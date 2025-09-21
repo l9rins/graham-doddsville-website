@@ -1,19 +1,20 @@
 {
-  "name": "graham-doddsville-news-api",
+  "name": "graham-doddsville-website",
   "version": "1.0.0",
-  "description": "News scraping API for Graham and Doddsville website",
-  "main": "news-api.js",
+  "description": "Modern responsive website for Graham and Doddsville - Australia's premier value investing education platform",
+  "main": "index.html",
   "scripts": {
-    "start": "node news-api.js",
-    "dev": "nodemon news-api.js",
-    "test": "jest"
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "frontend": "python -m http.server 8000"
   },
   "keywords": [
-    "news",
-    "scraping",
+    "value-investing",
+    "graham-doddsville",
     "australia",
-    "finance",
-    "investment"
+    "financial-education",
+    "responsive-website",
+    "news-aggregation"
   ],
   "author": "Graham and Doddsville",
   "license": "MIT",
