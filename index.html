@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Graham and Doddsville - Premier source of value investing information in Australia. Educational resources, articles, and insights for intelligent stock market investing.">
     <title>Graham and Doddsville - Value Investing Education Australia</title>
-    <link rel="stylesheet" href="styles.css?v=1.6&t=20241222">
+    <link rel="stylesheet" href="styles.css?v=1.7&t=20241222">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Georgia,serif&family=Arial,sans-serif&display=swap" rel="stylesheet">
@@ -26,24 +26,16 @@
                 <nav class="main-nav">
                     <ul>
                         <li><a href="#home">HOME</a></li>
-                        <li><a href="#markets">MARKETS</a></li>
-                        <li><a href="#investments">INVESTMENTS</a></li>
-                        <li><a href="#news">NEWS & INSIGHTS</a></li>
-                        <li><a href="#learn">LEARN</a></li>
                         <li><a href="#about">ABOUT</a></li>
-                        <li><a href="#contact">CONTACT</a></li>
+                        <li><a href="#advertise">ADVERTISE</a></li>
+                        <li><a href="#subscribe">SUBSCRIBE</a></li>
+                        <li><a href="#contact">CONTACT US</a></li>
                     </ul>
                 </nav>
-                <div class="header-actions">
-                    <div class="search-container">
-                        <input type="text" placeholder="Search investments, news..." class="search-input">
-                        <button class="search-btn">🔍</button>
-                    </div>
-                    <div class="mobile-menu-toggle" id="mobile-toggle">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
+                <div class="mobile-menu-toggle" id="mobile-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
                 </div>
             </div>
         </div>
@@ -79,8 +71,8 @@
     <main class="main-content">
         <div class="container">
             <div class="content-wrapper">
-                <!-- Main Content Area -->
-                <div class="main-column">
+                <!-- Left Column - Latest News -->
+                <div class="left-column">
                     <!-- Latest News Section -->
                     <section class="latest-news" id="home">
                         <h2>###### LATEST NEWS</h2>
@@ -132,7 +124,10 @@
                             </div>
                         </div>
                     </section>
+                </div>
 
+                <!-- Center Column - Feature Articles -->
+                <div class="center-column">
                     <!-- Feature Articles -->
                     <section class="feature-articles">
                         <h2>###### FEATURE ARTICLES</h2>
@@ -173,7 +168,10 @@
                             </article>
                         </div>
                     </section>
+                </div>
 
+                <!-- Right Column - Around the World & Classic Readings -->
+                <div class="right-column">
                     <!-- Around the World -->
                     <section class="around-world">
                         <h2>###### AROUND THE WORLD</h2>
@@ -225,108 +223,6 @@
                         <p class="see-more"><a href="#">See more...</a></p>
                     </section>
 
-                    <!-- Educational Videos -->
-                    <section class="educational-videos">
-                        <h2>###### EDUCATIONAL VIDEOS</h2>
-                        <div class="video-filters">
-                            <div class="filter-group">
-                                <label>Investor:</label>
-                                <select>
-                                    <option>Select...</option>
-                                    <option>Warren Buffett</option>
-                                    <option>Benjamin Graham</option>
-                                    <option>Charlie Munger</option>
-                                    <option>Peter Lynch</option>
-                                </select>
-                            </div>
-                            <div class="filter-group">
-                                <label>Topic:</label>
-                                <select>
-                                    <option>Select...</option>
-                                    <option>Value Investing</option>
-                                    <option>Market Analysis</option>
-                                    <option>Portfolio Management</option>
-                                    <option>Risk Management</option>
-                                </select>
-                            </div>
-                            <div class="filter-group">
-                                <label>Period:</label>
-                                <select>
-                                    <option>Select...</option>
-                                    <option>Last 3 months</option>
-                                    <option>Last 6 months</option>
-                                    <option>Last 12 months</option>
-                                    <option>&gt; 12 months</option>
-                                </select>
-                            </div>
-                            <div class="filter-group">
-                                <label>Sorted by:</label>
-                                <select>
-                                    <option>Select...</option>
-                                    <option>Most recent first</option>
-                                    <option>Oldest first</option>
-                                </select>
-                            </div>
-                        </div>
-                        <p class="see-more"><a href="#">...See more</a></p>
-                    </section>
-
-                    <!-- Book Feature -->
-                    <section class="book-feature">
-                        <h2>###### BOOK FEATURE</h2>
-                        <div class="featured-book">
-                            <h3>The Intelligent Investor</h3>
-                            <p class="book-author">by Benjamin Graham</p>
-                            <p class="book-description">The definitive book on value investing, first published in 1949 and still considered the bible of investing...</p>
-                            <div class="book-actions">
-                                <a href="#" class="btn-primary">Read Summary</a>
-                                <a href="#" class="btn-secondary">Buy Book</a>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Recommended Books -->
-                    <section class="recommended-books">
-                        <h2>###### RECOMMENDED BOOKS</h2>
-                        <div class="books-list">
-                            <div class="book-item">
-                                <h4><a href="#">Security Analysis</a></h4>
-                                <p class="book-author">Benjamin Graham & David Dodd</p>
-                            </div>
-                            <div class="book-item">
-                                <h4><a href="#">Common Stocks and Uncommon Profits</a></h4>
-                                <p class="book-author">Philip Fisher</p>
-                            </div>
-                            <div class="book-item">
-                                <h4><a href="#">One Up On Wall Street</a></h4>
-                                <p class="book-author">Peter Lynch</p>
-                            </div>
-                            <div class="book-item">
-                                <h4><a href="#">The Warren Buffett Portfolio</a></h4>
-                                <p class="book-author">Robert Hagstrom</p>
-                            </div>
-                        </div>
-                    </section>
-
-                    <!-- Warren Buffett on Everything -->
-                    <section class="warren-buffett">
-                        <h2>###### WARREN BUFFETT ON EVERYTHING</h2>
-                        <div class="buffett-quotes">
-                            <blockquote>
-                                "Rule No. 1: Never lose money. Rule No. 2: Never forget rule No. 1."
-                            </blockquote>
-                            <blockquote>
-                                "It's far better to buy a wonderful company at a fair price than a fair company at a wonderful price."
-                            </blockquote>
-                            <blockquote>
-                                "Our favorite holding period is forever."
-                            </blockquote>
-                        </div>
-                    </section>
-                </div>
-
-                <!-- Sidebar -->
-                <aside class="sidebar">
                     <!-- Events & Seminars -->
                     <section class="events-section">
                         <h2>EVENTS & SEMINARS</h2>
@@ -498,6 +394,109 @@
                     </section>
                 </div>
             </div>
+
+            <!-- Full Width Sections -->
+            <div class="full-width-sections">
+                <!-- Educational Videos -->
+                    <section class="educational-videos">
+                        <h2>###### EDUCATIONAL VIDEOS</h2>
+                        <div class="video-filters">
+                            <div class="filter-group">
+                                <label>Investor:</label>
+                                <select>
+                                    <option>Select...</option>
+                                    <option>Warren Buffett</option>
+                                    <option>Benjamin Graham</option>
+                                    <option>Charlie Munger</option>
+                                    <option>Peter Lynch</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label>Topic:</label>
+                                <select>
+                                    <option>Select...</option>
+                                    <option>Value Investing</option>
+                                    <option>Market Analysis</option>
+                                    <option>Portfolio Management</option>
+                                    <option>Risk Management</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label>Period:</label>
+                                <select>
+                                    <option>Select...</option>
+                                    <option>Last 3 months</option>
+                                    <option>Last 6 months</option>
+                                    <option>Last 12 months</option>
+                                    <option>&gt; 12 months</option>
+                                </select>
+                            </div>
+                            <div class="filter-group">
+                                <label>Sorted by:</label>
+                                <select>
+                                    <option>Select...</option>
+                                    <option>Most recent first</option>
+                                    <option>Oldest first</option>
+                                </select>
+                            </div>
+                        </div>
+                        <p class="see-more"><a href="#">...See more</a></p>
+                    </section>
+
+                    <!-- Book Feature -->
+                    <section class="book-feature">
+                        <h2>###### BOOK FEATURE</h2>
+                        <div class="featured-book">
+                            <h3>The Intelligent Investor</h3>
+                            <p class="book-author">by Benjamin Graham</p>
+                            <p class="book-description">The definitive book on value investing, first published in 1949 and still considered the bible of investing...</p>
+                            <div class="book-actions">
+                                <a href="#" class="btn-primary">Read Summary</a>
+                                <a href="#" class="btn-secondary">Buy Book</a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Recommended Books -->
+                    <section class="recommended-books">
+                        <h2>###### RECOMMENDED BOOKS</h2>
+                        <div class="books-list">
+                            <div class="book-item">
+                                <h4><a href="#">Security Analysis</a></h4>
+                                <p class="book-author">Benjamin Graham & David Dodd</p>
+                            </div>
+                            <div class="book-item">
+                                <h4><a href="#">Common Stocks and Uncommon Profits</a></h4>
+                                <p class="book-author">Philip Fisher</p>
+                            </div>
+                            <div class="book-item">
+                                <h4><a href="#">One Up On Wall Street</a></h4>
+                                <p class="book-author">Peter Lynch</p>
+                            </div>
+                            <div class="book-item">
+                                <h4><a href="#">The Warren Buffett Portfolio</a></h4>
+                                <p class="book-author">Robert Hagstrom</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Warren Buffett on Everything -->
+                    <section class="warren-buffett">
+                        <h2>###### WARREN BUFFETT ON EVERYTHING</h2>
+                        <div class="buffett-quotes">
+                            <blockquote>
+                                "Rule No. 1: Never lose money. Rule No. 2: Never forget rule No. 1."
+                            </blockquote>
+                            <blockquote>
+                                "It's far better to buy a wonderful company at a fair price than a fair company at a wonderful price."
+                            </blockquote>
+                            <blockquote>
+                                "Our favorite holding period is forever."
+                            </blockquote>
+                        </div>
+                    </section>
+                </div>
+            </div>
         </div>
     </main>
 
@@ -528,7 +527,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="news-scraper.js?v=1.6&t=20241222"></script>
+    <script src="news-scraper.js?v=1.7&t=20241222"></script>
     <script>
         // Display current date
         document.addEventListener('DOMContentLoaded', function() {

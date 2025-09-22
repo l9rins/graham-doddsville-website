@@ -42,41 +42,6 @@ body {
     gap: 20px;
 }
 
-.header-actions {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.search-container {
-    display: flex;
-    align-items: center;
-    background: #f5f5f5;
-    border-radius: 25px;
-    padding: 5px 15px;
-    border: 1px solid #ddd;
-}
-
-.search-input {
-    border: none;
-    background: transparent;
-    padding: 8px 10px;
-    font-size: 14px;
-    width: 200px;
-    outline: none;
-}
-
-.search-input::placeholder {
-    color: #888;
-}
-
-.search-btn {
-    background: none;
-    border: none;
-    font-size: 16px;
-    cursor: pointer;
-    padding: 5px;
-}
 
 .logo h1 {
     font-family: Georgia, serif;
@@ -161,12 +126,21 @@ body {
 
 .content-wrapper {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 30px;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
     align-items: start;
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
+}
+
+.left-column, .center-column, .right-column {
+    min-width: 0;
+}
+
+.full-width-sections {
+    grid-column: 1 / -1;
+    margin-top: 30px;
 }
 
 /* Main Column */
@@ -963,6 +937,10 @@ body {
         gap: 20px;
         width: 100%;
         max-width: 100%;
+    }
+    
+    .left-column, .center-column, .right-column {
+        margin-bottom: 30px;
     }
     
     .news-categories-dense {
