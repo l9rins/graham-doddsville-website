@@ -22,6 +22,8 @@ class AustralianNewsScraper {
             {
                 name: 'The Australian',
                 url: 'https://www.theaustralian.com.au/',
+                query: 'australia business finance',
+                apiSource: 'demo',
                 selectors: {
                     headlines: 'h3 a, .story-block h3 a, .headline a',
                     links: 'a[href*="/story/"], a[href*="/business/"]',
@@ -32,6 +34,8 @@ class AustralianNewsScraper {
             {
                 name: 'Sydney Morning Herald',
                 url: 'https://www.smh.com.au/',
+                query: 'australia business',
+                apiSource: 'demo',
                 selectors: {
                     headlines: 'h3 a, .story-block h3 a, .headline a',
                     links: 'a[href*="/story/"], a[href*="/business/"]',
@@ -42,6 +46,8 @@ class AustralianNewsScraper {
             {
                 name: 'ABC News',
                 url: 'https://www.abc.net.au/news/',
+                query: 'australia business finance',
+                apiSource: 'demo',
                 selectors: {
                     headlines: 'h3 a, .story-block h3 a, .headline a',
                     links: 'a[href*="/news/"]',
@@ -52,6 +58,8 @@ class AustralianNewsScraper {
             {
                 name: 'News.com.au',
                 url: 'https://www.news.com.au/',
+                query: 'australia business',
+                apiSource: 'demo',
                 selectors: {
                     headlines: 'h3 a, .story-block h3 a, .headline a',
                     links: 'a[href*="/story/"]',
