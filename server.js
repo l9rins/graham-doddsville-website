@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const fetch = require('node-fetch');
 const { DOMParser } = require('xmldom');
 const { newsSources } = require('./news-sources-config');
@@ -293,6 +294,14 @@ app.get('/api/health', (req, res) => {
         timestamp: new Date().toISOString(),
         sources: Object.keys(newsSources)
     });
+});
+
+// Serve static files
+app.use(express.static('.'));
+
+// Serve main page
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // Start server
