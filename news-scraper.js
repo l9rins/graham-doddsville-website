@@ -244,7 +244,7 @@ class AustralianNewsScraper {
         return newsItems
             .filter(item => this.isRelevantNews(item))
             .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))
-            .slice(0, 20); // Limit to 20 most recent items
+            .slice(0, 5); // Limit to 5 most recent items for better layout
     }
 
     // Check if news item is relevant to investment/finance
@@ -310,42 +310,28 @@ class NewsDisplayManager {
         this.scraper = new AustralianNewsScraper();
         this.currentFilter = 'all';
         this.currentSearch = '';
+        this.allNews = [];
+        this.displayedCount = 5;
+        this.maxDisplay = 5;
     }
 
     async initialize() {
         try {
-            console.log('NewsDisplayManager: Starting initialization...');
-            
             // Show loading state
             this.showLoadingState();
-            console.log('NewsDisplayManager: Loading state shown');
             
             // Fetch news
-            console.log('NewsDisplayManager: Fetching news...');
             const news = await this.scraper.fetchNews();
-            console.log('NewsDisplayManager: News fetched:', news.length, 'items');
+            this.allNews = news;
             
-            // Display news
-            this.displayNews(news);
-        console.log('NewsDisplayManager: News displayed');
-        
-        // Force display some news if none are showing
-        const self = this;
-        setTimeout(() => {
-            const newsList = document.querySelector('.news-list');
-            if (newsList && (newsList.innerHTML.includes('loading-spinner') || newsList.children.length === 0)) {
-                console.log('NewsDisplayManager: Forcing display of sample news');
-                self.displaySampleNews();
-            }
-        }, 2000);
+            // Display limited news
+            this.displayNews(news.slice(0, this.maxDisplay));
         
         // Setup event listeners
         this.setupEventListeners();
-        console.log('NewsDisplayManager: Event listeners setup');
         
         // Setup auto-refresh
         this.setupAutoRefresh();
-        console.log('NewsDisplayManager: Auto-refresh setup');
             
         } catch (error) {
             console.error('Error initializing news display:', error);
@@ -398,14 +384,23 @@ class NewsDisplayManager {
         }
 
         const newsHTML = news.map(item => this.createNewsItemHTML(item)).join('');
-        newsList.innerHTML = newsHTML;
+        
+        // Add Show More button if there are more news items
+        let showMoreButton = '';
+        if (this.allNews.length > this.maxDisplay) {
+            showMoreButton = `
+                <div class="show-more-container">
+                    <button class="show-more-btn" onclick="newsDisplayManager.showMoreNews()">
+                        Show More News (${this.allNews.length - this.maxDisplay} remaining)
+                    </button>
+                </div>
+            `;
+        }
+        
+        newsList.innerHTML = newsHTML + showMoreButton;
 
-        console.log('NewsDisplayManager: News HTML generated and inserted');
-        console.log('NewsDisplayManager: News list innerHTML length:', newsList.innerHTML.length);
-        console.log('NewsDisplayManager: News list children count:', newsList.children.length);
-
-        // Force visibility and ensure proper display
-        newsList.style.display = 'flex';
+        // Ensure proper display
+        newsList.style.display = 'block';
         newsList.style.visibility = 'visible';
         newsList.style.opacity = '1';
         
@@ -533,6 +528,12 @@ class NewsDisplayManager {
         if (lastUpdatedElement) {
             lastUpdatedElement.textContent = `Last updated: ${new Date().toLocaleTimeString('en-AU')}`;
         }
+    }
+
+    showMoreNews() {
+        this.maxDisplay += 5;
+        const newsToShow = this.allNews.slice(0, this.maxDisplay);
+        this.displayNews(newsToShow);
     }
 
     displaySampleNews() {
