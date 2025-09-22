@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Graham and Doddsville - Australia's premier value investing education platform with interactive tools, expert insights, and comprehensive learning resources.">
+    <title>Graham and Doddsville - Advanced Value Investing Education Platform</title>
+    <link rel="stylesheet" href="styles-modern.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1a365d">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1>Graham & Doddsville</h1>
+                <span class="tagline">Advanced Value Investing Education</span>
+            </div>
+            
+            <div class="nav-search">
+                <div class="search-container">
+                    <input type="text" placeholder="Search articles, tools, resources..." id="search-input">
+                    <button class="search-btn"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+            
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">Education <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-section">
+                                <h4>Learning Paths</h4>
+                                <a href="#">Beginner's Guide</a>
+                                <a href="#">Intermediate Strategies</a>
+                                <a href="#">Advanced Analysis</a>
+                            </div>
+                            <div class="dropdown-section">
+                                <h4>Interactive Tools</h4>
+                                <a href="#">Portfolio Builder</a>
+                                <a href="#">Risk Calculator</a>
+                                <a href="#">Valuation Tools</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">Resources <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <div class="dropdown-section">
+                                <h4>Classic Readings</h4>
+                                <a href="#">Warren Buffett Letters</a>
+                                <a href="#">Benjamin Graham Works</a>
+                                <a href="#">Investment Classics</a>
+                            </div>
+                            <div class="dropdown-section">
+                                <h4>Market Data</h4>
+                                <a href="#">Live Market Quotes</a>
+                                <a href="#">Economic Indicators</a>
+                                <a href="#">Company Analysis</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link cta-button">Subscribe</a>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="nav-toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background">
+            <div class="hero-pattern"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">Master Value Investing with Australia's Premier Education Platform</h1>
+                    <p class="hero-description">Access interactive tools, expert insights, and comprehensive learning resources designed to transform your investment approach.</p>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary">Start Learning</button>
+                        <button class="btn btn-secondary">Explore Tools</button>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="market-dashboard">
+                        <div class="dashboard-header">
+                            <h3>Live Market Data</h3>
+                            <span class="live-indicator">● LIVE</span>
+                        </div>
+                        <div class="market-cards">
+                            <div class="market-card">
+                                <div class="market-symbol">ASX 200</div>
+                                <div class="market-price">7,234.56</div>
+                                <div class="market-change positive">+45.23 (+0.63%)</div>
+                            </div>
+                            <div class="market-card">
+                                <div class="market-symbol">AUD/USD</div>
+                                <div class="market-price">0.6789</div>
+                                <div class="market-change negative">-0.0023 (-0.34%)</div>
+                            </div>
+                            <div class="market-card">
+                                <div class="market-symbol">Gold</div>
+                                <div class="market-price">$2,045.67</div>
+                                <div class="market-change positive">+12.45 (+0.61%)</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Tools Section -->
+    <section class="tools-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Interactive Financial Tools</h2>
+                <p>Powerful calculators and simulators to enhance your investment analysis</p>
+            </div>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Portfolio Builder</h3>
+                    <p>Build and analyze diversified portfolios with drag-and-drop functionality</p>
+                    <button class="btn btn-outline">Launch Tool</button>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3>Risk Calculator</h3>
+                    <p>Assess investment risk with personalized recommendations</p>
+                    <button class="btn btn-outline">Launch Tool</button>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h3>Valuation Tools</h3>
+                    <p>Advanced DCF and intrinsic value calculations</p>
+                    <button class="btn btn-outline">Launch Tool</button>
+                </div>
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-piggy-bank"></i>
+                    </div>
+                    <h3>Retirement Planner</h3>
+                    <p>Plan your financial future with visual projections</p>
+                    <button class="btn btn-outline">Launch Tool</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Learning Paths Section -->
+    <section class="learning-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Structured Learning Paths</h2>
+                <p>Progressive education from beginner to expert level</p>
+            </div>
+            <div class="learning-grid">
+                <div class="learning-card">
+                    <div class="learning-level">Beginner</div>
+                    <h3>Value Investing Fundamentals</h3>
+                    <p>Master the core principles of value investing with interactive lessons and real-world examples.</p>
+                    <div class="learning-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 25%"></div>
+                        </div>
+                        <span>3 of 12 lessons completed</span>
+                    </div>
+                    <div class="learning-features">
+                        <span class="feature-tag">Interactive</span>
+                        <span class="feature-tag">Video</span>
+                        <span class="feature-tag">Quizzes</span>
+                    </div>
+                    <button class="btn btn-primary">Continue Learning</button>
+                </div>
+                <div class="learning-card">
+                    <div class="learning-level">Intermediate</div>
+                    <h3>Advanced Analysis Techniques</h3>
+                    <p>Deep dive into financial statement analysis and company valuation methods.</p>
+                    <div class="learning-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <span>0 of 15 lessons completed</span>
+                    </div>
+                    <div class="learning-features">
+                        <span class="feature-tag">Case Studies</span>
+                        <span class="feature-tag">Tools</span>
+                        <span class="feature-tag">Expert</span>
+                    </div>
+                    <button class="btn btn-outline">Start Learning</button>
+                </div>
+                <div class="learning-card">
+                    <div class="learning-level">Expert</div>
+                    <h3>Master Class Series</h3>
+                    <p>Advanced strategies and insights from renowned value investors.</p>
+                    <div class="learning-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 0%"></div>
+                        </div>
+                        <span>0 of 8 lessons completed</span>
+                    </div>
+                    <div class="learning-features">
+                        <span class="feature-tag">Exclusive</span>
+                        <span class="feature-tag">Live</span>
+                        <span class="feature-tag">Premium</span>
+                    </div>
+                    <button class="btn btn-outline">Unlock Premium</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News & Insights Section -->
+    <section class="news-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Latest Market Insights</h2>
+                <p>Real-time news and expert analysis from Australian financial markets</p>
+            </div>
+            <div class="news-grid">
+                <div class="news-main">
+                    <article class="news-card featured">
+                        <div class="news-image">
+                            <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjI1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjhmOWZhIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzMzMyIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkF1c3RyYWxpYW4gRmluYW5jaWFsIE5ld3M8L3RleHQ+PC9zdmc+" alt="Financial News">
+                        </div>
+                        <div class="news-content">
+                            <div class="news-meta">
+                                <span class="news-source">Australian Financial Review</span>
+                                <span class="news-date">2 hours ago</span>
+                            </div>
+                            <h3 class="news-title">ASX 200 Rises as Investors Digest RBA Rate Decision</h3>
+                            <p class="news-excerpt">The benchmark index climbed 0.8% following the Reserve Bank's latest monetary policy announcement, with financial stocks leading the gains.</p>
+                            <div class="news-actions">
+                                <a href="#" class="read-more">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <div class="news-sidebar">
+                    <div class="news-category">
+                        <h4>Market Updates</h4>
+                        <div class="news-list" id="news-list">
+                            <!-- Dynamic news will be loaded here -->
+                        </div>
+                    </div>
+                    <div class="news-category">
+                        <h4>Expert Analysis</h4>
+                        <ul class="news-items">
+                            <li><a href="#">Value investing opportunities in small caps (AFR)</a></li>
+                            <li><a href="#">Property market stabilization signals (SMH)</a></li>
+                            <li><a href="#">Banking sector headwinds analysis (The Australian)</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expert Insights Section -->
+    <section class="experts-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Expert Insights & Interviews</h2>
+                <p>Learn from Australia's leading value investing professionals</p>
+            </div>
+            <div class="experts-grid">
+                <div class="expert-card">
+                    <div class="expert-image">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSI2MCIgY3k9IjYwIiByPSI2MCIgZmlsbD0iIzMxODJjZSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+RXhwZXJ0PC90ZXh0Pjwvc3ZnPg==" alt="Expert">
+                    </div>
+                    <div class="expert-info">
+                        <h4>Dr. Sarah Mitchell</h4>
+                        <p class="expert-title">Chief Investment Officer, Value Capital</p>
+                        <p class="expert-bio">20+ years experience in value investing with a focus on Australian small-cap opportunities.</p>
+                        <div class="expert-credentials">
+                            <span class="credential">CFA</span>
+                            <span class="credential">PhD Finance</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="expert-card">
+                    <div class="expert-image">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSI2MCIgY3k9IjYwIiByPSI2MCIgZmlsbD0iIzM4YTU2OSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+RXhwZXJ0PC90ZXh0Pjwvc3ZnPg==" alt="Expert">
+                    </div>
+                    <div class="expert-info">
+                        <h4>Michael Chen</h4>
+                        <p class="expert-title">Portfolio Manager, Graham & Dodd Fund</p>
+                        <p class="expert-bio">Specialist in Benjamin Graham's investment principles with 15 years of market experience.</p>
+                        <div class="expert-credentials">
+                            <span class="credential">MBA</span>
+                            <span class="credential">CAIA</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="expert-card">
+                    <div class="expert-image">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSI2MCIgY3k9IjYwIiByPSI2MCIgZmlsbD0iI2U1MzM2MyIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+RXhwZXJ0PC90ZXh0Pjwvc3ZnPg==" alt="Expert">
+                    </div>
+                    <div class="expert-info">
+                        <h4>Emma Thompson</h4>
+                        <p class="expert-title">Senior Analyst, Investment Research</p>
+                        <p class="expert-bio">Expert in financial statement analysis and company valuation with a focus on ASX-listed companies.</p>
+                        <div class="expert-credentials">
+                            <span class="credential">CPA</span>
+                            <span class="credential">CFA</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="community-section">
+        <div class="container">
+            <div class="community-content">
+                <div class="community-text">
+                    <h2>Join Australia's Value Investing Community</h2>
+                    <p>Connect with like-minded investors, share insights, and learn from experienced professionals in our exclusive community.</p>
+                    <div class="community-stats">
+                        <div class="stat">
+                            <div class="stat-number">2,500+</div>
+                            <div class="stat-label">Active Members</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">150+</div>
+                            <div class="stat-label">Expert Articles</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Live Events</div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary">Join Community</button>
+                </div>
+                <div class="community-visual">
+                    <div class="community-features">
+                        <div class="feature-item">
+                            <i class="fas fa-comments"></i>
+                            <span>Discussion Forums</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-video"></i>
+                            <span>Live Webinars</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-users"></i>
+                            <span>Expert Q&A</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Portfolio Sharing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Graham & Doddsville</h4>
+                    <p>Australia's premier value investing education platform, dedicated to empowering investors with knowledge and tools for long-term success.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Education</h4>
+                    <ul>
+                        <li><a href="#">Learning Paths</a></li>
+                        <li><a href="#">Interactive Tools</a></li>
+                        <li><a href="#">Video Library</a></li>
+                        <li><a href="#">Expert Interviews</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Classic Readings</a></li>
+                        <li><a href="#">Market Data</a></li>
+                        <li><a href="#">Research Reports</a></li>
+                        <li><a href="#">Newsletter</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Graham and Doddsville. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="news-scraper.js"></script>
+    <script src="script-modern.js"></script>
+</body>
+</html>
