@@ -26,6 +26,7 @@ body {
     padding: 0 20px;
     width: 100%;
     overflow-x: hidden;
+    overflow-y: visible;
 }
 
 /* Header */
@@ -34,6 +35,7 @@ body {
     border-bottom: 2px solid #000;
     padding: 15px 0;
     transition: all 0.3s ease;
+    overflow: visible;
 }
 
 .sticky-header {
@@ -59,10 +61,15 @@ body {
     margin: 0;
 }
 
+.main-nav {
+    overflow: visible;
+}
+
 .main-nav ul {
     display: flex;
     list-style: none;
     gap: 30px;
+    overflow: visible;
 }
 
 .main-nav a {
@@ -81,6 +88,7 @@ body {
 /* Mega Menu */
 .mega-menu-item {
     position: relative;
+    overflow: visible;
 }
 
 .mega-menu {
@@ -94,8 +102,11 @@ body {
     display: none;
     min-width: 300px;
     padding: 20px;
-    z-index: 1001;
+    z-index: 9999;
     margin-top: 5px;
+    max-width: 600px;
+    width: max-content;
+    white-space: nowrap;
 }
 
 .mega-menu.show {
