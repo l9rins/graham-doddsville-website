@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Graham and Doddsville - Premier source of value investing information in Australia. Educational resources, articles, and insights for intelligent stock market investing.">
     <title>Graham and Doddsville - Value Investing Education Australia</title>
-    <link rel="stylesheet" href="styles.css?v=2.6&t=20241222">
+    <link rel="stylesheet" href="styles.css?v=2.7&t=20241222">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Georgia,serif&family=Arial,sans-serif&display=swap" rel="stylesheet">
@@ -146,7 +146,7 @@
                         <div class="news-categories-grid">
                             <div class="news-category-card companies">
                                 <div class="category-header">
-                                    <h3>Companies</h3>
+                                <h3>Companies</h3>
                                     <a href="#" class="see-more">...See more</a>
                                 </div>
                                 <ul class="news-links">
@@ -161,7 +161,7 @@
                             
                             <div class="news-category-card markets">
                                 <div class="category-header">
-                                    <h3>Markets</h3>
+                                <h3>Markets</h3>
                                     <a href="#" class="see-more">...See more</a>
                                 </div>
                                 <ul class="news-links">
@@ -176,7 +176,7 @@
                             
                             <div class="news-category-card economy">
                                 <div class="category-header">
-                                    <h3>Economy</h3>
+                                <h3>Economy</h3>
                                     <a href="#" class="see-more">...See more</a>
                                 </div>
                                 <ul class="news-links">
@@ -191,7 +191,7 @@
                             
                             <div class="news-category-card industry">
                                 <div class="category-header">
-                                    <h3>Industry</h3>
+                                <h3>Industry</h3>
                                     <a href="#" class="see-more">...See more</a>
                                 </div>
                                 <ul class="news-links">
@@ -385,7 +385,7 @@
                                 <button class="time-btn" data-range="1M">1M</button>
                                 <button class="time-btn" data-range="1Y">1Y</button>
                             </div>
-                        </div>
+                            </div>
                         <div class="market-table-container" id="indices-tab">
                             <table class="market-table" data-sortable>
                                 <thead>
@@ -423,7 +423,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
+                            </div>
                         <div class="market-table-container" id="commodities-tab" style="display: none;">
                             <table class="market-table" data-sortable>
                                 <thead>
@@ -461,7 +461,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                        </div>
+                            </div>
                         <div class="market-table-container" id="currencies-tab" style="display: none;">
                             <table class="market-table" data-sortable>
                                 <thead>
@@ -812,16 +812,94 @@
                     <!-- Warren Buffett on Everything -->
                     <section class="warren-buffett">
                         <h2>###### WARREN BUFFETT ON EVERYTHING</h2>
-                        <div class="buffett-quotes">
-                            <blockquote>
-                                "Rule No. 1: Never lose money. Rule No. 2: Never forget rule No. 1."
-                            </blockquote>
-                            <blockquote>
-                                "It's far better to buy a wonderful company at a fair price than a fair company at a wonderful price."
-                            </blockquote>
-                            <blockquote>
-                                "Our favorite holding period is forever."
-                            </blockquote>
+                        
+                        <!-- Tab Navigation -->
+                        <div class="buffett-tabs">
+                            <button class="tab-btn active" data-tab="philosophy">Philosophy</button>
+                            <button class="tab-btn" data-tab="concepts">Investment Concepts</button>
+                            <button class="tab-btn" data-tab="bubbles">Bubbles & Crashes</button>
+                            <button class="tab-btn" data-tab="investors">Great Investors</button>
+                        </div>
+                        
+                        <!-- Tab Content -->
+                        <div class="buffett-content">
+                            <!-- Philosophy Tab -->
+                            <div class="tab-content active" id="philosophy-tab">
+                                <div class="buffett-columns">
+                                    <div class="buffett-column">
+                                        <div class="column-image">
+                                            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=300&h=200&fit=crop" alt="Investment Philosophy">
+                                        </div>
+                                        <h3>Investment Philosophy</h3>
+                                        <ul class="buffett-topics">
+                                            <li><a href="#">Conservatism</a></li>
+                                            <li><a href="#">Investment philosophy</a></li>
+                                            <li><a href="#">Investment objectives</a></li>
+                                            <li><a href="#">Performance standards</a></li>
+                                            <li><a href="#">Performance measurement</a></li>
+                                            <li><a href="#">Berkshire disclosure</a></li>
+                                            <li><a href="#">Market forecasting</a></li>
+                                            <li><a href="#">Market timing</a></li>
+                                            <li><a href="#">Value investing</a></li>
+                                            <li><a href="#">Successful Investing</a></li>
+                                            <li><a href="#">Exit Strategy</a></li>
+                                            <li><a href="#">Mistakes</a></li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="buffett-column">
+                                        <div class="column-image">
+                                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=300&h=200&fit=crop" alt="Investment Concepts">
+                                        </div>
+                                        <h3>Investment Concepts</h3>
+                                        <ul class="buffett-topics">
+                                            <li><a href="#">Efficient Market Theory</a></li>
+                                            <li><a href="#">Modern Portfolio Theory</a></li>
+                                            <li><a href="#">Intrinsic value</a></li>
+                                            <li><a href="#">Wall Street and Mr Market</a></li>
+                                            <li><a href="#">Circle of competence</a></li>
+                                            <li><a href="#">Margin of safety</a></li>
+                                            <li><a href="#">Frictional costs</a></li>
+                                            <li><a href="#">Capital allocation</a></li>
+                                            <li><a href="#">Security analyst</a></li>
+                                            <li><a href="#">Speculation</a></li>
+                                            <li><a href="#">Long Term Investing</a></li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="buffett-column">
+                                        <div class="column-image">
+                                            <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=300&h=200&fit=crop" alt="Bubbles and Crashes">
+                                        </div>
+                                        <h3>Bubbles and Crashes</h3>
+                                        <ul class="buffett-topics">
+                                            <li><a href="#">Market bubble</a></li>
+                                            <li><a href="#">Market crash</a></li>
+                                            <li><a href="#">Market psychology</a></li>
+                                            <li><a href="#">Fear and greed</a></li>
+                                            <li><a href="#">Market cycles</a></li>
+                                            <li><a href="#">Economic bubbles</a></li>
+                                            <li><a href="#">Recovery strategies</a></li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="buffett-column">
+                                        <div class="column-image">
+                                            <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=300&h=200&fit=crop" alt="Great Investors">
+                                        </div>
+                                        <h3>Great Investors</h3>
+                                        <ul class="buffett-topics">
+                                            <li><a href="#">Benjamin Graham</a></li>
+                                            <li><a href="#">David Dodd</a></li>
+                                            <li><a href="#">Charlie Munger</a></li>
+                                            <li><a href="#">Philip Fisher</a></li>
+                                            <li><a href="#">Peter Lynch</a></li>
+                                            <li><a href="#">John Templeton</a></li>
+                                            <li><a href="#">Seth Klarman</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </section>
 
@@ -871,9 +949,9 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="news-scraper.js?v=2.6&t=20241222"></script>
+    <script src="news-scraper.js?v=2.7&t=20241222"></script>
     <script>
-        // Display current date
+            // Display current date
         document.addEventListener('DOMContentLoaded', function() {
             const now = new Date();
             const options = { 
@@ -930,12 +1008,12 @@
                 const href = this.getAttribute('href');
                 // Only prevent default and scroll if href is not just '#'
                 if (href && href !== '#') {
-                    e.preventDefault();
+                e.preventDefault();
                     const target = document.querySelector(href);
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
                         });
                     }
                 }
@@ -943,12 +1021,12 @@
         });
 
         // Market data tabs functionality
-        document.querySelectorAll('.tab-btn').forEach(btn => {
+        document.querySelectorAll('.market-tabs .tab-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 const tabName = this.dataset.tab;
                 
-                // Remove active class from all buttons
-                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                // Remove active class from all market tab buttons
+                document.querySelectorAll('.market-tabs .tab-btn').forEach(b => b.classList.remove('active'));
                 // Add active class to clicked button
                 this.classList.add('active');
                 
@@ -961,6 +1039,29 @@
                 const targetTab = document.getElementById(tabName + '-tab');
                 if (targetTab) {
                     targetTab.style.display = 'block';
+                }
+            });
+        });
+
+        // Warren Buffett tabs functionality
+        document.querySelectorAll('.buffett-tabs .tab-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const tabName = this.dataset.tab;
+                
+                // Remove active class from all Buffett tab buttons
+                document.querySelectorAll('.buffett-tabs .tab-btn').forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Hide all tab content
+                document.querySelectorAll('.buffett-content .tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Show selected tab content
+                const targetTab = document.getElementById(tabName + '-tab');
+                if (targetTab) {
+                    targetTab.classList.add('active');
                 }
             });
         });

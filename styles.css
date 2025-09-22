@@ -1362,6 +1362,111 @@ body {
     font-size: 12px;
 }
 
+/* Warren Buffett Section */
+.buffett-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e8e8e8;
+}
+
+.buffett-tabs .tab-btn {
+    background: none;
+    border: none;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #666;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.buffett-tabs .tab-btn:hover {
+    color: #0066cc;
+    background: #f8f9fa;
+}
+
+.buffett-tabs .tab-btn.active {
+    color: #0066cc;
+    border-bottom-color: #0066cc;
+    background: #f8f9fa;
+}
+
+.buffett-content {
+    margin-top: 20px;
+}
+
+.buffett-content .tab-content {
+    display: none;
+}
+
+.buffett-content .tab-content.active {
+    display: block;
+}
+
+.buffett-columns {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.buffett-column {
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.buffett-column:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+}
+
+.column-image {
+    margin-bottom: 15px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.column-image img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+}
+
+.buffett-column h3 {
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #0066cc;
+}
+
+.buffett-topics {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.buffett-topics li {
+    margin-bottom: 8px;
+}
+
+.buffett-topics a {
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1.4;
+    transition: color 0.3s ease;
+}
+
+.buffett-topics a:hover {
+    color: #0066cc;
+}
+
 /* Error State */
 .error-state {
     text-align: center;
@@ -1632,6 +1737,20 @@ body {
     .books-categories {
         grid-template-columns: 1fr;
         gap: 20px;
+    }
+    
+    .buffett-columns {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .buffett-tabs {
+        flex-wrap: wrap;
+    }
+    
+    .buffett-tabs .tab-btn {
+        flex: 1;
+        min-width: 120px;
     }
     
     .news-categories-grid {
