@@ -360,9 +360,9 @@ class NewsDisplayManager {
         if (newsList) {
             newsList.innerHTML = `
                 <div class="error-state">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <p>Unable to load news. Please try again later.</p>
-                    <button class="btn btn-primary" onclick="newsDisplayManager.initialize()">Retry</button>
+                    <h4>⚠️ News Feed Temporarily Unavailable</h4>
+                    <p>We're experiencing technical difficulties loading the latest news. Please try refreshing the page or check back in a few minutes.</p>
+                    <button class="retry-btn" onclick="newsDisplayManager.initialize()">Retry Loading News</button>
                 </div>
             `;
         }
