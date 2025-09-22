@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Graham and Doddsville - Premier source of value investing information in Australia. Educational resources, articles, and insights for intelligent stock market investing.">
     <title>Graham and Doddsville - Value Investing Education Australia</title>
-    <link rel="stylesheet" href="styles.css?v=2.5&t=20241222">
+    <link rel="stylesheet" href="styles.css?v=2.6&t=20241222">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Georgia,serif&family=Arial,sans-serif&display=swap" rel="stylesheet">
@@ -871,7 +871,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="news-scraper.js?v=2.5&t=20241222"></script>
+    <script src="news-scraper.js?v=2.6&t=20241222"></script>
     <script>
         // Display current date
         document.addEventListener('DOMContentLoaded', function() {
@@ -892,6 +892,36 @@
         document.getElementById('mobile-toggle').addEventListener('click', function() {
             const nav = document.querySelector('.main-nav');
             nav.classList.toggle('active');
+        });
+
+        // Mega menu functionality
+        document.querySelectorAll('.mega-menu-item').forEach(item => {
+            const link = item.querySelector('a');
+            const megaMenu = item.querySelector('.mega-menu');
+            
+            // Show dropdown on hover
+            item.addEventListener('mouseenter', function() {
+                // Hide all other mega menus
+                document.querySelectorAll('.mega-menu').forEach(menu => {
+                    menu.classList.remove('show');
+                });
+                // Show this mega menu
+                megaMenu.classList.add('show');
+            });
+            
+            // Hide dropdown when mouse leaves
+            item.addEventListener('mouseleave', function() {
+                megaMenu.classList.remove('show');
+            });
+            
+            // Keep dropdown open when hovering over the mega menu itself
+            megaMenu.addEventListener('mouseenter', function() {
+                megaMenu.classList.add('show');
+            });
+            
+            megaMenu.addEventListener('mouseleave', function() {
+                megaMenu.classList.remove('show');
+            });
         });
 
         // Smooth scrolling for anchor links
