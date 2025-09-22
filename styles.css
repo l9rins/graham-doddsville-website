@@ -85,91 +85,79 @@ body {
     text-decoration: underline;
 }
 
-/* Mega Menu */
+/* Mega Menu - Complete Redesign for Client Requirements */
 .mega-menu-item {
     position: relative;
     overflow: visible;
-    /* Prevent layout shift */
-    contain: layout;
     /* Ensure proper stacking context */
-    z-index: 1;
+    z-index: 10;
 }
 
-/* Smart positioning for edge cases */
-.mega-menu-item:first-child .mega-menu {
-    left: 0;
-    transform: none;
-}
-
-.mega-menu-item:nth-child(2) .mega-menu {
-    left: 0;
-    transform: none;
-}
-
-.mega-menu-item:nth-child(3) .mega-menu {
-    left: 0;
-    transform: none;
-}
-
-.mega-menu-item:nth-last-child(-n+3) .mega-menu {
-    right: 0;
-    left: auto;
-    transform: none;
-}
-
-/* Specific positioning for Resources dropdown */
-.mega-menu-item.resources-menu .mega-menu {
-    right: 0;
-    left: auto;
-    transform: none;
-}
-
-/* Specific positioning for Events dropdown */
-.mega-menu-item.events-menu .mega-menu {
-    right: 0;
-    left: auto;
-    transform: none;
-}
-
+/* Each dropdown positioned relative to its own <li> */
 .mega-menu {
     position: absolute;
     top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 4px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     display: none;
-    width: 1000px;
-    max-width: calc(100vw - 40px);
-    max-height: 80vh;
+    width: 800px;
+    max-width: 90vw;
+    max-height: 70vh;
     padding: 20px;
-    z-index: 999999;
+    z-index: 1000;
     margin-top: 5px;
     box-sizing: border-box;
-    overflow-y: auto;
-    overflow-x: hidden;
-    /* Ensure no layout shift */
+    overflow: hidden;
+    /* Prevent layout shift */
     contain: layout style paint;
-    /* Force above all other elements */
-    isolation: isolate;
 }
+
+/* Edge positioning for rightmost items */
+.mega-menu-item:nth-last-child(-n+2) .mega-menu {
+    right: 0;
+    left: auto;
+}
+
 
 .mega-menu.show {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem 2rem;
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow: hidden;
+}
+
+/* Special layouts for specific menus */
+.mega-menu-item.wealth-creation-menu .mega-menu {
+    width: 600px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.mega-menu-item.greatest-investors-menu .mega-menu {
+    width: 900px;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.mega-menu-item.events-menu .mega-menu {
+    width: 900px;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.mega-menu-item.resources-menu .mega-menu {
+    width: 700px;
+    grid-template-columns: repeat(7, 1fr);
 }
 
 .mega-menu-column {
-    min-width: 140px;
-    max-width: 180px;
+    min-width: 160px;
+    max-width: 200px;
     overflow-y: auto;
     word-wrap: break-word;
     white-space: normal;
+    /* Handle excess items without expanding menu */
+    max-height: 60vh;
 }
 
 .mega-menu-column h4 {
