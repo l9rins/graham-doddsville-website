@@ -387,6 +387,11 @@
                             </div>
                             </div>
                         <div class="market-table-container" id="indices-tab">
+                            <!-- Interactive Chart -->
+                            <div class="market-chart-container">
+                                <canvas id="market-chart" width="400" height="200"></canvas>
+                            </div>
+                            
                             <table class="market-table" data-sortable>
                                 <thead>
                                     <tr>
@@ -682,7 +687,7 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="see-more"><a href="#" onclick="loadMoreNews()">...See more</a></p>
+                        <p class="see-more"><a href="#" onclick="loadMoreContent('videos')">...See more</a></p>
                     </section>
 
                     <!-- Book Feature -->
@@ -965,7 +970,93 @@
                 timeZoneName: 'short'
             };
             document.getElementById('current-date').textContent = now.toLocaleDateString('en-AU', options);
+            
+            // Initialize market chart
+            initializeMarketChart();
+            
+            // Initialize lazy loading
+            initializeLazyLoading();
         });
+
+        // Lazy loading implementation
+        function initializeLazyLoading() {
+            const images = document.querySelectorAll('img[data-src]');
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy');
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            images.forEach(img => imageObserver.observe(img));
+        }
+
+        // Simple market chart implementation
+        function initializeMarketChart() {
+            const canvas = document.getElementById('market-chart');
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, width, height);
+            
+            // Generate sample data (ASX 200 over time)
+            const dataPoints = [];
+            const baseValue = 8800;
+            let currentValue = baseValue;
+            
+            for (let i = 0; i < 20; i++) {
+                currentValue += (Math.random() - 0.5) * 50;
+                dataPoints.push({
+                    x: (i / 19) * width,
+                    y: height - ((currentValue - baseValue + 100) / 200) * height
+                });
+            }
+            
+            // Draw grid lines
+            ctx.strokeStyle = '#e0e0e0';
+            ctx.lineWidth = 1;
+            for (let i = 0; i <= 4; i++) {
+                const y = (i / 4) * height;
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(width, y);
+                ctx.stroke();
+            }
+            
+            // Draw chart line
+            ctx.strokeStyle = '#0066cc';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(dataPoints[0].x, dataPoints[0].y);
+            
+            for (let i = 1; i < dataPoints.length; i++) {
+                ctx.lineTo(dataPoints[i].x, dataPoints[i].y);
+            }
+            ctx.stroke();
+            
+            // Draw data points
+            ctx.fillStyle = '#0066cc';
+            dataPoints.forEach(point => {
+                ctx.beginPath();
+                ctx.arc(point.x, point.y, 3, 0, 2 * Math.PI);
+                ctx.fill();
+            });
+            
+            // Add labels
+            ctx.fillStyle = '#666';
+            ctx.font = '12px Arial';
+            ctx.fillText('ASX 200', 10, 20);
+            ctx.fillText('8,809.30', 10, 35);
+            ctx.fillText('+0.11%', 10, 50);
+        }
 
         // Mobile menu toggle
         document.getElementById('mobile-toggle').addEventListener('click', function() {
@@ -1128,10 +1219,92 @@
         document.querySelector('.global-search-input').addEventListener('input', function() {
             const searchTerm = this.value.toLowerCase();
             if (searchTerm.length > 2) {
-                // Implement search functionality
-                console.log('Searching for:', searchTerm);
+                performGlobalSearch(searchTerm);
             }
         });
+
+        // Global search function
+        function performGlobalSearch(searchTerm) {
+            const results = [];
+            
+            // Search news items
+            const newsItems = document.querySelectorAll('.news-item');
+            newsItems.forEach(item => {
+                const title = item.querySelector('.news-title a')?.textContent.toLowerCase() || '';
+                const excerpt = item.querySelector('.news-excerpt')?.textContent.toLowerCase() || '';
+                if (title.includes(searchTerm) || excerpt.includes(searchTerm)) {
+                    results.push({
+                        type: 'news',
+                        title: item.querySelector('.news-title a')?.textContent,
+                        url: item.querySelector('.news-title a')?.href,
+                        excerpt: item.querySelector('.news-excerpt')?.textContent
+                    });
+                }
+            });
+            
+            // Search articles
+            const articles = document.querySelectorAll('.article-item');
+            articles.forEach(item => {
+                const title = item.querySelector('h3 a')?.textContent.toLowerCase() || '';
+                const content = item.querySelector('p')?.textContent.toLowerCase() || '';
+                if (title.includes(searchTerm) || content.includes(searchTerm)) {
+                    results.push({
+                        type: 'article',
+                        title: item.querySelector('h3 a')?.textContent,
+                        url: item.querySelector('h3 a')?.href,
+                        excerpt: item.querySelector('p')?.textContent
+                    });
+                }
+            });
+            
+            // Search videos
+            const videos = document.querySelectorAll('.video-item');
+            videos.forEach(item => {
+                const title = item.querySelector('h4 a')?.textContent.toLowerCase() || '';
+                const description = item.querySelector('p')?.textContent.toLowerCase() || '';
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    results.push({
+                        type: 'video',
+                        title: item.querySelector('h4 a')?.textContent,
+                        url: item.querySelector('h4 a')?.href,
+                        excerpt: item.querySelector('p')?.textContent
+                    });
+                }
+            });
+            
+            // Display search results (you can implement a dropdown or modal)
+            console.log('Search results:', results);
+            displaySearchResults(results, searchTerm);
+        }
+
+        function displaySearchResults(results, searchTerm) {
+            // Create or update search results dropdown
+            let resultsContainer = document.querySelector('.search-results');
+            if (!resultsContainer) {
+                resultsContainer = document.createElement('div');
+                resultsContainer.className = 'search-results';
+                document.querySelector('.header-search').appendChild(resultsContainer);
+            }
+            
+            if (results.length === 0) {
+                resultsContainer.innerHTML = '<div class="no-results">No results found for "' + searchTerm + '"</div>';
+            } else {
+                const resultsHTML = results.slice(0, 5).map(result => `
+                    <div class="search-result-item">
+                        <div class="result-type">${result.type}</div>
+                        <div class="result-title"><a href="${result.url}">${result.title}</a></div>
+                        <div class="result-excerpt">${result.excerpt.substring(0, 100)}...</div>
+                    </div>
+                `).join('');
+                
+                resultsContainer.innerHTML = `
+                    <div class="search-results-header">Found ${results.length} results</div>
+                    ${resultsHTML}
+                `;
+            }
+            
+            resultsContainer.style.display = 'block';
+        }
 
         // Video filter functionality
         function filterVideos() {
@@ -1226,6 +1399,128 @@
                 // Fallback: show alert
                 alert('Loading more news...');
             }
+        }
+
+        // Enhanced "See more" functionality
+        function loadMoreContent(section) {
+            switch(section) {
+                case 'videos':
+                    loadMoreVideos();
+                    break;
+                case 'articles':
+                    loadMoreArticles();
+                    break;
+                case 'books':
+                    loadMoreBooks();
+                    break;
+                default:
+                    loadMoreNews();
+            }
+        }
+
+        function loadMoreVideos() {
+            const videoGrid = document.querySelector('.video-grid');
+            if (!videoGrid) return;
+            
+            // Add more video items
+            const newVideos = [
+                {
+                    title: 'Advanced Portfolio Management Strategies',
+                    investor: 'Warren Buffett',
+                    topic: 'Portfolio Management',
+                    period: '2024',
+                    thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg',
+                    views: '2.1M',
+                    channel: 'Investment Academy'
+                },
+                {
+                    title: 'Understanding Market Cycles',
+                    investor: 'Charlie Munger',
+                    topic: 'Market Analysis',
+                    period: '2024',
+                    thumbnail: 'https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg',
+                    views: '1.8M',
+                    channel: 'Financial Education'
+                }
+            ];
+            
+            newVideos.forEach(video => {
+                const videoItem = document.createElement('div');
+                videoItem.className = 'video-item';
+                videoItem.innerHTML = `
+                    <div class="video-thumbnail" onclick="openVideoModal('${video.thumbnail}', '${video.title}', '${video.channel}')">
+                        <img src="${video.thumbnail}" alt="${video.title}">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <h4><a href="#" target="_blank">${video.title}</a></h4>
+                    <div class="video-meta">
+                        <span class="channel">${video.channel}</span>
+                        <span class="views">${video.views} views</span>
+                    </div>
+                `;
+                videoGrid.appendChild(videoItem);
+            });
+        }
+
+        function loadMoreArticles() {
+            const articlesList = document.querySelector('.articles-list');
+            if (!articlesList) return;
+            
+            const newArticles = [
+                {
+                    title: 'The Psychology of Market Timing',
+                    author: 'Dr. Sarah Chen',
+                    date: 'Dec 20, 2024',
+                    category: 'Psychology',
+                    excerpt: 'Understanding the psychological factors that influence investment decisions and market timing strategies.'
+                },
+                {
+                    title: 'Sustainable Investing in the Digital Age',
+                    author: 'Michael Torres',
+                    date: 'Dec 19, 2024',
+                    category: 'ESG',
+                    excerpt: 'How technology is reshaping sustainable investing and creating new opportunities for impact investors.'
+                }
+            ];
+            
+            newArticles.forEach(article => {
+                const articleItem = document.createElement('div');
+                articleItem.className = 'article-item';
+                articleItem.innerHTML = `
+                    <div class="article-meta">
+                        <span class="article-category">${article.category}</span>
+                        <span class="article-date">${article.date}</span>
+                    </div>
+                    <h3><a href="#" target="_blank">${article.title}</a></h3>
+                    <p class="article-author">By ${article.author}</p>
+                    <p>${article.excerpt}</p>
+                `;
+                articlesList.appendChild(articleItem);
+            });
+        }
+
+        function loadMoreBooks() {
+            const booksCategories = document.querySelector('.books-categories');
+            if (!booksCategories) return;
+            
+            // Add more books to existing categories
+            const categories = booksCategories.querySelectorAll('.book-category');
+            categories.forEach(category => {
+                const bookLinks = category.querySelector('.book-links');
+                const newBooks = [
+                    'The Intelligent Investor (Revised Edition)',
+                    'Security Analysis: Principles and Technique',
+                    'Common Stocks and Uncommon Profits'
+                ];
+                
+                newBooks.forEach(book => {
+                    const bookLink = document.createElement('a');
+                    bookLink.href = '#';
+                    bookLink.textContent = book;
+                    bookLink.target = '_blank';
+                    bookLinks.appendChild(bookLink);
+                });
+            });
         }
 
         // Video modal functionality

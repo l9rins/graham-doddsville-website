@@ -10,6 +10,8 @@ class AustralianNewsScraper {
             {
                 name: 'Australian Financial Review',
                 url: 'https://www.afr.com/',
+                query: 'australia finance business',
+                apiSource: 'australian-financial-review',
                 selectors: {
                     headlines: 'h3 a, .story-block h3 a, .headline a',
                     links: 'a[href*="/story/"], a[href*="/companies/"], a[href*="/markets/"]',
@@ -110,13 +112,67 @@ class AustralianNewsScraper {
     // Scrape individual news source
     async scrapeSource(source) {
         try {
-            // Always use simulation for now (no API calls)
+            // Try real API first, fallback to simulation
+            const realNews = await this.fetchRealNews(source);
+            if (realNews && realNews.length > 0) {
+                return realNews;
+            }
             return this.simulateNewsScraping(source);
             
         } catch (error) {
             console.error(`Error getting news for ${source.name}:`, error);
             return this.simulateNewsScraping(source);
         }
+    }
+
+    async fetchRealNews(source) {
+        try {
+            // Use NewsAPI or similar service for real news
+            const apiKey = 'demo'; // Replace with actual API key
+            const url = `https://newsapi.org/v2/everything?q=${encodeURIComponent(source.query)}&sources=${source.apiSource}&apiKey=${apiKey}&pageSize=5&sortBy=publishedAt`;
+            
+            const response = await fetch(url);
+            if (!response.ok) throw new Error('API request failed');
+            
+            const data = await response.json();
+            return this.processRealNews(data.articles, source);
+            
+        } catch (error) {
+            console.log(`Real news not available for ${source.name}, using simulation`);
+            return null;
+        }
+    }
+
+    processRealNews(articles, source) {
+        return articles.map(article => ({
+            title: article.title,
+            description: article.description || article.content?.substring(0, 150) + '...',
+            url: article.url,
+            publishedAt: article.publishedAt,
+            source: source.name,
+            category: this.categorizeNews(article.title, article.description),
+            image: article.urlToImage || this.getPlaceholderImage(source.name)
+        }));
+    }
+
+    categorizeNews(title, description) {
+        const text = (title + ' ' + description).toLowerCase();
+        if (text.includes('company') || text.includes('earnings') || text.includes('profit')) return 'companies';
+        if (text.includes('market') || text.includes('stock') || text.includes('asx')) return 'markets';
+        if (text.includes('economy') || text.includes('gdp') || text.includes('inflation')) return 'economy';
+        if (text.includes('industry') || text.includes('sector') || text.includes('banking')) return 'industry';
+        return 'general';
+    }
+
+    getPlaceholderImage(sourceName) {
+        const images = {
+            'Australian Financial Review': 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkFGUjwvdGV4dD48L3N2Zz4=',
+            'The Australian': 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPlRoZSBBdXN0cmFsaWFuPC90ZXh0Pjwvc3ZnPg==',
+            'Sydney Morning Herald': 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPlNNSDwvdGV4dD48L3N2Zz4=',
+            'ABC News': 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkFCQzwvdGV4dD48L3N2Zz4=',
+            'News.com.au': 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPk5ld3MuY29tLmF1PC90ZXh0Pjwvc3ZnPg=='
+        };
+        return images[sourceName] || this.generatePlaceholderImage(sourceName);
     }
 
     // Generate data URI placeholder image
