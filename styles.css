@@ -135,6 +135,8 @@ body {
 /* Main Column */
 .main-column {
     min-width: 0;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 .main-column h2 {
@@ -156,6 +158,9 @@ body {
 
 .news-list {
     margin-bottom: 20px;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 /* Dense News Categories */
@@ -203,6 +208,10 @@ body {
     margin-bottom: 15px;
     padding-bottom: 15px;
     border-bottom: 1px solid #eee;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    word-wrap: break-word;
 }
 
 .news-item:last-child {

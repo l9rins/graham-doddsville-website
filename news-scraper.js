@@ -109,32 +109,9 @@ class AustralianNewsScraper {
     // Scrape individual news source
     async scrapeSource(source) {
         try {
-            // Check if we're in local development first
-            if (this.isLocalDevelopment) {
-                console.log(`AustralianNewsScraper: Using simulation for ${source.name} (local development)`);
-                return this.simulateNewsForSource(source);
-            }
-            
-            // Try to use the real API only if not in local development
-            if (this.apiUrl) {
-                try {
-                    console.log(`AustralianNewsScraper: Fetching real news from API for ${source.name}`);
-                    const response = await fetch(`${this.apiUrl}/api/news`);
-                    if (response.ok) {
-                        const data = await response.json();
-                        if (data.success && data.data && data.data.length > 0) {
-                            console.log(`AustralianNewsScraper: Got ${data.data.length} real news items from API`);
-                            return data.data;
-                        }
-                    }
-                } catch (apiError) {
-                    console.log(`API not available for ${source.name}, using simulation:`, apiError.message);
-                }
-            }
-            
-            // Fallback to simulation if API fails
+            // Always use simulation for now (no API calls)
             console.log(`AustralianNewsScraper: Using simulation for ${source.name}`);
-            return this.simulateNewsScraping(source);
+            return this.simulateNewsForSource(source);
             
         } catch (error) {
             console.error(`Error getting news for ${source.name}:`, error);
