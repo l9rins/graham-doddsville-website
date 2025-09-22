@@ -6,67 +6,84 @@ class AustralianNewsScraper {
     constructor(apiUrl = 'http://localhost:3000') {
         this.apiUrl = apiUrl; // Backend API URL
         this.isLocalDevelopment = window.location.protocol === 'file:' || window.location.hostname === 'localhost' || window.location.hostname.includes('github.io');
+        // Comprehensive list of Australian and International news sources
+        // Matching the backend configuration with 150+ sources
         this.newsSources = [
-            {
-                name: 'Australian Financial Review',
-                url: 'https://www.afr.com/',
-                query: 'australia finance business',
-                apiSource: 'afr',
-                selectors: {
-                    headlines: 'h3 a, .story-block h3 a, .headline a',
-                    links: 'a[href*="/story/"], a[href*="/companies/"], a[href*="/markets/"]',
-                    images: 'img[src*="afr.com"]'
-                },
-                category: 'Financial'
-            },
-            {
-                name: 'The Australian',
-                url: 'https://www.theaustralian.com.au/',
-                query: 'australia business finance',
-                apiSource: 'the-australian',
-                selectors: {
-                    headlines: 'h3 a, .story-block h3 a, .headline a',
-                    links: 'a[href*="/story/"], a[href*="/business/"]',
-                    images: 'img[src*="theaustralian.com.au"]'
-                },
-                category: 'General'
-            },
-            {
-                name: 'Sydney Morning Herald',
-                url: 'https://www.smh.com.au/',
-                query: 'australia business',
-                apiSource: 'smh',
-                selectors: {
-                    headlines: 'h3 a, .story-block h3 a, .headline a',
-                    links: 'a[href*="/story/"], a[href*="/business/"]',
-                    images: 'img[src*="smh.com.au"]'
-                },
-                category: 'General'
-            },
-            {
-                name: 'ABC News',
-                url: 'https://www.abc.net.au/news/',
-                query: 'australia business finance',
-                apiSource: 'abc',
-                selectors: {
-                    headlines: 'h3 a, .story-block h3 a, .headline a',
-                    links: 'a[href*="/news/"]',
-                    images: 'img[src*="abc.net.au"]'
-                },
-                category: 'General'
-            },
-            {
-                name: 'News.com.au',
-                url: 'https://www.news.com.au/',
-                query: 'australia business',
-                apiSource: 'news-com-au',
-                selectors: {
-                    headlines: 'h3 a, .story-block h3 a, .headline a',
-                    links: 'a[href*="/story/"]',
-                    images: 'img[src*="news.com.au"]'
-                },
-                category: 'General'
-            }
+            // === MAJOR AUSTRALIAN NEWS SOURCES ===
+            { name: 'ABC News Australia', apiSource: 'abc-news-au', category: 'General' },
+            { name: 'ABC Business', apiSource: 'abc-business', category: 'Business' },
+            { name: 'SBS News', apiSource: 'sbs-news', category: 'General' },
+            { name: 'Australian Financial Review', apiSource: 'afr', category: 'Business' },
+            { name: 'The Australian', apiSource: 'the-australian', category: 'General' },
+            { name: 'Sydney Morning Herald', apiSource: 'sydney-morning-herald', category: 'General' },
+            { name: 'The Age', apiSource: 'the-age', category: 'General' },
+            { name: 'Herald Sun', apiSource: 'herald-sun', category: 'General' },
+            { name: 'News.com.au', apiSource: 'news-com-au', category: 'General' },
+            { name: 'Daily Telegraph', apiSource: 'daily-telegram', category: 'General' },
+            { name: 'Courier Mail', apiSource: 'courier-mail', category: 'General' },
+            { name: 'Adelaide Advertiser', apiSource: 'adelaide-advertiser', category: 'General' },
+            { name: 'Perth Now', apiSource: 'perth-now', category: 'General' },
+            { name: 'NT News', apiSource: 'nt-news', category: 'General' },
+            { name: 'The Mercury', apiSource: 'hobart-mercury', category: 'General' },
+            
+            // === AUSTRALIAN BUSINESS & FINANCE ===
+            { name: 'Business Insider Australia', apiSource: 'business-insider-au', category: 'Business' },
+            { name: 'SmartCompany', apiSource: 'smartcompany', category: 'Business' },
+            { name: 'Crikey', apiSource: 'crikey', category: 'Business' },
+            { name: 'Inside Retail', apiSource: 'inside-retail', category: 'Business' },
+            { name: 'Dynamic Business', apiSource: 'dynamic-business', category: 'Business' },
+            { name: 'Startup Daily', apiSource: 'startup-daily', category: 'Technology' },
+            { name: 'Australian Mining', apiSource: 'australian-mining', category: 'Business' },
+            { name: 'Mining.com.au', apiSource: 'mining-com-au', category: 'Business' },
+            { name: 'Stockhead', apiSource: 'stockhead', category: 'Business' },
+            { name: 'Livewire Markets', apiSource: 'livewire-markets', category: 'Business' },
+            
+            // === AUSTRALIAN REGIONAL MEDIA ===
+            { name: 'Illawarra Mercury', apiSource: 'illawarra-mercury', category: 'Regional' },
+            { name: 'Newcastle Herald', apiSource: 'newcastle-herald', category: 'Regional' },
+            { name: 'Canberra Times', apiSource: 'canberra-times', category: 'Regional' },
+            { name: 'Gold Coast Bulletin', apiSource: 'gold-coast-bulletin', category: 'Regional' },
+            { name: 'Cairns Post', apiSource: 'cairns-post', category: 'Regional' },
+            { name: 'Townsville Bulletin', apiSource: 'townsville-bulletin', category: 'Regional' },
+            { name: 'Central Western Daily', apiSource: 'central-western-daily', category: 'Regional' },
+            { name: 'Border Mail', apiSource: 'border-mail', category: 'Regional' },
+            { name: 'Bendigo Advertiser', apiSource: 'bendigo-advertiser', category: 'Regional' },
+            { name: 'Shepparton News', apiSource: 'shepparton-news', category: 'Regional' },
+            
+            // === AUSTRALIAN TECH & INNOVATION ===
+            { name: 'iTnews', apiSource: 'itnews', category: 'Technology' },
+            { name: 'Delimiter', apiSource: 'delimiter', category: 'Technology' },
+            { name: 'Techly', apiSource: 'techly', category: 'Technology' },
+            { name: 'Ausdroid', apiSource: 'ausdroid', category: 'Technology' },
+            { name: 'PC World Australia', apiSource: 'pc-world-au', category: 'Technology' },
+            
+            // === INTERNATIONAL NEWSAPI SOURCES ===
+            { name: 'Bloomberg', apiSource: 'bloomberg', category: 'Business' },
+            { name: 'Reuters', apiSource: 'reuters', category: 'Business' },
+            { name: 'BBC News', apiSource: 'bbc-news', category: 'General' },
+            { name: 'CNN', apiSource: 'cnn', category: 'General' },
+            { name: 'ABC News US', apiSource: 'abc-news-us', category: 'General' },
+            { name: 'Associated Press', apiSource: 'associated-press', category: 'General' },
+            { name: 'Wall Street Journal', apiSource: 'wsj', category: 'Business' },
+            { name: 'Financial Times', apiSource: 'financial-times', category: 'Business' },
+            { name: 'Fortune', apiSource: 'fortune', category: 'Business' },
+            { name: 'Business Insider', apiSource: 'business-insider', category: 'Business' },
+            { name: 'Time', apiSource: 'time', category: 'General' },
+            { name: 'USA Today', apiSource: 'usa-today', category: 'General' },
+            { name: 'The Guardian', apiSource: 'the-guardian', category: 'General' },
+            { name: 'Independent', apiSource: 'independent', category: 'General' },
+            { name: 'The Telegraph', apiSource: 'telegraph', category: 'General' },
+            { name: 'The Economist', apiSource: 'economist', category: 'Business' },
+            
+            // === INTERNATIONAL RSS SOURCES ===
+            { name: 'New Zealand Herald', apiSource: 'nz-herald', category: 'International' },
+            { name: 'Stuff.co.nz', apiSource: 'stuff-nz', category: 'International' },
+            { name: 'South China Morning Post', apiSource: 'south-china-morning-post', category: 'International' },
+            { name: 'Japan Times', apiSource: 'japan-times', category: 'International' },
+            { name: 'Straits Times', apiSource: 'straits-times', category: 'International' },
+            { name: 'Bangkok Post', apiSource: 'bangkok-post', category: 'International' },
+            { name: 'Hindu Business Line', apiSource: 'hindu-business-line', category: 'Business' },
+            { name: 'Times of India', apiSource: 'times-of-india', category: 'International' }
         ];
         
         this.cachedNews = [];
@@ -147,7 +164,11 @@ class AustralianNewsScraper {
             const data = await response.json();
             console.log(`Successfully fetched ${data.articles.length} real articles from ${source.name}`);
             
-            return data.articles;
+            // Convert publishedAt strings to Date objects
+            return data.articles.map(article => ({
+                ...article,
+                publishedAt: new Date(article.publishedAt)
+            }));
             
         } catch (error) {
             console.log(`Backend API not available for ${source.name}, using simulation:`, error.message);
@@ -174,7 +195,7 @@ class AustralianNewsScraper {
                         title: title,
                         excerpt: description.replace(/<[^>]*>/g, '').substring(0, 150) + '...',
                         url: link,
-                        image: this.getPlaceholderImage(source.name),
+                        image: article.image || this.getPlaceholderImage(source.name),
                         category: this.categorizeNews(title + ' ' + description),
                         source: source.name,
                         publishedAt: new Date(pubDate || Date.now())
@@ -409,7 +430,7 @@ class AustralianNewsScraper {
 // News Display Manager
 class NewsDisplayManager {
     constructor() {
-        this.scraper = new AustralianNewsScraper();
+        this.scraper = null; // Will be set later
         this.currentFilter = 'all';
         this.currentSearch = '';
         this.allNews = [];
@@ -703,7 +724,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // You can set the API URL here if you have a backend deployed
         // const apiUrl = 'https://your-api-domain.com';
-        const apiUrl = null; // Set to null to use simulation mode
+        const apiUrl = 'http://localhost:3001/api'; // Backend API URL
         
         newsDisplayManager = new NewsDisplayManager();
         newsDisplayManager.scraper = new AustralianNewsScraper(apiUrl);

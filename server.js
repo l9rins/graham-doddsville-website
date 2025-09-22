@@ -2,74 +2,104 @@ const express = require('express');
 const cors = require('cors');
 const fetch = require('node-fetch');
 const { DOMParser } = require('xmldom');
+const { newsSources } = require('./news-sources-config');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
+const NEWS_API_KEY = '6d122bb10581490591ee20ade119ec27';
 
 // Enable CORS for all routes
 app.use(cors());
 app.use(express.json());
 
-// News sources with their RSS feeds
-const newsSources = {
-    'afr': {
-        name: 'Australian Financial Review',
-        rssUrl: 'https://www.afr.com/rss.xml',
-        category: 'business'
-    },
-    'smh': {
-        name: 'Sydney Morning Herald',
-        rssUrl: 'https://www.smh.com.au/rss.xml',
-        category: 'business'
-    },
-    'abc': {
-        name: 'ABC News',
-        rssUrl: 'https://www.abc.net.au/news/feed/1534/rss.xml',
-        category: 'business'
-    },
-    'the-australian': {
-        name: 'The Australian',
-        rssUrl: 'https://www.theaustralian.com.au/rss',
-        category: 'business'
-    },
-    'news-com-au': {
-        name: 'News.com.au',
-        rssUrl: 'https://www.news.com.au/feeds/feed.xml',
-        category: 'business'
-    }
-};
-
-// Parse RSS feed and extract articles
-function parseRSSFeed(xmlContent, source) {
+// RSS Feed Parser Function
+async function parseRSSFeed(url, sourceName) {
     try {
-        const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(xmlContent, 'text/xml');
-        const items = xmlDoc.getElementsByTagName('item');
+        console.log(`Fetching RSS feed from ${sourceName}...`);
+        const response = await fetch(url, {
+            headers: {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+            },
+            timeout: 10000
+        });
         
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const xmlText = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(xmlText, 'application/xml');
+        
+        const items = doc.getElementsByTagName('item');
         const articles = [];
-        for (let i = 0; i < Math.min(items.length, 5); i++) {
+        
+        for (let i = 0; i < Math.min(items.length, 10); i++) {
             const item = items[i];
-            const title = getTextContent(item, 'title');
-            const description = getTextContent(item, 'description');
-            const link = getTextContent(item, 'link');
-            const pubDate = getTextContent(item, 'pubDate');
+            const title = item.getElementsByTagName('title')[0]?.textContent || '';
+            const description = item.getElementsByTagName('description')[0]?.textContent || '';
+            const link = item.getElementsByTagName('link')[0]?.textContent || '';
+            const pubDate = item.getElementsByTagName('pubDate')[0]?.textContent || '';
             
             if (title && link) {
                 articles.push({
-                    title: title,
-                    excerpt: cleanDescription(description),
-                    url: link,
-                    image: generatePlaceholderImage(source.name),
+                    title: title.trim(),
+                    excerpt: description ? description.replace(/<[^>]*>/g, '').substring(0, 150) + '...' : '',
+                    url: link.trim(),
+                    image: generatePlaceholderImage(sourceName),
                     category: categorizeNews(title + ' ' + description),
-                    source: source.name,
-                    publishedAt: new Date(pubDate || Date.now()).toISOString()
+                    source: sourceName,
+                    publishedAt: pubDate ? new Date(pubDate).toISOString() : new Date().toISOString()
                 });
             }
         }
         
+        console.log(`Successfully parsed ${articles.length} articles from ${sourceName}`);
         return articles;
     } catch (error) {
-        console.error(`Error parsing RSS feed for ${source.name}:`, error);
+        console.error(`Error parsing RSS feed for ${sourceName}:`, error.message);
+        return [];
+    }
+}
+
+// Fetch news from NewsAPI
+async function fetchNewsFromAPI(source) {
+    try {
+        // Get articles from the last 7 days to ensure we have content
+        const sevenDaysAgo = new Date();
+        sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+        const fromDate = sevenDaysAgo.toISOString().split('T')[0];
+        
+        const url = `https://newsapi.org/v2/everything?sources=${source.source}&from=${fromDate}&sortBy=publishedAt&pageSize=5&apiKey=${NEWS_API_KEY}`;
+        
+        console.log(`Fetching news from NewsAPI for ${source.name}...`);
+        
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`NewsAPI error: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        if (data.status !== 'ok') {
+            throw new Error(`NewsAPI returned error: ${data.message}`);
+        }
+        
+        const articles = data.articles.map(article => ({
+            title: article.title,
+            excerpt: article.description ? article.description.substring(0, 150) + '...' : '',
+            url: article.url,
+            image: article.urlToImage || generatePlaceholderImage(source.name),
+            category: categorizeNews(article.title + ' ' + (article.description || '')),
+            source: source.name,
+            publishedAt: article.publishedAt
+        }));
+        
+        console.log(`Successfully fetched ${articles.length} articles from ${source.name}`);
+        return articles;
+        
+    } catch (error) {
+        console.error(`Error fetching news from NewsAPI for ${source.name}:`, error);
         return [];
     }
 }
@@ -126,10 +156,49 @@ function generatePlaceholderImage(sourceName) {
         'Sydney Morning Herald': '059669',
         'ABC News': 'dc2626',
         'The Australian': '7c3aed',
-        'News.com.au': '1e3a8a'
+        'News.com.au': '1e3a8a',
+        'Bloomberg': '000000',
+        'Reuters': 'ff6600',
+        'BBC News': 'bb0000',
+        'CNN': 'cc0000',
+        'Wall Street Journal': '000000',
+        'Financial Times': 'fff1e5',
+        'Fortune': '000000',
+        'Business Insider': '000000',
+        'Time': '000000',
+        'USA Today': '003399',
+        'The Guardian': '052962',
+        'Independent': '000000',
+        'The Telegraph': '000000',
+        'The Economist': 'e3120b',
+        'SBS News': 'ff6600',
+        'The Age': '000000',
+        'Herald Sun': '000000',
+        'Daily Telegraph': '000000',
+        'Courier Mail': '000000',
+        'Adelaide Advertiser': '000000',
+        'Perth Now': '000000',
+        'NT News': '000000',
+        'The Mercury': '000000'
     };
-    const color = colors[sourceName] || '666666';
-    return `https://via.placeholder.com/300x200/${color}/ffffff?text=${encodeURIComponent(sourceName)}`;
+    
+    // Get color for source or generate one based on name hash
+    let color = colors[sourceName];
+    if (!color) {
+        // Generate a consistent color based on source name
+        const hash = sourceName.split('').reduce((a, b) => {
+            a = ((a << 5) - a) + b.charCodeAt(0);
+            return a & a;
+        }, 0);
+        const colorIndex = Math.abs(hash) % 10;
+        const colorPalette = ['1e3a8a', '059669', 'dc2626', '7c3aed', '1e3a8a', 'ff6600', 'bb0000', 'cc0000', '000000', '003399'];
+        color = colorPalette[colorIndex];
+    }
+    
+    // Clean up source name for URL
+    const cleanName = sourceName.replace(/[^a-zA-Z0-9\s]/g, '').substring(0, 20);
+    
+    return `https://via.placeholder.com/300x200/${color}/ffffff?text=${encodeURIComponent(cleanName)}`;
 }
 
 // API endpoint to fetch news from a specific source
@@ -142,23 +211,13 @@ app.get('/api/news/:source', async (req, res) => {
             return res.status(404).json({ error: 'Source not found' });
         }
         
-        console.log(`Fetching news from ${source.name}...`);
+        let articles = [];
         
-        // Fetch RSS feed
-        const response = await fetch(source.rssUrl, {
-            headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-            }
-        });
-        
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+        if (source.type === 'newsapi') {
+            articles = await fetchNewsFromAPI(source);
+        } else if (source.type === 'rss') {
+            articles = await parseRSSFeed(source.url, source.name);
         }
-        
-        const xmlContent = await response.text();
-        const articles = parseRSSFeed(xmlContent, source);
-        
-        console.log(`Successfully fetched ${articles.length} articles from ${source.name}`);
         
         res.json({
             source: source.name,
@@ -187,12 +246,16 @@ app.get('/api/news', async (req, res) => {
         // Fetch from all sources in parallel
         const promises = sourceKeys.map(async (sourceKey) => {
             try {
-                const response = await fetch(`http://localhost:${PORT}/api/news/${sourceKey}`);
-                if (response.ok) {
-                    const data = await response.json();
-                    return data.articles;
+                const source = newsSources[sourceKey];
+                let articles = [];
+                
+                if (source.type === 'newsapi') {
+                    articles = await fetchNewsFromAPI(source);
+                } else if (source.type === 'rss') {
+                    articles = await parseRSSFeed(source.url, source.name);
                 }
-                return [];
+                
+                return articles;
             } catch (error) {
                 console.error(`Error fetching from ${sourceKey}:`, error);
                 return [];
