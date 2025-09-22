@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Graham and Doddsville - Premier source of value investing information in Australia. Educational resources, articles, and insights for intelligent stock market investing.">
     <title>Graham and Doddsville - Value Investing Education Australia</title>
-    <link rel="stylesheet" href="styles.css?v=2.2&t=20241222">
+    <link rel="stylesheet" href="styles.css?v=2.3&t=20241222">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Georgia,serif&family=Arial,sans-serif&display=swap" rel="stylesheet">
@@ -405,39 +405,81 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="quotes-list" id="commodities-tab" style="display: none;">
-                            <div class="quote-item">
-                                <span class="symbol">Gold</span>
-                                <span class="price">$2,045.67</span>
-                                <span class="change positive">+12.45</span>
-                            </div>
-                            <div class="quote-item">
-                                <span class="symbol">Oil</span>
-                                <span class="price">$78.23</span>
-                                <span class="change negative">-1.45</span>
-                            </div>
-                            <div class="quote-item">
-                                <span class="symbol">Silver</span>
-                                <span class="price">$24.56</span>
-                                <span class="change positive">+0.23</span>
-                            </div>
+                        <div class="market-table-container" id="commodities-tab" style="display: none;">
+                            <table class="market-table" data-sortable>
+                                <thead>
+                                    <tr>
+                                        <th class="sortable" data-sort="symbol" aria-label="Sort by symbol">Symbol</th>
+                                        <th class="sortable" data-sort="price" aria-label="Sort by price">Price</th>
+                                        <th class="sortable" data-sort="change" aria-label="Sort by change">Change</th>
+                                        <th class="sortable" data-sort="volume" aria-label="Sort by volume">Volume</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="symbol">Gold</td>
+                                        <td class="price">$2,045.67</td>
+                                        <td class="change positive">+12.45</td>
+                                        <td class="volume">1.2M</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="symbol">Oil</td>
+                                        <td class="price">$78.23</td>
+                                        <td class="change negative">-1.45</td>
+                                        <td class="volume">2.8M</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="symbol">Silver</td>
+                                        <td class="price">$24.56</td>
+                                        <td class="change positive">+0.23</td>
+                                        <td class="volume">850K</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="symbol">Copper</td>
+                                        <td class="price">$4.12</td>
+                                        <td class="change positive">+0.08</td>
+                                        <td class="volume">1.5M</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="quotes-list" id="currencies-tab" style="display: none;">
-                            <div class="quote-item">
-                                <span class="symbol">AUD/USD</span>
-                                <span class="price">0.6789</span>
-                                <span class="change negative">-0.0023</span>
-                            </div>
-                            <div class="quote-item">
-                                <span class="symbol">EUR/USD</span>
-                                <span class="price">1.0845</span>
-                                <span class="change positive">+0.0012</span>
-                            </div>
-                            <div class="quote-item">
-                                <span class="symbol">GBP/USD</span>
-                                <span class="price">1.2654</span>
-                                <span class="change negative">-0.0034</span>
-                            </div>
+                        <div class="market-table-container" id="currencies-tab" style="display: none;">
+                            <table class="market-table" data-sortable>
+                                <thead>
+                                    <tr>
+                                        <th class="sortable" data-sort="symbol" aria-label="Sort by symbol">Symbol</th>
+                                        <th class="sortable" data-sort="price" aria-label="Sort by price">Price</th>
+                                        <th class="sortable" data-sort="change" aria-label="Sort by change">Change</th>
+                                        <th class="sortable" data-sort="volume" aria-label="Sort by volume">Volume</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="symbol">AUD/USD</td>
+                                        <td class="price">0.6789</td>
+                                        <td class="change negative">-0.0023</td>
+                                        <td class="volume">850K</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="symbol">EUR/USD</td>
+                                        <td class="price">1.0845</td>
+                                        <td class="change positive">+0.0012</td>
+                                        <td class="volume">1.2M</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="symbol">GBP/USD</td>
+                                        <td class="price">1.2654</td>
+                                        <td class="change negative">-0.0034</td>
+                                        <td class="volume">950K</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="symbol">USD/JPY</td>
+                                        <td class="price">149.23</td>
+                                        <td class="change positive">+0.45</td>
+                                        <td class="volume">1.8M</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                         <p class="see-more"><a href="#">...See more</a></p>
                     </section>
@@ -534,7 +576,11 @@
                         </div>
                         <div class="videos-list">
                             <div class="video-item" data-investor="warren-buffett" data-topic="value-investing" data-period="recent">
-                                <h4><a href="#">Warren Buffett on Value Investing Principles</a></h4>
+                                <div class="video-thumbnail" onclick="openVideoModal('warren-buffett-value-investing')">
+                                    <div class="play-button">▶</div>
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPldhcnJlbiBCdWZmZXR0PC90ZXh0Pjwvc3ZnPg==" alt="Warren Buffett Video Thumbnail">
+                                </div>
+                                <h4><a href="#" onclick="openVideoModal('warren-buffett-value-investing')">Warren Buffett on Value Investing Principles</a></h4>
                                 <p>Learn the fundamental principles of value investing from the Oracle of Omaha...</p>
                                 <div class="video-meta">
                                     <span class="investor">Warren Buffett</span>
@@ -543,7 +589,11 @@
                                 </div>
                             </div>
                             <div class="video-item" data-investor="benjamin-graham" data-topic="market-analysis" data-period="recent">
-                                <h4><a href="#">Benjamin Graham's Security Analysis Methods</a></h4>
+                                <div class="video-thumbnail" onclick="openVideoModal('benjamin-graham-analysis')">
+                                    <div class="play-button">▶</div>
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkJlbmphbWluIEdyYWhhbTwvdGV4dD48L3N2Zz4=" alt="Benjamin Graham Video Thumbnail">
+                                </div>
+                                <h4><a href="#" onclick="openVideoModal('benjamin-graham-analysis')">Benjamin Graham's Security Analysis Methods</a></h4>
                                 <p>Deep dive into the father of value investing's analytical framework...</p>
                                 <div class="video-meta">
                                     <span class="investor">Benjamin Graham</span>
@@ -552,7 +602,11 @@
                                 </div>
                             </div>
                             <div class="video-item" data-investor="charlie-munger" data-topic="portfolio-management" data-period="older">
-                                <h4><a href="#">Charlie Munger on Portfolio Concentration</a></h4>
+                                <div class="video-thumbnail" onclick="openVideoModal('charlie-munger-portfolio')">
+                                    <div class="play-button">▶</div>
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkNoYXJsaWUgTXVuZ2VyPC90ZXh0Pjwvc3ZnPg==" alt="Charlie Munger Video Thumbnail">
+                                </div>
+                                <h4><a href="#" onclick="openVideoModal('charlie-munger-portfolio')">Charlie Munger on Portfolio Concentration</a></h4>
                                 <p>Understanding the benefits of concentrated portfolios...</p>
                                 <div class="video-meta">
                                     <span class="investor">Charlie Munger</span>
@@ -561,7 +615,11 @@
                                 </div>
                             </div>
                             <div class="video-item" data-investor="peter-lynch" data-topic="risk-management" data-period="recent">
-                                <h4><a href="#">Peter Lynch on Risk Management</a></h4>
+                                <div class="video-thumbnail" onclick="openVideoModal('peter-lynch-risk')">
+                                    <div class="play-button">▶</div>
+                                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPlBldGVyIEx5bmNoPC90ZXh0Pjwvc3ZnPg==" alt="Peter Lynch Video Thumbnail">
+                                </div>
+                                <h4><a href="#" onclick="openVideoModal('peter-lynch-risk')">Peter Lynch on Risk Management</a></h4>
                                 <p>How to manage risk while seeking growth opportunities...</p>
                                 <div class="video-meta">
                                     <span class="investor">Peter Lynch</span>
@@ -631,6 +689,20 @@
         </div>
     </main>
 
+    <!-- Video Modal -->
+    <div id="videoModal" class="video-modal">
+        <div class="video-modal-content">
+            <span class="video-modal-close" onclick="closeVideoModal()">&times;</span>
+            <div class="video-container">
+                <iframe id="videoPlayer" width="100%" height="400" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+            <div class="video-info">
+                <h3 id="videoTitle"></h3>
+                <p id="videoDescription"></p>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
@@ -658,7 +730,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="news-scraper.js?v=2.2&t=20241222"></script>
+    <script src="news-scraper.js?v=2.3&t=20241222"></script>
     <script>
         // Display current date
         document.addEventListener('DOMContentLoaded', function() {
@@ -877,10 +949,103 @@
             }
         }
 
+        // Video modal functionality
+        function openVideoModal(videoId) {
+            const modal = document.getElementById('videoModal');
+            const player = document.getElementById('videoPlayer');
+            const title = document.getElementById('videoTitle');
+            const description = document.getElementById('videoDescription');
+            
+            // Video data mapping
+            const videoData = {
+                'warren-buffett-value-investing': {
+                    title: 'Warren Buffett on Value Investing Principles',
+                    description: 'Learn the fundamental principles of value investing from the Oracle of Omaha. This comprehensive video covers Buffett\'s investment philosophy, margin of safety, and long-term thinking.',
+                    url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' // Placeholder - replace with actual video
+                },
+                'benjamin-graham-analysis': {
+                    title: 'Benjamin Graham\'s Security Analysis Methods',
+                    description: 'Deep dive into the father of value investing\'s analytical framework. Learn about intrinsic value, margin of safety, and fundamental analysis techniques.',
+                    url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' // Placeholder - replace with actual video
+                },
+                'charlie-munger-portfolio': {
+                    title: 'Charlie Munger on Portfolio Concentration',
+                    description: 'Understanding the benefits of concentrated portfolios. Charlie Munger explains why having fewer, better investments often leads to superior returns.',
+                    url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' // Placeholder - replace with actual video
+                },
+                'peter-lynch-risk': {
+                    title: 'Peter Lynch on Risk Management',
+                    description: 'How to manage risk while seeking growth opportunities. Peter Lynch shares his insights on portfolio diversification and risk assessment.',
+                    url: 'https://www.youtube.com/embed/dQw4w9WgXcQ' // Placeholder - replace with actual video
+                }
+            };
+            
+            const video = videoData[videoId];
+            if (video) {
+                title.textContent = video.title;
+                description.textContent = video.description;
+                player.src = video.url;
+                modal.style.display = 'block';
+            }
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const player = document.getElementById('videoPlayer');
+            modal.style.display = 'none';
+            player.src = ''; // Stop video playback
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('videoModal');
+            if (event.target === modal) {
+                closeVideoModal();
+            }
+        }
+
         function updateMarketData(timeRange) {
             // Simulate updating market data based on time range
             console.log('Updating market data for:', timeRange);
-            // In a real implementation, this would fetch new data from an API
+            
+            // Update all visible market tables with new data based on time range
+            const tables = document.querySelectorAll('.market-table tbody');
+            
+            tables.forEach(table => {
+                const rows = table.querySelectorAll('tr');
+                rows.forEach(row => {
+                    const changeCell = row.querySelector('.change');
+                    if (changeCell) {
+                        // Simulate different data based on time range
+                        const baseValue = parseFloat(changeCell.textContent.replace(/[+%-]/g, ''));
+                        let newValue;
+                        
+                        switch(timeRange) {
+                            case '1D':
+                                newValue = baseValue * (0.8 + Math.random() * 0.4); // ±20% variation
+                                break;
+                            case '1W':
+                                newValue = baseValue * (0.6 + Math.random() * 0.8); // ±40% variation
+                                break;
+                            case '1M':
+                                newValue = baseValue * (0.4 + Math.random() * 1.2); // ±60% variation
+                                break;
+                            case '1Y':
+                                newValue = baseValue * (0.2 + Math.random() * 1.6); // ±80% variation
+                                break;
+                            default:
+                                newValue = baseValue;
+                        }
+                        
+                        const isPositive = Math.random() > 0.5;
+                        const sign = isPositive ? '+' : '-';
+                        const formattedValue = newValue.toFixed(2);
+                        
+                        changeCell.textContent = `${sign}${formattedValue}${changeCell.textContent.includes('%') ? '%' : ''}`;
+                        changeCell.className = `change ${isPositive ? 'positive' : 'negative'}`;
+                    }
+                });
+            });
         }
 
 
