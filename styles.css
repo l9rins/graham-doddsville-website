@@ -50,6 +50,7 @@ body {
     justify-content: space-between;
     align-items: center;
     gap: 20px;
+    overflow: visible;
 }
 
 
@@ -92,9 +93,9 @@ body {
 }
 
 .mega-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
+    position: fixed;
+    top: auto;
+    left: auto;
     background: #fff;
     border: 1px solid #ddd;
     border-radius: 4px;

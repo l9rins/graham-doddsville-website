@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Graham and Doddsville - Premier source of value investing information in Australia. Educational resources, articles, and insights for intelligent stock market investing.">
     <title>Graham and Doddsville - Value Investing Education Australia</title>
-    <link rel="stylesheet" href="styles.css?v=2.8&t=20241222">
+    <link rel="stylesheet" href="styles.css?v=2.9&t=20241222">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Georgia,serif&family=Arial,sans-serif&display=swap" rel="stylesheet">
@@ -949,7 +949,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="news-scraper.js?v=2.8&t=20241222"></script>
+    <script src="news-scraper.js?v=2.9&t=20241222"></script>
     <script>
             // Display current date
         document.addEventListener('DOMContentLoaded', function() {
@@ -983,6 +983,12 @@
                 document.querySelectorAll('.mega-menu').forEach(menu => {
                     menu.classList.remove('show');
                 });
+                
+                // Position the dropdown
+                const rect = item.getBoundingClientRect();
+                megaMenu.style.top = (rect.bottom + window.scrollY + 5) + 'px';
+                megaMenu.style.left = rect.left + 'px';
+                
                 // Show this mega menu
                 megaMenu.classList.add('show');
             });
