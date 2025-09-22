@@ -95,6 +95,7 @@ body {
     min-width: 300px;
     padding: 20px;
     z-index: 1001;
+    margin-top: 5px;
 }
 
 .mega-menu-item:hover .mega-menu {
@@ -961,116 +962,6 @@ body {
     font-size: 11px;
 }
 
-/* Financial Calculators */
-.financial-calculators {
-    margin-top: 30px;
-    padding: 20px;
-    background: #f8f9fa;
-    border-radius: 8px;
-}
-
-.calculator-tabs {
-    display: flex;
-    margin-bottom: 20px;
-    border-bottom: 1px solid #ddd;
-}
-
-.calc-tab-btn {
-    background: none;
-    border: none;
-    padding: 10px 20px;
-    font-size: 14px;
-    font-weight: bold;
-    color: #666;
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    transition: all 0.3s ease;
-}
-
-.calc-tab-btn.active {
-    color: #0066cc;
-    border-bottom-color: #0066cc;
-}
-
-.calc-tab-btn:hover {
-    color: #0066cc;
-}
-
-.calculator-content h3 {
-    margin-bottom: 15px;
-    color: #333;
-}
-
-.calc-form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-}
-
-.form-group label {
-    font-size: 12px;
-    font-weight: bold;
-    color: #666;
-    margin-bottom: 5px;
-}
-
-.form-group input {
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
-}
-
-.calc-btn {
-    background: #0066cc;
-    color: white;
-    border: none;
-    padding: 12px 24px;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    grid-column: 1 / -1;
-    justify-self: start;
-}
-
-.calc-btn:hover {
-    background: #0052a3;
-}
-
-.calc-results {
-    background: white;
-    padding: 15px;
-    border-radius: 6px;
-    border: 1px solid #ddd;
-    font-size: 14px;
-    line-height: 1.6;
-}
-
-.calc-results h4 {
-    color: #0066cc;
-    margin-bottom: 10px;
-}
-
-.calc-results .result-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 5px 0;
-    border-bottom: 1px solid #eee;
-}
-
-.calc-results .result-item:last-child {
-    border-bottom: none;
-    font-weight: bold;
-    color: #333;
-}
 
 /* Video Items */
 .videos-list {
@@ -1407,10 +1298,6 @@ body {
         width: 100%;
     }
     
-    /* Mobile calculator adjustments */
-    .calc-form {
-        grid-template-columns: 1fr;
-    }
     
     /* Mobile market table adjustments */
     .market-table-container {

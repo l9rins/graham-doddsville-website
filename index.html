@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Graham and Doddsville - Premier source of value investing information in Australia. Educational resources, articles, and insights for intelligent stock market investing.">
     <title>Graham and Doddsville - Value Investing Education Australia</title>
-    <link rel="stylesheet" href="styles.css?v=2.1&t=20241222">
+    <link rel="stylesheet" href="styles.css?v=2.2&t=20241222">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Georgia,serif&family=Arial,sans-serif&display=swap" rel="stylesheet">
@@ -626,91 +626,6 @@
                         </div>
                     </section>
 
-                    <!-- Financial Calculators -->
-                    <section class="financial-calculators">
-                        <h2>###### FINANCIAL CALCULATORS</h2>
-                        <div class="calculator-tabs">
-                            <button class="calc-tab-btn active" data-calc="portfolio">Portfolio Builder</button>
-                            <button class="calc-tab-btn" data-calc="valuation">Valuation Metrics</button>
-                            <button class="calc-tab-btn" data-calc="retirement">Retirement Planning</button>
-                        </div>
-                        
-                        <div class="calculator-content" id="portfolio-calc">
-                            <h3>Portfolio Allocation Calculator</h3>
-                            <div class="calc-form">
-                                <div class="form-group">
-                                    <label>Total Investment Amount:</label>
-                                    <input type="number" id="total-amount" placeholder="100000" value="100000">
-                                </div>
-                                <div class="form-group">
-                                    <label>Conservative Allocation (%):</label>
-                                    <input type="number" id="conservative-pct" placeholder="40" value="40" min="0" max="100">
-                                </div>
-                                <div class="form-group">
-                                    <label>Growth Allocation (%):</label>
-                                    <input type="number" id="growth-pct" placeholder="40" value="40" min="0" max="100">
-                                </div>
-                                <div class="form-group">
-                                    <label>Aggressive Allocation (%):</label>
-                                    <input type="number" id="aggressive-pct" placeholder="20" value="20" min="0" max="100">
-                                </div>
-                                <button class="calc-btn" onclick="calculatePortfolio()">Calculate Allocation</button>
-                            </div>
-                            <div class="calc-results" id="portfolio-results"></div>
-                        </div>
-                        
-                        <div class="calculator-content" id="valuation-calc" style="display: none;">
-                            <h3>Stock Valuation Calculator</h3>
-                            <div class="calc-form">
-                                <div class="form-group">
-                                    <label>Current Stock Price:</label>
-                                    <input type="number" id="stock-price" placeholder="50.00" step="0.01">
-                                </div>
-                                <div class="form-group">
-                                    <label>Earnings Per Share (EPS):</label>
-                                    <input type="number" id="eps" placeholder="2.50" step="0.01">
-                                </div>
-                                <div class="form-group">
-                                    <label>Expected Growth Rate (%):</label>
-                                    <input type="number" id="growth-rate" placeholder="10" step="0.1">
-                                </div>
-                                <div class="form-group">
-                                    <label>Required Return (%):</label>
-                                    <input type="number" id="required-return" placeholder="12" step="0.1">
-                                </div>
-                                <button class="calc-btn" onclick="calculateValuation()">Calculate Fair Value</button>
-                            </div>
-                            <div class="calc-results" id="valuation-results"></div>
-                        </div>
-                        
-                        <div class="calculator-content" id="retirement-calc" style="display: none;">
-                            <h3>Retirement Planning Calculator</h3>
-                            <div class="calc-form">
-                                <div class="form-group">
-                                    <label>Current Age:</label>
-                                    <input type="number" id="current-age" placeholder="30" min="18" max="65">
-                                </div>
-                                <div class="form-group">
-                                    <label>Retirement Age:</label>
-                                    <input type="number" id="retirement-age" placeholder="65" min="50" max="80">
-                                </div>
-                                <div class="form-group">
-                                    <label>Current Savings:</label>
-                                    <input type="number" id="current-savings" placeholder="50000" value="50000">
-                                </div>
-                                <div class="form-group">
-                                    <label>Monthly Contribution:</label>
-                                    <input type="number" id="monthly-contribution" placeholder="1000" value="1000">
-                                </div>
-                                <div class="form-group">
-                                    <label>Expected Annual Return (%):</label>
-                                    <input type="number" id="annual-return" placeholder="7" step="0.1" value="7">
-                                </div>
-                                <button class="calc-btn" onclick="calculateRetirement()">Calculate Retirement Fund</button>
-                            </div>
-                            <div class="calc-results" id="retirement-results"></div>
-                        </div>
-                    </section>
                 </div>
             </div>
         </div>
@@ -743,7 +658,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="news-scraper.js?v=2.1&t=20241222"></script>
+    <script src="news-scraper.js?v=2.2&t=20241222"></script>
     <script>
         // Display current date
         document.addEventListener('DOMContentLoaded', function() {
@@ -968,162 +883,6 @@
             // In a real implementation, this would fetch new data from an API
         }
 
-        // Calculator tab functionality
-        document.querySelectorAll('.calc-tab-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const calcType = this.dataset.calc;
-                
-                // Remove active class from all calculator tabs
-                document.querySelectorAll('.calc-tab-btn').forEach(b => b.classList.remove('active'));
-                // Add active class to clicked tab
-                this.classList.add('active');
-                
-                // Hide all calculator content
-                document.querySelectorAll('.calculator-content').forEach(content => {
-                    content.style.display = 'none';
-                });
-                
-                // Show selected calculator content
-                const targetCalc = document.getElementById(calcType + '-calc');
-                if (targetCalc) {
-                    targetCalc.style.display = 'block';
-                }
-            });
-        });
-
-        // Calculator functions
-        function calculatePortfolio() {
-            const totalAmount = parseFloat(document.getElementById('total-amount').value) || 0;
-            const conservativePct = parseFloat(document.getElementById('conservative-pct').value) || 0;
-            const growthPct = parseFloat(document.getElementById('growth-pct').value) || 0;
-            const aggressivePct = parseFloat(document.getElementById('aggressive-pct').value) || 0;
-            
-            const totalPct = conservativePct + growthPct + aggressivePct;
-            
-            if (totalPct !== 100) {
-                alert('Allocation percentages must add up to 100%');
-                return;
-            }
-            
-            const conservativeAmount = (totalAmount * conservativePct) / 100;
-            const growthAmount = (totalAmount * growthPct) / 100;
-            const aggressiveAmount = (totalAmount * aggressivePct) / 100;
-            
-            const results = `
-                <h4>Portfolio Allocation Results</h4>
-                <div class="result-item">
-                    <span>Conservative Allocation:</span>
-                    <span>$${conservativeAmount.toLocaleString()} (${conservativePct}%)</span>
-                </div>
-                <div class="result-item">
-                    <span>Growth Allocation:</span>
-                    <span>$${growthAmount.toLocaleString()} (${growthPct}%)</span>
-                </div>
-                <div class="result-item">
-                    <span>Aggressive Allocation:</span>
-                    <span>$${aggressiveAmount.toLocaleString()} (${aggressivePct}%)</span>
-                </div>
-                <div class="result-item">
-                    <span>Total Investment:</span>
-                    <span>$${totalAmount.toLocaleString()}</span>
-                </div>
-            `;
-            
-            document.getElementById('portfolio-results').innerHTML = results;
-        }
-
-        function calculateValuation() {
-            const stockPrice = parseFloat(document.getElementById('stock-price').value) || 0;
-            const eps = parseFloat(document.getElementById('eps').value) || 0;
-            const growthRate = parseFloat(document.getElementById('growth-rate').value) || 0;
-            const requiredReturn = parseFloat(document.getElementById('required-return').value) || 0;
-            
-            if (stockPrice === 0 || eps === 0 || growthRate === 0 || requiredReturn === 0) {
-                alert('Please fill in all fields');
-                return;
-            }
-            
-            const pe = stockPrice / eps;
-            const peg = pe / growthRate;
-            const fairValue = (eps * (1 + growthRate/100)) / (requiredReturn/100);
-            const marginOfSafety = ((fairValue - stockPrice) / fairValue) * 100;
-            
-            const results = `
-                <h4>Stock Valuation Analysis</h4>
-                <div class="result-item">
-                    <span>Current P/E Ratio:</span>
-                    <span>${pe.toFixed(2)}</span>
-                </div>
-                <div class="result-item">
-                    <span>PEG Ratio:</span>
-                    <span>${peg.toFixed(2)}</span>
-                </div>
-                <div class="result-item">
-                    <span>Fair Value (DCF):</span>
-                    <span>$${fairValue.toFixed(2)}</span>
-                </div>
-                <div class="result-item">
-                    <span>Margin of Safety:</span>
-                    <span>${marginOfSafety.toFixed(1)}%</span>
-                </div>
-                <div class="result-item">
-                    <span>Recommendation:</span>
-                    <span>${marginOfSafety > 20 ? 'BUY' : marginOfSafety > 0 ? 'HOLD' : 'SELL'}</span>
-                </div>
-            `;
-            
-            document.getElementById('valuation-results').innerHTML = results;
-        }
-
-        function calculateRetirement() {
-            const currentAge = parseInt(document.getElementById('current-age').value) || 0;
-            const retirementAge = parseInt(document.getElementById('retirement-age').value) || 0;
-            const currentSavings = parseFloat(document.getElementById('current-savings').value) || 0;
-            const monthlyContribution = parseFloat(document.getElementById('monthly-contribution').value) || 0;
-            const annualReturn = parseFloat(document.getElementById('annual-return').value) || 0;
-            
-            if (currentAge === 0 || retirementAge === 0 || annualReturn === 0) {
-                alert('Please fill in all required fields');
-                return;
-            }
-            
-            const yearsToRetirement = retirementAge - currentAge;
-            const monthlyReturn = annualReturn / 100 / 12;
-            const totalMonths = yearsToRetirement * 12;
-            
-            // Future value of current savings
-            const futureValueCurrent = currentSavings * Math.pow(1 + annualReturn/100, yearsToRetirement);
-            
-            // Future value of monthly contributions
-            const futureValueContributions = monthlyContribution * 
-                ((Math.pow(1 + monthlyReturn, totalMonths) - 1) / monthlyReturn);
-            
-            const totalRetirementFund = futureValueCurrent + futureValueContributions;
-            const totalContributions = currentSavings + (monthlyContribution * totalMonths);
-            const totalGains = totalRetirementFund - totalContributions;
-            
-            const results = `
-                <h4>Retirement Planning Results</h4>
-                <div class="result-item">
-                    <span>Years to Retirement:</span>
-                    <span>${yearsToRetirement} years</span>
-                </div>
-                <div class="result-item">
-                    <span>Total Contributions:</span>
-                    <span>$${totalContributions.toLocaleString()}</span>
-                </div>
-                <div class="result-item">
-                    <span>Investment Gains:</span>
-                    <span>$${totalGains.toLocaleString()}</span>
-                </div>
-                <div class="result-item">
-                    <span>Total Retirement Fund:</span>
-                    <span>$${totalRetirementFund.toLocaleString()}</span>
-                </div>
-            `;
-            
-            document.getElementById('retirement-results').innerHTML = results;
-        }
 
         // News filter functionality
         document.querySelectorAll('.filter-link').forEach(link => {
