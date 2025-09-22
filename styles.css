@@ -113,14 +113,14 @@ body {
     contain: layout style paint;
 }
 
-/* STRICT GRID LAYOUT - 4 columns, 2 balanced rows */
+/* NUANCED GRID LAYOUT - Responsive columns with internal scrolling */
 .mega-menu.show {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 1fr;
+    grid-auto-rows: minmax(200px, auto);
     gap: 1.5rem 2rem;
     overflow: hidden;
-    max-height: 60vh;
+    max-height: 70vh;
 }
 
 /* PRECISE POSITIONING FOR EACH MENU */
@@ -145,59 +145,59 @@ body {
     grid-template-columns: repeat(4, 1fr);
 }
 
-/* Share Investing - 8 columns, 2 rows */
+/* Share Investing - 8 columns, responsive width */
 .mega-menu-item.share-investing-menu .mega-menu {
     width: 1000px;
-    max-width: 90vw;
+    max-width: 85vw;
     grid-template-columns: repeat(8, 1fr);
 }
 
-/* Greatest Investors - 3 columns, 2 rows */
+/* Greatest Investors - 3 columns, responsive width */
 .mega-menu-item.greatest-investors-menu .mega-menu {
     width: 900px;
-    max-width: 90vw;
+    max-width: 85vw;
     grid-template-columns: repeat(3, 1fr);
 }
 
-/* Investment Analysis - 4 columns, 2 rows */
+/* Investment Analysis - 4 columns, responsive width */
 .mega-menu-item.investment-analysis-menu .mega-menu {
     width: 800px;
     max-width: 85vw;
     grid-template-columns: repeat(4, 1fr);
 }
 
-/* Economics - 8 columns, 2 rows */
+/* Economics - 8 columns, responsive width */
 .mega-menu-item.economics-menu .mega-menu {
     width: 1000px;
-    max-width: 90vw;
+    max-width: 85vw;
     grid-template-columns: repeat(8, 1fr);
 }
 
-/* Professional Advisers - 8 columns, 2 rows */
+/* Professional Advisers - 8 columns, responsive width */
 .mega-menu-item.professional-advisers-menu .mega-menu {
     width: 1000px;
-    max-width: 90vw;
+    max-width: 85vw;
     grid-template-columns: repeat(8, 1fr);
 }
 
-/* Financial Products - 9 columns, 2 rows */
+/* Financial Products - 9 columns, responsive width */
 .mega-menu-item.financial-products-menu .mega-menu {
     width: 1100px;
-    max-width: 95vw;
+    max-width: 90vw;
     grid-template-columns: repeat(9, 1fr);
 }
 
-/* Resources - 7 columns, 2 rows */
+/* Resources - 7 columns, responsive width */
 .mega-menu-item.resources-menu .mega-menu {
     width: 900px;
-    max-width: 90vw;
+    max-width: 85vw;
     grid-template-columns: repeat(7, 1fr);
 }
 
-/* Events - 6 columns, 2 rows */
+/* Events - 6 columns, responsive width */
 .mega-menu-item.events-menu .mega-menu {
     width: 900px;
-    max-width: 90vw;
+    max-width: 85vw;
     grid-template-columns: repeat(6, 1fr);
 }
 
@@ -207,19 +207,42 @@ body {
     left: auto;
 }
 
-/* COLUMN STYLING - Strict overflow control */
+/* COLUMN STYLING - Internal scrolling with proper overflow */
 .mega-menu-column {
     min-width: 140px;
     max-width: 180px;
     overflow-y: auto;
+    overflow-x: hidden;
     word-wrap: break-word;
     white-space: normal;
-    max-height: 50vh;
+    max-height: 60vh;
     padding: 5px;
     box-sizing: border-box;
+    /* Ensure smooth scrolling */
+    scrollbar-width: thin;
+    scrollbar-color: #ccc #f5f5f5;
 }
 
-/* FORCE EXACTLY 2 ROWS - Override grid-auto-rows */
+/* Custom scrollbar for webkit browsers */
+.mega-menu-column::-webkit-scrollbar {
+    width: 6px;
+}
+
+.mega-menu-column::-webkit-scrollbar-track {
+    background: #f5f5f5;
+    border-radius: 3px;
+}
+
+.mega-menu-column::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 3px;
+}
+
+.mega-menu-column::-webkit-scrollbar-thumb:hover {
+    background: #999;
+}
+
+/* NUANCED GRID ROWS - Allow content to fit naturally */
 .mega-menu-item.wealth-creation-menu .mega-menu,
 .mega-menu-item.legal-taxation-menu .mega-menu,
 .mega-menu-item.financial-markets-menu .mega-menu,
@@ -231,9 +254,8 @@ body {
 .mega-menu-item.financial-products-menu .mega-menu,
 .mega-menu-item.resources-menu .mega-menu,
 .mega-menu-item.events-menu .mega-menu {
-    grid-template-rows: repeat(2, 1fr) !important;
-    grid-auto-rows: unset !important;
-    z-index: 9999 !important;
+    grid-auto-rows: minmax(200px, auto);
+    z-index: 1000;
 }
 
 .mega-menu-column h4 {
