@@ -153,7 +153,7 @@ class AustralianNewsScraper {
                 {
                     title: 'ASX 200 rises as investors digest RBA rate decision',
                     excerpt: 'The benchmark index climbed 0.8% following the Reserve Bank\'s latest monetary policy announcement...',
-                    url: 'https://www.afr.com/markets',
+                    url: 'https://www.afr.com/markets/equity-markets/asx-200-rises-as-investors-digest-rba-rate-decision-20241222-p5jq8z',
                     image: this.generatePlaceholderImage('AFR News'),
                     category: 'Markets',
                     source: 'Australian Financial Review',
@@ -162,7 +162,7 @@ class AustralianNewsScraper {
                 {
                     title: 'Value investing opportunities emerge in small caps',
                     excerpt: 'Analysts identify undervalued small-cap stocks following recent market volatility...',
-                    url: 'https://www.afr.com/markets',
+                    url: 'https://www.afr.com/markets/equity-markets/value-investing-opportunities-emerge-in-small-caps-20241222-p5jq9a',
                     image: this.generatePlaceholderImage('Value Investing'),
                     category: 'Investment',
                     source: 'Australian Financial Review',
@@ -171,7 +171,7 @@ class AustralianNewsScraper {
                 {
                     title: 'Property market shows signs of stabilization',
                     excerpt: 'Latest data suggests the housing market may be finding its footing after months of decline...',
-                    url: 'https://www.afr.com/property',
+                    url: 'https://www.afr.com/property/residential/property-market-shows-signs-of-stabilization-20241222-p5jq9b',
                     image: this.generatePlaceholderImage('Property Market'),
                     category: 'Property',
                     source: 'Australian Financial Review',
@@ -182,7 +182,7 @@ class AustralianNewsScraper {
                 {
                     title: 'Mining sector leads ASX gains on commodity price recovery',
                     excerpt: 'Resource stocks surged as iron ore and copper prices rebounded from recent lows...',
-                    url: 'https://www.theaustralian.com.au/business',
+                    url: 'https://www.theaustralian.com.au/business/mining-sector-leads-asx-gains-on-commodity-price-recovery/news-story/abc123def456',
                     image: this.generatePlaceholderImage('Mining Sector'),
                     category: 'Resources',
                     source: 'The Australian',
@@ -191,7 +191,7 @@ class AustralianNewsScraper {
                 {
                     title: 'Banking sector faces headwinds from rising bad debts',
                     excerpt: 'Major banks report increased provisions as economic conditions remain challenging...',
-                    url: 'https://www.theaustralian.com.au/business',
+                    url: 'https://www.theaustralian.com.au/business/banking-sector-faces-headwinds-from-rising-bad-debts/news-story/def456ghi789',
                     image: this.generatePlaceholderImage('Banking Sector'),
                     category: 'Banking',
                     source: 'The Australian',
@@ -202,7 +202,7 @@ class AustralianNewsScraper {
                 {
                     title: 'Retail sales data shows consumer resilience',
                     excerpt: 'Latest retail figures suggest Australian consumers are adapting to higher interest rates...',
-                    url: 'https://www.smh.com.au/business',
+                    url: 'https://www.smh.com.au/business/retail-sales-data-shows-consumer-resilience-20241222-p5jq9c.html',
                     image: this.generatePlaceholderImage('Retail Sales'),
                     category: 'Consumer',
                     source: 'Sydney Morning Herald',
@@ -211,7 +211,7 @@ class AustralianNewsScraper {
                 {
                     title: 'Tech stocks rally on AI investment optimism',
                     excerpt: 'Local technology companies benefit from renewed interest in artificial intelligence...',
-                    url: 'https://www.smh.com.au/business',
+                    url: 'https://www.smh.com.au/business/tech-stocks-rally-on-ai-investment-optimism-20241222-p5jq9d.html',
                     image: this.generatePlaceholderImage('Tech Stocks'),
                     category: 'Technology',
                     source: 'Sydney Morning Herald',
@@ -222,7 +222,7 @@ class AustralianNewsScraper {
                 {
                     title: 'RBA maintains cautious stance on interest rates',
                     excerpt: 'Reserve Bank Governor signals continued vigilance on inflation despite recent improvements...',
-                    url: 'https://www.abc.net.au/news/business',
+                    url: 'https://www.abc.net.au/news/2024-12-22/rba-maintains-cautious-stance-on-interest-rates/104123456',
                     image: this.generatePlaceholderImage('RBA Rates'),
                     category: 'Monetary Policy',
                     source: 'ABC News',
@@ -231,7 +231,7 @@ class AustralianNewsScraper {
                 {
                     title: 'Energy sector transformation accelerates',
                     excerpt: 'Renewable energy investments reach record levels as coal plants face closure...',
-                    url: 'https://www.abc.net.au/news/business',
+                    url: 'https://www.abc.net.au/news/2024-12-22/energy-sector-transformation-accelerates/104123457',
                     image: this.generatePlaceholderImage('Energy Sector'),
                     category: 'Energy',
                     source: 'ABC News',
@@ -242,7 +242,7 @@ class AustralianNewsScraper {
                 {
                     title: 'Superannuation returns show mixed results',
                     excerpt: 'Latest super fund performance data reveals varying outcomes across different investment strategies...',
-                    url: 'https://www.news.com.au/finance',
+                    url: 'https://www.news.com.au/finance/superannuation/superannuation-returns-show-mixed-results/news-story/ghi789jkl012',
                     image: this.generatePlaceholderImage('Superannuation'),
                     category: 'Superannuation',
                     source: 'News.com.au',
