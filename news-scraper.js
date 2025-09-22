@@ -110,8 +110,7 @@ class AustralianNewsScraper {
     async scrapeSource(source) {
         try {
             // Always use simulation for now (no API calls)
-            console.log(`AustralianNewsScraper: Using simulation for ${source.name}`);
-            return this.simulateNewsForSource(source);
+            return this.simulateNewsScraping(source);
             
         } catch (error) {
             console.error(`Error getting news for ${source.name}:`, error);

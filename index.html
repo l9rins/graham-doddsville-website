@@ -488,12 +488,8 @@
     <!-- Scripts -->
     <script src="news-scraper.js"></script>
     <script>
-        // Initialize news display
+        // Display current date
         document.addEventListener('DOMContentLoaded', function() {
-            const newsDisplay = new NewsDisplayManager();
-            newsDisplay.initialize();
-            
-            // Display current date
             const now = new Date();
             const options = { 
                 weekday: 'short', 
