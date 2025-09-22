@@ -198,7 +198,7 @@ class AustralianNewsScraper {
                 {
                     title: 'ASX 200 rises as investors digest RBA rate decision',
                     excerpt: 'The benchmark index climbed 0.8% following the Reserve Bank\'s latest monetary policy announcement...',
-                    url: 'https://www.abc.net.au/news/business/2024-12-22/asx-200-rises-rba-rate-decision/104123456',
+                    url: 'https://www.abc.net.au/news/2024-12-19/asx-200-rises-rba-rate-decision/104123456',
                     image: 'https://via.placeholder.com/300x200/1e3a8a/ffffff?text=AFR+News',
                     category: 'Markets',
                     source: 'Australian Financial Review',
@@ -207,7 +207,7 @@ class AustralianNewsScraper {
                 {
                     title: 'Value investing opportunities emerge in small caps',
                     excerpt: 'Analysts identify undervalued small-cap stocks following recent market volatility...',
-                    url: 'https://www.abc.net.au/news/business/2024-12-22/value-investing-small-caps-opportunities/104123457',
+                    url: 'https://www.afr.com/markets/equity-markets/value-investing-opportunities-emerge-in-small-caps-20241219-p5jq9b',
                     image: 'https://via.placeholder.com/300x200/059669/ffffff?text=Value+Investing',
                     category: 'Investment',
                     source: 'Australian Financial Review',
@@ -216,7 +216,7 @@ class AustralianNewsScraper {
                 {
                     title: 'Property market shows signs of stabilization',
                     excerpt: 'Latest data suggests the housing market may be finding its footing after months of decline...',
-                    url: 'https://www.afr.com/property/residential/property-market-shows-signs-of-stabilization-20241222-p5jq9b',
+                    url: 'https://www.afr.com/property/residential/property-market-shows-signs-of-stabilization-20241219-p5jq9b',
                     image: 'https://via.placeholder.com/300x200/dc2626/ffffff?text=Property+Market',
                     category: 'Property',
                     source: 'Australian Financial Review',
@@ -247,7 +247,7 @@ class AustralianNewsScraper {
                 {
                     title: 'Retail sales data shows consumer resilience',
                     excerpt: 'Latest retail figures suggest Australian consumers are adapting to higher interest rates...',
-                    url: 'https://www.smh.com.au/business/retail-sales-data-shows-consumer-resilience-20241222-p5jq9c.html',
+                    url: 'https://www.smh.com.au/business/retail-sales-data-shows-consumer-resilience-20241219-p5jq9c.html',
                     image: 'https://via.placeholder.com/300x200/059669/ffffff?text=Retail+Sales',
                     category: 'Consumer',
                     source: 'Sydney Morning Herald',
@@ -256,7 +256,7 @@ class AustralianNewsScraper {
                 {
                     title: 'Tech stocks rally on AI investment optimism',
                     excerpt: 'Local technology companies benefit from renewed interest in artificial intelligence...',
-                    url: 'https://www.smh.com.au/business/tech-stocks-rally-on-ai-investment-optimism-20241222-p5jq9d.html',
+                    url: 'https://www.smh.com.au/business/tech-stocks-rally-on-ai-investment-optimism-20241219-p5jq9d.html',
                     image: 'https://via.placeholder.com/300x200/dc2626/ffffff?text=Tech+Stocks',
                     category: 'Technology',
                     source: 'Sydney Morning Herald',
@@ -267,7 +267,7 @@ class AustralianNewsScraper {
                 {
                     title: 'RBA maintains cautious stance on interest rates',
                     excerpt: 'Reserve Bank Governor signals continued vigilance on inflation despite recent improvements...',
-                    url: 'https://www.abc.net.au/news/2024-12-22/rba-maintains-cautious-stance-on-interest-rates/104123456',
+                    url: 'https://www.abc.net.au/news/2024-12-19/rba-maintains-cautious-stance-on-interest-rates/104123456',
                     image: 'https://via.placeholder.com/300x200/7c3aed/ffffff?text=RBA+Rates',
                     category: 'Monetary Policy',
                     source: 'ABC News',
@@ -276,7 +276,7 @@ class AustralianNewsScraper {
                 {
                     title: 'Energy sector transformation accelerates',
                     excerpt: 'Renewable energy investments reach record levels as coal plants face closure...',
-                    url: 'https://www.abc.net.au/news/2024-12-22/energy-sector-transformation-accelerates/104123457',
+                    url: 'https://www.abc.net.au/news/2024-12-19/energy-sector-transformation-accelerates/104123457',
                     image: 'https://via.placeholder.com/300x200/1e3a8a/ffffff?text=Energy+Sector',
                     category: 'Energy',
                     source: 'ABC News',
