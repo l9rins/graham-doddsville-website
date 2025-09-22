@@ -949,7 +949,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="news-scraper.js?v=2.9&t=20241222"></script>
+    <script src="news-scraper.js?v=2.10&t=20241222"></script>
     <script>
             // Display current date
         document.addEventListener('DOMContentLoaded', function() {
@@ -961,6 +961,7 @@
                 day: 'numeric',
                 hour: '2-digit',
                 minute: '2-digit',
+                timeZone: 'Australia/Sydney',
                 timeZoneName: 'short'
             };
             document.getElementById('current-date').textContent = now.toLocaleDateString('en-AU', options);
