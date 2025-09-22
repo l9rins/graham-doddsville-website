@@ -1,5 +1,6 @@
 // News Scraper for Graham and Doddsville Website
 // Scrapes headlines from Australian newspapers and financial news sources
+// Updated: Fixed method name issue - v1.1
 
 class AustralianNewsScraper {
     constructor(apiUrl = 'http://localhost:3000') {
