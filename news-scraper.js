@@ -199,7 +199,7 @@ class AustralianNewsScraper {
                     title: 'ASX 200 rises as investors digest RBA rate decision',
                     excerpt: 'The benchmark index climbed 0.8% following the Reserve Bank\'s latest monetary policy announcement...',
                     url: 'https://www.abc.net.au/news/business/2024-12-22/asx-200-rises-rba-rate-decision/104123456',
-                    image: this.generatePlaceholderImage('AFR News'),
+                    image: 'https://via.placeholder.com/300x200/1e3a8a/ffffff?text=AFR+News',
                     category: 'Markets',
                     source: 'Australian Financial Review',
                     publishedAt: new Date(Date.now() - Math.random() * 24 * 60 * 60 * 1000)
@@ -208,7 +208,7 @@ class AustralianNewsScraper {
                     title: 'Value investing opportunities emerge in small caps',
                     excerpt: 'Analysts identify undervalued small-cap stocks following recent market volatility...',
                     url: 'https://www.abc.net.au/news/business/2024-12-22/value-investing-small-caps-opportunities/104123457',
-                    image: this.generatePlaceholderImage('Value Investing'),
+                    image: 'https://via.placeholder.com/300x200/059669/ffffff?text=Value+Investing',
                     category: 'Investment',
                     source: 'Australian Financial Review',
                     publishedAt: new Date(Date.now() - Math.random() * 24 * 60 * 60 * 1000)
@@ -217,7 +217,7 @@ class AustralianNewsScraper {
                     title: 'Property market shows signs of stabilization',
                     excerpt: 'Latest data suggests the housing market may be finding its footing after months of decline...',
                     url: 'https://www.afr.com/property/residential/property-market-shows-signs-of-stabilization-20241222-p5jq9b',
-                    image: this.generatePlaceholderImage('Property Market'),
+                    image: 'https://via.placeholder.com/300x200/dc2626/ffffff?text=Property+Market',
                     category: 'Property',
                     source: 'Australian Financial Review',
                     publishedAt: new Date(Date.now() - Math.random() * 24 * 60 * 60 * 1000)
@@ -228,7 +228,7 @@ class AustralianNewsScraper {
                     title: 'Mining sector leads ASX gains on commodity price recovery',
                     excerpt: 'Resource stocks surged as iron ore and copper prices rebounded from recent lows...',
                     url: 'https://www.theaustralian.com.au/business/mining-sector-leads-asx-gains-on-commodity-price-recovery/news-story/abc123def456',
-                    image: this.generatePlaceholderImage('Mining Sector'),
+                    image: 'https://via.placeholder.com/300x200/7c3aed/ffffff?text=Mining+Sector',
                     category: 'Resources',
                     source: 'The Australian',
                     publishedAt: new Date(Date.now() - Math.random() * 24 * 60 * 60 * 1000)
@@ -237,7 +237,7 @@ class AustralianNewsScraper {
                     title: 'Banking sector faces headwinds from rising bad debts',
                     excerpt: 'Major banks report increased provisions as economic conditions remain challenging...',
                     url: 'https://www.theaustralian.com.au/business/banking-sector-faces-headwinds-from-rising-bad-debts/news-story/def456ghi789',
-                    image: this.generatePlaceholderImage('Banking Sector'),
+                    image: 'https://via.placeholder.com/300x200/1e3a8a/ffffff?text=Banking+Sector',
                     category: 'Banking',
                     source: 'The Australian',
                     publishedAt: new Date(Date.now() - Math.random() * 24 * 60 * 60 * 1000)
@@ -248,7 +248,7 @@ class AustralianNewsScraper {
                     title: 'Retail sales data shows consumer resilience',
                     excerpt: 'Latest retail figures suggest Australian consumers are adapting to higher interest rates...',
                     url: 'https://www.smh.com.au/business/retail-sales-data-shows-consumer-resilience-20241222-p5jq9c.html',
-                    image: this.generatePlaceholderImage('Retail Sales'),
+                    image: 'https://via.placeholder.com/300x200/059669/ffffff?text=Retail+Sales',
                     category: 'Consumer',
                     source: 'Sydney Morning Herald',
                     publishedAt: new Date(Date.now() - Math.random() * 24 * 60 * 60 * 1000)
@@ -257,7 +257,7 @@ class AustralianNewsScraper {
                     title: 'Tech stocks rally on AI investment optimism',
                     excerpt: 'Local technology companies benefit from renewed interest in artificial intelligence...',
                     url: 'https://www.smh.com.au/business/tech-stocks-rally-on-ai-investment-optimism-20241222-p5jq9d.html',
-                    image: this.generatePlaceholderImage('Tech Stocks'),
+                    image: 'https://via.placeholder.com/300x200/dc2626/ffffff?text=Tech+Stocks',
                     category: 'Technology',
                     source: 'Sydney Morning Herald',
                     publishedAt: new Date(Date.now() - Math.random() * 24 * 60 * 60 * 1000)
@@ -268,7 +268,7 @@ class AustralianNewsScraper {
                     title: 'RBA maintains cautious stance on interest rates',
                     excerpt: 'Reserve Bank Governor signals continued vigilance on inflation despite recent improvements...',
                     url: 'https://www.abc.net.au/news/2024-12-22/rba-maintains-cautious-stance-on-interest-rates/104123456',
-                    image: this.generatePlaceholderImage('RBA Rates'),
+                    image: 'https://via.placeholder.com/300x200/7c3aed/ffffff?text=RBA+Rates',
                     category: 'Monetary Policy',
                     source: 'ABC News',
                     publishedAt: new Date(Date.now() - Math.random() * 24 * 60 * 60 * 1000)
@@ -277,7 +277,7 @@ class AustralianNewsScraper {
                     title: 'Energy sector transformation accelerates',
                     excerpt: 'Renewable energy investments reach record levels as coal plants face closure...',
                     url: 'https://www.abc.net.au/news/2024-12-22/energy-sector-transformation-accelerates/104123457',
-                    image: this.generatePlaceholderImage('Energy Sector'),
+                    image: 'https://via.placeholder.com/300x200/1e3a8a/ffffff?text=Energy+Sector',
                     category: 'Energy',
                     source: 'ABC News',
                     publishedAt: new Date(Date.now() - Math.random() * 24 * 60 * 60 * 1000)
@@ -288,7 +288,7 @@ class AustralianNewsScraper {
                     title: 'Superannuation returns show mixed results',
                     excerpt: 'Latest super fund performance data reveals varying outcomes across different investment strategies...',
                     url: 'https://www.news.com.au/finance/superannuation/superannuation-returns-show-mixed-results/news-story/ghi789jkl012',
-                    image: this.generatePlaceholderImage('Superannuation'),
+                    image: 'https://via.placeholder.com/300x200/059669/ffffff?text=Superannuation',
                     category: 'Superannuation',
                     source: 'News.com.au',
                     publishedAt: new Date(Date.now() - Math.random() * 24 * 60 * 60 * 1000)

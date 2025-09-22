@@ -506,7 +506,8 @@ img.lazy.loaded {
     overflow: hidden;
     word-wrap: break-word;
     clear: both;
-    display: block;
+    display: flex;
+    gap: 15px;
     background: #f8f9fa;
     border-radius: 4px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.05);
@@ -522,6 +523,24 @@ img.lazy.loaded {
 .news-item:last-child {
     border-bottom: none;
     margin-bottom: 0;
+}
+
+.news-image {
+    flex-shrink: 0;
+    width: 120px;
+    height: 80px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.news-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.news-content {
+    flex: 1;
 }
 
 .news-item h3 {
