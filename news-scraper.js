@@ -347,11 +347,12 @@ class NewsDisplayManager {
         console.log('NewsDisplayManager: News displayed');
         
         // Force display some news if none are showing
+        const self = this;
         setTimeout(() => {
             const newsList = document.querySelector('.news-list');
             if (newsList && (newsList.innerHTML.includes('loading-spinner') || newsList.children.length === 0)) {
                 console.log('NewsDisplayManager: Forcing display of sample news');
-                this.displaySampleNews();
+                self.displaySampleNews();
             }
         }, 2000);
         
