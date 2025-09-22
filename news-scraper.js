@@ -109,7 +109,13 @@ class AustralianNewsScraper {
     // Scrape individual news source
     async scrapeSource(source) {
         try {
-            // Always try to use the real API first
+            // Check if we're in local development first
+            if (this.isLocalDevelopment) {
+                console.log(`AustralianNewsScraper: Using simulation for ${source.name} (local development)`);
+                return this.simulateNewsForSource(source);
+            }
+            
+            // Try to use the real API only if not in local development
             if (this.apiUrl) {
                 try {
                     console.log(`AustralianNewsScraper: Fetching real news from API for ${source.name}`);
@@ -556,12 +562,21 @@ class NewsDisplayManager {
         const newsList = document.querySelector('.news-list');
         if (!newsList) return;
 
+        // Create a simple placeholder image generator
+        const createPlaceholderImage = (text) => {
+            const svg = `<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+                <rect width="300" height="200" fill="#f0f0f0"/>
+                <text x="150" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#666">${text}</text>
+            </svg>`;
+            return `data:image/svg+xml;base64,${btoa(svg)}`;
+        };
+
         const sampleNews = [
             {
                 title: 'ASX 200 rises as investors digest RBA rate decision',
                 excerpt: 'The benchmark index climbed 0.8% following the Reserve Bank\'s latest monetary policy announcement...',
                 url: 'https://www.afr.com/markets/equity-markets/asx-200-rises',
-                image: this.scraper.generatePlaceholderImage('AFR News'),
+                image: createPlaceholderImage('AFR News'),
                 category: 'Markets',
                 source: 'Australian Financial Review',
                 publishedAt: new Date(Date.now() - 2 * 60 * 60 * 1000)
@@ -570,7 +585,7 @@ class NewsDisplayManager {
                 title: 'Value investing opportunities emerge in small caps',
                 excerpt: 'Analysts identify undervalued small-cap stocks following recent market volatility...',
                 url: 'https://www.afr.com/markets/equity-markets/value-opportunities',
-                image: this.scraper.generatePlaceholderImage('Value Investing'),
+                image: createPlaceholderImage('Value Investing'),
                 category: 'Investment',
                 source: 'The Australian',
                 publishedAt: new Date(Date.now() - 4 * 60 * 60 * 1000)
@@ -579,7 +594,7 @@ class NewsDisplayManager {
                 title: 'Property market shows signs of stabilization',
                 excerpt: 'Latest data suggests the housing market may be finding its footing after months of decline...',
                 url: 'https://www.afr.com/property/residential/property-stabilization',
-                image: this.scraper.generatePlaceholderImage('Property Market'),
+                image: createPlaceholderImage('Property Market'),
                 category: 'Property',
                 source: 'Sydney Morning Herald',
                 publishedAt: new Date(Date.now() - 6 * 60 * 60 * 1000)
