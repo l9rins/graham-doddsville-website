@@ -11,7 +11,7 @@ class AustralianNewsScraper {
                 name: 'Australian Financial Review',
                 url: 'https://www.afr.com/',
                 query: 'australia finance business',
-                apiSource: 'australian-financial-review',
+                apiSource: 'demo', // Will use country-based search
                 selectors: {
                     headlines: 'h3 a, .story-block h3 a, .headline a',
                     links: 'a[href*="/story/"], a[href*="/companies/"], a[href*="/markets/"]',
@@ -127,18 +127,33 @@ class AustralianNewsScraper {
 
     async fetchRealNews(source) {
         try {
-            // Use NewsAPI or similar service for real news
-            const apiKey = 'demo'; // Replace with actual API key
-            const url = `https://newsapi.org/v2/everything?q=${encodeURIComponent(source.query)}&sources=${source.apiSource}&apiKey=${apiKey}&pageSize=5&sortBy=publishedAt`;
+            // Use NewsAPI for real news
+            const apiKey = '6d122bb10581490591ee20ade119ec27'; // Your NewsAPI key
+            
+            // Try different approaches for Australian news
+            let url;
+            if (source.apiSource && source.apiSource !== 'demo') {
+                // Use specific source if available
+                url = `https://newsapi.org/v2/everything?q=${encodeURIComponent(source.query)}&sources=${source.apiSource}&apiKey=${apiKey}&pageSize=5&sortBy=publishedAt&language=en`;
+            } else {
+                // Fallback to country-based search for Australia
+                url = `https://newsapi.org/v2/top-headlines?country=au&category=business&apiKey=${apiKey}&pageSize=5`;
+            }
             
             const response = await fetch(url);
-            if (!response.ok) throw new Error('API request failed');
+            if (!response.ok) {
+                throw new Error(`API request failed: ${response.status}`);
+            }
             
             const data = await response.json();
-            return this.processRealNews(data.articles, source);
+            if (data.status === 'ok' && data.articles && data.articles.length > 0) {
+                return this.processRealNews(data.articles, source);
+            } else {
+                throw new Error('No articles found');
+            }
             
         } catch (error) {
-            console.log(`Real news not available for ${source.name}, using simulation`);
+            console.log(`Real news not available for ${source.name}, using simulation:`, error.message);
             return null;
         }
     }
