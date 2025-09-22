@@ -36,6 +36,32 @@
         </div>
     </header>
 
+    <!-- Secondary Navigation -->
+    <nav class="secondary-nav">
+        <div class="container">
+            <ul class="secondary-nav-list">
+                <li><a href="#wealth-creation">Wealth Creation</a></li>
+                <li><a href="#legal-taxation">Legal & Taxation</a></li>
+                <li><a href="#financial-markets">Financial Markets</a></li>
+                <li><a href="#share-investing">Share Investing</a></li>
+                <li><a href="#greatest-investors">Greatest Investors</a></li>
+                <li><a href="#investment-analysis">Investment Analysis</a></li>
+                <li><a href="#economics">Economics</a></li>
+                <li><a href="#professional-advisers">Professional Advisers</a></li>
+                <li><a href="#financial-products">Financial Products</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#events">Events</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Date Display -->
+    <div class="date-display">
+        <div class="container">
+            <span id="current-date"></span>
+        </div>
+    </div>
+
     <!-- Main Content -->
     <main class="main-content">
         <div class="container">
@@ -44,9 +70,35 @@
                 <div class="main-column">
                     <!-- Latest News Section -->
                     <section class="latest-news" id="home">
-                        <h2>LATEST NEWS</h2>
+                        <h2>###### LATEST NEWS</h2>
                         <div class="news-list" id="news-list">
                             <!-- News items will be loaded here -->
+                        </div>
+                        <div class="news-categories">
+                            <div class="news-category">
+                                <h3>Companies</h3>
+                                <ul>
+                                    <li><a href="#">CBA reports strong quarterly results (AFR)</a></li>
+                                    <li><a href="#">BHP announces dividend increase (SMH)</a></li>
+                                    <li><a href="#">Woolworths expands into new markets (The Australian)</a></li>
+                                </ul>
+                            </div>
+                            <div class="news-category">
+                                <h3>Markets</h3>
+                                <ul>
+                                    <li><a href="#">ASX 200 rises 0.8% on RBA decision (AFR)</a></li>
+                                    <li><a href="#">AUD/USD falls to 0.6789 (Bloomberg)</a></li>
+                                    <li><a href="#">Gold prices surge on inflation concerns (Reuters)</a></li>
+                                </ul>
+                            </div>
+                            <div class="news-category">
+                                <h3>Economy</h3>
+                                <ul>
+                                    <li><a href="#">RBA maintains cautious stance on rates (ABC)</a></li>
+                                    <li><a href="#">Inflation data shows mixed signals (AFR)</a></li>
+                                    <li><a href="#">Employment figures exceed expectations (SMH)</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </section>
 
@@ -250,7 +302,18 @@
                                 </select>
                             </div>
                         </div>
-                        <p class="no-events">No events found</p>
+                        <div class="events-list">
+                            <div class="event-item">
+                                <h4>Value Investing Masterclass</h4>
+                                <p>Melbourne, VIC - Jan 15, 2025</p>
+                                <span class="event-cost">$299</span>
+                            </div>
+                            <div class="event-item">
+                                <h4>Graham & Dodd Principles Workshop</h4>
+                                <p>Sydney, NSW - Jan 22, 2025</p>
+                                <span class="event-cost">$199</span>
+                            </div>
+                        </div>
                         <p class="see-more"><a href="#">...More</a></p>
                     </section>
 
@@ -345,6 +408,19 @@
         document.addEventListener('DOMContentLoaded', function() {
             const newsDisplay = new NewsDisplayManager();
             newsDisplay.initialize();
+            
+            // Display current date
+            const now = new Date();
+            const options = { 
+                weekday: 'short', 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                timeZoneName: 'short'
+            };
+            document.getElementById('current-date').textContent = now.toLocaleDateString('en-AU', options);
         });
 
         // Mobile menu toggle
