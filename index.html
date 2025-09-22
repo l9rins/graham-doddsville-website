@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Graham and Doddsville - Premier source of value investing information in Australia. Educational resources, articles, and insights for intelligent stock market investing.">
     <title>Graham and Doddsville - Value Investing Education Australia</title>
-    <link rel="stylesheet" href="styles.css?v=2.3&t=20241222">
+    <link rel="stylesheet" href="styles.css?v=2.4&t=20241222">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Georgia,serif&family=Arial,sans-serif&display=swap" rel="stylesheet">
@@ -574,57 +574,92 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="videos-list">
-                            <div class="video-item" data-investor="warren-buffett" data-topic="value-investing" data-period="recent">
-                                <div class="video-thumbnail" onclick="openVideoModal('warren-buffett-value-investing')">
+                        <div class="videos-grid">
+                            <!-- Featured Video (Large) -->
+                            <div class="featured-video" data-investor="warren-buffett" data-topic="value-investing" data-period="recent">
+                                <div class="video-thumbnail large" onclick="openVideoModal('warren-buffett-crash-warning')">
                                     <div class="play-button">▶</div>
-                                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPldhcnJlbiBCdWZmZXR0PC90ZXh0Pjwvc3ZnPg==" alt="Warren Buffett Video Thumbnail">
+                                    <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Warren Buffett Warns About Stock Market Crash">
+                                    <div class="video-overlay">
+                                        <span class="views">2.1M views</span>
+                                    </div>
                                 </div>
-                                <h4><a href="#" onclick="openVideoModal('warren-buffett-value-investing')">Warren Buffett on Value Investing Principles</a></h4>
-                                <p>Learn the fundamental principles of value investing from the Oracle of Omaha...</p>
-                                <div class="video-meta">
-                                    <span class="investor">Warren Buffett</span>
-                                    <span class="topic">Value Investing</span>
-                                    <span class="date">Dec 20, 2024</span>
-                                </div>
+                                <h3><a href="#" onclick="openVideoModal('warren-buffett-crash-warning')">Warren Buffett Warns About the Potential Stock Market Crash</a></h3>
+                                <p class="channel">Investor Weekly</p>
+                                <p class="description">The Oracle of Omaha shares his concerns about current market valuations and potential risks ahead...</p>
                             </div>
-                            <div class="video-item" data-investor="benjamin-graham" data-topic="market-analysis" data-period="recent">
-                                <div class="video-thumbnail" onclick="openVideoModal('benjamin-graham-analysis')">
-                                    <div class="play-button">▶</div>
-                                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkJlbmphbWluIEdyYWhhbTwvdGV4dD48L3N2Zz4=" alt="Benjamin Graham Video Thumbnail">
+                            
+                            <!-- Video Grid (Smaller Videos) -->
+                            <div class="video-grid">
+                                <div class="video-item" data-investor="benjamin-graham" data-topic="market-analysis" data-period="recent">
+                                    <div class="video-thumbnail" onclick="openVideoModal('benjamin-graham-analysis')">
+                                        <div class="play-button">▶</div>
+                                        <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Benjamin Graham Security Analysis">
+                                        <div class="video-overlay">
+                                            <span class="views">850K views</span>
+                                        </div>
+                                    </div>
+                                    <h4><a href="#" onclick="openVideoModal('benjamin-graham-analysis')">Benjamin Graham's Security Analysis Methods</a></h4>
+                                    <p class="channel">Value Investing Academy</p>
                                 </div>
-                                <h4><a href="#" onclick="openVideoModal('benjamin-graham-analysis')">Benjamin Graham's Security Analysis Methods</a></h4>
-                                <p>Deep dive into the father of value investing's analytical framework...</p>
-                                <div class="video-meta">
-                                    <span class="investor">Benjamin Graham</span>
-                                    <span class="topic">Market Analysis</span>
-                                    <span class="date">Dec 18, 2024</span>
+                                <div class="video-item" data-investor="charlie-munger" data-topic="portfolio-management" data-period="older">
+                                    <div class="video-thumbnail" onclick="openVideoModal('charlie-munger-portfolio')">
+                                        <div class="play-button">▶</div>
+                                        <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Charlie Munger Portfolio">
+                                        <div class="video-overlay">
+                                            <span class="views">420K views</span>
+                                        </div>
+                                    </div>
+                                    <h4><a href="#" onclick="openVideoModal('charlie-munger-portfolio')">Charlie Munger on Portfolio Concentration</a></h4>
+                                    <p class="channel">Berkshire Insights</p>
                                 </div>
-                            </div>
-                            <div class="video-item" data-investor="charlie-munger" data-topic="portfolio-management" data-period="older">
-                                <div class="video-thumbnail" onclick="openVideoModal('charlie-munger-portfolio')">
-                                    <div class="play-button">▶</div>
-                                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkNoYXJsaWUgTXVuZ2VyPC90ZXh0Pjwvc3ZnPg==" alt="Charlie Munger Video Thumbnail">
+                                
+                                <div class="video-item" data-investor="peter-lynch" data-topic="risk-management" data-period="recent">
+                                    <div class="video-thumbnail" onclick="openVideoModal('peter-lynch-risk')">
+                                        <div class="play-button">▶</div>
+                                        <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Peter Lynch Risk Management">
+                                        <div class="video-overlay">
+                                            <span class="views">680K views</span>
+                                        </div>
+                                    </div>
+                                    <h4><a href="#" onclick="openVideoModal('peter-lynch-risk')">Peter Lynch on Risk Management</a></h4>
+                                    <p class="channel">Investment Masters</p>
                                 </div>
-                                <h4><a href="#" onclick="openVideoModal('charlie-munger-portfolio')">Charlie Munger on Portfolio Concentration</a></h4>
-                                <p>Understanding the benefits of concentrated portfolios...</p>
-                                <div class="video-meta">
-                                    <span class="investor">Charlie Munger</span>
-                                    <span class="topic">Portfolio Management</span>
-                                    <span class="date">Nov 15, 2024</span>
+                                
+                                <div class="video-item" data-investor="warren-buffett" data-topic="value-investing" data-period="recent">
+                                    <div class="video-thumbnail" onclick="openVideoModal('warren-buffett-annual-meeting')">
+                                        <div class="play-button">▶</div>
+                                        <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Warren Buffett Annual Meeting">
+                                        <div class="video-overlay">
+                                            <span class="views">1.2M views</span>
+                                        </div>
+                                    </div>
+                                    <h4><a href="#" onclick="openVideoModal('warren-buffett-annual-meeting')">Warren Buffett's 2024 Annual Meeting Highlights</a></h4>
+                                    <p class="channel">Berkshire Hathaway</p>
                                 </div>
-                            </div>
-                            <div class="video-item" data-investor="peter-lynch" data-topic="risk-management" data-period="recent">
-                                <div class="video-thumbnail" onclick="openVideoModal('peter-lynch-risk')">
-                                    <div class="play-button">▶</div>
-                                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPlBldGVyIEx5bmNoPC90ZXh0Pjwvc3ZnPg==" alt="Peter Lynch Video Thumbnail">
+                                
+                                <div class="video-item" data-investor="benjamin-graham" data-topic="value-investing" data-period="older">
+                                    <div class="video-thumbnail" onclick="openVideoModal('benjamin-graham-intelligent-investor')">
+                                        <div class="play-button">▶</div>
+                                        <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Benjamin Graham Intelligent Investor">
+                                        <div class="video-overlay">
+                                            <span class="views">950K views</span>
+                                        </div>
+                                    </div>
+                                    <h4><a href="#" onclick="openVideoModal('benjamin-graham-intelligent-investor')">The Intelligent Investor: Key Lessons</a></h4>
+                                    <p class="channel">Value Investing Channel</p>
                                 </div>
-                                <h4><a href="#" onclick="openVideoModal('peter-lynch-risk')">Peter Lynch on Risk Management</a></h4>
-                                <p>How to manage risk while seeking growth opportunities...</p>
-                                <div class="video-meta">
-                                    <span class="investor">Peter Lynch</span>
-                                    <span class="topic">Risk Management</span>
-                                    <span class="date">Dec 10, 2024</span>
+                                
+                                <div class="video-item" data-investor="charlie-munger" data-topic="market-analysis" data-period="recent">
+                                    <div class="video-thumbnail" onclick="openVideoModal('charlie-munger-psychology')">
+                                        <div class="play-button">▶</div>
+                                        <img src="https://i.ytimg.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Charlie Munger Psychology">
+                                        <div class="video-overlay">
+                                            <span class="views">320K views</span>
+                                        </div>
+                                    </div>
+                                    <h4><a href="#" onclick="openVideoModal('charlie-munger-psychology')">Charlie Munger on Human Psychology in Investing</a></h4>
+                                    <p class="channel">Mental Models</p>
                                 </div>
                             </div>
                         </div>
@@ -634,13 +669,45 @@
                     <!-- Book Feature -->
                     <section class="book-feature">
                         <h2>###### BOOK FEATURE</h2>
-                        <div class="featured-book">
-                            <h3>The Intelligent Investor</h3>
-                            <p class="book-author">by Benjamin Graham</p>
-                            <p class="book-description">The definitive book on value investing, first published in 1949 and still considered the bible of investing...</p>
-                            <div class="book-actions">
-                                <a href="#" class="btn-primary">Read Summary</a>
-                                <a href="#" class="btn-secondary">Buy Book</a>
+                        <div class="featured-books">
+                            <div class="featured-book">
+                                <div class="book-cover">
+                                    <img src="https://m.media-amazon.com/images/I/51Qq2VQ8K-L._SX342_SY445_.jpg" alt="Charlie Munger: The Complete Investor">
+                                </div>
+                                <div class="book-details">
+                                    <h3>Charlie Munger: The Complete Investor</h3>
+                                    <p class="book-author">by Tren Griffin</p>
+                                    <p class="book-year">2017</p>
+                                    <p class="book-publisher">Columbia Business School Publishing</p>
+                                    <p class="book-subject">Investing</p>
+                                    <p class="book-description">Describes Charlie Munger as Berkshire Hathaway's visionary vice chairman and Warren Buffett's indispensable financial partner, known for outperforming market indexes and believing any investor can do the same through "elementary, worldly wisdom" and interdisciplinary mental models.</p>
+                                    <div class="book-reviews">
+                                        <p><strong>Reviews:</strong> "A very interesting book, more about principles of value investing, and definitely worth a read."</p>
+                                        <p><strong>Source:</strong> Amazon</p>
+                                    </div>
+                                    <div class="book-price">
+                                        <span class="price">$24.61</span>
+                                        <a href="#" class="btn-primary">BUY NOW (Amazon)</a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="featured-book">
+                                <div class="book-cover">
+                                    <img src="https://m.media-amazon.com/images/I/41JjdbHX8XL._SX342_SY445_.jpg" alt="Trade Like Warren Buffett">
+                                </div>
+                                <div class="book-details">
+                                    <h3>Trade Like Warren Buffett</h3>
+                                    <p class="book-author">by James Altucher</p>
+                                    <p class="book-year">2005</p>
+                                    <p class="book-publisher">Wiley</p>
+                                    <p class="book-subject">Investing</p>
+                                    <p class="book-description">States that the book challenges current coverage of this great investor by including details of all of his strategies.</p>
+                                    <div class="book-price">
+                                        <span class="price">$18.99</span>
+                                        <a href="#" class="btn-primary">BUY NOW (Amazon)</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </section>
@@ -648,22 +715,77 @@
                     <!-- Recommended Books -->
                     <section class="recommended-books">
                         <h2>###### RECOMMENDED BOOKS</h2>
-                        <div class="books-list">
-                            <div class="book-item">
-                                <h4><a href="#">Security Analysis</a></h4>
-                                <p class="book-author">Benjamin Graham & David Dodd</p>
+                        <div class="books-categories">
+                            <div class="book-category">
+                                <h3>Buffett, Munger & Berkshire</h3>
+                                <ul class="book-links">
+                                    <li><a href="#">Poor Charlie's Almanack</a></li>
+                                    <li><a href="#">The Snowball</a></li>
+                                    <li><a href="#">Damn Right!</a></li>
+                                    <li><a href="#">Buffett: The Making of An American Capitalist</a></li>
+                                    <li><a href="#">The Essays of Warren Buffett: Lessons for Corporate America</a></li>
+                                    <li><a href="#">Of Permanent Value</a></li>
+                                    <li><a href="#">The Warren Buffett Way</a></li>
+                                    <li><a href="#" class="see-more">(see more)</a></li>
+                                </ul>
                             </div>
-                            <div class="book-item">
-                                <h4><a href="#">Common Stocks and Uncommon Profits</a></h4>
-                                <p class="book-author">Philip Fisher</p>
+                            
+                            <div class="book-category">
+                                <h3>Value Investing</h3>
+                                <ul class="book-links">
+                                    <li><a href="#">The Little Book That Beats the Market</a></li>
+                                    <li><a href="#">The Little Book of Value Investing</a></li>
+                                    <li><a href="#">Benjamin Graham On Value Investing: Lessons from the Dean of Wall Street</a></li>
+                                    <li><a href="#">The Intelligent Investor (3rd ed)</a></li>
+                                    <li><a href="#">Modern Value Investing</a></li>
+                                    <li><a href="#">Security Analysis (7th ed)</a></li>
+                                    <li><a href="#" class="see-more">(see more)</a></li>
+                                </ul>
                             </div>
-                            <div class="book-item">
-                                <h4><a href="#">One Up On Wall Street</a></h4>
-                                <p class="book-author">Peter Lynch</p>
+                            
+                            <div class="book-category">
+                                <h3>Share Investing</h3>
+                                <ul class="book-links">
+                                    <li><a href="#">How to Make Money in Stocks: A Winning System in Good Times and Bad</a></li>
+                                    <li><a href="#">Paths to Wealth through Common Stocks</a></li>
+                                    <li><a href="#">One Up On Wall Street: How To Use What You Already Know To Make Money In The Market</a></li>
+                                    <li><a href="#">Common Sense on Mutual Funds</a></li>
+                                    <li><a href="#" class="see-more">(see more)</a></li>
+                                </ul>
                             </div>
-                            <div class="book-item">
-                                <h4><a href="#">The Warren Buffett Portfolio</a></h4>
-                                <p class="book-author">Robert Hagstrom</p>
+                            
+                            <div class="book-category">
+                                <h3>Wealth Creation</h3>
+                                <ul class="book-links">
+                                    <li><a href="#">I Will Teach You to Be Rich: No Guilt. No Excuses. Just a 6-Week Program That Works</a></li>
+                                    <li><a href="#">The Richest Man in Babylon</a></li>
+                                    <li><a href="#">Millionaire Next Door: The Surprising Secrets of America's Wealthy</a></li>
+                                    <li><a href="#">The Science of Getting Rich</a></li>
+                                    <li><a href="#" class="see-more">(see more)</a></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="book-category">
+                                <h3>Financial Analysis</h3>
+                                <ul class="book-links">
+                                    <li><a href="#">Warren Buffett Accounting</a></li>
+                                    <li><a href="#">Financial Shenanigans: How to Detect Accounting Gimmicks and Fraud in Financial Reports</a></li>
+                                    <li><a href="#">Bemused Investor's Guide to Company Accounts</a></li>
+                                    <li><a href="#">Balance Sheet Basics: Financial Management for Nonfinancial Managers</a></li>
+                                    <li><a href="#" class="see-more">(see more)</a></li>
+                                </ul>
+                            </div>
+                            
+                            <div class="book-category">
+                                <h3>Sales & Marketing</h3>
+                                <ul class="book-links">
+                                    <li><a href="#">Ogilvy on Advertising</a></li>
+                                    <li><a href="#">Confessions of an Advertising Man</a></li>
+                                    <li><a href="#">Instant Cashflow</a></li>
+                                    <li><a href="#">The Copy Book: How Some of the Best Advertising Writers in the World Write Their Advertising</a></li>
+                                    <li><a href="#">Secrets of Successful Selling Habits</a></li>
+                                    <li><a href="#" class="see-more">(see more)</a></li>
+                                </ul>
                             </div>
                         </div>
                     </section>
@@ -730,7 +852,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="news-scraper.js?v=2.3&t=20241222"></script>
+    <script src="news-scraper.js?v=2.4&t=20241222"></script>
     <script>
         // Display current date
         document.addEventListener('DOMContentLoaded', function() {
