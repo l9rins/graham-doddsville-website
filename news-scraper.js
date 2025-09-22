@@ -61,7 +61,7 @@ class AustralianNewsScraper {
         
         this.cachedNews = [];
         this.lastUpdate = null;
-        this.updateInterval = 30 * 60 * 1000; // 30 minutes
+        this.updateInterval = 15 * 60 * 1000; // 15 minutes as per Carlos feedback
     }
 
     // Main method to fetch and process news
@@ -244,7 +244,7 @@ class AustralianNewsScraper {
         return newsItems
             .filter(item => this.isRelevantNews(item))
             .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))
-            .slice(0, 5); // Limit to 5 most recent items for better layout
+            .slice(0, 20); // Show more items for better information density
     }
 
     // Check if news item is relevant to investment/finance
@@ -311,8 +311,9 @@ class NewsDisplayManager {
         this.currentFilter = 'all';
         this.currentSearch = '';
         this.allNews = [];
-        this.displayedCount = 5;
-        this.maxDisplay = 5;
+        this.displayedCount = 7;
+        this.maxDisplay = 7;
+        this.currentCategory = 'all';
     }
 
     async initialize() {

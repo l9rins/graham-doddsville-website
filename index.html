@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Graham and Doddsville - Premier source of value investing information in Australia. Educational resources, articles, and insights for intelligent stock market investing.">
     <title>Graham and Doddsville - Value Investing Education Australia</title>
-    <link rel="stylesheet" href="styles.css?v=1.7&t=20241222">
+    <link rel="stylesheet" href="styles.css?v=1.9&t=20241222">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Georgia,serif&family=Arial,sans-serif&display=swap" rel="stylesheet">
@@ -76,6 +76,14 @@
                     <!-- Latest News Section -->
                     <section class="latest-news" id="home">
                         <h2>###### LATEST NEWS</h2>
+                        <div class="news-filters">
+                            <span class="filter-label">Filter by:</span>
+                            <a href="#" class="filter-link active" data-category="all">All</a>
+                            <a href="#" class="filter-link" data-category="companies">Companies</a>
+                            <a href="#" class="filter-link" data-category="markets">Markets</a>
+                            <a href="#" class="filter-link" data-category="economy">Economy</a>
+                            <a href="#" class="filter-link" data-category="industry">Industry</a>
+                        </div>
                         <div class="news-list" id="news-list">
                             <!-- News items will be loaded here -->
                         </div>
@@ -132,14 +140,13 @@
                     <section class="feature-articles">
                         <h2>###### FEATURE ARTICLES</h2>
                         <div class="article-filters">
-                            <ul>
-                                <li><a href="#" class="active">All</a></li>
-                                <li><a href="#">Investing</a></li>
-                                <li><a href="#">Economy</a></li>
-                                <li><a href="#">Industry</a></li>
-                                <li><a href="#">Super</a></li>
-                                <li><a href="#">Misc</a></li>
-                            </ul>
+                            <span class="filter-label">Filter by:</span>
+                            <a href="#" class="filter-link active" data-topic="all">All</a>
+                            <a href="#" class="filter-link" data-topic="investing">Investing</a>
+                            <a href="#" class="filter-link" data-topic="economy">Economy</a>
+                            <a href="#" class="filter-link" data-topic="industry">Industry</a>
+                            <a href="#" class="filter-link" data-topic="super">Super</a>
+                            <a href="#" class="filter-link" data-topic="misc">Misc</a>
                         </div>
                         <div class="articles-list">
                             <article class="article-item">
@@ -527,7 +534,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="news-scraper.js?v=1.8&t=20241222"></script>
+    <script src="news-scraper.js?v=1.9&t=20241222"></script>
     <script>
         // Display current date
         document.addEventListener('DOMContentLoaded', function() {
@@ -587,6 +594,42 @@
                 const targetTab = document.getElementById(tabName + '-tab');
                 if (targetTab) {
                     targetTab.style.display = 'block';
+                }
+            });
+        });
+
+        // News filter functionality
+        document.querySelectorAll('.filter-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all filter links in this section
+                const parentSection = this.closest('section');
+                parentSection.querySelectorAll('.filter-link').forEach(l => l.classList.remove('active'));
+                
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Get filter category
+                const category = this.dataset.category || this.dataset.topic;
+                
+                // Filter news items
+                if (category && category !== 'all') {
+                    const newsItems = parentSection.querySelectorAll('.news-item');
+                    newsItems.forEach(item => {
+                        const itemCategory = item.dataset.category || item.querySelector('.category')?.textContent?.toLowerCase();
+                        if (itemCategory && itemCategory.includes(category)) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                } else {
+                    // Show all items
+                    const newsItems = parentSection.querySelectorAll('.news-item');
+                    newsItems.forEach(item => {
+                        item.style.display = 'block';
+                    });
                 }
             });
         });
