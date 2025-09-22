@@ -294,14 +294,81 @@ body {
 }
 
 /* Dense News Categories */
-.news-categories-dense {
+/* Professional News Categories Grid */
+.news-categories-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 20px;
     margin-top: 20px;
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
+    padding: 0;
+}
+
+.news-category-card {
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.news-category-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+}
+
+.news-category-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #0066cc, #004499);
+}
+
+.news-category-card.companies::before {
+    background: linear-gradient(90deg, #1e3a8a, #1e40af);
+}
+
+.news-category-card.markets::before {
+    background: linear-gradient(90deg, #059669, #047857);
+}
+
+.news-category-card.economy::before {
+    background: linear-gradient(90deg, #dc2626, #b91c1c);
+}
+
+.news-category-card.industry::before {
+    background: linear-gradient(90deg, #7c3aed, #6d28d9);
+}
+
+.category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.category-header h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.category-header .see-more {
+    color: #666;
+    font-size: 12px;
+    text-decoration: none;
+    font-style: italic;
+}
+
+.category-header .see-more:hover {
+    color: #0066cc;
 }
 
 .news-category-column h3 {
@@ -1567,11 +1634,9 @@ body {
         gap: 20px;
     }
     
-    .news-categories-dense {
-        grid-template-columns: repeat(2, 1fr);
+    .news-categories-grid {
+        grid-template-columns: 1fr;
         gap: 15px;
-        width: 100%;
-        max-width: 100%;
     }
     
     .video-filters {
@@ -1677,11 +1742,9 @@ body {
         padding: 15px;
     }
     
-    .news-categories-dense {
+    .news-categories-grid {
         grid-template-columns: 1fr;
         gap: 10px;
-        width: 100%;
-        max-width: 100%;
     }
 }
 

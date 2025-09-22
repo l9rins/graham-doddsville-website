@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Graham and Doddsville - Premier source of value investing information in Australia. Educational resources, articles, and insights for intelligent stock market investing.">
     <title>Graham and Doddsville - Value Investing Education Australia</title>
-    <link rel="stylesheet" href="styles.css?v=2.4&t=20241222">
+    <link rel="stylesheet" href="styles.css?v=2.5&t=20241222">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Georgia,serif&family=Arial,sans-serif&display=swap" rel="stylesheet">
@@ -142,46 +142,65 @@
                             <!-- News items will be loaded here -->
                         </div>
                         
-                        <!-- Dense News Categories -->
-                        <div class="news-categories-dense">
-                            <div class="news-category-column">
-                                <h3>Companies</h3>
+                        <!-- Professional News Categories Grid -->
+                        <div class="news-categories-grid">
+                            <div class="news-category-card companies">
+                                <div class="category-header">
+                                    <h3>Companies</h3>
+                                    <a href="#" class="see-more">...See more</a>
+                                </div>
                                 <ul class="news-links">
-                                    <li><a href="#">CBA reports strong quarterly results (AFR)</a></li>
-                                    <li><a href="#">BHP announces dividend increase (SMH)</a></li>
-                                    <li><a href="#">Woolworths expands into new markets (The Australian)</a></li>
-                                    <li><a href="#">Telstra faces regulatory challenges (AFR)</a></li>
-                                    <li><a href="#">Rio Tinto production update (SMH)</a></li>
+                                    <li><a href="#">'Where's the debate gone?': Andrew Bolt re... (Sky)</a></li>
+                                    <li><a href="#">'Cutting rates significantly': Big bank's ... (Sky)</a></li>
+                                    <li><a href="#">ASX 200 ends the day down by 0.36 per cent... (Sky)</a></li>
+                                    <li><a href="#">Suvo to tap Indonesian nickel waste stream... (SMH)</a></li>
+                                    <li><a href="#">Rupert Murdoch to appeal family trust ruli... (Sky)</a></li>
+                                    <li><a href="#">'Narrow path': RBA Governor speaks out aft... (Sky)</a></li>
                                 </ul>
                             </div>
-                            <div class="news-category-column">
-                                <h3>Markets</h3>
+                            
+                            <div class="news-category-card markets">
+                                <div class="category-header">
+                                    <h3>Markets</h3>
+                                    <a href="#" class="see-more">...See more</a>
+                                </div>
                                 <ul class="news-links">
-                                    <li><a href="#">ASX 200 rises 0.8% on RBA decision (AFR)</a></li>
-                                    <li><a href="#">AUD/USD falls to 0.6789 (Bloomberg)</a></li>
-                                    <li><a href="#">Gold prices surge on inflation concerns (Reuters)</a></li>
-                                    <li><a href="#">Bond yields continue upward trend (AFR)</a></li>
-                                    <li><a href="#">Commodity prices mixed (SMH)</a></li>
+                                    <li><a href="#">Meet the Australian fundies making a motza... (AFR)</a></li>
+                                    <li><a href="#">ASX to slip, Wall St edge down with payrol... (AFR)</a></li>
+                                    <li><a href="#">OPEC+ delays oil output hike until April, ... (AFR)</a></li>
+                                    <li><a href="#">Outgoing senator's new job revealed (News)</a></li>
+                                    <li><a href="#">Big miner issues blunt warning to Aussies (News)</a></li>
+                                    <li><a href="#">ASX snaps three day winning streak (News)</a></li>
                                 </ul>
                             </div>
-                            <div class="news-category-column">
-                                <h3>Economy</h3>
+                            
+                            <div class="news-category-card economy">
+                                <div class="category-header">
+                                    <h3>Economy</h3>
+                                    <a href="#" class="see-more">...See more</a>
+                                </div>
                                 <ul class="news-links">
+                                    <li><a href="#">Massive US Federal Reserve decision signal... (Nine)</a></li>
+                                    <li><a href="#">How Donald Trump will change how the world... (SMH)</a></li>
                                     <li><a href="#">RBA maintains cautious stance on rates (ABC)</a></li>
                                     <li><a href="#">Inflation data shows mixed signals (AFR)</a></li>
                                     <li><a href="#">Employment figures exceed expectations (SMH)</a></li>
                                     <li><a href="#">GDP growth revised upward (The Australian)</a></li>
-                                    <li><a href="#">Consumer confidence rises (AFR)</a></li>
                                 </ul>
                             </div>
-                            <div class="news-category-column">
-                                <h3>Industry</h3>
+                            
+                            <div class="news-category-card industry">
+                                <div class="category-header">
+                                    <h3>Industry</h3>
+                                    <a href="#" class="see-more">...See more</a>
+                                </div>
                                 <ul class="news-links">
-                                    <li><a href="#">Banking sector faces headwinds (AFR)</a></li>
-                                    <li><a href="#">Mining sector leads ASX gains (The Australian)</a></li>
-                                    <li><a href="#">Retail sales data shows resilience (SMH)</a></li>
-                                    <li><a href="#">Tech stocks rally on AI optimism (AFR)</a></li>
-                                    <li><a href="#">Property market stabilization signals (SMH)</a></li>
+                                    <li><a href="#">RBA makes final 2024 rate call (MM)</a></li>
+                                    <li><a href="#">Perpetual/KKR deal in doubt amid significa... (MM)</a></li>
+                                    <li><a href="#">Former Pendal CEO joins DNR Capital board (MM)</a></li>
+                                    <li><a href="#">Former AMP advice exec steps back as FSCP ... (MM)</a></li>
+                                    <li><a href="#">Employee development at the fore as compet... (MM)</a></li>
+                                    <li><a href="#">Settlement reached in Caddick auditor clas... (MM)</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -852,7 +871,7 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="news-scraper.js?v=2.4&t=20241222"></script>
+    <script src="news-scraper.js?v=2.5&t=20241222"></script>
     <script>
         // Display current date
         document.addEventListener('DOMContentLoaded', function() {
