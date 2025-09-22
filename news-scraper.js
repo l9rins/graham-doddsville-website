@@ -317,12 +317,15 @@ class NewsDisplayManager {
 
     async initialize() {
         try {
+            console.log('NewsDisplayManager: Starting initialization...');
+            
             // Show loading state
             this.showLoadingState();
             
             // Fetch news
             const news = await this.scraper.fetchNews();
             this.allNews = news;
+            console.log('NewsDisplayManager: Fetched', news.length, 'news items');
             
             // Display limited news
             this.displayNews(news.slice(0, this.maxDisplay));
@@ -372,6 +375,7 @@ class NewsDisplayManager {
         }
 
         console.log('NewsDisplayManager: Displaying', news.length, 'news items');
+        console.log('NewsDisplayManager: News list element found:', newsList);
 
         if (news.length === 0) {
             newsList.innerHTML = `
