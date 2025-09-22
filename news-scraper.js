@@ -4,7 +4,7 @@
 class AustralianNewsScraper {
     constructor(apiUrl = 'http://localhost:3000') {
         this.apiUrl = apiUrl; // Backend API URL
-        this.isLocalDevelopment = window.location.protocol === 'file:' || window.location.hostname === 'localhost';
+        this.isLocalDevelopment = window.location.protocol === 'file:' || window.location.hostname === 'localhost' || window.location.hostname.includes('github.io');
         this.newsSources = [
             {
                 name: 'Australian Financial Review',
@@ -154,7 +154,7 @@ class AustralianNewsScraper {
                     title: 'ASX 200 rises as investors digest RBA rate decision',
                     excerpt: 'The benchmark index climbed 0.8% following the Reserve Bank\'s latest monetary policy announcement...',
                     url: 'https://www.afr.com/markets/equity-markets/asx-200-rises-as-investors-digest-rba-rate-decision-20241222-p5jq8z',
-                    image: this.generatePlaceholderImage('AFR News'),
+                    image: this.scraper.generatePlaceholderImage('AFR News'),
                     category: 'Markets',
                     source: 'Australian Financial Review',
                     publishedAt: new Date(Date.now() - Math.random() * 24 * 60 * 60 * 1000)
@@ -163,7 +163,7 @@ class AustralianNewsScraper {
                     title: 'Value investing opportunities emerge in small caps',
                     excerpt: 'Analysts identify undervalued small-cap stocks following recent market volatility...',
                     url: 'https://www.afr.com/markets/equity-markets/value-investing-opportunities-emerge-in-small-caps-20241222-p5jq9a',
-                    image: this.generatePlaceholderImage('Value Investing'),
+                    image: this.scraper.generatePlaceholderImage('Value Investing'),
                     category: 'Investment',
                     source: 'Australian Financial Review',
                     publishedAt: new Date(Date.now() - Math.random() * 24 * 60 * 60 * 1000)
@@ -172,7 +172,7 @@ class AustralianNewsScraper {
                     title: 'Property market shows signs of stabilization',
                     excerpt: 'Latest data suggests the housing market may be finding its footing after months of decline...',
                     url: 'https://www.afr.com/property/residential/property-market-shows-signs-of-stabilization-20241222-p5jq9b',
-                    image: this.generatePlaceholderImage('Property Market'),
+                    image: this.scraper.generatePlaceholderImage('Property Market'),
                     category: 'Property',
                     source: 'Australian Financial Review',
                     publishedAt: new Date(Date.now() - Math.random() * 24 * 60 * 60 * 1000)
@@ -560,7 +560,7 @@ class NewsDisplayManager {
                 title: 'ASX 200 rises as investors digest RBA rate decision',
                 excerpt: 'The benchmark index climbed 0.8% following the Reserve Bank\'s latest monetary policy announcement...',
                 url: 'https://www.afr.com/markets/equity-markets/asx-200-rises',
-                image: this.generatePlaceholderImage('AFR News'),
+                image: this.scraper.generatePlaceholderImage('AFR News'),
                 category: 'Markets',
                 source: 'Australian Financial Review',
                 publishedAt: new Date(Date.now() - 2 * 60 * 60 * 1000)
@@ -569,7 +569,7 @@ class NewsDisplayManager {
                 title: 'Value investing opportunities emerge in small caps',
                 excerpt: 'Analysts identify undervalued small-cap stocks following recent market volatility...',
                 url: 'https://www.afr.com/markets/equity-markets/value-opportunities',
-                image: this.generatePlaceholderImage('Value Investing'),
+                image: this.scraper.generatePlaceholderImage('Value Investing'),
                 category: 'Investment',
                 source: 'The Australian',
                 publishedAt: new Date(Date.now() - 4 * 60 * 60 * 1000)
@@ -578,7 +578,7 @@ class NewsDisplayManager {
                 title: 'Property market shows signs of stabilization',
                 excerpt: 'Latest data suggests the housing market may be finding its footing after months of decline...',
                 url: 'https://www.afr.com/property/residential/property-stabilization',
-                image: this.generatePlaceholderImage('Property Market'),
+                image: this.scraper.generatePlaceholderImage('Property Market'),
                 category: 'Property',
                 source: 'Sydney Morning Herald',
                 publishedAt: new Date(Date.now() - 6 * 60 * 60 * 1000)
