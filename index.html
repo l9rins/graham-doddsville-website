@@ -998,7 +998,77 @@
                         </div>
                     </div>
                 </li>
-                <li class="mega-menu-item events-menu"><a href="#events">Events</a></li>
+                <li class="mega-menu-item events-menu">
+                    <a href="#events">Events</a>
+                    <div class="mega-menu">
+                        <div class="mega-menu-column">
+                            <h4>Events & Seminars</h4>
+                            <a href="#value-investing-seminars">Value Investing Seminars</a>
+                            <a href="#financial-planning-workshops">Financial Planning Workshops</a>
+                            <a href="#investment-conferences">Investment Conferences</a>
+                            <a href="#wealth-building-events">Wealth Building Events</a>
+                            <a href="#market-analysis-seminars">Market Analysis Seminars</a>
+                            <a href="#retirement-planning-events">Retirement Planning Events</a>
+                            <a href="#tax-planning-seminars">Tax Planning Seminars</a>
+                            <a href="#estate-planning-workshops">Estate Planning Workshops</a>
+                        </div>
+                        <div class="mega-menu-column">
+                            <h4>Free Webinars</h4>
+                            <a href="#investment-basics-webinar">Investment Basics Webinar</a>
+                            <a href="#market-outlook-webinar">Market Outlook Webinar</a>
+                            <a href="#portfolio-construction-webinar">Portfolio Construction Webinar</a>
+                            <a href="#risk-management-webinar">Risk Management Webinar</a>
+                            <a href="#dividend-investing-webinar">Dividend Investing Webinar</a>
+                            <a href="#superannuation-webinar">Superannuation Webinar</a>
+                            <a href="#first-home-buyer-webinar">First Home Buyer Webinar</a>
+                            <a href="#debt-management-webinar">Debt Management Webinar</a>
+                        </div>
+                        <div class="mega-menu-column">
+                            <h4>Podcasts</h4>
+                            <a href="#value-investing-podcast">Value Investing Podcast</a>
+                            <a href="#market-analysis-podcast">Market Analysis Podcast</a>
+                            <a href="#wealth-building-podcast">Wealth Building Podcast</a>
+                            <a href="#investment-interviews">Investment Interviews</a>
+                            <a href="#economic-outlook-podcast">Economic Outlook Podcast</a>
+                            <a href="#success-stories-podcast">Success Stories Podcast</a>
+                            <a href="#investment-education-podcast">Investment Education Podcast</a>
+                            <a href="#market-news-podcast">Market News Podcast</a>
+                        </div>
+                        <div class="mega-menu-column">
+                            <h4>Free Online Courses</h4>
+                            <a href="#investment-fundamentals-course">Investment Fundamentals</a>
+                            <a href="#financial-literacy-course">Financial Literacy Course</a>
+                            <a href="#budgeting-basics-course">Budgeting Basics Course</a>
+                            <a href="#debt-management-course">Debt Management Course</a>
+                            <a href="#retirement-planning-course">Retirement Planning Course</a>
+                            <a href="#tax-optimization-course">Tax Optimization Course</a>
+                            <a href="#insurance-planning-course">Insurance Planning Course</a>
+                            <a href="#estate-planning-course">Estate Planning Course</a>
+                        </div>
+                        <div class="mega-menu-column">
+                            <h4>Industry Courses</h4>
+                            <a href="#cfa-preparation">CFA Preparation</a>
+                            <a href="#financial-planning-certification">Financial Planning Certification</a>
+                            <a href="#investment-advisory-course">Investment Advisory Course</a>
+                            <a href="#risk-management-certification">Risk Management Certification</a>
+                            <a href="#compliance-training">Compliance Training</a>
+                            <a href="#ethical-investing-course">Ethical Investing Course</a>
+                            <a href="#esg-investing-course">ESG Investing Course</a>
+                            <a href="#alternative-investments-course">Alternative Investments Course</a>
+                        </div>
+                        <div class="mega-menu-column">
+                            <h4>Tertiary Courses</h4>
+                            <a href="#finance-degree">Finance Degree Programs</a>
+                            <a href="#economics-degree">Economics Degree Programs</a>
+                            <a href="#accounting-degree">Accounting Degree Programs</a>
+                            <a href="#business-degree">Business Degree Programs</a>
+                            <a href="#mba-programs">MBA Programs</a>
+                            <a href="#financial-engineering">Financial Engineering</a>
+                            <a href="#investment-analysis-masters">Investment Analysis Masters</a>
+                            <a href="#wealth-management-masters">Wealth Management Masters</a>
+                        </div>
+                    </div>
+                </li>
             </ul>
         </div>
     </nav>
@@ -2743,19 +2813,23 @@
                 if (megaMenu) {
                     item.addEventListener('mouseenter', function() {
                         megaMenu.classList.add('show');
+                        document.body.classList.add('mega-menu-open');
                     });
-                    
+
                     item.addEventListener('mouseleave', function() {
                         megaMenu.classList.remove('show');
+                        document.body.classList.remove('mega-menu-open');
                     });
-                    
+
                     // Keep menu open when hovering over the mega-menu itself
                     megaMenu.addEventListener('mouseenter', function() {
                         megaMenu.classList.add('show');
+                        document.body.classList.add('mega-menu-open');
                     });
-                    
+
                     megaMenu.addEventListener('mouseleave', function() {
                         megaMenu.classList.remove('show');
+                        document.body.classList.remove('mega-menu-open');
                     });
                 }
             });
