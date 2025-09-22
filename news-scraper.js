@@ -11,7 +11,7 @@ class AustralianNewsScraper {
                 name: 'Australian Financial Review',
                 url: 'https://www.afr.com/',
                 query: 'australia finance business',
-                apiSource: 'demo', // Will use country-based search
+                apiSource: 'afr',
                 selectors: {
                     headlines: 'h3 a, .story-block h3 a, .headline a',
                     links: 'a[href*="/story/"], a[href*="/companies/"], a[href*="/markets/"]',
@@ -23,7 +23,7 @@ class AustralianNewsScraper {
                 name: 'The Australian',
                 url: 'https://www.theaustralian.com.au/',
                 query: 'australia business finance',
-                apiSource: 'demo',
+                apiSource: 'the-australian',
                 selectors: {
                     headlines: 'h3 a, .story-block h3 a, .headline a',
                     links: 'a[href*="/story/"], a[href*="/business/"]',
@@ -35,7 +35,7 @@ class AustralianNewsScraper {
                 name: 'Sydney Morning Herald',
                 url: 'https://www.smh.com.au/',
                 query: 'australia business',
-                apiSource: 'demo',
+                apiSource: 'smh',
                 selectors: {
                     headlines: 'h3 a, .story-block h3 a, .headline a',
                     links: 'a[href*="/story/"], a[href*="/business/"]',
@@ -47,7 +47,7 @@ class AustralianNewsScraper {
                 name: 'ABC News',
                 url: 'https://www.abc.net.au/news/',
                 query: 'australia business finance',
-                apiSource: 'demo',
+                apiSource: 'abc',
                 selectors: {
                     headlines: 'h3 a, .story-block h3 a, .headline a',
                     links: 'a[href*="/news/"]',
@@ -59,7 +59,7 @@ class AustralianNewsScraper {
                 name: 'News.com.au',
                 url: 'https://www.news.com.au/',
                 query: 'australia business',
-                apiSource: 'demo',
+                apiSource: 'news-com-au',
                 selectors: {
                     headlines: 'h3 a, .story-block h3 a, .headline a',
                     links: 'a[href*="/story/"]',
@@ -135,34 +135,22 @@ class AustralianNewsScraper {
 
     async fetchRealNews(source) {
         try {
-            // Use RSS feeds for real news - these work without CORS issues
-            const rssUrls = {
-                'Australian Financial Review': 'https://www.afr.com/rss.xml',
-                'The Australian': 'https://www.theaustralian.com.au/rss',
-                'Sydney Morning Herald': 'https://www.smh.com.au/rss.xml',
-                'ABC News': 'https://www.abc.net.au/news/feed/1534/rss.xml',
-                'News.com.au': 'https://www.news.com.au/feeds/feed.xml'
-            };
+            // Use backend API to fetch real news
+            const url = `${this.apiUrl}/news/${source.apiSource}`;
+            console.log(`Fetching real news from backend: ${url}`);
             
-            const rssUrl = rssUrls[source.name];
-            if (!rssUrl) {
-                console.log(`No RSS feed available for ${source.name}, using simulation`);
-                return null;
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`Backend API failed: ${response.status}`);
             }
             
-            // Use a CORS proxy to fetch RSS feeds
-            const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(rssUrl)}`;
-            const response = await fetch(proxyUrl);
             const data = await response.json();
+            console.log(`Successfully fetched ${data.articles.length} real articles from ${source.name}`);
             
-            if (data.contents) {
-                return this.parseRSSFeed(data.contents, source);
-            }
-            
-            return null;
+            return data.articles;
             
         } catch (error) {
-            console.log(`RSS feed not available for ${source.name}, using simulation:`, error.message);
+            console.log(`Backend API not available for ${source.name}, using simulation:`, error.message);
             return null;
         }
     }
