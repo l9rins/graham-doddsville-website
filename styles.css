@@ -89,6 +89,8 @@ body {
 .mega-menu-item {
     position: relative;
     overflow: visible;
+    /* Prevent layout shift */
+    contain: layout;
 }
 
 /* Smart positioning for edge cases */
@@ -146,6 +148,8 @@ body {
     box-sizing: border-box;
     overflow-y: auto;
     overflow-x: hidden;
+    /* Ensure no layout shift */
+    contain: layout style paint;
 }
 
 .mega-menu.show {
@@ -195,10 +199,7 @@ body {
     z-index: 99999 !important;
 }
 
-/* Prevent body scroll when mega menu is open */
-body.mega-menu-open {
-    overflow: hidden;
-}
+/* Prevent body scroll when mega menu is open - REMOVED to prevent page shift */
 
 /* Custom scrollbar for mega-menu */
 .mega-menu::-webkit-scrollbar {

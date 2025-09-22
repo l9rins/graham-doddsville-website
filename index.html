@@ -2813,23 +2813,19 @@
                 if (megaMenu) {
                     item.addEventListener('mouseenter', function() {
                         megaMenu.classList.add('show');
-                        document.body.classList.add('mega-menu-open');
                     });
 
                     item.addEventListener('mouseleave', function() {
                         megaMenu.classList.remove('show');
-                        document.body.classList.remove('mega-menu-open');
                     });
 
                     // Keep menu open when hovering over the mega-menu itself
                     megaMenu.addEventListener('mouseenter', function() {
                         megaMenu.classList.add('show');
-                        document.body.classList.add('mega-menu-open');
                     });
 
                     megaMenu.addEventListener('mouseleave', function() {
                         megaMenu.classList.remove('show');
-                        document.body.classList.remove('mega-menu-open');
                     });
                 }
             });
