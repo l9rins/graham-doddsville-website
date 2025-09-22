@@ -135,16 +135,68 @@ class AustralianNewsScraper {
 
     async fetchRealNews(source) {
         try {
-            // NewsAPI has CORS restrictions for direct browser requests
-            // For production, you'd need a backend proxy
-            // For now, we'll enhance the simulation with more realistic data
-            console.log(`NewsAPI requires backend proxy for browser requests. Using enhanced simulation for ${source.name}...`);
+            // Use RSS feeds for real news - these work without CORS issues
+            const rssUrls = {
+                'Australian Financial Review': 'https://www.afr.com/rss.xml',
+                'The Australian': 'https://www.theaustralian.com.au/rss',
+                'Sydney Morning Herald': 'https://www.smh.com.au/rss.xml',
+                'ABC News': 'https://www.abc.net.au/news/feed/1534/rss.xml',
+                'News.com.au': 'https://www.news.com.au/feeds/feed.xml'
+            };
             
-            // Return null to trigger simulation with enhanced data
+            const rssUrl = rssUrls[source.name];
+            if (!rssUrl) {
+                console.log(`No RSS feed available for ${source.name}, using simulation`);
+                return null;
+            }
+            
+            // Use a CORS proxy to fetch RSS feeds
+            const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(rssUrl)}`;
+            const response = await fetch(proxyUrl);
+            const data = await response.json();
+            
+            if (data.contents) {
+                return this.parseRSSFeed(data.contents, source);
+            }
+            
             return null;
             
         } catch (error) {
-            console.log(`Real news not available for ${source.name}, using simulation:`, error.message);
+            console.log(`RSS feed not available for ${source.name}, using simulation:`, error.message);
+            return null;
+        }
+    }
+    
+    parseRSSFeed(xmlContent, source) {
+        try {
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(xmlContent, 'text/xml');
+            const items = xmlDoc.querySelectorAll('item');
+            
+            const news = [];
+            for (let i = 0; i < Math.min(items.length, 3); i++) {
+                const item = items[i];
+                const title = item.querySelector('title')?.textContent || '';
+                const description = item.querySelector('description')?.textContent || '';
+                const link = item.querySelector('link')?.textContent || '';
+                const pubDate = item.querySelector('pubDate')?.textContent || '';
+                
+                if (title && link) {
+                    news.push({
+                        title: title,
+                        excerpt: description.replace(/<[^>]*>/g, '').substring(0, 150) + '...',
+                        url: link,
+                        image: this.getPlaceholderImage(source.name),
+                        category: this.categorizeNews(title + ' ' + description),
+                        source: source.name,
+                        publishedAt: new Date(pubDate || Date.now())
+                    });
+                }
+            }
+            
+            return news;
+        } catch (error) {
+            console.log(`Error parsing RSS feed for ${source.name}:`, error);
             return null;
         }
     }
