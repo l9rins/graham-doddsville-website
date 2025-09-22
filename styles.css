@@ -91,6 +91,8 @@ body {
     overflow: visible;
     /* Prevent layout shift */
     contain: layout;
+    /* Ensure proper stacking context */
+    z-index: 1;
 }
 
 /* Smart positioning for edge cases */
@@ -143,13 +145,15 @@ body {
     max-width: calc(100vw - 40px);
     max-height: 80vh;
     padding: 20px;
-    z-index: 99999;
+    z-index: 999999;
     margin-top: 5px;
     box-sizing: border-box;
     overflow-y: auto;
     overflow-x: hidden;
     /* Ensure no layout shift */
     contain: layout style paint;
+    /* Force above all other elements */
+    isolation: isolate;
 }
 
 .mega-menu.show {
@@ -196,7 +200,8 @@ body {
 
 /* Ensure dropdowns stay above all content */
 .mega-menu {
-    z-index: 99999 !important;
+    z-index: 999999 !important;
+    position: absolute !important;
 }
 
 /* Prevent body scroll when mega menu is open - REMOVED to prevent page shift */
@@ -374,6 +379,8 @@ img.lazy.loaded {
     border-bottom: 1px solid #ddd;
     padding: 10px 0;
     overflow: visible;
+    position: relative;
+    z-index: 100;
 }
 
 .secondary-nav-list {
