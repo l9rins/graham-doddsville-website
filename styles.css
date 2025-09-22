@@ -85,15 +85,14 @@ body {
     text-decoration: underline;
 }
 
-/* Mega Menu - Complete Redesign for Client Requirements */
+/* Mega Menu - PRECISE CLIENT REQUIREMENTS IMPLEMENTATION */
 .mega-menu-item {
     position: relative;
     overflow: visible;
-    /* Ensure proper stacking context */
     z-index: 10;
 }
 
-/* Each dropdown positioned relative to its own <li> */
+/* BASE MEGA MENU - Each dropdown positioned relative to its own <li> */
 .mega-menu {
     position: absolute;
     top: 100%;
@@ -104,60 +103,130 @@ body {
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     display: none;
     width: 800px;
-    max-width: 90vw;
-    max-height: 70vh;
+    max-width: 85vw;
+    max-height: 60vh;
     padding: 20px;
     z-index: 1000;
     margin-top: 5px;
     box-sizing: border-box;
     overflow: hidden;
-    /* Prevent layout shift */
     contain: layout style paint;
 }
 
-/* Edge positioning for rightmost items */
+/* STRICT GRID LAYOUT - 4 columns, 2 balanced rows */
+.mega-menu.show {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1.5rem 2rem;
+    overflow: hidden;
+}
+
+/* PRECISE POSITIONING FOR EACH MENU */
+/* Wealth Creation - 3 columns, 2 rows */
+.mega-menu-item.wealth-creation-menu .mega-menu {
+    width: 600px;
+    max-width: 80vw;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+/* Legal & Taxation - 4 columns, 2 rows */
+.mega-menu-item.legal-taxation-menu .mega-menu {
+    width: 800px;
+    max-width: 85vw;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+/* Financial Markets - 4 columns, 2 rows */
+.mega-menu-item.financial-markets-menu .mega-menu {
+    width: 800px;
+    max-width: 85vw;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+/* Share Investing - 8 columns, 2 rows */
+.mega-menu-item.share-investing-menu .mega-menu {
+    width: 1000px;
+    max-width: 90vw;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+/* Greatest Investors - 3 columns, 2 rows */
+.mega-menu-item.greatest-investors-menu .mega-menu {
+    width: 900px;
+    max-width: 90vw;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+/* Investment Analysis - 4 columns, 2 rows */
+.mega-menu-item.investment-analysis-menu .mega-menu {
+    width: 800px;
+    max-width: 85vw;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+/* Economics - 8 columns, 2 rows */
+.mega-menu-item.economics-menu .mega-menu {
+    width: 1000px;
+    max-width: 90vw;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+/* Professional Advisers - 8 columns, 2 rows */
+.mega-menu-item.professional-advisers-menu .mega-menu {
+    width: 1000px;
+    max-width: 90vw;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+/* Financial Products - 9 columns, 2 rows */
+.mega-menu-item.financial-products-menu .mega-menu {
+    width: 1100px;
+    max-width: 95vw;
+    grid-template-columns: repeat(9, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+/* Resources - 7 columns, 2 rows */
+.mega-menu-item.resources-menu .mega-menu {
+    width: 900px;
+    max-width: 90vw;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+/* Events - 6 columns, 2 rows */
+.mega-menu-item.events-menu .mega-menu {
+    width: 900px;
+    max-width: 90vw;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+
+/* EDGE POSITIONING - Rightmost items align to right edge */
 .mega-menu-item:nth-last-child(-n+2) .mega-menu {
     right: 0;
     left: auto;
 }
 
-
-.mega-menu.show {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem 2rem;
-    overflow: hidden;
-}
-
-/* Special layouts for specific menus */
-.mega-menu-item.wealth-creation-menu .mega-menu {
-    width: 600px;
-    grid-template-columns: repeat(3, 1fr);
-}
-
-.mega-menu-item.greatest-investors-menu .mega-menu {
-    width: 900px;
-    grid-template-columns: repeat(3, 1fr);
-}
-
-.mega-menu-item.events-menu .mega-menu {
-    width: 900px;
-    grid-template-columns: repeat(6, 1fr);
-}
-
-.mega-menu-item.resources-menu .mega-menu {
-    width: 700px;
-    grid-template-columns: repeat(7, 1fr);
-}
-
+/* COLUMN STYLING - Strict overflow control */
 .mega-menu-column {
-    min-width: 160px;
-    max-width: 200px;
+    min-width: 140px;
+    max-width: 180px;
     overflow-y: auto;
     word-wrap: break-word;
     white-space: normal;
-    /* Handle excess items without expanding menu */
-    max-height: 60vh;
+    max-height: 50vh;
+    padding: 5px;
+    box-sizing: border-box;
 }
 
 .mega-menu-column h4 {
