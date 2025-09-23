@@ -145,27 +145,27 @@ h6 {
     z-index: 100;
 }
 
-/* CLEAN MEGA MENU SYSTEM - Single source of truth */
+/* MORNINGSTAR-STYLE MEGA MENU - Clean, professional design */
 .mega-menu {
     position: absolute;
     top: 100%;
     left: 0;
     background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    border: 1px solid #e0e0e0;
+    border-radius: 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     display: none;
     width: 600px;
     max-width: 90vw;
     max-height: 70vh;
-    padding: 24px;
+    padding: 32px 24px;
     z-index: 999;
-    margin-top: 8px;
+    margin-top: 0;
     box-sizing: border-box;
     overflow: hidden;
     opacity: 0;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
+    transform: translateY(-5px);
+    transition: all 0.2s ease;
 }
 
 /* ENSURE SOLID BACKGROUNDS - No transparency issues */
@@ -175,13 +175,33 @@ h6 {
     opacity: 1 !important;
 }
 
-/* SINGLE HOVER RULE - Clean and reliable */
+/* MORNINGSTAR HOVER EFFECT - Smooth and professional */
 .mega-menu-item:hover .mega-menu {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
     opacity: 1;
     transform: translateY(0);
+}
+
+/* MORNINGSTAR NAVIGATION HOVER STATES */
+.mega-menu-item a {
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.mega-menu-item:hover a {
+    color: #0066cc;
+}
+
+.mega-menu-item:hover a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #0066cc;
 }
 
 /* INDIVIDUAL MENU WIDTHS - All menus use consistent constraints */
@@ -214,18 +234,18 @@ h6 {
     right: 0;
 }
 
-/* ENHANCED COLUMN STYLING - Proper scrolling and spacing */
+/* MORNINGSTAR COLUMN STYLING - Clean, professional layout */
 .mega-menu-column {
     min-width: 180px;
     max-width: 220px;
-    padding: 16px;
+    padding: 0;
     box-sizing: border-box;
-    line-height: 1.6;
+    line-height: 1.5;
     overflow-y: auto;
     overflow-x: hidden;
     max-height: 65vh;
     background: #fff;
-    border-radius: 4px;
+    border-radius: 0;
 }
 
 /* Custom scrollbar for webkit browsers */
@@ -248,32 +268,44 @@ h6 {
 }
 
 
-/* SIMPLE TEXT STYLING */
+/* MORNINGSTAR TYPOGRAPHY - Professional, clean styling */
 .mega-menu-column h4 {
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 16px;
+    font-weight: 700;
     color: #333;
-    margin: 0 0 10px 0;
-    padding: 0 0 6px 0;
-    border-bottom: 2px solid #e0e0e0;
-    line-height: 1.3;
+    margin: 0 0 16px 0;
+    padding: 0;
+    border-bottom: none;
+    line-height: 1.2;
+    text-transform: none;
+    letter-spacing: 0;
 }
 
 .mega-menu-column a {
     display: block;
-    padding: 6px 0;
+    padding: 8px 0;
     color: #555;
     text-decoration: none;
-    font-size: 13px;
-    transition: all 0.2s ease;
+    font-size: 14px;
+    font-weight: 400;
+    transition: color 0.2s ease;
     line-height: 1.4;
-    border-radius: 3px;
+    border-radius: 0;
 }
 
 .mega-menu-column a:hover {
     color: #0066cc;
-    background-color: #f8f9fa;
-    padding-left: 6px;
+    background-color: transparent;
+    padding-left: 0;
+}
+
+/* MORNINGSTAR DESCRIPTIVE TEXT */
+.mega-menu-column p {
+    font-size: 12px;
+    color: #888;
+    margin: 4px 0 12px 0;
+    line-height: 1.3;
+    font-style: normal;
 }
 
 /* SIMPLE RESPONSIVE DESIGN */
