@@ -105,24 +105,36 @@ h6 {
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
+/* CLEAN HEADER LAYOUT - Matching reference design */
 .header-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 20px;
+    gap: 30px;
     overflow: visible;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 
-/* PROFESSIONAL LOGO STYLING - Clean, serif font matching reference */
+/* PROFESSIONAL LOGO STYLING - Stacked layout matching reference */
 .logo h1 {
     font-family: 'Times New Roman', serif;
-    font-size: 32px;
+    font-size: 24px;
     font-weight: bold;
     color: #000;
     margin: 0;
-    letter-spacing: 1px;
-    line-height: 1.2;
+    letter-spacing: 0.5px;
+    line-height: 1.1;
+    text-align: left;
+}
+
+/* LOGO STACKED LAYOUT - Graham & Doddsville */
+.logo h1::before {
+    content: "Graham\A&\ADoddsville";
+    white-space: pre-line;
+    display: block;
 }
 
 .main-nav {
@@ -512,12 +524,12 @@ h6 {
     position: relative;
     display: flex;
     align-items: center;
-    background: #f8f9fa;
+    background: #f5f5f5;
     border-radius: 25px;
-    padding: 10px 20px;
-    border: 1px solid #e0e0e0;
+    padding: 8px 15px;
+    border: 1px solid #ddd;
     margin-left: 20px;
-    min-width: 350px;
+    min-width: 300px;
 }
 
 .global-search-input {
@@ -689,12 +701,17 @@ img.lazy.loaded {
     transform: rotate(-45deg) translate(6px, -6px);
 }
 
+/* CLEAN SECONDARY NAVIGATION - Single horizontal row */
 .secondary-nav-list {
     display: flex;
     list-style: none;
-    gap: 25px;
-    flex-wrap: wrap;
+    gap: 30px;
+    flex-wrap: nowrap;
     overflow: visible;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 /* PROFESSIONAL SECONDARY NAVIGATION LINKS */
