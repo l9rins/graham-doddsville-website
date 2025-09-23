@@ -103,7 +103,7 @@ body {
     box-shadow: 0 8px 32px rgba(0,0,0,0.12);
     display: none;
     width: 600px;
-    max-width: 90vw;
+    max-width: 85vw;
     max-height: 70vh;
     padding: 20px;
     z-index: 1000;
@@ -123,70 +123,81 @@ body {
     overflow-x: hidden;
 }
 
-/* INDIVIDUAL MENU SPECIFICATIONS - Consistent sizing */
+/* INDIVIDUAL MENU SPECIFICATIONS - Consistent sizing with viewport constraints */
 /* Wealth Creation - 3 columns */
 .mega-menu-item.wealth-creation-menu .mega-menu {
     width: 600px;
+    max-width: 80vw;
     grid-template-columns: repeat(3, 1fr);
 }
 
 /* Legal & Taxation - 4 columns */
 .mega-menu-item.legal-taxation-menu .mega-menu {
     width: 800px;
+    max-width: 85vw;
     grid-template-columns: repeat(4, 1fr);
 }
 
 /* Financial Markets - 4 columns */
 .mega-menu-item.financial-markets-menu .mega-menu {
     width: 800px;
+    max-width: 85vw;
     grid-template-columns: repeat(4, 1fr);
 }
 
 /* Share Investing - 4 columns */
 .mega-menu-item.share-investing-menu .mega-menu {
     width: 800px;
+    max-width: 85vw;
     grid-template-columns: repeat(4, 1fr);
 }
 
 /* Greatest Investors - 3 columns */
 .mega-menu-item.greatest-investors-menu .mega-menu {
     width: 700px;
+    max-width: 80vw;
     grid-template-columns: repeat(3, 1fr);
 }
 
 /* Investment Analysis - 4 columns */
 .mega-menu-item.investment-analysis-menu .mega-menu {
     width: 800px;
+    max-width: 85vw;
     grid-template-columns: repeat(4, 1fr);
 }
 
 /* Economics - 4 columns */
 .mega-menu-item.economics-menu .mega-menu {
     width: 800px;
+    max-width: 85vw;
     grid-template-columns: repeat(4, 1fr);
 }
 
 /* Professional Advisers - 4 columns */
 .mega-menu-item.professional-advisers-menu .mega-menu {
     width: 800px;
+    max-width: 85vw;
     grid-template-columns: repeat(4, 1fr);
 }
 
 /* Financial Products - 4 columns */
 .mega-menu-item.financial-products-menu .mega-menu {
     width: 800px;
+    max-width: 85vw;
     grid-template-columns: repeat(4, 1fr);
 }
 
 /* Resources - 4 columns */
 .mega-menu-item.resources-menu .mega-menu {
     width: 800px;
+    max-width: 85vw;
     grid-template-columns: repeat(4, 1fr);
 }
 
 /* Events - 4 columns */
 .mega-menu-item.events-menu .mega-menu {
     width: 800px;
+    max-width: 85vw;
     grid-template-columns: repeat(4, 1fr);
 }
 
@@ -270,15 +281,16 @@ body {
     padding-left: 8px;
 }
 
-/* RESPONSIVE DESIGN */
+/* RESPONSIVE DESIGN - Prevent horizontal scrolling */
 @media (max-width: 1200px) {
     .mega-menu {
-        max-width: 85vw;
+        max-width: 80vw;
     }
     
     .mega-menu-item.wealth-creation-menu .mega-menu,
     .mega-menu-item.greatest-investors-menu .mega-menu {
         width: 500px;
+        max-width: 75vw;
     }
     
     .mega-menu-item.legal-taxation-menu .mega-menu,
@@ -291,6 +303,32 @@ body {
     .mega-menu-item.resources-menu .mega-menu,
     .mega-menu-item.events-menu .mega-menu {
         width: 700px;
+        max-width: 80vw;
+    }
+}
+
+@media (max-width: 1000px) {
+    .mega-menu {
+        max-width: 75vw;
+    }
+    
+    .mega-menu-item.wealth-creation-menu .mega-menu,
+    .mega-menu-item.greatest-investors-menu .mega-menu {
+        width: 450px;
+        max-width: 70vw;
+    }
+    
+    .mega-menu-item.legal-taxation-menu .mega-menu,
+    .mega-menu-item.financial-markets-menu .mega-menu,
+    .mega-menu-item.share-investing-menu .mega-menu,
+    .mega-menu-item.investment-analysis-menu .mega-menu,
+    .mega-menu-item.economics-menu .mega-menu,
+    .mega-menu-item.professional-advisers-menu .mega-menu,
+    .mega-menu-item.financial-products-menu .mega-menu,
+    .mega-menu-item.resources-menu .mega-menu,
+    .mega-menu-item.events-menu .mega-menu {
+        width: 600px;
+        max-width: 75vw;
     }
 }
 
