@@ -88,6 +88,12 @@
     <!-- Secondary Navigation -->
     <nav class="secondary-nav">
         <div class="container">
+            <!-- Mobile Hamburger Menu Button -->
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
             <ul class="secondary-nav-list">
                 <li class="mega-menu-item wealth-creation-menu">
                     <a href="#wealth-creation">Wealth Creation</a>
@@ -2926,6 +2932,55 @@
             if (e.target.matches('.mega-menu-item > a')) {
                 setTimeout(distributeMegaMenuColumns, 10);
             }
+        });
+
+        // Mobile Menu Toggle Functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileToggle = document.querySelector('.mobile-menu-toggle');
+            const secondaryNavList = document.querySelector('.secondary-nav-list');
+            
+            if (mobileToggle && secondaryNavList) {
+                mobileToggle.addEventListener('click', function() {
+                    mobileToggle.classList.toggle('active');
+                    secondaryNavList.classList.toggle('active');
+                });
+                
+                // Close mobile menu when clicking on a link
+                const mobileLinks = secondaryNavList.querySelectorAll('a');
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileToggle.classList.remove('active');
+                        secondaryNavList.classList.remove('active');
+                    });
+                });
+                
+                // Close mobile menu when clicking outside
+                document.addEventListener('click', function(e) {
+                    if (!mobileToggle.contains(e.target) && !secondaryNavList.contains(e.target)) {
+                        mobileToggle.classList.remove('active');
+                        secondaryNavList.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Collapsible Sections Functionality
+            const collapsibleHeaders = document.querySelectorAll('.collapsible-header');
+            collapsibleHeaders.forEach(header => {
+                header.addEventListener('click', function() {
+                    const section = this.parentElement;
+                    const isActive = section.classList.contains('active');
+                    
+                    // Close all other sections
+                    document.querySelectorAll('.collapsible-section').forEach(s => {
+                        s.classList.remove('active');
+                    });
+                    
+                    // Toggle current section
+                    if (!isActive) {
+                        section.classList.add('active');
+                    }
+                });
+            });
         });
     </script>
 </body>
