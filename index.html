@@ -1312,6 +1312,37 @@
                                 <button class="tab-btn" data-tab="commodities">Commodities</button>
                                 <button class="tab-btn" data-tab="currencies">Currencies</button>
                             </div>
+                            <div class="market-filters">
+                                <div class="filter-group">
+                                    <label for="market-search">Search:</label>
+                                    <input type="text" id="market-search" placeholder="Search symbols..." class="market-search-input">
+                                </div>
+                                <div class="filter-group">
+                                    <label for="change-filter">Change:</label>
+                                    <select id="change-filter" class="market-filter-select">
+                                        <option value="">All</option>
+                                        <option value="positive">Gainers</option>
+                                        <option value="negative">Losers</option>
+                                        <option value="neutral">Unchanged</option>
+                                    </select>
+                                </div>
+                                <div class="filter-group">
+                                    <label for="sort-by">Sort by:</label>
+                                    <select id="sort-by" class="market-filter-select">
+                                        <option value="symbol">Symbol</option>
+                                        <option value="price">Price</option>
+                                        <option value="change">Change</option>
+                                        <option value="volume">Volume</option>
+                                    </select>
+                                </div>
+                                <div class="filter-group">
+                                    <label for="sort-order">Order:</label>
+                                    <select id="sort-order" class="market-filter-select">
+                                        <option value="asc">Ascending</option>
+                                        <option value="desc">Descending</option>
+                                    </select>
+                                </div>
+                            </div>
                             <div class="time-range-toggles">
                                 <button class="time-btn active" data-range="1D">1D</button>
                                 <button class="time-btn" data-range="1W">1W</button>
@@ -2310,6 +2341,121 @@
                 this.classList.add(isAsc ? 'sort-desc' : 'sort-asc');
             });
         });
+        
+        // Enhanced Market Data Filtering and Sorting
+        function initializeMarketFilters() {
+            const searchInput = document.getElementById('market-search');
+            const changeFilter = document.getElementById('change-filter');
+            const sortBy = document.getElementById('sort-by');
+            const sortOrder = document.getElementById('sort-order');
+            
+            // Search functionality
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    filterMarketData();
+                });
+            }
+            
+            // Change filter functionality
+            if (changeFilter) {
+                changeFilter.addEventListener('change', function() {
+                    filterMarketData();
+                });
+            }
+            
+            // Sort functionality
+            if (sortBy) {
+                sortBy.addEventListener('change', function() {
+                    sortMarketData();
+                });
+            }
+            
+            if (sortOrder) {
+                sortOrder.addEventListener('change', function() {
+                    sortMarketData();
+                });
+            }
+        }
+        
+        function filterMarketData() {
+            const searchTerm = document.getElementById('market-search')?.value.toLowerCase() || '';
+            const changeFilter = document.getElementById('change-filter')?.value || '';
+            const activeTab = document.querySelector('.market-tabs .tab-btn.active')?.dataset.tab;
+            const tableContainer = document.getElementById(`${activeTab}-tab`);
+            
+            if (!tableContainer) return;
+            
+            const table = tableContainer.querySelector('.market-table');
+            if (!table) return;
+            
+            const rows = table.querySelectorAll('tbody tr');
+            
+            rows.forEach(row => {
+                const symbol = row.querySelector('.symbol')?.textContent.toLowerCase() || '';
+                const change = row.querySelector('.change');
+                const changeClass = change?.classList.contains('positive') ? 'positive' : 
+                                  change?.classList.contains('negative') ? 'negative' : 'neutral';
+                
+                let show = true;
+                
+                // Search filter
+                if (searchTerm && !symbol.includes(searchTerm)) {
+                    show = false;
+                }
+                
+                // Change filter
+                if (changeFilter && changeClass !== changeFilter) {
+                    show = false;
+                }
+                
+                row.style.display = show ? '' : 'none';
+            });
+        }
+        
+        function sortMarketData() {
+            const sortBy = document.getElementById('sort-by')?.value || 'symbol';
+            const sortOrder = document.getElementById('sort-order')?.value || 'asc';
+            const activeTab = document.querySelector('.market-tabs .tab-btn.active')?.dataset.tab;
+            const tableContainer = document.getElementById(`${activeTab}-tab`);
+            
+            if (!tableContainer) return;
+            
+            const table = tableContainer.querySelector('.market-table');
+            if (!table) return;
+            
+            const tbody = table.querySelector('tbody');
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+            
+            rows.sort((a, b) => {
+                let aVal, bVal;
+                
+                if (sortBy === 'symbol') {
+                    aVal = a.querySelector('.symbol')?.textContent || '';
+                    bVal = b.querySelector('.symbol')?.textContent || '';
+                } else if (sortBy === 'price') {
+                    aVal = parseFloat(a.querySelector('.price')?.textContent.replace(/[^\d.-]/g, '') || 0);
+                    bVal = parseFloat(b.querySelector('.price')?.textContent.replace(/[^\d.-]/g, '') || 0);
+                } else if (sortBy === 'change') {
+                    aVal = parseFloat(a.querySelector('.change')?.textContent.replace(/[^\d.-]/g, '') || 0);
+                    bVal = parseFloat(b.querySelector('.change')?.textContent.replace(/[^\d.-]/g, '') || 0);
+                } else if (sortBy === 'volume') {
+                    aVal = parseFloat(a.querySelector('.volume')?.textContent.replace(/[^\d.-]/g, '') || 0);
+                    bVal = parseFloat(b.querySelector('.volume')?.textContent.replace(/[^\d.-]/g, '') || 0);
+                }
+                
+                if (sortOrder === 'asc') {
+                    return aVal > bVal ? 1 : aVal < bVal ? -1 : 0;
+                } else {
+                    return aVal < bVal ? 1 : aVal > bVal ? -1 : 0;
+                }
+            });
+            
+            // Re-append sorted rows
+            rows.forEach(row => tbody.appendChild(row));
+        }
+        
+        // Initialize market filters
+        initializeMarketFilters();
 
         // Enhanced Global search functionality
         let searchTimeout;

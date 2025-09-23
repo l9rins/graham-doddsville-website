@@ -1938,6 +1938,137 @@ input:focus, textarea:focus, select:focus {
     font-size: 11px;
 }
 
+/* Enhanced Market Filters */
+.market-filters {
+    display: flex;
+    gap: 15px;
+    margin: 15px 0;
+    flex-wrap: wrap;
+    align-items: center;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #e8e8e8;
+}
+
+.market-filters .filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 120px;
+}
+
+.market-filters label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #2c3e50;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.market-search-input,
+.market-filter-select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    background: #fff;
+    transition: all 0.3s ease;
+    min-height: 36px;
+}
+
+.market-search-input:focus,
+.market-filter-select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.1);
+}
+
+.market-search-input {
+    width: 200px;
+}
+
+.market-filter-select {
+    width: 120px;
+}
+
+/* Enhanced Market Table Styling */
+.market-table {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.market-table th {
+    background: #2c3e50;
+    color: #fff;
+    padding: 12px 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: relative;
+}
+
+.market-table th:hover {
+    background: #34495e;
+}
+
+.market-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background-color 0.2s ease;
+}
+
+.market-table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.market-table .symbol {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.market-table .price {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.market-table .change.positive {
+    color: #27ae60;
+    font-weight: 600;
+}
+
+.market-table .change.negative {
+    color: #e74c3c;
+    font-weight: 600;
+}
+
+.market-table .change.neutral {
+    color: #7f8c8d;
+    font-weight: 600;
+}
+
+/* Responsive Market Filters */
+@media (max-width: 768px) {
+    .market-filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .market-filters .filter-group {
+        min-width: auto;
+    }
+    
+    .market-search-input {
+        width: 100%;
+    }
+    
+    .market-filter-select {
+        width: 100%;
+    }
+}
+
 
 /* Video Items */
 .videos-grid {
