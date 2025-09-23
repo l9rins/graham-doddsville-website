@@ -238,8 +238,10 @@ h6 {
 
 /* CONSISTENT MENU WIDTHS - Modern, uniform sizing */
 .mega-menu-item.wealth-creation-menu .mega-menu {
-    width: 700px;
+    width: 900px;
     max-width: 90vw;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
 }
 
 .mega-menu-item.legal-taxation-menu .mega-menu,
@@ -266,17 +268,18 @@ h6 {
     right: 0;
 }
 
-/* WEALTH CREATION ALIGNMENT - Align to end of Events */
+/* WEALTH CREATION ALIGNMENT - Center positioned for better visibility */
 .mega-menu-item.wealth-creation-menu .mega-menu {
-    left: auto;
-    right: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    right: auto;
 }
 
 /* MODERN COLUMN STYLING - Clean, professional layout */
 .mega-menu-column {
-    min-width: 200px;
-    max-width: 250px;
-    padding: 0;
+    min-width: 220px;
+    max-width: 280px;
+    padding: 0 10px;
     box-sizing: border-box;
     line-height: 1.6;
     overflow-y: auto;
