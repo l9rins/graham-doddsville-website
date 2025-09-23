@@ -907,32 +907,7 @@ img.lazy.loaded {
     margin-bottom: 30px;
 }
 
-.article-filters {
-    margin-bottom: 20px;
-}
-
-.article-filters ul {
-    display: flex;
-    list-style: none;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.article-filters a {
-    color: #333;
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: bold;
-    padding: 5px 10px;
-    border: 1px solid #ddd;
-    background: #f9f9f9;
-}
-
-.article-filters a.active,
-.article-filters a:hover {
-    background: #000;
-    color: #fff;
-}
+/* Feature Articles filters now use the same styling as news-filters */
 
 .articles-list {
     margin-bottom: 20px;
@@ -2807,9 +2782,6 @@ img.lazy.loaded {
         flex-direction: column;
     }
     
-    .article-filters ul {
-        justify-content: center;
-    }
     
     .news-item {
         margin-bottom: 15px;
