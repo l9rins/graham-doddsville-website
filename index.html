@@ -79,14 +79,6 @@
                     <label for="global-search" class="sr-only">Search investments, articles, and more</label>
                     <input type="text" id="global-search" placeholder="Search investments, articles..." class="global-search-input" aria-label="Search investments, articles, and more">
                     <button class="search-btn" aria-label="Search" type="button">🔍</button>
-                    <!-- Search Scope Indicators -->
-                    <div class="search-scope">
-                        <span class="search-scope-item active" data-scope="all">All</span>
-                        <span class="search-scope-item" data-scope="news">News</span>
-                        <span class="search-scope-item" data-scope="articles">Articles</span>
-                        <span class="search-scope-item" data-scope="videos">Videos</span>
-                        <span class="search-scope-item" data-scope="tools">Tools</span>
-                    </div>
                 </div>
                 <div class="mobile-menu-toggle" id="mobile-toggle">
                     <span></span>
@@ -2320,7 +2312,6 @@
         });
 
         // Enhanced Global search functionality
-        let currentSearchScope = 'all';
         let searchTimeout;
         
         document.querySelector('.global-search-input').addEventListener('input', function() {
@@ -2332,104 +2323,80 @@
             if (searchTerm.length > 2) {
                 // Debounce search to avoid excessive API calls
                 searchTimeout = setTimeout(() => {
-                    performGlobalSearch(searchTerm, currentSearchScope);
+                    performGlobalSearch(searchTerm);
                 }, 300);
             } else {
                 hideSearchResults();
             }
         });
 
-        // Search scope functionality
-        document.querySelectorAll('.search-scope-item').forEach(item => {
-            item.addEventListener('click', function() {
-                // Update active scope
-                document.querySelectorAll('.search-scope-item').forEach(s => s.classList.remove('active'));
-                this.classList.add('active');
-                currentSearchScope = this.dataset.scope;
-                
-                // Re-run search if there's a current search term
-                const searchInput = document.querySelector('.global-search-input');
-                if (searchInput.value.length > 2) {
-                    performGlobalSearch(searchInput.value.toLowerCase(), currentSearchScope);
-                }
-            });
-        });
-
         // Enhanced Global search function
-        function performGlobalSearch(searchTerm, scope = 'all') {
+        function performGlobalSearch(searchTerm) {
             const results = [];
             
             // Search news items
-            if (scope === 'all' || scope === 'news') {
-                const newsItems = document.querySelectorAll('.news-item');
-                newsItems.forEach(item => {
-                    const title = item.querySelector('.news-title a')?.textContent.toLowerCase() || '';
-                    const excerpt = item.querySelector('.news-excerpt')?.textContent.toLowerCase() || '';
-                    if (title.includes(searchTerm) || excerpt.includes(searchTerm)) {
-                        results.push({
-                            type: 'news',
-                            title: item.querySelector('.news-title a')?.textContent,
-                            url: item.querySelector('.news-title a')?.href,
-                            excerpt: item.querySelector('.news-excerpt')?.textContent,
-                            relevance: calculateRelevance(title, excerpt, searchTerm)
-                        });
-                    }
-                });
-            }
+            const newsItems = document.querySelectorAll('.news-item');
+            newsItems.forEach(item => {
+                const title = item.querySelector('.news-title a')?.textContent.toLowerCase() || '';
+                const excerpt = item.querySelector('.news-excerpt')?.textContent.toLowerCase() || '';
+                if (title.includes(searchTerm) || excerpt.includes(searchTerm)) {
+                    results.push({
+                        type: 'news',
+                        title: item.querySelector('.news-title a')?.textContent,
+                        url: item.querySelector('.news-title a')?.href,
+                        excerpt: item.querySelector('.news-excerpt')?.textContent,
+                        relevance: calculateRelevance(title, excerpt, searchTerm)
+                    });
+                }
+            });
             
             // Search articles
-            if (scope === 'all' || scope === 'articles') {
-                const articles = document.querySelectorAll('.article-item');
-                articles.forEach(item => {
-                    const title = item.querySelector('h3 a')?.textContent.toLowerCase() || '';
-                    const content = item.querySelector('p')?.textContent.toLowerCase() || '';
-                    if (title.includes(searchTerm) || content.includes(searchTerm)) {
-                        results.push({
-                            type: 'article',
-                            title: item.querySelector('h3 a')?.textContent,
-                            url: item.querySelector('h3 a')?.href,
-                            excerpt: item.querySelector('p')?.textContent,
-                            relevance: calculateRelevance(title, content, searchTerm)
-                        });
-                    }
-                });
-            }
+            const articles = document.querySelectorAll('.article-item');
+            articles.forEach(item => {
+                const title = item.querySelector('h3 a')?.textContent.toLowerCase() || '';
+                const content = item.querySelector('p')?.textContent.toLowerCase() || '';
+                if (title.includes(searchTerm) || content.includes(searchTerm)) {
+                    results.push({
+                        type: 'article',
+                        title: item.querySelector('h3 a')?.textContent,
+                        url: item.querySelector('h3 a')?.href,
+                        excerpt: item.querySelector('p')?.textContent,
+                        relevance: calculateRelevance(title, content, searchTerm)
+                    });
+                }
+            });
             
             // Search videos
-            if (scope === 'all' || scope === 'videos') {
-                const videos = document.querySelectorAll('.video-item');
-                videos.forEach(item => {
-                    const title = item.querySelector('h4 a')?.textContent.toLowerCase() || '';
-                    const description = item.querySelector('p')?.textContent.toLowerCase() || '';
-                    if (title.includes(searchTerm) || description.includes(searchTerm)) {
-                        results.push({
-                            type: 'video',
-                            title: item.querySelector('h4 a')?.textContent,
-                            url: item.querySelector('h4 a')?.href,
-                            excerpt: item.querySelector('p')?.textContent,
-                            relevance: calculateRelevance(title, description, searchTerm)
-                        });
-                    }
-                });
-            }
+            const videos = document.querySelectorAll('.video-item');
+            videos.forEach(item => {
+                const title = item.querySelector('h4 a')?.textContent.toLowerCase() || '';
+                const description = item.querySelector('p')?.textContent.toLowerCase() || '';
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    results.push({
+                        type: 'video',
+                        title: item.querySelector('h4 a')?.textContent,
+                        url: item.querySelector('h4 a')?.href,
+                        excerpt: item.querySelector('p')?.textContent,
+                        relevance: calculateRelevance(title, description, searchTerm)
+                    });
+                }
+            });
             
             // Search tools and calculators
-            if (scope === 'all' || scope === 'tools') {
-                const tools = document.querySelectorAll('.tool-item, .calculator-item, .investment-tool');
-                tools.forEach(tool => {
-                    const title = tool.querySelector('h3, h4, h5')?.textContent.toLowerCase() || '';
-                    const description = tool.querySelector('p')?.textContent.toLowerCase() || '';
-                    if (title.includes(searchTerm) || description.includes(searchTerm)) {
-                        results.push({
-                            type: 'tool',
-                            title: tool.querySelector('h3, h4, h5')?.textContent,
-                            url: tool.querySelector('a')?.href || '#',
-                            excerpt: tool.querySelector('p')?.textContent,
-                            relevance: calculateRelevance(title, description, searchTerm)
-                        });
-                    }
-                });
-            }
+            const tools = document.querySelectorAll('.tool-item, .calculator-item, .investment-tool');
+            tools.forEach(tool => {
+                const title = tool.querySelector('h3, h4, h5')?.textContent.toLowerCase() || '';
+                const description = tool.querySelector('p')?.textContent.toLowerCase() || '';
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    results.push({
+                        type: 'tool',
+                        title: tool.querySelector('h3, h4, h5')?.textContent,
+                        url: tool.querySelector('a')?.href || '#',
+                        excerpt: tool.querySelector('p')?.textContent,
+                        relevance: calculateRelevance(title, description, searchTerm)
+                    });
+                }
+            });
             
             // Sort by relevance
             results.sort((a, b) => b.relevance - a.relevance);
