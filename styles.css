@@ -190,11 +190,21 @@ body {
     grid-template-columns: repeat(4, 1fr);
 }
 
-/* EDGE POSITIONING - Rightmost items align to right edge */
-.mega-menu-item:nth-last-child(-n+2) .mega-menu {
+/* EDGE POSITIONING - Only the very last item (Events) aligns to right edge */
+.mega-menu-item:nth-last-child(1) .mega-menu {
     left: auto;
     right: 0;
     transform: translateX(0);
+}
+
+/* SPECIFIC FIX: Financial Products and Resources dropdown positioning */
+.mega-menu-item.financial-products-menu .mega-menu,
+.mega-menu-item.resources-menu .mega-menu {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: 800px;
+    max-width: 85vw;
 }
 
 /* CLEAN COLUMN STYLING */
