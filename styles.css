@@ -78,13 +78,24 @@ h6 {
     overflow: visible;
 }
 
-/* Header */
+/* CLEAN PROFESSIONAL HEADER - Matching reference design */
 .header {
     background: #fff;
-    border-bottom: 2px solid #000;
-    padding: 15px 0;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 20px 0;
     transition: all 0.3s ease;
     overflow: visible;
+}
+
+/* PROFESSIONAL DATE/TIME BAR - Black background with white text */
+.date-time-bar {
+    background: #000;
+    color: #fff;
+    text-align: center;
+    padding: 12px 0;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
 }
 
 .sticky-header {
@@ -103,32 +114,37 @@ h6 {
 }
 
 
+/* PROFESSIONAL LOGO STYLING - Clean, serif font matching reference */
 .logo h1 {
-    font-family: Georgia, serif;
-    font-size: 28px;
+    font-family: 'Times New Roman', serif;
+    font-size: 32px;
     font-weight: bold;
     color: #000;
     margin: 0;
+    letter-spacing: 1px;
+    line-height: 1.2;
 }
 
 .main-nav {
     overflow: visible;
 }
 
+/* CLEAN NAVIGATION STYLING - Professional spacing and typography */
 .main-nav ul {
     display: flex;
     list-style: none;
-    gap: 30px;
+    gap: 35px;
     overflow: visible;
 }
 
+/* PROFESSIONAL NAVIGATION LINKS - Clean, bold styling */
 .main-nav a {
     color: #000;
     text-decoration: none;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 16px;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
 }
 
 .main-nav a:hover {
@@ -491,15 +507,17 @@ h6 {
 }
 
 /* Global Search */
+/* PROFESSIONAL SEARCH BAR - Clean, modern styling */
 .header-search {
     position: relative;
     display: flex;
     align-items: center;
-    background: #f5f5f5;
+    background: #f8f9fa;
     border-radius: 25px;
-    padding: 5px 15px;
-    border: 1px solid #ddd;
+    padding: 10px 20px;
+    border: 1px solid #e0e0e0;
     margin-left: 20px;
+    min-width: 350px;
 }
 
 .global-search-input {
@@ -621,10 +639,11 @@ img.lazy.loaded {
 }
 
 /* Secondary Navigation */
+/* CLEAN SECONDARY NAVIGATION - Professional styling */
 .secondary-nav {
-    background: #f5f5f5;
-    border-bottom: 1px solid #ddd;
-    padding: 10px 0;
+    background: #fff;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 20px 0;
     overflow: visible;
     position: relative;
     z-index: 100;
@@ -678,11 +697,13 @@ img.lazy.loaded {
     overflow: visible;
 }
 
+/* PROFESSIONAL SECONDARY NAVIGATION LINKS */
 .secondary-nav a {
     color: #333;
     text-decoration: none;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 500;
+    letter-spacing: 0.3px;
 }
 
 .secondary-nav a:hover {
