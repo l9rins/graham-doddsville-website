@@ -834,6 +834,315 @@ img.lazy.loaded {
     padding: 20px;
 }
 
+/* PERFORMANCE OPTIMIZATION - Boss Requirements */
+/* Lazy Loading Styles */
+.lazy-load {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease;
+}
+
+.lazy-load.loaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Content Loading States */
+.loading-placeholder {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    border-radius: 4px;
+    height: 200px;
+    margin-bottom: 20px;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Optimized Images */
+img {
+    max-width: 100%;
+    height: auto;
+    loading: lazy;
+}
+
+/* Content Prioritization */
+.above-fold {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.below-fold {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.below-fold.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* SEARCH FUNCTIONALITY IMPROVEMENTS - Boss Requirements */
+.header-search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border: 2px solid #e8e8e8;
+    border-radius: 25px;
+    padding: 8px 15px;
+    transition: all 0.3s ease;
+    max-width: 400px;
+}
+
+.header-search:focus-within {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.global-search-input {
+    border: none;
+    outline: none;
+    flex: 1;
+    padding: 8px 12px;
+    font-size: 14px;
+    background: transparent;
+}
+
+.search-btn {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+    background: #f8f9fa;
+    transform: scale(1.1);
+}
+
+/* Search Results Dropdown */
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    z-index: 1000;
+    max-height: 400px;
+    overflow-y: auto;
+    margin-top: 5px;
+}
+
+.search-results-header {
+    padding: 12px 16px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #e8e8e8;
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 14px;
+}
+
+.search-result-item {
+    padding: 12px 16px;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.search-result-item:hover {
+    background: #f8f9fa;
+}
+
+.search-result-item:last-child {
+    border-bottom: none;
+}
+
+.search-result-title {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 4px;
+    font-size: 14px;
+}
+
+.search-result-excerpt {
+    color: #666;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.search-result-type {
+    display: inline-block;
+    background: #3498db;
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 10px;
+    text-transform: uppercase;
+    margin-right: 8px;
+}
+
+.no-results {
+    padding: 20px;
+    text-align: center;
+    color: #666;
+    font-style: italic;
+}
+
+/* Search Scope Indicators */
+.search-scope {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.search-scope-item {
+    background: #f8f9fa;
+    border: 1px solid #e8e8e8;
+    border-radius: 15px;
+    padding: 6px 12px;
+    font-size: 12px;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-scope-item.active {
+    background: #3498db;
+    color: #fff;
+    border-color: #3498db;
+}
+
+/* ACCESSIBILITY IMPROVEMENTS - Boss Requirements */
+/* ARIA Labels and Keyboard Navigation */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Focus indicators for keyboard navigation */
+*:focus {
+    outline: 2px solid #3498db;
+    outline-offset: 2px;
+}
+
+/* Skip to content link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #000;
+    color: #fff;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 4px;
+    z-index: 10000;
+}
+
+.skip-link:focus {
+    top: 6px;
+}
+
+/* Enhanced button accessibility */
+button, .btn {
+    cursor: pointer;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button:focus, .btn:focus {
+    outline: 2px solid #3498db;
+    outline-offset: 2px;
+}
+
+/* Enhanced link accessibility */
+a {
+    color: #3498db;
+    text-decoration: underline;
+    transition: all 0.3s ease;
+}
+
+a:hover, a:focus {
+    color: #2980b9;
+    text-decoration: none;
+}
+
+a:focus {
+    outline: 2px solid #3498db;
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* Form accessibility */
+input, textarea, select {
+    border: 2px solid #e8e8e8;
+    border-radius: 4px;
+    padding: 12px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    min-height: 44px;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    body {
+        background: #fff;
+        color: #000;
+    }
+    
+    .mega-menu {
+        border: 2px solid #000;
+        background: #fff;
+    }
+    
+    .filter-link {
+        border: 2px solid #000;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
 /* Latest News */
 .latest-news {
     margin-bottom: 30px;

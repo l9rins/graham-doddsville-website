@@ -11,14 +11,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Georgia,serif&family=Arial,sans-serif&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <!-- Header -->
-    <header class="header sticky-header">
+    <header class="header sticky-header" role="banner">
         <div class="container">
             <div class="header-content">
                 <div class="logo">
                     <h1>Graham & Doddsville</h1>
                 </div>
-                <nav class="main-nav">
+                <nav class="main-nav" role="navigation" aria-label="Main navigation">
                     <ul>
                         <li class="mega-menu-item">
                             <a href="#news">NEWS</a>
@@ -72,9 +75,18 @@
                     </ul>
                 </nav>
                 
-                <div class="header-search">
-                    <input type="text" placeholder="Search investments, articles..." class="global-search-input">
-                    <button class="search-btn">🔍</button>
+                <div class="header-search" role="search">
+                    <label for="global-search" class="sr-only">Search investments, articles, and more</label>
+                    <input type="text" id="global-search" placeholder="Search investments, articles..." class="global-search-input" aria-label="Search investments, articles, and more">
+                    <button class="search-btn" aria-label="Search" type="button">🔍</button>
+                    <!-- Search Scope Indicators -->
+                    <div class="search-scope">
+                        <span class="search-scope-item active" data-scope="all">All</span>
+                        <span class="search-scope-item" data-scope="news">News</span>
+                        <span class="search-scope-item" data-scope="articles">Articles</span>
+                        <span class="search-scope-item" data-scope="videos">Videos</span>
+                        <span class="search-scope-item" data-scope="tools">Tools</span>
+                    </div>
                 </div>
                 <div class="mobile-menu-toggle" id="mobile-toggle">
                     <span></span>
@@ -86,7 +98,7 @@
     </header>
 
     <!-- Secondary Navigation -->
-    <nav class="secondary-nav">
+    <nav class="secondary-nav" role="navigation" aria-label="Secondary navigation">
         <div class="container">
             <!-- Mobile Hamburger Menu Button -->
             <button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
@@ -1016,7 +1028,7 @@
     </div>
 
     <!-- Main Content -->
-    <main class="main-content">
+    <main id="main-content" class="main-content" role="main">
         <div class="container">
             <div class="content-wrapper">
                 <!-- Left Column - Latest News -->
@@ -2307,66 +2319,151 @@
             });
         });
 
-        // Global search functionality
+        // Enhanced Global search functionality
+        let currentSearchScope = 'all';
+        let searchTimeout;
+        
         document.querySelector('.global-search-input').addEventListener('input', function() {
             const searchTerm = this.value.toLowerCase();
+            
+            // Clear previous timeout
+            clearTimeout(searchTimeout);
+            
             if (searchTerm.length > 2) {
-                performGlobalSearch(searchTerm);
+                // Debounce search to avoid excessive API calls
+                searchTimeout = setTimeout(() => {
+                    performGlobalSearch(searchTerm, currentSearchScope);
+                }, 300);
+            } else {
+                hideSearchResults();
             }
         });
 
-        // Global search function
-        function performGlobalSearch(searchTerm) {
+        // Search scope functionality
+        document.querySelectorAll('.search-scope-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Update active scope
+                document.querySelectorAll('.search-scope-item').forEach(s => s.classList.remove('active'));
+                this.classList.add('active');
+                currentSearchScope = this.dataset.scope;
+                
+                // Re-run search if there's a current search term
+                const searchInput = document.querySelector('.global-search-input');
+                if (searchInput.value.length > 2) {
+                    performGlobalSearch(searchInput.value.toLowerCase(), currentSearchScope);
+                }
+            });
+        });
+
+        // Enhanced Global search function
+        function performGlobalSearch(searchTerm, scope = 'all') {
             const results = [];
             
             // Search news items
-            const newsItems = document.querySelectorAll('.news-item');
-            newsItems.forEach(item => {
-                const title = item.querySelector('.news-title a')?.textContent.toLowerCase() || '';
-                const excerpt = item.querySelector('.news-excerpt')?.textContent.toLowerCase() || '';
-                if (title.includes(searchTerm) || excerpt.includes(searchTerm)) {
-                    results.push({
-                        type: 'news',
-                        title: item.querySelector('.news-title a')?.textContent,
-                        url: item.querySelector('.news-title a')?.href,
-                        excerpt: item.querySelector('.news-excerpt')?.textContent
-                    });
-                }
-            });
+            if (scope === 'all' || scope === 'news') {
+                const newsItems = document.querySelectorAll('.news-item');
+                newsItems.forEach(item => {
+                    const title = item.querySelector('.news-title a')?.textContent.toLowerCase() || '';
+                    const excerpt = item.querySelector('.news-excerpt')?.textContent.toLowerCase() || '';
+                    if (title.includes(searchTerm) || excerpt.includes(searchTerm)) {
+                        results.push({
+                            type: 'news',
+                            title: item.querySelector('.news-title a')?.textContent,
+                            url: item.querySelector('.news-title a')?.href,
+                            excerpt: item.querySelector('.news-excerpt')?.textContent,
+                            relevance: calculateRelevance(title, excerpt, searchTerm)
+                        });
+                    }
+                });
+            }
             
             // Search articles
-            const articles = document.querySelectorAll('.article-item');
-            articles.forEach(item => {
-                const title = item.querySelector('h3 a')?.textContent.toLowerCase() || '';
-                const content = item.querySelector('p')?.textContent.toLowerCase() || '';
-                if (title.includes(searchTerm) || content.includes(searchTerm)) {
-                    results.push({
-                        type: 'article',
-                        title: item.querySelector('h3 a')?.textContent,
-                        url: item.querySelector('h3 a')?.href,
-                        excerpt: item.querySelector('p')?.textContent
-                    });
-                }
-            });
+            if (scope === 'all' || scope === 'articles') {
+                const articles = document.querySelectorAll('.article-item');
+                articles.forEach(item => {
+                    const title = item.querySelector('h3 a')?.textContent.toLowerCase() || '';
+                    const content = item.querySelector('p')?.textContent.toLowerCase() || '';
+                    if (title.includes(searchTerm) || content.includes(searchTerm)) {
+                        results.push({
+                            type: 'article',
+                            title: item.querySelector('h3 a')?.textContent,
+                            url: item.querySelector('h3 a')?.href,
+                            excerpt: item.querySelector('p')?.textContent,
+                            relevance: calculateRelevance(title, content, searchTerm)
+                        });
+                    }
+                });
+            }
             
             // Search videos
-            const videos = document.querySelectorAll('.video-item');
-            videos.forEach(item => {
-                const title = item.querySelector('h4 a')?.textContent.toLowerCase() || '';
-                const description = item.querySelector('p')?.textContent.toLowerCase() || '';
-                if (title.includes(searchTerm) || description.includes(searchTerm)) {
-                    results.push({
-                        type: 'video',
-                        title: item.querySelector('h4 a')?.textContent,
-                        url: item.querySelector('h4 a')?.href,
-                        excerpt: item.querySelector('p')?.textContent
-                    });
-                }
-            });
+            if (scope === 'all' || scope === 'videos') {
+                const videos = document.querySelectorAll('.video-item');
+                videos.forEach(item => {
+                    const title = item.querySelector('h4 a')?.textContent.toLowerCase() || '';
+                    const description = item.querySelector('p')?.textContent.toLowerCase() || '';
+                    if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                        results.push({
+                            type: 'video',
+                            title: item.querySelector('h4 a')?.textContent,
+                            url: item.querySelector('h4 a')?.href,
+                            excerpt: item.querySelector('p')?.textContent,
+                            relevance: calculateRelevance(title, description, searchTerm)
+                        });
+                    }
+                });
+            }
             
-            // Display search results (you can implement a dropdown or modal)
-            console.log('Search results:', results);
+            // Search tools and calculators
+            if (scope === 'all' || scope === 'tools') {
+                const tools = document.querySelectorAll('.tool-item, .calculator-item, .investment-tool');
+                tools.forEach(tool => {
+                    const title = tool.querySelector('h3, h4, h5')?.textContent.toLowerCase() || '';
+                    const description = tool.querySelector('p')?.textContent.toLowerCase() || '';
+                    if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                        results.push({
+                            type: 'tool',
+                            title: tool.querySelector('h3, h4, h5')?.textContent,
+                            url: tool.querySelector('a')?.href || '#',
+                            excerpt: tool.querySelector('p')?.textContent,
+                            relevance: calculateRelevance(title, description, searchTerm)
+                        });
+                    }
+                });
+            }
+            
+            // Sort by relevance
+            results.sort((a, b) => b.relevance - a.relevance);
+            
+            // Display search results
             displaySearchResults(results, searchTerm);
+        }
+        
+        // Calculate search relevance
+        function calculateRelevance(title, content, searchTerm) {
+            let score = 0;
+            const titleWeight = 3;
+            const contentWeight = 1;
+            
+            // Title matches get higher weight
+            if (title.includes(searchTerm)) {
+                score += titleWeight;
+                if (title.startsWith(searchTerm)) score += 2; // Exact start match
+            }
+            
+            // Content matches
+            if (content.includes(searchTerm)) {
+                score += contentWeight;
+            }
+            
+            return score;
+        }
+        
+        // Hide search results
+        function hideSearchResults() {
+            const resultsContainer = document.querySelector('.search-results');
+            if (resultsContainer) {
+                resultsContainer.style.display = 'none';
+            }
         }
 
         function displaySearchResults(results, searchTerm) {
@@ -2980,6 +3077,121 @@
                         section.classList.add('active');
                     }
                 });
+            });
+            
+            // Performance Optimization - Lazy Loading
+            const lazyElements = document.querySelectorAll('.lazy-load');
+            const belowFoldElements = document.querySelectorAll('.below-fold');
+            
+            // Intersection Observer for lazy loading
+            const observerOptions = {
+                root: null,
+                rootMargin: '50px',
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('loaded');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe lazy load elements
+            lazyElements.forEach(el => observer.observe(el));
+            
+            // Observe below-fold elements
+            belowFoldElements.forEach(el => {
+                observer.observe(el);
+                el.addEventListener('intersect', () => {
+                    el.classList.add('visible');
+                });
+            });
+            
+            // Performance: Debounce scroll events
+            let scrollTimeout;
+            window.addEventListener('scroll', () => {
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    // Handle scroll-based optimizations
+                    const scrolled = window.pageYOffset;
+                    const parallax = document.querySelectorAll('.parallax');
+                    parallax.forEach(el => {
+                        const speed = el.dataset.speed || 0.5;
+                        el.style.transform = `translateY(${scrolled * speed}px)`;
+                    });
+                }, 10);
+            });
+            
+            // Keyboard Navigation Enhancement
+            document.addEventListener('keydown', function(e) {
+                // ESC key to close mobile menu
+                if (e.key === 'Escape') {
+                    const mobileToggle = document.querySelector('.mobile-menu-toggle');
+                    const secondaryNavList = document.querySelector('.secondary-nav-list');
+                    if (mobileToggle && secondaryNavList && secondaryNavList.classList.contains('active')) {
+                        mobileToggle.classList.remove('active');
+                        secondaryNavList.classList.remove('active');
+                    }
+                    
+                    // Close search results
+                    hideSearchResults();
+                }
+                
+                // Tab navigation for mega menus
+                if (e.key === 'Tab') {
+                    const megaMenuItems = document.querySelectorAll('.mega-menu-item');
+                    megaMenuItems.forEach(item => {
+                        const link = item.querySelector('a');
+                        const megaMenu = item.querySelector('.mega-menu');
+                        
+                        if (document.activeElement === link && megaMenu) {
+                            // Show mega menu on focus
+                            megaMenu.style.display = 'grid';
+                        }
+                    });
+                }
+            });
+            
+            // Enhanced keyboard navigation for search
+            const searchInput = document.querySelector('.global-search-input');
+            if (searchInput) {
+                searchInput.addEventListener('keydown', function(e) {
+                    if (e.key === 'ArrowDown') {
+                        e.preventDefault();
+                        const firstResult = document.querySelector('.search-result-item');
+                        if (firstResult) {
+                            firstResult.focus();
+                        }
+                    }
+                });
+            }
+            
+            // Keyboard navigation for search results
+            document.addEventListener('keydown', function(e) {
+                const searchResults = document.querySelectorAll('.search-result-item');
+                const activeResult = document.activeElement;
+                
+                if (searchResults.length > 0 && searchResults[0].closest('.search-results')) {
+                    if (e.key === 'ArrowDown') {
+                        e.preventDefault();
+                        const currentIndex = Array.from(searchResults).indexOf(activeResult);
+                        const nextIndex = (currentIndex + 1) % searchResults.length;
+                        searchResults[nextIndex].focus();
+                    } else if (e.key === 'ArrowUp') {
+                        e.preventDefault();
+                        const currentIndex = Array.from(searchResults).indexOf(activeResult);
+                        const prevIndex = currentIndex > 0 ? currentIndex - 1 : searchResults.length - 1;
+                        searchResults[prevIndex].focus();
+                    } else if (e.key === 'Enter') {
+                        e.preventDefault();
+                        if (activeResult.classList.contains('search-result-item')) {
+                            activeResult.click();
+                        }
+                    }
+                }
             });
         });
     </script>
