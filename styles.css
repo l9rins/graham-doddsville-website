@@ -126,8 +126,10 @@ h6 {
     color: #000;
     margin: 0;
     letter-spacing: 0.5px;
-    line-height: 1.1;
+    line-height: 1.0;
     text-align: left;
+    white-space: pre-line;
+    font-size: 0; /* Hide original text */
 }
 
 /* LOGO STACKED LAYOUT - Graham & Doddsville */
@@ -136,6 +138,7 @@ h6 {
     white-space: pre-line;
     display: block;
     line-height: 1.0;
+    font-size: 24px; /* Restore font size for ::before */
 }
 
 .main-nav {
