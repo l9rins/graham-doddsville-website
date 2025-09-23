@@ -136,6 +136,19 @@ body {
     grid-template-columns: repeat(3, 1fr);
 }
 
+/* Fix: Prevent any tab-like styling in Wealth Creation dropdown */
+.mega-menu-item.wealth-creation-menu .mega-menu::before,
+.mega-menu-item.wealth-creation-menu .mega-menu::after {
+    display: none !important;
+    content: none !important;
+}
+
+.mega-menu-item.wealth-creation-menu .tab-btn,
+.mega-menu-item.wealth-creation-menu .tab-nav,
+.mega-menu-item.wealth-creation-menu .tab-content {
+    display: none !important;
+}
+
 /* Legal & Taxation - 4 columns */
 .mega-menu-item.legal-taxation-menu .mega-menu {
     width: 650px;
