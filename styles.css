@@ -427,6 +427,798 @@ body {
     }
 }
 
+/* Professional Advisers Dropdown Styles */
+.professional-advisers-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    width: 300px;
+    max-width: 90vw;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1000;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+
+.dropdown:hover .professional-advisers-dropdown {
+    display: block;
+}
+
+.professional-advisers-wrapper {
+    padding: 15px;
+}
+
+.adviser-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.adviser-list li {
+    margin-bottom: 8px;
+}
+
+.adviser-list a {
+    color: #555;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: block;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    border-left: 3px solid #8e44ad; /* Purple accent border */
+}
+
+.adviser-list a:hover {
+    color: #2c3e50;
+    background-color: #f8f9fa;
+    text-decoration: none;
+    border-left-color: #6c3483;
+}
+
+/* Responsive design for Professional Advisers dropdown */
+@media (max-width: 600px) {
+    .professional-advisers-dropdown {
+        width: 100%;
+        max-width: 100vw;
+        left: 0;
+        right: 0;
+    }
+    
+    .professional-advisers-wrapper {
+        padding: 10px;
+    }
+    
+    .adviser-list a {
+        font-size: 0.85rem;
+        padding: 6px 10px;
+    }
+}
+
+/* Financial Products Dropdown Styles */
+.financial-products-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    width: 1400px;
+    max-width: 90vw;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1000;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+
+.dropdown:hover .financial-products-dropdown {
+    display: block;
+}
+
+.financial-products-wrapper {
+    padding: 15px;
+    max-height: 70vh;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.product-section {
+    min-width: 200px;
+}
+
+.product-section h3 {
+    color: #2c3e50;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #e74c3c; /* Red accent border */
+    padding-bottom: 3px;
+}
+
+.product-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.product-section li {
+    margin-bottom: 3px;
+}
+
+.product-section a {
+    color: #555;
+    text-decoration: none;
+    font-size: 0.8rem;
+    line-height: 1.3;
+    transition: color 0.2s ease;
+}
+
+.product-section a:hover {
+    color: #2c3e50;
+    text-decoration: underline;
+}
+
+/* Responsive design for Financial Products dropdown */
+@media (max-width: 1400px) {
+    .financial-products-dropdown {
+        width: 1200px;
+        max-width: 95vw;
+    }
+    
+    .financial-products-wrapper {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        padding: 12px;
+    }
+    
+    .product-section h3 {
+        font-size: 0.9rem;
+    }
+    
+    .product-section a {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 1000px) {
+    .financial-products-dropdown {
+        width: 900px;
+        max-width: 98vw;
+    }
+    
+    .financial-products-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 10px;
+    }
+    
+    .product-section h3 {
+        font-size: 0.85rem;
+    }
+    
+    .product-section a {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .financial-products-dropdown {
+        width: 100%;
+        max-width: 100vw;
+        left: 0;
+        right: 0;
+    }
+    
+    .financial-products-wrapper {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 8px;
+    }
+    
+    .product-section h3 {
+        font-size: 0.8rem;
+    }
+    
+    .product-section a {
+        font-size: 0.65rem;
+    }
+}
+
+/* Events Dropdown Styles */
+.events-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    width: 300px;
+    max-width: 90vw;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1000;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+
+.dropdown:hover .events-dropdown {
+    display: block;
+}
+
+.events-wrapper {
+    padding: 15px;
+}
+
+.event-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.event-list li {
+    margin-bottom: 8px;
+}
+
+.event-list a {
+    color: #555;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: block;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    border-left: 3px solid #3498db; /* Blue accent border */
+}
+
+.event-list a:hover {
+    color: #2c3e50;
+    background-color: #f8f9fa;
+    text-decoration: none;
+    border-left-color: #2980b9;
+}
+
+/* Responsive design for Events dropdown */
+@media (max-width: 600px) {
+    .events-dropdown {
+        width: 100%;
+        max-width: 100vw;
+        left: 0;
+        right: 0;
+    }
+    
+    .events-wrapper {
+        padding: 10px;
+    }
+    
+    .event-list a {
+        font-size: 0.85rem;
+        padding: 6px 10px;
+    }
+}
+
+/* Resources Dropdown Styles */
+.resources-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    width: 1400px;
+    max-width: 90vw;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1000;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+
+.dropdown:hover .resources-dropdown {
+    display: block;
+}
+
+.resources-wrapper {
+    padding: 15px;
+    max-height: 70vh;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.resource-section {
+    min-width: 200px;
+}
+
+.resource-section h3 {
+    color: #2c3e50;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #27ae60; /* Green accent border */
+    padding-bottom: 3px;
+}
+
+.resource-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.resource-section li {
+    margin-bottom: 3px;
+}
+
+.resource-section a {
+    color: #555;
+    text-decoration: none;
+    font-size: 0.8rem;
+    line-height: 1.3;
+    transition: color 0.2s ease;
+}
+
+.resource-section a:hover {
+    color: #2c3e50;
+    text-decoration: underline;
+}
+
+/* Responsive design for Resources dropdown */
+@media (max-width: 1400px) {
+    .resources-dropdown {
+        width: 1200px;
+        max-width: 95vw;
+    }
+    
+    .resources-wrapper {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        padding: 12px;
+    }
+    
+    .resource-section h3 {
+        font-size: 0.9rem;
+    }
+    
+    .resource-section a {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 1000px) {
+    .resources-dropdown {
+        width: 900px;
+        max-width: 98vw;
+    }
+    
+    .resources-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 10px;
+    }
+    
+    .resource-section h3 {
+        font-size: 0.85rem;
+    }
+    
+    .resource-section a {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .resources-dropdown {
+        width: 100%;
+        max-width: 100vw;
+        left: 0;
+        right: 0;
+    }
+    
+    .resources-wrapper {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 8px;
+    }
+    
+    .resource-section h3 {
+        font-size: 0.8rem;
+    }
+    
+    .resource-section a {
+        font-size: 0.65rem;
+    }
+}
+
+/* Economics Dropdown Styles */
+.economics-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    width: 1400px;
+    max-width: 90vw;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1000;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+
+.dropdown:hover .economics-dropdown {
+    display: block;
+}
+
+.economics-wrapper {
+    padding: 15px;
+    max-height: 70vh;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.economics-section {
+    min-width: 200px;
+}
+
+.economics-section h3 {
+    color: #2c3e50;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #f39c12; /* Orange accent border */
+    padding-bottom: 3px;
+}
+
+.economics-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.economics-section li {
+    margin-bottom: 3px;
+}
+
+.economics-section a {
+    color: #555;
+    text-decoration: none;
+    font-size: 0.8rem;
+    line-height: 1.3;
+    transition: color 0.2s ease;
+}
+
+.economics-section a:hover {
+    color: #2c3e50;
+    text-decoration: underline;
+}
+
+/* Responsive design for Economics dropdown */
+@media (max-width: 1400px) {
+    .economics-dropdown {
+        width: 1200px;
+        max-width: 95vw;
+    }
+    
+    .economics-wrapper {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        padding: 12px;
+    }
+    
+    .economics-section h3 {
+        font-size: 0.9rem;
+    }
+    
+    .economics-section a {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 1000px) {
+    .economics-dropdown {
+        width: 900px;
+        max-width: 98vw;
+    }
+    
+    .economics-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 10px;
+    }
+    
+    .economics-section h3 {
+        font-size: 0.85rem;
+    }
+    
+    .economics-section a {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .economics-dropdown {
+        width: 100%;
+        max-width: 100vw;
+        left: 0;
+        right: 0;
+    }
+    
+    .economics-wrapper {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 8px;
+    }
+    
+    .economics-section h3 {
+        font-size: 0.8rem;
+    }
+    
+    .economics-section a {
+        font-size: 0.65rem;
+    }
+}
+
+/* Greatest Investors Dropdown Styles */
+.greatest-investors-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    width: 1400px;
+    max-width: 90vw;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1000;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+
+.dropdown:hover .greatest-investors-dropdown {
+    display: block;
+}
+
+.greatest-investors-wrapper {
+    padding: 15px;
+    max-height: 70vh;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.investor-section {
+    min-width: 200px;
+}
+
+.investor-section h3 {
+    color: #2c3e50;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #9b59b6; /* Purple accent border */
+    padding-bottom: 3px;
+}
+
+.investor-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.investor-section li {
+    margin-bottom: 3px;
+}
+
+.investor-section a {
+    color: #555;
+    text-decoration: none;
+    font-size: 0.8rem;
+    line-height: 1.3;
+    transition: color 0.2s ease;
+}
+
+.investor-section a:hover {
+    color: #2c3e50;
+    text-decoration: underline;
+}
+
+/* Responsive design for Greatest Investors dropdown */
+@media (max-width: 1400px) {
+    .greatest-investors-dropdown {
+        width: 1200px;
+        max-width: 95vw;
+    }
+    
+    .greatest-investors-wrapper {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        padding: 12px;
+    }
+    
+    .investor-section h3 {
+        font-size: 0.9rem;
+    }
+    
+    .investor-section a {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 1000px) {
+    .greatest-investors-dropdown {
+        width: 900px;
+        max-width: 98vw;
+    }
+    
+    .greatest-investors-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 10px;
+    }
+    
+    .investor-section h3 {
+        font-size: 0.85rem;
+    }
+    
+    .investor-section a {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .greatest-investors-dropdown {
+        width: 100%;
+        max-width: 100vw;
+        left: 0;
+        right: 0;
+    }
+    
+    .greatest-investors-wrapper {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 8px;
+    }
+    
+    .investor-section h3 {
+        font-size: 0.8rem;
+    }
+    
+    .investor-section a {
+        font-size: 0.65rem;
+    }
+}
+
+/* Share Investing Dropdown Styles */
+.share-investing-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    width: 1400px;
+    max-width: 90vw;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1000;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+
+.dropdown:hover .share-investing-dropdown {
+    display: block;
+}
+
+.share-investing-wrapper {
+    padding: 15px;
+    max-height: 70vh;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.share-section {
+    min-width: 200px;
+}
+
+.share-section h3 {
+    color: #2c3e50;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #e67e22; /* Orange accent border */
+    padding-bottom: 3px;
+}
+
+.share-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.share-section li {
+    margin-bottom: 3px;
+}
+
+.share-section a {
+    color: #555;
+    text-decoration: none;
+    font-size: 0.8rem;
+    line-height: 1.3;
+    transition: color 0.2s ease;
+}
+
+.share-section a:hover {
+    color: #2c3e50;
+    text-decoration: underline;
+}
+
+/* Responsive design for Share Investing dropdown */
+@media (max-width: 1400px) {
+    .share-investing-dropdown {
+        width: 1200px;
+        max-width: 95vw;
+    }
+    
+    .share-investing-wrapper {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        padding: 12px;
+    }
+    
+    .share-section h3 {
+        font-size: 0.9rem;
+    }
+    
+    .share-section a {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 1000px) {
+    .share-investing-dropdown {
+        width: 900px;
+        max-width: 98vw;
+    }
+    
+    .share-investing-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 10px;
+    }
+    
+    .share-section h3 {
+        font-size: 0.85rem;
+    }
+    
+    .share-section a {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .share-investing-dropdown {
+        width: 100%;
+        max-width: 100vw;
+        left: 0;
+        right: 0;
+    }
+    
+    .share-investing-wrapper {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 8px;
+    }
+    
+    .share-section h3 {
+        font-size: 0.8rem;
+    }
+    
+    .share-section a {
+        font-size: 0.65rem;
+    }
+}
+
 /* Legal & Taxation Dropdown Styles */
 .legal-taxation-dropdown {
     display: none;
