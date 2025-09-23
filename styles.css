@@ -145,140 +145,87 @@ h6 {
     z-index: 100;
 }
 
-/* BASE MEGA MENU - Proper positioning and functionality */
+/* ROBUST MEGA MENU SYSTEM - Fixed positioning and z-index */
 .mega-menu {
     position: absolute;
     top: 100%;
     left: 0;
     background: #fff;
     border: 1px solid #ddd;
-    border-radius: 6px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
     display: none;
     width: 600px;
-    max-width: 85vw;
+    max-width: 90vw;
     max-height: 70vh;
-    padding: 20px;
-    z-index: 1000;
-    margin-top: 5px;
+    padding: 24px;
+    z-index: 10000;
+    margin-top: 8px;
     box-sizing: border-box;
     overflow: hidden;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
 }
 
-/* PROPER HOVER FUNCTIONALITY - Boss Recommendation */
-.main-nav li:hover .mega-menu,
-.secondary-nav li:hover .mega-menu,
+/* HOVER FUNCTIONALITY - Reliable trigger for each menu item */
 .mega-menu-item:hover .mega-menu {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    overflow-y: auto;
-    overflow-x: hidden;
+    opacity: 1;
+    transform: translateY(0);
 }
 
-/* INDIVIDUAL MENU SPECIFICATIONS - Simple and clean */
-/* Wealth Creation - 3 columns */
+/* ADAPTIVE GRID SYSTEM - Using auto-fit + minmax() for flexible columns */
+.mega-menu-item:hover .mega-menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* INDIVIDUAL MENU WIDTHS - Consistent max-width constraints */
 .mega-menu-item.wealth-creation-menu .mega-menu {
     width: 600px;
-    max-width: 80vw;
-    grid-template-columns: repeat(3, 1fr);
+    max-width: 90vw;
 }
 
-/* Legal & Taxation - 4 columns */
-.mega-menu-item.legal-taxation-menu .mega-menu {
-    width: 800px;
-    max-width: 85vw;
-    grid-template-columns: repeat(4, 1fr);
-}
-
-/* Financial Markets - 4 columns */
-.mega-menu-item.financial-markets-menu .mega-menu {
-    width: 800px;
-    max-width: 85vw;
-    grid-template-columns: repeat(4, 1fr);
-}
-
-/* Share Investing - 4 columns */
-.mega-menu-item.share-investing-menu .mega-menu {
-    width: 800px;
-    max-width: 85vw;
-    grid-template-columns: repeat(4, 1fr);
-}
-
-/* Greatest Investors - 3 columns */
-.mega-menu-item.greatest-investors-menu .mega-menu {
-    width: 700px;
-    max-width: 80vw;
-    grid-template-columns: repeat(3, 1fr);
-}
-
-/* Investment Analysis - 4 columns */
-.mega-menu-item.investment-analysis-menu .mega-menu {
-    width: 800px;
-    max-width: 85vw;
-    grid-template-columns: repeat(4, 1fr);
-}
-
-/* Economics - 4 columns */
-.mega-menu-item.economics-menu .mega-menu {
-    width: 800px;
-    max-width: 85vw;
-    grid-template-columns: repeat(4, 1fr);
-}
-
-/* Professional Advisers - 4 columns */
-.mega-menu-item.professional-advisers-menu .mega-menu {
-    width: 800px;
-    max-width: 85vw;
-    grid-template-columns: repeat(4, 1fr);
-}
-
-/* Financial Products - 4 columns */
-.mega-menu-item.financial-products-menu .mega-menu {
-    width: 800px;
-    max-width: 85vw;
-    grid-template-columns: repeat(4, 1fr);
-}
-
-/* Resources - 4 columns */
-.mega-menu-item.resources-menu .mega-menu {
-    width: 800px;
-    max-width: 85vw;
-    grid-template-columns: repeat(4, 1fr);
-}
-
-/* Events - 4 columns */
+.mega-menu-item.legal-taxation-menu .mega-menu,
+.mega-menu-item.financial-markets-menu .mega-menu,
+.mega-menu-item.share-investing-menu .mega-menu,
+.mega-menu-item.investment-analysis-menu .mega-menu,
+.mega-menu-item.economics-menu .mega-menu,
+.mega-menu-item.professional-advisers-menu .mega-menu,
+.mega-menu-item.financial-products-menu .mega-menu,
+.mega-menu-item.resources-menu .mega-menu,
 .mega-menu-item.events-menu .mega-menu {
     width: 800px;
-    max-width: 85vw;
-    grid-template-columns: repeat(4, 1fr);
+    max-width: 90vw;
 }
 
-/* EDGE POSITIONING - Only the very last item (Events) aligns to right edge */
-.mega-menu-item:nth-last-child(1) .mega-menu {
+.mega-menu-item.greatest-investors-menu .mega-menu {
+    width: 700px;
+    max-width: 90vw;
+}
+
+/* EDGE POSITIONING - Right-aligned for last few items */
+.mega-menu-item:nth-last-child(-n+2) .mega-menu {
     left: auto;
     right: 0;
-    transform: translateX(0);
 }
 
-/* SPECIFIC FIX: Financial Products and Resources dropdown positioning */
-.mega-menu-item.financial-products-menu .mega-menu,
-.mega-menu-item.resources-menu .mega-menu {
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%);
-}
-
-/* SIMPLE COLUMN STYLING */
+/* ENHANCED COLUMN STYLING - Proper scrolling and spacing */
 .mega-menu-column {
-    min-width: 150px;
-    max-width: 200px;
-    padding: 15px;
+    min-width: 180px;
+    max-width: 220px;
+    padding: 16px;
     box-sizing: border-box;
-    line-height: 1.5;
+    line-height: 1.6;
     overflow-y: auto;
     overflow-x: hidden;
-    max-height: 60vh;
+    max-height: 65vh;
+    background: #fff;
+    border-radius: 4px;
 }
 
 /* Custom scrollbar for webkit browsers */
@@ -392,11 +339,12 @@ h6 {
         top: 100%;
         left: 0;
         right: 0;
-        background: #f5f5f5;
+        background: #fff;
         border-top: 1px solid #ddd;
         flex-direction: column;
         padding: 20px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        z-index: 10000;
     }
     
     .secondary-nav-list.active {
@@ -418,12 +366,12 @@ h6 {
         font-size: 16px;
         color: #333;
         text-decoration: none;
-        min-height: 44px; /* Minimum touch target size */
+        min-height: 44px;
         display: flex;
         align-items: center;
     }
     
-    /* Mobile Touch Targets - Boss Requirements */
+    /* Mobile Touch Targets */
     .filter-link {
         min-height: 44px;
         display: flex;
@@ -439,7 +387,7 @@ h6 {
         padding: 12px 8px;
     }
     
-    /* Mobile Mega Menu */
+    /* Mobile Mega Menu - Simplified */
     .mega-menu {
         position: static;
         display: none;
@@ -447,7 +395,7 @@ h6 {
         border: none;
         padding: 15px 0;
         max-height: none;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         gap: 1rem;
         width: 100%;
         max-width: 100%;
@@ -455,6 +403,7 @@ h6 {
         transform: none;
         background: #f8f9fa;
         margin-top: 10px;
+        opacity: 1;
     }
     
     .mega-menu-item:hover .mega-menu,
@@ -463,9 +412,10 @@ h6 {
     }
     
     .mega-menu-column {
-        min-width: 120px;
+        min-width: 150px;
         max-width: none;
         padding: 10px;
+        max-height: none;
     }
 }
 
@@ -490,21 +440,15 @@ h6 {
     background: #a8a8a8;
 }
 
-/* Responsive behavior for tablet and desktop */
+/* Desktop responsive behavior */
 @media (min-width: 768px) {
     .mega-menu {
-        width: 1000px;
-        max-width: calc(100vw - 40px);
-    }
-    
-    .mega-menu.show {
-        grid-template-columns: repeat(6, 1fr);
-        gap: 1.5rem 2rem;
+        max-width: 90vw;
     }
     
     .mega-menu-column {
-        min-width: 140px;
-        max-width: 180px;
+        min-width: 180px;
+        max-width: 220px;
     }
 }
 
