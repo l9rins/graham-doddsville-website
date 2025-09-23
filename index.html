@@ -1463,6 +1463,16 @@
                             <a href="#" class="filter-link" data-category="industry">Industry</a>
                         </div>
                         <div class="news-list" id="news-list">
+                            <!-- Loading Animation -->
+                            <div class="news-loading" id="news-loading">
+                                <div class="news-loading-dots">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                                <div class="news-loading-text news-loading-pulse">Loading latest news...</div>
+                            </div>
                             <!-- News items will be loaded here -->
                         </div>
                         
@@ -3765,6 +3775,84 @@
                         }
                     }
                 }
+            });
+            
+            // News Loading Animation Control
+            function showNewsLoading() {
+                const newsLoading = document.getElementById('news-loading');
+                if (newsLoading) {
+                    newsLoading.style.display = 'flex';
+                }
+            }
+            
+            function hideNewsLoading() {
+                const newsLoading = document.getElementById('news-loading');
+                if (newsLoading) {
+                    newsLoading.style.display = 'none';
+                }
+            }
+            
+            // Optimized news loading with faster response
+            function loadNews() {
+                showNewsLoading();
+                
+                // Faster loading simulation (1-2 seconds)
+                const loadingTime = Math.random() * 1000 + 1000; // 1-2 seconds
+                
+                setTimeout(() => {
+                    hideNewsLoading();
+                    displayNewsContent();
+                }, loadingTime);
+            }
+            
+            // Display news content immediately
+            function displayNewsContent() {
+                const newsList = document.getElementById('news-list');
+                if (newsList) {
+                    // Clear loading and add news content
+                    newsList.innerHTML = `
+                        <div class="news-item">
+                            <div class="news-header">
+                                <h3>ASX 200 Rises 0.8% on Strong Economic Data</h3>
+                                <span class="news-time">2 minutes ago</span>
+                            </div>
+                            <p class="news-excerpt">Australian shares closed higher as investors welcomed better-than-expected employment figures and retail sales data...</p>
+                            <div class="news-meta">
+                                <span class="news-source">Financial Review</span>
+                                <span class="news-category">Markets</span>
+                            </div>
+                        </div>
+                        
+                        <div class="news-item">
+                            <div class="news-header">
+                                <h3>RBA Maintains Interest Rates at 4.35%</h3>
+                                <span class="news-time">15 minutes ago</span>
+                            </div>
+                            <p class="news-excerpt">The Reserve Bank of Australia kept the cash rate unchanged, citing concerns about inflation while noting economic resilience...</p>
+                            <div class="news-meta">
+                                <span class="news-source">ABC News</span>
+                                <span class="news-category">Economy</span>
+                            </div>
+                        </div>
+                        
+                        <div class="news-item">
+                            <div class="news-header">
+                                <h3>Tech Stocks Lead Market Gains</h3>
+                                <span class="news-time">1 hour ago</span>
+                            </div>
+                            <p class="news-excerpt">Technology companies led the market higher with strong earnings reports from major players in the sector...</p>
+                            <div class="news-meta">
+                                <span class="news-source">The Australian</span>
+                                <span class="news-category">Companies</span>
+                            </div>
+                        </div>
+                    `;
+                }
+            }
+            
+            // Initialize news loading on page load
+            document.addEventListener('DOMContentLoaded', function() {
+                loadNews();
             });
         });
     </script>

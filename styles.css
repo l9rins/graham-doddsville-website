@@ -231,6 +231,172 @@ body {
     text-decoration: underline;
 }
 
+/* News Loading Animation - Morningstar Style */
+.news-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.news-loading-text {
+    color: #666;
+    font-size: 16px;
+    font-weight: 500;
+    margin-left: 12px;
+}
+
+.news-loading-spinner {
+    width: 24px;
+    height: 24px;
+    border: 3px solid #e0e0e0;
+    border-top: 3px solid #3498db;
+    border-radius: 50%;
+    animation: news-spin 1s linear infinite;
+}
+
+@keyframes news-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Enhanced loading with dots animation */
+.news-loading-dots {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.news-loading-dots div {
+    position: absolute;
+    top: 33px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #3498db;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+
+.news-loading-dots div:nth-child(1) {
+    left: 8px;
+    animation: news-dots1 0.6s infinite;
+}
+
+.news-loading-dots div:nth-child(2) {
+    left: 8px;
+    animation: news-dots2 0.6s infinite;
+}
+
+.news-loading-dots div:nth-child(3) {
+    left: 32px;
+    animation: news-dots2 0.6s infinite;
+}
+
+.news-loading-dots div:nth-child(4) {
+    left: 56px;
+    animation: news-dots3 0.6s infinite;
+}
+
+@keyframes news-dots1 {
+    0% { transform: scale(0); }
+    100% { transform: scale(1); }
+}
+
+@keyframes news-dots3 {
+    0% { transform: scale(1); }
+    100% { transform: scale(0); }
+}
+
+@keyframes news-dots2 {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(24px, 0); }
+}
+
+/* Pulse animation for loading text */
+.news-loading-pulse {
+    animation: news-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes news-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* News Items Styling */
+.news-item {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.news-item:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+}
+
+.news-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.news-header h3 {
+    color: #2c3e50;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0;
+    flex: 1;
+    margin-right: 16px;
+}
+
+.news-time {
+    color: #666;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.news-excerpt {
+    color: #555;
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0 0 12px 0;
+}
+
+.news-meta {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.news-source {
+    color: #3498db;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.news-category {
+    background: #f8f9fa;
+    color: #666;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 4px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
 /* Responsive design for Wealth Creation dropdown */
 @media (max-width: 1200px) {
     .wealth-creation-dropdown {
@@ -2557,15 +2723,15 @@ input:focus, textarea:focus, select:focus {
 }
 
 .filter-link:hover {
-    background: #000;
-    color: #fff;
-    border-color: #000;
+    background: #000 !important;
+    color: #fff !important;
+    border-color: #000 !important;
 }
 
 .filter-link.active {
-    background: #000;
-    color: #fff;
-    border-color: #000;
+    background: #000 !important;
+    color: #fff !important;
+    border-color: #000 !important;
 }
 
 .news-list {
