@@ -57,9 +57,46 @@ body {
 }
 
 /* Dropdown Styles */
-.secondary-nav .dropdown {
+.secondary-nav {
     position: relative;
+}
+
+.secondary-nav-list {
+    position: relative;
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.secondary-nav .dropdown {
+    position: static;
     display: inline-block;
+}
+
+.secondary-nav .dropdown-menu,
+.secondary-nav .mega-dropdown,
+.secondary-nav .investors-dropdown,
+.secondary-nav .wealth-creation-dropdown {
+    position: absolute;
+    left: 0;  /* This aligns all dropdowns with the start of the nav */
+    top: 100%;
+    min-width: 200px;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border: 1px solid #eee;
+    z-index: 1000;
+    margin-top: 1px;
+}
+
+/* Container needs position relative to contain the dropdowns */
+.secondary-nav .container {
+    position: relative;
+}
+
+/* Script will need to set these CSS variables */
+:root {
+    --wealth-creation-left: 0px;
+    --dropdown-top: 0px;
 }
 
 .investors-dropdown {
@@ -260,14 +297,144 @@ body {
     }
 }
 
+/* Financial Markets Dropdown Styles */
+.financial-markets-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    width: 1400px;
+    max-width: 90vw;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1000;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+
+.dropdown:hover .financial-markets-dropdown {
+    display: block;
+}
+
+.financial-markets-wrapper {
+    padding: 15px;
+    max-height: 70vh;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.financial-section {
+    min-width: 200px;
+}
+
+.financial-section h3 {
+    color: #2c3e50;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #3498db; /* Blue accent border */
+    padding-bottom: 3px;
+}
+
+.financial-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.financial-section li {
+    margin-bottom: 3px;
+}
+
+.financial-section a {
+    color: #555;
+    text-decoration: none;
+    font-size: 0.8rem;
+    line-height: 1.3;
+    transition: color 0.2s ease;
+}
+
+.financial-section a:hover {
+    color: #2c3e50;
+    text-decoration: underline;
+}
+
+/* Responsive design for Financial Markets dropdown */
+@media (max-width: 1400px) {
+    .financial-markets-dropdown {
+        width: 1200px;
+        max-width: 95vw;
+    }
+    
+    .financial-markets-wrapper {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+        padding: 12px;
+    }
+    
+    .financial-section h3 {
+        font-size: 0.9rem;
+    }
+    
+    .financial-section a {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 1000px) {
+    .financial-markets-dropdown {
+        width: 900px;
+        max-width: 98vw;
+    }
+    
+    .financial-markets-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 10px;
+    }
+    
+    .financial-section h3 {
+        font-size: 0.85rem;
+    }
+    
+    .financial-section a {
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .financial-markets-dropdown {
+        width: 100%;
+        max-width: 100vw;
+        left: 0;
+        right: 0;
+    }
+    
+    .financial-markets-wrapper {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 8px;
+    }
+    
+    .financial-section h3 {
+        font-size: 0.8rem;
+    }
+    
+    .financial-section a {
+        font-size: 0.65rem;
+    }
+}
+
 /* Legal & Taxation Dropdown Styles */
 .legal-taxation-dropdown {
     display: none;
     position: absolute;
-    top: 0;
-    left: 100%;
+    top: 100%;
+    left: 0;
     background-color: #fff;
-    width: 1200px;
+    width: 1400px;
     max-width: 90vw;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     z-index: 1000;
@@ -289,7 +456,7 @@ body {
 }
 
 .legal-section {
-    min-width: 180px;
+    min-width: 200px;
 }
 
 .legal-section h3 {
@@ -325,9 +492,9 @@ body {
 }
 
 /* Responsive design for Legal & Taxation dropdown */
-@media (max-width: 1200px) {
+@media (max-width: 1400px) {
     .legal-taxation-dropdown {
-        width: 1000px;
+        width: 1200px;
         max-width: 95vw;
     }
     
@@ -346,9 +513,9 @@ body {
     }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
     .legal-taxation-dropdown {
-        width: 800px;
+        width: 900px;
         max-width: 98vw;
     }
     
@@ -373,7 +540,6 @@ body {
         max-width: 100vw;
         left: 0;
         right: 0;
-        top: 100%;
     }
     
     .legal-taxation-wrapper {
