@@ -85,165 +85,131 @@ body {
     text-decoration: underline;
 }
 
-/* Mega Menu - Improved Dropdown System */
+/* COMPLETE DROPDOWN SYSTEM OVERHAUL */
 .mega-menu-item {
     position: relative;
-    overflow: visible;
-    z-index: 10;
+    z-index: 100;
 }
 
-/* BASE MEGA MENU - Better positioning and overflow control */
+/* BASE MEGA MENU - Clean, consistent design */
 .mega-menu {
     position: absolute;
     top: 100%;
-    left: 0;
+    left: 50%;
+    transform: translateX(-50%);
     background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
     display: none;
-    width: 700px;
-    max-width: 80vw;
-    max-height: 65vh;
-    padding: 25px;
+    width: 600px;
+    max-width: 90vw;
+    max-height: 70vh;
+    padding: 20px;
     z-index: 1000;
-    margin-top: 8px;
+    margin-top: 5px;
     box-sizing: border-box;
     overflow: hidden;
+    /* Prevent layout shifts */
     contain: layout style paint;
-    /* Better text rendering */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
-/* IMPROVED GRID LAYOUT - Better spacing and responsive design */
+/* SHOW STATE - Clean grid layout */
 .mega-menu.show {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: minmax(180px, auto);
-    gap: 1.2rem 1.8rem;
-    overflow: hidden;
-    max-height: 65vh;
-    /* Better alignment */
-    align-items: start;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
-/* IMPROVED POSITIONING FOR EACH MENU - Better width control */
+/* INDIVIDUAL MENU SPECIFICATIONS - Consistent sizing */
 /* Wealth Creation - 3 columns */
 .mega-menu-item.wealth-creation-menu .mega-menu {
-    width: 550px;
-    max-width: 75vw;
+    width: 600px;
     grid-template-columns: repeat(3, 1fr);
-}
-
-/* Fix: Prevent any tab-like styling in Wealth Creation dropdown */
-.mega-menu-item.wealth-creation-menu .mega-menu::before,
-.mega-menu-item.wealth-creation-menu .mega-menu::after {
-    display: none !important;
-    content: none !important;
-}
-
-.mega-menu-item.wealth-creation-menu .tab-btn,
-.mega-menu-item.wealth-creation-menu .tab-nav,
-.mega-menu-item.wealth-creation-menu .tab-content {
-    display: none !important;
 }
 
 /* Legal & Taxation - 4 columns */
 .mega-menu-item.legal-taxation-menu .mega-menu {
-    width: 650px;
-    max-width: 75vw;
+    width: 800px;
     grid-template-columns: repeat(4, 1fr);
 }
 
 /* Financial Markets - 4 columns */
 .mega-menu-item.financial-markets-menu .mega-menu {
-    width: 650px;
-    max-width: 75vw;
+    width: 800px;
     grid-template-columns: repeat(4, 1fr);
 }
 
-/* Share Investing - 6 columns (reduced from 8) */
+/* Share Investing - 4 columns */
 .mega-menu-item.share-investing-menu .mega-menu {
     width: 800px;
-    max-width: 80vw;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
 }
 
 /* Greatest Investors - 3 columns */
 .mega-menu-item.greatest-investors-menu .mega-menu {
     width: 700px;
-    max-width: 75vw;
     grid-template-columns: repeat(3, 1fr);
 }
 
 /* Investment Analysis - 4 columns */
 .mega-menu-item.investment-analysis-menu .mega-menu {
-    width: 650px;
-    max-width: 75vw;
+    width: 800px;
     grid-template-columns: repeat(4, 1fr);
 }
 
-/* Economics - 6 columns (reduced from 8) */
+/* Economics - 4 columns */
 .mega-menu-item.economics-menu .mega-menu {
     width: 800px;
-    max-width: 80vw;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
 }
 
-/* Professional Advisers - 6 columns (reduced from 8) */
+/* Professional Advisers - 4 columns */
 .mega-menu-item.professional-advisers-menu .mega-menu {
     width: 800px;
-    max-width: 80vw;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
 }
 
-/* Financial Products - 6 columns (reduced from 9) */
+/* Financial Products - 4 columns */
 .mega-menu-item.financial-products-menu .mega-menu {
-    width: 850px;
-    max-width: 85vw;
-    grid-template-columns: repeat(6, 1fr);
+    width: 800px;
+    grid-template-columns: repeat(4, 1fr);
 }
 
-/* Resources - 5 columns (reduced from 7) */
+/* Resources - 4 columns */
 .mega-menu-item.resources-menu .mega-menu {
-    width: 750px;
-    max-width: 80vw;
-    grid-template-columns: repeat(5, 1fr);
+    width: 800px;
+    grid-template-columns: repeat(4, 1fr);
 }
 
-/* Events - 5 columns (reduced from 6) */
+/* Events - 4 columns */
 .mega-menu-item.events-menu .mega-menu {
-    width: 750px;
-    max-width: 80vw;
-    grid-template-columns: repeat(5, 1fr);
+    width: 800px;
+    grid-template-columns: repeat(4, 1fr);
 }
 
 /* EDGE POSITIONING - Rightmost items align to right edge */
 .mega-menu-item:nth-last-child(-n+2) .mega-menu {
-    right: 0;
     left: auto;
+    right: 0;
+    transform: translateX(0);
 }
 
-/* IMPROVED COLUMN STYLING - Better text handling and spacing */
+/* CLEAN COLUMN STYLING */
 .mega-menu-column {
-    min-width: 150px;
-    max-width: 200px;
+    min-width: 180px;
+    max-width: 220px;
+    padding: 15px;
+    box-sizing: border-box;
+    line-height: 1.5;
     overflow-y: auto;
     overflow-x: hidden;
-    word-wrap: break-word;
-    white-space: normal;
-    max-height: 55vh;
-    padding: 12px 8px;
-    box-sizing: border-box;
-    /* Better text spacing */
-    line-height: 1.4;
-    /* Ensure smooth scrolling */
+    max-height: 60vh;
+    /* Clean scrollbar */
     scrollbar-width: thin;
-    scrollbar-color: #ccc #f5f5f5;
-    /* Prevent text overlap */
-    position: relative;
-    isolation: isolate;
+    scrollbar-color: #ddd #f5f5f5;
 }
 
 /* Custom scrollbar for webkit browsers */
@@ -265,78 +231,56 @@ body {
     background: #999;
 }
 
-/* NUANCED GRID ROWS - Allow content to fit naturally */
-.mega-menu-item.wealth-creation-menu .mega-menu,
-.mega-menu-item.legal-taxation-menu .mega-menu,
-.mega-menu-item.financial-markets-menu .mega-menu,
-.mega-menu-item.share-investing-menu .mega-menu,
-.mega-menu-item.greatest-investors-menu .mega-menu,
-.mega-menu-item.investment-analysis-menu .mega-menu,
-.mega-menu-item.economics-menu .mega-menu,
-.mega-menu-item.professional-advisers-menu .mega-menu,
-.mega-menu-item.financial-products-menu .mega-menu,
-.mega-menu-item.resources-menu .mega-menu,
-.mega-menu-item.events-menu .mega-menu {
-    grid-auto-rows: minmax(200px, auto);
-    z-index: 1000;
-}
 
-/* IMPROVED TEXT STYLING - Better readability and spacing */
+/* CLEAN TEXT STYLING */
 .mega-menu-column h4 {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
     color: #333;
-    margin: 0 0 10px 0;
-    padding: 8px 0 6px 0;
-    border-bottom: 2px solid #e0e0e0;
+    margin: 0 0 12px 0;
+    padding: 0 0 8px 0;
+    border-bottom: 2px solid #e8e8e8;
     line-height: 1.3;
-    /* Prevent text overlap */
-    position: relative;
-    z-index: 1;
 }
 
 .mega-menu-column a {
     display: block;
-    padding: 4px 0;
+    padding: 6px 0;
     color: #555;
     text-decoration: none;
-    font-size: 11px;
+    font-size: 13px;
     transition: all 0.2s ease;
     line-height: 1.4;
-    white-space: normal;
-    /* Better spacing between links */
-    margin-bottom: 2px;
-    /* Prevent text overlap */
-    position: relative;
-    z-index: 1;
+    border-radius: 4px;
 }
 
 .mega-menu-column a:hover {
     color: #0066cc;
-    background-color: #f8f9fa;
-    padding-left: 4px;
-    border-radius: 3px;
+    background-color: #f0f8ff;
+    padding-left: 8px;
 }
 
-/* RESPONSIVE BEHAVIOR - Prevent dropdowns from going off page */
+/* RESPONSIVE DESIGN */
 @media (max-width: 1200px) {
     .mega-menu {
-        max-width: 70vw;
-        width: auto;
+        max-width: 85vw;
     }
     
+    .mega-menu-item.wealth-creation-menu .mega-menu,
+    .mega-menu-item.greatest-investors-menu .mega-menu {
+        width: 500px;
+    }
+    
+    .mega-menu-item.legal-taxation-menu .mega-menu,
+    .mega-menu-item.financial-markets-menu .mega-menu,
     .mega-menu-item.share-investing-menu .mega-menu,
+    .mega-menu-item.investment-analysis-menu .mega-menu,
     .mega-menu-item.economics-menu .mega-menu,
     .mega-menu-item.professional-advisers-menu .mega-menu,
-    .mega-menu-item.financial-products-menu .mega-menu {
-        grid-template-columns: repeat(4, 1fr);
-        width: 600px;
-    }
-    
+    .mega-menu-item.financial-products-menu .mega-menu,
     .mega-menu-item.resources-menu .mega-menu,
     .mega-menu-item.events-menu .mega-menu {
-        grid-template-columns: repeat(4, 1fr);
-        width: 600px;
+        width: 700px;
     }
 }
 
@@ -352,6 +296,8 @@ body {
         gap: 1rem;
         width: 100%;
         max-width: 100%;
+        left: 0;
+        transform: none;
     }
     
     .mega-menu-item:hover .mega-menu {
@@ -359,16 +305,10 @@ body {
     }
     
     .mega-menu-column {
-        min-width: 120px;
+        min-width: 140px;
         max-width: none;
-        padding: 8px;
+        padding: 10px;
     }
-}
-
-/* Ensure dropdowns stay above all content */
-.mega-menu {
-    z-index: 999999 !important;
-    position: absolute !important;
 }
 
 /* Prevent body scroll when mega menu is open - REMOVED to prevent page shift */
