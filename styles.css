@@ -2064,6 +2064,25 @@ input:focus, textarea:focus, select:focus {
     height: 150px;
     object-fit: cover;
     transition: opacity 0.3s ease;
+    background-color: #f0f0f0;
+    display: block;
+}
+
+/* Fallback for broken images */
+.video-thumbnail img:not([src]),
+.video-thumbnail img[src=""] {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+}
+
+.video-thumbnail img:not([src])::after,
+.video-thumbnail img[src=""]::after {
+    content: "Video Thumbnail";
 }
 
 .video-thumbnail:hover img {
