@@ -145,7 +145,7 @@ h6 {
     z-index: 100;
 }
 
-/* ROBUST MEGA MENU SYSTEM - Fixed positioning and z-index */
+/* CLEAN MEGA MENU SYSTEM - Single source of truth */
 .mega-menu {
     position: absolute;
     top: 100%;
@@ -159,7 +159,7 @@ h6 {
     max-width: 90vw;
     max-height: 70vh;
     padding: 24px;
-    z-index: 10000;
+    z-index: 999;
     margin-top: 8px;
     box-sizing: border-box;
     overflow: hidden;
@@ -168,14 +168,14 @@ h6 {
     transition: all 0.3s ease;
 }
 
-/* HOVER FUNCTIONALITY - Reliable trigger for each menu item */
-.mega-menu-item:hover .mega-menu {
-    display: grid;
-    opacity: 1;
-    transform: translateY(0);
+/* ENSURE SOLID BACKGROUNDS - No transparency issues */
+.mega-menu,
+.mega-menu-column {
+    background: #fff !important;
+    opacity: 1 !important;
 }
 
-/* ADAPTIVE GRID SYSTEM - Using auto-fit + minmax() for flexible columns */
+/* SINGLE HOVER RULE - Clean and reliable */
 .mega-menu-item:hover .mega-menu {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -184,7 +184,7 @@ h6 {
     transform: translateY(0);
 }
 
-/* INDIVIDUAL MENU WIDTHS - Consistent max-width constraints */
+/* INDIVIDUAL MENU WIDTHS - All menus use consistent constraints */
 .mega-menu-item.wealth-creation-menu .mega-menu {
     width: 600px;
     max-width: 90vw;
@@ -3346,7 +3346,6 @@ input:focus, textarea:focus, select:focus {
     .mega-menu.show {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-        grid-template-rows: repeat(2, auto);
         gap: 0.5rem 1rem;
     }
     

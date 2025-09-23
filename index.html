@@ -479,7 +479,7 @@
                         </div>
                     </div>
                 </li>
-                <li class="mega-menu-item">
+                <li class="mega-menu-item greatest-investors-menu">
                     <a href="#greatest-investors">Greatest Investors</a>
                     <div class="mega-menu greatest-investors-menu">
                         <div class="investors-tabs">
@@ -597,7 +597,18 @@
                         </div>
                     </div>
                 </li>
-                <li class="mega-menu-item investment-analysis-menu"><a href="#investment-analysis">Investment Analysis</a></li>
+                <li class="mega-menu-item investment-analysis-menu">
+                    <a href="#investment-analysis">Investment Analysis</a>
+                    <div class="mega-menu">
+                        <div class="mega-menu-column">
+                            <h4>Investment Analysis</h4>
+                            <a href="#fundamental-analysis">Fundamental Analysis</a>
+                            <a href="#technical-analysis">Technical Analysis</a>
+                            <a href="#quantitative-analysis">Quantitative Analysis</a>
+                            <a href="#risk-analysis">Risk Analysis</a>
+                        </div>
+                    </div>
+                </li>
                 <li class="mega-menu-item economics-menu">
                     <a href="#economics">Economics</a>
                     <div class="mega-menu">
@@ -2341,7 +2352,7 @@
                 this.classList.add(isAsc ? 'sort-desc' : 'sort-asc');
             });
         });
-        
+
         // Enhanced Market Data Filtering and Sorting
         function initializeMarketFilters() {
             const searchInput = document.getElementById('market-search');
@@ -2456,6 +2467,40 @@
         
         // Initialize market filters
         initializeMarketFilters();
+        
+        // CRITICAL: Ensure all mega-menu items work properly
+        function initializeMegaMenus() {
+            const megaMenuItems = document.querySelectorAll('.mega-menu-item');
+            
+            megaMenuItems.forEach(item => {
+                const megaMenu = item.querySelector('.mega-menu');
+                if (megaMenu) {
+                    // Ensure proper positioning
+                    megaMenu.style.position = 'absolute';
+                    megaMenu.style.top = '100%';
+                    megaMenu.style.left = '0';
+                    megaMenu.style.zIndex = '999';
+                    megaMenu.style.background = '#fff';
+                    megaMenu.style.maxWidth = '90vw';
+                    
+                    // Add hover event listeners
+                    item.addEventListener('mouseenter', function() {
+                        megaMenu.style.display = 'grid';
+                        megaMenu.style.opacity = '1';
+                        megaMenu.style.transform = 'translateY(0)';
+                    });
+                    
+                    item.addEventListener('mouseleave', function() {
+                        megaMenu.style.display = 'none';
+                        megaMenu.style.opacity = '0';
+                        megaMenu.style.transform = 'translateY(-10px)';
+                    });
+                }
+            });
+        }
+        
+        // Initialize mega menus on page load
+        initializeMegaMenus();
 
         // Enhanced Global search functionality
         let searchTimeout;
@@ -2469,7 +2514,7 @@
             if (searchTerm.length > 2) {
                 // Debounce search to avoid excessive API calls
                 searchTimeout = setTimeout(() => {
-                    performGlobalSearch(searchTerm);
+                performGlobalSearch(searchTerm);
                 }, 300);
             } else {
                 hideSearchResults();
