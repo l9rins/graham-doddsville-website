@@ -5430,6 +5430,30 @@ body {
 
 /* CSS Custom Properties for Design System */
 :root {
+    /* Brand Color Palette */
+    --primary-navy: #1e3a8a;      /* Deep navy - primary brand color */
+    --primary-gold: #f5b400;      /* Gold accent - secondary brand color */
+    --primary-navy-light: #3b5bdb; /* Lighter navy for hover states */
+    --primary-gold-light: #fbbf24; /* Lighter gold for hover states */
+    
+    /* Neutral Grayscale Palette */
+    --neutral-50: #f8f9fa;        /* Lightest gray */
+    --neutral-100: #e9ecef;       /* Very light gray */
+    --neutral-200: #dee2e6;       /* Light gray */
+    --neutral-300: #ced4da;       /* Medium light gray */
+    --neutral-400: #adb5bd;       /* Medium gray */
+    --neutral-500: #6c757d;       /* Medium dark gray */
+    --neutral-600: #495057;       /* Dark gray */
+    --neutral-700: #343a40;       /* Darker gray */
+    --neutral-800: #212529;       /* Very dark gray */
+    --neutral-900: #000000;       /* Black */
+    
+    /* Semantic Colors */
+    --success: #10b981;           /* Green for success states */
+    --warning: #f59e0b;           /* Orange for warnings */
+    --error: #ef4444;            /* Red for errors */
+    --info: #3b82f6;             /* Blue for information */
+    
     /* Typography Scale */
     --font-size-xs: 0.75rem;    /* 12px */
     --font-size-sm: 0.875rem;   /* 14px */
@@ -5476,12 +5500,12 @@ body {
     --transition-slow: 500ms ease-in-out;
 }
 
-/* Enhanced Typography Scale */
+/* Enhanced Typography Scale with Brand Colors */
 h1 {
     font-size: var(--font-size-2xl); /* 24px */
     line-height: var(--line-height-tight);
     font-weight: 700;
-    color: #2c3e50;
+    color: var(--primary-navy);
     margin-bottom: var(--space-6);
 }
 
@@ -5489,7 +5513,7 @@ h2 {
     font-size: var(--font-size-xl); /* 20px */
     line-height: var(--line-height-tight);
     font-weight: 600;
-    color: #2c3e50;
+    color: var(--primary-navy);
     margin-bottom: var(--space-5);
 }
 
@@ -5497,7 +5521,7 @@ h3 {
     font-size: var(--font-size-base); /* 16px */
     line-height: var(--line-height-normal);
     font-weight: 600;
-    color: #34495e;
+    color: var(--neutral-700);
     margin-bottom: var(--space-4);
 }
 
@@ -5505,7 +5529,7 @@ h4 {
     font-size: var(--font-size-lg);
     line-height: var(--line-height-normal);
     font-weight: 500;
-    color: #34495e;
+    color: var(--neutral-700);
     margin-bottom: var(--space-3);
 }
 
@@ -5513,7 +5537,7 @@ h5 {
     font-size: var(--font-size-base);
     line-height: var(--line-height-normal);
     font-weight: 500;
-    color: #7f8c8d;
+    color: var(--neutral-500);
     margin-bottom: var(--space-3);
 }
 
@@ -5521,14 +5545,14 @@ h6 {
     font-size: var(--font-size-sm);
     line-height: var(--line-height-normal);
     font-weight: 500;
-    color: #7f8c8d;
+    color: var(--neutral-500);
     margin-bottom: var(--space-2);
 }
 
 p {
     font-size: var(--font-size-sm); /* 14px */
     line-height: var(--line-height-relaxed);
-    color: #2c3e50;
+    color: var(--neutral-700);
     margin-bottom: var(--space-4);
 }
 
@@ -5684,6 +5708,282 @@ p {
     margin-top: var(--space-4);
 }
 
+/* ========================================
+   BRAND STYLE GUIDE & COMPONENTS
+   ======================================== */
+
+/* Enhanced Button System with Brand Colors */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-5);
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    line-height: 1;
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-radius: var(--radius-md); /* 6px - consistent corner radius */
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    min-height: 44px;
+    min-width: 44px;
+}
+
+.btn-primary {
+    background-color: var(--primary-navy);
+    color: white;
+    border-color: var(--primary-navy);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-navy-light);
+    border-color: var(--primary-navy-light);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+    background-color: var(--primary-gold);
+    color: var(--primary-navy);
+    border-color: var(--primary-gold);
+    font-weight: 600;
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-gold-light);
+    border-color: var(--primary-gold-light);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--primary-navy);
+    border-color: var(--primary-navy);
+}
+
+.btn-outline:hover {
+    background-color: var(--primary-navy);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-ghost {
+    background-color: transparent;
+    color: var(--neutral-600);
+    border-color: var(--neutral-300);
+}
+
+.btn-ghost:hover {
+    background-color: var(--neutral-50);
+    color: var(--primary-navy);
+    border-color: var(--primary-navy);
+}
+
+/* Enhanced Link Styling */
+a {
+    color: var(--primary-navy);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--primary-navy-light);
+    text-decoration: underline;
+}
+
+a:focus {
+    outline: 2px solid var(--primary-gold);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+}
+
+/* Form Elements with Brand Styling */
+input, select, textarea {
+    font-size: var(--font-size-base);
+    padding: var(--space-3) var(--space-4);
+    border: 2px solid var(--neutral-300);
+    border-radius: var(--radius-md);
+    background: white;
+    color: var(--neutral-700);
+    transition: all var(--transition-fast);
+    min-height: 44px;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: var(--primary-navy);
+    box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+    outline: none;
+}
+
+input:hover, select:hover, textarea:hover {
+    border-color: var(--neutral-400);
+}
+
+/* Filter Links with Brand Styling */
+.filter-link {
+    display: inline-block;
+    padding: var(--space-2) var(--space-4);
+    margin: var(--space-1);
+    border: 2px solid var(--neutral-300);
+    border-radius: var(--radius-md);
+    background: white;
+    color: var(--neutral-600);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    transition: all var(--transition-fast);
+    min-height: 44px;
+    line-height: 1.2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.filter-link:hover {
+    border-color: var(--primary-navy);
+    color: var(--primary-navy);
+    background: var(--neutral-50);
+    transform: translateY(-1px);
+}
+
+.filter-link.active {
+    background-color: var(--primary-navy);
+    color: white;
+    border-color: var(--primary-navy);
+    box-shadow: var(--shadow-sm);
+}
+
+.filter-link.active:hover {
+    background-color: var(--primary-navy-light);
+    border-color: var(--primary-navy-light);
+}
+
+/* Enhanced Card Components with Brand Colors */
+.card {
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    transition: all var(--transition-normal);
+    border: 1px solid var(--neutral-200);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+    border-color: var(--primary-navy);
+}
+
+.card-header {
+    padding: var(--space-6);
+    border-bottom: 1px solid var(--neutral-200);
+    background: var(--neutral-50);
+}
+
+.card-body {
+    padding: var(--space-6);
+}
+
+.card-footer {
+    padding: var(--space-6);
+    border-top: 1px solid var(--neutral-200);
+    background: var(--neutral-50);
+}
+
+.card-title {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--primary-navy);
+    margin-bottom: var(--space-3);
+    line-height: var(--line-height-tight);
+}
+
+.card-subtitle {
+    font-size: var(--font-size-sm);
+    color: var(--neutral-500);
+    margin-bottom: var(--space-4);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+}
+
+.card-text {
+    font-size: var(--font-size-sm);
+    color: var(--neutral-700);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--space-4);
+}
+
+.card-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    font-size: var(--font-size-xs);
+    color: var(--neutral-500);
+    margin-top: var(--space-4);
+}
+
+/* Enhanced Article Cards with Brand Colors */
+.article-item,
+.news-item {
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: var(--space-6);
+    margin-bottom: var(--space-6);
+    border: 1px solid var(--neutral-200);
+    transition: all var(--transition-normal);
+}
+
+.article-item:hover,
+.news-item:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+    border-color: var(--primary-navy);
+}
+
+.article-item h3,
+.news-item h3 {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--primary-navy);
+    margin-bottom: var(--space-4);
+    line-height: var(--line-height-tight);
+}
+
+.article-item h3 a,
+.news-item h3 a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.article-item h3 a:hover,
+.news-item h3 a:hover {
+    color: var(--primary-navy-light);
+}
+
+.article-item p,
+.news-item p {
+    color: var(--neutral-700);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--space-4);
+}
+
+.article-meta,
+.news-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    font-size: var(--font-size-xs);
+    color: var(--neutral-500);
+    margin-top: var(--space-4);
+}
+
 /* Responsive Grid */
 @media (max-width: 1200px) {
     .grid {
@@ -5713,6 +6013,144 @@ p {
     .news-item {
         padding: var(--space-4);
     }
+    
+    .btn {
+        padding: var(--space-2) var(--space-4);
+        font-size: var(--font-size-sm);
+    }
+}
+
+/* ========================================
+   ENHANCED LOGO & BRAND RECOGNITION
+   ======================================== */
+
+/* Enhanced Logo Styling */
+.logo h1 {
+    font-family: 'Georgia', serif;
+    font-size: var(--font-size-3xl);
+    font-weight: 700;
+    color: var(--primary-navy);
+    margin: 0;
+    line-height: 1.1;
+    text-align: center;
+}
+
+.logo .graham {
+    color: var(--primary-navy);
+    display: block;
+    margin-bottom: var(--space-1);
+}
+
+.logo .and {
+    color: var(--primary-gold);
+    font-size: var(--font-size-2xl);
+    font-weight: 400;
+    margin: 0 var(--space-2);
+    display: inline-block;
+}
+
+.logo .doddsville {
+    color: var(--primary-navy);
+    display: block;
+    margin-top: var(--space-1);
+}
+
+/* Logo hover effect */
+.logo:hover h1 {
+    transform: scale(1.02);
+    transition: transform var(--transition-fast);
+}
+
+/* Enhanced header with brand colors */
+.header {
+    background: linear-gradient(135deg, white 0%, var(--neutral-50) 100%);
+    border-bottom: 3px solid var(--primary-gold);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Brand accent elements */
+.brand-accent {
+    color: var(--primary-gold);
+    font-weight: 600;
+}
+
+.brand-primary {
+    color: var(--primary-navy);
+    font-weight: 600;
+}
+
+/* Enhanced navigation with brand colors */
+.main-nav a {
+    color: var(--primary-navy);
+    font-weight: 500;
+    transition: all var(--transition-fast);
+    position: relative;
+}
+
+.main-nav a:hover {
+    color: var(--primary-gold);
+    transform: translateY(-1px);
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-gold);
+    transition: width var(--transition-fast);
+}
+
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+/* Enhanced search bar with brand styling */
+.header-search {
+    position: relative;
+}
+
+.global-search-input {
+    border: 2px solid var(--neutral-300);
+    border-radius: var(--radius-md);
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--font-size-base);
+    transition: all var(--transition-fast);
+    background: white;
+}
+
+.global-search-input:focus {
+    border-color: var(--primary-navy);
+    box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+    outline: none;
+}
+
+.search-btn {
+    background: var(--primary-navy);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    padding: var(--space-3);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    margin-left: var(--space-2);
+}
+
+.search-btn:hover {
+    background: var(--primary-navy-light);
+    transform: scale(1.05);
+}
+
+/* Enhanced date/time bar with brand colors */
+.date-time-bar {
+    background: var(--primary-navy);
+    color: white;
+    padding: var(--space-2) 0;
+    text-align: center;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
 }
 
 /* Ensure all containers are responsive */
