@@ -1882,7 +1882,7 @@ h6 {
 
 /* SIMPLE RESPONSIVE DESIGN */
 @media (max-width: 1200px) {
-    .mega-menu {
+.mega-menu {
         max-width: 80vw;
     }
     
@@ -1939,14 +1939,14 @@ h6 {
     
     .secondary-nav-list {
         display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
         right: 0;
-        background: #fff;
+    background: #fff;
         border-top: 1px solid #ddd;
         flex-direction: column;
-        padding: 20px;
+    padding: 20px;
         box-shadow: 0 8px 24px rgba(0,0,0,0.15);
         z-index: 10000;
     }
@@ -1965,11 +1965,11 @@ h6 {
     }
     
     .secondary-nav-list a {
-        display: block;
+    display: block;
         padding: 15px 0;
         font-size: 16px;
         color: #333;
-        text-decoration: none;
+    text-decoration: none;
         min-height: 44px;
         display: flex;
         align-items: center;
@@ -6036,6 +6036,7 @@ input:hover, select:hover, textarea:hover {
     color: var(--primary-gold);
     font-size: var(--font-size-3xl);
     font-weight: 700;
+    font-style: normal;
     margin: 0 var(--space-1);
     display: inline;
 }
