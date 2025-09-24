@@ -20,7 +20,7 @@ app.use((req, res, next) => {
         res.setHeader('Cache-Control', 'public, max-age=31536000'); // 1 year
         res.setHeader('Expires', new Date(Date.now() + 31536000000).toUTCString());
     } else if (req.url.match(/\.(html)$/)) {
-        res.setHeader('Cache-Control', 'public, max-age=3600'); // 1 hour
+        res.setHeader('Cache-Control', 'public, max-age=86400'); // 24 hours
     } else {
         res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
     }

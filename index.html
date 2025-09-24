@@ -15,6 +15,12 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Graham and Doddsville - Value Investing Education Australia">
     <meta name="twitter:description" content="Premier source of value investing information in Australia. Educational resources, articles, and insights for intelligent stock market investing.">
+    <meta name="twitter:image" content="https://grahamanddoddsville.com.au/og-image.jpg">
+    <meta property="og:image" content="https://grahamanddoddsville.com.au/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="Graham and Doddsville">
+    <meta property="og:locale" content="en_AU">
     <title>Graham and Doddsville - Value Investing Education Australia</title>
     <link rel="stylesheet" href="styles.css?v=5.1&t=20241223">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -51,6 +57,61 @@
         ]
     }
     </script>
+    
+    <!-- Article Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "Value Investing Education and Resources",
+        "description": "Comprehensive value investing education, articles, and resources for intelligent stock market investing in Australia.",
+        "author": {
+            "@type": "Organization",
+            "name": "Graham and Doddsville"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Graham and Doddsville",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://grahamanddoddsville.com.au/logo.png"
+            }
+        },
+        "datePublished": "2024-12-23",
+        "dateModified": "2024-12-23",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://grahamanddoddsville.com.au"
+        }
+    }
+    </script>
+    
+    <!-- Event Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "Value Investing Education Events",
+        "description": "Educational events and resources for value investing in Australia.",
+        "organizer": {
+            "@type": "Organization",
+            "name": "Graham and Doddsville",
+            "url": "https://grahamanddoddsville.com.au"
+        },
+        "location": {
+            "@type": "Place",
+            "name": "Brisbane, Queensland, Australia",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Level 19, 10 Eagle Street",
+                "addressLocality": "Brisbane",
+                "addressRegion": "Queensland",
+                "postalCode": "4000",
+                "addressCountry": "AU"
+            }
+        }
+    }
+    </script>
 </head>
 <body>
     <!-- Skip to content link for accessibility -->
@@ -77,7 +138,7 @@
                 <div class="header-search" role="search">
                     <label for="global-search" class="sr-only">Search investments, articles, and more</label>
                     <input type="text" id="global-search" placeholder="Search investments, articles..." class="global-search-input" aria-label="Search investments, articles, and more">
-                    <button class="search-btn" aria-label="Search" type="button">🔍</button>
+                    <button class="search-btn" aria-label="Search" type="button" title="Search">🔍</button>
                 </div>
                 <div class="mobile-menu-toggle" id="mobile-toggle">
                     <span></span>
@@ -2775,7 +2836,7 @@
                             <!-- Featured Video (Large) -->
                             <div class="featured-video" data-investor="warren-buffett" data-topic="value-investing" data-period="recent">
                                 <div class="video-thumbnail large" onclick="openVideoModal('warren-buffett-crash-warning')">
-                                    <div class="play-button">▶</div>
+                                    <div class="play-button" aria-label="Play video" title="Play video">▶</div>
                                     <img src="https://img.youtube.com/vi/2MHIcabnjrA/maxresdefault.jpg" alt="Warren Buffett Warns About Stock Market Crash" loading="lazy">
                                     <div class="video-overlay">
                                         <span class="views">1.2M views</span>
@@ -2790,7 +2851,7 @@
                             <div class="video-grid">
                                 <div class="video-item" data-investor="benjamin-graham" data-topic="market-analysis" data-period="recent">
                                     <div class="video-thumbnail" onclick="openVideoModal('benjamin-graham-analysis')">
-                                        <div class="play-button">▶</div>
+                                        <div class="play-button" aria-label="Play video" title="Play video">▶</div>
                                         <img src="https://img.youtube.com/vi/S7Vdz7e0Iro/mqdefault.jpg" alt="Benjamin Graham Security Analysis" loading="lazy">
                                         <div class="video-overlay">
                                             <span class="views">245K views</span>
@@ -2801,7 +2862,7 @@
                                 </div>
                                 <div class="video-item" data-investor="charlie-munger" data-topic="portfolio-management" data-period="older">
                                     <div class="video-thumbnail" onclick="openVideoModal('charlie-munger-portfolio')">
-                                        <div class="play-button">▶</div>
+                                        <div class="play-button" aria-label="Play video" title="Play video">▶</div>
                                         <img src="https://img.youtube.com/vi/PVdyQs2UGl4/mqdefault.jpg" alt="Charlie Munger Portfolio">
                                         <div class="video-overlay">
                                             <span class="views">180K views</span>
@@ -2813,7 +2874,7 @@
                                 
                                 <div class="video-item" data-investor="peter-lynch" data-topic="risk-management" data-period="recent">
                                     <div class="video-thumbnail" onclick="openVideoModal('peter-lynch-risk')">
-                                        <div class="play-button">▶</div>
+                                        <div class="play-button" aria-label="Play video" title="Play video">▶</div>
                                         <img src="https://img.youtube.com/vi/72Pq5zKEi_s/mqdefault.jpg" alt="Peter Lynch Risk Management">
                                         <div class="video-overlay">
                                             <span class="views">320K views</span>
@@ -2825,7 +2886,7 @@
                                 
                                 <div class="video-item" data-investor="warren-buffett" data-topic="value-investing" data-period="recent">
                                     <div class="video-thumbnail" onclick="openVideoModal('warren-buffett-annual-meeting')">
-                                        <div class="play-button">▶</div>
+                                        <div class="play-button" aria-label="Play video" title="Play video">▶</div>
                                         <img src="https://img.youtube.com/vi/2MHIcabnjrA/mqdefault.jpg" alt="Warren Buffett Annual Meeting">
                                         <div class="video-overlay">
                                             <span class="views">890K views</span>
@@ -3699,8 +3760,8 @@
             nav.classList.toggle('active');
         });
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('.nav-link[href^="#"]').forEach(link => {
+        // Smooth scrolling for navigation links and article links
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 const targetId = this.getAttribute('href').substring(1);
@@ -3715,6 +3776,9 @@
                     // Close mobile menu if open
                     const nav = document.querySelector('.main-nav');
                     nav.classList.remove('active');
+                    
+                    // Update URL without page reload
+                    history.pushState(null, null, '#' + targetId);
                 }
             });
         });
@@ -3754,6 +3818,20 @@
                     const dropdown = focusedElement.querySelector('.mega-menu, .dropdown-menu');
                     if (dropdown) {
                         dropdown.style.display = 'block';
+                    }
+                }
+            }
+            
+            // Fix expandable summaries - Enter key only
+            if (e.key === 'Enter') {
+                const target = e.target;
+                if (target.classList.contains('collapsible-header') || target.closest('.collapsible-header')) {
+                    e.preventDefault();
+                    const header = target.classList.contains('collapsible-header') ? target : target.closest('.collapsible-header');
+                    const content = header.nextElementSibling;
+                    if (content && content.classList.contains('collapsible-content')) {
+                        content.classList.toggle('active');
+                        header.setAttribute('aria-expanded', content.classList.contains('active'));
                     }
                 }
             }

@@ -5114,6 +5114,22 @@ input:focus, textarea:focus, select:focus {
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
+/* Mobile back-to-top positioning */
+@media (max-width: 768px) {
+    .back-to-top {
+        bottom: 80px; /* Move up to avoid overlapping content */
+        right: 15px;
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+    
+    /* Add bottom padding to content to prevent overlap */
+    .main-content {
+        padding-bottom: 100px;
+    }
+}
+
 .back-to-top:hover {
     background: #34495e;
     transform: translateY(-2px);
@@ -5126,7 +5142,7 @@ input:focus, textarea:focus, select:focus {
 }
 
 /* Enhanced Mobile Navigation */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .main-nav {
         display: none;
         position: absolute;
@@ -5341,7 +5357,7 @@ input:focus, textarea:focus, select:focus {
 }
 
 @media (max-width: 480px) {
-    /* Extra small screens */
+    /* Extra small screens - iPhone SE and similar */
     .container {
         padding: 0 0.5rem;
     }
@@ -5371,6 +5387,32 @@ input:focus, textarea:focus, select:focus {
         right: 15px;
         font-size: 18px;
     }
+    
+    /* Fix widget overflow on iPhone SE */
+    .widget-panel,
+    .event-listings,
+    .around-world,
+    .classic-readings {
+        max-width: 100%;
+        overflow-x: hidden;
+        word-wrap: break-word;
+    }
+    
+    .widget-panel h3,
+    .event-listings h3,
+    .around-world h3,
+    .classic-readings h3 {
+        font-size: 1rem;
+        line-height: 1.3;
+    }
+    
+    .widget-panel p,
+    .event-listings p,
+    .around-world p,
+    .classic-readings p {
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
 }
 
 /* Prevent horizontal scroll */
@@ -5399,15 +5441,15 @@ body {
     background-color: #ffffff;
 }
 
-/* Improve contrast for links */
+/* Improve contrast for links - WCAG AA compliant */
 a {
-    color: #2980b9;
+    color: #1e3a8a; /* Darker blue for better contrast */
     text-decoration: underline;
 }
 
 a:hover,
 a:focus {
-    color: #1f5f8b;
+    color: #1e40af; /* Slightly lighter on hover */
     text-decoration: underline;
 }
 
@@ -5545,6 +5587,17 @@ th {
 .article-meta,
 .news-meta {
     color: #555; /* Improved from #777 */
+    font-size: 14px; /* Minimum readable size */
+}
+
+/* Fix caption text size */
+.caption,
+.article-meta,
+.news-meta,
+.video-overlay span,
+.views {
+    font-size: 14px !important; /* Override any smaller sizes */
+    line-height: 1.4;
 }
 
 /* Filter button accessibility */
