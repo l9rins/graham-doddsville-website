@@ -1690,17 +1690,9 @@ h6 {
     line-height: 1.0;
     text-align: left;
     white-space: pre-line;
-    font-size: 0; /* Hide original text */
 }
 
 /* LOGO STACKED LAYOUT - Graham & Doddsville */
-.logo h1::before {
-    content: "Graham &\A Doddsville";
-    white-space: pre-line;
-    display: block;
-    line-height: 1.0;
-    font-size: 24px; /* Restore font size for ::before */
-}
 
 .main-nav {
     overflow: visible;
