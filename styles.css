@@ -5732,8 +5732,13 @@ p {
 .btn-primary:hover {
     background-color: var(--primary-navy-light);
     border-color: var(--primary-navy-light);
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-md);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-primary:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: var(--shadow-sm);
 }
 
 .btn-secondary {
@@ -5746,8 +5751,13 @@ p {
 .btn-secondary:hover {
     background-color: var(--primary-gold-light);
     border-color: var(--primary-gold-light);
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-md);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-secondary:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: var(--shadow-sm);
 }
 
 .btn-outline {
@@ -5862,12 +5872,40 @@ input:hover, select:hover, textarea:hover {
     overflow: hidden;
     transition: all var(--transition-normal);
     border: 1px solid var(--neutral-200);
+    position: relative;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, var(--primary-navy) 0%, var(--primary-gold) 100%);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+    z-index: -1;
+    border-radius: var(--radius-lg);
 }
 
 .card:hover {
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-2px);
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-4px) scale(1.02);
     border-color: var(--primary-navy);
+}
+
+.card:hover::before {
+    opacity: 0.05;
+}
+
+.card:hover .card-title {
+    color: var(--primary-navy);
+    transform: translateX(4px);
+}
+
+.card:hover .card-text {
+    color: var(--neutral-800);
 }
 
 .card-header {
@@ -6142,6 +6180,279 @@ input:hover, select:hover, textarea:hover {
     text-align: center;
     font-size: var(--font-size-sm);
     font-weight: 500;
+}
+
+/* ========================================
+   SMOOTH INTERACTIONS & MICRO-ANIMATIONS
+   ======================================== */
+
+/* Smooth Section Transitions */
+.section-fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+}
+
+.section-fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.section-slide-in {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: all 0.5s ease-out;
+}
+
+.section-slide-in.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Enhanced Article Cards with Micro-Animations */
+.article-item,
+.news-item {
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    padding: var(--space-6);
+    margin-bottom: var(--space-6);
+    border: 1px solid var(--neutral-200);
+    transition: all var(--transition-normal);
+    position: relative;
+    overflow: hidden;
+}
+
+.article-item::before,
+.news-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(30, 58, 138, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.article-item:hover,
+.news-item:hover {
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-6px) scale(1.02);
+    border-color: var(--primary-navy);
+}
+
+.article-item:hover::before,
+.news-item:hover::before {
+    left: 100%;
+}
+
+.article-item h3,
+.news-item h3 {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    color: var(--primary-navy);
+    margin-bottom: var(--space-4);
+    line-height: var(--line-height-tight);
+    transition: all var(--transition-fast);
+}
+
+.article-item:hover h3,
+.news-item:hover h3 {
+    transform: translateX(8px);
+    color: var(--primary-navy-light);
+}
+
+.article-item h3 a,
+.news-item h3 a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.article-item h3 a:hover,
+.news-item h3 a:hover {
+    color: var(--primary-gold);
+}
+
+/* Skeleton Loading Animations */
+.skeleton {
+    background: linear-gradient(90deg, var(--neutral-200) 25%, var(--neutral-100) 50%, var(--neutral-200) 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+    border-radius: var(--radius-md);
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.skeleton-text {
+    height: 1rem;
+    margin-bottom: var(--space-2);
+    border-radius: var(--radius-sm);
+}
+
+.skeleton-title {
+    height: 1.5rem;
+    width: 60%;
+    margin-bottom: var(--space-4);
+    border-radius: var(--radius-sm);
+}
+
+.skeleton-image {
+    height: 200px;
+    width: 100%;
+    margin-bottom: var(--space-4);
+    border-radius: var(--radius-md);
+}
+
+.skeleton-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    margin-bottom: var(--space-6);
+    border: 1px solid var(--neutral-200);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Enhanced Filter Links with Micro-Animations */
+.filter-link {
+    display: inline-block;
+    padding: var(--space-2) var(--space-4);
+    margin: var(--space-1);
+    border: 2px solid var(--neutral-300);
+    border-radius: var(--radius-md);
+    background: white;
+    color: var(--neutral-600);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    transition: all var(--transition-fast);
+    min-height: 44px;
+    line-height: 1.2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.filter-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(30, 58, 138, 0.1), transparent);
+    transition: left 0.4s ease;
+}
+
+.filter-link:hover {
+    border-color: var(--primary-navy);
+    color: var(--primary-navy);
+    background: var(--neutral-50);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: var(--shadow-md);
+}
+
+.filter-link:hover::before {
+    left: 100%;
+}
+
+.filter-link.active {
+    background-color: var(--primary-navy);
+    color: white;
+    border-color: var(--primary-navy);
+    box-shadow: var(--shadow-md);
+    transform: scale(1.05);
+}
+
+.filter-link.active:hover {
+    background-color: var(--primary-navy-light);
+    border-color: var(--primary-navy-light);
+    transform: scale(1.08);
+}
+
+/* Smooth Scroll Behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Enhanced Navigation Animations */
+.main-nav a {
+    color: var(--primary-navy);
+    font-weight: 500;
+    transition: all var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+}
+
+.main-nav a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-gold);
+    transition: width var(--transition-normal);
+}
+
+.main-nav a:hover {
+    color: var(--primary-gold);
+    transform: translateY(-2px);
+}
+
+.main-nav a:hover::before {
+    width: 100%;
+}
+
+/* Loading States */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+    transition: opacity var(--transition-fast);
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid var(--neutral-300);
+    border-top: 2px solid var(--primary-navy);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Enhanced Image Loading */
+img {
+    transition: opacity var(--transition-normal);
+}
+
+img[loading="lazy"] {
+    opacity: 0;
+}
+
+img[loading="lazy"].loaded {
+    opacity: 1;
 }
 
 /* Ensure all containers are responsive */

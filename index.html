@@ -5249,6 +5249,140 @@
                 loadNews();
             });
         });
+
+        // ========================================
+        // SMOOTH INTERACTIONS & MICRO-ANIMATIONS
+        // ========================================
+
+        // Smooth Section Transitions on Scroll
+        function initScrollAnimations() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, observerOptions);
+
+            // Add fade-in animation to sections
+            document.querySelectorAll('section, .article-item, .news-item, .card').forEach(el => {
+                el.classList.add('section-fade-in');
+                observer.observe(el);
+            });
+        }
+
+        // Enhanced Skeleton Loading
+        function createSkeletonLoader(container, type = 'card') {
+            const skeleton = document.createElement('div');
+            skeleton.className = `skeleton-card skeleton-${type}`;
+            
+            if (type === 'card') {
+                skeleton.innerHTML = `
+                    <div class="skeleton skeleton-title"></div>
+                    <div class="skeleton skeleton-text"></div>
+                    <div class="skeleton skeleton-text"></div>
+                    <div class="skeleton skeleton-text" style="width: 40%;"></div>
+                `;
+            } else if (type === 'image') {
+                skeleton.innerHTML = `<div class="skeleton skeleton-image"></div>`;
+            }
+            
+            container.appendChild(skeleton);
+            return skeleton;
+        }
+
+        // Enhanced Image Loading with Skeleton
+        function enhanceImageLoading() {
+            const images = document.querySelectorAll('img[loading="lazy"]');
+            
+            images.forEach(img => {
+                const container = img.parentElement;
+                const skeleton = createSkeletonLoader(container, 'image');
+                
+                img.addEventListener('load', function() {
+                    this.classList.add('loaded');
+                    skeleton.remove();
+                });
+                
+                img.addEventListener('error', function() {
+                    skeleton.remove();
+                    this.style.display = 'none';
+                });
+            });
+        }
+
+        // Micro-interactions for Cards
+        function addCardMicroInteractions() {
+            document.querySelectorAll('.card, .article-item, .news-item').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-6px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        }
+
+        // Enhanced Button Interactions
+        function addButtonMicroInteractions() {
+            document.querySelectorAll('.btn, .filter-link').forEach(button => {
+                button.addEventListener('mousedown', function() {
+                    this.style.transform = 'scale(0.98)';
+                });
+                
+                button.addEventListener('mouseup', function() {
+                    this.style.transform = 'scale(1)';
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
+        }
+
+        // Smooth Page Transitions
+        function addSmoothTransitions() {
+            // Add transition classes to main content
+            document.querySelectorAll('.content-wrapper > div').forEach((section, index) => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = `all 0.6s ease-out ${index * 0.1}s`;
+                
+                setTimeout(() => {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }, 100);
+            });
+        }
+
+        // Initialize all animations
+        document.addEventListener('DOMContentLoaded', function() {
+            initScrollAnimations();
+            enhanceImageLoading();
+            addCardMicroInteractions();
+            addButtonMicroInteractions();
+            addSmoothTransitions();
+
+            // Performance optimization: Reduce animations on low-end devices
+            if (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) {
+                document.documentElement.style.setProperty('--transition-fast', '0ms');
+                document.documentElement.style.setProperty('--transition-normal', '0ms');
+                document.documentElement.style.setProperty('--transition-slow', '0ms');
+            }
+
+            // Respect user's motion preferences
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.documentElement.style.setProperty('--transition-fast', '0ms');
+                document.documentElement.style.setProperty('--transition-normal', '0ms');
+                document.documentElement.style.setProperty('--transition-slow', '0ms');
+            }
+        });
     </script>
 </body>
 </html>
