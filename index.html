@@ -4,12 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Graham and Doddsville - Premier source of value investing information in Australia. Educational resources, articles, and insights for intelligent stock market investing.">
+    <meta name="keywords" content="value investing, Graham and Doddsville, Warren Buffett, Charlie Munger, Benjamin Graham, stock market education, investment analysis, financial education Australia">
+    <meta name="author" content="Graham and Doddsville Pty Ltd">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Graham and Doddsville - Value Investing Education Australia">
+    <meta property="og:description" content="Premier source of value investing information in Australia. Educational resources, articles, and insights for intelligent stock market investing.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://grahamanddoddsville.com.au">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Graham and Doddsville - Value Investing Education Australia">
+    <meta name="twitter:description" content="Premier source of value investing information in Australia. Educational resources, articles, and insights for intelligent stock market investing.">
     <title>Graham and Doddsville - Value Investing Education Australia</title>
     <link rel="stylesheet" href="styles.css?v=5.1&t=20241223">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Georgia,serif&family=Arial,sans-serif&display=swap" rel="stylesheet">
     <script src="js/dropdown-position.js" defer></script>
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Graham and Doddsville",
+        "url": "https://grahamanddoddsville.com.au",
+        "logo": "https://grahamanddoddsville.com.au/logo.png",
+        "description": "Premier source of value investing information in Australia. Educational resources, articles, and insights for intelligent stock market investing.",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Level 19, 10 Eagle Street",
+            "addressLocality": "Brisbane",
+            "addressRegion": "Queensland",
+            "postalCode": "4000",
+            "addressCountry": "AU"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+61-7-3303-0843",
+            "contactType": "customer service",
+            "email": "info@grahamanddoddsville.com.au"
+        },
+        "sameAs": [
+            "https://www.facebook.com/grahamanddoddsville",
+            "https://www.twitter.com/grahamdoddsville"
+        ]
+    }
+    </script>
 </head>
 <body>
     <!-- Skip to content link for accessibility -->
@@ -24,12 +65,12 @@
                 </div>
                 <nav class="main-nav" role="navigation" aria-label="Main navigation">
                     <ul>
-                        <li><a href="#news">NEWS</a></li>
-                        <li><a href="#articles">ARTICLES</a></li>
-                        <li><a href="#videos">VIDEOS</a></li>
-                        <li><a href="#" onclick="showAdvertisePage()">ADVERTISE</a></li>
-                        <li><a href="#" onclick="showAboutPage()">ABOUT</a></li>
-                        <li><a href="#" onclick="showContactPage()">CONTACT</a></li>
+                        <li><a href="#news" class="nav-link">NEWS</a></li>
+                        <li><a href="#articles" class="nav-link">ARTICLES</a></li>
+                        <li><a href="#videos" class="nav-link">VIDEOS</a></li>
+                        <li><a href="#" onclick="showAdvertisePage()" class="nav-link">ADVERTISE</a></li>
+                        <li><a href="#" onclick="showAboutPage()" class="nav-link">ABOUT</a></li>
+                        <li><a href="#" onclick="showContactPage()" class="nav-link">CONTACT</a></li>
                     </ul>
                 </nav>
                 
@@ -1447,12 +1488,14 @@
 
     <!-- Main Content -->
     <main id="main-content" class="main-content" role="main">
+        <!-- Back to Top Button -->
+        <button id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">↑</button>
         <div class="container">
             <div class="content-wrapper">
                 <!-- Left Column - Latest News -->
                 <div class="left-column">
                     <!-- Latest News Section -->
-                    <section class="latest-news" id="home">
+                    <section class="latest-news" id="news">
                         <h2>###### LATEST NEWS</h2>
                         <div class="news-filters">
                             <span class="filter-label">Filter by:</span>
@@ -1542,7 +1585,7 @@
                 <!-- Center Column - Feature Articles -->
                 <div class="center-column">
                     <!-- Feature Articles -->
-                    <section class="feature-articles">
+                    <section id="articles" class="feature-articles">
                         <h2>###### FEATURE ARTICLES</h2>
                         <div class="article-filters">
                             <span class="filter-label">Filter by:</span>
@@ -2689,7 +2732,7 @@
             <!-- Full Width Sections -->
             <div class="full-width-sections">
                 <!-- Educational Videos -->
-                    <section class="educational-videos">
+                    <section id="videos" class="educational-videos">
                         <h2>###### EDUCATIONAL VIDEOS</h2>
                         <div class="video-filters">
                             <div class="filter-group">
@@ -2733,7 +2776,7 @@
                             <div class="featured-video" data-investor="warren-buffett" data-topic="value-investing" data-period="recent">
                                 <div class="video-thumbnail large" onclick="openVideoModal('warren-buffett-crash-warning')">
                                     <div class="play-button">▶</div>
-                                    <img src="https://img.youtube.com/vi/2MHIcabnjrA/maxresdefault.jpg" alt="Warren Buffett Warns About Stock Market Crash">
+                                    <img src="https://img.youtube.com/vi/2MHIcabnjrA/maxresdefault.jpg" alt="Warren Buffett Warns About Stock Market Crash" loading="lazy">
                                     <div class="video-overlay">
                                         <span class="views">1.2M views</span>
                                     </div>
@@ -2748,7 +2791,7 @@
                                 <div class="video-item" data-investor="benjamin-graham" data-topic="market-analysis" data-period="recent">
                                     <div class="video-thumbnail" onclick="openVideoModal('benjamin-graham-analysis')">
                                         <div class="play-button">▶</div>
-                                        <img src="https://img.youtube.com/vi/S7Vdz7e0Iro/mqdefault.jpg" alt="Benjamin Graham Security Analysis">
+                                        <img src="https://img.youtube.com/vi/S7Vdz7e0Iro/mqdefault.jpg" alt="Benjamin Graham Security Analysis" loading="lazy">
                                         <div class="video-overlay">
                                             <span class="views">245K views</span>
                                         </div>
@@ -3655,6 +3698,116 @@
             const nav = document.querySelector('.main-nav');
             nav.classList.toggle('active');
         });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-link[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    
+                    // Close mobile menu if open
+                    const nav = document.querySelector('.main-nav');
+                    nav.classList.remove('active');
+                }
+            });
+        });
+
+        // Back to top functionality
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        // Show/hide back to top button based on scroll position
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+
+        // Back to top button click handler
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Keyboard navigation support
+        document.addEventListener('keydown', function(e) {
+            // ESC key closes mobile menu
+            if (e.key === 'Escape') {
+                const nav = document.querySelector('.main-nav');
+                nav.classList.remove('active');
+            }
+            
+            // Tab navigation for dropdowns
+            if (e.key === 'Tab') {
+                const focusedElement = document.activeElement;
+                if (focusedElement.classList.contains('mega-menu-item')) {
+                    const dropdown = focusedElement.querySelector('.mega-menu, .dropdown-menu');
+                    if (dropdown) {
+                        dropdown.style.display = 'block';
+                    }
+                }
+            }
+        });
+
+        // ARIA live region for dynamic content updates
+        const liveRegion = document.createElement('div');
+        liveRegion.setAttribute('aria-live', 'polite');
+        liveRegion.setAttribute('aria-atomic', 'true');
+        liveRegion.className = 'sr-only';
+        document.body.appendChild(liveRegion);
+
+        // Announce filter changes to screen readers
+        function announceFilterChange(filterName) {
+            liveRegion.textContent = `Filter changed to ${filterName}`;
+            setTimeout(() => {
+                liveRegion.textContent = '';
+            }, 1000);
+        }
+
+        // Performance optimizations
+        // Lazy loading for images
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                            observer.unobserve(img);
+                        }
+                    }
+                });
+            });
+
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+
+        // Preload critical resources
+        const preloadLink = document.createElement('link');
+        preloadLink.rel = 'preload';
+        preloadLink.href = 'styles.css';
+        preloadLink.as = 'style';
+        document.head.appendChild(preloadLink);
+
+        // Service Worker registration for caching
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(registration => console.log('SW registered'))
+                .catch(error => console.log('SW registration failed'));
+        }
 
         // Article filter functionality
         document.addEventListener('DOMContentLoaded', function() {

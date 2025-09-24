@@ -13,6 +13,24 @@ const NEWS_API_KEY = '6d122bb10581490591ee20ade119ec27';
 app.use(cors());
 app.use(express.json());
 
+// Performance optimization middleware
+app.use((req, res, next) => {
+    // Set caching headers for static assets
+    if (req.url.match(/\.(css|js|png|jpg|jpeg|gif|ico|svg)$/)) {
+        res.setHeader('Cache-Control', 'public, max-age=31536000'); // 1 year
+        res.setHeader('Expires', new Date(Date.now() + 31536000000).toUTCString());
+    } else if (req.url.match(/\.(html)$/)) {
+        res.setHeader('Cache-Control', 'public, max-age=3600'); // 1 hour
+    } else {
+        res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+    }
+    
+    // Enable compression
+    res.setHeader('Vary', 'Accept-Encoding');
+    
+    next();
+});
+
 // RSS Feed Parser Function
 async function parseRSSFeed(url, sourceName) {
     try {
