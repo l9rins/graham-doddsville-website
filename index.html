@@ -3794,9 +3794,9 @@
         // Show/hide back to top button based on scroll position
         window.addEventListener('scroll', function() {
             if (window.pageYOffset > 300) {
-                backToTopButton.style.display = 'block';
+                backToTopButton.classList.add('show');
             } else {
-                backToTopButton.style.display = 'none';
+                backToTopButton.classList.remove('show');
             }
         });
 

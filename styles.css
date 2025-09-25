@@ -5104,6 +5104,14 @@ input:focus, textarea:focus, select:focus {
     z-index: 1000;
     transition: all 0.3s ease;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    /* Center the arrow properly */
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.back-to-top.show {
+    display: flex;
 }
 
 /* Mobile back-to-top positioning */
