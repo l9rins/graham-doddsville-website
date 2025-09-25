@@ -5124,6 +5124,23 @@ input:focus, textarea:focus, select:focus {
         font-size: 18px;
     }
     
+    /* Improve touch interactions */
+    .filter-link,
+    .btn,
+    .mobile-menu-toggle {
+        min-height: 44px;
+        min-width: 44px;
+        touch-action: manipulation;
+    }
+    
+    /* Prevent zoom on input focus */
+    input,
+    select,
+    textarea {
+        font-size: 16px;
+    }
+}
+    
     /* Add bottom padding to content to prevent overlap */
     .main-content {
         padding-bottom: 100px;
@@ -6453,6 +6470,8 @@ html {
 /* Enhanced Image Loading */
 img {
     transition: opacity var(--transition-normal);
+    max-width: 100%;
+    height: auto;
 }
 
 img[loading="lazy"] {
@@ -6461,6 +6480,27 @@ img[loading="lazy"] {
 
 img[loading="lazy"].loaded {
     opacity: 1;
+}
+
+/* Performance optimizations */
+* {
+    box-sizing: border-box;
+}
+
+/* Reduce repaints and reflows */
+.article-item,
+.news-item,
+.card {
+    contain: layout style paint;
+}
+
+/* Optimize animations for better performance */
+@media (prefers-reduced-motion: no-preference) {
+    .card:hover,
+    .article-item:hover,
+    .news-item:hover {
+        will-change: transform, box-shadow;
+    }
 }
 
 /* Ensure all containers are responsive */
