@@ -4425,6 +4425,7 @@
         }
         
         function updateMobileNewsDisplay(articles) {
+            console.log('updateMobileNewsDisplay called with:', articles);
             if (articles) {
                 // Group articles by category
                 const categories = {
@@ -4443,11 +4444,14 @@
                     }
                 });
                 
+                console.log('Grouped categories:', categories);
+                
                 // Populate each category section with mobile-specific HTML structure
                 Object.keys(categories).forEach(category => {
                     const container = document.querySelector(`#${category}-news`);
+                    console.log(`Looking for container #${category}-news:`, container);
                     if (container) {
-                        container.innerHTML = categories[category].slice(0, 5).map(article => `
+                        const html = categories[category].slice(0, 5).map(article => `
                             <a href="${article.url}" class="news-item-mobile" target="_blank" rel="noopener noreferrer">
                                 <span class="news-bullet">-</span>
                                 <div class="news-content">
@@ -4456,8 +4460,14 @@
                                 </div>
                             </a>
                         `).join('');
+                        container.innerHTML = html;
+                        console.log(`Updated ${category} container with ${categories[category].length} items`);
+                    } else {
+                        console.log(`Container #${category}-news not found!`);
                     }
                 });
+            } else {
+                console.log('No articles provided to updateMobileNewsDisplay');
             }
         }
 
