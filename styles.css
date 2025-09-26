@@ -7225,6 +7225,7 @@ th {
 .buffett-list-mobile {
     margin: 0;
     padding: 0;
+    text-align: left;
 }
 
 .news-item-mobile,
@@ -7233,9 +7234,10 @@ th {
 .buffett-item-mobile {
     display: flex;
     align-items: flex-start;
-    padding: 16px 0;
+    padding: 12px 0;
     border-bottom: 1px solid #f0f0f0;
     line-height: 1.6;
+    margin: 0;
 }
 
 .news-item-mobile:last-child,
@@ -7252,6 +7254,9 @@ th {
 .news-content {
     flex: 1;
     margin-left: 0; /* No extra indentation needed without bullets */
+    padding-left: 0;
+    width: 100%;
+    text-align: left;
 }
 
 .news-headline {
@@ -7319,9 +7324,8 @@ th {
     font-weight: 600;
     color: #333;
     margin: 0 0 12px 0;
-    padding-left: 4px; /* Align with section headers */
+    padding-left: 8px; /* Align with section headers */
     border-left: 3px solid #1e3a8a;
-    padding-left: 8px;
 }
 
 /* Article filters for Feature Articles */
