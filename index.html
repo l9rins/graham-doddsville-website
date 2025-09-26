@@ -1553,10 +1553,30 @@
         </div>
     </div>
 
+    <!-- Mobile Newspaper Filter Tabs (Mobile Only) -->
+    <div class="newspaper-filters mobile-only">
+        <div class="filter-tabs">
+            <button class="filter-tab active" data-filter="all">All</button>
+            <button class="filter-tab" data-filter="companies">Companies</button>
+            <button class="filter-tab" data-filter="markets">Markets</button>
+            <button class="filter-tab" data-filter="economy">Economy</button>
+            <button class="filter-tab" data-filter="industry">Industry</button>
+        </div>
+    </div>
+
     <!-- Main Content -->
     <main id="main-content" class="main-content" role="main">
         <!-- Back to Top Button -->
         <button id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">↑</button>
+        
+        <!-- Mobile Newspaper News Feed (Mobile Only) -->
+        <div class="newspaper-news-feed mobile-only">
+            <h2 class="news-section-title">Latest News</h2>
+            <div id="mobileNewsContainer" class="news-feed-container">
+                <!-- Mobile news items will be loaded here -->
+            </div>
+        </div>
+        
         <div class="container">
             <div class="content-wrapper grid grid-cols-12">
                 <!-- Left Column - Latest News -->
@@ -3679,7 +3699,82 @@
             
             // Initialize lazy loading
             initializeLazyLoading();
+            
+            // Initialize mobile newspaper functionality
+            initializeMobileNewspaper();
         });
+        
+        // Mobile newspaper functionality
+        function initializeMobileNewspaper() {
+            // Only initialize on mobile
+            if (window.innerWidth <= 767) {
+                // Initialize filter tabs
+                initializeMobileFilterTabs();
+                
+                // Load mobile news content
+                loadMobileNewsContent();
+            }
+        }
+        
+        function initializeMobileFilterTabs() {
+            const filterTabs = document.querySelectorAll('.filter-tab');
+            
+            filterTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active from all tabs
+                    filterTabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active to clicked tab
+                    this.classList.add('active');
+                    
+                    // Filter news by category
+                    const filter = this.getAttribute('data-filter');
+                    filterMobileNewsByCategory(filter);
+                });
+            });
+        }
+        
+        function filterMobileNewsByCategory(category) {
+            const newsItems = document.querySelectorAll('.news-item');
+            
+            newsItems.forEach(item => {
+                if (category === 'all') {
+                    item.style.display = 'block';
+                } else {
+                    const itemCategory = item.getAttribute('data-category');
+                    if (itemCategory === category) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                }
+            });
+        }
+        
+        function loadMobileNewsContent() {
+            fetch('/api/news')
+                .then(response => response.json())
+                .then(data => {
+                    updateMobileNewsDisplay(data.articles);
+                })
+                .catch(error => {
+                    console.error('Error loading mobile news:', error);
+                });
+        }
+        
+        function updateMobileNewsDisplay(articles) {
+            const mobileNewsContainer = document.querySelector('#mobileNewsContainer');
+            if (mobileNewsContainer && articles) {
+                // Update mobile news display with newspaper-style layout
+                mobileNewsContainer.innerHTML = articles.slice(0, 10).map(article => `
+                    <a href="${article.url}" class="news-item" data-category="${article.category ? article.category.toLowerCase() : 'general'}" target="_blank">
+                        <h3 class="news-headline">${article.title}</h3>
+                        <p class="news-meta">${article.source} • ${new Date(article.publishedAt).toLocaleDateString()}</p>
+                        <p class="news-excerpt">${article.excerpt || article.description || ''}</p>
+                    </a>
+                `).join('');
+            }
+        }
 
         // Lazy loading implementation
         function initializeLazyLoading() {
