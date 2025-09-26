@@ -4444,12 +4444,13 @@
         };
 
         function loadMobileNewsContent() {
+            console.log('loadMobileNewsContent called');
             // Show loading states immediately
             showMobileLoadingStates();
             
             // Check preloaded data first (fastest)
             if (window.preloadedNews && window.preloadedNews.length > 0) {
-                console.log('Loading news from preloaded data');
+                console.log('Loading mobile news from preloaded data:', window.preloadedNews.length, 'articles');
                 updateMobileNewsDisplay(window.preloadedNews);
                 return;
             }
@@ -4582,6 +4583,7 @@
                 
                 Object.keys(categories).forEach(category => {
                     const container = document.querySelector(`#${category}-news`);
+                    console.log(`Looking for mobile container #${category}-news:`, container);
                     if (container) {
                         const articles = categories[category].slice(0, 5);
                         const html = articles.map(article => `
@@ -4597,7 +4599,7 @@
                         updates.push({ container, html });
                         console.log(`Prepared ${category} container with ${articles.length} items`);
                     } else {
-                        console.log(`Container #${category}-news not found!`);
+                        console.log(`Mobile container #${category}-news not found!`);
                     }
                 });
                 
