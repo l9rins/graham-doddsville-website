@@ -37,16 +37,30 @@
             const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
             const apiUrl = isLocalhost ? 'http://localhost:3001/api/news' : 'https://l9rins.github.io/graham-doddsville-website/api/news';
             
+            console.log('Preloading news from API:', apiUrl);
+            
             // Preload news data in background
             fetch(apiUrl, { 
-                cache: 'force-cache',
-                priority: 'high'
-            }).then(response => response.json()).then(data => {
-                // Store in global cache for instant access
-                window.preloadedNews = data.articles;
-                console.log('News preloaded successfully');
+                cache: 'no-cache', // Don't use cache for real news
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            }).then(response => {
+                console.log('Preload API Response status:', response.status);
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                return response.json();
+            }).then(data => {
+                console.log('Preload API Response data:', data);
+                if (data && data.articles && data.articles.length > 0) {
+                    // Store in global cache for instant access
+                    window.preloadedNews = data.articles;
+                    console.log('Real news preloaded successfully:', data.articles.length, 'articles');
+                } else {
+                    console.log('Preload API returned empty data');
+                }
             }).catch(error => {
-                console.log('News preload failed, will use fallback');
+                console.log('News preload failed:', error);
             });
         })();
     </script>
@@ -4440,28 +4454,43 @@
             const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
             const apiUrl = isLocalhost ? 'http://localhost:3001/api/news' : 'https://l9rins.github.io/graham-doddsville-website/api/news';
             
-            // Use AbortController for timeout
+            console.log('Fetching real news from API:', apiUrl);
+            
+            // Use AbortController for timeout - increased to 5 seconds for real API
             const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 2000); // 2 second timeout
+            const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout for real API
             
             fetch(apiUrl, { 
                 signal: controller.signal,
-                cache: 'force-cache' // Use browser cache
+                cache: 'no-cache', // Don't use cache for real news
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
             })
                 .then(response => {
                     clearTimeout(timeoutId);
+                    console.log('API Response status:', response.status);
                     if (!response.ok) throw new Error(`HTTP ${response.status}`);
                     return response.json();
                 })
                 .then(data => {
-                    // Cache the data
-                    newsCache.data = data.articles;
-                    newsCache.timestamp = Date.now();
-                    updateMobileNewsDisplay(data.articles);
+                    console.log('API Response data:', data);
+                    if (data && data.articles && data.articles.length > 0) {
+                        // Cache the real data
+                        newsCache.data = data.articles;
+                        newsCache.timestamp = Date.now();
+                        updateMobileNewsDisplay(data.articles);
+                        console.log('Real news loaded successfully:', data.articles.length, 'articles');
+                    } else {
+                        console.log('API returned empty data, using fallback');
+                        showFallbackMobileNews();
+                    }
                 })
                 .catch(error => {
                     clearTimeout(timeoutId);
                     console.error('Error loading mobile news:', error);
+                    console.log('Falling back to static news');
                     // Fallback: show static news items
                     showFallbackMobileNews();
                 });
