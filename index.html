@@ -4298,6 +4298,9 @@
             // Initialize lazy loading
             initializeLazyLoading();
             
+            // Load mobile news content
+            loadMobileNewsContent();
+            
         // Initialize mobile newspaper functionality
         initializeMobileNewspaper();
         
@@ -4429,15 +4432,18 @@
                     }
                 });
                 
-                // Populate each category section
+                // Populate each category section with mobile-specific HTML structure
                 Object.keys(categories).forEach(category => {
                     const container = document.querySelector(`#${category}-news`);
                     if (container) {
                         container.innerHTML = categories[category].slice(0, 5).map(article => `
-                            <a href="${article.url}" class="news-item" target="_blank">
-                                <div class="news-title">${article.title}</div>
-                                <div class="news-source">${article.source}</div>
-                            </a>
+                            <div class="news-item-mobile">
+                                <span class="news-bullet">-</span>
+                                <div class="news-content">
+                                    <h3 class="news-headline">${article.title}</h3>
+                                    <span class="news-source">(${article.source})</span>
+                                </div>
+                            </div>
                         `).join('');
                     }
                 });
