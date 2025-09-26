@@ -724,7 +724,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // You can set the API URL here if you have a backend deployed
         // const apiUrl = 'https://your-api-domain.com';
-        const apiUrl = 'http://localhost:3000/api'; // Backend API URL
+        const apiUrl = 'http://localhost:3001/api'; // Backend API URL
         
         newsDisplayManager = new NewsDisplayManager();
         newsDisplayManager.scraper = new AustralianNewsScraper(apiUrl);
