@@ -729,6 +729,10 @@ document.addEventListener('DOMContentLoaded', () => {
         
         newsDisplayManager = new NewsDisplayManager();
         newsDisplayManager.scraper = new AustralianNewsScraper(apiUrl);
+        
+        // Make newsDisplayManager globally accessible for mobile
+        window.newsDisplayManager = newsDisplayManager;
+        
         newsDisplayManager.initialize();
         
         console.log('News display initialized successfully');

@@ -4332,8 +4332,10 @@
             // Initialize lazy loading
             initializeLazyLoading();
             
-            // Load mobile news content
-            loadMobileNewsContent();
+            // Load mobile news content with a small delay to ensure desktop news loads first
+            setTimeout(() => {
+                loadMobileNewsContent();
+            }, 100);
             
         // Initialize mobile newspaper functionality
         initializeMobileNewspaper();
@@ -4448,7 +4450,23 @@
             // Show loading states immediately
             showMobileLoadingStates();
             
-            // Check preloaded data first (fastest)
+            // Check if desktop news is already loaded and use that data
+            if (window.newsDisplayManager && window.newsDisplayManager.allNews && window.newsDisplayManager.allNews.length > 0) {
+                console.log('Loading mobile news from desktop data:', window.newsDisplayManager.allNews.length, 'articles');
+                updateMobileNewsDisplay(window.newsDisplayManager.allNews);
+                return;
+            }
+            
+            // If desktop news is still loading, wait a bit and try again
+            if (window.newsDisplayManager && !window.newsDisplayManager.allNews) {
+                console.log('Desktop news still loading, waiting...');
+                setTimeout(() => {
+                    loadMobileNewsContent();
+                }, 500);
+                return;
+            }
+            
+            // Check preloaded data second
             if (window.preloadedNews && window.preloadedNews.length > 0) {
                 console.log('Loading mobile news from preloaded data:', window.preloadedNews.length, 'articles');
                 updateMobileNewsDisplay(window.preloadedNews);
