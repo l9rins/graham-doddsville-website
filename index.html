@@ -29,6 +29,27 @@
     <link rel="preconnect" href="https://images.unsplash.com">
     <link rel="preconnect" href="https://img.youtube.com">
     <link rel="dns-prefetch" href="https://www.skynews.com.au">
+    
+    <!-- Preload critical news data -->
+    <script>
+        // Start loading news immediately when page starts loading
+        (function() {
+            const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+            const apiUrl = isLocalhost ? 'http://localhost:3001/api/news' : 'https://l9rins.github.io/graham-doddsville-website/api/news';
+            
+            // Preload news data in background
+            fetch(apiUrl, { 
+                cache: 'force-cache',
+                priority: 'high'
+            }).then(response => response.json()).then(data => {
+                // Store in global cache for instant access
+                window.preloadedNews = data.articles;
+                console.log('News preloaded successfully');
+            }).catch(error => {
+                console.log('News preload failed, will use fallback');
+            });
+        })();
+    </script>
     <link rel="dns-prefetch" href="https://www.smh.com.au">
     <link rel="dns-prefetch" href="https://www.afr.com">
     
@@ -4389,21 +4410,78 @@
             });
         }
         
+        // News caching system for instant loading
+        let newsCache = {
+            data: null,
+            timestamp: null,
+            maxAge: 5 * 60 * 1000 // 5 minutes cache
+        };
+
         function loadMobileNewsContent() {
+            // Show loading states immediately
+            showMobileLoadingStates();
+            
+            // Check preloaded data first (fastest)
+            if (window.preloadedNews && window.preloadedNews.length > 0) {
+                console.log('Loading news from preloaded data');
+                updateMobileNewsDisplay(window.preloadedNews);
+                return;
+            }
+            
+            // Check cache second
+            if (newsCache.data && newsCache.timestamp && 
+                (Date.now() - newsCache.timestamp) < newsCache.maxAge) {
+                console.log('Loading news from cache');
+                updateMobileNewsDisplay(newsCache.data);
+                return;
+            }
+            
             // Try to detect if we're on localhost or production
             const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
             const apiUrl = isLocalhost ? 'http://localhost:3001/api/news' : 'https://l9rins.github.io/graham-doddsville-website/api/news';
             
-            fetch(apiUrl)
-                .then(response => response.json())
+            // Use AbortController for timeout
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 2000); // 2 second timeout
+            
+            fetch(apiUrl, { 
+                signal: controller.signal,
+                cache: 'force-cache' // Use browser cache
+            })
+                .then(response => {
+                    clearTimeout(timeoutId);
+                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                    return response.json();
+                })
                 .then(data => {
+                    // Cache the data
+                    newsCache.data = data.articles;
+                    newsCache.timestamp = Date.now();
                     updateMobileNewsDisplay(data.articles);
                 })
                 .catch(error => {
+                    clearTimeout(timeoutId);
                     console.error('Error loading mobile news:', error);
                     // Fallback: show static news items
                     showFallbackMobileNews();
                 });
+        }
+        
+        function showMobileLoadingStates() {
+            // Show skeleton loading for each news category
+            const categories = ['companies', 'markets', 'economy', 'industry'];
+            categories.forEach(category => {
+                const container = document.querySelector(`#${category}-news`);
+                if (container) {
+                    container.innerHTML = `
+                        <div class="news-loading-skeleton">
+                            <div class="skeleton-line"></div>
+                            <div class="skeleton-line short"></div>
+                            <div class="skeleton-line"></div>
+                        </div>
+                    `;
+                }
+            });
         }
         
         function showFallbackMobileNews() {
@@ -4424,8 +4502,8 @@
         
         function updateMobileNewsDisplay(articles) {
             console.log('updateMobileNewsDisplay called with:', articles);
-            if (articles) {
-                // Group articles by category
+            if (articles && articles.length > 0) {
+                // Pre-allocate categories for better performance
                 const categories = {
                     companies: [],
                     markets: [],
@@ -4433,8 +4511,9 @@
                     industry: []
                 };
                 
+                // Optimized category assignment
                 articles.forEach(article => {
-                    const category = article.category ? article.category.toLowerCase() : 'general';
+                    const category = (article.category || 'general').toLowerCase();
                     if (categories[category]) {
                         categories[category].push(article);
                     } else {
@@ -4444,12 +4523,15 @@
                 
                 console.log('Grouped categories:', categories);
                 
-                // Populate each category section with mobile-specific HTML structure
+                // Batch DOM updates for better performance
+                const fragment = document.createDocumentFragment();
+                const updates = [];
+                
                 Object.keys(categories).forEach(category => {
                     const container = document.querySelector(`#${category}-news`);
-                    console.log(`Looking for container #${category}-news:`, container);
                     if (container) {
-                        const html = categories[category].slice(0, 5).map(article => `
+                        const articles = categories[category].slice(0, 5);
+                        const html = articles.map(article => `
                             <a href="${article.url}" class="news-item-mobile" target="_blank" rel="noopener noreferrer">
                                 <span class="news-bullet">-</span>
                                 <div class="news-content">
@@ -4458,14 +4540,24 @@
                                 </div>
                             </a>
                         `).join('');
-                        container.innerHTML = html;
-                        console.log(`Updated ${category} container with ${categories[category].length} items`);
+                        
+                        updates.push({ container, html });
+                        console.log(`Prepared ${category} container with ${articles.length} items`);
                     } else {
                         console.log(`Container #${category}-news not found!`);
                     }
                 });
+                
+                // Batch update all containers at once
+                updates.forEach(({ container, html }) => {
+                    container.innerHTML = html;
+                });
+                
+                console.log('All news containers updated successfully');
             } else {
                 console.log('No articles provided to updateMobileNewsDisplay');
+                // Show fallback content
+                showFallbackMobileNews();
             }
         }
 
