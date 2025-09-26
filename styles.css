@@ -7314,6 +7314,166 @@ th {
     text-decoration: none;
 }
 
+/* New Mobile Layout Styles */
+
+/* Sub-category styles */
+.sub-category {
+    margin-bottom: 20px;
+}
+
+.sub-category-title {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 12px 0;
+    padding-left: 4px; /* Align with section headers */
+    border-left: 3px solid #1e3a8a;
+    padding-left: 8px;
+}
+
+/* Article filters for Feature Articles */
+.article-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+    padding: 0 4px;
+}
+
+.article-filters .filter-pill {
+    background: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    color: #666;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.article-filters .filter-pill:hover {
+    background: #e9ecef;
+    border-color: #1e3a8a;
+    color: #1e3a8a;
+}
+
+.article-filters .filter-pill.active {
+    background: #1e3a8a;
+    border-color: #1e3a8a;
+    color: white;
+}
+
+/* Article slider */
+.article-slider {
+    position: relative;
+    overflow: hidden;
+}
+
+.article-slide {
+    display: none;
+}
+
+.article-slide.active {
+    display: block;
+}
+
+/* Event filters */
+.event-filters {
+    background: #f8f9fa;
+    padding: 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.filter-group {
+    margin-bottom: 16px;
+}
+
+.filter-group:last-child {
+    margin-bottom: 0;
+}
+
+.filter-group h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 8px 0;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    color: #666;
+    cursor: pointer;
+    margin: 0;
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-right: 6px;
+    accent-color: #1e3a8a;
+}
+
+.location-dropdown,
+.city-dropdown,
+.month-dropdown {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 14px;
+    background: white;
+    margin-bottom: 8px;
+}
+
+.location-dropdown:focus,
+.city-dropdown:focus,
+.month-dropdown:focus {
+    outline: none;
+    border-color: #1e3a8a;
+    box-shadow: 0 0 0 2px rgba(30, 58, 138, 0.1);
+}
+
+/* Quote items */
+.quote-item-mobile {
+    display: flex;
+    align-items: flex-start;
+    padding: 16px 0;
+    border-bottom: 1px solid #f0f0f0;
+    line-height: 1.6;
+}
+
+.quote-item-mobile:last-child {
+    border-bottom: none;
+}
+
+/* Value investing items */
+.value-item-mobile {
+    display: flex;
+    align-items: flex-start;
+    padding: 16px 0;
+    border-bottom: 1px solid #f0f0f0;
+    line-height: 1.6;
+}
+
+.value-item-mobile:last-child {
+    border-bottom: none;
+}
+
 /* Mobile newspaper news feed */
 @media (max-width: 767px) {
     .newspaper-news-feed {
