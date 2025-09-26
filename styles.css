@@ -4964,8 +4964,7 @@ input:focus, textarea:focus, select:focus {
     
     /* Mobile search adjustments */
     .header-search {
-        width: 100%;
-        margin-left: 0;
+        display: none !important; /* Hide search bar on mobile */
     }
     
     .global-search-input {
