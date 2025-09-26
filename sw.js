@@ -4,7 +4,7 @@ const urlsToCache = [
     '/',
     '/styles.css',
     '/index.html',
-    '/js/dropdown-position.js'
+    '/news-scraper.js'
 ];
 
 // Install event
@@ -12,7 +12,11 @@ self.addEventListener('install', event => {
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then(cache => {
-                return cache.addAll(urlsToCache);
+                return cache.addAll(urlsToCache.map(url => new Request(url, {cache: 'reload'})))
+                    .catch(error => {
+                        console.log('Cache addAll failed:', error);
+                        // Continue even if some files fail to cache
+                    });
             })
     );
 });

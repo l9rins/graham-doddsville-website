@@ -2863,7 +2863,7 @@
                             <div class="featured-video" data-investor="warren-buffett" data-topic="value-investing" data-period="recent">
                                 <div class="video-thumbnail large" onclick="openVideoModal('warren-buffett-crash-warning')">
                                     <div class="play-button" aria-label="Play video" title="Play video">▶</div>
-                                    <img src="https://img.youtube.com/vi/2MHIcabnjrA/maxresdefault.jpg" alt="Warren Buffett Warns About Stock Market Crash" loading="lazy">
+                                    <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Warren Buffett Warns About Stock Market Crash" loading="lazy">
                                     <div class="video-overlay">
                                         <span class="views">1.2M views</span>
                                     </div>
@@ -2878,7 +2878,7 @@
                                 <div class="video-item" data-investor="benjamin-graham" data-topic="market-analysis" data-period="recent">
                                     <div class="video-thumbnail" onclick="openVideoModal('benjamin-graham-analysis')">
                                         <div class="play-button" aria-label="Play video" title="Play video">▶</div>
-                                        <img src="https://img.youtube.com/vi/S7Vdz7e0Iro/mqdefault.jpg" alt="Benjamin Graham Security Analysis" loading="lazy">
+                                        <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Benjamin Graham Security Analysis" loading="lazy">
                                         <div class="video-overlay">
                                             <span class="views">245K views</span>
                                         </div>
@@ -2889,7 +2889,7 @@
                                 <div class="video-item" data-investor="charlie-munger" data-topic="portfolio-management" data-period="older">
                                     <div class="video-thumbnail" onclick="openVideoModal('charlie-munger-portfolio')">
                                         <div class="play-button" aria-label="Play video" title="Play video">▶</div>
-                                        <img src="https://img.youtube.com/vi/PVdyQs2UGl4/mqdefault.jpg" alt="Charlie Munger Portfolio">
+                                        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Charlie Munger Portfolio">
                                         <div class="video-overlay">
                                             <span class="views">180K views</span>
                                         </div>
@@ -2901,7 +2901,7 @@
                                 <div class="video-item" data-investor="peter-lynch" data-topic="risk-management" data-period="recent">
                                     <div class="video-thumbnail" onclick="openVideoModal('peter-lynch-risk')">
                                         <div class="play-button" aria-label="Play video" title="Play video">▶</div>
-                                        <img src="https://img.youtube.com/vi/72Pq5zKEi_s/mqdefault.jpg" alt="Peter Lynch Risk Management">
+                                        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Peter Lynch Risk Management">
                                         <div class="video-overlay">
                                             <span class="views">320K views</span>
                                         </div>
@@ -2913,7 +2913,7 @@
                                 <div class="video-item" data-investor="warren-buffett" data-topic="value-investing" data-period="recent">
                                     <div class="video-thumbnail" onclick="openVideoModal('warren-buffett-annual-meeting')">
                                         <div class="play-button" aria-label="Play video" title="Play video">▶</div>
-                                        <img src="https://img.youtube.com/vi/2MHIcabnjrA/mqdefault.jpg" alt="Warren Buffett Annual Meeting">
+                                        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Warren Buffett Annual Meeting">
                                         <div class="video-overlay">
                                             <span class="views">890K views</span>
                                         </div>
@@ -3977,12 +3977,7 @@
             });
         }
 
-        // Preload critical resources
-        const preloadLink = document.createElement('link');
-        preloadLink.rel = 'preload';
-        preloadLink.href = 'styles.css';
-        preloadLink.as = 'style';
-        document.head.appendChild(preloadLink);
+        // CSS is already linked in head, no need for additional preload
 
         // Service Worker registration for caching
         if ('serviceWorker' in navigator) {

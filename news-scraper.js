@@ -3,7 +3,7 @@
 // Updated: Fixed method name issue - v1.1
 
 class AustralianNewsScraper {
-    constructor(apiUrl = 'http://localhost:3000') {
+    constructor(apiUrl = 'http://localhost:3001') {
         this.apiUrl = apiUrl; // Backend API URL
         this.isLocalDevelopment = window.location.protocol === 'file:' || window.location.hostname === 'localhost' || window.location.hostname.includes('github.io');
         // Comprehensive list of Australian and International news sources
