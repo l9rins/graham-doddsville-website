@@ -134,6 +134,7 @@
             <div class="header-content">
                 <div class="logo">
                     <h1><span class="graham">Graham</span> <span class="and">&</span> <span class="doddsville">Doddsville</span></h1>
+                    <div class="tagline">The Value Investing Capital of the world.</div>
                 </div>
                 <nav class="main-nav" role="navigation" aria-label="Main navigation">
                     <ul>
@@ -1552,14 +1553,40 @@
         </div>
     </div>
 
-    <!-- Mobile Newspaper Filter Tabs (Mobile Only) -->
-    <div class="newspaper-filters mobile-only">
-        <div class="filter-tabs">
-            <button class="filter-tab active" data-filter="all">All</button>
-            <button class="filter-tab" data-filter="companies">Companies</button>
-            <button class="filter-tab" data-filter="markets">Markets</button>
-            <button class="filter-tab" data-filter="economy">Economy</button>
-            <button class="filter-tab" data-filter="industry">Industry</button>
+    <!-- Mobile Newspaper Categories (Mobile Only) -->
+    <div class="newspaper-categories mobile-only">
+        <h2 class="news-section-title">LATEST NEWS</h2>
+        
+        <!-- Companies Section -->
+        <div class="news-category-section">
+            <h3 class="category-heading">Companies</h3>
+            <div class="news-items" id="companies-news">
+                <!-- Companies news will be loaded here -->
+            </div>
+        </div>
+        
+        <!-- Markets Section -->
+        <div class="news-category-section">
+            <h3 class="category-heading">Markets</h3>
+            <div class="news-items" id="markets-news">
+                <!-- Markets news will be loaded here -->
+            </div>
+        </div>
+        
+        <!-- Economy Section -->
+        <div class="news-category-section">
+            <h3 class="category-heading">Economy</h3>
+            <div class="news-items" id="economy-news">
+                <!-- Economy news will be loaded here -->
+            </div>
+        </div>
+        
+        <!-- Industry Section -->
+        <div class="news-category-section">
+            <h3 class="category-heading">Industry</h3>
+            <div class="news-items" id="industry-news">
+                <!-- Industry news will be loaded here -->
+            </div>
         </div>
     </div>
 
@@ -1568,13 +1595,7 @@
         <!-- Back to Top Button -->
         <button id="back-to-top" class="back-to-top" aria-label="Back to top" title="Back to top">↑</button>
         
-        <!-- Mobile Newspaper News Feed (Mobile Only) -->
-        <div class="newspaper-news-feed mobile-only">
-            <h2 class="news-section-title">Latest News</h2>
-            <div id="mobileNewsContainer" class="news-feed-container">
-                <!-- Mobile news items will be loaded here -->
-            </div>
-        </div>
+        <!-- Mobile news feed removed - now using category sections above -->
         
         <div class="container">
             <div class="content-wrapper grid grid-cols-12">
@@ -3762,16 +3783,36 @@
         }
         
         function updateMobileNewsDisplay(articles) {
-            const mobileNewsContainer = document.querySelector('#mobileNewsContainer');
-            if (mobileNewsContainer && articles) {
-                // Update mobile news display with newspaper-style layout
-                mobileNewsContainer.innerHTML = articles.slice(0, 10).map(article => `
-                    <a href="${article.url}" class="news-item" data-category="${article.category ? article.category.toLowerCase() : 'general'}" target="_blank">
-                        <h3 class="news-headline">${article.title}</h3>
-                        <p class="news-meta">${article.source} • ${new Date(article.publishedAt).toLocaleDateString()}</p>
-                        <p class="news-excerpt">${article.excerpt || article.description || ''}</p>
-                    </a>
-                `).join('');
+            if (articles) {
+                // Group articles by category
+                const categories = {
+                    companies: [],
+                    markets: [],
+                    economy: [],
+                    industry: []
+                };
+                
+                articles.forEach(article => {
+                    const category = article.category ? article.category.toLowerCase() : 'general';
+                    if (categories[category]) {
+                        categories[category].push(article);
+                    } else {
+                        categories.companies.push(article); // Default to companies
+                    }
+                });
+                
+                // Populate each category section
+                Object.keys(categories).forEach(category => {
+                    const container = document.querySelector(`#${category}-news`);
+                    if (container) {
+                        container.innerHTML = categories[category].slice(0, 5).map(article => `
+                            <a href="${article.url}" class="news-item" target="_blank">
+                                <div class="news-title">${article.title}</div>
+                                <div class="news-source">${article.source}</div>
+                            </a>
+                        `).join('');
+                    }
+                });
             }
         }
 
