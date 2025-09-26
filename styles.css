@@ -7262,6 +7262,18 @@ th {
     margin: 0 0 0 20px; /* 20px indent from left border */
     line-height: 1.6; /* 1.6x font size */
     position: relative;
+    text-decoration: none;
+    color: inherit;
+    transition: background-color 0.2s ease;
+}
+
+.news-item-mobile:hover,
+.article-item-mobile:hover,
+.book-item-mobile:hover,
+.buffett-item-mobile:hover {
+    background-color: rgba(30, 58, 138, 0.05);
+    text-decoration: none;
+    color: inherit;
 }
 
 .news-item-mobile:last-child,

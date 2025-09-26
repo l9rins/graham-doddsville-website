@@ -4437,13 +4437,13 @@
                     const container = document.querySelector(`#${category}-news`);
                     if (container) {
                         container.innerHTML = categories[category].slice(0, 5).map(article => `
-                            <div class="news-item-mobile">
+                            <a href="${article.url}" class="news-item-mobile" target="_blank" rel="noopener noreferrer">
                                 <span class="news-bullet">-</span>
                                 <div class="news-content">
                                     <h3 class="news-headline">${article.title}</h3>
                                     <span class="news-source">(${article.source})</span>
                                 </div>
-                            </div>
+                            </a>
                         `).join('');
                     }
                 });
