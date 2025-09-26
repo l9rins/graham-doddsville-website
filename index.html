@@ -136,7 +136,8 @@
                     <h1><span class="graham">Graham</span> <span class="and">&</span> <span class="doddsville">Doddsville</span></h1>
                     <div class="tagline">The Value Investing Capital of the world.</div>
                 </div>
-                <nav class="main-nav" role="navigation" aria-label="Main navigation">
+                <!-- Desktop Navigation (hidden on mobile) -->
+                <nav class="main-nav desktop-only" role="navigation" aria-label="Main navigation">
                     <ul>
                         <li><a href="#news" class="nav-link">NEWS</a></li>
                         <li><a href="#articles" class="nav-link">ARTICLES</a></li>
@@ -148,12 +149,15 @@
                     </ul>
                 </nav>
                 
-                <div class="header-search" role="search">
+                <!-- Desktop Search (hidden on mobile) -->
+                <div class="header-search desktop-only" role="search">
                     <label for="global-search" class="sr-only">Search investments, articles, and more</label>
                     <input type="text" id="global-search" placeholder="Search investments, articles..." class="global-search-input" aria-label="Search investments, articles, and more">
                     <button class="search-btn" aria-label="Search" type="button" title="Search">🔍</button>
                 </div>
-                <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle navigation menu">
+                
+                <!-- Mobile Hamburger Menu -->
+                <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
@@ -161,6 +165,56 @@
             </div>
         </div>
     </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer">
+        <div class="drawer-header">
+            <h2>Graham & Doddsville</h2>
+            <button class="drawer-close" id="drawer-close" aria-label="Close menu">×</button>
+        </div>
+        <nav class="drawer-nav">
+            <ul class="drawer-menu">
+                <li><a href="#" class="drawer-link">Home</a></li>
+                <li class="drawer-submenu">
+                    <a href="#" class="drawer-link drawer-toggle">About Us</a>
+                    <ul class="drawer-submenu-items">
+                        <li><a href="#" class="drawer-link">Our Mission</a></li>
+                        <li><a href="#" class="drawer-link">Our Team</a></li>
+                        <li><a href="#" class="drawer-link">Company History</a></li>
+                    </ul>
+                </li>
+                <li><a href="#" class="drawer-link">Advertise</a></li>
+                <li><a href="#" class="drawer-link">Subscribe</a></li>
+                <li><a href="#news" class="drawer-link">Latest News</a></li>
+                <li><a href="#" class="drawer-link">Around the World</a></li>
+                <li><a href="#" class="drawer-link">Recommended Books & Summaries</a></li>
+                <li><a href="#" class="drawer-link">Wealth Creation</a></li>
+                <li><a href="#" class="drawer-link">Legal & Taxation</a></li>
+                <li><a href="#" class="drawer-link">Financial Markets</a></li>
+                <li><a href="#" class="drawer-link">Share Investing</a></li>
+                <li><a href="#" class="drawer-link">Greatest Investors</a></li>
+                <li><a href="#" class="drawer-link">Investment Analysis</a></li>
+                <li><a href="#" class="drawer-link">Economics</a></li>
+                <li><a href="#" class="drawer-link">Professional Advisers</a></li>
+                <li><a href="#" class="drawer-link">Financial Products</a></li>
+                <li><a href="#events" class="drawer-link">Events & Seminars</a></li>
+                <li><a href="#" class="drawer-link">Tools & Resources</a></li>
+                <li class="drawer-submenu">
+                    <a href="#" class="drawer-link drawer-toggle">More</a>
+                    <ul class="drawer-submenu-items">
+                        <li><a href="#" class="drawer-link">Contact Information</a></li>
+                        <li><a href="#" class="drawer-link">ACN: 670 651 877</a></li>
+                        <li><a href="#" class="drawer-link">Gold Tower, Level 19</a></li>
+                        <li><a href="#" class="drawer-link">10 Eagle Street, Brisbane</a></li>
+                        <li><a href="#" class="drawer-link">Phone: +61 7 3000 0000</a></li>
+                        <li><a href="#" class="drawer-link">Email: info@grahamanddoddsville.com.au</a></li>
+                        <li><a href="#" class="drawer-link">Privacy Policy</a></li>
+                        <li><a href="#" class="drawer-link">Terms of Service</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
 
     <!-- Secondary Navigation -->
     <nav class="secondary-nav" role="navigation" aria-label="Secondary navigation">
@@ -4016,13 +4070,45 @@
             ctx.fillText('+0.11%', 10, 50);
         }
 
-        // Mobile menu toggle
-        document.getElementById('mobile-toggle').addEventListener('click', function() {
-            const secondaryNav = document.querySelector('.secondary-nav-list');
-            this.classList.toggle('active');
-            if (secondaryNav) {
-                secondaryNav.classList.toggle('active');
-            }
+        // Mobile drawer functionality
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        const drawerClose = document.getElementById('drawer-close');
+        
+        if (mobileToggle && mobileDrawer) {
+            mobileToggle.addEventListener('click', () => {
+                mobileDrawer.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+        
+        if (drawerClose && mobileDrawer) {
+            drawerClose.addEventListener('click', () => {
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        }
+        
+        // Close drawer when clicking outside
+        if (mobileDrawer) {
+            mobileDrawer.addEventListener('click', (e) => {
+                if (e.target === mobileDrawer) {
+                    mobileDrawer.classList.remove('open');
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+        
+        // Drawer submenu functionality
+        document.querySelectorAll('.drawer-toggle').forEach(toggle => {
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                const submenu = toggle.parentElement.querySelector('.drawer-submenu-items');
+                if (submenu) {
+                    submenu.classList.toggle('show');
+                    toggle.classList.toggle('open');
+                }
+            });
         });
 
         // Smooth scrolling for navigation links and article links
