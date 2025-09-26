@@ -7247,19 +7247,12 @@ th {
 }
 
 .news-bullet {
-    color: #000;
-    font-weight: 700;
-    margin-right: 14px; /* Increased gap by 4px (from 10px to 14px) */
-    margin-top: 2px;
-    flex-shrink: 0;
-    width: 16px;
-    text-align: center;
-    margin-left: 20px; /* Indent bullets 20px from left edge */
+    display: none; /* Hide all bullet points as requested by client */
 }
 
 .news-content {
     flex: 1;
-    margin-left: 4px;
+    margin-left: 0; /* No extra indentation needed without bullets */
 }
 
 .news-headline {
