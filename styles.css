@@ -6941,50 +6941,6 @@ th {
     }
     
     /* Desktop menu as thin 40px bar above mobile layout */
-    .desktop-menu-bar {
-        display: block !important;
-        height: 40px;
-        background: #1e3a8a;
-        color: white;
-        padding: 0 16px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-    }
-    
-    .desktop-menu-bar .logo {
-        font-size: 1.2rem;
-        font-weight: 700;
-    }
-    
-    .desktop-menu-bar .nav-links {
-        display: flex;
-        gap: 24px;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-    }
-    
-    .desktop-menu-bar .nav-links a {
-        color: white;
-        text-decoration: none;
-        font-size: 14px;
-        font-weight: 500;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-    
-    .desktop-menu-bar .nav-links a:hover {
-        color: #f0f0f0;
-    }
-    
-    /* Keep mobile drawer icon visible on desktop */
-    .mobile-menu-toggle {
-        display: flex !important;
-    }
 }
 
 /* Mobile-only elements */
