@@ -4392,14 +4392,36 @@
         }
         
         function loadMobileNewsContent() {
-            fetch('http://localhost:3001/api/news')
+            // Try to detect if we're on localhost or production
+            const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+            const apiUrl = isLocalhost ? 'http://localhost:3001/api/news' : 'https://l9rins.github.io/graham-doddsville-website/api/news';
+            
+            fetch(apiUrl)
                 .then(response => response.json())
                 .then(data => {
                     updateMobileNewsDisplay(data.articles);
                 })
                 .catch(error => {
                     console.error('Error loading mobile news:', error);
+                    // Fallback: show static news items
+                    showFallbackMobileNews();
                 });
+        }
+        
+        function showFallbackMobileNews() {
+            // Static fallback news for when API is not available
+            const fallbackNews = [
+                { title: "Federal Reserve signals potential rate cuts ahead", source: "Reuters", category: "companies" },
+                { title: "ASX 200 rises as investors digest RBA rate decision", source: "AFR", category: "markets" },
+                { title: "Mining sector leads ASX gains on commodity price recovery", source: "The Australian", category: "economy" },
+                { title: "Tech stocks rally on AI investment optimism", source: "SMH", category: "industry" },
+                { title: "Banking sector faces headwinds from rising bad debts", source: "AFR", category: "companies" },
+                { title: "Superannuation returns show mixed results", source: "AFR", category: "markets" },
+                { title: "Property market shows signs of stabilization", source: "The Australian", category: "economy" },
+                { title: "ECB maintains dovish stance amid economic uncertainty", source: "Bloomberg", category: "industry" }
+            ];
+            
+            updateMobileNewsDisplay(fallbackNews);
         }
         
         function updateMobileNewsDisplay(articles) {
