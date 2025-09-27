@@ -6948,10 +6948,11 @@ th {
     }
 
     .hamburger-line {
-        width: 18px;
-        height: 2px;
-        background: #000;
-        border-radius: 1px;
+        width: 20px;
+        height: 3px;
+        background: #333;
+        border-radius: 2px;
+        display: block;
     }
 }
 
@@ -6988,6 +6989,10 @@ th {
         top: 50% !important;
         transform: translateY(-50%) !important;
         z-index: 10000 !important;
+        background: rgba(255, 255, 255, 0.9) !important;
+        border: 1px solid #e0e0e0 !important;
+        border-radius: 4px !important;
+        padding: 8px !important;
     }
     
     /* Mobile-specific date display styling */
