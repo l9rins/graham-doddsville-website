@@ -6915,7 +6915,7 @@ th {
 
     /* Mobile hamburger menu - minimal design */
     .mobile-menu-toggle {
-        display: flex;
+        display: flex !important;
         flex-direction: column;
         background: none;
         border: none;
@@ -6958,6 +6958,13 @@ th {
 @media (max-width: 767px) {
     .desktop-only {
         display: none !important;
+    }
+    
+    /* Force hamburger menu to show on mobile */
+    .mobile-menu-toggle {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }
     
     /* Mobile-specific date display styling */
