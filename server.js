@@ -217,7 +217,8 @@ function generatePlaceholderImage(sourceName) {
     // Clean up source name for URL
     const cleanName = sourceName.replace(/[^a-zA-Z0-9\s]/g, '').substring(0, 20);
     
-    return `https://via.placeholder.com/300x200/${color}/ffffff?text=${encodeURIComponent(cleanName)}`;
+    // Use a more reliable placeholder service or fallback
+    return `https://picsum.photos/300/200?random=${Math.floor(Math.random() * 1000)}`;
 }
 
 // API endpoint to fetch news from a specific source

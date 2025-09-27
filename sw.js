@@ -23,11 +23,24 @@ self.addEventListener('install', event => {
 
 // Fetch event
 self.addEventListener('fetch', event => {
+    // Skip caching for external domains
+    if (event.request.url.includes('via.placeholder.com') || 
+        event.request.url.includes('picsum.photos') ||
+        event.request.url.includes('fonts.googleapis.com') ||
+        event.request.url.includes('googleapis.com')) {
+        return; // Let the browser handle these requests normally
+    }
+    
     event.respondWith(
         caches.match(event.request)
             .then(response => {
                 // Return cached version or fetch from network
                 return response || fetch(event.request);
+            })
+            .catch(error => {
+                console.log('Fetch failed:', error);
+                // Return a fallback response or let the browser handle it
+                return fetch(event.request);
             })
     );
 });
