@@ -4451,10 +4451,14 @@
             showMobileLoadingStates();
             
             // Check if desktop news is already loaded and use that data
-            if (window.newsDisplayManager && window.newsDisplayManager.allNews && window.newsDisplayManager.allNews.length > 0) {
-                console.log('Loading mobile news from desktop data:', window.newsDisplayManager.allNews.length, 'articles');
-                updateMobileNewsDisplay(window.newsDisplayManager.allNews);
-                return;
+            console.log('Checking desktop news manager:', window.newsDisplayManager);
+            if (window.newsDisplayManager) {
+                console.log('Desktop news manager exists, allNews:', window.newsDisplayManager.allNews);
+                if (window.newsDisplayManager.allNews && window.newsDisplayManager.allNews.length > 0) {
+                    console.log('Loading mobile news from desktop data:', window.newsDisplayManager.allNews.length, 'articles');
+                    updateMobileNewsDisplay(window.newsDisplayManager.allNews);
+                    return;
+                }
             }
             
             // If desktop news is still loading, wait a bit and try again
@@ -4574,6 +4578,8 @@
         
         function updateMobileNewsDisplay(articles) {
             console.log('updateMobileNewsDisplay called with:', articles);
+            console.log('Articles length:', articles ? articles.length : 'undefined');
+            console.log('First article sample:', articles && articles.length > 0 ? articles[0] : 'none');
             if (articles && articles.length > 0) {
                 // Pre-allocate categories for better performance
                 const categories = {
@@ -4604,15 +4610,18 @@
                     console.log(`Looking for mobile container #${category}-news:`, container);
                     if (container) {
                         const articles = categories[category].slice(0, 5);
-                        const html = articles.map(article => `
-                            <a href="${article.url}" class="news-item-mobile" target="_blank" rel="noopener noreferrer">
+                        const html = articles.map(article => {
+                            console.log('Processing article:', article.title, 'URL:', article.url);
+                            return `
+                            <a href="${article.url || '#'}" class="news-item-mobile" target="_blank" rel="noopener noreferrer">
                                 <span class="news-bullet">-</span>
                                 <div class="news-content">
                                     <h3 class="news-headline">${article.title}</h3>
                                     <span class="news-source">(${article.source})</span>
                                 </div>
                             </a>
-                        `).join('');
+                        `;
+                        }).join('');
                         
                         updates.push({ container, html });
                         console.log(`Prepared ${category} container with ${articles.length} items`);
