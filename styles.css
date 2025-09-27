@@ -6995,6 +6995,13 @@ th {
         padding: 8px !important;
     }
     
+    /* Ensure mobile drawer is visible and functional */
+    .mobile-drawer {
+        display: block !important;
+        visibility: visible !important;
+        z-index: 10000 !important;
+    }
+    
     /* Mobile-specific date display styling */
     .date-display {
         background: #f8f9fa;
@@ -7020,10 +7027,11 @@ th {
     width: 80%; /* 80% of viewport width */
     height: 100vh;
     background: #fff;
-    z-index: 1000;
+    z-index: 10000; /* Increased z-index to ensure it's on top */
     transition: right 0.3s ease; /* 0.3s animation from right */
     overflow-y: auto;
     box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+    display: block; /* Ensure it's always displayed */
 }
 
 .mobile-drawer.open {
