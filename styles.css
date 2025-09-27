@@ -2463,6 +2463,8 @@ img {
     padding: 8px 15px;
     transition: all 0.3s ease;
     max-width: 400px;
+    flex-direction: row;
+    gap: 8px;
 }
 
 .header-search:focus-within {
@@ -2489,6 +2491,10 @@ img {
     transition: all 0.3s ease;
     color: #333;
     filter: grayscale(100%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
 }
 
 .search-btn:hover {
@@ -6816,7 +6822,7 @@ th {
 /* Show mobile newspaper elements only on mobile */
 @media (max-width: 767px) {
     .mobile-only {
-        display: block;
+        display: block !important;
     }
     
     /* Hide desktop content on mobile */
@@ -6972,6 +6978,11 @@ th {
         display: flex !important;
         visibility: visible !important;
         opacity: 1 !important;
+        position: absolute !important;
+        right: 20px !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        z-index: 10000 !important;
     }
     
     /* Mobile-specific date display styling */
