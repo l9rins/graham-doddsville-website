@@ -1937,6 +1937,10 @@ h6 {
         display: flex;
     }
     
+    .secondary-nav {
+        display: block; /* Show on mobile */
+    }
+    
     .secondary-nav-list {
         display: none;
     position: absolute;
@@ -2204,6 +2208,7 @@ img.lazy.loaded {
     overflow: visible;
     position: relative;
     z-index: 100;
+    display: none; /* Hide on desktop by default */
 }
 
 /* Mobile Hamburger Menu */
