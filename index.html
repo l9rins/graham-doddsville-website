@@ -4347,10 +4347,6 @@
             
             // Initialize event filters
             initializeEventFilters();
-            
-            // Force mobile news loading immediately (backup)
-            console.log('Force loading mobile news immediately...');
-            loadMobileNewsContent();
         });
         
         // Article slider functionality
@@ -4451,8 +4447,20 @@
             maxAge: 5 * 60 * 1000 // 5 minutes cache
         };
 
+        // Loading state guard to prevent multiple simultaneous calls
+        let mobileNewsLoading = false;
+
         function loadMobileNewsContent() {
             console.log('loadMobileNewsContent called');
+            
+            // Prevent multiple simultaneous calls
+            if (mobileNewsLoading) {
+                console.log('Mobile news already loading, skipping...');
+                return;
+            }
+            
+            mobileNewsLoading = true;
+            
             // Show loading states immediately
             showMobileLoadingStates();
             
@@ -4463,6 +4471,7 @@
                 if (window.newsDisplayManager.allNews && window.newsDisplayManager.allNews.length > 0) {
                     console.log('Loading mobile news from desktop data:', window.newsDisplayManager.allNews.length, 'articles');
                     updateMobileNewsDisplay(window.newsDisplayManager.allNews);
+                    mobileNewsLoading = false; // Reset loading state
                     return;
                 }
             }
@@ -4470,9 +4479,10 @@
             // If desktop news is still loading, wait a bit and try again
             if (window.newsDisplayManager && !window.newsDisplayManager.allNews) {
                 console.log('Desktop news still loading, waiting...');
+                mobileNewsLoading = false; // Reset loading state before retry
                 setTimeout(() => {
                     loadMobileNewsContent();
-                }, 500);
+                }, 1000); // Increased delay to 1 second
                 return;
             }
             
@@ -4480,6 +4490,7 @@
             if (window.preloadedNews && window.preloadedNews.length > 0) {
                 console.log('Loading mobile news from preloaded data:', window.preloadedNews.length, 'articles');
                 updateMobileNewsDisplay(window.preloadedNews);
+                mobileNewsLoading = false; // Reset loading state
                 return;
             }
             
@@ -4488,6 +4499,7 @@
                 (Date.now() - newsCache.timestamp) < newsCache.maxAge) {
                 console.log('Loading news from cache');
                 updateMobileNewsDisplay(newsCache.data);
+                mobileNewsLoading = false; // Reset loading state
                 return;
             }
             
@@ -4534,10 +4546,12 @@
                         newsCache.data = data.articles;
                         newsCache.timestamp = Date.now();
                         updateMobileNewsDisplay(data.articles);
+                        mobileNewsLoading = false; // Reset loading state
                         console.log('Real news loaded successfully:', data.articles.length, 'articles');
                     } else {
                         console.log('API returned empty data, using fallback');
                         showFallbackMobileNews();
+                        mobileNewsLoading = false; // Reset loading state
                     }
                 })
                 .catch(error => {
@@ -4546,6 +4560,7 @@
                     console.log('Falling back to static news');
                     // Fallback: show static news items
                     showFallbackMobileNews();
+                    mobileNewsLoading = false; // Reset loading state
                 });
         }
         
