@@ -6939,7 +6939,7 @@ th {
         border: none;
         padding: 0;
         cursor: pointer;
-        gap: 4px;
+        gap: 3px;
         width: 44px; /* 44px tap target */
         height: 44px; /* 44px tap target */
         margin-right: 20px; /* Increased right margin for more space */
@@ -6948,11 +6948,13 @@ th {
     }
 
     .hamburger-line {
-        width: 20px;
-        height: 3px;
+        width: 18px;
+        height: 2px;
         background: #333;
-        border-radius: 2px;
+        border-radius: 1px;
         display: block;
+        margin: 0 auto;
+        transition: all 0.3s ease;
     }
 }
 
