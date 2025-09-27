@@ -221,8 +221,8 @@
         <nav class="drawer-nav">
             <ul class="drawer-menu">
                 <li><a href="#" class="drawer-link">Home</a></li>
-                <li><a href="#" class="drawer-link">About</a></li>
-                <li><a href="#" class="drawer-link">Advertise</a></li>
+                <li><a href="#" class="drawer-link" onclick="openAboutPage()">About</a></li>
+                <li><a href="#" class="drawer-link" onclick="openAdvertisePage()">Advertise</a></li>
                 <li><a href="#" class="drawer-link">Subscribe</a></li>
                 <li><a href="#" class="drawer-link">Contact</a></li>
                 <li><a href="#" class="drawer-link">Wealth Creation</a></li>
@@ -4235,13 +4235,15 @@
         </div>
     </div>
 
-    <!-- Advertise Page Modal -->
-    <div id="advertiseModal" class="advertise-modal">
-        <div class="advertise-modal-content">
-            <span class="advertise-modal-close" onclick="closeAdvertisePage()">&times;</span>
-            <div class="advertise-content">
+    <!-- Advertise Page -->
+    <div id="advertisePage" class="advertise-page" style="display: none;">
+        <div class="advertise-page-content">
+            <div class="advertise-header">
+                <button class="back-button" onclick="closeAdvertisePage()">← Back</button>
                 <h1>Advertise With Us</h1>
-                
+            </div>
+            
+            <div class="advertise-content">
                 <p>Graham and Doddsville is the leading investment education website in Australia, and is arguably the largest value investing website in the whole world.</p>
                 
                 <p>At present, Graham and Doddsville is being accessed around 100,000 times per month, and this number is rapidly increasing with each passing month.</p>
@@ -4252,10 +4254,58 @@
                 
                 <p>Whether you want to advertise goods for sale, trades and services, employment opportunities, or business or investment opportunities, Graham and Doddsville has a solution for you. Contact our friendly team now to discuss your requirements:</p>
                 
-                <div class="advertise-contact">
-                    <h2>Contact Us</h2>
-                    <p><strong>Email:</strong> <a href="mailto:advertise@grahamanddoddsville.com.au">advertise@grahamanddoddsville.com.au</a></p>
-                </div>
+                <p><strong>Email:</strong> <a href="mailto:advertise@grahamanddoddsville.com.au">advertise@grahamanddoddsville.com.au</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Page -->
+    <div id="aboutPage" class="about-page" style="display: none;">
+        <div class="about-page-content">
+            <div class="about-header">
+                <button class="back-button" onclick="closeAboutPage()">← Back</button>
+                <h1>WHO WE ARE</h1>
+            </div>
+            
+            <div class="about-content">
+                <h2>What is Graham-and-Doddsville?</h2>
+                
+                <p>Graham and Doddsville is a website dedicated to helping everyone to become better investors.</p>
+                
+                <p>Our aim is to provide every investor from all walks of life with the right investment philosophy, strategies, tools and resources necessary to manage their own investment decisions,</p>
+                
+                <p>Here you will learn to better analyse and evaluate companies (or their stocks), particularly those listed in the Australian stockmarket.</p>
+                
+                <h2>Where did our name come from?</h2>
+                
+                <p>The rather unusual name for the website is derived from the famous speech (later an article) entitled "The Superinvestors of Graham-and-Doddsville" given by Warren Buffett on 17 May 1984 at the Columbia University School of Business.</p>
+                
+                <p>Honouring the 50th anniversary of Benjamin Graham and David Dodd's highly influential book, Security Analysis, Buffett launched an attack on the Modern Portfolio Theory and the Efficient Market Hypothesis by examining the consistent market outperformance of a select group of investors, all of whom 'coincidentally' studied under the same teacher, namely, Graham.</p>
+                
+                <p>Buffett dismissed the suggestion that these investors were merely the end product of something akin to a coin-flipping contest – a supposed game of pure chance in the field of stockmarket investing:</p>
+                
+                <blockquote>
+                    <p>"I think you will find that a disproportionate number of successful coin-flippers in the investment world came from a very small intellectual village that could be called Graham-and-Doddsville. A concentration of winners that simply cannot be explained by chance can be traced to this particular intellectual village."</p>
+                </blockquote>
+                
+                <p>Buffett highlighted the 'common intellectual theme' of the investors of Graham-and-Doddsville as simply being the search for discrepancies between the value of a business and the price of small pieces of that business in the stockmarket. He also adds:</p>
+                
+                <blockquote>
+                    <p>"If it doesn't make any difference whether all of a business is being bought on a Monday or a Friday, I am baffled why academicians invest extensive time and effort to see whether it makes a difference when buying small pieces of those same businesses. Our Graham & Dodd investors, needless to say, do not discuss beta, the capital asset pricing model, or covariance in returns among securities. These are not subjects of any interest to them. In fact, most of them would have difficulty defining those terms. The investors simply focus on two variables: price and value."</p>
+                </blockquote>
+                
+                <p>The original 'superinvestors' of Graham-and-Doddsville discussed in the speech / article were Walter Schloss, Tom Knapp & Ed Anderson, Bill Ruane, Charlie Munger, Rick Guerin, Stan Perlmeter, as well as Buffett himself.</p>
+                
+                <p>Graham and Doddsville website aims to be the online home of value investing around the world.</p>
+                
+                <h2>Our Mission Statement</h2>
+                
+                <p>Our mission statement is simple: To become the premier source of investment education for value investors in Australia. We will seek to meet this goal by:</p>
+                
+                <ul>
+                    <li>Promoting the value investing philosophy in Australia</li>
+                    <li>Providing comprehensive and useful investing guides, research tools and other investment-related information for investors.</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -5829,6 +5879,58 @@
             const modal = document.getElementById('advertiseModal');
             modal.style.display = 'none';
             document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        function openAboutPage() {
+            // Hide all main content
+            const mainContent = document.querySelector('.container');
+            const mobileContent = document.querySelector('.mobile-newspaper-main');
+            const aboutPage = document.getElementById('aboutPage');
+            
+            if (mainContent) mainContent.style.display = 'none';
+            if (mobileContent) mobileContent.style.display = 'none';
+            if (aboutPage) aboutPage.style.display = 'block';
+            
+            // Close mobile drawer if open
+            const drawer = document.querySelector('.mobile-drawer');
+            if (drawer) drawer.classList.remove('open');
+        }
+
+        function closeAboutPage() {
+            // Show main content again
+            const mainContent = document.querySelector('.container');
+            const mobileContent = document.querySelector('.mobile-newspaper-main');
+            const aboutPage = document.getElementById('aboutPage');
+            
+            if (mainContent) mainContent.style.display = 'block';
+            if (mobileContent) mobileContent.style.display = 'block';
+            if (aboutPage) aboutPage.style.display = 'none';
+        }
+
+        function openAdvertisePage() {
+            // Hide all main content
+            const mainContent = document.querySelector('.container');
+            const mobileContent = document.querySelector('.mobile-newspaper-main');
+            const advertisePage = document.getElementById('advertisePage');
+            
+            if (mainContent) mainContent.style.display = 'none';
+            if (mobileContent) mobileContent.style.display = 'none';
+            if (advertisePage) advertisePage.style.display = 'block';
+            
+            // Close mobile drawer if open
+            const drawer = document.querySelector('.mobile-drawer');
+            if (drawer) drawer.classList.remove('open');
+        }
+
+        function closeAdvertisePage() {
+            // Show main content again
+            const mainContent = document.querySelector('.container');
+            const mobileContent = document.querySelector('.mobile-newspaper-main');
+            const advertisePage = document.getElementById('advertisePage');
+            
+            if (mainContent) mainContent.style.display = 'block';
+            if (mobileContent) mobileContent.style.display = 'block';
+            if (advertisePage) advertisePage.style.display = 'none';
         }
 
         // Mega-menu functionality

@@ -19,7 +19,7 @@ class AustralianNewsScraper {
             { name: 'The Age', apiSource: 'the-age', category: 'General' },
             { name: 'Herald Sun', apiSource: 'herald-sun', category: 'General' },
             { name: 'News.com.au', apiSource: 'news-com-au', category: 'General' },
-            { name: 'Daily Telegraph', apiSource: 'daily-telegram', category: 'General' },
+            { name: 'Daily Telegraph', apiSource: 'daily-telegraph', category: 'General' },
             { name: 'Courier Mail', apiSource: 'courier-mail', category: 'General' },
             { name: 'Adelaide Advertiser', apiSource: 'adelaide-advertiser', category: 'General' },
             { name: 'Perth Now', apiSource: 'perth-now', category: 'General' },
