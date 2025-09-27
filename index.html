@@ -4333,18 +4333,24 @@
             initializeLazyLoading();
             
             // Load mobile news content with a small delay to ensure desktop news loads first
+            console.log('Setting up mobile news loading with delay...');
             setTimeout(() => {
+                console.log('Executing mobile news loading...');
                 loadMobileNewsContent();
             }, 100);
             
         // Initialize mobile newspaper functionality
         initializeMobileNewspaper();
         
-        // Initialize article slider
-        initializeArticleSlider();
-        
-        // Initialize event filters
-        initializeEventFilters();
+            // Initialize article slider
+            initializeArticleSlider();
+            
+            // Initialize event filters
+            initializeEventFilters();
+            
+            // Force mobile news loading immediately (backup)
+            console.log('Force loading mobile news immediately...');
+            loadMobileNewsContent();
         });
         
         // Article slider functionality
