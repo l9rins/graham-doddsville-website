@@ -547,32 +547,20 @@ class NewsDisplayManager {
     createNewsItemHTML(item) {
         const formattedDate = this.scraper.formatDate(item.publishedAt);
         
-        console.log('NewsDisplayManager: Creating HTML for item:', item.title);
+        console.log('NewsDisplayManager: Creating modern card HTML for item:', item.title);
         
         return `
-            <article class="news-item" data-category="${item.category.toLowerCase()}">
-                <div class="news-image">
-                    <img src="${item.image}" alt="${item.title}" loading="lazy">
+            <div class="news-item" data-category="${item.category.toLowerCase()}">
+                <div class="news-header">
+                    <h3><a href="${item.url}" target="_blank" rel="noopener noreferrer">${item.title}</a></h3>
                 </div>
-                <div class="news-content">
-                    <div class="news-meta">
-                        <span class="news-date">${formattedDate}</span>
-                        <span class="news-category">${item.category}</span>
-                        <span class="news-source">${item.source}</span>
-                    </div>
-                    <h3 class="news-title">
-                        <a href="${item.url}" target="_blank" rel="noopener noreferrer">
-                            ${item.title}
-                        </a>
-                    </h3>
-                    <p class="news-excerpt">${item.excerpt}</p>
-                    <div class="news-actions">
-                        <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="read-more">
-                            Read Full Article <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    </div>
+                <p>${item.excerpt}</p>
+                <div class="news-meta">
+                    <span class="news-category">${item.category}</span>
+                    <span class="news-time">${formattedDate}</span>
                 </div>
-            </article>
+                <a href="${item.url}" class="read-more-link" target="_blank" rel="noopener noreferrer">Read Full Article</a>
+            </div>
         `;
     }
 
@@ -747,63 +735,39 @@ document.addEventListener('DOMContentLoaded', () => {
                     <i class="fas fa-exclamation-triangle"></i>
                     <p>Unable to load news. Showing sample content...</p>
                 </div>
-                <article class="news-item">
-                    <div class="news-image">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzY2NiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkFGUiBOZXdzPC90ZXh0Pjwvc3ZnPg==" alt="AFR News">
+                <div class="news-item">
+                    <div class="news-header">
+                        <h3><a href="#" target="_blank">ASX 200 rises as investors digest RBA rate decision</a></h3>
                     </div>
-                    <div class="news-content">
-                        <div class="news-meta">
-                            <span class="news-date">2h ago</span>
-                            <span class="news-category">Markets</span>
-                            <span class="news-source">Australian Financial Review</span>
-                        </div>
-                        <h3 class="news-title">
-                            <a href="#" target="_blank">ASX 200 rises as investors digest RBA rate decision</a>
-                        </h3>
-                        <p class="news-excerpt">The benchmark index climbed 0.8% following the Reserve Bank's latest monetary policy announcement...</p>
-                        <div class="news-actions">
-                            <a href="#" target="_blank" class="read-more">Read Full Article <i class="fas fa-external-link-alt"></i></a>
-                        </div>
+                    <p>The benchmark index climbed 0.8% following the Reserve Bank's latest monetary policy announcement...</p>
+                    <div class="news-meta">
+                        <span class="news-category">Markets</span>
+                        <span class="news-time">2h ago</span>
                     </div>
-                </article>
-                <article class="news-item">
-                    <div class="news-image">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzY2NiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPlZhbHVlIEludmVzdGluZzwvdGV4dD48L3N2Zz4=" alt="Value Investing">
+                    <a href="#" class="read-more-link" target="_blank">Read Full Article</a>
+                </div>
+                <div class="news-item">
+                    <div class="news-header">
+                        <h3><a href="#" target="_blank">Value investing opportunities emerge in small caps</a></h3>
                     </div>
-                    <div class="news-content">
-                        <div class="news-meta">
-                            <span class="news-date">4h ago</span>
-                            <span class="news-category">Investment</span>
-                            <span class="news-source">The Australian</span>
-                        </div>
-                        <h3 class="news-title">
-                            <a href="#" target="_blank">Value investing opportunities emerge in small caps</a>
-                        </h3>
-                        <p class="news-excerpt">Analysts identify undervalued small-cap stocks following recent market volatility...</p>
-                        <div class="news-actions">
-                            <a href="#" target="_blank" class="read-more">Read Full Article <i class="fas fa-external-link-alt"></i></a>
-                        </div>
+                    <p>Analysts identify undervalued small-cap stocks following recent market volatility...</p>
+                    <div class="news-meta">
+                        <span class="news-category">Investment</span>
+                        <span class="news-time">4h ago</span>
                     </div>
-                </article>
-                <article class="news-item">
-                    <div class="news-image">
-                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzY2NiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPlByb3BlcnR5IE1hcmtldDwvdGV4dD48L3N2Zz4=" alt="Property Market">
+                    <a href="#" class="read-more-link" target="_blank">Read Full Article</a>
+                </div>
+                <div class="news-item">
+                    <div class="news-header">
+                        <h3><a href="#" target="_blank">Property market shows signs of stabilization</a></h3>
                     </div>
-                    <div class="news-content">
-                        <div class="news-meta">
-                            <span class="news-date">6h ago</span>
-                            <span class="news-category">Property</span>
-                            <span class="news-source">Sydney Morning Herald</span>
-                        </div>
-                        <h3 class="news-title">
-                            <a href="#" target="_blank">Property market shows signs of stabilization</a>
-                        </h3>
-                        <p class="news-excerpt">Latest data suggests the housing market may be finding its footing after months of decline...</p>
-                        <div class="news-actions">
-                            <a href="#" target="_blank" class="read-more">Read Full Article <i class="fas fa-external-link-alt"></i></a>
-                        </div>
+                    <p>Latest data suggests the housing market may be finding its footing after months of decline...</p>
+                    <div class="news-meta">
+                        <span class="news-category">Property</span>
+                        <span class="news-time">6h ago</span>
                     </div>
-                </article>
+                    <a href="#" class="read-more-link" target="_blank">Read Full Article</a>
+                </div>
             `;
         }
     }
