@@ -3099,9 +3099,8 @@ input:focus, textarea:focus, select:focus {
 }
 
 .article-item {
-    margin-bottom: 2px;
-    padding: 1px 0;
-    border-bottom: 1px solid #eee;
+    margin-bottom: 1px;
+    padding: 0;
 }
 
 .article-item:last-child {
@@ -3109,10 +3108,10 @@ input:focus, textarea:focus, select:focus {
 }
 
 .article-item h3 {
-    font-size: 8px;
+    font-size: 6px;
     font-weight: 600;
     margin-bottom: 0;
-    line-height: 1.1;
+    line-height: 1.0;
 }
 
 .article-item h3 a {
@@ -3125,14 +3124,14 @@ input:focus, textarea:focus, select:focus {
 }
 
 .article-item p {
-    font-size: 10px;
+    font-size: 7px;
     color: #666;
-    margin-bottom: 10px;
-    line-height: 1.5;
+    margin-bottom: 5px;
+    line-height: 1.2;
 }
 
 .article-meta {
-    font-size: 9px;
+    font-size: 6px;
     color: #888;
 }
 
@@ -3142,8 +3141,8 @@ input:focus, textarea:focus, select:focus {
 
 .article-meta .category {
     background: #f0f0f0;
-    padding: 2px 6px;
-    border-radius: 3px;
+    padding: 1px 4px;
+    border-radius: 2px;
 }
 
 /* Around the World */
@@ -6413,8 +6412,8 @@ input:hover, select:hover, textarea:hover {
     background: white;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-md);
-    padding: var(--space-6);
-    margin-bottom: var(--space-6);
+    padding: 1px 6px;
+    margin-bottom: 10px;
     border: 1px solid var(--neutral-200);
     transition: all var(--transition-normal);
     position: relative;
@@ -8294,7 +8293,7 @@ th {
 .classic-reading-item-mobile {
     display: flex;
     align-items: flex-start;
-    padding: 8px 0;
+    padding: 2px 0;
     border: none;
     background: none;
     text-decoration: none;
@@ -8391,7 +8390,7 @@ th {
     color: #4a5568;
     border: 1px solid #e2e8f0;
     border-radius: 8px;
-    padding: 8px 12px;
+    padding: 5px 5px;
     font-size: 12px;
     font-weight: 600;
     cursor: pointer;
