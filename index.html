@@ -3108,7 +3108,7 @@
 
             <!-- Buffett Content by Tab -->
             <div class="buffett-content-mobile">
-                <div class="buffett-tab active" data-tab="philosophy">
+                <div class="buffett-tab active" id="philosophy-tab-mobile" data-tab="philosophy">
                     <div class="books-slider-container">
                         <div class="books-slider" id="philosophy-buffett-slider">
                             <div class="buffett-item-mobile">
@@ -3311,7 +3311,7 @@
                     </div>
                 </div>
 
-                <div class="buffett-tab" data-tab="investing">
+                <div class="buffett-tab" id="investing-tab-mobile" data-tab="investing">
                     <div class="books-slider-container">
                         <div class="books-slider" id="investing-buffett-slider">
                             <div class="buffett-item-mobile">
@@ -3353,7 +3353,7 @@
                     </div>
                 </div>
 
-                <div class="buffett-tab" data-tab="businesses">
+                <div class="buffett-tab" id="businesses-tab-mobile" data-tab="businesses">
                     <div class="books-slider-container">
                         <div class="books-slider" id="businesses-buffett-slider">
                             <div class="buffett-item-mobile">
@@ -3395,7 +3395,7 @@
                     </div>
                 </div>
 
-                <div class="buffett-tab" data-tab="governance">
+                <div class="buffett-tab" id="governance-tab-mobile" data-tab="governance">
                     <div class="books-slider-container">
                         <div class="books-slider" id="governance-buffett-slider">
                             <div class="buffett-item-mobile">
@@ -3437,7 +3437,7 @@
                     </div>
                 </div>
 
-                <div class="buffett-tab" data-tab="accounting">
+                <div class="buffett-tab" id="accounting-tab-mobile" data-tab="accounting">
                     <div class="books-slider-container">
                         <div class="books-slider" id="accounting-buffett-slider">
                             <div class="buffett-item-mobile">
@@ -3479,7 +3479,7 @@
                     </div>
                 </div>
 
-                <div class="buffett-tab" data-tab="economics">
+                <div class="buffett-tab" id="economics-tab-mobile" data-tab="economics">
                     <div class="books-slider-container">
                         <div class="books-slider" id="economics-buffett-slider">
                             <div class="buffett-item-mobile">
@@ -3521,7 +3521,7 @@
                     </div>
                 </div>
 
-                <div class="buffett-tab" data-tab="miscellaneous">
+                <div class="buffett-tab" id="miscellaneous-tab-mobile" data-tab="miscellaneous">
                     <div class="books-slider-container">
                         <div class="books-slider" id="miscellaneous-buffett-slider">
                             <div class="buffett-item-mobile">
@@ -6292,7 +6292,7 @@
             });
         });
 
-        // Warren Buffett tabs functionality
+        // Warren Buffett tabs functionality (desktop)
         document.querySelectorAll('.buffett-tabs .tab-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 const tabName = this.dataset.tab;
@@ -6309,6 +6309,29 @@
                 
                 // Show selected tab content
                 const targetTab = document.getElementById(tabName + '-tab');
+                if (targetTab) {
+                    targetTab.classList.add('active');
+                }
+            });
+        });
+
+        // Warren Buffett tabs functionality (mobile)
+        document.querySelectorAll('.buffett-tabs-mobile .buffett-tab-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const tabName = this.dataset.tab;
+                
+                // Remove active class from all mobile Buffett tab buttons
+                document.querySelectorAll('.buffett-tabs-mobile .buffett-tab-btn').forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // Hide all mobile tab content
+                document.querySelectorAll('.buffett-content-mobile .buffett-tab').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Show selected mobile tab content
+                const targetTab = document.getElementById(tabName + '-tab-mobile');
                 if (targetTab) {
                     targetTab.classList.add('active');
                 }
