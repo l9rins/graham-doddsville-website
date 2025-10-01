@@ -441,9 +441,10 @@ body {
 }
 
 .news-source {
-    color: #3498db;
-    font-size: 14px;
-    font-weight: 600;
+    color: #999;
+    font-size: 12px;
+    font-weight: 400;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     text-decoration: none;
 }
 
@@ -3094,12 +3095,12 @@ input:focus, textarea:focus, select:focus {
 /* Feature Articles filters now use the same styling as news-filters */
 
 .articles-list {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .article-item {
-    margin-bottom: 20px;
-    padding-bottom: 20px;
+    margin-bottom: 2px;
+    padding: 1px 0;
     border-bottom: 1px solid #eee;
 }
 
@@ -3108,10 +3109,10 @@ input:focus, textarea:focus, select:focus {
 }
 
 .article-item h3 {
-    font-size: 15px;
-    font-weight: bold;
-    margin-bottom: 8px;
-    line-height: 1.4;
+    font-size: 8px;
+    font-weight: 600;
+    margin-bottom: 0;
+    line-height: 1.1;
 }
 
 .article-item h3 a {
@@ -3124,14 +3125,14 @@ input:focus, textarea:focus, select:focus {
 }
 
 .article-item p {
-    font-size: 13px;
+    font-size: 10px;
     color: #666;
     margin-bottom: 10px;
     line-height: 1.5;
 }
 
 .article-meta {
-    font-size: 12px;
+    font-size: 9px;
     color: #888;
 }
 
@@ -4587,7 +4588,6 @@ input:focus, textarea:focus, select:focus {
     font-size: 16px;
     margin-bottom: 15px;
     padding-bottom: 8px;
-    border-bottom: 2px solid #0066cc;
 }
 
 .book-links {
@@ -4610,6 +4610,36 @@ input:focus, textarea:focus, select:focus {
 
 .book-links a:hover {
     color: #0066cc;
+}
+
+/* Horizontal book links layout */
+.book-links-horizontal {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.book-links-horizontal a {
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+}
+
+.book-links-horizontal a:hover {
+    color: #0066cc;
+}
+
+.book-links-horizontal a:not(:last-child)::after {
+    content: " | ";
+    color: #666;
+    margin: 0 4px;
 }
 
 .book-links .see-more {
@@ -7362,7 +7392,7 @@ th {
     font-size: 18px;
     font-weight: 600;
     color: #000;
-    margin: 0 0 20px 0;
+    margin: 0 0 0px 0;
     text-transform: uppercase;
     letter-spacing: 1px;
     border-bottom: 2px solid #e0e0e0;
@@ -7388,9 +7418,9 @@ th {
 .book-item-mobile,
 .buffett-item-mobile {
     display: block;
-    padding: 8px 0;
+    padding: 1px 0;
     margin: 0;
-    line-height: 1.5;
+    line-height: 1.1;
     position: relative;
     text-decoration: none;
     color: inherit;
@@ -7578,7 +7608,7 @@ th {
 .book-categories {
     display: flex;
     flex-wrap: wrap;
-    gap: 0px;
+    gap: 1px;
     margin: 10px 0px;
     padding: 0 0px;
 }
@@ -7943,9 +7973,9 @@ th {
 .news-source {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 12px;
-    color: #888;
+    color: #999;
     font-weight: 400;
-    font-style: italic;
+    font-style: normal;
     margin-left: 0;
     display: block;
     line-height: 1.3;
@@ -7998,6 +8028,13 @@ th {
     margin-bottom: 12px;
 }
 
+.sub-category-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
 .sub-category-title {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 14px;
@@ -8006,6 +8043,37 @@ th {
     margin: 0;
     padding-left: 8px; /* Align with section headers */
     border-left: none; /* Remove blue vertical line */
+}
+
+.see-more-link {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 12px;
+    color: #1e3a8a;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.see-more-link:hover {
+    background-color: #f0f4ff;
+    color: #1e40af;
+}
+
+
+.see-more-section {
+    text-align: center;
+    margin-top: 16px;
+    padding: 12px 0;
+}
+
+.book-single-line {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333;
+    padding: 12px 0;
 }
 
 .category-heading {
@@ -8315,6 +8383,40 @@ th {
     background: #1e3a8a;
     border-color: #1e3a8a;
     color: white;
+}
+
+/* Feature Articles Button Styles */
+.buffett-tabs-mobile {
+    background: #f7fafc;
+    color: #4a5568;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 8px;
+    margin-bottom: 10px;
+    white-space: nowrap;
+}
+
+.buffett-tabs-mobile:hover {
+    background: #e2e8f0;
+    border-color: #cbd5e0;
+    color: #2d3748;
+}
+
+.buffett-tabs-mobile.active {
+    background: #1a365d;
+    color: white;
+    border-color: #1a365d;
+    box-shadow: 0 2px 4px rgba(26, 54, 93, 0.2);
+}
+
+.buffett-tabs-mobile:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(26, 54, 93, 0.1);
 }
 
 /* Article slider */
@@ -9184,6 +9286,26 @@ th {
     .top-categories {
         display: none;
     }
+    
+    /* Mobile horizontal book links */
+    .book-links-horizontal {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 4px;
+    }
+    
+    .book-links-horizontal a {
+        font-size: 13px;
+        line-height: 1.4;
+        white-space: nowrap;
+    }
+    
+    .book-links-horizontal a:not(:last-child)::after {
+        content: " | ";
+        color: #666;
+        margin: 0 2px;
+    }
 }
 
 /* Books Slider Styles */
@@ -9199,11 +9321,41 @@ th {
     overflow-y: auto;
 }
 
+/* Ensure horizontal book links work in slider */
+.books-slider .book-links-horizontal {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.books-slider .book-links-horizontal a {
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+}
+
+.books-slider .book-links-horizontal a:hover {
+    color: #0066cc;
+}
+
+.books-slider .book-links-horizontal a:not(:last-child)::after {
+    content: " | ";
+    color: #666;
+    margin: 0 4px;
+}
+
 /* Articles Slider Styles */
-.articles-slider-container {
+.articles-list-container {
     position: relative;
-    max-height: 400px;
-    overflow: hidden;
+    max-height: none;
+    overflow: visible;
 }
 
 .articles-slider {
@@ -9212,39 +9364,3 @@ th {
     overflow-y: auto;
 }
 
-.slider-controls {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.slider-btn {
-    background: #1a365d;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: bold;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.slider-btn:hover {
-    background: #2c5282;
-    transform: scale(1.1);
-}
-
-.slider-btn:active {
-    transform: scale(0.95);
-}
-
-.slider-btn:disabled {
-    background: #ccc;
-    cursor: not-allowed;
-}
