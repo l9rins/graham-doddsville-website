@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classical Readings - Graham and Doddsville</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .classical-readings-page {
+            display: block;
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            background-color: #fff;
+            overflow-y: auto;
+        }
+
+        .classical-readings-page-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .classical-readings-header {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #1e3a8a;
+        }
+
+        .classical-readings-header h1 {
+            color: #1e3a8a;
+            font-size: 28px;
+            margin: 0 0 10px 0;
+            font-weight: 700;
+        }
+
+        .page-subtitle {
+            color: #666;
+            font-size: 16px;
+            margin: 0;
+        }
+
+        .close-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #1e3a8a;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            z-index: 1000;
+        }
+
+        .close-btn:hover {
+            background: #1e40af;
+        }
+
+        .readings-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .readings-list li {
+            margin-bottom: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .readings-list li:last-child {
+            border-bottom: none;
+        }
+
+        .reading-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .reading-number {
+            background: #1e3a8a;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .reading-content {
+            flex: 1;
+        }
+
+        .reading-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1e3a8a;
+            text-decoration: none;
+            line-height: 1.4;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .reading-title:hover {
+            color: #1e40af;
+            text-decoration: underline;
+        }
+
+        .reading-author {
+            font-size: 14px;
+            color: #666;
+            font-style: italic;
+        }
+
+        .reading-year {
+            font-size: 14px;
+            color: #888;
+            margin-left: 8px;
+        }
+
+        /* Desktop See More functionality */
+        .desktop-see-more-section {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px 0;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .desktop-see-more-btn {
+            background: #1e3a8a;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .desktop-see-more-btn:hover {
+            background: #1e40af;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+        }
+
+        .hidden-readings {
+            display: none;
+        }
+
+        .hidden-readings.show {
+            display: block;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .classical-readings-page-content {
+                padding: 15px;
+            }
+            
+            .classical-readings-header h1 {
+                font-size: 24px;
+            }
+            
+            .reading-title {
+                font-size: 15px;
+            }
+            
+            .reading-author {
+                font-size: 13px;
+            }
+            
+            .reading-year {
+                font-size: 13px;
+            }
+            
+            .close-btn {
+                top: 15px;
+                right: 15px;
+                padding: 8px 12px;
+                font-size: 13px;
+            }
+
+            /* Hide see more section on mobile - show all readings */
+            .desktop-see-more-section {
+                display: none;
+            }
+
+            .hidden-readings {
+                display: block !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="classical-readings-page" id="classical-readings-page">
+        <button class="close-btn" onclick="closeClassicalReadingsPage()">← Back to Main</button>
+        
+        <div class="classical-readings-page-content">
+            <div class="classical-readings-header">
+                <h1>Classical Readings</h1>
+                <p class="page-subtitle">Essential writings from Warren Buffett, Benjamin Graham, and other value investing pioneers</p>
+            </div>
+            
+            <ol class="readings-list">
+                <li>
+                    <div class="reading-item">
+                        <div class="reading-number">1</div>
+                        <div class="reading-content">
+                            <a href="#" onclick="openPartnershipLettersPage()" class="reading-title">Warren Buffett's Partnership Letters</a>
+                            <div class="reading-author">Warren Buffett <span class="reading-year">(1957 to 1970)</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="reading-item">
+                        <div class="reading-number">2</div>
+                        <div class="reading-content">
+                            <a href="#" onclick="openUnpublishedLettersPage()" class="reading-title">Warren Buffett's Unpublished Letters to Berkshire Shareholders</a>
+                            <div class="reading-author">Warren Buffett <span class="reading-year">(1969 to 1976)</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="reading-item">
+                        <div class="reading-number">3</div>
+                        <div class="reading-content">
+                            <a href="#" onclick="openAnnualLettersPage()" class="reading-title">Warren Buffett's Letters to Berkshire Shareholders</a>
+                            <div class="reading-author">Warren Buffett <span class="reading-year">(1977 to present day)</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="reading-item">
+                        <div class="reading-number">4</div>
+                        <div class="reading-content">
+                            <a href="#" onclick="openOwnersManualPage()" class="reading-title">Berkshire Hathaway Owner's Manual</a>
+                            <div class="reading-author">Warren Buffett <span class="reading-year">(1999)</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="reading-item">
+                        <div class="reading-number">5</div>
+                        <div class="reading-content">
+                            <a href="#" onclick="openSuperinvestorsPage()" class="reading-title">The Superinvestors of Graham and Doddsville</a>
+                            <div class="reading-author">Warren Buffett <span class="reading-year">(1984)</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="reading-item">
+                        <div class="reading-number">6</div>
+                        <div class="reading-content">
+                            <a href="#" onclick="openGrahamLecturesPage()" class="reading-title">Benjamin Graham Lectures on Current Problems in Security Analysis</a>
+                            <div class="reading-author">Benjamin Graham <span class="reading-year">(1946 & 1947)</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="reading-item">
+                        <div class="reading-number">7</div>
+                        <div class="reading-content">
+                            <a href="#" onclick="openGrahamNewmanPage()" class="reading-title">Graham-Newman Partnership Letters</a>
+                            <div class="reading-author">Benjamin Graham <span class="reading-year">(1946 to 1958)</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="reading-item">
+                        <div class="reading-number">8</div>
+                        <div class="reading-content">
+                            <a href="https://api.grahamanddoddsville.com.au/readings/letter-to-shareholders-warren-buffett-1988.pdf" target="_blank" class="reading-title">Letter to Shareholders</a>
+                            <div class="reading-author">Warren Buffett <span class="reading-year">(1988)</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="reading-item">
+                        <div class="reading-number">9</div>
+                        <div class="reading-content">
+                            <a href="https://api.grahamanddoddsville.com.au/readings/letter-to-shareholders-warren-buffett-1989.pdf" target="_blank" class="reading-title">Letter to Shareholders</a>
+                            <div class="reading-author">Warren Buffett <span class="reading-year">(1989)</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="reading-item">
+                        <div class="reading-number">10</div>
+                        <div class="reading-content">
+                            <a href="https://api.grahamanddoddsville.com.au/readings/letter-to-shareholders-warren-buffett-1990.pdf" target="_blank" class="reading-title">Letter to Shareholders</a>
+                            <div class="reading-author">Warren Buffett <span class="reading-year">(1990)</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="reading-item">
+                        <div class="reading-number">11</div>
+                        <div class="reading-content">
+                            <a href="https://api.grahamanddoddsville.com.au/readings/letter-to-shareholders-warren-buffett-1991.pdf" target="_blank" class="reading-title">Letter to Shareholders</a>
+                            <div class="reading-author">Warren Buffett <span class="reading-year">(1991)</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="reading-item">
+                        <div class="reading-number">12</div>
+                        <div class="reading-content">
+                            <a href="https://api.grahamanddoddsville.com.au/readings/letter-to-shareholders-warren-buffett-1992.pdf" target="_blank" class="reading-title">Letter to Shareholders</a>
+                            <div class="reading-author">Warren Buffett <span class="reading-year">(1992)</span></div>
+                        </div>
+                    </div>
+                </li>
+            </ol>
+            
+            <!-- Desktop See More Section -->
+            <div class="desktop-see-more-section">
+                <button class="desktop-see-more-btn" onclick="toggleMoreReadings()">See More Classical Readings</button>
+            </div>
+            
+            <!-- Hidden readings for desktop -->
+            <ol class="readings-list hidden-readings" id="hidden-readings">
+                <li>
+                    <div class="reading-item">
+                        <div class="reading-number">13</div>
+                        <div class="reading-content">
+                            <a href="https://api.grahamanddoddsville.com.au/readings/the-security-i-like-best-warren-buffett-1951.pdf" target="_blank" class="reading-title">The Security I Like Best</a>
+                            <div class="reading-author">Warren Buffett <span class="reading-year">(1951)</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="reading-item">
+                        <div class="reading-number">14</div>
+                        <div class="reading-content">
+                            <a href="https://api.grahamanddoddsville.com.au/readings/toward-a-science-of-security-analysis-benjamin-graham-1952.pdf" target="_blank" class="reading-title">Toward a Science of Security Analysis</a>
+                            <div class="reading-author">Benjamin Graham <span class="reading-year">(1952)</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="reading-item">
+                        <div class="reading-number">15</div>
+                        <div class="reading-content">
+                            <a href="https://api.grahamanddoddsville.com.au/readings/testimony-on-the-committee-benjamin-graham-1955.pdf" target="_blank" class="reading-title">Testimony on the Committee</a>
+                            <div class="reading-author">Benjamin Graham <span class="reading-year">(1955)</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="reading-item">
+                        <div class="reading-number">16</div>
+                        <div class="reading-content">
+                            <a href="https://api.grahamanddoddsville.com.au/readings/how-to-handle-your-money-benjamin-graham-1955.pdf" target="_blank" class="reading-title">How to Handle Your Money</a>
+                            <div class="reading-author">Benjamin Graham <span class="reading-year">(1955)</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="reading-item">
+                        <div class="reading-number">17</div>
+                        <div class="reading-content">
+                            <a href="https://api.grahamanddoddsville.com.au/readings/the-new-speculation-benjamin-graham-1958.pdf" target="_blank" class="reading-title">The New Speculation</a>
+                            <div class="reading-author">Benjamin Graham <span class="reading-year">(1958)</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="reading-item">
+                        <div class="reading-number">18</div>
+                        <div class="reading-content">
+                            <a href="https://api.grahamanddoddsville.com.au/readings/stock-market-warning-benjamin-graham-1960.pdf" target="_blank" class="reading-title">Stock Market Warning</a>
+                            <div class="reading-author">Benjamin Graham <span class="reading-year">(1960)</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="reading-item">
+                        <div class="reading-number">19</div>
+                        <div class="reading-content">
+                            <a href="https://api.grahamanddoddsville.com.au/readings/letter-to-the-editor-warren-buffett-1962.pdf" target="_blank" class="reading-title">Letter to the Editor</a>
+                            <div class="reading-author">Warren Buffett <span class="reading-year">(1962)</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="reading-item">
+                        <div class="reading-number">20</div>
+                        <div class="reading-content">
+                            <a href="https://api.grahamanddoddsville.com.au/readings/renaissance-of-value-benjamin-graham-1974.pdf" target="_blank" class="reading-title">Renaissance of Value</a>
+                            <div class="reading-author">Benjamin Graham <span class="reading-year">(1974)</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="reading-item">
+                        <div class="reading-number">21</div>
+                        <div class="reading-content">
+                            <a href="https://api.grahamanddoddsville.com.au/readings/future-of-common-stocks-benjamin-graham-1974.pdf" target="_blank" class="reading-title">Future of Common Stocks</a>
+                            <div class="reading-author">Benjamin Graham <span class="reading-year">(1974)</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="reading-item">
+                        <div class="reading-number">22</div>
+                        <div class="reading-content">
+                            <a href="https://api.grahamanddoddsville.com.au/readings/simplest-way-to-select-benjamin-graham-1976.pdf" target="_blank" class="reading-title">Simplest Way to Select</a>
+                            <div class="reading-author">Benjamin Graham <span class="reading-year">(1976)</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="reading-item">
+                        <div class="reading-number">23</div>
+                        <div class="reading-content">
+                            <a href="https://api.grahamanddoddsville.com.au/readings/an-hour-with-mr-graham-1976.pdf" target="_blank" class="reading-title">An Hour With Mr Graham</a>
+                            <div class="reading-author">Benjamin Graham <span class="reading-year">(1976)</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="reading-item">
+                        <div class="reading-number">24</div>
+                        <div class="reading-content">
+                            <a href="https://api.grahamanddoddsville.com.au/readings/conversation-with-benjamin-graham-1976.pdf" target="_blank" class="reading-title">Conversation with Benjamin Graham</a>
+                            <div class="reading-author">Benjamin Graham <span class="reading-year">(1976)</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="reading-item">
+                        <div class="reading-number">25</div>
+                        <div class="reading-content">
+                            <a href="https://api.grahamanddoddsville.com.au/readings/how-inflation-swindles-warren-buffett-1977.pdf" target="_blank" class="reading-title">How Inflation Swindles</a>
+                            <div class="reading-author">Warren Buffett <span class="reading-year">(1977)</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="reading-item">
+                        <div class="reading-number">26</div>
+                        <div class="reading-content">
+                            <a href="https://api.grahamanddoddsville.com.au/readings/10-ways-to-beat-an-index-tweedy-browne-1999.pdf" target="_blank" class="reading-title">10 Ways to Beat an Index</a>
+                            <div class="reading-author">Tweedy, Browne <span class="reading-year">(1999)</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="reading-item">
+                        <div class="reading-number">27</div>
+                        <div class="reading-content">
+                            <a href="https://api.grahamanddoddsville.com.au/readings/investing-for-higher-after-tax-tweedy-browne-2000.pdf" target="_blank" class="reading-title">Investing for Higher After-Tax</a>
+                            <div class="reading-author">Tweedy, Browne <span class="reading-year">(2000)</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="reading-item">
+                        <div class="reading-number">28</div>
+                        <div class="reading-content">
+                            <a href="https://api.grahamanddoddsville.com.au/readings/great-10-year-record-tweedy-browne-2000.pdf" target="_blank" class="reading-title">Great 10-Year Record</a>
+                            <div class="reading-author">Tweedy, Browne <span class="reading-year">(2000)</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="reading-item">
+                        <div class="reading-number">29</div>
+                        <div class="reading-content">
+                            <a href="https://api.grahamanddoddsville.com.au/readings/value-investing-behavioural-finance-chris-browne-2000.pdf" target="_blank" class="reading-title">Value Investing and Behavioural Finance</a>
+                            <div class="reading-author">Chris Browne <span class="reading-year">(2000)</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="reading-item">
+                        <div class="reading-number">30</div>
+                        <div class="reading-content">
+                            <a href="https://api.grahamanddoddsville.com.au/readings/the-evolution-of-the-idea-of-value-investing.pdf" target="_blank" class="reading-title">The Evolution of the Idea of Value Investing</a>
+                            <div class="reading-author">Various Authors <span class="reading-year">(2000)</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="reading-item">
+                        <div class="reading-number">31</div>
+                        <div class="reading-content">
+                            <a href="https://api.grahamanddoddsville.com.au/readings/americas-growing-trade-deficit-is-selling.pdf" target="_blank" class="reading-title">America's Growing Trade Deficit is Selling</a>
+                            <div class="reading-author">Warren Buffett <span class="reading-year">(2003)</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="reading-item">
+                        <div class="reading-number">32</div>
+                        <div class="reading-content">
+                            <a href="https://api.grahamanddoddsville.com.au/readings/high-dividend-yield-return-tweedy-browne-2007.pdf" target="_blank" class="reading-title">High Dividend Yield Return</a>
+                            <div class="reading-author">Tweedy, Browne <span class="reading-year">(2007)</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="reading-item">
+                        <div class="reading-number">33</div>
+                        <div class="reading-content">
+                            <a href="https://api.grahamanddoddsville.com.au/readings/buy-american-i-am-warren-buffett-2008.pdf" target="_blank" class="reading-title">Buy American, I am</a>
+                            <div class="reading-author">Warren Buffett <span class="reading-year">(2008)</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="reading-item">
+                        <div class="reading-number">34</div>
+                        <div class="reading-content">
+                            <a href="https://api.grahamanddoddsville.com.au/readings/what-has-worked-in-investing-tweedy-browne-2009.pdf" target="_blank" class="reading-title">What Has Worked In Investing</a>
+                            <div class="reading-author">Tweedy, Browne <span class="reading-year">(2009)</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="reading-item">
+                        <div class="reading-number">35</div>
+                        <div class="reading-content">
+                            <a href="https://api.grahamanddoddsville.com.au/readings/slow-growth-greenback-effect-warren-buffett-2009.pdf" target="_blank" class="reading-title">Slow Growth Greenback Effect</a>
+                            <div class="reading-author">Warren Buffett <span class="reading-year">(2009)</span></div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="reading-item">
+                        <div class="reading-number">36</div>
+                        <div class="reading-content">
+                            <a href="https://api.grahamanddoddsville.com.au/readings/how-hedging-can-reduce-currency-risk-tweedy-browne-2010.pdf" target="_blank" class="reading-title">How Hedging Can Reduce Currency Risk</a>
+                            <div class="reading-author">Tweedy, Browne <span class="reading-year">(2010)</span></div>
+                        </div>
+                    </div>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        // Function to toggle more readings
+        function toggleMoreReadings() {
+            const hiddenReadings = document.getElementById('hidden-readings');
+            const seeMoreBtn = document.querySelector('.desktop-see-more-btn');
+            
+            if (hiddenReadings.classList.contains('show')) {
+                hiddenReadings.classList.remove('show');
+                seeMoreBtn.textContent = 'See More Classical Readings';
+            } else {
+                hiddenReadings.classList.add('show');
+                seeMoreBtn.textContent = 'Show Less';
+            }
+        }
+        // Function to close the classical readings page
+        function closeClassicalReadingsPage() {
+            // Go back to the main page
+            window.location.href = 'index.html';
+        }
+
+        // Function to open partnership letters page (placeholder - implement as needed)
+        function openPartnershipLettersPage() {
+            // Implementation for partnership letters page
+            console.log('Opening Partnership Letters page');
+        }
+
+        // Function to open unpublished letters page (placeholder - implement as needed)
+        function openUnpublishedLettersPage() {
+            // Implementation for unpublished letters page
+            console.log('Opening Unpublished Letters page');
+        }
+
+        // Function to open annual letters page (placeholder - implement as needed)
+        function openAnnualLettersPage() {
+            // Implementation for annual letters page
+            console.log('Opening Annual Letters page');
+        }
+
+        // Function to open owners manual page (placeholder - implement as needed)
+        function openOwnersManualPage() {
+            // Implementation for owners manual page
+            console.log('Opening Owners Manual page');
+        }
+
+        // Function to open superinvestors page (placeholder - implement as needed)
+        function openSuperinvestorsPage() {
+            // Implementation for superinvestors page
+            console.log('Opening Superinvestors page');
+        }
+
+        // Function to open Graham lectures page (placeholder - implement as needed)
+        function openGrahamLecturesPage() {
+            // Implementation for Graham lectures page
+            console.log('Opening Graham Lectures page');
+        }
+
+        // Function to open Graham-Newman page (placeholder - implement as needed)
+        function openGrahamNewmanPage() {
+            // Implementation for Graham-Newman page
+            console.log('Opening Graham-Newman page');
+        }
+    </script>
+</body>
+</html>

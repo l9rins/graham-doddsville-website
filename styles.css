@@ -5307,7 +5307,7 @@ input:focus, textarea:focus, select:focus {
     
     /* Add bottom padding to content to prevent overlap */
     .main-content {
-        padding-bottom: 100px;
+        padding-bottom: 1px;
     }
 
 .back-to-top:hover {
@@ -8067,6 +8067,7 @@ th {
     padding: 12px 0;
 }
 
+
 .book-single-line {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 14px;
@@ -9361,5 +9362,977 @@ th {
     transition: transform 0.3s ease;
     max-height: 400px;
     overflow-y: auto;
+}
+
+/* Partnership Letters Page */
+.partnership-letters-page {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 10000;
+    overflow-y: auto;
+}
+
+.partnership-letters-page-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.partnership-letters-header {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #1e3a8a;
+}
+
+.partnership-letters-header h1 {
+    font-size: 32px;
+    color: #1e3a8a;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.page-subtitle {
+    font-size: 18px;
+    color: #666;
+    margin: 0;
+}
+
+.partnership-letters-content {
+    line-height: 1.7;
+}
+
+.partnership-letters-content p {
+    margin-bottom: 20px;
+    color: #444;
+    font-size: 16px;
+}
+
+.letters-intro {
+    background: #f8f9fa;
+    padding: 20px;
+    border-left: 4px solid #1e3a8a;
+    margin: 30px 0;
+    border-radius: 0 8px 8px 0;
+}
+
+.partnership-letters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 15px;
+    margin-top: 40px;
+    padding: 30px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.letter-link {
+    display: block;
+    padding: 15px 20px;
+    background: #1e3a8a;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 2px solid #1e3a8a;
+}
+
+.letter-link:hover {
+    background: white;
+    color: #1e3a8a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(30,58,138,0.3);
+}
+
+@media (max-width: 768px) {
+    .partnership-letters-page-content {
+        padding: 15px;
+    }
+    
+    .partnership-letters-header h1 {
+        font-size: 24px;
+    }
+    
+    .partnership-letters-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 10px;
+        padding: 20px;
+    }
+    
+    .letter-link {
+        padding: 12px 16px;
+        font-size: 13px;
+    }
+}
+
+/* Unpublished Letters Page */
+.unpublished-letters-page {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 10000;
+    overflow-y: auto;
+}
+
+.unpublished-letters-page-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.unpublished-letters-header {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #1e3a8a;
+}
+
+.unpublished-letters-header h1 {
+    color: #1e3a8a;
+    font-size: 28px;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.page-subtitle {
+    color: #666;
+    font-size: 16px;
+    margin: 0;
+}
+
+.unpublished-letters-content {
+    line-height: 1.6;
+    color: #333;
+}
+
+.unpublished-letters-content p {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.letters-intro {
+    background-color: #f8fafc;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 30px 0;
+    border-left: 4px solid #1e3a8a;
+}
+
+.letters-intro p {
+    margin: 0;
+    font-weight: 600;
+    color: #1e3a8a;
+}
+
+.unpublished-letters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f8fafc;
+    border-radius: 8px;
+}
+
+.letter-link {
+    display: inline-block;
+    padding: 15px 20px;
+    background-color: #1e3a8a;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    border: 2px solid #1e3a8a;
+}
+
+.letter-link:hover {
+    background-color: #1e40af;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(30,58,138,0.3);
+}
+
+@media (max-width: 768px) {
+    .unpublished-letters-page-content {
+        padding: 15px;
+    }
+    
+    .unpublished-letters-header h1 {
+        font-size: 24px;
+    }
+    
+    .unpublished-letters-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 10px;
+        padding: 20px;
+    }
+    
+    .letter-link {
+        padding: 12px 16px;
+        font-size: 13px;
+    }
+}
+
+/* Annual Letters Page */
+.annual-letters-page {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 10000;
+    overflow-y: auto;
+}
+
+.annual-letters-page-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.annual-letters-header {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #1e3a8a;
+}
+
+.annual-letters-header h1 {
+    color: #1e3a8a;
+    font-size: 28px;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.annual-letters-content {
+    line-height: 1.6;
+    color: #333;
+}
+
+.annual-letters-content p {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.annual-letters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 12px;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f8fafc;
+    border-radius: 8px;
+}
+
+.annual-letters-footer {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #f8fafc;
+    border-radius: 8px;
+    border-left: 4px solid #1e3a8a;
+}
+
+.annual-letters-footer p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .annual-letters-page-content {
+        padding: 15px;
+    }
+    
+    .annual-letters-header h1 {
+        font-size: 24px;
+    }
+    
+    .annual-letters-grid {
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+        gap: 8px;
+        padding: 15px;
+    }
+    
+    .letter-link {
+        padding: 10px 12px;
+        font-size: 12px;
+    }
+}
+
+/* Owner's Manual Page */
+.owners-manual-page {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 10000;
+    overflow-y: auto;
+}
+
+.owners-manual-page-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.owners-manual-header {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #1e3a8a;
+}
+
+.owners-manual-header h1 {
+    color: #1e3a8a;
+    font-size: 28px;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.owners-manual-content {
+    line-height: 1.6;
+    color: #333;
+}
+
+.owners-manual-content p {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.owners-manual-content h3 {
+    color: #1e3a8a;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.owners-manual-footer {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #f8fafc;
+    border-radius: 8px;
+    border-left: 4px solid #1e3a8a;
+}
+
+.owners-manual-footer p {
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.manual-download {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.manual-download p {
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: #1e3a8a;
+}
+
+.manual-link {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #1e3a8a;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    border: 2px solid #1e3a8a;
+}
+
+.manual-link:hover {
+    background-color: #1e40af;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(30,58,138,0.3);
+}
+
+@media (max-width: 768px) {
+    .owners-manual-page-content {
+        padding: 15px;
+    }
+    
+    .owners-manual-header h1 {
+        font-size: 24px;
+    }
+    
+    .owners-manual-content h3 {
+        font-size: 18px;
+    }
+    
+    .manual-link {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+}
+
+/* Superinvestors Page */
+.superinvestors-page {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 10000;
+    overflow-y: auto;
+}
+
+.superinvestors-page-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.superinvestors-header {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #1e3a8a;
+}
+
+.superinvestors-header h1 {
+    color: #1e3a8a;
+    font-size: 28px;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.superinvestors-content {
+    line-height: 1.6;
+    color: #333;
+}
+
+.superinvestors-content p {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.superinvestors-content h3 {
+    color: #1e3a8a;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.superinvestors-footer {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #f8fafc;
+    border-radius: 8px;
+    border-left: 4px solid #1e3a8a;
+}
+
+.superinvestors-footer p {
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.essay-download {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.essay-download p {
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: #1e3a8a;
+}
+
+.essay-link {
+    display: inline-block;
+    padding: 12px 20px;
+    background: #1e3a8a;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid #1e3a8a;
+}
+
+.essay-link:hover {
+    background-color: #1e40af;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(30,58,138,0.3);
+}
+
+@media (max-width: 768px) {
+    .superinvestors-page-content {
+        padding: 15px;
+    }
+    
+    .superinvestors-header h1 {
+        font-size: 24px;
+    }
+    
+    .superinvestors-content h3 {
+        font-size: 18px;
+    }
+    
+    .essay-link {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+}
+
+/* Benjamin Graham Lectures Styling */
+.lecture-description {
+    margin: 10px 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+}
+
+.lecture-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.lecture-link {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #007bff;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.lecture-link:hover {
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+}
+
+.lecture-description-desktop {
+    margin: 10px 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+}
+
+.lecture-links-desktop {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.lecture-link-desktop {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #007bff;
+    font-size: 12px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.lecture-link-desktop:hover {
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+}
+
+/* Graham Lectures Page Styling */
+.graham-lectures-page {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 10000;
+    overflow-y: auto;
+}
+
+.graham-lectures-page-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.graham-lectures-header {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #1e3a8a;
+}
+
+.graham-lectures-header h1 {
+    color: #1e3a8a;
+    font-size: 28px;
+    margin: 0 0 10px 0;
+    font-weight: 700;
+}
+
+.page-subtitle {
+    color: #666;
+    font-size: 16px;
+    margin: 0;
+}
+
+.graham-lectures-content {
+    line-height: 1.6;
+}
+
+.graham-lectures-content p {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #333;
+}
+
+.lecture-downloads {
+    margin-top: 40px;
+    padding: 30px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.lecture-downloads h3 {
+    color: #1e3a8a;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.lecture-links-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.lecture-download-link {
+    display: inline-block;
+    padding: 12px 20px;
+    background: #1e3a8a;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid #1e3a8a;
+}
+
+.lecture-download-link:hover {
+    background: white;
+    color: #007bff;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,123,255,0.3);
+}
+
+/* Graham-Newman Partnership Letters Page Styling */
+.graham-newman-page {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 10000;
+    overflow-y: auto;
+}
+
+.graham-newman-page-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.graham-newman-header {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #1e3a8a;
+}
+
+.graham-newman-header h1 {
+    color: #1e3a8a;
+    font-size: 28px;
+    margin: 0 0 10px 0;
+    font-weight: 700;
+}
+
+.graham-newman-content {
+    line-height: 1.6;
+}
+
+.graham-newman-content p {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #333;
+}
+
+.partnership-downloads {
+    margin-top: 40px;
+    padding: 30px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.partnership-downloads h3 {
+    color: #059669;
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.partnership-links-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.partnership-download-link {
+    display: inline-block;
+    padding: 12px 20px;
+    background: #1e3a8a;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid #1e3a8a;
+}
+
+.partnership-download-link:hover {
+    background: white;
+    color: #059669;
+    text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(5,150,105,0.3);
+}
+
+/* All Classic Readings Page Styles */
+.all-classic-readings-page {
+    min-height: 100vh;
+    background: #f8fafc;
+    padding: 20px 0;
+}
+
+.all-classic-readings-page-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.all-classic-readings-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px 0;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.all-classic-readings-header .back-button {
+    background: #059669;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.all-classic-readings-header .back-button:hover {
+    background: #047857;
+}
+
+.all-classic-readings-header h1 {
+    font-size: 2.5rem;
+    color: #1f2937;
+    margin: 0 0 10px 0;
+    font-weight: 700;
+}
+
+.all-classic-readings-header .page-subtitle {
+    font-size: 1.1rem;
+    color: #6b7280;
+    margin: 0;
+}
+
+.all-classic-readings-content {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.classic-readings-grid {
+    padding: 30px;
+}
+
+.classic-readings-mobile {
+    display: block;
+}
+
+.classic-readings-desktop {
+    display: none;
+}
+
+/* Mobile styles for the new page */
+.classic-readings-mobile .classic-reading-item-mobile {
+    display: flex;
+    align-items: flex-start;
+    padding: 15px 0;
+    border-bottom: 1px solid #f3f4f6;
+    transition: background-color 0.2s ease;
+}
+
+.classic-readings-mobile .classic-reading-item-mobile:hover {
+    background-color: #f9fafb;
+}
+
+.classic-readings-mobile .classic-reading-item-mobile:last-child {
+    border-bottom: none;
+}
+
+.classic-readings-mobile .news-bullet {
+    font-weight: 700;
+    color: #1e3a8a;
+    font-size: 1.1rem;
+    margin-right: 15px;
+    min-width: 30px;
+    flex-shrink: 0;
+}
+
+.classic-readings-mobile .news-content {
+    flex: 1;
+}
+
+.classic-readings-mobile .news-headline {
+    font-size: 1rem;
+    line-height: 1.4;
+    margin: 0;
+    color: #1f2937;
+    font-weight: 500;
+}
+
+.classic-readings-mobile .news-headline a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.classic-readings-mobile .news-headline a:hover {
+    color: #059669;
+}
+
+/* Desktop styles for the new page */
+@media (min-width: 768px) {
+    .classic-readings-mobile {
+        display: none;
+    }
+    
+    .classic-readings-desktop {
+        display: block;
+    }
+    
+    .classic-readings-desktop .readings-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .classic-readings-desktop .readings-list li {
+        padding: 12px 0;
+        border-bottom: 1px solid #f3f4f6;
+        transition: background-color 0.2s ease;
+    }
+    
+    .classic-readings-desktop .readings-list li:hover {
+        background-color: #f9fafb;
+        padding-left: 10px;
+    }
+    
+    .classic-readings-desktop .readings-list li:last-child {
+        border-bottom: none;
+    }
+    
+    .classic-readings-desktop .readings-list li a {
+        color: #1f2937;
+        text-decoration: none;
+        font-size: 1rem;
+        line-height: 1.4;
+        transition: color 0.2s ease;
+    }
+    
+    .classic-readings-desktop .readings-list li a:hover {
+        color: #059669;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .all-classic-readings-header h1 {
+        font-size: 2rem;
+    }
+    
+    .classic-readings-grid {
+        padding: 20px;
+    }
+    
+    .classic-readings-mobile .news-headline {
+        font-size: 0.95rem;
+    }
+}
+
+/* Desktop See More Link Styles */
+.see-more-section-desktop {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.see-more-link-desktop {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #1e3a8a;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.see-more-link-desktop:hover {
+    background-color: #1e40af !important;
+    color: white !important;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(30, 58, 138, 0.3);
 }
 
