@@ -9,6 +9,16 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const NEWS_API_KEY = '6d122bb10581490591ee20ade119ec27';
 
+// Performance optimization constants
+const MAX_CONCURRENT_REQUESTS = 10; // Limit concurrent requests
+const REQUEST_TIMEOUT = 8000; // 8 second timeout
+const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes cache
+const MAX_ARTICLES_PER_SOURCE = 5; // Limit articles per source
+
+// In-memory cache for news data
+const newsCache = new Map();
+const sourceHealth = new Map(); // Track source health
+
 // Enable CORS for all routes
 app.use(cors());
 app.use(express.json());
@@ -31,16 +41,28 @@ app.use((req, res, next) => {
     next();
 });
 
-// RSS Feed Parser Function
+// Enhanced RSS Feed Parser with timeout and error handling
 async function parseRSSFeed(url, sourceName) {
     try {
         console.log(`Fetching RSS feed from ${sourceName}...`);
+        
+        // Check if source is marked as unhealthy
+        if (sourceHealth.get(sourceName)?.isUnhealthy) {
+            console.log(`Skipping unhealthy source: ${sourceName}`);
+            return [];
+        }
+        
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT);
+        
         const response = await fetch(url, {
             headers: {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
             },
-            timeout: 10000
+            signal: controller.signal
         });
+        
+        clearTimeout(timeoutId);
         
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -53,7 +75,7 @@ async function parseRSSFeed(url, sourceName) {
         const items = doc.getElementsByTagName('item');
         const articles = [];
         
-        for (let i = 0; i < Math.min(items.length, 10); i++) {
+        for (let i = 0; i < Math.min(items.length, MAX_ARTICLES_PER_SOURCE); i++) {
             const item = items[i];
             const title = item.getElementsByTagName('title')[0]?.textContent || '';
             const description = item.getElementsByTagName('description')[0]?.textContent || '';
@@ -73,27 +95,53 @@ async function parseRSSFeed(url, sourceName) {
             }
         }
         
+        // Mark source as healthy
+        sourceHealth.set(sourceName, { isUnhealthy: false, lastSuccess: Date.now() });
+        
         console.log(`Successfully parsed ${articles.length} articles from ${sourceName}`);
         return articles;
     } catch (error) {
         console.error(`Error parsing RSS feed for ${sourceName}:`, error.message);
+        
+        // Mark source as unhealthy if it fails multiple times
+        const health = sourceHealth.get(sourceName) || { failures: 0 };
+        health.failures = (health.failures || 0) + 1;
+        if (health.failures >= 3) {
+            health.isUnhealthy = true;
+            console.log(`Marking ${sourceName} as unhealthy after ${health.failures} failures`);
+        }
+        sourceHealth.set(sourceName, health);
+        
         return [];
     }
 }
 
-// Fetch news from NewsAPI
+// Enhanced NewsAPI fetcher with timeout and caching
 async function fetchNewsFromAPI(source) {
     try {
+        // Check cache first
+        const cacheKey = `newsapi_${source.source}`;
+        const cached = newsCache.get(cacheKey);
+        if (cached && (Date.now() - cached.timestamp) < CACHE_DURATION) {
+            console.log(`Using cached data for ${source.name}`);
+            return cached.articles;
+        }
+        
         // Get articles from the last 7 days to ensure we have content
         const sevenDaysAgo = new Date();
         sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
         const fromDate = sevenDaysAgo.toISOString().split('T')[0];
         
-        const url = `https://newsapi.org/v2/everything?sources=${source.source}&from=${fromDate}&sortBy=publishedAt&pageSize=5&apiKey=${NEWS_API_KEY}`;
+        const url = `https://newsapi.org/v2/everything?sources=${source.source}&from=${fromDate}&sortBy=publishedAt&pageSize=${MAX_ARTICLES_PER_SOURCE}&apiKey=${NEWS_API_KEY}`;
         
         console.log(`Fetching news from NewsAPI for ${source.name}...`);
         
-        const response = await fetch(url);
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT);
+        
+        const response = await fetch(url, { signal: controller.signal });
+        clearTimeout(timeoutId);
+        
         if (!response.ok) {
             throw new Error(`NewsAPI error: ${response.status}`);
         }
@@ -113,6 +161,12 @@ async function fetchNewsFromAPI(source) {
             source: source.name,
             publishedAt: article.publishedAt
         }));
+        
+        // Cache the results
+        newsCache.set(cacheKey, {
+            articles: articles,
+            timestamp: Date.now()
+        });
         
         console.log(`Successfully fetched ${articles.length} articles from ${source.name}`);
         return articles;
@@ -255,16 +309,15 @@ app.get('/api/news/:source', async (req, res) => {
     }
 });
 
-// API endpoint to fetch news from all sources
-app.get('/api/news', async (req, res) => {
-    try {
-        console.log('Fetching news from all sources...');
+// Batch processing function with concurrency control
+async function processBatch(sources, batchSize = MAX_CONCURRENT_REQUESTS) {
+    const results = [];
+    
+    for (let i = 0; i < sources.length; i += batchSize) {
+        const batch = sources.slice(i, i + batchSize);
+        console.log(`Processing batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(sources.length / batchSize)} (${batch.length} sources)`);
         
-        const allArticles = [];
-        const sourceKeys = Object.keys(newsSources);
-        
-        // Fetch from all sources in parallel
-        const promises = sourceKeys.map(async (sourceKey) => {
+        const batchPromises = batch.map(async (sourceKey) => {
             try {
                 const source = newsSources[sourceKey];
                 let articles = [];
@@ -282,20 +335,83 @@ app.get('/api/news', async (req, res) => {
             }
         });
         
-        const results = await Promise.all(promises);
+        const batchResults = await Promise.all(batchPromises);
+        results.push(...batchResults);
+        
+        // Small delay between batches to prevent overwhelming servers
+        if (i + batchSize < sources.length) {
+            await new Promise(resolve => setTimeout(resolve, 100));
+        }
+    }
+    
+    return results;
+}
+
+// Prioritized source system
+function getPrioritizedSources() {
+    const sourceKeys = Object.keys(newsSources);
+    
+    // High priority sources (major news outlets)
+    const highPriority = sourceKeys.filter(key => {
+        const source = newsSources[key];
+        return ['abc-news-au', 'afr', 'the-australian', 'sydney-morning-herald', 
+                'the-age', 'news-com-au', 'bloomberg', 'reuters', 'bbc-news', 'cnn'].includes(key);
+    });
+    
+    // Medium priority sources (business/tech)
+    const mediumPriority = sourceKeys.filter(key => {
+        const source = newsSources[key];
+        return source.category === 'business' || source.category === 'technology';
+    });
+    
+    // Low priority sources (regional)
+    const lowPriority = sourceKeys.filter(key => {
+        const source = newsSources[key];
+        return source.category === 'regional' && !highPriority.includes(key) && !mediumPriority.includes(key);
+    });
+    
+    return [...highPriority, ...mediumPriority, ...lowPriority];
+}
+
+// API endpoint to fetch news from all sources with optimization
+app.get('/api/news', async (req, res) => {
+    try {
+        console.log('Fetching news from all sources with optimization...');
+        
+        // Check if we have cached data
+        const cacheKey = 'all_news';
+        const cached = newsCache.get(cacheKey);
+        if (cached && (Date.now() - cached.timestamp) < CACHE_DURATION) {
+            console.log('Returning cached news data');
+            return res.json(cached.data);
+        }
+        
+        const allArticles = [];
+        const prioritizedSources = getPrioritizedSources();
+        
+        // Process sources in batches with priority
+        const results = await processBatch(prioritizedSources);
         results.forEach(articles => allArticles.push(...articles));
         
         // Sort by publication date (newest first)
         allArticles.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
         
-        console.log(`Successfully fetched ${allArticles.length} total articles`);
-        
-        res.json({
+        const responseData = {
             articles: allArticles,
             count: allArticles.length,
-            sources: sourceKeys,
+            sources: prioritizedSources,
             timestamp: new Date().toISOString()
+        };
+        
+        // Cache the results
+        newsCache.set(cacheKey, {
+            data: responseData,
+            timestamp: Date.now()
         });
+        
+        console.log(`Successfully fetched ${allArticles.length} total articles from ${prioritizedSources.length} sources`);
+        
+        res.json(responseData);
         
     } catch (error) {
         console.error('Error fetching news from all sources:', error);
@@ -306,13 +422,67 @@ app.get('/api/news', async (req, res) => {
     }
 });
 
-// Health check endpoint
+// Background refresh system
+async function backgroundRefresh() {
+    console.log('Starting background news refresh...');
+    try {
+        const prioritizedSources = getPrioritizedSources();
+        const results = await processBatch(prioritizedSources.slice(0, 20)); // Only refresh top 20 sources
+        
+        const allArticles = [];
+        results.forEach(articles => allArticles.push(...articles));
+        allArticles.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+        
+        const responseData = {
+            articles: allArticles,
+            count: allArticles.length,
+            sources: prioritizedSources.slice(0, 20),
+            timestamp: new Date().toISOString()
+        };
+        
+        // Update cache
+        newsCache.set('all_news', {
+            data: responseData,
+            timestamp: Date.now()
+        });
+        
+        console.log(`Background refresh completed: ${allArticles.length} articles`);
+    } catch (error) {
+        console.error('Background refresh failed:', error);
+    }
+}
+
+// Cache cleanup function
+function cleanupCache() {
+    const now = Date.now();
+    for (const [key, value] of newsCache.entries()) {
+        if (now - value.timestamp > CACHE_DURATION * 2) {
+            newsCache.delete(key);
+        }
+    }
+}
+
+// Health check endpoint with performance metrics
 app.get('/api/health', (req, res) => {
+    const healthySources = Array.from(sourceHealth.entries())
+        .filter(([name, health]) => !health.isUnhealthy)
+        .map(([name]) => name);
+    
     res.json({ 
         status: 'OK', 
         timestamp: new Date().toISOString(),
+        totalSources: Object.keys(newsSources).length,
+        healthySources: healthySources.length,
+        cacheSize: newsCache.size,
         sources: Object.keys(newsSources)
     });
+});
+
+// Cache management endpoint
+app.get('/api/cache/clear', (req, res) => {
+    newsCache.clear();
+    sourceHealth.clear();
+    res.json({ message: 'Cache cleared successfully' });
 });
 
 // Serve static files
@@ -330,7 +500,17 @@ app.listen(PORT, () => {
     console.log(`  GET /api/health - Health check`);
     console.log(`  GET /api/news - Fetch news from all sources`);
     console.log(`  GET /api/news/:source - Fetch news from specific source`);
+    console.log(`  GET /api/cache/clear - Clear cache`);
     console.log(`Available sources: ${Object.keys(newsSources).join(', ')}`);
+    
+    // Start background refresh timer (every 5 minutes)
+    setInterval(backgroundRefresh, 5 * 60 * 1000);
+    
+    // Start cache cleanup timer (every 10 minutes)
+    setInterval(cleanupCache, 10 * 60 * 1000);
+    
+    // Initial background refresh
+    setTimeout(backgroundRefresh, 10000); // Start after 10 seconds
 });
 
 module.exports = app;
