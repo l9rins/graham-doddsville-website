@@ -7155,6 +7155,36 @@ th {
     .mobile-only {
         display: block !important;
     }
+    
+    /* Simple Mobile News Styling */
+    .mobile-news-list {
+        padding: 16px;
+        background: #fff;
+    }
+    
+    .mobile-news-item {
+        margin-bottom: 12px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #f0f0f0;
+    }
+    
+    .mobile-news-item:last-child {
+        border-bottom: none;
+    }
+    
+    .mobile-news-item a {
+        color: #0066cc;
+        text-decoration: none;
+        font-size: 14px;
+        line-height: 1.4;
+        display: block;
+        transition: color 0.2s ease;
+    }
+    
+    .mobile-news-item a:hover {
+        color: #004499;
+        text-decoration: underline;
+    }
 }
 
 /* Mobile Navigation Drawer */

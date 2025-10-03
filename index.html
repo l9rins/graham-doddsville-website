@@ -1730,6 +1730,10 @@
     <div class="newspaper-categories mobile-only">
         <h2 class="news-section-title">LATEST NEWS</h2>
         
+        <!-- Simple Mobile News List -->
+        <div class="mobile-news-list" id="mobile-news-container">
+            <!-- News items will be loaded here -->
+        </div>
     </div>
 
     <!-- Mobile Newspaper Main Content -->
@@ -6486,58 +6490,27 @@
             console.log('updateMobileNewsDisplay called with:', articles);
             console.log('Articles length:', articles ? articles.length : 'undefined');
             console.log('First article sample:', articles && articles.length > 0 ? articles[0] : 'none');
+            
+            const mobileContainer = document.querySelector('#mobile-news-container');
+            if (!mobileContainer) {
+                console.log('Mobile news container not found!');
+                return;
+            }
+            
             if (articles && articles.length > 0) {
-                // Pre-allocate categories for better performance
-                const categories = {
-                    companies: [],
-                    markets: [],
-                    economy: [],
-                    industry: []
-                };
+                // Take first 10 articles and display in simple format
+                const displayArticles = articles.slice(0, 10);
+                const html = displayArticles.map(article => {
+                    console.log('Processing article:', article.title, 'URL:', article.url);
+                    return `
+                        <div class="mobile-news-item">
+                            <a href="${article.url || '#'}" target="_blank" rel="noopener noreferrer">${article.title} (${article.source})</a>
+                        </div>
+                    `;
+                }).join('');
                 
-                // Optimized category assignment
-                articles.forEach(article => {
-                    const category = (article.category || 'general').toLowerCase();
-                    if (categories[category]) {
-                        categories[category].push(article);
-                    } else {
-                        categories.companies.push(article); // Default to companies
-                    }
-                });
-                
-                console.log('Grouped categories:', categories);
-                
-                // Batch DOM updates for better performance
-                const fragment = document.createDocumentFragment();
-                const updates = [];
-                
-                Object.keys(categories).forEach(category => {
-                    const container = document.querySelector(`#top-${category}-news`);
-                    console.log(`Looking for mobile container #top-${category}-news:`, container);
-                    if (container) {
-                        const articles = categories[category].slice(0, 5);
-                        const html = articles.map(article => {
-                            console.log('Processing article:', article.title, 'URL:', article.url);
-                            return `
-                            <div class="news-item" style="background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 12px 16px; margin-bottom: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.2s ease;">
-                                <a href="${article.url || '#'}" style="color: #333; text-decoration: none; font-size: 10px; line-height: 1.4; display: block;" target="_blank" rel="noopener noreferrer">${article.title} (${article.source})</a>
-                            </div>
-                        `;
-                        }).join('');
-                        
-                        updates.push({ container, html });
-                        console.log(`Prepared ${category} container with ${articles.length} items`);
-                    } else {
-                        console.log(`Mobile container #${category}-news not found!`);
-                    }
-                });
-                
-                // Batch update all containers at once
-                updates.forEach(({ container, html }) => {
-                    container.innerHTML = html;
-                });
-                
-                console.log('All news containers updated successfully');
+                mobileContainer.innerHTML = html;
+                console.log('Mobile news updated successfully with', displayArticles.length, 'articles');
             } else {
                 console.log('No articles provided to updateMobileNewsDisplay');
                 // Show fallback content
