@@ -4645,6 +4645,11 @@ input:focus, textarea:focus, select:focus {
     margin: 0 4px;
 }
 
+/* Remove the last separator to avoid extra "|" */
+.book-links-horizontal a:last-child::after {
+    content: none;
+}
+
 .book-links .see-more {
     color: #666;
     font-style: italic;
@@ -9313,6 +9318,11 @@ th {
         color: #666;
         margin: 0 2px;
     }
+    
+    /* Remove the last separator to avoid extra "|" */
+    .book-links-horizontal a:last-child::after {
+        content: none;
+    }
 }
 
 /* Books Slider Styles */
@@ -9360,6 +9370,11 @@ th {
     content: " | ";
     color: #666;
     margin: 0 4px;
+}
+
+/* Remove the last separator to avoid extra "|" */
+.books-slider .book-links-horizontal a:last-child::after {
+    content: none;
 }
 
 /* Articles Slider Styles */
