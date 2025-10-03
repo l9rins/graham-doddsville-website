@@ -4611,34 +4611,112 @@ input:focus, textarea:focus, select:focus {
     color: #0066cc;
 }
 
-/* Horizontal book links layout */
+/* CSS Custom Properties for book links theming */
+:root {
+    --book-link-bg: #f8fafc;
+    --book-link-border: #e2e8f0;
+    --book-link-color: #333;
+    --book-link-hover-bg: #e0f2fe;
+    --book-link-hover-color: #1e3a8a;
+    --book-link-hover-border: #1e3a8a;
+    --book-link-shadow: rgba(30, 58, 138, 0.15);
+    --book-link-gap: 12px;
+    --book-link-min-width: 280px;
+}
+
+/* Horizontal book links layout - Enhanced for text wrapping */
 .book-links-horizontal {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(var(--book-link-min-width), 1fr));
+    gap: var(--book-link-gap);
     margin: 0;
     padding: 0;
-    line-height: 1.6;
+    line-height: 1.4;
 }
 
 .book-links-horizontal a {
-    color: #333;
+    color: var(--book-link-color);
     text-decoration: none;
-    font-size: 14px;
-    transition: color 0.3s ease;
-    white-space: nowrap;
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background: var(--book-link-bg);
+    border: 1px solid var(--book-link-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    white-space: normal;
+    line-height: 1.3;
+    letter-spacing: 0.01em;
+    word-spacing: 0.05em;
+    min-height: 44px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
 }
 
 .book-links-horizontal a:hover {
-    color: #0066cc;
+    color: var(--book-link-hover-color);
+    background: var(--book-link-hover-bg);
+    border-color: var(--book-link-hover-border);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px var(--book-link-shadow);
 }
 
+.book-links-horizontal a:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(30, 58, 138, 0.1);
+}
+
+/* Add focus states for accessibility */
+.book-links-horizontal a:focus {
+    outline: 2px solid var(--book-link-hover-color);
+    outline-offset: 2px;
+    background: var(--book-link-hover-bg);
+}
+
+/* Tooltip functionality for long book titles */
+.book-links-horizontal a[title] {
+    position: relative;
+}
+
+.book-links-horizontal a[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1a1a1a;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    white-space: nowrap;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    pointer-events: none;
+}
+
+.book-links-horizontal a[title]:hover::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(100%);
+    border: 5px solid transparent;
+    border-top-color: #1a1a1a;
+    z-index: 1000;
+}
+
+/* Remove the pipe separators since we're using grid now */
 .book-links-horizontal a:not(:last-child)::after {
-    content: " | ";
-    color: #666;
-    margin: 0 4px;
+    content: none;
 }
 
 .book-links .see-more {
@@ -9287,24 +9365,65 @@ th {
         display: none;
     }
     
-    /* Mobile horizontal book links */
+    /* Mobile horizontal book links - Enhanced responsive design */
     .book-links-horizontal {
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 4px;
+        grid-template-columns: 1fr;
+        gap: 8px;
+        padding: 0 4px;
+        --book-link-gap: 8px;
+        --book-link-min-width: 100%;
     }
     
     .book-links-horizontal a {
-        font-size: 13px;
-        line-height: 1.4;
-        white-space: nowrap;
+        font-size: clamp(0.8rem, 3vw, 0.9rem);
+        line-height: 1.3;
+        padding: 10px 8px;
+        min-height: 48px;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+        white-space: normal;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
     .book-links-horizontal a:not(:last-child)::after {
-        content: " | ";
-        color: #666;
-        margin: 0 2px;
+        content: none;
+    }
+    
+    /* Enhanced mobile book links with better touch targets */
+    .book-links-horizontal a {
+        min-height: 52px;
+        padding: 12px 10px;
+        font-size: clamp(0.8rem, 3.5vw, 0.95rem);
+        touch-action: manipulation;
+        -webkit-tap-highlight-color: rgba(30, 58, 138, 0.1);
+    }
+    
+    /* Add focus states for accessibility */
+    .book-links-horizontal a:focus {
+        outline: 2px solid #1e3a8a;
+        outline-offset: 2px;
+        background: #e0f2fe;
+    }
+    
+    /* Ensure proper text wrapping on very small screens */
+    @media (max-width: 480px) {
+        .book-links-horizontal {
+            grid-template-columns: 1fr;
+            gap: 6px;
+            padding: 0 2px;
+        }
+        
+        .book-links-horizontal a {
+            font-size: clamp(0.75rem, 4vw, 0.85rem);
+            padding: 10px 6px;
+            min-height: 48px;
+            word-break: break-word;
+            overflow-wrap: anywhere;
+        }
     }
 }
 
@@ -9321,34 +9440,52 @@ th {
     overflow-y: auto;
 }
 
-/* Ensure horizontal book links work in slider */
+/* Ensure horizontal book links work in slider - Enhanced for text wrapping */
 .books-slider .book-links-horizontal {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
     margin: 0;
     padding: 0;
-    line-height: 1.6;
+    line-height: 1.4;
 }
 
 .books-slider .book-links-horizontal a {
     color: #333;
     text-decoration: none;
-    font-size: 14px;
-    transition: color 0.3s ease;
-    white-space: nowrap;
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    white-space: normal;
+    line-height: 1.3;
+    letter-spacing: 0.01em;
+    word-spacing: 0.05em;
+    min-height: 44px;
+    position: relative;
+    overflow: hidden;
 }
 
 .books-slider .book-links-horizontal a:hover {
-    color: #0066cc;
+    color: #1e3a8a;
+    background: #e0f2fe;
+    border-color: #1e3a8a;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.15);
 }
 
 .books-slider .book-links-horizontal a:not(:last-child)::after {
-    content: " | ";
-    color: #666;
-    margin: 0 4px;
+    content: none;
 }
 
 /* Articles Slider Styles */
