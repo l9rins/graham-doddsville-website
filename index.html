@@ -6453,7 +6453,7 @@
             // Show skeleton loading for each news category
             const categories = ['companies', 'markets', 'economy', 'industry'];
             categories.forEach(category => {
-                const container = document.querySelector(`#${category}-news`);
+                const container = document.querySelector(`#top-${category}-news`);
                 if (container) {
                     container.innerHTML = `
                         <div class="news-loading-skeleton">
@@ -6512,20 +6512,16 @@
                 const updates = [];
                 
                 Object.keys(categories).forEach(category => {
-                    const container = document.querySelector(`#${category}-news`);
-                    console.log(`Looking for mobile container #${category}-news:`, container);
+                    const container = document.querySelector(`#top-${category}-news`);
+                    console.log(`Looking for mobile container #top-${category}-news:`, container);
                     if (container) {
                         const articles = categories[category].slice(0, 5);
                         const html = articles.map(article => {
                             console.log('Processing article:', article.title, 'URL:', article.url);
                             return `
-                            <a href="${article.url || '#'}" class="news-item-mobile" target="_blank" rel="noopener noreferrer">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">${article.title}</h3>
-                                    <span class="news-source">(${article.source})</span>
-                                </div>
-                            </a>
+                            <div class="news-item" style="background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 12px 16px; margin-bottom: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.2s ease;">
+                                <a href="${article.url || '#'}" style="color: #333; text-decoration: none; font-size: 10px; line-height: 1.4; display: block;" target="_blank" rel="noopener noreferrer">${article.title} (${article.source})</a>
+                            </div>
                         `;
                         }).join('');
                         
