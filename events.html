@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - Graham and Doddsville</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1e3a8a;
+            --primary-blue-light: #3b82f6;
+            --primary-blue-dark: #1e40af;
+            --secondary-gray: #f8f9fa;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-muted: #9ca3af;
+            --border-light: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--secondary-gray);
+        }
+
+        .wealth-creation-page {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            position: relative;
+        }
+
+        .wealth-creation-page-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-bottom: 2px solid #d4af37;
+            padding: 12px 0;
+            transition: all 0.3s ease;
+            overflow: visible;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            overflow: visible;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 40px;
+            width: auto;
+        }
+
+        .main-nav {
+            overflow: visible;
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            overflow: visible;
+        }
+
+        .nav-link {
+            color: #000;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 30px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 2px;
+            background: #333;
+            border-radius: 1px;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 2px 0;
+        }
+
+        /* Mobile Menu Toggle Animation */
+        .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Mobile Navigation Drawer */
+        .mobile-drawer {
+            position: fixed;
+            top: 0;
+            right: -80%;
+            width: 80%;
+            height: 100vh;
+            background: #fff;
+            z-index: 10000;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            display: block;
+        }
+
+        .mobile-drawer.open {
+            right: 0;
+        }
+
+        .drawer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 20px;
+            border-bottom: 1px solid #e0e0e0;
+            background: #1e3a8a;
+            color: white;
+        }
+
+        .drawer-logo {
+            max-height: 40px;
+            width: auto;
+            display: block;
+        }
+
+        .drawer-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .drawer-nav {
+            padding: 20px 0;
+        }
+
+        .drawer-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .drawer-menu li {
+            border-bottom: 1px solid #f0f0f0;
+            margin-bottom: 6px;
+            padding-left: 20px;
+        }
+
+        .drawer-link {
+            display: block;
+            padding: 6px 20px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+
+        .drawer-link:hover {
+            background: #f8f9fa;
+            color: #1e3a8a;
+        }
+
+        /* Mobile responsive styles */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .desktop-only {
+                display: none;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-only {
+                display: none;
+            }
+            
+            .mobile-drawer {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .wealth-creation-page-content {
+                padding: 16px;
+            }
+        }
+
+        /* Article Detail Panel */
+        .article-detail-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .article-detail-panel.active {
+            display: flex;
+        }
+
+        .article-detail-content {
+            background: white;
+            border-radius: 12px;
+            max-width: 800px;
+            max-height: 90vh;
+            width: 100%;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .article-detail-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .article-detail-title {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .article-detail-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.2s ease;
+        }
+
+        .article-detail-close:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .article-detail-body {
+            padding: 24px;
+            line-height: 1.7;
+        }
+
+        .article-detail-body h3 {
+            color: var(--primary-blue);
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+
+        .article-detail-body p {
+            margin-bottom: 16px;
+        }
+
+        .loading-spinner {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-secondary);
+        }
+
+        /* Page Title Section */
+        .page-title-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .breadcrumb {
+            margin-bottom: 16px;
+        }
+
+        .breadcrumb-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .breadcrumb-link:hover {
+            color: var(--primary-blue);
+        }
+
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0 0 16px 0;
+            line-height: 1.2;
+        }
+
+        .page-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Collapsible Categories */
+        .collapsible-categories {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .collapsible-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            transition: transform 0.2s ease;
+        }
+
+        .collapsible-section:hover {
+            transform: translateY(-2px);
+        }
+
+        .collapsible-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            background: var(--primary-blue);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .collapsible-header:hover {
+            background: var(--primary-blue-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.15);
+        }
+
+        .collapsible-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0;
+            color: white;
+        }
+
+        .collapsible-arrow {
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            color: white;
+        }
+
+        .collapsible-arrow.rotated {
+            transform: rotate(180deg);
+        }
+
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                        opacity 0.3s ease,
+                        padding 0.3s ease;
+            opacity: 0;
+            padding: 0 24px;
+        }
+
+        .collapsible-content.expanded {
+            max-height: 1000px;
+            opacity: 1;
+            padding: 12px 24px 24px 24px;
+        }
+
+        .collapsible-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .collapsible-links li {
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .collapsible-links li:last-child {
+            border-bottom: none;
+        }
+
+        .collapsible-link {
+            display: block;
+            padding: 16px 24px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .collapsible-link:hover {
+            background: var(--secondary-gray);
+            color: var(--primary-blue);
+            border-left-color: var(--primary-blue);
+        }
+    </style>
+</head>
+<body>
+    <div class="wealth-creation-page">
+        <!-- Header -->
+        <header class="header sticky-header">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="G&D Logo.png" alt="Graham & Doddsville" class="logo-image">
+                </div>
+                <!-- Desktop Navigation (hidden on mobile) -->
+                <nav class="main-nav desktop-only" role="navigation" aria-label="Main navigation">
+                    <ul>
+                        <li><a href="index.html" class="nav-link">HOME</a></li>
+                        <li><a href="classical-readings.html" class="nav-link">CLASSICAL READINGS</a></li>
+                        <li><a href="wealth-creation.html" class="nav-link">WEALTH CREATION</a></li>
+                        <li><a href="#" class="nav-link">ABOUT</a></li>
+                    </ul>
+                </nav>
+                
+                <!-- Mobile Hamburger Menu -->
+                <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Mobile Navigation Drawer -->
+        <div class="mobile-drawer" id="mobile-drawer">
+            <div class="drawer-header">
+                <img src="G&D Logo.png" alt="Graham and Doddsville" class="drawer-logo">
+                <button class="drawer-close" id="drawer-close" aria-label="Close menu">×</button>
+            </div>
+            <nav class="drawer-nav">
+                <ul class="drawer-menu">
+                    <li><a href="index.html" class="drawer-link">Home</a></li>
+                    <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
+                    <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
+                    <li><a href="legal-taxation.html" class="drawer-link">Legal & Taxation</a></li>
+                    <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
+                    <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
+                    <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
+                    <li><a href="economics.html" class="drawer-link">Economics</a></li>
+                    <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
+                    <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
+                    <li><a href="resources.html" class="drawer-link">Resources</a></li>
+                    <li><a href="events.html" class="drawer-link">Events</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="wealth-creation-page-content">
+            <!-- Page Title Section -->
+            <div class="page-title-section">
+                <div class="breadcrumb">
+                    <a href="index.html" class="breadcrumb-link">← Home</a>
+                </div>
+                <h1 class="page-title">Events</h1>
+                <p class="page-subtitle">Educational events, seminars, webinars, courses, and podcasts for comprehensive financial learning</p>
+            </div>
+
+            <!-- Collapsible Categories -->
+            <div class="collapsible-categories">
+                <!-- Events and Seminars -->
+                <div class="collapsible-section">
+                <div class="collapsible-header" onclick="toggleCollapsible('events-seminars')">
+                    <h3 class="collapsible-title">Events and Seminars</h3>
+                    <span class="collapsible-arrow" id="events-seminars-arrow">▼</span>
+                </div>
+                <div class="collapsible-content" id="events-seminars-content">
+                    <ul class="collapsible-links">
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('upcoming-events')">Upcoming Events</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('past-events')">Past Events</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('event-calendar')">Event Calendar</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('seminar-series')">Seminar Series</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('workshops')">Workshops</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('conferences')">Conferences</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('networking-events')">Networking Events</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('masterclasses')">Masterclasses</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Free Webinars -->
+            <div class="collapsible-section">
+                <div class="collapsible-header" onclick="toggleCollapsible('free-webinars')">
+                    <h3 class="collapsible-title">Free Webinars</h3>
+                    <span class="collapsible-arrow" id="free-webinars-arrow">▼</span>
+                </div>
+                <div class="collapsible-content" id="free-webinars-content">
+                    <ul class="collapsible-links">
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('upcoming-free-webinars')">Upcoming Free Webinars</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('on-demand-webinars')">On-Demand Free Webinars</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('webinar-library')">Webinar Library</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('webinar-registration')">Registration for Free Webinars</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('live-sessions')">Live Sessions</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('recorded-sessions')">Recorded Sessions</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('interactive-webinars')">Interactive Webinars</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('expert-panels')">Expert Panels</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Podcasts -->
+            <div class="collapsible-section">
+                <div class="collapsible-header" onclick="toggleCollapsible('podcasts')">
+                    <h3 class="collapsible-title">Podcasts</h3>
+                    <span class="collapsible-arrow" id="podcasts-arrow">▼</span>
+                </div>
+                <div class="collapsible-content" id="podcasts-content">
+                    <ul class="collapsible-links">
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('latest-episodes')">Latest Episodes</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('podcast-series')">Podcast Series</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('browse-by-topic')">Browse by Topic</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('subscribe')">Subscribe</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('investment-podcasts')">Investment Podcasts</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('market-analysis')">Market Analysis</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('expert-interviews')">Expert Interviews</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('educational-content')">Educational Content</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Free Online Courses -->
+            <div class="collapsible-section">
+                <div class="collapsible-header" onclick="toggleCollapsible('free-online-courses')">
+                    <h3 class="collapsible-title">Free Online Courses</h3>
+                    <span class="collapsible-arrow" id="free-online-courses-arrow">▼</span>
+                </div>
+                <div class="collapsible-content" id="free-online-courses-content">
+                    <ul class="collapsible-links">
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('introduction-investing')">Introduction to Investing</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('basics-financial-markets')">Basics of Financial Markets</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('understanding-personal-finance')">Understanding Personal Finance</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('course-catalog')">Course Catalog</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('beginner-courses')">Beginner Courses</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('intermediate-courses')">Intermediate Courses</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('self-paced-learning')">Self-Paced Learning</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('certificates')">Certificates</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Industry Courses -->
+            <div class="collapsible-section">
+                <div class="collapsible-header" onclick="toggleCollapsible('industry-courses')">
+                    <h3 class="collapsible-title">Industry Courses</h3>
+                    <span class="collapsible-arrow" id="industry-courses-arrow">▼</span>
+                </div>
+                <div class="collapsible-content" id="industry-courses-content">
+                    <ul class="collapsible-links">
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('advanced-investment-strategies')">Advanced Investment Strategies</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('financial-modeling')">Financial Modeling</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('risk-management')">Risk Management</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('professional-certifications')">Professional Certifications</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('portfolio-management')">Portfolio Management</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('derivatives-trading')">Derivatives Trading</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('compliance-training')">Compliance Training</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('ethics-professionalism')">Ethics & Professionalism</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Tertiary Courses -->
+            <div class="collapsible-section">
+                <div class="collapsible-header" onclick="toggleCollapsible('tertiary-courses')">
+                    <h3 class="collapsible-title">Tertiary Courses</h3>
+                    <span class="collapsible-arrow" id="tertiary-courses-arrow">▼</span>
+                </div>
+                <div class="collapsible-content" id="tertiary-courses-content">
+                    <ul class="collapsible-links">
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('undergraduate-programs')">Undergraduate Programs</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('postgraduate-programs')">Postgraduate Programs</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('mba-finance')">MBA in Finance</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('university-partnerships')">University Partnerships</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('bachelor-finance')">Bachelor of Finance</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('master-finance')">Master of Finance</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('phd-programs')">PhD Programs</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('executive-education')">Executive Education</a></li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Article Detail Panel -->
+    <div class="article-detail-panel" id="article-detail-panel">
+        <div class="article-detail-content">
+            <div class="article-detail-header">
+                <h3 class="article-detail-title" id="article-detail-title">Article Title</h3>
+                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">×</button>
+            </div>
+            <div class="article-detail-body" id="article-detail-body">
+                <div class="loading-spinner">Loading article...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Collapsible functionality
+        function toggleCollapsible(sectionId) {
+            const content = document.getElementById(`${sectionId}-content`);
+            const arrow = document.getElementById(`${sectionId}-arrow`);
+
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                content.classList.remove('expanded');
+                arrow.innerHTML = '▼';
+            } else {
+                // Close all other open sections
+                document.querySelectorAll('.collapsible-content.expanded').forEach(openContent => {
+                    openContent.style.maxHeight = null;
+                    openContent.classList.remove('expanded');
+                    const openArrowId = openContent.id.replace('-content', '-arrow');
+                    document.getElementById(openArrowId).innerHTML = '▼';
+                });
+
+                content.style.maxHeight = content.scrollHeight + "px";
+                content.classList.add('expanded');
+                arrow.innerHTML = '▲';
+            }
+        }
+
+        // Mobile drawer functionality
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        const drawerClose = document.getElementById('drawer-close');
+        
+        if (mobileToggle && mobileDrawer) {
+            mobileToggle.addEventListener('click', () => {
+                console.log('Hamburger menu clicked!');
+                mobileDrawer.classList.add('open');
+                document.body.style.overflow = 'hidden';
+                console.log('Drawer should be open now');
+            });
+        }
+        
+        if (drawerClose && mobileDrawer) {
+            drawerClose.addEventListener('click', () => {
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        }
+        
+        // Close drawer when clicking outside
+        if (mobileDrawer) {
+            mobileDrawer.addEventListener('click', (e) => {
+                if (e.target === mobileDrawer) {
+                    mobileDrawer.classList.remove('open');
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+
+        // Article content data
+        const articleContent = {
+            'upcoming-events': {
+                title: 'Upcoming Events',
+                content: `
+                    <p>Join us for our upcoming educational events and seminars designed to enhance your financial knowledge and investment skills.</p>
+                    
+                    <h3>Event Types</h3>
+                    <p>We host a variety of events including investment workshops, market analysis seminars, guest speaker presentations, and networking opportunities.</p>
+                    
+                    <h3>Registration</h3>
+                    <p>Most events require advance registration. Early bird discounts are often available for members and subscribers.</p>
+                    
+                    <h3>Venues</h3>
+                    <p>Events are held at various locations including our headquarters, partner venues, and online platforms for virtual attendance.</p>
+                `
+            },
+            'upcoming-free-webinars': {
+                title: 'Upcoming Free Webinars',
+                content: `
+                    <p>Access our free educational webinars covering a wide range of financial topics and investment strategies.</p>
+                    
+                    <h3>Webinar Topics</h3>
+                    <p>Topics include market analysis, investment strategies, retirement planning, tax optimization, and current market trends.</p>
+                    
+                    <h3>Expert Speakers</h3>
+                    <p>Our webinars feature industry experts, successful investors, and financial professionals sharing their insights and experience.</p>
+                    
+                    <h3>Interactive Format</h3>
+                    <p>Most webinars include Q&A sessions, polls, and interactive elements to enhance your learning experience.</p>
+                `
+            },
+            'latest-episodes': {
+                title: 'Latest Podcast Episodes',
+                content: `
+                    <p>Stay updated with our latest podcast episodes featuring in-depth discussions on investment strategies and market analysis.</p>
+                    
+                    <h3>Episode Topics</h3>
+                    <p>Covering value investing, market trends, company analysis, economic outlook, and interviews with successful investors.</p>
+                    
+                    <h3>Hosts</h3>
+                    <p>Our experienced hosts bring decades of investment experience and provide practical insights for all skill levels.</p>
+                    
+                    <h3>Availability</h3>
+                    <p>Episodes are available on all major podcast platforms including Apple Podcasts, Spotify, and Google Podcasts.</p>
+                `
+            },
+            'introduction-investing': {
+                title: 'Introduction to Investing',
+                content: `
+                    <p>Perfect for beginners, this comprehensive course covers the fundamentals of investing and financial markets.</p>
+                    
+                    <h3>Course Content</h3>
+                    <p>Learn about different asset classes, risk management, portfolio construction, and the basics of stock analysis.</p>
+                    
+                    <h3>Learning Outcomes</h3>
+                    <p>By the end of this course, you'll understand investment principles, be able to evaluate different investment options, and have a foundation for making informed investment decisions.</p>
+                    
+                    <h3>Format</h3>
+                    <p>Self-paced online course with video lessons, reading materials, quizzes, and practical exercises.</p>
+                `
+            },
+            'advanced-investment-strategies': {
+                title: 'Advanced Investment Strategies',
+                content: `
+                    <p>Designed for experienced investors and professionals, this course covers sophisticated investment strategies and techniques.</p>
+                    
+                    <h3>Advanced Topics</h3>
+                    <p>Includes quantitative analysis, derivatives strategies, alternative investments, and advanced portfolio optimization techniques.</p>
+                    
+                    <h3>Prerequisites</h3>
+                    <p>Participants should have a solid understanding of basic investment concepts and some experience in financial markets.</p>
+                    
+                    <h3>Certification</h3>
+                    <p>Upon successful completion, participants receive a certificate that can be used for professional development credits.</p>
+                `
+            },
+            'mba-finance': {
+                title: 'MBA in Finance',
+                content: `
+                    <p>Comprehensive graduate program designed to develop advanced financial management and investment analysis skills.</p>
+                    
+                    <h3>Program Structure</h3>
+                    <p>Two-year program covering corporate finance, investment analysis, risk management, and financial modeling with real-world applications.</p>
+                    
+                    <h3>Career Outcomes</h3>
+                    <p>Graduates pursue careers in investment banking, portfolio management, corporate finance, and financial consulting.</p>
+                    
+                    <h3>Admission Requirements</h3>
+                    <p>Bachelor's degree, GMAT/GRE scores, professional experience, and strong analytical and quantitative skills.</p>
+                `
+            }
+        };
+
+        // Article panel functionality
+        function openArticle(articleId) {
+            const panel = document.getElementById('article-detail-panel');
+            const title = document.getElementById('article-detail-title');
+            const body = document.getElementById('article-detail-body');
+            
+            if (articleContent[articleId]) {
+                title.textContent = articleContent[articleId].title;
+                body.innerHTML = articleContent[articleId].content;
+                panel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeArticlePanel() {
+            const panel = document.getElementById('article-detail-panel');
+            panel.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            const articleClose = document.getElementById('article-detail-close');
+            const articlePanel = document.getElementById('article-detail-panel');
+            
+            if (articleClose) {
+                articleClose.addEventListener('click', closeArticlePanel);
+            }
+            
+            if (articlePanel) {
+                articlePanel.addEventListener('click', function(event) {
+                    if (event.target === articlePanel) {
+                        closeArticlePanel();
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

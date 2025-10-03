@@ -961,39 +961,49 @@
             .mobile-drawer {
                 position: fixed;
                 top: 0;
-                left: -100%;
-                width: 280px;
+                right: -80%;
+                width: 80%;
                 height: 100vh;
-                background: white;
-                box-shadow: var(--shadow-xl);
-                transition: left 0.3s ease;
-                z-index: 1001;
+                background: #fff;
+                z-index: 10000;
+                transition: right 0.3s ease;
                 overflow-y: auto;
+                box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+                display: block;
             }
 
             .mobile-drawer.open {
-                left: 0;
+                right: 0;
             }
 
             .drawer-header {
                 display: flex;
-                align-items: center;
                 justify-content: space-between;
-                padding: 20px;
-                border-bottom: 1px solid var(--border-light);
+                align-items: center;
+                padding: 8px 20px;
+                border-bottom: 1px solid #e0e0e0;
+                background: #1e3a8a;
+                color: white;
             }
 
             .drawer-logo {
-                height: 32px;
+                max-height: 40px;
                 width: auto;
+                display: block;
             }
 
             .drawer-close {
                 background: none;
                 border: none;
-                font-size: 24px;
+                color: white;
+                font-size: 2rem;
                 cursor: pointer;
-                color: var(--text-primary);
+                padding: 0;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
 
             .drawer-nav {
@@ -1007,20 +1017,23 @@
             }
 
             .drawer-menu li {
-                border-bottom: 1px solid var(--border-light);
+                border-bottom: 1px solid #f0f0f0;
+                margin-bottom: 6px;
+                padding-left: 20px;
             }
 
             .drawer-link {
                 display: block;
-                padding: 16px 20px;
-                color: var(--text-primary);
+                padding: 6px 20px;
+                color: #333;
                 text-decoration: none;
                 font-weight: 500;
                 transition: background-color 0.2s ease;
             }
 
             .drawer-link:hover {
-                background-color: var(--secondary-gray);
+                background: #f8f9fa;
+                color: #1e3a8a;
             }
 
             .filters-section {
@@ -1142,20 +1155,18 @@
                 </div>
                 <nav class="drawer-nav">
                     <ul class="drawer-menu">
-                        <li><a href="#" class="drawer-link">Home</a></li>
-                        <li><a href="#" class="drawer-link" onclick="openAboutPage()">About Us</a></li>
-                        <li><a href="#" class="drawer-link" onclick="openAdvertisePage()">Advertise</a></li>
+                        <li><a href="index.html" class="drawer-link">Home</a></li>
+                        <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
                         <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
-                        <li><a href="#" class="drawer-link">Legal & Taxation</a></li>
-                        <li><a href="#" class="drawer-link">Financial Markets</a></li>
-                        <li><a href="#" class="drawer-link">Share Investing</a></li>
-                        <li><a href="#" class="drawer-link">Greatest Investors</a></li>
-                        <li><a href="#" class="drawer-link">Investment Analysis</a></li>
-                        <li><a href="#" class="drawer-link">Economics</a></li>
-                        <li><a href="#" class="drawer-link">Professional Advisers</a></li>
-                        <li><a href="#" class="drawer-link">Financial Products</a></li>
-                        <li><a href="#" class="drawer-link">Resources</a></li>
-                        <li><a href="#" class="drawer-link" onclick="openEventsPage()">Events</a></li>
+                        <li><a href="legal-taxation.html" class="drawer-link">Legal & Taxation</a></li>
+                        <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
+                        <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
+                        <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
+                        <li><a href="economics.html" class="drawer-link">Economics</a></li>
+                        <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
+                        <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
+                        <li><a href="resources.html" class="drawer-link">Resources</a></li>
+                        <li><a href="events.html" class="drawer-link">Events</a></li>
                     </ul>
                 </nav>
             </div>
@@ -2030,22 +2041,27 @@
             const drawerClose = document.getElementById('drawer-close');
 
             if (mobileToggle && mobileDrawer) {
-                mobileToggle.addEventListener('click', function() {
+                mobileToggle.addEventListener('click', () => {
+                    console.log('Hamburger menu clicked!');
                     mobileDrawer.classList.add('open');
+                    document.body.style.overflow = 'hidden';
+                    console.log('Drawer should be open now');
                 });
             }
 
             if (drawerClose && mobileDrawer) {
-                drawerClose.addEventListener('click', function() {
+                drawerClose.addEventListener('click', () => {
                     mobileDrawer.classList.remove('open');
+                    document.body.style.overflow = '';
                 });
             }
 
             // Close drawer when clicking outside
             if (mobileDrawer) {
-                mobileDrawer.addEventListener('click', function(e) {
+                mobileDrawer.addEventListener('click', (e) => {
                     if (e.target === mobileDrawer) {
                         mobileDrawer.classList.remove('open');
+                        document.body.style.overflow = '';
                     }
                 });
             }
