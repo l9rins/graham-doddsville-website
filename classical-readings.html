@@ -5,94 +5,818 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Classical Readings - Graham and Doddsville</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-blue: #1e3a8a;
+            --primary-blue-light: #3b82f6;
+            --primary-blue-dark: #1e40af;
+            --secondary-gray: #f8f9fa;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-muted: #9ca3af;
+            --border-light: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--secondary-gray);
+        }
+
         .classical-readings-page {
-            display: block;
-            position: relative;
-            width: 100%;
             min-height: 100vh;
-            background-color: #fff;
-            overflow-y: auto;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            position: relative;
         }
 
         .classical-readings-page-content {
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 24px;
         }
 
-        .classical-readings-header {
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 2px solid #1e3a8a;
-        }
-
-        .classical-readings-header h1 {
-            color: #1e3a8a;
-            font-size: 28px;
-            margin: 0 0 10px 0;
-            font-weight: 700;
-        }
-
-        .page-subtitle {
-            color: #666;
-            font-size: 16px;
-            margin: 0;
-        }
-
-        .close-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #1e3a8a;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 600;
-            z-index: 1000;
-        }
-
-        .close-btn:hover {
-            background: #1e40af;
-        }
-
-        .readings-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .readings-list li {
-            margin-bottom: 15px;
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-bottom: 2px solid #d4af37;
             padding: 12px 0;
-            border-bottom: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+            overflow: visible;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
 
-        .readings-list li:last-child {
-            border-bottom: none;
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .reading-item {
+        .header-content {
             display: flex;
-            align-items: flex-start;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            overflow: visible;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 40px;
+            width: auto;
+        }
+
+        .main-nav {
+            overflow: visible;
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            overflow: visible;
+        }
+
+        .nav-link {
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-family: Georgia, serif;
+        }
+
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 30px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 2px;
+            background: #333;
+            border-radius: 1px;
+            transition: all 0.3s ease;
+            transform-origin: center;
+            display: block;
+            margin: 2px 0;
+        }
+
+        /* Mobile Menu Toggle Animation */
+        .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Page Title Section */
+        .page-title-section {
+            margin: 24px 0 32px 0;
+            padding: 0;
+        }
+
+        .breadcrumb-link {
+            color: var(--primary-blue-light);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            display: inline-block;
+            transition: color 0.2s ease;
+        }
+
+        .breadcrumb-link:hover {
+            color: var(--primary-blue);
+        }
+
+        .page-title-section h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0 0 16px 0;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        /* Partnership Letters Content */
+        .partnership-letters-content {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .partnership-letters-header {
+            margin-bottom: 32px;
+        }
+
+        .partnership-letters-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 16px 0 8px 0;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .partnership-letters-header .page-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin: 0 0 24px 0;
+        }
+
+        .partnership-letters-body p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .letters-intro {
+            background: var(--secondary-gray);
+            padding: 20px;
+            border-radius: var(--radius-md);
+            margin: 32px 0;
+        }
+
+        .letters-intro p {
+            margin: 0;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .partnership-letters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .letter-link {
+            display: block;
+            padding: 12px 16px;
+            background: var(--primary-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            text-align: center;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .letter-link:hover {
+            background: var(--primary-blue-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Unpublished Letters Content */
+        .unpublished-letters-content {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .unpublished-letters-header {
+            margin-bottom: 32px;
+        }
+
+        .unpublished-letters-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 16px 0 8px 0;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .unpublished-letters-header .page-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin: 0 0 24px 0;
+        }
+
+        .unpublished-letters-body p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .unpublished-letters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        /* Annual Letters Content */
+        .annual-letters-content {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .annual-letters-header {
+            margin-bottom: 32px;
+        }
+
+        .annual-letters-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 16px 0 8px 0;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .annual-letters-header .page-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin: 0 0 24px 0;
+        }
+
+        .annual-letters-body p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .annual-letters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 12px;
+            margin-top: 24px;
+        }
+
+        .annual-letters-footer {
+            background: var(--secondary-gray);
+            padding: 24px;
+            border-radius: var(--radius-md);
+            margin-top: 32px;
+        }
+
+        .annual-letters-footer p {
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-primary);
+        }
+
+        /* Owner's Manual Content */
+        .owners-manual-content {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .owners-manual-header {
+            margin-bottom: 32px;
+        }
+
+        .owners-manual-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 16px 0 8px 0;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .owners-manual-header .page-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin: 0 0 24px 0;
+        }
+
+        .owners-manual-body p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .owners-manual-body h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 32px 0 16px 0;
+            letter-spacing: -0.01em;
+        }
+
+        .owners-manual-footer {
+            background: var(--secondary-gray);
+            padding: 24px;
+            border-radius: var(--radius-md);
+            margin-top: 32px;
+        }
+
+        .owners-manual-footer p {
+            margin: 0 0 20px 0;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-primary);
+        }
+
+        .manual-download {
+            text-align: center;
+            padding: 20px;
+            background: var(--primary-blue);
+            border-radius: var(--radius-md);
+        }
+
+        .manual-download p {
+            color: white;
+            margin: 0 0 16px 0;
+            font-weight: 600;
+        }
+
+        .manual-link {
+            display: inline-block;
+            padding: 12px 24px;
+            background: white;
+            color: var(--primary-blue);
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.2s ease;
+        }
+
+        .manual-link:hover {
+            background: var(--secondary-gray);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Superinvestors Content */
+        .superinvestors-content {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .superinvestors-header {
+            margin-bottom: 32px;
+        }
+
+        .superinvestors-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 16px 0 8px 0;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .superinvestors-header .page-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin: 0 0 24px 0;
+        }
+
+        .superinvestors-body p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .superinvestors-body h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 32px 0 16px 0;
+            letter-spacing: -0.01em;
+        }
+
+        .superinvestors-footer {
+            background: var(--secondary-gray);
+            padding: 24px;
+            border-radius: var(--radius-md);
+            margin-top: 32px;
+        }
+
+        .superinvestors-footer p {
+            margin: 0 0 20px 0;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-primary);
+        }
+
+        .essay-download {
+            text-align: center;
+            padding: 20px;
+            background: var(--primary-blue);
+            border-radius: var(--radius-md);
+        }
+
+        .essay-download p {
+            color: white;
+            margin: 0 0 16px 0;
+            font-weight: 600;
+        }
+
+        .essay-link {
+            display: inline-block;
+            padding: 12px 24px;
+            background: white;
+            color: var(--primary-blue);
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.2s ease;
+        }
+
+        .essay-link:hover {
+            background: var(--secondary-gray);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Graham Lectures Content */
+        .graham-lectures-content {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .graham-lectures-header {
+            margin-bottom: 32px;
+        }
+
+        .graham-lectures-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 16px 0 8px 0;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .graham-lectures-header .page-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin: 0 0 24px 0;
+        }
+
+        .graham-lectures-body p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .lecture-downloads {
+            background: var(--secondary-gray);
+            padding: 24px;
+            border-radius: var(--radius-md);
+            margin-top: 32px;
+        }
+
+        .lecture-downloads h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0 0 20px 0;
+            letter-spacing: -0.01em;
+        }
+
+        .lecture-links-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             gap: 12px;
         }
 
-        .reading-number {
-            background: #1e3a8a;
+        .lecture-download-link {
+            display: block;
+            padding: 12px 16px;
+            background: var(--primary-blue);
             color: white;
-            width: 28px;
-            height: 28px;
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 14px;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .lecture-download-link:hover {
+            background: var(--text-primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Graham-Newman Content */
+        .graham-newman-content {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .graham-newman-header {
+            margin-bottom: 32px;
+        }
+
+        .graham-newman-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 16px 0 8px 0;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .graham-newman-header .page-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin: 0 0 24px 0;
+        }
+
+        .graham-newman-body p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .partnership-downloads {
+            background: var(--secondary-gray);
+            padding: 24px;
+            border-radius: var(--radius-md);
+            margin-top: 32px;
+        }
+
+        .partnership-downloads h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0 0 20px 0;
+            letter-spacing: -0.01em;
+        }
+
+        .partnership-links-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 12px;
+        }
+
+        .partnership-download-link {
+            display: block;
+            padding: 12px 16px;
+            background: var(--primary-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            font-weight: 600;
+            font-size: 14px;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+        .partnership-download-link:hover {
+            background: var(--text-primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+
+        /* Filter and Search Section */
+        .filters-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+        }
+
+        .filters-row {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .filter-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .filter-select, .search-input {
+            padding: 8px 12px;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            background: white;
+            transition: all 0.2s ease;
+        }
+
+        .filter-select:focus, .search-input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+        }
+
+        .search-input {
+            min-width: 200px;
+            flex: 1;
+        }
+
+        .applied-filters {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+
+        .filter-tag {
+            background: var(--primary-blue);
+            color: white;
+            padding: 4px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .filter-tag button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            line-height: 1;
+        }
+
+        /* Cards Grid */
+        .readings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .reading-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reading-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--primary-blue-light));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .reading-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .reading-card:hover::before {
+            opacity: 1;
+        }
+
+        .reading-card-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .reading-number {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-light));
+            color: white;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 12px;
-            font-weight: 600;
+            font-size: 14px;
+            font-weight: 700;
             flex-shrink: 0;
+            box-shadow: var(--shadow-md);
         }
 
         .reading-content {
@@ -100,514 +824,1513 @@
         }
 
         .reading-title {
-            font-size: 16px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
             font-weight: 600;
-            color: #1e3a8a;
+            color: var(--text-primary);
             text-decoration: none;
             line-height: 1.4;
             display: block;
-            margin-bottom: 4px;
+            margin-bottom: 8px;
+            transition: color 0.2s ease;
         }
 
         .reading-title:hover {
-            color: #1e40af;
-            text-decoration: underline;
+            color: var(--primary-blue);
+        }
+
+        .reading-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
         }
 
         .reading-author {
             font-size: 14px;
-            color: #666;
-            font-style: italic;
+            font-weight: 500;
+            color: var(--text-secondary);
+            padding: 4px 8px;
+            border-radius: var(--radius-sm);
+            background: var(--secondary-gray);
         }
 
         .reading-year {
-            font-size: 14px;
-            color: #888;
-            margin-left: 8px;
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
         }
 
-        /* Desktop See More functionality */
-        .desktop-see-more-section {
-            text-align: center;
-            margin-top: 30px;
-            padding: 20px 0;
-            border-top: 1px solid #e5e7eb;
+        .reading-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+            margin-top: 16px;
         }
 
-        .desktop-see-more-btn {
-            background: #1e3a8a;
+        .btn-primary {
+            background: var(--primary-blue);
             color: white;
             border: none;
-            padding: 12px 24px;
-            border-radius: 6px;
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 500;
             cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        .desktop-see-more-btn:hover {
-            background: #1e40af;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+        .btn-primary:hover {
+            background: var(--primary-blue-dark);
+            transform: translateY(-1px);
         }
 
-        .hidden-readings {
-            display: none;
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-light);
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
 
-        .hidden-readings.show {
-            display: block;
+        .btn-secondary:hover {
+            background: var(--secondary-gray);
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
         }
 
-        /* Mobile Responsive */
+        /* Author Color Coding */
+        .author-buffett { background: linear-gradient(135deg, #059669, #10b981); color: white; }
+        .author-graham { background: linear-gradient(135deg, #dc2626, #ef4444); color: white; }
+        .author-tweedy { background: linear-gradient(135deg, #7c3aed, #a855f7); color: white; }
+        .author-other { background: linear-gradient(135deg, #6b7280, #9ca3af); color: white; }
+
+        /* Loading Animation */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 48px;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--border-light);
+            border-top: 4px solid var(--primary-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Mobile Optimizations */
         @media (max-width: 768px) {
             .classical-readings-page-content {
-                padding: 15px;
-            }
-            
-            .classical-readings-header h1 {
-                font-size: 24px;
-            }
-            
-            .reading-title {
-                font-size: 15px;
-            }
-            
-            .reading-author {
-                font-size: 13px;
-            }
-            
-            .reading-year {
-                font-size: 13px;
-            }
-            
-            .close-btn {
-                top: 15px;
-                right: 15px;
-                padding: 8px 12px;
-                font-size: 13px;
+                padding: 16px;
             }
 
-            /* Hide see more section on mobile - show all readings */
-            .desktop-see-more-section {
+            .page-title-section {
+                margin: 16px 0 24px 0;
+            }
+
+            .page-title-section h1 {
+                font-size: 2rem;
+            }
+
+            .main-nav {
                 display: none;
             }
 
-            .hidden-readings {
-                display: block !important;
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            /* Mobile Drawer Styles */
+            .mobile-drawer {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 280px;
+                height: 100vh;
+                background: white;
+                box-shadow: var(--shadow-xl);
+                transition: left 0.3s ease;
+                z-index: 1001;
+                overflow-y: auto;
+            }
+
+            .mobile-drawer.open {
+                left: 0;
+            }
+
+            .drawer-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 20px;
+                border-bottom: 1px solid var(--border-light);
+            }
+
+            .drawer-logo {
+                height: 32px;
+                width: auto;
+            }
+
+            .drawer-close {
+                background: none;
+                border: none;
+                font-size: 24px;
+                cursor: pointer;
+                color: var(--text-primary);
+            }
+
+            .drawer-nav {
+                padding: 20px 0;
+            }
+
+            .drawer-menu {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .drawer-menu li {
+                border-bottom: 1px solid var(--border-light);
+            }
+
+            .drawer-link {
+                display: block;
+                padding: 16px 20px;
+                color: var(--text-primary);
+                text-decoration: none;
+                font-weight: 500;
+                transition: background-color 0.2s ease;
+            }
+
+            .drawer-link:hover {
+                background-color: var(--secondary-gray);
+            }
+
+            .filters-section {
+                padding: 20px;
+            }
+
+            .filters-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .search-input {
+                min-width: auto;
+            }
+
+            .readings-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .reading-card {
+                padding: 20px;
+            }
+
+
+            /* Mobile Filter Drawer */
+            .mobile-filter-drawer {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: white;
+                border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+                padding: 24px;
+                transform: translateY(100%);
+                transition: transform 0.3s ease;
+                z-index: 1000;
+                box-shadow: var(--shadow-xl);
+            }
+
+            .mobile-filter-drawer.open {
+                transform: translateY(0);
+            }
+
+            .mobile-filter-toggle {
+                position: fixed;
+                bottom: 24px;
+                right: 24px;
+                background: var(--primary-blue);
+                color: white;
+                border: none;
+                width: 56px;
+                height: 56px;
+                border-radius: 50%;
+                font-size: 24px;
+                cursor: pointer;
+                box-shadow: var(--shadow-lg);
+                z-index: 999;
+            }
+        }
+
+        /* Desktop Enhancements */
+        @media (min-width: 1024px) {
+            .readings-grid {
+                grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            }
+
+            .reading-card {
+                padding: 28px;
+            }
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
         }
     </style>
 </head>
 <body>
     <div class="classical-readings-page" id="classical-readings-page">
-        <button class="close-btn" onclick="closeClassicalReadingsPage()">← Back to Main</button>
         
         <div class="classical-readings-page-content">
-            <div class="classical-readings-header">
+            <!-- Header -->
+            <header class="header sticky-header" role="banner">
+                <div class="container">
+                    <div class="header-content">
+                        <div class="logo">
+                            <img src="G&D Logo.png" alt="Graham and Doddsville" class="logo-image">
+                        </div>
+                        <!-- Desktop Navigation (hidden on mobile) -->
+                        <nav class="main-nav desktop-only" role="navigation" aria-label="Main navigation">
+                            <ul>
+                                <li><a href="#" onclick="showAboutPage()" class="nav-link">ABOUT</a></li>
+                                <li><a href="#" onclick="showAdvertisePage()" class="nav-link">ADVERTISE</a></li>
+                                <li><a href="#" class="nav-link">SUBSCRIBE</a></li>
+                                <li><a href="#" onclick="showContactPage()" class="nav-link">CONTACT US</a></li>
+                            </ul>
+                        </nav>
+                        
+                        <!-- Mobile Hamburger Menu -->
+                        <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
+                            <span class="hamburger-line"></span>
+                            <span class="hamburger-line"></span>
+                            <span class="hamburger-line"></span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Mobile Navigation Drawer -->
+            <div class="mobile-drawer" id="mobile-drawer">
+                <div class="drawer-header">
+                    <img src="G&D Logo.png" alt="Graham and Doddsville" class="drawer-logo">
+                    <button class="drawer-close" id="drawer-close" aria-label="Close menu">×</button>
+                </div>
+                <nav class="drawer-nav">
+                    <ul class="drawer-menu">
+                        <li><a href="#" class="drawer-link">Home</a></li>
+                        <li><a href="#" class="drawer-link" onclick="openAboutPage()">About Us</a></li>
+                        <li><a href="#" class="drawer-link" onclick="openAdvertisePage()">Advertise</a></li>
+                        <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
+                        <li><a href="#" class="drawer-link">Legal & Taxation</a></li>
+                        <li><a href="#" class="drawer-link">Financial Markets</a></li>
+                        <li><a href="#" class="drawer-link">Share Investing</a></li>
+                        <li><a href="#" class="drawer-link">Greatest Investors</a></li>
+                        <li><a href="#" class="drawer-link">Investment Analysis</a></li>
+                        <li><a href="#" class="drawer-link">Economics</a></li>
+                        <li><a href="#" class="drawer-link">Professional Advisers</a></li>
+                        <li><a href="#" class="drawer-link">Financial Products</a></li>
+                        <li><a href="#" class="drawer-link">Resources</a></li>
+                        <li><a href="#" class="drawer-link" onclick="openEventsPage()">Events</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Page Title Section -->
+            <div class="page-title-section">
+                <a href="index.html" class="breadcrumb-link">← Home</a>
                 <h1>Classical Readings</h1>
-                <p class="page-subtitle">Essential writings from Warren Buffett, Benjamin Graham, and other value investing pioneers</p>
             </div>
             
-            <ol class="readings-list">
-                <li>
-                    <div class="reading-item">
-                        <div class="reading-number">1</div>
-                        <div class="reading-content">
-                            <a href="#" onclick="openPartnershipLettersPage()" class="reading-title">Warren Buffett's Partnership Letters</a>
-                            <div class="reading-author">Warren Buffett <span class="reading-year">(1957 to 1970)</span></div>
-                        </div>
+            <!-- Filter and Search Section -->
+            <div class="filters-section">
+                <div class="filters-row">
+                    <div class="filter-group">
+                        <label class="filter-label" for="author-filter">Author</label>
+                        <select id="author-filter" class="filter-select">
+                            <option value="">All Authors</option>
+                            <option value="Warren Buffett">Warren Buffett</option>
+                            <option value="Benjamin Graham">Benjamin Graham</option>
+                            <option value="Tweedy, Browne">Tweedy, Browne</option>
+                            <option value="Chris Browne">Chris Browne</option>
+                            <option value="Various Authors">Various Authors</option>
+                        </select>
                     </div>
-                </li>
-                <li>
-                    <div class="reading-item">
-                        <div class="reading-number">2</div>
-                        <div class="reading-content">
-                            <a href="#" onclick="openUnpublishedLettersPage()" class="reading-title">Warren Buffett's Unpublished Letters to Berkshire Shareholders</a>
-                            <div class="reading-author">Warren Buffett <span class="reading-year">(1969 to 1976)</span></div>
-                        </div>
+                    <div class="filter-group">
+                        <label class="filter-label" for="decade-filter">Decade</label>
+                        <select id="decade-filter" class="filter-select">
+                            <option value="">All Decades</option>
+                            <option value="1930s">1930s</option>
+                            <option value="1940s">1940s</option>
+                            <option value="1950s">1950s</option>
+                            <option value="1960s">1960s</option>
+                            <option value="1970s">1970s</option>
+                            <option value="1980s">1980s</option>
+                            <option value="1990s">1990s</option>
+                            <option value="2000s">2000s</option>
+                            <option value="2010s">2010s</option>
+                        </select>
                     </div>
-                </li>
-                <li>
-                    <div class="reading-item">
-                        <div class="reading-number">3</div>
-                        <div class="reading-content">
-                            <a href="#" onclick="openAnnualLettersPage()" class="reading-title">Warren Buffett's Letters to Berkshire Shareholders</a>
-                            <div class="reading-author">Warren Buffett <span class="reading-year">(1977 to present day)</span></div>
-                        </div>
+                    <div class="filter-group">
+                        <label class="filter-label" for="type-filter">Type</label>
+                        <select id="type-filter" class="filter-select">
+                            <option value="">All Types</option>
+                            <option value="letter">Letters</option>
+                            <option value="lecture">Lectures</option>
+                            <option value="article">Articles</option>
+                            <option value="testimony">Testimonies</option>
+                        </select>
                     </div>
-                </li>
-                <li>
-                    <div class="reading-item">
-                        <div class="reading-number">4</div>
-                        <div class="reading-content">
-                            <a href="#" onclick="openOwnersManualPage()" class="reading-title">Berkshire Hathaway Owner's Manual</a>
-                            <div class="reading-author">Warren Buffett <span class="reading-year">(1999)</span></div>
-                        </div>
+                    <div class="filter-group" style="flex: 1;">
+                        <label class="filter-label" for="search-input">Search</label>
+                        <input type="text" id="search-input" class="search-input" placeholder="Search readings, authors, or topics...">
                     </div>
-                </li>
-                <li>
-                    <div class="reading-item">
-                        <div class="reading-number">5</div>
-                        <div class="reading-content">
-                            <a href="#" onclick="openSuperinvestorsPage()" class="reading-title">The Superinvestors of Graham and Doddsville</a>
-                            <div class="reading-author">Warren Buffett <span class="reading-year">(1984)</span></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="reading-item">
-                        <div class="reading-number">6</div>
-                        <div class="reading-content">
-                            <a href="#" onclick="openGrahamLecturesPage()" class="reading-title">Benjamin Graham Lectures on Current Problems in Security Analysis</a>
-                            <div class="reading-author">Benjamin Graham <span class="reading-year">(1946 & 1947)</span></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="reading-item">
-                        <div class="reading-number">7</div>
-                        <div class="reading-content">
-                            <a href="#" onclick="openGrahamNewmanPage()" class="reading-title">Graham-Newman Partnership Letters</a>
-                            <div class="reading-author">Benjamin Graham <span class="reading-year">(1946 to 1958)</span></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="reading-item">
-                        <div class="reading-number">8</div>
-                        <div class="reading-content">
-                            <a href="https://api.grahamanddoddsville.com.au/readings/letter-to-shareholders-warren-buffett-1988.pdf" target="_blank" class="reading-title">Letter to Shareholders</a>
-                            <div class="reading-author">Warren Buffett <span class="reading-year">(1988)</span></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="reading-item">
-                        <div class="reading-number">9</div>
-                        <div class="reading-content">
-                            <a href="https://api.grahamanddoddsville.com.au/readings/letter-to-shareholders-warren-buffett-1989.pdf" target="_blank" class="reading-title">Letter to Shareholders</a>
-                            <div class="reading-author">Warren Buffett <span class="reading-year">(1989)</span></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="reading-item">
-                        <div class="reading-number">10</div>
-                        <div class="reading-content">
-                            <a href="https://api.grahamanddoddsville.com.au/readings/letter-to-shareholders-warren-buffett-1990.pdf" target="_blank" class="reading-title">Letter to Shareholders</a>
-                            <div class="reading-author">Warren Buffett <span class="reading-year">(1990)</span></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="reading-item">
-                        <div class="reading-number">11</div>
-                        <div class="reading-content">
-                            <a href="https://api.grahamanddoddsville.com.au/readings/letter-to-shareholders-warren-buffett-1991.pdf" target="_blank" class="reading-title">Letter to Shareholders</a>
-                            <div class="reading-author">Warren Buffett <span class="reading-year">(1991)</span></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="reading-item">
-                        <div class="reading-number">12</div>
-                        <div class="reading-content">
-                            <a href="https://api.grahamanddoddsville.com.au/readings/letter-to-shareholders-warren-buffett-1992.pdf" target="_blank" class="reading-title">Letter to Shareholders</a>
-                            <div class="reading-author">Warren Buffett <span class="reading-year">(1992)</span></div>
-                        </div>
-                    </div>
-                </li>
-            </ol>
-            
-            <!-- Desktop See More Section -->
-            <div class="desktop-see-more-section">
-                <button class="desktop-see-more-btn" onclick="toggleMoreReadings()">See More Classical Readings</button>
+                </div>
+                <div class="applied-filters" id="applied-filters"></div>
             </div>
             
-            <!-- Hidden readings for desktop -->
-            <ol class="readings-list hidden-readings" id="hidden-readings">
-                <li>
-                    <div class="reading-item">
-                        <div class="reading-number">13</div>
-                        <div class="reading-content">
-                            <a href="https://api.grahamanddoddsville.com.au/readings/the-security-i-like-best-warren-buffett-1951.pdf" target="_blank" class="reading-title">The Security I Like Best</a>
-                            <div class="reading-author">Warren Buffett <span class="reading-year">(1951)</span></div>
+            <!-- Mobile Filter Toggle -->
+            
+            <!-- Mobile Filter Drawer -->
+            <div class="mobile-filter-drawer" id="mobile-filter-drawer">
+                <!-- Mobile filters will use the same filters-section -->
+            </div>
+            
+            <!-- Loading State -->
+            <div class="loading" id="loading-state" style="display: none;">
+                <div class="spinner"></div>
+            </div>
+            
+            <!-- Readings Grid -->
+            <!-- Partnership Letters Content (Hidden by default) -->
+            <div id="partnership-letters-content" class="partnership-letters-content" style="display: none;">
+                <div class="partnership-letters-header">
+                    <a href="#" class="breadcrumb-link" onclick="showClassicalReadings()">← Classical Readings</a>
+                    <h1>Warren Buffett's Partnership Letters</h1>
+                    <p class="page-subtitle">1957 to 1970</p>
+                </div>
+                
+                <div class="partnership-letters-body">
+                    <p>Before he became synonymous with Berkshire Hathaway, Warren Buffett embarked on an investment journey that began with the establishment of the Buffett Partnership Limited in 1956.</p>
+                    
+                    <p>Initially, this endeavor involved seven close friends and relatives who became limited partners in his venture. As Buffett's investment prowess became increasingly evident, he expanded his circle of partners by creating additional partnerships following the same model. These partnerships marked the early stages of his remarkable career as an investor and financial sage.</p>
+                    
+                    <p>During the critical period between 1959 and 1969, Warren Buffett maintained a tradition of regularly sending letters to his partners. These letters served as a means of updating them on the progress and performance of their investments. They provide a unique window into Buffett's investment philosophy, strategies, and the wisdom that would ultimately shape his future success. These correspondences represent a valuable historical record of the early days of one of the most celebrated and influential investors of our time.</p>
+                    
+                    <div class="letters-intro">
+                        <p><strong>To read the Warren Buffett's partnership letters, click below:</strong></p>
+                    </div>
+                    
+                    <div class="partnership-letters-grid">
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1959.02.11.pdf" class="letter-link" target="_blank">1959-Feb</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1960.02.20.pdf" class="letter-link" target="_blank">1960-Feb</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1961.01.30.pdf" class="letter-link" target="_blank">1961-Jan</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1961.07.31.pdf" class="letter-link" target="_blank">1961-Jul</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1962.01.29.pdf" class="letter-link" target="_blank">1962-Jan</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1962.07.30.pdf" class="letter-link" target="_blank">1962-Jul</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1962.12.31.pdf" class="letter-link" target="_blank">1962-Dec</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1963.01.31.pdf" class="letter-link" target="_blank">1963-Jan</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1963.07.31.pdf" class="letter-link" target="_blank">1963-Jul</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1963.11.30.pdf" class="letter-link" target="_blank">1963-Nov</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1963.12.31.pdf" class="letter-link" target="_blank">1963-Dec</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1964.01.31.pdf" class="letter-link" target="_blank">1964-Jan</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1964.07.31.pdf" class="letter-link" target="_blank">1964-Jul</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1965.01.31.pdf" class="letter-link" target="_blank">1965-Jan</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1965.07.31.pdf" class="letter-link" target="_blank">1965-Jul</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1965.11.30.pdf" class="letter-link" target="_blank">1965-Nov</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1966.01.31.pdf" class="letter-link" target="_blank">1966-Jan</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1966.07.31.pdf" class="letter-link" target="_blank">1966-Jul</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1966.11.30.pdf" class="letter-link" target="_blank">1966-Nov</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1967.01.31.pdf" class="letter-link" target="_blank">1967-Jan</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1967.07.31.pdf" class="letter-link" target="_blank">1967-Jul</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1967.10.31.pdf" class="letter-link" target="_blank">1967-Oct</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1967.11.30.pdf" class="letter-link" target="_blank">1967-Nov</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1968.01.31.pdf" class="letter-link" target="_blank">1968-Jan</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1968.07.31.pdf" class="letter-link" target="_blank">1968-Jul</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1968.11.30.pdf" class="letter-link" target="_blank">1968-Nov</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1969.01.31.pdf" class="letter-link" target="_blank">1969-Jan</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1969.05.31.pdf" class="letter-link" target="_blank">1969-May</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Unpublished Letters Content (Hidden by default) -->
+            <div id="unpublished-letters-content" class="unpublished-letters-content" style="display: none;">
+                <div class="unpublished-letters-header">
+                    <a href="#" class="breadcrumb-link" onclick="showClassicalReadings()">← Classical Readings</a>
+                    <h1>Warren Buffett's Unpublished Letters to Shareholders</h1>
+                    <p class="page-subtitle">1969 to 1976</p>
+                </div>
+                
+                <div class="unpublished-letters-body">
+                    <p>Commencing in approximately 1969, Warren Buffett initiated an enduring tradition of crafting annual letters addressed to the shareholders of Berkshire Hathaway.</p>
+                    
+                    <p>Encapsulating a wealth of timeless insights and pearls of investment wisdom, these letters have become an invaluable resource for both seasoned investors and newcomers to the world of finance.</p>
+                    
+                    <p>Remarkably, a series of these epistles, spanning from 1969 to 1976, has not been officially published on Berkshire Hathaway's website. Consequently, these particular letters have acquired a somewhat colloquial moniker, being affectionately referred to as the "unpublished" letters to shareholders. This unique collection serves as a treasure trove of Buffett's early reflections and provides an exclusive glimpse into the formative years of one of the world's most iconic investors, making them a compelling and sought-after artifact in the realm of financial literature.</p>
+                    
+                    <div class="letters-intro">
+                        <p><strong>To read Warren Buffett's unpublished letters to shareholders, click below:</strong></p>
+                    </div>
+                    
+                    <div class="unpublished-letters-grid">
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-unpublished-letters/1970.pdf" class="letter-link" target="_blank">1970</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-unpublished-letters/1972.pdf" class="letter-link" target="_blank">1972</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-unpublished-letters/1973.pdf" class="letter-link" target="_blank">1973</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-unpublished-letters/1974.pdf" class="letter-link" target="_blank">1974</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-unpublished-letters/1975.pdf" class="letter-link" target="_blank">1975</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-unpublished-letters/1976.pdf" class="letter-link" target="_blank">1976</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-unpublished-letters/1977.pdf" class="letter-link" target="_blank">1977</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Annual Letters Content (Hidden by default) -->
+            <div id="annual-letters-content" class="annual-letters-content" style="display: none;">
+                <div class="annual-letters-header">
+                    <a href="#" class="breadcrumb-link" onclick="showClassicalReadings()">← Classical Readings</a>
+                    <h1>Annual Letters to Berkshire Hathaway Shareholders</h1>
+                    <p class="page-subtitle">1977 to present day</p>
+                </div>
+                
+                <div class="annual-letters-body">
+                    <p>Every year, the Chairman of Berkshire Hathaway, Warren Buffett, writes a long letter to the shareholders updating them on the financial performance and position of the parent company and its conglomerate subsidiaries.</p>
+                    
+                    <p>These letters have evolved into a revered tradition and serve as a vital conduit for disseminating crucial insights and counsel on investments, appealing not only to fledgling investors but also to seasoned financial professionals. Imbued with the timeless wisdom of one of the most celebrated figures in the world of finance, these annual letters represent a wealth of guidance and education that is invaluable for anyone seeking to delve into the principles of value investing.</p>
+                    
+                    <div class="letters-intro">
+                        <p><strong>To read Warren Buffett's annual letters to shareholders, click below:</strong></p>
+                    </div>
+                    
+                    <div class="annual-letters-grid">
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1977.pdf" class="letter-link" target="_blank">1977</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1978.pdf" class="letter-link" target="_blank">1978</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1979.pdf" class="letter-link" target="_blank">1979</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1980.pdf" class="letter-link" target="_blank">1980</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1981.pdf" class="letter-link" target="_blank">1981</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1982.pdf" class="letter-link" target="_blank">1982</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1983.pdf" class="letter-link" target="_blank">1983</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1984.pdf" class="letter-link" target="_blank">1984</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1985.pdf" class="letter-link" target="_blank">1985</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1986.pdf" class="letter-link" target="_blank">1986</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1987.pdf" class="letter-link" target="_blank">1987</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1988.pdf" class="letter-link" target="_blank">1988</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1989.pdf" class="letter-link" target="_blank">1989</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1990.pdf" class="letter-link" target="_blank">1990</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1991.pdf" class="letter-link" target="_blank">1991</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1992.pdf" class="letter-link" target="_blank">1992</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1993.pdf" class="letter-link" target="_blank">1993</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1994.pdf" class="letter-link" target="_blank">1994</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1995.pdf" class="letter-link" target="_blank">1995</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1996.pdf" class="letter-link" target="_blank">1996</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1997.pdf" class="letter-link" target="_blank">1997</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1998.pdf" class="letter-link" target="_blank">1998</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1999.pdf" class="letter-link" target="_blank">1999</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2000.pdf" class="letter-link" target="_blank">2000</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2001.pdf" class="letter-link" target="_blank">2001</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2002.pdf" class="letter-link" target="_blank">2002</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2003.pdf" class="letter-link" target="_blank">2003</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2004.pdf" class="letter-link" target="_blank">2004</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2005.pdf" class="letter-link" target="_blank">2005</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2006.pdf" class="letter-link" target="_blank">2006</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2007.pdf" class="letter-link" target="_blank">2007</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2008.pdf" class="letter-link" target="_blank">2008</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2009.pdf" class="letter-link" target="_blank">2009</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2010.pdf" class="letter-link" target="_blank">2010</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2011.pdf" class="letter-link" target="_blank">2011</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2012.pdf" class="letter-link" target="_blank">2012</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2013.pdf" class="letter-link" target="_blank">2013</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2014.pdf" class="letter-link" target="_blank">2014</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2015.pdf" class="letter-link" target="_blank">2015</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2016.pdf" class="letter-link" target="_blank">2016</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2017.pdf" class="letter-link" target="_blank">2017</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2018.pdf" class="letter-link" target="_blank">2018</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2019.pdf" class="letter-link" target="_blank">2019</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2020.pdf" class="letter-link" target="_blank">2020</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2021.pdf" class="letter-link" target="_blank">2021</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2022.pdf" class="letter-link" target="_blank">2022</a>
+                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2023.pdf" class="letter-link" target="_blank">2023</a>
+                    </div>
+                    
+                    <div class="annual-letters-footer">
+                        <p><strong>Emphatically, the letters should be considered mandatory reading for anyone with a vested interest in the art and science of value investing.</strong> Through these epistles, Warren Buffett distills his unparalleled experience and sage investment philosophy into a format that is accessible and illuminating. As a compendium of enduring wisdom and practical advice, these letters constitute an indispensable resource for aspiring investors and serve as a beacon guiding them toward making prudent financial decisions and achieving long-term success in the world of investment.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Owner's Manual Content (Hidden by default) -->
+            <div id="owners-manual-content" class="owners-manual-content" style="display: none;">
+                <div class="owners-manual-header">
+                    <a href="#" class="breadcrumb-link" onclick="showClassicalReadings()">← Classical Readings</a>
+                    <h1>Berkshire Hathaway's Owner's Manual</h1>
+                    <p class="page-subtitle">1999</p>
+                </div>
+                
+                <div class="owners-manual-body">
+                    <p>Warren Buffett, often regarded as the greatest investor of all time, has always been transparent about his investment philosophy and strategies. To provide shareholders with a comprehensive understanding of how Berkshire Hathaway operates and what they can expect as owners, Buffett penned what he affectionately calls the "Owner's Manual."</p>
+                    
+                    <p>This document, included in the company's annual reports, serves as a guiding compass for Berkshire Hathaway shareholders. In this article, we'll delve into the key elements of Berkshire Hathaway's Owner's Manual and what it reveals about Warren Buffett's approach to investing.</p>
+                    
+                    <h3>The Berkshire Culture</h3>
+                    <p>At the heart of Berkshire Hathaway's Owner's Manual lies the importance of the company's culture. Buffett emphasizes the unique culture that drives Berkshire's success. He emphasizes the value of integrity, honesty, and the long-term perspective in all business dealings. Berkshire's decentralized structure allows its subsidiaries to operate independently while adhering to these core values.</p>
+                    
+                    <h3>Focus on Long-Term Ownership</h3>
+                    <p>Warren Buffett's investment horizon has always been long-term, and he encourages Berkshire Hathaway shareholders to adopt the same perspective. The Owner's Manual highlights the importance of owning shares in a business for the long haul, discouraging short-term speculation. Buffett believes that long-term ownership aligns interests and maximizes shareholder value.</p>
+                    
+                    <h3>Intrinsic Business Value</h3>
+                    <p>Buffett's emphasis on intrinsic business value is a central theme in the Owner's Manual. He encourages shareholders to focus on the economic realities of the businesses they own rather than short-term market fluctuations. Berkshire Hathaway invests in companies with strong fundamentals, competitive advantages, and predictable cash flows.</p>
+                    
+                    <h3>Rational Decision-Making</h3>
+                    <p>The Owner's Manual emphasizes rational decision-making when it comes to investing. Buffett advises shareholders to avoid making investment decisions based on emotions or market sentiment. Instead, he suggests a thoughtful and analytical approach to assessing potential investments, focusing on businesses with durable competitive advantages.</p>
+                    
+                    <h3>Berkshire's Principles of Risk Management</h3>
+                    <p>Buffett discusses risk management extensively in the Owner's Manual. He acknowledges that Berkshire Hathaway faces a variety of risks, from insurance liabilities to investment risks. Buffett's conservative approach to risk management involves setting aside significant reserves to cover potential losses, ensuring Berkshire remains financially strong even in challenging times.</p>
+                    
+                    <h3>The Role of Shareholders</h3>
+                    <p>Buffett recognizes the importance of informed and engaged shareholders. He encourages shareholders to read and understand the Owner's Manual, to vote responsibly on corporate matters, and to consider themselves as owners of the business, not just stockholders. Berkshire Hathaway's commitment to transparency underscores its respect for shareholders.</p>
+                    
+                    <div class="owners-manual-footer">
+                        <p>In conclusion, Berkshire Hathaway's Owner's Manual serves as a testament to Warren Buffett's commitment to transparency and his belief in the principles of long-term value investing. It offers valuable insights into the culture, decision-making process, and risk management strategies of one of the world's most successful conglomerates. For shareholders and investors, it provides a roadmap to understanding the core principles that have guided Berkshire Hathaway to unparalleled success under Buffett's leadership.</p>
+                        
+                        <div class="manual-download">
+                            <p><strong>To read the full Owner's Manual, click below:</strong></p>
+                            <a href="https://api.grahamanddoddsville.com.au/readings/owners-manual/manual.pdf" class="manual-link" target="_blank">Download Owner's Manual (PDF)</a>
                         </div>
                     </div>
-                </li>
-                <li>
-                    <div class="reading-item">
-                        <div class="reading-number">14</div>
-                        <div class="reading-content">
-                            <a href="https://api.grahamanddoddsville.com.au/readings/toward-a-science-of-security-analysis-benjamin-graham-1952.pdf" target="_blank" class="reading-title">Toward a Science of Security Analysis</a>
-                            <div class="reading-author">Benjamin Graham <span class="reading-year">(1952)</span></div>
+                </div>
+            </div>
+
+            <!-- Superinvestors Content (Hidden by default) -->
+            <div id="superinvestors-content" class="superinvestors-content" style="display: none;">
+                <div class="superinvestors-header">
+                    <a href="#" class="breadcrumb-link" onclick="showClassicalReadings()">← Classical Readings</a>
+                    <h1>The Superinvestors of Graham and Doddsville</h1>
+                    <p class="page-subtitle">1984</p>
+                </div>
+                
+                <div class="superinvestors-body">
+                    <p>Warren Buffett's "The Superinvestors of Graham and Doddsville" is a timeless essay that shines a light on the principles of value investing championed by Benjamin Graham and David Dodd, the forefathers of this investment philosophy.</p>
+                    
+                    <p>Published in 1984, this seminal work continues to resonate with investors around the world, offering profound insights into the methods and mindset of successful value investors.</p>
+                    
+                    <p>The essay begins by debunking the myth that stock market success is driven by the "efficient market hypothesis," which posits that all available information is reflected in stock prices, making it impossible for investors to consistently outperform the market. Buffett provides a compelling counterargument by showcasing the remarkable performance of a group of investors, all of whom were followers of Graham and Dodd's value investing principles.</p>
+                    
+                    <h3>Intrinsic Value and Fundamental Analysis</h3>
+                    <p>One of the central tenets of Graham and Dodd's approach is the concept of "intrinsic value" – the true worth of a stock, independent of its market price. Buffett highlights that the investors profiled in his essay all share this fundamental belief in determining intrinsic value through meticulous analysis of a company's financials and industry dynamics.</p>
+                    
+                    <h3>The Superinvestors</h3>
+                    <p>The essay introduces readers to the superinvestors themselves, including notable names like Buffett himself, Charlie Munger, Walter Schloss, Tom Knapp, Tom Phelps, Bill Ruane, Rick Guerin, Stan Perlmeter, Jack Byrne and Rick Rickertsen. Buffett emphasizes that these individuals hail from diverse backgrounds, have varying investment strategies, and employ different methods for valuation. However, what unites them is their commitment to the value investing principles espoused by Graham and Dodd.</p>
+                    
+                    <h3>Investment Success Stories</h3>
+                    <p>Buffett goes on to dissect some of the successful investments made by these superinvestors, showcasing instances where they identified undervalued stocks that later yielded substantial profits. The examples serve as compelling evidence of the effectiveness of the Graham and Dodd approach and the ability of these investors to consistently beat the market.</p>
+                    
+                    <div class="superinvestors-footer">
+                        <p>In conclusion, "The Superinvestors of Graham and Doddsville" serves as both a tribute to the enduring wisdom of Benjamin Graham and David Dodd and a testament to the fact that value investing remains a potent and profitable investment strategy. The essay reinforces the idea that, despite the prevailing belief in efficient markets, diligent analysis, patience, and a commitment to intrinsic value can empower investors to achieve extraordinary results over the long term. Warren Buffett's timeless work continues to inspire and educate aspiring investors, carrying forward the legacy of Graham and Dodd's value investing principles for generations to come.</p>
+                        
+                        <div class="essay-download">
+                            <p><strong>To read the full essay, click below:</strong></p>
+                            <a href="https://api.grahamanddoddsville.com.au/readings/superinvestors-of-graham-and-doddsville/1984.pdf" class="essay-link" target="_blank">Download "The Superinvestors of Graham and Doddsville" (PDF)</a>
                         </div>
                     </div>
-                </li>
-                <li>
-                    <div class="reading-item">
-                        <div class="reading-number">15</div>
-                        <div class="reading-content">
-                            <a href="https://api.grahamanddoddsville.com.au/readings/testimony-on-the-committee-benjamin-graham-1955.pdf" target="_blank" class="reading-title">Testimony on the Committee</a>
-                            <div class="reading-author">Benjamin Graham <span class="reading-year">(1955)</span></div>
+                </div>
+            </div>
+
+            <!-- Graham Lectures Content (Hidden by default) -->
+            <div id="graham-lectures-content" class="graham-lectures-content" style="display: none;">
+                <div class="graham-lectures-header">
+                    <a href="#" class="breadcrumb-link" onclick="showClassicalReadings()">← Classical Readings</a>
+                    <h1>Benjamin Graham Lectures on Current Problems in Security Analysis</h1>
+                    <p class="page-subtitle">1946 & 1947</p>
+                </div>
+                
+                <div class="graham-lectures-body">
+                    <p>Benjamin Graham's series of 10 lectures entitled "Current Problems in Security Analysis" marked a pivotal moment in the world of finance and investment education.</p>
+                    
+                    <p>These lectures garnered tremendous popularity among a diverse audience, attracting not only students but also seasoned investment professionals eager to expand their knowledge and enhance their financial acumen. Graham's insights and strategies provided a profound impact, serving as a catalyst for immediate implementation by those who recognized the immense value of his teachings. As these professionals began to apply Graham's principles and recommendations to their investment endeavors, they reaped tangible financial benefits, further underscoring the enduring relevance and effectiveness of Graham's approach to security analysis.</p>
+                    
+                    <p>In the annals of investment education, Benjamin Graham's lectures stand as a testament to his exceptional ability to distill complex financial concepts into comprehensible and actionable insights. The resonance and applicability of his teachings, exemplified by the swift adoption by investment professionals, underscore the enduring relevance of Graham's wisdom and the profound impact he had on the evolution of investment strategies and financial education. These lectures continue to serve as a source of inspiration and knowledge for aspiring investors and financial professionals alike, illuminating the path to sound investment practices and enduring financial success.</p>
+                    
+                    <div class="lecture-downloads">
+                        <h3>Available Lectures:</h3>
+                        <div class="lecture-links-container">
+                            <a href="https://api.grahamanddoddsville.com.au/readings/graham-lectures/lecture-1.pdf" target="_blank" class="lecture-download-link">Lecture 1</a>
+                            <a href="https://api.grahamanddoddsville.com.au/readings/graham-lectures/lecture-2.pdf" target="_blank" class="lecture-download-link">Lecture 2</a>
+                            <a href="https://api.grahamanddoddsville.com.au/readings/graham-lectures/lecture-3.pdf" target="_blank" class="lecture-download-link">Lecture 3</a>
+                            <a href="https://api.grahamanddoddsville.com.au/readings/graham-lectures/lecture-4.pdf" target="_blank" class="lecture-download-link">Lecture 4</a>
+                            <a href="https://api.grahamanddoddsville.com.au/readings/graham-lectures/lecture-5.pdf" target="_blank" class="lecture-download-link">Lecture 5</a>
+                            <a href="https://api.grahamanddoddsville.com.au/readings/graham-lectures/lecture-6.pdf" target="_blank" class="lecture-download-link">Lecture 6</a>
+                            <a href="https://api.grahamanddoddsville.com.au/readings/graham-lectures/lecture-7.pdf" target="_blank" class="lecture-download-link">Lecture 7</a>
+                            <a href="https://api.grahamanddoddsville.com.au/readings/graham-lectures/lecture-8.pdf" target="_blank" class="lecture-download-link">Lecture 8</a>
+                            <a href="https://api.grahamanddoddsville.com.au/readings/graham-lectures/lecture-9.pdf" target="_blank" class="lecture-download-link">Lecture 9</a>
+                            <a href="https://api.grahamanddoddsville.com.au/readings/graham-lectures/lecture-10.pdf" target="_blank" class="lecture-download-link">Lecture 10</a>
                         </div>
                     </div>
-                </li>
-                <li>
-                    <div class="reading-item">
-                        <div class="reading-number">16</div>
-                        <div class="reading-content">
-                            <a href="https://api.grahamanddoddsville.com.au/readings/how-to-handle-your-money-benjamin-graham-1955.pdf" target="_blank" class="reading-title">How to Handle Your Money</a>
-                            <div class="reading-author">Benjamin Graham <span class="reading-year">(1955)</span></div>
+                </div>
+            </div>
+
+            <!-- Graham-Newman Content (Hidden by default) -->
+            <div id="graham-newman-content" class="graham-newman-content" style="display: none;">
+                <div class="graham-newman-header">
+                    <a href="#" class="breadcrumb-link" onclick="showClassicalReadings()">← Classical Readings</a>
+                    <h1>Graham-Newman Partnership Letters</h1>
+                    <p class="page-subtitle">1946 to 1958</p>
+                </div>
+                
+                <div class="graham-newman-body">
+                    <p>During his tenure as Benjamin Graham's protégé at Graham-Newman, Warren Buffett had the unique opportunity to observe firsthand the investment strategies and principles of his revered mentor. Much like Buffett, Graham also composed annual letters to his investment partners, providing insights into the firm's activities and investment approach.</p>
+                    
+                    <p>However, in stark contrast to Buffett's later style, Graham's letters were characterized by their matter-of-fact, no-nonsense approach. Unlike the verbose and philosophical tone that would come to define Buffett's letters, Graham's writings were notably devoid of sermonizing or the delivery of pearls of investment wisdom to the reader. Instead, Graham's focus was primarily on the factual aspects of the partnership's operations and investments.</p>
+                    
+                    <p>While Benjamin Graham and Warren Buffett both made significant contributions to the world of value investing, their communication styles in their annual letters to partners were distinctly different. Graham's letters, marked by their straightforward and pragmatic tone, provided investors with a clear and concise account of the partnership's activities and financial performance.</p>
+                    
+                    <p>In contrast, Buffett's letters would evolve over the years to encompass not only financial reporting but also extensive commentary on investment philosophy and life lessons, becoming a rich source of wisdom for generations of investors. These differing approaches in their letters reflect the unique personalities and communication styles of two of the most influential figures in the field of value investing.</p>
+                    
+                    <div class="partnership-downloads">
+                        <h3>Available Partnership Letters:</h3>
+                        <div class="partnership-links-container">
+                            <a href="https://api.grahamanddoddsville.com.au/readings/graham-newman-letters/1946.pdf" target="_blank" class="partnership-download-link">1946</a>
+                            <a href="https://api.grahamanddoddsville.com.au/readings/graham-newman-letters/1947.pdf" target="_blank" class="partnership-download-link">1947</a>
+                            <a href="https://api.grahamanddoddsville.com.au/readings/graham-newman-letters/1948.pdf" target="_blank" class="partnership-download-link">1948</a>
+                            <a href="https://api.grahamanddoddsville.com.au/readings/graham-newman-letters/1949.pdf" target="_blank" class="partnership-download-link">1949</a>
+                            <a href="https://api.grahamanddoddsville.com.au/readings/graham-newman-letters/1950.pdf" target="_blank" class="partnership-download-link">1950</a>
+                            <a href="https://api.grahamanddoddsville.com.au/readings/graham-newman-letters/1951.pdf" target="_blank" class="partnership-download-link">1951</a>
+                            <a href="https://api.grahamanddoddsville.com.au/readings/graham-newman-letters/1952.pdf" target="_blank" class="partnership-download-link">1952</a>
+                            <a href="https://api.grahamanddoddsville.com.au/readings/graham-newman-letters/1953.pdf" target="_blank" class="partnership-download-link">1953</a>
+                            <a href="https://api.grahamanddoddsville.com.au/readings/graham-newman-letters/1954.pdf" target="_blank" class="partnership-download-link">1954</a>
+                            <a href="https://api.grahamanddoddsville.com.au/readings/graham-newman-letters/1955.pdf" target="_blank" class="partnership-download-link">1955</a>
+                            <a href="https://api.grahamanddoddsville.com.au/readings/graham-newman-letters/1956.pdf" target="_blank" class="partnership-download-link">1956</a>
+                            <a href="https://api.grahamanddoddsville.com.au/readings/graham-newman-letters/1957.pdf" target="_blank" class="partnership-download-link">1957</a>
+                            <a href="https://api.grahamanddoddsville.com.au/readings/graham-newman-letters/1958.pdf" target="_blank" class="partnership-download-link">1958</a>
                         </div>
                     </div>
-                </li>
-                <li>
-                    <div class="reading-item">
-                        <div class="reading-number">17</div>
-                        <div class="reading-content">
-                            <a href="https://api.grahamanddoddsville.com.au/readings/the-new-speculation-benjamin-graham-1958.pdf" target="_blank" class="reading-title">The New Speculation</a>
-                            <div class="reading-author">Benjamin Graham <span class="reading-year">(1958)</span></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="reading-item">
-                        <div class="reading-number">18</div>
-                        <div class="reading-content">
-                            <a href="https://api.grahamanddoddsville.com.au/readings/stock-market-warning-benjamin-graham-1960.pdf" target="_blank" class="reading-title">Stock Market Warning</a>
-                            <div class="reading-author">Benjamin Graham <span class="reading-year">(1960)</span></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="reading-item">
-                        <div class="reading-number">19</div>
-                        <div class="reading-content">
-                            <a href="https://api.grahamanddoddsville.com.au/readings/letter-to-the-editor-warren-buffett-1962.pdf" target="_blank" class="reading-title">Letter to the Editor</a>
-                            <div class="reading-author">Warren Buffett <span class="reading-year">(1962)</span></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="reading-item">
-                        <div class="reading-number">20</div>
-                        <div class="reading-content">
-                            <a href="https://api.grahamanddoddsville.com.au/readings/renaissance-of-value-benjamin-graham-1974.pdf" target="_blank" class="reading-title">Renaissance of Value</a>
-                            <div class="reading-author">Benjamin Graham <span class="reading-year">(1974)</span></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="reading-item">
-                        <div class="reading-number">21</div>
-                        <div class="reading-content">
-                            <a href="https://api.grahamanddoddsville.com.au/readings/future-of-common-stocks-benjamin-graham-1974.pdf" target="_blank" class="reading-title">Future of Common Stocks</a>
-                            <div class="reading-author">Benjamin Graham <span class="reading-year">(1974)</span></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="reading-item">
-                        <div class="reading-number">22</div>
-                        <div class="reading-content">
-                            <a href="https://api.grahamanddoddsville.com.au/readings/simplest-way-to-select-benjamin-graham-1976.pdf" target="_blank" class="reading-title">Simplest Way to Select</a>
-                            <div class="reading-author">Benjamin Graham <span class="reading-year">(1976)</span></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="reading-item">
-                        <div class="reading-number">23</div>
-                        <div class="reading-content">
-                            <a href="https://api.grahamanddoddsville.com.au/readings/an-hour-with-mr-graham-1976.pdf" target="_blank" class="reading-title">An Hour With Mr Graham</a>
-                            <div class="reading-author">Benjamin Graham <span class="reading-year">(1976)</span></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="reading-item">
-                        <div class="reading-number">24</div>
-                        <div class="reading-content">
-                            <a href="https://api.grahamanddoddsville.com.au/readings/conversation-with-benjamin-graham-1976.pdf" target="_blank" class="reading-title">Conversation with Benjamin Graham</a>
-                            <div class="reading-author">Benjamin Graham <span class="reading-year">(1976)</span></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="reading-item">
-                        <div class="reading-number">25</div>
-                        <div class="reading-content">
-                            <a href="https://api.grahamanddoddsville.com.au/readings/how-inflation-swindles-warren-buffett-1977.pdf" target="_blank" class="reading-title">How Inflation Swindles</a>
-                            <div class="reading-author">Warren Buffett <span class="reading-year">(1977)</span></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="reading-item">
-                        <div class="reading-number">26</div>
-                        <div class="reading-content">
-                            <a href="https://api.grahamanddoddsville.com.au/readings/10-ways-to-beat-an-index-tweedy-browne-1999.pdf" target="_blank" class="reading-title">10 Ways to Beat an Index</a>
-                            <div class="reading-author">Tweedy, Browne <span class="reading-year">(1999)</span></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="reading-item">
-                        <div class="reading-number">27</div>
-                        <div class="reading-content">
-                            <a href="https://api.grahamanddoddsville.com.au/readings/investing-for-higher-after-tax-tweedy-browne-2000.pdf" target="_blank" class="reading-title">Investing for Higher After-Tax</a>
-                            <div class="reading-author">Tweedy, Browne <span class="reading-year">(2000)</span></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="reading-item">
-                        <div class="reading-number">28</div>
-                        <div class="reading-content">
-                            <a href="https://api.grahamanddoddsville.com.au/readings/great-10-year-record-tweedy-browne-2000.pdf" target="_blank" class="reading-title">Great 10-Year Record</a>
-                            <div class="reading-author">Tweedy, Browne <span class="reading-year">(2000)</span></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="reading-item">
-                        <div class="reading-number">29</div>
-                        <div class="reading-content">
-                            <a href="https://api.grahamanddoddsville.com.au/readings/value-investing-behavioural-finance-chris-browne-2000.pdf" target="_blank" class="reading-title">Value Investing and Behavioural Finance</a>
-                            <div class="reading-author">Chris Browne <span class="reading-year">(2000)</span></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="reading-item">
-                        <div class="reading-number">30</div>
-                        <div class="reading-content">
-                            <a href="https://api.grahamanddoddsville.com.au/readings/the-evolution-of-the-idea-of-value-investing.pdf" target="_blank" class="reading-title">The Evolution of the Idea of Value Investing</a>
-                            <div class="reading-author">Various Authors <span class="reading-year">(2000)</span></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="reading-item">
-                        <div class="reading-number">31</div>
-                        <div class="reading-content">
-                            <a href="https://api.grahamanddoddsville.com.au/readings/americas-growing-trade-deficit-is-selling.pdf" target="_blank" class="reading-title">America's Growing Trade Deficit is Selling</a>
-                            <div class="reading-author">Warren Buffett <span class="reading-year">(2003)</span></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="reading-item">
-                        <div class="reading-number">32</div>
-                        <div class="reading-content">
-                            <a href="https://api.grahamanddoddsville.com.au/readings/high-dividend-yield-return-tweedy-browne-2007.pdf" target="_blank" class="reading-title">High Dividend Yield Return</a>
-                            <div class="reading-author">Tweedy, Browne <span class="reading-year">(2007)</span></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="reading-item">
-                        <div class="reading-number">33</div>
-                        <div class="reading-content">
-                            <a href="https://api.grahamanddoddsville.com.au/readings/buy-american-i-am-warren-buffett-2008.pdf" target="_blank" class="reading-title">Buy American, I am</a>
-                            <div class="reading-author">Warren Buffett <span class="reading-year">(2008)</span></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="reading-item">
-                        <div class="reading-number">34</div>
-                        <div class="reading-content">
-                            <a href="https://api.grahamanddoddsville.com.au/readings/what-has-worked-in-investing-tweedy-browne-2009.pdf" target="_blank" class="reading-title">What Has Worked In Investing</a>
-                            <div class="reading-author">Tweedy, Browne <span class="reading-year">(2009)</span></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="reading-item">
-                        <div class="reading-number">35</div>
-                        <div class="reading-content">
-                            <a href="https://api.grahamanddoddsville.com.au/readings/slow-growth-greenback-effect-warren-buffett-2009.pdf" target="_blank" class="reading-title">Slow Growth Greenback Effect</a>
-                            <div class="reading-author">Warren Buffett <span class="reading-year">(2009)</span></div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="reading-item">
-                        <div class="reading-number">36</div>
-                        <div class="reading-content">
-                            <a href="https://api.grahamanddoddsville.com.au/readings/how-hedging-can-reduce-currency-risk-tweedy-browne-2010.pdf" target="_blank" class="reading-title">How Hedging Can Reduce Currency Risk</a>
-                            <div class="reading-author">Tweedy, Browne <span class="reading-year">(2010)</span></div>
-                        </div>
-                    </div>
-                </li>
-            </ol>
+                </div>
+            </div>
+
+            <div class="readings-grid" id="readings-grid">
+                <!-- Cards will be dynamically generated by JavaScript -->
+            </div>
         </div>
     </div>
 
     <script>
-        // Function to toggle more readings
-        function toggleMoreReadings() {
-            const hiddenReadings = document.getElementById('hidden-readings');
-            const seeMoreBtn = document.querySelector('.desktop-see-more-btn');
-            
-            if (hiddenReadings.classList.contains('show')) {
-                hiddenReadings.classList.remove('show');
-                seeMoreBtn.textContent = 'See More Classical Readings';
-            } else {
-                hiddenReadings.classList.add('show');
-                seeMoreBtn.textContent = 'Show Less';
+        // Reading data for dynamic generation
+        const readingsData = [
+            {
+                id: 1,
+                title: "Warren Buffett's Partnership Letters",
+                author: "Warren Buffett",
+                year: "1957-1970",
+                url: "#",
+                decade: "1950s",
+                type: "letter",
+                isSpecial: true
+            },
+            {
+                id: 2,
+                title: "Warren Buffett's Unpublished Letters to Berkshire Shareholders",
+                author: "Warren Buffett",
+                year: "1969-1976",
+                url: "#",
+                decade: "1960s",
+                type: "letter",
+                isSpecial: true
+            },
+            {
+                id: 3,
+                title: "Warren Buffett's Letters to Berkshire Shareholders",
+                author: "Warren Buffett",
+                year: "1977-Present",
+                url: "#",
+                decade: "1970s",
+                type: "letter",
+                isSpecial: true
+            },
+            {
+                id: 4,
+                title: "Berkshire Hathaway Owner's Manual",
+                author: "Warren Buffett",
+                year: "1999",
+                url: "#",
+                decade: "1990s",
+                type: "article",
+                isSpecial: true
+            },
+            {
+                id: 5,
+                title: "The Superinvestors of Graham and Doddsville",
+                author: "Warren Buffett",
+                year: "1984",
+                url: "#",
+                decade: "1980s",
+                type: "article",
+                isSpecial: true
+            },
+            {
+                id: 6,
+                title: "Benjamin Graham Lectures on Current Problems in Security Analysis",
+                author: "Benjamin Graham",
+                year: "1946-1947",
+                url: "#",
+                decade: "1940s",
+                type: "lecture",
+                isSpecial: true
+            },
+            {
+                id: 7,
+                title: "Graham-Newman Partnership Letters",
+                author: "Benjamin Graham",
+                year: "1946-1958",
+                url: "#",
+                decade: "1940s",
+                type: "letter",
+                isSpecial: true
+            },
+            {
+                id: 8,
+                title: "Letter to Shareholders",
+                author: "Warren Buffett",
+                year: "1988",
+                url: "https://api.grahamanddoddsville.com.au/readings/letter-to-shareholders-warren-buffett-1988.pdf",
+                decade: "1980s",
+                type: "letter"
+            },
+            {
+                id: 9,
+                title: "Letter to Shareholders",
+                author: "Warren Buffett",
+                year: "1989",
+                url: "https://api.grahamanddoddsville.com.au/readings/letter-to-shareholders-warren-buffett-1989.pdf",
+                decade: "1980s",
+                type: "letter"
+            },
+            {
+                id: 10,
+                title: "Letter to Shareholders",
+                author: "Warren Buffett",
+                year: "1990",
+                url: "https://api.grahamanddoddsville.com.au/readings/letter-to-shareholders-warren-buffett-1990.pdf",
+                decade: "1990s",
+                type: "letter"
+            },
+            {
+                id: 11,
+                title: "Letter to Shareholders",
+                author: "Warren Buffett",
+                year: "1991",
+                url: "https://api.grahamanddoddsville.com.au/readings/letter-to-shareholders-warren-buffett-1991.pdf",
+                decade: "1990s",
+                type: "letter"
+            },
+            {
+                id: 12,
+                title: "Letter to Shareholders",
+                author: "Warren Buffett",
+                year: "1992",
+                url: "https://api.grahamanddoddsville.com.au/readings/letter-to-shareholders-warren-buffett-1992.pdf",
+                decade: "1990s",
+                type: "letter"
+            },
+            {
+                id: 13,
+                title: "The Security I Like Best",
+                author: "Warren Buffett",
+                year: "1951",
+                url: "https://api.grahamanddoddsville.com.au/readings/the-security-i-like-best-warren-buffett-1951.pdf",
+                decade: "1950s",
+                type: "article"
+            },
+            {
+                id: 14,
+                title: "Toward a Science of Security Analysis",
+                author: "Benjamin Graham",
+                year: "1952",
+                url: "https://api.grahamanddoddsville.com.au/readings/toward-a-science-of-security-analysis-benjamin-graham-1952.pdf",
+                decade: "1950s",
+                type: "article"
+            },
+            {
+                id: 15,
+                title: "Testimony on the Committee",
+                author: "Benjamin Graham",
+                year: "1955",
+                url: "https://api.grahamanddoddsville.com.au/readings/testimony-on-the-committee-benjamin-graham-1955.pdf",
+                decade: "1950s",
+                type: "testimony"
+            },
+            {
+                id: 16,
+                title: "How to Handle Your Money",
+                author: "Benjamin Graham",
+                year: "1955",
+                url: "https://api.grahamanddoddsville.com.au/readings/how-to-handle-your-money-benjamin-graham-1955.pdf",
+                decade: "1950s",
+                type: "article"
+            },
+            {
+                id: 17,
+                title: "The New Speculation",
+                author: "Benjamin Graham",
+                year: "1958",
+                url: "https://api.grahamanddoddsville.com.au/readings/the-new-speculation-benjamin-graham-1958.pdf",
+                decade: "1950s",
+                type: "article"
+            },
+            {
+                id: 18,
+                title: "Stock Market Warning",
+                author: "Benjamin Graham",
+                year: "1960",
+                url: "https://api.grahamanddoddsville.com.au/readings/stock-market-warning-benjamin-graham-1960.pdf",
+                decade: "1960s",
+                type: "article"
+            },
+            {
+                id: 19,
+                title: "Letter to the Editor",
+                author: "Warren Buffett",
+                year: "1962",
+                url: "https://api.grahamanddoddsville.com.au/readings/letter-to-the-editor-warren-buffett-1962.pdf",
+                decade: "1960s",
+                type: "letter"
+            },
+            {
+                id: 20,
+                title: "Renaissance of Value",
+                author: "Benjamin Graham",
+                year: "1974",
+                url: "https://api.grahamanddoddsville.com.au/readings/renaissance-of-value-benjamin-graham-1974.pdf",
+                decade: "1970s",
+                type: "article"
+            },
+            {
+                id: 21,
+                title: "Future of Common Stocks",
+                author: "Benjamin Graham",
+                year: "1974",
+                url: "https://api.grahamanddoddsville.com.au/readings/future-of-common-stocks-benjamin-graham-1974.pdf",
+                decade: "1970s",
+                type: "article"
+            },
+            {
+                id: 22,
+                title: "Simplest Way to Select",
+                author: "Benjamin Graham",
+                year: "1976",
+                url: "https://api.grahamanddoddsville.com.au/readings/simplest-way-to-select-benjamin-graham-1976.pdf",
+                decade: "1970s",
+                type: "article"
+            },
+            {
+                id: 23,
+                title: "An Hour With Mr Graham",
+                author: "Benjamin Graham",
+                year: "1976",
+                url: "https://api.grahamanddoddsville.com.au/readings/an-hour-with-mr-graham-1976.pdf",
+                decade: "1970s",
+                type: "article"
+            },
+            {
+                id: 24,
+                title: "Conversation with Benjamin Graham",
+                author: "Benjamin Graham",
+                year: "1976",
+                url: "https://api.grahamanddoddsville.com.au/readings/conversation-with-benjamin-graham-1976.pdf",
+                decade: "1970s",
+                type: "article"
+            },
+            {
+                id: 25,
+                title: "How Inflation Swindles",
+                author: "Warren Buffett",
+                year: "1977",
+                url: "https://api.grahamanddoddsville.com.au/readings/how-inflation-swindles-warren-buffett-1977.pdf",
+                decade: "1970s",
+                type: "article"
+            },
+            {
+                id: 26,
+                title: "10 Ways to Beat an Index",
+                author: "Tweedy, Browne",
+                year: "1999",
+                url: "https://api.grahamanddoddsville.com.au/readings/10-ways-to-beat-an-index-tweedy-browne-1999.pdf",
+                decade: "1990s",
+                type: "article"
+            },
+            {
+                id: 27,
+                title: "Investing for Higher After-Tax",
+                author: "Tweedy, Browne",
+                year: "2000",
+                url: "https://api.grahamanddoddsville.com.au/readings/investing-for-higher-after-tax-tweedy-browne-2000.pdf",
+                decade: "2000s",
+                type: "article"
+            },
+            {
+                id: 28,
+                title: "Great 10-Year Record",
+                author: "Tweedy, Browne",
+                year: "2000",
+                url: "https://api.grahamanddoddsville.com.au/readings/great-10-year-record-tweedy-browne-2000.pdf",
+                decade: "2000s",
+                type: "article"
+            },
+            {
+                id: 29,
+                title: "Value Investing and Behavioural Finance",
+                author: "Chris Browne",
+                year: "2000",
+                url: "https://api.grahamanddoddsville.com.au/readings/value-investing-behavioural-finance-chris-browne-2000.pdf",
+                decade: "2000s",
+                type: "article"
+            },
+            {
+                id: 30,
+                title: "The Evolution of the Idea of Value Investing",
+                author: "Various Authors",
+                year: "2000",
+                url: "https://api.grahamanddoddsville.com.au/readings/the-evolution-of-the-idea-of-value-investing.pdf",
+                decade: "2000s",
+                type: "article"
+            },
+            {
+                id: 31,
+                title: "America's Growing Trade Deficit is Selling",
+                author: "Warren Buffett",
+                year: "2003",
+                url: "https://api.grahamanddoddsville.com.au/readings/americas-growing-trade-deficit-is-selling.pdf",
+                decade: "2000s",
+                type: "article"
+            },
+            {
+                id: 32,
+                title: "High Dividend Yield Return",
+                author: "Tweedy, Browne",
+                year: "2007",
+                url: "https://api.grahamanddoddsville.com.au/readings/high-dividend-yield-return-tweedy-browne-2007.pdf",
+                decade: "2000s",
+                type: "article"
+            },
+            {
+                id: 33,
+                title: "Buy American, I am",
+                author: "Warren Buffett",
+                year: "2008",
+                url: "https://api.grahamanddoddsville.com.au/readings/buy-american-i-am-warren-buffett-2008.pdf",
+                decade: "2000s",
+                type: "article"
+            },
+            {
+                id: 34,
+                title: "What Has Worked In Investing",
+                author: "Tweedy, Browne",
+                year: "2009",
+                url: "https://api.grahamanddoddsville.com.au/readings/what-has-worked-in-investing-tweedy-browne-2009.pdf",
+                decade: "2000s",
+                type: "article"
+            },
+            {
+                id: 35,
+                title: "Slow Growth Greenback Effect",
+                author: "Warren Buffett",
+                year: "2009",
+                url: "https://api.grahamanddoddsville.com.au/readings/slow-growth-greenback-effect-warren-buffett-2009.pdf",
+                decade: "2000s",
+                type: "article"
+            },
+            {
+                id: 36,
+                title: "How Hedging Can Reduce Currency Risk",
+                author: "Tweedy, Browne",
+                year: "2010",
+                url: "https://api.grahamanddoddsville.com.au/readings/how-hedging-can-reduce-currency-risk-tweedy-browne-2010.pdf",
+                decade: "2010s",
+                type: "article"
             }
-        }
-        // Function to close the classical readings page
-        function closeClassicalReadingsPage() {
-            // Go back to the main page
-            window.location.href = 'index.html';
+        ];
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            generateAllReadings();
+            setupFilters();
+            setupMobileFilters();
+            setupMobileMenu();
+            animateNumbers();
+        });
+
+        // Generate all reading cards
+        function generateAllReadings() {
+            const container = document.getElementById('readings-grid');
+            if (!container) return;
+
+            readingsData.forEach(reading => {
+                const card = createReadingCard(reading);
+                container.appendChild(card);
+            });
         }
 
-        // Function to open partnership letters page (placeholder - implement as needed)
+        // Create a reading card element
+        function createReadingCard(reading) {
+            const card = document.createElement('div');
+            card.className = 'reading-card';
+            card.setAttribute('data-author', reading.author);
+            card.setAttribute('data-decade', reading.decade);
+            card.setAttribute('data-type', reading.type);
+            
+            const authorClass = getAuthorClass(reading.author);
+            const buttonText = reading.isSpecial ? 'Read Collection' : 'Read PDF';
+            
+            // Determine button action based on item type
+            let buttonAction;
+            if (reading.isSpecial) {
+                // Items 1-7: Show special content
+                buttonAction = `onclick="${getSpecialAction(reading.id)}"`;
+            } else if (reading.id >= 8 && reading.id <= 36) {
+                // Items 8-36: Redirect to specific URLs
+                const redirectUrl = getRedirectUrl(reading.id);
+                buttonAction = redirectUrl ? `href="${redirectUrl}" target="_blank"` : `href="${reading.url}" target="_blank"`;
+            } else {
+                // Other items: Use original URL
+                buttonAction = `href="${reading.url}" target="_blank"`;
+            }
+            
+            // Determine title link URL
+            let titleUrl = reading.url;
+            if (reading.id >= 8 && reading.id <= 36) {
+                const redirectUrl = getRedirectUrl(reading.id);
+                titleUrl = redirectUrl || reading.url;
+            }
+
+            card.innerHTML = `
+                <div class="reading-card-header">
+                    <div class="reading-number">${reading.id}</div>
+                    <div class="reading-content">
+                        <a href="${titleUrl}" target="_blank" class="reading-title">${reading.title}</a>
+                        <div class="reading-meta">
+                            <span class="reading-author ${authorClass}">${reading.author}</span>
+                            <span class="reading-year">${reading.year}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="reading-actions">
+                    <a ${buttonAction} class="btn-primary">${buttonText}</a>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        // Get special action for special readings
+        function getSpecialAction(id) {
+            const actions = {
+                1: 'showPartnershipLetters()',
+                2: 'showUnpublishedLetters()',
+                3: 'showAnnualLetters()',
+                4: 'showOwnersManual()',
+                5: 'showSuperinvestors()',
+                6: 'showGrahamLectures()',
+                7: 'showGrahamNewman()'
+            };
+            return actions[id] || 'console.log("Special reading")';
+        }
+
+        // Get redirect URL for items 8-36
+        function getRedirectUrl(id) {
+            const urls = {
+                8: 'https://api.grahamanddoddsville.com.au/readings/should-rich-corporations-return-stockholders-cash-benjamin-graham-1932.pdf',
+                9: 'https://api.grahamanddoddsville.com.au/readings/should-rich-but-losing-corporations-be-liquidated-benjamin-graham-1932.pdf',
+                10: 'https://api.grahamanddoddsville.com.au/readings/selling-america-for-50-cents-on-the-dollar-benjamin-graham-1932.pdf',
+                11: 'https://api.grahamanddoddsville.com.au/readings/special-situations-benjamin-graham-1946.pdf',
+                12: 'https://api.grahamanddoddsville.com.au/readings/valuation-techniques-benjamin-graham-1947.pdf',
+                13: 'https://api.grahamanddoddsville.com.au/readings/the-security-i-like-best-warren-buffett-1951.pdf',
+                14: 'https://api.grahamanddoddsville.com.au/readings/toward-a-science-of-security-analysis-benjamin-graham-1952.pdf',
+                15: 'https://api.grahamanddoddsville.com.au/readings/testimony-on-the-committee-on-banking-and-currency-united-states-senate-benjamin-graham-1955.pdf',
+                16: 'https://api.grahamanddoddsville.com.au/readings/how-to-handle-your-money-benjamin-graham-1955.pdf',
+                17: 'https://api.grahamanddoddsville.com.au/readings/the-new-speculation-in-common-stocks-benjamin-graham-1958.pdf',
+                18: 'https://api.grahamanddoddsville.com.au/readings/stock-market-warning-danger-ahead-benjamin-graham-1960.pdf',
+                19: 'https://api.grahamanddoddsville.com.au/readings/letter-to-the-editor-warren-buffett-1962.pdf',
+                20: 'https://api.grahamanddoddsville.com.au/readings/renaissance-of-value-benjamin-graham-1974.pdf',
+                21: 'https://api.grahamanddoddsville.com.au/readings/the-future-of-common-stocks-benjamin-graham-1974.pdf',
+                22: 'https://api.grahamanddoddsville.com.au/readings/the-simplest-way-to-select-bargain-stocks-benjamin-graham-1976.pdf',
+                23: 'https://api.grahamanddoddsville.com.au/readings/an-hour-with-mr-graham-1976.pdf',
+                24: 'https://api.grahamanddoddsville.com.au/readings/a-conversation-with-benjamin-graham-1976.pdf',
+                25: 'https://api.grahamanddoddsville.com.au/readings/how-inflation-swindles-the-equity-investor-warren-buffett-1977.pdf',
+                26: 'https://api.grahamanddoddsville.com.au/readings/10-ways-to-beat-an-index-tweedy-browne-1999.pdf',
+                27: 'https://api.grahamanddoddsville.com.au/readings/investing-for-higher-after-tax-returns-tweedy-browne-2000.pdf',
+                28: 'https://api.grahamanddoddsville.com.au/readings/great-10-year-record-great-future-right-tweedy-browne-2000.pdf',
+                29: 'https://api.grahamanddoddsville.com.au/readings/value-investing-and-behavioral-finance.pdf',
+                30: 'https://api.grahamanddoddsville.com.au/readings/the-evolution-of-the-idea-of-value-investing.pdf',
+                31: 'https://api.grahamanddoddsville.com.au/readings/americas-growing-trade-deficit-is-selling.pdf',
+                32: 'https://api.grahamanddoddsville.com.au/readings/the-high-dividend-yield-return-advantage.pdf',
+                33: 'https://api.grahamanddoddsville.com.au/readings/buy-american-i-am-warren-buffett-2008.pdf',
+                34: 'https://api.grahamanddoddsville.com.au/readings/what-has-worked-in-investing.pdf',
+                35: 'https://api.grahamanddoddsville.com.au/readings/slow-growth-and-the-greenback-effect-2013.pdf',
+                36: 'https://api.grahamanddoddsville.com.au/readings/how-hedging-can-substantially-reduce-foreign-stock-currency-risk.pdf'
+            };
+            return urls[id] || null;
+        }
+
+        // Get author CSS class for color coding
+        function getAuthorClass(author) {
+            if (author.includes('Warren Buffett')) return 'author-buffett';
+            if (author.includes('Benjamin Graham')) return 'author-graham';
+            if (author.includes('Tweedy') || author.includes('Chris Browne')) return 'author-tweedy';
+            return 'author-other';
+        }
+
+        // Setup filter functionality
+        function setupFilters() {
+            const authorFilter = document.getElementById('author-filter');
+            const decadeFilter = document.getElementById('decade-filter');
+            const typeFilter = document.getElementById('type-filter');
+            const searchInput = document.getElementById('search-input');
+
+            if (authorFilter) authorFilter.addEventListener('change', applyFilters);
+            if (decadeFilter) decadeFilter.addEventListener('change', applyFilters);
+            if (typeFilter) typeFilter.addEventListener('change', applyFilters);
+            if (searchInput) searchInput.addEventListener('input', applyFilters);
+        }
+
+        // Setup mobile filters
+        function setupMobileFilters() {
+            // Show mobile filter toggle on mobile
+            if (window.innerWidth <= 768) {
+                const mobileToggle = document.querySelector('.mobile-filter-toggle');
+                if (mobileToggle) mobileToggle.style.display = 'block';
+            }
+        }
+
+        // Setup mobile menu functionality
+        function setupMobileMenu() {
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            const drawerClose = document.getElementById('drawer-close');
+
+            if (mobileToggle && mobileDrawer) {
+                mobileToggle.addEventListener('click', function() {
+                    mobileDrawer.classList.add('open');
+                });
+            }
+
+            if (drawerClose && mobileDrawer) {
+                drawerClose.addEventListener('click', function() {
+                    mobileDrawer.classList.remove('open');
+                });
+            }
+
+            // Close drawer when clicking outside
+            if (mobileDrawer) {
+                mobileDrawer.addEventListener('click', function(e) {
+                    if (e.target === mobileDrawer) {
+                        mobileDrawer.classList.remove('open');
+                    }
+                });
+            }
+        }
+
+        // Apply filters to readings
+        function applyFilters() {
+            const authorFilter = document.getElementById('author-filter');
+            const decadeFilter = document.getElementById('decade-filter');
+            const typeFilter = document.getElementById('type-filter');
+            const searchInput = document.getElementById('search-input');
+
+            const currentFilters = {
+                author: authorFilter ? authorFilter.value : '',
+                decade: decadeFilter ? decadeFilter.value : '',
+                type: typeFilter ? typeFilter.value : '',
+                search: searchInput ? searchInput.value.toLowerCase() : ''
+            };
+
+            const cards = document.querySelectorAll('.reading-card');
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                const author = card.getAttribute('data-author');
+                const decade = card.getAttribute('data-decade');
+                const type = card.getAttribute('data-type');
+                const title = card.querySelector('.reading-title').textContent.toLowerCase();
+
+                const matchesAuthor = !currentFilters.author || author === currentFilters.author;
+                const matchesDecade = !currentFilters.decade || decade === currentFilters.decade;
+                const matchesType = !currentFilters.type || type === currentFilters.type;
+                const matchesSearch = !currentFilters.search || 
+                    title.includes(currentFilters.search) || 
+                    author.toLowerCase().includes(currentFilters.search);
+
+                if (matchesAuthor && matchesDecade && matchesType && matchesSearch) {
+                    card.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            updateAppliedFilters(currentFilters);
+        }
+
+        // Update applied filters display
+        function updateAppliedFilters(filters) {
+            const appliedFiltersContainer = document.getElementById('applied-filters');
+            if (!appliedFiltersContainer) return;
+
+            appliedFiltersContainer.innerHTML = '';
+
+            Object.entries(filters).forEach(([key, value]) => {
+                if (value) {
+                    const tag = document.createElement('div');
+                    tag.className = 'filter-tag';
+                    tag.innerHTML = `
+                        ${key}: ${value}
+                        <button onclick="removeFilter('${key}')">×</button>
+                    `;
+                    appliedFiltersContainer.appendChild(tag);
+                }
+            });
+        }
+
+        // Remove a specific filter
+        function removeFilter(filterType) {
+            const filterElement = document.getElementById(`${filterType}-filter`);
+            if (filterElement) filterElement.value = '';
+            applyFilters();
+        }
+
+        // Toggle mobile filters
+        function toggleMobileFilters() {
+            const filtersSection = document.querySelector('.filters-section');
+            if (filtersSection) {
+                filtersSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+
+        // Show notification
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: var(--primary-blue);
+                color: white;
+                padding: 12px 20px;
+                border-radius: var(--radius-sm);
+                z-index: 10000;
+                font-size: 14px;
+                font-weight: 500;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 3000);
+        }
+
+        // Animate numbers on load
+        function animateNumbers() {
+            const numbers = document.querySelectorAll('.reading-number');
+            numbers.forEach((number, index) => {
+                setTimeout(() => {
+                    number.style.transform = 'scale(1.1)';
+                    setTimeout(() => {
+                        number.style.transform = 'scale(1)';
+                    }, 200);
+                }, index * 50);
+            });
+        }
+
+
+        // Show partnership letters content
+        function showPartnershipLetters() {
+            const partnershipContent = document.getElementById('partnership-letters-content');
+            const readingsGrid = document.getElementById('readings-grid');
+            const filtersSection = document.querySelector('.filters-section');
+            
+            if (partnershipContent) {
+                partnershipContent.style.display = 'block';
+                if (readingsGrid) readingsGrid.style.display = 'none';
+                if (filtersSection) filtersSection.style.display = 'none';
+            }
+        }
+
+        // Show unpublished letters content
+        function showUnpublishedLetters() {
+            const unpublishedContent = document.getElementById('unpublished-letters-content');
+            const readingsGrid = document.getElementById('readings-grid');
+            const filtersSection = document.querySelector('.filters-section');
+            
+            if (unpublishedContent) {
+                unpublishedContent.style.display = 'block';
+                if (readingsGrid) readingsGrid.style.display = 'none';
+                if (filtersSection) filtersSection.style.display = 'none';
+            }
+        }
+
+        // Show annual letters content
+        function showAnnualLetters() {
+            const annualContent = document.getElementById('annual-letters-content');
+            const readingsGrid = document.getElementById('readings-grid');
+            const filtersSection = document.querySelector('.filters-section');
+            
+            if (annualContent) {
+                annualContent.style.display = 'block';
+                if (readingsGrid) readingsGrid.style.display = 'none';
+                if (filtersSection) filtersSection.style.display = 'none';
+            }
+        }
+
+        // Show owner's manual content
+        function showOwnersManual() {
+            const ownersManualContent = document.getElementById('owners-manual-content');
+            const readingsGrid = document.getElementById('readings-grid');
+            const filtersSection = document.querySelector('.filters-section');
+            
+            if (ownersManualContent) {
+                ownersManualContent.style.display = 'block';
+                if (readingsGrid) readingsGrid.style.display = 'none';
+                if (filtersSection) filtersSection.style.display = 'none';
+            }
+        }
+
+        // Show superinvestors content
+        function showSuperinvestors() {
+            const superinvestorsContent = document.getElementById('superinvestors-content');
+            const readingsGrid = document.getElementById('readings-grid');
+            const filtersSection = document.querySelector('.filters-section');
+            
+            if (superinvestorsContent) {
+                superinvestorsContent.style.display = 'block';
+                if (readingsGrid) readingsGrid.style.display = 'none';
+                if (filtersSection) filtersSection.style.display = 'none';
+            }
+        }
+
+        // Show Graham lectures content
+        function showGrahamLectures() {
+            const grahamLecturesContent = document.getElementById('graham-lectures-content');
+            const readingsGrid = document.getElementById('readings-grid');
+            const filtersSection = document.querySelector('.filters-section');
+            
+            if (grahamLecturesContent) {
+                grahamLecturesContent.style.display = 'block';
+                if (readingsGrid) readingsGrid.style.display = 'none';
+                if (filtersSection) filtersSection.style.display = 'none';
+            }
+        }
+
+        // Show Graham-Newman content
+        function showGrahamNewman() {
+            const grahamNewmanContent = document.getElementById('graham-newman-content');
+            const readingsGrid = document.getElementById('readings-grid');
+            const filtersSection = document.querySelector('.filters-section');
+            
+            if (grahamNewmanContent) {
+                grahamNewmanContent.style.display = 'block';
+                if (readingsGrid) readingsGrid.style.display = 'none';
+                if (filtersSection) filtersSection.style.display = 'none';
+            }
+        }
+
+        // Show classical readings (go back to main view)
+        function showClassicalReadings() {
+            const partnershipContent = document.getElementById('partnership-letters-content');
+            const unpublishedContent = document.getElementById('unpublished-letters-content');
+            const annualContent = document.getElementById('annual-letters-content');
+            const ownersManualContent = document.getElementById('owners-manual-content');
+            const superinvestorsContent = document.getElementById('superinvestors-content');
+            const grahamLecturesContent = document.getElementById('graham-lectures-content');
+            const grahamNewmanContent = document.getElementById('graham-newman-content');
+            const readingsGrid = document.getElementById('readings-grid');
+            const filtersSection = document.querySelector('.filters-section');
+            
+            if (partnershipContent) partnershipContent.style.display = 'none';
+            if (unpublishedContent) unpublishedContent.style.display = 'none';
+            if (annualContent) annualContent.style.display = 'none';
+            if (ownersManualContent) ownersManualContent.style.display = 'none';
+            if (superinvestorsContent) superinvestorsContent.style.display = 'none';
+            if (grahamLecturesContent) grahamLecturesContent.style.display = 'none';
+            if (grahamNewmanContent) grahamNewmanContent.style.display = 'none';
+            if (readingsGrid) readingsGrid.style.display = 'grid';
+            if (filtersSection) filtersSection.style.display = 'block';
+        }
+
+        // Placeholder functions for existing functionality
         function openPartnershipLettersPage() {
-            // Implementation for partnership letters page
             console.log('Opening Partnership Letters page');
         }
 
-        // Function to open unpublished letters page (placeholder - implement as needed)
         function openUnpublishedLettersPage() {
-            // Implementation for unpublished letters page
             console.log('Opening Unpublished Letters page');
         }
 
-        // Function to open annual letters page (placeholder - implement as needed)
         function openAnnualLettersPage() {
-            // Implementation for annual letters page
             console.log('Opening Annual Letters page');
         }
 
-        // Function to open owners manual page (placeholder - implement as needed)
         function openOwnersManualPage() {
-            // Implementation for owners manual page
             console.log('Opening Owners Manual page');
         }
 
-        // Function to open superinvestors page (placeholder - implement as needed)
         function openSuperinvestorsPage() {
-            // Implementation for superinvestors page
             console.log('Opening Superinvestors page');
         }
 
-        // Function to open Graham lectures page (placeholder - implement as needed)
         function openGrahamLecturesPage() {
-            // Implementation for Graham lectures page
             console.log('Opening Graham Lectures page');
         }
 
-        // Function to open Graham-Newman page (placeholder - implement as needed)
         function openGrahamNewmanPage() {
-            // Implementation for Graham-Newman page
             console.log('Opening Graham-Newman page');
+        }
+
+        // Navigation functions
+        function showAboutPage() {
+            console.log('Opening About page');
+        }
+
+        function showAdvertisePage() {
+            console.log('Opening Advertise page');
+        }
+
+        function showContactPage() {
+            console.log('Opening Contact page');
+        }
+
+        function openAboutPage() {
+            console.log('Opening About page');
+        }
+
+        function openAdvertisePage() {
+            console.log('Opening Advertise page');
+        }
+
+        function openEventsPage() {
+            console.log('Opening Events page');
         }
     </script>
 </body>
