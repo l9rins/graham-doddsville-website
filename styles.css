@@ -4628,7 +4628,11 @@ input:focus, textarea:focus, select:focus {
     text-decoration: none;
     font-size: 14px;
     transition: color 0.3s ease;
-    white-space: nowrap;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    line-height: 1.4;
 }
 
 .book-links-horizontal a:hover {
@@ -9298,7 +9302,10 @@ th {
     .book-links-horizontal a {
         font-size: 13px;
         line-height: 1.4;
-        white-space: nowrap;
+        white-space: normal;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
     }
     
     .book-links-horizontal a:not(:last-child)::after {
@@ -9338,7 +9345,11 @@ th {
     text-decoration: none;
     font-size: 14px;
     transition: color 0.3s ease;
-    white-space: nowrap;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    line-height: 1.4;
 }
 
 .books-slider .book-links-horizontal a:hover {
