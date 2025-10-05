@@ -3,7 +3,7 @@ const cors = require('cors');
 const path = require('path');
 const fetch = require('node-fetch');
 const { DOMParser } = require('xmldom');
-const { newsSources } = require('./news-sources-config');
+const { newsSources, regionalNewsSources } = require('./news-sources-config');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -309,6 +309,85 @@ app.get('/api/news/:source', async (req, res) => {
     }
 });
 
+// API endpoint to fetch news by geographic region
+app.get('/api/news/region/:region', async (req, res) => {
+    try {
+        const region = req.params.region;
+        const sourceKeys = regionalNewsSources[region];
+        
+        if (!sourceKeys) {
+            return res.status(404).json({ error: 'Region not found' });
+        }
+        
+        console.log(`Fetching news for region: ${region}`);
+        
+        // Get sources for this region, filtering out undefined sources
+        const sources = sourceKeys.map(key => newsSources[key]).filter(source => source && source.name);
+        
+        if (sources.length === 0) {
+            return res.status(404).json({ error: 'No sources found for region' });
+        }
+        
+        console.log(`Found ${sources.length} sources for ${region}:`, sources.map(s => s.name));
+        
+        // Prioritize RSS sources since NewsAPI has rate limits
+        const rssSources = sources.filter(s => s.type === 'rss');
+        const newsApiSources = sources.filter(s => s.type === 'newsapi');
+        
+        let allArticles = [];
+        
+        // Try RSS sources first (more reliable)
+        if (rssSources.length > 0) {
+            console.log(`Trying ${rssSources.length} RSS sources for ${region}...`);
+            const rssSourceKeys = rssSources.map(s => {
+                const key = Object.keys(newsSources).find(k => newsSources[k] === s);
+                return key;
+            }).filter(Boolean);
+            const rssResults = await processBatch(rssSourceKeys.slice(0, 5), 3);
+            allArticles = rssResults.flat();
+            console.log(`RSS sources returned ${allArticles.length} articles`);
+        }
+        
+        // If we have few articles, try NewsAPI sources (but handle rate limits gracefully)
+        if (allArticles.length < 3 && newsApiSources.length > 0) {
+            console.log(`Trying ${newsApiSources.length} NewsAPI sources for ${region}...`);
+            try {
+                const apiSourceKeys = newsApiSources.map(s => {
+                    const key = Object.keys(newsSources).find(k => newsSources[k] === s);
+                    return key;
+                }).filter(Boolean);
+                const apiResults = await processBatch(apiSourceKeys.slice(0, 3), 2);
+                const apiArticles = apiResults.flat();
+                allArticles = [...allArticles, ...apiArticles];
+                console.log(`NewsAPI sources returned ${apiArticles.length} articles`);
+            } catch (error) {
+                console.log(`NewsAPI failed for ${region} (likely rate limited):`, error.message);
+            }
+        }
+        
+        // Sort articles by date
+        allArticles = allArticles.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+        
+        // Take top 5 articles
+        const topArticles = allArticles.slice(0, 5);
+        
+        res.json({
+            region: region,
+            articles: topArticles,
+            count: topArticles.length,
+            sources: sources.map(s => s.name),
+            timestamp: new Date().toISOString()
+        });
+        
+    } catch (error) {
+        console.error(`Error fetching news for region ${req.params.region}:`, error);
+        res.status(500).json({ 
+            error: 'Failed to fetch regional news',
+            message: error.message 
+        });
+    }
+});
+
 // Batch processing function with concurrency control
 async function processBatch(sources, batchSize = MAX_CONCURRENT_REQUESTS) {
     const results = [];
@@ -320,6 +399,11 @@ async function processBatch(sources, batchSize = MAX_CONCURRENT_REQUESTS) {
         const batchPromises = batch.map(async (sourceKey) => {
             try {
                 const source = newsSources[sourceKey];
+                if (!source) {
+                    console.log(`Source ${sourceKey} not found, skipping...`);
+                    return [];
+                }
+                
                 let articles = [];
                 
                 if (source.type === 'newsapi') {

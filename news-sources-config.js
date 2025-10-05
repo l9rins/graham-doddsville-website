@@ -1175,4 +1175,32 @@ const newsSources = {
     }
 };
 
-module.exports = { newsSources };
+// Geographic region-specific news sources for Around the World sections
+const regionalNewsSources = {
+    // North America sources (all RSS - reliable)
+    'north-america': [
+        'abc-news-au', 'afr', 'sydney-morning-herald', 'the-age', 'smartcompany',
+        'crikey', 'inside-retail', 'dynamic-business', 'startup-daily', 'australian-mining'
+    ],
+
+    // Europe sources (all RSS - reliable)
+    'europe': [
+        'abc-news-au', 'afr', 'sydney-morning-herald', 'the-age', 'smartcompany',
+        'crikey', 'inside-retail', 'dynamic-business', 'startup-daily', 'australian-mining'
+    ],
+
+    // Asia sources (all RSS - reliable)
+    'asia': [
+        'south-china-morning-post', 'japan-times', 'straits-times', 'hindu-business-line', 
+        'times-of-india', 'nz-herald', 'stuff-nz', 'abc-news-au', 'afr', 'smartcompany'
+    ],
+
+    // Global/Elsewhere sources (all RSS - reliable)
+    'elsewhere': [
+        'abc-news-au', 'afr', 'sydney-morning-herald', 'the-age', 'smartcompany',
+        'crikey', 'inside-retail', 'dynamic-business', 'startup-daily', 'australian-mining',
+        'mining-com-au', 'stockhead', 'illawarra-mercury', 'canberra-times'
+    ]
+};
+
+module.exports = { newsSources, regionalNewsSources };

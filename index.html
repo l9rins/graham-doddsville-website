@@ -1730,8 +1730,18 @@
     <div class="newspaper-categories mobile-only">
         <h2 class="news-section-title">LATEST NEWS</h2>
         
-        <!-- Simple Mobile News List -->
+        <!-- Mobile News List with Loading -->
         <div class="mobile-news-list" id="mobile-news-container">
+            <!-- Loading Animation -->
+            <div class="mobile-news-loading" id="mobile-news-loading">
+                <div class="mobile-news-loading-dots">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="mobile-news-loading-text">Loading latest news...</div>
+            </div>
             <!-- News items will be loaded here -->
         </div>
     </div>
@@ -1752,38 +1762,18 @@
                     <h3 class="sub-category-title">North America</h3>
                     <a href="#" class="see-more-link">See more</a>
                 </div>
-                <div class="news-list-mobile">
-                    <div class="news-item-mobile">
-                        <span class="news-bullet">-</span>
-                        <div class="news-content">
-                            <h3 class="news-headline">Federal Reserve signals potential rate cuts ahead (Reuters)</h3>
+                <div class="news-list-mobile" id="north-america-news">
+                    <!-- Loading Animation -->
+                    <div class="mobile-news-loading" id="north-america-loading">
+                        <div class="mobile-news-loading-dots">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
                         </div>
+                        <div class="mobile-news-loading-text">Loading North America news...</div>
                     </div>
-                    <div class="news-item-mobile">
-                        <span class="news-bullet">-</span>
-                        <div class="news-content">
-                            <h3 class="news-headline">US inflation data shows continued cooling trend (WSJ)</h3>
-                        </div>
-                    </div>
-                    <div class="news-item-mobile">
-                        <span class="news-bullet">-</span>
-                        <div class="news-content">
-                            <h3 class="news-headline">Tech stocks rally on strong earnings reports (CNBC)</h3>
-                        </div>
-                    </div>
-                    <div class="news-item-mobile">
-                        <span class="news-bullet">-</span>
-                        <div class="news-content">
-                            <h3 class="news-headline">Energy sector faces headwinds from oil price volatility</h3>
-                            <span class="news-source">(Bloomberg)</span>
-                        </div>
-                    </div>
-                    <div class="news-item-mobile">
-                        <span class="news-bullet">-</span>
-                        <div class="news-content">
-                            <h3 class="news-headline">Healthcare stocks gain on regulatory clarity (Reuters)</h3>
-                        </div>
-                    </div>
+                    <!-- News items will be loaded here -->
                 </div>
             </div>
 
@@ -1793,41 +1783,18 @@
                     <h3 class="sub-category-title">Europe</h3>
                     <a href="#" class="see-more-link">See more</a>
                 </div>
-                <div class="news-list-mobile">
-                    <div class="news-item-mobile">
-                        <span class="news-bullet">-</span>
-                        <div class="news-content">
-                            <h3 class="news-headline">ECB maintains dovish stance amid economic uncertainty</h3>
-                            <span class="news-source">(Bloomberg)</span>
+                <div class="news-list-mobile" id="europe-news">
+                    <!-- Loading Animation -->
+                    <div class="mobile-news-loading" id="europe-loading">
+                        <div class="mobile-news-loading-dots">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
                         </div>
+                        <div class="mobile-news-loading-text">Loading Europe news...</div>
                     </div>
-                    <div class="news-item-mobile">
-                        <span class="news-bullet">-</span>
-                        <div class="news-content">
-                            <h3 class="news-headline">European banks show resilience in stress tests</h3>
-                            <span class="news-source">(FT)</span>
-                        </div>
-                    </div>
-                    <div class="news-item-mobile">
-                        <span class="news-bullet">-</span>
-                        <div class="news-content">
-                            <h3 class="news-headline">German manufacturing sector shows signs of recovery (Reuters)</h3>
-                        </div>
-                    </div>
-                    <div class="news-item-mobile">
-                        <span class="news-bullet">-</span>
-                        <div class="news-content">
-                            <h3 class="news-headline">UK inflation falls to lowest level in two years</h3>
-                            <span class="news-source">(BBC)</span>
-                        </div>
-                    </div>
-                    <div class="news-item-mobile">
-                        <span class="news-bullet">-</span>
-                        <div class="news-content">
-                            <h3 class="news-headline">French luxury goods sector maintains strong performance</h3>
-                            <span class="news-source">(WSJ)</span>
-                        </div>
-                    </div>
+                    <!-- News items will be loaded here -->
                 </div>
             </div>
 
@@ -1837,10 +1804,18 @@
                     <h3 class="sub-category-title">Asia</h3>
                     <a href="#" class="see-more-link">See more</a>
                 </div>
-                <div class="news-list-mobile">
-                    
-                    
-                    
+                <div class="news-list-mobile" id="asia-news">
+                    <!-- Loading Animation -->
+                    <div class="mobile-news-loading" id="asia-loading">
+                        <div class="mobile-news-loading-dots">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="mobile-news-loading-text">Loading Asia news...</div>
+                    </div>
+                    <!-- News items will be loaded here -->
                 </div>
             </div>
 
@@ -1850,8 +1825,18 @@
                     <h3 class="sub-category-title">Elsewhere</h3>
                     <a href="#" class="see-more-link">See more</a>
                 </div>
-                <div class="news-list-mobile">
-                    
+                <div class="news-list-mobile" id="elsewhere-news">
+                    <!-- Loading Animation -->
+                    <div class="mobile-news-loading" id="elsewhere-loading">
+                        <div class="mobile-news-loading-dots">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                        <div class="mobile-news-loading-text">Loading global news...</div>
+                    </div>
+                    <!-- News items will be loaded here -->
                 </div>
             </div>
         </section>
@@ -1926,7 +1911,7 @@
                     <div class="articles-list-container">
                         <div class="articles-list" id="industry-articles-list">
                             <div class="article-item">
-                                <h5><a href="https://www.moneymag.com.au/australian-super-sued-over-multiple-accounts" target="_blank">Australian Super sued over multiple accounts 🔗</a></h5>
+                                <h5><a href="https://www.moneymag.com.au/australian-super-sued-over-multiple-accounts" target="_blank">Australian Super sued over multiple accounts </a></h5>
                             </div>
                             <div class="article-item">
                                 <h5><a href="https://www.moneymag.com.au/rising-costs-worry-older-australians-challenger-research" target="_blank">Rising costs worry most older Australians: Challenger research</a></h5>
@@ -6226,6 +6211,13 @@
             setTimeout(() => {
                 console.log('Executing mobile news loading...');
                 loadMobileNewsContent();
+                
+                // Load regional news for Around the World sections
+                console.log('Loading regional news sections...');
+                loadRegionalNews('north-america', 'north-america-news', 'north-america-loading');
+                loadRegionalNews('europe', 'europe-news', 'europe-loading');
+                loadRegionalNews('asia', 'asia-news', 'asia-loading');
+                loadRegionalNews('elsewhere', 'elsewhere-news', 'elsewhere-loading');
             }, 100);
             
         // Initialize mobile newspaper functionality
@@ -6492,19 +6484,32 @@
             console.log('First article sample:', articles && articles.length > 0 ? articles[0] : 'none');
             
             const mobileContainer = document.querySelector('#mobile-news-container');
+            const loadingElement = document.querySelector('#mobile-news-loading');
+            
             if (!mobileContainer) {
                 console.log('Mobile news container not found!');
                 return;
             }
             
+            // Hide loading animation
+            if (loadingElement) {
+loadingElement.style.display = 'none';
+            }
+            
             if (articles && articles.length > 0) {
-                // Take first 10 articles and display in simple format
-                const displayArticles = articles.slice(0, 10);
+                // Take first 5 articles and display in proper news format
+                const displayArticles = articles.slice(0, 5);
                 const html = displayArticles.map(article => {
                     console.log('Processing article:', article.title, 'URL:', article.url);
                     return `
-                        <div class="mobile-news-item">
-                            <a href="${article.url || '#'}" target="_blank" rel="noopener noreferrer">${article.title} (${article.source})</a>
+                        <div class="news-item-mobile">
+                            <span class="news-bullet">-</span>
+                            <div class="news-content">
+                                <h3 class="news-headline">
+                                    <a href="${article.url || '#'}" target="_blank" rel="noopener noreferrer">${article.title}</a>
+                                </h3>
+                                <span class="news-source">(${article.source})</span>
+                            </div>
                         </div>
                     `;
                 }).join('');
@@ -6516,6 +6521,259 @@
                 // Show fallback content
                 showFallbackMobileNews();
             }
+        }
+
+        // Regional news loading functions
+        function loadRegionalNews(region, containerId, loadingId) {
+            console.log(`Loading ${region} news...`);
+            
+            const container = document.querySelector(`#${containerId}`);
+            const loadingElement = document.querySelector(`#${loadingId}`);
+            
+            if (!container) {
+                console.log(`Container ${containerId} not found!`);
+                return;
+            }
+            
+            // Show loading state
+            if (loadingElement) {
+                loadingElement.style.display = 'block';
+            }
+            
+            // Determine API URL
+            const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+            const isGitHubPages = window.location.hostname === 'l9rins.github.io';
+            
+            let apiUrl;
+            if (isLocalhost) {
+                apiUrl = `http://localhost:3001/api/news/region/${region}`;
+            } else if (isGitHubPages) {
+                apiUrl = `http://localhost:3001/api/news/region/${region}`;
+            } else {
+                apiUrl = `https://l9rins.github.io/graham-doddsville-website/api/news/region/${region}`;
+            }
+            
+            console.log(`Fetching ${region} news from:`, apiUrl);
+            
+            // Use AbortController for timeout
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 8000); // 8 second timeout
+            
+            fetch(apiUrl, {
+                signal: controller.signal,
+                cache: 'no-cache',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                clearTimeout(timeoutId);
+                console.log(`${region} API Response status:`, response.status);
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                return response.json();
+            })
+            .then(data => {
+                console.log(`${region} API Response data:`, data);
+                if (data && data.articles && data.articles.length > 0) {
+                    updateRegionalNewsDisplay(container, loadingElement, data.articles, region);
+                } else {
+                    console.log(`${region} API returned empty data, using fallback`);
+                    showRegionalFallbackNews(container, loadingElement, region);
+                }
+            })
+            .catch(error => {
+                clearTimeout(timeoutId);
+                console.error(`Error loading ${region} news:`, error);
+                console.log(`Falling back to static ${region} news`);
+                showRegionalFallbackNews(container, loadingElement, region);
+            });
+        }
+        
+        function updateRegionalNewsDisplay(container, loadingElement, articles, region) {
+            console.log(`updateRegionalNewsDisplay called for ${region} with:`, articles);
+            
+            // Hide loading animation
+            if (loadingElement) {
+                loadingElement.style.display = 'none';
+            }
+            
+            if (articles && articles.length > 0) {
+                // Take first 5 articles and display in proper news format
+                const displayArticles = articles.slice(0, 5);
+                const html = displayArticles.map(article => {
+                    console.log(`Processing ${region} article:`, article.title, 'URL:', article.url);
+                    return `
+                        <div class="news-item-mobile">
+                            <span class="news-bullet">-</span>
+                            <div class="news-content">
+                                <h3 class="news-headline">
+                                    <a href="${article.url || '#'}" target="_blank" rel="noopener noreferrer">${article.title}</a>
+                                </h3>
+                                <span class="news-source">(${article.source})</span>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+                
+                container.innerHTML = html;
+                console.log(`${region} news updated successfully with`, displayArticles.length, 'articles');
+            } else {
+                console.log(`No articles provided for ${region}`);
+                showRegionalFallbackNews(container, loadingElement, region);
+            }
+        }
+        
+        function showRegionalFallbackNews(container, loadingElement, region) {
+            // Hide loading animation
+            if (loadingElement) {
+                loadingElement.style.display = 'none';
+            }
+            
+            // Show fallback content based on region
+            const fallbackContent = getRegionalFallbackContent(region);
+            container.innerHTML = fallbackContent;
+            console.log(`Showing fallback content for ${region}`);
+        }
+        
+        function getRegionalFallbackContent(region) {
+            const fallbackTemplates = {
+                'north-america': `
+                    <div class="news-item-mobile">
+                        <span class="news-bullet">-</span>
+                        <div class="news-content">
+                            <h3 class="news-headline">Federal Reserve signals potential rate cuts ahead (Reuters)</h3>
+                        </div>
+                    </div>
+                    <div class="news-item-mobile">
+                        <span class="news-bullet">-</span>
+                        <div class="news-content">
+                            <h3 class="news-headline">US inflation data shows continued cooling trend (WSJ)</h3>
+                        </div>
+                    </div>
+                    <div class="news-item-mobile">
+                        <span class="news-bullet">-</span>
+                        <div class="news-content">
+                            <h3 class="news-headline">Tech stocks rally on strong earnings reports (CNBC)</h3>
+                        </div>
+                    </div>
+                    <div class="news-item-mobile">
+                        <span class="news-bullet">-</span>
+                        <div class="news-content">
+                            <h3 class="news-headline">Energy sector faces headwinds from oil price volatility</h3>
+                            <span class="news-source">(Bloomberg)</span>
+                        </div>
+                    </div>
+                    <div class="news-item-mobile">
+                        <span class="news-bullet">-</span>
+                        <div class="news-content">
+                            <h3 class="news-headline">Healthcare stocks gain on regulatory clarity (Reuters)</h3>
+                        </div>
+                    </div>
+                `,
+                'europe': `
+                    <div class="news-item-mobile">
+                        <span class="news-bullet">-</span>
+                        <div class="news-content">
+                            <h3 class="news-headline">ECB maintains dovish stance amid economic uncertainty</h3>
+                            <span class="news-source">(Bloomberg)</span>
+                        </div>
+                    </div>
+                    <div class="news-item-mobile">
+                        <span class="news-bullet">-</span>
+                        <div class="news-content">
+                            <h3 class="news-headline">European banks show resilience in stress tests</h3>
+                            <span class="news-source">(FT)</span>
+                        </div>
+                    </div>
+                    <div class="news-item-mobile">
+                        <span class="news-bullet">-</span>
+                        <div class="news-content">
+                            <h3 class="news-headline">German manufacturing sector shows signs of recovery (Reuters)</h3>
+                        </div>
+                    </div>
+                    <div class="news-item-mobile">
+                        <span class="news-bullet">-</span>
+                        <div class="news-content">
+                            <h3 class="news-headline">UK inflation falls to lowest level in two years</h3>
+                            <span class="news-source">(BBC)</span>
+                        </div>
+                    </div>
+                    <div class="news-item-mobile">
+                        <span class="news-bullet">-</span>
+                        <div class="news-content">
+                            <h3 class="news-headline">French luxury goods sector maintains strong performance</h3>
+                            <span class="news-source">(WSJ)</span>
+                        </div>
+                    </div>
+                `,
+                'asia': `
+                    <div class="news-item-mobile">
+                        <span class="news-bullet">-</span>
+                        <div class="news-content">
+                            <h3 class="news-headline">China's manufacturing PMI shows expansion (SCMP)</h3>
+                        </div>
+                    </div>
+                    <div class="news-item-mobile">
+                        <span class="news-bullet">-</span>
+                        <div class="news-content">
+                            <h3 class="news-headline">Japan's economy shows signs of recovery (Japan Times)</h3>
+                        </div>
+                    </div>
+                    <div class="news-item-mobile">
+                        <span class="news-bullet">-</span>
+                        <div class="news-content">
+                            <h3 class="news-headline">Singapore's financial sector remains resilient (Straits Times)</h3>
+                        </div>
+                    </div>
+                    <div class="news-item-mobile">
+                        <span class="news-bullet">-</span>
+                        <div class="news-content">
+                            <h3 class="news-headline">India's tech sector continues strong growth (Times of India)</h3>
+                        </div>
+                    </div>
+                    <div class="news-item-mobile">
+                        <span class="news-bullet">-</span>
+                        <div class="news-content">
+                            <h3 class="news-headline">Australia-New Zealand trade relations strengthen (NZ Herald)</h3>
+                        </div>
+                    </div>
+                `,
+                'elsewhere': `
+                    <div class="news-item-mobile">
+                        <span class="news-bullet">-</span>
+                        <div class="news-content">
+                            <h3 class="news-headline">Global markets show mixed signals amid uncertainty (Reuters)</h3>
+                        </div>
+                    </div>
+                    <div class="news-item-mobile">
+                        <span class="news-bullet">-</span>
+                        <div class="news-content">
+                            <h3 class="news-headline">International trade tensions continue to impact economies (BBC)</h3>
+                        </div>
+                    </div>
+                    <div class="news-item-mobile">
+                        <span class="news-bullet">-</span>
+                        <div class="news-content">
+                            <h3 class="news-headline">Climate change policies reshape global energy markets (Bloomberg)</h3>
+                        </div>
+                    </div>
+                    <div class="news-item-mobile">
+                        <span class="news-bullet">-</span>
+                        <div class="news-content">
+                            <h3 class="news-headline">Emerging markets face currency volatility challenges (FT)</h3>
+                        </div>
+                    </div>
+                    <div class="news-item-mobile">
+                        <span class="news-bullet">-</span>
+                        <div class="news-content">
+                            <h3 class="news-headline">Global supply chain disruptions continue to affect trade (CNN)</h3>
+                        </div>
+                    </div>
+                `
+            };
+            
+            return fallbackTemplates[region] || '<div class="news-item-mobile"><div class="news-content"><h3 class="news-headline">No news available</h3></div></div>';
         }
 
         // Lazy loading implementation
@@ -6671,20 +6929,24 @@
         
         // Show/hide back to top button based on scroll position
         window.addEventListener('scroll', function() {
-            if (window.pageYOffset > 300) {
-                backToTopButton.classList.add('show');
-            } else {
-                backToTopButton.classList.remove('show');
+            if (backToTopButton) {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('show');
+                } else {
+                    backToTopButton.classList.remove('show');
+                }
             }
         });
 
         // Back to top button click handler
-        backToTopButton.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+        if (backToTopButton) {
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             });
-        });
+        }
 
         // Keyboard navigation support
         document.addEventListener('keydown', function(e) {
@@ -6953,30 +7215,35 @@
         });
 
         // Market data tabs functionality
-        document.querySelectorAll('.market-tabs .tab-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const tabName = this.dataset.tab;
-                
-                // Remove active class from all market tab buttons
-                document.querySelectorAll('.market-tabs .tab-btn').forEach(b => b.classList.remove('active'));
-                // Add active class to clicked button
-                this.classList.add('active');
-                
-                // Hide all tab content
-                document.querySelectorAll('.quotes-list, .market-table-container').forEach(content => {
-                    content.style.display = 'none';
+        const marketTabButtons = document.querySelectorAll('.market-tabs .tab-btn');
+        if (marketTabButtons.length > 0) {
+            marketTabButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const tabName = this.dataset.tab;
+                    
+                    // Remove active class from all market tab buttons
+                    document.querySelectorAll('.market-tabs .tab-btn').forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Hide all tab content
+                    document.querySelectorAll('.quotes-list, .market-table-container').forEach(content => {
+                        content.style.display = 'none';
+                    });
+                    
+                    // Show selected tab content
+                    const targetTab = document.getElementById(tabName + '-tab');
+                    if (targetTab) {
+                        targetTab.style.display = 'block';
+                    }
                 });
-                
-                // Show selected tab content
-                const targetTab = document.getElementById(tabName + '-tab');
-                if (targetTab) {
-                    targetTab.style.display = 'block';
-                }
             });
-        });
+        }
 
         // Warren Buffett tabs functionality (desktop)
-        document.querySelectorAll('.buffett-tabs .tab-btn').forEach(btn => {
+        const buffettTabButtons = document.querySelectorAll('.buffett-tabs .tab-btn');
+        if (buffettTabButtons.length > 0) {
+            buffettTabButtons.forEach(btn => {
             btn.addEventListener('click', function() {
                 const tabName = this.dataset.tab;
                 
@@ -6996,10 +7263,13 @@
                     targetTab.classList.add('active');
                 }
             });
-        });
+            });
+        }
 
         // Warren Buffett tabs functionality (mobile)
-        document.querySelectorAll('.buffett-tabs-mobile .buffett-tab-btn').forEach(btn => {
+        const buffettMobileTabButtons = document.querySelectorAll('.buffett-tabs-mobile .buffett-tab-btn');
+        if (buffettMobileTabButtons.length > 0) {
+            buffettMobileTabButtons.forEach(btn => {
             btn.addEventListener('click', function() {
                 const tabName = this.dataset.tab;
                 
@@ -7019,10 +7289,13 @@
                     targetTab.classList.add('active');
                 }
             });
-        });
+            });
+        }
 
         // Time range toggles functionality
-        document.querySelectorAll('.time-btn').forEach(btn => {
+        const timeButtons = document.querySelectorAll('.time-btn');
+        if (timeButtons.length > 0) {
+            timeButtons.forEach(btn => {
             btn.addEventListener('click', function() {
                 const timeRange = this.dataset.range;
                 
@@ -7034,10 +7307,13 @@
                 // Update market data based on time range
                 updateMarketData(timeRange);
             });
-        });
+            });
+        }
 
         // Sortable table functionality
-        document.querySelectorAll('.market-table th.sortable').forEach(th => {
+        const sortableHeaders = document.querySelectorAll('.market-table th.sortable');
+        if (sortableHeaders.length > 0) {
+            sortableHeaders.forEach(th => {
             th.addEventListener('click', function() {
                 const table = this.closest('table');
                 const tbody = table.querySelector('tbody');
@@ -7070,7 +7346,8 @@
                 // Add sort class to header
                 this.classList.add(isAsc ? 'sort-desc' : 'sort-asc');
             });
-        });
+            });
+        }
 
         // Enhanced Market Data Filtering and Sorting
         function initializeMarketFilters() {
@@ -7224,7 +7501,9 @@
         // Enhanced Global search functionality
         let searchTimeout;
         
-        document.querySelector('.global-search-input').addEventListener('input', function() {
+        const globalSearchInput = document.querySelector('.global-search-input');
+        if (globalSearchInput) {
+            globalSearchInput.addEventListener('input', function() {
             const searchTerm = this.value.toLowerCase();
             
             // Clear previous timeout
@@ -7239,6 +7518,7 @@
                 hideSearchResults();
             }
         });
+        }
 
         // Enhanced Global search function
         function performGlobalSearch(searchTerm) {
@@ -7493,6 +7773,293 @@
                 alert('Loading more news...');
             }
         }
+
+        // Function to populate category sections with real news data
+        function populateCategorySections() {
+            console.log('Populating category sections...');
+            
+            // Check if we have news data available
+            if (window.newsDisplayManager && window.newsDisplayManager.allNews && window.newsDisplayManager.allNews.length > 0) {
+                const news = window.newsDisplayManager.allNews;
+                console.log('Found news data:', news.length, 'articles');
+                
+                // Define category mappings for all 7 sections
+                const categoryMappings = {
+                    'top-companies-news': ['Companies', 'Investment', 'Business'],
+                    'top-markets-news': ['Markets', 'Investment', 'General'],
+                    'top-economy-news': ['Economy', 'Monetary Policy', 'General'],
+                    'top-industry-news': ['Industry', 'Resources', 'Energy', 'Technology'],
+                    'top-regulatory-news': ['Regulatory', 'Banking', 'Monetary Policy', 'General'],
+                    'top-guru-watch-news': ['Investment', 'Companies', 'Markets'],
+                    'top-around-world-news': ['General', 'International', 'Economy']
+                };
+                
+                // Populate each category section
+                Object.keys(categoryMappings).forEach(sectionId => {
+                    const targetCategories = categoryMappings[sectionId];
+                    const sectionElement = document.getElementById(sectionId);
+                    
+                    if (sectionElement) {
+                        // Filter news by category
+                        const categoryNews = news.filter(article => 
+                            targetCategories.some(cat => 
+                                article.category && article.category.toLowerCase().includes(cat.toLowerCase())
+                            )
+                        ).slice(0, 3); // Show top 3 articles per category
+                        
+                        console.log(`Populating ${sectionId} with ${categoryNews.length} articles`);
+                        
+                        if (categoryNews.length > 0) {
+                            const newsHTML = categoryNews.map(article => `
+                                <div class="news-item" style="background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 12px 16px; margin-bottom: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.2s ease;">
+                                    <a href="${article.url}" target="_blank" rel="noopener noreferrer" style="color: #333; text-decoration: none; font-size: 10px; line-height: 1.4; display: block;">${article.title.length > 60 ? article.title.substring(0, 60) + '...' : article.title} (${article.source})</a>
+                                </div>
+                            `).join('');
+                            
+                            sectionElement.innerHTML = newsHTML;
+                            console.log(`✅ Successfully populated ${sectionId}`);
+                        } else {
+                            // If no specific category news, show any recent news as fallback
+                            const fallbackNews = news.slice(0, 3);
+                            console.log(`⚠️ No specific news for ${sectionId}, showing fallback news`);
+                            
+                            const fallbackHTML = fallbackNews.map(article => `
+                                <div class="news-item" style="background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 12px 16px; margin-bottom: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.2s ease;">
+                                    <a href="${article.url}" target="_blank" rel="noopener noreferrer" style="color: #333; text-decoration: none; font-size: 10px; line-height: 1.4; display: block;">${article.title.length > 60 ? article.title.substring(0, 60) + '...' : article.title} (${article.source})</a>
+                                </div>
+                            `).join('');
+                            
+                            sectionElement.innerHTML = fallbackHTML;
+                        }
+                    }
+                });
+            } else {
+                console.log('No news data available yet, trying direct API call...');
+                
+                // Try to fetch news directly from API
+                fetch('/api/news')
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data && data.articles && data.articles.length > 0) {
+                            console.log('Direct API call successful, got', data.articles.length, 'articles');
+                            populateCategorySectionsWithData(data.articles);
+                        } else {
+                            console.log('Direct API call returned no data');
+                            setTimeout(populateCategorySections, 2000);
+                        }
+                    })
+                    .catch(error => {
+                        console.log('Direct API call failed:', error);
+                        setTimeout(populateCategorySections, 2000);
+                    });
+            }
+        }
+
+        // Function to populate category sections with direct API data
+        function populateCategorySectionsWithData(news) {
+            console.log('Populating category sections with direct API data:', news.length, 'articles');
+            
+            // Debug: Show sample of news categories
+            const sampleCategories = news.slice(0, 5).map(article => ({
+                title: article.title.substring(0, 50) + '...',
+                category: article.category,
+                source: article.source
+            }));
+            console.log('Sample news categories:', sampleCategories);
+            
+            // Define category mappings for all 7 sections
+            const categoryMappings = {
+                'top-companies-news': ['Companies', 'Investment', 'Business'],
+                'top-markets-news': ['Markets', 'Investment', 'General'],
+                'top-economy-news': ['Economy', 'Monetary Policy', 'General'],
+                'top-industry-news': ['Industry', 'Resources', 'Energy', 'Technology'],
+                'top-regulatory-news': ['Regulatory', 'Banking', 'Monetary Policy', 'General'],
+                'top-guru-watch-news': ['Investment', 'Companies', 'Markets'],
+                'top-around-world-news': ['General', 'International', 'Economy']
+            };
+            
+            // Populate each category section
+            Object.keys(categoryMappings).forEach(sectionId => {
+                const targetCategories = categoryMappings[sectionId];
+                const sectionElement = document.getElementById(sectionId);
+                
+                console.log(`Processing section: ${sectionId}, looking for categories:`, targetCategories);
+                
+                if (sectionElement) {
+                    // Filter news by category
+                    const categoryNews = news.filter(article => 
+                        targetCategories.some(cat => 
+                            article.category && article.category.toLowerCase().includes(cat.toLowerCase())
+                        )
+                    ).slice(0, 3); // Show top 3 articles per category
+                    
+                    console.log(`Populating ${sectionId} with ${categoryNews.length} articles`);
+                    
+                    if (categoryNews.length > 0) {
+                        const newsHTML = categoryNews.map(article => `
+                            <div class="news-item" style="background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 12px 16px; margin-bottom: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.2s ease;">
+                                <a href="${article.url}" target="_blank" rel="noopener noreferrer" style="color: #333; text-decoration: none; font-size: 10px; line-height: 1.4; display: block;">${article.title.length > 60 ? article.title.substring(0, 60) + '...' : article.title} (${article.source})</a>
+                            </div>
+                        `).join('');
+                        
+                        sectionElement.innerHTML = newsHTML;
+                        console.log(`✅ Successfully populated ${sectionId} with ${categoryNews.length} articles`);
+                    } else {
+                        // If no specific category news, show any recent news as fallback
+                        const fallbackNews = news.slice(0, 3);
+                        console.log(`⚠️ No specific news for ${sectionId}, showing fallback news`);
+                        
+                        const fallbackHTML = fallbackNews.map(article => `
+                            <div class="news-item" style="background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 12px 16px; margin-bottom: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.2s ease;">
+                                <a href="${article.url}" target="_blank" rel="noopener noreferrer" style="color: #333; text-decoration: none; font-size: 10px; line-height: 1.4; display: block;">${article.title.length > 60 ? article.title.substring(0, 60) + '...' : article.title} (${article.source})</a>
+                            </div>
+                        `).join('');
+                        
+                        sectionElement.innerHTML = fallbackHTML;
+                        console.log(`✅ Populated ${sectionId} with fallback news`);
+                    }
+                }
+            });
+        }
+
+        // Test function to verify JavaScript is working
+        function testJavaScript() {
+            console.log('✅ JavaScript is working!');
+            const testElement = document.getElementById('top-companies-news');
+            if (testElement) {
+                console.log('✅ Found top-companies-news element');
+            } else {
+                console.log('❌ Could not find top-companies-news element');
+            }
+        }
+
+        // Fallback function for desktop news
+        function showFallbackDesktopNews() {
+            console.log('Showing fallback desktop news...');
+            const fallbackNews = [
+                { title: "Federal Reserve signals potential rate cuts ahead", source: "Reuters", category: "Companies" },
+                { title: "ASX 200 rises as investors digest RBA rate decision", source: "AFR", category: "Markets" },
+                { title: "Mining sector leads ASX gains on commodity price recovery", source: "The Australian", category: "Economy" },
+                { title: "Tech stocks rally on AI investment optimism", source: "SMH", category: "Industry" }
+            ];
+            
+            // Update each section with fallback content
+            const sections = ['top-companies-news', 'top-markets-news', 'top-economy-news', 'top-industry-news'];
+            sections.forEach((sectionId, index) => {
+                const element = document.getElementById(sectionId);
+                if (element) {
+                    const news = fallbackNews[index] || fallbackNews[0];
+                    element.innerHTML = `
+                        <div class="news-item" style="background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 12px 16px; margin-bottom: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.2s ease;">
+                            <a href="#" style="color: #333; text-decoration: none; font-size: 10px; line-height: 1.4; display: block;">${news.title} (${news.source})</a>
+                        </div>
+                    `;
+                    console.log(`✅ Updated ${sectionId} with fallback content`);
+                }
+            });
+        }
+
+        // Call populateCategorySections when news data is available
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, starting category population...');
+            testJavaScript();
+            
+            // Force immediate population with direct API call
+            console.log('Making immediate API call for category sections...');
+            fetch('/api/news')
+                .then(response => {
+                    console.log('API response status:', response.status);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Direct API call successful, got', data.articles ? data.articles.length : 0, 'articles');
+                    if (data && data.articles && data.articles.length > 0) {
+                        console.log('Populating category sections with API data...');
+                        populateCategorySectionsWithData(data.articles);
+                    } else {
+                        console.log('No articles in API response');
+                    }
+                })
+                .catch(error => {
+                    console.log('Direct API call failed:', error);
+                    console.error('Error details:', error);
+                    // Try to show fallback content
+                    console.log('Attempting to show fallback content...');
+                    showFallbackDesktopNews();
+                });
+            
+            // Also try the original method
+            setTimeout(populateCategorySections, 1000);
+            
+            // Force fallback after 5 seconds if nothing else works
+            setTimeout(() => {
+                console.log('Timeout reached, forcing fallback content...');
+                showFallbackDesktopNews();
+            }, 5000);
+            
+            // Also try when newsDisplayManager is ready
+            const checkForNewsData = () => {
+                if (window.newsDisplayManager && window.newsDisplayManager.allNews && window.newsDisplayManager.allNews.length > 0) {
+                    console.log('NewsDisplayManager has data, populating sections...');
+                    populateCategorySections();
+                } else {
+                    console.log('NewsDisplayManager not ready yet, retrying...');
+                    setTimeout(checkForNewsData, 2000);
+                }
+            };
+            checkForNewsData();
+        });
+
+        // Also try to populate immediately when the page loads (backup method)
+        window.addEventListener('load', function() {
+            console.log('Window loaded, trying category population again...');
+            setTimeout(() => {
+                fetch('/api/news')
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data && data.articles && data.articles.length > 0) {
+                            console.log('Window load - populating categories with', data.articles.length, 'articles');
+                            populateCategorySectionsWithData(data.articles);
+                        }
+                    })
+                    .catch(error => {
+                        console.log('Window load API call failed:', error);
+                    });
+            }, 3000);
+        });
+
+        // Force category population using preloaded data
+        function forceCategoryPopulation() {
+            console.log('Force category population called...');
+            
+            // Try to use preloaded data first
+            if (window.preloadedNews && window.preloadedNews.length > 0) {
+                console.log('Using preloaded news data:', window.preloadedNews.length, 'articles');
+                populateCategorySectionsWithData(window.preloadedNews);
+                return;
+            }
+            
+            // Fallback to API call
+            fetch('/api/news')
+                .then(response => response.json())
+                .then(data => {
+                    if (data && data.articles && data.articles.length > 0) {
+                        console.log('Force population - using API data:', data.articles.length, 'articles');
+                        populateCategorySectionsWithData(data.articles);
+                    }
+                })
+                .catch(error => {
+                    console.log('Force population API call failed:', error);
+                });
+        }
+
+        // Call force population multiple times to ensure it works
+        setTimeout(forceCategoryPopulation, 1000);
+        setTimeout(forceCategoryPopulation, 3000);
+        setTimeout(forceCategoryPopulation, 5000);
 
         // Enhanced "See more" functionality
         function loadMoreContent(section) {

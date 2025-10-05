@@ -3120,7 +3120,7 @@ input:focus, textarea:focus, select:focus {
 }
 
 .article-item h3 a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .article-item p {
@@ -5877,7 +5877,7 @@ p {
 
 .article-item h3 a:hover,
 .news-item h3 a:hover {
-    color: #3498db;
+    color: #000;
 }
 
 .article-item p,
@@ -5992,6 +5992,11 @@ a {
 a:hover {
     color: var(--primary-navy-light);
     text-decoration: underline;
+}
+
+/* Remove underlines from article item links on hover */
+.article-item h3 a:hover {
+    text-decoration: none !important;
 }
 
 a:focus {
@@ -6177,7 +6182,7 @@ input:hover, select:hover, textarea:hover {
 .news-item h3 {
     font-size: var(--font-size-xl);
     font-weight: 600;
-    color: var(--primary-navy);
+    color: #000;
     margin-bottom: var(--space-4);
     line-height: var(--line-height-tight);
 }
@@ -6191,7 +6196,7 @@ input:hover, select:hover, textarea:hover {
 
 .article-item h3 a:hover,
 .news-item h3 a:hover {
-    color: var(--primary-navy-light);
+    color: #000;
 }
 
 .article-item p,
@@ -6457,7 +6462,7 @@ input:hover, select:hover, textarea:hover {
 .news-item h3 {
     font-size: var(--font-size-xl);
     font-weight: 600;
-    color: var(--primary-navy);
+    color: #000;
     margin-bottom: var(--space-4);
     line-height: var(--line-height-tight);
     transition: all var(--transition-fast);
@@ -6466,7 +6471,7 @@ input:hover, select:hover, textarea:hover {
 .article-item:hover h3,
 .news-item:hover h3 {
     transform: translateX(8px);
-    color: var(--primary-navy-light);
+    color: #000;
 }
 
 .article-item h3 a,
@@ -6478,7 +6483,7 @@ input:hover, select:hover, textarea:hover {
 
 .article-item h3 a:hover,
 .news-item h3 a:hover {
-    color: var(--primary-gold);
+    color: #000;
 }
 
 /* Skeleton Loading Animations */
@@ -6751,6 +6756,32 @@ body {
 a {
     color: #1e3a8a; /* Darker blue for better contrast */
     text-decoration: underline;
+}
+
+/* Remove underlines from article item links */
+.article-item h3 a,
+.article-item h3 a:hover,
+.article-item h3 a:focus {
+    text-decoration: none !important;
+}
+
+/* Remove underlines from mobile news links */
+.news-item-mobile .news-headline a,
+.news-item-mobile .news-headline a:hover,
+.news-item-mobile .news-headline a:focus,
+.news-headline a,
+.news-headline a:hover,
+.news-headline a:focus {
+    text-decoration: none !important;
+    color: #000 !important;
+}
+
+/* Additional mobile news link overrides */
+.mobile-news-list .news-item-mobile .news-headline a,
+.mobile-news-list .news-item-mobile .news-headline a:hover,
+.mobile-news-list .news-item-mobile .news-headline a:focus {
+    text-decoration: none !important;
+    color: #000 !important;
 }
 
 a:hover,
@@ -7156,52 +7187,51 @@ th {
         display: block !important;
     }
     
-    /* Simple Mobile News Styling - Match news-list-mobile structure */
+    /* Mobile News Loading Animation */
+    .mobile-news-loading {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+        text-align: center;
+    }
+    
+    .mobile-news-loading-dots {
+        display: flex;
+        gap: 4px;
+        margin-bottom: 16px;
+    }
+    
+    .mobile-news-loading-dots div {
+        width: 8px;
+        height: 8px;
+        background: #1e3a8a;
+        border-radius: 50%;
+        animation: mobile-news-loading-pulse 1.4s ease-in-out infinite both;
+    }
+    
+    .mobile-news-loading-dots div:nth-child(1) { animation-delay: -0.32s; }
+    .mobile-news-loading-dots div:nth-child(2) { animation-delay: -0.16s; }
+    .mobile-news-loading-dots div:nth-child(3) { animation-delay: 0s; }
+    .mobile-news-loading-dots div:nth-child(4) { animation-delay: 0.16s; }
+    
+    @keyframes mobile-news-loading-pulse {
+        0%, 80%, 100% { transform: scale(0.8); opacity: 0.5; }
+        40% { transform: scale(1); opacity: 1; }
+    }
+    
+    .mobile-news-loading-text {
+        color: #666;
+        font-size: 14px;
+        font-weight: 500;
+    }
+    
+    /* Mobile News List Styling - Use existing news-list-mobile structure */
     .mobile-news-list {
         margin: 0;
         padding: 0;
         text-align: left;
-    }
-    
-    .mobile-news-item {
-        display: block;
-        padding: 1px 0;
-        margin: 0;
-        line-height: 1.1;
-        position: relative;
-        text-decoration: none;
-        color: inherit;
-        background: transparent;
-        border-radius: 0;
-        border: none;
-        transition: all 0.2s ease;
-    }
-    
-    .mobile-news-item:hover {
-        background-color: #f8f9fa;
-        border-color: #d4af37;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        text-decoration: none;
-        color: inherit;
-        transform: translateY(-1px);
-    }
-    
-    .mobile-news-item:last-child {
-        border-bottom: none;
-    }
-    
-    .mobile-news-item a {
-        color: inherit;
-        text-decoration: none;
-        font-size: 14px;
-        line-height: 1.1;
-        display: block;
-        transition: all 0.2s ease;
-    }
-    
-    .mobile-news-item a:hover {
-        color: inherit;
-        text-decoration: none;
     }
 }
 
@@ -8023,6 +8053,17 @@ th {
     line-height: 1.5;
     display: inline;
     letter-spacing: -0.1px;
+}
+
+.news-headline a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.news-headline a:hover {
+    color: #d4af37;
+    text-decoration: none;
 }
 
 /* PROFESSIONAL NEWS SOURCE STYLING */
