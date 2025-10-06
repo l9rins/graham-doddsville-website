@@ -1,5 +1,5 @@
 // Service Worker for Performance Optimization
-const CACHE_NAME = 'graham-doddsville-v1';
+const CACHE_NAME = 'graham-doddsville-v2';
 const urlsToCache = [
     '/',
     '/styles.css',
