@@ -1842,6 +1842,11 @@
             </div>
         </section>
 
+        <!-- MARKET QUOTES Section -->
+        <section class="newspaper-section" id="mobile-market-quotes">
+            <h2 class="section-header">MARKET QUOTES</h2>
+            <!-- Market quotes content will go here -->
+        </section>
 
         <!-- FEATURE ARTICLES Section with Slider -->
         <section class="newspaper-section" id="mobile-feature-articles">
@@ -1987,7 +1992,7 @@
 
         <!-- RECOMMENDED BOOKS Section with Categories -->
         <section class="newspaper-section" id="mobile-books">
-            <h2 class="section-header">RECOMMENDED BOOKS</h2>
+            <h2 class="section-header">RECOMMENDED READING</h2>
             
             <!-- Book Category Navigation -->
             <div class="book-categories">
@@ -3074,9 +3079,6 @@
                     <div class="news-content">
                         <h3 class="news-headline"><a href="https://api.grahamanddoddsville.com.au/readings/valuation-techniques-benjamin-graham-1947.pdf" target="_blank" style="cursor: pointer; color: inherit; text-decoration: none;">Valuation Techniques (Benjamin Graham 1947)</a></h3>
                     </div>
-                </div>
-                <div class="see-more-section">
-                    <a href="classical-readings.html" class="see-more-link" style="cursor: pointer;">See more</a>
                 </div>
             </div>
         </section>
@@ -4309,12 +4311,6 @@
         <!-- Mobile Footer -->
         <footer class="mobile-footer">
             <div class="footer-content">
-                <h2 class="footer-title">ABOUT US</h2>
-                <div class="footer-text">
-                    <p>Graham and Doddsville is the premier source of value investing information in Australia. Our aim is to help educate individual investors on intelligent investing in the stockmarket.</p>
-                    
-                    <p>We offer the most comprehensive source of investment-related information, including book recommendations, educational videos, articles, biographies and virtually anything you can think of that has anything to do with value investing</p>
-                                </div>
                 
                 <div class="company-info">
                     <h3>Graham and Doddsville Pty Ltd</h3>
@@ -4362,6 +4358,36 @@
                     <!-- Latest News Section -->
                     <section class="latest-news" id="news">
                         <h2>###### LATEST NEWS</h2>
+                        <div class="news-datetime" id="news-datetime"></div>
+                        
+                        <!-- Latest News Sub-headings -->
+                        <div class="latest-news-subheadings">
+                            <div class="sub-heading-row">
+                                <h3 class="sub-heading-title">Companies</h3>
+                                <a href="#" class="see-more-link">See more</a>
+                            </div>
+                            <div class="sub-heading-row">
+                                <h3 class="sub-heading-title">Markets</h3>
+                                <a href="#" class="see-more-link">See more</a>
+                            </div>
+                            <div class="sub-heading-row">
+                                <h3 class="sub-heading-title">Economy</h3>
+                                <a href="#" class="see-more-link">See more</a>
+                            </div>
+                            <div class="sub-heading-row">
+                                <h3 class="sub-heading-title">Industry</h3>
+                                <a href="#" class="see-more-link">See more</a>
+                            </div>
+                            <div class="sub-heading-row">
+                                <h3 class="sub-heading-title">Regulatory</h3>
+                                <a href="#" class="see-more-link">See more</a>
+                            </div>
+                            <div class="sub-heading-row">
+                                <h3 class="sub-heading-title">Guru Watch</h3>
+                                <a href="#" class="see-more-link">See more</a>
+                            </div>
+                        </div>
+                        
                         <div class="news-list" id="news-list">
                             <!-- Loading Animation -->
                             <div class="news-loading" id="news-loading">
@@ -4986,9 +5012,6 @@
                             <li><a href="https://api.grahamanddoddsville.com.au/readings/special-situations-benjamin-graham-1946.pdf" target="_blank" style="cursor: pointer; color: inherit; text-decoration: none;">Special Situations (Benjamin Graham 1946)</a></li>
                             <li><a href="https://api.grahamanddoddsville.com.au/readings/valuation-techniques-benjamin-graham-1947.pdf" target="_blank" style="cursor: pointer; color: inherit; text-decoration: none;">Valuation Techniques (Benjamin Graham 1947)</a></li>
                         </ol>
-                        <div class="see-more-section-desktop">
-                            <a href="classical-readings.html" class="see-more-link-desktop">See more</a>
-                        </div>
                     </section>
 
 
@@ -5001,7 +5024,7 @@
 
                     <!-- Recommended Books -->
                     <section class="recommended-books">
-                        <h2>###### RECOMMENDED BOOKS</h2>
+                        <h2>###### RECOMMENDED READING</h2>
                         <div class="books-categories">
                             <div class="book-category">
                                 <h3>Buffett, Munger & Berkshire</h3>
@@ -6159,9 +6182,6 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>ABOUT US</h3>
-                    <p>Graham and Doddsville is the premier source of value investing information in Australia. Our aim is to help educate individual investors on intelligent investing in the stockmarket.</p>
-                    <p>We offer the most comprehensive source of investment-related information, including book recommendations, educational videos, articles, biographies and virtually anything you can think of that has anything to do with value investing</p>
                     <div class="contact-info">
                         <p><strong>Graham and Doddsville Pty Ltd</strong></p>
                         <p>ACN 670 651 877</p>
@@ -6200,6 +6220,12 @@
                 timeZoneName: 'short'
             };
             document.getElementById('current-date').textContent = now.toLocaleDateString('en-AU', options);
+            
+            // Update the news datetime
+            const newsDateTimeElement = document.getElementById('news-datetime');
+            if (newsDateTimeElement) {
+                newsDateTimeElement.textContent = now.toLocaleDateString('en-AU', options);
+            }
             
             // Initialize market chart
             initializeMarketChart();

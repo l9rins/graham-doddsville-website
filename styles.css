@@ -8078,6 +8078,41 @@ th {
     line-height: 1.3;
 }
 
+/* LATEST NEWS SUB-HEADINGS STYLING */
+.latest-news-subheadings {
+    margin: 16px 0;
+}
+
+.sub-heading-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    padding: 4px 0;
+}
+
+.sub-heading-title {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1e3a8a;
+    margin: 0;
+    padding-left: 8px;
+}
+
+.see-more-link {
+    color: #999;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.see-more-link:hover {
+    color: #1e3a8a;
+    text-decoration: underline;
+}
+
 .see-more-link {
     text-align: center;
     margin-top: 16px;
@@ -8134,11 +8169,11 @@ th {
 
 .sub-category-title {
     font-family: 'Georgia', 'Times New Roman', serif;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 600;
     color: #1e3a8a;
     margin: 0;
-    padding-left: 8px; /* Align with section headers */
+    padding-left: 0; /* Left-align with headlines */
     border-left: none; /* Remove blue vertical line */
 }
 
