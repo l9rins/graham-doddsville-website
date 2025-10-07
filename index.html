@@ -1893,7 +1893,6 @@
                                 <span class="article-source">Intelligent Investor</span>
                             </div>
                         </div>
-                        <a href="#" class="see-more-mobile" data-list="investing-articles-list">See more</a>
                     </div>
                 </div>
                 
@@ -2017,10 +2016,10 @@
                         </div>
                     </div>
                 </div>
-                    <a href="#" class="see-more-mobile" data-list="economy-articles-list">See more</a>
-                    <a href="#" class="see-more-mobile" data-list="industry-articles-list">See more</a>
-                    <a href="#" class="see-more-mobile" data-list="super-articles-list">See more</a>
-                    <a href="#" class="see-more-mobile" data-list="misc-articles-list">See more</a>
+                <!-- Single persistent See more button for mobile feature articles -->
+                <div class="feature-articles-footer">
+                    <button id="feature-see-more" class="see-more-mobile" aria-controls="mobile-feature-articles">See more</button>
+                </div>
             </div>
         </section>
 
@@ -6841,6 +6840,10 @@ loadingElement.style.display = 'none';
                     </div>
                 `
             };
+            <!-- Centered See more link for mobile books -->
+            <div class="mobile-books-see-more">
+                <a href="classical-readings.html" class="mobile-books-see-more-link">See more</a>
+            </div>
             
             return fallbackTemplates[region] || '<div class="news-item-mobile"><div class="news-content"><h3 class="news-headline">No news available</h3></div></div>';
         }
@@ -9549,34 +9552,60 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const VISIBLE_BATCH = 5;
 
-    function initList(listId) {
-        const list = document.getElementById(listId);
-        if (!list) return;
-        const items = Array.from(list.querySelectorAll('.article-item'));
-        items.forEach((it) => it.classList.remove('visible'));
-        // show first batch
-        let shown = 0;
+    // Initialize a list element: hide all then show first VISIBLE_BATCH
+    function initListElement(listEl) {
+        if (!listEl) return;
+        const items = Array.from(listEl.querySelectorAll('.article-item'));
+        items.forEach(it => it.classList.remove('visible'));
         items.slice(0, VISIBLE_BATCH).forEach(it => it.classList.add('visible'));
-        list.dataset.shown = Math.min(items.length, VISIBLE_BATCH);
-        // toggle see more link state
-        const seeMore = document.querySelector('.see-more-mobile[data-list="' + listId + '"]');
-        if (seeMore) {
-            seeMore.style.display = (items.length > VISIBLE_BATCH) ? 'block' : 'none';
-            seeMore.addEventListener('click', function (e) {
-                e.preventDefault();
-                const current = parseInt(list.dataset.shown || '0', 10);
-                const next = Math.min(items.length, current + VISIBLE_BATCH);
-                items.slice(current, next).forEach(it => it.classList.add('visible'));
-                list.dataset.shown = next;
-                if (next >= items.length) {
-                    seeMore.style.display = 'none';
-                }
-            });
+        listEl.dataset.shown = Math.min(items.length, VISIBLE_BATCH);
+        // Update the global See more button state
+        updateSeeMoreButtonState(listEl);
+    }
+
+    function updateSeeMoreButtonState(listEl) {
+        const btn = document.getElementById('feature-see-more');
+        if (!btn || !listEl) return;
+        const items = Array.from(listEl.querySelectorAll('.article-item'));
+        const shown = parseInt(listEl.dataset.shown || '0', 10);
+        if (shown >= items.length) {
+            btn.disabled = true;
+            btn.setAttribute('aria-disabled', 'true');
+        } else {
+            btn.disabled = false;
+            btn.removeAttribute('aria-disabled');
         }
     }
 
-    // Initialize all lists
-    ['investing-articles-list','economy-articles-list','industry-articles-list','super-articles-list','misc-articles-list'].forEach(initList);
+    // Reveal next batch for the currently active slide
+    function revealNextBatchForActive() {
+        const activeSlide = document.querySelector('#mobile-feature-articles .article-slide.active');
+        if (!activeSlide) return;
+        const list = activeSlide.querySelector('.articles-list');
+        if (!list) return;
+        const items = Array.from(list.querySelectorAll('.article-item'));
+        const current = parseInt(list.dataset.shown || '0', 10);
+        const next = Math.min(items.length, current + VISIBLE_BATCH);
+        items.slice(current, next).forEach(it => it.classList.add('visible'));
+        list.dataset.shown = next;
+        updateSeeMoreButtonState(list);
+    }
+
+    // Initialize all lists (but keep only the active slide visible)
+    const allLists = ['investing-articles-list','economy-articles-list','industry-articles-list','super-articles-list','misc-articles-list'];
+    allLists.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) initListElement(el);
+    });
+
+    // Wire up the single See more button
+    const globalSeeMore = document.getElementById('feature-see-more');
+    if (globalSeeMore) {
+        globalSeeMore.addEventListener('click', function (e) {
+            e.preventDefault();
+            revealNextBatchForActive();
+        });
+    }
 
     // When switching filter tabs, reset visibility for the selected category
     const tabs = document.querySelectorAll('#mobile-feature-articles .buffett-tabs-mobile');
@@ -9584,7 +9613,7 @@ document.addEventListener('DOMContentLoaded', function () {
         tab.addEventListener('click', function () {
             // find the active slide category
             const category = tab.dataset.filter;
-            // hide other slides and reset lists inside the active one
+            // hide other slides and set active
             const slides = document.querySelectorAll('#mobile-feature-articles .article-slide');
             slides.forEach(s => s.classList.remove('active'));
             const activeSlide = document.querySelector('#mobile-feature-articles .article-slide[data-category="' + category + '"]');
@@ -9592,7 +9621,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // init list inside active slide
             const list = activeSlide ? activeSlide.querySelector('.articles-list') : null;
-            if (list && list.id) initList(list.id);
+            if (list) initListElement(list);
         });
     });
 });
