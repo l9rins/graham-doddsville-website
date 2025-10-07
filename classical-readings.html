@@ -761,14 +761,14 @@
         .readings-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 24px;
+            gap: 16px; /* Reduced from 24px to create less space */
             margin-bottom: 48px;
         }
 
         .reading-card {
             background: white;
             border-radius: var(--radius-lg);
-            padding: 24px;
+            padding: 20px; /* Reduced from 24px */
             box-shadow: var(--shadow-sm);
             border: 1px solid var(--border-light);
             transition: all 0.3s ease;
@@ -856,16 +856,13 @@
         }
 
         .reading-year {
-            font-size: 12px;
+            font-size: 18px; /* Increased from 12px (50% bigger) */
             color: var(--text-muted);
-            font-weight: 500;
+            font-weight: 600; /* Increased weight for better visibility */
         }
 
         .reading-actions {
-            display: flex;
-            justify-content: flex-end;
-            gap: 8px;
-            margin-top: 16px;
+            display: none; /* Hide all Read Collection and Read PDF buttons */
         }
 
         .btn-primary {
@@ -908,9 +905,9 @@
         }
 
         /* Author Color Coding */
-        .author-buffett { background: linear-gradient(135deg, #059669, #10b981); color: white; }
-        .author-graham { background: linear-gradient(135deg, #dc2626, #ef4444); color: white; }
-        .author-tweedy { background: linear-gradient(135deg, #7c3aed, #a855f7); color: white; }
+        .author-buffett { background: linear-gradient(135deg, #7c3aed, #a855f7); color: white; } /* Purple like logo */
+        .author-graham { background: linear-gradient(135deg, #d4af37, #f5b400); color: white; } /* Golden yellow like logo */
+        .author-tweedy { background: linear-gradient(135deg, #15803d, #22c55e); color: white; } /* Dark green */
         .author-other { background: linear-gradient(135deg, #6b7280, #9ca3af); color: white; }
 
         /* Loading Animation */
@@ -1195,7 +1192,6 @@
                         <label class="filter-label" for="decade-filter">Decade</label>
                         <select id="decade-filter" class="filter-select">
                             <option value="">All Decades</option>
-                            <option value="1930s">1930s</option>
                             <option value="1940s">1940s</option>
                             <option value="1950s">1950s</option>
                             <option value="1960s">1960s</option>
@@ -1622,8 +1618,8 @@
             },
             {
                 id: 8,
-                title: "Letter to Shareholders",
-                author: "Warren Buffett",
+                title: "Should Rich Corporations Return Stockholders' Cash?",
+                author: "Benjamin Graham",
                 year: "1988",
                 url: "https://api.grahamanddoddsville.com.au/readings/letter-to-shareholders-warren-buffett-1988.pdf",
                 decade: "1980s",
@@ -1631,7 +1627,7 @@
             },
             {
                 id: 9,
-                title: "Letter to Shareholders",
+                title: "Should Rich But Losing Corporations Be Liquidated?",
                 author: "Warren Buffett",
                 year: "1989",
                 url: "https://api.grahamanddoddsville.com.au/readings/letter-to-shareholders-warren-buffett-1989.pdf",
@@ -1640,7 +1636,7 @@
             },
             {
                 id: 10,
-                title: "Letter to Shareholders",
+                title: "Selling America for 50 Cents on the Dollar?",
                 author: "Warren Buffett",
                 year: "1990",
                 url: "https://api.grahamanddoddsville.com.au/readings/letter-to-shareholders-warren-buffett-1990.pdf",
@@ -1649,7 +1645,7 @@
             },
             {
                 id: 11,
-                title: "Letter to Shareholders",
+                title: "Special Situations",
                 author: "Warren Buffett",
                 year: "1991",
                 url: "https://api.grahamanddoddsville.com.au/readings/letter-to-shareholders-warren-buffett-1991.pdf",
@@ -1658,7 +1654,7 @@
             },
             {
                 id: 12,
-                title: "Letter to Shareholders",
+                title: "Valuation Techniques",
                 author: "Warren Buffett",
                 year: "1992",
                 url: "https://api.grahamanddoddsville.com.au/readings/letter-to-shareholders-warren-buffett-1992.pdf",
@@ -1685,7 +1681,7 @@
             },
             {
                 id: 15,
-                title: "Testimony on the Committee",
+                title: "Testimony on the Committee on Banking and Currency",
                 author: "Benjamin Graham",
                 year: "1955",
                 url: "https://api.grahamanddoddsville.com.au/readings/testimony-on-the-committee-benjamin-graham-1955.pdf",
@@ -1703,7 +1699,7 @@
             },
             {
                 id: 17,
-                title: "The New Speculation",
+                title: "The New Speculation in Common Stocks",
                 author: "Benjamin Graham",
                 year: "1958",
                 url: "https://api.grahamanddoddsville.com.au/readings/the-new-speculation-benjamin-graham-1958.pdf",
@@ -1712,7 +1708,7 @@
             },
             {
                 id: 18,
-                title: "Stock Market Warning",
+                title: "Stock Market Warning: Danger Ahead",
                 author: "Benjamin Graham",
                 year: "1960",
                 url: "https://api.grahamanddoddsville.com.au/readings/stock-market-warning-benjamin-graham-1960.pdf",
@@ -1739,7 +1735,7 @@
             },
             {
                 id: 21,
-                title: "Future of Common Stocks",
+                title: "The Future of Common Stocks",
                 author: "Benjamin Graham",
                 year: "1974",
                 url: "https://api.grahamanddoddsville.com.au/readings/future-of-common-stocks-benjamin-graham-1974.pdf",
@@ -1748,7 +1744,7 @@
             },
             {
                 id: 22,
-                title: "Simplest Way to Select",
+                title: "The Simplest Way to Select Bargain Stocks",
                 author: "Benjamin Graham",
                 year: "1976",
                 url: "https://api.grahamanddoddsville.com.au/readings/simplest-way-to-select-benjamin-graham-1976.pdf",
@@ -1766,7 +1762,7 @@
             },
             {
                 id: 24,
-                title: "Conversation with Benjamin Graham",
+                title: "A Conversation with Benjamin Graham",
                 author: "Benjamin Graham",
                 year: "1976",
                 url: "https://api.grahamanddoddsville.com.au/readings/conversation-with-benjamin-graham-1976.pdf",
@@ -1775,7 +1771,7 @@
             },
             {
                 id: 25,
-                title: "How Inflation Swindles",
+                title: "How Inflation Swindles The Equity Investor",
                 author: "Warren Buffett",
                 year: "1977",
                 url: "https://api.grahamanddoddsville.com.au/readings/how-inflation-swindles-warren-buffett-1977.pdf",
@@ -1793,7 +1789,7 @@
             },
             {
                 id: 27,
-                title: "Investing for Higher After-Tax",
+                title: "Investing for Higher After-Tax Returns",
                 author: "Tweedy, Browne",
                 year: "2000",
                 url: "https://api.grahamanddoddsville.com.au/readings/investing-for-higher-after-tax-tweedy-browne-2000.pdf",
@@ -1802,7 +1798,7 @@
             },
             {
                 id: 28,
-                title: "Great 10-Year Record",
+                title: "Great 10-Year Record = Great Future, Right?",
                 author: "Tweedy, Browne",
                 year: "2000",
                 url: "https://api.grahamanddoddsville.com.au/readings/great-10-year-record-tweedy-browne-2000.pdf",
@@ -1820,7 +1816,7 @@
             },
             {
                 id: 30,
-                title: "The Evolution of the Idea of Value Investing",
+                title: "The Evolution of the Idea of Value Investing: From Ben Graham to Warren Buffett and Beyond",
                 author: "Various Authors",
                 year: "2000",
                 url: "https://api.grahamanddoddsville.com.au/readings/the-evolution-of-the-idea-of-value-investing.pdf",
@@ -1829,7 +1825,7 @@
             },
             {
                 id: 31,
-                title: "America's Growing Trade Deficit is Selling",
+                title: "America's Growing Trade Deficit is Selling The Nation Out From Under Us. Here's A Way to Fix The Problem – And We Need To Do It Now",
                 author: "Warren Buffett",
                 year: "2003",
                 url: "https://api.grahamanddoddsville.com.au/readings/americas-growing-trade-deficit-is-selling.pdf",
@@ -1838,7 +1834,7 @@
             },
             {
                 id: 32,
-                title: "High Dividend Yield Return",
+                title: "The High Dividend Yield Return Advantage",
                 author: "Tweedy, Browne",
                 year: "2007",
                 url: "https://api.grahamanddoddsville.com.au/readings/high-dividend-yield-return-tweedy-browne-2007.pdf",
@@ -1865,7 +1861,7 @@
             },
             {
                 id: 35,
-                title: "Slow Growth Greenback Effect",
+                title: "Slow Growth and the Greenback Effect",
                 author: "Warren Buffett",
                 year: "2009",
                 url: "https://api.grahamanddoddsville.com.au/readings/slow-growth-greenback-effect-warren-buffett-2009.pdf",
@@ -1874,7 +1870,7 @@
             },
             {
                 id: 36,
-                title: "How Hedging Can Reduce Currency Risk",
+                title: "How Hedging Can Substantially Reduce Foreign Stock Currency Risk",
                 author: "Tweedy, Browne",
                 year: "2010",
                 url: "https://api.grahamanddoddsville.com.au/readings/how-hedging-can-reduce-currency-risk-tweedy-browne-2010.pdf",
