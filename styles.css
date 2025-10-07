@@ -434,8 +434,29 @@ body {
     #mobile-feature-articles .articles-list .article-item {
         display: none;
     }
+    /* Visible items are single-line rows: headline left, source right in parentheses */
     #mobile-feature-articles .articles-list .article-item.visible {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+    /* Source appears inline to the right and wrapped in parentheses */
+    #mobile-feature-articles .articles-list .article-item .article-source {
+        display: inline-block;
+        margin-top: 0;
+        white-space: nowrap;
+        color: #888;
+        font-size: 13px;
+    }
+    #mobile-feature-articles .articles-list .article-item .article-source::before { content: "("; }
+    #mobile-feature-articles .articles-list .article-item .article-source::after { content: ")"; }
+
+    /* Allow headline to take remaining space and prevent excessive wrapping */
+    #mobile-feature-articles .articles-list .article-item h5 {
+        flex: 1 1 auto;
+        margin: 0;
     }
 
     /* See more link styling */
