@@ -1621,6 +1621,18 @@
                         <div class="news-item" style="background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 12px 16px; margin-bottom: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.2s ease;">
                             <a href="#" style="color: #333; text-decoration: none; font-size: 10px; line-height: 1.4; display: block;">ASX 200 ends the day down by 0.36 per cent... (Sky)</a>
                         </div>
+                        <div class="buffett-see-more-container">
+                            <a href="#" class="buffett-see-more-link" data-list="businesses-buffett-slider">See more</a>
+                        </div>
+                        <div class="buffett-see-more-container">
+                            <a href="#" class="buffett-see-more-link" data-list="governance-buffett-slider">See more</a>
+                        </div>
+                        <div class="buffett-see-more-container">
+                            <a href="#" class="buffett-see-more-link" data-list="accounting-buffett-slider">See more</a>
+                        </div>
+                        <div class="buffett-see-more-container">
+                            <a href="#" class="buffett-see-more-link" data-list="economics-buffett-slider">See more</a>
+                        </div>
                     </div>
                 </div>
                 
@@ -3338,6 +3350,9 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="buffett-see-more-container">
+                            <a href="#" class="buffett-see-more-link" data-list="philosophy-buffett-slider">See more</a>
+                        </div>
                     </div>
                 </div>
 
@@ -3561,6 +3576,9 @@
                                     <span class="news-source">(Investment Assets)</span>
                                 </div>
                             </div>
+                        </div>
+                        <div class="buffett-see-more-container">
+                            <a href="#" class="buffett-see-more-link" data-list="investing-buffett-slider">See more</a>
                         </div>
                     </div>
                 </div>
@@ -9626,6 +9644,99 @@ document.addEventListener('DOMContentLoaded', function () {
             // init list inside active slide
             const list = activeSlide ? activeSlide.querySelector('.articles-list') : null;
             if (list) initListElement(list);
+        });
+    });
+});
+</script>
+<!-- Mobile-only script for BUFFETT per-category pagination (show first 9, reveal more) -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    if (window.matchMedia && !window.matchMedia('(max-width: 768px)').matches) return; // only run on mobile
+
+    const VISIBLE_BATCH = 9;
+
+    function initBuffettList(sliderId) {
+        const slider = document.getElementById(sliderId);
+        if (!slider) return;
+        const items = Array.from(slider.querySelectorAll('.buffett-item-mobile'));
+        items.forEach(it => it.classList.remove('visible'));
+        items.slice(0, VISIBLE_BATCH).forEach(it => it.classList.add('visible'));
+        slider.dataset.shown = Math.min(items.length, VISIBLE_BATCH);
+        updateBuffettSeeMoreState(sliderId);
+    }
+
+    function updateBuffettSeeMoreState(sliderId) {
+        const slider = document.getElementById(sliderId);
+        if (!slider) return;
+        const shown = parseInt(slider.dataset.shown || '0', 10);
+        const items = slider.querySelectorAll('.buffett-item-mobile');
+        const btn = document.querySelector('.buffett-see-more-link[data-list="' + sliderId + '"]');
+        if (!btn) return;
+        if (shown >= items.length) {
+            btn.classList.add('disabled');
+            btn.setAttribute('aria-disabled', 'true');
+            btn.style.pointerEvents = 'none';
+        } else {
+            btn.classList.remove('disabled');
+            btn.removeAttribute('aria-disabled');
+            btn.style.pointerEvents = '';
+        }
+    }
+
+    function revealNextBatch(sliderId) {
+        const slider = document.getElementById(sliderId);
+        if (!slider) return;
+        const items = Array.from(slider.querySelectorAll('.buffett-item-mobile'));
+        const current = parseInt(slider.dataset.shown || '0', 10);
+        const next = Math.min(items.length, current + VISIBLE_BATCH);
+        items.slice(current, next).forEach(it => it.classList.add('visible'));
+        slider.dataset.shown = next;
+        updateBuffettSeeMoreState(sliderId);
+    }
+
+    // Known Buffett slider IDs (safe to include; init will skip missing ones)
+    const sliderIds = [
+        'philosophy-buffett-slider',
+        'investing-buffett-slider',
+        'businesses-buffett-slider',
+        'governance-buffett-slider',
+        'accounting-buffett-slider',
+        'economics-buffett-slider',
+        'miscellaneous-buffett-slider'
+    ];
+
+    sliderIds.forEach(id => initBuffettList(id));
+
+    // Wire per-category See more links
+    document.querySelectorAll('.buffett-see-more-link').forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            const list = this.dataset.list;
+            if (!list) return;
+            revealNextBatch(list);
+        });
+    });
+
+    // When switching Buffett tabs, initialize that category's slider (if present)
+    // The HTML uses buttons with class .buffett-tab-btn and data-tab="<category>" inside the .buffett-tabs-mobile container.
+    const buffettTabButtons = document.querySelectorAll('#mobile-buffett .buffett-tab-btn');
+    buffettTabButtons.forEach(btn => {
+        btn.addEventListener('click', function () {
+            const cat = this.dataset.tab; // data-tab attribute on the button
+            if (!cat) return;
+
+            // Toggle active state on the tab buttons
+            document.querySelectorAll('#mobile-buffett .buffett-tab-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+
+            // Toggle active state on the content panes
+            document.querySelectorAll('#mobile-buffett .buffett-tab').forEach(t => t.classList.remove('active'));
+            const targetPane = document.querySelector('#mobile-buffett .buffett-tab[data-tab="' + cat + '"]');
+            if (targetPane) targetPane.classList.add('active');
+
+            // Initialize and show the first batch for the slider for this category
+            const sliderId = cat + '-buffett-slider';
+            initBuffettList(sliderId);
         });
     });
 });
