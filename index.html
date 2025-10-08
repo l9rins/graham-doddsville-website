@@ -9683,14 +9683,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    function revealNextBatch(sliderId) {
+    // Reveal all remaining items for the slider (user requested: show 9 initially, reveal all on See more)
+    function revealAll(sliderId) {
         const slider = document.getElementById(sliderId);
         if (!slider) return;
         const items = Array.from(slider.querySelectorAll('.buffett-item-mobile'));
-        const current = parseInt(slider.dataset.shown || '0', 10);
-        const next = Math.min(items.length, current + VISIBLE_BATCH);
-        items.slice(current, next).forEach(it => it.classList.add('visible'));
-        slider.dataset.shown = next;
+        items.forEach(it => it.classList.add('visible'));
+        slider.dataset.shown = items.length;
         updateBuffettSeeMoreState(sliderId);
     }
 
@@ -9713,7 +9712,7 @@ document.addEventListener('DOMContentLoaded', function () {
             e.preventDefault();
             const list = this.dataset.list;
             if (!list) return;
-            revealNextBatch(list);
+            revealAll(list);
         });
     });
 
