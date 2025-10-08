@@ -462,7 +462,7 @@ body {
     /* See more link styling */
     #mobile-feature-articles .see-more-mobile {
         display: block;
-        text-align: center;
+        text-align: center ;
         margin-top: 8px;
         color: #1e3a8a;
         font-size: 14px;
@@ -509,10 +509,10 @@ body {
 /* Hide all items by default; JS will show the first N via .visible */
 /* Hide all items by default; JS will add .visible to show the first N */
 #mobile-buffett .buffett-item-mobile {
-    display: none;
+    display: none !important; /* ensure generic rules don't override this */
 }
 #mobile-buffett .buffett-item-mobile.visible {
-    display: inline-flex; /* show visible items inline like book links */
+    display: inline-flex !important; /* show visible items inline like book links */
     align-items: center;
     gap: 8px;
 }
@@ -539,13 +539,13 @@ body {
 
 #mobile-buffett .books-slider .buffett-item-mobile {
     /* keep default hidden unless .visible is present */
-    display: none;
+    display: none !important;
     margin: 0;
     padding: 0;
 }
 
 #mobile-buffett .books-slider .buffett-item-mobile.visible {
-    display: inline-flex; /* render visible items inline so they appear like horizontal links */
+    display: inline-flex !important; /* render visible items inline so they appear like horizontal links */
     align-items: center;
     margin: 0;
     padding: 0;
