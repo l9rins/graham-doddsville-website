@@ -462,12 +462,29 @@ body {
     /* See more link styling */
     #mobile-feature-articles .see-more-mobile {
         display: block;
-        text-align: left;
+        text-align: center;
         margin-top: 8px;
-        color: #0066cc;
+        color: #1e3a8a;
         font-size: 14px;
         text-decoration: none;
         padding: 6px 0;
+    }
+
+    /* Center the single See more button and make its background match the page */
+    #feature-see-more {
+        display: inline-block;
+        margin: 8px auto 0 auto;
+        background: transparent; /* same as page background */
+        border: none;
+        color: #1e3a8a;
+        font-weight: 600;
+        font-size: 14px;
+        padding: 6px 12px;
+        cursor: pointer;
+    }
+    #feature-see-more:disabled {
+        opacity: 0.5;
+        cursor: default;
     }
 
     /* Mobile books See more link */
@@ -483,6 +500,85 @@ body {
         font-size: 15px;
     }
 }
+
+/* WARREN BUFFETT ON EVERYTHING styling adjustments */
+#mobile-buffett .news-source {
+    display: none !important; /* hide bracketed labels */
+}
+
+/* Hide all items by default; JS will show the first N via .visible */
+/* Hide all items by default; JS will add .visible to show the first N */
+#mobile-buffett .buffett-item-mobile {
+    display: none;
+}
+#mobile-buffett .buffett-item-mobile.visible {
+    display: inline-flex; /* show visible items inline like book links */
+    align-items: center;
+    gap: 8px;
+}
+
+.buffett-see-more-container {
+    text-align: center;
+    margin-top: 8px;
+    margin-bottom: 12px;
+}
+.buffett-see-more-link {
+    color: #1e3a8a;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* Make Buffett headlines match the horizontal book-links style: inline, pipe separators, wrapping */
+#mobile-buffett .books-slider {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+#mobile-buffett .books-slider .buffett-item-mobile {
+    /* keep default hidden unless .visible is present */
+    display: none;
+    margin: 0;
+    padding: 0;
+}
+
+#mobile-buffett .books-slider .buffett-item-mobile.visible {
+    display: inline-flex; /* render visible items inline so they appear like horizontal links */
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+#mobile-buffett .buffett-item-mobile .news-bullet {
+    display: none; /* remove leading dash to match book-links */
+}
+
+#mobile-buffett .news-content {
+    margin: 0;
+    padding: 0;
+}
+
+#mobile-buffett .news-headline {
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 1.4;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    margin: 0;
+}
+
+/* Add pipe separator between inline headlines (except last item) */
+#mobile-buffett .books-slider .buffett-item-mobile:not(:last-child) .news-headline::after {
+    content: " | ";
+    color: #666;
+    margin: 0 4px;
+}
+
 
 .news-item:hover {
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
