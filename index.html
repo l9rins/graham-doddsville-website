@@ -2041,10 +2041,10 @@
             
             <!-- Book Category Navigation -->
             <div class="book-categories">
-                <button class="book-category-btn" data-category="buffett-munger" style="background: #f7fafc; color: #4a5568; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 10px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-right: 10px; margin-bottom: 10px;">Warren Buffett</button>
+                <button class="book-category-btn" data-category="buffett-munger" style="background: #1e3a8a; color: white; border: 1px solid #1e3a8a; border-radius: 8px; padding: 10px 10px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-right: 10px; margin-bottom: 10px;">Warren Buffett</button>
                 <button class="book-category-btn" data-category="value-investing" style="background: #f7fafc; color: #4a5568; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 10px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-right: 10px; margin-bottom: 10px;">Value Investing</button>
                 <button class="book-category-btn" data-category="share-investing" style="background: #f7fafc; color: #4a5568; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 10px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-right: 10px; margin-bottom: 10px;">Share Investing</button>
-                <button class="book-category-btn" data-category="wealth-creation" style="background: #1e3a8a; color: white; border: 1px solid #1e3a8a; border-radius: 8px; padding: 10px 10px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-right: 10px; margin-bottom: 10px;">Wealth Creation</button>
+                <button class="book-category-btn" data-category="wealth-creation" style="background: #f7fafc; color: #4a5568; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 10px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-right: 10px; margin-bottom: 10px;">Wealth Creation</button>
                 <button class="book-category-btn" data-category="financial-analysis" style="background: #f7fafc; color: #4a5568; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 10px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-right: 10px; margin-bottom: 10px;">Financial Analyis</button>
                 <button class="book-category-btn" data-category="sales-marketing" style="background: #f7fafc; color: #4a5568; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 10px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-right: 10px; margin-bottom: 10px;">Sales & Marketing</button>
                 <button class="book-category-btn" data-category="self-improvement" style="background: #f7fafc; color: #4a5568; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 10px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-right: 10px; margin-bottom: 10px;">Self-Improvement</button>
@@ -9622,6 +9622,10 @@ document.addEventListener('DOMContentLoaded', function () {
         tab.addEventListener('click', function () {
             // find the active slide category
             const category = tab.dataset.filter;
+            // remove active from all tabs
+            document.querySelectorAll('#mobile-feature-articles .buffett-tabs-mobile').forEach(t => t.classList.remove('active'));
+            // add active to clicked tab
+            this.classList.add('active');
             // hide other slides and set active
             const slides = document.querySelectorAll('#mobile-feature-articles .article-slide');
             slides.forEach(s => s.classList.remove('active'));
