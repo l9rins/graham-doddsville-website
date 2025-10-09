@@ -6606,19 +6606,8 @@ loadingElement.style.display = 'none';
                 loadingElement.style.display = 'block';
             }
             
-            // Determine API URL
-            const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-            const isGitHubPages = window.location.hostname === 'l9rins.github.io';
-            
-            let apiUrl;
-            if (isLocalhost) {
-                apiUrl = `http://localhost:3001/api/news/region/${region}`;
-            } else if (isGitHubPages) {
-                apiUrl = `http://localhost:3001/api/news/region/${region}`;
-            } else {
-                apiUrl = `https://l9rins.github.io/graham-doddsville-website/api/news/region/${region}`;
-            }
-            
+            // Determine API URL - use relative for same origin
+            const apiUrl = `/api/news/region/${region}`;
             console.log(`Fetching ${region} news from:`, apiUrl);
             
             // Use AbortController for timeout

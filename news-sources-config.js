@@ -1177,29 +1177,28 @@ const newsSources = {
 
 // Geographic region-specific news sources for Around the World sections
 const regionalNewsSources = {
-    // North America sources (US/Canada focused)
+    // North America sources (RSS focused for reliability)
     'north-america': [
-        'bloomberg', 'reuters', 'bbc-news', 'cnn', 'abc-news-us', 'associated-press',
-        'wsj', 'financial-times', 'fortune', 'business-insider', 'time', 'usa-today'
+        'wsj', 'financial-times', 'fortune', 'time', 'usa-today', 'the-guardian', 'independent',
+        'telegraph', 'economist', 'bloomberg', 'reuters', 'cnn'
     ],
 
-    // Europe sources (European focused)
+    // Europe sources (RSS focused)
     'europe': [
-        'bbc-news', 'reuters', 'financial-times', 'the-guardian', 'independent',
-        'telegraph', 'economist', 'bloomberg', 'wsj', 'cnn'
+        'financial-times', 'the-guardian', 'independent', 'telegraph', 'economist',
+        'bbc-news', 'reuters', 'bloomberg', 'wsj', 'cnn'
     ],
 
-    // Asia sources (Asian focused)
+    // Asia sources (RSS focused)
     'asia': [
         'south-china-morning-post', 'japan-times', 'straits-times', 'bangkok-post',
         'hindu-business-line', 'times-of-india', 'nz-herald', 'stuff-nz', 'bloomberg', 'reuters'
     ],
 
-    // Global/Elsewhere sources (international mix)
+    // Global/Elsewhere sources (RSS focused)
     'elsewhere': [
-        'bloomberg', 'reuters', 'bbc-news', 'cnn', 'abc-news-us', 'associated-press',
-        'wsj', 'financial-times', 'the-guardian', 'independent', 'south-china-morning-post',
-        'japan-times', 'straits-times', 'nz-herald', 'stuff-nz'
+        'bloomberg', 'reuters', 'bbc-news', 'cnn', 'wsj', 'financial-times', 'the-guardian',
+        'independent', 'south-china-morning-post', 'japan-times', 'nz-herald', 'stuff-nz'
     ]
 };
 
