@@ -6450,22 +6450,8 @@
                 return;
             }
             
-            // Try to detect if we're on localhost or production
-            const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-            const isGitHubPages = window.location.hostname === 'l9rins.github.io';
-            
-            // Smart API URL selection
-            let apiUrl;
-            if (isLocalhost) {
-                apiUrl = 'http://localhost:3001/api/news';
-            } else if (isGitHubPages) {
-                // For GitHub Pages, try localhost first, then fallback to static
-                apiUrl = 'http://localhost:3001/api/news';
-                console.log('GitHub Pages detected - trying localhost API first');
-            } else {
-                apiUrl = 'https://l9rins.github.io/graham-doddsville-website/api/news';
-            }
-            
+            // Smart API URL selection - use relative for same origin
+            const apiUrl = '/api/news';
             console.log('Fetching real news from API:', apiUrl);
             
             // Use AbortController for timeout - increased to 5 seconds for real API
