@@ -1621,18 +1621,7 @@
                         <div class="news-item" style="background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 12px 16px; margin-bottom: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.2s ease;">
                             <a href="#" style="color: #333; text-decoration: none; font-size: 10px; line-height: 1.4; display: block;">ASX 200 ends the day down by 0.36 per cent... (Sky)</a>
                         </div>
-                        <div class="buffett-see-more-container">
-                            <a href="#" class="buffett-see-more-link" data-list="businesses-buffett-slider">See more</a>
-                        </div>
-                        <div class="buffett-see-more-container">
-                            <a href="#" class="buffett-see-more-link" data-list="governance-buffett-slider">See more</a>
-                        </div>
-                        <div class="buffett-see-more-container">
-                            <a href="#" class="buffett-see-more-link" data-list="accounting-buffett-slider">See more</a>
-                        </div>
-                        <div class="buffett-see-more-container">
-                            <a href="#" class="buffett-see-more-link" data-list="economics-buffett-slider">See more</a>
-                        </div>
+                    
                     </div>
                 </div>
                 
@@ -6634,7 +6623,7 @@ loadingElement.style.display = 'none';
             
             // Use AbortController for timeout
             const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 8000); // 8 second timeout
+            const timeoutId = setTimeout(() => controller.abort(), 5000); // Reduced to 5 second timeout
             
             fetch(apiUrl, {
                 signal: controller.signal,

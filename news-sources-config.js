@@ -1177,29 +1177,29 @@ const newsSources = {
 
 // Geographic region-specific news sources for Around the World sections
 const regionalNewsSources = {
-    // North America sources (all RSS - reliable)
+    // North America sources (US/Canada focused)
     'north-america': [
-        'abc-news-au', 'afr', 'sydney-morning-herald', 'the-age', 'smartcompany',
-        'crikey', 'inside-retail', 'dynamic-business', 'startup-daily', 'australian-mining'
+        'bloomberg', 'reuters', 'bbc-news', 'cnn', 'abc-news-us', 'associated-press',
+        'wsj', 'financial-times', 'fortune', 'business-insider', 'time', 'usa-today'
     ],
 
-    // Europe sources (all RSS - reliable)
+    // Europe sources (European focused)
     'europe': [
-        'abc-news-au', 'afr', 'sydney-morning-herald', 'the-age', 'smartcompany',
-        'crikey', 'inside-retail', 'dynamic-business', 'startup-daily', 'australian-mining'
+        'bbc-news', 'reuters', 'financial-times', 'the-guardian', 'independent',
+        'telegraph', 'economist', 'bloomberg', 'wsj', 'cnn'
     ],
 
-    // Asia sources (all RSS - reliable)
+    // Asia sources (Asian focused)
     'asia': [
-        'south-china-morning-post', 'japan-times', 'straits-times', 'hindu-business-line', 
-        'times-of-india', 'nz-herald', 'stuff-nz', 'abc-news-au', 'afr', 'smartcompany'
+        'south-china-morning-post', 'japan-times', 'straits-times', 'bangkok-post',
+        'hindu-business-line', 'times-of-india', 'nz-herald', 'stuff-nz', 'bloomberg', 'reuters'
     ],
 
-    // Global/Elsewhere sources (all RSS - reliable)
+    // Global/Elsewhere sources (international mix)
     'elsewhere': [
-        'abc-news-au', 'afr', 'sydney-morning-herald', 'the-age', 'smartcompany',
-        'crikey', 'inside-retail', 'dynamic-business', 'startup-daily', 'australian-mining',
-        'mining-com-au', 'stockhead', 'illawarra-mercury', 'canberra-times'
+        'bloomberg', 'reuters', 'bbc-news', 'cnn', 'abc-news-us', 'associated-press',
+        'wsj', 'financial-times', 'the-guardian', 'independent', 'south-china-morning-post',
+        'japan-times', 'straits-times', 'nz-herald', 'stuff-nz'
     ]
 };
 
