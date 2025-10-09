@@ -10,10 +10,10 @@ const PORT = process.env.PORT || 3001;
 const NEWS_API_KEY = '6d122bb10581490591ee20ade119ec27';
 
 // Performance optimization constants
-const MAX_CONCURRENT_REQUESTS = 10; // Limit concurrent requests
-const REQUEST_TIMEOUT = 8000; // 8 second timeout
-const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes cache
-const MAX_ARTICLES_PER_SOURCE = 5; // Limit articles per source
+const MAX_CONCURRENT_REQUESTS = 20; // Increased from 10 for faster fetching
+const REQUEST_TIMEOUT = 5000; // Reduced from 8000 for quicker response
+const CACHE_DURATION = 2 * 60 * 1000; // Reduced to 2 minutes for fresher data
+const MAX_ARTICLES_PER_SOURCE = 3; // Reduced from 5 to speed up
 
 // In-memory cache for news data
 const newsCache = new Map();
@@ -456,7 +456,8 @@ function getPrioritizedSources() {
         return source.category === 'regional' && !highPriority.includes(key) && !mediumPriority.includes(key);
     });
     
-    return [...highPriority, ...mediumPriority, ...lowPriority];
+    // Limit to top 20 sources for faster loading
+    return [...highPriority, ...mediumPriority, ...lowPriority].slice(0, 20);
 }
 
 // API endpoint to fetch news from all sources with optimization

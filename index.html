@@ -9032,25 +9032,51 @@ loadingElement.style.display = 'none';
             }
             
             // Optimized news loading with faster response
-            function loadNews() {
+            async function loadNews() {
                 showNewsLoading();
                 
-                // Faster loading simulation (1-2 seconds)
-                const loadingTime = Math.random() * 1000 + 1000; // 1-2 seconds
-                
-                setTimeout(() => {
+                try {
+                    const response = await fetch('/api/news');
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch news');
+                    }
+                    const newsData = await response.json();
+                    
                     hideNewsLoading();
+                    displayNewsContent(newsData);
+                } catch (error) {
+                    console.error('Error loading news:', error);
+                    hideNewsLoading();
+                    // Fallback to static content
                     displayNewsContent();
-                }, loadingTime);
+                }
             }
             
-            // Display news content immediately - Updated v5.3
-            function displayNewsContent() {
-                console.log('displayNewsContent called - v5.3');
+            // Display news content - Updated to handle dynamic data
+            function displayNewsContent(newsData) {
+                console.log('displayNewsContent called');
                 const newsList = document.getElementById('news-list');
-                if (newsList) {
-                    console.log('Updating news list with modern cards');
-                    // Clear loading and add news content
+                if (!newsList) return;
+                
+                if (newsData && newsData.articles && newsData.articles.length > 0) {
+                    // Render dynamic news
+                    const newsHTML = newsData.articles.slice(0, 10).map(article => `
+                        <div class="news-item">
+                            <div class="news-header">
+                                <h3><a href="${article.url}" target="_blank">${article.title}</a></h3>
+                            </div>
+                            <p>${article.description || 'No description available.'}</p>
+                            <div class="news-meta">
+                                <span class="news-category">${article.source || 'News'}</span>
+                                <span class="news-time">${article.publishedAt ? new Date(article.publishedAt).toLocaleString() : 'Recent'}</span>
+                            </div>
+                            <a href="${article.url}" class="read-more-link" target="_blank">Read Full Article</a>
+                        </div>
+                    `).join('');
+                    newsList.innerHTML = newsHTML;
+                } else {
+                    // Fallback to static content
+                    console.log('Using fallback static news');
                     newsList.innerHTML = `
                         <div class="news-item">
                             <div class="news-header">
