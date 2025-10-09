@@ -1,10 +1,8 @@
 // Service Worker for Performance Optimization
-const CACHE_NAME = 'graham-doddsville-v2';
+const CACHE_NAME = 'graham-doddsville-v3';
 const urlsToCache = [
     '/',
-    '/styles.css',
-    '/index.html',
-    '/news-scraper.js'
+    '/styles.css'
 ];
 
 // Install event
