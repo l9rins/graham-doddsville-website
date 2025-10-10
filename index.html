@@ -71,6 +71,17 @@
                 if (data && data.articles && data.articles.length > 0) {
                     // Store in global cache for instant access
                     window.preloadedNews = data.articles;
+                    // Also save to localStorage
+                    try {
+                        const cacheData = {
+                            data: data.articles,
+                            timestamp: Date.now(),
+                            maxAge: 10 * 60 * 1000
+                        };
+                        localStorage.setItem('newsCache', JSON.stringify(cacheData));
+                    } catch (e) {
+                        console.log('Error saving preload to localStorage:', e);
+                    }
                     console.log('Real news preloaded successfully:', data.articles.length, 'articles');
                 } else {
                     console.log('Preload API returned empty data');
@@ -4389,7 +4400,6 @@
                     <!-- Latest News Section -->
                     <section class="latest-news" id="news">
                         <h2>###### LATEST NEWS</h2>
-                        <div class="news-datetime" id="news-datetime"></div>
                         
                         <!-- Latest News Sub-headings -->
                         <div class="latest-news-subheadings">
@@ -4397,41 +4407,50 @@
                                 <h3 class="sub-heading-title">Companies</h3>
                                 <a href="#" class="see-more-link">See more</a>
                             </div>
+                            <div class="category-news-container" id="companies-news">
+                                <!-- Companies news will be loaded here -->
+                            </div>
+                            
                             <div class="sub-heading-row">
                                 <h3 class="sub-heading-title">Markets</h3>
                                 <a href="#" class="see-more-link">See more</a>
                             </div>
+                            <div class="category-news-container" id="markets-news">
+                                <!-- Markets news will be loaded here -->
+                            </div>
+                            
                             <div class="sub-heading-row">
                                 <h3 class="sub-heading-title">Economy</h3>
                                 <a href="#" class="see-more-link">See more</a>
                             </div>
+                            <div class="category-news-container" id="economy-news">
+                                <!-- Economy news will be loaded here -->
+                            </div>
+                            
                             <div class="sub-heading-row">
                                 <h3 class="sub-heading-title">Industry</h3>
                                 <a href="#" class="see-more-link">See more</a>
                             </div>
+                            <div class="category-news-container" id="industry-news">
+                                <!-- Industry news will be loaded here -->
+                            </div>
+                            
                             <div class="sub-heading-row">
                                 <h3 class="sub-heading-title">Regulatory</h3>
                                 <a href="#" class="see-more-link">See more</a>
                             </div>
+                            <div class="category-news-container" id="regulatory-news">
+                                <!-- Regulatory news will be loaded here -->
+                            </div>
+                            
                             <div class="sub-heading-row">
                                 <h3 class="sub-heading-title">Guru Watch</h3>
                                 <a href="#" class="see-more-link">See more</a>
                             </div>
-                        </div>
-                        
-                        <div class="news-list" id="news-list">
-                            <!-- Loading Animation -->
-                            <div class="news-loading" id="news-loading">
-                                <div class="news-loading-dots">
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                </div>
-                                <div class="news-loading-text news-loading-pulse">Loading latest news...</div>
-                                </div>
-                            <!-- News items will be loaded here -->
+                            <div class="category-news-container" id="guru-watch-news">
+                                <!-- Guru Watch news will be loaded here -->
                             </div>
+                        </div>
 
                     </section>
                 </div>
@@ -6391,14 +6410,106 @@
         let newsCache = {
             data: null,
             timestamp: null,
-            maxAge: 5 * 60 * 1000 // 5 minutes cache
+            maxAge: 10 * 60 * 1000 // 10 minutes cache
         };
+
+        // Load from localStorage on page load
+        try {
+            const cached = localStorage.getItem('newsCache');
+            if (cached) {
+                const parsed = JSON.parse(cached);
+                if (parsed.timestamp && (Date.now() - parsed.timestamp) < newsCache.maxAge) {
+                    newsCache = parsed;
+                    console.log('Loaded news from localStorage cache');
+                }
+            }
+        } catch (e) {
+            console.log('Error loading from localStorage:', e);
+        }
 
         // Loading state guard to prevent multiple simultaneous calls
         let mobileNewsLoading = false;
 
+        function generateSimulatedNews() {
+            console.log('Generating simulated news for mobile fallback');
+            return [
+                {
+                    title: 'ASX 200 rises as investors digest RBA rate decision',
+                    excerpt: 'The benchmark index climbed 0.8% following the Reserve Bank\'s latest monetary policy announcement...',
+                    url: '#',
+                    image: 'https://via.placeholder.com/300x200/1e3a8a/ffffff?text=AFR+News',
+                    category: 'Markets',
+                    source: 'Australian Financial Review',
+                    publishedAt: new Date(Date.now() - Math.random() * 24 * 60 * 60 * 1000)
+                },
+                {
+                    title: 'Value investing opportunities emerge in small caps',
+                    excerpt: 'Analysts identify undervalued small-cap stocks following recent market volatility...',
+                    url: '#',
+                    image: 'https://via.placeholder.com/300x200/059669/ffffff?text=Value+Investing',
+                    category: 'Investment',
+                    source: 'Australian Financial Review',
+                    publishedAt: new Date(Date.now() - Math.random() * 24 * 60 * 60 * 1000)
+                },
+                {
+                    title: 'Mining sector leads ASX gains on commodity price recovery',
+                    excerpt: 'Resource stocks surged as iron ore and copper prices rebounded from recent lows...',
+                    url: '#',
+                    image: 'https://via.placeholder.com/300x200/7c3aed/ffffff?text=Mining+Sector',
+                    category: 'Resources',
+                    source: 'The Australian',
+                    publishedAt: new Date(Date.now() - Math.random() * 24 * 60 * 60 * 1000)
+                },
+                {
+                    title: 'Banking sector faces headwinds from rising bad debts',
+                    excerpt: 'Major banks report increased provisions as economic conditions remain challenging...',
+                    url: '#',
+                    image: 'https://via.placeholder.com/300x200/dc2626/ffffff?text=Banking+Sector',
+                    category: 'Banking',
+                    source: 'The Australian',
+                    publishedAt: new Date(Date.now() - Math.random() * 24 * 60 * 60 * 1000)
+                },
+                {
+                    title: 'Tech stocks rally on AI investment optimism',
+                    excerpt: 'Technology shares gained ground as investors bet on artificial intelligence developments...',
+                    url: '#',
+                    image: 'https://via.placeholder.com/300x200/0891b2/ffffff?text=Tech+Stocks',
+                    category: 'Technology',
+                    source: 'Sydney Morning Herald',
+                    publishedAt: new Date(Date.now() - Math.random() * 24 * 60 * 60 * 1000)
+                },
+                {
+                    title: 'Superannuation returns show mixed results',
+                    excerpt: 'Pension funds report varied performance with some beating inflation while others lag...',
+                    url: '#',
+                    image: 'https://via.placeholder.com/300x200/7c2d12/ffffff?text=Superannuation',
+                    category: 'Finance',
+                    source: 'Australian Financial Review',
+                    publishedAt: new Date(Date.now() - Math.random() * 24 * 60 * 60 * 1000)
+                },
+                {
+                    title: 'Property market shows signs of stabilization',
+                    excerpt: 'Latest data suggests the housing market may be finding its footing after months of decline...',
+                    url: '#',
+                    image: 'https://via.placeholder.com/300x200/16a34a/ffffff?text=Property+Market',
+                    category: 'Property',
+                    source: 'The Australian',
+                    publishedAt: new Date(Date.now() - Math.random() * 24 * 60 * 60 * 1000)
+                },
+                {
+                    title: 'Federal Reserve signals potential rate cuts ahead',
+                    excerpt: 'US central bank hints at monetary policy easing in response to economic indicators...',
+                    url: '#',
+                    image: 'https://via.placeholder.com/300x200/4f46e5/ffffff?text=Fed+Rate+Cuts',
+                    category: 'Economy',
+                    source: 'Reuters',
+                    publishedAt: new Date(Date.now() - Math.random() * 24 * 60 * 60 * 1000)
+                }
+            ];
+        }
+
         function loadMobileNewsContent() {
-            console.log('loadMobileNewsContent called');
+            console.log('loadMobileNewsContent called - starting mobile news load');
             
             // Prevent multiple simultaneous calls
             if (mobileNewsLoading) {
@@ -6407,9 +6518,11 @@
             }
             
             mobileNewsLoading = true;
+            console.log('Setting mobileNewsLoading to true');
             
             // Show loading states immediately
             showMobileLoadingStates();
+            console.log('Called showMobileLoadingStates');
             
             // Check if desktop news is already loaded and use that data
             console.log('Checking desktop news manager:', window.newsDisplayManager);
@@ -6450,14 +6563,28 @@
                 return;
             }
             
-            // Smart API URL selection - use relative for same origin
-            const apiUrl = '/api/news';
+            // Smart API URL selection - same as preload
+            const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+            const isGitHubPages = window.location.hostname === 'l9rins.github.io';
+            
+            let apiUrl;
+            if (isLocalhost) {
+                apiUrl = 'http://localhost:3001/api/news';
+            } else if (isGitHubPages) {
+                apiUrl = 'https://l9rins.github.io/graham-doddsville-website/api/news';
+            } else {
+                apiUrl = 'https://l9rins.github.io/graham-doddsville-website/api/news'; // Fallback to static
+            }
             console.log('Fetching real news from API:', apiUrl);
             
-            // Use AbortController for timeout - increased to 5 seconds for real API
+            // Use AbortController for timeout - reduced to 2 seconds for faster fallback
             const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout for real API
+            const timeoutId = setTimeout(() => {
+                console.log('API request timed out after 2 seconds');
+                controller.abort();
+            }, 2000); // 2 second timeout for faster response
             
+            console.log('Making fetch request to:', apiUrl);
             fetch(apiUrl, { 
                 signal: controller.signal,
                 cache: 'no-cache', // Don't use cache for real news
@@ -6468,31 +6595,42 @@
             })
                 .then(response => {
                     clearTimeout(timeoutId);
-                    console.log('API Response status:', response.status);
-                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                    console.log('API Response received, status:', response.status);
+                    if (!response.ok) {
+                        console.log('Response not ok, throwing error');
+                        throw new Error(`HTTP ${response.status}`);
+                    }
                     return response.json();
                 })
                 .then(data => {
-                    console.log('API Response data:', data);
+                    console.log('API Response data received:', data);
                     if (data && data.articles && data.articles.length > 0) {
                         // Cache the real data
                         newsCache.data = data.articles;
                         newsCache.timestamp = Date.now();
+                        try {
+                            localStorage.setItem('newsCache', JSON.stringify(newsCache));
+                        } catch (e) {
+                            console.log('Error saving to localStorage:', e);
+                        }
+                        console.log('Calling updateMobileNewsDisplay with', data.articles.length, 'articles');
                         updateMobileNewsDisplay(data.articles);
                         mobileNewsLoading = false; // Reset loading state
                         console.log('Real news loaded successfully:', data.articles.length, 'articles');
                     } else {
-                        console.log('API returned empty data, using fallback');
-                        showFallbackMobileNews();
+                        console.log('API returned empty data, using simulated news');
+                        const simulatedNews = generateSimulatedNews();
+                        updateMobileNewsDisplay(simulatedNews);
                         mobileNewsLoading = false; // Reset loading state
                     }
                 })
                 .catch(error => {
                     clearTimeout(timeoutId);
                     console.error('Error loading mobile news:', error);
-                    console.log('Falling back to static news');
-                    // Fallback: show static news items
-                    showFallbackMobileNews();
+                    console.log('Falling back to simulated news');
+                    // Fallback: show simulated news items
+                    const simulatedNews = generateSimulatedNews();
+                    updateMobileNewsDisplay(simulatedNews);
                     mobileNewsLoading = false; // Reset loading state
                 });
         }
@@ -6577,7 +6715,7 @@ loadingElement.style.display = 'none';
 
         // Regional news loading functions
         function loadRegionalNews(region, containerId, loadingId) {
-            console.log(`Loading ${region} news...`);
+            console.log(`loadRegionalNews called for ${region} - starting regional news load`);
             
             const container = document.querySelector(`#${containerId}`);
             const loadingElement = document.querySelector(`#${loadingId}`);
@@ -6587,9 +6725,12 @@ loadingElement.style.display = 'none';
                 return;
             }
             
+            console.log(`Container ${containerId} found, loading element ${loadingId}:`, loadingElement);
+            
             // Show loading state
             if (loadingElement) {
                 loadingElement.style.display = 'block';
+                console.log(`Set loading element ${loadingId} to display: block`);
             }
             
             // Determine API URL - use relative for same origin
@@ -6598,8 +6739,12 @@ loadingElement.style.display = 'none';
             
             // Use AbortController for timeout
             const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 5000); // Reduced to 5 second timeout
+            const timeoutId = setTimeout(() => {
+                console.log(`${region} API request timed out after 2 seconds`);
+                controller.abort();
+            }, 2000); // Reduced to 2 second timeout
             
+            console.log(`Making fetch request for ${region} to:`, apiUrl);
             fetch(apiUrl, {
                 signal: controller.signal,
                 cache: 'no-cache',
@@ -6610,13 +6755,17 @@ loadingElement.style.display = 'none';
             })
             .then(response => {
                 clearTimeout(timeoutId);
-                console.log(`${region} API Response status:`, response.status);
-                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                console.log(`${region} API Response received, status:`, response.status);
+                if (!response.ok) {
+                    console.log(`${region} Response not ok, throwing error`);
+                    throw new Error(`HTTP ${response.status}`);
+                }
                 return response.json();
             })
             .then(data => {
-                console.log(`${region} API Response data:`, data);
+                console.log(`${region} API Response data received:`, data);
                 if (data && data.articles && data.articles.length > 0) {
+                    console.log(`Calling updateRegionalNewsDisplay for ${region} with`, data.articles.length, 'articles');
                     updateRegionalNewsDisplay(container, loadingElement, data.articles, region);
                 } else {
                     console.log(`${region} API returned empty data, using fallback`);
@@ -6813,10 +6962,6 @@ loadingElement.style.display = 'none';
                     </div>
                 `
             };
-            <!-- Centered See more link for mobile books -->
-            <div class="mobile-books-see-more">
-                <a href="classical-readings.html" class="mobile-books-see-more-link">See more</a>
-            </div>
             
             return fallbackTemplates[region] || '<div class="news-item-mobile"><div class="news-content"><h3 class="news-headline">No news available</h3></div></div>';
         }

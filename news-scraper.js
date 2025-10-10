@@ -451,6 +451,18 @@ class NewsDisplayManager {
             this.allNews = news;
             console.log('NewsDisplayManager: Fetched', news.length, 'news items');
             
+            // Cache in localStorage
+            try {
+                const cacheData = {
+                    data: news,
+                    timestamp: Date.now(),
+                    maxAge: 10 * 60 * 1000
+                };
+                localStorage.setItem('newsCache', JSON.stringify(cacheData));
+            } catch (e) {
+                console.log('Error saving to localStorage:', e);
+            }
+            
             // Display limited news
             this.displayNews(news.slice(0, this.maxDisplay));
         
@@ -467,78 +479,101 @@ class NewsDisplayManager {
     }
 
     showLoadingState() {
-        const newsList = document.querySelector('.news-list');
-        if (newsList) {
-            newsList.innerHTML = `
-                <div class="loading-state">
-                    <div class="loading-spinner"></div>
-                    <p>Loading latest news...</p>
-                </div>
-            `;
-        }
+        // Show loading state in each category container
+        const categoryContainers = [
+            'companies-news', 'markets-news', 'economy-news', 
+            'industry-news', 'regulatory-news', 'guru-watch-news'
+        ];
+        
+        categoryContainers.forEach(containerId => {
+            const container = document.getElementById(containerId);
+            if (container) {
+                container.innerHTML = `
+                    <div class="loading-state">
+                        <div class="loading-spinner"></div>
+                        <p>Loading news...</p>
+                    </div>
+                `;
+            }
+        });
     }
 
     showErrorState() {
-        const newsList = document.querySelector('.news-list');
-        if (newsList) {
-            newsList.innerHTML = `
-                <div class="error-state">
-                    <h4>⚠️ News Feed Temporarily Unavailable</h4>
-                    <p>We're experiencing technical difficulties loading the latest news. Please try refreshing the page or check back in a few minutes.</p>
-                    <button class="retry-btn" onclick="newsDisplayManager.initialize()">Retry Loading News</button>
-                </div>
-            `;
-        }
+        // Show error state in each category container
+        const categoryContainers = [
+            'companies-news', 'markets-news', 'economy-news', 
+            'industry-news', 'regulatory-news', 'guru-watch-news'
+        ];
+        
+        categoryContainers.forEach(containerId => {
+            const container = document.getElementById(containerId);
+            if (container) {
+                container.innerHTML = `
+                    <div class="error-state">
+                        <h4>⚠️ News Feed Temporarily Unavailable</h4>
+                        <p>We're experiencing technical difficulties loading the latest news. Please try refreshing the page or check back in a few minutes.</p>
+                        <button class="retry-btn" onclick="newsDisplayManager.initialize()">Retry Loading News</button>
+                    </div>
+                `;
+            }
+        });
     }
 
     displayNews(news) {
-        const newsList = document.querySelector('.news-list');
-        if (!newsList) {
-            console.error('NewsDisplayManager: .news-list element not found');
-            return;
-        }
-
-        console.log('NewsDisplayManager: Displaying', news.length, 'news items');
-        console.log('NewsDisplayManager: News list element found:', newsList);
+        console.log('NewsDisplayManager: Displaying', news.length, 'news items organized by category');
 
         if (news.length === 0) {
-            newsList.innerHTML = `
-                <div class="no-news-state">
-                    <i class="fas fa-newspaper"></i>
-                    <p>No news available at the moment.</p>
-                </div>
-            `;
+            console.log('No news to display');
             return;
         }
 
-        const newsHTML = news.map(item => this.createNewsItemHTML(item)).join('');
-        
-        // Add Show More button if there are more news items
-        let showMoreButton = '';
-        if (this.allNews.length > this.maxDisplay) {
-            showMoreButton = `
-                <div class="show-more-container">
-                    <button class="show-more-btn" onclick="newsDisplayManager.showMoreNews()">
-                        Show More News (${this.allNews.length - this.maxDisplay} remaining)
-                    </button>
-                </div>
-            `;
-        }
-        
-        newsList.innerHTML = newsHTML + showMoreButton;
-
-        // Ensure proper display
-        newsList.style.display = 'block';
-        newsList.style.visibility = 'visible';
-        newsList.style.opacity = '1';
-        
-        // Hide any loading states that might still be present
-        const loadingStates = newsList.querySelectorAll('.loading-state, .loading-spinner');
-        loadingStates.forEach(state => {
-            state.style.display = 'none';
+        // Group news by category
+        const newsByCategory = {};
+        news.forEach(item => {
+            const category = item.category;
+            if (!newsByCategory[category]) {
+                newsByCategory[category] = [];
+            }
+            newsByCategory[category].push(item);
         });
-        
-        console.log('NewsDisplayManager: News display forced to be visible');
+
+        console.log('News grouped by category:', Object.keys(newsByCategory));
+
+        // Define category to container ID mapping
+        const categoryContainers = {
+            'Companies': 'companies-news',
+            'Markets': 'markets-news',
+            'Economy': 'economy-news',
+            'Industry': 'industry-news',
+            'Regulatory': 'regulatory-news',
+            'Guru Watch': 'guru-watch-news'
+        };
+
+        // Display news for each category
+        Object.keys(categoryContainers).forEach(category => {
+            const containerId = categoryContainers[category];
+            const container = document.getElementById(containerId);
+            
+            if (container) {
+                const categoryNews = newsByCategory[category] || [];
+                console.log(`Displaying ${categoryNews.length} items for ${category} in ${containerId}`);
+                
+                if (categoryNews.length > 0) {
+                    // Take first 3 articles per category for initial display
+                    const displayNews = categoryNews.slice(0, 3);
+                    const newsHTML = displayNews.map(item => this.createNewsItemHTML(item)).join('');
+                    container.innerHTML = newsHTML;
+                } else {
+                    container.innerHTML = `
+                        <div class="no-news-in-category">
+                            <p>No ${category.toLowerCase()} news available at the moment.</p>
+                        </div>
+                    `;
+                }
+            } else {
+                console.error(`Container ${containerId} not found for category ${category}`);
+            }
+        });
 
         // Update last updated time
         this.updateLastUpdatedTime();
@@ -550,7 +585,7 @@ class NewsDisplayManager {
         console.log('NewsDisplayManager: Creating modern card HTML for item:', item.title);
         
         return `
-            <div class="news-item" data-category="${item.category.toLowerCase()}">
+            <div class="news-item" data-category="${item.category}">
                 <div class="news-header">
                     <h3><a href="${item.url}" target="_blank" rel="noopener noreferrer">${item.title}</a></h3>
                 </div>
@@ -565,16 +600,7 @@ class NewsDisplayManager {
     }
 
     setupEventListeners() {
-        // Category filter buttons
-        const categoryButtons = document.querySelectorAll('.news-category-filter');
-        categoryButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                const category = e.target.dataset.category;
-                this.filterByCategory(category);
-            });
-        });
-
-        // Search input
+        // Search input (if exists)
         const searchInput = document.querySelector('.news-search-input');
         if (searchInput) {
             searchInput.addEventListener('input', (e) => {
@@ -582,7 +608,7 @@ class NewsDisplayManager {
             });
         }
 
-        // Refresh button
+        // Refresh button (if exists)
         const refreshButton = document.querySelector('.news-refresh-btn');
         if (refreshButton) {
             refreshButton.addEventListener('click', () => {
@@ -608,35 +634,10 @@ class NewsDisplayManager {
         }
     }
 
-    filterByCategory(category) {
-        this.currentFilter = category;
-        this.applyFilters();
-    }
-
     searchNews(query) {
-        this.currentSearch = query.toLowerCase();
-        this.applyFilters();
-    }
-
-    applyFilters() {
-        const newsItems = document.querySelectorAll('.news-item');
-        
-        newsItems.forEach(item => {
-            const itemCategory = item.dataset.category;
-            const itemTitle = item.querySelector('.news-title').textContent.toLowerCase();
-            const itemExcerpt = item.querySelector('.news-excerpt').textContent.toLowerCase();
-            
-            const categoryMatch = this.currentFilter === 'all' || itemCategory === this.currentFilter;
-            const searchMatch = this.currentSearch === '' || 
-                itemTitle.includes(this.currentSearch) || 
-                itemExcerpt.includes(this.currentSearch);
-            
-            if (categoryMatch && searchMatch) {
-                item.style.display = 'block';
-            } else {
-                item.style.display = 'none';
-            }
-        });
+        // For now, search functionality is disabled in category-organized view
+        // Could be implemented later to search within categories
+        console.log('Search functionality not implemented for category-organized view');
     }
 
     updateLastUpdatedTime() {

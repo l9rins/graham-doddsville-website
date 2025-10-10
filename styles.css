@@ -8088,11 +8088,10 @@ th {
 
 /* Footer Styling */
 .site-footer {
-    background: #1a1a1a;
+    background: var(--color-primary);
     color: #ffffff;
     padding: 50px 0;
     margin-top: 60px;
-    border-top: 3px solid #d4af37;
 }
 
 .footer-content {
@@ -8280,6 +8279,11 @@ th {
     color: #1e3a8a;
     margin: 0;
     padding-left: 8px;
+    transition: color 0.2s ease;
+}
+
+.sub-heading-title:hover {
+    color: #f5b400;
 }
 
 .see-more-link {
@@ -8293,6 +8297,42 @@ th {
 .see-more-link:hover {
     color: #1e3a8a;
     text-decoration: underline;
+}
+
+/* Category News Containers */
+.category-news-container {
+    margin-bottom: 24px;
+    padding: 0 8px;
+}
+
+.category-news-container .news-item {
+    margin-bottom: 12px;
+    padding: 12px;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: box-shadow 0.2s ease;
+}
+
+.category-news-container .news-item:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.category-news-container .news-item:last-child {
+    margin-bottom: 0;
+}
+
+.no-news-in-category {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    padding: 20px 0;
+}
+
+.no-news-in-category p {
+    margin: 0;
+    font-size: 14px;
 }
 
 .see-more-link {

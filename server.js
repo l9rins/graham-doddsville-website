@@ -10,9 +10,9 @@ const PORT = process.env.PORT || 3001;
 const NEWS_API_KEY = '6d122bb10581490591ee20ade119ec27';
 
 // Performance optimization constants
-const MAX_CONCURRENT_REQUESTS = 20; // Increased from 10 for faster fetching
-const REQUEST_TIMEOUT = 5000; // Reduced from 8000 for quicker response
-const CACHE_DURATION = 2 * 60 * 1000; // Reduced to 2 minutes for fresher data
+const MAX_CONCURRENT_REQUESTS = 30; // Increased for faster fetching
+const REQUEST_TIMEOUT = 3000; // Reduced for quicker response
+const CACHE_DURATION = 5 * 60 * 1000; // Increased to 5 minutes for better performance
 const MAX_ARTICLES_PER_SOURCE = 3; // Reduced from 5 to speed up
 
 // In-memory cache for news data
@@ -194,23 +194,23 @@ function cleanDescription(description) {
 // Categorize news based on content
 function categorizeNews(content) {
     const lowerContent = content.toLowerCase();
-    if (lowerContent.includes('asx') || lowerContent.includes('market') || lowerContent.includes('stock')) {
+    if (lowerContent.includes('asx') || lowerContent.includes('market') || lowerContent.includes('stock') || lowerContent.includes('trading')) {
         return 'Markets';
-    } else if (lowerContent.includes('company') || lowerContent.includes('business') || lowerContent.includes('corporate')) {
+    } else if (lowerContent.includes('company') || lowerContent.includes('business') || lowerContent.includes('corporate') || lowerContent.includes('startup')) {
         return 'Companies';
-    } else if (lowerContent.includes('economy') || lowerContent.includes('gdp') || lowerContent.includes('inflation')) {
+    } else if (lowerContent.includes('economy') || lowerContent.includes('gdp') || lowerContent.includes('inflation') || lowerContent.includes('unemployment')) {
         return 'Economy';
-    } else if (lowerContent.includes('industry') || lowerContent.includes('sector') || lowerContent.includes('mining')) {
+    } else if (lowerContent.includes('industry') || lowerContent.includes('sector') || lowerContent.includes('mining') || lowerContent.includes('manufacturing')) {
         return 'Industry';
-    } else if (lowerContent.includes('rba') || lowerContent.includes('interest') || lowerContent.includes('rate')) {
-        return 'Monetary Policy';
+    } else if (lowerContent.includes('rba') || lowerContent.includes('interest') || lowerContent.includes('rate') || lowerContent.includes('regulation') || lowerContent.includes('regulator') || lowerContent.includes('policy')) {
+        return 'Regulatory';
     } else if (lowerContent.includes('property') || lowerContent.includes('housing') || lowerContent.includes('real estate')) {
         return 'Property';
-    } else if (lowerContent.includes('bank') || lowerContent.includes('financial') || lowerContent.includes('fund')) {
+    } else if (lowerContent.includes('bank') || lowerContent.includes('financial') || lowerContent.includes('fund') || lowerContent.includes('finance')) {
         return 'Banking';
-    } else if (lowerContent.includes('tech') || lowerContent.includes('ai') || lowerContent.includes('digital')) {
+    } else if (lowerContent.includes('tech') || lowerContent.includes('ai') || lowerContent.includes('digital') || lowerContent.includes('software')) {
         return 'Technology';
-    } else if (lowerContent.includes('energy') || lowerContent.includes('renewable') || lowerContent.includes('coal')) {
+    } else if (lowerContent.includes('energy') || lowerContent.includes('renewable') || lowerContent.includes('coal') || lowerContent.includes('oil')) {
         return 'Energy';
     } else if (lowerContent.includes('super') || lowerContent.includes('retirement') || lowerContent.includes('pension')) {
         return 'Superannuation';
@@ -218,8 +218,10 @@ function categorizeNews(content) {
         return 'Consumer';
     } else if (lowerContent.includes('mining') || lowerContent.includes('resources') || lowerContent.includes('commodity')) {
         return 'Resources';
-    } else if (lowerContent.includes('investment') || lowerContent.includes('value') || lowerContent.includes('portfolio')) {
+    } else if (lowerContent.includes('investment') || lowerContent.includes('value') || lowerContent.includes('portfolio') || lowerContent.includes('investor')) {
         return 'Investment';
+    } else if (lowerContent.includes('buffett') || lowerContent.includes('munger') || lowerContent.includes('graham') || lowerContent.includes('dodd') || lowerContent.includes('guru') || lowerContent.includes('investor') || lowerContent.includes('legend')) {
+        return 'Guru Watch';
     }
     return 'General';
 }
