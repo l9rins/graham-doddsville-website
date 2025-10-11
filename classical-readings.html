@@ -710,7 +710,7 @@
             color: var(--text-secondary);
         }
 
-        .filter-select, .search-input {
+        .filter-select {
             padding: 8px 12px;
             border: 1px solid var(--border-light);
             border-radius: var(--radius-sm);
@@ -719,15 +719,10 @@
             transition: all 0.2s ease;
         }
 
-        .filter-select:focus, .search-input:focus {
+        .filter-select:focus {
             outline: none;
             border-color: var(--primary-blue);
             box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
-        }
-
-        .search-input {
-            min-width: 200px;
-            flex: 1;
         }
 
         .applied-filters {
@@ -1042,10 +1037,6 @@
                 align-items: stretch;
             }
 
-            .search-input {
-                min-width: auto;
-            }
-
             .readings-grid {
                 grid-template-columns: 1fr;
                 gap: 16px;
@@ -1171,7 +1162,7 @@
             <!-- Page Title Section -->
             <div class="page-title-section">
                 <a href="index.html" class="breadcrumb-link">← Home</a>
-                <h1>Classical Readings</h1>
+                <h1 class="section-header">Classical Readings</h1>
             </div>
             
             <!-- Filter and Search Section -->
@@ -1211,10 +1202,6 @@
                             <option value="article">Articles</option>
                             <option value="testimony">Testimonies</option>
                         </select>
-                    </div>
-                    <div class="filter-group" style="flex: 1;">
-                        <label class="filter-label" for="search-input">Search</label>
-                        <input type="text" id="search-input" class="search-input" placeholder="Search readings, authors, or topics...">
                     </div>
                 </div>
                 <div class="applied-filters" id="applied-filters"></div>
@@ -2013,12 +2000,10 @@
             const authorFilter = document.getElementById('author-filter');
             const decadeFilter = document.getElementById('decade-filter');
             const typeFilter = document.getElementById('type-filter');
-            const searchInput = document.getElementById('search-input');
 
             if (authorFilter) authorFilter.addEventListener('change', applyFilters);
             if (decadeFilter) decadeFilter.addEventListener('change', applyFilters);
             if (typeFilter) typeFilter.addEventListener('change', applyFilters);
-            if (searchInput) searchInput.addEventListener('input', applyFilters);
         }
 
         // Setup mobile filters
@@ -2068,13 +2053,11 @@
             const authorFilter = document.getElementById('author-filter');
             const decadeFilter = document.getElementById('decade-filter');
             const typeFilter = document.getElementById('type-filter');
-            const searchInput = document.getElementById('search-input');
 
             const currentFilters = {
                 author: authorFilter ? authorFilter.value : '',
                 decade: decadeFilter ? decadeFilter.value : '',
-                type: typeFilter ? typeFilter.value : '',
-                search: searchInput ? searchInput.value.toLowerCase() : ''
+                type: typeFilter ? typeFilter.value : ''
             };
 
             const cards = document.querySelectorAll('.reading-card');
@@ -2089,11 +2072,8 @@
                 const matchesAuthor = !currentFilters.author || author === currentFilters.author;
                 const matchesDecade = !currentFilters.decade || decade === currentFilters.decade;
                 const matchesType = !currentFilters.type || type === currentFilters.type;
-                const matchesSearch = !currentFilters.search || 
-                    title.includes(currentFilters.search) || 
-                    author.toLowerCase().includes(currentFilters.search);
 
-                if (matchesAuthor && matchesDecade && matchesType && matchesSearch) {
+                if (matchesAuthor && matchesDecade && matchesType) {
                     card.style.display = 'block';
                     visibleCount++;
                 } else {
