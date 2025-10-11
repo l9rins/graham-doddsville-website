@@ -4808,7 +4808,9 @@ input:focus, textarea:focus, select:focus {
 .book-links-horizontal a {
     color: #333;
     text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 14px;
+    font-weight: 600;
     transition: color 0.3s ease;
     white-space: normal;
     word-wrap: break-word;
@@ -4830,6 +4832,13 @@ input:focus, textarea:focus, select:focus {
 /* Remove the last separator to avoid extra "|" */
 .book-links-horizontal a:last-child::after {
     content: none;
+}
+
+.book-links-horizontal .see-more {
+    color: #666;
+    font-style: italic;
+    font-size: 12px;
+    font-weight: 400;
 }
 
 .book-links .see-more {
@@ -9699,7 +9708,9 @@ th {
 .books-slider .book-links-horizontal a {
     color: #333;
     text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 14px;
+    font-weight: 600;
     transition: color 0.3s ease;
     white-space: normal;
     word-wrap: break-word;
@@ -9721,6 +9732,13 @@ th {
 /* Remove the last separator to avoid extra "|" */
 .books-slider .book-links-horizontal a:last-child::after {
     content: none;
+}
+
+.books-slider .book-links-horizontal .see-more {
+    color: #666;
+    font-style: italic;
+    font-size: 12px;
+    font-weight: 400;
 }
 
 /* Articles Slider Styles */
