@@ -4804,8 +4804,10 @@ input:focus, textarea:focus, select:focus {
     padding: 0;
     line-height: 1.6;
     word-break: break-all;
+    overflow-wrap: break-word;
     white-space: normal;
-    max-width: 100%;
+    width: 180px;
+    hyphens: none;
 }
 
 .book-links-horizontal a {
@@ -9720,8 +9722,10 @@ th {
     padding: 0;
     line-height: 1.6;
     word-break: break-all;
+    overflow-wrap: break-word;
     white-space: normal;
-    max-width: 100%;
+    width: 180px;
+    hyphens: none;
 }
 
 .books-slider .book-links-horizontal a {
