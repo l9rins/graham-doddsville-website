@@ -4844,6 +4844,47 @@ input:focus, textarea:focus, select:focus {
     font-size: 12px;
 }
 
+/* Normal book links layout - no aggressive word breaking */
+.book-links-normal {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.book-links-normal a {
+    color: #333;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    line-height: 1.4;
+}
+
+.book-links-normal a:hover {
+    color: #0066cc;
+}
+
+.book-links-normal a:not(:last-child)::after {
+    content: " | ";
+    color: #666;
+    margin: 0 4px;
+}
+
+/* Remove the last separator to avoid extra "|" */
+.book-links-normal a:last-child::after {
+    content: none;
+}
+
 .wealth-see-more-container {
     text-align: center;
     margin-top: 8px;
@@ -9750,7 +9791,7 @@ th {
 
 #philosophy-buffett-slider {
     display: block;
-    width: 200px;
+    width: 365px;
     white-space: normal;
     word-break: break-all;
     overflow-wrap: break-word;
