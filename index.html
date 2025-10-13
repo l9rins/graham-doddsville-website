@@ -1745,19 +1745,130 @@
     <div class="newspaper-categories mobile-only">
         <h2 class="news-section-title">LATEST NEWS</h2>
         
-        <!-- Mobile News List with Loading -->
-        <div class="mobile-news-list" id="mobile-news-container">
-            <!-- Loading Animation -->
-            <div class="mobile-news-loading" id="mobile-news-loading">
-                <div class="mobile-news-loading-dots">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-                <div class="mobile-news-loading-text">Loading latest news...</div>
+        <!-- Companies Sub-Category -->
+        <div class="sub-category">
+            <div class="sub-category-header">
+                <h3 class="sub-category-title">Companies</h3>
+                <a href="#" class="see-more-link">See more</a>
             </div>
-            <!-- News items will be loaded here -->
+            <div class="news-list-mobile" id="companies-news-mobile">
+                <!-- Loading Animation -->
+                <div class="mobile-news-loading" id="companies-loading">
+                    <div class="mobile-news-loading-dots">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="mobile-news-loading-text">Loading Companies news...</div>
+                </div>
+                <!-- News items will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Markets Sub-Category -->
+        <div class="sub-category">
+            <div class="sub-category-header">
+                <h3 class="sub-category-title">Markets</h3>
+                <a href="#" class="see-more-link">See more</a>
+            </div>
+            <div class="news-list-mobile" id="markets-news-mobile">
+                <!-- Loading Animation -->
+                <div class="mobile-news-loading" id="markets-loading">
+                    <div class="mobile-news-loading-dots">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="mobile-news-loading-text">Loading Markets news...</div>
+                </div>
+                <!-- News items will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Economy Sub-Category -->
+        <div class="sub-category">
+            <div class="sub-category-header">
+                <h3 class="sub-category-title">Economy</h3>
+                <a href="#" class="see-more-link">See more</a>
+            </div>
+            <div class="news-list-mobile" id="economy-news-mobile">
+                <!-- Loading Animation -->
+                <div class="mobile-news-loading" id="economy-loading">
+                    <div class="mobile-news-loading-dots">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="mobile-news-loading-text">Loading Economy news...</div>
+                </div>
+                <!-- News items will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Industry Sub-Category -->
+        <div class="sub-category">
+            <div class="sub-category-header">
+                <h3 class="sub-category-title">Industry</h3>
+                <a href="#" class="see-more-link">See more</a>
+            </div>
+            <div class="news-list-mobile" id="industry-news-mobile">
+                <!-- Loading Animation -->
+                <div class="mobile-news-loading" id="industry-loading">
+                    <div class="mobile-news-loading-dots">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="mobile-news-loading-text">Loading Industry news...</div>
+                </div>
+                <!-- News items will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Regulatory Sub-Category -->
+        <div class="sub-category">
+            <div class="sub-category-header">
+                <h3 class="sub-category-title">Regulatory</h3>
+                <a href="#" class="see-more-link">See more</a>
+            </div>
+            <div class="news-list-mobile" id="regulatory-news-mobile">
+                <!-- Loading Animation -->
+                <div class="mobile-news-loading" id="regulatory-loading">
+                    <div class="mobile-news-loading-dots">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="mobile-news-loading-text">Loading Regulatory news...</div>
+                </div>
+                <!-- News items will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Guru Watch Sub-Category -->
+        <div class="sub-category">
+            <div class="sub-category-header">
+                <h3 class="sub-category-title">Guru Watch</h3>
+                <a href="#" class="see-more-link">See more</a>
+            </div>
+            <div class="news-list-mobile" id="guru-watch-news-mobile">
+                <!-- Loading Animation -->
+                <div class="mobile-news-loading" id="guru-watch-loading">
+                    <div class="mobile-news-loading-dots">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="mobile-news-loading-text">Loading Guru Watch news...</div>
+                </div>
+                <!-- News items will be loaded here -->
+            </div>
         </div>
     </div>
 
@@ -6648,44 +6759,79 @@
             console.log('Articles length:', articles ? articles.length : 'undefined');
             console.log('First article sample:', articles && articles.length > 0 ? articles[0] : 'none');
             
-            const mobileContainer = document.querySelector('#mobile-news-container');
-            const loadingElement = document.querySelector('#mobile-news-loading');
+            // Define category mappings for mobile sub-categories
+            const categoryMappings = {
+                'companies-news-mobile': ['Companies', 'Investment', 'Business'],
+                'markets-news-mobile': ['Markets', 'Investment', 'General'],
+                'economy-news-mobile': ['Economy', 'Monetary Policy', 'General'],
+                'industry-news-mobile': ['Industry', 'Resources', 'Energy', 'Technology'],
+                'regulatory-news-mobile': ['Regulatory', 'Banking', 'Monetary Policy', 'General'],
+                'guru-watch-news-mobile': ['Investment', 'Companies', 'Markets']
+            };
             
-            if (!mobileContainer) {
-                console.log('Mobile news container not found!');
-                return;
-            }
-            
-            // Hide loading animation
-            if (loadingElement) {
-loadingElement.style.display = 'none';
-            }
-            
-            if (articles && articles.length > 0) {
-                // Take first 5 articles and display in proper news format
-                const displayArticles = articles.slice(0, 5);
-                const html = displayArticles.map(article => {
-                    console.log('Processing article:', article.title, 'URL:', article.url);
-                    return `
-                        <div class="news-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">
-                                    <a href="${article.url || '#'}" target="_blank" rel="noopener noreferrer">${article.title}</a>
-                                </h3>
-                                <span class="news-source">(${article.source})</span>
-                            </div>
-                        </div>
-                    `;
-                }).join('');
+            // Populate each category section
+            Object.keys(categoryMappings).forEach(sectionId => {
+                const targetCategories = categoryMappings[sectionId];
+                const sectionElement = document.getElementById(sectionId);
+                const loadingElement = document.getElementById(sectionId.replace('-news-mobile', '-loading'));
                 
-                mobileContainer.innerHTML = html;
-                console.log('Mobile news updated successfully with', displayArticles.length, 'articles');
-            } else {
-                console.log('No articles provided to updateMobileNewsDisplay');
-                // Show fallback content
-                showFallbackMobileNews();
-            }
+                if (sectionElement) {
+                    // Hide loading animation
+                    if (loadingElement) {
+                        loadingElement.style.display = 'none';
+                    }
+                    
+                    // Filter news by category
+                    const categoryNews = articles.filter(article => 
+                        targetCategories.some(cat => 
+                            article.category && article.category.toLowerCase().includes(cat.toLowerCase())
+                        )
+                    ).slice(0, 4); // Show top 4 articles per category
+                    
+                    console.log(`Populating ${sectionId} with ${categoryNews.length} articles`);
+                    
+                    if (categoryNews.length > 0) {
+                        const html = categoryNews.map(article => {
+                            console.log('Processing article:', article.title, 'URL:', article.url);
+                            return `
+                                <div class="news-item-mobile">
+                                    <span class="news-bullet">-</span>
+                                    <div class="news-content">
+                                        <h3 class="news-headline">
+                                            <a href="${article.url || '#'}" target="_blank" rel="noopener noreferrer">${article.title}</a>
+                                        </h3>
+                                        <span class="news-source">(${article.source})</span>
+                                    </div>
+                                </div>
+                            `;
+                        }).join('');
+                        
+                        sectionElement.innerHTML = html;
+                        console.log(`✅ Successfully populated ${sectionId} with ${categoryNews.length} articles`);
+                    } else {
+                        // If no specific category news, show any recent news as fallback
+                        const fallbackNews = articles.slice(0, 4);
+                        console.log(`⚠️ No specific news for ${sectionId}, showing fallback news`);
+                        
+                        const fallbackHtml = fallbackNews.map(article => `
+                            <div class="news-item-mobile">
+                                <span class="news-bullet">-</span>
+                                <div class="news-content">
+                                    <h3 class="news-headline">
+                                        <a href="${article.url || '#'}" target="_blank" rel="noopener noreferrer">${article.title}</a>
+                                    </h3>
+                                    <span class="news-source">(${article.source})</span>
+                                </div>
+                            </div>
+                        `).join('');
+                        
+                        sectionElement.innerHTML = fallbackHtml;
+                        console.log(`✅ Populated ${sectionId} with fallback news`);
+                    }
+                } else {
+                    console.log(`Section element ${sectionId} not found`);
+                }
+            });
         }
 
         // Regional news loading functions
