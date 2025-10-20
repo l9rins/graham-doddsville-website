@@ -3737,24 +3737,74 @@ input:focus, textarea:focus, select:focus {
 /* Mobile responsiveness for books table */
 @media (max-width: 768px) {
     .books-table-container {
-        margin: 15px -15px; /* Negative margin to extend to screen edges */
+        margin: 15px 0;
         border-radius: 6px;
-        box-shadow: none; /* Remove shadow on mobile for cleaner look */
+        box-shadow: none;
+        overflow-x: visible; /* Allow content to be visible */
     }
     
     .books-table {
-        font-size: 13px;
-        min-width: 500px; /* Slightly smaller min-width for mobile */
+        display: none; /* Hide table on mobile */
     }
     
-    .books-table th,
-    .books-table td {
-        padding: 10px 12px;
+    /* Mobile card layout */
+    .books-table-container::after {
+        content: "";
+        display: block;
+        clear: both;
     }
     
-    .books-table .book-title {
-        max-width: 200px;
-        word-wrap: break-word;
+    /* Create mobile cards using CSS */
+    .books-mobile-cards {
+        display: block;
+    }
+    
+    .book-mobile-card {
+        background: #fff;
+        border-radius: 8px;
+        margin-bottom: 12px;
+        padding: 16px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        border: 1px solid #e0e0e0;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    
+    .book-mobile-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+    
+    .book-mobile-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 8px;
+        line-height: 1.4;
+    }
+    
+    .book-mobile-title a {
+        color: #3498db;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+    
+    .book-mobile-title a:hover {
+        color: #2980b9;
+        text-decoration: underline;
+    }
+    
+    .book-mobile-author {
+        font-size: 14px;
+        color: #7f8c8d;
+        font-style: italic;
+        margin-bottom: 8px;
+    }
+    
+    .book-mobile-price {
+        font-size: 16px;
+        font-weight: 600;
+        color: #27ae60;
+        font-family: monospace;
     }
 }
 

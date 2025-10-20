@@ -1293,6 +1293,26 @@
                 </table>
             </div>
 
+            <!-- Mobile Cards Layout (hidden on desktop, visible on mobile) -->
+            <div class="books-mobile-cards" style="display: none;">
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/Rich-Dad-Poor-Dad/dp/1612680194" target="_blank" rel="noopener noreferrer">Rich Dad Poor Dad</a></div>
+                    <div class="book-mobile-author">Robert Kiyosaki</div>
+                    <div class="book-mobile-price">$19.99</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/Your-Money-Your-Life/dp/0143115766" target="_blank" rel="noopener noreferrer">Your Money or Your Life</a></div>
+                    <div class="book-mobile-author">Joe Dominguez, Vicki Robin & Monica Wood</div>
+                    <div class="book-mobile-price">$27.99</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/Total-Money-Makeover/dp/0785289089" target="_blank" rel="noopener noreferrer">The Total Money Makeover</a></div>
+                    <div class="book-mobile-author">Dave Ramsey</div>
+                    <div class="book-mobile-price">$24.99</div>
+                </div>
+                <!-- Add more mobile cards here as needed -->
+            </div>
+
             <div class="books-description">
                 <p><strong>Note:</strong> Prices are in AUD and may vary depending on the retailer and availability. Some books may be available as digital editions at lower prices.</p>
 
@@ -1358,6 +1378,28 @@
             }
 
             window.addEventListener('scroll', handleScroll);
+
+            // Mobile cards functionality
+            function toggleMobileLayout() {
+                const tableContainer = document.querySelector('.books-table-container');
+                const mobileCards = document.querySelector('.books-mobile-cards');
+                
+                if (window.innerWidth <= 768) {
+                    // Mobile: show cards, hide table
+                    if (tableContainer) tableContainer.style.display = 'none';
+                    if (mobileCards) mobileCards.style.display = 'block';
+                } else {
+                    // Desktop: show table, hide cards
+                    if (tableContainer) tableContainer.style.display = 'block';
+                    if (mobileCards) mobileCards.style.display = 'none';
+                }
+            }
+
+            // Initial check
+            toggleMobileLayout();
+
+            // Listen for window resize
+            window.addEventListener('resize', toggleMobileLayout);
         });
     </script>
 </body>
