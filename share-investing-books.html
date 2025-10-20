@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share Investing Books - Graham and Doddsville</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1e3a8a;
+            --primary-blue-light: #3b82f6;
+            --primary-blue-dark: #1e40af;
+            --secondary-gray: #f8f9fa;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-muted: #9ca3af;
+            --border-light: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--secondary-gray);
+        }
+
+        .books-page {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            position: relative;
+        }
+
+        .books-page-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-bottom: 2px solid #d4af37;
+            padding: 12px 0;
+            transition: all 0.3s ease;
+            overflow: visible;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            overflow: visible;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 40px;
+            width: auto;
+        }
+
+        .main-nav {
+            overflow: visible;
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            overflow: visible;
+        }
+
+        .main-nav li {
+            position: relative;
+            overflow: visible;
+        }
+
+        .main-nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s ease;
+            overflow: visible;
+        }
+
+        .main-nav a:hover {
+            color: var(--primary-blue);
+        }
+
+        .main-nav-desktop-only {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .main-nav-desktop-only {
+                display: none;
+            }
+        }
+
+        /* Page Title Section */
+        .page-title-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .breadcrumb {
+            margin-bottom: 16px;
+        }
+
+        .breadcrumb-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .breadcrumb-link:hover {
+            color: var(--primary-blue);
+        }
+
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 0;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .page-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin: 8px 0 0 0;
+        }
+
+        /* Books Content */
+        .books-content {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .books-header {
+            margin-bottom: 32px;
+        }
+
+        .books-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 16px 0 8px 0;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .books-header .page-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin: 0 0 24px 0;
+        }
+
+        .books-description p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .books-description h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 32px 0 16px 0;
+            letter-spacing: -0.01em;
+        }
+
+        /* Books Table */
+        .books-table-container {
+            overflow-x: auto;
+            margin: 32px 0;
+        }
+
+        .books-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .books-table th {
+            background: var(--primary-blue);
+            color: white;
+            padding: 16px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 14px;
+            border: none;
+        }
+
+        .books-table td {
+            padding: 16px;
+            border-bottom: 1px solid var(--border-light);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .books-table tr:nth-child(even) {
+            background: var(--secondary-gray);
+        }
+
+        .books-table tr:hover {
+            background: #f1f5f9;
+        }
+
+        .book-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .book-author {
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        .book-price {
+            font-weight: 600;
+            color: var(--primary-blue);
+            font-size: 15px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .books-table-container {
+                margin: 16px -16px 32px -16px;
+            }
+
+            .books-table {
+                min-width: 600px;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .books-page-content {
+                padding: 16px;
+            }
+
+            .books-header h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Mobile Menu Styles */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 30px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 30px;
+            height: 3px;
+            background: var(--text-primary);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-toggle.open span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .mobile-menu-toggle.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .mobile-only {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-only {
+                display: flex !important;
+            }
+            .mobile-menu-toggle {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="books-page">
+        <!-- Header -->
+        <header class="header" id="main-header">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="G&D Logo.png" alt="Graham & Doddsville Logo" class="logo-image">
+                    </a>
+                </div>
+
+                <nav class="main-nav main-nav-desktop-only">
+                    <ul>
+                        <li><a href="index.html" class="nav-link">HOME</a></li>
+                        <li><a href="classical-readings.html" class="nav-link">CLASSICAL READINGS</a></li>
+                        <li><a href="financial-markets.html" class="nav-link">FINANCIAL MARKETS</a></li>
+                        <li><a href="economics.html" class="nav-link">ECONOMICS</a></li>
+                        <li><a href="legal-taxation.html" class="nav-link">LEGAL & TAXATION</a></li>
+                        <li><a href="professional-advisers.html" class="nav-link">PROFESSIONAL ADVISERS</a></li>
+                        <li><a href="resources.html" class="nav-link">RESOURCES</a></li>
+                        <li><a href="events.html" class="nav-link">EVENTS</a></li>
+                    </ul>
+                </nav>
+
+                <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Mobile Drawer -->
+        <div class="mobile-drawer" id="mobile-drawer">
+            <div class="drawer-header">
+                <img src="G&D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
+                <button class="drawer-close" id="drawer-close" aria-label="Close menu">×</button>
+            </div>
+            <nav class="drawer-nav">
+                <ul class="drawer-menu">
+                    <li><a href="index.html" class="drawer-link">Home</a></li>
+                    <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
+                    <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
+                    <li><a href="legal-taxation.html" class="drawer-link">Legal & Taxation</a></li>
+                    <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
+                    <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
+                    <li><a href="#" class="drawer-link">Investment Analysis</a></li>
+                    <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
+                    <li><a href="economics.html" class="drawer-link">Economics</a></li>
+                    <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
+                    <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
+                    <li><a href="resources.html" class="drawer-link">Resources</a></li>
+                    <li><a href="events.html" class="drawer-link">Events</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Page Title Section -->
+        <section class="page-title-section">
+            <div class="breadcrumb">
+                <a href="index.html" class="breadcrumb-link">← Home</a>
+            </div>
+            <h1 class="page-title">Share Investing Books</h1>
+            <p class="page-subtitle">Master the fundamentals of stock market investing and portfolio management</p>
+        </section>
+
+        <!-- Books Content -->
+        <section class="books-content">
+
+            <div class="books-table-container">
+                <table class="books-table">
+                    <thead>
+                        <tr>
+                            <th>📚 Title</th>
+                            <th>✍️ Author(s)</th>
+                            <th>💰 Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/One-Up-Wall-Street/dp/0743200403" target="_blank" rel="noopener noreferrer">One Up On Wall Street</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Peter Lynch</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$19.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Best-Loser-Wins-Investing-Strategy/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Best Loser Wins</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Tom Hougaard</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$24.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Little-Book-Common-Sense-Investing/dp/0470102101" target="_blank" rel="noopener noreferrer">The Little Book of Common Sense Investing</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">John Bogle</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$21.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Quality-Growth-Investor-2024-Edition/dp/B0D4Z8Z8Z8" target="_blank" rel="noopener noreferrer">The Quality Growth Investor (2024 Edition)</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Long Equity</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$39.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Neatest-Little-Guide-Stock-Market/dp/0966962672" target="_blank" rel="noopener noreferrer">The Neatest Little Guide to Stock Market Investing</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Jason Kelly</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$16.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Stock-Market-Wizards-Interviews-Todays/dp/0887307201" target="_blank" rel="noopener noreferrer">Stock Market Wizards</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Jack Schwager</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$29.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Art-Quality-Investing/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">The Art of Quality Investing</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Luc Kroeze</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$34.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Random-Walk-Down-Wall-Street/dp/0393352242" target="_blank" rel="noopener noreferrer">A Random Walk Down Wall Street</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Burton Malkiel</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$26.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Stocks-Long-Run-Definitive-Investment/dp/0071800514" target="_blank" rel="noopener noreferrer">Stocks for the Long Run</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Jeremy Siegel</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$34.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Get-Started-Investing-Australia/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Get Started Investing</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Alec Renehan & Bryce Leske</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$24.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Girls-That-Invest-Breaking-Financial/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Girls That Invest</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Simran Kaur</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$22.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Trade-Like-Stock-Market-Wizard/dp/0071807225" target="_blank" rel="noopener noreferrer">Trade Like a Stock Market Wizard</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Mark Minervini</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$31.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Bogleheads-Guide-Investing/dp/1118921283" target="_blank" rel="noopener noreferrer">The Bogleheads' Guide to Investing</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Mel Lindauer et al.</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$27.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Think-Trade-Like-Champion/dp/0071807225" target="_blank" rel="noopener noreferrer">Think & Trade Like a Champion</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Mark Minervini</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$32.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Hedge-Fund-Market-Wizards-Top/dp/1118273044" target="_blank" rel="noopener noreferrer">Hedge Fund Market Wizards</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Jack Schwager</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$33.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Four-Pillars-Investing-Lessons-Learned/dp/0071747054" target="_blank" rel="noopener noreferrer">The Four Pillars of Investing</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">William Bernstein</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$24.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Elements-Investing-Simple-Path-Wealth/dp/1118484872" target="_blank" rel="noopener noreferrer">The Elements of Investing</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Burton Malkiel & Charles Ellis</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$23.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/New-Market-Wizards-Conversations-Todays/dp/0887308453" target="_blank" rel="noopener noreferrer">The New Market Wizards</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Jack Schwager</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$31.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Unknown-Market-Wizards-Untold-Story/dp/0857195617" target="_blank" rel="noopener noreferrer">Unknown Market Wizards</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Jack Schwager</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$35.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Most-Important-Thing-Uncommon-Sense/dp/0231153686" target="_blank" rel="noopener noreferrer">The Most Important Thing</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Howard Marks</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$28.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/What-Works-Wall-Street-Fourth/dp/0071626813" target="_blank" rel="noopener noreferrer">What Works on Wall Street (4th ed)</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">James O'Shaughnessy</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$39.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Little-Book-That-Builds-Wealth/dp/047022651X" target="_blank" rel="noopener noreferrer">The Little Book That Builds Wealth</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Pat Dorsey</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$22.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Five-Rules-Successful-Stock-Investing/dp/0470624159" target="_blank" rel="noopener noreferrer">The Five Rules for Successful Stock Investing</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Pat Dorsey</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$23.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Stock-Market-101-Beginners-Investing/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Stock Market 101</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Michele Cagan</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$19.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Trading-Zone-Master-Skills-Discipline/dp/0735201447" target="_blank" rel="noopener noreferrer">Trading in the Zone</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Mark Douglas</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$26.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Trading-Psychology-Master-Fear-Greed/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Trading Psychology</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Bennett Zamani & Matthew Pryzby</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$29.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Charting-Technical-Analysis-Fred-McAllen/dp/0134757613" target="_blank" rel="noopener noreferrer">Charting and Technical Analysis</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Fred Mcallen</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$41.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Technical-Analysis-Financial-Markets-Comprehensive/dp/0735200661" target="_blank" rel="noopener noreferrer">Technical Analysis of the Financial Markets</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">John Murphy</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$49.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Common-Sense-Mutual-Funds-Fully/dp/0470138134" target="_blank" rel="noopener noreferrer">Common Sense on Mutual Funds</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">John Bogle & David Swensen</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$25.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Beating-Street-Peter-Lynch/dp/0743200403" target="_blank" rel="noopener noreferrer">Beating the Street</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Peter Lynch</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$21.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Learn-Earn-Peter-Lynch/dp/0684811634" target="_blank" rel="noopener noreferrer">Learn to Earn</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Peter Lynch</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$18.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Common-Stocks-Uncommon-Profits/dp/0471445509" target="_blank" rel="noopener noreferrer">Common Stocks and Uncommon Profits</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Philip Fisher</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$23.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/How-Make-Money-Stocks/dp/0071614132" target="_blank" rel="noopener noreferrer">How to Make Money in Stocks</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">William O'Neil</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$29.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Investing-Growth-Terry-Smith/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Investing for Growth</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Terry Smith</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$32.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Clash-Cultures-Investment-Banking/dp/1118238251" target="_blank" rel="noopener noreferrer">The Clash of the Cultures</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">John Bogle</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$26.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/100-Baggers-Stocks-1000-Investor/dp/1982149890" target="_blank" rel="noopener noreferrer">100 Baggers</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Christopher Mayer</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$27.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Little-Book-That-Beats-Market/dp/0471730519" target="_blank" rel="noopener noreferrer">The Little Investment That Beats the Market</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Joel Greenblatt</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$24.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Reminiscences-Stock-Operator-Edwin-Lefevre/dp/0471770886" target="_blank" rel="noopener noreferrer">Reminiscences of a Stock Operator</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Edwin Lefèvre</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$19.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Little-Book-Big-Dividends/dp/0470568110" target="_blank" rel="noopener noreferrer">The Little Book of Big Dividends</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Charles Carlson</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$21.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Extraordinary-Popular-Delusions-Madness-Crowds/dp/0486284584" target="_blank" rel="noopener noreferrer">Extraordinary Popular Delusions</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Charles Mackay</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$16.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/How-Pick-Quality-Shares/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">How to Pick Quality Shares</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Phil Oakley</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$28.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/How-Day-Trade-Living/dp/1535585951" target="_blank" rel="noopener noreferrer">How to Day Trade for a Living</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Andrew Azia</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$24.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/You-Can-Stock-Market-Genius/dp/0684840073" target="_blank" rel="noopener noreferrer">You Can Be a Stock Market Genius</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Joel Greenblatt</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$26.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Man-Who-Solved-Market/dp/073521798X" target="_blank" rel="noopener noreferrer">The Man Who Solved the Market</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Gregory Zuckerman</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$29.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Piece-Action-How-Investors-Turned/dp/0470437664" target="_blank" rel="noopener noreferrer">A Piece of the Action</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Joe Nocera</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$31.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Where-Are-Customers-Yachts/dp/0471770894" target="_blank" rel="noopener noreferrer">Where Are the Customers' Yachts?</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Fred Schwed Jr</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$17.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Confidence-Game-Insiders-Tell/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Confidence Game</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Christine Richard</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$33.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/John-Bogle-Investing-Giants-Series/dp/0071637966" target="_blank" rel="noopener noreferrer">John Bogle on Investing</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">John Bogle</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$24.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Paths-Wealth-Through-Common-Stocks/dp/0470139491" target="_blank" rel="noopener noreferrer">Paths to Wealth through Common Stocks</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Philip Fisher</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$24.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/How-Make-Money-Stocks-Beginners/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">How to Make Money in Stocks (Beginner's Guide)</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Fred Green</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$22.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Bogle-Mutual-Funds-New-Perspective/dp/0071364384" target="_blank" rel="noopener noreferrer">Bogle on Mutual Funds</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">John Bogle</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$26.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Beginners-Guide-Stock-Market/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">A Beginner's Guide to the Stock Market</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Matthew Kratter</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$19.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Irrational-Exuberance-Robert-Shiller/dp/0691173125" target="_blank" rel="noopener noreferrer">Irrational Exuberance</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Robert Shiller</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$27.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Fooled-Randomness-Hidden-Markets/dp/0812975219" target="_blank" rel="noopener noreferrer">Fooled by Randomness</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Nassim Taleb</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$24.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Fooling-Some-People-All-Time/dp/0470077912" target="_blank" rel="noopener noreferrer">Fooling Some of the People All of the Time</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">David Einhorn</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$29.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Little-Book-Behavioral-Investing/dp/0470057806" target="_blank" rel="noopener noreferrer">The Little Book of Behavioral Investing</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">James Montier</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$22.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Liars-Poker-Rising-Through-Nations/dp/039333869X" target="_blank" rel="noopener noreferrer">Liar's Poker</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Michael Lewis</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$21.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Little-Book-Main-Street-Money/dp/0470045397" target="_blank" rel="noopener noreferrer">The Little Book of Main Street Money</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Jonathan Clements</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$20.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Little-Book-Bulletproof-Investing/dp/0470040476" target="_blank" rel="noopener noreferrer">The Little Book of Bulletproof Investing</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Ben Stein & Phil DeMuth</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$19.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Trading-Technical-Analysis-Masterclass/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Trading: Technical Analysis Masterclass</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Rolf Schlotmann & Moritz Czubatinski</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$49.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Great-Crash-1929-John-Galbraith/dp/0395859999" target="_blank" rel="noopener noreferrer">The Great Crash 1929</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">John Kenneth Galbraith</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$18.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/How-Value-Real-Estate-Investment/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">How to Value Real Estate Investment Trusts (REITs) in Australia</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Carlos Abad</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$29.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Stock-Investing-Beginners-Fantastic-Moats/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Stock Investing for Beginners: Fantastic Moats</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Freeman Publications</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$17.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Alchemy-Finance-Reading-Riches-Markets/dp/0471445495" target="_blank" rel="noopener noreferrer">The Alchemy of Finance</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">George Soros</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$26.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Little-Book-Investing-Like-Pros/dp/0470624159" target="_blank" rel="noopener noreferrer">The Little Book of Investing Like the Pros</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Joshua Pearl & Joshua Rosenbaum</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$23.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Ultimate-Industry-Guide-Australian-Publicly/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">The Ultimate Industry Guide for Australian Publicly-Listed Companies</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Carlos Abad</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$39.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/When-Wolves-Bite-Investors-Wall/dp/0071804234" target="_blank" rel="noopener noreferrer">When the Wolves Bite</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Scott Wapner</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$28.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Why-Are-So-Clueless-About/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Why Are We So Clueless About the Stock Market?</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Mariusz Skonieczny</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$25.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Stock-Investing-Dummies-Paul-Mladjenovic/dp/1119371821" target="_blank" rel="noopener noreferrer">Stock Investing For Dummies</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Paul Mladjenovic</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$26.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Little-Book-Safe-Money/dp/0470103154" target="_blank" rel="noopener noreferrer">The Little Book of Safe Money</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Jason Zweig</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$21.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Little-Book-Bull-Moves-Updated/dp/0470643994" target="_blank" rel="noopener noreferrer">The Little Book of Bull Moves (Updated)</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Peter Schiff</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$23.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Holy-Grail-Investing-Tony-Robbins/dp/147116461X" target="_blank" rel="noopener noreferrer">The Holy Grail of Investing</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Tony Robbins & Christopher Zook</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$31.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Big-Mistakes-Michael-Batnick/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Big Mistakes</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Michael Batnick</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$24.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/How-Value-Major-Australian-Bank/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">How to Value a Major Australian Bank</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Carlos Abad</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$27.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Fundamental-Analysis-Essentials-Brian-Hale/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Fundamental Analysis Essentials</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Brian Hale</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$32.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Success-Stock-Market-James-Emanuel/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Success in the Stock Market</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">James Emanuel</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$29.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Complete-Idiots-Guide-Stock-Investing/dp/0028642488" target="_blank" rel="noopener noreferrer">The Complete Idiot's Guide to Stock Investing</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Fisher Sarah Young & Shelly Susan</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$24.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Little-Book-Big-Profits-Small/dp/0471713061" target="_blank" rel="noopener noreferrer">The Little Book of Big Profits from Small Stocks</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Hilary Kramer</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$22.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Quick-Start-Guide-Investing/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">The Quick-Start Guide to Investing</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Glen James & Nick Bradley</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$21.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Alpha-Masters-Maneet-Ahuja/dp/1118064741" target="_blank" rel="noopener noreferrer">The Alpha Masters</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Maneet Ahuja</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$33.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Little-Book-Trading-Michael-Covel/dp/0471776022" target="_blank" rel="noopener noreferrer">The Little Book of Trading</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Michael Covel</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$23.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Biography-Bill-Ackman-Daniel-Gray/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">The Biography of Bill Ackman</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Daniel Gray</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$26.99</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="books-description">
+                <p><strong>Note:</strong> Prices are in AUD and may vary depending on the retailer and availability. Some books may be available as digital editions at lower prices.</p>
+
+                <p><strong>Disclaimer:</strong> This list is for informational purposes only and does not constitute investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            const drawer = document.getElementById('mobile-drawer');
+            const toggle = document.getElementById('mobile-toggle');
+
+            drawer.classList.toggle('open');
+            toggle.classList.toggle('open');
+        }
+
+        function closeMobileMenu() {
+            const drawer = document.getElementById('mobile-drawer');
+            const toggle = document.getElementById('mobile-toggle');
+
+            drawer.classList.remove('open');
+            toggle.classList.remove('open');
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu event listeners
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const drawerClose = document.getElementById('drawer-close');
+
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', toggleMobileMenu);
+            }
+
+            if (drawerClose) {
+                drawerClose.addEventListener('click', closeMobileMenu);
+            }
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                const drawer = document.getElementById('mobile-drawer');
+                const toggle = document.getElementById('mobile-toggle');
+
+                if (drawer.classList.contains('open') &&
+                    !drawer.contains(event.target) &&
+                    !mobileToggle.contains(event.target)) {
+                    closeMobileMenu();
+                }
+            });
+
+            // Sticky header functionality
+            const header = document.getElementById('main-header');
+            const sticky = header.offsetTop;
+
+            function handleScroll() {
+                if (window.pageYOffset > sticky) {
+                    header.classList.add('sticky-header');
+                } else {
+                    header.classList.remove('sticky-header');
+                }
+            }
+
+            window.addEventListener('scroll', handleScroll);
+        });
+    </script>
+</body>
+</html>

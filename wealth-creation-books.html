@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wealth Creation Books - Graham and Doddsville</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1e3a8a;
+            --primary-blue-light: #3b82f6;
+            --primary-blue-dark: #1e40af;
+            --secondary-gray: #f8f9fa;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-muted: #9ca3af;
+            --border-light: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--secondary-gray);
+        }
+
+        .books-page {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            position: relative;
+        }
+
+        .books-page-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-bottom: 2px solid #d4af37;
+            padding: 12px 0;
+            transition: all 0.3s ease;
+            overflow: visible;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            overflow: visible;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 40px;
+            width: auto;
+        }
+
+        .main-nav {
+            overflow: visible;
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            overflow: visible;
+        }
+
+        .main-nav li {
+            position: relative;
+            overflow: visible;
+        }
+
+        .main-nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s ease;
+            overflow: visible;
+        }
+
+        .main-nav a:hover {
+            color: var(--primary-blue);
+        }
+
+        .main-nav-desktop-only {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .main-nav-desktop-only {
+                display: none;
+            }
+        }
+
+        /* Page Title Section */
+        .page-title-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .breadcrumb {
+            margin-bottom: 16px;
+        }
+
+        .breadcrumb-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .breadcrumb-link:hover {
+            color: var(--primary-blue);
+        }
+
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 0;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .page-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin: 8px 0 0 0;
+        }
+
+        /* Books Content */
+        .books-content {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .books-header {
+            margin-bottom: 32px;
+        }
+
+        .books-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 16px 0 8px 0;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .books-header .page-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin: 0 0 24px 0;
+        }
+
+        .books-description p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .books-description h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 32px 0 16px 0;
+            letter-spacing: -0.01em;
+        }
+
+        /* Books Table */
+        .books-table-container {
+            overflow-x: auto;
+            margin: 32px 0;
+        }
+
+        .books-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .books-table th {
+            background: var(--primary-blue);
+            color: white;
+            padding: 16px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 14px;
+            border: none;
+        }
+
+        .books-table td {
+            padding: 16px;
+            border-bottom: 1px solid var(--border-light);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .books-table tr:nth-child(even) {
+            background: var(--secondary-gray);
+        }
+
+        .books-table tr:hover {
+            background: #f1f5f9;
+        }
+
+        .book-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .book-author {
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        .book-price {
+            font-weight: 600;
+            color: var(--primary-blue);
+            font-size: 15px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .books-table-container {
+                margin: 16px -16px 32px -16px;
+            }
+
+            .books-table {
+                min-width: 600px;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .books-page-content {
+                padding: 16px;
+            }
+
+            .books-header h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Mobile Menu Styles */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 30px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 2px;
+            background: #333;
+            border-radius: 1px;
+            transition: all 0.3s ease;
+            transform-origin: center;
+            display: block;
+            margin: 2px 0;
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        .mobile-only {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-only {
+                display: flex !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="books-page">
+        <!-- Header -->
+        <header class="header" id="main-header">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="G&D Logo.png" alt="Graham & Doddsville Logo" class="logo-image">
+                    </a>
+                </div>
+
+                <nav class="main-nav main-nav-desktop-only">
+                    <ul>
+                        <li><a href="index.html" class="nav-link">HOME</a></li>
+                        <li><a href="classical-readings.html" class="nav-link">CLASSICAL READINGS</a></li>
+                        <li><a href="financial-markets.html" class="nav-link">FINANCIAL MARKETS</a></li>
+                        <li><a href="economics.html" class="nav-link">ECONOMICS</a></li>
+                        <li><a href="legal-taxation.html" class="nav-link">LEGAL & TAXATION</a></li>
+                        <li><a href="professional-advisers.html" class="nav-link">PROFESSIONAL ADVISERS</a></li>
+                        <li><a href="resources.html" class="nav-link">RESOURCES</a></li>
+                        <li><a href="events.html" class="nav-link">EVENTS</a></li>
+                    </ul>
+                </nav>
+
+                <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Mobile Drawer -->
+        <div class="mobile-drawer" id="mobile-drawer">
+            <div class="drawer-header">
+                <img src="G&D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
+                <button class="drawer-close" id="drawer-close" aria-label="Close menu">×</button>
+            </div>
+            <nav class="drawer-nav">
+                <ul class="drawer-menu">
+                    <li><a href="index.html" class="drawer-link">Home</a></li>
+                    <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
+                    <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
+                    <li><a href="legal-taxation.html" class="drawer-link">Legal & Taxation</a></li>
+                    <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
+                    <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
+                    <li><a href="#" class="drawer-link">Investment Analysis</a></li>
+                    <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
+                    <li><a href="economics.html" class="drawer-link">Economics</a></li>
+                    <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
+                    <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
+                    <li><a href="resources.html" class="drawer-link">Resources</a></li>
+                    <li><a href="events.html" class="drawer-link">Events</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Page Title Section -->
+        <section class="page-title-section">
+            <div class="breadcrumb">
+                <a href="index.html" class="breadcrumb-link">← Home</a>
+            </div>
+            <h1 class="page-title">Wealth Creation Books</h1>
+            <p class="page-subtitle">Strategies and principles for building long-term financial wealth</p>
+        </section>
+
+        <!-- Books Content -->
+        <section class="books-content">
+
+            <div class="books-table-container">
+                <table class="books-table">
+                    <thead>
+                        <tr>
+                            <th>📚 Title</th>
+                            <th>✍️ Author(s)</th>
+                            <th>💰 Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Money-Game-Adam-Smith/dp/0394472226" target="_blank" rel="noopener noreferrer">The Money Game</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Adam Smith</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$24.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Strategic-Millionaire-Armando-Pantoja/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">The Strategic Millionaire</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Armando Pantoja</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$29.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Simple-Money-Rich-Life/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Simple Money, Rich Life</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Bob Lotich</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$26.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Broken-Money-Lyn-Alden/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Broken Money</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Lyn Alden</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$34.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Millionaire-Mission-Brian-Preston/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Millionaire Mission</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Brian Preston</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$27.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Youre-Already-Wealth-Heiress/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">You're Already a Wealth Heiress!</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Linda Jones</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$24.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Barefoot-Investor-Scott-Pape/dp/174379325X" target="_blank" rel="noopener noreferrer">The Barefoot Investor</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Scott Pape</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$22.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Get-Good-Money-Tiffany-Aliche/dp/0593232747" target="_blank" rel="noopener noreferrer">Get Good with Money</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Tiffany Aliche</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$28.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/7-Strategies-Wealth-Happiness/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">7 Strategies For Wealth And Happiness</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Jim John</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$25.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Happy-Pocket-Full-Money/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">A Happy Pocket Full of Money</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">David Cameron Gikandi</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$23.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Its-Not-Your-Money/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">It's Not Your Money</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Tosha Silver</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$26.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Million-Dollar-Weekend-Noah-Kagan/dp/0062566189" target="_blank" rel="noopener noreferrer">Million Dollar Weekend</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Noah Kagan</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$29.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Poverty-Riches-Wealth-Kris-Vallotton/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Poverty, Riches and Wealth</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Kris Vallotton</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$24.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/How-Money-Works-Dorling-Kindersley/dp/024118947X" target="_blank" rel="noopener noreferrer">How Money Works</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Dorling Kindersley</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$19.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Price-Money-Rob-Dix/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">The Price of Money</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Rob Dix</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$31.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/White-Coat-Investor-James-Dahle/dp/0991433108" target="_blank" rel="noopener noreferrer">The White Coat Investor</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">James Dahle</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$34.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Buy-Back-Your-Time/dp/0735210938" target="_blank" rel="noopener noreferrer">Buy Back Your Time</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Dan Martell</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$27.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Wealth-Choice-Dennis-Kimbro/dp/1578660010" target="_blank" rel="noopener noreferrer">Wealth Choice</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Dennis Kimbro</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$25.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Think-Grow-Rich-Napoleon-Hill/dp/1585424331" target="_blank" rel="noopener noreferrer">Think And Grow Rich</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Napoleon Hill</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$16.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Simple-Path-Wealth-J-L-Collins/dp/1737724103" target="_blank" rel="noopener noreferrer">The Simple Path to Wealth</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">J.L. Collins</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$24.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Millionaire-Fastlane-MJ-DeMarco/dp/0974356311" target="_blank" rel="noopener noreferrer">The Millionaire Fastlane</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">MJ DeMarco</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$29.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/You-Are-Badass-Making-Money/dp/0735223134" target="_blank" rel="noopener noreferrer">You Are a Badass at Making Money</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Jen Sincero</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$26.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Richer-Wiser-Happier-William-Green/dp/1501164855" target="_blank" rel="noopener noreferrer">Richer, Wiser, Happier</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">William Green</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$32.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Tax-Free-Wealth-Tom-Wheelwright/dp/1944648636" target="_blank" rel="noopener noreferrer">Tax-Free Wealth</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Tom Wheelwright</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$28.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Rich-Fck-Amanda-Frances/dp/0062953849" target="_blank" rel="noopener noreferrer">Rich As Fck*</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Amanda Frances</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$27.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Abundance-Now-Lisa-Nichols/dp/0063148053" target="_blank" rel="noopener noreferrer">Abundance Now</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Lisa Nichols & Janet Switzer</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$29.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Magic-Manifesting-Money-Ryuu-Shinohara/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">The Magic of Manifesting Money</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Ryuu Shinohara</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$24.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Secrets-Six-Figure-Women-Barbara-Stanny/dp/0978994012" target="_blank" rel="noopener noreferrer">Secrets of Six-Figure Women</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Barbara Stanny</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$26.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Why-Rich-Are-Getting-Richer/dp/1937832017" target="_blank" rel="noopener noreferrer">Why the Rich Are Getting Richer</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Robert Kiyosaki</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$19.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Rich-Dads-Increase-Your-Financial/dp/044658506X" target="_blank" rel="noopener noreferrer">Rich Dad's Increase Your Financial IQ</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Robert Kiyosaki</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$21.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Money-Magnet-Steve-McKnight/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Money Magnet</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Steve McKnight</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$28.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Smart-Women-Finish-Rich/dp/0761140187" target="_blank" rel="noopener noreferrer">Smart Women Finish Rich</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">David Bach</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$24.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Your-Next-Five-Moves/dp/1982154816" target="_blank" rel="noopener noreferrer">Your Next Five Moves</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Patrick Bet-David</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$31.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Profit-First-Mike-Michalowicz/dp/0735214143" target="_blank" rel="noopener noreferrer">Profit First</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Mike Michalowicz</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$27.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Investing-Kids-Dylin-Redling/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Investing for Kids</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Dylin Redling & Allison Tom</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$22.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Compound-Effect-Darren-Hardy/dp/159315724X" target="_blank" rel="noopener noreferrer">The Compound Effect</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Darren Hardy</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$25.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Total-Money-Makeover-Dave-Ramsey/dp/0785288111" target="_blank" rel="noopener noreferrer">The Total Money Makeover</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Dave Ramsey</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$23.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Dave-Ramseys-Complete-Guide-Money/dp/076421029X" target="_blank" rel="noopener noreferrer">Dave Ramsey's Complete Guide to Money</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Dave Ramsey</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$29.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Smart-Money-Smart-Kids/dp/1414394692" target="_blank" rel="noopener noreferrer">Smart Money Smart Kids</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Dave Ramsey & Rachel Cruze</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$24.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Millionaire-Mind-Thomas-Stanley/dp/0740718584" target="_blank" rel="noopener noreferrer">The Millionaire Mind</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Thomas Stanley</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$26.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Rich-Dad-Poor-Dad/dp/1612680194" target="_blank" rel="noopener noreferrer">Rich Dad Poor Dad</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Robert Kiyosaki</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$16.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/I-Will-Teach-You-Rich/dp/0761147482" target="_blank" rel="noopener noreferrer">I Will Teach You to Be Rich</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Ramit Sethi</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$24.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Principles-Life-Work-Ray-Dalio/dp/1501124021" target="_blank" rel="noopener noreferrer">Principles: Life and Work</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Ray Dalio</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$39.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Psychology-Money-Morgan-Housel/dp/0857197681" target="_blank" rel="noopener noreferrer">The Psychology of Money</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Morgan Housel</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$22.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Rich-Dads-Guide-Investing/dp/0446677469" target="_blank" rel="noopener noreferrer">Rich Dad's Guide to Investing</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Robert Kiyosaki</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$24.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Rich-Dads-CASHFLOW-Quadrant/dp/1612680054" target="_blank" rel="noopener noreferrer">Rich Dad's CASHFLOW Quadrant</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Robert Kiyosaki</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$19.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/7-Steps-Wealth-John-Fitzgerald/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">7 Steps to Wealth</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">John Fitzgerald</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$26.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Rich-AF-Vivian-Tu/dp/0062957682" target="_blank" rel="noopener noreferrer">Rich AF</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Vivian Tu</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$28.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Rich-Dads-Who-Took-Money/dp/0446695769" target="_blank" rel="noopener noreferrer">Rich Dad's Who Took My Money?</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Robert Kiyosaki</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$21.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Secrets-Millionaire-Mind-T-Harv/dp/0060763280" target="_blank" rel="noopener noreferrer">Secrets Of The Millionaire Mind</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">T. Harv Eker</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$23.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Retire-Young-Retire-Rich/dp/0446695211" target="_blank" rel="noopener noreferrer">Retire Young Retire Rich</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Robert Kiyosaki</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$22.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Wealth-Mindset-Neville-Goddard/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">The Wealth Mindset</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Neville Goddard & Tim Grimes</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$27.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/One-Week-Budget-Tiffany-Aliche/dp/0062561892" target="_blank" rel="noopener noreferrer">The One Week Budget</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Tiffany Aliche</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$25.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/You-Need-Budget-Jesse-Mecham/dp/0062567599" target="_blank" rel="noopener noreferrer">You Need a Budget</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Jesse Mecham</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$24.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Baby-Steps-Millionaires-Dave-Ramsey/dp/1492666876" target="_blank" rel="noopener noreferrer">Baby Steps Millionaires</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Dave Ramsey</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$26.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Financial-Peace-Planner-Dave-Ramsey/dp/1937077209" target="_blank" rel="noopener noreferrer">The Financial Peace Planner</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Dave Ramsey</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$31.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/How-Get-Rich-Felix-Dennis/dp/1591842719" target="_blank" rel="noopener noreferrer">How to Get Rich</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Felix Dennis</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$29.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Science-Getting-Rich-Wallace-Wattles/dp/1603869028" target="_blank" rel="noopener noreferrer">The Science of Getting Rich</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Wallace Wattles</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$14.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Millionaire-Next-Door-Thomas-Stanley/dp/1589795474" target="_blank" rel="noopener noreferrer">Millionaire Next Door</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Thomas Stanley & William Danko</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$19.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Richest-Man-Babylon-George-Clason/dp/0451205367" target="_blank" rel="noopener noreferrer">The Richest Man in Babylon</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">George S. Clason</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$12.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Think-Grow-Rich-Napoleon-Hill/dp/1585424331" target="_blank" rel="noopener noreferrer">Think and Grow Rich (Original)</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Napoleon Hill</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$16.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/How-Become-Sustainably-Rich/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">How to Become Sustainably Rich</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Clay Clark</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$32.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Your-Money-Your-Life/dp/0143115766" target="_blank" rel="noopener noreferrer">Your Money or Your Life</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Vicki Robin</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$21.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Same-Ever-Morgan-Housel/dp/0593332704" target="_blank" rel="noopener noreferrer">Same as Ever</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Morgan Housel</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$28.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/One-Thousand-Ways-Make-1000/dp/1603869028" target="_blank" rel="noopener noreferrer">One Thousand Ways to Make $1000</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">F.C. Minaker</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$18.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/4-Hour-Work-Week-Timothy-Ferriss/dp/0091929113" target="_blank" rel="noopener noreferrer">The 4-Hour Work Week</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Timothy Ferriss</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$26.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Supermoney-Adam-Smith/dp/0471612742" target="_blank" rel="noopener noreferrer">Supermoney</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Adam Smith</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$27.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/How-Get-Rich-Before-30/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">How To Get Rich Before 30</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">A.B. Stanley</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$24.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/How-Become-Rich-Successful/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">How to Become Rich and Successful</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Ernesto Martinez</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$29.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Jim-Cramers-Get-Rich-Carefully/dp/0671047970" target="_blank" rel="noopener noreferrer">Jim Cramer's Get Rich Carefully</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">James Cramer</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$31.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Miracle-Morning-Hal-Elrod/dp/0979019710" target="_blank" rel="noopener noreferrer">The Miracle Morning</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Hal Elrod</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$22.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Die-Zero-Bill-Perkins/dp/0062888363" target="_blank" rel="noopener noreferrer">Die With Zero</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Bill Perkins</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$26.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/How-Be-Rich-J-Paul-Getty/dp/0465028785" target="_blank" rel="noopener noreferrer">How To Be Rich</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">J. Paul Getty</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$24.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Take-Street-Arthur-Levitt/dp/0307472916" target="_blank" rel="noopener noreferrer">Take on the Street</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Arthur Levitt</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$28.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Rich-Dad-Poor-Dad-Teens/dp/0446585574" target="_blank" rel="noopener noreferrer">Rich Dad Poor Dad for Teens</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Robert Kiyosaki</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$18.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Blueprint-Wealth-Gary-Stone/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Blueprint to Wealth</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Gary Stone</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$31.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Missing-Billionaires-Victor-Haghani/dp/1119748088" target="_blank" rel="noopener noreferrer">The Missing Billionaires</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Victor Haghani & James White</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$34.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Enough-John-Bogle/dp/1119026394" target="_blank" rel="noopener noreferrer">Enough</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">John Bogle</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$25.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/9-Step-Path-Financial-Independence/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">A 9-Step Path To Financial Independence</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Joe Dominguez, Vicki Robin & Monica Wood</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$27.99</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="books-description">
+                <p><strong>Note:</strong> Prices are in AUD and may vary depending on the retailer and availability. Some books may be available as digital editions at lower prices.</p>
+
+                <p><strong>Disclaimer:</strong> This list is for informational purposes only and does not constitute investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            const drawer = document.getElementById('mobile-drawer');
+            const toggle = document.getElementById('mobile-toggle');
+
+            drawer.classList.toggle('open');
+            toggle.classList.toggle('active');
+        }
+
+        function closeMobileMenu() {
+            const drawer = document.getElementById('mobile-drawer');
+            const toggle = document.getElementById('mobile-toggle');
+
+            drawer.classList.remove('open');
+            toggle.classList.remove('active');
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu event listeners
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const drawerClose = document.getElementById('drawer-close');
+
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', toggleMobileMenu);
+            }
+
+            if (drawerClose) {
+                drawerClose.addEventListener('click', closeMobileMenu);
+            }
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                const drawer = document.getElementById('mobile-drawer');
+                const toggle = document.getElementById('mobile-toggle');
+
+                if (drawer.classList.contains('open') &&
+                    !drawer.contains(event.target) &&
+                    !mobileToggle.contains(event.target)) {
+                    closeMobileMenu();
+                }
+            });
+
+            // Sticky header functionality
+            const header = document.getElementById('main-header');
+            const sticky = header.offsetTop;
+
+            function handleScroll() {
+                if (window.pageYOffset > sticky) {
+                    header.classList.add('sticky-header');
+                } else {
+                    header.classList.remove('sticky-header');
+                }
+            }
+
+            window.addEventListener('scroll', handleScroll);
+        });
+    </script>
+</body>
+</html>

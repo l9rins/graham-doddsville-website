@@ -222,14 +222,12 @@
     <!-- Mobile Navigation Drawer -->
     <div class="mobile-drawer" id="mobile-drawer">
         <div class="drawer-header">
-            <img src="G&D Logo.png" alt="Graham and Doddsville" class="drawer-logo">
+            <img src="G&D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
             <button class="drawer-close" id="drawer-close" aria-label="Close menu">×</button>
         </div>
         <nav class="drawer-nav">
             <ul class="drawer-menu">
-                <li><a href="index.html" class="drawer-link">Home</a></li>
-                <li><a href="#" onclick="showAboutPage()" class="drawer-link">About Us</a></li>
-                <li><a href="#" onclick="showAdvertisePage()" class="drawer-link">Advertise With Us</a></li>
+                <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
                 <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
                 <li><a href="legal-taxation.html" class="drawer-link">Legal & Taxation</a></li>
                 <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
@@ -240,7 +238,7 @@
                 <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
                 <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
                 <li><a href="resources.html" class="drawer-link">Resources</a></li>
-                <li><a href="events.html" class="drawer-link">Events & Seminars</a></li>
+                <li><a href="events.html" class="drawer-link">Events</a></li>
             </ul>
         </nav>
     </div>
@@ -1727,13 +1725,13 @@
                     <div class="news-items" id="top-around-world-news">
                         <!-- Around the World news will be loaded here -->
                         <div class="news-item" style="background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 12px 16px; margin-bottom: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.2s ease;">
-                            <a href="#" style="color: #333; text-decoration: none; font-size: 10px; line-height: 1.4; display: block;">We expect year-ended growth in the US economy will slow to around a 1¾% pace by the end of 2024 and remain around that pace during 2025. The more moderate growth environment should allow demand and ... (USA) (7/26/2024)</a>
+                            <a href="#" style="color: #333; text-decoration: none; font-size: 10px; line-height: 1.4; display: block;">The Big TakeBlackstone's Data-Center Ambit... (Bloomberg)</a>
                         </div>
                         <div class="news-item" style="background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 12px 16px; margin-bottom: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.2s ease;">
-                            <a href="#" style="color: #333; text-decoration: none; font-size: 10px; line-height: 1.4; display: block;">The global economy always faces risks, but for the moment, the US is doing well, and prospects of another Trump presidency do not seem to be worrying the market at all. ... (USA) (7/26/2024)</a>
+                            <a href="#" style="color: #333; text-decoration: none; font-size: 10px; line-height: 1.4; display: block;">ArcelorMittal backtracks on green steel pl... (Euroweekly)</a>
                         </div>
                         <div class="news-item" style="background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 12px 16px; margin-bottom: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.2s ease;">
-                            <a href="#" style="color: #333; text-decoration: none; font-size: 10px; line-height: 1.4; display: block;">The Federal Reserve's (Fed's) aggressive post-pandemic rate-hiking and higher-for-longer rate strategy has helped underpin the U.S. dollar. This has significant consequences for global economies, curr ... (USA) (7/26/2024)</a>
+                            <a href="#" style="color: #333; text-decoration: none; font-size: 10px; line-height: 1.4; display: block;">As China's trade slows, Trump's tariffs lo... (SCMP)</a>
                         </div>
                     </div>
                 </div>
@@ -1824,6 +1822,27 @@
                         <div></div>
                     </div>
                     <div class="mobile-news-loading-text">Loading Industry news...</div>
+                </div>
+                <!-- News items will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Commodities Sub-Category -->
+        <div class="sub-category">
+            <div class="sub-category-header">
+                <h3 class="sub-category-title">Commodities</h3>
+                <a href="#" class="see-more-link">See more</a>
+            </div>
+            <div class="news-list-mobile" id="commodities-news-mobile">
+                <!-- Loading Animation -->
+                <div class="mobile-news-loading" id="commodities-loading">
+                    <div class="mobile-news-loading-dots">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="mobile-news-loading-text">Loading Commodities news...</div>
                 </div>
                 <!-- News items will be loaded here -->
             </div>
@@ -1970,7 +1989,65 @@
         <!-- MARKET QUOTES Section -->
         <section class="newspaper-section" id="mobile-market-quotes">
             <h2 class="section-header">MARKET QUOTES</h2>
-            <!-- Market quotes content will go here -->
+            
+            <!-- Market Quotes Container -->
+            <div class="market-quotes-container">
+                <!-- Quote 1 -->
+                <div class="market-quote-item" onclick="showFullQuote(1)">
+                    <div class="quote-content">
+                        <p class="quote-text">"We expect year-ended growth in the US economy will slow to around a 1¾% pace by the end of 2024 and remain around that pace during 2025. The more moderate growth environment should allow demand and ..."</p>
+                        <div class="quote-meta">
+                            <span class="quote-author">John Doe</span>
+                            <span class="quote-position">Chief Economist</span>
+                            <span class="quote-company">Sample Investment Bank</span>
+                            <span class="quote-country">(USA)</span>
+                            <span class="quote-date">(7/26/2024)</span>
+                        </div>
+                        <div class="quote-source">
+                            <a href="#" onclick="event.stopPropagation(); openSourceLink('https://example.com/source1')" class="source-link">View Source Document</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quote 2 -->
+                <div class="market-quote-item" onclick="showFullQuote(2)">
+                    <div class="quote-content">
+                        <p class="quote-text">"The global economy always faces risks, but for the moment, the US is doing well, and prospects of another Trump presidency do not seem to be worrying the market at all. ..."</p>
+                        <div class="quote-meta">
+                            <span class="quote-author">Jane Smith</span>
+                            <span class="quote-position">Market Analyst</span>
+                            <span class="quote-company">Global Markets Inc</span>
+                            <span class="quote-country">(USA)</span>
+                            <span class="quote-date">(7/26/2024)</span>
+                        </div>
+                        <div class="quote-source">
+                            <a href="#" onclick="event.stopPropagation(); openSourceLink('https://example.com/source2')" class="source-link">View Source Document</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quote 3 -->
+                <div class="market-quote-item" onclick="showFullQuote(3)">
+                    <div class="quote-content">
+                        <p class="quote-text">"The Federal Reserve's (Fed's) aggressive post-pandemic rate-hiking and higher-for-longer rate strategy has helped underpin the U.S. dollar. This has significant consequences for global economies, curr ..."</p>
+                        <div class="quote-meta">
+                            <span class="quote-author">Michael Johnson</span>
+                            <span class="quote-position">Senior Economist</span>
+                            <span class="quote-company">Federal Reserve Watch</span>
+                            <span class="quote-country">(USA)</span>
+                            <span class="quote-date">(7/26/2024)</span>
+                        </div>
+                        <div class="quote-source">
+                            <a href="#" onclick="event.stopPropagation(); openSourceLink('https://example.com/source3')" class="source-link">View Source Document</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- See More Button -->
+                <div class="see-more-quotes">
+                    <button class="see-more-btn" onclick="showAllQuotes()">See more</button>
+                </div>
+            </div>
         </section>
 
         <!-- FEATURE ARTICLES Section with Slider -->
@@ -2165,7 +2242,7 @@
 
             <!-- Book Content by Category -->
             <div class="book-content">
-                <div class="book-category" data-category="buffett-munger">
+                <div class="book-category active" data-category="buffett-munger">
                     <div class="books-slider-container">
                         <div class="books-slider" id="buffett-books-slider">
                             <div class="book-links-horizontal">
@@ -2177,106 +2254,40 @@
                                 <a href="https://www.amazon.com/Permanent-Value-Story-Warren-Buffett/dp/0966446100" target="_blank">Of Permanent Value</a> 
                                 <a href="https://www.amazon.com/Warren-Buffett-Way-Investment-Strategies/dp/1118503252" target="_blank">The Warren Buffett Way</a>
                             </div>
-                        </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
-                            </div>
-                            
+                            <div class="buffett-see-more-container">
+                                <a href="warren-buffett-books.html" class="buffett-see-more-link">See more</a>
                             </div>
                         </div>
+                            
+                            </div>
+                            
+                            </div>
+                            
+                            </div>
+                            
+                            </div>
+                            
+                            </div>
+                            
+                            </div>
+                            
+                            </div>
+                            
+                            </div>
+                            
+                            </div>
+                            
+                            </div>
+                            
+                            </div>
+                            
+                            </div>
+                            
+                            </div>
+                            
+                            </div>
+                            
+                            </div>
                     </div>
                 </div>
 
@@ -2290,6 +2301,9 @@
                                 <a href="https://www.amazon.com/Intelligent-Investor-Definitive-Investing-Essentials/dp/0060555661" target="_blank">The Intelligent Investor (3rd ed)</a> | 
                                 <a href="https://www.amazon.com/Modern-Value-Investing-Twenty-Five-Strategies/dp/1119606469" target="_blank">Modern Value Investing</a> | 
                                 <a href="https://www.amazon.com/Security-Analysis-Foreword-Buffett-Editions/dp/0071592539" target="_blank">Security Analysis (7th ed)</a>
+                            </div>
+                            <div class="value-investing-see-more-container">
+                                <a href="value-investing-books.html" class="value-investing-see-more-link">See more</a>
                             </div>
                         </div>
                             
@@ -2457,6 +2471,9 @@
                                 <a href="https://www.amazon.com/One-Up-Wall-Street-Already/dp/0743200403" target="_blank">One Up On Wall Street: How To Use What You Already Know To Make Money In The Market</a> | 
                                 <a href="https://www.amazon.com/Common-Sense-Mutual-Funds-Anniversary/dp/0471322075" target="_blank">Common Sense on Mutual Funds</a>
                             </div>
+                            <div class="share-investing-see-more-container">
+                                <a href="share-investing-books.html" class="share-investing-see-more-link">See more</a>
+                            </div>
                         </div>
                         
                         </div>
@@ -2623,7 +2640,7 @@
                     </div>
                 </div>
 
-                <div class="book-category active" data-category="wealth-creation">
+                <div class="book-category" data-category="wealth-creation">
                     <div class="books-slider-container">
                         <div class="books-slider" id="wealth-creation-books-slider">
                             <div class="book-links-horizontal">
@@ -2633,7 +2650,7 @@
                                 <a href="https://www.amazon.com/Science-Getting-Rich-Wallace-Wattles/dp/1604599312" target="_blank">The Science of Getting Rich</a>
                             </div>
                             <div class="wealth-see-more-container">
-                                <a href="wealth-creation.html" class="wealth-see-more-link">See more</a>
+                                <a href="wealth-creation-books.html" class="wealth-see-more-link">See more</a>
                             </div>
                         </div>
                     </div>
@@ -2777,6 +2794,9 @@
                                 <a href="https://www.amazon.com/Bemused-Investors-Guide-Company-Accounts/dp/047084469X" target="_blank">Bemused Investor's Guide to Company Accounts</a> | 
                                 <a href="https://www.amazon.com/Balance-Sheet-Basics-Financial-Management/dp/0814408127" target="_blank">Balance Sheet Basics: Financial Management for Nonfinancial Managers</a>
                             </div>
+                            <div class="financial-analysis-see-more-container">
+                                <a href="financial-analysis-books.html" class="financial-analysis-see-more-link">See more</a>
+                            </div>
                         </div>
                             
                             </div>
@@ -2799,6 +2819,9 @@
                                 <a href="https://www.amazon.com/Instant-Cashflow-Brad-Sugars/dp/0731400049" target="_blank">Instant Cashflow</a> | 
                                 <a href="https://www.amazon.com/Copy-Book-Advertising-Writers-Advertising/dp/0500015154" target="_blank">The Copy Book: How Some of the Best Advertising Writers in the World Write Their Advertising</a> | 
                                 <a href="https://www.amazon.com/Secrets-Successful-Selling-Habits/dp/0471447378" target="_blank">Secrets of Successful Selling Habits</a>
+                            </div>
+                            <div class="sales-marketing-see-more-container">
+                                <a href="sales-marketing-books.html" class="sales-marketing-see-more-link">See more</a>
                             </div>
                         </div>
                             
@@ -2927,6 +2950,9 @@
                                 <a href="https://www.amazon.com/Power-Positive-Thinking-Norman-Vincent/dp/0743250547" target="_blank">The Power of Positive Thinking</a> | 
                                 <a href="https://www.amazon.com/Awaken-Giant-Within-Immediate-Emotional/dp/0671791540" target="_blank">Awaken The Giant Within</a> | 
                                 <a href="https://www.amazon.com/Habits-Highly-Effective-People-Powerful/dp/1982137274" target="_blank">The 7 Habits of Highly Effective People</a>
+                            </div>
+                            <div class="self-improvement-see-more-container">
+                                <a href="self-improvement-books.html" class="self-improvement-see-more-link">See more</a>
                             </div>
                         </div>
                             
@@ -3107,6 +3133,9 @@
                                 <a href="https://www.amazon.com/Personal-MBA-World-Class-Business-Education/dp/1591845572" target="_blank">The Personal MBA: A World-Class Business Education in a Single Volume</a> | 
                                 <a href="https://www.amazon.com/How-Build-Billion-Dollar-Business-Purpose/dp/1119906204" target="_blank">How to Build a Billion-Dollar Business: On Purpose. For Profit. With Passion.</a>
                             </div>
+                            <div class="business-management-see-more-container">
+                                <a href="business-management-books.html" class="business-management-see-more-link">See more</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -3120,15 +3149,9 @@
                                 <a href="https://www.amazon.com/Short-History-Nearly-Everything/dp/076790818X" target="_blank">A Short History of Nearly Everything</a> | 
                                 <a href="https://www.amazon.com/Black-Swan-Impact-Highly-Improbable/dp/081297381X" target="_blank">The Black Swan: The Impact Of The Highly Improbable</a>
                             </div>
-                        </div>
-                    </div>
-                        
-                        </div>
-                        
-                        </div>
-                        
-                        </div>
-                        
+                            <div class="miscellaneous-see-more-container">
+                                <a href="miscellaneous-books.html" class="miscellaneous-see-more-link">See more</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -6741,17 +6764,60 @@
         function showFallbackMobileNews() {
             // Static fallback news for when API is not available
             const fallbackNews = [
+                // Companies (5 items)
                 { title: "Federal Reserve signals potential rate cuts ahead", source: "Reuters", category: "companies" },
-                { title: "ASX 200 rises as investors digest RBA rate decision", source: "AFR", category: "markets" },
-                { title: "Mining sector leads ASX gains on commodity price recovery", source: "The Australian", category: "economy" },
-                { title: "Tech stocks rally on AI investment optimism", source: "SMH", category: "industry" },
                 { title: "Banking sector faces headwinds from rising bad debts", source: "AFR", category: "companies" },
+                { title: "Major bank announces record profit amid interest rate hikes", source: "SMH", category: "companies" },
+                { title: "Tech startup secures $50M Series B funding round", source: "AFR", category: "companies" },
+                { title: "Retail giant reports strong Q4 earnings despite inflation", source: "Bloomberg", category: "companies" },
+                
+                // Markets (5 items)
+                { title: "ASX 200 rises as investors digest RBA rate decision", source: "AFR", category: "markets" },
                 { title: "Superannuation returns show mixed results", source: "AFR", category: "markets" },
+                { title: "Global markets react to US jobs data surprise", source: "Reuters", category: "markets" },
+                { title: "Currency markets volatile ahead of central bank meetings", source: "Bloomberg", category: "markets" },
+                { title: "Bond yields climb on hawkish Fed commentary", source: "WSJ", category: "markets" },
+                
+                // Economy (5 items)
+                { title: "Mining sector leads ASX gains on commodity price recovery", source: "The Australian", category: "economy" },
                 { title: "Property market shows signs of stabilization", source: "The Australian", category: "economy" },
-                { title: "ECB maintains dovish stance amid economic uncertainty", source: "Bloomberg", category: "industry" }
+                { title: "Inflation data comes in hotter than expected", source: "SMH", category: "economy" },
+                { title: "GDP growth revised upward for Q3", source: "AFR", category: "economy" },
+                { title: "Trade deficit narrows as exports strengthen", source: "Reuters", category: "economy" },
+                
+                // Industry (5 items)
+                { title: "Tech stocks rally on AI investment optimism", source: "SMH", category: "industry" },
+                { title: "ECB maintains dovish stance amid economic uncertainty", source: "Bloomberg", category: "industry" },
+                { title: "Renewable energy sector attracts record investment", source: "AFR", category: "industry" },
+                { title: "Manufacturing PMI signals sector recovery", source: "The Australian", category: "industry" },
+                { title: "Healthcare stocks outperform on M&A activity", source: "Bloomberg", category: "industry" },
+                
+                // Commodities (5 items)
+                { title: "Oil prices surge on Middle East tensions", source: "Reuters", category: "Commodities" },
+                { title: "Gold hits new highs as safe-haven demand rises", source: "Bloomberg", category: "Commodities" },
+                { title: "Iron ore prices supported by Chinese demand", source: "AFR", category: "Commodities" },
+                { title: "Agricultural commodities volatile due to weather patterns", source: "SMH", category: "Commodities" },
+                { title: "Copper demand strong from electric vehicle production", source: "Reuters", category: "Commodities" }
             ];
             
             updateMobileNewsDisplay(fallbackNews);
+        }
+        
+        function abbreviateSource(source) {
+            const abbreviations = {
+                'Australian Financial Review': 'AFR',
+                'Sydney Morning Herald': 'SMH',
+                'The Australian': 'AUS',
+                'ABC News': 'ABC',
+                'Reuters': 'REU',
+                'Bloomberg': 'BLM',
+                'Financial Review': 'AFR',
+                'Herald Sun': 'HS',
+                'News Corp': 'NC',
+                'Sky News': 'SKY',
+                'Wall Street Journal': 'WSJ'
+            };
+            return abbreviations[source] || source;
         }
         
         function updateMobileNewsDisplay(articles) {
@@ -6765,6 +6831,7 @@
                 'markets-news-mobile': ['Markets', 'Investment', 'General'],
                 'economy-news-mobile': ['Economy', 'Monetary Policy', 'General'],
                 'industry-news-mobile': ['Industry', 'Resources', 'Energy', 'Technology'],
+                'commodities-news-mobile': ['Commodities', 'Resources', 'Energy'],
                 'regulatory-news-mobile': ['Regulatory', 'Banking', 'Monetary Policy', 'General'],
                 'guru-watch-news-mobile': ['Investment', 'Companies', 'Markets']
             };
@@ -6786,7 +6853,7 @@
                         targetCategories.some(cat => 
                             article.category && article.category.toLowerCase().includes(cat.toLowerCase())
                         )
-                    ).slice(0, 4); // Show top 4 articles per category
+                    ).slice(0, 5); // Show top 5 articles per category
                     
                     console.log(`Populating ${sectionId} with ${categoryNews.length} articles`);
                     
@@ -6799,8 +6866,8 @@
                                     <div class="news-content">
                                         <h3 class="news-headline">
                                             <a href="${article.url || '#'}" target="_blank" rel="noopener noreferrer">${article.title}</a>
+                                            <span class="news-source">(${abbreviateSource(article.source)})</span>
                                         </h3>
-                                        <span class="news-source">(${article.source})</span>
                                     </div>
                                 </div>
                             `;
@@ -6819,8 +6886,8 @@
                                 <div class="news-content">
                                     <h3 class="news-headline">
                                         <a href="${article.url || '#'}" target="_blank" rel="noopener noreferrer">${article.title}</a>
+                                        <span class="news-source">(${abbreviateSource(article.source)})</span>
                                     </h3>
-                                    <span class="news-source">(${article.source})</span>
                                 </div>
                             </div>
                         `).join('');
@@ -9716,6 +9783,7 @@ document.addEventListener('DOMContentLoaded', function () {
         items.forEach(it => it.classList.remove('visible'));
         items.slice(0, VISIBLE_BATCH).forEach(it => it.classList.add('visible'));
         slider.dataset.shown = Math.min(items.length, VISIBLE_BATCH);
+        slider.dataset.expanded = 'false'; // Initialize as collapsed
         updateBuffettSeeMoreState(sliderId);
     }
 
@@ -9726,14 +9794,28 @@ document.addEventListener('DOMContentLoaded', function () {
         const items = slider.querySelectorAll('.buffett-item-mobile');
         const btn = document.querySelector('.buffett-see-more-link[data-list="' + sliderId + '"]');
         if (!btn) return;
-        if (shown >= items.length) {
-            btn.classList.add('disabled');
-            btn.setAttribute('aria-disabled', 'true');
-            btn.style.pointerEvents = 'none';
-        } else {
+
+        const isExpanded = slider.dataset.expanded === 'true';
+        const totalItems = items.length;
+        const initialBatch = 9; // VISIBLE_BATCH
+
+        if (isExpanded) {
+            // Currently expanded - show "See less" to collapse back
+            btn.textContent = 'See less';
             btn.classList.remove('disabled');
             btn.removeAttribute('aria-disabled');
             btn.style.pointerEvents = '';
+        } else if (totalItems > initialBatch) {
+            // Currently collapsed and has more items - show "See more" to expand
+            btn.textContent = 'See more';
+            btn.classList.remove('disabled');
+            btn.removeAttribute('aria-disabled');
+            btn.style.pointerEvents = '';
+        } else {
+            // No more items to show (all fit in initial batch)
+            btn.classList.add('disabled');
+            btn.setAttribute('aria-disabled', 'true');
+            btn.style.pointerEvents = 'none';
         }
     }
 
@@ -9744,6 +9826,23 @@ document.addEventListener('DOMContentLoaded', function () {
         const items = Array.from(slider.querySelectorAll('.buffett-item-mobile'));
         items.forEach(it => it.classList.add('visible'));
         slider.dataset.shown = items.length;
+        slider.dataset.expanded = 'true';
+        updateBuffettSeeMoreState(sliderId);
+    }
+
+    // Hide items back to initial batch (for See less functionality)
+    function hideItems(sliderId) {
+        const slider = document.getElementById(sliderId);
+        if (!slider) return;
+        const items = Array.from(slider.querySelectorAll('.buffett-item-mobile'));
+        // Hide all items beyond the initial batch
+        items.forEach((item, index) => {
+            if (index >= VISIBLE_BATCH) {
+                item.classList.remove('visible');
+            }
+        });
+        slider.dataset.shown = VISIBLE_BATCH;
+        slider.dataset.expanded = 'false';
         updateBuffettSeeMoreState(sliderId);
     }
 
@@ -9763,10 +9862,22 @@ document.addEventListener('DOMContentLoaded', function () {
     // Wire per-category See more links
     document.querySelectorAll('.buffett-see-more-link').forEach(link => {
         link.addEventListener('click', function (e) {
-            e.preventDefault();
             const list = this.dataset.list;
             if (!list) return;
-            revealAll(list);
+            
+            e.preventDefault();
+            const slider = document.getElementById(list);
+            if (!slider) return;
+
+            const isExpanded = slider.dataset.expanded === 'true';
+
+            if (isExpanded) {
+                // Currently expanded, hide items back to initial batch
+                hideItems(list);
+            } else {
+                // Currently collapsed, reveal all items
+                revealAll(list);
+            }
         });
     });
 
@@ -9793,5 +9904,181 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+// Market Quotes Functionality
+function showFullQuote(quoteId) {
+    // Sample full quotes - in a real implementation, this would fetch from a database
+    const fullQuotes = {
+        1: {
+            title: "US Economic Growth Outlook",
+            content: "We expect year-ended growth in the US economy will slow to around a 1¾% pace by the end of 2024 and remain around that pace during 2025. The more moderate growth environment should allow demand and supply to come back into better balance, supporting a more sustainable economic expansion. While there are always risks to our outlook, we believe the US economy is well-positioned for continued growth.",
+            author: "John Doe",
+            position: "Chief Economist",
+            company: "Sample Investment Bank",
+            date: "7/26/2024",
+            country: "USA"
+        },
+        2: {
+            title: "Global Economic Risks Assessment",
+            content: "The global economy always faces risks, but for the moment, the US is doing well, and prospects of another Trump presidency do not seem to be worrying the market at all. Investors appear confident that economic policies will remain supportive of growth regardless of political changes. This stability is providing a solid foundation for continued market performance.",
+            author: "Jane Smith",
+            position: "Market Analyst",
+            company: "Global Markets Inc",
+            date: "7/26/2024",
+            country: "USA"
+        },
+        3: {
+            title: "Federal Reserve Policy Impact",
+            content: "The Federal Reserve's (Fed's) aggressive post-pandemic rate-hiking and higher-for-longer rate strategy has helped underpin the U.S. dollar. This has significant consequences for global economies, currencies, and trade flows. Emerging markets in particular may face challenges as the strong dollar makes their exports more expensive and increases the cost of dollar-denominated debt.",
+            author: "Michael Johnson",
+            position: "Senior Economist",
+            company: "Federal Reserve Watch",
+            date: "7/26/2024",
+            country: "USA"
+        }
+    };
+
+    const quote = fullQuotes[quoteId];
+    if (!quote) return;
+
+    // Create modal for full quote
+    const modal = document.createElement('div');
+    modal.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.8);
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    `;
+
+    modal.innerHTML = `
+        <div style="
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            max-width: 600px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        ">
+            <button onclick="this.closest('div').parentElement.remove()" style="
+                position: absolute;
+                top: 12px;
+                right: 12px;
+                background: none;
+                border: none;
+                font-size: 24px;
+                cursor: pointer;
+                color: #666;
+            ">×</button>
+            
+            <h3 style="margin-top: 0; color: #1e3a8a; font-family: Georgia, serif;">${quote.title}</h3>
+            
+            <div style="margin: 16px 0; padding: 16px; background: #f8f9fa; border-left: 4px solid #1e3a8a; font-style: italic; font-family: Georgia, serif;">
+                "${quote.content}"
+            </div>
+            
+            <div style="font-size: 0.9rem; color: #666; border-top: 1px solid #eee; padding-top: 12px;">
+                <strong>${quote.author}</strong><br>
+                ${quote.position}<br>
+                ${quote.company}<br>
+                ${quote.country} - ${quote.date}
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+    
+    // Close modal when clicking outside
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            modal.remove();
+        }
+    });
+}
+
+function openSourceLink(url) {
+    window.open(url, '_blank', 'noopener,noreferrer');
+}
+
+function showAllQuotes() {
+    // Create modal showing all historical quotes
+    const modal = document.createElement('div');
+    modal.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.8);
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    `;
+
+    modal.innerHTML = `
+        <div style="
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        ">
+            <button onclick="this.closest('div').parentElement.remove()" style="
+                position: absolute;
+                top: 12px;
+                right: 12px;
+                background: none;
+                border: none;
+                font-size: 24px;
+                cursor: pointer;
+                color: #666;
+            ">×</button>
+            
+            <h2 style="margin-top: 0; color: #1e3a8a; text-align: center;">All Market Quotes</h2>
+            
+            <div style="margin-top: 20px;">
+                <div style="border-bottom: 1px solid #eee; padding: 16px 0;">
+                    <h4 style="margin: 0 0 8px 0; color: #1e3a8a;">US Economic Growth Outlook</h4>
+                    <p style="margin: 8px 0; color: #666; font-size: 0.9rem;">John Doe, Chief Economist, Sample Investment Bank (USA) - 7/26/2024</p>
+                    <p style="margin: 8px 0; font-style: italic;">"We expect year-ended growth in the US economy will slow to around a 1¾% pace by the end of 2024..."</p>
+                </div>
+                
+                <div style="border-bottom: 1px solid #eee; padding: 16px 0;">
+                    <h4 style="margin: 0 0 8px 0; color: #1e3a8a;">Global Economic Risks Assessment</h4>
+                    <p style="margin: 8px 0; color: #666; font-size: 0.9rem;">Jane Smith, Market Analyst, Global Markets Inc (USA) - 7/26/2024</p>
+                    <p style="margin: 8px 0; font-style: italic;">"The global economy always faces risks, but for the moment, the US is doing well..."</p>
+                </div>
+                
+                <div style="padding: 16px 0;">
+                    <h4 style="margin: 0 0 8px 0; color: #1e3a8a;">Federal Reserve Policy Impact</h4>
+                    <p style="margin: 8px 0; color: #666; font-size: 0.9rem;">Michael Johnson, Senior Economist, Federal Reserve Watch (USA) - 7/26/2024</p>
+                    <p style="margin: 8px 0; font-style: italic;">"The Federal Reserve's (Fed's) aggressive post-pandemic rate-hiking..."</p>
+                </div>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+    
+    // Close modal when clicking outside
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            modal.remove();
+        }
+    });
+}
 </script>
 </html>

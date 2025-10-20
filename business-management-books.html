@@ -1,0 +1,1426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business & Management Books - Graham and Doddsville</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1e3a8a;
+            --primary-blue-light: #3b82f6;
+            --primary-blue-dark: #1e40af;
+            --secondary-gray: #f8f9fa;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-muted: #9ca3af;
+            --border-light: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--secondary-gray);
+        }
+
+        .books-page {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            position: relative;
+        }
+
+        .books-page-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-bottom: 2px solid #d4af37;
+            padding: 12px 0;
+            transition: all 0.3s ease;
+            overflow: visible;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            overflow: visible;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 40px;
+            width: auto;
+        }
+
+        .main-nav {
+            overflow: visible;
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            overflow: visible;
+        }
+
+        .main-nav li {
+            position: relative;
+            overflow: visible;
+        }
+
+        .main-nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s ease;
+            overflow: visible;
+        }
+
+        .main-nav a:hover {
+            color: var(--primary-blue);
+        }
+
+        .main-nav-desktop-only {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .main-nav-desktop-only {
+                display: none;
+            }
+        }
+
+        /* Page Title Section */
+        .page-title-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .breadcrumb {
+            margin-bottom: 16px;
+        }
+
+        .breadcrumb-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .breadcrumb-link:hover {
+            color: var(--primary-blue);
+        }
+
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 0;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .page-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin: 8px 0 0 0;
+        }
+
+        /* Books Content */
+        .books-content {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .books-header {
+            margin-bottom: 32px;
+        }
+
+        .books-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 16px 0 8px 0;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .books-header .page-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin: 0 0 24px 0;
+        }
+
+        .books-description p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .books-description h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 32px 0 16px 0;
+            letter-spacing: -0.01em;
+        }
+
+        /* Books Table */
+        .books-table-container {
+            overflow-x: auto;
+            margin: 32px 0;
+        }
+
+        .books-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .books-table th {
+            background: var(--primary-blue);
+            color: white;
+            padding: 16px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 14px;
+            border: none;
+        }
+
+        .books-table td {
+            padding: 16px;
+            border-bottom: 1px solid var(--border-light);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .books-table tr:nth-child(even) {
+            background: var(--secondary-gray);
+        }
+
+        .books-table tr:hover {
+            background: #f1f5f9;
+        }
+
+        .book-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .book-author {
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        .book-price {
+            font-weight: 600;
+            color: var(--primary-blue);
+            font-size: 15px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .books-table-container {
+                margin: 16px -16px 32px -16px;
+            }
+
+            .books-table {
+                min-width: 600px;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .books-page-content {
+                padding: 16px;
+            }
+
+            .books-header h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Mobile Menu Styles */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 30px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 30px;
+            height: 3px;
+            background: var(--text-primary);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-toggle.open span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .mobile-menu-toggle.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .mobile-only {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-only {
+                display: flex !important;
+            }
+            .mobile-menu-toggle {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="books-page">
+        <!-- Header -->
+        <header class="header" id="main-header">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="G&D Logo.png" alt="Graham & Doddsville Logo" class="logo-image">
+                    </a>
+                </div>
+
+                <nav class="main-nav main-nav-desktop-only">
+                    <ul>
+                        <li><a href="index.html" class="nav-link">HOME</a></li>
+                        <li><a href="classical-readings.html" class="nav-link">CLASSICAL READINGS</a></li>
+                        <li><a href="financial-markets.html" class="nav-link">FINANCIAL MARKETS</a></li>
+                        <li><a href="economics.html" class="nav-link">ECONOMICS</a></li>
+                        <li><a href="legal-taxation.html" class="nav-link">LEGAL & TAXATION</a></li>
+                        <li><a href="professional-advisers.html" class="nav-link">PROFESSIONAL ADVISERS</a></li>
+                        <li><a href="resources.html" class="nav-link">RESOURCES</a></li>
+                        <li><a href="events.html" class="nav-link">EVENTS</a></li>
+                    </ul>
+                </nav>
+
+                <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Mobile Drawer -->
+        <div class="mobile-drawer" id="mobile-drawer">
+            <div class="drawer-header">
+                <img src="G&D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
+                <button class="drawer-close" id="drawer-close" aria-label="Close menu">×</button>
+            </div>
+            <nav class="drawer-nav">
+                <ul class="drawer-menu">
+                    <li><a href="index.html" class="drawer-link">Home</a></li>
+                    <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
+                    <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
+                    <li><a href="legal-taxation.html" class="drawer-link">Legal & Taxation</a></li>
+                    <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
+                    <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
+                    <li><a href="#" class="drawer-link">Investment Analysis</a></li>
+                    <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
+                    <li><a href="economics.html" class="drawer-link">Economics</a></li>
+                    <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
+                    <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
+                    <li><a href="resources.html" class="drawer-link">Resources</a></li>
+                    <li><a href="events.html" class="drawer-link">Events</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Page Title Section -->
+        <section class="page-title-section">
+            <div class="breadcrumb">
+                <a href="index.html" class="breadcrumb-link">← Home</a>
+            </div>
+            <h1 class="page-title">Business & Management Books</h1>
+            <p class="page-subtitle">Leadership, strategy, and operational excellence for business success</p>
+        </section>
+
+        <!-- Books Content -->
+        <section class="books-content">
+
+            <div class="books-table-container">
+                <table class="books-table">
+                    <thead>
+                        <tr>
+                            <th>📚 Title</th>
+                            <th>✍️ Author(s)</th>
+                            <th>💰 Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=How+To%3A+%2410M&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">How To: $10M</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">William Brown</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$21.44</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Undisruptable&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Undisruptable</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Aidan McCullen</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$33.84</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Valuepreneurs&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Valuepreneurs</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Steve Waddell</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$33.03</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=%24100M+Offers&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">$100M Offers</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Alex Hormozi</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$39.59</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=%24100M+Leads&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">$100M Leads</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Alex Hormozi</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$43.94</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=The+EXITPreneur%27s+Playbook&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The EXITPreneur's Playbook</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Joe Valley</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$28.10</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=How+to+Build+a+Billion-Dollar+Business&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">How to Build a Billion-Dollar Business</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Radek Sali & Bernadette Schwerdt</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$21.56</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Million+Dollar+Weekend&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Million Dollar Weekend</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Noah Kagan</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$28.49</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Leadership+Strategy+and+Tactics&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Leadership Strategy and Tactics</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Jocko Willink</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$26.95</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Hustle+Harder%2C+Hustle+Smarter&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Hustle Harder, Hustle Smarter</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Curtis "50 Cent" Jackson</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$22.32</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=The+Dichotomy+of+Leadership&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Dichotomy of Leadership</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Jocko Willink & Leif Babin</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$26.95</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Robert%E2%80%99s+Rules+of+Order+Newly+Revised&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Robert's Rules of Order Newly Revised</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Henry Robert et al.</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$25.40</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Extreme+Revenue+Growth&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Extreme Revenue Growth</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Victor Cheng</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$41.37</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Your+Next+Five+Moves&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Your Next Five Moves</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Patrick Bet-David</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$25.40</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Microsoft+Secrets&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Microsoft Secrets</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Cusumano & Selby</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$41.41</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=The+Diary+of+a+CEO&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Diary of a CEO</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Steven Bartlett</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$22.00</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Dotcom+Secrets&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Dotcom Secrets</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Russell Brunson</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$23.09</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=UNSCRIPTED&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">UNSCRIPTED</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">MJ DeMarco</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$29.61</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Start+Your+Own+Corporation&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Start Your Own Corporation</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Garrett Sutton</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$47.81</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Rich+Dad%E2%80%99s+Before+You+Quit+Your+Job&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Rich Dad's Before You Quit Your Job</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Robert Kiyosaki</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$23.09</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=From+the+Trash+Man+to+the+Cash+Man&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">From the Trash Man to the Cash Man</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Myron Golden</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$321.82</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Profit+First&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Profit First</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Mike Michalowicz</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$26.00</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=12+Months+to+%241+Million&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">12 Months to $1 Million</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Ryan Moran</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$38.50</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Steve+Jobs&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Steve Jobs</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Walter Isaacson</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$19.25</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Built+to+Sell&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Built to Sell</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">John Warrillow</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$20.79</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=The+Prosperous+Coach&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Prosperous Coach</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Chandler & Litvin</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$98.41</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=The+5+Levels+of+Leadership&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The 5 Levels of Leadership</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">John Maxwell</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$12.63</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=The+21+Irrefutable+Laws+of+Leadership&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The 21 Irrefutable Laws of Leadership</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">John Maxwell</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$28.04</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Developing+the+Leader+Within+You+2.0&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Developing the Leader Within You 2.0</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">John Maxwell</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$23.09</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=The+Culture+Map&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Culture Map</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Erin Meyer</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$18.00</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Business+Made+Simple&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Business Made Simple</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Donald Miller</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$21.56</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Shoe+Dog&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Shoe Dog</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Phil Knight</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$15.00</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Good+to+Great&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Good to Great</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Jim Collins</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$25.44</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Maverick%21&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Maverick!</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Ricardo Semler</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$24.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Competitive+Strategy&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Competitive Strategy</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Michael Porter</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$25.40</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Built+to+Last&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Built to Last</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Collins & Porras</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$25.16</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Who+Moved+My+Cheese%3F&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Who Moved My Cheese?</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Spencer Johnson</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$12.00</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=The+E+Myth+Revisited&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The E Myth Revisited</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Michael Gerber</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$19.00</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Blue+Ocean+Strategy&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Blue Ocean Strategy</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Kim & Mauborgne</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$34.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Traction&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Traction</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Gino Wickman</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$18.19</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Business+Model+Generation&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Business Model Generation</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Osterwalder & Pigneur</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$34.77</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=The+Power+of+Broke&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Power of Broke</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Daymond John</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$31.59</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Titan&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Titan</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Ron Chernow</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$40.39</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Dare+to+Lead&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Dare to Lead</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Brené Brown</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$16.00</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=The+Outsiders&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Outsiders</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">William Thorndike</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$22.77</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=The+Hard+Thing+About+Hard+Things&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Hard Thing About Hard Things</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Ben Horowitz</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$28.81</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Leadership+and+Self-Deception&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Leadership and Self-Deception</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Arbinger Institute</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$23.09</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Twelve+and+a+Half&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Twelve and a Half</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Gary Vaynerchuk</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$34.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Jab%2C+Jab%2C+Jab%2C+Right+Hook&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Jab, Jab, Jab, Right Hook</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Gary Vaynerchuk</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$30.79</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=High+Output+Management&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">High Output Management</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Andrew Grove</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$11.58</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Sam+Walton%3A+Made+In+America&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Sam Walton: Made In America</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Sam Walton</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$13.09</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=No+Rules+Rules&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">No Rules Rules</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Hastings & Meyer</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$26.96</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=First+A+Dream&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">First A Dream</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Jim Clayton</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$75.20</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=The+Man+Behind+the+Microchip&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Man Behind the Microchip</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Leslie Berlin</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$51.95</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Business+%40+the+Speed+of+Thought&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Business @ the Speed of Thought</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Bill Gates</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$64.71</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=The+Personal+MBA&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Personal MBA</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Josh Kaufman</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$21.56</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=The+Lean+Startup&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Lean Startup</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Eric Ries</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$21.95</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Crush+It%21&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Crush It!</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Gary Vaynerchuk</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$20.40</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Winning&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Winning</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Jack Welch</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$26.41</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Getting+to+Yes&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Getting to Yes</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Ury & Fisher</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$19.25</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Drive&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Drive</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Daniel Pink</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$20.72</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=The+Everything+Store&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Everything Store</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Brad Stone</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$17.70</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Outliers&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Outliers</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Malcolm Gladwell</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$19.25</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Start+With+Why&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Start With Why</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Simon Sinek</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$19.25</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=The+Innovator%E2%80%99s+Dilemma&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Innovator's Dilemma</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Clayton Christensen</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$35.40</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=The+Coaching+Habit&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Coaching Habit</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Michael Bungay Stanier</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$19.23</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=2600+Phrases+for+Effective+Performance+Reviews&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">2600 Phrases for Effective Performance Reviews</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Paul Falcone</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$17.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Give+and+Take&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Give and Take</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Adam Grant</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$19.25</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=The+Effective+Executive&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Effective Executive</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Peter Drucker</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$24.57</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=The+Ten+Commandments+for+Business+Failure&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Ten Commandments for Business Failure</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Donald Keough</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$26.30</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Dear+Chairman&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Dear Chairman</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Jeff Gramm</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$41.58</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Purple+Cow&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Purple Cow</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Seth Godin</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$19.21</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=The+%24100+Startup&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The $100 Startup</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Chris Guillebeau</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$23.00</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Personal+History&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Personal History</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Katharine Graham</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$47.18</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Only+the+Paranoid+Survive&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Only the Paranoid Survive</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Andrew Grove</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$14.09</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Exactly+What+to+Say&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Exactly What to Say</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Phil Jones</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$25.47</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Jack%3A+Straight+from+the+Gut&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Jack: Straight from the Gut</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Jack Welch</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$20.45</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Dream+Big&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Dream Big</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Cristiane Correa</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$60.55</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=The+Art+of+War&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Art of War</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Sun Tzu</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$9.46</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Zero+to+One&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Zero to One</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Masters & Thiel</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$41.90</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Tribes&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Tribes</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Seth Godin</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$26.15</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Drive+to+Thrive&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Drive to Thrive</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Sharad Bajaj</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$19.51</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=The+Farmer+from+Merna&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Farmer from Merna</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Karl Schriftgeisser</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$150.07</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Business+Adventures&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Business Adventures</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">John Brooks</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$19.25</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title"><a href="https://www.amazon.com.au/s?k=Limping+on+Water&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Limping on Water</a></div>
+                            </td>
+                            <td>
+                                <div class="book-author">Phil Beuth</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$670.00</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="books-description">
+                <p><strong>Note:</strong> Prices are in AUD and may vary depending on the retailer and availability. Some books may be available as digital editions at lower prices.</p>
+
+                <p><strong>Disclaimer:</strong> This list is for informational purposes only and does not constitute investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            const drawer = document.getElementById('mobile-drawer');
+            const toggle = document.getElementById('mobile-toggle');
+
+            drawer.classList.toggle('open');
+            toggle.classList.toggle('open');
+        }
+
+        function closeMobileMenu() {
+            const drawer = document.getElementById('mobile-drawer');
+            const toggle = document.getElementById('mobile-toggle');
+
+            drawer.classList.remove('open');
+            toggle.classList.remove('open');
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu event listeners
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const drawerClose = document.getElementById('drawer-close');
+
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', toggleMobileMenu);
+            }
+
+            if (drawerClose) {
+                drawerClose.addEventListener('click', closeMobileMenu);
+            }
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                const drawer = document.getElementById('mobile-drawer');
+                const toggle = document.getElementById('mobile-toggle');
+
+                if (drawer.classList.contains('open') &&
+                    !drawer.contains(event.target) &&
+                    !mobileToggle.contains(event.target)) {
+                    closeMobileMenu();
+                }
+            });
+
+            // Sticky header functionality
+            const header = document.getElementById('main-header');
+            const sticky = header.offsetTop;
+
+            function handleScroll() {
+                if (window.pageYOffset > sticky) {
+                    header.classList.add('sticky-header');
+                } else {
+                    header.classList.remove('sticky-header');
+                }
+            }
+
+            window.addEventListener('scroll', handleScroll);
+        });
+    </script>
+</body>
+</html>

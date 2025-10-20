@@ -409,11 +409,14 @@ body {
     }
 
     #mobile-feature-articles .articles-list .article-item h5 {
-        font-family: var(--font-primary) !important; /* match news headlines font */
-        font-size: 15px !important; /* same as .news-item h3 */
-        line-height: 1.4 !important;
-        margin: 0 0 6px 0 !important;
-        font-weight: 700 !important;
+        font-family: Georgia, serif;
+        font-size: 0.96rem; /* 11.5pt equivalent */
+        font-weight: 600;
+        color: #333;
+        margin: 0;
+        line-height: 1.5;
+        display: inline;
+        letter-spacing: -0.1px;
     }
 
     #mobile-feature-articles .articles-list .article-item h5 a {
@@ -465,6 +468,7 @@ body {
         text-align: center ;
         margin-top: 8px;
         color: #1e3a8a;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         font-size: 14px;
         text-decoration: none;
         padding: 6px 0;
@@ -477,7 +481,8 @@ body {
         background: transparent; /* same as page background */
         border: none;
         color: #1e3a8a;
-        font-weight: 600;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        font-weight: normal;
         font-size: 14px;
         padding: 6px 12px;
         cursor: pointer;
@@ -496,6 +501,7 @@ body {
     .mobile-books-see-more-link {
         color: #1e3a8a;
         text-decoration: none;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         font-weight: 600;
         font-size: 15px;
     }
@@ -520,11 +526,12 @@ body {
 .buffett-see-more-container {
     text-align: center;
     margin-top: 8px;
-    margin-bottom: 12px;
+    margin-bottom: 1px;
 }
 .buffett-see-more-link {
     color: #1e3a8a;
     text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-weight: 600;
     font-size: 14px;
 }
@@ -533,7 +540,7 @@ body {
 #mobile-buffett .books-slider {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 2px;
     align-items: center;
 }
 
@@ -574,7 +581,7 @@ body {
 
 /* Add pipe separator between inline headlines (except last item) */
 #mobile-buffett .books-slider .buffett-item-mobile:not(:last-child) .news-headline::after {
-    content: " | ";
+    content: ",";
     color: #666;
     margin: 0 4px;
 }
@@ -2325,9 +2332,6 @@ h6 {
     }
 }
 
-
-}
-
 .mobile-menu-toggle {
     display: none;
     flex-direction: column;
@@ -2423,7 +2427,7 @@ h6 {
 .date-display {
     background: transparent;
     color: #666;
-    padding: 12px 20px;
+    padding: 0px 16px;
     text-align: right;
     font-size: 13px;
     font-weight: 500;
@@ -3665,6 +3669,95 @@ input:focus, textarea:focus, select:focus {
 }
 
 
+/* Books Table Styles */
+.books-table-container {
+    overflow-x: auto;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    background: #fff;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+.books-table {
+    width: 100%;
+    min-width: 600px; /* Minimum width to prevent squishing */
+    border-collapse: collapse;
+    font-size: 14px;
+    background: #fff;
+}
+
+.books-table th,
+.books-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.books-table th {
+    background: #2c3e50;
+    color: #fff;
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.books-table tbody tr:hover {
+    background: #f8f9fa;
+}
+
+.books-table .book-title {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.books-table .book-title a {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.books-table .book-title a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+.books-table .book-author {
+    color: #7f8c8d;
+    font-style: italic;
+}
+
+.books-table .book-price {
+    font-weight: 600;
+    color: #27ae60;
+    font-family: monospace;
+}
+
+/* Mobile responsiveness for books table */
+@media (max-width: 768px) {
+    .books-table-container {
+        margin: 15px -15px; /* Negative margin to extend to screen edges */
+        border-radius: 6px;
+        box-shadow: none; /* Remove shadow on mobile for cleaner look */
+    }
+    
+    .books-table {
+        font-size: 13px;
+        min-width: 500px; /* Slightly smaller min-width for mobile */
+    }
+    
+    .books-table th,
+    .books-table td {
+        padding: 10px 12px;
+    }
+    
+    .books-table .book-title {
+        max-width: 200px;
+        word-wrap: break-word;
+    }
+}
+
 /* Video Items */
 .videos-grid {
     display: grid;
@@ -4552,8 +4645,8 @@ input:focus, textarea:focus, select:focus {
 .book-links-horizontal a {
     color: #333;
     text-decoration: none;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-size: 14px;
+    font-family: Georgia, serif;
+    font-size: 0.96rem;
     font-weight: 600;
     transition: color 0.3s ease;
     white-space: normal;
@@ -4635,12 +4728,103 @@ input:focus, textarea:focus, select:focus {
 .wealth-see-more-container {
     text-align: center;
     margin-top: 8px;
-    margin-bottom: 12px;
+    margin-bottom: 1px;
+}
+
+.value-investing-see-more-container {
+    text-align: center;
+    margin-top: 8px;
+    margin-bottom: 1px;
+}
+
+.share-investing-see-more-container {
+    text-align: center;
+    margin-top: 8px;
+    margin-bottom: 1px;
 }
 
 .wealth-see-more-link {
     color: #1e3a8a;
     text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.value-investing-see-more-link {
+    color: #1e3a8a;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.share-investing-see-more-container {
+    text-align: center;
+    margin-top: 8px;
+    margin-bottom: 12px;
+}
+
+.share-investing-see-more-link {
+    color: #1e3a8a;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.financial-analysis-see-more-container {
+    text-align: center;
+    margin-top: 8px;
+    margin-bottom: 1px;
+}
+
+.financial-analysis-see-more-link {
+    color: #1e3a8a;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.sales-marketing-see-more-container {
+    text-align: center;
+    margin-top: 8px;
+    margin-bottom: 1px;
+}
+
+.sales-marketing-see-more-link {
+    color: #1e3a8a;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.self-improvement-see-more-container {
+    text-align: center;
+    margin-top: 8px;
+    margin-bottom: 1px;
+}
+
+.self-improvement-see-more-link {
+    color: #1e3a8a;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.business-management-see-more-container {
+    text-align: center;
+    margin-top: 8px;
+    margin-bottom: 1px;
+}
+
+.business-management-see-more-link {
+    color: #1e3a8a;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-weight: 600;
     font-size: 14px;
 }
@@ -6950,6 +7134,7 @@ th {
     .news-section-title {
         margin-top: 32px;
         margin-bottom: 32px;
+        color: #6B46C1; /* Brand purple */
     }
 }
 
@@ -7405,7 +7590,7 @@ th {
 }
 
 .newspaper-section {
-    margin-bottom: 32px;
+    margin-bottom: 10px;
     padding: 0 16px;
     background: #fff;
 }
@@ -7415,7 +7600,7 @@ th {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 18px;
     font-weight: 600;
-    color: #000;
+    color: #6B46C1; /* Brand purple */
     margin: 0 0 0px 0;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -7631,23 +7816,27 @@ th {
 /* Book Categories Styles */
 .book-categories {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 1px;
     margin: 10px 0px;
     padding: 0 0px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .book-category-btn {
     background: #f8f9fa;
     border: 1px solid #dee2e6;
     border-radius: 10px;
-    padding: 8px 16px;
+    padding: 8px 12px;
     font-size: 12px;
     font-weight: 500;
     color: #495057;
     cursor: pointer;
     transition: all 0.2s ease;
     white-space: nowrap;
+    flex-shrink: 0;
+    min-width: fit-content;
 }
 
 .book-category-btn:hover {
@@ -7676,17 +7865,19 @@ th {
 /* Buffett Tabs Styles */
 .buffett-tabs-mobile {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 8px;
     margin: 20px 0;
     padding: 0 1px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 }
 
 .buffett-tab-btn {
     background: #f8f9fa;
     border: 1px solid #dee2e6;
     border-radius: 10px;
-    padding: 8px 16px;
+    padding: 8px 12px;
     font-size: 12px;
     font-weight: 600;
     color: #495057;
@@ -7694,6 +7885,8 @@ th {
     transition: all 0.2s ease;
     white-space: nowrap;
     text-transform: uppercase;
+    flex-shrink: 0;
+    min-width: fit-content;
 }
 
 .buffett-tab-btn:hover {
@@ -7982,8 +8175,8 @@ th {
 
 /* PROFESSIONAL NEWS HEADLINE STYLING */
 .news-headline {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-size: 14px;
+    font-family: Georgia, serif;
+    font-size: 0.96rem; /* 11.5pt equivalent */
     font-weight: 600;
     color: #333;
     margin: 0;
@@ -8007,12 +8200,11 @@ th {
 .news-source {
     font-family: 'Arial', sans-serif;
     font-size: 11px;
-    color: #999;
-    font-weight: 400;
-    font-style: italic;
-    margin-left: 0;
-    display: block;
-    line-height: 1.3;
+    color: #666666; /* Grey color */
+    font-weight: normal;
+    font-style: normal;
+    margin-left: 0.25rem; /* Small space after headline */
+    display: inline;
 }
 
 /* LATEST NEWS SUB-HEADINGS STYLING */
@@ -8045,6 +8237,7 @@ th {
 .see-more-link {
     color: #999;
     text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 12px;
     font-weight: 500;
     transition: color 0.2s ease;
@@ -8095,11 +8288,13 @@ th {
     text-align: center;
     margin-top: 16px;
     padding: 8px 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .see-more-btn {
     color: #1e3a8a;
     text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 14px;
     font-weight: 600;
     padding: 8px 16px;
@@ -8131,6 +8326,27 @@ th {
     text-decoration: none;
 }
 
+/* Market quotes See More button - matches feature-see-more design */
+.see-more-quotes .see-more-btn {
+    display: inline-block;
+    margin: 8px auto 0 auto;
+    background: transparent;
+    border: none;
+    color: #1e3a8a;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    font-weight: normal !important;
+    font-size: 14px;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 0; /* Remove border radius to match feature-see-more */
+    text-transform: none !important;
+}
+
+.see-more-quotes .see-more-btn:hover {
+    background: transparent; /* Keep transparent on hover */
+    color: #1e3a8a;
+}
+
 /* New Mobile Layout Styles */
 
 /* Sub-category styles */
@@ -8142,14 +8358,14 @@ th {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 8px;
+    margin-bottom: 0px;
 }
 
 .sub-category-title {
-    font-family: 'Georgia', 'Times New Roman', serif;
+    font-family: Arial, sans-serif;
     font-size: 18px;
     font-weight: 600;
-    color: #1e3a8a;
+    color: #000000;
     margin: 0;
     padding-left: 0; /* Left-align with headlines */
     border-left: none; /* Remove blue vertical line */
@@ -8849,8 +9065,8 @@ th {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         font-size: 18px;
         font-weight: 600;
-        color: #000;
-        margin: 0 0 20px 0;
+        color: #6B46C1;
+        margin: 0 0 0px 0;
         text-transform: uppercase;
         letter-spacing: 1px;
         border-bottom: 2px solid #e0e0e0;
@@ -9407,7 +9623,8 @@ th {
     }
     
     .book-links-horizontal a {
-        font-size: 13px;
+        font-family: Georgia, serif;
+        font-size: 0.96rem;
         line-height: 1.4;
         white-space: normal;
         word-wrap: break-word;
@@ -9430,14 +9647,14 @@ th {
 /* Books Slider Styles */
 .books-slider-container {
     position: relative;
-    max-height: 400px;
-    overflow: hidden;
+    max-height: none;
+    overflow: visible;
 }
 
 .books-slider {
     transition: transform 0.3s ease;
-    max-height: 400px;
-    overflow-y: auto;
+    max-height: none;
+    overflow-y: visible;
 }
 
 /* Ensure horizontal book links work in slider */
@@ -9502,6 +9719,7 @@ th {
 .books-slider .wealth-see-more-link {
     color: #1e3a8a;
     text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-weight: 600;
     font-size: 14px;
 }
@@ -9549,6 +9767,14 @@ th {
     color: #1e3a8a;
     margin: 10px 0;
     font-weight: bold;
+}
+
+.page-title-section {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 32px;
+    margin-bottom: 2px;
+    box-shadow: var(--shadow-md);
 }
 
 .page-subtitle {
@@ -10479,6 +10705,7 @@ th {
     color: white;
     text-decoration: none;
     border-radius: 4px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 14px;
     font-weight: 600;
     transition: all 0.3s ease;
@@ -10489,5 +10716,283 @@ th {
     color: white !important;
     transform: translateY(-1px);
     box-shadow: 0 2px 4px rgba(30, 58, 138, 0.3);
+}
+
+/* Mobile Book Categories - Single Horizontal Line */
+@media (max-width: 767px) {
+    .book-categories {
+        padding: 0 10px;
+        margin: 15px 0;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+    }
+    
+    .book-categories::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, and Opera */
+    }
+    
+    .book-category-btn {
+        padding: 10px 14px;
+        font-size: 13px;
+        min-height: 44px; /* Touch-friendly */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* Mobile Buffett Tabs - Single Horizontal Line */
+@media (max-width: 767px) {
+    .buffett-tabs-mobile {
+        padding: 0 10px;
+        margin: 15px 0;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+    }
+    
+    .buffett-tabs-mobile::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, and Opera */
+    }
+    
+    .buffett-tab-btn {
+        padding: 10px 14px;
+        font-size: 13px;
+        min-height: 44px; /* Touch-friendly */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* Market Quotes Styles */
+.market-quotes-container {
+    margin-top: 20px;
+}
+
+.market-quote-item {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.market-quote-item:hover {
+    background: #f1f3f4;
+    border-color: #dee2e6;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transform: translateY(-1px);
+}
+
+.quote-content {
+    position: relative;
+}
+
+.quote-text {
+    font-family: Georgia, serif;
+    font-size: 0.96rem;
+    line-height: 1.5;
+    color: #333;
+    margin: 0 0 12px 0;
+    font-style: italic;
+}
+
+.quote-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 8px;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.quote-author {
+    font-weight: 600;
+    color: #1e3a8a;
+}
+
+.quote-position,
+.quote-company {
+    color: #495057;
+}
+
+.quote-country,
+.quote-date {
+    color: #6c757d;
+    font-style: italic;
+}
+
+.quote-source {
+    margin-top: 8px;
+}
+
+.source-link {
+    font-size: 0.85rem;
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.source-link:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+.see-more-quotes {
+    text-align: center;
+    margin-top: 2px;
+    padding-top: 1px;
+    border-top: 1px solid #e9ecef;
+}
+
+.see-more-btn {
+    background: #1e3a8a;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.see-more-btn:hover {
+    background: #152c5a;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(30, 58, 138, 0.3);
+}
+
+/* Book Category See More Links */
+.warren-buffett-see-more-container {
+    margin-bottom: 1px;
+}
+
+.warren-buffett-see-more-link {
+    color: #1e3a8a;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.value-investing-see-more-container {
+    margin-bottom: 1px;
+}
+
+.value-investing-see-more-link {
+    color: #1e3a8a;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.share-investing-see-more-container {
+    margin-bottom: 1px;
+}
+
+.share-investing-see-more-link {
+    color: #1e3a8a;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.wealth-creation-see-more-container {
+    margin-bottom: 1px;
+}
+
+.wealth-creation-see-more-link {
+    color: #1e3a8a;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.financial-analysis-see-more-container {
+    margin-bottom: 1px;
+}
+
+.financial-analysis-see-more-link {
+    color: #1e3a8a;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.sales-marketing-see-more-container {
+    margin-bottom: 1px;
+}
+
+.sales-marketing-see-more-link {
+    color: #1e3a8a;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.self-improvement-see-more-container {
+    margin-bottom: 1px;
+}
+
+.self-improvement-see-more-link {
+    color: #1e3a8a;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.business-management-see-more-container {
+    margin-bottom: 1px;
+}
+
+.business-management-see-more-link {
+    color: #1e3a8a;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.miscellaneous-see-more-container {
+    text-align: center;
+    margin-top: 8px;
+    margin-bottom: 1px;
+}
+
+.miscellaneous-see-more-link {
+    color: #1e3a8a;
+    text-decoration: none;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+/* Mobile Market Quotes */
+@media (max-width: 767px) {
+    .market-quote-item {
+        padding: 14px;
+        margin-bottom: 12px;
+    }
+    
+    .quote-text {
+        font-size: 0.92rem;
+    }
+    
+    .quote-meta {
+        font-size: 0.8rem;
+        gap: 6px;
+    }
 }
 
