@@ -104,7 +104,8 @@ a:hover {
 
 html, body {
     width: 100%;
-    overflow-x: visible;
+    overflow-x: hidden;
+    max-width: 100vw;
 }
 
 /* TYPOGRAPHY HIERARCHY - Boss Requirements */
@@ -1886,7 +1887,7 @@ h6 {
     margin: 0 auto;
     padding: 0 20px;
     width: 100%;
-    overflow: visible;
+    overflow: hidden;
     box-sizing: border-box;
 }
 
@@ -1905,7 +1906,7 @@ h6 {
     border-bottom: 2px solid #d4af37;
     padding: 12px 0; /* Reduced from 24px to 12px */
     transition: all 0.3s ease;
-    overflow: visible;
+    overflow: hidden;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
@@ -2454,8 +2455,8 @@ h6 {
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
-    padding: 0 20px;
     box-sizing: border-box;
+    padding: 0 20px;
 }
 
 .left-column, .center-column, .right-column {
@@ -3457,6 +3458,8 @@ input:focus, textarea:focus, select:focus {
 /* Market Table */
 .market-table-container {
     overflow-x: auto;
+    max-width: 100%;
+    width: 100%;
 }
 
 /* Market Chart */
