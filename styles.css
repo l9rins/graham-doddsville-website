@@ -4720,7 +4720,7 @@ input:focus, textarea:focus, select:focus {
 }
 
 .book-links-horizontal a:not(:last-child)::after {
-    content: " | ";
+    content: ",";
     color: #666;
     margin: 0 4px;
 }
@@ -9697,7 +9697,7 @@ th {
     }
     
     .book-links-horizontal a:not(:last-child)::after {
-        content: " | ";
+        content: ",";
         color: #666;
         margin: 0 2px;
     }
@@ -9733,7 +9733,7 @@ th {
 .books-slider .book-links-horizontal a {
     color: #333;
     text-decoration: none;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: Georgia, serif;
     font-size: 14px;
     font-weight: 600;
     transition: color 0.3s ease;
@@ -9749,7 +9749,7 @@ th {
 }
 
 .books-slider .book-links-horizontal a:not(:last-child)::after {
-    content: " , ";
+    content: ",";
     color: #666;
     margin: 0 4px;
 }
