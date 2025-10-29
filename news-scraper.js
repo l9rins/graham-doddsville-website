@@ -488,17 +488,18 @@ class NewsDisplayManager {
         categoryContainers.forEach(containerId => {
             const container = document.getElementById(containerId);
             if (container) {
-                container.innerHTML = `
-                    <div class="loading-state">
-                        <div class="loading-spinner"></div>
-                        <p>Loading news...</p>
-                    </div>
-                `;
+                // Only show loading state if container is empty (no static content)
+                if (!container.innerHTML.trim() || container.innerHTML.includes('Loading news...')) {
+                    container.innerHTML = `
+                        <div class="loading-state">
+                            <div class="loading-spinner"></div>
+                            <p>Loading news...</p>
+                        </div>
+                    `;
+                }
             }
         });
-    }
-
-    showErrorState() {
+    }    showErrorState() {
         // Show error state in each category container
         const categoryContainers = [
             'companies-news', 'markets-news', 'economy-news', 
@@ -508,13 +509,18 @@ class NewsDisplayManager {
         categoryContainers.forEach(containerId => {
             const container = document.getElementById(containerId);
             if (container) {
-                container.innerHTML = `
-                    <div class="error-state">
-                        <h4>⚠️ News Feed Temporarily Unavailable</h4>
-                        <p>We're experiencing technical difficulties loading the latest news. Please try refreshing the page or check back in a few minutes.</p>
-                        <button class="retry-btn" onclick="newsDisplayManager.initialize()">Retry Loading News</button>
-                    </div>
-                `;
+                // Only show error state if container is empty or has loading state (no static content)
+                if (!container.innerHTML.trim() || 
+                    container.innerHTML.includes('Loading news...') || 
+                    container.innerHTML.includes('News Feed Temporarily Unavailable')) {
+                    container.innerHTML = `
+                        <div class="error-state">
+                            <h4>⚠️ News Feed Temporarily Unavailable</h4>
+                            <p>We're experiencing technical difficulties loading the latest news. Please try refreshing the page or check back in a few minutes.</p>
+                            <button class="retry-btn" onclick="newsDisplayManager.initialize()">Retry Loading News</button>
+                        </div>
+                    `;
+                }
             }
         });
     }
@@ -555,6 +561,12 @@ class NewsDisplayManager {
             const container = document.getElementById(containerId);
             
             if (container) {
+                // Skip if container already has static content (don't overwrite)
+                if (container.querySelector('.news-item') && !container.innerHTML.includes('Loading news...') && !container.innerHTML.includes('News Feed Temporarily Unavailable')) {
+                    console.log(`Skipping ${containerId} - already has static content`);
+                    return;
+                }
+                
                 const categoryNews = newsByCategory[category] || [];
                 console.log(`Displaying ${categoryNews.length} items for ${category} in ${containerId}`);
                 
