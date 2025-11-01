@@ -5,7 +5,8 @@
     --font-primary: 'Georgia', 'Times New Roman', serif;
     --font-secondary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     
-    --color-primary: #1e3a8a;
+    /* Primary brand colour (purple from the logo) */
+    --color-primary: #4b2e83;
     --color-accent: #d4af37;
     --color-text: #333;
     --color-text-light: #666;
@@ -194,7 +195,7 @@ body {
 }
 
 .investor-section h4 {
-    color: #2c3e50;
+    color: #3a2366;
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 12px;
@@ -262,7 +263,7 @@ body {
 }
 
 .wealth-section h3 {
-    color: #2c3e50;
+    color: #3a2366;
     font-size: 0.95rem;
     font-weight: 600;
     margin-bottom: 8px;
@@ -601,7 +602,7 @@ body {
 }
 
 .news-header h3 {
-    color: #2c3e50;
+    color: #3a2366;
     font-size: 18px;
     font-weight: 600;
     line-height: 1.4;
@@ -748,7 +749,7 @@ body {
 }
 
 .financial-section h3 {
-    color: #2c3e50;
+    color: #3a2366;
     font-size: 0.95rem;
     font-weight: 600;
     margin-bottom: 8px;
@@ -950,7 +951,7 @@ body {
 }
 
 .product-section h3 {
-    color: #2c3e50;
+    color: #3a2366;
     font-size: 0.95rem;
     font-weight: 600;
     margin-bottom: 8px;
@@ -1151,7 +1152,7 @@ body {
 }
 
 .resource-section h3 {
-    color: #2c3e50;
+    color: #3a2366;
     font-size: 0.95rem;
     font-weight: 600;
     margin-bottom: 8px;
@@ -1281,7 +1282,7 @@ body {
 }
 
 .economics-section h3 {
-    color: #2c3e50;
+    color: #3a2366;
     font-size: 0.95rem;
     font-weight: 600;
     margin-bottom: 8px;
@@ -1411,7 +1412,7 @@ body {
 }
 
 .investor-section h3 {
-    color: #2c3e50;
+    color: #3a2366;
     font-size: 0.95rem;
     font-weight: 600;
     margin-bottom: 8px;
@@ -1541,7 +1542,7 @@ body {
 }
 
 .share-section h3 {
-    color: #2c3e50;
+    color: #3a2366;
     font-size: 0.95rem;
     font-weight: 600;
     margin-bottom: 8px;
@@ -1671,7 +1672,7 @@ body {
 }
 
 .legal-section h3 {
-    color: #2c3e50;
+    color: #3a2366;
     font-size: 0.95rem;
     font-weight: 600;
     margin-bottom: 8px;
@@ -6876,6 +6877,12 @@ img[loading="lazy"].loaded {
 .article-item,
 .news-item {
     max-width: 100%;
+
+    /* Mobile: ensure news headings remain readable on the dark container background */
+    .news-section-title,
+    .sub-heading-title {
+        color: #ffffff !important;
+    }
     word-wrap: break-word;
     overflow-wrap: break-word;
 }
@@ -7166,7 +7173,7 @@ th {
 
 /* Hide mobile newspaper elements on desktop */
 .mobile-only {
-    display: none;
+    display: block !important; /* Temporarily show for testing */
 }
 
 /* Show mobile newspaper elements only on mobile */
@@ -7193,7 +7200,12 @@ th {
     .news-section-title {
         margin-top: 32px;
         margin-bottom: 32px;
-        color: #6B46C1; /* Brand purple */
+        color: var(--color-primary);
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        border-bottom: 2px solid var(--color-primary);
+        padding-bottom: 10px;
     }
 }
 
@@ -7214,6 +7226,12 @@ th {
         max-width: none;
         border: 1.5px solid #e8e9ea;
         position: relative;
+    }
+    
+    /* Mobile: ensure news headings remain readable on the dark container background */
+    .news-section-title,
+    .sub-heading-title {
+        color: #ffffff !important;
     }
     
     /* Jagged notebook border effect */
@@ -8288,7 +8306,7 @@ th {
     font-family: 'Georgia', 'Times New Roman', serif;
     font-size: 16px;
     font-weight: 600;
-    color: #1e3a8a;
+    color: var(--color-primary);
     margin: 0;
     padding-left: 8px;
     transition: color 0.2s ease;
@@ -8429,7 +8447,7 @@ th {
     font-family: Arial, sans-serif;
     font-size: 18px;
     font-weight: 600;
-    color: #000000;
+    color: #4B0082;
     margin: 0;
     padding-left: 0; /* Left-align with headlines */
     border-left: none; /* Remove blue vertical line */

@@ -204,19 +204,21 @@ function categorizeNews(content) {
         return 'Industry';
     } else if (lowerContent.includes('rba') || lowerContent.includes('interest') || lowerContent.includes('rate') || lowerContent.includes('regulation') || lowerContent.includes('regulator') || lowerContent.includes('policy')) {
         return 'Regulatory';
+    } else if (lowerContent.includes('commodity') || lowerContent.includes('commodities') || lowerContent.includes('gold') || lowerContent.includes('silver') || lowerContent.includes('copper') || lowerContent.includes('iron ore') || lowerContent.includes('wheat') || lowerContent.includes('oil') || lowerContent.includes('gas')) {
+        return 'Commodities';
     } else if (lowerContent.includes('property') || lowerContent.includes('housing') || lowerContent.includes('real estate')) {
         return 'Property';
     } else if (lowerContent.includes('bank') || lowerContent.includes('financial') || lowerContent.includes('fund') || lowerContent.includes('finance')) {
         return 'Banking';
     } else if (lowerContent.includes('tech') || lowerContent.includes('ai') || lowerContent.includes('digital') || lowerContent.includes('software')) {
         return 'Technology';
-    } else if (lowerContent.includes('energy') || lowerContent.includes('renewable') || lowerContent.includes('coal') || lowerContent.includes('oil')) {
+    } else if (lowerContent.includes('energy') || lowerContent.includes('renewable') || lowerContent.includes('coal')) {
         return 'Energy';
     } else if (lowerContent.includes('super') || lowerContent.includes('retirement') || lowerContent.includes('pension')) {
         return 'Superannuation';
     } else if (lowerContent.includes('retail') || lowerContent.includes('consumer') || lowerContent.includes('shopping')) {
         return 'Consumer';
-    } else if (lowerContent.includes('mining') || lowerContent.includes('resources') || lowerContent.includes('commodity')) {
+    } else if (lowerContent.includes('mining') || lowerContent.includes('resources')) {
         return 'Resources';
     } else if (lowerContent.includes('investment') || lowerContent.includes('value') || lowerContent.includes('portfolio') || lowerContent.includes('investor')) {
         return 'Investment';

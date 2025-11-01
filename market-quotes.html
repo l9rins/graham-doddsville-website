@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Quotes - Graham and Doddsville</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1e3a8a;
+            --primary-blue-light: #3b82f6;
+            --primary-blue-dark: #1e40af;
+            --secondary-gray: #f8f9fa;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-muted: #9ca3af;
+            --border-light: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--secondary-gray);
+        }
+
+        .market-quotes-page {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            position: relative;
+        }
+
+        .market-quotes-page-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 48px;
+            padding: 48px 0;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .page-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 0 0 16px 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        .quotes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .quote-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-light);
+        }
+
+        .quote-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .quote-header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 20px;
+        }
+
+        .quote-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 0 8px 0;
+        }
+
+        .quote-meta {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        .quote-content {
+            padding: 24px;
+        }
+
+        .quote-text {
+            font-family: Georgia, serif;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-primary);
+            margin: 0 0 20px 0;
+            font-style: italic;
+        }
+
+        .quote-author-info {
+            border-top: 1px solid var(--border-light);
+            padding-top: 16px;
+        }
+
+        .quote-author {
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin: 0 0 4px 0;
+        }
+
+        .quote-position {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin: 0 0 2px 0;
+        }
+
+        .quote-company {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin: 0 0 8px 0;
+        }
+
+        .quote-footer {
+            background: var(--secondary-gray);
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .quote-date {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .quote-country {
+            background: var(--primary-blue);
+            color: white;
+            padding: 4px 8px;
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 24px;
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: var(--radius-md);
+            transition: all 0.2s ease;
+            border: 2px solid var(--primary-blue);
+        }
+
+        .back-link:hover {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .market-quotes-page-content {
+                padding: 16px;
+            }
+
+            .page-title {
+                font-size: 2.2rem;
+            }
+
+            .quotes-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .quote-card {
+                margin: 0 -4px; /* Allow slight overflow for better mobile fit */
+            }
+
+            .quote-content {
+                padding: 16px;
+            }
+
+            .quote-title {
+                font-size: 1.2rem;
+            }
+
+            .quote-text {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .market-quotes-page-content {
+                padding: 12px;
+            }
+
+            .page-header {
+                padding: 32px 0;
+            }
+
+            .page-title {
+                font-size: 1.8rem;
+            }
+
+            .page-subtitle {
+                font-size: 1rem;
+            }
+
+            .quote-card {
+                margin: 0 -8px; /* More generous overflow for very small screens */
+            }
+
+            .quote-content {
+                padding: 12px;
+            }
+
+            .quote-title {
+                font-size: 1.1rem;
+            }
+
+            .quote-text {
+                font-size: 0.95rem;
+            }
+
+            .quote-author {
+                font-size: 0.9rem;
+            }
+
+            .quote-position,
+            .quote-company {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="market-quotes-page">
+        <div class="market-quotes-page-content">
+            <a href="index.html" class="back-link">← Back to Home</a>
+
+            <div class="page-header">
+                <h1 class="page-title">Market Quotes</h1>
+                <p class="page-subtitle">Expert insights and analysis from leading economists and market analysts</p>
+            </div>
+
+            <div class="quotes-grid">
+                <!-- Quote 1 -->
+                <div class="quote-card">
+                    <div class="quote-header">
+                        <h3 class="quote-title">US Economic Growth Outlook</h3>
+                        <p class="quote-meta">Economic Analysis</p>
+                    </div>
+                    <div class="quote-content">
+                        <p class="quote-text">"We expect year-ended growth in the US economy will slow to around a 1¾% pace by the end of 2024 and remain around that pace during 2025. The more moderate growth environment should allow demand and supply to come back into better balance, supporting a more sustainable economic expansion. While there are always risks to our outlook, we believe the US economy is well-positioned for continued growth."</p>
+
+                        <div class="quote-author-info">
+                            <p class="quote-author">John Doe</p>
+                            <p class="quote-position">Chief Economist</p>
+                            <p class="quote-company">Sample Investment Bank</p>
+                        </div>
+                    </div>
+                    <div class="quote-footer">
+                        <span class="quote-date">July 26, 2024</span>
+                        <span class="quote-country">USA</span>
+                    </div>
+                </div>
+
+                <!-- Quote 2 -->
+                <div class="quote-card">
+                    <div class="quote-header">
+                        <h3 class="quote-title">Global Economic Risks Assessment</h3>
+                        <p class="quote-meta">Market Analysis</p>
+                    </div>
+                    <div class="quote-content">
+                        <p class="quote-text">"The global economy always faces risks, but for the moment, the US is doing well, and prospects of another Trump presidency do not seem to be worrying the market at all. Investors appear confident that economic policies will remain supportive of growth regardless of political changes. This stability is providing a solid foundation for continued market performance."</p>
+
+                        <div class="quote-author-info">
+                            <p class="quote-author">Jane Smith</p>
+                            <p class="quote-position">Market Analyst</p>
+                            <p class="quote-company">Global Markets Inc</p>
+                        </div>
+                    </div>
+                    <div class="quote-footer">
+                        <span class="quote-date">July 26, 2024</span>
+                        <span class="quote-country">USA</span>
+                    </div>
+                </div>
+
+                <!-- Quote 3 -->
+                <div class="quote-card">
+                    <div class="quote-header">
+                        <h3 class="quote-title">Federal Reserve Policy Impact</h3>
+                        <p class="quote-meta">Monetary Policy</p>
+                    </div>
+                    <div class="quote-content">
+                        <p class="quote-text">"The Federal Reserve's (Fed's) aggressive post-pandemic rate-hiking and higher-for-longer rate strategy has helped underpin the U.S. dollar. This has significant consequences for global economies, currencies, and trade flows. Emerging markets in particular may face challenges as the strong dollar makes their exports more expensive and increases the cost of dollar-denominated debt."</p>
+
+                        <div class="quote-author-info">
+                            <p class="quote-author">Michael Johnson</p>
+                            <p class="quote-position">Senior Economist</p>
+                            <p class="quote-company">Federal Reserve Watch</p>
+                        </div>
+                    </div>
+                    <div class="quote-footer">
+                        <span class="quote-date">July 26, 2024</span>
+                        <span class="quote-country">USA</span>
+                    </div>
+                </div>
+
+                <!-- Quote 4 -->
+                <div class="quote-card">
+                    <div class="quote-header">
+                        <h3 class="quote-title">European Central Bank Strategy</h3>
+                        <p class="quote-meta">European Economics</p>
+                    </div>
+                    <div class="quote-content">
+                        <p class="quote-text">"The ECB's cautious approach to monetary policy normalization reflects the ongoing uncertainties in the eurozone economy. While inflation has moderated, structural challenges in productivity and demographic trends continue to weigh on long-term growth prospects. The bank's focus on data-dependent decision making provides flexibility but also introduces uncertainty for market participants."</p>
+
+                        <div class="quote-author-info">
+                            <p class="quote-author">Dr. Anna Schmidt</p>
+                            <p class="quote-position">European Economist</p>
+                            <p class="quote-company">European Financial Institute</p>
+                        </div>
+                    </div>
+                    <div class="quote-footer">
+                        <span class="quote-date">July 25, 2024</span>
+                        <span class="quote-country">Germany</span>
+                    </div>
+                </div>
+
+                <!-- Quote 5 -->
+                <div class="quote-card">
+                    <div class="quote-header">
+                        <h3 class="quote-title">Asian Market Dynamics</h3>
+                        <p class="quote-meta">Asian Markets</p>
+                    </div>
+                    <div class="quote-content">
+                        <p class="quote-text">"Asia's economic trajectory remains robust despite global headwinds. China's transition to a consumption-driven growth model, combined with India's rapid digital transformation and Southeast Asia's manufacturing renaissance, positions the region for continued outperformance. However, geopolitical tensions and supply chain vulnerabilities remain key risk factors that require careful monitoring."</p>
+
+                        <div class="quote-author-info">
+                            <p class="quote-author">Dr. Li Wei</p>
+                            <p class="quote-position">Chief Asia Economist</p>
+                            <p class="quote-company">Pacific Investment Group</p>
+                        </div>
+                    </div>
+                    <div class="quote-footer">
+                        <span class="quote-date">July 24, 2024</span>
+                        <span class="quote-country">Singapore</span>
+                    </div>
+                </div>
+
+                <!-- Quote 6 -->
+                <div class="quote-card">
+                    <div class="quote-header">
+                        <h3 class="quote-title">Emerging Markets Outlook</h3>
+                        <p class="quote-meta">Global Markets</p>
+                    </div>
+                    <div class="quote-content">
+                        <p class="quote-text">"Emerging markets are at a critical juncture. While attractive valuations and improving fundamentals present opportunities, external financing conditions and commodity price volatility create challenges. Countries with strong policy frameworks and diversified economies are better positioned to navigate these turbulent waters and capitalize on the next phase of global growth."</p>
+
+                        <div class="quote-author-info">
+                            <p class="quote-author">Carlos Rodriguez</p>
+                            <p class="quote-position">Emerging Markets Strategist</p>
+                            <p class="quote-company">Global Development Bank</p>
+                        </div>
+                    </div>
+                    <div class="quote-footer">
+                        <span class="quote-date">July 23, 2024</span>
+                        <span class="quote-country">Brazil</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html></content>
+<parameter name="filePath">c:\Users\Mark Lorenz\Desktop\LibraryWebsite\market-quotes.html
