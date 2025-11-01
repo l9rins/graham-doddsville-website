@@ -49,29 +49,237 @@
             padding: 24px;
         }
 
-        .page-header {
-            text-align: center;
-            margin-bottom: 48px;
-            padding: 48px 0;
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-            color: white;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-lg);
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-bottom: 2px solid #d4af37;
+            padding: 12px 0;
+            transition: all 0.3s ease;
+            overflow: visible;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
 
-        .page-title {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 3rem;
-            font-weight: 700;
-            margin: 0 0 16px 0;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            overflow: visible;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 40px;
+            width: auto;
+        }
+
+        .main-nav {
+            overflow: visible;
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            overflow: visible;
+        }
+
+        .nav-link {
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-family: Georgia, serif;
+        }
+
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 30px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 2px;
+            background: #333;
+            border-radius: 1px;
+            transition: all 0.3s ease;
+            transform-origin: center;
+            display: block;
+            margin: 2px 0;
+        }
+
+        /* Mobile Menu Toggle Animation */
+        .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Desktop/Mobile visibility classes */
+        .desktop-only {
+            display: block;
+        }
+
+        .mobile-only {
+            display: none;
+        }
+
+        /* Mobile Navigation Drawer */
+        .mobile-drawer {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 300px;
+            height: 100vh;
+            background: white;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            transition: left 0.3s ease;
+            z-index: 1001;
+            overflow-y: auto;
+        }
+
+        .mobile-drawer.open {
+            left: 0;
+        }
+
+        .drawer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #e5e7eb;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        }
+
+        .drawer-logo {
+            height: 35px;
+            width: auto;
+        }
+
+        .drawer-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+            padding: 5px;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .drawer-close:hover {
+            background: #f3f4f6;
+        }
+
+        .drawer-nav {
+            padding: 20px;
+        }
+
+        .drawer-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .drawer-menu li {
+            margin-bottom: 15px;
+        }
+
+        .drawer-link {
+            color: #333;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            display: block;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .drawer-link:hover {
+            background: #f3f4f6;
+            color: #1e3a8a;
+        }
+
+        /* Page Title Section */
+        .page-title-section {
+            margin: 24px 0 32px 0;
+            padding: 0;
+        }
+
+        .breadcrumb-link {
+            color: var(--primary-blue-light);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            display: inline-block;
+            transition: color 0.2s ease;
+        }
+
+        .breadcrumb-link:hover {
+            color: var(--primary-blue);
+        }
+
+        .page-title-section h1 {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: #6B46C1; /* Brand purple */
+            margin: 0 0 0px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #e0e0e0;
+            padding: 4px 0 4px 4px; /* 4px left padding inside bar */
+            background: rgba(250, 251, 252, 0.65); /* Reduced opacity by 20% */
+            height: 32px; /* Reduced from 36px to 32px */
+            display: flex;
+            align-items: center;
+            letter-spacing: -0.02em;
         }
 
         .page-subtitle {
-            font-size: 1.2rem;
-            font-weight: 300;
-            margin: 0;
-            opacity: 0.9;
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin: 8px 0 0 0;
         }
 
         .quotes-grid {
@@ -105,11 +313,13 @@
             font-family: 'Playfair Display', Georgia, serif;
             font-size: 1.4rem;
             font-weight: 600;
+            color: white;
             margin: 0 0 8px 0;
         }
 
         .quote-meta {
             font-size: 0.9rem;
+            color: white;
             opacity: 0.9;
             margin: 0;
         }
@@ -190,6 +400,14 @@
         }
 
         @media (max-width: 768px) {
+            .desktop-only {
+                display: none !important;
+            }
+
+            .mobile-only {
+                display: block !important;
+            }
+
             .market-quotes-page-content {
                 padding: 16px;
             }
@@ -264,14 +482,116 @@
             }
         }
     </style>
+
+    <script>
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            const drawerClose = document.getElementById('drawer-close');
+
+            // Toggle mobile menu
+            mobileToggle.addEventListener('click', function() {
+                mobileDrawer.classList.toggle('open');
+                mobileToggle.classList.toggle('active');
+            });
+
+            // Close mobile menu
+            drawerClose.addEventListener('click', function() {
+                mobileDrawer.classList.remove('open');
+                mobileToggle.classList.remove('active');
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!mobileDrawer.contains(event.target) && !mobileToggle.contains(event.target)) {
+                    mobileDrawer.classList.remove('open');
+                    mobileToggle.classList.remove('active');
+                }
+            });
+
+            // Close menu on escape key
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape') {
+                    mobileDrawer.classList.remove('open');
+                    mobileToggle.classList.remove('active');
+                }
+            });
+        });
+
+        // Placeholder functions for navigation links
+        function showAboutPage() {
+            alert('About page functionality would be implemented here');
+        }
+
+        function showAdvertisePage() {
+            alert('Advertise page functionality would be implemented here');
+        }
+
+        function showContactPage() {
+            alert('Contact page functionality would be implemented here');
+        }
+    </script>
 </head>
 <body>
-    <div class="market-quotes-page">
+    <div class="market-quotes-page" id="market-quotes-page">
+        
         <div class="market-quotes-page-content">
-            <a href="index.html" class="back-link">← Back to Home</a>
+            <!-- Header -->
+            <header class="header sticky-header" role="banner">
+                <div class="container">
+                    <div class="header-content">
+                        <div class="logo">
+                            <img src="G&D Logo.png" alt="Graham and Doddsville" class="logo-image">
+                        </div>
+                        <!-- Desktop Navigation (hidden on mobile) -->
+                        <nav class="main-nav desktop-only" role="navigation" aria-label="Main navigation">
+                            <ul>
+                                <li><a href="#" onclick="showAboutPage()" class="nav-link">ABOUT</a></li>
+                                <li><a href="#" onclick="showAdvertisePage()" class="nav-link">ADVERTISE</a></li>
+                                <li><a href="#" class="nav-link">SUBSCRIBE</a></li>
+                                <li><a href="#" onclick="showContactPage()" class="nav-link">CONTACT US</a></li>
+                            </ul>
+                        </nav>
+                        
+                        <!-- Mobile Hamburger Menu -->
+                        <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
+                            <span class="hamburger-line"></span>
+                            <span class="hamburger-line"></span>
+                            <span class="hamburger-line"></span>
+                        </button>
+                    </div>
+                </div>
+            </header>
 
-            <div class="page-header">
-                <h1 class="page-title">Market Quotes</h1>
+            <!-- Mobile Navigation Drawer -->
+            <div class="mobile-drawer" id="mobile-drawer">
+                <div class="drawer-header">
+                    <img src="G&D Logo.png" alt="Graham and Doddsville" class="drawer-logo">
+                    <button class="drawer-close" id="drawer-close" aria-label="Close menu">×</button>
+                </div>
+                <nav class="drawer-nav">
+                    <ul class="drawer-menu">
+                        <li><a href="index.html" class="drawer-link">Home</a></li>
+                        <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
+                        <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
+                        <li><a href="legal-taxation.html" class="drawer-link">Legal & Taxation</a></li>
+                        <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
+                        <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
+                        <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
+                        <li><a href="economics.html" class="drawer-link">Economics</a></li>
+                        <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
+                        <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
+                        <li><a href="resources.html" class="drawer-link">Resources</a></li>
+                        <li><a href="events.html" class="drawer-link">Events</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Page Title Section -->
+            <div class="page-title-section">
+                <a href="index.html" class="breadcrumb-link">← Home</a>
+                <h1 class="section-header">Market Quotes</h1>
                 <p class="page-subtitle">Expert insights and analysis from leading economists and market analysts</p>
             </div>
 

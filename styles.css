@@ -412,7 +412,7 @@ body {
 
     #mobile-feature-articles .articles-list .article-item h5 {
         font-family: Georgia, serif;
-        font-size: 0.96rem; /* 11.5pt equivalent */
+        font-size: 1.1rem; /* Match LATEST NEWS font size */
         font-weight: 600;
         color: #333;
         margin: 0;
@@ -579,6 +579,10 @@ body {
     overflow-wrap: break-word;
     hyphens: auto;
     margin: 0;
+    text-rendering: optimizeLegibility;
+    font-kerning: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* Add pipe separator between inline headlines (except last item) */
@@ -3043,6 +3047,15 @@ input:focus, textarea:focus, select:focus {
     margin-bottom: 30px;
 }
 
+/* Desktop FEATURE ARTICLES - match LATEST NEWS format with no spacing */
+.feature-articles .news-item {
+    margin-bottom: 0; /* No space between titles */
+}
+
+.feature-articles .news-item h3 {
+    margin-bottom: 0; /* No space between title and source */
+}
+
 /* Feature Articles filters now use the same styling as news-filters */
 
 .articles-list {
@@ -3050,7 +3063,7 @@ input:focus, textarea:focus, select:focus {
 }
 
 .article-item {
-    margin-bottom: 1px;
+    margin-bottom: 0; /* No space between titles */
     padding: 0;
 }
 
@@ -3261,6 +3274,18 @@ input:focus, textarea:focus, select:focus {
     margin-bottom: 30px;
 }
 
+/* Ensure proper text rendering and punctuation spacing for recommended books */
+.recommended-books,
+.recommended-books a,
+.recommended-books h3,
+.recommended-books p,
+.recommended-books span {
+    text-rendering: optimizeLegibility;
+    font-kerning: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 .books-list {
     margin-bottom: 20px;
 }
@@ -3313,6 +3338,10 @@ input:focus, textarea:focus, select:focus {
     font-style: italic;
     font-size: 13px;
     line-height: 1.5;
+    text-rendering: optimizeLegibility;
+    font-kerning: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* Sidebar */
@@ -4681,12 +4710,26 @@ input:focus, textarea:focus, select:focus {
     margin-bottom: 8px;
 }
 
+.book-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.book-links li {
+    margin-bottom: 8px;
+}
+
 .book-links a {
     color: #333;
     text-decoration: none;
     font-size: 14px;
     line-height: 1.4;
     transition: color 0.3s ease;
+    text-rendering: optimizeLegibility;
+    font-kerning: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .book-links a:hover {
@@ -4714,6 +4757,10 @@ input:focus, textarea:focus, select:focus {
     overflow-wrap: break-word;
     hyphens: auto;
     line-height: 1.4;
+    text-rendering: optimizeLegibility;
+    font-kerning: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .book-links-horizontal a:hover {
@@ -4768,6 +4815,10 @@ input:focus, textarea:focus, select:focus {
     overflow-wrap: break-word;
     hyphens: auto;
     line-height: 1.4;
+    text-rendering: optimizeLegibility;
+    font-kerning: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .book-links-normal a:hover {
@@ -4974,6 +5025,10 @@ input:focus, textarea:focus, select:focus {
     font-weight: bold;
     padding-bottom: 8px;
     border-bottom: 2px solid #0066cc;
+    text-rendering: optimizeLegibility;
+    font-kerning: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .buffett-topics {
@@ -4992,6 +5047,10 @@ input:focus, textarea:focus, select:focus {
     font-size: 14px;
     line-height: 1.4;
     transition: color 0.3s ease;
+    text-rendering: optimizeLegibility;
+    font-kerning: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .buffett-topics a:hover {
@@ -6877,12 +6936,6 @@ img[loading="lazy"].loaded {
 .article-item,
 .news-item {
     max-width: 100%;
-
-    /* Mobile: ensure news headings remain readable on the dark container background */
-    .news-section-title,
-    .sub-heading-title {
-        color: #ffffff !important;
-    }
     word-wrap: break-word;
     overflow-wrap: break-word;
 }
@@ -7336,6 +7389,18 @@ th {
         display: none !important;
     }
     
+    /* Desktop news section title styling */
+    .news-section-title {
+        color: var(--color-primary) !important;
+        font-family: var(--font-primary);
+        font-size: 24px;
+        font-weight: 700;
+        text-align: left;
+        margin: 0 0 20px 0;
+        border-bottom: 2px solid var(--color-primary);
+        padding-bottom: 8px;
+    }
+    
     /* Desktop menu as thin 40px bar above mobile layout */
 }
 
@@ -7675,6 +7740,18 @@ th {
     margin-bottom: 10px;
     padding: 0 16px;
     background: #fff;
+}
+
+/* Ensure proper text rendering and punctuation spacing for newspaper sections */
+.newspaper-section,
+.newspaper-section a,
+.newspaper-section h3,
+.newspaper-section p,
+.newspaper-section span {
+    text-rendering: optimizeLegibility;
+    font-kerning: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* PROFESSIONAL SECTION HEADER STYLING */
@@ -8709,7 +8786,7 @@ th {
     text-decoration: none;
     color: inherit;
     transition: background-color 0.2s ease;
-    min-height: 44px;
+    min-height: 4px;
     margin-bottom: 4px;
     cursor: pointer;
 }
@@ -9712,6 +9789,10 @@ th {
         word-wrap: break-word;
         overflow-wrap: break-word;
         hyphens: auto;
+        text-rendering: optimizeLegibility;
+        font-kerning: normal;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
     
     .book-links-horizontal a:not(:last-child)::after {
