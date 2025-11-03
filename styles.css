@@ -9224,16 +9224,16 @@ th {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         font-size: 18px;
         font-weight: 600;
-        color: #6B46C1;
+        color: #6B46C1 !important; /* Reverted to original purple color */
         margin: 0 0 0px 0;
         text-transform: uppercase;
         letter-spacing: 1px;
         border-bottom: 2px solid #e0e0e0;
         padding: 4px 0 4px 4px; /* 4px left padding inside bar */
-        background: rgba(250, 251, 252, 0.65); /* Reduced opacity by 20% */
+        background: rgba(250, 251, 252, 0.65); /* Reverted to original semi-transparent background */
         height: 32px; /* Reduced from 36px to 32px */
-        display: flex;
-        align-items: center;
+        line-height: 24px; /* Center text vertically */
+        text-align: left !important; /* Left align like AROUND THE WORLD */
     }
 
     .news-item {
