@@ -7493,9 +7493,9 @@
             // Use AbortController for timeout
             const controller = new AbortController();
             const timeoutId = setTimeout(() => {
-                console.log(`${region} API request timed out after 2 seconds`);
+                console.log(`${region} API request timed out after 10 seconds`);
                 controller.abort();
-            }, 2000); // Reduced to 2 second timeout
+            }, 10000); // Increased to 10 second timeout for regional news API
             
             console.log(`Making fetch request for ${region} to:`, apiUrl);
             fetch(apiUrl, {
