@@ -3472,18 +3472,19 @@
 
 
         <!-- WARREN BUFFETT ON EVERYTHING Section with Tabs -->
-        <section class="newspaper-section" id="mobile-buffett">
+        <div class="newspaper-section" id="mobile-buffett">
             <h2 class="section-header">WARREN BUFFETT ON EVERYTHING</h2>
             
-            <!-- Buffett Tab Navigation -->
             <div class="buffett-tabs-mobile">
-                <button class="buffett-tab-btn active" data-tab="philosophy">Philosophy</button>
-                <button class="buffett-tab-btn" data-tab="investing">Investing</button>
-                <button class="buffett-tab-btn" data-tab="businesses">Businesses</button>
-                <button class="buffett-tab-btn" data-tab="governance">Governance</button>
-                <button class="buffett-tab-btn" data-tab="accounting">Accounting</button>
-                <button class="buffett-tab-btn" data-tab="economics">Economics</button>
-                <button class="buffett-tab-btn" data-tab="miscellaneous">Miscellaneous</button>
+                <button class="buffett-tab-btn active" data-category="buffett-munger">Buffett & Munger</button>
+                <button class="buffett-tab-btn" data-category="value-investing">Value Investing</button>
+                <button class="buffett-tab-btn" data-category="share-investing">Share Investing</button>
+                <button class="buffett-tab-btn" data-category="wealth-creation">Wealth Creation</button>
+                <button class="buffett-tab-btn" data-category="financial-analysis">Financial Analysis</button>
+                <button class="buffett-tab-btn" data-category="sales-marketing">Sales & Marketing</button>
+                <button class="buffett-tab-btn" data-category="self-improvement">Self Improvement</button>
+                <button class="buffett-tab-btn" data-category="business-management">Business Management</button>
+                <button class="buffett-tab-btn" data-category="miscellaneous">Miscellaneous</button>
             </div>
 
             <!-- Buffett Content by Tab -->
@@ -4698,7 +4699,7 @@
                                 </div>
                                 </div>
                             </div>
-        </section>
+        </div>
 
 
         <!-- Mobile Footer -->
@@ -8548,16 +8549,43 @@
         }
         
         // Add event listeners to video filters
-        document.getElementById('video-investor-filter').addEventListener('change', filterVideos);
-        document.getElementById('video-topic-filter').addEventListener('change', filterVideos);
-        document.getElementById('video-period-filter').addEventListener('change', filterVideos);
-        document.getElementById('video-sort-filter').addEventListener('change', filterVideos);
+        const videoInvestorFilter = document.getElementById('video-investor-filter');
+        if (videoInvestorFilter) {
+            videoInvestorFilter.addEventListener('change', filterVideos);
+        } else {
+            console.warn('Element not found: video-investor-filter');
+        }
+
+        const videoTopicFilter = document.getElementById('video-topic-filter');
+        if (videoTopicFilter) {
+            videoTopicFilter.addEventListener('change', filterVideos);
+        } else {
+            console.warn('Element not found: video-topic-filter');
+        }
+
+        const videoPeriodFilter = document.getElementById('video-period-filter');
+        if (videoPeriodFilter) {
+            videoPeriodFilter.addEventListener('change', filterVideos);
+        } else {
+            console.warn('Element not found: video-period-filter');
+        }
+
+        const videoSortFilter = document.getElementById('video-sort-filter');
+        if (videoSortFilter) {
+            videoSortFilter.addEventListener('change', filterVideos);
+        } else {
+            console.warn('Element not found: video-sort-filter');
+        }
 
         // Event filter functionality
         function filterEvents() {
-            const stateFilter = document.getElementById('event-state-filter').value;
-            const formatFilter = document.getElementById('event-format-filter').value;
-            const costFilter = document.getElementById('event-cost-filter').value;
+            const stateFilterElement = document.getElementById('event-state-filter');
+            const formatFilterElement = document.getElementById('event-format-filter');
+            const costFilterElement = document.getElementById('event-cost-filter');
+            
+            const stateFilter = stateFilterElement ? stateFilterElement.value : '';
+            const formatFilter = formatFilterElement ? formatFilterElement.value : '';
+            const costFilter = costFilterElement ? costFilterElement.value : '';
             
             const eventItems = document.querySelectorAll('.event-item');
             
@@ -8577,9 +8605,26 @@
         }
         
         // Add event listeners to event filters
-        document.getElementById('event-state-filter').addEventListener('change', filterEvents);
-        document.getElementById('event-format-filter').addEventListener('change', filterEvents);
-        document.getElementById('event-cost-filter').addEventListener('change', filterEvents);
+        const eventStateFilter = document.getElementById('event-state-filter');
+        if (eventStateFilter) {
+            eventStateFilter.addEventListener('change', filterEvents);
+        } else {
+            console.warn('Element not found: event-state-filter');
+        }
+
+        const eventFormatFilter = document.getElementById('event-format-filter');
+        if (eventFormatFilter) {
+            eventFormatFilter.addEventListener('change', filterEvents);
+        } else {
+            console.warn('Element not found: event-format-filter');
+        }
+
+        const eventCostFilter = document.getElementById('event-cost-filter');
+        if (eventCostFilter) {
+            eventCostFilter.addEventListener('change', filterEvents);
+        } else {
+            console.warn('Element not found: event-cost-filter');
+        }
 
         // Greatest Investors tab functionality
         function initInvestorsTabs() {
@@ -10573,133 +10618,130 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
     if (window.matchMedia && !window.matchMedia('(max-width: 768px)').matches) return; // only run on mobile
 
-    const VISIBLE_BATCH = 9;
+    // const VISIBLE_BATCH = 9;
 
-    function initBuffettList(sliderId) {
-        const slider = document.getElementById(sliderId);
-        if (!slider) return;
-        const items = Array.from(slider.querySelectorAll('.buffett-item-mobile'));
-        items.forEach(it => it.classList.remove('visible'));
-        items.slice(0, VISIBLE_BATCH).forEach(it => it.classList.add('visible'));
-        slider.dataset.shown = Math.min(items.length, VISIBLE_BATCH);
-        slider.dataset.expanded = 'false'; // Initialize as collapsed
-        updateBuffettSeeMoreState(sliderId);
-    }
+    // function initBuffettList(sliderId) {
+    //     const slider = document.getElementById(sliderId);
+    //     if (!slider) return;
+    //     const items = Array.from(slider.querySelectorAll('.buffett-item-mobile'));
+    //     items.forEach(it => it.classList.remove('visible'));
+    //     items.slice(0, VISIBLE_BATCH).forEach(it => it.classList.add('visible'));
+    //     slider.dataset.shown = Math.min(items.length, VISIBLE_BATCH);
+    //     slider.dataset.expanded = 'false'; // Initialize as collapsed
+    //     updateBuffettSeeMoreState(sliderId);
+    // }
 
-    function updateBuffettSeeMoreState(sliderId) {
-        const slider = document.getElementById(sliderId);
-        if (!slider) return;
-        const shown = parseInt(slider.dataset.shown || '0', 10);
-        const items = slider.querySelectorAll('.buffett-item-mobile');
-        const btn = document.querySelector('.buffett-see-more-link[data-list="' + sliderId + '"]');
-        if (!btn) return;
+    // function updateBuffettSeeMoreState(sliderId) {
+    //     const slider = document.getElementById(sliderId);
+    //     if (!slider) return;
+    //     const shown = parseInt(slider.dataset.shown || '0', 10);
+    //     const items = slider.querySelectorAll('.buffett-item-mobile');
+    //     const btn = document.querySelector('.buffett-see-more-link[data-list="' + sliderId + '"]');
+    //     if (!btn) return;
 
-        const isExpanded = slider.dataset.expanded === 'true';
-        const totalItems = items.length;
-        const initialBatch = 9; // VISIBLE_BATCH
+    //     const isExpanded = slider.dataset.expanded === 'true';
+    //     const totalItems = items.length;
+    //     const initialBatch = 9; // VISIBLE_BATCH
 
-        if (isExpanded) {
-            // Currently expanded - show "See less" to collapse back
-            btn.textContent = 'See less';
-            btn.classList.remove('disabled');
-            btn.removeAttribute('aria-disabled');
-            btn.style.pointerEvents = '';
-        } else if (totalItems > initialBatch) {
-            // Currently collapsed and has more items - show "See more" to expand
-            btn.textContent = 'See more';
-            btn.classList.remove('disabled');
-            btn.removeAttribute('aria-disabled');
-            btn.style.pointerEvents = '';
-        } else {
-            // No more items to show (all fit in initial batch)
-            btn.classList.add('disabled');
-            btn.setAttribute('aria-disabled', 'true');
-            btn.style.pointerEvents = 'none';
-        }
-    }
+    //     if (isExpanded) {
+    //         // Currently expanded - show "See less" to collapse back
+    //         btn.textContent = 'See less';
+    //         btn.classList.remove('disabled');
+    //         btn.removeAttribute('aria-disabled');
+    //         btn.style.pointerEvents = '';
+    //     } else if (totalItems > initialBatch) {
+    //         // Currently collapsed and has more items - show "See more" to expand
+    //         btn.textContent = 'See more';
+    //         btn.classList.remove('disabled');
+    //         btn.removeAttribute('aria-disabled');
+    //         btn.style.pointerEvents = '';
+    //     } else {
+    //         // No more items to show (all fit in initial batch)
+    //         btn.classList.add('disabled');
+    //         btn.setAttribute('aria-disabled', 'true');
+    //         btn.style.pointerEvents = 'none';
+    //     }
+    // }
 
-    // Reveal all remaining items for the slider (user requested: show 9 initially, reveal all on See more)
-    function revealAll(sliderId) {
-        const slider = document.getElementById(sliderId);
-        if (!slider) return;
-        const items = Array.from(slider.querySelectorAll('.buffett-item-mobile'));
-        items.forEach(it => it.classList.add('visible'));
-        slider.dataset.shown = items.length;
-        slider.dataset.expanded = 'true';
-        updateBuffettSeeMoreState(sliderId);
-    }
+    // // Reveal all remaining items for the slider (user requested: show 9 initially, reveal all on See more)
+    // function revealAll(sliderId) {
+    //     const slider = document.getElementById(sliderId);
+    //     if (!slider) return;
+    //     const items = Array.from(slider.querySelectorAll('.buffett-item-mobile'));
+    //     items.forEach(it => it.classList.add('visible'));
+    //     slider.dataset.shown = items.length;
+    //     slider.dataset.expanded = 'true';
+    //     updateBuffettSeeMoreState(sliderId);
+    // }
 
-    // Hide items back to initial batch (for See less functionality)
-    function hideItems(sliderId) {
-        const slider = document.getElementById(sliderId);
-        if (!slider) return;
-        const items = Array.from(slider.querySelectorAll('.buffett-item-mobile'));
-        // Hide all items beyond the initial batch
-        items.forEach((item, index) => {
-            if (index >= VISIBLE_BATCH) {
-                item.classList.remove('visible');
-            }
-        });
-        slider.dataset.shown = VISIBLE_BATCH;
-        slider.dataset.expanded = 'false';
-        updateBuffettSeeMoreState(sliderId);
-    }
+    // // Hide items back to initial batch (for See less functionality)
+    // function hideItems(sliderId) {
+    //     const slider = document.getElementById(sliderId);
+    //     if (!slider) return;
+    //     const items = Array.from(slider.querySelectorAll('.buffett-item-mobile'));
+    //     // Hide all items beyond the initial batch
+    //     items.forEach((item, index) => {
+    //         if (index >= VISIBLE_BATCH) {
+    //             item.classList.remove('visible');
+    //         }
+    //     });
+    //     slider.dataset.shown = VISIBLE_BATCH;
+    //     slider.dataset.expanded = 'false';
+    //     updateBuffettSeeMoreState(sliderId);
+    // }
 
-    // Known Buffett slider IDs (safe to include; init will skip missing ones)
-    const sliderIds = [
-        'philosophy-buffett-slider',
-        'investing-buffett-slider',
-        'businesses-buffett-slider',
-        'governance-buffett-slider',
-        'accounting-buffett-slider',
-        'economics-buffett-slider',
-        'miscellaneous-buffett-slider'
-    ];
+    // // Known Buffett slider IDs (safe to include; init will skip missing ones)
+    // const sliderIds = [
+    //     'philosophy-buffett-slider',
+    //     'investing-buffett-slider',
+    //     'businesses-buffett-slider',
+    //     'governance-buffett-slider',
+    //     'accounting-buffett-slider',
+    //     'economics-buffett-slider',
+    //     'miscellaneous-buffett-slider'
+    // ];
 
-    sliderIds.forEach(id => initBuffettList(id));
+    // sliderIds.forEach(id => initBuffettList(id));
 
-    // Wire per-category See more links
-    document.querySelectorAll('.buffett-see-more-link').forEach(link => {
-        link.addEventListener('click', function (e) {
-            const list = this.dataset.list;
-            if (!list) return;
+    // // Wire per-category See more links
+    // document.querySelectorAll('.buffett-see-more-link').forEach(link => {
+    //     link.addEventListener('click', function (e) {
+    //         const list = this.dataset.list;
+    //         if (!list) return;
             
-            e.preventDefault();
-            const slider = document.getElementById(list);
-            if (!slider) return;
+    //         e.preventDefault();
+    //         const slider = document.getElementById(list);
+    //         if (!slider) return;
 
-            const isExpanded = slider.dataset.expanded === 'true';
+    //         const isExpanded = slider.dataset.expanded === 'true';
 
-            if (isExpanded) {
-                // Currently expanded, hide items back to initial batch
-                hideItems(list);
-            } else {
-                // Currently collapsed, reveal all items
-                revealAll(list);
-            }
-        });
-    });
+    //         if (isExpanded) {
+    //             // Currently expanded, hide items back to initial batch
+    //             hideItems(list);
+    //         } else {
+    //             // Currently collapsed, reveal all items
+    //             revealAll(list);
+    //         }
+    //     });
+    // });
 
-    // When switching Buffett tabs, initialize that category's slider (if present)
-    // The HTML uses buttons with class .buffett-tab-btn and data-tab="<category>" inside the .buffett-tabs-mobile container.
+    // Simple static tab switching for #mobile-buffett
     const buffettTabButtons = document.querySelectorAll('#mobile-buffett .buffett-tab-btn');
     buffettTabButtons.forEach(btn => {
         btn.addEventListener('click', function () {
-            const cat = this.dataset.tab; // data-tab attribute on the button
+            const cat = this.dataset.category; // data-category attribute on the button
             if (!cat) return;
 
-            // Toggle active state on the tab buttons
+            // Hide all tab-content divs
+            document.querySelectorAll('#mobile-buffett .tab-content').forEach(t => t.style.display = 'none');
+
+            // Show the matching content div
+            const target = document.getElementById(cat);
+            if (target) target.style.display = 'block';
+
+            // Update active button styling
             document.querySelectorAll('#mobile-buffett .buffett-tab-btn').forEach(b => b.classList.remove('active'));
             this.classList.add('active');
-
-            // Toggle active state on the content panes
-            document.querySelectorAll('#mobile-buffett .buffett-tab').forEach(t => t.classList.remove('active'));
-            const targetPane = document.querySelector('#mobile-buffett .buffett-tab[data-tab="' + cat + '"]');
-            if (targetPane) targetPane.classList.add('active');
-
-            // Initialize and show the first batch for the slider for this category
-            const sliderId = cat + '-buffett-slider';
-            initBuffettList(sliderId);
         });
     });
 });

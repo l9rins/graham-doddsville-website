@@ -4573,6 +4573,11 @@ input:focus, textarea:focus, select:focus {
     flex: 1;
     padding: 20px;
     background: white;
+    display: none; /* Hidden by default */
+}
+
+.tab-content.active {
+    display: block; /* Shown when active */
 }
 
 .tab-panel {
