@@ -1172,6 +1172,38 @@ const newsSources = {
         url: 'https://www.sunraysiadaily.com.au/rss.xml',
         type: 'rss',
         category: 'regional'
+    },
+
+    // Additional RSS sources for regional news (to replace failing NewsAPI sources)
+    'cnn-rss': {
+        name: 'CNN',
+        url: 'http://rss.cnn.com/rss/edition.rss',
+        type: 'rss',
+        category: 'international'
+    },
+    'bbc-rss': {
+        name: 'BBC News',
+        url: 'https://feeds.bbci.co.uk/news/rss.xml',
+        type: 'rss',
+        category: 'international'
+    },
+    'reuters-rss': {
+        name: 'Reuters',
+        url: 'https://feeds.reuters.com/reuters/topNews',
+        type: 'rss',
+        category: 'international'
+    },
+    'nyt-rss': {
+        name: 'New York Times',
+        url: 'https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml',
+        type: 'rss',
+        category: 'international'
+    },
+    'guardian-rss': {
+        name: 'The Guardian',
+        url: 'https://www.theguardian.com/world/rss',
+        type: 'rss',
+        category: 'international'
     }
 };
 
@@ -1179,14 +1211,14 @@ const newsSources = {
 const regionalNewsSources = {
     // North America sources (RSS focused for reliability)
     'north-america': [
-        'wsj', 'financial-times', 'fortune', 'time', 'usa-today', 'the-guardian', 'independent',
-        'telegraph', 'economist', 'bloomberg', 'reuters', 'cnn'
+        'cnn-rss', 'bbc-rss', 'reuters-rss', 'nyt-rss', 'fortune', 'time', 'usa-today', 'the-guardian', 'independent',
+        'telegraph', 'bloomberg'
     ],
 
     // Europe sources (RSS focused)
     'europe': [
-        'financial-times', 'the-guardian', 'independent', 'telegraph', 'economist',
-        'bbc-news', 'reuters', 'bloomberg', 'wsj', 'cnn'
+        'guardian-rss', 'bbc-rss', 'reuters-rss', 'independent', 'telegraph',
+        'bloomberg', 'wsj', 'cnn'
     ],
 
     // Asia sources (RSS focused)
