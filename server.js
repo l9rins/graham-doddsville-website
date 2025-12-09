@@ -167,6 +167,19 @@ function isArticleValid(article) {
     return true;
 }
 
+function isArticleRelevant(article) {
+    const relevantKeywords = [
+        'investment', 'investing', 'market', 'stocks', 'shares', 'equity',
+        'bonds', 'property', 'real estate', 'superannuation', 'super',
+        'banking', 'finance', 'economic', 'economy', 'inflation', 'interest',
+        'rate', 'rba', 'asx', 'mining', 'resources', 'energy', 'retail',
+        'consumer', 'business', 'company', 'earnings', 'profit', 'revenue'
+    ];
+
+    const text = (article.title + ' ' + (article.excerpt || '')).toLowerCase();
+    return relevantKeywords.some(keyword => text.includes(keyword));
+}
+
 function deduplicateArticles(articles) {
     const uniqueArticles = [];
     const seenHashes = new Set();
@@ -570,6 +583,12 @@ app.get('/api/news/region/:region', async (req, res) => {
             } catch (error) {
                 console.log(`NewsAPI failed for ${region} (likely rate limited):`, error.message);
             }
+        }
+        
+        // Filter articles based on region
+        const isGeneralNewsRegion = ['north-america', 'europe'].includes(region);
+        if (!isGeneralNewsRegion) {
+            allArticles = allArticles.filter(article => isArticleRelevant(article));
         }
         
         // Sort articles by date
