@@ -1,27 +1,187 @@
+require('dotenv').config();
+
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const fetch = require('node-fetch');
 const { DOMParser } = require('xmldom');
+const crypto = require('crypto');
+const rateLimit = require('express-rate-limit');
 const { newsSources, regionalNewsSources } = require('./news-sources-config');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-const NEWS_API_KEY = '6d122bb10581490591ee20ade119ec27';
+const NEWS_API_KEY = process.env.NEWS_API_KEY;
 
 // Performance optimization constants
-const MAX_CONCURRENT_REQUESTS = 30; // Increased for faster fetching
-const REQUEST_TIMEOUT = 3000; // Reduced for quicker response
-const CACHE_DURATION = 5 * 60 * 1000; // Increased to 5 minutes for better performance
-const MAX_ARTICLES_PER_SOURCE = 3; // Reduced from 5 to speed up
+const MAX_CONCURRENT_REQUESTS = 5; // Reduced for NewsAPI rate limits
+const REQUEST_TIMEOUT = 5000; // Increased for NewsAPI
+const CACHE_DURATION = 6 * 60 * 60 * 1000; // 6 hours for NewsAPI free tier
+const MAX_ARTICLES_PER_SOURCE = 5; // Increased for better content
+
+// NewsAPI optimization constants
+const FINANCIAL_KEYWORDS = ['investment', 'stock market', 'earnings', 'dividend', 'portfolio', 'value investing', 'financial analysis'];
+const CREDIBLE_DOMAINS = ['reuters.com', 'bloomberg.com', 'ft.com', 'cnbc.com', 'investing.com', 'wsj.com', 'economist.com'];
+const REQUEST_DELAY = 5000; // 5 seconds between requests
+const FREE_TIER_DELAY_HOURS = 24; // NewsAPI free tier articles are minimum 24 hours old
+
+// Rate limiting
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // limit each IP to 100 requests per windowMs
+    message: 'Too many requests from this IP, please try again later.'
+});
+
+// Request tracking for NewsAPI quota management
+const REQUEST_COUNTER = {
+    dailyCount: 0,
+    lastResetDate: new Date().toDateString(),
+    requests: []  // Store request timestamps for sliding window analysis
+};
+
+// Reset counter at midnight
+function resetDailyCounter() {
+    const now = new Date().toDateString();
+    if (now !== REQUEST_COUNTER.lastResetDate) {
+        console.log(`✅ Daily reset: ${REQUEST_COUNTER.dailyCount} requests used yesterday`);
+        REQUEST_COUNTER.dailyCount = 0;
+        REQUEST_COUNTER.lastResetDate = now;
+        REQUEST_COUNTER.requests = [];
+    }
+}
+
+// Check and track NewsAPI requests
+async function checkAndTrackNewsAPIRequest() {
+    resetDailyCounter();
+    
+    if (REQUEST_COUNTER.dailyCount >= 100) {
+        throw new Error(`❌ Daily NewsAPI limit (100) exceeded. Reset at midnight UTC.`);
+    }
+    
+    if (REQUEST_COUNTER.dailyCount >= 95) {
+        console.warn(`⚠️ WARNING: ${REQUEST_COUNTER.dailyCount}/100 daily requests used`);
+    }
+    
+    REQUEST_COUNTER.dailyCount++;
+    return true;
+}
+
+// Centralized rate limiter for NewsAPI requests
+class RequestQueue {
+    constructor(delayMs = 5000, maxConcurrent = 1) {
+        this.queue = [];
+        this.active = 0;
+        this.delayMs = delayMs;
+        this.maxConcurrent = maxConcurrent;
+        this.lastRequestTime = 0;
+    }
+    
+    async add(fn) {
+        return new Promise((resolve, reject) => {
+            this.queue.push({ fn, resolve, reject });
+            this.process();
+        });
+    }
+    
+    async process() {
+        if (this.active >= this.maxConcurrent || this.queue.length === 0) {
+            return;
+        }
+        
+        this.active++;
+        const { fn, resolve, reject } = this.queue.shift();
+        
+        try {
+            // Enforce minimum delay between requests
+            const timeSinceLastRequest = Date.now() - this.lastRequestTime;
+            if (timeSinceLastRequest < this.delayMs) {
+                await new Promise(r => setTimeout(r, this.delayMs - timeSinceLastRequest));
+            }
+            
+            this.lastRequestTime = Date.now();
+            const result = await fn();
+            resolve(result);
+        } catch (error) {
+            reject(error);
+        } finally {
+            this.active--;
+            this.process();
+        }
+    }
+}
+
+const newsApiQueue = new RequestQueue(REQUEST_DELAY, 1);  // 5sec delay, 1 concurrent
+
+// Deduplication and validation functions
+const articleHashes = new Set();
 
 // In-memory cache for news data
 const newsCache = new Map();
 const sourceHealth = new Map(); // Track source health
 
 // Enable CORS for all routes
-app.use(cors());
+const corsOptions = {
+    origin: process.env.NODE_ENV === 'production'
+        ? 'https://yourdomain.com'  // Change to your actual domain
+        : 'http://localhost:3001',
+    methods: ['GET', 'POST'],
+    credentials: true,
+    maxAge: 3600
+};
+
+app.use(cors(corsOptions));
+app.use(limiter);
 app.use(express.json());
+
+// Deduplication and validation functions
+function generateArticleHash(title, source, publishedAt) {
+    const content = `${title.trim().toLowerCase()}_${source.trim().toLowerCase()}_${new Date(publishedAt).toDateString()}`;
+    return crypto.createHash('sha256').update(content).digest('hex');
+}
+
+function isArticleValid(article) {
+    // Validation rules
+    if (!article.title || article.title.length < 20 || article.title.length > 150) return false;
+    if (!article.description || article.description.length < 50) return false;
+    if (!article.source || !article.source.name) return false;
+    if (!article.url) return false;
+    if (!article.publishedAt) return false;
+    
+    // ✅ NEW: Account for free tier 24-hour delay
+    const publishedDate = new Date(article.publishedAt);
+    const now = new Date();
+    const hoursDiff = (now - publishedDate) / (1000 * 60 * 60);
+    
+    // Free tier: articles are minimum 24 hours old, accept up to 72 hours
+    const MIN_HOURS = FREE_TIER_DELAY_HOURS;   // Don't show fresh articles (not from free tier)
+    const MAX_HOURS = 72;   // Don't show very stale articles
+    
+    if (hoursDiff < MIN_HOURS || hoursDiff > MAX_HOURS) return false;
+    
+    // Check domain whitelist for NewsAPI articles
+    if (article.url) {
+        const url = new URL(article.url);
+        if (!CREDIBLE_DOMAINS.some(domain => url.hostname.includes(domain))) return false;
+    }
+    
+    return true;
+}
+
+function deduplicateArticles(articles) {
+    const uniqueArticles = [];
+    const seenHashes = new Set();
+    
+    for (const article of articles) {
+        const hash = generateArticleHash(article.title, article.source, article.publishedAt);
+        if (!seenHashes.has(hash) && !articleHashes.has(hash)) {
+            seenHashes.add(hash);
+            articleHashes.add(hash);
+            uniqueArticles.push(article);
+        }
+    }
+    
+    return uniqueArticles;
+}
 
 // Performance optimization middleware
 app.use((req, res, next) => {
@@ -118,25 +278,55 @@ async function parseRSSFeed(url, sourceName) {
     }
 }
 
-// Enhanced NewsAPI fetcher with timeout and caching
-async function fetchNewsFromAPI(source) {
+// Fetch news for a source, using appropriate method
+async function fetchNews(sourceKey, keywords = FINANCIAL_KEYWORDS) {
+    const source = newsSources[sourceKey];
+    if (!source) return [];
+
+    if (source.type === 'rss') {
+        return await parseRSSFeed(source.url, source.name);
+    } else if (source.type === 'newsapi') {
+        const articles = [];
+        for (const keyword of keywords) {
+            try {
+                const result = await fetchNewsFromAPI(keyword, 0);
+                articles.push(...result);
+            } catch (error) {
+                console.log(`Failed to fetch ${keyword} for ${source.name}:`, error.message);
+            }
+        }
+        return articles;
+    }
+    return [];
+}
+
+// Enhanced NewsAPI fetcher with optimization and validation
+async function fetchNewsFromAPI(keyword, delay = 0) {
+    if (delay > 0) {
+        await new Promise(resolve => setTimeout(resolve, delay));
+    }
+    
     try {
+        // ✅ NEW: Check quota before making request
+        await checkAndTrackNewsAPIRequest();
+        
         // Check cache first
-        const cacheKey = `newsapi_${source.source}`;
+        const cacheKey = `newsapi_${keyword}`;
         const cached = newsCache.get(cacheKey);
         if (cached && (Date.now() - cached.timestamp) < CACHE_DURATION) {
-            console.log(`Using cached data for ${source.name}`);
+            console.log(`Using cached data for keyword: ${keyword}`);
             return cached.articles;
         }
         
-        // Get articles from the last 7 days to ensure we have content
+        // Date range: last 7 days to account for free tier delay
         const sevenDaysAgo = new Date();
         sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
         const fromDate = sevenDaysAgo.toISOString().split('T')[0];
+        const toDate = new Date().toISOString().split('T')[0];
         
-        const url = `https://newsapi.org/v2/everything?sources=${source.source}&from=${fromDate}&sortBy=publishedAt&pageSize=${MAX_ARTICLES_PER_SOURCE}&apiKey=${NEWS_API_KEY}`;
+        const url = `https://newsapi.org/v2/everything?q=${encodeURIComponent(keyword)}&domains=${CREDIBLE_DOMAINS.join(',')}&from=${fromDate}&to=${toDate}&language=en&sortBy=publishedAt&pageSize=${MAX_ARTICLES_PER_SOURCE}&apiKey=${NEWS_API_KEY}`;
         
-        console.log(`Fetching news from NewsAPI for ${source.name}...`);
+        console.log(`Fetching optimized news from NewsAPI for keyword: ${keyword}...`);
         
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT);
@@ -154,27 +344,37 @@ async function fetchNewsFromAPI(source) {
             throw new Error(`NewsAPI returned error: ${data.message}`);
         }
         
-        const articles = data.articles.map(article => ({
-            title: article.title,
-            excerpt: article.description ? article.description.substring(0, 150) + '...' : '',
-            url: article.url,
-            image: article.urlToImage || generatePlaceholderImage(source.name),
-            category: categorizeNews(article.title + ' ' + (article.description || '')),
-            source: source.name,
-            publishedAt: article.publishedAt
-        }));
+        // Validate and process articles
+        const validArticles = data.articles
+            .filter(article => isArticleValid({
+                title: article.title,
+                description: article.description,
+                source: { name: article.source.name },
+                url: article.url,
+                publishedAt: article.publishedAt
+            }))
+            .map(article => ({
+                title: article.title.trim(),
+                excerpt: article.description ? article.description.substring(0, 120) + '...' : '',
+                url: article.url,
+                image: article.urlToImage || generatePlaceholderImage(article.source.name),
+                category: categorizeNews(article.title + ' ' + (article.description || '')),
+                source: article.source.name,
+                publishedAt: article.publishedAt,
+                hash: generateArticleHash(article.title, article.source.name, article.publishedAt)
+            }));
         
         // Cache the results
         newsCache.set(cacheKey, {
-            articles: articles,
+            articles: validArticles,
             timestamp: Date.now()
         });
         
-        console.log(`Successfully fetched ${articles.length} articles from ${source.name}`);
-        return articles;
+        console.log(`Successfully fetched ${validArticles.length} valid articles for keyword: ${keyword}`);
+        return validArticles;
         
     } catch (error) {
-        console.error(`Error fetching news from NewsAPI for ${source.name}:`, error);
+        console.error(`Error fetching news from NewsAPI for keyword ${keyword}:`, error.message);
         return [];
     }
 }
@@ -362,7 +562,8 @@ app.get('/api/news/region/:region', async (req, res) => {
                     const key = Object.keys(newsSources).find(k => newsSources[k] === s);
                     return key;
                 }).filter(Boolean);
-                const apiResults = await processBatch(apiSourceKeys.slice(0, 3), 2);
+                const keywords = (region === 'north-america' || region === 'europe') ? ['news'] : FINANCIAL_KEYWORDS;
+                const apiResults = await processBatch(apiSourceKeys.slice(0, 3), 2, keywords);
                 const apiArticles = apiResults.flat();
                 allArticles = [...allArticles, ...apiArticles];
                 console.log(`NewsAPI sources returned ${apiArticles.length} articles`);
@@ -395,7 +596,7 @@ app.get('/api/news/region/:region', async (req, res) => {
 });
 
 // Batch processing function with concurrency control
-async function processBatch(sources, batchSize = MAX_CONCURRENT_REQUESTS) {
+async function processBatch(sources, batchSize = MAX_CONCURRENT_REQUESTS, keywords = FINANCIAL_KEYWORDS) {
     const results = [];
     
     for (let i = 0; i < sources.length; i += batchSize) {
@@ -412,11 +613,7 @@ async function processBatch(sources, batchSize = MAX_CONCURRENT_REQUESTS) {
                 
                 let articles = [];
                 
-                if (source.type === 'newsapi') {
-                    articles = await fetchNewsFromAPI(source);
-                } else if (source.type === 'rss') {
-                    articles = await parseRSSFeed(source.url, source.name);
-                }
+                articles = await fetchNews(sourceKey, keywords);
                 
                 return articles;
             } catch (error) {
@@ -467,31 +664,68 @@ function getPrioritizedSources() {
 // API endpoint to fetch news from all sources with optimization
 app.get('/api/news', async (req, res) => {
     try {
-        console.log('Fetching news from all sources with optimization...');
+        console.log('Fetching optimized financial news...');
         
         // Check if we have cached data
-        const cacheKey = 'all_news';
+        const cacheKey = 'optimized_news';
         const cached = newsCache.get(cacheKey);
         if (cached && (Date.now() - cached.timestamp) < CACHE_DURATION) {
-            console.log('Returning cached news data');
-            return res.json(cached.data);
+            console.log('Returning cached optimized news data');
+            return res.json({
+                ...cached.data,
+                lastUpdated: new Date(cached.timestamp).toISOString(),
+                isCached: true
+            });
         }
         
         const allArticles = [];
-        const prioritizedSources = getPrioritizedSources();
         
-        // Process sources in batches with priority
-        const results = await processBatch(prioritizedSources);
-        results.forEach(articles => allArticles.push(...articles));
+        // Fetch from RSS sources first (reliable)
+        const rssSources = getPrioritizedSources().filter(key => newsSources[key]?.type === 'rss').slice(0, 10);
+        if (rssSources.length > 0) {
+            console.log(`Fetching from ${rssSources.length} RSS sources...`);
+            const rssResults = await processBatch(rssSources, 3);
+            rssResults.forEach(articles => allArticles.push(...articles));
+        }
         
-        // Sort by publication date (newest first)
-        allArticles.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+        // Fetch optimized NewsAPI content with keywords
+        console.log('Fetching optimized NewsAPI content...');
+        const newsApiPromises = FINANCIAL_KEYWORDS.map(keyword => 
+            newsApiQueue.add(() => fetchNewsFromAPI(keyword, 0))
+        );
+        
+        const newsApiResults = await Promise.allSettled(newsApiPromises);
+        newsApiResults.forEach(result => {
+            if (result.status === 'fulfilled') {
+                allArticles.push(...result.value);
+            } else {
+                console.error('NewsAPI keyword fetch failed:', result.reason);
+            }
+        });
+        
+        // Deduplicate articles
+        const uniqueArticles = deduplicateArticles(allArticles);
+        
+        // Sort by publication date (newest first), then by URL uniqueness
+        uniqueArticles.sort((a, b) => {
+            const dateDiff = new Date(b.publishedAt) - new Date(a.publishedAt);
+            if (dateDiff !== 0) return dateDiff;
+            // Prefer articles from different sources
+            return a.source.localeCompare(b.source);
+        });
+        
+        // Take top articles (limit to prevent overload)
+        const topArticles = uniqueArticles.slice(0, 50);
         
         const responseData = {
-            articles: allArticles,
-            count: allArticles.length,
-            sources: prioritizedSources,
-            timestamp: new Date().toISOString()
+            articles: topArticles,
+            count: topArticles.length,
+            keywords: FINANCIAL_KEYWORDS,
+            domains: CREDIBLE_DOMAINS,
+            lastUpdated: new Date().toISOString(),
+            isCached: false,
+            freshness: 'LIVE',  // ✅ NEW: Freshness indicator
+            deduplicationApplied: allArticles.length - uniqueArticles.length
         };
         
         // Cache the results
@@ -500,46 +734,100 @@ app.get('/api/news', async (req, res) => {
             timestamp: Date.now()
         });
         
-        console.log(`Successfully fetched ${allArticles.length} total articles from ${prioritizedSources.length} sources`);
+        console.log(`Successfully fetched ${topArticles.length} unique articles (${allArticles.length - uniqueArticles.length} duplicates removed)`);
         
         res.json(responseData);
         
     } catch (error) {
-        console.error('Error fetching news from all sources:', error);
-        res.status(500).json({ 
-            error: 'Failed to fetch news from all sources',
-            message: error.message 
+        console.error('Error fetching optimized news:', error);
+        
+        // Return cached data with transparency
+        const cached = newsCache.get('optimized_news');
+        if (cached) {
+            const ageHours = Math.round((Date.now() - cached.timestamp) / (1000 * 60 * 60));
+            
+            return res.json({
+                ...cached.data,
+                freshness: 'STALE',  // ✅ NEW: Stale indicator
+                staleSinceHours: ageHours,
+                error: 'Using cached data due to API failure',
+                errorMessage: error.message,
+                disclaimer: '⚠️ Free tier active: Limited real-time updates. Data may be 24-48 hours old.',
+                httpStatus: 206  // 206 Partial Content
+            });
+        }
+        
+        res.status(503).json({ 
+            error: 'Service temporarily unavailable',
+            message: 'NewsAPI is rate-limited. Please try again in a few minutes.',
+            disclaimer: 'Financial news updates temporarily delayed. Free tier (100 req/day) active.',
+            retryAfter: 300  // 5 minutes
         });
     }
 });
 
 // Background refresh system
 async function backgroundRefresh() {
-    console.log('Starting background news refresh...');
+    console.log('📰 Starting background news refresh...');
     try {
-        const prioritizedSources = getPrioritizedSources();
-        const results = await processBatch(prioritizedSources.slice(0, 20)); // Only refresh top 20 sources
-        
         const allArticles = [];
-        results.forEach(articles => allArticles.push(...articles));
-        allArticles.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
-        
+
+        // Fetch from RSS sources
+        const rssSources = getPrioritizedSources()
+            .filter(key => newsSources[key]?.type === 'rss')
+            .slice(0, 8);
+
+        if (rssSources.length > 0) {
+            console.log(`📡 Fetching from ${rssSources.length} RSS sources...`);
+            const rssResults = await processBatch(rssSources, 2);
+            rssResults.forEach(articles => allArticles.push(...articles));
+        }
+
+        // Fetch optimized NewsAPI content (limit to 2 keywords for background refresh)
+        const selectedKeywords = FINANCIAL_KEYWORDS.slice(0, 2);
+        console.log(`🔍 Fetching from NewsAPI with keywords: ${selectedKeywords.join(', ')}`);
+
+        // TEMP: Use simple delay instead of RequestQueue for background refresh
+        const newsApiPromises = selectedKeywords.map((keyword, index) => 
+            fetchNewsFromAPI(keyword, index * REQUEST_DELAY)
+        );
+
+        const newsApiResults = await Promise.allSettled(newsApiPromises);
+        newsApiResults.forEach(result => {
+            if (result.status === 'fulfilled') {
+                allArticles.push(...result.value);
+            } else {
+                console.warn(`⚠️ NewsAPI failed for keyword:`, result.reason);
+            }
+        });
+
+        // Deduplicate and sort
+        const uniqueArticles = deduplicateArticles(allArticles);
+        uniqueArticles.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+
+        const topArticles = uniqueArticles.slice(0, 30);
+
         const responseData = {
-            articles: allArticles,
-            count: allArticles.length,
-            sources: prioritizedSources.slice(0, 20),
-            timestamp: new Date().toISOString()
+            articles: topArticles,
+            count: topArticles.length,
+            keywords: selectedKeywords,
+            domains: CREDIBLE_DOMAINS,
+            lastUpdated: new Date().toISOString(),
+            isCached: false
         };
-        
+
         // Update cache
-        newsCache.set('all_news', {
+        newsCache.set('optimized_news', {
             data: responseData,
             timestamp: Date.now()
         });
-        
-        console.log(`Background refresh completed: ${allArticles.length} articles`);
+
+        console.log(`✅ Background refresh completed: ${topArticles.length} articles cached`);
+        return responseData;  // ✅ Return the result
+
     } catch (error) {
-        console.error('Background refresh failed:', error);
+        console.error('❌ Background refresh failed:', error.message);
+        throw error;  // ✅ Re-throw so calling code knows it failed
     }
 }
 
@@ -551,21 +839,56 @@ function cleanupCache() {
             newsCache.delete(key);
         }
     }
+    
+    // Clean up old deduplication hashes (keep last 1000)
+    if (articleHashes.size > 1000) {
+        const hashesArray = Array.from(articleHashes);
+        const keepHashes = hashesArray.slice(-500); // Keep most recent 500
+        articleHashes.clear();
+        keepHashes.forEach(hash => articleHashes.add(hash));
+    }
 }
 
 // Health check endpoint with performance metrics
 app.get('/api/health', (req, res) => {
+    resetDailyCounter();  // Ensure counter is current
+    
     const healthySources = Array.from(sourceHealth.entries())
         .filter(([name, health]) => !health.isUnhealthy)
         .map(([name]) => name);
     
+    const cachedNews = newsCache.get('optimized_news');
+    const articleCount = cachedNews ? cachedNews.data.count : 0;
+    const lastUpdated = cachedNews ? cachedNews.timestamp : null;
+    
+    // Calculate remaining quota
+    const requestsUsedToday = REQUEST_COUNTER.dailyCount;
+    const requestsRemaining = Math.max(0, 100 - requestsUsedToday);
+    const quotaPercentage = ((requestsUsedToday / 100) * 100).toFixed(1);
+    
     res.json({ 
         status: 'OK', 
         timestamp: new Date().toISOString(),
-        totalSources: Object.keys(newsSources).length,
-        healthySources: healthySources.length,
-        cacheSize: newsCache.size,
-        sources: Object.keys(newsSources)
+        api: {
+            requestsUsedToday: requestsUsedToday,
+            requestsRemaining: requestsRemaining,
+            quotaPercentage: quotaPercentage,
+            quotaStatus: requestsRemaining < 10 ? '⚠️ WARNING' : 'OK',
+            resetTime: 'Midnight UTC'
+        },
+        sources: {
+            total: Object.keys(newsSources).length,
+            healthy: healthySources.length,
+            unhealthy: Object.keys(newsSources).length - healthySources.length
+        },
+        cache: {
+            cachedArticles: articleCount,
+            lastUpdated: lastUpdated ? new Date(lastUpdated).toISOString() : null,
+            cacheSize: newsCache.size,
+            deduplicationHashes: articleHashes.size
+        },
+        keywords: FINANCIAL_KEYWORDS,
+        domains: CREDIBLE_DOMAINS
     });
 });
 
@@ -576,32 +899,136 @@ app.get('/api/cache/clear', (req, res) => {
     res.json({ message: 'Cache cleared successfully' });
 });
 
-// Serve static files
-app.use(express.static('.'));
+// Static file serving with optimized caching headers
+// ===================================================
 
-// Serve main page
+// HTML files from /public/html - no cache (frequently updated)
+app.use('/html', express.static(path.join(__dirname, 'public', 'html'), {
+    setHeaders: (res, path) => {
+        res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+        res.setHeader('Pragma', 'no-cache');
+        res.setHeader('Expires', '0');
+    }
+}));
+
+// CSS files from /public/css - long cache (1 year)
+app.use('/css', express.static(path.join(__dirname, 'public', 'css'), {
+    setHeaders: (res, path) => {
+        res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+        res.setHeader('Expires', new Date(Date.now() + 31536000000).toUTCString());
+    }
+}));
+
+// JavaScript files from /public/js - long cache (1 year)
+app.use('/js', express.static(path.join(__dirname, 'public', 'js'), {
+    setHeaders: (res, path) => {
+        res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+        res.setHeader('Expires', new Date(Date.now() + 31536000000).toUTCString());
+    }
+}));
+
+// Images from /public/images - medium cache (1 week)
+app.use('/images', express.static(path.join(__dirname, 'public', 'images'), {
+    setHeaders: (res, path) => {
+        res.setHeader('Cache-Control', 'public, max-age=604800'); // 1 week
+        res.setHeader('Expires', new Date(Date.now() + 604800000).toUTCString());
+    }
+}));
+
+// Root static files (favicon, manifest, service worker, etc.) - short cache
+app.use(express.static(path.join(__dirname, 'public'), {
+    setHeaders: (res, path) => {
+        if (path.endsWith('.ico') || path.endsWith('.png') || path.endsWith('.jpg') || path.endsWith('.jpeg')) {
+            res.setHeader('Cache-Control', 'public, max-age=86400'); // 1 day
+        } else {
+            res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+        }
+    }
+}));
+
+// Serve static files from the root directory
+app.use(express.static(__dirname));
+
+// Serve main page (index.html from /public/)
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// ========================
+// ERROR HANDLING MIDDLEWARE
+// ========================
+
+// 404 - Route not found
+app.use((req, res) => {
+    res.status(404).json({
+        error: 'Not Found',
+        message: 'The requested resource does not exist',
+        path: req.path
+    });
+});
+
+// General error handler
+app.use((err, req, res, next) => {
+    console.error('❌ Server Error:', err.message);
+    
+    res.status(err.status || 500).json({
+        error: 'Server Error',
+        message: process.env.NODE_ENV === 'production' 
+            ? 'An error occurred' 
+            : err.message,
+        timestamp: new Date().toISOString()
+    });
+});
+
+// Handle uncaught exceptions
+process.on('uncaughtException', (err) => {
+    console.error('💥 UNCAUGHT EXCEPTION:', err);
+    process.exit(1);
+});
+
+// Handle unhandled rejections
+process.on('unhandledRejection', (reason, promise) => {
+    console.error('💥 UNHANDLED REJECTION:', reason);
 });
 
 // Start server
-app.listen(PORT, () => {
-    console.log(`News API server running on port ${PORT}`);
-    console.log(`Available endpoints:`);
-    console.log(`  GET /api/health - Health check`);
-    console.log(`  GET /api/news - Fetch news from all sources`);
-    console.log(`  GET /api/news/:source - Fetch news from specific source`);
-    console.log(`  GET /api/cache/clear - Clear cache`);
-    console.log(`Available sources: ${Object.keys(newsSources).join(', ')}`);
-    
-    // Start background refresh timer (every 5 minutes)
-    setInterval(backgroundRefresh, 5 * 60 * 1000);
-    
-    // Start cache cleanup timer (every 10 minutes)
-    setInterval(cleanupCache, 10 * 60 * 1000);
-    
-    // Initial background refresh
-    setTimeout(backgroundRefresh, 10000); // Start after 10 seconds
+const server = app.listen(PORT, () => {
+    if (process.env.NODE_ENV === 'development') {
+        console.log(`News API server running on port ${PORT}`);
+        console.log(`Available endpoints:`);
+        console.log(`  GET /api/health - Health check`);
+        console.log(`  GET /api/news - Fetch optimized financial news`);
+        console.log(`  GET /api/news/:source - Fetch news from specific source`);
+        console.log(`  GET /api/cache/clear - Clear cache`);
+        console.log(`Financial keywords: ${FINANCIAL_KEYWORDS.join(', ')}`);
+        console.log(`Credible domains: ${CREDIBLE_DOMAINS.join(', ')}`);
+        console.log('✅ Server ready for requests!');
+    }
 });
+
+// Schedule background refresh AFTER server is fully started
+setTimeout(() => {
+    console.log('📋 Scheduling background refresh...');
+
+    // Run first refresh after additional delay
+    setTimeout(() => {
+        backgroundRefresh().catch(error => {
+            console.error('❌ Background refresh error:', error);
+        });
+    }, 5000); // 5 seconds after server start
+
+    // Schedule recurring refreshes every 6 hours
+    const refreshInterval = setInterval(() => {
+        backgroundRefresh().catch(error => {
+            console.error('❌ Background refresh error:', error);
+        });
+    }, 6 * 60 * 60 * 1000);
+
+    refreshInterval.unref();
+}, 1000); // Wait 1 second after server starts
+
+// Cache cleanup interval
+const cleanupInterval = setInterval(cleanupCache, 2 * 60 * 60 * 1000);
+cleanupInterval.unref();
 
 module.exports = app;

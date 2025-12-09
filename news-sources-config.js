@@ -1204,6 +1204,12 @@ const newsSources = {
         url: 'https://www.theguardian.com/world/rss',
         type: 'rss',
         category: 'international'
+    },
+    'usa-today-rss': {
+        name: 'USA Today',
+        url: 'https://www.usatoday.com/rss/',
+        type: 'rss',
+        category: 'international'
     }
 };
 
@@ -1211,7 +1217,7 @@ const newsSources = {
 const regionalNewsSources = {
     // North America sources (RSS focused for reliability)
     'north-america': [
-        'cnn-rss', 'bbc-rss', 'reuters-rss', 'nyt-rss', 'fortune', 'time', 'usa-today', 'the-guardian', 'independent',
+        'cnn-rss', 'bbc-rss', 'reuters-rss', 'nyt-rss', 'usa-today-rss', 'fortune', 'time', 'the-guardian', 'independent',
         'telegraph', 'bloomberg'
     ],
 
