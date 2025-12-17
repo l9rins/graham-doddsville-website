@@ -1,0 +1,728 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Quotes - Graham and Doddsville</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1e3a8a;
+            --primary-blue-light: #3b82f6;
+            --primary-blue-dark: #1e40af;
+            --secondary-gray: #f8f9fa;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-muted: #9ca3af;
+            --border-light: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--secondary-gray);
+        }
+
+        .market-quotes-page {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            position: relative;
+        }
+
+        .market-quotes-page-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-bottom: 2px solid #d4af37;
+            padding: 12px 0;
+            transition: all 0.3s ease;
+            overflow: visible;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            overflow: visible;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 40px;
+            width: auto;
+        }
+
+        .main-nav {
+            overflow: visible;
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            overflow: visible;
+        }
+
+        .nav-link {
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-family: Georgia, serif;
+        }
+
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 30px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 2px;
+            background: #333;
+            border-radius: 1px;
+            transition: all 0.3s ease;
+            transform-origin: center;
+            display: block;
+            margin: 2px 0;
+        }
+
+        /* Mobile Menu Toggle Animation */
+        .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Desktop/Mobile visibility classes */
+        .desktop-only {
+            display: block;
+        }
+
+        .mobile-only {
+            display: none;
+        }
+
+        /* Mobile Navigation Drawer */
+        .mobile-drawer {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            height: 100vh;
+            background: white;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            transition: right 0.3s ease;
+            z-index: 1001;
+            overflow-y: auto;
+        }
+
+        .mobile-drawer.open {
+            right: 0;
+        }
+
+        .drawer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #e5e7eb;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        }
+
+        .drawer-logo {
+            height: 35px;
+            width: auto;
+        }
+
+        .drawer-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+            padding: 5px;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .drawer-close:hover {
+            background: #f3f4f6;
+        }
+
+        .drawer-nav {
+            padding: 20px;
+        }
+
+        .drawer-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .drawer-menu li {
+            margin-bottom: 15px;
+        }
+
+        .drawer-link {
+            color: #333;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            display: block;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .drawer-link:hover {
+            background: #f3f4f6;
+            color: #1e3a8a;
+        }
+
+        /* Page Title Section */
+        .page-title-section {
+            margin: 24px 0 32px 0;
+            padding: 0;
+        }
+
+        .breadcrumb-link {
+            color: var(--primary-blue-light);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            display: inline-block;
+            transition: color 0.2s ease;
+        }
+
+        .breadcrumb-link:hover {
+            color: var(--primary-blue);
+        }
+
+        .page-title-section h1 {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: #6B46C1; /* Brand purple */
+            margin: 0 0 0px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #e0e0e0;
+            padding: 4px 0 4px 4px; /* 4px left padding inside bar */
+            background: rgba(250, 251, 252, 0.65); /* Reduced opacity by 20% */
+            height: 32px; /* Reduced from 36px to 32px */
+            display: flex;
+            align-items: center;
+            letter-spacing: -0.02em;
+        }
+
+        .page-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin: 8px 0 0 0;
+        }
+
+        .quotes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        .quote-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-light);
+        }
+
+        .quote-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .quote-header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 20px;
+        }
+
+        .quote-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: white;
+            margin: 0 0 8px 0;
+        }
+
+        .quote-meta {
+            font-size: 0.9rem;
+            color: white;
+            opacity: 0.9;
+            margin: 0;
+        }
+
+        .quote-content {
+            padding: 24px;
+        }
+
+        .quote-text {
+            font-family: Georgia, serif;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-primary);
+            margin: 0 0 20px 0;
+            font-style: italic;
+        }
+
+        .quote-author-info {
+            border-top: 1px solid var(--border-light);
+            padding-top: 16px;
+        }
+
+        .quote-author {
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin: 0 0 4px 0;
+        }
+
+        .quote-position {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin: 0 0 2px 0;
+        }
+
+        .quote-company {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin: 0 0 8px 0;
+        }
+
+        .quote-footer {
+            background: var(--secondary-gray);
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .quote-date {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .quote-country {
+            background: var(--primary-blue);
+            color: white;
+            padding: 4px 8px;
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 24px;
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: var(--radius-md);
+            transition: all 0.2s ease;
+            border: 2px solid var(--primary-blue);
+        }
+
+        .back-link:hover {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .desktop-only {
+                display: none !important;
+            }
+
+            .mobile-only {
+                display: block !important;
+            }
+
+            .market-quotes-page-content {
+                padding: 16px;
+            }
+
+            .page-title {
+                font-size: 2.2rem;
+            }
+
+            .quotes-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .quote-card {
+                margin: 0 -4px; /* Allow slight overflow for better mobile fit */
+            }
+
+            .quote-content {
+                padding: 16px;
+            }
+
+            .quote-title {
+                font-size: 1.2rem;
+            }
+
+            .quote-text {
+                font-size: 1rem;
+                line-height: 1.6;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .market-quotes-page-content {
+                padding: 12px;
+            }
+
+            .page-header {
+                padding: 32px 0;
+            }
+
+            .page-title {
+                font-size: 1.8rem;
+            }
+
+            .page-subtitle {
+                font-size: 1rem;
+            }
+
+            .quote-card {
+                margin: 0 -8px; /* More generous overflow for very small screens */
+            }
+
+            .quote-content {
+                padding: 12px;
+            }
+
+            .quote-title {
+                font-size: 1.1rem;
+            }
+
+            .quote-text {
+                font-size: 0.95rem;
+            }
+
+            .quote-author {
+                font-size: 0.9rem;
+            }
+
+            .quote-position,
+            .quote-company {
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+
+    <script>
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            const drawerClose = document.getElementById('drawer-close');
+
+            // Toggle mobile menu
+            mobileToggle.addEventListener('click', function() {
+                mobileDrawer.classList.toggle('open');
+                mobileToggle.classList.toggle('active');
+            });
+
+            // Close mobile menu
+            drawerClose.addEventListener('click', function() {
+                mobileDrawer.classList.remove('open');
+                mobileToggle.classList.remove('active');
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!mobileDrawer.contains(event.target) && !mobileToggle.contains(event.target)) {
+                    mobileDrawer.classList.remove('open');
+                    mobileToggle.classList.remove('active');
+                }
+            });
+
+            // Close menu on escape key
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape') {
+                    mobileDrawer.classList.remove('open');
+                    mobileToggle.classList.remove('active');
+                }
+            });
+        });
+
+        // Placeholder functions for navigation links
+        function showAboutPage() {
+            alert('About page functionality would be implemented here');
+        }
+
+        function showAdvertisePage() {
+            alert('Advertise page functionality would be implemented here');
+        }
+
+        function showContactPage() {
+            alert('Contact page functionality would be implemented here');
+        }
+    </script>
+</head>
+<body>
+    <div class="market-quotes-page" id="market-quotes-page">
+        
+        <div class="market-quotes-page-content">
+            <!-- Header -->
+            <header class="header sticky-header" role="banner">
+                <div class="container">
+                    <div class="header-content">
+                        <div class="logo">
+                            <img src="/images/G&amp;D Logo.png" alt="Graham and Doddsville" class="logo-image">
+                        </div>
+                        <!-- Desktop Navigation (hidden on mobile) -->
+                        <nav class="main-nav desktop-only" role="navigation" aria-label="Main navigation">
+                            <ul>
+                                <li><a href="#" onclick="showAboutPage()" class="nav-link">ABOUT</a></li>
+                                <li><a href="#" onclick="showAdvertisePage()" class="nav-link">ADVERTISE</a></li>
+                                <li><a href="#" class="nav-link">SUBSCRIBE</a></li>
+                                <li><a href="#" onclick="showContactPage()" class="nav-link">CONTACT US</a></li>
+                            </ul>
+                        </nav>
+                        
+                        <!-- Mobile Hamburger Menu -->
+                        <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
+                            <span class="hamburger-line"></span>
+                            <span class="hamburger-line"></span>
+                            <span class="hamburger-line"></span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Mobile Navigation Drawer -->
+            <div class="mobile-drawer" id="mobile-drawer">
+                <div class="drawer-header">
+                    <img src="/images/G&amp;D Logo.png" alt="Graham and Doddsville" class="drawer-logo">
+                    <button class="drawer-close" id="drawer-close" aria-label="Close menu">×</button>
+                </div>
+                <nav class="drawer-nav">
+                    <ul class="drawer-menu">
+                        <li><a href="index.html" class="drawer-link">Home</a></li>
+                        <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
+                        <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
+                        <li><a href="legal-taxation.html" class="drawer-link">Legal &amp; Taxation</a></li>
+                        <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
+                        <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
+                        <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
+                        <li><a href="economics.html" class="drawer-link">Economics</a></li>
+                        <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
+                        <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
+                        <li><a href="resources.html" class="drawer-link">Resources</a></li>
+                        <li><a href="events.html" class="drawer-link">Events</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Page Title Section -->
+            <div class="page-title-section">
+                <a href="index.html" class="breadcrumb-link">← Home</a>
+                <h1 class="section-header">Market Quotes</h1>
+                <p class="page-subtitle">Expert insights and analysis from leading economists and market analysts</p>
+            </div>
+
+            <div class="quotes-grid">
+                <!-- Quote 1 -->
+                <div class="quote-card">
+                    <div class="quote-header">
+                        <h3 class="quote-title">US Economic Growth Outlook</h3>
+                        <p class="quote-meta">Economic Analysis</p>
+                    </div>
+                    <div class="quote-content">
+                        <p class="quote-text">"We expect year-ended growth in the US economy will slow to around a 1¾% pace by the end of 2024 and remain around that pace during 2025. The more moderate growth environment should allow demand and supply to come back into better balance, supporting a more sustainable economic expansion. While there are always risks to our outlook, we believe the US economy is well-positioned for continued growth."</p>
+
+                        <div class="quote-author-info">
+                            <p class="quote-author">John Doe</p>
+                            <p class="quote-position">Chief Economist</p>
+                            <p class="quote-company">Sample Investment Bank</p>
+                        </div>
+                    </div>
+                    <div class="quote-footer">
+                        <span class="quote-date">July 26, 2024</span>
+                        <span class="quote-country">USA</span>
+                    </div>
+                </div>
+
+                <!-- Quote 2 -->
+                <div class="quote-card">
+                    <div class="quote-header">
+                        <h3 class="quote-title">Global Economic Risks Assessment</h3>
+                        <p class="quote-meta">Market Analysis</p>
+                    </div>
+                    <div class="quote-content">
+                        <p class="quote-text">"The global economy always faces risks, but for the moment, the US is doing well, and prospects of another Trump presidency do not seem to be worrying the market at all. Investors appear confident that economic policies will remain supportive of growth regardless of political changes. This stability is providing a solid foundation for continued market performance."</p>
+
+                        <div class="quote-author-info">
+                            <p class="quote-author">Jane Smith</p>
+                            <p class="quote-position">Market Analyst</p>
+                            <p class="quote-company">Global Markets Inc</p>
+                        </div>
+                    </div>
+                    <div class="quote-footer">
+                        <span class="quote-date">July 26, 2024</span>
+                        <span class="quote-country">USA</span>
+                    </div>
+                </div>
+
+                <!-- Quote 3 -->
+                <div class="quote-card">
+                    <div class="quote-header">
+                        <h3 class="quote-title">Federal Reserve Policy Impact</h3>
+                        <p class="quote-meta">Monetary Policy</p>
+                    </div>
+                    <div class="quote-content">
+                        <p class="quote-text">"The Federal Reserve's (Fed's) aggressive post-pandemic rate-hiking and higher-for-longer rate strategy has helped underpin the U.S. dollar. This has significant consequences for global economies, currencies, and trade flows. Emerging markets in particular may face challenges as the strong dollar makes their exports more expensive and increases the cost of dollar-denominated debt."</p>
+
+                        <div class="quote-author-info">
+                            <p class="quote-author">Michael Johnson</p>
+                            <p class="quote-position">Senior Economist</p>
+                            <p class="quote-company">Federal Reserve Watch</p>
+                        </div>
+                    </div>
+                    <div class="quote-footer">
+                        <span class="quote-date">July 26, 2024</span>
+                        <span class="quote-country">USA</span>
+                    </div>
+                </div>
+
+                <!-- Quote 4 -->
+                <div class="quote-card">
+                    <div class="quote-header">
+                        <h3 class="quote-title">European Central Bank Strategy</h3>
+                        <p class="quote-meta">European Economics</p>
+                    </div>
+                    <div class="quote-content">
+                        <p class="quote-text">"The ECB's cautious approach to monetary policy normalization reflects the ongoing uncertainties in the eurozone economy. While inflation has moderated, structural challenges in productivity and demographic trends continue to weigh on long-term growth prospects. The bank's focus on data-dependent decision making provides flexibility but also introduces uncertainty for market participants."</p>
+
+                        <div class="quote-author-info">
+                            <p class="quote-author">Dr. Anna Schmidt</p>
+                            <p class="quote-position">European Economist</p>
+                            <p class="quote-company">European Financial Institute</p>
+                        </div>
+                    </div>
+                    <div class="quote-footer">
+                        <span class="quote-date">July 25, 2024</span>
+                        <span class="quote-country">Germany</span>
+                    </div>
+                </div>
+
+                <!-- Quote 5 -->
+                <div class="quote-card">
+                    <div class="quote-header">
+                        <h3 class="quote-title">Asian Market Dynamics</h3>
+                        <p class="quote-meta">Asian Markets</p>
+                    </div>
+                    <div class="quote-content">
+                        <p class="quote-text">"Asia's economic trajectory remains robust despite global headwinds. China's transition to a consumption-driven growth model, combined with India's rapid digital transformation and Southeast Asia's manufacturing renaissance, positions the region for continued outperformance. However, geopolitical tensions and supply chain vulnerabilities remain key risk factors that require careful monitoring."</p>
+
+                        <div class="quote-author-info">
+                            <p class="quote-author">Dr. Li Wei</p>
+                            <p class="quote-position">Chief Asia Economist</p>
+                            <p class="quote-company">Pacific Investment Group</p>
+                        </div>
+                    </div>
+                    <div class="quote-footer">
+                        <span class="quote-date">July 24, 2024</span>
+                        <span class="quote-country">Singapore</span>
+                    </div>
+                </div>
+
+                <!-- Quote 6 -->
+                <div class="quote-card">
+                    <div class="quote-header">
+                        <h3 class="quote-title">Emerging Markets Outlook</h3>
+                        <p class="quote-meta">Global Markets</p>
+                    </div>
+                    <div class="quote-content">
+                        <p class="quote-text">"Emerging markets are at a critical juncture. While attractive valuations and improving fundamentals present opportunities, external financing conditions and commodity price volatility create challenges. Countries with strong policy frameworks and diversified economies are better positioned to navigate these turbulent waters and capitalize on the next phase of global growth."</p>
+
+                        <div class="quote-author-info">
+                            <p class="quote-author">Carlos Rodriguez</p>
+                            <p class="quote-position">Emerging Markets Strategist</p>
+                            <p class="quote-company">Global Development Bank</p>
+                        </div>
+                    </div>
+                    <div class="quote-footer">
+                        <span class="quote-date">July 23, 2024</span>
+                        <span class="quote-country">Brazil</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<parameter name="filePath">c:\Users\Mark Lorenz\Desktop\LibraryWebsite\market-quotes.html
+</parameter></body></html>

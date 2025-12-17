@@ -27,8 +27,8 @@ const FREE_TIER_DELAY_HOURS = 24; // NewsAPI free tier articles are minimum 24 h
 
 // Rate limiting
 const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    max: 100, // limit each IP to 100 requests per windowMs
+    windowMs: process.env.NODE_ENV === 'development' ? 60 * 1000 : 15 * 60 * 1000, // 1 minute in dev, 15 minutes in prod
+    max: process.env.NODE_ENV === 'development' ? 1000 : 100, // 1000 requests per minute in dev, 100 per 15 min in prod
     message: 'Too many requests from this IP, please try again later.'
 });
 

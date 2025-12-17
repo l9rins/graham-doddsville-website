@@ -1,0 +1,838 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greatest Investors - Graham and Doddsville</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1e3a8a;
+            --primary-blue-light: #3b82f6;
+            --primary-blue-dark: #1e40af;
+            --secondary-gray: #f8f9fa;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-muted: #9ca3af;
+            --border-light: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--secondary-gray);
+        }
+
+        .wealth-creation-page {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            position: relative;
+        }
+
+        .wealth-creation-page-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-bottom: 2px solid #d4af37;
+            padding: 12px 0;
+            transition: all 0.3s ease;
+            overflow: visible;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            overflow: visible;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 40px;
+            width: auto;
+        }
+
+        .main-nav {
+            overflow: visible;
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            overflow: visible;
+        }
+
+        .nav-link {
+            color: #000;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 30px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 2px;
+            background: #333;
+            border-radius: 1px;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 2px 0;
+        }
+
+        /* Mobile Menu Toggle Animation */
+        .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Mobile Navigation Drawer */
+        .mobile-drawer {
+            position: fixed;
+            top: 0;
+            right: -80%;
+            width: 80%;
+            height: 100vh;
+            background: #fff;
+            z-index: 10000;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            display: block;
+        }
+
+        .mobile-drawer.open {
+            right: 0;
+        }
+
+        .drawer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 20px;
+            border-bottom: 1px solid #e0e0e0;
+            background: #1e3a8a;
+            color: white;
+        }
+
+        .drawer-logo {
+            max-height: 40px;
+            width: auto;
+            display: block;
+        }
+
+        .drawer-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .drawer-nav {
+            padding: 20px 0;
+        }
+
+        .drawer-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .drawer-menu li {
+            border-bottom: 1px solid #f0f0f0;
+            margin-bottom: 6px;
+            padding-left: 20px;
+        }
+
+        .drawer-link {
+            display: block;
+            padding: 6px 20px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+
+        .drawer-link:hover {
+            background: #f8f9fa;
+            color: #1e3a8a;
+        }
+
+        /* Mobile responsive styles */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .desktop-only {
+                display: none;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-only {
+                display: none;
+            }
+            
+            .mobile-drawer {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .wealth-creation-page-content {
+                padding: 16px;
+            }
+        }
+
+        /* Article Detail Panel */
+        .article-detail-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .article-detail-panel.active {
+            display: flex;
+        }
+
+        .article-detail-content {
+            background: white;
+            border-radius: 12px;
+            max-width: 800px;
+            max-height: 90vh;
+            width: 100%;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .article-detail-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .article-detail-title {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .article-detail-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.2s ease;
+        }
+
+        .article-detail-close:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .article-detail-body {
+            padding: 24px;
+            line-height: 1.7;
+        }
+
+        .article-detail-body h3 {
+            color: var(--primary-blue);
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+
+        .article-detail-body p {
+            margin-bottom: 16px;
+        }
+
+        .loading-spinner {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-secondary);
+        }
+
+        /* Page Title Section */
+        .page-title-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .breadcrumb {
+            margin-bottom: 16px;
+        }
+
+        .breadcrumb-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .breadcrumb-link:hover {
+            color: var(--primary-blue);
+        }
+
+        .page-title {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: #6B46C1; /* Brand purple */
+            margin: 0 0 0px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #e0e0e0;
+            padding: 4px 0 4px 4px; /* 4px left padding inside bar */
+            background: rgba(250, 251, 252, 0.65); /* Reduced opacity by 20% */
+            height: 32px; /* Reduced from 36px to 32px */
+            display: flex;
+            align-items: center;
+            letter-spacing: -0.02em;
+        }
+
+        .page-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Collapsible Categories */
+        .collapsible-categories {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .collapsible-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            transition: transform 0.2s ease;
+        }
+
+        .collapsible-section:hover {
+            transform: translateY(-2px);
+        }
+
+        .collapsible-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            background: var(--primary-blue);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .collapsible-header:hover {
+            background: var(--primary-blue-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.15);
+        }
+
+        .collapsible-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0;
+            color: white;
+        }
+
+        .collapsible-arrow {
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            color: white;
+        }
+
+        .collapsible-arrow.rotated {
+            transform: rotate(180deg);
+        }
+
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                        opacity 0.3s ease,
+                        padding 0.3s ease;
+            opacity: 0;
+            padding: 0 24px;
+        }
+
+        .collapsible-content.expanded {
+            max-height: 1000px;
+            opacity: 1;
+            padding: 12px 24px 24px 24px;
+        }
+
+        .collapsible-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .collapsible-links li {
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .collapsible-links li:last-child {
+            border-bottom: none;
+        }
+
+        .collapsible-link {
+            display: block;
+            padding: 16px 24px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .collapsible-link:hover {
+            background: var(--secondary-gray);
+            color: var(--primary-blue);
+            border-left-color: var(--primary-blue);
+        }
+    </style>
+</head>
+<body>
+    <div class="wealth-creation-page">
+        <!-- Header -->
+        <header class="header sticky-header">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="/images/G&amp;D Logo.png" alt="Graham &amp; Doddsville" class="logo-image">
+                </div>
+                <!-- Desktop Navigation (hidden on mobile) -->
+                <nav class="main-nav desktop-only" role="navigation" aria-label="Main navigation">
+                    <ul>
+                        <li><a href="index.html" class="nav-link">HOME</a></li>
+                        <li><a href="classical-readings.html" class="nav-link">CLASSICAL READINGS</a></li>
+                        <li><a href="wealth-creation.html" class="nav-link">WEALTH CREATION</a></li>
+                        <li><a href="#" class="nav-link">ABOUT</a></li>
+                    </ul>
+                </nav>
+                
+                <!-- Mobile Hamburger Menu -->
+                <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Mobile Navigation Drawer -->
+        <div class="mobile-drawer" id="mobile-drawer">
+            <div class="drawer-header">
+                <img src="/images/G&amp;D Logo.png" alt="Graham and Doddsville" class="drawer-logo">
+                <button class="drawer-close" id="drawer-close" aria-label="Close menu">×</button>
+            </div>
+            <nav class="drawer-nav">
+                <ul class="drawer-menu">
+                    <li><a href="index.html" class="drawer-link">Home</a></li>
+                    <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
+                    <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
+                    <li><a href="legal-taxation.html" class="drawer-link">Legal &amp; Taxation</a></li>
+                    <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
+                    <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
+                    <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
+                    <li><a href="economics.html" class="drawer-link">Economics</a></li>
+                    <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
+                    <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
+                    <li><a href="resources.html" class="drawer-link">Resources</a></li>
+                    <li><a href="events.html" class="drawer-link">Events</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="wealth-creation-page-content">
+            <!-- Page Title Section -->
+            <div class="page-title-section">
+                <div class="breadcrumb">
+                    <a href="index.html" class="breadcrumb-link">← Home</a>
+                </div>
+                <h1 class="page-title section-header">Greatest Investors</h1>
+                <p class="page-subtitle">Explore the lives and strategies of the world's most successful investors</p>
+            </div>
+
+            <!-- Collapsible Categories -->
+            <div class="collapsible-categories">
+                <!-- The Superinvestors -->
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('superinvestors')">
+                        <h3 class="collapsible-title">The Superinvestors</h3>
+                        <span class="collapsible-arrow" id="superinvestors-arrow">▼</span>
+                    </div>
+                    <div class="collapsible-content" id="superinvestors-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('benjamin-graham')">Benjamin Graham</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('warren-buffett')">Warren Buffett</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('charlie-munger')">Charlie Munger</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('ed-anderson')">Ed Anderson</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('rick-guerin')">Rick Guerin</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('tom-knapp')">Tom Knapp</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('stan-perlmeter')">Stan Perlmeter</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('bill-ruane')">Bill Ruane</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('walter-schloss')">Walter Schloss</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('edwin-schloss')">Edwin Schloss</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Famous Value Investors -->
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('value-investors')">
+                        <h3 class="collapsible-title">Famous Value Investors</h3>
+                        <span class="collapsible-arrow" id="value-investors-arrow">▼</span>
+                    </div>
+                    <div class="collapsible-content" id="value-investors-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('bill-ackman')">Bill Ackman</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('bruce-berkowitz')">Bruce Berkowitz</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('charles-brandes')">Charles Brandes</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('christopher-browne')">Christopher Browne</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('todd-combs')">Todd Combs</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('peter-cundill')">Peter Cundill</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('david-dreman')">David Dreman</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('david-einhorn')">David Einhorn</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('jean-marie-eveillard')">Jean-Marie Eveillard</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('mario-gabelli')">Mario Gabelli</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('tom-gayner')">Tom Gayner</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('glenn-greenberg')">Glenn Greenberg</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('joel-greenblatt')">Joel Greenblatt</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('william-gross')">William Gross</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('mason-hawkins')">Mason Hawkins</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('carl-icahn')">Carl Icahn</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('irving-kahn')">Irving Kahn</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('seth-klarman')">Seth Klarman</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('edward-lampert')">Edward Lampert</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('michael-larson')">Michael Larson</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('jorge-paulo-lemann')">Jorge Paulo Lemann</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('li-lu')">Li Lu</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('howard-marks')">Howard Marks</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('bill-miller')">Bill Miller</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('john-neff')">John Neff</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('bill-nygren')">Bill Nygren</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('robert-olstein')">Robert Olstein</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('mohnish-pabrai')">Mohnish Pabrai</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('michael-price')">Michael Price</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('julian-robertson')">Julian Robertson</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('thomas-rowe-price')">Thomas Rowe Price</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('lou-simpson')">Lou Simpson</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('guy-spier')">Guy Spier</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('al-waleed-bin-talal')">Al Waleed bin Talal</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('john-templeton')">John Templeton</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('whitney-tilson')">Whitney Tilson</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('laurence-tisch')">Laurence Tisch</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('charles-de-vaulx')">Charles de Vaulx</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('wallace-weitz')">Wallace Weitz</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('martin-whitman')">Martin Whitman</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Other Famous Investors -->
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('other-investors')">
+                        <h3 class="collapsible-title">Other Famous Investors</h3>
+                        <span class="collapsible-arrow" id="other-investors-arrow">▼</span>
+                    </div>
+                    <div class="collapsible-content" id="other-investors-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('philip-anschutz')">Philip Anschutz</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('bernard-baruch')">Bernard Baruch</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('john-bogle')">John Bogle</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('anthony-bolton')">Anthony Bolton</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('philip-carret')">Philip Carret</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('steven-cohen')">Steven Cohen</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('jim-cramer')">Jim Cramer</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('ray-dalio')">Ray Dalio</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('shelby-davis')">Shelby Davis</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('august-von-finck')">August von Finck</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('kenneth-fisher')">Kenneth Fisher</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('philip-fisher')">Philip Fisher</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('jeremy-grantham')">Jeremy Grantham</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('ken-griffin')">Ken Griffin</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('stephen-jarislowsky')">Stephen Jarislowsky</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('paul-tudor-jones')">Paul Tudor Jones</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('edward-johnson-iii')">Edward Johnson III</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('rupert-johnson')">Rupert Johnson</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('suleiman-kerimov')">Suleiman Kerimov</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('daniel-loeb')">Daniel Loeb</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('peter-lynch')">Peter Lynch</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('william-j-oneill')">William J O'Neill</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('ron-perelman')">Ron Perelman</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('jim-rogers')">Jim Rogers</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('mikhail-prokhorov')">Mikhail Prokhorov</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('harold-simmons')">Harold Simmons</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('james-simons')">James Simons</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('james-d-slater')">James D Slater</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('george-soros')">George Soros</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('michael-steinhardt')">Michael Steinhardt</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('david-tepper')">David Tepper</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('ralph-wanger')">Ralph Wanger</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Article Detail Panel -->
+    <div class="article-detail-panel" id="article-detail-panel">
+        <div class="article-detail-content">
+            <div class="article-detail-header">
+                <h3 class="article-detail-title" id="article-detail-title">Article Title</h3>
+                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">×</button>
+            </div>
+            <div class="article-detail-body" id="article-detail-body">
+                <div class="loading-spinner">Loading article...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Collapsible functionality
+        function toggleCollapsible(sectionId) {
+            const content = document.getElementById(`${sectionId}-content`);
+            const arrow = document.getElementById(`${sectionId}-arrow`);
+
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                content.classList.remove('expanded');
+                arrow.innerHTML = '▼';
+            } else {
+                // Close all other open sections
+                document.querySelectorAll('.collapsible-content.expanded').forEach(openContent => {
+                    openContent.style.maxHeight = null;
+                    openContent.classList.remove('expanded');
+                    const openArrowId = openContent.id.replace('-content', '-arrow');
+                    document.getElementById(openArrowId).innerHTML = '▼';
+                });
+
+                content.style.maxHeight = content.scrollHeight + "px";
+                content.classList.add('expanded');
+                arrow.innerHTML = '▲';
+            }
+        }
+
+        // Mobile drawer functionality
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        const drawerClose = document.getElementById('drawer-close');
+        
+        if (mobileToggle && mobileDrawer) {
+            mobileToggle.addEventListener('click', () => {
+                console.log('Hamburger menu clicked!');
+                mobileDrawer.classList.add('open');
+                document.body.style.overflow = 'hidden';
+                console.log('Drawer should be open now');
+            });
+        }
+        
+        if (drawerClose && mobileDrawer) {
+            drawerClose.addEventListener('click', () => {
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        }
+        
+        // Close drawer when clicking outside
+        if (mobileDrawer) {
+            mobileDrawer.addEventListener('click', (e) => {
+                if (e.target === mobileDrawer) {
+                    mobileDrawer.classList.remove('open');
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+
+        // Article content data
+        const articleContent = {
+            'benjamin-graham': {
+                title: 'Benjamin Graham',
+                content: `
+                    <p>Benjamin Graham (1894-1976) is widely regarded as the father of value investing and one of the most influential financial thinkers of the 20th century.</p>
+                    
+                    <h3>Early Life and Career</h3>
+                    <p>Born in London and raised in New York, Graham graduated from Columbia University and began his career on Wall Street in 1914. He co-founded the Graham-Newman partnership in 1926.</p>
+                    
+                    <h3>Investment Philosophy</h3>
+                    <p>Graham developed the concept of "intrinsic value" and the "margin of safety" - buying securities at a significant discount to their true worth to protect against losses.</p>
+                    
+                    <h3>Key Works</h3>
+                    <p>His books "Security Analysis" (1934) and "The Intelligent Investor" (1949) remain foundational texts for value investors worldwide.</p>
+                `
+            },
+            'warren-buffett': {
+                title: 'Warren Buffett',
+                content: `
+                    <p>Warren Buffett, known as the "Oracle of Omaha," is one of the most successful investors in history and chairman of Berkshire Hathaway.</p>
+                    
+                    <h3>Investment Philosophy</h3>
+                    <p>Buffett follows a value investing approach, focusing on companies with strong fundamentals, competitive advantages, and competent management.</p>
+                    
+                    <h3>Key Principles</h3>
+                    <p>His investment principles include buying wonderful companies at fair prices, thinking long-term, and avoiding speculation.</p>
+                    
+                    <h3>Legacy</h3>
+                    <p>Buffett has pledged to give away 99% of his wealth to philanthropic causes, primarily through the Bill & Melinda Gates Foundation.</p>
+                `
+            },
+            'charlie-munger': {
+                title: 'Charlie Munger',
+                content: `
+                    <p>Charlie Munger is Warren Buffett's longtime business partner and vice chairman of Berkshire Hathaway, known for his multidisciplinary approach to investing.</p>
+                    
+                    <h3>Investment Philosophy</h3>
+                    <p>Munger emphasizes the importance of mental models, continuous learning, and understanding multiple disciplines to make better investment decisions.</p>
+                    
+                    <h3>Key Contributions</h3>
+                    <p>He introduced Buffett to the concept of buying great companies at fair prices rather than fair companies at great prices.</p>
+                    
+                    <h3>Wisdom</h3>
+                    <p>Munger is known for his wit and wisdom, often sharing insights about human psychology, business, and life through his speeches and writings.</p>
+                `
+            }
+        };
+
+        // Article panel functionality
+        function openArticle(articleId) {
+            const panel = document.getElementById('article-detail-panel');
+            const title = document.getElementById('article-detail-title');
+            const body = document.getElementById('article-detail-body');
+            
+            if (articleContent[articleId]) {
+                title.textContent = articleContent[articleId].title;
+                body.innerHTML = articleContent[articleId].content;
+                panel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeArticlePanel() {
+            const panel = document.getElementById('article-detail-panel');
+            panel.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            const articleClose = document.getElementById('article-detail-close');
+            const articlePanel = document.getElementById('article-detail-panel');
+            
+            if (articleClose) {
+                articleClose.addEventListener('click', closeArticlePanel);
+            }
+            
+            if (articlePanel) {
+                articlePanel.addEventListener('click', function(event) {
+                    if (event.target === articlePanel) {
+                        closeArticlePanel();
+                    }
+                });
+            }
+        });
+    </script>
+
+
+</body></html>

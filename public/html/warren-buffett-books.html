@@ -1,0 +1,1324 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warren Buffett Books - Graham and Doddsville</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1e3a8a;
+            --primary-blue-light: #3b82f6;
+            --primary-blue-dark: #1e40af;
+            --secondary-gray: #f8f9fa;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-muted: #9ca3af;
+            --border-light: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--secondary-gray);
+        }
+
+        .books-page {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            position: relative;
+        }
+
+        .books-page-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-bottom: 2px solid #d4af37;
+            padding: 12px 0;
+            transition: all 0.3s ease;
+            overflow: visible;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            overflow: visible;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 40px;
+            width: auto;
+        }
+
+        .main-nav {
+            overflow: visible;
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            overflow: visible;
+        }
+
+        .main-nav li {
+            position: relative;
+            overflow: visible;
+        }
+
+        .main-nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s ease;
+            overflow: visible;
+        }
+
+        .main-nav a:hover {
+            color: var(--primary-blue);
+        }
+
+        .main-nav-desktop-only {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .main-nav-desktop-only {
+                display: none;
+            }
+        }
+
+        /* Page Title Section */
+        .page-title-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .breadcrumb {
+            margin-bottom: 16px;
+        }
+
+        .breadcrumb-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .breadcrumb-link:hover {
+            color: var(--primary-blue);
+        }
+
+        .page-title {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: #6B46C1; /* Brand purple */
+            margin: 0 0 0px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #e0e0e0;
+            padding: 4px 0 4px 4px; /* 4px left padding inside bar */
+            background: rgba(250, 251, 252, 0.65); /* Reduced opacity by 20% */
+            height: 32px; /* Reduced from 36px to 32px */
+            display: flex;
+            align-items: center;
+            letter-spacing: -0.02em;
+        }
+
+        .page-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin: 8px 0 0 0;
+        }
+
+        /* Books Content */
+        .books-content {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .books-header {
+            margin-bottom: 32px;
+        }
+
+        .books-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 16px 0 8px 0;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .books-header .page-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin: 0 0 24px 0;
+        }
+
+        .books-description p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .books-description h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 32px 0 16px 0;
+            letter-spacing: -0.01em;
+        }
+
+        /* Books Table */
+        .books-table-container {
+            overflow-x: auto;
+            margin: 32px 0;
+        }
+
+        .books-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .books-table th {
+            background: var(--primary-blue);
+            color: white;
+            padding: 16px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 14px;
+            border: none;
+        }
+
+        .books-table td {
+            padding: 16px;
+            border-bottom: 1px solid var(--border-light);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .books-table tr:nth-child(even) {
+            background: var(--secondary-gray);
+        }
+
+        .books-table tr:hover {
+            background: #f1f5f9;
+        }
+
+        .book-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .book-author {
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+
+        .book-price {
+            font-weight: 600;
+            color: var(--primary-blue);
+            font-size: 15px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .books-table-container {
+                margin: 16px -16px 32px -16px;
+            }
+
+            .books-table {
+                min-width: 600px;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .books-page-content {
+                padding: 16px;
+            }
+
+            .books-header h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Mobile Menu Styles */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 30px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 30px;
+            height: 3px;
+            background: var(--text-primary);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-toggle.open span:nth-child(1) {
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+
+        .mobile-menu-toggle.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        .mobile-only {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-only {
+                display: flex !important;
+            }
+            .mobile-menu-toggle {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="books-page">
+        <!-- Header -->
+        <header class="header" id="main-header">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html">
+                        <img src="/images/G&amp;D Logo.png" alt="Graham &amp; Doddsville Logo" class="logo-image">
+                    </a>
+                </div>
+
+                <nav class="main-nav main-nav-desktop-only">
+                    <ul>
+                        <li><a href="index.html" class="nav-link">HOME</a></li>
+                        <li><a href="classical-readings.html" class="nav-link">CLASSICAL READINGS</a></li>
+                        <li><a href="financial-markets.html" class="nav-link">FINANCIAL MARKETS</a></li>
+                        <li><a href="economics.html" class="nav-link">ECONOMICS</a></li>
+                        <li><a href="legal-taxation.html" class="nav-link">LEGAL &amp; TAXATION</a></li>
+                        <li><a href="professional-advisers.html" class="nav-link">PROFESSIONAL ADVISERS</a></li>
+                        <li><a href="resources.html" class="nav-link">RESOURCES</a></li>
+                        <li><a href="events.html" class="nav-link">EVENTS</a></li>
+                    </ul>
+                </nav>
+
+                <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Mobile Drawer -->
+        <div class="mobile-drawer" id="mobile-drawer">
+            <div class="drawer-header">
+                <img src="/images/G&amp;D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
+                <button class="drawer-close" id="drawer-close" aria-label="Close menu">×</button>
+            </div>
+            <nav class="drawer-nav">
+                <ul class="drawer-menu">
+                    <li><a href="index.html" class="drawer-link">Home</a></li>
+                    <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
+                    <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
+                    <li><a href="legal-taxation.html" class="drawer-link">Legal &amp; Taxation</a></li>
+                    <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
+                    <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
+                    <li><a href="#" class="drawer-link">Investment Analysis</a></li>
+                    <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
+                    <li><a href="economics.html" class="drawer-link">Economics</a></li>
+                    <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
+                    <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
+                    <li><a href="resources.html" class="drawer-link">Resources</a></li>
+                    <li><a href="events.html" class="drawer-link">Events</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Page Title Section -->
+        <section class="page-title-section">
+            <div class="breadcrumb">
+                <a href="index.html" class="breadcrumb-link">← Home</a>
+            </div>
+            <h1 class="page-title">Warren Buffett Books</h1>
+            <p class="page-subtitle">Essential reading for understanding the Oracle of Omaha's investment philosophy and business wisdom</p>
+        </section>
+
+        <!-- Books Content -->
+        <section class="books-content">
+
+            <div class="books-table-container">
+                <table class="books-table">
+                    <thead>
+                        <tr>
+                            <th>📚 Title</th>
+                            <th>✍️ Author(s)</th>
+                            <th>💰 Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="book-title">Warren Buffett: An Illustrated Biography</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Ayano Morio</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$35.95</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">The Deals of Warren Buffett</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Glen Arnold</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$47.10</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">Warren Buffett: Investor and Entrepreneur</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Todd Finkle</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$35.38</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">The Essays of Warren Buffett</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Lawrence Cunningham</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$51.63</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">Berkshire Hathaway Letters to Shareholders</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Warren Buffett &amp; Max Olson</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$6.10</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">The Warren Buffett Shareholder</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Lawrence Cunningham &amp; Stephanie Cuba</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$7.75</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">Warren Buffett and the Value Investing Mindset</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Carlos Abad</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$13.06</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">The Warren Buffett Way</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Robert Hagstrom</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$46.02</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">Of Permanent Value</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Andrew Kilpatrick</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$434.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">Buffett: The Making of An American Capitalist</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Roger Lowenstein</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$39.46</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">The Snowball</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Alice Schroeder</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$21.56</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">Poor Charlie's Almanack</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Charles T. Munger</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$47.86</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">The Warren Buffett CEO</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Robert Miles</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$50.23</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">Buffettology</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Mary Buffett &amp; David Clark</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$32.13</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">The Complete Financial History of Berkshire Hathaway</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Adam Mead</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$99.27</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">Warren Buffett Wealth</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Robert Miles</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$40.95</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">Warren Buffett: Inside the Ultimate Money Mind</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Robert Hagstrom</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$34.72</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">The Winning Investment Habits of Warren Buffett and George Soros</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Mark Tier</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$51.88</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">The Warren Buffett Philosophy of Investment</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Elena Chirkova</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$45.01</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">Damn Right!</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Janet Lowe</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$39.32</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">The Essential Buffett</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Robert Hagstrom</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$22.60</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">The Warren Buffett Portfolio</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Robert Hagstrom</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$26.95</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">Seeking Wisdom: From Darwin to Munger</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Peter Bevelin</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$75.78</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">The Tao of Warren Buffett</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Mary Buffett &amp; David Clark</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$29.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">The New Buffettology</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Mary Buffett &amp; David Clark</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$48.76</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">University of Berkshire Hathaway</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Daniel Pecaut &amp; Corey Wrenn</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$18.88</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">Buffett Beyond Value</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Prem Jain</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$187.00</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">Buffett's 2-Step Stock Market Strategy</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Danial Jiwani</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$31.74</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">Warren Buffett's 3 Favorite Books</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Preston George Pysh</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$29.32</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">A Few Lessons for Investors and Managers</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Warren Buffett &amp; Peter Bevelin</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$31.54</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">Warren Buffett's Ground Rules</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Jeremy Miller</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$19.25</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">Warren Buffett Speaks</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Janet Lowe</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$23.23</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">Invest Like Warren Buffett</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Matthew Kratter</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$10.15</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">Buying Like Buffett</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Jonathan Belliveau</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$5.56</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">Warren Buffett on Business</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Warren Buffett &amp; Richard Connors</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$31.54</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">Tap Dancing To Work</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Carol Loomis</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$27.99</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">The Warren Buffett Stock Portfolio</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Mary Buffett &amp; David Clark</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$17.35</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">Charlie Munger: The Complete Investor</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Tren Griffin</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$24.61</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">Capital Allocation</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Jacob McDonough</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$32.52</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">How to Think Like Benjamin Graham and Invest Like Warren Buffett</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Lawrence Cunningham</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$76.97</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">Warren Buffett: 43 Lessons for Business &amp; Life</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Keith Lard</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$21.20</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">Warren Buffett Invests Like a Girl</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Motley Fool &amp; Louann Lofton</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$21.23</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">Warren Buffett's Management Secrets</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Mary Buffett &amp; David Clark</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$20.85</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">101 Reasons to Own the World's Greatest Investment</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Robert Miles</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$38.74</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">How to Pick Stocks Like Warren Buffett</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Timothy Vick</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$54.39</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">Think, Act and Invest Like Warren Buffett</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Larry Swedroe</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$27.73</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">The Real Warren Buffett</div>
+                            </td>
+                            <td>
+                                <div class="book-author">James O'Loughlin</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$58.31</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">Even Buffett Isn't Perfect</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Janjigian Vahan</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$63.59</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">Trade Like Warren Buffett</div>
+                            </td>
+                            <td>
+                                <div class="book-author">James Altucher</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$68.55</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="book-title">The Warren Buffett: The Good Guy of Wall Street</div>
+                            </td>
+                            <td>
+                                <div class="book-author">Andrew Kilpatrick</div>
+                            </td>
+                            <td>
+                                <div class="book-price">$269.00</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Mobile Cards Layout (hidden on desktop, visible on mobile) -->
+            <div class="books-mobile-cards" style="display: none;">
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Warren+Buffett:+An+Illustrated+Biography&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Warren Buffett: An Illustrated Biography</a></div>
+                    <div class="book-mobile-author">Ayano Morio</div>
+                    <div class="book-mobile-price">$35.95</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Deals+of+Warren+Buffett&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Deals of Warren Buffett</a></div>
+                    <div class="book-mobile-author">Glen Arnold</div>
+                    <div class="book-mobile-price">$47.10</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Warren+Buffett:+Investor+and+Entrepreneur&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Warren Buffett: Investor and Entrepreneur</a></div>
+                    <div class="book-mobile-author">Todd Finkle</div>
+                    <div class="book-mobile-price">$35.38</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Essays+of+Warren+Buffett&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Essays of Warren Buffett</a></div>
+                    <div class="book-mobile-author">Lawrence Cunningham</div>
+                    <div class="book-mobile-price">$51.63</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Berkshire+Hathaway+Letters+to+Shareholders&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Berkshire Hathaway Letters to Shareholders</a></div>
+                    <div class="book-mobile-author">Warren Buffett &amp; Max Olson</div>
+                    <div class="book-mobile-price">$6.10</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Warren+Buffett+Shareholder&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Warren Buffett Shareholder</a></div>
+                    <div class="book-mobile-author">Lawrence Cunningham &amp; Stephanie Cuba</div>
+                    <div class="book-mobile-price">$7.75</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Warren+Buffett+and+the+Value+Investing+Mindset&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Warren Buffett and the Value Investing Mindset</a></div>
+                    <div class="book-mobile-author">Carlos Abad</div>
+                    <div class="book-mobile-price">$13.06</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Warren+Buffett+Way&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Warren Buffett Way</a></div>
+                    <div class="book-mobile-author">Robert Hagstrom</div>
+                    <div class="book-mobile-price">$46.02</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Of+Permanent+Value&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Of Permanent Value</a></div>
+                    <div class="book-mobile-author">Andrew Kilpatrick</div>
+                    <div class="book-mobile-price">$434.99</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Buffett:+The+Making+of+An+American+Capitalist&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Buffett: The Making of An American Capitalist</a></div>
+                    <div class="book-mobile-author">Roger Lowenstein</div>
+                    <div class="book-mobile-price">$39.46</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Snowball&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Snowball</a></div>
+                    <div class="book-mobile-author">Alice Schroeder</div>
+                    <div class="book-mobile-price">$21.56</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Poor+Charlie's+Almanack&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Poor Charlie's Almanack</a></div>
+                    <div class="book-mobile-author">Charles T. Munger</div>
+                    <div class="book-mobile-price">$47.86</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Warren+Buffett+CEO&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Warren Buffett CEO</a></div>
+                    <div class="book-mobile-author">Robert Miles</div>
+                    <div class="book-mobile-price">$50.23</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Buffettology&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Buffettology</a></div>
+                    <div class="book-mobile-author">Mary Buffett &amp; David Clark</div>
+                    <div class="book-mobile-price">$32.13</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Complete+Financial+History+of+Berkshire+Hathaway&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Complete Financial History of Berkshire Hathaway</a></div>
+                    <div class="book-mobile-author">Adam Mead</div>
+                    <div class="book-mobile-price">$99.27</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Warren+Buffett+Wealth&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Warren Buffett Wealth</a></div>
+                    <div class="book-mobile-author">Robert Miles</div>
+                    <div class="book-mobile-price">$40.95</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Warren+Buffett:+Inside+the+Ultimate+Money+Mind&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Warren Buffett: Inside the Ultimate Money Mind</a></div>
+                    <div class="book-mobile-author">Robert Hagstrom</div>
+                    <div class="book-mobile-price">$34.72</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Winning+Investment+Habits+of+Warren+Buffett+and+George+Soros&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Winning Investment Habits of Warren Buffett and George Soros</a></div>
+                    <div class="book-mobile-author">Mark Tier</div>
+                    <div class="book-mobile-price">$51.88</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Warren+Buffett+Philosophy+of+Investment&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Warren Buffett Philosophy of Investment</a></div>
+                    <div class="book-mobile-author">Elena Chirkova</div>
+                    <div class="book-mobile-price">$45.01</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Damn+Right!&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Damn Right!</a></div>
+                    <div class="book-mobile-author">Janet Lowe</div>
+                    <div class="book-mobile-price">$39.32</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Essential+Buffett&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Essential Buffett</a></div>
+                    <div class="book-mobile-author">Robert Hagstrom</div>
+                    <div class="book-mobile-price">$22.60</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Warren+Buffett+Portfolio&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Warren Buffett Portfolio</a></div>
+                    <div class="book-mobile-author">Robert Hagstrom</div>
+                    <div class="book-mobile-price">$26.95</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Seeking+Wisdom:+From+Darwin+to+Munger&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Seeking Wisdom: From Darwin to Munger</a></div>
+                    <div class="book-mobile-author">Peter Bevelin</div>
+                    <div class="book-mobile-price">$75.78</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Tao+of+Warren+Buffett&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Tao of Warren Buffett</a></div>
+                    <div class="book-mobile-author">Mary Buffett &amp; David Clark</div>
+                    <div class="book-mobile-price">$29.99</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+New+Buffettology&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The New Buffettology</a></div>
+                    <div class="book-mobile-author">Mary Buffett &amp; David Clark</div>
+                    <div class="book-mobile-price">$48.76</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=University+of+Berkshire+Hathaway&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">University of Berkshire Hathaway</a></div>
+                    <div class="book-mobile-author">Daniel Pecaut &amp; Corey Wrenn</div>
+                    <div class="book-mobile-price">$18.88</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Buffett+Beyond+Value&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Buffett Beyond Value</a></div>
+                    <div class="book-mobile-author">Prem Jain</div>
+                    <div class="book-mobile-price">$187.00</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Buffett's+2-Step+Stock+Market+Strategy&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Buffett's 2-Step Stock Market Strategy</a></div>
+                    <div class="book-mobile-author">Danial Jiwani</div>
+                    <div class="book-mobile-price">$31.74</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Warren+Buffett's+3+Favorite+Books&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Warren Buffett's 3 Favorite Books</a></div>
+                    <div class="book-mobile-author">Preston George Pysh</div>
+                    <div class="book-mobile-price">$29.32</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=A+Few+Lessons+for+Investors+and+Managers&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">A Few Lessons for Investors and Managers</a></div>
+                    <div class="book-mobile-author">Warren Buffett &amp; Peter Bevelin</div>
+                    <div class="book-mobile-price">$31.54</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Warren+Buffett's+Ground+Rules&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Warren Buffett's Ground Rules</a></div>
+                    <div class="book-mobile-author">Jeremy Miller</div>
+                    <div class="book-mobile-price">$19.25</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Warren+Buffett+Speaks&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Warren Buffett Speaks</a></div>
+                    <div class="book-mobile-author">Janet Lowe</div>
+                    <div class="book-mobile-price">$23.23</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Invest+Like+Warren+Buffett&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Invest Like Warren Buffett</a></div>
+                    <div class="book-mobile-author">Matthew Kratter</div>
+                    <div class="book-mobile-price">$10.15</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Buying+Like+Buffett&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Buying Like Buffett</a></div>
+                    <div class="book-mobile-author">Jonathan Belliveau</div>
+                    <div class="book-mobile-price">$5.56</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Warren+Buffett+on+Business&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Warren Buffett on Business</a></div>
+                    <div class="book-mobile-author">Warren Buffett &amp; Richard Connors</div>
+                    <div class="book-mobile-price">$31.54</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Tap+Dancing+To+Work&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Tap Dancing To Work</a></div>
+                    <div class="book-mobile-author">Carol Loomis</div>
+                    <div class="book-mobile-price">$27.99</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Warren+Buffett+Stock+Portfolio&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Warren Buffett Stock Portfolio</a></div>
+                    <div class="book-mobile-author">Mary Buffett &amp; David Clark</div>
+                    <div class="book-mobile-price">$17.35</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Charlie+Munger:+The+Complete+Investor&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Charlie Munger: The Complete Investor</a></div>
+                    <div class="book-mobile-author">Tren Griffin</div>
+                    <div class="book-mobile-price">$24.61</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Capital+Allocation&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Capital Allocation</a></div>
+                    <div class="book-mobile-author">Jacob McDonough</div>
+                    <div class="book-mobile-price">$32.52</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=How+to+Think+Like+Benjamin+Graham+and+Invest+Like+Warren+Buffett&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">How to Think Like Benjamin Graham and Invest Like Warren Buffett</a></div>
+                    <div class="book-mobile-author">Lawrence Cunningham</div>
+                    <div class="book-mobile-price">$76.97</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Warren+Buffett:+43+Lessons+for+Business+&amp;+Life&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Warren Buffett: 43 Lessons for Business &amp; Life</a></div>
+                    <div class="book-mobile-author">Keith Lard</div>
+                    <div class="book-mobile-price">$21.20</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Warren+Buffett+Invests+Like+a+Girl&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Warren Buffett Invests Like a Girl</a></div>
+                    <div class="book-mobile-author">Motley Fool &amp; Louann Lofton</div>
+                    <div class="book-mobile-price">$21.23</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Warren+Buffett's+Management+Secrets&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Warren Buffett's Management Secrets</a></div>
+                    <div class="book-mobile-author">Mary Buffett &amp; David Clark</div>
+                    <div class="book-mobile-price">$20.85</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=101+Reasons+to+Own+the+World's+Greatest+Investment&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">101 Reasons to Own the World's Greatest Investment</a></div>
+                    <div class="book-mobile-author">Robert Miles</div>
+                    <div class="book-mobile-price">$38.74</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=How+to+Pick+Stocks+Like+Warren+Buffett&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">How to Pick Stocks Like Warren Buffett</a></div>
+                    <div class="book-mobile-author">Timothy Vick</div>
+                    <div class="book-mobile-price">$54.39</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Think,+Act+and+Invest+Like+Warren+Buffett&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Think, Act and Invest Like Warren Buffett</a></div>
+                    <div class="book-mobile-author">Larry Swedroe</div>
+                    <div class="book-mobile-price">$27.73</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Real+Warren+Buffett&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Real Warren Buffett</a></div>
+                    <div class="book-mobile-author">James O'Loughlin</div>
+                    <div class="book-mobile-price">$58.31</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Even+Buffett+Isn't+Perfect&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Even Buffett Isn't Perfect</a></div>
+                    <div class="book-mobile-author">Janjigian Vahan</div>
+                    <div class="book-mobile-price">$63.59</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Trade+Like+Warren+Buffett&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Trade Like Warren Buffett</a></div>
+                    <div class="book-mobile-author">James Altucher</div>
+                    <div class="book-mobile-price">$68.55</div>
+                </div>
+                <div class="book-mobile-card">
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Warren+Buffett:+The+Good+Guy+of+Wall+Street&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Warren Buffett: The Good Guy of Wall Street</a></div>
+                    <div class="book-mobile-author">Andrew Kilpatrick</div>
+                    <div class="book-mobile-price">$269.00</div>
+                </div>
+            </div>
+
+            <div class="books-description">
+                <p><strong>Note:</strong> Prices are in AUD and may vary depending on the retailer and availability. Some books may be available as digital editions at lower prices.</p>
+
+                <p><strong>Disclaimer:</strong> This list is for informational purposes only and does not constitute investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Mobile menu functionality
+        function toggleMobileMenu() {
+            const drawer = document.getElementById('mobile-drawer');
+            const toggle = document.getElementById('mobile-toggle');
+
+            drawer.classList.toggle('open');
+            toggle.classList.toggle('open');
+        }
+
+        function closeMobileMenu() {
+            const drawer = document.getElementById('mobile-drawer');
+            const toggle = document.getElementById('mobile-toggle');
+
+            drawer.classList.remove('open');
+            toggle.classList.remove('open');
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu event listeners
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const drawerClose = document.getElementById('drawer-close');
+
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', toggleMobileMenu);
+            }
+
+            if (drawerClose) {
+                drawerClose.addEventListener('click', closeMobileMenu);
+            }
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                const drawer = document.getElementById('mobile-drawer');
+                const toggle = document.getElementById('mobile-toggle');
+
+                if (drawer.classList.contains('open') &&
+                    !drawer.contains(event.target) &&
+                    !mobileToggle.contains(event.target)) {
+                    closeMobileMenu();
+                }
+            });
+
+            // Sticky header functionality
+            const header = document.getElementById('main-header');
+            const sticky = header.offsetTop;
+
+            function handleScroll() {
+                if (window.pageYOffset > sticky) {
+                    header.classList.add('sticky-header');
+                } else {
+                    header.classList.remove('sticky-header');
+                }
+            }
+
+            window.addEventListener('scroll', handleScroll);
+
+            // Mobile cards functionality
+            function toggleMobileLayout() {
+                const tableContainer = document.querySelector('.books-table-container');
+                const mobileCards = document.querySelector('.books-mobile-cards');
+                
+                if (window.innerWidth <= 768) {
+                    // Mobile: show cards, hide table
+                    if (tableContainer) tableContainer.style.display = 'none';
+                    if (mobileCards) mobileCards.style.display = 'block';
+                } else {
+                    // Desktop: show table, hide cards
+                    if (tableContainer) tableContainer.style.display = 'block';
+                    if (mobileCards) mobileCards.style.display = 'none';
+                }
+            }
+
+            // Initial check
+            toggleMobileLayout();
+
+            // Listen for window resize
+            window.addEventListener('resize', toggleMobileLayout);
+        });
+    </script>
+
+
+</body></html>

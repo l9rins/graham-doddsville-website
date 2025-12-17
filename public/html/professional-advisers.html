@@ -1,0 +1,956 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Advisers - Graham and Doddsville</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1e3a8a;
+            --primary-blue-light: #3b82f6;
+            --primary-blue-dark: #1e40af;
+            --secondary-gray: #f8f9fa;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-muted: #9ca3af;
+            --border-light: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--secondary-gray);
+        }
+
+        .wealth-creation-page {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            position: relative;
+        }
+
+        .wealth-creation-page-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-bottom: 2px solid #d4af37;
+            padding: 12px 0;
+            transition: all 0.3s ease;
+            overflow: visible;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            overflow: visible;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 40px;
+            width: auto;
+        }
+
+        .main-nav {
+            overflow: visible;
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            overflow: visible;
+        }
+
+        .nav-link {
+            color: #000;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 30px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 2px;
+            background: #333;
+            border-radius: 1px;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 2px 0;
+        }
+
+        /* Mobile Menu Toggle Animation */
+        .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Mobile Navigation Drawer */
+        .mobile-drawer {
+            position: fixed;
+            top: 0;
+            right: -80%;
+            width: 80%;
+            height: 100vh;
+            background: #fff;
+            z-index: 10000;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            display: block;
+        }
+
+        .mobile-drawer.open {
+            right: 0;
+        }
+
+        .drawer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 20px;
+            border-bottom: 1px solid #e0e0e0;
+            background: #1e3a8a;
+            color: white;
+        }
+
+        .drawer-logo {
+            max-height: 40px;
+            width: auto;
+            display: block;
+        }
+
+        .drawer-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .drawer-nav {
+            padding: 20px 0;
+        }
+
+        .drawer-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .drawer-menu li {
+            border-bottom: 1px solid #f0f0f0;
+            margin-bottom: 6px;
+            padding-left: 20px;
+        }
+
+        .drawer-link {
+            display: block;
+            padding: 6px 20px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+
+        .drawer-link:hover {
+            background: #f8f9fa;
+            color: #1e3a8a;
+        }
+
+        /* Mobile responsive styles */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .desktop-only {
+                display: none;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-only {
+                display: none;
+            }
+            
+            .mobile-drawer {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .wealth-creation-page-content {
+                padding: 16px;
+            }
+        }
+
+        /* Article Detail Panel */
+        .article-detail-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .article-detail-panel.active {
+            display: flex;
+        }
+
+        .article-detail-content {
+            background: white;
+            border-radius: 12px;
+            max-width: 800px;
+            max-height: 90vh;
+            width: 100%;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .article-detail-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .article-detail-title {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .article-detail-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.2s ease;
+        }
+
+        .article-detail-close:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .article-detail-body {
+            padding: 24px;
+            line-height: 1.7;
+        }
+
+        .article-detail-body h3 {
+            color: var(--primary-blue);
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+
+        .article-detail-body p {
+            margin-bottom: 16px;
+        }
+
+        .loading-spinner {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-secondary);
+        }
+
+        /* Page Title Section */
+        .page-title-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .breadcrumb {
+            margin-bottom: 16px;
+        }
+
+        .breadcrumb-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .breadcrumb-link:hover {
+            color: var(--primary-blue);
+        }
+
+        .page-title {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: #6B46C1; /* Brand purple */
+            margin: 0 0 0px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #e0e0e0;
+            padding: 4px 0 4px 4px; /* 4px left padding inside bar */
+            background: rgba(250, 251, 252, 0.65); /* Reduced opacity by 20% */
+            height: 32px; /* Reduced from 36px to 32px */
+            display: flex;
+            align-items: center;
+            letter-spacing: -0.02em;
+        }
+
+        .page-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Collapsible Categories */
+        .collapsible-categories {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .collapsible-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            transition: transform 0.2s ease;
+        }
+
+        .collapsible-section:hover {
+            transform: translateY(-2px);
+        }
+
+        .collapsible-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            background: var(--primary-blue);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .collapsible-header:hover {
+            background: var(--primary-blue-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.15);
+        }
+
+        .collapsible-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0;
+            color: white;
+        }
+
+        .collapsible-arrow {
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            color: white;
+        }
+
+        .collapsible-arrow.rotated {
+            transform: rotate(180deg);
+        }
+
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                        opacity 0.3s ease,
+                        padding 0.3s ease;
+            opacity: 0;
+            padding: 0 24px;
+        }
+
+        .collapsible-content.expanded {
+            max-height: 1000px;
+            opacity: 1;
+            padding: 12px 24px 24px 24px;
+        }
+
+        .collapsible-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .collapsible-links li {
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .collapsible-links li:last-child {
+            border-bottom: none;
+        }
+
+        .collapsible-link {
+            display: block;
+            padding: 16px 24px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .collapsible-link:hover {
+            background: var(--secondary-gray);
+            color: var(--primary-blue);
+            border-left-color: var(--primary-blue);
+        }
+    </style>
+</head>
+<body>
+    <div class="wealth-creation-page">
+        <!-- Header -->
+        <header class="header sticky-header">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="/images/G&amp;D Logo.png" alt="Graham &amp; Doddsville" class="logo-image">
+                </div>
+                <!-- Desktop Navigation (hidden on mobile) -->
+                <nav class="main-nav desktop-only" role="navigation" aria-label="Main navigation">
+                    <ul>
+                        <li><a href="index.html" class="nav-link">HOME</a></li>
+                        <li><a href="classical-readings.html" class="nav-link">CLASSICAL READINGS</a></li>
+                        <li><a href="wealth-creation.html" class="nav-link">WEALTH CREATION</a></li>
+                        <li><a href="#" class="nav-link">ABOUT</a></li>
+                    </ul>
+                </nav>
+                
+                <!-- Mobile Hamburger Menu -->
+                <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Mobile Navigation Drawer -->
+        <div class="mobile-drawer" id="mobile-drawer">
+            <div class="drawer-header">
+                <img src="/images/G&amp;D Logo.png" alt="Graham and Doddsville" class="drawer-logo">
+                <button class="drawer-close" id="drawer-close" aria-label="Close menu">×</button>
+            </div>
+            <nav class="drawer-nav">
+                <ul class="drawer-menu">
+                    <li><a href="index.html" class="drawer-link">Home</a></li>
+                    <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
+                    <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
+                    <li><a href="legal-taxation.html" class="drawer-link">Legal &amp; Taxation</a></li>
+                    <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
+                    <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
+                    <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
+                    <li><a href="economics.html" class="drawer-link">Economics</a></li>
+                    <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
+                    <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
+                    <li><a href="resources.html" class="drawer-link">Resources</a></li>
+                    <li><a href="events.html" class="drawer-link">Events</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="wealth-creation-page-content">
+            <!-- Page Title Section -->
+            <div class="page-title-section">
+                <div class="breadcrumb">
+                    <a href="index.html" class="breadcrumb-link">← Home</a>
+                </div>
+                <h1 class="page-title">Professional Advisers</h1>
+                <p class="page-subtitle">Expert guidance from qualified professionals across all aspects of financial planning and investment management</p>
+            </div>
+
+            <!-- Collapsible Categories -->
+            <div class="collapsible-categories">
+                <!-- Financial Planning Professionals -->
+                <div class="collapsible-section">
+                <div class="collapsible-header" onclick="toggleCollapsible('financial-planning')">
+                    <h3 class="collapsible-title">Financial Planning Professionals</h3>
+                    <span class="collapsible-arrow" id="financial-planning-arrow">▼</span>
+                </div>
+                <div class="collapsible-content" id="financial-planning-content">
+                    <ul class="collapsible-links">
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('financial-planners-role')">Role of Financial Planners</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('choosing-financial-planner')">Choosing a Financial Planner</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('financial-planning-process')">Financial Planning Process</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('retirement-planning')">Retirement Planning</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('estate-planning')">Estate Planning</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('tax-planning')">Tax Planning</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('insurance-planning')">Insurance Planning</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('education-funding')">Education Funding</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('debt-management')">Debt Management</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('cash-flow-planning')">Cash Flow Planning</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Investment Professionals -->
+            <div class="collapsible-section">
+                <div class="collapsible-header" onclick="toggleCollapsible('investment-professionals')">
+                    <h3 class="collapsible-title">Investment Professionals</h3>
+                    <span class="collapsible-arrow" id="investment-professionals-arrow">▼</span>
+                </div>
+                <div class="collapsible-content" id="investment-professionals-content">
+                    <ul class="collapsible-links">
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('fund-managers')">Fund Managers</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('investment-bankers')">Investment Bankers</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('stockbrokers')">Stockbrokers</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('portfolio-managers')">Portfolio Managers</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('research-analysts')">Research Analysts</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('wealth-managers')">Wealth Managers</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('private-bankers')">Private Bankers</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('investment-advisors')">Investment Advisors</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('robo-advisors')">Robo-Advisors</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('alternative-investment-managers')">Alternative Investment Managers</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Banking Professionals -->
+            <div class="collapsible-section">
+                <div class="collapsible-header" onclick="toggleCollapsible('banking-professionals')">
+                    <h3 class="collapsible-title">Banking Professionals</h3>
+                    <span class="collapsible-arrow" id="banking-professionals-arrow">▼</span>
+                </div>
+                <div class="collapsible-content" id="banking-professionals-content">
+                    <ul class="collapsible-links">
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('retail-bankers')">Retail Bankers</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('commercial-bankers')">Commercial Bankers</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('private-bankers')">Private Bankers</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('relationship-managers')">Relationship Managers</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('credit-analysts')">Credit Analysts</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('loan-officers')">Loan Officers</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('mortgage-brokers')">Mortgage Brokers</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('online-brokers')">Online Brokers</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('fintech-advisors')">Fintech Advisors</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('digital-banking')">Digital Banking Specialists</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Legal and Compliance -->
+            <div class="collapsible-section">
+                <div class="collapsible-header" onclick="toggleCollapsible('legal-compliance')">
+                    <h3 class="collapsible-title">Legal and Compliance</h3>
+                    <span class="collapsible-arrow" id="legal-compliance-arrow">▼</span>
+                </div>
+                <div class="collapsible-content" id="legal-compliance-content">
+                    <ul class="collapsible-links">
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('financial-lawyers')">Financial Lawyers</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('tax-lawyers')">Tax Lawyers</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('estate-lawyers')">Estate Lawyers</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('compliance-officers')">Compliance Officers</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('regulatory-specialists')">Regulatory Specialists</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('risk-managers')">Risk Managers</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('auditors')">Auditors</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('forensic-accountants')">Forensic Accountants</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('corporate-lawyers')">Corporate Lawyers</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('securities-lawyers')">Securities Lawyers</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Insurance Professionals -->
+            <div class="collapsible-section">
+                <div class="collapsible-header" onclick="toggleCollapsible('insurance-professionals')">
+                    <h3 class="collapsible-title">Insurance Professionals</h3>
+                    <span class="collapsible-arrow" id="insurance-professionals-arrow">▼</span>
+                </div>
+                <div class="collapsible-content" id="insurance-professionals-content">
+                    <ul class="collapsible-links">
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('insurance-brokers')">Insurance Brokers</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('life-insurance-advisors')">Life Insurance Advisors</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('health-insurance-specialists')">Health Insurance Specialists</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('property-insurance-advisors')">Property Insurance Advisors</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('liability-insurance-experts')">Liability Insurance Experts</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('annuity-specialists')">Annuity Specialists</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('disability-insurance-advisors')">Disability Insurance Advisors</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('long-term-care-specialists')">Long-term Care Specialists</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('business-insurance-advisors')">Business Insurance Advisors</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('insurance-underwriters')">Insurance Underwriters</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Accounting and Tax Professionals -->
+            <div class="collapsible-section">
+                <div class="collapsible-header" onclick="toggleCollapsible('accounting-tax')">
+                    <h3 class="collapsible-title">Accounting and Tax Professionals</h3>
+                    <span class="collapsible-arrow" id="accounting-tax-arrow">▼</span>
+                </div>
+                <div class="collapsible-content" id="accounting-tax-content">
+                    <ul class="collapsible-links">
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('certified-accountants')">Certified Accountants</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('tax-advisors')">Tax Advisors</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('bookkeepers')">Bookkeepers</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('financial-controllers')">Financial Controllers</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('cost-accountants')">Cost Accountants</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('management-accountants')">Management Accountants</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('tax-preparers')">Tax Preparers</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('enrolled-agents')">Enrolled Agents</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('tax-attorneys')">Tax Attorneys</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('forensic-accountants')">Forensic Accountants</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Research and Analysis -->
+            <div class="collapsible-section">
+                <div class="collapsible-header" onclick="toggleCollapsible('research-analysis')">
+                    <h3 class="collapsible-title">Research and Analysis</h3>
+                    <span class="collapsible-arrow" id="research-analysis-arrow">▼</span>
+                </div>
+                <div class="collapsible-content" id="research-analysis-content">
+                    <ul class="collapsible-links">
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('research-houses')">Research Houses</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('equity-researchers')">Equity Researchers</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('credit-analysts')">Credit Analysts</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('macro-economists')">Macro Economists</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('quantitative-analysts')">Quantitative Analysts</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('data-scientists')">Data Scientists</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('market-researchers')">Market Researchers</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('industry-analysts')">Industry Analysts</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('economic-forecasters')">Economic Forecasters</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('investment-strategists')">Investment Strategists</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Technology and Digital -->
+            <div class="collapsible-section">
+                <div class="collapsible-header" onclick="toggleCollapsible('technology-digital')">
+                    <h3 class="collapsible-title">Technology and Digital</h3>
+                    <span class="collapsible-arrow" id="technology-digital-arrow">▼</span>
+                </div>
+                <div class="collapsible-content" id="technology-digital-content">
+                    <ul class="collapsible-links">
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('fintech-advisors')">Fintech Advisors</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('robo-advisors')">Robo-Advisors</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('digital-banking-specialists')">Digital Banking Specialists</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('cybersecurity-experts')">Cybersecurity Experts</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('blockchain-advisors')">Blockchain Advisors</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('cryptocurrency-advisors')">Cryptocurrency Advisors</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('regtech-specialists')">RegTech Specialists</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('wealthtech-advisors')">WealthTech Advisors</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('insurtech-specialists')">InsurTech Specialists</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('proptech-advisors')">PropTech Advisors</a></li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Article Detail Panel -->
+    <div class="article-detail-panel" id="article-detail-panel">
+        <div class="article-detail-content">
+            <div class="article-detail-header">
+                <h3 class="article-detail-title" id="article-detail-title">Article Title</h3>
+                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">×</button>
+            </div>
+            <div class="article-detail-body" id="article-detail-body">
+                <div class="loading-spinner">Loading article...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Collapsible functionality
+        function toggleCollapsible(sectionId) {
+            const content = document.getElementById(`${sectionId}-content`);
+            const arrow = document.getElementById(`${sectionId}-arrow`);
+
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                content.classList.remove('expanded');
+                arrow.innerHTML = '▼';
+            } else {
+                // Close all other open sections
+                document.querySelectorAll('.collapsible-content.expanded').forEach(openContent => {
+                    openContent.style.maxHeight = null;
+                    openContent.classList.remove('expanded');
+                    const openArrowId = openContent.id.replace('-content', '-arrow');
+                    document.getElementById(openArrowId).innerHTML = '▼';
+                });
+
+                content.style.maxHeight = content.scrollHeight + "px";
+                content.classList.add('expanded');
+                arrow.innerHTML = '▲';
+            }
+        }
+
+        // Mobile drawer functionality
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        const drawerClose = document.getElementById('drawer-close');
+        
+        if (mobileToggle && mobileDrawer) {
+            mobileToggle.addEventListener('click', () => {
+                console.log('Hamburger menu clicked!');
+                mobileDrawer.classList.add('open');
+                document.body.style.overflow = 'hidden';
+                console.log('Drawer should be open now');
+            });
+        }
+        
+        if (drawerClose && mobileDrawer) {
+            drawerClose.addEventListener('click', () => {
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        }
+        
+        // Close drawer when clicking outside
+        if (mobileDrawer) {
+            mobileDrawer.addEventListener('click', (e) => {
+                if (e.target === mobileDrawer) {
+                    mobileDrawer.classList.remove('open');
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+
+        // Article content data
+        const articleContent = {
+            'financial-planners-role': {
+                title: 'Role of Financial Planners',
+                content: `
+                    <p>Financial planners are professionals who help individuals and families create comprehensive financial strategies to achieve their long-term goals.</p>
+                    
+                    <h3>Core Responsibilities</h3>
+                    <p>Financial planners assess your current financial situation, identify goals, and create personalized strategies for retirement, education funding, tax optimization, and wealth preservation.</p>
+                    
+                    <h3>Services Provided</h3>
+                    <p>Services include retirement planning, investment advice, insurance analysis, estate planning, tax strategies, and cash flow management. They provide ongoing monitoring and adjustments to your financial plan.</p>
+                    
+                    <h3>Qualifications</h3>
+                    <p>Look for certified financial planners (CFP) or chartered financial consultants (ChFC) who have completed rigorous education requirements and adhere to fiduciary standards.</p>
+                `
+            },
+            'fund-managers': {
+                title: 'Fund Managers',
+                content: `
+                    <p>Fund managers are investment professionals responsible for making investment decisions on behalf of mutual funds, pension funds, and other investment vehicles.</p>
+                    
+                    <h3>Investment Strategy</h3>
+                    <p>Fund managers develop and implement investment strategies, conduct research, and make buy/sell decisions to maximize returns while managing risk according to the fund's objectives.</p>
+                    
+                    <h3>Performance Monitoring</h3>
+                    <p>They continuously monitor market conditions, analyze economic trends, and adjust portfolios to maintain alignment with investment goals and risk parameters.</p>
+                    
+                    <h3>Client Communication</h3>
+                    <p>Fund managers communicate with investors through regular reports, explaining investment decisions and providing updates on fund performance and market outlook.</p>
+                `
+            },
+            'investment-bankers': {
+                title: 'Investment Bankers',
+                content: `
+                    <p>Investment bankers facilitate complex financial transactions for corporations, governments, and other large institutions.</p>
+                    
+                    <h3>Core Functions</h3>
+                    <p>They assist with mergers and acquisitions, initial public offerings (IPOs), debt and equity financing, and corporate restructuring. They also provide strategic financial advice.</p>
+                    
+                    <h3>Transaction Types</h3>
+                    <p>Services include underwriting securities, arranging financing, advising on M&A deals, and helping companies access capital markets for growth and expansion.</p>
+                    
+                    <h3>Market Expertise</h3>
+                    <p>Investment bankers have deep knowledge of financial markets, regulatory requirements, and industry trends to structure optimal deals for their clients.</p>
+                `
+            },
+            'retail-bankers': {
+                title: 'Retail Bankers',
+                content: `
+                    <p>Retail bankers serve individual customers and small businesses, providing a wide range of financial products and services.</p>
+                    
+                    <h3>Product Offerings</h3>
+                    <p>They offer checking and savings accounts, personal loans, mortgages, credit cards, investment products, and insurance services tailored to individual needs.</p>
+                    
+                    <h3>Customer Service</h3>
+                    <p>Retail bankers build relationships with customers, understand their financial goals, and recommend appropriate products and services to help them achieve their objectives.</p>
+                    
+                    <h3>Financial Guidance</h3>
+                    <p>They provide basic financial advice, help customers understand banking products, and assist with account management and financial planning.</p>
+                `
+            },
+            'insurance-brokers': {
+                title: 'Insurance Brokers',
+                content: `
+                    <p>Insurance brokers act as intermediaries between clients and insurance companies, helping individuals and businesses find appropriate coverage.</p>
+                    
+                    <h3>Coverage Analysis</h3>
+                    <p>They assess clients' risk exposure, analyze existing coverage, and recommend appropriate insurance products including life, health, property, and liability insurance.</p>
+                    
+                    <h3>Market Access</h3>
+                    <p>Brokers have access to multiple insurance carriers, allowing them to compare policies and find the best coverage at competitive rates for their clients.</p>
+                    
+                    <h3>Claims Assistance</h3>
+                    <p>They assist clients with the claims process, helping navigate complex procedures and ensuring fair settlement of insurance claims.</p>
+                `
+            },
+            'certified-accountants': {
+                title: 'Certified Accountants',
+                content: `
+                    <p>Certified accountants provide comprehensive accounting, tax, and financial advisory services to individuals and businesses.</p>
+                    
+                    <h3>Financial Reporting</h3>
+                    <p>They prepare financial statements, conduct audits, and ensure compliance with accounting standards and regulatory requirements.</p>
+                    
+                    <h3>Tax Services</h3>
+                    <p>Services include tax preparation, tax planning, representation before tax authorities, and advice on tax-efficient strategies.</p>
+                    
+                    <h3>Business Advisory</h3>
+                    <p>They provide strategic financial advice, help with business planning, cash flow management, and assist with financial decision-making.</p>
+                `
+            },
+            'research-houses': {
+                title: 'Research Houses',
+                content: `
+                    <p>Research houses provide independent analysis and insights on financial markets, companies, and economic trends.</p>
+                    
+                    <h3>Market Analysis</h3>
+                    <p>They conduct in-depth research on stocks, bonds, commodities, and other financial instruments, providing buy/sell/hold recommendations.</p>
+                    
+                    <h3>Economic Research</h3>
+                    <p>Research houses analyze economic indicators, central bank policies, and global market trends to provide macroeconomic insights.</p>
+                    
+                    <h3>Investment Insights</h3>
+                    <p>They publish research reports, market outlooks, and investment strategies to help investors make informed decisions.</p>
+                `
+            }
+        };
+
+        // Article panel functionality
+        function openArticle(articleId) {
+            const panel = document.getElementById('article-detail-panel');
+            const title = document.getElementById('article-detail-title');
+            const body = document.getElementById('article-detail-body');
+            
+            if (articleContent[articleId]) {
+                title.textContent = articleContent[articleId].title;
+                body.innerHTML = articleContent[articleId].content;
+                panel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeArticlePanel() {
+            const panel = document.getElementById('article-detail-panel');
+            panel.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            const articleClose = document.getElementById('article-detail-close');
+            const articlePanel = document.getElementById('article-detail-panel');
+            
+            if (articleClose) {
+                articleClose.addEventListener('click', closeArticlePanel);
+            }
+            
+            if (articlePanel) {
+                articlePanel.addEventListener('click', function(event) {
+                    if (event.target === articlePanel) {
+                        closeArticlePanel();
+                    }
+                });
+            }
+        });
+    </script>
+
+
+</body></html>

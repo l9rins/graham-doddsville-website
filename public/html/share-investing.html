@@ -1,0 +1,919 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share Investing - Graham and Doddsville</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1e3a8a;
+            --primary-blue-light: #3b82f6;
+            --primary-blue-dark: #1e40af;
+            --secondary-gray: #f8f9fa;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-muted: #9ca3af;
+            --border-light: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--secondary-gray);
+        }
+
+        .wealth-creation-page {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            position: relative;
+        }
+
+        .wealth-creation-page-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-bottom: 2px solid #d4af37;
+            padding: 12px 0;
+            transition: all 0.3s ease;
+            overflow: visible;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            overflow: visible;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 40px;
+            width: auto;
+        }
+
+        .main-nav {
+            overflow: visible;
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            overflow: visible;
+        }
+
+        .nav-link {
+            color: #000;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 30px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 2px;
+            background: #333;
+            border-radius: 1px;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 2px 0;
+        }
+
+        /* Mobile Menu Toggle Animation */
+        .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Mobile Navigation Drawer */
+        .mobile-drawer {
+            position: fixed;
+            top: 0;
+            right: -80%;
+            width: 80%;
+            height: 100vh;
+            background: #fff;
+            z-index: 10000;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            display: block;
+        }
+
+        .mobile-drawer.open {
+            right: 0;
+        }
+
+        .drawer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 20px;
+            border-bottom: 1px solid #e0e0e0;
+            background: #1e3a8a;
+            color: white;
+        }
+
+        .drawer-logo {
+            max-height: 40px;
+            width: auto;
+            display: block;
+        }
+
+        .drawer-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .drawer-nav {
+            padding: 20px 0;
+        }
+
+        .drawer-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .drawer-menu li {
+            border-bottom: 1px solid #f0f0f0;
+            margin-bottom: 6px;
+            padding-left: 20px;
+        }
+
+        .drawer-link {
+            display: block;
+            padding: 6px 20px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+
+        .drawer-link:hover {
+            background: #f8f9fa;
+            color: #1e3a8a;
+        }
+
+        /* Mobile responsive styles */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .desktop-only {
+                display: none;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-only {
+                display: none;
+            }
+            
+            .mobile-drawer {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .wealth-creation-page-content {
+                padding: 16px;
+            }
+        }
+
+        /* Article Detail Panel */
+        .article-detail-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .article-detail-panel.active {
+            display: flex;
+        }
+
+        .article-detail-content {
+            background: white;
+            border-radius: 12px;
+            max-width: 800px;
+            max-height: 90vh;
+            width: 100%;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .article-detail-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .article-detail-title {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .article-detail-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.2s ease;
+        }
+
+        .article-detail-close:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .article-detail-body {
+            padding: 24px;
+            line-height: 1.7;
+        }
+
+        .article-detail-body h3 {
+            color: var(--primary-blue);
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+
+        .article-detail-body p {
+            margin-bottom: 16px;
+        }
+
+        .loading-spinner {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-secondary);
+        }
+
+        /* Page Title Section */
+        .page-title-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .breadcrumb {
+            margin-bottom: 16px;
+        }
+
+        .breadcrumb-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .breadcrumb-link:hover {
+            color: var(--primary-blue);
+        }
+
+        .page-title {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: #6B46C1; /* Brand purple */
+            margin: 0 0 0px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #e0e0e0;
+            padding: 4px 0 4px 4px; /* 4px left padding inside bar */
+            background: rgba(250, 251, 252, 0.65); /* Reduced opacity by 20% */
+            height: 32px; /* Reduced from 36px to 32px */
+            display: flex;
+            align-items: center;
+            letter-spacing: -0.02em;
+        }
+
+        .page-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Collapsible Categories */
+        .collapsible-categories {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .collapsible-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            transition: transform 0.2s ease;
+        }
+
+        .collapsible-section:hover {
+            transform: translateY(-2px);
+        }
+
+        .collapsible-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            background: var(--primary-blue);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .collapsible-header:hover {
+            background: var(--primary-blue-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.15);
+        }
+
+        .collapsible-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0;
+            color: white;
+        }
+
+        .collapsible-arrow {
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            color: white;
+        }
+
+        .collapsible-arrow.rotated {
+            transform: rotate(180deg);
+        }
+
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                        opacity 0.3s ease,
+                        padding 0.3s ease;
+            opacity: 0;
+            padding: 0 24px;
+        }
+
+        .collapsible-content.expanded {
+            max-height: 1000px;
+            opacity: 1;
+            padding: 12px 24px 24px 24px;
+        }
+
+        .collapsible-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .collapsible-links li {
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .collapsible-links li:last-child {
+            border-bottom: none;
+        }
+
+        .collapsible-link {
+            display: block;
+            padding: 16px 24px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .collapsible-link:hover {
+            background: var(--secondary-gray);
+            color: var(--primary-blue);
+            border-left-color: var(--primary-blue);
+        }
+    </style>
+</head>
+<body>
+    <div class="wealth-creation-page">
+        <!-- Header -->
+        <header class="header sticky-header">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="/images/G&amp;D Logo.png" alt="Graham &amp; Doddsville" class="logo-image">
+                </div>
+                <!-- Desktop Navigation (hidden on mobile) -->
+                <nav class="main-nav desktop-only" role="navigation" aria-label="Main navigation">
+                    <ul>
+                        <li><a href="index.html" class="nav-link">HOME</a></li>
+                        <li><a href="classical-readings.html" class="nav-link">CLASSICAL READINGS</a></li>
+                        <li><a href="wealth-creation.html" class="nav-link">WEALTH CREATION</a></li>
+                        <li><a href="#" class="nav-link">ABOUT</a></li>
+                    </ul>
+                </nav>
+                
+                <!-- Mobile Hamburger Menu -->
+                <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Mobile Navigation Drawer -->
+        <div class="mobile-drawer" id="mobile-drawer">
+            <div class="drawer-header">
+                <img src="/images/G&amp;D Logo.png" alt="Graham and Doddsville" class="drawer-logo">
+                <button class="drawer-close" id="drawer-close" aria-label="Close menu">×</button>
+            </div>
+            <nav class="drawer-nav">
+                <ul class="drawer-menu">
+                    <li><a href="index.html" class="drawer-link">Home</a></li>
+                    <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
+                    <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
+                    <li><a href="legal-taxation.html" class="drawer-link">Legal &amp; Taxation</a></li>
+                    <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
+                    <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
+                    <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
+                    <li><a href="economics.html" class="drawer-link">Economics</a></li>
+                    <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
+                    <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
+                    <li><a href="resources.html" class="drawer-link">Resources</a></li>
+                    <li><a href="events.html" class="drawer-link">Events</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="wealth-creation-page-content">
+            <!-- Page Title Section -->
+            <div class="page-title-section">
+                <div class="breadcrumb">
+                    <a href="index.html" class="breadcrumb-link">← Home</a>
+                </div>
+                <h1 class="page-title">Share Investing</h1>
+                <p class="page-subtitle">Master the art of stock market investing with comprehensive guides and strategies</p>
+            </div>
+
+            <!-- Collapsible Categories -->
+            <div class="collapsible-categories">
+                <!-- Introduction to Shares -->
+                <div class="collapsible-section">
+                <div class="collapsible-header" onclick="toggleCollapsible('introduction-shares')">
+                    <h3 class="collapsible-title">Introduction to Shares</h3>
+                    <span class="collapsible-arrow" id="introduction-shares-arrow">▼</span>
+                </div>
+                <div class="collapsible-content" id="introduction-shares-content">
+                    <ul class="collapsible-links">
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('how-market-works')">How the market works</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('why-invest-shares')">Why invest in shares</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('risks-disadvantages')">Risks and disadvantages</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('how-allocate-capital')">How to allocate capital</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('how-select-stocks')">How to select stocks</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('how-open-account')">How to open an account</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('how-diversify')">How to diversify</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('when-to-sell')">When to sell</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('trading-platforms')">Share trading platforms</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('stock-screeners')">Stock screeners</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Investing Psychology -->
+            <div class="collapsible-section">
+                <div class="collapsible-header" onclick="toggleCollapsible('investing-psychology')">
+                    <h3 class="collapsible-title">Investing Psychology</h3>
+                    <span class="collapsible-arrow" id="investing-psychology-arrow">▼</span>
+                </div>
+                <div class="collapsible-content" id="investing-psychology-content">
+                    <ul class="collapsible-links">
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('psychology-investing')">Psychology of investing</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('cognitive-biases')">Cognitive biases</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('fear-greed')">Fear and greed</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('herd-mentality')">Herd mentality</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('market-bubbles')">Market bubbles</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('economic-depression')">Economic depression</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('market-cycles')">Market cycles</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('risk-perception')">Risk perception</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('munger-psychology')">Munger's Psychology</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('resilient-mindset')">Resilient mindset</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Portfolio Construction -->
+            <div class="collapsible-section">
+                <div class="collapsible-header" onclick="toggleCollapsible('portfolio-construction')">
+                    <h3 class="collapsible-title">Portfolio Construction</h3>
+                    <span class="collapsible-arrow" id="portfolio-construction-arrow">▼</span>
+                </div>
+                <div class="collapsible-content" id="portfolio-construction-content">
+                    <ul class="collapsible-links">
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('asset-allocation')">Type of asset allocation</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('asset-classes')">Asset classes</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('shares-vs-cash')">Shares vs cash</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('shares-vs-other-assets')">Shares vs other assets</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('portfolio-construction')">Portfolio construction</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('core-portfolio-strategies')">Core portfolio strategies</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('active-management')">Active management</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('bonds-fixed-income')">Bonds and fixed income</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('alternative-investments')">Alternative investments</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('index-funds')">Index funds</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Investing Styles -->
+            <div class="collapsible-section">
+                <div class="collapsible-header" onclick="toggleCollapsible('investing-styles')">
+                    <h3 class="collapsible-title">Investing Styles</h3>
+                    <span class="collapsible-arrow" id="investing-styles-arrow">▼</span>
+                </div>
+                <div class="collapsible-content" id="investing-styles-content">
+                    <ul class="collapsible-links">
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('value-investing')">Value investing</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('index-investing')">Index investing</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('growth-investing')">Growth investing</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('garp-investing')">GARP investing</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('dividend-investing')">Dividend investing</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('income-investing')">Income investing</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('qualitative-analysis')">Qualitative analysis</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('contrarian-investing')">Contrarian investing</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('esg-investing')">ESG investing</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('momentum-investing')">Momentum investing</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('low-volatility-investing')">Low volatility investing</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('technical-analysis')">Technical analysis</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Stockpicking Strategies -->
+            <div class="collapsible-section">
+                <div class="collapsible-header" onclick="toggleCollapsible('stockpicking-strategies')">
+                    <h3 class="collapsible-title">Stockpicking Strategies</h3>
+                    <span class="collapsible-arrow" id="stockpicking-strategies-arrow">▼</span>
+                </div>
+                <div class="collapsible-content" id="stockpicking-strategies-content">
+                    <ul class="collapsible-links">
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('magic-formula')">Magic Formula</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('canslim')">CANSLIM</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('dogs-of-dow')">Dogs of the Dow</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('small-cap-investing')">Small cap investing</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('special-situations')">Special situations</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('net-net-investing')">Net net investing</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('piotroski-score')">Piotroski's score</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('graham-screener')">Graham screener</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('tiny-titans')">Tiny titans</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('buffet-criteria')">Buffet's criteria</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('munger-criteria')">Munger's criteria</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('graham-criteria')">Graham's criteria</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Value Investing -->
+            <div class="collapsible-section">
+                <div class="collapsible-header" onclick="toggleCollapsible('value-investing')">
+                    <h3 class="collapsible-title">Value Investing</h3>
+                    <span class="collapsible-arrow" id="value-investing-arrow">▼</span>
+                </div>
+                <div class="collapsible-content" id="value-investing-content">
+                    <ul class="collapsible-links">
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('value-introduction')">Introduction</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('value-principles')">Principles</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('value-types')">Types</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('financial-analysis')">Financial analysis</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('margin-of-safety')">Margin of safety</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('art-of-valuation')">Art of valuation</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('value-psychology')">Psychology</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('value-case-studies')">Case studies</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('famous-investors')">10 famous investors</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('buffet-tenets')">Buffet's tenets</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('modern-society')">Modern society</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('value-limitations')">Limitations</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('value-outlook')">Outlook</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Technical Analysis -->
+            <div class="collapsible-section">
+                <div class="collapsible-header" onclick="toggleCollapsible('technical-analysis')">
+                    <h3 class="collapsible-title">Technical Analysis</h3>
+                    <span class="collapsible-arrow" id="technical-analysis-arrow">▼</span>
+                </div>
+                <div class="collapsible-content" id="technical-analysis-content">
+                    <ul class="collapsible-links">
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('tech-introduction')">Introduction</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('chart-patterns')">Chart patterns</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('technical-indicators')">Technical indicators</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('moving-averages')">Moving averages</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('support-resistance')">Support and resistance</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('candlestick-analysis')">Candlestick analysis</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('fibonacci-retracements')">Fibonacci retracements</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('trading-strategies')">Trading strategies</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('trading-software')">Trading software</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('tech-outlook')">Outlook</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- IPOs -->
+            <div class="collapsible-section">
+                <div class="collapsible-header" onclick="toggleCollapsible('ipos')">
+                    <h3 class="collapsible-title">IPOs</h3>
+                    <span class="collapsible-arrow" id="ipos-arrow">▼</span>
+                </div>
+                <div class="collapsible-content" id="ipos-content">
+                    <ul class="collapsible-links">
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('what-are-ipos')">What are IPOs</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('ipo-process')">The IPO process</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('ipo-advantages-disadvantages')">Advantages and disadvantages</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('how-analyse-ipos')">How to analyse IPOs</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('how-value-ipos')">How to value IPOs</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('influencing-factors')">Influencing factors</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('how-access-ipos')">How to access IPOs</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('how-manage-ipos')">How to manage IPOs</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('common-mistakes')">Common mistakes</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('alternative-strategies')">Alternative strategies</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('latest-trends')">Latest trends</a></li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Article Detail Panel -->
+    <div class="article-detail-panel" id="article-detail-panel">
+        <div class="article-detail-content">
+            <div class="article-detail-header">
+                <h3 class="article-detail-title" id="article-detail-title">Article Title</h3>
+                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">×</button>
+            </div>
+            <div class="article-detail-body" id="article-detail-body">
+                <div class="loading-spinner">Loading article...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Collapsible functionality
+        function toggleCollapsible(sectionId) {
+            const content = document.getElementById(`${sectionId}-content`);
+            const arrow = document.getElementById(`${sectionId}-arrow`);
+
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                content.classList.remove('expanded');
+                arrow.innerHTML = '▼';
+            } else {
+                // Close all other open sections
+                document.querySelectorAll('.collapsible-content.expanded').forEach(openContent => {
+                    openContent.style.maxHeight = null;
+                    openContent.classList.remove('expanded');
+                    const openArrowId = openContent.id.replace('-content', '-arrow');
+                    document.getElementById(openArrowId).innerHTML = '▼';
+                });
+
+                content.style.maxHeight = content.scrollHeight + "px";
+                content.classList.add('expanded');
+                arrow.innerHTML = '▲';
+            }
+        }
+
+        // Mobile drawer functionality
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        const drawerClose = document.getElementById('drawer-close');
+        
+        if (mobileToggle && mobileDrawer) {
+            mobileToggle.addEventListener('click', () => {
+                console.log('Hamburger menu clicked!');
+                mobileDrawer.classList.add('open');
+                document.body.style.overflow = 'hidden';
+                console.log('Drawer should be open now');
+            });
+        }
+        
+        if (drawerClose && mobileDrawer) {
+            drawerClose.addEventListener('click', () => {
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        }
+        
+        // Close drawer when clicking outside
+        if (mobileDrawer) {
+            mobileDrawer.addEventListener('click', (e) => {
+                if (e.target === mobileDrawer) {
+                    mobileDrawer.classList.remove('open');
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+
+        // Article content data
+        const articleContent = {
+            'how-market-works': {
+                title: 'How the Market Works',
+                content: `
+                    <p>The stock market is a complex ecosystem where buyers and sellers come together to trade shares of publicly listed companies. Understanding how this system operates is fundamental to successful investing.</p>
+                    
+                    <h3>Market Mechanics</h3>
+                    <p>Stock markets operate through exchanges where buyers and sellers meet. The price of a stock is determined by supply and demand - when more people want to buy than sell, prices rise, and vice versa.</p>
+                    
+                    <h3>Key Participants</h3>
+                    <p>Major participants include individual investors, institutional investors (pension funds, mutual funds), market makers, and algorithmic traders. Each group has different motivations and time horizons.</p>
+                    
+                    <h3>Market Efficiency</h3>
+                    <p>Markets are generally efficient, meaning stock prices reflect all available information. However, inefficiencies can exist temporarily, creating opportunities for astute investors.</p>
+                `
+            },
+            'why-invest-shares': {
+                title: 'Why Invest in Shares',
+                content: `
+                    <p>Shares represent ownership in companies and have historically provided superior returns compared to other asset classes over the long term.</p>
+                    
+                    <h3>Historical Performance</h3>
+                    <p>Over the long term, shares have outperformed bonds, cash, and inflation. The S&P 500 has averaged approximately 10% annual returns over the past century.</p>
+                    
+                    <h3>Ownership Benefits</h3>
+                    <p>As a shareholder, you own a piece of the company and are entitled to dividends and capital appreciation. You also have voting rights in company decisions.</p>
+                    
+                    <h3>Liquidity</h3>
+                    <p>Shares are highly liquid investments that can be bought and sold quickly, providing flexibility that other investments like real estate cannot match.</p>
+                `
+            },
+            'value-investing': {
+                title: 'Value Investing',
+                content: `
+                    <p>Value investing is an investment strategy that involves buying stocks that appear to be trading for less than their intrinsic value.</p>
+                    
+                    <h3>Core Principles</h3>
+                    <p>Value investors look for companies trading below their true worth, focusing on fundamentals rather than market sentiment or short-term price movements.</p>
+                    
+                    <h3>Key Metrics</h3>
+                    <p>Important metrics include price-to-earnings ratio, price-to-book ratio, debt-to-equity ratio, and free cash flow. These help identify undervalued opportunities.</p>
+                    
+                    <h3>Famous Practitioners</h3>
+                    <p>Warren Buffett, Benjamin Graham, and Charlie Munger are among the most successful value investors, demonstrating the strategy's long-term effectiveness.</p>
+                `
+            },
+            'magic-formula': {
+                title: 'Magic Formula',
+                content: `
+                    <p>The Magic Formula is a quantitative investment strategy developed by Joel Greenblatt that focuses on high returns on capital and low earnings multiples.</p>
+                    
+                    <h3>Strategy Overview</h3>
+                    <p>The formula ranks companies by their earnings yield (EBIT/Enterprise Value) and return on capital, selecting those with the best combination of both metrics.</p>
+                    
+                    <h3>Implementation</h3>
+                    <p>Investors typically buy 20-30 stocks from the top-ranked companies, holding them for one year before rebalancing. This systematic approach removes emotion from investing.</p>
+                    
+                    <h3>Historical Performance</h3>
+                    <p>Backtesting has shown the Magic Formula to outperform the market significantly, with returns of approximately 30% annually over 17 years.</p>
+                `
+            }
+        };
+
+        // Article panel functionality
+        function openArticle(articleId) {
+            const panel = document.getElementById('article-detail-panel');
+            const title = document.getElementById('article-detail-title');
+            const body = document.getElementById('article-detail-body');
+            
+            if (articleContent[articleId]) {
+                title.textContent = articleContent[articleId].title;
+                body.innerHTML = articleContent[articleId].content;
+                panel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeArticlePanel() {
+            const panel = document.getElementById('article-detail-panel');
+            panel.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            const articleClose = document.getElementById('article-detail-close');
+            const articlePanel = document.getElementById('article-detail-panel');
+            
+            if (articleClose) {
+                articleClose.addEventListener('click', closeArticlePanel);
+            }
+            
+            if (articlePanel) {
+                articlePanel.addEventListener('click', function(event) {
+                    if (event.target === articlePanel) {
+                        closeArticlePanel();
+                    }
+                });
+            }
+        });
+    </script>
+
+
+</body></html>

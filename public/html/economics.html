@@ -1,0 +1,886 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Economics - Graham and Doddsville</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1e3a8a;
+            --primary-blue-light: #3b82f6;
+            --primary-blue-dark: #1e40af;
+            --secondary-gray: #f8f9fa;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-muted: #9ca3af;
+            --border-light: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--secondary-gray);
+        }
+
+        .wealth-creation-page {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            position: relative;
+        }
+
+        .wealth-creation-page-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-bottom: 2px solid #d4af37;
+            padding: 12px 0;
+            transition: all 0.3s ease;
+            overflow: visible;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            overflow: visible;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 40px;
+            width: auto;
+        }
+
+        .main-nav {
+            overflow: visible;
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            overflow: visible;
+        }
+
+        .nav-link {
+            color: #000;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 30px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 2px;
+            background: #333;
+            border-radius: 1px;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 2px 0;
+        }
+
+        /* Mobile Menu Toggle Animation */
+        .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Mobile Navigation Drawer */
+        .mobile-drawer {
+            position: fixed;
+            top: 0;
+            right: -80%;
+            width: 80%;
+            height: 100vh;
+            background: #fff;
+            z-index: 10000;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            display: block;
+        }
+
+        .mobile-drawer.open {
+            right: 0;
+        }
+
+        .drawer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 20px;
+            border-bottom: 1px solid #e0e0e0;
+            background: #1e3a8a;
+            color: white;
+        }
+
+        .drawer-logo {
+            max-height: 40px;
+            width: auto;
+            display: block;
+        }
+
+        .drawer-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .drawer-nav {
+            padding: 20px 0;
+        }
+
+        .drawer-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .drawer-menu li {
+            border-bottom: 1px solid #f0f0f0;
+            margin-bottom: 6px;
+            padding-left: 20px;
+        }
+
+        .drawer-link {
+            display: block;
+            padding: 6px 20px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+
+        .drawer-link:hover {
+            background: #f8f9fa;
+            color: #1e3a8a;
+        }
+
+        /* Mobile responsive styles */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .desktop-only {
+                display: none;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-only {
+                display: none;
+            }
+            
+            .mobile-drawer {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .wealth-creation-page-content {
+                padding: 16px;
+            }
+        }
+
+        /* Article Detail Panel */
+        .article-detail-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .article-detail-panel.active {
+            display: flex;
+        }
+
+        .article-detail-content {
+            background: white;
+            border-radius: 12px;
+            max-width: 800px;
+            max-height: 90vh;
+            width: 100%;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .article-detail-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .article-detail-title {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .article-detail-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.2s ease;
+        }
+
+        .article-detail-close:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .article-detail-body {
+            padding: 24px;
+            line-height: 1.7;
+        }
+
+        .article-detail-body h3 {
+            color: var(--primary-blue);
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+
+        .article-detail-body p {
+            margin-bottom: 16px;
+        }
+
+        .loading-spinner {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-secondary);
+        }
+
+        /* Page Title Section */
+        .page-title-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .breadcrumb {
+            margin-bottom: 16px;
+        }
+
+        .breadcrumb-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .breadcrumb-link:hover {
+            color: var(--primary-blue);
+        }
+
+        .page-title {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: #6B46C1; /* Brand purple */
+            margin: 0 0 0px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #e0e0e0;
+            padding: 4px 0 4px 4px; /* 4px left padding inside bar */
+            background: rgba(250, 251, 252, 0.65); /* Reduced opacity by 20% */
+            height: 32px; /* Reduced from 36px to 32px */
+            display: flex;
+            align-items: center;
+            letter-spacing: -0.02em;
+        }
+
+        .page-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Collapsible Categories */
+        .collapsible-categories {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .collapsible-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            transition: transform 0.2s ease;
+        }
+
+        .collapsible-section:hover {
+            transform: translateY(-2px);
+        }
+
+        .collapsible-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            background: var(--primary-blue);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .collapsible-header:hover {
+            background: var(--primary-blue-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.15);
+        }
+
+        .collapsible-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0;
+            color: white;
+        }
+
+        .collapsible-arrow {
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            color: white;
+        }
+
+        .collapsible-arrow.rotated {
+            transform: rotate(180deg);
+        }
+
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                        opacity 0.3s ease,
+                        padding 0.3s ease;
+            opacity: 0;
+            padding: 0 24px;
+        }
+
+        .collapsible-content.expanded {
+            max-height: 1000px;
+            opacity: 1;
+            padding: 12px 24px 24px 24px;
+        }
+
+        .collapsible-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .collapsible-links li {
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .collapsible-links li:last-child {
+            border-bottom: none;
+        }
+
+        .collapsible-link {
+            display: block;
+            padding: 16px 24px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .collapsible-link:hover {
+            background: var(--secondary-gray);
+            color: var(--primary-blue);
+            border-left-color: var(--primary-blue);
+        }
+    </style>
+</head>
+<body>
+    <div class="wealth-creation-page">
+        <!-- Header -->
+        <header class="header sticky-header">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="/images/G&amp;D Logo.png" alt="Graham &amp; Doddsville" class="logo-image">
+                </div>
+                <!-- Desktop Navigation (hidden on mobile) -->
+                <nav class="main-nav desktop-only" role="navigation" aria-label="Main navigation">
+                    <ul>
+                        <li><a href="index.html" class="nav-link">HOME</a></li>
+                        <li><a href="classical-readings.html" class="nav-link">CLASSICAL READINGS</a></li>
+                        <li><a href="wealth-creation.html" class="nav-link">WEALTH CREATION</a></li>
+                        <li><a href="#" class="nav-link">ABOUT</a></li>
+                    </ul>
+                </nav>
+                
+                <!-- Mobile Hamburger Menu -->
+                <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Mobile Navigation Drawer -->
+        <div class="mobile-drawer" id="mobile-drawer">
+            <div class="drawer-header">
+                <img src="/images/G&amp;D Logo.png" alt="Graham and Doddsville" class="drawer-logo">
+                <button class="drawer-close" id="drawer-close" aria-label="Close menu">×</button>
+            </div>
+            <nav class="drawer-nav">
+                <ul class="drawer-menu">
+                    <li><a href="index.html" class="drawer-link">Home</a></li>
+                    <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
+                    <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
+                    <li><a href="legal-taxation.html" class="drawer-link">Legal &amp; Taxation</a></li>
+                    <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
+                    <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
+                    <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
+                    <li><a href="economics.html" class="drawer-link">Economics</a></li>
+                    <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
+                    <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
+                    <li><a href="resources.html" class="drawer-link">Resources</a></li>
+                    <li><a href="events.html" class="drawer-link">Events</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="wealth-creation-page-content">
+            <!-- Page Title Section -->
+            <div class="page-title-section">
+                <div class="breadcrumb">
+                    <a href="index.html" class="breadcrumb-link">← Home</a>
+                </div>
+                <h1 class="page-title section-header">Economics</h1>
+                <p class="page-subtitle">Comprehensive guide to economic principles, policies, and indicators</p>
+            </div>
+
+            <!-- Collapsible Categories -->
+            <div class="collapsible-categories">
+                <!-- Introduction to Economics -->
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('intro-economics')">
+                        <h3 class="collapsible-title">Introduction to Economics</h3>
+                        <span class="collapsible-arrow" id="intro-economics-arrow">▼</span>
+                    </div>
+                    <div class="collapsible-content" id="intro-economics-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('intro-to-economics')">Intro to economics</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('microeconomics')">Microeconomics</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('macroeconomics')">Macroeconomics</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('behavioural-economics')">Behavioural economics</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('10-famous-economists')">10 famous economists</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('economic-theories')">Economic theories</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('supply-and-demand')">Supply and demand</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('implication-for-businesses')">Implication for businesses</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('effects-on-investments')">Effects on investments</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('limitations-of-economics')">Limitations of economics</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Global Economy -->
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('global-economy')">
+                        <h3 class="collapsible-title">Global Economy</h3>
+                        <span class="collapsible-arrow" id="global-economy-arrow">▼</span>
+                    </div>
+                    <div class="collapsible-content" id="global-economy-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('global-overview')">Overview</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('global-governance')">Global governance</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('role-of-central-banks')">Role of central banks</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('global-economic-indicators')">Global economic indicators</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('international-trade')">International trade</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('foreign-direct-investment')">Foreign direct investment</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('global-financial-markets')">Global financial markets</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('emerging-markets')">Emerging markets</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('global-investment-risks')">Global investment risks</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('future-trends')">Future trends</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Australian Economy -->
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('australian-economy')">
+                        <h3 class="collapsible-title">Australian Economy</h3>
+                        <span class="collapsible-arrow" id="australian-economy-arrow">▼</span>
+                    </div>
+                    <div class="collapsible-content" id="australian-economy-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('australian-overview')">Overview</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('macro-indicators')">Macro indicators</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('economic-sectors')">Economic sectors</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('labour-market')">Labour market</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('trade-relations')">Trade relations</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('gdp')">GDP</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('trade-output')">Trade output</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('export-and-import')">Export and import</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('property-market')">Property market</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('household-wealth')">Household wealth</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('australian-dollar')">Australian dollar</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('economic-outlook')">Economic outlook</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Monetary Policy -->
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('monetary-policy')">
+                        <h3 class="collapsible-title">Monetary Policy</h3>
+                        <span class="collapsible-arrow" id="monetary-policy-arrow">▼</span>
+                    </div>
+                    <div class="collapsible-content" id="monetary-policy-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('monetary-policy-definition')">Definition</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('role-of-rba')">Role of RBA</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('rba-statements')">RBA Statements</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('rba-interest-rates')">RBA interest rates</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('minutes-of-rba')">Minutes of RBA</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('monetary-policy-limitations')">Limitations</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Fiscal Policy -->
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('fiscal-policy')">
+                        <h3 class="collapsible-title">Fiscal Policy</h3>
+                        <span class="collapsible-arrow" id="fiscal-policy-arrow">▼</span>
+                    </div>
+                    <div class="collapsible-content" id="fiscal-policy-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('fiscal-policy-definition')">Definition</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('government-spending')">Government spending</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('tax-and-fiscal-policy')">Tax and fiscal policy</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('fiscal-policy-limitations')">Limitations</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Inflation -->
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('inflation')">
+                        <h3 class="collapsible-title">Inflation</h3>
+                        <span class="collapsible-arrow" id="inflation-arrow">▼</span>
+                    </div>
+                    <div class="collapsible-content" id="inflation-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('inflation-definition')">Definition</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('measuring-inflation')">Measuring inflation</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('cpi')">CPI</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('cpi-and-inflation')">CPI and inflation</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('types-of-inflation')">Types of inflation</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('effects-of-inflation')">Effects of inflation</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('inflation-monetary-policy')">Monetary policy</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('hyperinflation')">Hyperinflation</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('deflation')">Deflation</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('strategies-inflation')">Strategies - inflation</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('strategies-deflation')">Strategies - deflation</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('combating-inflation')">Combating inflation</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Business Cycles -->
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('business-cycles')">
+                        <h3 class="collapsible-title">Business Cycles</h3>
+                        <span class="collapsible-arrow" id="business-cycles-arrow">▼</span>
+                    </div>
+                    <div class="collapsible-content" id="business-cycles-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('business-cycles-definition')">Definition</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('business-cycle-drivers')">Drivers</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('business-cycle-implications')">Implications</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('business-cycle-forecasting')">Forecasting</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Economic Indicators -->
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('economic-indicators')">
+                        <h3 class="collapsible-title">Economic Indicators</h3>
+                        <span class="collapsible-arrow" id="economic-indicators-arrow">▼</span>
+                    </div>
+                    <div class="collapsible-content" id="economic-indicators-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('gdp-indicator')">GDP</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('cpi-indicator')">CPI</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('unemployment-rate')">Unemployment rate</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('official-cash-rate')">Official cash rate</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('business-confidence')">Business confidence</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('consumer-confidence')">Consumer confidence</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('retail-sales')">Retail sales</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('balance-of-trade')">Balance of trade</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('building-approvals')">Building approvals</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('private-expenditure')">Private expenditure</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('house-price-index')">House price index</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('business-inventories')">Business inventories</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Article Detail Panel -->
+    <div class="article-detail-panel" id="article-detail-panel">
+        <div class="article-detail-content">
+            <div class="article-detail-header">
+                <h3 class="article-detail-title" id="article-detail-title">Article Title</h3>
+                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">×</button>
+            </div>
+            <div class="article-detail-body" id="article-detail-body">
+                <div class="loading-spinner">Loading article...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Collapsible functionality
+        function toggleCollapsible(sectionId) {
+            const content = document.getElementById(`${sectionId}-content`);
+            const arrow = document.getElementById(`${sectionId}-arrow`);
+
+            if (content.style.maxHeight) {
+                content.style.maxHeight = null;
+                content.classList.remove('expanded');
+                arrow.innerHTML = '▼';
+            } else {
+                // Close all other open sections
+                document.querySelectorAll('.collapsible-content.expanded').forEach(openContent => {
+                    openContent.style.maxHeight = null;
+                    openContent.classList.remove('expanded');
+                    const openArrowId = openContent.id.replace('-content', '-arrow');
+                    document.getElementById(openArrowId).innerHTML = '▼';
+                });
+
+                content.style.maxHeight = content.scrollHeight + "px";
+                content.classList.add('expanded');
+                arrow.innerHTML = '▲';
+            }
+        }
+
+        // Mobile drawer functionality
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        const drawerClose = document.getElementById('drawer-close');
+        
+        if (mobileToggle && mobileDrawer) {
+            mobileToggle.addEventListener('click', () => {
+                console.log('Hamburger menu clicked!');
+                mobileDrawer.classList.add('open');
+                document.body.style.overflow = 'hidden';
+                console.log('Drawer should be open now');
+            });
+        }
+        
+        if (drawerClose && mobileDrawer) {
+            drawerClose.addEventListener('click', () => {
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        }
+        
+        // Close drawer when clicking outside
+        if (mobileDrawer) {
+            mobileDrawer.addEventListener('click', (e) => {
+                if (e.target === mobileDrawer) {
+                    mobileDrawer.classList.remove('open');
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+
+        // Article content data
+        const articleContent = {
+            'intro-to-economics': {
+                title: 'Introduction to Economics',
+                content: `
+                    <p>Economics is the study of how societies use scarce resources to produce valuable commodities and distribute them among different people.</p>
+                    
+                    <h3>Key Concepts</h3>
+                    <p>Economics examines how individuals, businesses, governments, and nations make choices about how to allocate resources. It focuses on the production, distribution, and consumption of goods and services.</p>
+                    
+                    <h3>Two Main Branches</h3>
+                    <p>Microeconomics studies individual consumers and firms, while macroeconomics looks at the economy as a whole, including topics like inflation, unemployment, and economic growth.</p>
+                    
+                    <h3>Importance</h3>
+                    <p>Understanding economics helps explain how markets work, why some countries are rich while others are poor, and how government policies affect economic outcomes.</p>
+                `
+            },
+            'supply-and-demand': {
+                title: 'Supply and Demand',
+                content: `
+                    <p>Supply and demand is one of the most fundamental concepts in economics and forms the backbone of a market economy.</p>
+                    
+                    <h3>Demand</h3>
+                    <p>Demand refers to how much of a product or service is desired by buyers. The quantity demanded is the amount of a product people are willing to buy at a certain price.</p>
+                    
+                    <h3>Supply</h3>
+                    <p>Supply represents how much the market can offer. The quantity supplied refers to the amount of a certain good producers are willing to supply when receiving a certain price.</p>
+                    
+                    <h3>Market Equilibrium</h3>
+                    <p>When supply and demand are equal, the economy is said to be at equilibrium. At this point, the allocation of goods is at its most efficient.</p>
+                `
+            },
+            'inflation-definition': {
+                title: 'Inflation Definition',
+                content: `
+                    <p>Inflation is the rate at which the general level of prices for goods and services is rising, and subsequently, purchasing power is falling.</p>
+                    
+                    <h3>How It's Measured</h3>
+                    <p>Inflation is typically measured by the Consumer Price Index (CPI), which tracks the prices of a basket of goods and services over time.</p>
+                    
+                    <h3>Types of Inflation</h3>
+                    <p>Inflation can be demand-pull (too much demand), cost-push (rising costs), or built-in (expectations of future inflation).</p>
+                    
+                    <h3>Effects</h3>
+                    <p>While moderate inflation is normal in a growing economy, high inflation can erode purchasing power and create economic instability.</p>
+                `
+            }
+        };
+
+        // Article panel functionality
+        function openArticle(articleId) {
+            const panel = document.getElementById('article-detail-panel');
+            const title = document.getElementById('article-detail-title');
+            const body = document.getElementById('article-detail-body');
+            
+            if (articleContent[articleId]) {
+                title.textContent = articleContent[articleId].title;
+                body.innerHTML = articleContent[articleId].content;
+                panel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeArticlePanel() {
+            const panel = document.getElementById('article-detail-panel');
+            panel.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            const articleClose = document.getElementById('article-detail-close');
+            const articlePanel = document.getElementById('article-detail-panel');
+            
+            if (articleClose) {
+                articleClose.addEventListener('click', closeArticlePanel);
+            }
+            
+            if (articlePanel) {
+                articlePanel.addEventListener('click', function(event) {
+                    if (event.target === articlePanel) {
+                        closeArticlePanel();
+                    }
+                });
+            }
+        });
+    </script>
+
+
+</body></html>
