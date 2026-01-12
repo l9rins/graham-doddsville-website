@@ -968,9 +968,9 @@ app.use(express.static(path.join(__dirname, 'public'), {
 // Serve static files from the root directory
 app.use(express.static(__dirname));
 
-// Serve main page (index.html from /public/)
+// Serve main page (index.html from root)
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 // ========================
@@ -1011,43 +1011,35 @@ process.on('unhandledRejection', (reason, promise) => {
 });
 
 // Start server
-const server = app.listen(PORT, () => {
-    if (process.env.NODE_ENV === 'development') {
-        console.log(`News API server running on port ${PORT}`);
-        console.log(`Available endpoints:`);
-        console.log(`  GET /api/health - Health check`);
-        console.log(`  GET /api/news - Fetch optimized financial news`);
-        console.log(`  GET /api/news/:source - Fetch news from specific source`);
-        console.log(`  GET /api/cache/clear - Clear cache`);
-        console.log(`Financial keywords: ${FINANCIAL_KEYWORDS.join(', ')}`);
-        console.log(`Credible domains: ${CREDIBLE_DOMAINS.join(', ')}`);
-        console.log('✅ Server ready for requests!');
-    }
+app.listen(PORT, '::', () => {
+    console.log(`Server running at http://localhost:${PORT}`);
 });
 
 // Schedule background refresh AFTER server is fully started
-setTimeout(() => {
-    console.log('📋 Scheduling background refresh...');
+// TEMPORARILY DISABLED ALL BACKGROUND REFRESH
+// setTimeout(() => {
+//     console.log('📋 Scheduling background refresh...');
 
-    // Run first refresh after additional delay
-    setTimeout(() => {
-        backgroundRefresh().catch(error => {
-            console.error('❌ Background refresh error:', error);
-        });
-    }, 5000); // 5 seconds after server start
+//     // TEMPORARILY DISABLED: Run first refresh after additional delay
+//     // setTimeout(() => {
+//     //     backgroundRefresh().catch(error => {
+//     //         console.error('❌ Background refresh error:', error);
+//     //     });
+//     // }, 5000); // 5 seconds after server start
 
-    // Schedule recurring refreshes every 6 hours
-    const refreshInterval = setInterval(() => {
-        backgroundRefresh().catch(error => {
-            console.error('❌ Background refresh error:', error);
-        });
-    }, 6 * 60 * 60 * 1000);
+//     // Schedule recurring refreshes every 6 hours
+//     const refreshInterval = setInterval(() => {
+//         backgroundRefresh().catch(error => {
+//             console.error('❌ Background refresh error:', error);
+//         });
+//     }, 6 * 60 * 60 * 1000);
 
-    refreshInterval.unref();
-}, 1000); // Wait 1 second after server starts
+//     refreshInterval.unref();
+// }, 1000); // Wait 1 second after server starts
 
 // Cache cleanup interval
-const cleanupInterval = setInterval(cleanupCache, 2 * 60 * 60 * 1000);
-cleanupInterval.unref();
+// TEMPORARILY DISABLED
+// const cleanupInterval = setInterval(cleanupCache, 2 * 60 * 60 * 1000);
+// cleanupInterval.unref();
 
 module.exports = app;

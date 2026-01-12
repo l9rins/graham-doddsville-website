@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Economics - Graham and Doddsville</title>
+    <title>ABOUT - Graham and Doddsville</title>
     <link rel="stylesheet" href="/css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <style>
@@ -301,6 +301,7 @@
             margin: 0;
             font-size: 1.5rem;
             font-weight: 600;
+            color: white;
         }
 
         .article-detail-close {
@@ -496,50 +497,64 @@
 <body>
     <div class="wealth-creation-page">
         <!-- Header -->
-        <header class="header sticky-header">
-            <div class="header-content">
+        <header class="header sticky-header" role="banner">
+            <div class="container"><div class="header-content">
                 <div class="logo">
                     <img src="/images/G&amp;D Logo.png" alt="Graham &amp; Doddsville" class="logo-image">
                 </div>
-                <!-- Desktop Navigation (hidden on mobile) -->
-                <nav class="main-nav desktop-only" role="navigation" aria-label="Main navigation">
-                    <ul>
+                
+                <nav class="main-nav desktop-only">                    <ul>
                         <li><a href="index.html" class="nav-link">HOME</a></li>
                         <li><a href="classical-readings.html" class="nav-link">CLASSICAL READINGS</a></li>
                         <li><a href="wealth-creation.html" class="nav-link">WEALTH CREATION</a></li>
                         <li><a href="#" class="nav-link">ABOUT</a></li>
-                    </ul>
-                </nav>
+                    </ul></nav>
                 
-                <!-- Mobile Hamburger Menu -->
+                
                 <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                 </button>
-            </div>
-        </header>
+            </div></header>
 
         <!-- Mobile Navigation Drawer -->
         <div class="mobile-drawer" id="mobile-drawer">
-            <div class="drawer-header">
-                <img src="/images/G&amp;D Logo.png" alt="Graham and Doddsville" class="drawer-logo">
-                <button class="drawer-close" id="drawer-close" aria-label="Close menu">×</button>
-            </div>
+        <div class="drawer-header">
+            <img src="G&D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
+            <button class="drawer-close" id="drawer-close" aria-label="Close menu"></button>
+        </div>
+        <nav class="drawer-nav">
+            <ul class="drawer-menu">
+                <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
+                <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
+                <li><a href="legal-taxation.html" class="drawer-link">Legal & Taxation</a></li>
+                <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
+                <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
+                <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
+                <li><a href="#" class="drawer-link">Investment Analysis</a></li>
+                <li><a href="economics.html" class="drawer-link">Economics</a></li>
+                <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
+                <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
+                <li><a href="resources.html" class="drawer-link">Resources</a></li>
+                <li><a href="events.html" class="drawer-link">Events & Seminars</a></li>
+            </ul>
+        </nav>
+    </div>
             <nav class="drawer-nav">
                 <ul class="drawer-menu">
                     <li><a href="index.html" class="drawer-link">Home</a></li>
                     <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
                     <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
                     <li><a href="legal-taxation.html" class="drawer-link">Legal &amp; Taxation</a></li>
-                    <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
+                    <li><a href="financial-markets.html" class="drawer-link">WEALTH CREATION</a></li>
                     <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
                     <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
-                    <li><a href="economics.html" class="drawer-link">Economics</a></li>
-                    <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
+                    <li><a href="ABOUT.html" class="drawer-link">ABOUT</a></li>
+                    <li><a href="professional-advisers.html" class="drawer-link"></a></li>
                     <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
-                    <li><a href="resources.html" class="drawer-link">Resources</a></li>
-                    <li><a href="events.html" class="drawer-link">Events</a></li>
+                    <li><a href=".html" class="drawer-link"></a></li>
+                    <li><a href=".html" class="drawer-link"></a></li>
                 </ul>
             </nav>
         </div>
@@ -550,30 +565,30 @@
                 <div class="breadcrumb">
                     <a href="index.html" class="breadcrumb-link">← Home</a>
                 </div>
-                <h1 class="page-title section-header">Economics</h1>
+                <h1 class="page-title section-header">ABOUT</h1>
                 <p class="page-subtitle">Comprehensive guide to economic principles, policies, and indicators</p>
             </div>
 
             <!-- Collapsible Categories -->
             <div class="collapsible-categories">
-                <!-- Introduction to Economics -->
+                <!-- Introduction to ABOUT -->
                 <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('intro-economics')">
-                        <h3 class="collapsible-title">Introduction to Economics</h3>
-                        <span class="collapsible-arrow" id="intro-economics-arrow">▼</span>
+                    <div class="collapsible-header" onclick="toggleCollapsible('intro-ABOUT')">
+                        <h3 class="collapsible-title">Introduction to ABOUT</h3>
+                        <span class="collapsible-arrow" id="intro-ABOUT-arrow">▼</span>
                     </div>
-                    <div class="collapsible-content" id="intro-economics-content">
+                    <div class="collapsible-content" id="intro-ABOUT-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('intro-to-economics')">Intro to economics</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('microeconomics')">Microeconomics</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('macroeconomics')">Macroeconomics</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('behavioural-economics')">Behavioural economics</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('intro-to-ABOUT')">Intro to ABOUT</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('microABOUT')">MicroABOUT</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('macroABOUT')">MacroABOUT</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('behavioural-ABOUT')">Behavioural ABOUT</a></li>
                             <li><a href="#" class="collapsible-link" onclick="openArticle('10-famous-economists')">10 famous economists</a></li>
                             <li><a href="#" class="collapsible-link" onclick="openArticle('economic-theories')">Economic theories</a></li>
                             <li><a href="#" class="collapsible-link" onclick="openArticle('supply-and-demand')">Supply and demand</a></li>
                             <li><a href="#" class="collapsible-link" onclick="openArticle('implication-for-businesses')">Implication for businesses</a></li>
                             <li><a href="#" class="collapsible-link" onclick="openArticle('effects-on-investments')">Effects on investments</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('limitations-of-economics')">Limitations of economics</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('limitations-of-ABOUT')">Limitations of ABOUT</a></li>
                         </ul>
                     </div>
                 </div>
@@ -592,7 +607,7 @@
                             <li><a href="#" class="collapsible-link" onclick="openArticle('global-economic-indicators')">Global economic indicators</a></li>
                             <li><a href="#" class="collapsible-link" onclick="openArticle('international-trade')">International trade</a></li>
                             <li><a href="#" class="collapsible-link" onclick="openArticle('foreign-direct-investment')">Foreign direct investment</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('global-financial-markets')">Global financial markets</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('global-financial-markets')">Global WEALTH CREATION</a></li>
                             <li><a href="#" class="collapsible-link" onclick="openArticle('emerging-markets')">Emerging markets</a></li>
                             <li><a href="#" class="collapsible-link" onclick="openArticle('global-investment-risks')">Global investment risks</a></li>
                             <li><a href="#" class="collapsible-link" onclick="openArticle('future-trends')">Future trends</a></li>
@@ -796,25 +811,25 @@
 
         // Article content data
         const articleContent = {
-            'intro-to-economics': {
-                title: 'Introduction to Economics',
+            'intro-to-ABOUT': {
+                title: 'Introduction to ABOUT',
                 content: `
-                    <p>Economics is the study of how societies use scarce resources to produce valuable commodities and distribute them among different people.</p>
+                    <p>ABOUT is the study of how societies use scarce  to produce valuable commodities and distribute them among different people.</p>
                     
                     <h3>Key Concepts</h3>
-                    <p>Economics examines how individuals, businesses, governments, and nations make choices about how to allocate resources. It focuses on the production, distribution, and consumption of goods and services.</p>
+                    <p>ABOUT examines how individuals, businesses, governments, and nations make choices about how to allocate . It focuses on the production, distribution, and consumption of goods and services.</p>
                     
                     <h3>Two Main Branches</h3>
-                    <p>Microeconomics studies individual consumers and firms, while macroeconomics looks at the economy as a whole, including topics like inflation, unemployment, and economic growth.</p>
+                    <p>MicroABOUT studies individual consumers and firms, while macroABOUT looks at the economy as a whole, including topics like inflation, unemployment, and economic growth.</p>
                     
                     <h3>Importance</h3>
-                    <p>Understanding economics helps explain how markets work, why some countries are rich while others are poor, and how government policies affect economic outcomes.</p>
+                    <p>Understanding ABOUT helps explain how markets work, why some countries are rich while others are poor, and how government policies affect economic outcomes.</p>
                 `
             },
             'supply-and-demand': {
                 title: 'Supply and Demand',
                 content: `
-                    <p>Supply and demand is one of the most fundamental concepts in economics and forms the backbone of a market economy.</p>
+                    <p>Supply and demand is one of the most fundamental concepts in ABOUT and forms the backbone of a market economy.</p>
                     
                     <h3>Demand</h3>
                     <p>Demand refers to how much of a product or service is desired by buyers. The quantity demanded is the amount of a product people are willing to buy at a certain price.</p>
@@ -884,3 +899,15 @@
 
 
 </body></html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -37,13 +37,13 @@
             background: var(--secondary-gray);
         }
 
-        .market-quotes-page {
+        .wealth-creation-page {
             min-height: 100vh;
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             position: relative;
         }
 
-        .market-quotes-page-content {
+        .wealth-creation-page-content {
             max-width: 1200px;
             margin: 0 auto;
             padding: 24px;
@@ -75,6 +75,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            background: #1e3a8a;
         }
 
         .logo {
@@ -180,9 +181,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px;
+            padding: 8px 20px;
             border-bottom: 1px solid #e5e7eb;
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            background: #1e3a8a;
         }
 
         .drawer-logo {
@@ -210,7 +211,7 @@
         }
 
         .drawer-nav {
-            padding: 20px;
+            padding: 20px 0;
         }
 
         .drawer-menu {
@@ -229,7 +230,7 @@
             font-size: 16px;
             font-weight: 500;
             display: block;
-            padding: 10px 15px;
+            padding: 1.75px 20px;
             border-radius: 8px;
             transition: all 0.2s ease;
         }
@@ -241,7 +242,7 @@
 
         /* Page Title Section */
         .page-title-section {
-            margin: 24px 0 32px 0;
+            margin: 25px;
             padding: 0;
         }
 
@@ -261,7 +262,7 @@
 
         .page-title-section h1 {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-size: 18px;
+            font-size: 28px;
             font-weight: 600;
             color: #6B46C1; /* Brand purple */
             margin: 0 0 0px 0;
@@ -304,7 +305,7 @@
         }
 
         .quote-header {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            background: #1e3a8a;
             color: white;
             padding: 20px;
         }
@@ -422,7 +423,7 @@
             }
 
             .quote-card {
-                margin: 0 -4px; /* Allow slight overflow for better mobile fit */
+                margin: 0 12px; /* Allow slight overflow for better mobile fit */
             }
 
             .quote-content {
@@ -457,7 +458,7 @@
             }
 
             .quote-card {
-                margin: 0 -8px; /* More generous overflow for very small screens */
+                margin: 0 12px; /* More generous overflow for very small screens */
             }
 
             .quote-content {
@@ -534,64 +535,63 @@
     </script>
 </head>
 <body>
-    <div class="market-quotes-page" id="market-quotes-page">
+    <div class="wealth-creation-page" id="market-quotes-page">
         
         <div class="market-quotes-page-content">
             <!-- Header -->
-            <header class="header sticky-header" role="banner">
-                <div class="container">
-                    <div class="header-content">
-                        <div class="logo">
-                            <img src="G&D Logo.png" alt="Graham and Doddsville" class="logo-image">
-                        </div>
-                        <!-- Desktop Navigation (hidden on mobile) -->
-                        <nav class="main-nav desktop-only" role="navigation" aria-label="Main navigation">
-                            <ul>
-                                <li><a href="#" onclick="showAboutPage()" class="nav-link">ABOUT</a></li>
-                                <li><a href="#" onclick="showAdvertisePage()" class="nav-link">ADVERTISE</a></li>
-                                <li><a href="#" class="nav-link">SUBSCRIBE</a></li>
-                                <li><a href="#" onclick="showContactPage()" class="nav-link">CONTACT US</a></li>
-                            </ul>
-                        </nav>
-                        
-                        <!-- Mobile Hamburger Menu -->
-                        <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
-                            <span class="hamburger-line"></span>
-                            <span class="hamburger-line"></span>
-                            <span class="hamburger-line"></span>
-                        </button>
-                    </div>
+        <header class="header sticky-header" role="banner">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="G&D Logo.png" alt="Graham and Doddsville" class="logo-image">
                 </div>
-            </header>
+                
+                <nav class="main-nav desktop-only">                    <ul>
+                        <li><a href="index.html" class="nav-link">HOME</a></li>
+                        <li><a href="classical-readings.html" class="nav-link">CLASSICAL READINGS</a></li>
+                        <li><a href="wealth-creation.html" class="nav-link">WEALTH CREATION</a></li>
+                        <li><a href="#" class="nav-link">ABOUT</a></li>
+                    </ul></nav>
+                
+                
+                <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div></header>
 
             <!-- Mobile Navigation Drawer -->
             <div class="mobile-drawer" id="mobile-drawer">
-                <div class="drawer-header">
-                    <img src="G&D Logo.png" alt="Graham and Doddsville" class="drawer-logo">
-                    <button class="drawer-close" id="drawer-close" aria-label="Close menu">×</button>
-                </div>
-                <nav class="drawer-nav">
-                    <ul class="drawer-menu">
-                        <li><a href="index.html" class="drawer-link">Home</a></li>
-                        <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
-                        <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
-                        <li><a href="legal-taxation.html" class="drawer-link">Legal & Taxation</a></li>
-                        <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
-                        <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
-                        <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
-                        <li><a href="economics.html" class="drawer-link">Economics</a></li>
-                        <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
-                        <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
-                        <li><a href="resources.html" class="drawer-link">Resources</a></li>
-                        <li><a href="events.html" class="drawer-link">Events</a></li>
-                    </ul>
-                </nav>
-            </div>
+        <div class="drawer-header">
+            <img src="G&D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
+            <button class="drawer-close" id="drawer-close" aria-label="Close menu"></button>
+        </div>
+        <nav class="drawer-nav">
+            <ul class="drawer-menu">
+                <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
+                <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
+                <li><a href="legal-taxation.html" class="drawer-link">Legal & Taxation</a></li>
+                <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
+                <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
+                <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
+                <li><a href="#" class="drawer-link">Investment Analysis</a></li>
+                <li><a href="economics.html" class="drawer-link">Economics</a></li>
+                <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
+                <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
+                <li><a href="resources.html" class="drawer-link">Resources</a></li>
+                <li><a href="events.html" class="drawer-link">Events & Seminars</a></li>
+            </ul>
+        </nav>
+    </div>
+            
+        </div>
 
             <!-- Page Title Section -->
             <div class="page-title-section">
-                <a href="index.html" class="breadcrumb-link">← Home</a>
-                <h1 class="section-header">Market Quotes</h1>
+                <div class="breadcrumb">
+                    <a href="index.html" class="breadcrumb-link">← Home</a>
+                </div>
+                <h1 class="page-title section-header">Market Quotes</h1>
                 <p class="page-subtitle">Expert insights and analysis from leading economists and market analysts</p>
             </div>
 
@@ -663,7 +663,7 @@
                 <div class="quote-card">
                     <div class="quote-header">
                         <h3 class="quote-title">European Central Bank Strategy</h3>
-                        <p class="quote-meta">European Economics</p>
+                        <p class="quote-meta">European ABOUT</p>
                     </div>
                     <div class="quote-content">
                         <p class="quote-text">"The ECB's cautious approach to monetary policy normalization reflects the ongoing uncertainties in the eurozone economy. While inflation has moderated, structural challenges in productivity and demographic trends continue to weigh on long-term growth prospects. The bank's focus on data-dependent decision making provides flexibility but also introduces uncertainty for market participants."</p>
@@ -727,3 +727,15 @@
 </body>
 </html></content>
 <parameter name="filePath">c:\Users\Mark Lorenz\Desktop\LibraryWebsite\market-quotes.html
+
+
+
+
+
+
+
+
+
+
+
+

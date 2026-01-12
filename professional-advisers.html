@@ -38,7 +38,6 @@
         }
 
         .wealth-creation-page {
-            min-height: 100vh;
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             position: relative;
         }
@@ -303,6 +302,7 @@
             margin: 0;
             font-size: 1.5rem;
             font-weight: 600;
+            color: white;
         }
 
         .article-detail-close {
@@ -372,7 +372,7 @@
 
         .page-title {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-size: 18px;
+            font-size: 25px;
             font-weight: 600;
             color: #6B46C1; /* Brand purple */
             margin: 0 0 0px 0;
@@ -498,50 +498,50 @@
 <body>
     <div class="wealth-creation-page">
         <!-- Header -->
-        <header class="header sticky-header">
-            <div class="header-content">
+        <header class="header sticky-header" role="banner">
+            <div class="container"><div class="header-content">
                 <div class="logo">
                     <img src="G&D Logo.png" alt="Graham & Doddsville" class="logo-image">
                 </div>
-                <!-- Desktop Navigation (hidden on mobile) -->
-                <nav class="main-nav desktop-only" role="navigation" aria-label="Main navigation">
-                    <ul>
+                
+                <nav class="main-nav desktop-only">                    <ul>
                         <li><a href="index.html" class="nav-link">HOME</a></li>
                         <li><a href="classical-readings.html" class="nav-link">CLASSICAL READINGS</a></li>
                         <li><a href="wealth-creation.html" class="nav-link">WEALTH CREATION</a></li>
                         <li><a href="#" class="nav-link">ABOUT</a></li>
-                    </ul>
-                </nav>
+                    </ul></nav>
                 
-                <!-- Mobile Hamburger Menu -->
+                
                 <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                 </button>
-            </div>
-        </header>
+            </div></header>
 
         <!-- Mobile Navigation Drawer -->
         <div class="mobile-drawer" id="mobile-drawer">
-            <div class="drawer-header">
-                <img src="G&D Logo.png" alt="Graham and Doddsville" class="drawer-logo">
-                <button class="drawer-close" id="drawer-close" aria-label="Close menu">×</button>
-            </div>
-            <nav class="drawer-nav">
-                <ul class="drawer-menu">
-                    <li><a href="index.html" class="drawer-link">Home</a></li>
-                    <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
-                    <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
-                    <li><a href="legal-taxation.html" class="drawer-link">Legal & Taxation</a></li>
-                    <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
-                    <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
-                    <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
-                    <li><a href="economics.html" class="drawer-link">Economics</a></li>
-                    <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
-                    <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
-                    <li><a href="resources.html" class="drawer-link">Resources</a></li>
-                    <li><a href="events.html" class="drawer-link">Events</a></li>
+        <div class="drawer-header">
+            <img src="G&D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
+            <button class="drawer-close" id="drawer-close" aria-label="Close menu"></button>
+        </div>
+        <nav class="drawer-nav">
+            <ul class="drawer-menu">
+                <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
+                <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
+                <li><a href="legal-taxation.html" class="drawer-link">Legal & Taxation</a></li>
+                <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
+                <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
+                <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
+                <li><a href="#" class="drawer-link">Investment Analysis</a></li>
+                <li><a href="economics.html" class="drawer-link">Economics</a></li>
+                <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
+                <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
+                <li><a href="resources.html" class="drawer-link">Resources</a></li>
+                <li><a href="events.html" class="drawer-link">Events & Seminars</a></li>
+            </ul>
+        </nav>
+    </div>
                 </ul>
             </nav>
         </div>
@@ -558,181 +558,64 @@
 
             <!-- Collapsible Categories -->
             <div class="collapsible-categories">
-                <!-- Financial Planning Professionals -->
+                <!-- Financial Planning & Wealth -->
                 <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('financial-planning')">
-                    <h3 class="collapsible-title">Financial Planning Professionals</h3>
-                    <span class="collapsible-arrow" id="financial-planning-arrow">▼</span>
+                    <div class="collapsible-header" onclick="toggleCollapsible('financial-planning')">
+                        <h3 class="collapsible-title">Financial Planning & Wealth</h3>
+                        <span class="collapsible-arrow" id="financial-planning-arrow">▼</span>
+                    </div>
+                    <div class="collapsible-content" id="financial-planning-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('financial-planners')">Financial Planners</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('accountants')">Accountants</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('fund-managers')">Fund Managers</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="collapsible-content" id="financial-planning-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('financial-planners-role')">Role of Financial Planners</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('choosing-financial-planner')">Choosing a Financial Planner</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('financial-planning-process')">Financial Planning Process</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('retirement-planning')">Retirement Planning</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('estate-planning')">Estate Planning</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('tax-planning')">Tax Planning</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('insurance-planning')">Insurance Planning</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('education-funding')">Education Funding</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('debt-management')">Debt Management</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('cash-flow-planning')">Cash Flow Planning</a></li>
-                    </ul>
-                </div>
-            </div>
 
-            <!-- Investment Professionals -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('investment-professionals')">
-                    <h3 class="collapsible-title">Investment Professionals</h3>
-                    <span class="collapsible-arrow" id="investment-professionals-arrow">▼</span>
+                <!-- Banking & Finance -->
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('banking-finance')">
+                        <h3 class="collapsible-title">Banking & Finance</h3>
+                        <span class="collapsible-arrow" id="banking-finance-arrow">▼</span>
+                    </div>
+                    <div class="collapsible-content" id="banking-finance-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('investment-bankers')">Investment Bankers</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('retail-bankers')">Retail Bankers</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('mortgage-brokers')">Mortgage Brokers</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="collapsible-content" id="investment-professionals-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('fund-managers')">Fund Managers</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('investment-bankers')">Investment Bankers</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('stockbrokers')">Stockbrokers</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('portfolio-managers')">Portfolio Managers</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('research-analysts')">Research Analysts</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('wealth-managers')">Wealth Managers</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('private-bankers')">Private Bankers</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('investment-advisors')">Investment Advisors</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('robo-advisors')">Robo-Advisors</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('alternative-investment-managers')">Alternative Investment Managers</a></li>
-                    </ul>
-                </div>
-            </div>
 
-            <!-- Banking Professionals -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('banking-professionals')">
-                    <h3 class="collapsible-title">Banking Professionals</h3>
-                    <span class="collapsible-arrow" id="banking-professionals-arrow">▼</span>
+                <!-- Trading & Broking -->
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('trading-broking')">
+                        <h3 class="collapsible-title">Trading & Broking</h3>
+                        <span class="collapsible-arrow" id="trading-broking-arrow">▼</span>
+                    </div>
+                    <div class="collapsible-content" id="trading-broking-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('stockbrokers')">Stockbrokers</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('online-brokers')">Online Brokers</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="collapsible-content" id="banking-professionals-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('retail-bankers')">Retail Bankers</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('commercial-bankers')">Commercial Bankers</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('private-bankers')">Private Bankers</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('relationship-managers')">Relationship Managers</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('credit-analysts')">Credit Analysts</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('loan-officers')">Loan Officers</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('mortgage-brokers')">Mortgage Brokers</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('online-brokers')">Online Brokers</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('fintech-advisors')">Fintech Advisors</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('digital-banking')">Digital Banking Specialists</a></li>
-                    </ul>
-                </div>
-            </div>
 
-            <!-- Legal and Compliance -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('legal-compliance')">
-                    <h3 class="collapsible-title">Legal and Compliance</h3>
-                    <span class="collapsible-arrow" id="legal-compliance-arrow">▼</span>
+                <!-- Specialist Services -->
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('specialist-services')">
+                        <h3 class="collapsible-title">Specialist Services</h3>
+                        <span class="collapsible-arrow" id="specialist-services-arrow">▼</span>
+                    </div>
+                    <div class="collapsible-content" id="specialist-services-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('lawyers')">Lawyers</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('insurance-brokers')">Insurance Brokers</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('research-houses')">Research Houses</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="collapsible-content" id="legal-compliance-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('financial-lawyers')">Financial Lawyers</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('tax-lawyers')">Tax Lawyers</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('estate-lawyers')">Estate Lawyers</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('compliance-officers')">Compliance Officers</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('regulatory-specialists')">Regulatory Specialists</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('risk-managers')">Risk Managers</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('auditors')">Auditors</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('forensic-accountants')">Forensic Accountants</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('corporate-lawyers')">Corporate Lawyers</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('securities-lawyers')">Securities Lawyers</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Insurance Professionals -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('insurance-professionals')">
-                    <h3 class="collapsible-title">Insurance Professionals</h3>
-                    <span class="collapsible-arrow" id="insurance-professionals-arrow">▼</span>
-                </div>
-                <div class="collapsible-content" id="insurance-professionals-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('insurance-brokers')">Insurance Brokers</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('life-insurance-advisors')">Life Insurance Advisors</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('health-insurance-specialists')">Health Insurance Specialists</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('property-insurance-advisors')">Property Insurance Advisors</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('liability-insurance-experts')">Liability Insurance Experts</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('annuity-specialists')">Annuity Specialists</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('disability-insurance-advisors')">Disability Insurance Advisors</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('long-term-care-specialists')">Long-term Care Specialists</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('business-insurance-advisors')">Business Insurance Advisors</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('insurance-underwriters')">Insurance Underwriters</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Accounting and Tax Professionals -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('accounting-tax')">
-                    <h3 class="collapsible-title">Accounting and Tax Professionals</h3>
-                    <span class="collapsible-arrow" id="accounting-tax-arrow">▼</span>
-                </div>
-                <div class="collapsible-content" id="accounting-tax-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('certified-accountants')">Certified Accountants</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('tax-advisors')">Tax Advisors</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('bookkeepers')">Bookkeepers</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('financial-controllers')">Financial Controllers</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('cost-accountants')">Cost Accountants</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('management-accountants')">Management Accountants</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('tax-preparers')">Tax Preparers</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('enrolled-agents')">Enrolled Agents</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('tax-attorneys')">Tax Attorneys</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('forensic-accountants')">Forensic Accountants</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Research and Analysis -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('research-analysis')">
-                    <h3 class="collapsible-title">Research and Analysis</h3>
-                    <span class="collapsible-arrow" id="research-analysis-arrow">▼</span>
-                </div>
-                <div class="collapsible-content" id="research-analysis-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('research-houses')">Research Houses</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('equity-researchers')">Equity Researchers</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('credit-analysts')">Credit Analysts</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('macro-economists')">Macro Economists</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('quantitative-analysts')">Quantitative Analysts</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('data-scientists')">Data Scientists</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('market-researchers')">Market Researchers</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('industry-analysts')">Industry Analysts</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('economic-forecasters')">Economic Forecasters</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('investment-strategists')">Investment Strategists</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Technology and Digital -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('technology-digital')">
-                    <h3 class="collapsible-title">Technology and Digital</h3>
-                    <span class="collapsible-arrow" id="technology-digital-arrow">▼</span>
-                </div>
-                <div class="collapsible-content" id="technology-digital-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('fintech-advisors')">Fintech Advisors</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('robo-advisors')">Robo-Advisors</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('digital-banking-specialists')">Digital Banking Specialists</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('cybersecurity-experts')">Cybersecurity Experts</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('blockchain-advisors')">Blockchain Advisors</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('cryptocurrency-advisors')">Cryptocurrency Advisors</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('regtech-specialists')">RegTech Specialists</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('wealthtech-advisors')">WealthTech Advisors</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('insurtech-specialists')">InsurTech Specialists</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('proptech-advisors')">PropTech Advisors</a></li>
-                    </ul>
-                </div>
-            </div>
             </div>
         </div>
     </div>
@@ -808,109 +691,202 @@
 
         // Article content data
         const articleContent = {
-            'financial-planners-role': {
-                title: 'Role of Financial Planners',
+            'financial-planners': {
+                title: 'Financial Planners',
                 content: `
-                    <p>Financial planners are professionals who help individuals and families create comprehensive financial strategies to achieve their long-term goals.</p>
+                    <p>Financial planners are comprehensive financial advisors who help individuals and families achieve their financial goals through holistic financial planning. They assess clients' entire financial picture and develop customized strategies.</p>
                     
-                    <h3>Core Responsibilities</h3>
-                    <p>Financial planners assess your current financial situation, identify goals, and create personalized strategies for retirement, education funding, tax optimization, and wealth preservation.</p>
-                    
-                    <h3>Services Provided</h3>
-                    <p>Services include retirement planning, investment advice, insurance analysis, estate planning, tax strategies, and cash flow management. They provide ongoing monitoring and adjustments to your financial plan.</p>
+                    <h3>Key Services</h3>
+                    <p>Financial planners provide retirement planning, investment management, tax planning, estate planning, insurance analysis, debt management, and education funding strategies.</p>
                     
                     <h3>Qualifications</h3>
-                    <p>Look for certified financial planners (CFP) or chartered financial consultants (ChFC) who have completed rigorous education requirements and adhere to fiduciary standards.</p>
+                    <p>Certified Financial Planners (CFP) have completed extensive education and passed rigorous examinations. Other designations include ChFC (Chartered Financial Consultant) and PFS (Personal Financial Specialist).</p>
+                    
+                    <h3>When to Consult</h3>
+                    <p>Consider a financial planner when you need comprehensive financial advice, want to develop a long-term financial strategy, or need help coordinating various aspects of your financial life such as investments, insurance, and taxes.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Financial planners offer objective advice, help avoid costly mistakes, and provide peace of mind by ensuring all aspects of your financial life work together harmoniously.</p>
+                `
+            },
+            'accountants': {
+                title: 'Accountants',
+                content: `
+                    <p>Accountants are financial professionals who specialize in recording, analyzing, and reporting financial transactions. They ensure financial accuracy, compliance, and provide valuable insights for business and personal finances.</p>
+                    
+                    <h3>Key Services</h3>
+                    <p>Accountants provide tax preparation and planning, financial statement preparation, auditing, bookkeeping, financial analysis, and business advisory services.</p>
+                    
+                    <h3>Types of Accountants</h3>
+                    <p>Certified Public Accountants (CPA), Chartered Accountants (CA), and tax specialists are common qualifications. Some specialize in forensic accounting, management accounting, or public accounting.</p>
+                    
+                    <h3>When to Use</h3>
+                    <p>Consult an accountant for tax advice, business financial management, audit requirements, financial reporting, or when setting up a new business or investment structure.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Accountants help minimize tax liabilities, ensure compliance with regulations, and provide insights that can improve financial performance and decision-making.</p>
                 `
             },
             'fund-managers': {
                 title: 'Fund Managers',
                 content: `
-                    <p>Fund managers are investment professionals responsible for making investment decisions on behalf of mutual funds, pension funds, and other investment vehicles.</p>
+                    <p>Fund managers are investment professionals who oversee investment portfolios on behalf of individuals, institutions, or mutual funds. They make investment decisions to achieve specific financial objectives.</p>
                     
-                    <h3>Investment Strategy</h3>
-                    <p>Fund managers develop and implement investment strategies, conduct research, and make buy/sell decisions to maximize returns while managing risk according to the fund's objectives.</p>
+                    <h3>Key Services</h3>
+                    <p>Fund managers conduct research, select securities, manage risk, monitor market conditions, and make buy/sell decisions to optimize portfolio performance.</p>
                     
-                    <h3>Performance Monitoring</h3>
-                    <p>They continuously monitor market conditions, analyze economic trends, and adjust portfolios to maintain alignment with investment goals and risk parameters.</p>
+                    <h3>Types of Fund Managers</h3>
+                    <p>Portfolio managers, investment advisors, hedge fund managers, and mutual fund managers specialize in different investment strategies and asset classes.</p>
                     
-                    <h3>Client Communication</h3>
-                    <p>Fund managers communicate with investors through regular reports, explaining investment decisions and providing updates on fund performance and market outlook.</p>
+                    <h3>When to Use</h3>
+                    <p>Consider fund managers when you lack the time, expertise, or inclination to manage investments yourself, or when you want professional management of large portfolios.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Professional fund managers bring expertise, research , and risk management capabilities that individual investors typically cannot access.</p>
                 `
             },
             'investment-bankers': {
                 title: 'Investment Bankers',
                 content: `
-                    <p>Investment bankers facilitate complex financial transactions for corporations, governments, and other large institutions.</p>
+                    <p>Investment bankers are financial intermediaries who help corporations, governments, and institutions raise capital and provide strategic financial advice. They facilitate complex financial transactions.</p>
                     
-                    <h3>Core Functions</h3>
-                    <p>They assist with mergers and acquisitions, initial public offerings (IPOs), debt and equity financing, and corporate restructuring. They also provide strategic financial advice.</p>
+                    <h3>Key Services</h3>
+                    <p>Investment bankers provide merger and acquisition advisory, initial public offerings (IPOs), debt and equity underwriting, restructuring advice, and market-making services.</p>
                     
-                    <h3>Transaction Types</h3>
-                    <p>Services include underwriting securities, arranging financing, advising on M&A deals, and helping companies access capital markets for growth and expansion.</p>
+                    <h3>Types of Investment Bankers</h3>
+                    <p>Bulge bracket banks, boutique firms, and regional investment banks offer different levels of service and specialization in various industries or transaction types.</p>
                     
-                    <h3>Market Expertise</h3>
-                    <p>Investment bankers have deep knowledge of financial markets, regulatory requirements, and industry trends to structure optimal deals for their clients.</p>
+                    <h3>When to Use</h3>
+                    <p>Consult investment bankers when your business needs to raise capital, pursue mergers/acquisitions, or requires sophisticated financial restructuring.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Investment bankers provide access to capital markets, extensive networks, and expertise in complex financial transactions that can significantly impact business growth and valuation.</p>
                 `
             },
             'retail-bankers': {
                 title: 'Retail Bankers',
                 content: `
-                    <p>Retail bankers serve individual customers and small businesses, providing a wide range of financial products and services.</p>
+                    <p>Retail bankers work with individual customers to provide banking services, financial products, and advice for personal financial management. They are the primary point of contact for everyday banking needs.</p>
                     
-                    <h3>Product Offerings</h3>
-                    <p>They offer checking and savings accounts, personal loans, mortgages, credit cards, investment products, and insurance services tailored to individual needs.</p>
+                    <h3>Key Services</h3>
+                    <p>Retail bankers offer savings accounts, checking accounts, loans, mortgages, credit cards, investment products, and basic financial advice.</p>
                     
-                    <h3>Customer Service</h3>
-                    <p>Retail bankers build relationships with customers, understand their financial goals, and recommend appropriate products and services to help them achieve their objectives.</p>
+                    <h3>Types of Retail Bankers</h3>
+                    <p>Personal bankers, relationship managers, and financial services representatives specialize in different aspects of retail banking from basic transactions to comprehensive financial planning.</p>
                     
-                    <h3>Financial Guidance</h3>
-                    <p>They provide basic financial advice, help customers understand banking products, and assist with account management and financial planning.</p>
+                    <h3>When to Use</h3>
+                    <p>Use retail bankers for everyday banking needs, applying for loans or mortgages, opening accounts, or getting basic financial product recommendations.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Retail bankers provide convenient access to banking services, personalized service, and can help coordinate various financial products for comprehensive personal financial management.</p>
+                `
+            },
+            'mortgage-brokers': {
+                title: 'Mortgage Brokers',
+                content: `
+                    <p>Mortgage brokers are independent financial professionals who help individuals find and secure the best mortgage loans from various lenders. They act as intermediaries between borrowers and lending institutions.</p>
+                    
+                    <h3>Key Services</h3>
+                    <p>Mortgage brokers assess client needs, compare loan products, assist with applications, negotiate terms, and help with refinancing or debt consolidation.</p>
+                    
+                    <h3>Qualifications</h3>
+                    <p>Licensed mortgage brokers must complete training and pass examinations. Many hold additional certifications in mortgage planning and lending practices.</p>
+                    
+                    <h3>When to Use</h3>
+                    <p>Consult a mortgage broker when buying a home, refinancing existing mortgages, or seeking specialized loan products that may not be available through direct lenders.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Mortgage brokers have access to a wide range of lenders and products, can often negotiate better rates, and provide expert guidance through the complex mortgage process.</p>
+                `
+            },
+            'stockbrokers': {
+                title: 'Stockbrokers',
+                content: `
+                    <p>Stockbrokers are licensed professionals who buy and sell securities on behalf of clients. They provide investment advice, execute trades, and help investors navigate the stock market.</p>
+                    
+                    <h3>Key Services</h3>
+                    <p>Stockbrokers offer investment research, trade execution, portfolio management, market analysis, and personalized investment recommendations.</p>
+                    
+                    <h3>Types of Stockbrokers</h3>
+                    <p>Full-service brokers provide comprehensive advice and research, while discount brokers focus on low-cost trade execution with minimal advisory services.</p>
+                    
+                    <h3>When to Use</h3>
+                    <p>Use stockbrokers when you want professional assistance with stock trading, need research and analysis, or require guidance in building an investment portfolio.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Stockbrokers provide market expertise, research tools, and can help investors make informed decisions while managing the complexities of trading and compliance.</p>
+                `
+            },
+            'online-brokers': {
+                title: 'Online Brokers',
+                content: `
+                    <p>Online brokers are digital platforms that provide investors with tools and technology to trade securities electronically. They offer low-cost access to WEALTH CREATION without traditional broker services.</p>
+                    
+                    <h3>Key Services</h3>
+                    <p>Online brokers provide trading platforms, real-time market data, research tools, educational , and mobile trading applications.</p>
+                    
+                    <h3>Types of Online Brokers</h3>
+                    <p>Discount online brokers focus on low fees and self-directed trading, while robo-advisors use algorithms for automated portfolio management.</p>
+                    
+                    <h3>When to Use</h3>
+                    <p>Choose online brokers if you prefer self-directed investing, want low trading costs, or need flexible access to markets through digital platforms.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Online brokers offer lower fees, 24/7 market access, advanced trading tools, and educational  that empower individual investors to manage their own portfolios.</p>
+                `
+            },
+            'lawyers': {
+                title: 'Lawyers',
+                content: `
+                    <p>Lawyers are legal professionals who provide advice and representation in matters involving laws and regulations. In finance, they specialize in areas like corporate law, tax law, and estate planning.</p>
+                    
+                    <h3>Key Services</h3>
+                    <p>Legal services include contract drafting, regulatory compliance, dispute resolution, estate planning, tax law advice, and corporate governance.</p>
+                    
+                    <h3>Types of Financial Lawyers</h3>
+                    <p>Corporate lawyers, tax attorneys, estate planning attorneys, and securities lawyers specialize in different areas of financial and business law.</p>
+                    
+                    <h3>When to Use</h3>
+                    <p>Consult lawyers for legal aspects of business transactions, estate planning, tax disputes, regulatory compliance, or when setting up complex financial structures.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Lawyers provide legal protection, ensure compliance with regulations, and help navigate complex legal frameworks that can have significant financial implications.</p>
                 `
             },
             'insurance-brokers': {
                 title: 'Insurance Brokers',
                 content: `
-                    <p>Insurance brokers act as intermediaries between clients and insurance companies, helping individuals and businesses find appropriate coverage.</p>
+                    <p>Insurance brokers are independent professionals who help individuals and businesses find and purchase appropriate insurance coverage from various insurance companies.</p>
                     
-                    <h3>Coverage Analysis</h3>
-                    <p>They assess clients' risk exposure, analyze existing coverage, and recommend appropriate insurance products including life, health, property, and liability insurance.</p>
+                    <h3>Key Services</h3>
+                    <p>Insurance brokers assess risk needs, compare policies from multiple insurers, negotiate terms, provide claims assistance, and offer ongoing policy management.</p>
                     
-                    <h3>Market Access</h3>
-                    <p>Brokers have access to multiple insurance carriers, allowing them to compare policies and find the best coverage at competitive rates for their clients.</p>
+                    <h3>Types of Insurance</h3>
+                    <p>Life insurance, health insurance, property insurance, liability insurance, and business insurance are common areas where brokers provide expertise.</p>
                     
-                    <h3>Claims Assistance</h3>
-                    <p>They assist clients with the claims process, helping navigate complex procedures and ensuring fair settlement of insurance claims.</p>
-                `
-            },
-            'certified-accountants': {
-                title: 'Certified Accountants',
-                content: `
-                    <p>Certified accountants provide comprehensive accounting, tax, and financial advisory services to individuals and businesses.</p>
+                    <h3>When to Use</h3>
+                    <p>Use insurance brokers when you need comprehensive coverage analysis, want to compare multiple insurance options, or require specialized insurance for business or personal needs.</p>
                     
-                    <h3>Financial Reporting</h3>
-                    <p>They prepare financial statements, conduct audits, and ensure compliance with accounting standards and regulatory requirements.</p>
-                    
-                    <h3>Tax Services</h3>
-                    <p>Services include tax preparation, tax planning, representation before tax authorities, and advice on tax-efficient strategies.</p>
-                    
-                    <h3>Business Advisory</h3>
-                    <p>They provide strategic financial advice, help with business planning, cash flow management, and assist with financial decision-making.</p>
+                    <h3>Benefits</h3>
+                    <p>Insurance brokers provide access to a wide range of products, expert advice on coverage needs, and can often secure better terms than dealing directly with insurers.</p>
                 `
             },
             'research-houses': {
                 title: 'Research Houses',
                 content: `
-                    <p>Research houses provide independent analysis and insights on financial markets, companies, and economic trends.</p>
+                    <p>Research houses are independent financial research firms that provide in-depth analysis and recommendations on stocks, sectors, and market trends. They serve institutional and individual investors.</p>
                     
-                    <h3>Market Analysis</h3>
-                    <p>They conduct in-depth research on stocks, bonds, commodities, and other financial instruments, providing buy/sell/hold recommendations.</p>
+                    <h3>Key Services</h3>
+                    <p>Research houses offer company analysis, sector reports, market forecasts, investment recommendations, and economic research.</p>
                     
-                    <h3>Economic Research</h3>
-                    <p>Research houses analyze economic indicators, central bank policies, and global market trends to provide macroeconomic insights.</p>
+                    <h3>Types of Research</h3>
+                    <p>Sell-side research (from investment banks), buy-side research (for institutional investors), and independent research firms provide different perspectives and analysis.</p>
                     
-                    <h3>Investment Insights</h3>
-                    <p>They publish research reports, market outlooks, and investment strategies to help investors make informed decisions.</p>
+                    <h3>When to Use</h3>
+                    <p>Consult research houses when you need detailed company or sector analysis, want independent investment opinions, or require comprehensive market research.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Research houses provide objective analysis, deep industry expertise, and insights that can inform investment decisions and help identify opportunities or risks in the market.</p>
                 `
             }
         };
@@ -955,3 +931,15 @@
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+

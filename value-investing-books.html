@@ -116,12 +116,27 @@
             color: var(--primary-blue);
         }
 
-        .main-nav-desktop-only {
+        .nav-link {
+            color: #000;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+
+        .desktop-only {
             display: block;
         }
 
         @media (max-width: 768px) {
-            .main-nav-desktop-only {
+            .desktop-only {
                 display: none;
             }
         }
@@ -308,27 +323,107 @@
             border: none;
             cursor: pointer;
             padding: 0;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1001;
         }
 
-        .mobile-menu-toggle span {
-            display: block;
-            width: 30px;
-            height: 3px;
-            background: var(--text-primary);
-            border-radius: 2px;
+        .hamburger-line {
+            width: 25px;
+            height: 2px;
+            background: #333;
+            border-radius: 1px;
             transition: all 0.3s ease;
+            display: block;
+            margin: 2px 0;
         }
 
-        .mobile-menu-toggle.open span:nth-child(1) {
-            transform: rotate(45deg) translate(7px, 7px);
+        /* Mobile Navigation Drawer */
+        .mobile-drawer {
+            position: fixed;
+            top: 0;
+            right: -80%;
+            width: 80%;
+            height: 100vh;
+            background: #fff;
+            z-index: 10000;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            display: block;
         }
 
-        .mobile-menu-toggle.open span:nth-child(2) {
-            opacity: 0;
+        .mobile-drawer.open {
+            right: 0;
         }
 
-        .mobile-menu-toggle.open span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
+        .drawer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 20px;
+            border-bottom: 1px solid #e0e0e0;
+            background: #1e3a8a;
+            color: white;
+        }
+
+        .drawer-logo {
+            max-height: 40px;
+            width: auto;
+            display: block;
+        }
+
+        .drawer-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.2s ease;
+        }
+
+        .drawer-close:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .drawer-nav {
+            padding: 20px;
+        }
+
+        .drawer-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .drawer-menu li {
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .drawer-menu li:last-child {
+            border-bottom: none;
+        }
+
+        .drawer-link {
+            display: block;
+            padding: 6px 20px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .drawer-link:hover {
+            color: var(--primary-blue);
         }
 
         .mobile-only {
@@ -348,1426 +443,1002 @@
 <body>
     <div class="books-page">
         <!-- Header -->
-        <header class="header" id="main-header">
-            <div class="header-content">
-                <div class="logo">
-                    <a href="index.html">
-                        <img src="G&D Logo.png" alt="Graham & Doddsville Logo" class="logo-image">
-                    </a>
-                </div>
+        <header class="header sticky-header" role="banner">
+            <div class="container"><div class="header-content">
+                    <div class="logo">
+                        <a href="index.html">
+                            <img src="G&D Logo.png" alt="Graham & Doddsville Logo" class="logo-image">
+                        </a>
+                    </div>
 
-                <nav class="main-nav main-nav-desktop-only">
-                    <ul>
-                        <li><a href="index.html" class="nav-link">HOME</a></li>
-                        <li><a href="classical-readings.html" class="nav-link">CLASSICAL READINGS</a></li>
-                        <li><a href="financial-markets.html" class="nav-link">FINANCIAL MARKETS</a></li>
-                        <li><a href="economics.html" class="nav-link">ECONOMICS</a></li>
-                        <li><a href="legal-taxation.html" class="nav-link">LEGAL & TAXATION</a></li>
-                        <li><a href="professional-advisers.html" class="nav-link">PROFESSIONAL ADVISERS</a></li>
-                        <li><a href="resources.html" class="nav-link">RESOURCES</a></li>
-                        <li><a href="events.html" class="nav-link">EVENTS</a></li>
-                    </ul>
-                </nav>
+                    <!-- Desktop Navigation (hidden on mobile) -->
+                    <nav class="main-nav desktop-only">
+                        <ul>
+                            <li><a href="index.html" class="nav-link">HOME</a></li>
+                            <li><a href="classical-readings.html" class="nav-link">CLASSICAL READINGS</a></li>
+                            <li><a href="financial-markets.html" class="nav-link">FINANCIAL MARKETS</a></li>
+                            <li><a href="economics.html" class="nav-link">ECONOMICS</a></li>
+                            <li><a href="legal-taxation.html" class="nav-link">LEGAL & TAXATION</a></li>
+                            <li><a href="professional-advisers.html" class="nav-link">PROFESSIONAL ADVISERS</a></li>
+                            <li><a href="resources.html" class="nav-link">RESOURCES</a></li>
+                            <li><a href="events.html" class="nav-link">EVENTS</a></li>
+                        </ul>
+                    </nav>
 
-                <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </header>
+                    <!-- Mobile Hamburger Menu -->
+                    <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div></header>
 
-        <!-- Mobile Drawer -->
+        <!-- Mobile Navigation Drawer -->
         <div class="mobile-drawer" id="mobile-drawer">
-            <div class="drawer-header">
-                <img src="G&D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
-                <button class="drawer-close" id="drawer-close" aria-label="Close menu">×</button>
-            </div>
-            <nav class="drawer-nav">
-                <ul class="drawer-menu">
-                    <li><a href="index.html" class="drawer-link">Home</a></li>
-                    <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
-                    <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
-                    <li><a href="legal-taxation.html" class="drawer-link">Legal & Taxation</a></li>
-                    <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
-                    <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
-                    <li><a href="#" class="drawer-link">Investment Analysis</a></li>
-                    <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
-                    <li><a href="economics.html" class="drawer-link">Economics</a></li>
-                    <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
-                    <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
-                    <li><a href="resources.html" class="drawer-link">Resources</a></li>
-                    <li><a href="events.html" class="drawer-link">Events</a></li>
-                </ul>
-            </nav>
+        <div class="drawer-header">
+            <img src="G&D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
+            <button class="drawer-close" id="drawer-close" aria-label="Close menu"></button>
         </div>
-
-        <!-- Page Title Section -->
-        <section class="page-title-section">
-            <div class="breadcrumb">
-                <a href="index.html" class="breadcrumb-link">← Home</a>
-            </div>
-            <h1 class="page-title">Value Investing Books</h1>
-            <p class="page-subtitle">Essential reading for understanding the principles of value investing pioneered by Benjamin Graham and Warren Buffett</p>
-        </section>
+        <nav class="drawer-nav">
+            <ul class="drawer-menu">
+                <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
+                <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
+                <li><a href="legal-taxation.html" class="drawer-link">Legal & Taxation</a></li>
+                <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
+                <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
+                <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
+                <li><a href="#" class="drawer-link">Investment Analysis</a></li>
+                <li><a href="economics.html" class="drawer-link">Economics</a></li>
+                <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
+                <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
+                <li><a href="resources.html" class="drawer-link">Resources</a></li>
+                <li><a href="events.html" class="drawer-link">Events & Seminars</a></li>
+            </ul>
+        </nav>
+    </div>
+       </section>
 
         <!-- Books Content -->
         <section class="books-content">
-
-            <div class="books-table-container">
-                <table class="books-table">
-                    <thead>
-                        <tr>
-                            <th>📚 Title</th>
-                            <th>✍️ Author(s)</th>
-                            <th>💰 Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Intelligent-Investor-Definitive-Investing-Essentials/dp/0060555661" target="_blank" rel="noopener noreferrer">The Intelligent Investor (3rd ed)</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Benjamin Graham</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$25.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Security-Analysis-Foreword-Warren-Buffett/dp/0071592539" target="_blank" rel="noopener noreferrer">Security Analysis (2nd ed)</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Benjamin Graham and David Dodd</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$89.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Security-Analysis-Seventh-Edition-Fundamentals/dp/0071832776" target="_blank" rel="noopener noreferrer">Security Analysis (7th ed)</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Benjamin Graham and David Dodd</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$95.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Margin-Safety-Risk-Averse-Value-Investing/dp/0887305105" target="_blank" rel="noopener noreferrer">Margin of Safety</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Seth Klarman</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$45.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Security-Analysis-Original-1934-Edition/dp/0070244960" target="_blank" rel="noopener noreferrer">Security Analysis (1st ed)</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Benjamin Graham and David Dodd</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$79.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Security-Analysis-Third-Edition-Fundamentals/dp/0071448209" target="_blank" rel="noopener noreferrer">Security Analysis (3rd ed)</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Benjamin Graham and David Dodd</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$85.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Security-Analysis-Sixth-Edition-Fundamentals/dp/0071412283" target="_blank" rel="noopener noreferrer">Security Analysis (6th ed)</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Benjamin Graham and David Dodd</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$92.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Stocks-Long-Run-Definitive-Investment/dp/0071800514" target="_blank" rel="noopener noreferrer">Stocks for the Long Run</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Jeremy Siegel</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$29.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Rediscovered-Benjamin-Graham-Selected-Writings/dp/0471244726" target="_blank" rel="noopener noreferrer">The Rediscovered Benjamin Graham</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Benjamin Graham</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$35.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Intelligent-Investor-Definitive-Investing-Essentials/dp/0060555661" target="_blank" rel="noopener noreferrer">The Intelligent Investor (Revised Edition)</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Benjamin Graham</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$25.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Intelligent-Investor-Definitive-Investing-Essentials/dp/0060555661" target="_blank" rel="noopener noreferrer">The Intelligent Investor: The Classic Text On Value Investing</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Benjamin Graham</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$25.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Value-Investing-Graham-Buffett-Beyond/dp/0471463396" target="_blank" rel="noopener noreferrer">Value Investing: From Graham to Buffett and Beyond (2nd edn)</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Greenwald, Kahn, Bellissimo, Cooper, Santos</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$39.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Investing-Templeton-Way-Unconventional-Wisdom/dp/0071357063" target="_blank" rel="noopener noreferrer">Investing the Templeton Way</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Lauren Templeton and Scott Phillips</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$32.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Benjamin-Grahams-Net-Net-Stock-Strategy/dp/1737122807" target="_blank" rel="noopener noreferrer">Benjamin Graham's Net-Net Stock Strategy</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Evan Bleker</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$24.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Good-Stocks-Cheap-Value-Investing/dp/0131493386" target="_blank" rel="noopener noreferrer">Good Stocks Cheap</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Kenneth Marshall</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$28.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Joys-Compounding-Compounders-Compounding-Compound/dp/B08L9Q8Z8L" target="_blank" rel="noopener noreferrer">The Joys Of Compounding</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Gautam Baid</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$19.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Benjamin-Graham-Investing-Security-Analysis/dp/0071509490" target="_blank" rel="noopener noreferrer">Benjamin Graham on Investing</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Benjamin Graham and Rodney G Klein</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$22.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Little-Book-Value-Investing/dp/0470102265" target="_blank" rel="noopener noreferrer">The Little Book of Value Investing</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Christopher Browne</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$22.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Little-Book-That-Still-Beats/dp/0470624159" target="_blank" rel="noopener noreferrer">The Little Book That Still Beats the Market</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Joel Greenblatt</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$24.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/You-Can-Stock-Market-Genius/dp/0684840073" target="_blank" rel="noopener noreferrer">You Can Be A Stockmarket Genius</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Joel Greenblatt</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$26.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Value-Investing-Dummies-Peter-Sander/dp/0470222228" target="_blank" rel="noopener noreferrer">Value Investing For Dummies</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Peter Sander and Janet Haley</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$29.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Education-Value-Investor-Thoughts-Process/dp/0230554608" target="_blank" rel="noopener noreferrer">The Education of a Value Investor</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Guy Spier</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$35.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/8-Step-Beginners-Guide-Value-Investing/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">The 8-Step Beginner's Guide to Value Investing</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Freeman Publications</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$15.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Dhandho-Investor-Heuristics-Low-Risk-High-Returns/dp/0470043893" target="_blank" rel="noopener noreferrer">The Dhandho Investor</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Mohnish Pabrai</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$27.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Invest-Like-Guru-Winning-Strategies/dp/0470949527" target="_blank" rel="noopener noreferrer">Invest Like a Guru</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Charlie Tian</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$31.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Deep-Value-Investing-Profiting-Crashes/dp/1118741844" target="_blank" rel="noopener noreferrer">Deep Value</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Tobias Carlisle</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$33.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Active-Value-Investing-Making-Portfolio/dp/1119589298" target="_blank" rel="noopener noreferrer">Active Value Investing</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Vitaliy Katsenelson</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$39.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Value-Investing-Growth-Companies-Framework/dp/9811209177" target="_blank" rel="noopener noreferrer">Value Investing in Growth Companies</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Rusmin Ang and Victor Chng</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$45.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Mosaic-Perspectives-Investing-Mohnish-Pabrai/dp/935489049X" target="_blank" rel="noopener noreferrer">Mosaic: Perspectives on Investing</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Mohnish Pabrai</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$29.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Manual-Ideas-Definitive-Investment-Opportunities/dp/1119601275" target="_blank" rel="noopener noreferrer">The Manual of Ideas</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">John Mihaljevic</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$49.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Modern-Value-Investing-Updated-Expanded/dp/191608140X" target="_blank" rel="noopener noreferrer">Modern Value Investing</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Sven Carlin</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$34.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Benjamin-Graham-Father-Financial-Analysis/dp/0070243964" target="_blank" rel="noopener noreferrer">Benjamin Graham: The Father of Financial Analysis</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Irving Kahn and Robert Milne</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$42.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Little-Book-That-Beats-Market/dp/0471730519" target="_blank" rel="noopener noreferrer">The Little Book That Beats the Market</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Joel Greenblatt</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$24.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Getting-Started-Value-Investing-Charles/dp/0471759258" target="_blank" rel="noopener noreferrer">Getting Started in Value Investing</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Charles S Mizrahi</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$26.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Value-Investing-Graham-Buffett-Beyond/dp/0471463396" target="_blank" rel="noopener noreferrer">Value Investing: From Graham to Buffett and Beyond</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Greenwald, Kahn, Bellissimo, Cooper, Santos</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$39.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Quantitative-Value-Investing-Stock-Selection/dp/1118328078" target="_blank" rel="noopener noreferrer">Quantitative Value</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Wesley Gray and Tobias Carlisle</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$41.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Acquirers-Multiple-Revised-Expanded-Framework/dp/0470919730" target="_blank" rel="noopener noreferrer">The Acquirer's Multiple</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Tobias Carlisle</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$37.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Applied-Value-Investing-Framework-Implementation/dp/1118314727" target="_blank" rel="noopener noreferrer">Applied Value Investing</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Joseph Calandro</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$43.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Value-Trap-Investing-Cheap-Stocks/dp/0071830779" target="_blank" rel="noopener noreferrer">Value Trap</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Brian Nelson</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$38.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/All-About-Value-Investing-Esme/dp/007170126X" target="_blank" rel="noopener noreferrer">All About Value Investing</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Esme Faerber</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$31.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Benjamin-Graham-Power-Growth-Stocks/dp/0070248974" target="_blank" rel="noopener noreferrer">Benjamin Graham and the Power of Growth Stocks</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Martin, Hansen, Link, Nicoski</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$36.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Business-Value-Investing-Framework-Implementation/dp/1119643151" target="_blank" rel="noopener noreferrer">The Business of Value Investing</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Sham Gad</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$44.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Net-Current-Asset-Value-Approach/dp/1737122823" target="_blank" rel="noopener noreferrer">The Net Current Asset Value Approach to Stock Investing</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Victor Wendl</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$27.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Conscious-Investor-Purpose-Profit-Impact/dp/1119813974" target="_blank" rel="noopener noreferrer">The Conscious Investor</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">John Price</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$33.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/F-Wall-Street-Business-Elite/dp/1608198414" target="_blank" rel="noopener noreferrer">F Wall Street</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Joe Ponzio</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$28.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Value-Investing-Masters-Interviews-Investors/dp/0071700921" target="_blank" rel="noopener noreferrer">Value Investing with Masters</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Kirk Kazanjian</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$35.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Value-able-Investing-Framework-Implementation/dp/0730321339" target="_blank" rel="noopener noreferrer">Value.able</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Roger Montgomery</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$29.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Concise-Guide-Value-Investing-Brian/dp/085719876X" target="_blank" rel="noopener noreferrer">Concise Guide to Value Investing</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Brian McNiven</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$24.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Power-Modern-Value-Investing-Framework/dp/1119810991" target="_blank" rel="noopener noreferrer">The Power of Modern Value Investing</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Gary Smith and Margaret Smith</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$41.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Value-Investing-Made-Easy-Intelligent/dp/0071702266" target="_blank" rel="noopener noreferrer">Value Investing Made Easy</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Janet Lowe</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$26.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Benjamin-Graham-Value-Investing-Classic/dp/0071509490" target="_blank" rel="noopener noreferrer">Benjamin Graham On Value Investing</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Janet Lowe</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$22.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Value-Investors-Interviews-Worlds-Top/dp/0071700867" target="_blank" rel="noopener noreferrer">The Value Investors</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Ronald Chan</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$38.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Making-Value-Investor-Investing-Process/dp/9354890503" target="_blank" rel="noopener noreferrer">The Making of a Value Investor</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Gautam Baid</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$32.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Deep-Value-Investing-Profiting-Crashes/dp/1118741844" target="_blank" rel="noopener noreferrer">Deep Value Investing</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Jeroen Bos</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$33.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Art-Value-Investing-Interviews-Investors/dp/0230554594" target="_blank" rel="noopener noreferrer">The Art of Value Investing</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Heins and Tilson</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$39.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Stock-Investing-Beginners-Complete-Investing/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Stock Investing for Beginners</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Everyman Investing</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$18.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Value-Investing-Beginners-Guide-Investing/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Value Investing For Beginners</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Kevin Bailey</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$16.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Modern-Security-Analysis-Active-Portfolio/dp/1118603385" target="_blank" rel="noopener noreferrer">Modern Security Analysis</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Whitman and Diz</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$47.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Value-Investing-Tools-Techniques-James/dp/0470554860" target="_blank" rel="noopener noreferrer">Value Investing: Tools and Techniques</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">James Montier</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$42.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Secrets-Value-Investing-Need-Know/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">The Secrets of Value Investing You Need to Know</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">JD Rams</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$21.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Strategic-Value-Investing-Framework-Implementation/dp/0071702266" target="_blank" rel="noopener noreferrer">Strategic Value Investing</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Horan, Johnson, Robinson</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$43.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Taking-Charge-Value-Investing-Framework/dp/0071830787" target="_blank" rel="noopener noreferrer">Taking Charge with Value Investing</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Brian Nichols</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$36.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Ben-Graham-Was-Quant-Framework/dp/0230554616" target="_blank" rel="noopener noreferrer">Ben Graham Was a Quant</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Steven Greiner</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$34.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Value-Investing-Today-Rethinking-Benjamin/dp/0470551337" target="_blank" rel="noopener noreferrer">Value Investing Today</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Charles Brandes</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$37.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/What-Would-Ben-Graham-Now/dp/0071621396" target="_blank" rel="noopener noreferrer">What Would Ben Graham Do Now?</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Jeffrey Towson</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$31.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Concentrated-Investing-Strategies-Extraordinary-Returns/dp/1119019848" target="_blank" rel="noopener noreferrer">Concentrated Investing</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Benello, van Biema, Carlisle</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$39.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Case-Long-Term-Investing-Jim/dp/0071805454" target="_blank" rel="noopener noreferrer">The Case for Long-Term Investing</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Jim Cullen</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$28.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Modern-Approach-Graham-Dodd-Investing/dp/0071621639" target="_blank" rel="noopener noreferrer">A Modern Approach to Graham and Dodd Investing</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Thomas Au</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$41.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Value-Investing-Real-Estate-Framework/dp/0071709670" target="_blank" rel="noopener noreferrer">Value Investing in Real Estate</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Gary Eldred</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$35.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Value-Investing-Checklist-Mistakes-Avoid/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Value Investing Checklist</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Vivek Coudhary</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$19.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Triumph-Value-Investing-Janet-Lowe/dp/0071703079" target="_blank" rel="noopener noreferrer">The Triumph of Value Investing</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Janet Lowe</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$29.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Value-Returns-Framework-Implementation/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Value Returns</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Randy Beeman and James Schneider</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$32.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Value-Investing-Simplified-Framework-Implementation/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Value Investing Simplified</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Cayden Chang</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$22.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/What-Value-Investing-Lawrence-Cunningham/dp/0071703079" target="_blank" rel="noopener noreferrer">What Is Value Investing?</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Lawrence Cunningham</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$25.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/5-Keys-Value-Investing-J/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">The 5 Keys to Value Investing</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">J Dennis Jean-Jacques</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$17.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Value-Investing-Balanced-Approach-Martin/dp/0230554624" target="_blank" rel="noopener noreferrer">Value Investing: A Balanced Approach</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Martin Whitman</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$38.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/New-Era-Value-Investing-Framework/dp/0071703087" target="_blank" rel="noopener noreferrer">New Era Value Investing</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Nancy Tengler</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$36.99</div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Large-Cap-Portfolio-Framework-Implementation/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">The Large-Cap Portfolio</a></div>
-                            </td>
-                            <td>
-                                <div class="book-author">Thomas Villalta</div>
-                            </td>
-                            <td>
-                                <div class="book-price">$34.99</div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- Mobile Cards Layout (hidden on desktop, visible on mobile) -->
-            <div class="books-mobile-cards" style="display: none;">
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Intelligent+Investor+(3rd+ed)&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Intelligent Investor (3rd ed)</a></div>
-                    <div class="book-mobile-author">Benjamin Graham</div>
-                    <div class="book-mobile-price">$25.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Security+Analysis+(2nd+ed)&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Security Analysis (2nd ed)</a></div>
-                    <div class="book-mobile-author">Benjamin Graham and David Dodd</div>
-                    <div class="book-mobile-price">$89.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Security+Analysis+(7th+ed)&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Security Analysis (7th ed)</a></div>
-                    <div class="book-mobile-author">Benjamin Graham and David Dodd</div>
-                    <div class="book-mobile-price">$95.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Margin+of+Safety&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Margin of Safety</a></div>
-                    <div class="book-mobile-author">Seth Klarman</div>
-                    <div class="book-mobile-price">$45.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Security+Analysis+(1st+ed)&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Security Analysis (1st ed)</a></div>
-                    <div class="book-mobile-author">Benjamin Graham and David Dodd</div>
-                    <div class="book-mobile-price">$79.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Security+Analysis+(3rd+ed)&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Security Analysis (3rd ed)</a></div>
-                    <div class="book-mobile-author">Benjamin Graham and David Dodd</div>
-                    <div class="book-mobile-price">$85.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Security+Analysis+(6th+ed)&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Security Analysis (6th ed)</a></div>
-                    <div class="book-mobile-author">Benjamin Graham and David Dodd</div>
-                    <div class="book-mobile-price">$92.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Stocks+for+the+Long+Run&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Stocks for the Long Run</a></div>
-                    <div class="book-mobile-author">Jeremy Siegel</div>
-                    <div class="book-mobile-price">$29.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Rediscovered+Benjamin+Graham&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Rediscovered Benjamin Graham</a></div>
-                    <div class="book-mobile-author">Benjamin Graham</div>
-                    <div class="book-mobile-price">$35.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Intelligent+Investor+(Revised+Edition)&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Intelligent Investor (Revised Edition)</a></div>
-                    <div class="book-mobile-author">Benjamin Graham</div>
-                    <div class="book-mobile-price">$25.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Intelligent+Investor:+The+Classic+Text+On+Value+Investing&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Intelligent Investor: The Classic Text On Value Investing</a></div>
-                    <div class="book-mobile-author">Benjamin Graham</div>
-                    <div class="book-mobile-price">$25.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Value+Investing:+From+Graham+to+Buffett+and+Beyond+(2nd+edn)&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Value Investing: From Graham to Buffett and Beyond (2nd edn)</a></div>
-                    <div class="book-mobile-author">Greenwald, Kahn, Bellissimo, Cooper, Santos</div>
-                    <div class="book-mobile-price">$39.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Investing+the+Templeton+Way&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Investing the Templeton Way</a></div>
-                    <div class="book-mobile-author">Lauren Templeton and Scott Phillips</div>
-                    <div class="book-mobile-price">$32.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Benjamin+Graham's+Net-Net+Stock+Strategy&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Benjamin Graham's Net-Net Stock Strategy</a></div>
-                    <div class="book-mobile-author">Evan Bleker</div>
-                    <div class="book-mobile-price">$24.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Good+Stocks+Cheap&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Good Stocks Cheap</a></div>
-                    <div class="book-mobile-author">Kenneth Marshall</div>
-                    <div class="book-mobile-price">$28.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Joys+Of+Compounding&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Joys Of Compounding</a></div>
-                    <div class="book-mobile-author">Gautam Baid</div>
-                    <div class="book-mobile-price">$19.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Benjamin+Graham+on+Investing&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Benjamin Graham on Investing</a></div>
-                    <div class="book-mobile-author">Benjamin Graham and Rodney G Klein</div>
-                    <div class="book-mobile-price">$22.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Little+Book+of+Value+Investing&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Little Book of Value Investing</a></div>
-                    <div class="book-mobile-author">Christopher Browne</div>
-                    <div class="book-mobile-price">$22.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Little+Book+That+Still+Beats+the+Market&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Little Book That Still Beats the Market</a></div>
-                    <div class="book-mobile-author">Joel Greenblatt</div>
-                    <div class="book-mobile-price">$24.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=You+Can+Be+A+Stockmarket+Genius&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">You Can Be A Stockmarket Genius</a></div>
-                    <div class="book-mobile-author">Joel Greenblatt</div>
-                    <div class="book-mobile-price">$26.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Value+Investing+For+Dummies&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Value Investing For Dummies</a></div>
-                    <div class="book-mobile-author">Peter Sander and Janet Haley</div>
-                    <div class="book-mobile-price">$29.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Education+of+a+Value+Investor&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Education of a Value Investor</a></div>
-                    <div class="book-mobile-author">Guy Spier</div>
-                    <div class="book-mobile-price">$35.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+8-Step+Beginner's+Guide+to+Value+Investing&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The 8-Step Beginner's Guide to Value Investing</a></div>
-                    <div class="book-mobile-author">Freeman Publications</div>
-                    <div class="book-mobile-price">$15.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Dhandho+Investor&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Dhandho Investor</a></div>
-                    <div class="book-mobile-author">Mohnish Pabrai</div>
-                    <div class="book-mobile-price">$27.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Invest+Like+a+Guru&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Invest Like a Guru</a></div>
-                    <div class="book-mobile-author">Charlie Tian</div>
-                    <div class="book-mobile-price">$31.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Deep+Value&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Deep Value</a></div>
-                    <div class="book-mobile-author">Tobias Carlisle</div>
-                    <div class="book-mobile-price">$33.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Active+Value+Investing&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Active Value Investing</a></div>
-                    <div class="book-mobile-author">Vitaliy Katsenelson</div>
-                    <div class="book-mobile-price">$39.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Value+Investing+in+Growth+Companies&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Value Investing in Growth Companies</a></div>
-                    <div class="book-mobile-author">Rusmin Ang and Victor Chng</div>
-                    <div class="book-mobile-price">$45.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Mosaic:+Perspectives+on+Investing&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Mosaic: Perspectives on Investing</a></div>
-                    <div class="book-mobile-author">Mohnish Pabrai</div>
-                    <div class="book-mobile-price">$29.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Manual+of+Ideas&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Manual of Ideas</a></div>
-                    <div class="book-mobile-author">John Mihaljevic</div>
-                    <div class="book-mobile-price">$49.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Modern+Value+Investing&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Modern Value Investing</a></div>
-                    <div class="book-mobile-author">Sven Carlin</div>
-                    <div class="book-mobile-price">$34.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Benjamin+Graham:+The+Father+of+Financial+Analysis&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Benjamin Graham: The Father of Financial Analysis</a></div>
-                    <div class="book-mobile-author">Irving Kahn and Robert Milne</div>
-                    <div class="book-mobile-price">$42.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Little+Book+That+Beats+the+Market&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Little Book That Beats the Market</a></div>
-                    <div class="book-mobile-author">Joel Greenblatt</div>
-                    <div class="book-mobile-price">$24.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Getting+Started+in+Value+Investing&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Getting Started in Value Investing</a></div>
-                    <div class="book-mobile-author">Charles S Mizrahi</div>
-                    <div class="book-mobile-price">$26.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Value+Investing:+From+Graham+to+Buffett+and+Beyond&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Value Investing: From Graham to Buffett and Beyond</a></div>
-                    <div class="book-mobile-author">Greenwald, Kahn, Bellissimo, Cooper, Santos</div>
-                    <div class="book-mobile-price">$39.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Quantitative+Value&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Quantitative Value</a></div>
-                    <div class="book-mobile-author">Wesley Gray and Tobias Carlisle</div>
-                    <div class="book-mobile-price">$41.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Acquirer's+Multiple&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Acquirer's Multiple</a></div>
-                    <div class="book-mobile-author">Tobias Carlisle</div>
-                    <div class="book-mobile-price">$37.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Applied+Value+Investing&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Applied Value Investing</a></div>
-                    <div class="book-mobile-author">Joseph Calandro</div>
-                    <div class="book-mobile-price">$43.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Value+Trap&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Value Trap</a></div>
-                    <div class="book-mobile-author">Brian Nelson</div>
-                    <div class="book-mobile-price">$38.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=All+About+Value+Investing&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">All About Value Investing</a></div>
-                    <div class="book-mobile-author">Esme Faerber</div>
-                    <div class="book-mobile-price">$31.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Benjamin+Graham+and+the+Power+of+Growth+Stocks&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Benjamin Graham and the Power of Growth Stocks</a></div>
-                    <div class="book-mobile-author">Martin, Hansen, Link, Nicoski</div>
-                    <div class="book-mobile-price">$36.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Business+of+Value+Investing&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Business of Value Investing</a></div>
-                    <div class="book-mobile-author">Sham Gad</div>
-                    <div class="book-mobile-price">$44.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Net+Current+Asset+Value+Approach+to+Stock+Investing&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Net Current Asset Value Approach to Stock Investing</a></div>
-                    <div class="book-mobile-author">Victor Wendl</div>
-                    <div class="book-mobile-price">$27.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Conscious+Investor&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Conscious Investor</a></div>
-                    <div class="book-mobile-author">John Price</div>
-                    <div class="book-mobile-price">$33.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=F+Wall+Street&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">F Wall Street</a></div>
-                    <div class="book-mobile-author">Joe Ponzio</div>
-                    <div class="book-mobile-price">$28.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Value+Investing+with+Masters&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Value Investing with Masters</a></div>
-                    <div class="book-mobile-author">Kirk Kazanjian</div>
-                    <div class="book-mobile-price">$35.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Value.able&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Value.able</a></div>
-                    <div class="book-mobile-author">Roger Montgomery</div>
-                    <div class="book-mobile-price">$29.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Concise+Guide+to+Value+Investing&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Concise Guide to Value Investing</a></div>
-                    <div class="book-mobile-author">Brian McNiven</div>
-                    <div class="book-mobile-price">$24.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Power+of+Modern+Value+Investing&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Power of Modern Value Investing</a></div>
-                    <div class="book-mobile-author">Gary Smith and Margaret Smith</div>
-                    <div class="book-mobile-price">$41.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Value+Investing+Made+Easy&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Value Investing Made Easy</a></div>
-                    <div class="book-mobile-author">Janet Lowe</div>
-                    <div class="book-mobile-price">$26.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Benjamin+Graham+On+Value+Investing&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Benjamin Graham On Value Investing</a></div>
-                    <div class="book-mobile-author">Janet Lowe</div>
-                    <div class="book-mobile-price">$22.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Value+Investors&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Value Investors</a></div>
-                    <div class="book-mobile-author">Ronald Chan</div>
-                    <div class="book-mobile-price">$38.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Making+of+a+Value+Investor&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Making of a Value Investor</a></div>
-                    <div class="book-mobile-author">Gautam Baid</div>
-                    <div class="book-mobile-price">$32.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Deep+Value+Investing&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Deep Value Investing</a></div>
-                    <div class="book-mobile-author">Jeroen Bos</div>
-                    <div class="book-mobile-price">$33.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Art+of+Value+Investing&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Art of Value Investing</a></div>
-                    <div class="book-mobile-author">Heins and Tilson</div>
-                    <div class="book-mobile-price">$39.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Stock+Investing+for+Beginners&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Stock Investing for Beginners</a></div>
-                    <div class="book-mobile-author">Everyman Investing</div>
-                    <div class="book-mobile-price">$18.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Value+Investing+For+Beginners&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Value Investing For Beginners</a></div>
-                    <div class="book-mobile-author">Kevin Bailey</div>
-                    <div class="book-mobile-price">$16.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Modern+Security+Analysis&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Modern Security Analysis</a></div>
-                    <div class="book-mobile-author">Whitman and Diz</div>
-                    <div class="book-mobile-price">$47.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Value+Investing:+Tools+and+Techniques&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Value Investing: Tools and Techniques</a></div>
-                    <div class="book-mobile-author">James Montier</div>
-                    <div class="book-mobile-price">$42.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Secrets+of+Value+Investing+You+Need+to+Know&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Secrets of Value Investing You Need to Know</a></div>
-                    <div class="book-mobile-author">JD Rams</div>
-                    <div class="book-mobile-price">$21.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Strategic+Value+Investing&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Strategic Value Investing</a></div>
-                    <div class="book-mobile-author">Horan, Johnson, Robinson</div>
-                    <div class="book-mobile-price">$43.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Taking+Charge+with+Value+Investing&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Taking Charge with Value Investing</a></div>
-                    <div class="book-mobile-author">Brian Nichols</div>
-                    <div class="book-mobile-price">$36.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Ben+Graham+Was+a+Quant&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Ben Graham Was a Quant</a></div>
-                    <div class="book-mobile-author">Steven Greiner</div>
-                    <div class="book-mobile-price">$34.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Value+Investing+Today&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Value Investing Today</a></div>
-                    <div class="book-mobile-author">Charles Brandes</div>
-                    <div class="book-mobile-price">$37.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=What+Would+Ben+Graham+Do+Now?&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">What Would Ben Graham Do Now?</a></div>
-                    <div class="book-mobile-author">Jeffrey Towson</div>
-                    <div class="book-mobile-price">$31.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Concentrated+Investing&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Concentrated Investing</a></div>
-                    <div class="book-mobile-author">Benello, van Biema, Carlisle</div>
-                    <div class="book-mobile-price">$39.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Case+for+Long-Term+Investing&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Case for Long-Term Investing</a></div>
-                    <div class="book-mobile-author">Jim Cullen</div>
-                    <div class="book-mobile-price">$28.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=A+Modern+Approach+to+Graham+and+Dodd+Investing&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">A Modern Approach to Graham and Dodd Investing</a></div>
-                    <div class="book-mobile-author">Thomas Au</div>
-                    <div class="book-mobile-price">$41.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Value+Investing+in+Real+Estate&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Value Investing in Real Estate</a></div>
-                    <div class="book-mobile-author">Gary Eldred</div>
-                    <div class="book-mobile-price">$35.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Value+Investing+Checklist&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Value Investing Checklist</a></div>
-                    <div class="book-mobile-author">Vivek Coudhary</div>
-                    <div class="book-mobile-price">$19.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Triumph+of+Value+Investing&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Triumph of Value Investing</a></div>
-                    <div class="book-mobile-author">Janet Lowe</div>
-                    <div class="book-mobile-price">$29.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Value+Returns&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Value Returns</a></div>
-                    <div class="book-mobile-author">Randy Beeman and James Schneider</div>
-                    <div class="book-mobile-price">$32.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Value+Investing+Simplified&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Value Investing Simplified</a></div>
-                    <div class="book-mobile-author">Cayden Chang</div>
-                    <div class="book-mobile-price">$22.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=What+Is+Value+Investing?&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">What Is Value Investing?</a></div>
-                    <div class="book-mobile-author">Lawrence Cunningham</div>
-                    <div class="book-mobile-price">$25.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+5+Keys+to+Value+Investing&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The 5 Keys to Value Investing</a></div>
-                    <div class="book-mobile-author">J Dennis Jean-Jacques</div>
-                    <div class="book-mobile-price">$17.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=Value+Investing:+A+Balanced+Approach&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Value Investing: A Balanced Approach</a></div>
-                    <div class="book-mobile-author">Martin Whitman</div>
-                    <div class="book-mobile-price">$38.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=New+Era+Value+Investing&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">New Era Value Investing</a></div>
-                    <div class="book-mobile-author">Nancy Tengler</div>
-                    <div class="book-mobile-price">$36.99</div>
-                </div>
-                <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/s?k=The+Large-Cap+Portfolio&tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Large-Cap Portfolio</a></div>
-                    <div class="book-mobile-author">Thomas Villalta</div>
-                    <div class="book-mobile-price">$34.99</div>
-                </div>
-            </div>
-
-            <div class="books-description">
-                <p><strong>Note:</strong> Prices are in AUD and may vary depending on the retailer and availability. Some books may be available as digital editions at lower prices.</p>
-
-                <p><strong>Disclaimer:</strong> This list is for informational purposes only and does not constitute investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>
-            </div>
-        </section>
+<h2>Buffett, Munger & Berkshire</h2>
+<div class="books-table-container">
+<table class="books-table">
+<thead>
+<tr>
+<th>📚 Title</th>
+<th>✍️ Author(s)</th>
+<th>💰 Price</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><div class="book-title">Value Investing: From Graham to Buffett and Beyond (2nd edn)</div></td>
+<td><div class="book-author">Greenwald, Kahn, Bellissimo, Cooper, Santos</div></td>
+<td><div class="book-price">$39.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Value Investing: From Graham to Buffett and Beyond</div></td>
+<td><div class="book-author">Greenwald, Kahn, Bellissimo, Cooper, Santos</div></td>
+<td><div class="book-price">$39.99</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="books-mobile-cards">
+<div class="book-mobile-card">
+<div class="book-mobile-title">Value Investing: From Graham to Buffett and Beyond (2nd edn)</div>
+<div class="book-mobile-author">Greenwald, Kahn, Bellissimo, Cooper, Santos</div>
+<div class="book-mobile-price">$39.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Value Investing: From Graham to Buffett and Beyond</div>
+<div class="book-mobile-author">Greenwald, Kahn, Bellissimo, Cooper, Santos</div>
+<div class="book-mobile-price">$39.99</div>
+</div>
+</div>
+<h2>Value Investing</h2>
+<div class="books-table-container">
+<table class="books-table">
+<thead>
+<tr>
+<th>📚 Title</th>
+<th>✍️ Author(s)</th>
+<th>💰 Price</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><div class="book-title">The Intelligent Investor (3rd ed)</div></td>
+<td><div class="book-author">Benjamin Graham</div></td>
+<td><div class="book-price">$25.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Security Analysis (2nd ed)</div></td>
+<td><div class="book-author">Benjamin Graham and David Dodd</div></td>
+<td><div class="book-price">$89.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Security Analysis (7th ed)</div></td>
+<td><div class="book-author">Benjamin Graham and David Dodd</div></td>
+<td><div class="book-price">$95.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Margin of Safety</div></td>
+<td><div class="book-author">Seth Klarman</div></td>
+<td><div class="book-price">$45.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Security Analysis (1st ed)</div></td>
+<td><div class="book-author">Benjamin Graham and David Dodd</div></td>
+<td><div class="book-price">$79.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Security Analysis (3rd ed)</div></td>
+<td><div class="book-author">Benjamin Graham and David Dodd</div></td>
+<td><div class="book-price">$85.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Security Analysis (6th ed)</div></td>
+<td><div class="book-author">Benjamin Graham and David Dodd</div></td>
+<td><div class="book-price">$92.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">The Rediscovered Benjamin Graham</div></td>
+<td><div class="book-author">Benjamin Graham</div></td>
+<td><div class="book-price">$35.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">The Intelligent Investor (Revised Edition)</div></td>
+<td><div class="book-author">Benjamin Graham</div></td>
+<td><div class="book-price">$25.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">The Intelligent Investor: The Classic Text On Value Investing</div></td>
+<td><div class="book-author">Benjamin Graham</div></td>
+<td><div class="book-price">$25.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Benjamin Graham on Investing</div></td>
+<td><div class="book-author">Benjamin Graham and Rodney G Klein</div></td>
+<td><div class="book-price">$22.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">The Little Book of Value Investing</div></td>
+<td><div class="book-author">Christopher Browne</div></td>
+<td><div class="book-price">$22.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Value Investing For Dummies</div></td>
+<td><div class="book-author">Peter Sander and Janet Haley</div></td>
+<td><div class="book-price">$29.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">The 8-Step Beginner's Guide to Value Investing</div></td>
+<td><div class="book-author">Freeman Publications</div></td>
+<td><div class="book-price">$15.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Active Value Investing</div></td>
+<td><div class="book-author">Vitaliy Katsenelson</div></td>
+<td><div class="book-price">$39.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Value Investing in Growth Companies</div></td>
+<td><div class="book-author">Rusmin Ang and Victor Chng</div></td>
+<td><div class="book-price">$45.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Modern Value Investing</div></td>
+<td><div class="book-author">Sven Carlin</div></td>
+<td><div class="book-price">$34.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Getting Started in Value Investing</div></td>
+<td><div class="book-author">Charles S Mizrahi</div></td>
+<td><div class="book-price">$26.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Applied Value Investing</div></td>
+<td><div class="book-author">Joseph Calandro</div></td>
+<td><div class="book-price">$43.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">All About Value Investing</div></td>
+<td><div class="book-author">Esme Faerber</div></td>
+<td><div class="book-price">$31.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">The Business of Value Investing</div></td>
+<td><div class="book-author">Sham Gad</div></td>
+<td><div class="book-price">$44.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Value Investing with Masters</div></td>
+<td><div class="book-author">Kirk Kazanjian</div></td>
+<td><div class="book-price">$35.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Concise Guide to Value Investing</div></td>
+<td><div class="book-author">Brian McNiven</div></td>
+<td><div class="book-price">$24.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">The Power of Modern Value Investing</div></td>
+<td><div class="book-author">Gary Smith and Margaret Smith</div></td>
+<td><div class="book-price">$41.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Value Investing Made Easy</div></td>
+<td><div class="book-author">Janet Lowe</div></td>
+<td><div class="book-price">$26.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Benjamin Graham On Value Investing</div></td>
+<td><div class="book-author">Janet Lowe</div></td>
+<td><div class="book-price">$22.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Deep Value Investing</div></td>
+<td><div class="book-author">Jeroen Bos</div></td>
+<td><div class="book-price">$33.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">The Art of Value Investing</div></td>
+<td><div class="book-author">Heins and Tilson</div></td>
+<td><div class="book-price">$39.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Value Investing For Beginners</div></td>
+<td><div class="book-author">Kevin Bailey</div></td>
+<td><div class="book-price">$16.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Modern Security Analysis</div></td>
+<td><div class="book-author">Whitman and Diz</div></td>
+<td><div class="book-price">$47.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Value Investing: Tools and Techniques</div></td>
+<td><div class="book-author">James Montier</div></td>
+<td><div class="book-price">$42.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">The Secrets of Value Investing You Need to Know</div></td>
+<td><div class="book-author">JD Rams</div></td>
+<td><div class="book-price">$21.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Strategic Value Investing</div></td>
+<td><div class="book-author">Horan, Johnson, Robinson</div></td>
+<td><div class="book-price">$43.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Taking Charge with Value Investing</div></td>
+<td><div class="book-author">Brian Nichols</div></td>
+<td><div class="book-price">$36.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Value Investing Today</div></td>
+<td><div class="book-author">Charles Brandes</div></td>
+<td><div class="book-price">$37.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Value Investing in Real Estate</div></td>
+<td><div class="book-author">Gary Eldred</div></td>
+<td><div class="book-price">$35.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Value Investing Checklist</div></td>
+<td><div class="book-author">Vivek Coudhary</div></td>
+<td><div class="book-price">$19.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">The Triumph of Value Investing</div></td>
+<td><div class="book-author">Janet Lowe</div></td>
+<td><div class="book-price">$29.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Value Investing Simplified</div></td>
+<td><div class="book-author">Cayden Chang</div></td>
+<td><div class="book-price">$22.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">What Is Value Investing?</div></td>
+<td><div class="book-author">Lawrence Cunningham</div></td>
+<td><div class="book-price">$25.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">The 5 Keys to Value Investing</div></td>
+<td><div class="book-author">J Dennis Jean-Jacques</div></td>
+<td><div class="book-price">$17.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Value Investing: A Balanced Approach</div></td>
+<td><div class="book-author">Martin Whitman</div></td>
+<td><div class="book-price">$38.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">New Era Value Investing</div></td>
+<td><div class="book-author">Nancy Tengler</div></td>
+<td><div class="book-price">$36.99</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="books-mobile-cards">
+<div class="book-mobile-card">
+<div class="book-mobile-title">The Intelligent Investor (3rd ed)</div>
+<div class="book-mobile-author">Benjamin Graham</div>
+<div class="book-mobile-price">$25.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Security Analysis (2nd ed)</div>
+<div class="book-mobile-author">Benjamin Graham and David Dodd</div>
+<div class="book-mobile-price">$89.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Security Analysis (7th ed)</div>
+<div class="book-mobile-author">Benjamin Graham and David Dodd</div>
+<div class="book-mobile-price">$95.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Margin of Safety</div>
+<div class="book-mobile-author">Seth Klarman</div>
+<div class="book-mobile-price">$45.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Security Analysis (1st ed)</div>
+<div class="book-mobile-author">Benjamin Graham and David Dodd</div>
+<div class="book-mobile-price">$79.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Security Analysis (3rd ed)</div>
+<div class="book-mobile-author">Benjamin Graham and David Dodd</div>
+<div class="book-mobile-price">$85.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Security Analysis (6th ed)</div>
+<div class="book-mobile-author">Benjamin Graham and David Dodd</div>
+<div class="book-mobile-price">$92.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">The Rediscovered Benjamin Graham</div>
+<div class="book-mobile-author">Benjamin Graham</div>
+<div class="book-mobile-price">$35.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">The Intelligent Investor (Revised Edition)</div>
+<div class="book-mobile-author">Benjamin Graham</div>
+<div class="book-mobile-price">$25.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">The Intelligent Investor: The Classic Text On Value Investing</div>
+<div class="book-mobile-author">Benjamin Graham</div>
+<div class="book-mobile-price">$25.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Benjamin Graham on Investing</div>
+<div class="book-mobile-author">Benjamin Graham and Rodney G Klein</div>
+<div class="book-mobile-price">$22.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">The Little Book of Value Investing</div>
+<div class="book-mobile-author">Christopher Browne</div>
+<div class="book-mobile-price">$22.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Value Investing For Dummies</div>
+<div class="book-mobile-author">Peter Sander and Janet Haley</div>
+<div class="book-mobile-price">$29.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">The 8-Step Beginner's Guide to Value Investing</div>
+<div class="book-mobile-author">Freeman Publications</div>
+<div class="book-mobile-price">$15.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Active Value Investing</div>
+<div class="book-mobile-author">Vitaliy Katsenelson</div>
+<div class="book-mobile-price">$39.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Value Investing in Growth Companies</div>
+<div class="book-mobile-author">Rusmin Ang and Victor Chng</div>
+<div class="book-mobile-price">$45.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Modern Value Investing</div>
+<div class="book-mobile-author">Sven Carlin</div>
+<div class="book-mobile-price">$34.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Getting Started in Value Investing</div>
+<div class="book-mobile-author">Charles S Mizrahi</div>
+<div class="book-mobile-price">$26.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Applied Value Investing</div>
+<div class="book-mobile-author">Joseph Calandro</div>
+<div class="book-mobile-price">$43.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">All About Value Investing</div>
+<div class="book-mobile-author">Esme Faerber</div>
+<div class="book-mobile-price">$31.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">The Business of Value Investing</div>
+<div class="book-mobile-author">Sham Gad</div>
+<div class="book-mobile-price">$44.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Value Investing with Masters</div>
+<div class="book-mobile-author">Kirk Kazanjian</div>
+<div class="book-mobile-price">$35.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Concise Guide to Value Investing</div>
+<div class="book-mobile-author">Brian McNiven</div>
+<div class="book-mobile-price">$24.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">The Power of Modern Value Investing</div>
+<div class="book-mobile-author">Gary Smith and Margaret Smith</div>
+<div class="book-mobile-price">$41.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Value Investing Made Easy</div>
+<div class="book-mobile-author">Janet Lowe</div>
+<div class="book-mobile-price">$26.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Benjamin Graham On Value Investing</div>
+<div class="book-mobile-author">Janet Lowe</div>
+<div class="book-mobile-price">$22.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Deep Value Investing</div>
+<div class="book-mobile-author">Jeroen Bos</div>
+<div class="book-mobile-price">$33.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">The Art of Value Investing</div>
+<div class="book-mobile-author">Heins and Tilson</div>
+<div class="book-mobile-price">$39.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Value Investing For Beginners</div>
+<div class="book-mobile-author">Kevin Bailey</div>
+<div class="book-mobile-price">$16.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Modern Security Analysis</div>
+<div class="book-mobile-author">Whitman and Diz</div>
+<div class="book-mobile-price">$47.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Value Investing: Tools and Techniques</div>
+<div class="book-mobile-author">James Montier</div>
+<div class="book-mobile-price">$42.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">The Secrets of Value Investing You Need to Know</div>
+<div class="book-mobile-author">JD Rams</div>
+<div class="book-mobile-price">$21.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Strategic Value Investing</div>
+<div class="book-mobile-author">Horan, Johnson, Robinson</div>
+<div class="book-mobile-price">$43.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Taking Charge with Value Investing</div>
+<div class="book-mobile-author">Brian Nichols</div>
+<div class="book-mobile-price">$36.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Value Investing Today</div>
+<div class="book-mobile-author">Charles Brandes</div>
+<div class="book-mobile-price">$37.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Value Investing in Real Estate</div>
+<div class="book-mobile-author">Gary Eldred</div>
+<div class="book-mobile-price">$35.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Value Investing Checklist</div>
+<div class="book-mobile-author">Vivek Coudhary</div>
+<div class="book-mobile-price">$19.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">The Triumph of Value Investing</div>
+<div class="book-mobile-author">Janet Lowe</div>
+<div class="book-mobile-price">$29.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Value Investing Simplified</div>
+<div class="book-mobile-author">Cayden Chang</div>
+<div class="book-mobile-price">$22.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">What Is Value Investing?</div>
+<div class="book-mobile-author">Lawrence Cunningham</div>
+<div class="book-mobile-price">$25.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">The 5 Keys to Value Investing</div>
+<div class="book-mobile-author">J Dennis Jean-Jacques</div>
+<div class="book-mobile-price">$17.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Value Investing: A Balanced Approach</div>
+<div class="book-mobile-author">Martin Whitman</div>
+<div class="book-mobile-price">$38.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">New Era Value Investing</div>
+<div class="book-mobile-author">Nancy Tengler</div>
+<div class="book-mobile-price">$36.99</div>
+</div>
+</div>
+<h2>Share Investing & Stock Market</h2>
+<div class="books-table-container">
+<table class="books-table">
+<thead>
+<tr>
+<th>📚 Title</th>
+<th>✍️ Author(s)</th>
+<th>💰 Price</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><div class="book-title">Stocks for the Long Run</div></td>
+<td><div class="book-author">Jeremy Siegel</div></td>
+<td><div class="book-price">$29.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Investing the Templeton Way</div></td>
+<td><div class="book-author">Lauren Templeton and Scott Phillips</div></td>
+<td><div class="book-price">$32.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Benjamin Graham's Net-Net Stock Strategy</div></td>
+<td><div class="book-author">Evan Bleker</div></td>
+<td><div class="book-price">$24.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Good Stocks Cheap</div></td>
+<td><div class="book-author">Kenneth Marshall</div></td>
+<td><div class="book-price">$28.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">You Can Be A Stockmarket Genius</div></td>
+<td><div class="book-author">Joel Greenblatt</div></td>
+<td><div class="book-price">$26.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Mosaic: Perspectives on Investing</div></td>
+<td><div class="book-author">Mohnish Pabrai</div></td>
+<td><div class="book-price">$29.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Benjamin Graham and the Power of Growth Stocks</div></td>
+<td><div class="book-author">Martin, Hansen, Link, Nicoski</div></td>
+<td><div class="book-price">$36.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">The Net Current Asset Value Approach to Stock Investing</div></td>
+<td><div class="book-author">Victor Wendl</div></td>
+<td><div class="book-price">$27.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Stock Investing for Beginners</div></td>
+<td><div class="book-author">Everyman Investing</div></td>
+<td><div class="book-price">$18.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Concentrated Investing</div></td>
+<td><div class="book-author">Benello, van Biema, Carlisle</div></td>
+<td><div class="book-price">$39.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">The Case for Long-Term Investing</div></td>
+<td><div class="book-author">Jim Cullen</div></td>
+<td><div class="book-price">$28.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">A Modern Approach to Graham and Dodd Investing</div></td>
+<td><div class="book-author">Thomas Au</div></td>
+<td><div class="book-price">$41.99</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="books-mobile-cards">
+<div class="book-mobile-card">
+<div class="book-mobile-title">Stocks for the Long Run</div>
+<div class="book-mobile-author">Jeremy Siegel</div>
+<div class="book-mobile-price">$29.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Investing the Templeton Way</div>
+<div class="book-mobile-author">Lauren Templeton and Scott Phillips</div>
+<div class="book-mobile-price">$32.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Benjamin Graham's Net-Net Stock Strategy</div>
+<div class="book-mobile-author">Evan Bleker</div>
+<div class="book-mobile-price">$24.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Good Stocks Cheap</div>
+<div class="book-mobile-author">Kenneth Marshall</div>
+<div class="book-mobile-price">$28.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">You Can Be A Stockmarket Genius</div>
+<div class="book-mobile-author">Joel Greenblatt</div>
+<div class="book-mobile-price">$26.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Mosaic: Perspectives on Investing</div>
+<div class="book-mobile-author">Mohnish Pabrai</div>
+<div class="book-mobile-price">$29.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Benjamin Graham and the Power of Growth Stocks</div>
+<div class="book-mobile-author">Martin, Hansen, Link, Nicoski</div>
+<div class="book-mobile-price">$36.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">The Net Current Asset Value Approach to Stock Investing</div>
+<div class="book-mobile-author">Victor Wendl</div>
+<div class="book-mobile-price">$27.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Stock Investing for Beginners</div>
+<div class="book-mobile-author">Everyman Investing</div>
+<div class="book-mobile-price">$18.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Concentrated Investing</div>
+<div class="book-mobile-author">Benello, van Biema, Carlisle</div>
+<div class="book-mobile-price">$39.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">The Case for Long-Term Investing</div>
+<div class="book-mobile-author">Jim Cullen</div>
+<div class="book-mobile-price">$28.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">A Modern Approach to Graham and Dodd Investing</div>
+<div class="book-mobile-author">Thomas Au</div>
+<div class="book-mobile-price">$41.99</div>
+</div>
+</div>
+<h2>Financial Analysis & Valuation</h2>
+<div class="books-table-container">
+<table class="books-table">
+<thead>
+<tr>
+<th>📚 Title</th>
+<th>✍️ Author(s)</th>
+<th>💰 Price</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><div class="book-title">Benjamin Graham: The Father of Financial Analysis</div></td>
+<td><div class="book-author">Irving Kahn and Robert Milne</div></td>
+<td><div class="book-price">$42.99</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="books-mobile-cards">
+<div class="book-mobile-card">
+<div class="book-mobile-title">Benjamin Graham: The Father of Financial Analysis</div>
+<div class="book-mobile-author">Irving Kahn and Robert Milne</div>
+<div class="book-mobile-price">$42.99</div>
+</div>
+</div>
+<h2>Miscellaneous / Biographies</h2>
+<div class="books-table-container">
+<table class="books-table">
+<thead>
+<tr>
+<th>📚 Title</th>
+<th>✍️ Author(s)</th>
+<th>💰 Price</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><div class="book-title">The Joys Of Compounding</div></td>
+<td><div class="book-author">Gautam Baid</div></td>
+<td><div class="book-price">$19.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">The Little Book That Still Beats the Market</div></td>
+<td><div class="book-author">Joel Greenblatt</div></td>
+<td><div class="book-price">$24.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">The Education of a Value Investor</div></td>
+<td><div class="book-author">Guy Spier</div></td>
+<td><div class="book-price">$35.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">The Dhandho Investor</div></td>
+<td><div class="book-author">Mohnish Pabrai</div></td>
+<td><div class="book-price">$27.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Invest Like a Guru</div></td>
+<td><div class="book-author">Charlie Tian</div></td>
+<td><div class="book-price">$31.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Deep Value</div></td>
+<td><div class="book-author">Tobias Carlisle</div></td>
+<td><div class="book-price">$33.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">The Manual of Ideas</div></td>
+<td><div class="book-author">John Mihaljevic</div></td>
+<td><div class="book-price">$49.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">The Little Book That Beats the Market</div></td>
+<td><div class="book-author">Joel Greenblatt</div></td>
+<td><div class="book-price">$24.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Quantitative Value</div></td>
+<td><div class="book-author">Wesley Gray and Tobias Carlisle</div></td>
+<td><div class="book-price">$41.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">The Acquirer's Multiple</div></td>
+<td><div class="book-author">Tobias Carlisle</div></td>
+<td><div class="book-price">$37.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Value Trap</div></td>
+<td><div class="book-author">Brian Nelson</div></td>
+<td><div class="book-price">$38.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">The Conscious Investor</div></td>
+<td><div class="book-author">John Price</div></td>
+<td><div class="book-price">$33.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">F Wall Street</div></td>
+<td><div class="book-author">Joe Ponzio</div></td>
+<td><div class="book-price">$28.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Value.able</div></td>
+<td><div class="book-author">Roger Montgomery</div></td>
+<td><div class="book-price">$29.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">The Value Investors</div></td>
+<td><div class="book-author">Ronald Chan</div></td>
+<td><div class="book-price">$38.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">The Making of a Value Investor</div></td>
+<td><div class="book-author">Gautam Baid</div></td>
+<td><div class="book-price">$32.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Ben Graham Was a Quant</div></td>
+<td><div class="book-author">Steven Greiner</div></td>
+<td><div class="book-price">$34.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">What Would Ben Graham Do Now?</div></td>
+<td><div class="book-author">Jeffrey Towson</div></td>
+<td><div class="book-price">$31.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">Value Returns</div></td>
+<td><div class="book-author">Randy Beeman and James Schneider</div></td>
+<td><div class="book-price">$32.99</div></td>
+</tr>
+<tr>
+<td><div class="book-title">The Large-Cap Portfolio</div></td>
+<td><div class="book-author">Thomas Villalta</div></td>
+<td><div class="book-price">$34.99</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="books-mobile-cards">
+<div class="book-mobile-card">
+<div class="book-mobile-title">The Joys Of Compounding</div>
+<div class="book-mobile-author">Gautam Baid</div>
+<div class="book-mobile-price">$19.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">The Little Book That Still Beats the Market</div>
+<div class="book-mobile-author">Joel Greenblatt</div>
+<div class="book-mobile-price">$24.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">The Education of a Value Investor</div>
+<div class="book-mobile-author">Guy Spier</div>
+<div class="book-mobile-price">$35.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">The Dhandho Investor</div>
+<div class="book-mobile-author">Mohnish Pabrai</div>
+<div class="book-mobile-price">$27.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Invest Like a Guru</div>
+<div class="book-mobile-author">Charlie Tian</div>
+<div class="book-mobile-price">$31.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Deep Value</div>
+<div class="book-mobile-author">Tobias Carlisle</div>
+<div class="book-mobile-price">$33.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">The Manual of Ideas</div>
+<div class="book-mobile-author">John Mihaljevic</div>
+<div class="book-mobile-price">$49.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">The Little Book That Beats the Market</div>
+<div class="book-mobile-author">Joel Greenblatt</div>
+<div class="book-mobile-price">$24.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Quantitative Value</div>
+<div class="book-mobile-author">Wesley Gray and Tobias Carlisle</div>
+<div class="book-mobile-price">$41.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">The Acquirer's Multiple</div>
+<div class="book-mobile-author">Tobias Carlisle</div>
+<div class="book-mobile-price">$37.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Value Trap</div>
+<div class="book-mobile-author">Brian Nelson</div>
+<div class="book-mobile-price">$38.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">The Conscious Investor</div>
+<div class="book-mobile-author">John Price</div>
+<div class="book-mobile-price">$33.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">F Wall Street</div>
+<div class="book-mobile-author">Joe Ponzio</div>
+<div class="book-mobile-price">$28.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Value.able</div>
+<div class="book-mobile-author">Roger Montgomery</div>
+<div class="book-mobile-price">$29.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">The Value Investors</div>
+<div class="book-mobile-author">Ronald Chan</div>
+<div class="book-mobile-price">$38.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">The Making of a Value Investor</div>
+<div class="book-mobile-author">Gautam Baid</div>
+<div class="book-mobile-price">$32.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Ben Graham Was a Quant</div>
+<div class="book-mobile-author">Steven Greiner</div>
+<div class="book-mobile-price">$34.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">What Would Ben Graham Do Now?</div>
+<div class="book-mobile-author">Jeffrey Towson</div>
+<div class="book-mobile-price">$31.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">Value Returns</div>
+<div class="book-mobile-author">Randy Beeman and James Schneider</div>
+<div class="book-mobile-price">$32.99</div>
+</div>
+<div class="book-mobile-card">
+<div class="book-mobile-title">The Large-Cap Portfolio</div>
+<div class="book-mobile-author">Thomas Villalta</div>
+<div class="book-mobile-price">$34.99</div>
+</div>
+</div>
+</section>
     </div>
 
     <script>
-        // Mobile menu functionality
-        function toggleMobileMenu() {
-            const drawer = document.getElementById('mobile-drawer');
-            const toggle = document.getElementById('mobile-toggle');
-
-            drawer.classList.toggle('open');
-            toggle.classList.toggle('open');
+        // Mobile drawer functionality
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        const drawerClose = document.getElementById('drawer-close');
+        
+        if (mobileToggle && mobileDrawer) {
+            mobileToggle.addEventListener('click', () => {
+                console.log('Hamburger menu clicked!');
+                mobileDrawer.classList.add('open');
+                document.body.style.overflow = 'hidden';
+                console.log('Drawer should be open now');
+            });
         }
-
-        function closeMobileMenu() {
-            const drawer = document.getElementById('mobile-drawer');
-            const toggle = document.getElementById('mobile-toggle');
-
-            drawer.classList.remove('open');
-            toggle.classList.remove('open');
+        
+        if (drawerClose && mobileDrawer) {
+            drawerClose.addEventListener('click', () => {
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            });
         }
-
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu event listeners
-            const mobileToggle = document.getElementById('mobile-toggle');
-            const drawerClose = document.getElementById('drawer-close');
-
-            if (mobileToggle) {
-                mobileToggle.addEventListener('click', toggleMobileMenu);
-            }
-
-            if (drawerClose) {
-                drawerClose.addEventListener('click', closeMobileMenu);
-            }
-
-            // Close menu when clicking outside
-            document.addEventListener('click', function(event) {
-                const drawer = document.getElementById('mobile-drawer');
-                const toggle = document.getElementById('mobile-toggle');
-
-                if (drawer.classList.contains('open') &&
-                    !drawer.contains(event.target) &&
-                    !mobileToggle.contains(event.target)) {
-                    closeMobileMenu();
+        
+        // Close drawer when clicking outside
+        if (mobileDrawer) {
+            mobileDrawer.addEventListener('click', (e) => {
+                if (e.target === mobileDrawer) {
+                    mobileDrawer.classList.remove('open');
+                    document.body.style.overflow = '';
                 }
             });
+        }
 
-            // Sticky header functionality
-            const header = document.getElementById('main-header');
-            const sticky = header.offsetTop;
+        // Sticky header functionality
+        const header = document.getElementById('main-header');
+        const sticky = header.offsetTop;
 
-            function handleScroll() {
-                if (window.pageYOffset > sticky) {
-                    header.classList.add('sticky-header');
-                } else {
-                    header.classList.remove('sticky-header');
-                }
+        function handleScroll() {
+            if (window.pageYOffset > sticky) {
+                header.classList.add('sticky-header');
+            } else {
+                header.classList.remove('sticky-header');
             }
+        }
 
-            window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll);
 
-            // Mobile cards functionality
-            function toggleMobileLayout() {
-                const tableContainer = document.querySelector('.books-table-container');
-                const mobileCards = document.querySelector('.books-mobile-cards');
-                
-                if (window.innerWidth <= 768) {
-                    // Mobile: show cards, hide table
-                    if (tableContainer) tableContainer.style.display = 'none';
-                    if (mobileCards) mobileCards.style.display = 'block';
-                } else {
-                    // Desktop: show table, hide cards
-                    if (tableContainer) tableContainer.style.display = 'block';
-                    if (mobileCards) mobileCards.style.display = 'none';
-                }
+        // Mobile cards functionality
+        function toggleMobileLayout() {
+            const tableContainer = document.querySelector('.books-table-container');
+            const mobileCards = document.querySelector('.books-mobile-cards');
+            
+            if (window.innerWidth <= 768) {
+                // Mobile: show cards, hide table
+                if (tableContainer) tableContainer.style.display = 'none';
+                if (mobileCards) mobileCards.style.display = 'block';
+            } else {
+                // Desktop: show table, hide cards
+                if (tableContainer) tableContainer.style.display = 'block';
+                if (mobileCards) mobileCards.style.display = 'none';
             }
+        }
 
-            // Initial check
-            toggleMobileLayout();
+        // Initial check
+        toggleMobileLayout();
 
-            // Listen for window resize
-            window.addEventListener('resize', toggleMobileLayout);
-        });
+        // Listen for window resize
+        window.addEventListener('resize', toggleMobileLayout);
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+

@@ -151,7 +151,7 @@
 
         /* Page Title Section */
         .page-title-section {
-            margin: 24px 0 32px 0;
+            margin: 20px 0 19px 0;
             padding: 0;
         }
 
@@ -177,7 +177,7 @@
             margin: 0 0 0px 0;
             text-transform: uppercase;
             letter-spacing: 1px;
-            border-bottom: 2px solid #e0e0e0;
+            border-bottom: 15px solid #ffffff00;
             padding: 4px 0 4px 4px; /* 4px left padding inside bar */
             background: rgba(250, 251, 252, 0.65); /* Reduced opacity by 20% */
             height: 32px; /* Reduced from 36px to 32px */
@@ -938,11 +938,11 @@
         /* Mobile Optimizations */
         @media (max-width: 768px) {
             .classical-readings-page-content {
-                padding: 16px;
+                padding: 0px;
             }
 
             .page-title-section {
-                margin: 16px 0 24px 0;
+                margin: 20px 19px;
             }
 
             .page-title-section h1 {
@@ -1118,51 +1118,53 @@
         <div class="classical-readings-page-content">
             <!-- Header -->
             <header class="header sticky-header" role="banner">
-                <div class="container">
-                    <div class="header-content">
+                <div class="container"><div class="header-content">
                         <div class="logo">
                             <img src="G&D Logo.png" alt="Graham and Doddsville" class="logo-image">
                         </div>
-                        <!-- Desktop Navigation (hidden on mobile) -->
-                        <nav class="main-nav desktop-only" role="navigation" aria-label="Main navigation">
+                        
+                        <nav class="main-nav desktop-only">
                             <ul>
-                                <li><a href="#" onclick="showAboutPage()" class="nav-link">ABOUT</a></li>
-                                <li><a href="#" onclick="showAdvertisePage()" class="nav-link">ADVERTISE</a></li>
-                                <li><a href="#" class="nav-link">SUBSCRIBE</a></li>
-                                <li><a href="#" onclick="showContactPage()" class="nav-link">CONTACT US</a></li>
+                                <li><a href="index.html" class="nav-link">HOME</a></li>
+                                <li><a href="classical-readings.html" class="nav-link">CLASSICAL READINGS</a></li>
+                                <li><a href="wealth-creation.html" class="nav-link">WEALTH CREATION</a></li>
+                                <li><a href="financial-markets.html" class="nav-link">FINANCIAL MARKETS</a></li>
+                                <li><a href="resources.html" class="nav-link">RESOURCES</a></li>
+                                <li><a href="events.html" class="nav-link">EVENTS</a></li>
                             </ul>
                         </nav>
                         
-                        <!-- Mobile Hamburger Menu -->
+                        
                         <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
                             <span class="hamburger-line"></span>
                             <span class="hamburger-line"></span>
                             <span class="hamburger-line"></span>
                         </button>
-                    </div>
-                </div>
-            </header>
+                    </div></header>
 
             <!-- Mobile Navigation Drawer -->
             <div class="mobile-drawer" id="mobile-drawer">
-                <div class="drawer-header">
-                    <img src="G&D Logo.png" alt="Graham and Doddsville" class="drawer-logo">
-                    <button class="drawer-close" id="drawer-close" aria-label="Close menu">×</button>
-                </div>
-                <nav class="drawer-nav">
-                    <ul class="drawer-menu">
-                        <li><a href="index.html" class="drawer-link">Home</a></li>
-                        <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
-                        <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
-                        <li><a href="legal-taxation.html" class="drawer-link">Legal & Taxation</a></li>
-                        <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
-                        <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
-                        <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
-                        <li><a href="economics.html" class="drawer-link">Economics</a></li>
-                        <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
-                        <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
-                        <li><a href="resources.html" class="drawer-link">Resources</a></li>
-                        <li><a href="events.html" class="drawer-link">Events</a></li>
+        <div class="drawer-header">
+            <img src="G&D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
+            <button class="drawer-close" id="drawer-close" aria-label="Close menu"></button>
+        </div>
+        <nav class="drawer-nav">
+            <ul class="drawer-menu">
+                <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
+                <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
+                <li><a href="legal-taxation.html" class="drawer-link">Legal & Taxation</a></li>
+                <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
+                <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
+                <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
+                <li><a href="#" class="drawer-link">Investment Analysis</a></li>
+                <li><a href="economics.html" class="drawer-link">Economics</a></li>
+                <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
+                <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
+                <li><a href="resources.html" class="drawer-link">Resources</a></li>
+                <li><a href="events.html" class="drawer-link">Events & Seminars</a></li>
+            </ul>
+        </nav>
+    </div>
                     </ul>
                 </nav>
             </div>
@@ -1248,34 +1250,34 @@
                     </div>
                     
                     <div class="partnership-letters-grid">
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1959.02.11.pdf" class="letter-link" target="_blank">1959-Feb</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1960.02.20.pdf" class="letter-link" target="_blank">1960-Feb</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1961.01.30.pdf" class="letter-link" target="_blank">1961-Jan</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1961.07.31.pdf" class="letter-link" target="_blank">1961-Jul</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1962.01.29.pdf" class="letter-link" target="_blank">1962-Jan</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1962.07.30.pdf" class="letter-link" target="_blank">1962-Jul</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1962.12.31.pdf" class="letter-link" target="_blank">1962-Dec</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1963.01.31.pdf" class="letter-link" target="_blank">1963-Jan</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1963.07.31.pdf" class="letter-link" target="_blank">1963-Jul</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1963.11.30.pdf" class="letter-link" target="_blank">1963-Nov</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1963.12.31.pdf" class="letter-link" target="_blank">1963-Dec</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1964.01.31.pdf" class="letter-link" target="_blank">1964-Jan</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1964.07.31.pdf" class="letter-link" target="_blank">1964-Jul</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1965.01.31.pdf" class="letter-link" target="_blank">1965-Jan</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1965.07.31.pdf" class="letter-link" target="_blank">1965-Jul</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1965.11.30.pdf" class="letter-link" target="_blank">1965-Nov</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1966.01.31.pdf" class="letter-link" target="_blank">1966-Jan</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1966.07.31.pdf" class="letter-link" target="_blank">1966-Jul</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1966.11.30.pdf" class="letter-link" target="_blank">1966-Nov</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1967.01.31.pdf" class="letter-link" target="_blank">1967-Jan</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1967.07.31.pdf" class="letter-link" target="_blank">1967-Jul</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1967.10.31.pdf" class="letter-link" target="_blank">1967-Oct</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1967.11.30.pdf" class="letter-link" target="_blank">1967-Nov</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1968.01.31.pdf" class="letter-link" target="_blank">1968-Jan</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1968.07.31.pdf" class="letter-link" target="_blank">1968-Jul</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1968.11.30.pdf" class="letter-link" target="_blank">1968-Nov</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1969.01.31.pdf" class="letter-link" target="_blank">1969-Jan</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-partnership-letters/1969.05.31.pdf" class="letter-link" target="_blank">1969-May</a>
+                        <a href="pdfs/warren-buffet-partnership%20letters/1959.02.11.pdf" class="letter-link" target="_blank">1959-Feb</a>
+                        <a href="pdfs/warren-buffet-partnership%20letters/1960.02.20.pdf" class="letter-link" target="_blank">1960-Feb</a>
+                        <a href="pdfs/warren-buffet-partnership%20letters/1961.01.30.pdf" class="letter-link" target="_blank">1961-Jan</a>
+                        <a href="pdfs/warren-buffet-partnership%20letters/1961.07.22.pdf" class="letter-link" target="_blank">1961-Jul</a>
+                        <a href="pdfs/warren-buffet-partnership%20letters/1962.01.24.pdf" class="letter-link" target="_blank">1962-Jan</a>
+                        <a href="pdfs/warren-buffet-partnership%20letters/1962.07.06.pdf" class="letter-link" target="_blank">1962-Jul</a>
+                        <a href="pdfs/warren-buffet-partnership%20letters/1962.12.24.pdf" class="letter-link" target="_blank">1962-Dec</a>
+                        <a href="pdfs/warren-buffet-partnership%20letters/1963.01.18.pdf" class="letter-link" target="_blank">1963-Jan</a>
+                        <a href="pdfs/warren-buffet-partnership%20letters/1963.07.10.pdf" class="letter-link" target="_blank">1963-Jul</a>
+                        <a href="pdfs/warren-buffet-partnership%20letters/1963.11.06.pdf" class="letter-link" target="_blank">1963-Nov</a>
+                        <a href="pdfs/warren-buffet-partnership%20letters/1963.12.26.pdf" class="letter-link" target="_blank">1963-Dec</a>
+                        <a href="pdfs/warren-buffet-partnership%20letters/1964.01.18.pdf" class="letter-link" target="_blank">1964-Jan</a>
+                        <a href="pdfs/warren-buffet-partnership%20letters/1964.07.08.pdf" class="letter-link" target="_blank">1964-Jul</a>
+                        <a href="pdfs/warren-buffet-partnership%20letters/1965.01.18.pdf" class="letter-link" target="_blank">1965-Jan</a>
+                        <a href="pdfs/warren-buffet-partnership%20letters/1965.07.09.pdf" class="letter-link" target="_blank">1965-Jul</a>
+                        <a href="pdfs/warren-buffet-partnership%20letters/1965.11.01.pdf" class="letter-link" target="_blank">1965-Nov</a>
+                        <a href="pdfs/warren-buffet-partnership%20letters/1966.01.20.pdf" class="letter-link" target="_blank">1966-Jan</a>
+                        <a href="pdfs/warren-buffet-partnership%20letters/1966.07.12.pdf" class="letter-link" target="_blank">1966-Jul</a>
+                        <a href="pdfs/warren-buffet-partnership%20letters/1966.11.01.pdf" class="letter-link" target="_blank">1966-Nov</a>
+                        <a href="pdfs/warren-buffet-partnership%20letters/1967.01.25.pdf" class="letter-link" target="_blank">1967-Jan</a>
+                        <a href="pdfs/warren-buffet-partnership%20letters/1967.07.12.pdf" class="letter-link" target="_blank">1967-Jul</a>
+                        <a href="pdfs/warren-buffet-partnership%20letters/1967.10.09.pdf" class="letter-link" target="_blank">1967-Oct</a>
+                        <a href="pdfs/warren-buffet-partnership%20letters/1967.11.01.pdf" class="letter-link" target="_blank">1967-Nov</a>
+                        <a href="pdfs/warren-buffet-partnership%20letters/1968.01.24.pdf" class="letter-link" target="_blank">1968-Jan</a>
+                        <a href="pdfs/warren-buffet-partnership%20letters/1968.07.11.pdf" class="letter-link" target="_blank">1968-Jul</a>
+                        <a href="pdfs/warren-buffet-partnership%20letters/1968.11.01.pdf" class="letter-link" target="_blank">1968-Nov</a>
+                        <a href="pdfs/warren-buffet-partnership%20letters/1969.01.22.pdf" class="letter-link" target="_blank">1969-Jan</a>
+                        <a href="pdfs/warren-buffet-partnership%20letters/1969.05.29.pdf" class="letter-link" target="_blank">1969-May</a>
                     </div>
                 </div>
             </div>
@@ -1300,13 +1302,13 @@
                     </div>
                     
                     <div class="unpublished-letters-grid">
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-unpublished-letters/1970.pdf" class="letter-link" target="_blank">1970</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-unpublished-letters/1972.pdf" class="letter-link" target="_blank">1972</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-unpublished-letters/1973.pdf" class="letter-link" target="_blank">1973</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-unpublished-letters/1974.pdf" class="letter-link" target="_blank">1974</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-unpublished-letters/1975.pdf" class="letter-link" target="_blank">1975</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-unpublished-letters/1976.pdf" class="letter-link" target="_blank">1976</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-unpublished-letters/1977.pdf" class="letter-link" target="_blank">1977</a>
+                        <a href="pdfs/buffetts-unpublished-letters-to-shareholders/1970.pdf" class="letter-link" target="_blank">1970</a>
+                        <a href="pdfs/buffetts-unpublished-letters-to-shareholders/1972.pdf" class="letter-link" target="_blank">1972</a>
+                        <a href="pdfs/buffetts-unpublished-letters-to-shareholders/1973.pdf" class="letter-link" target="_blank">1973</a>
+                        <a href="pdfs/buffetts-unpublished-letters-to-shareholders/1974.pdf" class="letter-link" target="_blank">1974</a>
+                        <a href="pdfs/buffetts-unpublished-letters-to-shareholders/1975.pdf" class="letter-link" target="_blank">1975</a>
+                        <a href="pdfs/buffetts-unpublished-letters-to-shareholders/1976.pdf" class="letter-link" target="_blank">1976</a>
+                        <a href="pdfs/buffetts-unpublished-letters-to-shareholders/1977.pdf" class="letter-link" target="_blank">1977</a>
                     </div>
                 </div>
             </div>
@@ -1329,23 +1331,23 @@
                     </div>
                     
                     <div class="annual-letters-grid">
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1977.pdf" class="letter-link" target="_blank">1977</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1978.pdf" class="letter-link" target="_blank">1978</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1979.pdf" class="letter-link" target="_blank">1979</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1980.pdf" class="letter-link" target="_blank">1980</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1981.pdf" class="letter-link" target="_blank">1981</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1982.pdf" class="letter-link" target="_blank">1982</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1983.pdf" class="letter-link" target="_blank">1983</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1984.pdf" class="letter-link" target="_blank">1984</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1985.pdf" class="letter-link" target="_blank">1985</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1986.pdf" class="letter-link" target="_blank">1986</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1987.pdf" class="letter-link" target="_blank">1987</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1988.pdf" class="letter-link" target="_blank">1988</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1989.pdf" class="letter-link" target="_blank">1989</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1990.pdf" class="letter-link" target="_blank">1990</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1991.pdf" class="letter-link" target="_blank">1991</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1992.pdf" class="letter-link" target="_blank">1992</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1993.pdf" class="letter-link" target="_blank">1993</a>
+                        <a href="https://www.berkshirehathaway.com/letters/1977.html" class="letter-link" target="_blank">1977</a>
+                        <a href="https://www.berkshirehathaway.com/letters/1978.html" class="letter-link" target="_blank">1978</a>
+                        <a href="https://www.berkshirehathaway.com/letters/1979.html" class="letter-link" target="_blank">1979</a>
+                        <a href="https://www.berkshirehathaway.com/letters/1980.html" class="letter-link" target="_blank">1980</a>
+                        <a href="https://www.berkshirehathaway.com/letters/1981.html" class="letter-link" target="_blank">1981</a>
+                        <a href="https://www.berkshirehathaway.com/letters/1982.html" class="letter-link" target="_blank">1982</a>
+                        <a href="https://www.berkshirehathaway.com/letters/1983.html" class="letter-link" target="_blank">1983</a>
+                        <a href="https://www.berkshirehathaway.com/letters/1984.html" class="letter-link" target="_blank">1984</a>
+                        <a href="https://www.berkshirehathaway.com/letters/1985.html" class="letter-link" target="_blank">1985</a>
+                        <a href="https://www.berkshirehathaway.com/letters/1986.html" class="letter-link" target="_blank">1986</a>
+                        <a href="https://www.berkshirehathaway.com/letters/1987.html" class="letter-link" target="_blank">1987</a>
+                        <a href="https://www.berkshirehathaway.com/letters/1988.html" class="letter-link" target="_blank">1988</a>
+                        <a href="https://www.berkshirehathaway.com/letters/1989.html" class="letter-link" target="_blank">1989</a>
+                        <a href="https://www.berkshirehathaway.com/letters/1990.html" class="letter-link" target="_blank">1990</a>
+                        <a href="https://www.berkshirehathaway.com/letters/1991.html" class="letter-link" target="_blank">1991</a>
+                        <a href="https://www.berkshirehathaway.com/letters/1992.html" class="letter-link" target="_blank">1992</a>
+                        <a href="https://www.berkshirehathaway.com/letters/1993.html" class="letter-link" target="_blank">1993</a>
                         <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1994.pdf" class="letter-link" target="_blank">1994</a>
                         <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1995.pdf" class="letter-link" target="_blank">1995</a>
                         <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1996.pdf" class="letter-link" target="_blank">1996</a>
@@ -1353,29 +1355,29 @@
                         <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1998.pdf" class="letter-link" target="_blank">1998</a>
                         <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/1999.pdf" class="letter-link" target="_blank">1999</a>
                         <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2000.pdf" class="letter-link" target="_blank">2000</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2001.pdf" class="letter-link" target="_blank">2001</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2002.pdf" class="letter-link" target="_blank">2002</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2003.pdf" class="letter-link" target="_blank">2003</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2004.pdf" class="letter-link" target="_blank">2004</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2005.pdf" class="letter-link" target="_blank">2005</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2006.pdf" class="letter-link" target="_blank">2006</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2007.pdf" class="letter-link" target="_blank">2007</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2008.pdf" class="letter-link" target="_blank">2008</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2009.pdf" class="letter-link" target="_blank">2009</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2010.pdf" class="letter-link" target="_blank">2010</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2011.pdf" class="letter-link" target="_blank">2011</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2012.pdf" class="letter-link" target="_blank">2012</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2013.pdf" class="letter-link" target="_blank">2013</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2014.pdf" class="letter-link" target="_blank">2014</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2015.pdf" class="letter-link" target="_blank">2015</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2016.pdf" class="letter-link" target="_blank">2016</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2017.pdf" class="letter-link" target="_blank">2017</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2018.pdf" class="letter-link" target="_blank">2018</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2019.pdf" class="letter-link" target="_blank">2019</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2020.pdf" class="letter-link" target="_blank">2020</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2021.pdf" class="letter-link" target="_blank">2021</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2022.pdf" class="letter-link" target="_blank">2022</a>
-                        <a href="https://api.grahamanddoddsville.com.au/readings/buffett-annual-letters/2023.pdf" class="letter-link" target="_blank">2023</a>
+                        <a href="https://www.berkshirehathaway.com/letters/2001ar/2001letter.html" class="letter-link" target="_blank">2001</a>
+                        <a href="pdfs/annual-letters-to-berkshire-hathaway-shareholders/2002pdf.pdf" class="letter-link" target="_blank">2002</a>
+                        <a href="pdfs/annual-letters-to-berkshire-hathaway-shareholders/2003ltr.pdf" class="letter-link" target="_blank">2003</a>
+                        <a href="pdfs/annual-letters-to-berkshire-hathaway-shareholders/2004ltr.pdf" class="letter-link" target="_blank">2004</a>
+                        <a href="pdfs/annual-letters-to-berkshire-hathaway-shareholders/2005ltr.pdf" class="letter-link" target="_blank">2005</a>
+                        <a href="pdfs/annual-letters-to-berkshire-hathaway-shareholders/2006ltr.pdf" class="letter-link" target="_blank">2006</a>
+                        <a href="pdfs/annual-letters-to-berkshire-hathaway-shareholders/2007ltr.pdf" class="letter-link" target="_blank">2007</a>
+                        <a href="pdfs/annual-letters-to-berkshire-hathaway-shareholders/2008ltr.pdf" class="letter-link" target="_blank">2008</a>
+                        <a href="pdfs/annual-letters-to-berkshire-hathaway-shareholders/2009ltr.pdf" class="letter-link" target="_blank">2009</a>
+                        <a href="pdfs/annual-letters-to-berkshire-hathaway-shareholders/2010ltr.pdf" class="letter-link" target="_blank">2010</a>
+                        <a href="pdfs/annual-letters-to-berkshire-hathaway-shareholders/2011ltr.pdf" class="letter-link" target="_blank">2011</a>
+                        <a href="pdfs/annual-letters-to-berkshire-hathaway-shareholders/2012ltr.pdf" class="letter-link" target="_blank">2012</a>
+                        <a href="pdfs/annual-letters-to-berkshire-hathaway-shareholders/2013ltr.pdf" class="letter-link" target="_blank">2013</a>
+                        <a href="pdfs/annual-letters-to-berkshire-hathaway-shareholders/2014ltr.pdf" class="letter-link" target="_blank">2014</a>
+                        <a href="pdfs/annual-letters-to-berkshire-hathaway-shareholders/2015ltr.pdf" class="letter-link" target="_blank">2015</a>
+                        <a href="pdfs/annual-letters-to-berkshire-hathaway-shareholders/2016ltr.pdf" class="letter-link" target="_blank">2016</a>
+                        <a href="pdfs/annual-letters-to-berkshire-hathaway-shareholders/2017ltr.pdf" class="letter-link" target="_blank">2017</a>
+                        <a href="pdfs/annual-letters-to-berkshire-hathaway-shareholders/2018ltr.pdf" class="letter-link" target="_blank">2018</a>
+                        <a href="pdfs/annual-letters-to-berkshire-hathaway-shareholders/2019ltr.pdf" class="letter-link" target="_blank">2019</a>
+                        <a href="pdfs/annual-letters-to-berkshire-hathaway-shareholders/2020ltr.pdf" class="letter-link" target="_blank">2020</a>
+                        <a href="pdfs/annual-letters-to-berkshire-hathaway-shareholders/2021ltr.pdf" class="letter-link" target="_blank">2021</a>
+                        <a href="pdfs/annual-letters-to-berkshire-hathaway-shareholders/2022ltr.pdf" class="letter-link" target="_blank">2022</a>
+                        <a href="pdfs/annual-letters-to-berkshire-hathaway-shareholders/2023ltr.pdf" class="letter-link" target="_blank">2023</a>
                     </div>
                     
                     <div class="annual-letters-footer">
@@ -1455,7 +1457,7 @@
                         
                         <div class="essay-download">
                             <p><strong>To read the full essay, click below:</strong></p>
-                            <a href="https://api.grahamanddoddsville.com.au/readings/superinvestors-of-graham-and-doddsville/1984.pdf" class="essay-link" target="_blank">Download "The Superinvestors of Graham and Doddsville" (PDF)</a>
+                            <a href="pdfs/superinvestors-of-graham-and-doddsville/1984.pdf" class="essay-link" target="_blank">Download "The Superinvestors of Graham and Doddsville" (PDF)</a>
                         </div>
                     </div>
                 </div>
@@ -1514,19 +1516,19 @@
                     <div class="partnership-downloads">
                         <h3>Available Partnership Letters:</h3>
                         <div class="partnership-links-container">
-                            <a href="https://api.grahamanddoddsville.com.au/readings/graham-newman-letters/1946.pdf" target="_blank" class="partnership-download-link">1946</a>
-                            <a href="https://api.grahamanddoddsville.com.au/readings/graham-newman-letters/1947.pdf" target="_blank" class="partnership-download-link">1947</a>
-                            <a href="https://api.grahamanddoddsville.com.au/readings/graham-newman-letters/1948.pdf" target="_blank" class="partnership-download-link">1948</a>
-                            <a href="https://api.grahamanddoddsville.com.au/readings/graham-newman-letters/1949.pdf" target="_blank" class="partnership-download-link">1949</a>
-                            <a href="https://api.grahamanddoddsville.com.au/readings/graham-newman-letters/1950.pdf" target="_blank" class="partnership-download-link">1950</a>
-                            <a href="https://api.grahamanddoddsville.com.au/readings/graham-newman-letters/1951.pdf" target="_blank" class="partnership-download-link">1951</a>
-                            <a href="https://api.grahamanddoddsville.com.au/readings/graham-newman-letters/1952.pdf" target="_blank" class="partnership-download-link">1952</a>
-                            <a href="https://api.grahamanddoddsville.com.au/readings/graham-newman-letters/1953.pdf" target="_blank" class="partnership-download-link">1953</a>
-                            <a href="https://api.grahamanddoddsville.com.au/readings/graham-newman-letters/1954.pdf" target="_blank" class="partnership-download-link">1954</a>
-                            <a href="https://api.grahamanddoddsville.com.au/readings/graham-newman-letters/1955.pdf" target="_blank" class="partnership-download-link">1955</a>
-                            <a href="https://api.grahamanddoddsville.com.au/readings/graham-newman-letters/1956.pdf" target="_blank" class="partnership-download-link">1956</a>
-                            <a href="https://api.grahamanddoddsville.com.au/readings/graham-newman-letters/1957.pdf" target="_blank" class="partnership-download-link">1957</a>
-                            <a href="https://api.grahamanddoddsville.com.au/readings/graham-newman-letters/1958.pdf" target="_blank" class="partnership-download-link">1958</a>
+                            <a href="pdfs/graham-newman-partnership-letters/1946.pdf" target="_blank" class="partnership-download-link">1946</a>
+                            <a href="pdfs/graham-newman-partnership-letters/1947.pdf" target="_blank" class="partnership-download-link">1947</a>
+                            <a href="pdfs/graham-newman-partnership-letters/1948.pdf" target="_blank" class="partnership-download-link">1948</a>
+                            <a href="pdfs/graham-newman-partnership-letters/1949.pdf" target="_blank" class="partnership-download-link">1949</a>
+                            <a href="pdfs/graham-newman-partnership-letters/1950.pdf" target="_blank" class="partnership-download-link">1950</a>
+                            <a href="pdfs/graham-newman-partnership-letters/1951.pdf" target="_blank" class="partnership-download-link">1951</a>
+                            <a href="pdfs/graham-newman-partnership-letters/1952.pdf" target="_blank" class="partnership-download-link">1952</a>
+                            <a href="pdfs/graham-newman-partnership-letters/1953.pdf" target="_blank" class="partnership-download-link">1953</a>
+                            <a href="pdfs/graham-newman-partnership-letters/1954.pdf" target="_blank" class="partnership-download-link">1954</a>
+                            <a href="pdfs/graham-newman-partnership-letters/1955.pdf" target="_blank" class="partnership-download-link">1955</a>
+                            <a href="pdfs/graham-newman-partnership-letters/1956.pdf" target="_blank" class="partnership-download-link">1956</a>
+                            <a href="pdfs/graham-newman-partnership-letters/1957.pdf" target="_blank" class="partnership-download-link">1957</a>
+                            <a href="pdfs/graham-newman-partnership-letters/1958.pdf" target="_blank" class="partnership-download-link">1958</a>
                         </div>
                     </div>
                 </div>
@@ -1615,53 +1617,53 @@
                 id: 8,
                 title: "Should Rich Corporations Return Stockholders' Cash?",
                 author: "Benjamin Graham",
-                year: "1988",
-                url: "https://api.grahamanddoddsville.com.au/readings/letter-to-shareholders-warren-buffett-1988.pdf",
-                decade: "1980s",
-                type: "letter"
+                year: "1932",
+                url: "pdfs/should-rich-corporations-return-stockholders-cash-benjamin-graham/should-rich-corporations-return-stockholders-cash-benjamin-graham-1932.pdf",
+                decade: "1930s",
+                type: "article"
             },
             {
                 id: 9,
                 title: "Should Rich But Losing Corporations Be Liquidated?",
-                author: "Warren Buffett",
-                year: "1989",
-                url: "https://api.grahamanddoddsville.com.au/readings/letter-to-shareholders-warren-buffett-1989.pdf",
-                decade: "1980s",
-                type: "letter"
+                author: "Benjamin Graham",
+                year: "1932",
+                url: "pdfs/8-to-12/should-rich-but-losing-corporations-be-liquidated-benjamin-graham-1932.pdf",
+                decade: "1930s",
+                type: "article"
             },
             {
                 id: 10,
                 title: "Selling America for 50 Cents on the Dollar?",
-                author: "Warren Buffett",
-                year: "1990",
-                url: "https://api.grahamanddoddsville.com.au/readings/letter-to-shareholders-warren-buffett-1990.pdf",
-                decade: "1990s",
-                type: "letter"
+                author: "Benjamin Graham",
+                year: "1932",
+                url: "pdfs/8-to-12/selling-america-for-50-cents-on-the-dollar-benjamin-graham-1932.pdf",
+                decade: "1930s",
+                type: "article"
             },
             {
                 id: 11,
                 title: "Special Situations",
-                author: "Warren Buffett",
-                year: "1991",
-                url: "https://api.grahamanddoddsville.com.au/readings/letter-to-shareholders-warren-buffett-1991.pdf",
-                decade: "1990s",
-                type: "letter"
+                author: "Benjamin Graham",
+                year: "1946",
+                url: "pdfs/8-to-12/special-situations-benjamin-graham-1946.pdf",
+                decade: "1940s",
+                type: "article"
             },
             {
                 id: 12,
                 title: "Valuation Techniques",
-                author: "Warren Buffett",
-                year: "1992",
-                url: "https://api.grahamanddoddsville.com.au/readings/letter-to-shareholders-warren-buffett-1992.pdf",
-                decade: "1990s",
-                type: "letter"
+                author: "Benjamin Graham",
+                year: "1947",
+                url: "pdfs/8-to-12/valuation-techniques-benjamin-graham-1947.pdf",
+                decade: "1940s",
+                type: "article"
             },
             {
                 id: 13,
                 title: "The Security I Like Best",
                 author: "Warren Buffett",
                 year: "1951",
-                url: "https://api.grahamanddoddsville.com.au/readings/the-security-i-like-best-warren-buffett-1951.pdf",
+                url: "pdfs/13-36/the-security-i-like-best-warren-buffett-1951.pdf",
                 decade: "1950s",
                 type: "article"
             },
@@ -1670,7 +1672,7 @@
                 title: "Toward a Science of Security Analysis",
                 author: "Benjamin Graham",
                 year: "1952",
-                url: "https://api.grahamanddoddsville.com.au/readings/toward-a-science-of-security-analysis-benjamin-graham-1952.pdf",
+                url: "pdfs/13-36/toward-a-science-of-security-analysis-benjamin-graham-1952.pdf",
                 decade: "1950s",
                 type: "article"
             },
@@ -1688,7 +1690,7 @@
                 title: "How to Handle Your Money",
                 author: "Benjamin Graham",
                 year: "1955",
-                url: "https://api.grahamanddoddsville.com.au/readings/how-to-handle-your-money-benjamin-graham-1955.pdf",
+                url: "pdfs/13-36/how-to-handle-your-money-benjamin-graham-1955.pdf",
                 decade: "1950s",
                 type: "article"
             },
@@ -1706,7 +1708,7 @@
                 title: "Stock Market Warning: Danger Ahead",
                 author: "Benjamin Graham",
                 year: "1960",
-                url: "https://api.grahamanddoddsville.com.au/readings/stock-market-warning-benjamin-graham-1960.pdf",
+                url: "pdfs/13-36/stock-market-warning-danger-ahead-benjamin-graham-1960.pdf",
                 decade: "1960s",
                 type: "article"
             },
@@ -1715,7 +1717,7 @@
                 title: "Letter to the Editor",
                 author: "Warren Buffett",
                 year: "1962",
-                url: "https://api.grahamanddoddsville.com.au/readings/letter-to-the-editor-warren-buffett-1962.pdf",
+                url: "pdfs/13-36/letter-to-the-editor-warren-buffett-1962.pdf",
                 decade: "1960s",
                 type: "letter"
             },
@@ -1724,7 +1726,7 @@
                 title: "Renaissance of Value",
                 author: "Benjamin Graham",
                 year: "1974",
-                url: "https://api.grahamanddoddsville.com.au/readings/renaissance-of-value-benjamin-graham-1974.pdf",
+                url: "pdfs/13-36/renaissance-of-value-benjamin-graham-1974.pdf",
                 decade: "1970s",
                 type: "article"
             },
@@ -1733,7 +1735,7 @@
                 title: "The Future of Common Stocks",
                 author: "Benjamin Graham",
                 year: "1974",
-                url: "https://api.grahamanddoddsville.com.au/readings/future-of-common-stocks-benjamin-graham-1974.pdf",
+                url: "pdfs/13-36/the-future-of-common-stocks-benjamin-graham-1974.pdf",
                 decade: "1970s",
                 type: "article"
             },
@@ -1751,7 +1753,7 @@
                 title: "An Hour With Mr Graham",
                 author: "Benjamin Graham",
                 year: "1976",
-                url: "https://api.grahamanddoddsville.com.au/readings/an-hour-with-mr-graham-1976.pdf",
+                url: "pdfs/13-36/an-hour-with-mr-graham-1976.pdf",
                 decade: "1970s",
                 type: "article"
             },
@@ -1760,7 +1762,7 @@
                 title: "A Conversation with Benjamin Graham",
                 author: "Benjamin Graham",
                 year: "1976",
-                url: "https://api.grahamanddoddsville.com.au/readings/conversation-with-benjamin-graham-1976.pdf",
+                url: "pdfs/13-36/a-conversation-with-benjamin-graham-1976.pdf",
                 decade: "1970s",
                 type: "article"
             },
@@ -1769,7 +1771,7 @@
                 title: "How Inflation Swindles The Equity Investor",
                 author: "Warren Buffett",
                 year: "1977",
-                url: "https://api.grahamanddoddsville.com.au/readings/how-inflation-swindles-warren-buffett-1977.pdf",
+                url: "pdfs/13-36/how-inflation-swindles-the-equity-investor-warren-buffett-1977.pdf",
                 decade: "1970s",
                 type: "article"
             },
@@ -1778,7 +1780,7 @@
                 title: "10 Ways to Beat an Index",
                 author: "Tweedy, Browne",
                 year: "1999",
-                url: "https://api.grahamanddoddsville.com.au/readings/10-ways-to-beat-an-index-tweedy-browne-1999.pdf",
+                url: "pdfs/13-36/10-ways-to-beat-an-index-tweedy-browne-1999.pdf",
                 decade: "1990s",
                 type: "article"
             },
@@ -1787,7 +1789,7 @@
                 title: "Investing for Higher After-Tax Returns",
                 author: "Tweedy, Browne",
                 year: "2000",
-                url: "https://api.grahamanddoddsville.com.au/readings/investing-for-higher-after-tax-tweedy-browne-2000.pdf",
+                url: "pdfs/13-36/investing-for-higher-after-tax-returns-tweedy-browne-2000.pdf",
                 decade: "2000s",
                 type: "article"
             },
@@ -1796,7 +1798,7 @@
                 title: "Great 10-Year Record = Great Future, Right?",
                 author: "Tweedy, Browne",
                 year: "2000",
-                url: "https://api.grahamanddoddsville.com.au/readings/great-10-year-record-tweedy-browne-2000.pdf",
+                url: "pdfs/13-36/great-10-year-record-great-future-right-tweedy-browne-2000.pdf",
                 decade: "2000s",
                 type: "article"
             },
@@ -1805,7 +1807,7 @@
                 title: "Value Investing and Behavioural Finance",
                 author: "Chris Browne",
                 year: "2000",
-                url: "https://api.grahamanddoddsville.com.au/readings/value-investing-behavioural-finance-chris-browne-2000.pdf",
+                url: "pdfs/13-36/value-investing-and-behavioral-finance.pdf",
                 decade: "2000s",
                 type: "article"
             },
@@ -1823,7 +1825,7 @@
                 title: "America's Growing Trade Deficit is Selling The Nation Out From Under Us. Here's A Way to Fix The Problem – And We Need To Do It Now",
                 author: "Warren Buffett",
                 year: "2003",
-                url: "https://api.grahamanddoddsville.com.au/readings/americas-growing-trade-deficit-is-selling.pdf",
+                url: "pdfs/13-36/americas-growing-trade-deficit-is-selling.pdf",
                 decade: "2000s",
                 type: "article"
             },
@@ -1832,7 +1834,7 @@
                 title: "The High Dividend Yield Return Advantage",
                 author: "Tweedy, Browne",
                 year: "2007",
-                url: "https://api.grahamanddoddsville.com.au/readings/high-dividend-yield-return-tweedy-browne-2007.pdf",
+                url: "pdfs/13-36/the-high-dividend-yield-return-advantage.pdf",
                 decade: "2000s",
                 type: "article"
             },
@@ -1841,7 +1843,7 @@
                 title: "Buy American, I am",
                 author: "Warren Buffett",
                 year: "2008",
-                url: "https://api.grahamanddoddsville.com.au/readings/buy-american-i-am-warren-buffett-2008.pdf",
+                url: "pdfs/13-36/buy-american-i-am-warren-buffett-2008.pdf",
                 decade: "2000s",
                 type: "article"
             },
@@ -1859,7 +1861,7 @@
                 title: "Slow Growth and the Greenback Effect",
                 author: "Warren Buffett",
                 year: "2009",
-                url: "https://api.grahamanddoddsville.com.au/readings/slow-growth-greenback-effect-warren-buffett-2009.pdf",
+                url: "pdfs/13-36/slow-growth-and-the-greenback-effect-2013.pdf",
                 decade: "2000s",
                 type: "article"
             },
@@ -1921,7 +1923,11 @@
             
             // Determine title link URL
             let titleUrl = reading.url;
-            if (reading.id >= 8 && reading.id <= 36) {
+            let titleOnclick = '';
+            if (reading.isSpecial) {
+                titleUrl = '#';
+                titleOnclick = `onclick="${getSpecialAction(reading.id)}"`;
+            } else if (reading.id >= 8 && reading.id <= 36) {
                 const redirectUrl = getRedirectUrl(reading.id);
                 titleUrl = redirectUrl || reading.url;
             }
@@ -1930,7 +1936,7 @@
                 <div class="reading-card-header">
                     <div class="reading-number">${reading.id}</div>
                     <div class="reading-content">
-                        <a href="${titleUrl}" target="_blank" class="reading-title">${reading.title}</a>
+                        <a href="${titleUrl}" ${titleOnclick} class="reading-title" style="cursor: pointer;">${reading.title}</a>
                         <div class="reading-meta">
                             <span class="reading-author ${authorClass}">${reading.author}</span>
                             <span class="reading-year">${reading.year}</span>
@@ -1967,29 +1973,11 @@
                 10: 'https://api.grahamanddoddsville.com.au/readings/selling-america-for-50-cents-on-the-dollar-benjamin-graham-1932.pdf',
                 11: 'https://api.grahamanddoddsville.com.au/readings/special-situations-benjamin-graham-1946.pdf',
                 12: 'https://api.grahamanddoddsville.com.au/readings/valuation-techniques-benjamin-graham-1947.pdf',
-                13: 'https://api.grahamanddoddsville.com.au/readings/the-security-i-like-best-warren-buffett-1951.pdf',
-                14: 'https://api.grahamanddoddsville.com.au/readings/toward-a-science-of-security-analysis-benjamin-graham-1952.pdf',
                 15: 'https://api.grahamanddoddsville.com.au/readings/testimony-on-the-committee-on-banking-and-currency-united-states-senate-benjamin-graham-1955.pdf',
-                16: 'https://api.grahamanddoddsville.com.au/readings/how-to-handle-your-money-benjamin-graham-1955.pdf',
                 17: 'https://api.grahamanddoddsville.com.au/readings/the-new-speculation-in-common-stocks-benjamin-graham-1958.pdf',
-                18: 'https://api.grahamanddoddsville.com.au/readings/stock-market-warning-danger-ahead-benjamin-graham-1960.pdf',
-                19: 'https://api.grahamanddoddsville.com.au/readings/letter-to-the-editor-warren-buffett-1962.pdf',
-                20: 'https://api.grahamanddoddsville.com.au/readings/renaissance-of-value-benjamin-graham-1974.pdf',
-                21: 'https://api.grahamanddoddsville.com.au/readings/the-future-of-common-stocks-benjamin-graham-1974.pdf',
                 22: 'https://api.grahamanddoddsville.com.au/readings/the-simplest-way-to-select-bargain-stocks-benjamin-graham-1976.pdf',
-                23: 'https://api.grahamanddoddsville.com.au/readings/an-hour-with-mr-graham-1976.pdf',
-                24: 'https://api.grahamanddoddsville.com.au/readings/a-conversation-with-benjamin-graham-1976.pdf',
-                25: 'https://api.grahamanddoddsville.com.au/readings/how-inflation-swindles-the-equity-investor-warren-buffett-1977.pdf',
-                26: 'https://api.grahamanddoddsville.com.au/readings/10-ways-to-beat-an-index-tweedy-browne-1999.pdf',
-                27: 'https://api.grahamanddoddsville.com.au/readings/investing-for-higher-after-tax-returns-tweedy-browne-2000.pdf',
-                28: 'https://api.grahamanddoddsville.com.au/readings/great-10-year-record-great-future-right-tweedy-browne-2000.pdf',
-                29: 'https://api.grahamanddoddsville.com.au/readings/value-investing-and-behavioral-finance.pdf',
                 30: 'https://api.grahamanddoddsville.com.au/readings/the-evolution-of-the-idea-of-value-investing.pdf',
-                31: 'https://api.grahamanddoddsville.com.au/readings/americas-growing-trade-deficit-is-selling.pdf',
-                32: 'https://api.grahamanddoddsville.com.au/readings/the-high-dividend-yield-return-advantage.pdf',
-                33: 'https://api.grahamanddoddsville.com.au/readings/buy-american-i-am-warren-buffett-2008.pdf',
                 34: 'https://api.grahamanddoddsville.com.au/readings/what-has-worked-in-investing.pdf',
-                35: 'https://api.grahamanddoddsville.com.au/readings/slow-growth-and-the-greenback-effect-2013.pdf',
                 36: 'https://api.grahamanddoddsville.com.au/readings/how-hedging-can-substantially-reduce-foreign-stock-currency-risk.pdf'
             };
             return urls[id] || null;
@@ -2329,9 +2317,20 @@
             console.log('Opening Advertise page');
         }
 
-        function openEventsPage() {
-            console.log('Opening Events page');
+        function openPage() {
+            console.log('Opening  page');
         }
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+

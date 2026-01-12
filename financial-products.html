@@ -38,7 +38,6 @@
         }
 
         .wealth-creation-page {
-            min-height: 100vh;
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             position: relative;
         }
@@ -303,6 +302,7 @@
             margin: 0;
             font-size: 1.5rem;
             font-weight: 600;
+            color: white;
         }
 
         .article-detail-close {
@@ -372,7 +372,7 @@
 
         .page-title {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-size: 18px;
+            font-size: 25px;
             font-weight: 600;
             color: #6B46C1; /* Brand purple */
             margin: 0 0 0px 0;
@@ -498,52 +498,51 @@
 <body>
     <div class="wealth-creation-page">
         <!-- Header -->
-        <header class="header sticky-header">
-            <div class="header-content">
+        <header class="header sticky-header" role="banner">
+            <div class="container"><div class="header-content">
                 <div class="logo">
                     <img src="G&D Logo.png" alt="Graham & Doddsville" class="logo-image">
                 </div>
-                <!-- Desktop Navigation (hidden on mobile) -->
-                <nav class="main-nav desktop-only" role="navigation" aria-label="Main navigation">
-                    <ul>
+                
+                <nav class="main-nav desktop-only">                    <ul>
                         <li><a href="index.html" class="nav-link">HOME</a></li>
                         <li><a href="classical-readings.html" class="nav-link">CLASSICAL READINGS</a></li>
                         <li><a href="wealth-creation.html" class="nav-link">WEALTH CREATION</a></li>
                         <li><a href="#" class="nav-link">ABOUT</a></li>
-                    </ul>
-                </nav>
+                    </ul></nav>
                 
-                <!-- Mobile Hamburger Menu -->
+                
                 <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                 </button>
-            </div>
-        </header>
+            </div></header>
 
         <!-- Mobile Navigation Drawer -->
         <div class="mobile-drawer" id="mobile-drawer">
-            <div class="drawer-header">
-                <img src="G&D Logo.png" alt="Graham and Doddsville" class="drawer-logo">
-                <button class="drawer-close" id="drawer-close" aria-label="Close menu">×</button>
-            </div>
-            <nav class="drawer-nav">
-                <ul class="drawer-menu">
-                    <li><a href="index.html" class="drawer-link">Home</a></li>
-                    <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
-                    <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
-                    <li><a href="legal-taxation.html" class="drawer-link">Legal & Taxation</a></li>
-                    <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
-                    <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
-                    <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
-                    <li><a href="economics.html" class="drawer-link">Economics</a></li>
-                    <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
-                    <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
-                    <li><a href="resources.html" class="drawer-link">Resources</a></li>
-                    <li><a href="events.html" class="drawer-link">Events</a></li>
-                </ul>
-            </nav>
+        <div class="drawer-header">
+            <img src="G&D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
+            <button class="drawer-close" id="drawer-close" aria-label="Close menu"></button>
+        </div>
+        <nav class="drawer-nav">
+            <ul class="drawer-menu">
+                <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
+                <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
+                <li><a href="legal-taxation.html" class="drawer-link">Legal & Taxation</a></li>
+                <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
+                <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
+                <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
+                <li><a href="#" class="drawer-link">Investment Analysis</a></li>
+                <li><a href="economics.html" class="drawer-link">Economics</a></li>
+                <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
+                <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
+                <li><a href="resources.html" class="drawer-link">Resources</a></li>
+                <li><a href="events.html" class="drawer-link">Events & Seminars</a></li>
+            </ul>
+        </nav>
+    </div>
+            
         </div>
 
         <div class="wealth-creation-page-content">
@@ -566,14 +565,9 @@
                 </div>
                 <div class="collapsible-content" id="cash-content">
                     <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('cash-accounts')">Cash Accounts</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('term-deposits')">Term Deposits</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('cash-management-trusts')">Cash Management Trusts</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('high-yield-savings')">High Yield Savings</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('money-market-accounts')">Money Market Accounts</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('certificates-of-deposit')">Certificates of Deposit</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('treasury-bills')">Treasury Bills</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('cash-equivalents')">Cash Equivalents</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('cash')">Cash</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('term-deposits')">Term deposits</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('cash-management-trusts')">Cash management trusts</a></li>
                     </ul>
                 </div>
             </div>
@@ -586,14 +580,10 @@
                 </div>
                 <div class="collapsible-content" id="fixed-income-content">
                     <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('government-bonds')">Government Bonds</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('semi-government-bonds')">Semi-Government Bonds</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('corporate-bonds')">Corporate Bonds</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('government-bonds')">Government bonds</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('semi-government-bonds')">Semi-government bonds</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('corporate-bonds')">Corporate bonds</a></li>
                         <li><a href="#" class="collapsible-link" onclick="openArticle('debentures')">Debentures</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('bond-funds')">Bond Funds</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('treasury-notes')">Treasury Notes</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('municipal-bonds')">Municipal Bonds</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('inflation-linked-bonds')">Inflation-Linked Bonds</a></li>
                     </ul>
                 </div>
             </div>
@@ -608,14 +598,11 @@
                     <ul class="collapsible-links">
                         <li><a href="#" class="collapsible-link" onclick="openArticle('shares')">Shares</a></li>
                         <li><a href="#" class="collapsible-link" onclick="openArticle('superannuation')">Superannuation</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('smsfs')">SMSFs (Self-Managed Superannuation Funds)</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('rsas')">RSAs (Retirement Savings Accounts)</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('etfs')">ETFs (Exchange Traded Funds)</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('lics')">LICs (Listed Investment Companies)</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('managed-funds')">Managed Funds</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('index-funds')">Index Funds</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('growth-funds')">Growth Funds</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('value-funds')">Value Funds</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('smsfs')">SMSFs</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('rsas')">RSAs</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('etfs')">ETFs</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('lics')">LICs</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('managed-funds')">Managed funds</a></li>
                     </ul>
                 </div>
             </div>
@@ -628,36 +615,33 @@
                 </div>
                 <div class="collapsible-content" id="hybrids-content">
                     <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('preference-shares')">Preference Shares</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('convertible-bonds')">Convertible Bonds</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('capital-notes')">Capital Notes</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('hybrid-securities')">Hybrid Securities</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('perpetual-securities')">Perpetual Securities</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('subordinated-debt')">Subordinated Debt</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('convertible-preference-shares')">Convertible Preference Shares</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('hybrid-funds')">Hybrid Funds</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('preference-shares')">Preference shares</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('convertible-bonds')">Convertible bonds</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('capital-notes')">Capital notes</a></li>
                     </ul>
                 </div>
             </div>
 
-            <!-- Derivatives -->
+            <!-- Derivative -->
             <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('derivatives')">
-                    <h3 class="collapsible-title">Derivatives</h3>
-                    <span class="collapsible-arrow" id="derivatives-arrow">▼</span>
+                <div class="collapsible-header" onclick="toggleCollapsible('derivative')">
+                    <h3 class="collapsible-title">Derivative</h3>
+                    <span class="collapsible-arrow" id="derivative-arrow">▼</span>
                 </div>
-                <div class="collapsible-content" id="derivatives-content">
+                <div class="collapsible-content" id="derivative-content">
                     <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('call-options')">Call Options</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('put-options')">Put Options</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('call-options')">Call options</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('put-options')">Put options</a></li>
                         <li><a href="#" class="collapsible-link" onclick="openArticle('forwards')">Forwards</a></li>
                         <li><a href="#" class="collapsible-link" onclick="openArticle('futures')">Futures</a></li>
                         <li><a href="#" class="collapsible-link" onclick="openArticle('swaps')">Swaps</a></li>
                         <li><a href="#" class="collapsible-link" onclick="openArticle('warrants')">Warrants</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('cfds')">CFDs (Contracts For Difference)</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('index-derivatives')">Index Derivatives</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('interest-rate-derivatives')">Interest Rate Derivatives</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('structured-products')">Structured Products</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('cfds')">CFDS</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('index-derivatives')">Index derivatives</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('interest-rate-derivatives')">Interest rate derivative</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('grains-derivatives')">Grains derivatives</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('energy-derivatives')">Energy derivatives</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('structured-products')">Structured products</a></li>
                     </ul>
                 </div>
             </div>
@@ -670,14 +654,10 @@
                 </div>
                 <div class="collapsible-content" id="property-content">
                     <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('direct-property')">Direct Property</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('reits')">REITs (Real Estate Investment Trusts)</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('lpts')">LPTs (Listed Property Trusts)</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('upts')">UPTs (Unlisted Property Trusts)</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('property-funds')">Property Funds</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('commercial-property')">Commercial Property</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('residential-property')">Residential Property</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('property-development')">Property Development</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('direct-property')">Direct property</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('reits')">REITs</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('lpts')">LPTs</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('upts')">UPTs</a></li>
                     </ul>
                 </div>
             </div>
@@ -690,14 +670,16 @@
                 </div>
                 <div class="collapsible-content" id="commodities-content">
                     <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('precious-metals')">Precious Metals (Gold, Silver, Platinum, Palladium)</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('agricultural-commodities')">Agricultural Commodities</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('energy-commodities')">Energy Commodities</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('metal-commodities')">Metal Commodities</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('livestock-futures')">Livestock Futures</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('oil-futures')">Oil Futures</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('iron-ore-futures')">Iron Ore Futures</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('commodity-funds')">Commodity Funds</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('gold')">Gold</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('silver')">Silver</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('platinum')">Platinum</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('palladium')">Palladium</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('agricultural-commodities')">Agricultural commodities</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('energy-commodities')">Energy commodities</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('metal-commodities')">Metal commodities</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('livestock-futures')">Livestock futures</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('oil-futures')">Oil futures</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('iron-ore-futures')">Iron ore futures</a></li>
                     </ul>
                 </div>
             </div>
@@ -710,16 +692,16 @@
                 </div>
                 <div class="collapsible-content" id="miscellaneous-content">
                     <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('margin-loans')">Margin Loans</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('foreign-exchange')">Foreign Exchange</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('margin-loans')">Margin loan</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('foreign-exchange')">Foreign exchange</a></li>
                         <li><a href="#" class="collapsible-link" onclick="openArticle('cryptocurrency')">Cryptocurrency</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('private-equity')">Private Equity</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('private-debt')">Private Debt</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('infrastructure-assets')">Infrastructure Assets</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('venture-capital')">Venture Capital</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('private-equity')">Private equity</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('private-debt')">Private debt</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('infrastructure-assets')">Infrastructure assets</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('venture-capital')">Venture capital</a></li>
                         <li><a href="#" class="collapsible-link" onclick="openArticle('collectibles')">Collectibles</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('art-investments')">Art Investments</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('fine-wine')">Fine Wine</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('art-investments')">Art</a></li>
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('fine-wine')">Fine wine</a></li>
                     </ul>
                 </div>
             </div>
@@ -798,19 +780,49 @@
 
         // Article content data
         const articleContent = {
-            'cash-accounts': {
-                title: 'Cash Accounts',
+            'cash': {
+                title: 'Cash',
                 content: `
-                    <p>Cash accounts are the most basic form of financial product, providing liquidity and safety for your money.</p>
+                    <p>Cash represents the most liquid and safest form of holding money, providing immediate access and capital preservation.</p>
                     
-                    <h3>Types of Cash Accounts</h3>
-                    <p>These include savings accounts, checking accounts, and high-yield savings accounts. Each offers different interest rates and access features.</p>
+                    <h3>Key Characteristics</h3>
+                    <p>Cash includes physical currency and deposits in bank accounts that can be accessed on demand without penalty.</p>
                     
                     <h3>Benefits</h3>
-                    <p>Cash accounts provide immediate access to funds, are typically insured by government agencies, and offer a safe haven during market volatility.</p>
+                    <p>Complete liquidity, safety from market fluctuations, and serves as a hedge against uncertainty.</p>
                     
                     <h3>Considerations</h3>
-                    <p>While safe, cash accounts typically offer lower returns compared to other investments and may not keep pace with inflation over the long term.</p>
+                    <p>Cash typically earns minimal or no interest and may lose purchasing power due to inflation over time.</p>
+                `
+            },
+            'term-deposits': {
+                title: 'Term Deposits',
+                content: `
+                    <p>Term deposits are savings accounts with fixed interest rates and maturity dates, offering higher returns than regular savings accounts.</p>
+                    
+                    <h3>Key Features</h3>
+                    <p>Fixed interest rates, predetermined maturity periods (typically 1-5 years), and guaranteed returns make them attractive for conservative savers.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Low risk, predictable returns, and often higher interest rates than standard savings accounts.</p>
+                    
+                    <h3>Considerations</h3>
+                    <p>Funds are locked in for the term, early withdrawal penalties apply, and returns may not beat inflation in high-inflation environments.</p>
+                `
+            },
+            'cash-management-trusts': {
+                title: 'Cash Management Trusts',
+                content: `
+                    <p>Cash management trusts are pooled investment vehicles that invest in short-term, high-quality money market instruments.</p>
+                    
+                    <h3>Investment Focus</h3>
+                    <p>These trusts invest in bank bills, certificates of deposit, and other short-term debt securities with maturities typically under 12 months.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Higher returns than traditional savings accounts, daily liquidity, and professional management of short-term investments.</p>
+                    
+                    <h3>Risk Profile</h3>
+                    <p>Very low risk due to high-quality investments and short maturities, though returns fluctuate with interest rate changes.</p>
                 `
             },
             'government-bonds': {
@@ -828,6 +840,51 @@
                     <p>While safe, government bonds typically offer lower returns than riskier assets, but provide steady income and capital preservation.</p>
                 `
             },
+            'semi-government-bonds': {
+                title: 'Semi-Government Bonds',
+                content: `
+                    <p>Semi-government bonds are debt securities issued by state, provincial, or local government entities.</p>
+                    
+                    <h3>Key Features</h3>
+                    <p>Issued by government agencies or authorities, often with specific purposes like infrastructure or education funding.</p>
+                    
+                    <h3>Risk Assessment</h3>
+                    <p>Generally very low risk, though slightly higher than federal government bonds due to potential state-specific economic factors.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Tax advantages in some jurisdictions, steady income, and diversification within the fixed income asset class.</p>
+                `
+            },
+            'corporate-bonds': {
+                title: 'Corporate Bonds',
+                content: `
+                    <p>Corporate bonds are debt securities issued by companies to raise capital for business operations, expansion, or other corporate purposes.</p>
+                    
+                    <h3>Credit Ratings</h3>
+                    <p>Rated by agencies like Standard & Poor's and Moody's, ranging from AAA (highest quality) to D (in default).</p>
+                    
+                    <h3>Risk and Return</h3>
+                    <p>Offer higher yields than government bonds to compensate for additional credit risk, with investment-grade and high-yield categories.</p>
+                    
+                    <h3>Types</h3>
+                    <p>Include senior secured bonds, subordinated bonds, convertible bonds, and callable bonds with different risk profiles.</p>
+                `
+            },
+            'debentures': {
+                title: 'Debentures',
+                content: `
+                    <p>Debentures are unsecured debt instruments issued by corporations, backed only by the issuer's creditworthiness rather than specific assets.</p>
+                    
+                    <h3>Key Features</h3>
+                    <p>Unsecured debt, typically issued by large, creditworthy companies, and often subordinated to other creditors in bankruptcy.</p>
+                    
+                    <h3>Risk Profile</h3>
+                    <p>Higher risk than secured bonds but lower than equity, with yields reflecting the issuer's credit quality.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Regular interest payments, potential for capital appreciation, and diversification benefits in a fixed income portfolio.</p>
+                `
+            },
             'shares': {
                 title: 'Shares',
                 content: `
@@ -843,8 +900,53 @@
                     <p>Investors can choose individual stocks or diversified funds, with strategies ranging from value investing to growth investing.</p>
                 `
             },
+            'superannuation': {
+                title: 'Superannuation',
+                content: `
+                    <p>Superannuation is a retirement savings system where employers and employees contribute to retirement funds managed by trustees.</p>
+                    
+                    <h3>Australian Context</h3>
+                    <p>In Australia, superannuation is mandatory with employer contributions of at least 11% of salary, plus voluntary employee contributions.</p>
+                    
+                    <h3>Key Features</h3>
+                    <p>Tax advantages during accumulation phase, compulsory preservation until retirement, and choice of investment options.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Compulsory savings, tax benefits, diversified investment options, and professional fund management.</p>
+                `
+            },
+            'smsfs': {
+                title: 'SMSFs',
+                content: `
+                    <p>Self-Managed Superannuation Funds are private retirement savings plans where members control their own investments and administration.</p>
+                    
+                    <h3>Key Features</h3>
+                    <p>Greater investment control, potential for higher returns, but increased responsibility for compliance and administration.</p>
+                    
+                    <h3>Requirements</h3>
+                    <p>Limited to 4 members, strict regulatory compliance, annual audits, and professional trustee responsibilities.</p>
+                    
+                    <h3>Considerations</h3>
+                    <p>Higher costs, complexity, and regulatory burden make SMSFs suitable only for sophisticated investors.</p>
+                `
+            },
+            'rsas': {
+                title: 'RSAs',
+                content: `
+                    <p>Retirement Savings Accounts are tax-advantaged savings vehicles designed specifically for retirement planning and wealth accumulation.</p>
+                    
+                    <h3>Tax Benefits</h3>
+                    <p>Contributions may be tax-deductible, investment growth is tax-deferred, and withdrawals in retirement may be taxed favorably.</p>
+                    
+                    <h3>Key Features</h3>
+                    <p>Long-term savings focus, diversified investment options, and professional management in many cases.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Tax advantages, disciplined savings approach, and potential for compounded growth over decades.</p>
+                `
+            },
             'etfs': {
-                title: 'ETFs (Exchange Traded Funds)',
+                title: 'ETFs',
                 content: `
                     <p>ETFs are investment funds that trade on stock exchanges, combining the diversification of mutual funds with the flexibility of stocks.</p>
                     
@@ -858,8 +960,278 @@
                     <p>ETFs offer transparency, liquidity, and typically lower expense ratios compared to actively managed mutual funds.</p>
                 `
             },
+            'lics': {
+                title: 'LICs',
+                content: `
+                    <p>Listed Investment Companies (LICs) are closed-end investment funds that are listed on stock exchanges and invest in diversified portfolios.</p>
+                    
+                    <h3>Key Features</h3>
+                    <p>LICs have a fixed number of shares, trade like stocks, and are managed by professional investment teams.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Professional management, diversification, and ability to trade throughout the day at market prices.</p>
+                    
+                    <h3>Considerations</h3>
+                    <p>LICs can trade at premiums or discounts to their net asset value, and management fees may be higher than index funds.</p>
+                `
+            },
+            'managed-funds': {
+                title: 'Managed Funds',
+                content: `
+                    <p>Managed funds are investment vehicles where professional fund managers pool investor money to invest in diversified portfolios.</p>
+                    
+                    <h3>Types</h3>
+                    <p>Include mutual funds, unit trusts, and managed investment schemes with various investment strategies and risk profiles.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Professional management, diversification, liquidity, and access to institutional-quality investment strategies.</p>
+                    
+                    <h3>Fees</h3>
+                    <p>Managed funds typically charge management fees and performance fees, which can impact overall returns.</p>
+                `
+            },
+            'preference-shares': {
+                title: 'Preference Shares',
+                content: `
+                    <p>Preference shares are hybrid securities that combine characteristics of both debt and equity, offering fixed dividend payments.</p>
+                    
+                    <h3>Key Features</h3>
+                    <p>Fixed dividend payments that must be paid before common shareholders, but typically no voting rights.</p>
+                    
+                    <h3>Risk Profile</h3>
+                    <p>Higher risk than bonds but lower than common shares, with potential for both income and capital appreciation.</p>
+                    
+                    <h3>Types</h3>
+                    <p>Cumulative preference shares (dividends accumulate if unpaid) and convertible preference shares (can be converted to common shares).</p>
+                `
+            },
+            'convertible-bonds': {
+                title: 'Convertible Bonds',
+                content: `
+                    <p>Convertible bonds are debt securities that can be converted into a predetermined number of the issuer's common shares.</p>
+                    
+                    <h3>Key Features</h3>
+                    <p>Combines fixed income characteristics with equity participation potential, offering downside protection and upside potential.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Regular interest payments, potential for capital appreciation through conversion, and typically lower yields than straight bonds.</p>
+                    
+                    <h3>Considerations</h3>
+                    <p>Conversion value depends on stock price performance, and bonds may be called if stock price rises significantly.</p>
+                `
+            },
+            'capital-notes': {
+                title: 'Capital Notes',
+                content: `
+                    <p>Capital notes are hybrid securities issued by financial institutions that combine debt and equity characteristics.</p>
+                    
+                    <h3>Key Features</h3>
+                    <p>Typically perpetual (no maturity date), with discretionary dividend payments and ability to convert to equity under certain conditions.</p>
+                    
+                    <h3>Risk Profile</h3>
+                    <p>Higher risk than senior debt but lower than common equity, often treated as loss-absorbing capital by regulators.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Higher yields than senior debt, potential for capital appreciation, and diversification benefits.</p>
+                `
+            },
+            'call-options': {
+                title: 'Call Options',
+                content: `
+                    <p>Call options give the buyer the right, but not the obligation, to purchase an underlying asset at a specified price within a certain time period.</p>
+                    
+                    <h3>Key Components</h3>
+                    <p>Strike price (exercise price), expiration date, and premium paid for the option contract.</p>
+                    
+                    <h3>Uses</h3>
+                    <p>Used for speculation, hedging existing positions, or leveraging capital to amplify potential returns.</p>
+                    
+                    <h3>Risk Considerations</h3>
+                    <p>Options can expire worthless, and losses are limited to the premium paid, but potential gains are theoretically unlimited.</p>
+                `
+            },
+            'put-options': {
+                title: 'Put Options',
+                content: `
+                    <p>Put options give the buyer the right, but not the obligation, to sell an underlying asset at a specified price within a certain time period.</p>
+                    
+                    <h3>Key Components</h3>
+                    <p>Strike price, expiration date, and premium, similar to call options but with opposite directional exposure.</p>
+                    
+                    <h3>Uses</h3>
+                    <p>Used for hedging against downside risk, speculation on price declines, or protecting existing long positions.</p>
+                    
+                    <h3>Risk Profile</h3>
+                    <p>Losses limited to premium paid, but effective for portfolio protection and risk management strategies.</p>
+                `
+            },
+            'forwards': {
+                title: 'Forwards',
+                content: `
+                    <p>Forwards are customized contracts between two parties to buy or sell an asset at a specified price on a future date.</p>
+                    
+                    <h3>Key Features</h3>
+                    <p>Customized terms, no exchange involvement, and typically used by sophisticated investors and institutions.</p>
+                    
+                    <h3>Uses</h3>
+                    <p>Hedging currency risk, commodity price risk, and interest rate risk in business operations.</p>
+                    
+                    <h3>Risk Considerations</h3>
+                    <p>Counterparty risk (risk that the other party defaults), and no daily settlement like futures contracts.</p>
+                `
+            },
+            'futures': {
+                title: 'Futures',
+                content: `
+                    <p>Futures are standardized contracts to buy or sell an asset at a predetermined price on a specified future date, traded on exchanges.</p>
+                    
+                    <h3>Key Features</h3>
+                    <p>Standardized contracts, daily settlement of gains/losses (marking to market), and leverage through margin requirements.</p>
+                    
+                    <h3>Uses</h3>
+                    <p>Hedging commodity prices, currencies, and interest rates, as well as speculation on price movements.</p>
+                    
+                    <h3>Risk Management</h3>
+                    <p>Exchange guarantees performance, but leverage can amplify both gains and losses significantly.</p>
+                `
+            },
+            'swaps': {
+                title: 'Swaps',
+                content: `
+                    <p>Swaps are derivative contracts where two parties exchange cash flows or financial instruments over a specified period.</p>
+                    
+                    <h3>Common Types</h3>
+                    <p>Interest rate swaps, currency swaps, and credit default swaps, each exchanging different types of cash flows.</p>
+                    
+                    <h3>Uses</h3>
+                    <p>Managing interest rate risk, currency risk, and credit risk in sophisticated financial strategies.</p>
+                    
+                    <h3>Risk Profile</h3>
+                    <p>Counterparty risk is primary concern, though often mitigated through collateral and netting agreements.</p>
+                `
+            },
+            'warrants': {
+                title: 'Warrants',
+                content: `
+                    <p>Warrants are derivative securities that give the holder the right to buy the underlying stock at a specific price within a certain time period.</p>
+                    
+                    <h3>Key Differences from Options</h3>
+                    <p>Issued by the company itself rather than created by investors, and often have longer expiration periods.</p>
+                    
+                    <h3>Uses</h3>
+                    <p>Used in capital raising, employee compensation, and as sweeteners in bond offerings.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Leveraged exposure to stock price movements with potentially lower cost than options.</p>
+                `
+            },
+            'cfds': {
+                title: 'CFDs',
+                content: `
+                    <p>Contracts for Difference (CFDs) are derivative products that allow traders to speculate on price movements without owning the underlying asset.</p>
+                    
+                    <h3>Key Features</h3>
+                    <p>Leveraged trading, can be used for going long or short, and settle in cash based on price differences.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Access to global markets, leverage to amplify returns, and ability to profit from both rising and falling markets.</p>
+                    
+                    <h3>Risks</h3>
+                    <p>High leverage can lead to significant losses, and CFDs are not suitable for all investors.</p>
+                `
+            },
+            'index-derivatives': {
+                title: 'Index Derivatives',
+                content: `
+                    <p>Index derivatives are financial contracts based on stock market indices, allowing investors to gain exposure to broad market movements.</p>
+                    
+                    <h3>Types</h3>
+                    <p>Index futures, index options, and exchange-traded funds (ETFs) that track market indices.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Instant diversification across many stocks, lower costs than individual stock trading, and efficient market exposure.</p>
+                    
+                    <h3>Uses</h3>
+                    <p>Hedging portfolio risk, gaining market exposure, and implementing various investment strategies.</p>
+                `
+            },
+            'interest-rate-derivatives': {
+                title: 'Interest Rate Derivatives',
+                content: `
+                    <p>Interest rate derivatives are financial contracts whose value is derived from changes in interest rates.</p>
+                    
+                    <h3>Common Types</h3>
+                    <p>Interest rate swaps, futures, options, and forward rate agreements.</p>
+                    
+                    <h3>Uses</h3>
+                    <p>Managing interest rate risk for borrowers, lenders, and investors in fixed income securities.</p>
+                    
+                    <h3>Importance</h3>
+                    <p>Critical for financial institutions and corporations to hedge against interest rate fluctuations.</p>
+                `
+            },
+            'grains-derivatives': {
+                title: 'Grains Derivatives',
+                content: `
+                    <p>Grains derivatives are futures and options contracts based on agricultural commodities like wheat, corn, soybeans, and other grains.</p>
+                    
+                    <h3>Key Markets</h3>
+                    <p>Traded on exchanges like the Chicago Board of Trade (CBOT), with contracts for various grain types and delivery months.</p>
+                    
+                    <h3>Participants</h3>
+                    <p>Farmers, processors, traders, and speculators use these contracts to hedge price risk and speculate on price movements.</p>
+                    
+                    <h3>Risk Factors</h3>
+                    <p>Weather conditions, global supply/demand, currency fluctuations, and government policies affect grain prices.</p>
+                `
+            },
+            'energy-derivatives': {
+                title: 'Energy Derivatives',
+                content: `
+                    <p>Energy derivatives are financial contracts based on energy commodities like crude oil, natural gas, gasoline, and heating oil.</p>
+                    
+                    <h3>Key Markets</h3>
+                    <p>Traded on exchanges like NYMEX and ICE Futures, with contracts for immediate and deferred delivery.</p>
+                    
+                    <h3>Uses</h3>
+                    <p>Hedging fuel costs for airlines and trucking companies, speculation, and portfolio diversification.</p>
+                    
+                    <h3>Volatility</h3>
+                    <p>Energy markets are highly volatile due to geopolitical , supply disruptions, and economic cycles.</p>
+                `
+            },
+            'structured-products': {
+                title: 'Structured Products',
+                content: `
+                    <p>Structured products are pre-packaged investment strategies that combine traditional investments with derivatives to meet specific risk-return objectives.</p>
+                    
+                    <h3>Components</h3>
+                    <p>Typically combine a bond or deposit with options or other derivatives to create customized payoff profiles.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Capital protection, enhanced yields, and tailored risk profiles for different investor needs.</p>
+                    
+                    <h3>Considerations</h3>
+                    <p>Complexity can make them difficult to understand, and liquidity may be limited compared to standard investments.</p>
+                `
+            },
+            'direct-property': {
+                title: 'Direct Property',
+                content: `
+                    <p>Direct property investment involves purchasing real estate assets directly, either for rental income or capital appreciation.</p>
+                    
+                    <h3>Types</h3>
+                    <p>Residential property, commercial property, industrial property, and development sites.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Rental income, tax advantages, inflation hedging, and potential for capital growth.</p>
+                    
+                    <h3>Considerations</h3>
+                    <p>Illiquidity, high transaction costs, management requirements, and sensitivity to economic cycles.</p>
+                `
+            },
             'reits': {
-                title: 'REITs (Real Estate Investment Trusts)',
+                title: 'REITs',
                 content: `
                     <p>REITs are companies that own, operate, or finance income-producing real estate, allowing investors to access real estate markets without direct property ownership.</p>
                     
@@ -871,6 +1243,216 @@
                     
                     <h3>Considerations</h3>
                     <p>REITs are sensitive to interest rates and economic cycles, and their dividends may be taxed differently than other investments.</p>
+                `
+            },
+            'lpts': {
+                title: 'LPTs',
+                content: `
+                    <p>Listed Property Trusts (LPTs) are investment vehicles that pool investor funds to invest in property assets and are listed on stock exchanges.</p>
+                    
+                    <h3>Key Features</h3>
+                    <p>Unit holders receive income from property rentals and capital growth, with units trading like shares.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Liquidity through stock exchange trading, diversification across multiple properties, and professional management.</p>
+                    
+                    <h3>Tax Treatment</h3>
+                    <p>Income distributed to investors may have favorable tax treatment in some jurisdictions.</p>
+                `
+            },
+            'upts': {
+                title: 'UPTs',
+                content: `
+                    <p>Unlisted Property Trusts (UPTs) are property investment vehicles that are not listed on stock exchanges, offering exposure to property markets.</p>
+                    
+                    <h3>Key Features</h3>
+                    <p>Typically have lower entry thresholds than direct property, professional management, and focus on income and capital growth.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Diversification, professional management, and access to institutional-quality property investments.</p>
+                    
+                    <h3>Considerations</h3>
+                    <p>Lower liquidity than listed alternatives, and typically longer investment horizons required.</p>
+                `
+            },
+            'gold': {
+                title: 'Gold',
+                content: `
+                    <p>Gold is a precious metal that has been used as a store of value and hedge against inflation for thousands of years.</p>
+                    
+                    <h3>Investment Forms</h3>
+                    <p>Physical gold (bars, coins), gold ETFs, gold mining shares, and gold futures contracts.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Hedge against inflation, currency fluctuations, and economic uncertainty; low correlation with other assets.</p>
+                    
+                    <h3>Considerations</h3>
+                    <p>No income generation, storage and insurance costs for physical gold, and price volatility.</p>
+                `
+            },
+            'silver': {
+                title: 'Silver',
+                content: `
+                    <p>Silver is both a precious metal and an industrial metal, used in jewelry, electronics, solar panels, and various industrial applications.</p>
+                    
+                    <h3>Dual Nature</h3>
+                    <p>Silver benefits from both precious metal demand (safe haven) and industrial demand (economic growth).</p>
+                    
+                    <h3>Investment Options</h3>
+                    <p>Physical silver, silver ETFs, silver mining stocks, and silver futures contracts.</p>
+                    
+                    <h3>Risk Profile</h3>
+                    <p>More volatile than gold due to industrial demand fluctuations, but potentially higher returns.</p>
+                `
+            },
+            'platinum': {
+                title: 'Platinum',
+                content: `
+                    <p>Platinum is a rare precious metal primarily used in automotive catalytic converters, jewelry, and industrial applications.</p>
+                    
+                    <h3>Key Uses</h3>
+                    <p>Over 50% of platinum demand comes from automotive industry for emission control devices.</p>
+                    
+                    <h3>Investment Characteristics</h3>
+                    <p>Higher price per ounce than gold, more volatile, and strong correlation with industrial activity.</p>
+                    
+                    <h3>Supply Factors</h3>
+                    <p>Limited global supply with South Africa and Russia producing majority of world supply.</p>
+                `
+            },
+            'palladium': {
+                title: 'Palladium',
+                content: `
+                    <p>Palladium is a rare precious metal primarily used in automotive catalytic converters and increasingly in electronics and jewelry.</p>
+                    
+                    <h3>Market Dynamics</h3>
+                    <p>Supply is more constrained than platinum, leading to higher prices and greater price volatility.</p>
+                    
+                    <h3>Industrial Demand</h3>
+                    <p>Critical for diesel engine emissions control, with growing demand from gasoline engines as well.</p>
+                    
+                    <h3>Investment Appeal</h3>
+                    <p>Strong industrial demand fundamentals combined with precious metal characteristics.</p>
+                `
+            },
+            'agricultural-commodities': {
+                title: 'Agricultural Commodities',
+                content: `
+                    <p>Agricultural commodities include crops and livestock products that are traded on global commodity markets.</p>
+                    
+                    <h3>Major Commodities</h3>
+                    <p>Corn, soybeans, wheat, coffee, cocoa, sugar, cotton, and livestock futures.</p>
+                    
+                    <h3>Investment Factors</h3>
+                    <p>Weather conditions, global population growth, changing dietary habits, and biofuel demand.</p>
+                    
+                    <h3>Risk Considerations</h3>
+                    <p>Weather-related volatility, disease outbreaks in livestock, and geopolitical trade policies.</p>
+                `
+            },
+            'energy-commodities': {
+                title: 'Energy Commodities',
+                content: `
+                    <p>Energy commodities include crude oil, natural gas, coal, and refined products like gasoline and heating oil.</p>
+                    
+                    <h3>Key Markets</h3>
+                    <p>WTI and Brent crude oil, natural gas, coal, and petroleum products traded on major exchanges.</p>
+                    
+                    <h3>Price Drivers</h3>
+                    <p>Global supply/demand balance, OPEC decisions, geopolitical , and economic growth rates.</p>
+                    
+                    <h3>Investment Uses</h3>
+                    <p>Hedging fuel costs, portfolio diversification, and speculation on energy price movements.</p>
+                `
+            },
+            'metal-commodities': {
+                title: 'Metal Commodities',
+                content: `
+                    <p>Metal commodities include base metals like copper, aluminum, zinc, and nickel, as well as precious metals.</p>
+                    
+                    <h3>Industrial Importance</h3>
+                    <p>Critical for construction, manufacturing, electronics, and infrastructure development.</p>
+                    
+                    <h3>Price Factors</h3>
+                    <p>Global economic growth, industrial demand, mining supply constraints, and currency movements.</p>
+                    
+                    <h3>Trading</h3>
+                    <p>Active futures markets on exchanges like LME and CME, with high liquidity and volatility.</p>
+                `
+            },
+            'livestock-futures': {
+                title: 'Livestock Futures',
+                content: `
+                    <p>Livestock futures contracts allow traders to speculate on or hedge against price movements in cattle, hogs, and other livestock.</p>
+                    
+                    <h3>Major Contracts</h3>
+                    <p>Live cattle, feeder cattle, and lean hog futures traded on the Chicago Mercantile Exchange.</p>
+                    
+                    <h3>Market Participants</h3>
+                    <p>Producers, feedlots, meat processors, and speculators participate in these markets.</p>
+                    
+                    <h3>Risk Factors</h3>
+                    <p>Disease outbreaks, feed costs, weather conditions, and consumer demand for meat products.</p>
+                `
+            },
+            'oil-futures': {
+                title: 'Oil Futures',
+                content: `
+                    <p>Oil futures are contracts to buy or sell crude oil at a predetermined price on a future date, traded on major exchanges.</p>
+                    
+                    <h3>Key Benchmarks</h3>
+                    <p>WTI (West Texas Intermediate) and Brent crude oil futures are the most widely followed global benchmarks.</p>
+                    
+                    <h3>Uses</h3>
+                    <p>Hedging for oil producers and consumers, speculation, and portfolio diversification.</p>
+                    
+                    <h3>Volatility</h3>
+                    <p>Oil markets are highly volatile due to geopolitical , supply disruptions, and economic cycles.</p>
+                `
+            },
+            'iron-ore-futures': {
+                title: 'Iron Ore Futures',
+                content: `
+                    <p>Iron ore futures contracts allow participants to hedge or speculate on iron ore price movements, a critical industrial commodity.</p>
+                    
+                    <h3>Key Markets</h3>
+                    <p>Dalian Commodity Exchange (China) and Singapore Exchange offer iron ore futures contracts.</p>
+                    
+                    <h3>Price Drivers</h3>
+                    <p>Steel production levels, global economic growth, mining supply, and Chinese demand.</p>
+                    
+                    <h3>Importance</h3>
+                    <p>Iron ore is essential for steel production, making it a key indicator of industrial activity.</p>
+                `
+            },
+            'margin-loans': {
+                title: 'Margin Loans',
+                content: `
+                    <p>Margin loans allow investors to borrow money from brokers to purchase securities, using their existing investments as collateral.</p>
+                    
+                    <h3>How It Works</h3>
+                    <p>Investors can borrow up to 50-70% of the value of their securities portfolio to invest in additional assets.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Leverage to amplify returns, ability to maintain market exposure without selling assets.</p>
+                    
+                    <h3>Risks</h3>
+                    <p>Margin calls if portfolio value falls, interest costs, and potential for amplified losses.</p>
+                `
+            },
+            'foreign-exchange': {
+                title: 'Foreign Exchange',
+                content: `
+                    <p>Foreign exchange (FX) involves trading currencies against each other, either for speculation or hedging currency risk.</p>
+                    
+                    <h3>Major Pairs</h3>
+                    <p>EUR/USD, USD/JPY, GBP/USD, and USD/CHF are the most actively traded currency pairs.</p>
+                    
+                    <h3>Uses</h3>
+                    <p>Hedging international business risk, speculation on currency movements, and portfolio diversification.</p>
+                    
+                    <h3>Factors</h3>
+                    <p>Interest rate differentials, economic data, political , and central bank policies influence currency values.</p>
                 `
             },
             'cryptocurrency': {
@@ -886,6 +1468,111 @@
                     
                     <h3>Technology</h3>
                     <p>Most cryptocurrencies are built on blockchain technology, offering transparency, decentralization, and potential for innovation.</p>
+                `
+            },
+            'private-equity': {
+                title: 'Private Equity',
+                content: `
+                    <p>Private equity involves investing in private companies that are not listed on public stock exchanges.</p>
+                    
+                    <h3>Investment Strategies</h3>
+                    <p>Venture capital (early-stage), growth capital (expanding companies), and buyouts (mature companies).</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Potential for high returns, active involvement in company management, and diversification from public markets.</p>
+                    
+                    <h3>Considerations</h3>
+                    <p>Illiquidity, high minimum investments, longer time horizons, and higher risk than public investments.</p>
+                `
+            },
+            'private-debt': {
+                title: 'Private Debt',
+                content: `
+                    <p>Private debt involves lending money directly to private companies, typically through private debt funds or direct lending.</p>
+                    
+                    <h3>Types</h3>
+                    <p>Senior secured loans, subordinated debt, distressed debt, and venture debt.</p>
+                    
+                    <h3>Risk Profile</h3>
+                    <p>Lower risk than equity but higher than investment-grade bonds, with returns reflecting credit quality.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Regular income payments, potential for capital appreciation, and diversification benefits.</p>
+                `
+            },
+            'infrastructure-assets': {
+                title: 'Infrastructure Assets',
+                content: `
+                    <p>Infrastructure assets include investments in essential public services and facilities like roads, bridges, utilities, and transportation systems.</p>
+                    
+                    <h3>Investment Vehicles</h3>
+                    <p>Infrastructure funds, greenfield projects, brownfield assets, and listed infrastructure companies.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Stable cash flows, inflation protection, low correlation with traditional assets, and social importance.</p>
+                    
+                    <h3>Considerations</h3>
+                    <p>Long investment horizons, regulatory risk, and potential political interference.</p>
+                `
+            },
+            'venture-capital': {
+                title: 'Venture Capital',
+                content: `
+                    <p>Venture capital involves investing in early-stage, high-growth potential companies that are typically not yet profitable.</p>
+                    
+                    <h3>Stages</h3>
+                    <p>Seed stage, early stage, and growth stage investments with different risk and return profiles.</p>
+                    
+                    <h3>Risk Profile</h3>
+                    <p>Very high risk with most investments failing, but successful investments can deliver extraordinary returns.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Access to innovative companies, potential for outsized returns, and involvement in groundbreaking technologies.</p>
+                `
+            },
+            'collectibles': {
+                title: 'Collectibles',
+                content: `
+                    <p>Collectibles include rare and valuable items such as art, antiques, coins, stamps, wine, and other tangible assets.</p>
+                    
+                    <h3>Investment Appeal</h3>
+                    <p>Diversification from traditional financial assets, potential for appreciation, and enjoyment of ownership.</p>
+                    
+                    <h3>Considerations</h3>
+                    <p>Illiquidity, high transaction costs, subjective valuation, and storage/preservation requirements.</p>
+                    
+                    <h3>Risks</h3>
+                    <p>Market demand can be fickle, and authenticity verification is crucial for valuable items.</p>
+                `
+            },
+            'art-investments': {
+                title: 'Art',
+                content: `
+                    <p>Art investment involves purchasing paintings, sculptures, and other artworks with the expectation of future appreciation and potential income.</p>
+                    
+                    <h3>Market Segments</h3>
+                    <p>Contemporary art, modern art, old masters, and emerging artists from different regions.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Aesthetic enjoyment, portfolio diversification, inflation hedge, and potential tax advantages.</p>
+                    
+                    <h3>Challenges</h3>
+                    <p>Subjective valuation, illiquidity, high transaction costs, and need for expert authentication.</p>
+                `
+            },
+            'fine-wine': {
+                title: 'Fine Wine',
+                content: `
+                    <p>Fine wine investment involves purchasing rare and collectible wines that appreciate in value over time.</p>
+                    
+                    <h3>Key Regions</h3>
+                    <p>Bordeaux, Burgundy, Napa Valley, and other premium wine-producing regions with established reputations.</p>
+                    
+                    <h3>Storage Requirements</h3>
+                    <p>Professional storage facilities are essential to maintain wine quality and value.</p>
+                    
+                    <h3>Market Factors</h3>
+                    <p>Vintage quality, producer reputation, global demand, and economic conditions influence wine prices.</p>
                 `
             }
         };
@@ -930,3 +1617,15 @@
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+

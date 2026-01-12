@@ -116,12 +116,12 @@
             color: var(--primary-blue);
         }
 
-        .main-nav-desktop-only {
+        .desktop-only {
             display: block;
         }
 
         @media (max-width: 768px) {
-            .main-nav-desktop-only {
+            .desktop-only {
                 display: none;
             }
         }
@@ -348,15 +348,15 @@
 <body>
     <div class="books-page">
         <!-- Header -->
-        <header class="header" id="main-header">
-            <div class="header-content">
+        <header class="header sticky-header" id="main-header">
+            <div class="container"><div class="header-content">
                 <div class="logo">
                     <a href="index.html">
                         <img src="G&D Logo.png" alt="Graham & Doddsville Logo" class="logo-image">
                     </a>
                 </div>
 
-                <nav class="main-nav main-nav-desktop-only">
+                <nav class="main-nav desktop-only">
                     <ul>
                         <li><a href="index.html" class="nav-link">HOME</a></li>
                         <li><a href="classical-readings.html" class="nav-link">CLASSICAL READINGS</a></li>
@@ -370,37 +370,35 @@
                 </nav>
 
                 <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
                 </button>
-            </div>
-        </header>
+            </div></header>
 
         <!-- Mobile Drawer -->
         <div class="mobile-drawer" id="mobile-drawer">
-            <div class="drawer-header">
-                <img src="G&D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
-                <button class="drawer-close" id="drawer-close" aria-label="Close menu">×</button>
-            </div>
-            <nav class="drawer-nav">
-                <ul class="drawer-menu">
-                    <li><a href="index.html" class="drawer-link">Home</a></li>
-                    <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
-                    <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
-                    <li><a href="legal-taxation.html" class="drawer-link">Legal & Taxation</a></li>
-                    <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
-                    <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
-                    <li><a href="#" class="drawer-link">Investment Analysis</a></li>
-                    <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
-                    <li><a href="economics.html" class="drawer-link">Economics</a></li>
-                    <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
-                    <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
-                    <li><a href="resources.html" class="drawer-link">Resources</a></li>
-                    <li><a href="events.html" class="drawer-link">Events</a></li>
-                </ul>
-            </nav>
+        <div class="drawer-header">
+            <img src="G&D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
+            <button class="drawer-close" id="drawer-close" aria-label="Close menu"></button>
         </div>
+        <nav class="drawer-nav">
+            <ul class="drawer-menu">
+                <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
+                <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
+                <li><a href="legal-taxation.html" class="drawer-link">Legal & Taxation</a></li>
+                <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
+                <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
+                <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
+                <li><a href="#" class="drawer-link">Investment Analysis</a></li>
+                <li><a href="economics.html" class="drawer-link">Economics</a></li>
+                <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
+                <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
+                <li><a href="resources.html" class="drawer-link">Resources</a></li>
+                <li><a href="events.html" class="drawer-link">Events & Seminars</a></li>
+            </ul>
+        </nav>
+    </div>
 
         <!-- Page Title Section -->
         <section class="page-title-section">
@@ -723,7 +721,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <div class="book-title"><a href="https://www.amazon.com.au/Technical-Analysis-Financial-Markets-Comprehensive/dp/0735200661" target="_blank" rel="noopener noreferrer">Technical Analysis of the Financial Markets</a></div>
+                                <div class="book-title"><a href="https://www.amazon.com.au/Technical-Analysis-Financial-Markets-Comprehensive/dp/0735200661" target="_blank" rel="noopener noreferrer">Technical Analysis of the WEALTH CREATION</a></div>
                             </td>
                             <td>
                                 <div class="book-author">John Murphy</div>
@@ -1468,7 +1466,7 @@
                     <div class="book-mobile-price">$41.99</div>
                 </div>
                 <div class="book-mobile-card">
-                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/Technical-Analysis-Financial-Markets-Complete/dp/0735200661" target="_blank" rel="noopener noreferrer">Technical Analysis of the Financial Markets</a></div>
+                    <div class="book-mobile-title"><a href="https://www.amazon.com.au/Technical-Analysis-Financial-Markets-Complete/dp/0735200661" target="_blank" rel="noopener noreferrer">Technical Analysis of the WEALTH CREATION</a></div>
                     <div class="book-mobile-author">John Murphy</div>
                     <div class="book-mobile-price">$49.99</div>
                 </div>
@@ -1835,3 +1833,14 @@
     </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+

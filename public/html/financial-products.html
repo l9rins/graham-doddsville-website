@@ -496,50 +496,64 @@
 <body>
     <div class="wealth-creation-page">
         <!-- Header -->
-        <header class="header sticky-header">
-            <div class="header-content">
+        <header class="header sticky-header" role="banner">
+            <div class="container"><div class="header-content">
                 <div class="logo">
                     <img src="/images/G&amp;D Logo.png" alt="Graham &amp; Doddsville" class="logo-image">
                 </div>
-                <!-- Desktop Navigation (hidden on mobile) -->
-                <nav class="main-nav desktop-only" role="navigation" aria-label="Main navigation">
-                    <ul>
+                
+                <nav class="main-nav desktop-only">                    <ul>
                         <li><a href="index.html" class="nav-link">HOME</a></li>
                         <li><a href="classical-readings.html" class="nav-link">CLASSICAL READINGS</a></li>
                         <li><a href="wealth-creation.html" class="nav-link">WEALTH CREATION</a></li>
                         <li><a href="#" class="nav-link">ABOUT</a></li>
-                    </ul>
-                </nav>
+                    </ul></nav>
                 
-                <!-- Mobile Hamburger Menu -->
+                
                 <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                 </button>
-            </div>
-        </header>
+            </div></header>
 
         <!-- Mobile Navigation Drawer -->
         <div class="mobile-drawer" id="mobile-drawer">
-            <div class="drawer-header">
-                <img src="/images/G&amp;D Logo.png" alt="Graham and Doddsville" class="drawer-logo">
-                <button class="drawer-close" id="drawer-close" aria-label="Close menu">×</button>
-            </div>
+        <div class="drawer-header">
+            <img src="G&D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
+            <button class="drawer-close" id="drawer-close" aria-label="Close menu"></button>
+        </div>
+        <nav class="drawer-nav">
+            <ul class="drawer-menu">
+                <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
+                <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
+                <li><a href="legal-taxation.html" class="drawer-link">Legal & Taxation</a></li>
+                <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
+                <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
+                <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
+                <li><a href="#" class="drawer-link">Investment Analysis</a></li>
+                <li><a href="economics.html" class="drawer-link">Economics</a></li>
+                <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
+                <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
+                <li><a href="resources.html" class="drawer-link">Resources</a></li>
+                <li><a href="events.html" class="drawer-link">Events & Seminars</a></li>
+            </ul>
+        </nav>
+    </div>
             <nav class="drawer-nav">
                 <ul class="drawer-menu">
                     <li><a href="index.html" class="drawer-link">Home</a></li>
                     <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
                     <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
                     <li><a href="legal-taxation.html" class="drawer-link">Legal &amp; Taxation</a></li>
-                    <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
+                    <li><a href="financial-markets.html" class="drawer-link">WEALTH CREATION</a></li>
                     <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
                     <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
-                    <li><a href="economics.html" class="drawer-link">Economics</a></li>
-                    <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
+                    <li><a href="ABOUT.html" class="drawer-link">ABOUT</a></li>
+                    <li><a href="professional-advisers.html" class="drawer-link"></a></li>
                     <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
-                    <li><a href="resources.html" class="drawer-link">Resources</a></li>
-                    <li><a href="events.html" class="drawer-link">Events</a></li>
+                    <li><a href=".html" class="drawer-link"></a></li>
+                    <li><a href=".html" class="drawer-link"></a></li>
                 </ul>
             </nav>
         </div>
@@ -811,6 +825,111 @@
                     <p>While safe, cash accounts typically offer lower returns compared to other investments and may not keep pace with inflation over the long term.</p>
                 `
             },
+            'term-deposits': {
+                title: 'Term Deposits',
+                content: `
+                    <p>Term deposits are savings accounts with fixed interest rates and maturity dates, offering higher returns than regular savings accounts.</p>
+                    
+                    <h3>Key Features</h3>
+                    <p>Fixed interest rates, predetermined maturity periods (typically 1-5 years), and guaranteed returns make them attractive for conservative savers.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Low risk, predictable returns, and often higher interest rates than standard savings accounts.</p>
+                    
+                    <h3>Considerations</h3>
+                    <p>Funds are locked in for the term, early withdrawal penalties apply, and returns may not beat inflation in high-inflation environments.</p>
+                `
+            },
+            'cash-management-trusts': {
+                title: 'Cash Management Trusts',
+                content: `
+                    <p>Cash management trusts are pooled investment vehicles that invest in short-term, high-quality money market instruments.</p>
+                    
+                    <h3>Investment Focus</h3>
+                    <p>These trusts invest in bank bills, certificates of deposit, and other short-term debt securities with maturities typically under 12 months.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Higher returns than traditional savings accounts, daily liquidity, and professional management of short-term investments.</p>
+                    
+                    <h3>Risk Profile</h3>
+                    <p>Very low risk due to high-quality investments and short maturities, though returns fluctuate with interest rate changes.</p>
+                `
+            },
+            'high-yield-savings': {
+                title: 'High Yield Savings',
+                content: `
+                    <p>High-yield savings accounts offer significantly higher interest rates than traditional savings accounts while maintaining liquidity.</p>
+                    
+                    <h3>Key Features</h3>
+                    <p>Competitive interest rates, online banking platforms, and often no monthly fees or minimum balance requirements.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Better returns than standard savings accounts, FDIC insurance protection, and easy access to funds.</p>
+                    
+                    <h3>Considerations</h3>
+                    <p>May require online banking, interest rates can change, and some accounts have withdrawal limits.</p>
+                `
+            },
+            'money-market-accounts': {
+                title: 'Money Market Accounts',
+                content: `
+                    <p>Money market accounts combine features of savings accounts and money market funds, offering higher interest rates with check-writing privileges.</p>
+                    
+                    <h3>Key Features</h3>
+                    <p>Higher interest rates than savings accounts, limited check-writing capabilities, and competitive yields.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Better returns than traditional savings, FDIC insurance, and some liquidity through check writing.</p>
+                    
+                    <h3>Requirements</h3>
+                    <p>Often require higher minimum balances and may have monthly fees if balance requirements aren't met.</p>
+                `
+            },
+            'certificates-of-deposit': {
+                title: 'Certificates of Deposit',
+                content: `
+                    <p>Certificates of deposit (CDs) are savings accounts that pay a fixed interest rate for a specified period of time.</p>
+                    
+                    <h3>Key Features</h3>
+                    <p>Fixed interest rates, fixed terms (typically 3 months to 5 years), and FDIC insurance protection.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Guaranteed returns, higher interest rates than savings accounts, and low risk.</p>
+                    
+                    <h3>Considerations</h3>
+                    <p>Funds are locked in for the term, early withdrawal penalties can be significant, and rates may not keep pace with inflation.</p>
+                `
+            },
+            'treasury-bills': {
+                title: 'Treasury Bills',
+                content: `
+                    <p>Treasury bills are short-term debt obligations issued by the government, considered among the safest investments available.</p>
+                    
+                    <h3>Key Features</h3>
+                    <p>Maturities of 4, 13, 26, or 52 weeks, sold at a discount to face value, and backed by the full faith and credit of the government.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Extremely low risk, highly liquid, and often used as a benchmark for other short-term investments.</p>
+                    
+                    <h3>How They Work</h3>
+                    <p>Purchased at a discount and redeemed at face value, with the difference representing the interest earned.</p>
+                `
+            },
+            'cash-equivalents': {
+                title: 'Cash Equivalents',
+                content: `
+                    <p>Cash equivalents are short-term, highly liquid investments that can be quickly converted to cash with minimal risk of value changes.</p>
+                    
+                    <h3>Examples</h3>
+                    <p>Include treasury bills, commercial paper, money market funds, and certificates of deposit with short maturities.</p>
+                    
+                    <h3>Key Characteristics</h3>
+                    <p>High liquidity, low risk, short maturities (typically less than 3 months), and stable values.</p>
+                    
+                    <h3>Uses</h3>
+                    <p>Ideal for parking cash temporarily, managing short-term liquidity needs, and preserving capital.</p>
+                `
+            },
             'government-bonds': {
                 title: 'Government Bonds',
                 content: `
@@ -826,6 +945,111 @@
                     <p>While safe, government bonds typically offer lower returns than riskier assets, but provide steady income and capital preservation.</p>
                 `
             },
+            'semi-government-bonds': {
+                title: 'Semi-Government Bonds',
+                content: `
+                    <p>Semi-government bonds are debt securities issued by state, provincial, or local government entities.</p>
+                    
+                    <h3>Key Features</h3>
+                    <p>Issued by government agencies or authorities, often with specific purposes like infrastructure or education funding.</p>
+                    
+                    <h3>Risk Assessment</h3>
+                    <p>Generally very low risk, though slightly higher than federal government bonds due to potential state-specific economic factors.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Tax advantages in some jurisdictions, steady income, and diversification within the fixed income asset class.</p>
+                `
+            },
+            'corporate-bonds': {
+                title: 'Corporate Bonds',
+                content: `
+                    <p>Corporate bonds are debt securities issued by companies to raise capital for business operations, expansion, or other corporate purposes.</p>
+                    
+                    <h3>Credit Ratings</h3>
+                    <p>Rated by agencies like Standard & Poor's and Moody's, ranging from AAA (highest quality) to D (in default).</p>
+                    
+                    <h3>Risk and Return</h3>
+                    <p>Offer higher yields than government bonds to compensate for additional credit risk, with investment-grade and high-yield categories.</p>
+                    
+                    <h3>Types</h3>
+                    <p>Include senior secured bonds, subordinated bonds, convertible bonds, and callable bonds with different risk profiles.</p>
+                `
+            },
+            'debentures': {
+                title: 'Debentures',
+                content: `
+                    <p>Debentures are unsecured debt instruments issued by corporations, backed only by the issuer's creditworthiness rather than specific assets.</p>
+                    
+                    <h3>Key Features</h3>
+                    <p>Unsecured debt, typically issued by large, creditworthy companies, and often subordinated to other creditors in bankruptcy.</p>
+                    
+                    <h3>Risk Profile</h3>
+                    <p>Higher risk than secured bonds but lower than equity, with yields reflecting the issuer's credit quality.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Regular interest payments, potential for capital appreciation, and diversification benefits in a fixed income portfolio.</p>
+                `
+            },
+            'bond-funds': {
+                title: 'Bond Funds',
+                content: `
+                    <p>Bond funds are investment funds that pool money to invest in a diversified portfolio of bonds and other debt securities.</p>
+                    
+                    <h3>Types of Bond Funds</h3>
+                    <p>Government bond funds, corporate bond funds, high-yield bond funds, and international bond funds.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Professional management, diversification, liquidity, and easier access to bond markets than individual bonds.</p>
+                    
+                    <h3>Risk Considerations</h3>
+                    <p>Interest rate risk, credit risk, and potential for capital losses when interest rates rise.</p>
+                `
+            },
+            'treasury-notes': {
+                title: 'Treasury Notes',
+                content: `
+                    <p>Treasury notes are intermediate-term debt securities issued by the government with maturities ranging from 2 to 10 years.</p>
+                    
+                    <h3>Key Features</h3>
+                    <p>Semi-annual interest payments, face values from $100 to $1 million, and backed by the full faith and credit of the government.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Extremely low credit risk, regular income payments, and high liquidity in secondary markets.</p>
+                    
+                    <h3>Uses</h3>
+                    <p>Ideal for investors seeking steady income with minimal risk and moderate maturity horizons.</p>
+                `
+            },
+            'municipal-bonds': {
+                title: 'Municipal Bonds',
+                content: `
+                    <p>Municipal bonds are debt securities issued by state and local governments to fund public projects and services.</p>
+                    
+                    <h3>Tax Advantages</h3>
+                    <p>Interest income is often exempt from federal income tax and sometimes state and local taxes, making them attractive for high-income investors.</p>
+                    
+                    <h3>Types</h3>
+                    <p>General obligation bonds (backed by taxing power) and revenue bonds (backed by specific revenue streams).</p>
+                    
+                    <h3>Risk Profile</h3>
+                    <p>Generally low risk, though credit quality varies by issuer and economic conditions can affect repayment ability.</p>
+                `
+            },
+            'inflation-linked-bonds': {
+                title: 'Inflation-Linked Bonds',
+                content: `
+                    <p>Inflation-linked bonds are debt securities where the principal and/or interest payments are adjusted for inflation.</p>
+                    
+                    <h3>How They Work</h3>
+                    <p>Principal value adjusts with inflation indices, protecting investors from purchasing power erosion during inflationary periods.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Hedge against inflation, real return preservation, and typically issued by governments for credit quality.</p>
+                    
+                    <h3>Examples</h3>
+                    <p>Treasury Inflation-Protected Securities (TIPS) in the US and similar instruments in other countries.</p>
+                `
+            },
             'shares': {
                 title: 'Shares',
                 content: `
@@ -839,6 +1063,51 @@
                     
                     <h3>Investment Strategies</h3>
                     <p>Investors can choose individual stocks or diversified funds, with strategies ranging from value investing to growth investing.</p>
+                `
+            },
+            'superannuation': {
+                title: 'Superannuation',
+                content: `
+                    <p>Superannuation is a retirement savings system where employers and employees contribute to retirement funds managed by trustees.</p>
+                    
+                    <h3>Australian Context</h3>
+                    <p>In Australia, superannuation is mandatory with employer contributions of at least 11% of salary, plus voluntary employee contributions.</p>
+                    
+                    <h3>Key Features</h3>
+                    <p>Tax advantages during accumulation phase, compulsory preservation until retirement, and choice of investment options.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Compulsory savings, tax benefits, diversified investment options, and professional fund management.</p>
+                `
+            },
+            'smsfs': {
+                title: 'SMSFs (Self-Managed Superannuation Funds)',
+                content: `
+                    <p>Self-Managed Superannuation Funds are private retirement savings plans where members control their own investments and administration.</p>
+                    
+                    <h3>Key Features</h3>
+                    <p>Greater investment control, potential for higher returns, but increased responsibility for compliance and administration.</p>
+                    
+                    <h3>Requirements</h3>
+                    <p>Limited to 4 members, strict regulatory compliance, annual audits, and professional trustee responsibilities.</p>
+                    
+                    <h3>Considerations</h3>
+                    <p>Higher costs, complexity, and regulatory burden make SMSFs suitable only for sophisticated investors.</p>
+                `
+            },
+            'rsas': {
+                title: 'RSAs (Retirement Savings Accounts)',
+                content: `
+                    <p>Retirement Savings Accounts are tax-advantaged savings vehicles designed specifically for retirement planning and wealth accumulation.</p>
+                    
+                    <h3>Tax Benefits</h3>
+                    <p>Contributions may be tax-deductible, investment growth is tax-deferred, and withdrawals in retirement may be taxed favorably.</p>
+                    
+                    <h3>Key Features</h3>
+                    <p>Long-term savings focus, diversified investment options, and professional management in many cases.</p>
+                    
+                    <h3>Benefits</h3>
+                    <p>Tax advantages, disciplined savings approach, and potential for compounded growth over decades.</p>
                 `
             },
             'etfs': {
@@ -929,3 +1198,15 @@
 
 
 </body></html>
+
+
+
+
+
+
+
+
+
+
+
+

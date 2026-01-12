@@ -97,6 +97,34 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231e3a8a'/%3E%3Ctext x='50' y='60' font-family='Georgia,serif' font-size='24' font-weight='bold' text-anchor='middle' fill='%23f5b400'%3EG%26D%3C/text%3E%3C/svg%3E">
     <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' fill='%231e3a8a' rx='20'/%3E%3Ctext x='90' y='110' font-family='Georgia,serif' font-size='48' font-weight='bold' text-anchor='middle' fill='%23f5b400'%3EG%26D%3C/text%3E%3C/svg%3E">
     <link rel="manifest" href="data:application/json,%7B%22name%22:%22Graham%20and%20Doddsville%22,%22short_name%22:%22G%26D%22,%22icons%22:%5B%7B%22src%22:%22data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' fill='%231e3a8a' rx='24'/%3E%3Ctext x='96' y='120' font-family='Georgia,serif' font-size='48' font-weight='bold' text-anchor='middle' fill='%23f5b400'%3EG%26D%3C/text%3E%3C/svg%3E%22,%22sizes%22:%22192x192%22,%22type%22:%22image/svg+xml%22%7D%5D,%22theme_color%22:%22%231e3a8a%22,%22background_color%22:%22%23ffffff%22%7D">
+    <style>
+        .buffett-tab-btn.active {
+            background: #1e3a8a !important;
+            color: white !important;
+        }
+        .buffett-tab-btn {
+            background: white;
+            color: #1e3a8a;
+            border: 1px solid #1e3a8a;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .buffett-tab-btn:hover {
+            background: #f0f0f0;
+        }
+        .buffett-see-more-link {
+            color: #1e3a8a;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            padding: 10px 20px;
+            border: 1px solid #1e3a8a;
+            border-radius: 6px;
+            display: inline-block;
+        }
+    </style>
     <script src="js/dropdown-position.js" defer></script>
     
     <!-- Structured Data for SEO -->
@@ -3448,19 +3476,19 @@
                 <div class="classic-reading-item-mobile">
                     <span class="news-bullet">8.</span>
                     <div class="news-content">
-                        <h3 class="news-headline"><a href="https://api.grahamanddoddsville.com.au/readings/should-rich-corporations-return-stockholders-cash-benjamin-graham-1932.pdf" target="_blank" style="cursor: pointer; color: inherit; text-decoration: none;">Should Rich Corporations Return Stockholders' Cash? (Benjamin Graham 1932)</a></h3>
+                        <h3 class="news-headline"><a href="pdfs/8-to-12/should-rich-corporations-return-stockholders-cash-benjamin-graham-1932.pdf" target="_blank" style="cursor: pointer; color: inherit; text-decoration: none;">Should Rich Corporations Return Stockholders' Cash? (Benjamin Graham 1932)</a></h3>
                     </div>
                 </div>
                 <div class="classic-reading-item-mobile">
                     <span class="news-bullet">9.</span>
                     <div class="news-content">
-                        <h3 class="news-headline"><a href="https://api.grahamanddoddsville.com.au/readings/should-rich-but-losing-corporations-be-liquidated-benjamin-graham-1932.pdf" target="_blank" style="cursor: pointer; color: inherit; text-decoration: none;">Should Rich But Losing Corporations be Liquidated? (Benjamin Graham 1932)</a></h3>
+                        <h3 class="news-headline"><a href="pdfs/8-to-12/should-rich-but-losing-corporations-be-liquidated-benjamin-graham-1932.pdf" target="_blank" style="cursor: pointer; color: inherit; text-decoration: none;">Should Rich But Losing Corporations be Liquidated? (Benjamin Graham 1932)</a></h3>
                     </div>
                 </div>
                 <div class="classic-reading-item-mobile">
                     <span class="news-bullet">10.</span>
                     <div class="news-content">
-                        <h3 class="news-headline"><a href="https://api.grahamanddoddsville.com.au/readings/selling-america-for-50-cents-on-the-dollar-benjamin-graham-1932.pdf" target="_blank" style="cursor: pointer; color: inherit; text-decoration: none;">Selling America for 50 Cents on the Dollar (Benjamin Graham 1932)</a></h3>
+                        <h3 class="news-headline"><a href="pdfs/8-to-12/selling-america-for-50-cents-on-the-dollar-benjamin-graham-1932.pdf" target="_blank" style="cursor: pointer; color: inherit; text-decoration: none;">Selling America for 50 Cents on the Dollar (Benjamin Graham 1932)</a></h3>
                     </div>
                 </div>
                 <!-- Centered See more link for Classic Readings (mobile) -->
@@ -3473,60 +3501,93 @@
 
         <!-- WARREN BUFFETT ON EVERYTHING Section with Tabs -->
         <div class="newspaper-section" id="mobile-buffett">
-            <h2 class="section-header">WARREN BUFFETT ON EVERYTHING</h2>
-            
-            <div class="buffett-tabs-mobile">
-                <button class="buffett-tab-btn active" onclick="openStaticTab('buffett-munger', this)">Buffett & Munger</button>
-                <button class="buffett-tab-btn" onclick="openStaticTab('value-investing', this)">Value Investing</button>
-                <button class="buffett-tab-btn" onclick="openStaticTab('share-investing', this)">Share Investing</button>
-                <button class="buffett-tab-btn" onclick="openStaticTab('wealth-creation', this)">Wealth Creation</button>
-                <button class="buffett-tab-btn" onclick="openStaticTab('financial-analysis', this)">Financial Analysis</button>
-                <button class="buffett-tab-btn" onclick="openStaticTab('sales-marketing', this)">Sales & Marketing</button>
-                <button class="buffett-tab-btn" onclick="openStaticTab('self-improvement', this)">Self Improvement</button>
-                <button class="buffett-tab-btn" onclick="openStaticTab('business-management', this)">Business Management</button>
-                <button class="buffett-tab-btn" onclick="openStaticTab('miscellaneous', this)">Miscellaneous</button>
+            <h2>Warren Buffett On Everything</h2>
+            <p>Warren Buffett's investment philosophy is built on the principles of value investing, patience, and discipline. He focuses on acquiring high-quality companies with durable competitive advantages at prices below their intrinsic value.</p>
+            <div class="tab-buttons" style="display: flex; overflow-x: auto; margin-bottom: 15px; gap: 10px; padding-bottom: 5px; -webkit-overflow-scrolling: touch; scrollbar-width: none;">
+                <button class="buffett-tab-btn active" data-tab="philosophy" style="white-space: nowrap; flex-shrink: 0;">Philosophy</button>
+                <button class="buffett-tab-btn" data-tab="investing" style="white-space: nowrap; flex-shrink: 0;">Investing</button>
+                <button class="buffett-tab-btn" data-tab="businesses" style="white-space: nowrap; flex-shrink: 0;">Businesses</button>
+                <button class="buffett-tab-btn" data-tab="governance" style="white-space: nowrap; flex-shrink: 0;">Governance</button>
             </div>
-
-<div id="buffett-munger" class="buffett-content active" style="display:block;"><p>Poor Charlie's Almanack,The Snowball,Damn Right!,Buffett: The Making of An American Capitalist,The Essays of Warren Buffett</p></div>
-<div id="value-investing" class="buffett-content" style="display:none;"><p>The Intelligent Investor,Security Analysis,Common Stocks and Uncommon Profits,Margin of Safety,The Dhandho Investor</p></div>
-<div id="share-investing" class="buffett-content" style="display:none;"><p>One Up on Wall Street,Beating the Street,A Random Walk Down Wall Street,Stocks for the Long Run</p></div>
-<div id="wealth-creation" class="buffett-content" style="display:none;"><p>The Millionaire Next Door,Rich Dad Poor Dad,The Richest Man in Babylon,Think and Grow Rich</p></div>
-<div id="financial-analysis" class="buffett-content" style="display:none;"><p>Financial Shenanigans,Quality of Earnings,Financial Statement Analysis,Valuation</p></div>
-<div id="sales-marketing" class="buffett-content" style="display:none;"><p>Influence: The Psychology of Persuasion,Made to Stick,Purple Cow,Crossing the Chasm</p></div>
-<div id="self-improvement" class="buffett-content" style="display:none;"><p>How to Win Friends and Influence People,The 7 Habits of Highly Effective People,Atomic Habits</p></div>
-<div id="business-management" class="buffett-content" style="display:none;"><p>Good to Great,The Outsiders,Shoe Dog,Zero to One,The Lean Startup</p></div>
-<div id="miscellaneous" class="buffett-content" style="display:none;"><p>Titan,Steve Jobs,Elon Musk,The Box,Freakonomics,Outliers,Sapiens</p></div>
-<script>
-    function openStaticTab(id, btn) {
-        // Hide all
-        document.querySelectorAll('.buffett-content').forEach(el => el.style.display = 'none');
-        document.querySelectorAll('.buffett-tab-btn').forEach(el => el.classList.remove('active'));
-        // Show active
-        document.getElementById(id).style.display = 'block';
-        btn.classList.add('active');
-    }
-</script>
+            <style>
+                .buffett-horizontal-list {
+                    display: flex !important;
+                    flex-wrap: nowrap !important;
+                    overflow-x: auto !important;
+                    white-space: nowrap !important;
+                    gap: 0; /* Removing gap, using padding on items if needed */
+                    padding-bottom: 10px;
+                    list-style-type: none;
+                    padding-left: 0;
+                    margin-bottom: 0;
+                    -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
+                    scrollbar-width: none; /* Hide scrollbar Firefox */
+                }
+                .buffett-horizontal-list::-webkit-scrollbar {
+                    display: none; /* Hide scrollbar Chrome/Safari */
+                }
+                .buffett-horizontal-list li {
+                    display: inline-block;
+                    flex-shrink: 0; /* Prevent shrinking */
+                }
+                .buffett-horizontal-list li a {
+                    text-decoration: none;
+                    color: #333;
+                    font-weight: 600;
+                    font-size: 14px;
+                    font-family: Georgia, serif;
+                }
+                /* Add the comma separator */
+                .buffett-horizontal-list li::after {
+                    content: " , ";
+                    color: #666;
+                    margin-right: 5px;
+                }
+                .buffett-horizontal-list li:last-child::after {
+                    content: "";
+                    margin-right: 0;
+                }
+            </style>
+            <div class="buffett-content-div" id="philosophy-content" style="display: block;">
+                <ul class="buffett-horizontal-list">
+                    <li><a href="warren-buffett-philosophy.html#efficient-market-theory">Efficient Market Theory</a></li>
+                    <li><a href="warren-buffett-philosophy.html#modern-portfolio-theory">Modern Portfolio Theory</a></li>
+                    <li><a href="warren-buffett-philosophy.html#intrinsic-value">Intrinsic Value</a></li>
+                    <li><a href="warren-buffett-philosophy.html#margin-of-safety">Margin of Safety</a></li>
+                    <li><a href="warren-buffett-philosophy.html#circle-of-competence">Circle of Competence</a></li>
+                </ul>
+            </div>
+            <div class="buffett-content-div" id="investing-content" style="display: none;">
+                <ul class="buffett-horizontal-list">
+                    <li><a href="warren-buffett-philosophy.html#stock-market">Stock Market</a></li>
+                    <li><a href="warren-buffett-philosophy.html#portfolio-allocation">Portfolio Allocation</a></li>
+                    <li><a href="warren-buffett-philosophy.html#buying-criteria">Buying Criteria</a></li>
+                    <li><a href="warren-buffett-philosophy.html#selling-criteria">Selling Criteria</a></li>
+                    <li><a href="warren-buffett-philosophy.html#volatility">Volatility</a></li>
+                </ul>
+            </div>
+            <div class="buffett-content-div" id="businesses-content" style="display: none;">
+                <ul class="buffett-horizontal-list">
+                    <li><a href="warren-buffett-philosophy.html#economic-moats">Economic Moats</a></li>
+                    <li><a href="warren-buffett-philosophy.html#management-quality">Management Quality</a></li>
+                    <li><a href="warren-buffett-philosophy.html#insurance-operations">Insurance Operations</a></li>
+                    <li><a href="warren-buffett-philosophy.html#banks">Banks</a></li>
+                    <li><a href="warren-buffett-philosophy.html#retail">Retail</a></li>
+                </ul>
+            </div>
+            <div class="buffett-content-div" id="governance-content" style="display: none;">
+                <ul class="buffett-horizontal-list">
+                    <li><a href="warren-buffett-philosophy.html#corporate-governance">Corporate Governance</a></li>
+                    <li><a href="warren-buffett-philosophy.html#ceo-compensation">CEO Compensation</a></li>
+                    <li><a href="warren-buffett-philosophy.html#board-roles">Board Roles</a></li>
+                    <li><a href="warren-buffett-philosophy.html#shareholder-rights">Shareholder Rights</a></li>
+                    <li><a href="warren-buffett-philosophy.html#transparency">Transparency</a></li>
+                </ul>
+            </div>
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="warren-buffett-philosophy.html" class="buffett-see-more-link">See more</a>
+            </div>
         </div>
-
-            <!-- Buffett Content by Tab -->
-                        <ol class="readings-list">
-                            <li><a href="#" onclick="openPartnershipLettersPage()" style="cursor: pointer; color: inherit; text-decoration: none;">Warren Buffett's Partnership Letters (1957 to 1970)</a></li>
-                            <li><a href="#" onclick="openUnpublishedLettersPage()" style="cursor: pointer; color: inherit; text-decoration: none;">Warren Buffett's Unpublished Letters to Berkshire Shareholders (1969 to 1976)</a></li>
-                            <li><a href="#" onclick="openAnnualLettersPage()" style="cursor: pointer; color: inherit; text-decoration: none;">Warren Buffett's Letters to Berkshire Shareholders (1977 to present day)</a></li>
-                            <li><a href="#" onclick="openOwnersManualPage()" style="cursor: pointer; color: inherit; text-decoration: none;">Berkshire Hathaway Owner's Manual (1999)</a></li>
-                            <li><a href="#" onclick="openSuperinvestorsPage()" style="cursor: pointer; color: inherit; text-decoration: none;">The Superinvestors of Graham and Doddsville (1984)</a></li>
-                            <li><a href="#" onclick="openGrahamLecturesPage()" style="cursor: pointer; color: inherit; text-decoration: none;">Benjamin Graham Lectures on Current Problems in Security Analysis (1946 & 1947)</a></li>
-                            <li><a href="#" onclick="openGrahamNewmanPage()" style="cursor: pointer; color: inherit; text-decoration: none;">Graham-Newman Partnership Letters (1946 to 1958)</a></li>
-                            <li><a href="https://api.grahamanddoddsville.com.au/readings/should-rich-corporations-return-stockholders-cash-benjamin-graham-1932.pdf" target="_blank" style="cursor: pointer; color: inherit; text-decoration: none;">Should Rich Corporations Return Stockholders' Cash? (Benjamin Graham 1932)</a></li>
-                            <li><a href="https://api.grahamanddoddsville.com.au/readings/should-rich-but-losing-corporations-be-liquidated-benjamin-graham-1932.pdf" target="_blank" style="cursor: pointer; color: inherit; text-decoration: none;">Should Rich But Losing Corporations be Liquidated? (Benjamin Graham 1932)</a></li>
-                            <li><a href="https://api.grahamanddoddsville.com.au/readings/selling-america-for-50-cents-on-the-dollar-benjamin-graham-1932.pdf" target="_blank" style="cursor: pointer; color: inherit; text-decoration: none;">Selling America for 50 Cents on the Dollar (Benjamin Graham 1932)</a></li>
-                            <li><a href="https://api.grahamanddoddsville.com.au/readings/special-situations-benjamin-graham-1946.pdf" target="_blank" style="cursor: pointer; color: inherit; text-decoration: none;">Special Situations (Benjamin Graham 1946)</a></li>
-                            <li><a href="https://api.grahamanddoddsville.com.au/readings/valuation-techniques-benjamin-graham-1947.pdf" target="_blank" style="cursor: pointer; color: inherit; text-decoration: none;">Valuation Techniques (Benjamin Graham 1947)</a></li>
-                        </ol>
-                        <div style="text-align: center; margin-top: 16px;">
-                            <a href="classical-readings.html" style="color: #1e3a8a; text-decoration: none; font-weight: 600;">See more</a>
-                        </div>
-                    </section>
 
 
 
@@ -3541,12 +3602,12 @@
                         <h2>###### OUR RECOMMENDED BOOKS</h2>
                         <div class="books-categories">
                             <div class="book-category">
-                                <h3>Warren Buffett</h3>
+                                <h3>WARREN BUFFETT</h3>
                                 <p>Poor Charlie's Almanack,The Snowball,Damn Right!,Buffett: The Making of An American Capitalist,The Essays of Warren Buffett: Lessons for Corporate America,Of Permanent Value,The Warren Buffett Way</p>
                             </div>
                             
                             <div class="book-category">
-                                <h3>Value Investing</h3>
+                                <h3>VALUE INVESTING</h3>
                                 <div class="book-links-horizontal">
                                     <a href="https://www.amazon.com/Little-Book-That-Beats-Market/dp/0471733064" target="_blank">The Little Book That Beats the Market</a> | 
                                     <a href="https://www.amazon.com/Little-Book-Value-Investing-Christopher/dp/0470055898" target="_blank">The Little Book of Value Investing</a> | 
@@ -3558,7 +3619,7 @@
                             </div>
                             
                             <div class="book-category">
-                                <h3>Share Investing</h3>
+                                <h3>SHARE INVESTING</h3>
                                 <div class="book-links-horizontal">
                                     <a href="https://www.amazon.com/How-Make-Money-Stocks-Winning/dp/0071614133" target="_blank">How to Make Money in Stocks: A Winning System in Good Times and Bad</a> | 
                                     <a href="https://www.amazon.com/Paths-Wealth-through-Common-Stocks/dp/0471445502" target="_blank">Paths to Wealth through Common Stocks</a> | 
@@ -3574,7 +3635,7 @@
                             </div>
                             
                             <div class="book-category">
-                                <h3>Wealth Creation</h3>
+                                <h3>WEALTH CREATION</h3>
                                 <div class="book-links-horizontal">
                                     <a href="https://www.amazon.com/Will-Teach-You-Rich-Second/dp/0761147489" target="_blank">I Will Teach You to Be Rich: No Guilt. No Excuses. Just a 6-Week Program That Works</a> | 
                                     <a href="https://www.amazon.com/Richest-Man-Babylon-George-Clason/dp/0451205367" target="_blank">The Richest Man in Babylon</a> | 
@@ -3590,7 +3651,7 @@
                             </div>
                             
                             <div class="book-category">
-                                <h3>Financial Analysis</h3>
+                                <h3>FINANCIAL ANALYSIS</h3>
                                 <div class="book-links-horizontal">
                                     <a href="https://www.amazon.com/Warren-Buffett-Accounting-Book-Reading/dp/1118856844" target="_blank">Warren Buffett Accounting</a> | 
                                     <a href="https://www.amazon.com/Financial-Shenanigans-Detecting-Accounting-Financial/dp/0071386262" target="_blank">Financial Shenanigans: How to Detect Accounting Gimmicks and Fraud in Financial Reports</a> | 
@@ -3606,7 +3667,7 @@
                             </div>
                             
                             <div class="book-category">
-                                <h3>Sales & Marketing</h3>
+                                <h3>SALES & MARKETING</h3>
                                 <div class="book-links-horizontal">
                                     <a href="https://www.amazon.com/Ogilvy-Advertising-David/dp/039472903X" target="_blank">Ogilvy on Advertising</a> | 
                                     <a href="https://www.amazon.com/Confessions-Advertising-Man-David-Ogilvy/dp/1904915377" target="_blank">Confessions of an Advertising Man</a> | 
@@ -3622,7 +3683,7 @@
                             </div>
                             
                             <div class="book-category">
-                                <h3>Self-Improvement</h3>
+                                <h3>SELF-IMPROVEMENT</h3>
                                 <div class="book-links-horizontal">
                                     <a href="https://www.amazon.com/As-Man-Thinketh-Original-1902/dp/1503032433" target="_blank">As A Man Thinketh (The Original 1902 Edition)</a> | 
                                     <a href="https://www.amazon.com/Law-Success-Napoleon-Hill/dp/1604599304" target="_blank">The Law of Success</a> | 
@@ -3638,7 +3699,7 @@
                             </div>
                             
                             <div class="book-category">
-                                <h3>Business & Management</h3>
+                                <h3>BUSINESS & MANAGEMENT</h3>
                                 <div class="book-links-horizontal">
                                     <a href="https://www.amazon.com/100M-Offers-People-Feel-Stupid/dp/1737475715" target="_blank">$100M Offers: How To Make Offers So Good People Feel Stupid Saying No</a> | 
                                     <a href="https://www.amazon.com/Personal-MBA-World-Class-Business-Education/dp/1591845572" target="_blank">The Personal MBA: A World-Class Business Education in a Single Volume</a> | 
@@ -3654,7 +3715,7 @@
                             </div>
                             
                             <div class="book-category">
-                                <h3>Miscellaneous</h3>
+                                <h3>MISCELLANEOUS</h3>
                                 <div class="book-links-horizontal">
                                     <a href="https://www.amazon.com/Autobiography-Benjamin-Franklin-Dover-Thrift/dp/0486290735" target="_blank">The Autobiography of Benjamin Franklin</a> | 
                                     <a href="https://www.amazon.com/Extraordinary-Popular-Delusions-Madness-Crowds/dp/1614277200" target="_blank">Extraordinary Popular Delusions and the Madness of Crowds</a> | 
@@ -3670,31 +3731,30 @@
                             </div>
                         </div>
                         <div style="text-align: center; margin-top: 24px;">
-                            <a href="#" style="color: #1e3a8a; text-decoration: none; font-weight: 600;">See more</a>
+                            <a href="warren-buffett-philosophy.html" style="color: #1e3a8a; text-decoration: none; font-weight: 600;">See more</a>
                         </div>
                     </section>
 
 
                     <!-- Warren Buffett on Everything -->
                     <section class="warren-buffett">
-                        <h2>###### WARREN BUFFETT ON EVERYTHING</h2>
-                        
-                        <!-- Tab Navigation -->
-                        <div class="buffett-tabs">
-                            <button class="tab-btn active" data-tab="philosophy">PHILOSOPHY</button>
-                            <button class="tab-btn" data-tab="investing">INVESTING</button>
-                            <button class="tab-btn" data-tab="businesses">BUSINESSES</button>
-                            <button class="tab-btn" data-tab="governance">GOVERNANCE</button>
-                            <button class="tab-btn" data-tab="accounting">ACCOUNTING</button>
-                            <button class="tab-btn" data-tab="economics">ECONOMICS</button>
-                            <button class="tab-btn" data-tab="miscellaneous">MISCELLANEOUS</button>
+                        <h2>Warren Buffett On Everything</h2>
+                        <p>Warren Buffett's investment philosophy is built on the principles of value investing, patience, and discipline. He focuses on acquiring high-quality companies with durable competitive advantages at prices below their intrinsic value. Central to his approach is the concept of a "margin of safety," which protects against analytical errors and market volatility. Buffett advocates for long-term holding periods, famously stating his favorite holding period is "forever," allowing compound interest to work its magic. He eschews complex financial instruments and market timing, preferring businesses he understands deeply. His annual letters to shareholders are legendary for their wit and wisdom, distilling complex financial concepts into digestible lessons on business, ethics, and life. Ultimately, Buffett's success lies not just in his financial acumen but in his unwavering commitment to rationality and integrity.</p>
+                        <div style="text-align: center; margin-top: 24px;">
+                            <a href="warren-buffett-philosophy.html" style="display: inline-block; padding: 12px 30px; background-color: #1e3a8a; color: white; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 14px; transition: background 0.3s;">See more</a>
                         </div>
-                        
-                        <!-- Tab Content -->
-                        <div class="buffett-content">
-                            <!-- Philosophy Tab -->
-                            <div class="tab-content active" id="philosophy-tab">
-                                <div class="buffett-columns">
+<div style="text-align: center; margin-top: 24px;">
+    <a href="warren-buffett-philosophy.html" style="color: #1e3a8a; text-decoration: none; font-weight: 600; font-size: 16px; background: transparent; border: 0px solid #1e3a8a;">See more</a>
+</div>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="video-modal">
                                     <div class="buffett-column">
                                         <div class="column-image">
                                             <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=300&h=200&fit=crop" alt="Investment Philosophy">
@@ -4109,6 +4169,9 @@
                                     
                                 </div>
                             </div>
+                        </div>
+                        <div style="text-align: center; margin-top: 24px;">
+                            <a href="warren-buffett-philosophy.html" style="color: #1e3a8a; text-decoration: none; font-weight: 600;">See more</a>
                         </div>
                     </section>
 
@@ -8531,22 +8594,19 @@ document.addEventListener('DOMContentLoaded', function () {
     //     });
     // });
 
-    // Simple static tab switching for #mobile-buffett
+    // Tab switching for #mobile-buffett
     const buffettTabButtons = document.querySelectorAll('#mobile-buffett .buffett-tab-btn');
     buffettTabButtons.forEach(btn => {
         btn.addEventListener('click', function () {
-            const cat = this.dataset.category; // data-category attribute on the button
-            if (!cat) return;
-
-            // Hide all tab-content divs
-            document.querySelectorAll('#mobile-buffett .tab-content').forEach(t => t.style.display = 'none');
-
-            // Show the matching content div
-            const target = document.getElementById(cat);
-            if (target) target.style.display = 'block';
-
-            // Update active button styling
+            const tab = this.dataset.tab;
+            // Hide all .buffett-content-div
+            document.querySelectorAll('#mobile-buffett .buffett-content-div').forEach(div => div.style.display = 'none');
+            // Remove active class from all buttons
             document.querySelectorAll('#mobile-buffett .buffett-tab-btn').forEach(b => b.classList.remove('active'));
+            // Show the specific target ID
+            const target = document.getElementById(tab + '-content');
+            if (target) target.style.display = 'block';
+            // Add active class to clicked button
             this.classList.add('active');
         });
     });
