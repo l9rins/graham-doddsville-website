@@ -790,13 +790,13 @@ app.get('/api/news', async (req, res) => {
         
         const allArticles = [];
         
-        // Fetch from RSS sources first (reliable) - TEMPORARILY DISABLED FOR TESTING
-        // const rssSources = getPrioritizedSources().filter(key => newsSources[key]?.type === 'rss').slice(0, 10);
-        // if (rssSources.length > 0) {
-        //     console.log(`Fetching from ${rssSources.length} RSS sources...`);
-        //     const rssResults = await processBatch(rssSources, 3);
-        //     rssResults.forEach(articles => allArticles.push(...articles));
-        // }
+        // Fetch from RSS sources first (reliable) - ENABLED
+        const rssSources = getPrioritizedSources().filter(key => newsSources[key]?.type === 'rss').slice(0, 10);
+        if (rssSources.length > 0) {
+            console.log(`Fetching from ${rssSources.length} RSS sources...`);
+            const rssResults = await processBatch(rssSources, 3);
+            rssResults.forEach(articles => allArticles.push(...articles));
+        }
         
         // Fetch optimized NewsAPI content with keywords
         console.log('Fetching optimized NewsAPI content...');
