@@ -176,40 +176,6 @@ class AustralianNewsScraper {
         }
     }
     
-    parseRSSFeed(xmlContent, source) {
-        try {
-            const parser = new DOMParser();
-            const xmlDoc = parser.parseFromString(xmlContent, 'text/xml');
-            const items = xmlDoc.querySelectorAll('item');
-            
-            const news = [];
-            for (let i = 0; i < Math.min(items.length, 3); i++) {
-                const item = items[i];
-                const title = item.querySelector('title')?.textContent || '';
-                const description = item.querySelector('description')?.textContent || '';
-                const link = item.querySelector('link')?.textContent || '';
-                const pubDate = item.querySelector('pubDate')?.textContent || '';
-                
-                if (title && link) {
-                    news.push({
-                        title: title,
-                        excerpt: description.replace(/<[^>]*>/g, '').substring(0, 150) + '...',
-                        url: link,
-                        image: article.image || this.getPlaceholderImage(source.name),
-                        category: this.categorizeNews(title + ' ' + description),
-                        source: source.name,
-                        publishedAt: new Date(pubDate || Date.now())
-                    });
-                }
-            }
-            
-            return news;
-        } catch (error) {
-            console.log(`Error parsing RSS feed for ${source.name}:`, error);
-            return null;
-        }
-    }
-
     processRealNews(articles, source) {
         return articles.map(article => ({
             title: article.title,

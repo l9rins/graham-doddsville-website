@@ -4,10 +4,14 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const fetch = require('node-fetch');
+const fs = require('fs');
+const Parser = require('rss-parser');
 const { DOMParser } = require('xmldom');
 const crypto = require('crypto');
 const rateLimit = require('express-rate-limit');
 const { newsSources, regionalNewsSources } = require('./news-sources-config');
+
+const parser = new Parser();
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -18,6 +22,16 @@ const MAX_CONCURRENT_REQUESTS = 5; // Reduced for NewsAPI rate limits
 const REQUEST_TIMEOUT = 5000; // Increased for NewsAPI
 const CACHE_DURATION = 6 * 60 * 60 * 1000; // 6 hours for NewsAPI free tier
 const MAX_ARTICLES_PER_SOURCE = 5; // Increased for better content
+
+// CACHE SETTINGS
+const CACHE_DIR = path.join(__dirname, 'news-cache');
+const NEWSAPI_CACHE_TIME = 6 * 60 * 60 * 1000; // 6 Hours (Strict for free tier)
+const RSS_CACHE_TIME = 30 * 60 * 1000;         // 30 Minutes (fresher for RSS)
+
+// Ensure cache directory exists
+if (!fs.existsSync(CACHE_DIR)) {
+    fs.mkdirSync(CACHE_DIR);
+}
 
 // NewsAPI optimization constants
 const FINANCIAL_KEYWORDS = ['investment', 'stock market', 'earnings', 'dividend', 'portfolio', 'value investing', 'financial analysis'];
@@ -494,37 +508,107 @@ function generatePlaceholderImage(sourceName) {
     return `https://picsum.photos/300/200?random=${Math.floor(Math.random() * 1000)}`;
 }
 
-// API endpoint to fetch news from a specific source
-app.get('/api/news/:source', async (req, res) => {
+// === HELPER: FETCH AND NORMALIZE ===
+async function fetchSourceData(sourceKey) {
+    const sourceConfig = newsSources[sourceKey];
+    if (!sourceConfig) throw new Error('Source not found in config');
+
+    console.log(`[Server] Fetching fresh data for ${sourceKey} (${sourceConfig.type})...`);
+
+    let articles = [];
+
     try {
-        const sourceKey = req.params.source;
-        const source = newsSources[sourceKey];
-        
-        if (!source) {
-            return res.status(404).json({ error: 'Source not found' });
+        if (sourceConfig.type === 'newsapi') {
+            // --- STRATEGY A: NewsAPI ---
+            const apiKey = process.env.NEWS_API_KEY;
+            // Note: Using 'everything' endpoint often yields more than top-headlines for specific domains
+            const url = `https://newsapi.org/v2/everything?domains=${sourceConfig.source}&apiKey=${apiKey}&pageSize=10`;
+
+            const response = await fetch(url);
+            const data = await response.json();
+
+            if (data.status === 'ok') {
+                articles = data.articles;
+            } else {
+                throw new Error(`NewsAPI Error: ${JSON.stringify(data)}`);
+            }
+
+        } else if (sourceConfig.type === 'rss') {
+            // --- STRATEGY B: RSS Feeds ---
+            const feed = await parser.parseURL(sourceConfig.url);
+
+            // Normalize RSS to match NewsAPI structure so frontend code is simple
+            articles = feed.items.map(item => ({
+                title: item.title,
+                description: item.contentSnippet || item.content,
+                url: item.link,
+                publishedAt: item.pubDate,
+                source: { name: sourceConfig.name }, // Match NewsAPI format
+                urlToImage: null // RSS rarely provides clean images, frontend handles placeholder
+            }));
         }
-        
-        let articles = [];
-        
-        if (source.type === 'newsapi') {
-            articles = await fetchNewsFromAPI(source);
-        } else if (source.type === 'rss') {
-            articles = await parseRSSFeed(source.url, source.name);
-        }
-        
-        res.json({
-            source: source.name,
-            articles: articles,
-            count: articles.length,
-            timestamp: new Date().toISOString()
-        });
-        
     } catch (error) {
-        console.error(`Error fetching news for ${req.params.source}:`, error);
-        res.status(500).json({ 
-            error: 'Failed to fetch news',
-            message: error.message 
-        });
+        console.error(`[Server] Error fetching ${sourceKey}:`, error.message);
+        throw error;
+    }
+
+    return {
+        articles: articles,
+        timestamp: new Date().toISOString()
+    };
+}
+
+// === THE ROUTE ===
+app.get('/api/news/:sourceId', async (req, res) => {
+    try {
+        const sourceId = req.params.sourceId;
+        const cacheFile = path.join(CACHE_DIR, `${sourceId}.json`);
+        const sourceConfig = newsSources[sourceId];
+
+        if (!sourceConfig) {
+            return res.status(404).json({ error: 'Source not configured' });
+        }
+
+        // 1. DETERMINE CACHE DURATION
+        const cacheDuration = sourceConfig.type === 'newsapi' ? NEWSAPI_CACHE_TIME : RSS_CACHE_TIME;
+
+        // 2. CHECK CACHE
+        if (fs.existsSync(cacheFile)) {
+            const fileData = fs.readFileSync(cacheFile, 'utf8');
+            const cachedJson = JSON.parse(fileData);
+            
+            const fileTime = new Date(cachedJson.timestamp).getTime();
+            const now = new Date().getTime();
+
+            // If cache is fresh, return it immediately
+            if ((now - fileTime) < cacheDuration) {
+                console.log(`[Server] Serving ${sourceId} from CACHE`);
+                return res.json(cachedJson);
+            }
+            console.log(`[Server] Cache expired for ${sourceId}`);
+        }
+
+        // 3. FETCH FRESH DATA (If cache missing or stale)
+        const freshData = await fetchSourceData(sourceId);
+
+        // 4. WRITE TO CACHE
+        fs.writeFileSync(cacheFile, JSON.stringify(freshData, null, 2));
+        
+        console.log(`[Server] Served and cached ${sourceId}`);
+        return res.json(freshData);
+
+    } catch (error) {
+        console.error(`[Server] Error processing ${req.params.sourceId}:`, error.message);
+        
+        // FAIL-SAFE: If fetch fails (API limit), try to serve STALE cache if it exists
+        const cacheFile = path.join(CACHE_DIR, `${req.params.sourceId}.json`);
+        if (fs.existsSync(cacheFile)) {
+            console.log(`[Server] Serving STALE cache for ${req.params.sourceId} due to error`);
+            const staleData = fs.readFileSync(cacheFile, 'utf8');
+            return res.json(JSON.parse(staleData));
+        }
+
+        return res.status(500).json({ error: 'Failed to fetch news', details: error.message });
     }
 });
 
@@ -1011,7 +1095,7 @@ process.on('unhandledRejection', (reason, promise) => {
 });
 
 // Start server
-app.listen(PORT, '::', () => {
+app.listen(PORT, '127.0.0.1', () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });
 
