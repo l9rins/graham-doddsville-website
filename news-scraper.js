@@ -3,11 +3,16 @@
 // Updated: Fixed method name issue - v1.1
 
 class AustralianNewsScraper {
-    constructor(apiUrl = 'http://localhost:3001') {
-        this.apiUrl = apiUrl; // Backend API URL
-        this.isLocalDevelopment = window.location.protocol === 'file:' || window.location.hostname === 'localhost' || window.location.hostname.includes('github.io');
-        // Comprehensive list of Australian and International news sources
-        // Matching the backend configuration with 150+ sources
+    constructor(apiUrl) {
+        // If no URL provided, assume we are hitting the server that served this page
+        this.apiUrl = apiUrl || '/api';
+        
+        // Remove the "isLocalDevelopment" check that forces simulation
+        // this.isLocalDevelopment = window.location.protocol === 'file:' || window.location.hostname === 'localhost' || window.location.hostname.includes('github.io');
+        
+        // Initialize cache
+        this.cachedNews = [];
+        this.lastUpdate = null;
         this.newsSources = [
             // === MAJOR AUSTRALIAN NEWS SOURCES ===
             { name: 'ABC News Australia', apiSource: 'abc-news-au', category: 'General' },
@@ -94,58 +99,85 @@ class AustralianNewsScraper {
     // Main method to fetch and process news
     async fetchNews() {
         try {
-            console.log('AustralianNewsScraper: Starting news scraping...');
+            console.log('AustralianNewsScraper: Starting news fetching...');
             
-            // Check if we have recent cached data
+            // Check client-side cache (memory) first
             if (this.cachedNews.length > 0 && this.isRecentCache()) {
-                console.log('AustralianNewsScraper: Using cached news data');
+                console.log('Returning client-side cached data');
                 return this.cachedNews;
             }
 
-            // For local development, always use simulated data to avoid CORS issues
-            console.log('AustralianNewsScraper: Using simulated news data for local development');
+            // DIRECTLY FETCH FROM API (Do not force simulation)
             const allNews = [];
             
-            // Generate simulated news from each source
-            for (const source of this.newsSources) {
-                try {
-                    console.log(`AustralianNewsScraper: Simulating news for ${source.name}...`);
-                    const news = await this.scrapeSource(source);
-                    console.log(`AustralianNewsScraper: Generated ${news.length} items for ${source.name}`);
-                    allNews.push(...news);
-                } catch (error) {
-                    console.error(`Error generating news for ${source.name}:`, error);
+            // We can now just hit the main endpoint which aggregates everything
+            // Note: Your server has a smart endpoint '/api/news' that does aggregation!
+            try {
+                console.log(`Fetching from backend: ${this.apiUrl}/news`);
+                const response = await fetch(`${this.apiUrl}/news`);
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.articles) {
+                        allNews.push(...data.articles);
+                        console.log(`Received ${data.articles.length} articles from backend`);
+                    }
+                } else {
+                    throw new Error('Backend responded with error');
                 }
+            } catch (error) {
+                console.error('Backend fetch failed, falling back to simulation:', error);
+                // ONLY use simulation if the real backend fails
+                return this.runSimulationFallback(); 
             }
 
-            // Process and filter news
-            const processedNews = this.processNews(allNews);
-            
-            // Cache the results
-            this.cachedNews = processedNews;
+            // Process and cache results
+            this.cachedNews = allNews;
             this.lastUpdate = new Date();
-            
-            console.log(`AustralianNewsScraper: Successfully scraped ${processedNews.length} news items`);
-            return processedNews;
-            
+            return allNews;
+
         } catch (error) {
-            console.error('Error in fetchNews:', error);
-            return this.cachedNews; // Return cached data if available
+            console.error('Critical error in fetchNews:', error);
+            return [];
         }
     }
+    
+    // Move your old simulation logic into a fallback method
+    async runSimulationFallback() {
+        console.log('AustralianNewsScraper: Running simulation fallback...');
+        const allNews = [];
+        
+        // Generate simulated news from each source
+        for (const source of this.newsSources) {
+            try {
+                console.log(`AustralianNewsScraper: Simulating news for ${source.name}...`);
+                const news = await this.scrapeSource(source);
+                console.log(`AustralianNewsScraper: Generated ${news.length} items for ${source.name}`);
+                allNews.push(...news);
+            } catch (error) {
+                console.error(`Error generating news for ${source.name}:`, error);
+            }
+        }
 
-    // Scrape individual news source
+        // Process and filter news
+        const processedNews = this.processNews(allNews);
+        
+        // Cache the results
+        this.cachedNews = processedNews;
+        this.lastUpdate = new Date();
+        
+        console.log(`AustralianNewsScraper: Successfully simulated ${processedNews.length} news items`);
+        return processedNews;
+    }
+
+    // Scrape individual news source (used only for simulation fallback)
     async scrapeSource(source) {
         try {
-            // Try real API first, fallback to simulation
-            const realNews = await this.fetchRealNews(source);
-            if (realNews && realNews.length > 0) {
-                return realNews;
-            }
+            // For fallback simulation, just return simulated data
             return this.simulateNewsScraping(source);
             
         } catch (error) {
-            console.error(`Error getting news for ${source.name}:`, error);
+            console.error(`Error simulating news for ${source.name}:`, error);
             return this.simulateNewsScraping(source);
         }
     }
