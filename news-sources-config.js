@@ -253,97 +253,97 @@ const newsSources = {
     // === INTERNATIONAL NEWSAPI SOURCES ===
     'bloomberg': {
         name: 'Bloomberg',
-        source: 'bloomberg',
+        source: 'bloomberg.com',
         type: 'newsapi',
         category: 'business'
     },
     'reuters': {
         name: 'Reuters',
-        source: 'reuters',
+        source: 'reuters.com',
         type: 'newsapi',
         category: 'business'
     },
     'bbc-news': {
         name: 'BBC News',
-        source: 'bbc-news',
+        source: 'bbc.com',
         type: 'newsapi',
         category: 'general'
     },
     'cnn': {
         name: 'CNN',
-        source: 'cnn',
+        source: 'cnn.com',
         type: 'newsapi',
         category: 'general'
     },
     'abc-news-us': {
         name: 'ABC News US',
-        source: 'abc-news',
+        source: 'abcnews.go.com',
         type: 'newsapi',
         category: 'general'
     },
     'associated-press': {
         name: 'Associated Press',
-        source: 'associated-press',
+        source: 'apnews.com',
         type: 'newsapi',
         category: 'general'
     },
     'wsj': {
         name: 'Wall Street Journal',
-        source: 'the-wall-street-journal',
+        source: 'wsj.com',
         type: 'newsapi',
         category: 'business'
     },
     'financial-times': {
         name: 'Financial Times',
-        source: 'financial-times',
+        source: 'ft.com',
         type: 'newsapi',
         category: 'business'
     },
     'fortune': {
         name: 'Fortune',
-        source: 'fortune',
+        source: 'fortune.com',
         type: 'newsapi',
         category: 'business'
     },
     'business-insider': {
         name: 'Business Insider',
-        source: 'business-insider',
+        source: 'businessinsider.com',
         type: 'newsapi',
         category: 'business'
     },
     'time': {
         name: 'Time',
-        source: 'time',
+        source: 'time.com',
         type: 'newsapi',
         category: 'general'
     },
     'usa-today': {
         name: 'USA Today',
-        source: 'usa-today',
+        source: 'usatoday.com',
         type: 'newsapi',
         category: 'general'
     },
     'the-guardian': {
         name: 'The Guardian',
-        source: 'the-guardian-uk',
+        source: 'theguardian.com',
         type: 'newsapi',
         category: 'general'
     },
     'independent': {
         name: 'Independent',
-        source: 'independent',
+        source: 'independent.co.uk',
         type: 'newsapi',
         category: 'general'
     },
     'telegraph': {
         name: 'The Telegraph',
-        source: 'the-telegraph',
+        source: 'telegraph.co.uk',
         type: 'newsapi',
         category: 'general'
     },
     'economist': {
         name: 'The Economist',
-        source: 'the-economist',
+        source: 'economist.com',
         type: 'newsapi',
         category: 'business'
     },
