@@ -13,6 +13,58 @@ const { newsSources, regionalNewsSources } = require('./news-sources-config');
 
 const parser = new Parser();
 
+// === EMERGENCY BACKUP DATA (For when API Quota is dead) ===
+const BACKUP_NEWS = [
+    {
+        title: "Localhost Development Mode: API Quota Exceeded",
+        description: "This is a placeholder article because the NewsAPI limit (100 req/day) has been reached. Real news will return tomorrow.",
+        url: "#",
+        source: "System Message",
+        publishedAt: new Date().toISOString(),
+        category: "General"
+    },
+    {
+        title: "Buffett's Berkshire Hathaway Reports Strong Q4 Earnings",
+        description: "Operating earnings surged as insurance underwriting profits rebounded significantly in the latest quarter.",
+        url: "#",
+        source: "Bloomberg",
+        publishedAt: new Date().toISOString(),
+        category: "Companies"
+    },
+    {
+        title: "ASX 200 rallies on mining strength",
+        description: "The local bourse hit a new record high driven by surging commodity prices and renewed optimism in the resources sector.",
+        url: "#",
+        source: "ABC News",
+        publishedAt: new Date().toISOString(),
+        category: "Markets"
+    },
+    {
+        title: "Reserve Bank maintains interest rates",
+        description: "The RBA kept the cash rate steady at 4.35% as expected, citing persistent inflation pressures despite recent economic data.",
+        url: "#",
+        source: "Australian Financial Review",
+        publishedAt: new Date().toISOString(),
+        category: "Economy"
+    },
+    {
+        title: "Tech stocks lead market recovery",
+        description: "Technology shares bounced back strongly following recent volatility, with AI and cloud computing stocks showing particular strength.",
+        url: "#",
+        source: "Sydney Morning Herald",
+        publishedAt: new Date().toISOString(),
+        category: "Industry"
+    },
+    {
+        title: "Value investing opportunities emerge",
+        description: "Analysts identify undervalued stocks in traditional sectors as market sentiment shifts toward fundamental analysis approaches.",
+        url: "#",
+        source: "The Australian",
+        publishedAt: new Date().toISOString(),
+        category: "Investment"
+    }
+];
+
 const app = express();
 const PORT = process.env.PORT || 3001;
 const NEWS_API_KEY = process.env.NEWS_API_KEY;
@@ -455,57 +507,12 @@ function categorizeNews(content) {
     return 'General';
 }
 
-// Generate placeholder image based on source
+// Generate placeholder image (Fixed: Uses Placehold.co which is faster/reliable)
 function generatePlaceholderImage(sourceName) {
-    const colors = {
-        'Australian Financial Review': '1e3a8a',
-        'Sydney Morning Herald': '059669',
-        'ABC News': 'dc2626',
-        'The Australian': '7c3aed',
-        'News.com.au': '1e3a8a',
-        'Bloomberg': '000000',
-        'Reuters': 'ff6600',
-        'BBC News': 'bb0000',
-        'CNN': 'cc0000',
-        'Wall Street Journal': '000000',
-        'Financial Times': 'fff1e5',
-        'Fortune': '000000',
-        'Business Insider': '000000',
-        'Time': '000000',
-        'USA Today': '003399',
-        'The Guardian': '052962',
-        'Independent': '000000',
-        'The Telegraph': '000000',
-        'The Economist': 'e3120b',
-        'SBS News': 'ff6600',
-        'The Age': '000000',
-        'Herald Sun': '000000',
-        'Daily Telegraph': '000000',
-        'Courier Mail': '000000',
-        'Adelaide Advertiser': '000000',
-        'Perth Now': '000000',
-        'NT News': '000000',
-        'The Mercury': '000000'
-    };
-    
-    // Get color for source or generate one based on name hash
-    let color = colors[sourceName];
-    if (!color) {
-        // Generate a consistent color based on source name
-        const hash = sourceName.split('').reduce((a, b) => {
-            a = ((a << 5) - a) + b.charCodeAt(0);
-            return a & a;
-        }, 0);
-        const colorIndex = Math.abs(hash) % 10;
-        const colorPalette = ['1e3a8a', '059669', 'dc2626', '7c3aed', '1e3a8a', 'ff6600', 'bb0000', 'cc0000', '000000', '003399'];
-        color = colorPalette[colorIndex];
-    }
-    
-    // Clean up source name for URL
-    const cleanName = sourceName.replace(/[^a-zA-Z0-9\s]/g, '').substring(0, 20);
-    
-    // Use a more reliable placeholder service or fallback
-    return `https://picsum.photos/300/200?random=${Math.floor(Math.random() * 1000)}`;
+    // Clean up source name
+    const safeName = sourceName ? sourceName.replace(/[^a-zA-Z0-9 ]/g, '') : 'News';
+    // Returns a fast, lightweight generated image
+    return `https://placehold.co/600x400/1e3a8a/ffffff?text=${encodeURIComponent(safeName)}`;
 }
 
 // === HELPER: FETCH AND NORMALIZE ===
@@ -769,10 +776,10 @@ app.get('/api/news', async (req, res) => {
     try {
         console.log('Fetching optimized financial news...');
         
-        // Check if we have cached data
+        // Check if we have cached data (but not empty data)
         const cacheKey = 'optimized_news';
         const cached = newsCache.get(cacheKey);
-        if (cached && (Date.now() - cached.timestamp) < CACHE_DURATION) {
+        if (cached && (Date.now() - cached.timestamp) < CACHE_DURATION && cached.data.articles && cached.data.articles.length > 0) {
             console.log('Returning cached optimized news data');
             return res.json({
                 ...cached.data,
@@ -783,13 +790,13 @@ app.get('/api/news', async (req, res) => {
         
         const allArticles = [];
         
-        // Fetch from RSS sources first (reliable)
-        const rssSources = getPrioritizedSources().filter(key => newsSources[key]?.type === 'rss').slice(0, 10);
-        if (rssSources.length > 0) {
-            console.log(`Fetching from ${rssSources.length} RSS sources...`);
-            const rssResults = await processBatch(rssSources, 3);
-            rssResults.forEach(articles => allArticles.push(...articles));
-        }
+        // Fetch from RSS sources first (reliable) - TEMPORARILY DISABLED FOR TESTING
+        // const rssSources = getPrioritizedSources().filter(key => newsSources[key]?.type === 'rss').slice(0, 10);
+        // if (rssSources.length > 0) {
+        //     console.log(`Fetching from ${rssSources.length} RSS sources...`);
+        //     const rssResults = await processBatch(rssSources, 3);
+        //     rssResults.forEach(articles => allArticles.push(...articles));
+        // }
         
         // Fetch optimized NewsAPI content with keywords
         console.log('Fetching optimized NewsAPI content...');
@@ -831,13 +838,37 @@ app.get('/api/news', async (req, res) => {
             deduplicationApplied: allArticles.length - uniqueArticles.length
         };
         
-        // Cache the results
-        newsCache.set(cacheKey, {
-            data: responseData,
-            timestamp: Date.now()
-        });
+        // Cache the results (only if we have articles)
+        if (topArticles.length > 0) {
+            newsCache.set(cacheKey, {
+                data: responseData,
+                timestamp: Date.now()
+            });
+        }
         
         console.log(`Successfully fetched ${topArticles.length} unique articles (${allArticles.length - uniqueArticles.length} duplicates removed)`);
+        
+        // If no articles were fetched (all APIs failed), serve emergency backup
+        if (topArticles.length === 0) {
+            console.log('🚨 No articles fetched from APIs. Serving Emergency Backup Data.');
+            
+            // Enhance backup data with random images
+            const backupWithImages = BACKUP_NEWS.map(item => ({
+                ...item,
+                image: `https://placehold.co/600x400/1e3a8a/ffffff?text=${encodeURIComponent(item.source)}`
+            }));
+
+            return res.json({ 
+                articles: backupWithImages, 
+                count: backupWithImages.length, 
+                keywords: FINANCIAL_KEYWORDS,
+                domains: CREDIBLE_DOMAINS,
+                lastUpdated: new Date().toISOString(),
+                isCached: false,
+                freshness: 'BACKUP',
+                warning: 'Using emergency backup data (API Quota Exceeded)' 
+            });
+        }
         
         res.json(responseData);
         
@@ -860,11 +891,20 @@ app.get('/api/news', async (req, res) => {
             });
         }
         
-        res.status(503).json({ 
-            error: 'Service temporarily unavailable',
-            message: 'NewsAPI is rate-limited. Please try again in a few minutes.',
-            disclaimer: 'Financial news updates temporarily delayed. Free tier (100 req/day) active.',
-            retryAfter: 300  // 5 minutes
+        // 6. Last Resort: Emergency Backup
+        // If everything failed, send the static backup data so the UI isn't empty
+        console.log('🚨 API Failed & No Cache. Serving Emergency Backup Data.');
+        
+        // Enhance backup data with random images
+        const backupWithImages = BACKUP_NEWS.map(item => ({
+            ...item,
+            image: `https://placehold.co/600x400/1e3a8a/ffffff?text=${encodeURIComponent(item.source)}`
+        }));
+
+        res.json({ 
+            articles: backupWithImages, 
+            count: backupWithImages.length, 
+            warning: 'Using emergency backup data (API Quota Exceeded)' 
         });
     }
 });
@@ -951,6 +991,59 @@ function cleanupCache() {
         keepHashes.forEach(hash => articleHashes.add(hash));
     }
 }
+
+// Health check endpoint with performance metrics
+app.get('/api/news/category/:category', async (req, res) => {
+    try {
+        const requestedCategory = req.params.category.toLowerCase();
+        console.log(`Fetching news for category: ${requestedCategory}`);
+        
+        // Check if we have cached data
+        const cacheKey = 'optimized_news';
+        const cached = newsCache.get(cacheKey);
+        
+        if (!cached || (Date.now() - cached.timestamp) > CACHE_DURATION) {
+            console.log('No valid cache found, fetching fresh data...');
+            return res.status(503).json({ 
+                error: 'Service temporarily unavailable',
+                message: 'Please try the main news endpoint first to populate cache.',
+                retryAfter: 60
+            });
+        }
+        
+        // Filter articles by category (case-insensitive)
+        const filteredArticles = cached.data.articles.filter(article => 
+            article.category && article.category.toLowerCase() === requestedCategory
+        );
+        
+        // Sort by publication date (newest first)
+        filteredArticles.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+        
+        // Take up to 20 articles for the category page
+        const categoryArticles = filteredArticles.slice(0, 20);
+        
+        const responseData = {
+            category: requestedCategory,
+            articles: categoryArticles,
+            count: categoryArticles.length,
+            totalAvailable: filteredArticles.length,
+            lastUpdated: new Date(cached.timestamp).toISOString(),
+            isCached: true,
+            freshness: 'CACHED'
+        };
+        
+        console.log(`Returning ${categoryArticles.length} articles for category '${requestedCategory}'`);
+        
+        res.json(responseData);
+        
+    } catch (error) {
+        console.error('Error fetching category news:', error);
+        res.status(500).json({ 
+            error: 'Internal server error',
+            message: 'Failed to fetch category news'
+        });
+    }
+});
 
 // Health check endpoint with performance metrics
 app.get('/api/health', (req, res) => {
@@ -1095,8 +1188,16 @@ process.on('unhandledRejection', (reason, promise) => {
 });
 
 // Start server
-app.listen(PORT, '127.0.0.1', () => {
-    console.log(`Server running at http://localhost:${PORT}`);
+const server = app.listen(PORT, '127.0.0.1', () => {
+    console.log(`Server running at http://localhost:${PORT} and http://127.0.0.1:${PORT}`);
+});
+
+server.on('error', (err) => {
+    console.error('Server error:', err);
+});
+
+server.on('listening', () => {
+    console.log('Server is actually listening on 127.0.0.1!');
 });
 
 // Schedule background refresh AFTER server is fully started

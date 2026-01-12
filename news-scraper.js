@@ -240,13 +240,12 @@ class AustralianNewsScraper {
         return images[sourceName] || this.generatePlaceholderImage(sourceName);
     }
 
-    // Generate data URI placeholder image
-    generatePlaceholderImage(text, width = 300, height = 200) {
-        const svg = `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
-            <rect width="100%" height="100%" fill="#f0f0f0"/>
-            <text x="50%" y="50%" font-family="Arial, sans-serif" font-size="14" fill="#666" text-anchor="middle" dy=".3em">${text}</text>
-        </svg>`;
-        return 'data:image/svg+xml;base64,' + btoa(svg);
+    // Generate placeholder image using placehold.co (matches server logic)
+    generatePlaceholderImage(sourceName) {
+        // Clean up source name
+        const safeName = sourceName ? sourceName.replace(/[^a-zA-Z0-9 ]/g, '') : 'News';
+        // Returns a fast, lightweight generated image
+        return `https://placehold.co/600x400/1e3a8a/ffffff?text=${encodeURIComponent(safeName)}`;
     }
 
     // Simulate news scraping (replace with actual scraping in production)
@@ -559,11 +558,8 @@ class NewsDisplayManager {
             const container = document.getElementById(containerId);
             
             if (container) {
-                // Skip if container already has static content (don't overwrite)
-                if (container.querySelector('.news-item') && !container.innerHTML.includes('Loading news...') && !container.innerHTML.includes('News Feed Temporarily Unavailable')) {
-                    console.log(`Skipping ${containerId} - already has static content`);
-                    return;
-                }
+                // FORCE clear the container before appending new data (remove skip logic)
+                container.innerHTML = '';
                 
                 const categoryNews = newsByCategory[category] || [];
                 console.log(`Displaying ${categoryNews.length} items for ${category} in ${containerId}`);
