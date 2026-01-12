@@ -1188,8 +1188,8 @@ process.on('unhandledRejection', (reason, promise) => {
 });
 
 // Start server
-const server = app.listen(PORT, '127.0.0.1', () => {
-    console.log(`Server running at http://localhost:${PORT} and http://127.0.0.1:${PORT}`);
+const server = app.listen(PORT, '0.0.0.0', () => {
+    console.log(`Server running on port ${PORT}`);
 });
 
 server.on('error', (err) => {
@@ -1197,7 +1197,7 @@ server.on('error', (err) => {
 });
 
 server.on('listening', () => {
-    console.log('Server is actually listening on 127.0.0.1!');
+    console.log('Server is listening on all interfaces!');
 });
 
 // Schedule background refresh AFTER server is fully started
