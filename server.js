@@ -282,47 +282,61 @@ app.use((req, res, next) => {
     next();
 });
 
-// Enhanced RSS Feed Parser with timeout and error handling
+// Enhanced RSS Feed Parser with timeout, error handling, and entity cleaning
 async function parseRSSFeed(url, sourceName) {
     try {
         console.log(`Fetching RSS feed from ${sourceName}...`);
-        
-        // Check if source is marked as unhealthy
+
         if (sourceHealth.get(sourceName)?.isUnhealthy) {
             console.log(`Skipping unhealthy source: ${sourceName}`);
             return [];
         }
-        
+
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT);
-        
+
         const response = await fetch(url, {
             headers: {
                 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
             },
             signal: controller.signal
         });
-        
+
         clearTimeout(timeoutId);
-        
+
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        
-        const xmlText = await response.text();
+
+        let xmlText = await response.text();
+
+        // === THE FIX IS HERE ===
+        // Clean common HTML entities that break strict XML parsers
+        xmlText = xmlText
+            .replace(/&nbsp;/g, ' ')
+            .replace(/&copy;/g, '©')
+            .replace(/&ndash;/g, '-')
+            .replace(/&mdash;/g, '-')
+            .replace(/&rsquo;/g, "'")
+            .replace(/&lsquo;/g, "'")
+            .replace(/&rdquo;/g, '"')
+            .replace(/&ldquo;/g, '"');
+        // =======================
+
         const parser = new DOMParser();
-        const doc = parser.parseFromString(xmlText, 'application/xml');
-        
+        // Use 'text/xml' instead of 'application/xml' for better leniency
+        const doc = parser.parseFromString(xmlText, 'text/xml');
+
         const items = doc.getElementsByTagName('item');
         const articles = [];
-        
+
         for (let i = 0; i < Math.min(items.length, MAX_ARTICLES_PER_SOURCE); i++) {
             const item = items[i];
             const title = item.getElementsByTagName('title')[0]?.textContent || '';
             const description = item.getElementsByTagName('description')[0]?.textContent || '';
             const link = item.getElementsByTagName('link')[0]?.textContent || '';
             const pubDate = item.getElementsByTagName('pubDate')[0]?.textContent || '';
-            
+
             if (title && link) {
                 articles.push({
                     title: title.trim(),
@@ -335,16 +349,15 @@ async function parseRSSFeed(url, sourceName) {
                 });
             }
         }
-        
+
         // Mark source as healthy
         sourceHealth.set(sourceName, { isUnhealthy: false, lastSuccess: Date.now() });
-        
+
         console.log(`Successfully parsed ${articles.length} articles from ${sourceName}`);
         return articles;
     } catch (error) {
         console.error(`Error parsing RSS feed for ${sourceName}:`, error.message);
-        
-        // Mark source as unhealthy if it fails multiple times
+
         const health = sourceHealth.get(sourceName) || { failures: 0 };
         health.failures = (health.failures || 0) + 1;
         if (health.failures >= 3) {
@@ -352,7 +365,7 @@ async function parseRSSFeed(url, sourceName) {
             console.log(`Marking ${sourceName} as unhealthy after ${health.failures} failures`);
         }
         sourceHealth.set(sourceName, health);
-        
+
         return [];
     }
 }
