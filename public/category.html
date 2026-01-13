@@ -3,192 +3,250 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Graham and Doddsville - Value Investing Education Australia">
-    <meta name="keywords" content="value investing, Graham and Doddsville, Warren Buffett, Charlie Munger, Benjamin Graham, stock market education, investment analysis, financial education Australia">
+    <meta name="description" content="Graham and Doddsville - Financial News Archive">
+    <meta name="keywords" content="value investing, financial news, market analysis">
     <meta name="author" content="Graham and Doddsville Pty Ltd">
     <meta name="robots" content="index, follow">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <meta property="og:title" content="Graham and Doddsville - Value Investing Education Australia">
-    <meta property="og:description" content="Premier source of value investing information in Australia. Educational resources, articles, and insights for intelligent stock market investing.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://grahamanddoddsville.com.au">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Graham and Doddsville - Value Investing Education Australia">
-    <meta name="twitter:description" content="Premier source of value investing information in Australia. Educational resources, articles, and insights for intelligent stock market investing.">
-    <meta name="twitter:image" content="https://grahamanddoddsville.com.au/og-image.jpg">
-    <meta property="og:image" content="https://grahamanddoddsville.com.au/og-image.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:site_name" content="Graham and Doddsville">
-    <meta property="og:locale" content="en_AU">
-    <title id="page-title">Loading... - Graham and Doddsville</title>
+    <title id="page-title">Graham and Doddsville - News Archive</title>
     <link rel="stylesheet" href="/css/styles.css?v=5.7&t=20241224">
-    <!-- Using system fonts to avoid Google Fonts dependency -->
 
     <!-- Performance Optimizations -->
     <link rel="preconnect" href="https://images.unsplash.com">
     <link rel="preconnect" href="https://img.youtube.com">
     <link rel="dns-prefetch" href="https://www.skynews.com.au">
-    <link rel="dns-prefetch" href="https://www.smh.com.au">
-    <link rel="dns-prefetch" href="https://www.afr.com">
-
-    <!-- Favicon and Brand Assets -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231e3a8a'/%3E%3Ctext x='50' y='60' font-family='Georgia,serif' font-size='24' font-weight='bold' text-anchor='middle' fill='%23f5b400'%3EG%26D%3C/text%3E%3C/svg%3E">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' fill='%231e3a8a' rx='20'/%3E%3Ctext x='90' y='110' font-family='Georgia,serif' font-size='48' font-weight='bold' text-anchor='middle' fill='%23f5b400'%3EG%26D%3C/text%3E%3C/svg%3E">
-    <link rel="manifest" href="data:application/json,%7B%22name%22:%22Graham%20and%20Doddsville%22,%22short_name%22:%22G%26D%22,%22icons%22:%5B%7B%22src%22:%22data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' fill='%231e3a8a' rx='24'/%3E%3Ctext x='96' y='120' font-family='Georgia,serif' font-size='48' font-weight='bold' text-anchor='middle' fill='%23f5b400'%3EG%26D%3C/text%3E%3C/svg%3E%22,%22sizes%22:%22192x192%22,%22type%22:%22image/svg+xml%22%7D%5D,%22theme_color%22:%22%231e3a8a%22,%22background_color%22:%22%23ffffff%22%7D">
-    <script src="/js/dropdown-position.js" defer=""></script>
 </head>
 <body>
-    <header class="header sticky-header" role="banner">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <img src="/images/G&amp;D Logo (for black background).png" alt="Graham and Doddsville" class="logo-image">
+    <!-- Header -->
+    <header style="background-color: #1e3a8a; color: white; padding: 20px 0; margin-bottom: 30px;">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                    <a href="index.html" style="color: white; text-decoration: none; font-size: 14px; font-weight: 500;">
+                        ← Back to Home
+                    </a>
                 </div>
-                <!-- Desktop Navigation (hidden on mobile) -->
-                <nav class="main-nav desktop-only" role="navigation" aria-label="Main navigation">
-                    <ul>
-                        <li><a href="/" onclick="showAboutPage()" class="nav-link">ABOUT US</a></li>
-                        <li><a href="/" onclick="showAdvertisePage()" class="nav-link">ADVERTISE</a></li>
-                    </ul>
-                </nav>
-
-                <!-- Mobile Hamburger Menu -->
-                <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                </button>
+                <div>
+                    <h1 id="category-title" style="margin: 0; font-size: 24px; font-weight: 600;">News Archive</h1>
+                </div>
+                <div style="width: 100px;"></div> <!-- Spacer for centering -->
             </div>
         </div>
     </header>
 
-    <!-- Mobile Navigation Drawer -->
-    <div class="mobile-drawer" id="mobile-drawer">
-        <div class="drawer-header">
-            <img src="/images/G&amp;D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
-            <button class="drawer-close" id="drawer-close" aria-label="Close menu">×</button>
-        </div>
-        <nav class="drawer-nav">
-            <ul class="drawer-menu">
-                <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
-                <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
-                <li><a href="legal-taxation.html" class="drawer-link">Legal &amp; Taxation</a></li>
-                <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
-                <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
-                <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
-                <li><a href="/" class="drawer-link">Investment Analysis</a></li>
-                <li><a href="economics.html" class="drawer-link">Economics</a></li>
-                <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
-                <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
-                <li><a href="resources.html" class="drawer-link">Resources</a></li>
-                <li><a href="events.html" class="drawer-link">Events &amp; Seminars</a></li>
-            </ul>
-        </nav>
-    </div>
-
-    <!-- Secondary Navigation -->
-    <nav class="secondary-nav" role="navigation" aria-label="Secondary navigation">
-        <div class="container">
-            <ul class="secondary-nav-list">
-                <li class="dropdown">
-                    <a href="#wealth-creation" class="dropdown-toggle">Wealth Creation</a>
-                    <div class="wealth-creation-dropdown">
-                        <div class="wealth-creation-wrapper">
-                            <div class="wealth-section">
-                                <h3>The Laws of Wealth</h3>
-                                <ul>
-                                    <li><a href="wealth-creation.html">The Psychology of Wealth</a></li>
-                                    <li><a href="wealth-creation.html">Compound Interest</a></li>
-                                    <li><a href="wealth-creation.html">Risk Management</a></li>
-                                    <li><a href="wealth-creation.html">Long-term Investing</a></li>
-                                </ul>
-                            </div>
-                            <div class="wealth-section">
-                                <h3>Investment Strategies</h3>
-                                <ul>
-                                    <li><a href="wealth-creation.html">Value Investing</a></li>
-                                    <li><a href="wealth-creation.html">Growth Investing</a></li>
-                                    <li><a href="wealth-creation.html">Dividend Investing</a></li>
-                                    <li><a href="wealth-creation.html">Index Funds</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li class="dropdown">
-                    <a href="#investment-analysis" class="dropdown-toggle">Investment Analysis</a>
-                    <div class="investment-analysis-dropdown">
-                        <div class="analysis-wrapper">
-                            <div class="analysis-section">
-                                <h3>Fundamental Analysis</h3>
-                                <ul>
-                                    <li><a href="share-investing.html">Company Valuation</a></li>
-                                    <li><a href="share-investing.html">Financial Statements</a></li>
-                                    <li><a href="share-investing.html">Ratio Analysis</a></li>
-                                    <li><a href="share-investing.html">Cash Flow Analysis</a></li>
-                                </ul>
-                            </div>
-                            <div class="analysis-section">
-                                <h3>Technical Analysis</h3>
-                                <ul>
-                                    <li><a href="financial-markets.html">Chart Patterns</a></li>
-                                    <li><a href="financial-markets.html">Trend Analysis</a></li>
-                                    <li><a href="financial-markets.html">Volume Analysis</a></li>
-                                    <li><a href="financial-markets.html">Market Indicators</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li><a href="Greatest-Investors.html">Greatest Investors</a></li>
-                <li><a href="classical-readings.html">Classical Readings</a></li>
-                <li><a href="resources.html">Resources</a></li>
-            </ul>
-        </div>
-    </nav>
-
     <!-- Main Content -->
-    <main class="main-content" role="main">
-        <div class="container">
-            <!-- Category News Section -->
-            <section class="category-news-section">
-                <div class="category-header">
-                    <h1 id="page-title">Loading...</h1>
-                    <p id="category-description">Loading news articles...</p>
-                </div>
+    <main style="max-width: 800px; margin: 0 auto; padding: 0 20px;">
+        <!-- Loading Indicator -->
+        <div id="loading-indicator" style="text-align: center; padding: 40px; color: #666;">
+            <div style="display: inline-block; width: 20px; height: 20px; border: 3px solid #f3f3f3; border-top: 3px solid #1e3a8a; border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 10px;"></div>
+            <div>Loading articles...</div>
+        </div>
 
-                <div id="category-news-container" class="category-news-container">
-                    <div class="loading-state">
-                        <div class="loading-spinner"></div>
-                        <p>Loading news...</p>
-                    </div>
-                </div>
-            </section>
+        <!-- News Container -->
+        <div id="category-news-container" style="display: none;">
+            <!-- Articles will be injected here -->
+        </div>
+
+        <!-- No Articles Message -->
+        <div id="no-articles" style="display: none; text-align: center; padding: 40px; color: #999; font-style: italic;">
+            No articles found for this category.
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="contact-info">
-                    <p><strong>Graham and Doddsville Pty Ltd</strong></p>
-                    <p>ACN: 670 651 877</p>
-                    <p>Level 18, 324 Queen Street, Brisbane Qld 4000</p>
-                    <p>Email: info@grahamanddoddsville.com.au</p>
-                </div>
+    <!-- CSS Animation for Loading Spinner -->
+    <style>
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
 
-                <div class="footer-disclaimer">
-                    <p><strong>Disclaimer:</strong> While every care has been taken to ensure the accuracy of information in this website, Graham and Doddsville does not accept any responsibility or liability for any damage or loss to any person for the result of any action taken on the basis of this information. To the full extent allowed by the law, Graham and Doddsville makes no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability with respect to the website or the information, products, services, or related graphics contained on the website for any purpose.</p>
+        /* Clean newspaper styling for articles */
+        .archive-news-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .archive-news-item:last-child {
+            border-bottom: none;
+        }
+
+        .archive-news-item a {
+            font-family: Georgia, serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #111;
+            text-decoration: none;
+            line-height: 1.4;
+        }
+
+        .archive-news-item a:hover {
+            color: #1e3a8a;
+        }
+
+        .archive-news-meta {
+            margin-top: 8px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .archive-news-source {
+            text-transform: uppercase;
+            font-weight: bold;
+            color: #1e3a8a;
+        }
+    </style>
+
+    <!-- News Archive Script -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Parse URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const categoryType = urlParams.get('type');
+
+        // Redirect to home if no type parameter
+        if (!categoryType) {
+            window.location.href = 'index.html';
+            return;
+        }
+
+        // Set page title and category title
+        const categoryTitles = {
+            'regulatory': 'Regulatory News Archive',
+            'guru-watch': 'Guru Watch Archive',
+            'economy': 'Economy News Archive',
+            'companies': 'Company News Archive',
+            'markets': 'Markets News Archive',
+            'commodities': 'Commodities News Archive',
+            'industry': 'Industry News Archive',
+            'north-america': 'North America News Archive',
+            'europe': 'Europe News Archive',
+            'asia': 'Asia News Archive',
+            'elsewhere': 'Global News Archive'
+        };
+
+        const title = categoryTitles[categoryType] || 'News Archive';
+        document.getElementById('page-title').textContent = `Graham and Doddsville - ${title}`;
+        document.getElementById('category-title').textContent = title;
+
+        // Start fetching news for this category
+        fetchCategoryNews(categoryType);
+    });
+
+    async function fetchCategoryNews(categoryType) {
+        console.log(`🚀 Loading ${categoryType} archive...`);
+
+        const feedConfig = [
+            { id: 'yahoo', url: 'https://finance.yahoo.com/news/rssindex', name: 'Yahoo Finance' },
+            { id: 'mining', url: 'https://www.mining.com/feed/', name: 'Mining.com' },
+            { id: 'regulatory', url: 'https://news.google.com/rss/search?q=ASIC+investigation+OR+ACCC+fine+OR+APRA+regulation+Australia&hl=en-AU&gl=AU&ceid=AU:en', name: 'Regulator Watch' },
+            { id: 'guru', url: 'https://news.google.com/rss/search?q=Warren+Buffett+OR+Charlie+Munger+OR+Ray+Dalio+investing&hl=en-US&gl=US&ceid=US:en', name: 'Guru Watch' },
+            { id: 'economy_backup', url: 'https://news.google.com/rss/search?q=Reserve+Bank+of+Australia+Interest+Rates+Inflation+Economy&hl=en-AU&gl=AU&ceid=AU:en', name: 'RBA News' },
+            { id: 'north_america', url: 'https://news.google.com/rss/search?q=US+Stock+Market+Economy+Fed&hl=en-US&gl=US&ceid=US:en', name: 'US Markets' },
+            { id: 'europe', url: 'https://news.google.com/rss/search?q=ECB+European+Markets+Economy&hl=en-GB&gl=GB&ceid=GB:en', name: 'Euro Markets' },
+            { id: 'asia', url: 'https://news.google.com/rss/search?q=China+Economy+Japan+Markets+ASX&hl=en-SG&gl=SG&ceid=SG:en', name: 'Asian Markets' },
+            { id: 'elsewhere', url: 'https://news.google.com/rss/search?q=Global+Economy+Emerging+Markets&hl=en-AU&gl=AU&ceid=AU:en', name: 'Global News' }
+        ];
+
+        let allArticles = [];
+
+        const promises = feedConfig.map(async (feed) => {
+            try {
+                const cacheBuster = `&_t=${new Date().getTime()}`;
+                const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feed.url)}${cacheBuster}`);
+                const data = await res.json();
+                if (data.status === 'ok') {
+                    return data.items.map(item => ({
+                        title: item.title,
+                        link: item.link,
+                        pubDate: item.pubDate,
+                        description: (item.description || '').replace(/<[^>]*>?/gm, ''),
+                        sourceId: feed.id,
+                        displaySource: feed.name
+                    }));
+                }
+            } catch (err) {
+                console.warn(`Skipping ${feed.name}:`, err);
+            }
+            return [];
+        });
+
+        const results = await Promise.all(promises);
+        results.forEach(items => allArticles.push(...items));
+
+        updateCategoryDisplay(allArticles, categoryType);
+    }
+
+    function updateCategoryDisplay(articles, categoryType) {
+        // Filter articles based on category
+        const cleanArticles = articles.filter(article => {
+            const t = article.title.toLowerCase();
+            const badWords = ['stabbing', 'murder', 'police', 'arrest', 'dead', 'die', 'killed', 'court', 'jail', 'crash', 'tennis', 'cricket', 'rugby', 'lottery'];
+            if (article.sourceId === 'regulatory' && t.includes('court')) return true;
+            return !badWords.some(w => t.includes(w));
+        });
+
+        // Category mapping (same as main page)
+        const commodityKeywords = /gold|silver|lithium|copper|oil|gas|nickel|iron ore|mineral|metal/i;
+
+        const categoryFilters = {
+            'regulatory': a => a.sourceId === 'regulatory',
+            'guru-watch': a => a.sourceId === 'guru',
+            'commodities': a => a.sourceId === 'mining' || a.title.match(commodityKeywords),
+            'economy': a => a.sourceId === 'economy_backup',
+            'companies': a => a.sourceId === 'yahoo' && a.title.match(/profit|revenue|shares|dividend|earnings/i),
+            'markets': a => a.sourceId === 'yahoo' && !a.title.match(/profit|revenue/i),
+            'industry': a => a.sourceId === 'mining' && !a.title.match(commodityKeywords),
+            'north-america': a => a.sourceId === 'north_america',
+            'europe': a => a.sourceId === 'europe',
+            'asia': a => a.sourceId === 'asia',
+            'elsewhere': a => a.sourceId === 'elsewhere'
+        };
+
+        // Filter articles for this category and show all available (no 5-article limit)
+        const categoryArticles = cleanArticles.filter(categoryFilters[categoryType] || (() => false));
+
+        // Hide loading indicator
+        document.getElementById('loading-indicator').style.display = 'none';
+
+        const container = document.getElementById('category-news-container');
+        const noArticles = document.getElementById('no-articles');
+
+        if (categoryArticles.length === 0) {
+            noArticles.style.display = 'block';
+            return;
+        }
+
+        // Show all available articles (no limit like main page)
+        const html = categoryArticles.map(a => `
+            <div class="archive-news-item">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                    <div style="flex:1;">
+                        <a href="${a.link}" target="_blank" class="archive-news-link">${a.title}</a>
+                        <div class="archive-news-meta">
+                            <span class="archive-news-source">${a.displaySource}</span>
+                            • ${formatDate(a.pubDate)}
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
+        `).join('');
 
-    <!-- Scripts -->
-    <script src="/js/category-loader.js"></script>
+        container.innerHTML = html;
+        container.style.display = 'block';
+
+        console.log(`✅ Loaded ${categoryArticles.length} articles for ${categoryType} archive`);
+    }
+
+    function formatDate(dateString) {
+        if (!dateString) return '';
+        const diff = Math.floor((new Date() - new Date(dateString)) / 1000);
+        if (diff < 3600) return Math.floor(diff / 60) + 'm ago';
+        if (diff < 86400) return Math.floor(diff / 3600) + 'h ago';
+        return Math.floor(diff / 86400) + 'd ago';
+    }
+    </script>
 </body>
 </html>
