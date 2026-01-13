@@ -5256,24 +5256,45 @@
         }
         
         function updateMobileNewsDisplay(articles) {
-            console.log('updateMobileNewsDisplay called with:', articles);
+            console.log('STRICT MODE: updateMobileNewsDisplay called', articles);
             console.log('Articles length:', articles ? articles.length : 'undefined');
             console.log('First article sample:', articles && articles.length > 0 ? articles[0] : 'none');
             
-            // Define category mappings for mobile sub-categories
+            // 1. DEDUPLICATION: Remove duplicate headlines
+            const seenTitles = new Set();
+            const uniqueArticles = articles.filter(article => {
+                const normalizedTitle = article.title.toLowerCase().trim();
+                if (seenTitles.has(normalizedTitle)) return false;
+                seenTitles.add(normalizedTitle);
+                return true;
+            });
+            
+            // 2. DEFINE STRICT CATEGORIES (No 'General' allowed here)
             const categoryMappings = {
-                'companies-news-mobile': ['Companies', 'Investment', 'Business'],
-                'markets-news-mobile': ['Markets', 'Investment', 'General'],
-                'economy-news-mobile': ['Economy', 'Monetary Policy', 'General'],
+                'companies-news-mobile': ['Companies', 'Business', 'Corporate'],
+                'markets-news-mobile': ['Markets', 'Trading', 'Stocks', 'Forex'],
+                'economy-news-mobile': ['Economy', 'Monetary', 'Fiscal', 'Inflation'],
                 'industry-news-mobile': ['Industry', 'Resources', 'Energy', 'Technology'],
-                'commodities-news-mobile': ['Commodities', 'Resources', 'Energy'],
-                'regulatory-news-mobile': ['Regulatory', 'Banking', 'Monetary Policy', 'General'],
-                'guru-watch-news-mobile': ['Investment', 'Companies', 'Markets']
+                'commodities-news-mobile': ['Commodities', 'Mining'],
+                'regulatory-news-mobile': ['Regulatory', 'Banking', 'Law'],
+                'guru-watch-news-mobile': ['Buffett', 'Berkshire']
+            };
+            
+            // 3. EXPANDED KEYWORDS (The only way a 'General' article survives)
+            const keywordMappings = {
+                'companies-news-mobile': ['limited', 'inc', 'corp', 'profit', 'revenue', 'ceo', 'berkshire', 'earnings', 'dividend'],
+                'markets-news-mobile': ['asx', 'dow', 's&p', 'rally', 'slump', 'trade', 'wall st', 'bull', 'bear', 'index'],
+                'economy-news-mobile': ['rba', 'rates', 'inflation', 'gdp', 'tax', 'federal reserve', 'budget', 'interest', 'cpi'],
+                'industry-news-mobile': ['mining', 'tech', 'construction', 'sector', 'retail', 'manufacturing', 'infrastructure', 'energy'],
+                'commodities-news-mobile': ['gold', 'oil', 'iron', 'copper', 'lithium', 'gas', 'crude', 'metal'],
+                'regulatory-news-mobile': ['asic', 'apra', 'accc', 'court', 'ban', 'law', 'legislation', 'senate', 'inquiry'],
+                'guru-watch-news-mobile': ['buffett', 'munger', 'soros', 'dalio', 'ackman', 'icahn']
             };
             
             // Populate each category section
             Object.keys(categoryMappings).forEach(sectionId => {
                 const targetCategories = categoryMappings[sectionId];
+                const targetKeywords = keywordMappings[sectionId];
                 const sectionElement = document.getElementById(sectionId);
                 const loadingElement = document.getElementById(sectionId.replace('-news-mobile', '-loading'));
                 
@@ -5283,12 +5304,34 @@
                         loadingElement.style.display = 'none';
                     }
                     
-                    // Filter news by category
-                    const categoryNews = articles.filter(article => 
-                        targetCategories.some(cat => 
-                            article.category && article.category.toLowerCase().includes(cat.toLowerCase())
-                        )
-                    ).slice(0, 5); // Show top 5 articles per category
+                    // Filter news: Match Category OR Match Keyword in Title
+                    const categoryNews = uniqueArticles.filter(article => {
+                        const titleLower = article.title.toLowerCase();
+                        const catLower = (article.category || '').toLowerCase();
+                        
+                        // 1. CRIME FILTER (Immediate Block)
+                        const isCrime = ['stabbing', 'murder', 'police', 'arrest', 'fire', 'crash', 'dead', 'die', 'killed', 'charged', 'court', 'guilty', 'jail', 'prison', 'accident', 'nazi', 'maggot'].some(badWord => 
+                            titleLower.includes(badWord)
+                        );
+                        if (isCrime) return false;
+                        
+                        // 2. CHECK MATCHES
+                        // A. Category Match (Only if it's NOT 'general')
+                        const isGeneral = catLower === 'general' || catLower === '';
+                        const catMatch = !isGeneral && targetCategories.some(cat => catLower.includes(cat.toLowerCase()));
+                        
+                        // B. Keyword Match (Required if category is General)
+                        const titleMatch = targetKeywords.some(keyword => titleLower.includes(keyword.toLowerCase()));
+                        
+                        // STRICT RULE: If it's "General" news, it MUST have a financial keyword.
+                        if (isGeneral) {
+                            return titleMatch; 
+                        }
+                        
+                        // Otherwise, accept if Category Matches OR Title Matches
+                        return catMatch || titleMatch;
+                        
+                    }).slice(0, 5); // Show top 5 articles per category
                     
                     console.log(`Populating ${sectionId} with ${categoryNews.length} articles`);
                     
@@ -5296,12 +5339,13 @@
                         const html = categoryNews.map(article => {
                             console.log('Processing article:', article.title, 'URL:', article.url);
                             return `
-                                <div class="news-item-mobile">
+                                <div class="news-item-mobile" style="margin-bottom: 8px;">
                                     <span class="news-bullet">-</span>
-                                    <div class="news-content">
-                                        <h3 class="news-headline">
-                                            <a href="${article.url || '#'}" target="_blank" rel="noopener noreferrer">${article.title}</a>
-                                            <span class="news-source">(${abbreviateSource(article.source)})</span>
+                                    <div class="news-content" style="background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 12px 16px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); min-height: 65px; display: flex; align-items: center;">
+                                        <h3 class="news-headline" style="margin: 0; width: 100%;">
+                                            <a href="${article.url || '#'}" target="_blank" rel="noopener noreferrer" style="color: #333; text-decoration: none; font-size: 12px; line-height: 1.4; display: block; font-weight: 500;">
+                                                ${article.title} <span class="news-source" style="color: #666; font-size: 10px;">(${abbreviateSource(article.source)})</span>
+                                            </a>
                                         </h3>
                                     </div>
                                 </div>
@@ -5311,24 +5355,9 @@
                         sectionElement.innerHTML = html;
                         console.log(`✅ Successfully populated ${sectionId} with ${categoryNews.length} articles`);
                     } else {
-                        // If no specific category news, show any recent news as fallback
-                        const fallbackNews = articles.slice(0, 4);
-                        console.log(`⚠️ No specific news for ${sectionId}, showing fallback news`);
-                        
-                        const fallbackHtml = fallbackNews.map(article => `
-                            <div class="news-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">
-                                        <a href="${article.url || '#'}" target="_blank" rel="noopener noreferrer">${article.title}</a>
-                                        <span class="news-source">(${abbreviateSource(article.source)})</span>
-                                    </h3>
-                                </div>
-                            </div>
-                        `).join('');
-                        
-                        sectionElement.innerHTML = fallbackHtml;
-                        console.log(`✅ Populated ${sectionId} with fallback news`);
+                        // If no specific news found, try to populate from General but be careful
+                        console.log(`No specific news for ${sectionId}`);
+                        // Optional: Leave empty or show a "More news coming soon" message
                     }
                 } else {
                     console.log(`Section element ${sectionId} not found`);
