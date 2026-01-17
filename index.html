@@ -5724,33 +5724,47 @@
             ctx.fillText('+0.11%', 10, 50);
         }
 
+        // Mobile drawer functions
+        function toggleMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                if (mobileDrawer.classList.contains('open')) {
+                    mobileDrawer.classList.remove('open');
+                    document.body.style.overflow = '';
+                    console.log('Drawer closed');
+                } else {
+                    mobileDrawer.classList.add('open');
+                    document.body.style.overflow = 'hidden';
+                    console.log('Drawer opened');
+                }
+            }
+        }
+        function closeMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+                console.log('Drawer closed');
+            }
+        }
         // Mobile drawer functionality
         const mobileToggle = document.getElementById('mobile-toggle');
         const mobileDrawer = document.getElementById('mobile-drawer');
         const drawerClose = document.getElementById('drawer-close');
         
-        if (mobileToggle && mobileDrawer) {
-            mobileToggle.addEventListener('click', () => {
-                console.log('Hamburger menu clicked!');
-                mobileDrawer.classList.add('open');
-                document.body.style.overflow = 'hidden';
-                console.log('Drawer should be open now');
-            });
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', toggleMenu);
         }
         
-        if (drawerClose && mobileDrawer) {
-            drawerClose.addEventListener('click', () => {
-                mobileDrawer.classList.remove('open');
-                document.body.style.overflow = '';
-            });
+        if (drawerClose) {
+            drawerClose.addEventListener('click', closeMenu);
         }
         
         // Close drawer when clicking outside
         if (mobileDrawer) {
             mobileDrawer.addEventListener('click', (e) => {
                 if (e.target === mobileDrawer) {
-                    mobileDrawer.classList.remove('open');
-                    document.body.style.overflow = '';
+                    closeMenu();
                 }
             });
         }
@@ -8180,43 +8194,23 @@
             console.log('Found buttons:', buttons.length);
             console.log('Found contents:', contents.length);
             
-            // Debug: List all buttons and their categories
-            buttons.forEach((btn, idx) => {
-                console.log(`Button ${idx}:`, btn.textContent.trim(), 'Category:', btn.getAttribute('data-category'));
-            });
-            
-            // Debug: List all content sections and their categories
-            contents.forEach((content, idx) => {
-                console.log(`Content ${idx}:`, content.getAttribute('data-category'));
-            });
-            
             // Set initial state - show the section with active class
             const activeSection = document.querySelector('.book-category.active');
             if (activeSection) {
                 activeSection.style.display = 'block';
-                console.log('Initial active section:', activeSection.getAttribute('data-category'));
-            } else {
-                // If no active section, show the first one
-                if (contents.length > 0) {
-                    contents[0].style.display = 'block';
-                    contents[0].classList.add('active');
-                    console.log('No active section found, showing first section');
-                }
+            } else if (contents.length > 0) {
+                contents[0].style.display = 'block';
+                contents[0].classList.add('active');
             }
             
             // Enhanced button click handler
             buttons.forEach((button, index) => {
-                console.log('Setting up button:', button.textContent.trim());
-                console.log('Button data-category:', button.getAttribute('data-category'));
-                
                 button.onclick = function(e) {
                     e.preventDefault();
-                    console.log('Button clicked:', this.textContent.trim());
-                    
                     const category = this.getAttribute('data-category');
-                    console.log('Category:', category);
+                    console.log('Button clicked:', category);
                     
-                    // Reset all buttons to inactive state
+                    // Reset all buttons
                     buttons.forEach(btn => {
                         btn.style.background = '#f7fafc';
                         btn.style.color = '#4a5568';
@@ -8230,146 +8224,68 @@
                     this.style.border = 'none';
                     this.classList.add('active');
                     
-                    // Hide all contents and remove active class
+                    // Hide all contents
                     contents.forEach(content => {
                         content.style.display = 'none';
                         content.classList.remove('active');
                     });
                     
-                    // Show target content and add active class
+                    // Show target content
                     const target = document.querySelector(`.book-category[data-category="${category}"]`);
-                    console.log('Looking for target with category:', category);
-                    console.log('Target found:', target);
                     
                     if (target) {
-                        // Add active class and show content
+                        // Activate target
                         target.classList.add('active');
-                        target.style.display = 'block';
-                        target.style.visibility = 'visible';
-                        target.style.opacity = '1';
-                        target.style.height = 'auto';
-                        target.style.maxHeight = 'none';
                         
-                        console.log('Content switched to:', category);
-                        console.log('Target classes:', target.className);
+                        // Apply robust styling to ensure visibility (Applied to all categories)
+                        const styles = {
+                            display: 'block',
+                            visibility: 'visible',
+                            opacity: '1',
+                            height: 'auto',
+                            maxHeight: 'none',
+                            position: 'relative',
+                            zIndex: '999'
+                        };
                         
-                        // Ensure all child elements are visible
-                        const slider = target.querySelector('.books-slider');
-                        const container = target.querySelector('.books-slider-container');
-                        const bookItems = target.querySelectorAll('.book-item-mobile');
+                        // Apply styles to target
+                        Object.assign(target.style, styles);
                         
-                        console.log('Slider found:', slider);
-                        console.log('Container found:', container);
-                        console.log('Book items found:', bookItems.length);
+                        // Apply to children (slider, container, items)
+                        const children = [
+                            target.querySelector('.books-slider'),
+                            target.querySelector('.books-slider-container'),
+                            ...target.querySelectorAll('.book-item-mobile')
+                        ];
                         
-                        // Force visibility of container
-                        if (container) {
-                            container.style.display = 'block';
-                            container.style.visibility = 'visible';
-                            container.style.opacity = '1';
-                        }
-                        
-                        // Force visibility of slider
-                        if (slider) {
-                            slider.style.display = 'block';
-                            slider.style.visibility = 'visible';
-                            slider.style.opacity = '1';
-                            slider.style.height = 'auto';
-                            slider.style.maxHeight = '400px';
-                        }
-                        
-                        // Force visibility of all book items
-                        bookItems.forEach((item, index) => {
-                            item.style.display = 'block';
-                            item.style.visibility = 'visible';
-                            item.style.opacity = '1';
-                        });
-                        
-                        // Additional debugging for problematic categories
-                        if (category === 'wealth-creation' || category === 'financial-analysis') {
-                            console.log(`=== ${category.toUpperCase()} DEBUG ===`);
-                            console.log('Target element:', target);
-                            console.log('Target computed style:', window.getComputedStyle(target));
-                            console.log('Slider computed style:', slider ? window.getComputedStyle(slider) : 'No slider');
-                            console.log('Book items count:', bookItems.length);
-                            
-                            // Force all styles to ensure visibility
-                            target.style.setProperty('display', 'block', 'important');
-                            target.style.setProperty('visibility', 'visible', 'important');
-                            target.style.setProperty('opacity', '1', 'important');
-                            target.style.setProperty('height', 'auto', 'important');
-                            target.style.setProperty('max-height', 'none', 'important');
-                            target.style.setProperty('position', 'relative', 'important');
-                            target.style.setProperty('z-index', '999', 'important');
-                            
-                            if (slider) {
-                                slider.style.setProperty('display', 'block', 'important');
-                                slider.style.setProperty('visibility', 'visible', 'important');
-                                slider.style.setProperty('opacity', '1', 'important');
-                                slider.style.setProperty('height', 'auto', 'important');
-                                slider.style.setProperty('max-height', 'none', 'important');
-                                slider.style.setProperty('overflow', 'visible', 'important');
-                                slider.style.setProperty('position', 'relative', 'important');
-                                slider.style.setProperty('z-index', '999', 'important');
-                            }
-                            
-                            if (container) {
-                                container.style.setProperty('display', 'block', 'important');
-                                container.style.setProperty('visibility', 'visible', 'important');
-                                container.style.setProperty('opacity', '1', 'important');
-                                container.style.setProperty('height', 'auto', 'important');
-                                container.style.setProperty('max-height', 'none', 'important');
-                                container.style.setProperty('overflow', 'visible', 'important');
-                                container.style.setProperty('position', 'relative', 'important');
-                                container.style.setProperty('z-index', '999', 'important');
-                            }
-                            
-                            // Force visibility of all book items with more aggressive styling
-                            bookItems.forEach((item, index) => {
-                                item.style.setProperty('display', 'block', 'important');
-                                item.style.setProperty('visibility', 'visible', 'important');
-                                item.style.setProperty('opacity', '1', 'important');
-                                item.style.setProperty('position', 'relative', 'important');
-                                item.style.setProperty('z-index', '999', 'important');
-                                item.style.setProperty('height', 'auto', 'important');
-                                item.style.setProperty('max-height', 'none', 'important');
-                            });
-                            
-                            // Check parent containers that might be hiding content
-                            let parent = target.parentElement;
-                            let level = 0;
-                            while (parent && level < 5) {
-                                console.log(`Parent ${level}:`, parent.tagName, parent.className);
-                                const parentStyle = window.getComputedStyle(parent);
-                                console.log(`Parent ${level} display:`, parentStyle.display);
-                                console.log(`Parent ${level} visibility:`, parentStyle.visibility);
-                                console.log(`Parent ${level} opacity:`, parentStyle.opacity);
-                                console.log(`Parent ${level} height:`, parentStyle.height);
-                                console.log(`Parent ${level} max-height:`, parentStyle.maxHeight);
-                                console.log(`Parent ${level} overflow:`, parentStyle.overflow);
-                                
-                                // Force parent visibility if needed
-                                if (parentStyle.display === 'none' || parentStyle.visibility === 'hidden' || parentStyle.opacity === '0') {
-                                    parent.style.setProperty('display', 'block', 'important');
-                                    parent.style.setProperty('visibility', 'visible', 'important');
-                                    parent.style.setProperty('opacity', '1', 'important');
-                                    console.log(`Fixed parent ${level} visibility`);
+                        children.forEach(child => {
+                            if (child) {
+                                Object.assign(child.style, styles);
+                                // Specific overrides for slider
+                                if (child.classList.contains('books-slider')) {
+                                    child.style.overflow = 'visible';
+                                    child.style.maxHeight = '400px';
                                 }
-                                
-                                parent = parent.parentElement;
-                                level++;
                             }
+                        });
+
+                        // Check parent visibility (Fix for nested hiding)
+                        let parent = target.parentElement;
+                        let level = 0;
+                        while (parent && level < 5) {
+                            const parentStyle = window.getComputedStyle(parent);
+                            if (parentStyle.display === 'none' || parentStyle.visibility === 'hidden') {
+                                parent.style.display = 'block';
+                                parent.style.visibility = 'visible';
+                                parent.style.opacity = '1';
+                            }
+                            parent = parent.parentElement;
+                            level++;
                         }
                         
                         console.log('Successfully switched to category:', category);
                     } else {
                         console.error('Target not found for category:', category);
-                        // List all available categories for debugging
-                        const allBookCategories = document.querySelectorAll('.book-category');
-                        console.log('All book categories found:', allBookCategories.length);
-                        allBookCategories.forEach((cat, index) => {
-                            console.log(`Category ${index}:`, cat.getAttribute('data-category'));
-                        });
                     }
                 };
             });
@@ -8381,8 +8297,6 @@
         } else {
             initBookCategories();
         }
-
-
     </script>
 
     <!-- Footer with Disclaimer -->
