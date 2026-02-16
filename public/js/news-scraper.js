@@ -1,35 +1,38 @@
 // News Scraper for Graham and Doddsville Website
-// Updated: Fixes Date Crash and Image Timeouts
+// Updated: Targets ALL ID variations to prevent conflicts and ensure 5 items everywhere
 
 class AustralianNewsScraper {
     constructor(apiUrl) {
         this.apiUrl = apiUrl || '/api';
         this.cachedNews = [];
         this.lastUpdate = null;
-        this.updateInterval = 15 * 60 * 1000; 
+        this.updateInterval = 15 * 60 * 1000;
     }
 
     async fetchNews() {
         try {
             console.log('AustralianNewsScraper: Starting news fetching...');
-            
-            // Check client-side cache
+
             if (this.cachedNews.length > 0 && this.isRecentCache()) {
                 console.log('Returning client-side cached data');
                 return this.cachedNews;
             }
 
             const allNews = [];
-            
-            // Fetch directly from the Server API
+
             try {
                 console.log(`Fetching from backend: ${this.apiUrl}/news`);
                 const response = await fetch(`${this.apiUrl}/news`);
-                
+
                 if (response.ok) {
                     const data = await response.json();
                     if (data.articles) {
-                        allNews.push(...data.articles);
+                        const reProcessedArticles = data.articles.map(article => ({
+                            ...article,
+                            category: this.categorizeNews(article.title, article.description || article.content, article.source.name || article.source)
+                        }));
+
+                        allNews.push(...reProcessedArticles);
                         console.log(`Received ${data.articles.length} articles from backend`);
                     }
                 } else {
@@ -37,7 +40,7 @@ class AustralianNewsScraper {
                 }
             } catch (error) {
                 console.error('Backend fetch failed:', error);
-                return []; 
+                return [];
             }
 
             this.cachedNews = allNews;
@@ -55,16 +58,67 @@ class AustralianNewsScraper {
         return (Date.now() - this.lastUpdate.getTime()) < this.updateInterval;
     }
 
-    // === THE CRITICAL FIX IS HERE ===
+    categorizeNews(title, description, sourceName) {
+        const text = (title + ' ' + (description || '')).toLowerCase();
+        const source = (sourceName || '').toLowerCase();
+
+        if (text.includes('buffett') || text.includes('berkshire') || text.includes('munger') ||
+            text.includes('dalio') || text.includes('ackman') || text.includes('burry') ||
+            text.includes('portfolio') || text.includes('hedge fund') || text.includes('investor letter') ||
+            text.includes('holding') || text.includes('stake') || text.includes('shareholder letter')) {
+            return 'Guru Watch';
+        }
+
+        if (text.includes('rba') || text.includes('reserve bank') || text.includes('asic') ||
+            text.includes('accc') || text.includes('tax') || text.includes('law') ||
+            text.includes('legislation') || text.includes('government') || text.includes('policy') ||
+            text.includes('compliance') || text.includes('court') || text.includes('fine') ||
+            text.includes('ban') || text.includes('penalty') || text.includes('regulator')) {
+            return 'Regulatory';
+        }
+
+        if (text.includes('economy') || text.includes('gdp') || text.includes('inflation') ||
+            text.includes('interest rate') || text.includes('cpi') || text.includes('unemployment') ||
+            text.includes('jobs') || text.includes('recession') || text.includes('growth') ||
+            text.includes('fiscal') || text.includes('trade deficit') || text.includes('dollar')) {
+            return 'Economy';
+        }
+
+        if (text.includes('mining') || text.includes('banking') || text.includes('retail') ||
+            text.includes('tech') || text.includes('healthcare') || text.includes('energy') ||
+            text.includes('resources') || text.includes('construction') || text.includes('property') ||
+            text.includes('real estate') || text.includes('sector')) {
+            return 'Industry';
+        }
+
+        if (text.includes('asx') || text.includes('market') || text.includes('dow') ||
+            text.includes('nasdaq') || text.includes('s&p') || text.includes('index') ||
+            text.includes('rally') || text.includes('plunge') || text.includes('bull') ||
+            text.includes('bear') || text.includes('close') || text.includes('open')) {
+            return 'Markets';
+        }
+
+        if (text.includes('company') || text.includes('shares') || text.includes('stock') ||
+            text.includes('dividend') || text.includes('profit') || text.includes('revenue') ||
+            text.includes('earnings') || text.includes('deal') || text.includes('acquisition') ||
+            text.includes('merger') || text.includes('ceo') || text.includes('appoint') ||
+            text.includes('launch') || text.includes('results') || text.includes('sales') ||
+            text.includes('forecast') || text.includes('guidance') || text.includes('quarterly') ||
+            text.includes('report') || text.includes('announced') || text.includes('business')) {
+            return 'Companies';
+        }
+
+        if (source.includes('financial') || source.includes('business') || source.includes('money')) {
+            return 'Companies';
+        }
+
+        return 'General';
+    }
+
     formatDate(dateInput) {
         try {
-            // 1. Force convert ANY input (string or object) to a Date Object
             const date = new Date(dateInput);
-
-            // 2. Check if the conversion worked
-            if (isNaN(date.getTime())) {
-                return 'Recently'; // Fallback for bad dates
-            }
+            if (isNaN(date.getTime())) return 'Recently';
 
             const now = new Date();
             const diff = now - date;
@@ -74,8 +128,7 @@ class AustralianNewsScraper {
             if (hours < 1) return 'Just now';
             if (hours < 24) return `${hours}h ago`;
             if (days < 7) return `${days}d ago`;
-            
-            // 3. Now it is safe to call the function
+
             return date.toLocaleDateString('en-AU');
         } catch (e) {
             console.error('Date formatting error:', e);
@@ -95,49 +148,58 @@ class NewsDisplayManager {
         try {
             console.log('NewsDisplayManager: Starting initialization...');
             this.showLoadingState();
-            
+
             const news = await this.scraper.fetchNews();
             this.allNews = news;
-            
-            // Save to localStorage
+
             try {
                 const cacheData = { data: news, timestamp: Date.now() };
                 localStorage.setItem('newsCache', JSON.stringify(cacheData));
             } catch (e) { console.log('LocalStorage Error:', e); }
-            
+
             this.displayNews(news);
             this.setupEventListeners();
             this.setupAutoRefresh();
-            
+
         } catch (error) {
             console.error('Error initializing news display:', error);
             this.showErrorState();
         }
     }
 
-    // Use Placehold.co to prevent timeouts
     generatePlaceholderImage(sourceName) {
         const safeName = sourceName ? sourceName.replace(/[^a-zA-Z0-9 ]/g, '') : 'News';
         return `https://placehold.co/600x400/1e3a8a/ffffff?text=${encodeURIComponent(safeName)}`;
     }
 
+    // === UPDATED: Targets BOTH ID sets (companies-news AND top-companies-news) ===
     showLoadingState() {
         const categoryContainers = [
-            'companies-news', 'markets-news', 'economy-news', 
-            'industry-news', 'regulatory-news', 'guru-watch-news'
+            'companies-news', 'top-companies-news',
+            'markets-news', 'top-markets-news',
+            'economy-news', 'top-economy-news',
+            'industry-news', 'top-industry-news',
+            'regulatory-news', 'top-regulatory-news',
+            'guru-watch-news', 'top-guru-watch-news',
+            'feature-articles-container'
         ];
         categoryContainers.forEach(containerId => {
             const container = document.getElementById(containerId);
             if (container) {
-                container.innerHTML = `<div class="loading-state"><p>Loading news...</p></div>`;
+                container.innerHTML = `<div class="loading-state"><div class="news-loading-spinner"></div><p>Loading news...</p></div>`;
             }
         });
     }
 
     showErrorState() {
         const categoryContainers = [
-            'companies-news', 'markets-news', 'economy-news', 
-            'industry-news', 'regulatory-news', 'guru-watch-news'
+            'companies-news', 'top-companies-news',
+            'markets-news', 'top-markets-news',
+            'economy-news', 'top-economy-news',
+            'industry-news', 'top-industry-news',
+            'regulatory-news', 'top-regulatory-news',
+            'guru-watch-news', 'top-guru-watch-news',
+            'feature-articles-container'
         ];
         categoryContainers.forEach(containerId => {
             const container = document.getElementById(containerId);
@@ -147,6 +209,7 @@ class NewsDisplayManager {
         });
     }
 
+    // === SMART HYBRID DISPLAY LOGIC ===
     displayNews(news) {
         console.log('NewsDisplayManager: Displaying', news.length, 'news items');
 
@@ -162,45 +225,85 @@ class NewsDisplayManager {
             newsByCategory[category].push(item);
         });
 
+        if (!newsByCategory['Feature Articles'] && newsByCategory['General']) {
+            newsByCategory['Feature Articles'] = newsByCategory['General'];
+        }
+
+        // Configuration:
+        // Supports BOTH ID formats to override any other script
         const categoryContainers = {
-            'Companies': 'companies-news',
-            'Markets': 'markets-news',
-            'Economy': 'economy-news',
-            'Industry': 'industry-news',
-            'Regulatory': 'regulatory-news',
-            'Guru Watch': 'guru-watch-news'
+            'Companies': { ids: ['companies-news', 'top-companies-news'], limit: 5, freshLimit: 48, hardLimit: 168 },
+            'Markets': { ids: ['markets-news', 'top-markets-news'], limit: 5, freshLimit: 48, hardLimit: 168 },
+            'Economy': { ids: ['economy-news', 'top-economy-news'], limit: 5, freshLimit: 48, hardLimit: 168 },
+            'Industry': { ids: ['industry-news', 'top-industry-news'], limit: 5, freshLimit: 48, hardLimit: 168 },
+            'Regulatory': { ids: ['regulatory-news', 'top-regulatory-news'], limit: 5, freshLimit: 72, hardLimit: 168 },
+            'Guru Watch': { ids: ['guru-watch-news', 'top-guru-watch-news'], limit: 5, freshLimit: 72, hardLimit: 336 },
+            'Feature Articles': { ids: ['feature-articles-container'], limit: 10, freshLimit: 48, hardLimit: 168 }
         };
 
         Object.keys(categoryContainers).forEach(category => {
-            const containerId = categoryContainers[category];
-            const container = document.getElementById(containerId);
-            
-            if (container) {
-                container.innerHTML = ''; // Clear container
-                const categoryNews = newsByCategory[category] || [];
-                
-                if (categoryNews.length > 0) {
-                    const displayNews = categoryNews.slice(0, 3);
-                    container.innerHTML = displayNews.map(item => this.createNewsItemHTML(item)).join('');
-                } else {
-                    container.innerHTML = `<div class="no-news-in-category"><p>No updates currently available.</p></div>`;
+            const config = categoryContainers[category];
+
+            // Iterate over ALL possible IDs for this category
+            config.ids.forEach(containerId => {
+                const container = document.getElementById(containerId);
+
+                if (container) {
+                    container.innerHTML = '';
+                    let rawArticles = newsByCategory[category] || [];
+
+                    // 1. Sort by Date (Newest First)
+                    rawArticles.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+
+                    // 2. SMART SELECTION
+                    let selectedArticles = this.getSmartArticles(rawArticles, config.limit, config.freshLimit, config.hardLimit);
+
+                    if (selectedArticles.length > 0) {
+                        container.innerHTML = selectedArticles.map(item => this.createNewsItemHTML(item)).join('');
+                    } else {
+                        container.innerHTML = `<div class="no-news-in-category"><p>No updates within 7 days.</p></div>`;
+                    }
                 }
-            }
+            });
         });
 
         this.updateLastUpdatedTime();
     }
 
+    getSmartArticles(articles, limit, freshHours, hardHours) {
+        const now = new Date();
+        const validArticles = articles.filter(item => !isNaN(new Date(item.publishedAt).getTime()));
+
+        const freshArticles = [];
+        const backfillArticles = [];
+
+        validArticles.forEach(item => {
+            const diffHours = (now - new Date(item.publishedAt)) / (1000 * 60 * 60);
+            if (diffHours <= freshHours) {
+                freshArticles.push(item);
+            } else if (diffHours <= hardHours) {
+                backfillArticles.push(item);
+            }
+        });
+
+        let result = [...freshArticles];
+        if (result.length < limit && backfillArticles.length > 0) {
+            const needed = limit - result.length;
+            result = result.concat(backfillArticles.slice(0, needed));
+        }
+
+        return result.slice(0, limit);
+    }
+
     createNewsItemHTML(item) {
-        // Safe date formatting
         const formattedDate = this.scraper.formatDate(item.publishedAt);
-        
-        // Use reliable image source
         let imageUrl = item.image;
         if (!imageUrl || imageUrl.includes('unsplash')) {
             imageUrl = this.generatePlaceholderImage(item.source);
         }
-        
+
+        // Determine layout based on container type (sidebar vs main)
+        // For simplicity, we use the standard card layout which works in both
         return `
             <div class="news-item" data-category="${item.category}">
                 <div class="news-image-container">
@@ -246,7 +349,9 @@ class NewsDisplayManager {
 // Initialize
 let newsDisplayManager;
 document.addEventListener('DOMContentLoaded', () => {
-    const apiUrl = '/api'; 
+    const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    const apiUrl = isLocalhost ? 'http://localhost:3001/api' : '/api';
+
     newsDisplayManager = new NewsDisplayManager();
     newsDisplayManager.scraper = new AustralianNewsScraper(apiUrl);
     window.newsDisplayManager = newsDisplayManager;

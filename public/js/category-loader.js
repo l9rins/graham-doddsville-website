@@ -1,108 +1,98 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const container = document.getElementById('category-news-container');
-    const pageTitle = document.getElementById('page-title');
-    const categoryHeader = document.querySelector('.category-header h1');
-    const categoryDesc = document.querySelector('.category-description');
+// Category Loader for Graham and Doddsville Homepage
+// Updated: Increases news items from 3 to 5 per section
 
-    // 1. Get Category from URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const category = urlParams.get('type');
+document.addEventListener('DOMContentLoaded', async () => {
+    // 1. configuration
+    const categories = [
+        { id: 'top-companies-news', keywords: ['Companies', 'Investment', 'Business'] },
+        { id: 'top-markets-news', keywords: ['Markets', 'Investment', 'General'] },
+        { id: 'top-economy-news', keywords: ['Economy', 'Monetary Policy', 'General'] },
+        { id: 'top-industry-news', keywords: ['Industry', 'Resources', 'Energy', 'Technology'] },
+        { id: 'top-regulatory-news', keywords: ['Regulatory', 'Banking', 'Monetary Policy', 'General'] },
+        { id: 'top-guru-watch-news', keywords: ['Investment', 'Companies', 'Markets'] },
+        { id: 'top-around-world-news', keywords: ['General', 'International', 'Economy'] }
+    ];
 
-    // 2. Initialize Page
-    if (category) {
-        const displayCategory = category.charAt(0).toUpperCase() + category.slice(1).replace('-', ' ');
-        document.title = `${displayCategory} News - Graham and Doddsville`;
-        if (categoryHeader) categoryHeader.textContent = displayCategory;
-        if (categoryDesc) categoryDesc.textContent = `Latest updates and analysis for ${displayCategory}`;
-
-        loadCategoryNews(category);
-    } else {
-        showError('No category specified');
-    }
-
-    // 3. Main Load Function
-    async function loadCategoryNews(cat) {
-        showLoading();
-
-        try {
-            // Use relative path for Render compatibility
-            const response = await fetch(`/api/news/category/${cat}`);
-
-            if (!response.ok) {
-                throw new Error(`Server returned ${response.status}`);
+    // 2. Main Logic
+    try {
+        // Wait for the main news manager to be ready, or fetch directly if needed
+        if (window.newsDisplayManager && window.newsDisplayManager.allNews && window.newsDisplayManager.allNews.length > 0) {
+            console.log(`Populating category sections with existing data: ${window.newsDisplayManager.allNews.length} articles`);
+            populateSections(window.newsDisplayManager.allNews);
+        } else {
+            // If main manager isn't ready, fetch independently
+            console.log('Fetching news for category sections...');
+            const response = await fetch('/api/news');
+            if (response.ok) {
+                const data = await response.json();
+                if (data.articles) {
+                    populateSections(data.articles);
+                }
             }
-
-            const data = await response.json();
-
-            if (data.articles && data.articles.length > 0) {
-                renderArticles(data.articles);
-            } else {
-                showEmptyState(cat);
-            }
-
-        } catch (error) {
-            console.error('Error loading category news:', error);
-            showError();
         }
+
+    } catch (error) {
+        console.error('Error in category-loader:', error);
     }
 
-    // 4. Render Functions
-    function renderArticles(articles) {
+    // 3. Populate Function
+    function populateSections(allNews) {
+        categories.forEach(cat => {
+            const container = document.getElementById(cat.id);
+            if (!container) return;
+
+            // Filter news for this category based on keywords
+            // We use the same loose matching logic to ensure we get enough items
+            const sectionNews = allNews.filter(article => {
+                const category = (article.category || 'General');
+                // Check if the article's category matches any of our keywords
+                return cat.keywords.includes(category) || cat.keywords.includes('General');
+            });
+
+            // Deduplicate logic if needed, but for now just take the top 5
+            // UPDATED: Changed slice(0, 3) to slice(0, 5)
+            const uniqueNews = [...new Set(sectionNews)];
+            const displayNews = uniqueNews.slice(0, 5);
+
+            if (displayNews.length > 0) {
+                console.log(`Populating ${cat.id} with ${displayNews.length} articles`);
+                renderCategoryNews(container, displayNews);
+            } else {
+                console.log(`No news found for ${cat.id}`);
+                // Optional: Leave empty or show placeholder
+                container.innerHTML = '<p class="no-news">No recent updates.</p>';
+            }
+        });
+    }
+
+    // 4. Render Function (Simplified for Sidebar/Small sections)
+    function renderCategoryNews(container, articles) {
         container.innerHTML = articles.map(article => `
-            <div class="news-card">
+            <div class="news-item-small">
                 <div class="news-content">
-                    <div class="news-meta">
-                        <span class="news-source">${article.source}</span>
-                        <span class="news-date">${new Date(article.publishedAt).toLocaleDateString()}</span>
-                    </div>
-                    <h3 class="news-title">
-                        <a href="${article.url}" target="_blank" rel="noopener">${article.title}</a>
-                    </h3>
-                    <p class="news-excerpt">${article.excerpt || ''}</p>
-                    <a href="${article.url}" target="_blank" rel="noopener" class="read-more">Read Article →</a>
+                    <h4><a href="${article.url}" target="_blank" rel="noopener">${article.title}</a></h4>
+                    <span class="news-date">${formatDate(article.publishedAt)}</span>
                 </div>
             </div>
         `).join('');
     }
 
-    function showLoading() {
-        container.innerHTML = `
-            <div class="loading-state">
-                <div class="loading-spinner"></div>
-                <p>Loading market updates...</p>
-            </div>
-        `;
-    }
+    // Helper Date Formatter
+    function formatDate(dateString) {
+        try {
+            const date = new Date(dateString);
+            if (isNaN(date.getTime())) return 'Recently';
 
-    // 5. THE FIX: Proper Error State with Working Buttons
-    function showError(message) {
-        container.innerHTML = `
-            <div class="error-container">
-                <div class="error-icon">⚠️</div>
-                <h3>Unable to Load News</h3>
-                <p>${message || "News service temporarily unavailable. Please try again later."}</p>
-                <div class="error-actions">
-                    <button id="retry-btn" class="btn btn-primary">Try Again</button>
-                    <a href="index.html" class="btn btn-secondary">← Back to Home</a>
-                </div>
-            </div>
-        `;
+            const now = new Date();
+            const diff = (now - date) / (1000 * 60 * 60); // hours
 
-        // Attach event listener AFTER creating the button
-        const retryBtn = document.getElementById('retry-btn');
-        if (retryBtn) {
-            retryBtn.addEventListener('click', () => {
-                loadCategoryNews(category);
-            });
+            if (diff < 1) return 'Just now';
+            if (diff < 24) return `${Math.floor(diff)}h ago`;
+            if (diff < 168) return `${Math.floor(diff / 24)}d ago`; // up to 7 days
+
+            return date.toLocaleDateString('en-AU', { month: 'short', day: 'numeric' });
+        } catch (e) {
+            return 'Recently';
         }
-    }
-
-    function showEmptyState(cat) {
-        container.innerHTML = `
-            <div class="empty-state">
-                <p>No articles found for "${cat}".</p>
-                <a href="index.html" class="btn btn-primary">Browse All News</a>
-            </div>
-        `;
     }
 });
