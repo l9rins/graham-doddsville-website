@@ -93,7 +93,7 @@ const newsSources = {
         type: 'rss',
         category: 'general'
     },
-    
+
     // === AUSTRALIAN BUSINESS & FINANCE ===
     'business-insider-au': {
         name: 'Business Insider Australia',
@@ -155,7 +155,7 @@ const newsSources = {
         type: 'rss',
         category: 'business'
     },
-    
+
     // === AUSTRALIAN REGIONAL MEDIA ===
     'illawarra-mercury': {
         name: 'Illawarra Mercury',
@@ -217,7 +217,7 @@ const newsSources = {
         type: 'rss',
         category: 'regional'
     },
-    
+
     // === AUSTRALIAN TECH & INNOVATION ===
     'itnews': {
         name: 'iTnews',
@@ -249,7 +249,7 @@ const newsSources = {
         type: 'rss',
         category: 'technology'
     },
-    
+
     // === INTERNATIONAL NEWSAPI SOURCES ===
     'bloomberg': {
         name: 'Bloomberg',
@@ -347,7 +347,7 @@ const newsSources = {
         type: 'newsapi',
         category: 'business'
     },
-    
+
     // === INTERNATIONAL RSS SOURCES ===
     'nz-herald': {
         name: 'New Zealand Herald',
@@ -397,7 +397,7 @@ const newsSources = {
         type: 'rss',
         category: 'international'
     },
-    
+
     // === ADDITIONAL AUSTRALIAN REGIONAL SOURCES ===
     'geelong-advertiser': {
         name: 'Geelong Advertiser',

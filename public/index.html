@@ -9518,16 +9518,16 @@
         document.addEventListener('DOMContentLoaded', function () {
             console.log('DOM loaded, trying category population...');
             setTimeout(() => {
-                fetchRSSNews().catch(error => {
-                    console.log('DOM load RSS fetch failed:', error);
-                });
+                // fetchRSSNews().catch(error => {
+                //    console.log('DOM load RSS fetch failed:', error);
+                // });
             }, 1000);
         });
 
         // Ensure RSS news loads on DOMContentLoaded
         document.addEventListener('DOMContentLoaded', function () {
             console.log('DOMContentLoaded - fetching RSS news...');
-            fetchRSSNews().catch(error => console.log('DOMContentLoaded RSS fetch failed:', error));
+            // fetchRSSNews().catch(error => console.log('DOMContentLoaded RSS fetch failed:', error));
         });
 
         // Force category population using preloaded data

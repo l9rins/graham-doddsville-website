@@ -119,15 +119,15 @@ function resetDailyCounter() {
 // Check and track NewsAPI requests
 async function checkAndTrackNewsAPIRequest() {
     resetDailyCounter();
-    
+
     if (REQUEST_COUNTER.dailyCount >= 100) {
         throw new Error(`❌ Daily NewsAPI limit (100) exceeded. Reset at midnight UTC.`);
     }
-    
+
     if (REQUEST_COUNTER.dailyCount >= 95) {
         console.warn(`⚠️ WARNING: ${REQUEST_COUNTER.dailyCount}/100 daily requests used`);
     }
-    
+
     REQUEST_COUNTER.dailyCount++;
     return true;
 }
@@ -141,29 +141,29 @@ class RequestQueue {
         this.maxConcurrent = maxConcurrent;
         this.lastRequestTime = 0;
     }
-    
+
     async add(fn) {
         return new Promise((resolve, reject) => {
             this.queue.push({ fn, resolve, reject });
             this.process();
         });
     }
-    
+
     async process() {
         if (this.active >= this.maxConcurrent || this.queue.length === 0) {
             return;
         }
-        
+
         this.active++;
         const { fn, resolve, reject } = this.queue.shift();
-        
+
         try {
             // Enforce minimum delay between requests
             const timeSinceLastRequest = Date.now() - this.lastRequestTime;
             if (timeSinceLastRequest < this.delayMs) {
                 await new Promise(r => setTimeout(r, this.delayMs - timeSinceLastRequest));
             }
-            
+
             this.lastRequestTime = Date.now();
             const result = await fn();
             resolve(result);
@@ -212,24 +212,24 @@ function isArticleValid(article) {
     if (!article.source || !article.source.name) return false;
     if (!article.url) return false;
     if (!article.publishedAt) return false;
-    
+
     // ✅ NEW: Account for free tier 24-hour delay
     const publishedDate = new Date(article.publishedAt);
     const now = new Date();
     const hoursDiff = (now - publishedDate) / (1000 * 60 * 60);
-    
+
     // Free tier: articles are minimum 24 hours old, accept up to 72 hours
     const MIN_HOURS = FREE_TIER_DELAY_HOURS;   // Don't show fresh articles (not from free tier)
     const MAX_HOURS = 72;   // Don't show very stale articles
-    
+
     if (hoursDiff < MIN_HOURS || hoursDiff > MAX_HOURS) return false;
-    
+
     // Check domain whitelist for NewsAPI articles
     if (article.url) {
         const url = new URL(article.url);
         if (!CREDIBLE_DOMAINS.some(domain => url.hostname.includes(domain))) return false;
     }
-    
+
     return true;
 }
 
@@ -249,7 +249,7 @@ function isArticleRelevant(article) {
 function deduplicateArticles(articles) {
     const uniqueArticles = [];
     const seenHashes = new Set();
-    
+
     for (const article of articles) {
         const hash = generateArticleHash(article.title, article.source, article.publishedAt);
         if (!seenHashes.has(hash) && !articleHashes.has(hash)) {
@@ -258,7 +258,7 @@ function deduplicateArticles(articles) {
             uniqueArticles.push(article);
         }
     }
-    
+
     return uniqueArticles;
 }
 
@@ -275,10 +275,10 @@ app.use((req, res, next) => {
     } else {
         res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
     }
-    
+
     // Enable compression
     res.setHeader('Vary', 'Accept-Encoding');
-    
+
     next();
 });
 
@@ -397,11 +397,11 @@ async function fetchNewsFromAPI(keyword, delay = 0) {
     if (delay > 0) {
         await new Promise(resolve => setTimeout(resolve, delay));
     }
-    
+
     try {
         // ✅ NEW: Check quota before making request
         await checkAndTrackNewsAPIRequest();
-        
+
         // Check cache first
         const cacheKey = `newsapi_${keyword}`;
         const cached = newsCache.get(cacheKey);
@@ -409,33 +409,33 @@ async function fetchNewsFromAPI(keyword, delay = 0) {
             console.log(`Using cached data for keyword: ${keyword}`);
             return cached.articles;
         }
-        
+
         // Date range: last 7 days to account for free tier delay
         const sevenDaysAgo = new Date();
         sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
         const fromDate = sevenDaysAgo.toISOString().split('T')[0];
         const toDate = new Date().toISOString().split('T')[0];
-        
+
         const url = `https://newsapi.org/v2/everything?q=${encodeURIComponent(keyword)}&domains=${CREDIBLE_DOMAINS.join(',')}&from=${fromDate}&to=${toDate}&language=en&sortBy=publishedAt&pageSize=${MAX_ARTICLES_PER_SOURCE}&apiKey=${NEWS_API_KEY}`;
-        
+
         console.log(`Fetching optimized news from NewsAPI for keyword: ${keyword}...`);
-        
+
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT);
-        
+
         const response = await fetch(url, { signal: controller.signal });
         clearTimeout(timeoutId);
-        
+
         if (!response.ok) {
             throw new Error(`NewsAPI error: ${response.status}`);
         }
-        
+
         const data = await response.json();
-        
+
         if (data.status !== 'ok') {
             throw new Error(`NewsAPI returned error: ${data.message}`);
         }
-        
+
         // Validate and process articles
         const validArticles = data.articles
             .filter(article => isArticleValid({
@@ -455,16 +455,16 @@ async function fetchNewsFromAPI(keyword, delay = 0) {
                 publishedAt: article.publishedAt,
                 hash: generateArticleHash(article.title, article.source.name, article.publishedAt)
             }));
-        
+
         // Cache the results
         newsCache.set(cacheKey, {
             articles: validArticles,
             timestamp: Date.now()
         });
-        
+
         console.log(`Successfully fetched ${validArticles.length} valid articles for keyword: ${keyword}`);
         return validArticles;
-        
+
     } catch (error) {
         console.error(`Error fetching news from NewsAPI for keyword ${keyword}:`, error.message);
         return [];
@@ -596,7 +596,7 @@ app.get('/api/news/:sourceId', async (req, res) => {
         if (fs.existsSync(cacheFile)) {
             const fileData = fs.readFileSync(cacheFile, 'utf8');
             const cachedJson = JSON.parse(fileData);
-            
+
             const fileTime = new Date(cachedJson.timestamp).getTime();
             const now = new Date().getTime();
 
@@ -613,13 +613,13 @@ app.get('/api/news/:sourceId', async (req, res) => {
 
         // 4. WRITE TO CACHE
         fs.writeFileSync(cacheFile, JSON.stringify(freshData, null, 2));
-        
+
         console.log(`[Server] Served and cached ${sourceId}`);
         return res.json(freshData);
 
     } catch (error) {
         console.error(`[Server] Error processing ${req.params.sourceId}:`, error.message);
-        
+
         // FAIL-SAFE: If fetch fails (API limit), try to serve STALE cache if it exists
         const cacheFile = path.join(CACHE_DIR, `${req.params.sourceId}.json`);
         if (fs.existsSync(cacheFile)) {
@@ -637,28 +637,28 @@ app.get('/api/news/region/:region', async (req, res) => {
     try {
         const region = req.params.region;
         const sourceKeys = regionalNewsSources[region];
-        
+
         if (!sourceKeys) {
             return res.status(404).json({ error: 'Region not found' });
         }
-        
+
         console.log(`Fetching news for region: ${region}`);
-        
+
         // Get sources for this region, filtering out undefined sources
         const sources = sourceKeys.map(key => newsSources[key]).filter(source => source && source.name);
-        
+
         if (sources.length === 0) {
             return res.status(404).json({ error: 'No sources found for region' });
         }
-        
+
         console.log(`Found ${sources.length} sources for ${region}:`, sources.map(s => s.name));
-        
+
         // Prioritize RSS sources since NewsAPI has rate limits
         const rssSources = sources.filter(s => s.type === 'rss');
         const newsApiSources = sources.filter(s => s.type === 'newsapi');
-        
+
         let allArticles = [];
-        
+
         // Try RSS sources first (more reliable)
         if (rssSources.length > 0) {
             console.log(`Trying ${rssSources.length} RSS sources for ${region}...`);
@@ -670,7 +670,7 @@ app.get('/api/news/region/:region', async (req, res) => {
             allArticles = rssResults.flat();
             console.log(`RSS sources returned ${allArticles.length} articles`);
         }
-        
+
         // If we have few articles, try NewsAPI sources (but handle rate limits gracefully)
         if (allArticles.length < 3 && newsApiSources.length > 0) {
             console.log(`Trying ${newsApiSources.length} NewsAPI sources for ${region}...`);
@@ -688,19 +688,19 @@ app.get('/api/news/region/:region', async (req, res) => {
                 console.log(`NewsAPI failed for ${region} (likely rate limited):`, error.message);
             }
         }
-        
+
         // Filter articles based on region
         const isGeneralNewsRegion = ['north-america', 'europe'].includes(region);
         if (!isGeneralNewsRegion) {
             allArticles = allArticles.filter(article => isArticleRelevant(article));
         }
-        
+
         // Sort articles by date
         allArticles = allArticles.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
-        
+
         // Take top 5 articles
         const topArticles = allArticles.slice(0, 5);
-        
+
         res.json({
             region: region,
             articles: topArticles,
@@ -708,12 +708,12 @@ app.get('/api/news/region/:region', async (req, res) => {
             sources: sources.map(s => s.name),
             timestamp: new Date().toISOString()
         });
-        
+
     } catch (error) {
         console.error(`Error fetching news for region ${req.params.region}:`, error);
-        res.status(500).json({ 
+        res.status(500).json({
             error: 'Failed to fetch regional news',
-            message: error.message 
+            message: error.message
         });
     }
 });
@@ -721,11 +721,11 @@ app.get('/api/news/region/:region', async (req, res) => {
 // Batch processing function with concurrency control
 async function processBatch(sources, batchSize = MAX_CONCURRENT_REQUESTS, keywords = FINANCIAL_KEYWORDS) {
     const results = [];
-    
+
     for (let i = 0; i < sources.length; i += batchSize) {
         const batch = sources.slice(i, i + batchSize);
         console.log(`Processing batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(sources.length / batchSize)} (${batch.length} sources)`);
-        
+
         const batchPromises = batch.map(async (sourceKey) => {
             try {
                 const source = newsSources[sourceKey];
@@ -733,53 +733,53 @@ async function processBatch(sources, batchSize = MAX_CONCURRENT_REQUESTS, keywor
                     console.log(`Source ${sourceKey} not found, skipping...`);
                     return [];
                 }
-                
+
                 let articles = [];
-                
+
                 articles = await fetchNews(sourceKey, keywords);
-                
+
                 return articles;
             } catch (error) {
                 console.error(`Error fetching from ${sourceKey}:`, error);
                 return [];
             }
         });
-        
+
         const batchResults = await Promise.all(batchPromises);
         results.push(...batchResults);
-        
+
         // Small delay between batches to prevent overwhelming servers
         if (i + batchSize < sources.length) {
             await new Promise(resolve => setTimeout(resolve, 100));
         }
     }
-    
+
     return results;
 }
 
 // Prioritized source system
 function getPrioritizedSources() {
     const sourceKeys = Object.keys(newsSources);
-    
+
     // High priority sources (major news outlets)
     const highPriority = sourceKeys.filter(key => {
         const source = newsSources[key];
-        return ['abc-news-au', 'afr', 'the-australian', 'sydney-morning-herald', 
-                'the-age', 'news-com-au', 'bloomberg', 'reuters', 'bbc-news', 'cnn'].includes(key);
+        return ['abc-news-au', 'afr', 'the-australian', 'sydney-morning-herald',
+            'the-age', 'news-com-au', 'bloomberg', 'reuters', 'bbc-news', 'cnn'].includes(key);
     });
-    
+
     // Medium priority sources (business/tech)
     const mediumPriority = sourceKeys.filter(key => {
         const source = newsSources[key];
         return source.category === 'business' || source.category === 'technology';
     });
-    
+
     // Low priority sources (regional)
     const lowPriority = sourceKeys.filter(key => {
         const source = newsSources[key];
         return source.category === 'regional' && !highPriority.includes(key) && !mediumPriority.includes(key);
     });
-    
+
     // Limit to top 20 sources for faster loading
     return [...highPriority, ...mediumPriority, ...lowPriority].slice(0, 20);
 }
@@ -788,7 +788,7 @@ function getPrioritizedSources() {
 app.get('/api/news', async (req, res) => {
     try {
         console.log('Fetching optimized financial news...');
-        
+
         // Check if we have cached data (but not empty data)
         const cacheKey = 'optimized_news';
         const cached = newsCache.get(cacheKey);
@@ -800,9 +800,9 @@ app.get('/api/news', async (req, res) => {
                 isCached: true
             });
         }
-        
+
         const allArticles = [];
-        
+
         // Fetch from RSS sources first (reliable) - ENABLED
         const rssSources = getPrioritizedSources().filter(key => newsSources[key]?.type === 'rss').slice(0, 10);
         if (rssSources.length > 0) {
@@ -810,13 +810,13 @@ app.get('/api/news', async (req, res) => {
             const rssResults = await processBatch(rssSources, 3);
             rssResults.forEach(articles => allArticles.push(...articles));
         }
-        
+
         // Fetch optimized NewsAPI content with keywords
         console.log('Fetching optimized NewsAPI content...');
-        const newsApiPromises = FINANCIAL_KEYWORDS.map(keyword => 
+        const newsApiPromises = FINANCIAL_KEYWORDS.map(keyword =>
             newsApiQueue.add(() => fetchNewsFromAPI(keyword, 0))
         );
-        
+
         const newsApiResults = await Promise.allSettled(newsApiPromises);
         newsApiResults.forEach(result => {
             if (result.status === 'fulfilled') {
@@ -825,10 +825,10 @@ app.get('/api/news', async (req, res) => {
                 console.error('NewsAPI keyword fetch failed:', result.reason);
             }
         });
-        
+
         // Deduplicate articles
         const uniqueArticles = deduplicateArticles(allArticles);
-        
+
         // Sort by publication date (newest first), then by URL uniqueness
         uniqueArticles.sort((a, b) => {
             const dateDiff = new Date(b.publishedAt) - new Date(a.publishedAt);
@@ -836,10 +836,10 @@ app.get('/api/news', async (req, res) => {
             // Prefer articles from different sources
             return a.source.localeCompare(b.source);
         });
-        
+
         // Take top articles (limit to prevent overload)
         const topArticles = uniqueArticles.slice(0, 50);
-        
+
         const responseData = {
             articles: topArticles,
             count: topArticles.length,
@@ -850,7 +850,7 @@ app.get('/api/news', async (req, res) => {
             freshness: 'LIVE',  // ✅ NEW: Freshness indicator
             deduplicationApplied: allArticles.length - uniqueArticles.length
         };
-        
+
         // Cache the results (only if we have articles)
         if (topArticles.length > 0) {
             newsCache.set(cacheKey, {
@@ -858,41 +858,41 @@ app.get('/api/news', async (req, res) => {
                 timestamp: Date.now()
             });
         }
-        
+
         console.log(`Successfully fetched ${topArticles.length} unique articles (${allArticles.length - uniqueArticles.length} duplicates removed)`);
-        
+
         // If no articles were fetched (all APIs failed), serve emergency backup
         if (topArticles.length === 0) {
             console.log('🚨 No articles fetched from APIs. Serving Emergency Backup Data.');
-            
+
             // Enhance backup data with random images
             const backupWithImages = BACKUP_NEWS.map(item => ({
                 ...item,
                 image: `https://placehold.co/600x400/1e3a8a/ffffff?text=${encodeURIComponent(item.source)}`
             }));
 
-            return res.json({ 
-                articles: backupWithImages, 
-                count: backupWithImages.length, 
+            return res.json({
+                articles: backupWithImages,
+                count: backupWithImages.length,
                 keywords: FINANCIAL_KEYWORDS,
                 domains: CREDIBLE_DOMAINS,
                 lastUpdated: new Date().toISOString(),
                 isCached: false,
                 freshness: 'BACKUP',
-                warning: 'Using emergency backup data (API Quota Exceeded)' 
+                warning: 'Using emergency backup data (API Quota Exceeded)'
             });
         }
-        
+
         res.json(responseData);
-        
+
     } catch (error) {
         console.error('Error fetching optimized news:', error);
-        
+
         // Return cached data with transparency
         const cached = newsCache.get('optimized_news');
         if (cached) {
             const ageHours = Math.round((Date.now() - cached.timestamp) / (1000 * 60 * 60));
-            
+
             return res.json({
                 ...cached.data,
                 freshness: 'STALE',  // ✅ NEW: Stale indicator
@@ -903,21 +903,21 @@ app.get('/api/news', async (req, res) => {
                 httpStatus: 206  // 206 Partial Content
             });
         }
-        
+
         // 6. Last Resort: Emergency Backup
         // If everything failed, send the static backup data so the UI isn't empty
         console.log('🚨 API Failed & No Cache. Serving Emergency Backup Data.');
-        
+
         // Enhance backup data with random images
         const backupWithImages = BACKUP_NEWS.map(item => ({
             ...item,
             image: `https://placehold.co/600x400/1e3a8a/ffffff?text=${encodeURIComponent(item.source)}`
         }));
 
-        res.json({ 
-            articles: backupWithImages, 
-            count: backupWithImages.length, 
-            warning: 'Using emergency backup data (API Quota Exceeded)' 
+        res.json({
+            articles: backupWithImages,
+            count: backupWithImages.length,
+            warning: 'Using emergency backup data (API Quota Exceeded)'
         });
     }
 });
@@ -944,7 +944,7 @@ async function backgroundRefresh() {
         console.log(`🔍 Fetching from NewsAPI with keywords: ${selectedKeywords.join(', ')}`);
 
         // TEMP: Use simple delay instead of RequestQueue for background refresh
-        const newsApiPromises = selectedKeywords.map((keyword, index) => 
+        const newsApiPromises = selectedKeywords.map((keyword, index) =>
             fetchNewsFromAPI(keyword, index * REQUEST_DELAY)
         );
 
@@ -995,7 +995,7 @@ function cleanupCache() {
             newsCache.delete(key);
         }
     }
-    
+
     // Clean up old deduplication hashes (keep last 1000)
     if (articleHashes.size > 1000) {
         const hashesArray = Array.from(articleHashes);
@@ -1010,31 +1010,31 @@ app.get('/api/news/category/:category', async (req, res) => {
     try {
         const requestedCategory = req.params.category.toLowerCase();
         console.log(`Fetching news for category: ${requestedCategory}`);
-        
+
         // Check if we have cached data
         const cacheKey = 'optimized_news';
         const cached = newsCache.get(cacheKey);
-        
+
         if (!cached || (Date.now() - cached.timestamp) > CACHE_DURATION) {
             console.log('No valid cache found, fetching fresh data...');
-            return res.status(503).json({ 
+            return res.status(503).json({
                 error: 'Service temporarily unavailable',
                 message: 'Please try the main news endpoint first to populate cache.',
                 retryAfter: 60
             });
         }
-        
+
         // Filter articles by category (case-insensitive)
-        const filteredArticles = cached.data.articles.filter(article => 
+        const filteredArticles = cached.data.articles.filter(article =>
             article.category && article.category.toLowerCase() === requestedCategory
         );
-        
+
         // Sort by publication date (newest first)
         filteredArticles.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
-        
+
         // Take up to 20 articles for the category page
         const categoryArticles = filteredArticles.slice(0, 20);
-        
+
         const responseData = {
             category: requestedCategory,
             articles: categoryArticles,
@@ -1044,14 +1044,14 @@ app.get('/api/news/category/:category', async (req, res) => {
             isCached: true,
             freshness: 'CACHED'
         };
-        
+
         console.log(`Returning ${categoryArticles.length} articles for category '${requestedCategory}'`);
-        
+
         res.json(responseData);
-        
+
     } catch (error) {
         console.error('Error fetching category news:', error);
-        res.status(500).json({ 
+        res.status(500).json({
             error: 'Internal server error',
             message: 'Failed to fetch category news'
         });
@@ -1061,22 +1061,22 @@ app.get('/api/news/category/:category', async (req, res) => {
 // Health check endpoint with performance metrics
 app.get('/api/health', (req, res) => {
     resetDailyCounter();  // Ensure counter is current
-    
+
     const healthySources = Array.from(sourceHealth.entries())
         .filter(([name, health]) => !health.isUnhealthy)
         .map(([name]) => name);
-    
+
     const cachedNews = newsCache.get('optimized_news');
     const articleCount = cachedNews ? cachedNews.data.count : 0;
     const lastUpdated = cachedNews ? cachedNews.timestamp : null;
-    
+
     // Calculate remaining quota
     const requestsUsedToday = REQUEST_COUNTER.dailyCount;
     const requestsRemaining = Math.max(0, 100 - requestsUsedToday);
     const quotaPercentage = ((requestsUsedToday / 100) * 100).toFixed(1);
-    
-    res.json({ 
-        status: 'OK', 
+
+    res.json({
+        status: 'OK',
         timestamp: new Date().toISOString(),
         api: {
             requestsUsedToday: requestsUsedToday,
@@ -1179,11 +1179,11 @@ app.use((req, res) => {
 // General error handler
 app.use((err, req, res, next) => {
     console.error('❌ Server Error:', err.message);
-    
+
     res.status(err.status || 500).json({
         error: 'Server Error',
-        message: process.env.NODE_ENV === 'production' 
-            ? 'An error occurred' 
+        message: process.env.NODE_ENV === 'production'
+            ? 'An error occurred'
             : err.message,
         timestamp: new Date().toISOString()
     });
