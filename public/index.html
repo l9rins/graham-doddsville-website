@@ -47,10 +47,10 @@
             // Smart API URL selection
             let apiUrl;
             if (isLocalhost) {
-                apiUrl = 'http://localhost:3001/api/news';
+                apiUrl = 'http://localhost:3051/api/news';
             } else if (isGitHubPages) {
                 // For GitHub Pages, try localhost first, then fallback to static
-                apiUrl = 'http://localhost:3001/api/news';
+                apiUrl = 'http://localhost:3051/api/news';
                 console.log('GitHub Pages detected - trying localhost API first');
             } else {
                 apiUrl = 'https://l9rins.github.io/graham-doddsville-website/api/news';
@@ -8275,37 +8275,75 @@
         }
 
         function updateRegionalNewsDisplay(container, loadingElement, articles, region) {
-            console.log(`updateRegionalNewsDisplay called for ${region} with:`, articles);
+            console.log(`updateRegionalNewsDisplay called for ${region} with:`, articles.length, 'articles');
 
             // Hide loading animation
             if (loadingElement) {
                 loadingElement.style.display = 'none';
             }
 
-            if (articles && articles.length > 0) {
-                // Take first 5 articles and display in proper news format
-                const displayArticles = articles.slice(0, 5);
-                const html = displayArticles.map(article => {
-                    console.log(`Processing ${region} article:`, article.title, 'URL:', article.url);
-                    return `
-                        <div class="news-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">
-                                    <a href="${article.url || '#'}" target="_blank" rel="noopener noreferrer">${article.title}</a>
-                                    <span class="news-source">(${article.source})</span>
-                                </h3>
-                            </div>
-                        </div>
-                    `;
-                }).join('');
-
-                container.innerHTML = html;
-                console.log(`${region} news updated successfully with`, displayArticles.length, 'articles');
-            } else {
+            if (!articles || articles.length === 0) {
                 console.log(`No articles provided for ${region}`);
                 showRegionalFallbackNews(container, loadingElement, region);
+                return;
             }
+
+            const now = new Date();
+            const freshLimit = 48;  // hours
+            const hardLimit = 168;  // 7 days
+
+            // 1. Filter out invalid dates and sort newest first
+            const validArticles = articles
+                .filter(a => !isNaN(new Date(a.publishedAt || a.pubDate).getTime()))
+                .sort((a, b) => new Date(b.publishedAt || b.pubDate) - new Date(a.publishedAt || a.pubDate));
+
+            // 2. Smart Backfill: fresh first, then older to fill quota
+            const freshArticles = [];
+            const backfillArticles = [];
+
+            validArticles.forEach(a => {
+                const ageHours = (now - new Date(a.publishedAt || a.pubDate)) / (1000 * 60 * 60);
+                if (ageHours <= freshLimit) {
+                    freshArticles.push(a);
+                } else if (ageHours <= hardLimit) {
+                    backfillArticles.push(a);
+                }
+            });
+
+            let displayArticles = [...freshArticles];
+            if (displayArticles.length < 5 && backfillArticles.length > 0) {
+                const needed = 5 - displayArticles.length;
+                displayArticles = displayArticles.concat(backfillArticles.slice(0, needed));
+            }
+            displayArticles = displayArticles.slice(0, 5);
+
+            if (displayArticles.length === 0) {
+                showRegionalFallbackNews(container, loadingElement, region);
+                return;
+            }
+
+            // 3. Render matching desktop Guru Watch / Europe format (Verified Inline Styles)
+            const html = displayArticles.map(article => {
+                const sourceName = article.source || article.displaySource || '';
+                const timeString = formatDate(article.publishedAt || article.pubDate);
+
+                return `
+                    <div class="news-item-mobile" style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #f0f0f0;">
+                        <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                            <div style="flex:1;">
+                                <a href="${article.url || article.link || '#'}" target="_blank" style="font-family: Georgia, serif; font-size: 15px; font-weight: 600; color: #111; text-decoration: none; line-height: 1.4;">${article.title}</a>
+                                <div style="margin-top:4px; font-size: 11px; color: #666;">
+                                    <span style="text-transform:uppercase; font-weight:bold; color:#1e3a8a;">${sourceName}</span>
+                                    • ${timeString}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            container.innerHTML = html;
+            console.log(`${region} news updated with ${displayArticles.length} articles (Smart Backfill)`);
         }
 
         function showRegionalFallbackNews(container, loadingElement, region) {
@@ -8321,198 +8359,47 @@
         }
 
         function getRegionalFallbackContent(region) {
+            const makeItem = (title, source) => `
+                <div class="news-item-mobile" style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #f0f0f0;">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                        <div style="flex:1;">
+                            <a href="#" target="_blank" style="font-family: Georgia, serif; font-size: 15px; font-weight: 600; color: #111; text-decoration: none; line-height: 1.4;">${title}</a>
+                            <div style="margin-top:4px; font-size: 11px; color: #666;">
+                                <span style="text-transform:uppercase; font-weight:bold; color:#1e3a8a;">${source}</span>
+                                • Recently
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+
             const fallbackTemplates = {
-                'north-america': `
-                    <div class="news-item-mobile">
-                        <span class="news-bullet">-</span>
-                        <div class="news-content">
-                            <h3 class="news-headline">
-                                <a href="#" target="_blank" rel="noopener noreferrer">Federal Reserve signals potential rate cuts ahead</a>
-                                <span class="news-source">(Reuters)</span>
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="news-item-mobile">
-                        <span class="news-bullet">-</span>
-                        <div class="news-content">
-                            <h3 class="news-headline">
-                                <a href="#" target="_blank" rel="noopener noreferrer">US inflation data shows continued cooling trend</a>
-                                <span class="news-source">(WSJ)</span>
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="news-item-mobile">
-                        <span class="news-bullet">-</span>
-                        <div class="news-content">
-                            <h3 class="news-headline">
-                                <a href="#" target="_blank" rel="noopener noreferrer">Tech stocks rally on strong earnings reports</a>
-                                <span class="news-source">(CNBC)</span>
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="news-item-mobile">
-                        <span class="news-bullet">-</span>
-                        <div class="news-content">
-                            <h3 class="news-headline">
-                                <a href="#" target="_blank" rel="noopener noreferrer">Energy sector faces headwinds from oil price volatility</a>
-                                <span class="news-source">(Bloomberg)</span>
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="news-item-mobile">
-                        <span class="news-bullet">-</span>
-                        <div class="news-content">
-                            <h3 class="news-headline">
-                                <a href="#" target="_blank" rel="noopener noreferrer">Healthcare stocks gain on regulatory clarity</a>
-                                <span class="news-source">(Reuters)</span>
-                            </h3>
-                        </div>
-                    </div>
-                `,
-                'europe': `
-                    <div class="news-item-mobile">
-                        <span class="news-bullet">-</span>
-                        <div class="news-content">
-                            <h3 class="news-headline">
-                                <a href="#" target="_blank" rel="noopener noreferrer">ECB maintains dovish stance amid economic uncertainty</a>
-                                <span class="news-source">(Bloomberg)</span>
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="news-item-mobile">
-                        <span class="news-bullet">-</span>
-                        <div class="news-content">
-                            <h3 class="news-headline">
-                                <a href="#" target="_blank" rel="noopener noreferrer">European banks show resilience in stress tests</a>
-                                <span class="news-source">(FT)</span>
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="news-item-mobile">
-                        <span class="news-bullet">-</span>
-                        <div class="news-content">
-                            <h3 class="news-headline">
-                                <a href="#" target="_blank" rel="noopener noreferrer">German manufacturing sector shows signs of recovery</a>
-                                <span class="news-source">(Reuters)</span>
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="news-item-mobile">
-                        <span class="news-bullet">-</span>
-                        <div class="news-content">
-                            <h3 class="news-headline">
-                                <a href="#" target="_blank" rel="noopener noreferrer">UK inflation falls to lowest level in two years</a>
-                                <span class="news-source">(BBC)</span>
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="news-item-mobile">
-                        <span class="news-bullet">-</span>
-                        <div class="news-content">
-                            <h3 class="news-headline">
-                                <a href="#" target="_blank" rel="noopener noreferrer">French luxury goods sector maintains strong performance</a>
-                                <span class="news-source">(WSJ)</span>
-                            </h3>
-                        </div>
-                    </div>
-                `,
-                'asia': `
-                    <div class="news-item-mobile">
-                        <span class="news-bullet">-</span>
-                        <div class="news-content">
-                            <h3 class="news-headline">
-                                <a href="#" target="_blank" rel="noopener noreferrer">China's manufacturing PMI shows expansion</a>
-                                <span class="news-source">(SCMP)</span>
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="news-item-mobile">
-                        <span class="news-bullet">-</span>
-                        <div class="news-content">
-                            <h3 class="news-headline">
-                                <a href="#" target="_blank" rel="noopener noreferrer">Japan's economy shows signs of recovery</a>
-                                <span class="news-source">(Japan Times)</span>
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="news-item-mobile">
-                        <span class="news-bullet">-</span>
-                        <div class="news-content">
-                            <h3 class="news-headline">
-                                <a href="#" target="_blank" rel="noopener noreferrer">Singapore's financial sector remains resilient</a>
-                                <span class="news-source">(Straits Times)</span>
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="news-item-mobile">
-                        <span class="news-bullet">-</span>
-                        <div class="news-content">
-                            <h3 class="news-headline">
-                                <a href="#" target="_blank" rel="noopener noreferrer">India's tech sector continues strong growth</a>
-                                <span class="news-source">(Times of India)</span>
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="news-item-mobile">
-                        <span class="news-bullet">-</span>
-                        <div class="news-content">
-                            <h3 class="news-headline">
-                                <a href="#" target="_blank" rel="noopener noreferrer">Australia-New Zealand trade relations strengthen</a>
-                                <span class="news-source">(NZ Herald)</span>
-                            </h3>
-                        </div>
-                    </div>
-                `,
-                'elsewhere': `
-                    <div class="news-item-mobile">
-                        <span class="news-bullet">-</span>
-                        <div class="news-content">
-                            <h3 class="news-headline">
-                                <a href="#" target="_blank" rel="noopener noreferrer">Global markets show mixed signals amid uncertainty</a>
-                                <span class="news-source">(Reuters)</span>
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="news-item-mobile">
-                        <span class="news-bullet">-</span>
-                        <div class="news-content">
-                            <h3 class="news-headline">
-                                <a href="#" target="_blank" rel="noopener noreferrer">International trade tensions continue to impact economies</a>
-                                <span class="news-source">(BBC)</span>
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="news-item-mobile">
-                        <span class="news-bullet">-</span>
-                        <div class="news-content">
-                            <h3 class="news-headline">
-                                <a href="#" target="_blank" rel="noopener noreferrer">Climate change policies reshape global energy markets</a>
-                                <span class="news-source">(Bloomberg)</span>
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="news-item-mobile">
-                        <span class="news-bullet">-</span>
-                        <div class="news-content">
-                            <h3 class="news-headline">
-                                <a href="#" target="_blank" rel="noopener noreferrer">Emerging markets face currency volatility challenges</a>
-                                <span class="news-source">(FT)</span>
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="news-item-mobile">
-                        <span class="news-bullet">-</span>
-                        <div class="news-content">
-                            <h3 class="news-headline">
-                                <a href="#" target="_blank" rel="noopener noreferrer">Global supply chain disruptions continue to affect trade</a>
-                                <span class="news-source">(CNN)</span>
-                            </h3>
-                        </div>
-                    </div>
-                `
+                'north-america':
+                    makeItem('Federal Reserve signals potential rate cuts ahead', 'Reuters') +
+                    makeItem('US inflation data shows continued cooling trend', 'WSJ') +
+                    makeItem('Tech stocks rally on strong earnings reports', 'CNBC') +
+                    makeItem('Energy sector faces headwinds from oil price volatility', 'Bloomberg') +
+                    makeItem('Healthcare stocks gain on regulatory clarity', 'Reuters'),
+                'europe':
+                    makeItem('ECB maintains dovish stance amid economic uncertainty', 'Bloomberg') +
+                    makeItem('European banks show resilience in stress tests', 'FT') +
+                    makeItem('German manufacturing sector shows signs of recovery', 'Reuters') +
+                    makeItem('UK inflation falls to lowest level in two years', 'BBC') +
+                    makeItem('French luxury goods sector maintains strong performance', 'WSJ'),
+                'asia':
+                    makeItem("China's manufacturing PMI shows expansion", 'SCMP') +
+                    makeItem("Japan's economy shows signs of recovery", 'Japan Times') +
+                    makeItem("Singapore's financial sector remains resilient", 'Straits Times') +
+                    makeItem("India's tech sector continues strong growth", 'Times of India') +
+                    makeItem('Australia-New Zealand trade relations strengthen', 'NZ Herald'),
+                'elsewhere':
+                    makeItem('Global markets show mixed signals amid uncertainty', 'Reuters') +
+                    makeItem('International trade tensions continue to impact economies', 'BBC') +
+                    makeItem('Climate change policies reshape global energy markets', 'Bloomberg') +
+                    makeItem('Emerging markets face currency volatility challenges', 'FT') +
+                    makeItem('Global supply chain disruptions continue to affect trade', 'CNN')
             };
 
-            return fallbackTemplates[region] || '<div class="news-item-mobile"><div class="news-content"><h3 class="news-headline">No news available</h3></div></div>';
+            return fallbackTemplates[region] || makeItem('No news available', '');
         }
 
         // Lazy loading implementation
@@ -11842,7 +11729,29 @@
                 const desktopId = `top-${cat}-news`;
                 const mobileId = cat.match(/north-america|europe|asia|elsewhere/) ? `${cat}-news` : `${cat}-news-mobile`;
 
-                let content = categories[cat].slice(0, 5);
+                const now = new Date();
+                const freshLimit = 48;  // hours
+                const hardLimit = 168;  // 7 days
+
+                // Sort newest first
+                const sorted = categories[cat]
+                    .filter(a => !isNaN(new Date(a.pubDate).getTime()))
+                    .sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+
+                // Smart Backfill: fresh first, then older to fill quota
+                const fresh = [];
+                const backfill = [];
+                sorted.forEach(a => {
+                    const ageH = (now - new Date(a.pubDate)) / (1000 * 60 * 60);
+                    if (ageH <= freshLimit) fresh.push(a);
+                    else if (ageH <= hardLimit) backfill.push(a);
+                });
+
+                let content = [...fresh];
+                if (content.length < 5 && backfill.length > 0) {
+                    content = content.concat(backfill.slice(0, 5 - content.length));
+                }
+                content = content.slice(0, 5);
 
                 // EMERGENCY LAYER: If no articles available, use fallback content
                 if (content.length === 0) {

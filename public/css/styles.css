@@ -11673,8 +11673,6 @@ th {
     }
 }
 
-font-weight: 600;
-}
 
 .category-header p {
     color: #6b7280;
@@ -11797,11 +11795,21 @@ font-weight: 600;
 }
 
 /* News Aggregator Updates */
+.section-header,
+.newspaper-section h2,
 .category-heading,
 .sub-category-title,
 .feature-articles h2 {
     color: #1e3a8a !important;
     font-weight: 700 !important;
+}
+
+.section-header,
+.newspaper-section h2,
+.category-heading,
+.feature-articles h2 {
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .feature-articles h3 {

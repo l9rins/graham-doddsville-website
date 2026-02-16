@@ -350,7 +350,7 @@ class NewsDisplayManager {
 let newsDisplayManager;
 document.addEventListener('DOMContentLoaded', () => {
     const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-    const apiUrl = isLocalhost ? 'http://localhost:3001/api' : '/api';
+    const apiUrl = isLocalhost ? 'http://localhost:3051/api' : '/api';
 
     newsDisplayManager = new NewsDisplayManager();
     newsDisplayManager.scraper = new AustralianNewsScraper(apiUrl);
