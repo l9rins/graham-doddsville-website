@@ -1658,8 +1658,8 @@
                         <div class="news-item"
                             style="background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 12px 16px; margin-bottom: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.2s ease;">
                             <a href="#"
-                                style="color: #333; text-decoration: none; font-size: 10px; line-height: 1.4; display: block;">Meet
-                                the Australian fundies making a motza... (AFR)</a>
+                                style="color: #666; text-decoration: none; font-size: 10px; line-height: 1.4; display: block; font-style: italic;">Loading
+                                latest companies news...</a>
                         </div>
                         <div class="news-item"
                             style="background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 12px 16px; margin-bottom: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.2s ease;">
@@ -1690,8 +1690,8 @@
                         <div class="news-item"
                             style="background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 12px 16px; margin-bottom: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.2s ease;">
                             <a href="#"
-                                style="color: #333; text-decoration: none; font-size: 10px; line-height: 1.4; display: block;">How
-                                Donald Trump will change how the world... (SMH)</a>
+                                style="color: #666; text-decoration: none; font-size: 10px; line-height: 1.4; display: block; font-style: italic;">Loading
+                                latest economy news...</a>
                         </div>
                         <div class="news-item"
                             style="background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 12px 16px; margin-bottom: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.2s ease;">
@@ -8111,42 +8111,42 @@
                 return true;
             });
 
-            // 2. Define sections with keywords and forced categories
+            // 2. Define sections with BOTH category matching AND keyword fallback
             const sections = [
                 {
                     id: 'companies-news-mobile',
-                    keywords: ['limited', 'inc', 'corp', 'profit', 'revenue', 'ceo', 'earnings', 'share', 'dividend', 'acquisition'],
-                    forcedCategory: null // Use keywords
+                    categories: ['Companies', 'Investment', 'Business'],
+                    keywords: ['limited', 'inc', 'corp', 'profit', 'revenue', 'ceo', 'earnings', 'share', 'dividend', 'acquisition']
                 },
                 {
                     id: 'markets-news-mobile',
-                    keywords: ['asx', 'dow', 's&p', 'rally', 'slump', 'trade', 'wall st', 'bull', 'bear', 'index', 'points'],
-                    forcedCategory: null
+                    categories: ['Markets'],
+                    keywords: ['asx', 'dow', 's&p', 'rally', 'slump', 'trade', 'wall st', 'bull', 'bear', 'index', 'points']
                 },
                 {
                     id: 'economy-news-mobile',
-                    keywords: ['rba', 'rates', 'inflation', 'gdp', 'tax', 'federal reserve', 'budget', 'interest', 'cpi', 'economy'],
-                    forcedCategory: null
+                    categories: ['Economy', 'Monetary Policy'],
+                    keywords: ['rba', 'rates', 'inflation', 'gdp', 'tax', 'federal reserve', 'budget', 'interest', 'cpi', 'economy']
                 },
                 {
                     id: 'industry-news-mobile',
-                    keywords: ['mining', 'tech', 'construction', 'sector', 'retail', 'manufacturing', 'infrastructure', 'energy'],
-                    forcedCategory: null
+                    categories: ['Industry', 'Resources', 'Energy', 'Technology'],
+                    keywords: ['mining', 'tech', 'construction', 'sector', 'retail', 'manufacturing', 'infrastructure', 'energy']
                 },
                 {
                     id: 'commodities-news-mobile',
-                    keywords: ['gold', 'oil', 'iron', 'copper', 'lithium', 'gas', 'crude', 'metal'],
-                    forcedCategory: null
+                    categories: ['Commodities'],
+                    keywords: ['gold', 'oil', 'iron', 'copper', 'lithium', 'gas', 'crude', 'metal']
                 },
                 {
                     id: 'regulatory-news-mobile',
-                    keywords: [], // Not used
-                    forcedCategory: 'regulatory'
+                    categories: ['Regulatory', 'Banking'],
+                    keywords: ['asic', 'accc', 'apra', 'regulation', 'compliance', 'fine', 'penalty']
                 },
                 {
                     id: 'guru-watch-news-mobile',
-                    keywords: [], // Not used
-                    forcedCategory: 'guru-watch'
+                    categories: ['Guru Watch'],
+                    keywords: ['buffett', 'munger', 'dalio', 'ackman', 'hedge fund', 'investor letter']
                 }
             ];
 
@@ -8157,19 +8157,26 @@
                 if (loading) loading.style.display = 'none';
 
                 if (container) {
-                    let matches = [];
+                    // First: match by server-assigned category
+                    let matches = uniqueArticles.filter(article => {
+                        if (!article.category) return false;
+                        return section.categories.some(cat =>
+                            article.category.toLowerCase().includes(cat.toLowerCase())
+                        );
+                    });
 
-                    if (section.forcedCategory) {
-                        // For regulatory and guru-watch, take articles with matching category
-                        matches = uniqueArticles.filter(article => article.category === section.forcedCategory).slice(0, 5);
-                    } else {
-                        // For others, filter general articles by keywords
-                        matches = uniqueArticles.filter(article => {
-                            if (article.category !== 'general') return false;
+                    // Second: if not enough, also match by keywords in title
+                    if (matches.length < 5) {
+                        const existingTitles = new Set(matches.map(a => a.title));
+                        const keywordMatches = uniqueArticles.filter(article => {
+                            if (existingTitles.has(article.title)) return false;
                             const t = article.title.toLowerCase();
                             return section.keywords.some(k => t.includes(k));
-                        }).slice(0, 5);
+                        });
+                        matches = matches.concat(keywordMatches);
                     }
+
+                    matches = matches.slice(0, 5);
 
                     // Render clean newspaper style
                     if (matches.length > 0) {
@@ -8195,11 +8202,10 @@
                                     font-size: 11px; 
                                     font-family: sans-serif;
                                     display: inline-block;
-                                ">
-                                    ${abbreviateSource(article.source)}
-                                </span>
+                                ">${abbreviateSource(article.source)}</span>
                             </div>
                         `).join('');
+                        console.log(`✅ Mobile: populated ${section.id} with ${matches.length} articles`);
                     } else {
                         container.innerHTML = `<div style="padding:10px; color:#999; font-size:12px; text-align:center; font-family: sans-serif;">No updates</div>`;
                     }
@@ -9368,58 +9374,111 @@
             }));
             console.log('Sample news categories:', sampleCategories);
 
-            // Define category mappings for all 7 sections
+            // Define category mappings — targeting BOTH ID formats
             const categoryMappings = {
-                'top-companies-news': ['Companies', 'Investment', 'Business'],
-                'top-markets-news': ['Markets', 'Investment', 'General'],
-                'top-economy-news': ['Economy', 'Monetary Policy', 'General'],
-                'top-industry-news': ['Industry', 'Resources', 'Energy', 'Technology'],
-                'top-regulatory-news': ['Regulatory', 'Banking', 'Monetary Policy', 'General'],
-                'top-guru-watch-news': ['Investment', 'Companies', 'Markets'],
-                'top-around-world-news': ['General', 'International', 'Economy']
+                'Companies': { ids: ['companies-news', 'top-companies-news'], keywords: ['Companies', 'Investment', 'Business'] },
+                'Markets': { ids: ['markets-news', 'top-markets-news'], keywords: ['Markets', 'Investment', 'General'] },
+                'Economy': { ids: ['economy-news', 'top-economy-news'], keywords: ['Economy', 'Monetary Policy', 'General'] },
+                'Industry': { ids: ['industry-news', 'top-industry-news'], keywords: ['Industry', 'Resources', 'Energy', 'Technology'] },
+                'Regulatory': { ids: ['regulatory-news', 'top-regulatory-news'], keywords: ['Regulatory', 'Banking', 'Monetary Policy'] },
+                'Guru Watch': { ids: ['guru-watch-news', 'top-guru-watch-news'], keywords: ['Guru Watch', 'Investment', 'Companies', 'Markets'] },
+                'Around World': { ids: ['top-around-world-news'], keywords: ['General', 'International', 'Economy'] }
             };
 
+            // Helper to abbreviate source name
+            function abbreviateSource(source) {
+                if (!source) return '';
+                const abbreviations = {
+                    'Australian Financial Review': 'AFR',
+                    'Sydney Morning Herald': 'SMH',
+                    'The Australian': 'AUS',
+                    'ABC News Australia': 'ABC',
+                    'Mining.com.au': 'MINING',
+                    'Australian Mining': 'AU MINING',
+                    'Google News - Mining': 'MINING',
+                    'Google News - Retail': 'RETAIL',
+                    'Google News - Construction': 'CONSTRUCTION',
+                    'Google News - ASIC/ACCC': 'REGULATOR',
+                };
+                return abbreviations[source] || source.substring(0, 15);
+            }
+
             // Populate each category section
-            Object.keys(categoryMappings).forEach(sectionId => {
-                const targetCategories = categoryMappings[sectionId];
-                const sectionElement = document.getElementById(sectionId);
+            Object.keys(categoryMappings).forEach(category => {
+                const config = categoryMappings[category];
+                const targetCategories = config.keywords;
 
-                console.log(`Processing section: ${sectionId}, looking for categories:`, targetCategories);
+                // Filter news by category
+                const categoryNews = news.filter(article =>
+                    targetCategories.some(cat =>
+                        article.category && article.category.toLowerCase().includes(cat.toLowerCase())
+                    )
+                ).slice(0, 5); // Show top 5 articles per category
 
-                if (sectionElement) {
-                    // Filter news by category
-                    const categoryNews = news.filter(article =>
-                        targetCategories.some(cat =>
-                            article.category && article.category.toLowerCase().includes(cat.toLowerCase())
-                        )
-                    ).slice(0, 3); // Show top 3 articles per category
+                // Write to ALL matching container IDs
+                config.ids.forEach(sectionId => {
+                    const sectionElement = document.getElementById(sectionId);
 
-                    console.log(`Populating ${sectionId} with ${categoryNews.length} articles`);
+                    if (sectionElement) {
+                        if (categoryNews.length > 0) {
+                            const newsHTML = categoryNews.map(article => `
+                                <div class="news-item-mobile" style="margin-bottom: 16px;">
+                                    <h3 class="news-headline" style="margin: 0 0 6px 0; line-height: 1.25;">
+                                        <a href="${article.url}" target="_blank" rel="noopener noreferrer" style="
+                                            font-family: Georgia, serif;
+                                            color: #000;
+                                            text-decoration: none;
+                                            font-size: 16px;
+                                            font-weight: 700;
+                                            display: block;
+                                        ">${article.title}</a>
+                                    </h3>
+                                    <span class="news-source" style="
+                                        background-color: #f0f2f5;
+                                        color: #444;
+                                        padding: 2px 8px;
+                                        border-radius: 4px;
+                                        font-size: 11px;
+                                        font-family: sans-serif;
+                                        display: inline-block;
+                                    ">${abbreviateSource(article.source)}</span>
+                                </div>
+                            `).join('');
 
-                    if (categoryNews.length > 0) {
-                        const newsHTML = categoryNews.map(article => `
-                            <div class="news-item" style="background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 12px 16px; margin-bottom: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.2s ease;">
-                                <a href="${article.url}" target="_blank" rel="noopener noreferrer" style="color: #333; text-decoration: none; font-size: 10px; line-height: 1.4; display: block;">${article.title.length > 60 ? article.title.substring(0, 60) + '...' : article.title} (${article.source})</a>
-                            </div>
-                        `).join('');
+                            sectionElement.innerHTML = newsHTML;
+                            console.log(`✅ Successfully populated ${sectionId} with ${categoryNews.length} articles`);
+                        } else {
+                            // If no specific category news, show any recent news as fallback
+                            const fallbackNews = news.slice(0, 5);
+                            const fallbackHTML = fallbackNews.map(article => `
+                                <div class="news-item-mobile" style="margin-bottom: 16px;">
+                                    <h3 class="news-headline" style="margin: 0 0 6px 0; line-height: 1.25;">
+                                        <a href="${article.url}" target="_blank" rel="noopener noreferrer" style="
+                                            font-family: Georgia, serif;
+                                            color: #000;
+                                            text-decoration: none;
+                                            font-size: 16px;
+                                            font-weight: 700;
+                                            display: block;
+                                        ">${article.title}</a>
+                                    </h3>
+                                    <span class="news-source" style="
+                                        background-color: #f0f2f5;
+                                        color: #444;
+                                        padding: 2px 8px;
+                                        border-radius: 4px;
+                                        font-size: 11px;
+                                        font-family: sans-serif;
+                                        display: inline-block;
+                                    ">${abbreviateSource(article.source)}</span>
+                                </div>
+                            `).join('');
 
-                        sectionElement.innerHTML = newsHTML;
-                        console.log(`✅ Successfully populated ${sectionId} with ${categoryNews.length} articles`);
-                    } else {
-                        // If no specific category news, show any recent news as fallback
-                        const fallbackNews = news.slice(0, 3);
-                        console.log(`⚠️ No specific news for ${sectionId}, showing fallback news`);
-
-                        const fallbackHTML = fallbackNews.map(article => `
-                            <div class="news-item" style="background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 12px 16px; margin-bottom: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.2s ease;">
-                                <a href="${article.url}" target="_blank" rel="noopener noreferrer" style="color: #333; text-decoration: none; font-size: 10px; line-height: 1.4; display: block;">${article.title.length > 60 ? article.title.substring(0, 60) + '...' : article.title} (${article.source})</a>
-                            </div>
-                        `).join('');
-
-                        sectionElement.innerHTML = fallbackHTML;
-                        console.log(`✅ Populated ${sectionId} with fallback news`);
+                            sectionElement.innerHTML = fallbackHTML;
+                            console.log(`⚠️ No specific news for ${sectionId}, showing fallback news`);
+                        }
                     }
-                }
+                });
             });
         }
 
@@ -9465,6 +9524,9 @@
             console.log('DOM loaded, starting category population...');
             testJavaScript();
 
+            // Guard flag to prevent fallback from overwriting real data
+            window.categorySectionsPopulated = false;
+
             // Force immediate population with direct API call
             console.log('Making immediate API call for category sections...');
             fetch('/api/news')
@@ -9480,33 +9542,42 @@
                     if (data && data.articles && data.articles.length > 0) {
                         console.log('Populating category sections with API data...');
                         populateCategorySectionsWithData(data.articles);
+                        window.categorySectionsPopulated = true; // Mark as populated
+                        console.log('✅ Category sections populated with REAL data — fallback disabled');
                     } else {
-                        console.log('No articles in API response');
+                        console.log('No articles in API response, will use fallback');
                     }
                 })
                 .catch(error => {
                     console.log('Direct API call failed:', error);
                     console.error('Error details:', error);
-                    // Try to show fallback content
-                    console.log('Attempting to show fallback content...');
-                    showFallbackDesktopNews();
+                    // Only show fallback if not already populated
+                    if (!window.categorySectionsPopulated) {
+                        console.log('Attempting to show fallback content...');
+                        showFallbackDesktopNews();
+                    }
                 });
 
-            // Also try the original method
+            // Also try the original method after 1 second
             setTimeout(populateCategorySections, 1000);
 
-            // Force fallback after 5 seconds if nothing else works
+            // Safety net: Only show fallback after 8 seconds if NOTHING has populated
             setTimeout(() => {
-                console.log('Timeout reached, forcing fallback content...');
-                showFallbackDesktopNews();
-            }, 5000);
+                if (!window.categorySectionsPopulated) {
+                    console.log('Timeout reached and no real data — forcing fallback content...');
+                    showFallbackDesktopNews();
+                } else {
+                    console.log('Timeout reached but real data already loaded — skipping fallback');
+                }
+            }, 8000);
 
             // Also try when newsDisplayManager is ready
             const checkForNewsData = () => {
                 if (window.newsDisplayManager && window.newsDisplayManager.allNews && window.newsDisplayManager.allNews.length > 0) {
                     console.log('NewsDisplayManager has data, populating sections...');
                     populateCategorySections();
-                } else {
+                    window.categorySectionsPopulated = true;
+                } else if (!window.categorySectionsPopulated) {
                     console.log('NewsDisplayManager not ready yet, retrying...');
                     setTimeout(checkForNewsData, 2000);
                 }
@@ -10422,9 +10493,9 @@
 
                     let apiUrl;
                     if (isLocalhost) {
-                        apiUrl = 'http://localhost:3001/api/news';
+                        apiUrl = 'http://localhost:3051/api/news';
                     } else if (isGitHubPages) {
-                        apiUrl = 'http://localhost:3001/api/news'; // Try localhost first
+                        apiUrl = 'http://localhost:3051/api/news'; // Try localhost first
                     } else {
                         apiUrl = 'https://l9rins.github.io/graham-doddsville-website/api/news';
                     }
@@ -10467,6 +10538,12 @@
 
             function displayNewsContent(newsData) {
                 console.log('displayNewsContent called');
+
+                // Skip if real data already populated by the API
+                if (window.categorySectionsPopulated) {
+                    console.log('displayNewsContent: Real data already loaded, skipping to avoid overwrite');
+                    return;
+                }
 
                 // Display last updated time if available
                 if (newsData && newsData.lastUpdated) {
@@ -11729,6 +11806,12 @@
                 const desktopId = `top-${cat}-news`;
                 const mobileId = cat.match(/north-america|europe|asia|elsewhere/) ? `${cat}-news` : `${cat}-news-mobile`;
 
+                // Skip desktop overwrite if real API data already loaded
+                if (window.categorySectionsPopulated) {
+                    console.log(`Skipping ${cat} — real data already loaded from API`);
+                    return;
+                }
+
                 const now = new Date();
                 const freshLimit = 48;  // hours
                 const hardLimit = 168;  // 7 days
@@ -11794,6 +11877,7 @@
             return Math.floor(diff / 86400) + 'd ago';
         }
     </script>
+    <script src="js/news-scraper.js"></script>
 </body>
 
 </html>

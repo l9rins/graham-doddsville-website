@@ -135,19 +135,19 @@ const newsSources = {
         name: 'Australian Mining',
         url: 'https://www.australianmining.com.au/feed/',
         type: 'rss',
-        category: 'business'
+        category: 'Industry'
     },
     'mining-com-au': {
         name: 'Mining.com.au',
         url: 'https://www.mining.com/feed/',
         type: 'rss',
-        category: 'business'
+        category: 'Industry'
     },
     'stockhead': {
         name: 'Stockhead',
         url: 'https://stockhead.com.au/feed/',
         type: 'rss',
-        category: 'business'
+        category: 'Markets'
     },
     'livewire-markets': {
         name: 'Livewire Markets',
@@ -155,6 +155,32 @@ const newsSources = {
         type: 'rss',
         category: 'business'
     },
+    // === GOOGLE NEWS TARGETED FEEDS (For Guaranteed Freshness) ===
+    'google-news-mining': {
+        name: 'Google News - Mining',
+        url: 'https://news.google.com/rss/search?q=Mining+Industry+Australia+when:7d&hl=en-AU&gl=AU&ceid=AU:en',
+        type: 'rss',
+        category: 'Industry' // Explicitly set to Industry
+    },
+    'google-news-retail': {
+        name: 'Google News - Retail',
+        url: 'https://news.google.com/rss/search?q=Retail+Sector+Australia+when:7d&hl=en-AU&gl=AU&ceid=AU:en',
+        type: 'rss',
+        category: 'Industry' // Explicitly set to Industry
+    },
+    'google-news-construction': {
+        name: 'Google News - Construction',
+        url: 'https://news.google.com/rss/search?q=Construction+Industry+Australia+when:7d&hl=en-AU&gl=AU&ceid=AU:en',
+        type: 'rss',
+        category: 'Industry' // Explicitly set to Industry
+    },
+    'google-news-regulatory': {
+        name: 'Google News - ASIC/ACCC',
+        url: 'https://news.google.com/rss/search?q=(ASIC+OR+ACCC+OR+RBA)+Australia+when:7d&hl=en-AU&gl=AU&ceid=AU:en',
+        type: 'rss',
+        category: 'Regulatory' // Explicitly set to Regulatory
+    },
+
 
     // === AUSTRALIAN REGIONAL MEDIA ===
     'illawarra-mercury': {
@@ -1174,7 +1200,7 @@ const newsSources = {
         category: 'regional'
     },
 
-    // Additional RSS sources for regional news (to replace failing NewsAPI sources)
+    // === RELIABLE RSS SOURCES FOR REGIONAL NEWS ===
     'cnn-rss': {
         name: 'CNN',
         url: 'http://rss.cnn.com/rss/edition.rss',
@@ -1210,33 +1236,134 @@ const newsSources = {
         url: 'https://www.usatoday.com/rss/',
         type: 'rss',
         category: 'international'
+    },
+
+    // === GOOGLE NEWS TARGETED FEEDS — REGIONAL (Guaranteed Fresh) ===
+    // NORTH AMERICA
+    'google-news-us-economy': {
+        name: 'Google News - US Economy',
+        url: 'https://news.google.com/rss/search?q=US+economy+GDP+inflation+Federal+Reserve+when:3d&hl=en-US&gl=US&ceid=US:en',
+        type: 'rss',
+        category: 'North America'
+    },
+    'google-news-us-markets': {
+        name: 'Google News - US Markets',
+        url: 'https://news.google.com/rss/search?q=Wall+Street+S%26P+500+Nasdaq+Dow+Jones+stocks+when:3d&hl=en-US&gl=US&ceid=US:en',
+        type: 'rss',
+        category: 'North America'
+    },
+    'google-news-us-business': {
+        name: 'Google News - US Business',
+        url: 'https://news.google.com/rss/search?q=US+business+corporate+earnings+company+news+when:3d&hl=en-US&gl=US&ceid=US:en',
+        type: 'rss',
+        category: 'North America'
+    },
+    'google-news-canada': {
+        name: 'Google News - Canada Economy',
+        url: 'https://news.google.com/rss/search?q=Canada+economy+Bank+of+Canada+TSX+when:3d&hl=en-CA&gl=CA&ceid=CA:en',
+        type: 'rss',
+        category: 'North America'
+    },
+
+    // EUROPE
+    'google-news-europe-economy': {
+        name: 'Google News - Europe Economy',
+        url: 'https://news.google.com/rss/search?q=European+economy+ECB+interest+rates+eurozone+when:3d&hl=en-GB&gl=GB&ceid=GB:en',
+        type: 'rss',
+        category: 'Europe'
+    },
+    'google-news-europe-markets': {
+        name: 'Google News - Europe Markets',
+        url: 'https://news.google.com/rss/search?q=FTSE+DAX+CAC+European+stocks+markets+when:3d&hl=en-GB&gl=GB&ceid=GB:en',
+        type: 'rss',
+        category: 'Europe'
+    },
+    'google-news-uk-economy': {
+        name: 'Google News - UK Economy',
+        url: 'https://news.google.com/rss/search?q=UK+economy+Bank+of+England+pound+sterling+when:3d&hl=en-GB&gl=GB&ceid=GB:en',
+        type: 'rss',
+        category: 'Europe'
+    },
+    'google-news-europe-business': {
+        name: 'Google News - Europe Business',
+        url: 'https://news.google.com/rss/search?q=Europe+business+corporate+trade+investment+when:3d&hl=en-GB&gl=GB&ceid=GB:en',
+        type: 'rss',
+        category: 'Europe'
+    },
+
+    // ASIA
+    'google-news-china-economy': {
+        name: 'Google News - China Economy',
+        url: 'https://news.google.com/rss/search?q=China+economy+GDP+trade+PBOC+markets+when:3d&hl=en-SG&gl=SG&ceid=SG:en',
+        type: 'rss',
+        category: 'Asia'
+    },
+    'google-news-japan-economy': {
+        name: 'Google News - Japan Economy',
+        url: 'https://news.google.com/rss/search?q=Japan+economy+BOJ+Nikkei+yen+markets+when:3d&hl=en-SG&gl=SG&ceid=SG:en',
+        type: 'rss',
+        category: 'Asia'
+    },
+    'google-news-india-economy': {
+        name: 'Google News - India Economy',
+        url: 'https://news.google.com/rss/search?q=India+economy+RBI+Sensex+Nifty+markets+when:3d&hl=en-IN&gl=IN&ceid=IN:en',
+        type: 'rss',
+        category: 'Asia'
+    },
+    'google-news-asia-markets': {
+        name: 'Google News - Asia Markets',
+        url: 'https://news.google.com/rss/search?q=Asia+Pacific+markets+stocks+economy+trade+when:3d&hl=en-SG&gl=SG&ceid=SG:en',
+        type: 'rss',
+        category: 'Asia'
+    },
+
+    // ELSEWHERE (Global / Emerging Markets / Middle East / Africa / Latin America)
+    'google-news-emerging-markets': {
+        name: 'Google News - Emerging Markets',
+        url: 'https://news.google.com/rss/search?q=emerging+markets+economy+investment+growth+when:3d&hl=en-US&gl=US&ceid=US:en',
+        type: 'rss',
+        category: 'Elsewhere'
+    },
+    'google-news-middle-east': {
+        name: 'Google News - Middle East Economy',
+        url: 'https://news.google.com/rss/search?q=Middle+East+economy+oil+OPEC+Saudi+UAE+when:3d&hl=en-US&gl=US&ceid=US:en',
+        type: 'rss',
+        category: 'Elsewhere'
+    },
+    'google-news-africa': {
+        name: 'Google News - Africa Economy',
+        url: 'https://news.google.com/rss/search?q=Africa+economy+investment+trade+growth+when:3d&hl=en-US&gl=US&ceid=US:en',
+        type: 'rss',
+        category: 'Elsewhere'
+    },
+    'google-news-global-trade': {
+        name: 'Google News - Global Trade',
+        url: 'https://news.google.com/rss/search?q=global+trade+tariffs+sanctions+supply+chain+when:3d&hl=en-US&gl=US&ceid=US:en',
+        type: 'rss',
+        category: 'Elsewhere'
     }
 };
 
 // Geographic region-specific news sources for Around the World sections
 const regionalNewsSources = {
-    // North America sources (RSS focused for reliability)
+    // North America: Google News targeted feeds only (guaranteed fresh US/Canada content)
     'north-america': [
-        'cnn-rss', 'bbc-rss', 'reuters-rss', 'nyt-rss', 'usa-today-rss', 'fortune', 'time', 'the-guardian', 'independent',
-        'telegraph', 'bloomberg'
+        'google-news-us-economy', 'google-news-us-markets', 'google-news-us-business', 'google-news-canada'
     ],
 
-    // Europe sources (RSS focused)
+    // Europe: Google News targeted feeds only (guaranteed fresh EU/UK content)
     'europe': [
-        'guardian-rss', 'bbc-rss', 'reuters-rss', 'independent', 'telegraph',
-        'bloomberg', 'wsj', 'cnn'
+        'google-news-europe-economy', 'google-news-europe-markets', 'google-news-uk-economy', 'google-news-europe-business'
     ],
 
-    // Asia sources (RSS focused)
+    // Asia: Google News targeted feeds only (guaranteed fresh Asia-Pacific content)
     'asia': [
-        'south-china-morning-post', 'japan-times', 'straits-times', 'bangkok-post',
-        'hindu-business-line', 'times-of-india', 'nz-herald', 'stuff-nz', 'bloomberg', 'reuters'
+        'google-news-china-economy', 'google-news-japan-economy', 'google-news-india-economy', 'google-news-asia-markets'
     ],
 
-    // Global/Elsewhere sources (RSS focused)
+    // Elsewhere: Google News targeted feeds only (global/emerging markets content)
     'elsewhere': [
-        'bloomberg', 'reuters', 'bbc-news', 'cnn', 'wsj', 'financial-times', 'the-guardian',
-        'independent', 'south-china-morning-post', 'japan-times', 'nz-herald', 'stuff-nz'
+        'google-news-emerging-markets', 'google-news-middle-east', 'google-news-africa', 'google-news-global-trade'
     ]
 };
 

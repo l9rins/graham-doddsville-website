@@ -29,7 +29,9 @@ class AustralianNewsScraper {
                     if (data.articles) {
                         const reProcessedArticles = data.articles.map(article => ({
                             ...article,
-                            category: this.categorizeNews(article.title, article.description || article.content, article.source.name || article.source)
+                            category: (article.category && ['Industry', 'Regulatory', 'Technology', 'Commodities'].includes(article.category))
+                                ? article.category
+                                : this.categorizeNews(article.title, article.description || article.content, article.source.name || article.source)
                         }));
 
                         allNews.push(...reProcessedArticles);
@@ -213,6 +215,12 @@ class NewsDisplayManager {
     displayNews(news) {
         console.log('NewsDisplayManager: Displaying', news.length, 'news items');
 
+        // Skip if real API data already populated the sections
+        if (window.categorySectionsPopulated) {
+            console.log('NewsDisplayManager.displayNews: Real API data already loaded, skipping to avoid overwrite');
+            return;
+        }
+
         if (!news || news.length === 0) {
             this.showErrorState();
             return;
@@ -254,6 +262,21 @@ class NewsDisplayManager {
 
                     // 1. Sort by Date (Newest First)
                     rawArticles.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+
+                    // BACKFILL STRATEGY: If fewer than 3 articles, supplement with General news
+                    // This creates a "Hybrid" feed where specific news takes precedence, but the section is never empty
+                    if (rawArticles.length < 3) {
+                        let generalNews = newsByCategory['General'] || [];
+                        generalNews.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+
+                        // Filter out duplicates (by title)
+                        const existingTitles = new Set(rawArticles.map(a => a.title));
+                        const uniqueGeneral = generalNews.filter(a => !existingTitles.has(a.title));
+
+                        // Take enough to reach limit (or at least some)
+                        const needed = config.limit - rawArticles.length;
+                        rawArticles = rawArticles.concat(uniqueGeneral.slice(0, needed));
+                    }
 
                     // 2. SMART SELECTION
                     let selectedArticles = this.getSmartArticles(rawArticles, config.limit, config.freshLimit, config.hardLimit);

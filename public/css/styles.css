@@ -702,6 +702,17 @@ body {
     margin: 0;
     flex: 1;
     margin-right: 16px;
+
+    /* 2-line Clamp */
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    /* Standard property for compatibility */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 2.8em;
+    /* Fallback for non-webkit */
 }
 
 .news-time {
@@ -11827,4 +11838,22 @@ th {
     margin-bottom: 20px;
     padding-bottom: 15px;
     border-bottom: 1px solid #eee;
+}
+
+/* === FORCE 2-LINE TITLES (Mobile & Desktop) === */
+.news-header h3 a,
+.news-headline a,
+.news-item h3 a {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* Limit to 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* Adds the '...' at the end */
+    line-height: 1.4em;
+    /* Standard spacing */
+    max-height: 2.8em;
+    /* 1.4em * 2 lines = 2.8em max height */
+    text-decoration: none;
 }

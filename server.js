@@ -66,7 +66,7 @@ const BACKUP_NEWS = [
 ];
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3051;
 const NEWS_API_KEY = process.env.NEWS_API_KEY;
 
 // Performance optimization constants
@@ -283,7 +283,7 @@ app.use((req, res, next) => {
 });
 
 // Enhanced RSS Feed Parser with timeout, error handling, and entity cleaning
-async function parseRSSFeed(url, sourceName) {
+async function parseRSSFeed(url, sourceName, defaultCategory = null) {
     try {
         console.log(`Fetching RSS feed from ${sourceName}...`);
 
@@ -338,12 +338,45 @@ async function parseRSSFeed(url, sourceName) {
             const pubDate = item.getElementsByTagName('pubDate')[0]?.textContent || '';
 
             if (title && link) {
+                // Enhanced Image Extraction
+                let imageUrl = null;
+
+                // 1. Try media:content
+                const mediaContent = item.getElementsByTagName('media:content')[0];
+                if (mediaContent) {
+                    imageUrl = mediaContent.getAttribute('url');
+                }
+
+                // 2. Try enclosure
+                if (!imageUrl) {
+                    const enclosure = item.getElementsByTagName('enclosure')[0];
+                    if (enclosure && enclosure.getAttribute('type')?.startsWith('image')) {
+                        imageUrl = enclosure.getAttribute('url');
+                    }
+                }
+
+                // 3. Try parsing description for <img> tag
+                if (!imageUrl && description) {
+                    const imgMatch = description.match(/<img[^>]+src="([^">]+)"/);
+                    if (imgMatch) {
+                        imageUrl = imgMatch[1];
+                    }
+                }
+
+                // 4. Google News specific (cover image often in description)
+                if (!imageUrl && sourceName.includes('Google News')) {
+                    // Google News RSS doesn't give images easily, but sometimes they are in the description HTML
+                    // If not found, it will fall back to placeholder in the frontend
+                }
+
                 articles.push({
                     title: title.trim(),
                     excerpt: description ? description.replace(/<[^>]*>/g, '').substring(0, 150) + '...' : '',
                     url: link.trim(),
-                    image: generatePlaceholderImage(sourceName),
-                    category: categorizeNews(title + ' ' + description),
+                    image: imageUrl || generatePlaceholderImage(sourceName),
+                    category: (defaultCategory && ['Industry', 'Regulatory', 'Technology'].includes(defaultCategory))
+                        ? defaultCategory
+                        : categorizeNews(title + ' ' + description + ' ' + sourceName),
                     source: sourceName,
                     publishedAt: pubDate ? new Date(pubDate).toISOString() : new Date().toISOString()
                 });
@@ -376,7 +409,7 @@ async function fetchNews(sourceKey, keywords = FINANCIAL_KEYWORDS) {
     if (!source) return [];
 
     if (source.type === 'rss') {
-        return await parseRSSFeed(source.url, source.name);
+        return await parseRSSFeed(source.url, source.name, source.category);
     } else if (source.type === 'newsapi') {
         const articles = [];
         for (const keyword of keywords) {
@@ -635,7 +668,7 @@ app.get('/api/news/:sourceId', async (req, res) => {
 // API endpoint to fetch news by geographic region
 app.get('/api/news/region/:region', async (req, res) => {
     try {
-        const region = req.params.region;
+        const region = req.params.region.toLowerCase();
         const sourceKeys = regionalNewsSources[region];
 
         if (!sourceKeys) {
@@ -653,25 +686,26 @@ app.get('/api/news/region/:region', async (req, res) => {
 
         console.log(`Found ${sources.length} sources for ${region}:`, sources.map(s => s.name));
 
-        // Prioritize RSS sources since NewsAPI has rate limits
+        // All sources should be RSS now (Google News + direct RSS)
         const rssSources = sources.filter(s => s.type === 'rss');
         const newsApiSources = sources.filter(s => s.type === 'newsapi');
 
         let allArticles = [];
 
-        // Try RSS sources first (more reliable)
+        // Try RSS sources first (our primary strategy now)
         if (rssSources.length > 0) {
-            console.log(`Trying ${rssSources.length} RSS sources for ${region}...`);
+            console.log(`Processing ${rssSources.length} RSS sources for ${region}...`);
             const rssSourceKeys = rssSources.map(s => {
                 const key = Object.keys(newsSources).find(k => newsSources[k] === s);
                 return key;
             }).filter(Boolean);
-            const rssResults = await processBatch(rssSourceKeys.slice(0, 5), 3);
+            // Process all RSS sources (up to 7) with batch size 4 for speed
+            const rssResults = await processBatch(rssSourceKeys.slice(0, 7), 4);
             allArticles = rssResults.flat();
-            console.log(`RSS sources returned ${allArticles.length} articles`);
+            console.log(`RSS sources returned ${allArticles.length} articles for ${region}`);
         }
 
-        // If we have few articles, try NewsAPI sources (but handle rate limits gracefully)
+        // fallback: try NewsAPI sources if RSS returned too few
         if (allArticles.length < 3 && newsApiSources.length > 0) {
             console.log(`Trying ${newsApiSources.length} NewsAPI sources for ${region}...`);
             try {
@@ -689,13 +723,27 @@ app.get('/api/news/region/:region', async (req, res) => {
             }
         }
 
-        // Filter articles based on region
-        const isGeneralNewsRegion = ['north-america', 'europe'].includes(region);
-        if (!isGeneralNewsRegion) {
-            allArticles = allArticles.filter(article => isArticleRelevant(article));
-        }
+        // No additional relevance filter — Google News feeds are already targeted by region
+        // Filter for freshness: only keep articles from the last 7 days
+        const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+        allArticles = allArticles.filter(article => {
+            if (!article.publishedAt) return true; // Keep articles without dates (Google News often has recent ones)
+            const pubDate = new Date(article.publishedAt);
+            return pubDate >= sevenDaysAgo;
+        });
 
-        // Sort articles by date
+        console.log(`After freshness filter: ${allArticles.length} articles remain for ${region}`);
+
+        // Deduplicate by title
+        const seen = new Set();
+        allArticles = allArticles.filter(article => {
+            const key = article.title?.toLowerCase().trim();
+            if (!key || seen.has(key)) return false;
+            seen.add(key);
+            return true;
+        });
+
+        // Sort articles by date (newest first)
         allArticles = allArticles.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
 
         // Take top 5 articles
@@ -771,7 +819,7 @@ function getPrioritizedSources() {
     // Medium priority sources (business/tech)
     const mediumPriority = sourceKeys.filter(key => {
         const source = newsSources[key];
-        return source.category === 'business' || source.category === 'technology';
+        return ['business', 'technology', 'Industry', 'Regulatory', 'Markets'].includes(source.category);
     });
 
     // Low priority sources (regional)
@@ -781,7 +829,7 @@ function getPrioritizedSources() {
     });
 
     // Limit to top 20 sources for faster loading
-    return [...highPriority, ...mediumPriority, ...lowPriority].slice(0, 20);
+    return [...highPriority, ...mediumPriority, ...lowPriority].slice(0, 50);
 }
 
 // API endpoint to fetch news from all sources with optimization
@@ -804,7 +852,7 @@ app.get('/api/news', async (req, res) => {
         const allArticles = [];
 
         // Fetch from RSS sources first (reliable) - ENABLED
-        const rssSources = getPrioritizedSources().filter(key => newsSources[key]?.type === 'rss').slice(0, 10);
+        const rssSources = getPrioritizedSources().filter(key => newsSources[key]?.type === 'rss').slice(0, 30);
         if (rssSources.length > 0) {
             console.log(`Fetching from ${rssSources.length} RSS sources...`);
             const rssResults = await processBatch(rssSources, 3);
@@ -931,7 +979,7 @@ async function backgroundRefresh() {
         // Fetch from RSS sources
         const rssSources = getPrioritizedSources()
             .filter(key => newsSources[key]?.type === 'rss')
-            .slice(0, 8);
+            .slice(0, 30);
 
         if (rssSources.length > 0) {
             console.log(`📡 Fetching from ${rssSources.length} RSS sources...`);
@@ -961,7 +1009,7 @@ async function backgroundRefresh() {
         const uniqueArticles = deduplicateArticles(allArticles);
         uniqueArticles.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
 
-        const topArticles = uniqueArticles.slice(0, 30);
+        const topArticles = uniqueArticles.slice(0, 200);
 
         const responseData = {
             articles: topArticles,
@@ -1214,26 +1262,26 @@ server.on('listening', () => {
 });
 
 // Schedule background refresh AFTER server is fully started
-// TEMPORARILY DISABLED ALL BACKGROUND REFRESH
-// setTimeout(() => {
-//     console.log('📋 Scheduling background refresh...');
+// Schedule background refresh AFTER server is fully started
+setTimeout(() => {
+    console.log('📋 Scheduling background refresh...');
 
-//     // TEMPORARILY DISABLED: Run first refresh after additional delay
-//     // setTimeout(() => {
-//     //     backgroundRefresh().catch(error => {
-//     //         console.error('❌ Background refresh error:', error);
-//     //     });
-//     // }, 5000); // 5 seconds after server start
+    // Run first refresh immediately after delay
+    setTimeout(() => {
+        backgroundRefresh().catch(error => {
+            console.error('❌ Background refresh error:', error);
+        });
+    }, 1000);
 
-//     // Schedule recurring refreshes every 6 hours
-//     const refreshInterval = setInterval(() => {
-//         backgroundRefresh().catch(error => {
-//             console.error('❌ Background refresh error:', error);
-//         });
-//     }, 6 * 60 * 60 * 1000);
+    // Schedule recurring refreshes every 6 hours
+    const refreshInterval = setInterval(() => {
+        backgroundRefresh().catch(error => {
+            console.error('❌ Background refresh error:', error);
+        });
+    }, 6 * 60 * 60 * 1000);
 
-//     refreshInterval.unref();
-// }, 1000); // Wait 1 second after server starts
+    refreshInterval.unref();
+}, 1000); // Wait 1 second after server starts
 
 // Cache cleanup interval
 // TEMPORARILY DISABLED

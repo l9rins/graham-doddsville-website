@@ -22,7 +22,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         } else {
             // If main manager isn't ready, fetch independently
             console.log('Fetching news for category sections...');
-            const response = await fetch('/api/news');
+            const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+            const apiUrl = isLocalhost ? 'http://localhost:3051/api/news' : '/api/news';
+            const response = await fetch(apiUrl);
             if (response.ok) {
                 const data = await response.json();
                 if (data.articles) {
