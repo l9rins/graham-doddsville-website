@@ -180,6 +180,18 @@ const newsSources = {
         type: 'rss',
         category: 'Regulatory' // Explicitly set to Regulatory
     },
+    'google-news-guru': {
+        name: 'Google News - Guru Watch',
+        url: 'https://news.google.com/rss/search?q=Warren+Buffett+OR+Charlie+Munger+OR+Ray+Dalio+OR+Bill+Ackman+investing+when:30d&hl=en-US&gl=US&ceid=US:en',
+        type: 'rss',
+        category: 'Guru Watch'
+    },
+    'google-news-investment-gurus': {
+        name: 'Google News - Investment Gurus',
+        url: 'https://news.google.com/rss/search?q=value+investing+superinvestors+hedge+fund+letters+when:30d&hl=en-US&gl=US&ceid=US:en',
+        type: 'rss',
+        category: 'Guru Watch'
+    },
 
 
     // === AUSTRALIAN REGIONAL MEDIA ===

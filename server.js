@@ -11,7 +11,11 @@ const crypto = require('crypto');
 const rateLimit = require('express-rate-limit');
 const { newsSources, regionalNewsSources } = require('./news-sources-config');
 
-const parser = new Parser();
+const parser = new Parser({
+    headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+    }
+});
 
 // === EMERGENCY BACKUP DATA (For when API Quota is dead) ===
 const BACKUP_NEWS = [
@@ -374,7 +378,7 @@ async function parseRSSFeed(url, sourceName, defaultCategory = null) {
                     excerpt: description ? description.replace(/<[^>]*>/g, '').substring(0, 150) + '...' : '',
                     url: link.trim(),
                     image: imageUrl || generatePlaceholderImage(sourceName),
-                    category: (defaultCategory && ['Industry', 'Regulatory', 'Technology'].includes(defaultCategory))
+                    category: (defaultCategory && ['Industry', 'Regulatory', 'Technology', 'Guru Watch', 'Economy', 'Markets', 'Companies'].includes(defaultCategory))
                         ? defaultCategory
                         : categorizeNews(title + ' ' + description + ' ' + sourceName),
                     source: sourceName,
@@ -545,10 +549,10 @@ function categorizeNews(content) {
         return 'Consumer';
     } else if (lowerContent.includes('mining') || lowerContent.includes('resources')) {
         return 'Resources';
-    } else if (lowerContent.includes('investment') || lowerContent.includes('value') || lowerContent.includes('portfolio') || lowerContent.includes('investor')) {
-        return 'Investment';
     } else if (lowerContent.includes('buffett') || lowerContent.includes('munger') || lowerContent.includes('graham') || lowerContent.includes('dodd') || lowerContent.includes('guru') || lowerContent.includes('investor') || lowerContent.includes('legend')) {
         return 'Guru Watch';
+    } else if (lowerContent.includes('investment') || lowerContent.includes('value') || lowerContent.includes('portfolio') || lowerContent.includes('investor')) {
+        return 'Investment';
     }
     return 'General';
 }
@@ -819,7 +823,7 @@ function getPrioritizedSources() {
     // Medium priority sources (business/tech)
     const mediumPriority = sourceKeys.filter(key => {
         const source = newsSources[key];
-        return ['business', 'technology', 'Industry', 'Regulatory', 'Markets'].includes(source.category);
+        return ['business', 'technology', 'Industry', 'Regulatory', 'Markets', 'Guru Watch'].includes(source.category);
     });
 
     // Low priority sources (regional)
