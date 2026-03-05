@@ -895,9 +895,9 @@ async function fetchAllCategoryNews() {
         { category: 'Companies', query: 'ASX earnings results profit revenue shares', fallback: 'Australian business company stock ASX', baseAge: 48 },
         { category: 'Markets', query: 'stock market shares ASX wall street', fallback: 'dow jones nasdaq S&P financial markets trading', baseAge: 48 },
         { category: 'Economy', query: 'Australian economy RBA inflation interest rate', fallback: 'GDP unemployment recession economic growth', baseAge: 48 },
-        { category: 'Industry', query: 'mining energy banking retail sector Australia', fallback: 'resources construction property technology industry', baseAge: 48 },
-        { category: 'Regulatory', query: 'ASIC regulation compliance financial penalty', fallback: 'ACCC RBA banking law financial regulation Australia', baseAge: 168 },
-        { category: 'Guru Watch', query: 'Buffett investing value stocks hedge fund', fallback: 'Munger Dalio Ackman investor portfolio hedge fund', baseAge: 48 }
+        { category: 'Industry', query: 'mining energy banking retail sector Australia', fallback: 'Australia business industry resources', baseAge: 48 },
+        { category: 'Regulatory', query: 'ASIC regulation compliance financial penalty', fallback: 'Australian financial regulation news', baseAge: 168 },
+        { category: 'Guru Watch', query: 'Buffett investing value stocks hedge fund', fallback: 'investing value strategy stock market portfolio', baseAge: 48 }
     ];
 
     const allArticles = [];
@@ -908,7 +908,7 @@ async function fetchAllCategoryNews() {
             const feed = await parser.parseURL(url);
             let items = feed.items || [];
 
-            const MAX_AGE_LIMIT = config.baseAge + 336; // Allow relaxing up to 14 further days
+            const MAX_AGE_LIMIT = config.baseAge + 720; // Allow relaxing up to 30 further days
 
             // Pre-check if primary yields at least 5 articles within MAX_AGE_LIMIT
             const potentialCount = items.filter(item => {
