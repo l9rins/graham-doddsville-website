@@ -91,7 +91,16 @@ if (!fs.existsSync(CACHE_DIR)) {
 
 // NewsAPI optimization constants
 const FINANCIAL_KEYWORDS = ['investment', 'stock market', 'earnings', 'dividend', 'portfolio', 'value investing', 'financial analysis'];
-const CREDIBLE_DOMAINS = ['reuters.com', 'bloomberg.com', 'ft.com', 'cnbc.com', 'investing.com', 'wsj.com', 'economist.com'];
+const CREDIBLE_DOMAINS = [
+    'reuters.com', 'bloomberg.com', 'ft.com', 'cnbc.com',
+    'investing.com', 'wsj.com', 'economist.com',
+    'afr.com', 'smh.com.au', 'theaustralian.com.au',
+    'abc.net.au', 'asx.com.au', 'rba.gov.au', 'asic.gov.au',
+    'news.com.au', 'businessinsider.com.au', 'marketwatch.com',
+    'finance.yahoo.com', 'seekingalpha.com', 'fool.com',
+    'livewiremarkets.com', 'stockhead.com.au', 'theguardian.com',
+    'bbc.com', 'ap.org', 'apnews.com'
+];
 const REQUEST_DELAY = 5000; // 5 seconds between requests
 const FREE_TIER_DELAY_HOURS = 24; // NewsAPI free tier articles are minimum 24 hours old
 
@@ -196,8 +205,9 @@ const sourceHealth = new Map(); // Track source health
 // Enable CORS for all routes
 const corsOptions = {
     origin: process.env.NODE_ENV === 'production'
-        ? 'https://yourdomain.com'  // Change to your actual domain
-        : 'http://localhost:3001',
+        ? ['https://graham-doddsville.onrender.com',
+            'https://grahamanddoddsville.com.au']
+        : 'http://localhost:3051',
     methods: ['GET', 'POST'],
     credentials: true,
     maxAge: 3600
@@ -226,17 +236,8 @@ function isArticleValid(article) {
     const now = new Date();
     const hoursDiff = (now - publishedDate) / (1000 * 60 * 60);
 
-    // Free tier: articles are minimum 24 hours old, accept up to 72 hours
-    const MIN_HOURS = FREE_TIER_DELAY_HOURS;   // Don't show fresh articles (not from free tier)
-    const MAX_HOURS = 72;   // Don't show very stale articles
-
-    if (hoursDiff < MIN_HOURS || hoursDiff > MAX_HOURS) return false;
-
-    // Check domain whitelist for NewsAPI articles
-    if (article.url) {
-        const url = new URL(article.url);
-        if (!CREDIBLE_DOMAINS.some(domain => url.hostname.includes(domain))) return false;
-    }
+    const MAX_HOURS = 168; // 7 days
+    if (hoursDiff > MAX_HOURS) return false;
 
     return true;
 }
@@ -931,9 +932,6 @@ async function refreshNewsCache() {
                     const seenUrls = new Set();
                     for (const article of data.articles) {
                         if (!article.title || !article.url || !article.publishedAt) continue;
-
-                        // Enforce domain whitelist
-                        if (article.url && !CREDIBLE_DOMAINS.some(domain => new URL(article.url).hostname.includes(domain))) continue;
 
                         const publishedDate = new Date(article.publishedAt);
                         const hoursDiff = (new Date() - publishedDate) / (1000 * 60 * 60);
