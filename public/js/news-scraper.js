@@ -1,6 +1,20 @@
 // News Scraper for Graham and Doddsville Website
 // Updated: Targets ALL ID variations to prevent conflicts and ensure 5 items everywhere
 
+const FALLBACK_ARTICLES = [];
+['Companies', 'Markets', 'Economy', 'Industry', 'Regulatory', 'Guru Watch'].forEach(category => {
+    for (let i = 0; i < 3; i++) {
+        FALLBACK_ARTICLES.push({
+            title: `${category} Market Update Loading...`,
+            url: 'https://www.asx.com.au',
+            publishedAt: new Date().toISOString(),
+            source: { name: '[Cached] ASX' },
+            category: category,
+            excerpt: `Real-time ${category.toLowerCase()} data is currently unavailable. Please check back shortly or visit the ASX website directly for the latest updates.`
+        });
+    }
+});
+
 class AustralianNewsScraper {
     constructor(apiUrl) {
         this.apiUrl = apiUrl || '/api';
@@ -42,7 +56,7 @@ class AustralianNewsScraper {
                 }
             } catch (error) {
                 console.error('Backend fetch failed:', error);
-                return [];
+                return FALLBACK_ARTICLES;
             }
 
             this.cachedNews = allNews;
@@ -51,7 +65,7 @@ class AustralianNewsScraper {
 
         } catch (error) {
             console.error('Critical error in fetchNews:', error);
-            return [];
+            return FALLBACK_ARTICLES;
         }
     }
 
@@ -177,12 +191,12 @@ class NewsDisplayManager {
     // === UPDATED: Targets BOTH ID sets (companies-news AND top-companies-news) ===
     showLoadingState() {
         const categoryContainers = [
-            'companies-news', 'top-companies-news',
-            'markets-news', 'top-markets-news',
-            'economy-news', 'top-economy-news',
-            'industry-news', 'top-industry-news',
-            'regulatory-news', 'top-regulatory-news',
-            'guru-watch-news', 'top-guru-watch-news',
+            'companies-news', 'top-companies-news', 'companies-news-mobile',
+            'markets-news', 'top-markets-news', 'markets-news-mobile',
+            'economy-news', 'top-economy-news', 'economy-news-mobile',
+            'industry-news', 'top-industry-news', 'industry-news-mobile',
+            'regulatory-news', 'top-regulatory-news', 'regulatory-news-mobile',
+            'guru-watch-news', 'top-guru-watch-news', 'guru-watch-news-mobile',
             'feature-articles-container'
         ];
         categoryContainers.forEach(containerId => {
@@ -195,12 +209,12 @@ class NewsDisplayManager {
 
     showErrorState() {
         const categoryContainers = [
-            'companies-news', 'top-companies-news',
-            'markets-news', 'top-markets-news',
-            'economy-news', 'top-economy-news',
-            'industry-news', 'top-industry-news',
-            'regulatory-news', 'top-regulatory-news',
-            'guru-watch-news', 'top-guru-watch-news',
+            'companies-news', 'top-companies-news', 'companies-news-mobile',
+            'markets-news', 'top-markets-news', 'markets-news-mobile',
+            'economy-news', 'top-economy-news', 'economy-news-mobile',
+            'industry-news', 'top-industry-news', 'industry-news-mobile',
+            'regulatory-news', 'top-regulatory-news', 'regulatory-news-mobile',
+            'guru-watch-news', 'top-guru-watch-news', 'guru-watch-news-mobile',
             'feature-articles-container'
         ];
         categoryContainers.forEach(containerId => {
@@ -214,12 +228,6 @@ class NewsDisplayManager {
     // === SMART HYBRID DISPLAY LOGIC ===
     displayNews(news) {
         console.log('NewsDisplayManager: Displaying', news.length, 'news items');
-
-        // Skip if real API data already populated the sections
-        if (window.categorySectionsPopulated) {
-            console.log('NewsDisplayManager.displayNews: Real API data already loaded, skipping to avoid overwrite');
-            return;
-        }
 
         if (!news || news.length === 0) {
             this.showErrorState();
@@ -240,12 +248,12 @@ class NewsDisplayManager {
         // Configuration:
         // Supports BOTH ID formats to override any other script
         const categoryContainers = {
-            'Companies': { ids: ['companies-news', 'top-companies-news'], limit: 5, freshLimit: 48, hardLimit: 168 },
-            'Markets': { ids: ['markets-news', 'top-markets-news'], limit: 5, freshLimit: 48, hardLimit: 168 },
-            'Economy': { ids: ['economy-news', 'top-economy-news'], limit: 5, freshLimit: 48, hardLimit: 168 },
-            'Industry': { ids: ['industry-news', 'top-industry-news'], limit: 5, freshLimit: 48, hardLimit: 168 },
-            'Regulatory': { ids: ['regulatory-news', 'top-regulatory-news'], limit: 5, freshLimit: 72, hardLimit: 168 },
-            'Guru Watch': { ids: ['guru-watch-news', 'top-guru-watch-news'], limit: 5, freshLimit: 72, hardLimit: 336 },
+            'Companies': { ids: ['companies-news', 'top-companies-news', 'companies-news-mobile'], limit: 5, freshLimit: 48, hardLimit: 168 },
+            'Markets': { ids: ['markets-news', 'top-markets-news', 'markets-news-mobile'], limit: 5, freshLimit: 48, hardLimit: 168 },
+            'Economy': { ids: ['economy-news', 'top-economy-news', 'economy-news-mobile'], limit: 5, freshLimit: 48, hardLimit: 168 },
+            'Industry': { ids: ['industry-news', 'top-industry-news', 'industry-news-mobile'], limit: 5, freshLimit: 48, hardLimit: 168 },
+            'Regulatory': { ids: ['regulatory-news', 'top-regulatory-news', 'regulatory-news-mobile'], limit: 5, freshLimit: 72, hardLimit: 168 },
+            'Guru Watch': { ids: ['guru-watch-news', 'top-guru-watch-news', 'guru-watch-news-mobile'], limit: 5, freshLimit: 72, hardLimit: 336 },
             'Feature Articles': { ids: ['feature-articles-container'], limit: 10, freshLimit: 48, hardLimit: 168 }
         };
 
@@ -254,6 +262,11 @@ class NewsDisplayManager {
 
             // Iterate over ALL possible IDs for this category
             config.ids.forEach(containerId => {
+                // Skip if real API data already populated the desktop sections
+                if (window.categorySectionsPopulated && !containerId.includes('-mobile')) {
+                    return;
+                }
+
                 const container = document.getElementById(containerId);
 
                 if (container) {
@@ -373,7 +386,7 @@ class NewsDisplayManager {
 let newsDisplayManager;
 document.addEventListener('DOMContentLoaded', () => {
     const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-    const apiUrl = isLocalhost ? 'http://localhost:3051/api' : '/api';
+    const apiUrl = isLocalhost ? 'http://localhost:3051/api' : 'https://graham-doddsville.onrender.com/api';
 
     newsDisplayManager = new NewsDisplayManager();
     newsDisplayManager.scraper = new AustralianNewsScraper(apiUrl);

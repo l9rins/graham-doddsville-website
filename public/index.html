@@ -50,10 +50,10 @@
                 apiUrl = 'http://localhost:3051/api/news';
             } else if (isGitHubPages) {
                 // For GitHub Pages, try localhost first, then fallback to static
-                apiUrl = 'http://localhost:3051/api/news';
+                apiUrl = 'https://graham-doddsville.onrender.com/api/news';
                 console.log('GitHub Pages detected - trying localhost API first');
             } else {
-                apiUrl = 'https://l9rins.github.io/graham-doddsville-website/api/news';
+                apiUrl = 'https://graham-doddsville.onrender.com/api/news';
             }
 
             console.log('Preloading news from API:', apiUrl);
