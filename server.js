@@ -895,7 +895,7 @@ async function fetchAllCategoryNews() {
         { category: 'Companies', query: 'ASX earnings results profit revenue shares', fallback: 'Australian business company stock ASX', baseAge: 48 },
         { category: 'Markets', query: 'stock market shares ASX wall street', fallback: 'dow jones nasdaq S&P financial markets trading', baseAge: 48 },
         { category: 'Economy', query: 'Australian economy RBA inflation interest rate', fallback: 'GDP unemployment recession economic growth', baseAge: 48 },
-        { category: 'Industry', query: 'mining energy banking retail sector Australia', fallback: 'Australia business industry resources', baseAge: 48 },
+        { category: 'Industry', query: 'ASX mining banking energy retail sector', fallback: 'resources construction property technology industry Australia', baseAge: 48 },
         { category: 'Regulatory', query: 'ASIC regulation compliance financial penalty', fallback: 'Australian financial regulation news', baseAge: 168 },
         { category: 'Guru Watch', query: 'Buffett investing value stocks hedge fund', fallback: 'investing value strategy stock market portfolio', baseAge: 48 }
     ];
