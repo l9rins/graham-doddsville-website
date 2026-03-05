@@ -10780,7 +10780,7 @@
                                             <div style="flex:1;">
                                                 <a href="${article.url || '#'}" target="_blank" rel="noopener noreferrer" style="font-family: Georgia, serif; font-size: 15px; font-weight: 600; color: #111; text-decoration: none; line-height: 1.4;">${article.title}</a>
                                                 <div style="margin-top:4px; font-size: 11px; color: #666;">
-                                                    <span style="text-transform:uppercase; font-weight:bold; color:#1e3a8a;">${article.source || ''} · ${targetCategory.toUpperCase()}</span>
+                                                    <span style="text-transform:uppercase; font-weight:bold; color:#1e3a8a;">${article.source?.name || article.source || ''} · ${(article.category || targetCategory || containerId.replace('-news-mobile', '')).toUpperCase()}</span>
                                                     • ${getRelativeTime(article.publishedAt)}
                                                 </div>
                                             </div>

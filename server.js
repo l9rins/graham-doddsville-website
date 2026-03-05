@@ -839,9 +839,9 @@ function getPrioritizedSources() {
 // API endpoint to fetch news from all sources with optimization
 app.get('/api/news', async (req, res) => {
     try {
-        console.log('Fetching optimized financial news...');
+        console.log('Fetching optimized category news...');
 
-        // Check if we have cached data (but not empty data)
+        // Check if we have cached data
         const cacheKey = 'optimized_news';
         const cached = newsCache.get(cacheKey);
         if (cached && (Date.now() - cached.timestamp) < CACHE_DURATION && cached.data.articles && cached.data.articles.length > 0) {
@@ -853,85 +853,16 @@ app.get('/api/news', async (req, res) => {
             });
         }
 
-        const allArticles = [];
+        // Fetch fresh data
+        const responseData = await fetchAllCategoryNews();
 
-        // Fetch from RSS sources first (reliable) - ENABLED
-        const rssSources = getPrioritizedSources().filter(key => newsSources[key]?.type === 'rss').slice(0, 30);
-        if (rssSources.length > 0) {
-            console.log(`Fetching from ${rssSources.length} RSS sources...`);
-            const rssResults = await processBatch(rssSources, 3);
-            rssResults.forEach(articles => allArticles.push(...articles));
-        }
-
-        // Fetch optimized NewsAPI content with keywords
-        console.log('Fetching optimized NewsAPI content...');
-        const newsApiPromises = FINANCIAL_KEYWORDS.map(keyword =>
-            newsApiQueue.add(() => fetchNewsFromAPI(keyword, 0))
-        );
-
-        const newsApiResults = await Promise.allSettled(newsApiPromises);
-        newsApiResults.forEach(result => {
-            if (result.status === 'fulfilled') {
-                allArticles.push(...result.value);
-            } else {
-                console.error('NewsAPI keyword fetch failed:', result.reason);
-            }
-        });
-
-        // Deduplicate articles
-        const uniqueArticles = deduplicateArticles(allArticles);
-
-        // Sort by publication date (newest first), then by URL uniqueness
-        uniqueArticles.sort((a, b) => {
-            const dateDiff = new Date(b.publishedAt) - new Date(a.publishedAt);
-            if (dateDiff !== 0) return dateDiff;
-            // Prefer articles from different sources
-            return a.source.localeCompare(b.source);
-        });
-
-        // Take top articles (limit to prevent overload)
-        const topArticles = uniqueArticles.slice(0, 50);
-
-        const responseData = {
-            articles: topArticles,
-            count: topArticles.length,
-            keywords: FINANCIAL_KEYWORDS,
-            domains: CREDIBLE_DOMAINS,
-            lastUpdated: new Date().toISOString(),
-            isCached: false,
-            freshness: 'LIVE',  // ✅ NEW: Freshness indicator
-            deduplicationApplied: allArticles.length - uniqueArticles.length
-        };
-
-        // Cache the results (only if we have articles)
-        if (topArticles.length > 0) {
-            newsCache.set(cacheKey, {
-                data: responseData,
-                timestamp: Date.now()
-            });
-        }
-
-        console.log(`Successfully fetched ${topArticles.length} unique articles (${allArticles.length - uniqueArticles.length} duplicates removed)`);
-
-        // If no articles were fetched (all APIs failed), serve emergency backup
-        if (topArticles.length === 0) {
-            console.log('🚨 No articles fetched from APIs. Serving Emergency Backup Data.');
-
-            // Enhance backup data with random images
-            const backupWithImages = BACKUP_NEWS.map(item => ({
-                ...item,
-                image: `https://placehold.co/600x400/1e3a8a/ffffff?text=${encodeURIComponent(item.source)}`
-            }));
-
+        // If no articles fetched, serve backup
+        if (responseData.articles.length === 0) {
+            console.log('🚨 No articles fetched. Serving Emergency Backup Data.');
             return res.json({
-                articles: backupWithImages,
-                count: backupWithImages.length,
-                keywords: FINANCIAL_KEYWORDS,
-                domains: CREDIBLE_DOMAINS,
-                lastUpdated: new Date().toISOString(),
-                isCached: false,
-                freshness: 'BACKUP',
-                warning: 'Using emergency backup data (API Quota Exceeded)'
+                articles: BACKUP_NEWS,
+                count: BACKUP_NEWS.length,
+                warning: 'Using emergency backup data'
             });
         }
 
@@ -940,102 +871,119 @@ app.get('/api/news', async (req, res) => {
     } catch (error) {
         console.error('Error fetching optimized news:', error);
 
-        // Return cached data with transparency
+        // Serve stale cache if available
         const cached = newsCache.get('optimized_news');
         if (cached) {
-            const ageHours = Math.round((Date.now() - cached.timestamp) / (1000 * 60 * 60));
-
             return res.json({
                 ...cached.data,
-                freshness: 'STALE',  // ✅ NEW: Stale indicator
-                staleSinceHours: ageHours,
-                error: 'Using cached data due to API failure',
-                errorMessage: error.message,
-                disclaimer: '⚠️ Free tier active: Limited real-time updates. Data may be 24-48 hours old.',
-                httpStatus: 206  // 206 Partial Content
+                freshness: 'STALE',
+                error: 'Using cached data due to API failure'
             });
         }
 
-        // 6. Last Resort: Emergency Backup
-        // If everything failed, send the static backup data so the UI isn't empty
-        console.log('🚨 API Failed & No Cache. Serving Emergency Backup Data.');
-
-        // Enhance backup data with random images
-        const backupWithImages = BACKUP_NEWS.map(item => ({
-            ...item,
-            image: `https://placehold.co/600x400/1e3a8a/ffffff?text=${encodeURIComponent(item.source)}`
-        }));
-
         res.json({
-            articles: backupWithImages,
-            count: backupWithImages.length,
-            warning: 'Using emergency backup data (API Quota Exceeded)'
+            articles: BACKUP_NEWS,
+            count: BACKUP_NEWS.length,
+            warning: 'Using emergency backup data'
         });
     }
 });
+
+// Helper function to fetch all specific category news
+async function fetchAllCategoryNews() {
+    const categoriesConfig = [
+        { category: 'Companies', query: 'ASX company earnings results profit revenue', baseAge: 48 },
+        { category: 'Markets', query: 'ASX stock market dow jones nasdaq S&P500', baseAge: 48 },
+        { category: 'Economy', query: 'Australian economy RBA inflation GDP interest rate', baseAge: 48 },
+        { category: 'Industry', query: 'ASX mining banking energy retail sector', baseAge: 48 },
+        { category: 'Regulatory', query: 'ASIC ACCC RBA regulation compliance penalty', baseAge: 168 },
+        { category: 'Guru Watch', query: 'Warren Buffett Charlie Munger Ray Dalio investing', baseAge: 48 }
+    ];
+
+    const allArticles = [];
+
+    await Promise.all(categoriesConfig.map(async (config) => {
+        const url = `https://news.google.com/rss/search?q=${encodeURIComponent(config.query)}&hl=en-AU&gl=AU&ceid=AU:en`;
+        try {
+            const feed = await parser.parseURL(url);
+            const items = (feed.items || []).slice(0, 50); // Minimum 20 items per category as required
+
+            let validArticles = [];
+            let currentAgeLimit = config.baseAge;
+            const MAX_AGE_LIMIT = 168; // 7 days
+
+            while (validArticles.length < 5 && currentAgeLimit <= MAX_AGE_LIMIT) {
+                validArticles = [];
+                const seenUrls = new Set();
+
+                for (const item of items) {
+                    if (!item.title || !item.link || !item.pubDate) continue;
+
+                    const publishedDate = new Date(item.pubDate);
+                    const now = new Date();
+                    const hoursDiff = (now - publishedDate) / (1000 * 60 * 60);
+
+                    // De-duplicate within the category feed
+                    if (hoursDiff <= currentAgeLimit && !seenUrls.has(item.link)) {
+                        seenUrls.add(item.link);
+
+                        let sourceName = 'Google News';
+                        if (item.source) sourceName = item.source;
+
+                        validArticles.push({
+                            title: item.title.trim(),
+                            url: item.link.trim(),
+                            publishedAt: publishedDate.toISOString(),
+                            source: { name: sourceName },
+                            category: config.category,
+                            excerpt: (item.contentSnippet || item.content || '').replace(/<[^>]*>/g, '').substring(0, 150) + '...'
+                        });
+                    }
+                }
+
+                if (validArticles.length < 5) {
+                    currentAgeLimit += 24; // Relax by 24h
+                }
+            }
+
+            // Exactly 5 articles max per category
+            allArticles.push(...validArticles.slice(0, 5));
+        } catch (err) {
+            console.error(`Error fetching category RSS for ${config.category}:`, err.message);
+        }
+    }));
+
+    // Sort globally by date (newest first)
+    allArticles.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+
+    const responseData = {
+        articles: allArticles,
+        count: allArticles.length,
+        lastUpdated: new Date().toISOString(),
+        isCached: false,
+        freshness: 'LIVE'
+    };
+
+    if (allArticles.length > 0) {
+        newsCache.set('optimized_news', {
+            data: responseData,
+            timestamp: Date.now()
+        });
+    }
+
+    return responseData;
+}
 
 // Background refresh system
 async function backgroundRefresh() {
     console.log('📰 Starting background news refresh...');
     try {
-        const allArticles = [];
-
-        // Fetch from RSS sources
-        const rssSources = getPrioritizedSources()
-            .filter(key => newsSources[key]?.type === 'rss')
-            .slice(0, 30);
-
-        if (rssSources.length > 0) {
-            console.log(`📡 Fetching from ${rssSources.length} RSS sources...`);
-            const rssResults = await processBatch(rssSources, 2);
-            rssResults.forEach(articles => allArticles.push(...articles));
-        }
-
-        // Fetch optimized NewsAPI content (limit to 2 keywords for background refresh)
-        const selectedKeywords = FINANCIAL_KEYWORDS.slice(0, 2);
-        console.log(`🔍 Fetching from NewsAPI with keywords: ${selectedKeywords.join(', ')}`);
-
-        // TEMP: Use simple delay instead of RequestQueue for background refresh
-        const newsApiPromises = selectedKeywords.map((keyword, index) =>
-            fetchNewsFromAPI(keyword, index * REQUEST_DELAY)
-        );
-
-        const newsApiResults = await Promise.allSettled(newsApiPromises);
-        newsApiResults.forEach(result => {
-            if (result.status === 'fulfilled') {
-                allArticles.push(...result.value);
-            } else {
-                console.warn(`⚠️ NewsAPI failed for keyword:`, result.reason);
-            }
-        });
-
-        // Deduplicate and sort
-        const uniqueArticles = deduplicateArticles(allArticles);
-        uniqueArticles.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
-
-        const topArticles = uniqueArticles.slice(0, 200);
-
-        const responseData = {
-            articles: topArticles,
-            count: topArticles.length,
-            keywords: selectedKeywords,
-            domains: CREDIBLE_DOMAINS,
-            lastUpdated: new Date().toISOString(),
-            isCached: false
-        };
-
-        // Update cache
-        newsCache.set('optimized_news', {
-            data: responseData,
-            timestamp: Date.now()
-        });
-
-        console.log(`✅ Background refresh completed: ${topArticles.length} articles cached`);
-        return responseData;  // ✅ Return the result
-
+        const responseData = await fetchAllCategoryNews();
+        console.log(`✅ Background refresh completed: ${responseData.count} articles cached`);
+        return responseData;
     } catch (error) {
         console.error('❌ Background refresh failed:', error.message);
-        throw error;  // ✅ Re-throw so calling code knows it failed
+        throw error;
     }
 }
 

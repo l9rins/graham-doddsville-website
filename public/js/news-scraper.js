@@ -1,20 +1,6 @@
 // News Scraper for Graham and Doddsville Website
 // Updated: Targets ALL ID variations to prevent conflicts and ensure 5 items everywhere
 
-const FALLBACK_ARTICLES = [];
-['Companies', 'Markets', 'Economy', 'Industry', 'Regulatory', 'Guru Watch'].forEach(category => {
-    for (let i = 0; i < 3; i++) {
-        FALLBACK_ARTICLES.push({
-            title: `${category} Market Update Loading...`,
-            url: 'https://www.asx.com.au',
-            publishedAt: new Date().toISOString(),
-            source: { name: '[Cached] ASX' },
-            category: category,
-            excerpt: `Real-time ${category.toLowerCase()} data is currently unavailable. Please check back shortly or visit the ASX website directly for the latest updates.`
-        });
-    }
-});
-
 class AustralianNewsScraper {
     constructor(apiUrl) {
         this.apiUrl = apiUrl || '/api';
