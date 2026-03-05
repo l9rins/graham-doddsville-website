@@ -9140,10 +9140,9 @@ th {
     margin-right: 12px;
     font-size: 16px;
     display: inline-block;
-    width: 28px;
-    /* Fixed width ensures all numbers take exact same horizontal space */
+    min-width: 28px;
     text-align: left;
-    /* Align left ensures 1. and 10. start at the exact same left margin */
+    flex-shrink: 0;
 }
 
 .classic-reading-item-mobile .news-content {
