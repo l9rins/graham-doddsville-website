@@ -615,33 +615,26 @@ body {
 }
 
 #mobile-buffett .buffett-item-mobile.visible {
-    display: inline-flex !important;
+    display: inline !important;
     /* show visible items inline like book links */
-    align-items: center;
-    gap: 8px;
 }
 
 /* Make Buffett headlines match the horizontal book-links style: inline, pipe separators, wrapping */
 
 /* Make Buffett headlines match the horizontal book-links style: inline, pipe separators, wrapping */
 #mobile-buffett .books-slider {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2px;
-    align-items: center;
-}
-
-#mobile-buffett .books-slider .buffett-item-mobile {
-    /* keep default hidden unless .visible is present */
-    display: none !important;
-    margin: 0;
-    padding: 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 10;
+    line-clamp: 10;
+    overflow: hidden;
+    padding-right: 16px;
+    white-space: normal;
 }
 
 #mobile-buffett .books-slider .buffett-item-mobile.visible {
-    display: inline-flex !important;
+    display: inline !important;
     /* render visible items inline so they appear like horizontal links */
-    align-items: center;
     margin: 0;
     padding: 0;
 }
@@ -652,6 +645,8 @@ body {
 }
 
 #mobile-buffett .news-content {
+    display: inline;
+    /* needed for wrapping inline */
     margin: 0;
     padding: 0;
 }
@@ -677,8 +672,11 @@ body {
 /* Add pipe separator between inline headlines (except last item) */
 #mobile-buffett .books-slider .buffett-item-mobile:not(:last-child) .news-headline::after {
     content: ",";
+    /* Fix 1: comma space */
     color: #666;
-    margin: 0 4px;
+    margin-right: 4px;
+    /* Fix 1: removing space before comma */
+    margin-left: 0;
 }
 
 
