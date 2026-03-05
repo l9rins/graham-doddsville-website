@@ -11455,30 +11455,32 @@
         document.addEventListener('DOMContentLoaded', function () {
             if (window.matchMedia && !window.matchMedia('(max-width: 768px)').matches) return; // only run on mobile
 
-            const VISIBLE_BATCH = 9;
-
             function initBuffettList(sliderId) {
                 const slider = document.getElementById(sliderId);
                 if (!slider) return;
                 const items = Array.from(slider.querySelectorAll('.buffett-item-mobile'));
-                items.forEach(it => it.classList.remove('visible'));
-                items.slice(0, VISIBLE_BATCH).forEach(it => it.classList.add('visible'));
-                slider.dataset.shown = Math.min(items.length, VISIBLE_BATCH);
+                // All items strictly visible to allow CSS max-height to govern
+                items.forEach(it => it.classList.add('visible'));
+                slider.classList.remove('expanded');
                 slider.dataset.expanded = 'false'; // Initialize as collapsed
-                updateBuffettSeeMoreState(sliderId);
+
+                // Allow layout to render before checking heights
+                setTimeout(() => {
+                    updateBuffettSeeMoreState(sliderId);
+                }, 50);
             }
 
             function updateBuffettSeeMoreState(sliderId) {
                 const slider = document.getElementById(sliderId);
                 if (!slider) return;
-                const shown = parseInt(slider.dataset.shown || '0', 10);
-                const items = slider.querySelectorAll('.buffett-item-mobile');
                 const btn = document.querySelector('.buffett-see-more-link[data-list="' + sliderId + '"]');
                 if (!btn) return;
 
                 const isExpanded = slider.dataset.expanded === 'true';
-                const totalItems = items.length;
-                const initialBatch = 9; // VISIBLE_BATCH
+
+                // Check if the content actually overflows the 10-line max-height
+                // (using scrollHeight > clientHeight on a hidden overflow container)
+                const isOverflowing = slider.scrollHeight > slider.clientHeight;
 
                 if (isExpanded) {
                     // Currently expanded - show "See less" to collapse back
@@ -11486,43 +11488,37 @@
                     btn.classList.remove('disabled');
                     btn.removeAttribute('aria-disabled');
                     btn.style.pointerEvents = '';
-                } else if (totalItems > initialBatch) {
-                    // Currently collapsed and has more items - show "See more" to expand
+                    btn.style.display = 'inline-block';
+                } else if (isOverflowing) {
+                    // Currently collapsed and has more items hidden by CSS max-height
                     btn.textContent = 'See more';
                     btn.classList.remove('disabled');
                     btn.removeAttribute('aria-disabled');
                     btn.style.pointerEvents = '';
+                    btn.style.display = 'inline-block';
                 } else {
-                    // No more items to show (all fit in initial batch)
+                    // No more items to show (all fit within 10 lines)
                     btn.classList.add('disabled');
                     btn.setAttribute('aria-disabled', 'true');
                     btn.style.pointerEvents = 'none';
+                    btn.style.display = 'none';
                 }
             }
 
-            // Reveal all remaining items for the slider (user requested: show 9 initially, reveal all on See more)
+            // Reveal all remaining items for the slider
             function revealAll(sliderId) {
                 const slider = document.getElementById(sliderId);
                 if (!slider) return;
-                const items = Array.from(slider.querySelectorAll('.buffett-item-mobile'));
-                items.forEach(it => it.classList.add('visible'));
-                slider.dataset.shown = items.length;
+                slider.classList.add('expanded');
                 slider.dataset.expanded = 'true';
                 updateBuffettSeeMoreState(sliderId);
             }
 
-            // Hide items back to initial batch (for See less functionality)
+            // Hide items back to initial CSS clamp (for See less functionality)
             function hideItems(sliderId) {
                 const slider = document.getElementById(sliderId);
                 if (!slider) return;
-                const items = Array.from(slider.querySelectorAll('.buffett-item-mobile'));
-                // Hide all items beyond the initial batch
-                items.forEach((item, index) => {
-                    if (index >= VISIBLE_BATCH) {
-                        item.classList.remove('visible');
-                    }
-                });
-                slider.dataset.shown = VISIBLE_BATCH;
+                slider.classList.remove('expanded');
                 slider.dataset.expanded = 'false';
                 updateBuffettSeeMoreState(sliderId);
             }

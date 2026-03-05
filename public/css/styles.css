@@ -623,18 +623,25 @@ body {
 
 /* Make Buffett headlines match the horizontal book-links style: inline, pipe separators, wrapping */
 #mobile-buffett .books-slider {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 10;
-    line-clamp: 10;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    align-items: center;
+    max-height: 230px;
+    /* ~10 lines at 1.4 line height plus row gaps */
     overflow: hidden;
     padding-right: 16px;
-    white-space: normal;
+    /* Fix 3: Right margin too tight */
+}
+
+#mobile-buffett .books-slider.expanded {
+    max-height: none;
 }
 
 #mobile-buffett .books-slider .buffett-item-mobile.visible {
-    display: inline !important;
+    display: inline-flex !important;
     /* render visible items inline so they appear like horizontal links */
+    align-items: center;
     margin: 0;
     padding: 0;
 }
@@ -645,8 +652,6 @@ body {
 }
 
 #mobile-buffett .news-content {
-    display: inline;
-    /* needed for wrapping inline */
     margin: 0;
     padding: 0;
 }
