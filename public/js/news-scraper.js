@@ -341,18 +341,14 @@ class NewsDisplayManager {
         // Determine layout based on container type (sidebar vs main)
         // For simplicity, we use the standard card layout which works in both
         return `
-            <div class="news-item" data-category="${item.category}">
-                <div class="news-image-container">
-                     <img src="${imageUrl}" alt="${item.title}" class="news-thumb" onerror="this.src='${this.generatePlaceholderImage(item.source)}'">
-                </div>
-                <div class="news-content">
-                    <div class="news-header">
-                        <h3><a href="${item.url}" target="_blank" rel="noopener noreferrer">${item.title}</a></h3>
-                    </div>
-                    <p>${item.excerpt || item.description || ''}</p>
-                    <div class="news-meta">
-                        <span class="news-source">${item.source}</span>
-                        <span class="news-time">${formattedDate}</span>
+            <div class="news-item-mobile" style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #f0f0f0;" data-category="${item.category}">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                    <div style="flex:1;">
+                        <a href="${item.url || '#'}" target="_blank" rel="noopener noreferrer" style="font-family: Georgia, serif; font-size: 15px; font-weight: 600; color: #111; text-decoration: none; line-height: 1.4;">${item.title}</a>
+                        <div style="margin-top:4px; font-size: 11px; color: #666;">
+                            <span style="text-transform:uppercase; font-weight:bold; color:#1e3a8a;">${item.source?.name || item.source || ''}</span>
+                            • ${formattedDate}
+                        </div>
                     </div>
                 </div>
             </div>
