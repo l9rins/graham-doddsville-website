@@ -910,7 +910,7 @@ async function fetchAllCategoryNews() {
 
             let validArticles = [];
             let currentAgeLimit = config.baseAge;
-            const MAX_AGE_LIMIT = 168; // 7 days
+            const MAX_AGE_LIMIT = currentAgeLimit + 168; // Allow relaxing up to 7 further days
 
             while (validArticles.length < 5 && currentAgeLimit <= MAX_AGE_LIMIT) {
                 validArticles = [];
