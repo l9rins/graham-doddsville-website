@@ -4897,8 +4897,10 @@ select:focus {
     display: block;
     width: 200px;
     white-space: normal;
-    word-break: break-all;
+    word-break: break-word;
     overflow-wrap: break-word;
+    padding-right: 16px;
+    /* Fix 1: Minimum 16px right padding so text doesn't touch edge */
 }
 
 .book-links-horizontal a {
@@ -4925,8 +4927,11 @@ select:focus {
 
 .book-links-horizontal a:not(:last-child)::after {
     content: ",";
+    /* Fix 2: Changed to comma-space (the space is added via margin below) */
     color: #666;
-    margin: 0 4px;
+    margin-right: 4px;
+    /* Fix 2: Only right margin, no left margin */
+    margin-left: 0;
 }
 
 /* Remove the last separator to avoid extra "|" */
@@ -9132,8 +9137,10 @@ th {
     margin-right: 12px;
     font-size: 16px;
     display: inline-block;
-    min-width: 24px;
+    width: 28px;
+    /* Fixed width ensures all numbers take exact same horizontal space */
     text-align: left;
+    /* Align left ensures 1. and 10. start at the exact same left margin */
 }
 
 .classic-reading-item-mobile .news-content {
@@ -10172,11 +10179,18 @@ th {
 
 /* Ensure horizontal book links work in slider */
 .books-slider .book-links-horizontal {
-    display: block;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 10;
+    line-clamp: 10;
     width: 355px;
     white-space: normal;
-    word-break: break-all;
+    word-break: break-word;
     overflow-wrap: break-word;
+    padding-right: 16px;
+    /* Fix 1: Minimum 16px right padding */
+    overflow: hidden;
+    /* Fix 3: hide excess lines after 10 lines */
 }
 
 .books-slider .book-links-horizontal a {
@@ -10199,8 +10213,11 @@ th {
 
 .books-slider .book-links-horizontal a:not(:last-child)::after {
     content: ",";
+    /* Fix 2: Comma-space padding */
     color: #666;
-    margin: 0 4px;
+    margin-right: 4px;
+    /* Fix 2: Right margin only */
+    margin-left: 0;
 }
 
 /* Remove the last separator to avoid extra "|" */
