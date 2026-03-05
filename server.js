@@ -892,12 +892,12 @@ app.get('/api/news', async (req, res) => {
 // Helper function to fetch all specific category news
 async function fetchAllCategoryNews() {
     const categoriesConfig = [
-        { category: 'Companies', query: 'ASX company earnings results profit revenue', baseAge: 48 },
-        { category: 'Markets', query: 'ASX stock market dow jones nasdaq S&P500', baseAge: 48 },
-        { category: 'Economy', query: 'Australian economy RBA inflation GDP interest rate', baseAge: 48 },
-        { category: 'Industry', query: 'ASX mining banking energy retail sector', baseAge: 48 },
-        { category: 'Regulatory', query: 'ASIC ACCC RBA regulation compliance penalty', baseAge: 168 },
-        { category: 'Guru Watch', query: 'Warren Buffett Charlie Munger Ray Dalio investing', baseAge: 48 }
+        { category: 'Companies', query: 'ASX earnings results profit revenue shares', fallback: 'Australian business company stock ASX', baseAge: 48 },
+        { category: 'Markets', query: 'stock market shares ASX wall street', fallback: 'dow jones nasdaq S&P financial markets trading', baseAge: 48 },
+        { category: 'Economy', query: 'Australian economy RBA inflation interest rate', fallback: 'GDP unemployment recession economic growth', baseAge: 48 },
+        { category: 'Industry', query: 'mining energy banking retail sector Australia', fallback: 'resources construction property technology industry', baseAge: 48 },
+        { category: 'Regulatory', query: 'ASIC regulation compliance financial penalty', fallback: 'ACCC RBA banking law financial regulation Australia', baseAge: 168 },
+        { category: 'Guru Watch', query: 'Buffett investing value stocks hedge fund', fallback: 'Munger Dalio Ackman investor portfolio hedge fund', baseAge: 48 }
     ];
 
     const allArticles = [];
@@ -906,11 +906,41 @@ async function fetchAllCategoryNews() {
         const url = `https://news.google.com/rss/search?q=${encodeURIComponent(config.query)}&hl=en-AU&gl=AU&ceid=AU:en`;
         try {
             const feed = await parser.parseURL(url);
-            const items = (feed.items || []).slice(0, 50); // Minimum 20 items per category as required
+            let items = feed.items || [];
+
+            const MAX_AGE_LIMIT = config.baseAge + 336; // Allow relaxing up to 14 further days
+
+            // Pre-check if primary yields at least 5 articles within MAX_AGE_LIMIT
+            const potentialCount = items.filter(item => {
+                if (!item.pubDate) return false;
+                const hoursDiff = (new Date() - new Date(item.pubDate)) / (1000 * 60 * 60);
+                return hoursDiff <= MAX_AGE_LIMIT;
+            }).length;
+
+            // If PRIMARY yields fewer than 5 valid articles, fetch FALLBACK and merge
+            if (potentialCount < 5 && config.fallback) {
+                const fallbackUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(config.fallback)}&hl=en-AU&gl=AU&ceid=AU:en`;
+                try {
+                    const fallbackFeed = await parser.parseURL(fallbackUrl);
+                    const fallbackItems = fallbackFeed.items || [];
+
+                    const seenUrls = new Set(items.map(i => i.link));
+                    for (const item of fallbackItems) {
+                        if (!seenUrls.has(item.link)) {
+                            seenUrls.add(item.link);
+                            items.push(item);
+                        }
+                    }
+                } catch (err) {
+                    console.error(`Error fetching FALLBACK for ${config.category}:`, err.message);
+                }
+            }
+
+            // Cap items list size explicitly
+            items = items.slice(0, 100);
 
             let validArticles = [];
             let currentAgeLimit = config.baseAge;
-            const MAX_AGE_LIMIT = currentAgeLimit + 168; // Allow relaxing up to 7 further days
 
             while (validArticles.length < 5 && currentAgeLimit <= MAX_AGE_LIMIT) {
                 validArticles = [];
