@@ -169,8 +169,9 @@ class NewsDisplayManager {
         }
     }
 
-    generatePlaceholderImage(sourceName) {
-        const safeName = sourceName ? sourceName.replace(/[^a-zA-Z0-9 ]/g, '') : 'News';
+    generatePlaceholderImage(source) {
+        const sourceName = source?.name || source || 'News';
+        const safeName = sourceName.replace(/[^a-zA-Z0-9 ]/g, '');
         return `https://placehold.co/600x400/1e3a8a/ffffff?text=${encodeURIComponent(safeName)}`;
     }
 

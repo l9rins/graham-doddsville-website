@@ -8455,7 +8455,7 @@
 
             // 3. Render matching desktop Guru Watch / Europe format (Verified Inline Styles)
             const html = displayArticles.map(article => {
-                const sourceName = article.source || article.displaySource || '';
+                const sourceName = article.source?.name || article.source || article.displaySource || '';
                 const timeString = formatDate(article.publishedAt || article.pubDate);
 
                 return `
@@ -9441,7 +9441,7 @@
                         if (categoryNews.length > 0) {
                             const newsHTML = categoryNews.map(article => `
                                 <div class="news-item" style="background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 12px 16px; margin-bottom: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.2s ease;">
-                                    <a href="${article.url}" target="_blank" rel="noopener noreferrer" style="color: #333; text-decoration: none; font-size: 10px; line-height: 1.4; display: block;">${article.title.length > 60 ? article.title.substring(0, 60) + '...' : article.title} (${article.source})</a>
+                                    <a href="${article.url}" target="_blank" rel="noopener noreferrer" style="color: #333; text-decoration: none; font-size: 10px; line-height: 1.4; display: block;">${article.title.length > 60 ? article.title.substring(0, 60) + '...' : article.title} (${article.source?.name || article.source || ''})</a>
                                 </div>
                             `).join('');
 
@@ -9454,7 +9454,7 @@
 
                             const fallbackHTML = fallbackNews.map(article => `
                                 <div class="news-item" style="background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 12px 16px; margin-bottom: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.2s ease;">
-                                    <a href="${article.url}" target="_blank" rel="noopener noreferrer" style="color: #333; text-decoration: none; font-size: 10px; line-height: 1.4; display: block;">${article.title.length > 60 ? article.title.substring(0, 60) + '...' : article.title} (${article.source})</a>
+                                    <a href="${article.url}" target="_blank" rel="noopener noreferrer" style="color: #333; text-decoration: none; font-size: 10px; line-height: 1.4; display: block;">${article.title.length > 60 ? article.title.substring(0, 60) + '...' : article.title} (${article.source?.name || article.source || ''})</a>
                                 </div>
                             `).join('');
 
@@ -9513,6 +9513,7 @@
             // Helper to abbreviate source name
             function abbreviateSource(source) {
                 if (!source) return '';
+                const sourceName = source?.name || source || '';
                 const abbreviations = {
                     'Australian Financial Review': 'AFR',
                     'Sydney Morning Herald': 'SMH',
@@ -9525,7 +9526,7 @@
                     'Google News - Construction': 'CONSTRUCTION',
                     'Google News - ASIC/ACCC': 'REGULATOR',
                 };
-                return abbreviations[source] || source.substring(0, 15);
+                return abbreviations[sourceName] || sourceName.substring(0, 15);
             }
 
             // Populate each category section
@@ -10796,7 +10797,7 @@
                                             ${article.excerpt ? `<p class="news-excerpt">${article.excerpt}</p>` : ''}
                                         </div>
                                         <div class="news-meta">
-                                            <span class="news-category">${article.source || 'News'}</span>
+                                            <span class="news-category">${article.source?.name || article.source || 'News'}</span>
                                             <span class="news-time">${getRelativeTime(article.publishedAt)}</span>
                                         </div>
                                         <a href="${article.url}" class="read-more-link" target="_blank">Read Full Article</a>
@@ -10855,7 +10856,7 @@
                                         <span class="news-bullet">-</span>
                                         <div class="news-content">
                                             <h3 class="news-headline">${article.title}</h3>
-                                            <span class="news-source"> ${article.source}</span>
+                                            <span class="news-source"> ${article.source?.name || article.source || ''}</span>
                                             <span class="news-time">${getRelativeTime(article.publishedAt)}</span>
                                         </div>
                                     </div>
@@ -10869,7 +10870,7 @@
                                             ${article.excerpt ? `<p class="news-excerpt">${article.excerpt}</p>` : ''}
                                         </div>
                                         <div class="news-meta">
-                                            <span class="news-category">${article.source || 'News'}</span>
+                                            <span class="news-category">${article.source?.name || article.source || 'News'}</span>
                                             <span class="news-time">${getRelativeTime(article.publishedAt)}</span>
                                         </div>
                                         <a href="${article.url}" class="read-more-link" target="_blank">Read Full Article</a>
