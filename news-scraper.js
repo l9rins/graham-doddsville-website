@@ -6,10 +6,10 @@ class AustralianNewsScraper {
     constructor(apiUrl) {
         // If no URL provided, assume we are hitting the server that served this page
         this.apiUrl = apiUrl || '/api';
-        
+
         // Remove the "isLocalDevelopment" check that forces simulation
         // this.isLocalDevelopment = window.location.protocol === 'file:' || window.location.hostname === 'localhost' || window.location.hostname.includes('github.io');
-        
+
         // Initialize cache
         this.cachedNews = [];
         this.lastUpdate = null;
@@ -30,7 +30,7 @@ class AustralianNewsScraper {
             { name: 'Perth Now', apiSource: 'perth-now', category: 'General' },
             { name: 'NT News', apiSource: 'nt-news', category: 'General' },
             { name: 'The Mercury', apiSource: 'hobart-mercury', category: 'General' },
-            
+
             // === AUSTRALIAN BUSINESS & FINANCE ===
             { name: 'Business Insider Australia', apiSource: 'business-insider-au', category: 'Business' },
             { name: 'SmartCompany', apiSource: 'smartcompany', category: 'Business' },
@@ -42,7 +42,7 @@ class AustralianNewsScraper {
             { name: 'Mining.com.au', apiSource: 'mining-com-au', category: 'Business' },
             { name: 'Stockhead', apiSource: 'stockhead', category: 'Business' },
             { name: 'Livewire Markets', apiSource: 'livewire-markets', category: 'Business' },
-            
+
             // === AUSTRALIAN REGIONAL MEDIA ===
             { name: 'Illawarra Mercury', apiSource: 'illawarra-mercury', category: 'Regional' },
             { name: 'Newcastle Herald', apiSource: 'newcastle-herald', category: 'Regional' },
@@ -54,14 +54,14 @@ class AustralianNewsScraper {
             { name: 'Border Mail', apiSource: 'border-mail', category: 'Regional' },
             { name: 'Bendigo Advertiser', apiSource: 'bendigo-advertiser', category: 'Regional' },
             { name: 'Shepparton News', apiSource: 'shepparton-news', category: 'Regional' },
-            
+
             // === AUSTRALIAN TECH & INNOVATION ===
             { name: 'iTnews', apiSource: 'itnews', category: 'Technology' },
             { name: 'Delimiter', apiSource: 'delimiter', category: 'Technology' },
             { name: 'Techly', apiSource: 'techly', category: 'Technology' },
             { name: 'Ausdroid', apiSource: 'ausdroid', category: 'Technology' },
             { name: 'PC World Australia', apiSource: 'pc-world-au', category: 'Technology' },
-            
+
             // === INTERNATIONAL NEWSAPI SOURCES ===
             { name: 'Bloomberg', apiSource: 'bloomberg', category: 'Business' },
             { name: 'Reuters', apiSource: 'reuters', category: 'Business' },
@@ -79,7 +79,7 @@ class AustralianNewsScraper {
             { name: 'Independent', apiSource: 'independent', category: 'General' },
             { name: 'The Telegraph', apiSource: 'telegraph', category: 'General' },
             { name: 'The Economist', apiSource: 'economist', category: 'Business' },
-            
+
             // === INTERNATIONAL RSS SOURCES ===
             { name: 'New Zealand Herald', apiSource: 'nz-herald', category: 'International' },
             { name: 'Stuff.co.nz', apiSource: 'stuff-nz', category: 'International' },
@@ -90,7 +90,7 @@ class AustralianNewsScraper {
             { name: 'Hindu Business Line', apiSource: 'hindu-business-line', category: 'Business' },
             { name: 'Times of India', apiSource: 'times-of-india', category: 'International' }
         ];
-        
+
         this.cachedNews = [];
         this.lastUpdate = null;
         this.updateInterval = 15 * 60 * 1000; // 15 minutes as per Carlos feedback
@@ -100,7 +100,7 @@ class AustralianNewsScraper {
     async fetchNews() {
         try {
             console.log('AustralianNewsScraper: Starting news fetching...');
-            
+
             // Check client-side cache (memory) first
             if (this.cachedNews.length > 0 && this.isRecentCache()) {
                 console.log('Returning client-side cached data');
@@ -109,13 +109,13 @@ class AustralianNewsScraper {
 
             // DIRECTLY FETCH FROM API (Do not force simulation)
             const allNews = [];
-            
+
             // We can now just hit the main endpoint which aggregates everything
             // Note: Your server has a smart endpoint '/api/news' that does aggregation!
             try {
                 console.log(`Fetching from backend: ${this.apiUrl}/news`);
                 const response = await fetch(`${this.apiUrl}/news`);
-                
+
                 if (response.ok) {
                     const data = await response.json();
                     if (data.articles) {
@@ -128,7 +128,7 @@ class AustralianNewsScraper {
             } catch (error) {
                 console.error('Backend fetch failed, falling back to simulation:', error);
                 // ONLY use simulation if the real backend fails
-                return this.runSimulationFallback(); 
+                return this.runSimulationFallback();
             }
 
             // Process and cache results
@@ -141,12 +141,12 @@ class AustralianNewsScraper {
             return [];
         }
     }
-    
+
     // Move your old simulation logic into a fallback method
     async runSimulationFallback() {
         console.log('AustralianNewsScraper: Running simulation fallback...');
         const allNews = [];
-        
+
         // Generate simulated news from each source
         for (const source of this.newsSources) {
             try {
@@ -161,11 +161,11 @@ class AustralianNewsScraper {
 
         // Process and filter news
         const processedNews = this.processNews(allNews);
-        
+
         // Cache the results
         this.cachedNews = processedNews;
         this.lastUpdate = new Date();
-        
+
         console.log(`AustralianNewsScraper: Successfully simulated ${processedNews.length} news items`);
         return processedNews;
     }
@@ -175,7 +175,7 @@ class AustralianNewsScraper {
         try {
             // For fallback simulation, just return simulated data
             return this.simulateNewsScraping(source);
-            
+
         } catch (error) {
             console.error(`Error simulating news for ${source.name}:`, error);
             return this.simulateNewsScraping(source);
@@ -187,27 +187,27 @@ class AustralianNewsScraper {
             // Use backend API to fetch real news
             const url = `${this.apiUrl}/news/${source.apiSource}`;
             console.log(`Fetching real news from backend: ${url}`);
-            
+
             const response = await fetch(url);
             if (!response.ok) {
                 throw new Error(`Backend API failed: ${response.status}`);
             }
-            
+
             const data = await response.json();
             console.log(`Successfully fetched ${data.articles.length} real articles from ${source.name}`);
-            
+
             // Convert publishedAt strings to Date objects
             return data.articles.map(article => ({
                 ...article,
                 publishedAt: new Date(article.publishedAt)
             }));
-            
+
         } catch (error) {
             console.log(`Backend API not available for ${source.name}, using simulation:`, error.message);
             return null;
         }
     }
-    
+
     processRealNews(articles, source) {
         return articles.map(article => ({
             title: article.title,
@@ -241,9 +241,10 @@ class AustralianNewsScraper {
     }
 
     // Generate placeholder image using placehold.co (matches server logic)
-    generatePlaceholderImage(sourceName) {
+    generatePlaceholderImage(source) {
         // Clean up source name
-        const safeName = sourceName ? sourceName.replace(/[^a-zA-Z0-9 ]/g, '') : 'News';
+        const sourceName = source?.name || source || 'News';
+        const safeName = sourceName.replace(/[^a-zA-Z0-9 ]/g, '');
         // Returns a fast, lightweight generated image
         return `https://placehold.co/600x400/1e3a8a/ffffff?text=${encodeURIComponent(safeName)}`;
     }
@@ -389,7 +390,7 @@ class AustralianNewsScraper {
 
     // Get news by category
     getNewsByCategory(category) {
-        return this.cachedNews.filter(item => 
+        return this.cachedNews.filter(item =>
             item.category.toLowerCase() === category.toLowerCase()
         );
     }
@@ -439,15 +440,15 @@ class NewsDisplayManager {
     async initialize() {
         try {
             console.log('NewsDisplayManager: Starting initialization...');
-            
+
             // Show loading state
             this.showLoadingState();
-            
+
             // Fetch news
             const news = await this.scraper.fetchNews();
             this.allNews = news;
             console.log('NewsDisplayManager: Fetched', news.length, 'news items');
-            
+
             // Cache in localStorage
             try {
                 const cacheData = {
@@ -459,16 +460,16 @@ class NewsDisplayManager {
             } catch (e) {
                 console.log('Error saving to localStorage:', e);
             }
-            
+
             // Display limited news
             this.displayNews(news.slice(0, this.maxDisplay));
-        
-        // Setup event listeners
-        this.setupEventListeners();
-        
-        // Setup auto-refresh
-        this.setupAutoRefresh();
-            
+
+            // Setup event listeners
+            this.setupEventListeners();
+
+            // Setup auto-refresh
+            this.setupAutoRefresh();
+
         } catch (error) {
             console.error('Error initializing news display:', error);
             this.showErrorState();
@@ -478,10 +479,10 @@ class NewsDisplayManager {
     showLoadingState() {
         // Show loading state in each category container
         const categoryContainers = [
-            'companies-news', 'markets-news', 'economy-news', 
+            'companies-news', 'markets-news', 'economy-news',
             'industry-news', 'regulatory-news', 'guru-watch-news'
         ];
-        
+
         categoryContainers.forEach(containerId => {
             const container = document.getElementById(containerId);
             if (container) {
@@ -496,19 +497,19 @@ class NewsDisplayManager {
                 }
             }
         });
-    }    showErrorState() {
+    } showErrorState() {
         // Show error state in each category container
         const categoryContainers = [
-            'companies-news', 'markets-news', 'economy-news', 
+            'companies-news', 'markets-news', 'economy-news',
             'industry-news', 'regulatory-news', 'guru-watch-news'
         ];
-        
+
         categoryContainers.forEach(containerId => {
             const container = document.getElementById(containerId);
             if (container) {
                 // Only show error state if container is empty or has loading state (no static content)
-                if (!container.innerHTML.trim() || 
-                    container.innerHTML.includes('Loading news...') || 
+                if (!container.innerHTML.trim() ||
+                    container.innerHTML.includes('Loading news...') ||
                     container.innerHTML.includes('News Feed Temporarily Unavailable')) {
                     container.innerHTML = `
                         <div class="error-state">
@@ -556,14 +557,14 @@ class NewsDisplayManager {
         Object.keys(categoryContainers).forEach(category => {
             const containerId = categoryContainers[category];
             const container = document.getElementById(containerId);
-            
+
             if (container) {
                 // FORCE clear the container before appending new data (remove skip logic)
                 container.innerHTML = '';
-                
+
                 const categoryNews = newsByCategory[category] || [];
                 console.log(`Displaying ${categoryNews.length} items for ${category} in ${containerId}`);
-                
+
                 if (categoryNews.length > 0) {
                     // Take first 3 articles per category for initial display
                     const displayNews = categoryNews.slice(0, 3);
@@ -587,9 +588,9 @@ class NewsDisplayManager {
 
     createNewsItemHTML(item) {
         const formattedDate = this.scraper.formatDate(item.publishedAt);
-        
+
         console.log('NewsDisplayManager: Creating modern card HTML for item:', item.title);
-        
+
         return `
             <div class="news-item" data-category="${item.category}">
                 <div class="news-header">
@@ -704,7 +705,7 @@ class NewsDisplayManager {
 
         const newsHTML = sampleNews.map(item => this.createNewsItemHTML(item)).join('');
         newsList.innerHTML = newsHTML;
-        
+
         console.log('NewsDisplayManager: Sample news displayed');
         this.updateLastUpdatedTime();
     }
@@ -716,24 +717,24 @@ let newsDisplayManager;
 document.addEventListener('DOMContentLoaded', () => {
     try {
         console.log('Initializing news display...');
-        
+
         // You can set the API URL here if you have a backend deployed
         // const apiUrl = 'https://your-api-domain.com';
         const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
         const apiUrl = isLocalhost ? 'http://localhost:3001/api' : 'https://l9rins.github.io/graham-doddsville-website/api'; // Backend API URL
-        
+
         newsDisplayManager = new NewsDisplayManager();
         newsDisplayManager.scraper = new AustralianNewsScraper(apiUrl);
-        
+
         // Make newsDisplayManager globally accessible for mobile
         window.newsDisplayManager = newsDisplayManager;
-        
+
         newsDisplayManager.initialize();
-        
+
         console.log('News display initialized successfully');
     } catch (error) {
         console.error('Error initializing news display:', error);
-        
+
         // Fallback: Show some static news if initialization fails
         const newsList = document.querySelector('.news-list');
         if (newsList) {

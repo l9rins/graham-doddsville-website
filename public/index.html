@@ -8139,6 +8139,7 @@
         }
 
         function abbreviateSource(source) {
+            const sourceName = source?.name || source || '';
             const abbreviations = {
                 'Australian Financial Review': 'AFR',
                 'Sydney Morning Herald': 'SMH',
@@ -8152,7 +8153,7 @@
                 'Sky News': 'SKY',
                 'Wall Street Journal': 'WSJ'
             };
-            return abbreviations[source] || source;
+            return abbreviations[sourceName] || sourceName;
         }
 
         // Fetch news from RSS feeds using rss2json
