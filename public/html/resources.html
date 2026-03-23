@@ -373,7 +373,7 @@
 
         .page-title {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-size: 2rem;
+            font-size: 1.25rem;
             font-weight: 600;
             color: #6B46C1; /* Brand purple */
             margin: 0 0 0px 0;
@@ -587,7 +587,6 @@
                 
                 <nav class="main-nav desktop-only">                    <ul>
                         <li><a href="index.html" class="nav-link">HOME</a></li>
-                        <li><a href="classical-readings.html" class="nav-link">CLASSICAL READINGS</a></li>
                         <li><a href="wealth-creation.html" class="nav-link">WEALTH CREATION</a></li>
                         <li><a href="#" class="nav-link">ABOUT</a></li>
                     </ul></nav>
@@ -658,9 +657,12 @@
 </div>
 
                 <!-- Calculators -->
-                <div class="main-category">
-                    <h2 class="main-category-title">Calculators</h2>
-                    <div class="category-content">
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('calculators')">
+                        <h3 class="collapsible-title">Calculators</h3>
+                        <span class="collapsible-arrow" id="calculators-arrow">▼</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="calculators-content">
 
                         <div class="sub-category-links">
                             <a href="#" class="sub-category-link" onclick="openArticle('money-management-calc')">Money Management</a>
@@ -675,9 +677,12 @@
                 </div>
 
                 <!-- Stock Screeners -->
-                <div class="main-category">
-                    <h2 class="main-category-title">Stock Screeners</h2>
-                    <div class="category-content">
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('stock-screeners')">
+                        <h3 class="collapsible-title">Stock Screeners</h3>
+                        <span class="collapsible-arrow" id="stock-screeners-arrow">▼</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="stock-screeners-content">
 
                         <div class="sub-category-links">
                             <a href="https://au.finance.yahoo.com/research-hub/screener/" class="sub-category-link" target="_blank">Yahoo Finance</a>
@@ -692,9 +697,12 @@
                 </div>
 
                 <!-- Portfolio Creators -->
-                <div class="main-category">
-                    <h2 class="main-category-title">Portfolio Creators</h2>
-                    <div class="category-content">
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('portfolio-creators')">
+                        <h3 class="collapsible-title">Portfolio Creators</h3>
+                        <span class="collapsible-arrow" id="portfolio-creators-arrow">▼</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="portfolio-creators-content">
 
                         <div class="sub-category-links">
                             <a href="https://www.blackrock.com/au/financial-professionals/solutions/tools/etf-porfolio-builder-tool#/" class="sub-category-link" target="_blank">BlackRock Portfolio Builder</a>
@@ -706,9 +714,12 @@
                 </div>
 
                 <!-- Stock Forums -->
-                <div class="main-category">
-                    <h2 class="main-category-title">Stock Forums</h2>
-                    <div class="category-content">
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('stock-forums')">
+                        <h3 class="collapsible-title">Stock Forums</h3>
+                        <span class="collapsible-arrow" id="stock-forums-arrow">▼</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="stock-forums-content">
 
                         <div class="sub-category-links">
                             <a href="https://hotcopper.com.au/" class="sub-category-link" target="_blank">HotCopper</a>
@@ -723,9 +734,12 @@
                 </div>
 
                 <!-- Glossary -->
-                <div class="main-category">
-                    <h2 class="main-category-title">Glossary</h2>
-                    <div class="category-content">
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('glossary')">
+                        <h3 class="collapsible-title">Glossary</h3>
+                        <span class="collapsible-arrow" id="glossary-arrow">▼</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="glossary-content">
 
                         <div class="sub-category-links">
                             <a href="#" class="sub-category-link" onclick="openArticle('glossary-a-e')">Glossary - A to E</a>
@@ -739,9 +753,12 @@
                 </div>
 
                 <!-- Useful Links -->
-                <div class="main-category">
-                    <h2 class="main-category-title">Useful Links</h2>
-                    <div class="category-content">
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('useful-links')">
+                        <h3 class="collapsible-title">Useful Links</h3>
+                        <span class="collapsible-arrow" id="useful-links-arrow">▼</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="useful-links-content">
 
                         <div class="sub-category-links">
                             <a href="#" class="sub-category-link" onclick="openArticle('buffett-munger')">Buffett & Munger</a>
