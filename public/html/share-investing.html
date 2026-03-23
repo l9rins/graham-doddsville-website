@@ -38,7 +38,6 @@
         }
 
         .wealth-creation-page {
-            min-height: 100vh;
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             position: relative;
         }
@@ -67,14 +66,14 @@
         }
 
         .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 30px;
-            overflow: visible;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+            background: #1e3a8a;
+            border-radius: 0;
+            box-shadow: none;
+            padding: 0;
+            margin: 0px; /* 8px margin around viewport */
+            max-width: none;
+            border: 1.5px solid #e8e9ea;
+            position: relative;
         }
 
         .logo {
@@ -303,6 +302,7 @@
             margin: 0;
             font-size: 1.5rem;
             font-weight: 600;
+            color: white;
         }
 
         .article-detail-close {
@@ -499,7 +499,7 @@
         <header class="header sticky-header" role="banner">
             <div class="container"><div class="header-content">
                 <div class="logo">
-                    <img src="/images/G&D Logo.png" alt="Graham & Doddsville" class="logo-image">
+                    <img src="G&D Logo.png" alt="Graham & Doddsville" class="logo-image">
                 </div>
                 
                 <nav class="main-nav desktop-only">                    <ul>
@@ -525,13 +525,13 @@
         </div>
         <nav class="drawer-nav">
             <ul class="drawer-menu">
-                <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
+                <li><a href="index.html" class="drawer-link">Home</a></li>
                 <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
                 <li><a href="legal-taxation.html" class="drawer-link">Legal & Taxation</a></li>
                 <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
                 <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
                 <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
-                <li><a href="#" class="drawer-link">Investment Analysis</a></li>
+                <li><a href="share-investing.html" class="drawer-link">Investment Analysis</a></li>
                 <li><a href="economics.html" class="drawer-link">Economics</a></li>
                 <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
                 <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
@@ -540,22 +540,6 @@
             </ul>
         </nav>
     </div>
-            <nav class="drawer-nav">
-                <ul class="drawer-menu">
-                    <li><a href="index.html" class="drawer-link">Home</a></li>
-                    <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
-                    <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
-                    <li><a href="legal-taxation.html" class="drawer-link"></a></li>
-                    <li><a href="financial-markets.html" class="drawer-link">WEALTH CREATION</a></li>
-                    <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
-                    <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
-                    <li><a href="ABOUT.html" class="drawer-link">ABOUT</a></li>
-                    <li><a href="professional-advisers.html" class="drawer-link"></a></li>
-                    <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
-                    <li><a href=".html" class="drawer-link"></a></li>
-                    <li><a href=".html" class="drawer-link"></a></li>
-                </ul>
-            </nav>
         </div>
 
         <div class="wealth-creation-page-content">
@@ -826,6 +810,10 @@
 
         // Article content data
         const articleContent = {
+            'investment-analysis': {
+                title: 'Investment Analysis',
+                content: `<p>Investment Analysis content to be added.</p>`
+            },
             'how-market-works': {
                 title: 'How the Market Works',
                 content: `
@@ -5521,6 +5509,1574 @@
                     <p>As an investor, being attuned to emerging themes and market shifts can lead to more informed and successful investment decisions in the ever-evolving world of IPOs. The trends discussed in this article provide valuable insights for investors looking to navigate the complexities of the IPO market and capitalize on new opportunities for growth.</p>
                     <p><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions</p>
                 `
+            },
+
+            'ed-anderson': {
+                title: 'Ed Anderson',
+                content: `
+                    <h2>Ed Anderson: A Value Investing Pioneer</h2>
+
+                    <h3>Introduction</h3>
+                    <p>Ed Anderson was a renowned value investor known for his disciplined approach to stock selection, focusing on undervalued companies with strong fundamentals. He emphasised long-term holding, thorough research, and patience as key principles for achieving success in the stock market.</p>
+
+                    <h3>Personal Life</h3>
+                    <p>Edward "Ed" L. Anderson Jr, a notable figure in the world of investing, was born in the United States in1928. Little is publicly known about Anderson's family background, as he maintained a private personal life throughout his years. Details about his parents and siblings are unknown.</p>
+                    <p>Anderson was married to Shirley Smith Anderson, his beloved wife. Together, they shared a life that included the joys of raising a family. Ed and Shirley were blessed with two sons: David Warren Anderson and Steven Bradley Anderson.</p>
+                    <p>David Warren Anderson and his wife, Deirdre (Cavanaugh) Anderson, resided in Hingham, Massachusetts, bringing up their family in the New England region. Steven Bradley Anderson, along with his wife Jennifer (Bork) Anderson, made their home in Davis, California.</p>
+                    <p>Sadly, Anderson faced the loss of his wife, Shirley, leaving a void in his life. However, life took an unexpected yet beautiful turn when he found love with Joan Elizabeth Parsons. Joan became Ed's partner, sharing 34 years of companionship.</p>
+                    <p>Anderson's role as a father extended beyond providing love and guidance to his sons. He also had the joy of being a grandfather to five grandchildren.</p>
+                    <p>On 9 February 2012, Anderson passed away at the age of 83 due to an incurable stomach cancer. His departure marked the end of an era, leaving behind a legacy of financial wisdom, a testament to his skill as an investor, and, most importantly, a legacy of love and devotion to his family.</p>
+
+                    <h3>Education</h3>
+                    <p>Anderson graduated from the University of Chicago, where he served as President of the Alumni Association and received the University's Alumni Citation Award in 1992.</p>
+                    <p>He received his doctorate in chemistry from Washington State University in 1952 and worked for the Atomic Energy Commission as a physicist prior to his investment career.</p>
+
+                    <h3>Work History</h3>
+                    <p>Anderson initially worked as an analyst for Charlie Munger, when the latter was still running his own investment partnership, Wheeler, Munger, based in Los Angeles, immediately prior to joining Tweedy, Browne.</p>
+                    <p>Tweedy, Browne was a brokerage firm which originally opened its doors during the 1920s as a market maker in small, thinly traded stocks.</p>
+                    <p>In 1959, the partners of the brokerage firm then known as Tweedy, Browne & Knapp (of whom Warren Buffett of Berkshire Hathaway was a client) pooled their capital into a partnership investment vehicle. In 1968, the firm accepted its first outside money management clients as limited partners of an investment firm.</p>
+                    <p>In 1968, Anderson joined fellow "superinvestor", Tom Knapp, and some other investors as a partner, after which the investment firm became known as Tweedy, Browne Partners.</p>
+                    <p>Anderson would spend his working days tracking down every single stock in the National Stock Summary and Polk's Bank Directory, which were like the yellow pages for stocks, and would then look for value picks that provided a good margin of safety.</p>
+                    <p>He was a partner of the firm until 1983, when he retired to pursue charitable and intellectual interests, including behavioural science and education.</p>
+                    <p>He was an original member of "The Graham Group" with Warren Buffett. He took great pleasure in the group's annual gatherings and learning from each of his fellow investors.</p>
+
+                    <h3>Investment Performance</h3>
+                    <p>Throughout the years since 1968, Tweedy, Browne consistently delivered impressive annual returns, outperforming the market and solidifying its reputation as a beacon of value investing.</p>
+                    <p>From 1968 to 1983, Tweedy, Browne generated an impressive 20% annual compounded rate of return overall over the course of 15 years, with limited partners receiving 16% annual compounded rate of return. This is to be contrasted with Standard & Poor's (S&P 500) which generated a mere 7% annual compounded rate of return over the same period.</p>
+                    <p>Among the myriad investments that Tweedy, Browne undertook, several standout as exemplars of their keen eye for value and long-term vision. One notable investment was their stake in British American Tobacco (BAT), a multinational tobacco company. Tweedy, Browne recognised BAT's solid fundamentals, global market presence, and attractive valuation, making a substantial investment that yielded handsome returns over time.</p>
+                    <p>Another noteworthy investment was their foray into the world of Japanese equities, particularly during the 1980s and 1990s. At a time when many investors were skeptical of the Japanese market's prospects, Tweedy, Browne saw opportunity in undervalued Japanese companies with strong balance sheets and competitive advantages. This contrarian approach paid off handsomely as Japan's economy rebounded, and the investments flourished.</p>
+
+                    <h3>Investment Style, Philosophy & Principles</h3>
+                    <h4>Investment Style</h4>
+                    <p>Anderson's investment style can be characterised as deeply rooted in the principles of value investing. He was a firm believer in diligently analysing companies to identify those that were undervalued by the market. This contrarian approach often led him to uncover hidden gems that others might have overlooked. His methodical and patient approach to investing stood in stark contrast to the frenetic pace of the market, emphasising the importance of long-term value creation over short-term gains.</p>
+
+                    <h4>Investment Philosophy</h4>
+                    <p>At the core of Anderson's investment philosophy was the belief that markets were not always efficient and that opportunities existed to exploit mispricings. He viewed investing as owning a piece of a business rather than merely trading stocks, focusing on the intrinsic value of companies. Anderson was a disciple of the teachings of Benjamin Graham and Warren Buffett, who emphasised the importance of margin of safety and a marginally undervalued stock.</p>
+
+                    <h4>Investment Principles</h4>
+                    <p>Anderson's investment principles were grounded in fundamental analysis and a deep understanding of company financials. He advocated for thorough research into a company's balance sheet, income statement, and cash flow statement. He looked for companies with strong competitive advantages, sustainable business models, and competent management teams.</p>
+                    <p>Recommended Asset Allocations</p>
+                    <p>For asset allocation, Anderson favoured a diversified approach. He believed in spreading risk across various asset classes, including stocks, bonds, and occasionally alternative investments. However, his focus remained on equities, particularly undervalued stocks that had the potential for long-term appreciation.</p>
+                    <p>Stock Selection Criteria</p>
+                    <p>Anderson's stock selection criteria revolved around several key factors. He sought out companies with a history of consistent earnings growth, a strong balance sheet with manageable debt levels, and a track record of generating free cash flow. He also favored companies with a competitive moat, a sustainable business model, and shareholder-friendly management.</p>
+                    <p>Valuation Methodology</p>
+                    <p>When valuing stocks, Anderson employed a conservative approach. He looked for companies trading below their intrinsic value, often using metrics such as price-to-earnings ratio, price-to-book ratio, and discounted cash flow analysis. His valuation methodology emphasised the importance of buying stocks at a significant discount to their true worth, ensuring a margin of safety for investors.</p>
+                    <p>Criteria for Selling Stock</p>
+                    <p>Anderson would typically sell if a company's fundamentals deteriorated, its competitive position weakened, or if the stock reached his estimated intrinsic value. He believed in letting winners run but also in cutting losses short, maintaining a disciplined approach to portfolio management.</p>
+                    <p>Investment Mistakes</p>
+                    <p>Despite his remarkable success, Anderson, like any seasoned investor, made mistakes. One of his notable errors was holding onto a few underperforming stocks for too long, sometimes overlooking warning signs of fundamental deterioration.</p>
+
+                    <h3>Selected Quotes</h3>
+                    <p>1. "Investing is owning a piece of a business, not just a piece of paper. Focus on the underlying value of the company, and the market's short-term fluctuations become mere noise."</p>
+                    <p>2. "The key to successful investing lies in buying when others are fearful and selling when others are greedy. Emotions often cloud judgment; discipline is the antidote."</p>
+                    <p>3. "A margin of safety is the bedrock of value investing. Buying stocks at a discount to their intrinsic value provides a cushion against market volatility and unforeseen risks."</p>
+                    <p>4. "Patience is a virtue in investing. Rome wasn't built in a day, and neither is a well-performing portfolio. Let time be your ally."</p>
+                    <p>5. "Diversification is essential, but it shouldn't dilute your best ideas. Concentrate your investments in your highest-conviction picks for maximum impact."</p>
+                    <p>6. "The stock market is a voting machine in the short term but a weighing machine in the long term. Quality companies will ultimately reflect their true worth."</p>
+                    <p>7. "Successful investing requires a contrarian mindset. Don't follow the herd; dare to be different and seek out opportunities where others fear to tread."</p>
+                    <p>8. "Investing without research is like sailing without a compass. Thoroughly understand the companies you invest in, from their financials to their competitive advantages."</p>
+                    <p>9. "Value investing is about buying dollars for fifty cents. Look for undervalued companies with strong fundamentals and patient management."</p>
+                    <p>10. "Remember, the stock market is there to serve you, not to instruct you. Stay disciplined, stick to your investment thesis, and tune out the noise."</p>
+
+                    <h3>Literature</h3>
+                    <h4>Books by Ed Anderson</h4>
+                    <p>Anderson has not authored any books.</p>
+
+                    <h4>Articles by Ed Anderson</h4>
+                    <p>None found.</p>
+
+                    <h4>Books about Ed Anderson</h4>
+                    <p>1. "The Value Investors: Lessons from the World's Top Fund Managers" (mentioned in Chapter 5 "On the Shoulders of Value Giants") by Ronald Chan</p>
+                    <p>2. "Forbes Greatest Investing Stories" (mentioned in Chapter 1 "Value Avatar: Benjamin Graham") by Richard Phalon</p>
+
+                    <h4>Articles about Ed Anderson</h4>
+                    <p>1. "The Superinvestors of Graham-and-Doddsville" by Warren Buffett (1984)</p>
+                    <p>2. "The Superinvestors of Graham-and-Doddsville: Tweedy, Browne" (23 March 2015)</p>
+
+                    <h4>Books Recommended by Ed Anderson</h4>
+                    <p>1. "The Intelligent Investor" by Benjamin Graham (1949). See also Revised Edition and Third Edition.</p>
+                    <p>Benjamin Graham's book is a classic guide to value investing, emphasising the importance of thorough analysis and a margin of safety when buying stocks. Graham's principles, including the concept of Mr Market and defensive investing, remain essential reading for investors seeking long-term success in the stock market.</p>
+                    <p>2. "Security Analysis" by Benjamin Graham and David Dodd, 1934</p>
+                    <p>This seminal work laid the foundation for value investing principles. It emphasised the importance of thorough analysis, intrinsic value, and margin of safety.</p>
+                    <ul>
+                        <li>Security Analysis (First edition, 1934) – co-authored with David Dodd</li>
+                        <li>Security Analysis (Second edition, 1940)– co-authored with David Dodd</li>
+                        <li>Security Analysis (Third edition, 1951) – co-authored with David Dodd</li>
+                        <li>Security Analysis (Fourth edition, 1962) – co-authored with David Dodd and Sidney Cottle</li>
+                        <li>Security Analysis (Fifth edition, 1988) – authored by Sidney Cottle, Roger Murray and Frank Block</li>
+                        <li>Security Analysis (Sixth edition, 2008) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
+                        <li>Security Analysis (Seventh edition, 2023)– co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett</li>
+                    </ul>
+                    <p>Anderson often cited this classic work by Benjamin Graham as essential reading for value investors. Graham's timeless principles of value investing, including the concept of margin of safety, influenced Anderson's own investment philosophy.</p>
+                    <p>3. "Common Stocks and Uncommon Profits" by Philip Fisher (1958)</p>
+                    <p>Anderson recommended this book by Philip Fisher for investors seeking to understand the importance of qualitative analysis in stock selection. Fisher's emphasis on evaluating a company's growth potential and management quality resonated with Anderson's investment approach.</p>
+                    <p>4. "Margin of Safety: Risk-Averse Value Investing Strategies for the Thoughtful Investor" by Seth Klarman (1991)</p>
+                    <p>Anderson recommended Klarman's book as a comprehensive guide to value investing. Klarman's emphasis on risk management, margin of safety, and contrarian thinking resonated strongly with Anderson's own investment principles.</p>
+                    <p>5. "One Up On Wall Street: How to Use What You Already Know to Make Money in the Market" by Peter Lynch (1989)</p>
+                    <p>Anderson appreciated Lynch's practical approach to investing and often recommended this book to novice investors. Lynch's insights on spotting investment opportunities in everyday life and the importance of staying informed resonated with Anderson's philosophy of staying vigilant in the market.</p>
+                    <p>6. "The Essays of Warren Buffett" by Warren Buffett and Lawrence Cunningham (Published in 1997)</p>
+                    <p>Anderson often referred to this collection of Buffett's letters and essays as a treasure trove of wisdom for investors. Buffett's straightforward, common-sense approach to investing, as showcased in these writings, aligned closely with Anderson's own beliefs.</p>
+
+                    <h3>Other Trivia</h3>
+                    <h4>Hobbies:</h4>
+                    <p>Mentorship: Anderson loved to educate others on his favourite subjects, and enthusiastically passed on his wisdom and experience with respect to security analysis, value investing and special situations to up-and-coming security analysts.</p>
+                    <h4>Charitable Work:</h4>
+                    <p>Education Scholarships: Anderson was a staunch supporter of education and believed in empowering the next generation. He established scholarship programs to assist deserving students in pursuing higher education, particularly in the fields of finance and ABOUT.</p>
+                    <p>Healthcare Initiatives: Anderson recognized the importance of accessible healthcare for all. He donated to hospitals and medical research institutions, aiming to improve healthcare facilities and advance medical science.</p>
+                    <h4>Personal Interests</h4>
+                    <p>Anderson was active in the field of behavior analysis, human sexuality and childhood education and wanted to be remembered for disseminating the research-based therapies of Dr O Ivar Lovaas for autistic children.</p>
+                    <p>He was also a co-founder of Headsprout, Inc. an education technology company that has taught hundreds of thousands of children to read and was acquired by Newell/Rubbermaid in 2011.</p>
+                    <h4>Other Trivia and Little-Known Facts</h4>
+                    <p>None found.</p>
+                    <h4>Websites Dedicated to Ed Anderson</h4>
+                    <p>Value Walk: https://www.valuewalk.com/tom-knapp-tweedy-browne/</p>
+
+                    <p><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>
+                `
+            },
+
+            'rick-guerin': {
+                title: 'Rick Guerin',
+                content: `
+                    <h2>Rick Guerin: The Forgotten Superinvestor</h2>
+
+                    <h3>Introduction</h3>
+                    <p>Rick Guerin, a value investor and former business partner of Warren Buffett, was known for his keen eye for undervalued assets and his successful investments in various companies. He gained recognition as one of Buffett's superinvestors, with remarkable success stories that solidified his legacy in the world of finance.</p>
+
+                    <h3>Personal Life</h3>
+                    <p>John Patrick "Rick" Guerin was born in Los Angeles in 1929 and grew up during the Great Depression. He had an incredible work ethic and began working at the age of six by delivering ice and newspapers.</p>
+                    <p>He had grown up with a "divorced father" and a "drunk mother", so he raised himself on the streets. Munger described him as a "rough-and-tumble guy who was scrambling to better himself."</p>
+                    <p>He graduated from Loyola High School in Los Angeles at 16 and lied about his age to join the Navy. He was deployed to the South Pacific at the end of World War II but saw no action.</p>
+                    <p>His friend, Charlie Munger, described Guerin as "a self-made man" who was "ferociously smart". He continued: "When Rick took the Navy's intelligence test, he finished early with an off-the-chart score. That's unheard of."</p>
+                    <p>He died on 13 October 2020 at the age of 90. He was survived by his wife Fabienne, and children Camille, Elizabeth, Patrick, Bianca, Michelle, Maggie and Riley.</p>
+
+                    <h3>Education</h3>
+                    <p>In the military, Guerin was a code breaker before training as a fighter pilot.</p>
+                    <p>Despite the GI Bill and side jobs in construction, modelling and ski patrol, Guerin could not afford to attend medical school, as was his dream. After graduating from UCLA with a math major, he accepted a job with IBM as a salesman. He then decided to pursue a career in money management despite having a non-business background.</p>
+
+                    <h3>Work History</h3>
+                    <p>Guerin became a stockbroker at a couple of small firms that peddled third-class stocks because they carried the highest profit, or "spread," for the firm.</p>
+                    <p>"In 1961", Guerin recalls, "a friend called and said he was going to buy into a downtown (LA) trading firm because someone [Jack Wheeler of Wheeler, Cruttenden & Company] was selling out". He decided that he too would join in the investment by buying Wheeler's 50% share using the only $40,000 he had. But when he arrived at the meeting place to settle the deal, he met Charlie Munger. The two of them started to talk. "I was just going to this meeting for the closing. I was going to deliver a check and take a stock certificate. We were joking with Munger, when this light went on in my brain. 'I'm on the wrong side of this transaction.'" </p>
+                    <p>Guerin eventually lost his entire investment in the partnership. However, as Munger later noted, "By then, he'd learned a lot and was doing very well." He went on emulate Buffett and Munger by establishing his own investment firm, Pacific Partners Ltd.</p>
+                    <p>Buffett explained: "With some, the idea of buying dollar bills for forty cents takes, and with some it doesn't take. It's like an inoculation. It's extraordinary to me. If it doesn't grab them right away, I find that you can talk to them for years and show them records—you can do everything—and it just doesn't make any difference. I've never seen anyone who became a convert over a ten-year period with this approach. It’s always instant recognition or nothing. Whatever it is, I’ve never understood it. But with a fellow like Rick Guerin – no business background in terms of studying it, but he saw it like that, he understood what it’s about, and he was applying it five minutes later. And Rick was smart enough to know that you should get a great teacher, which is what I was lucky enough to do with Ben Graham."</p>
+                    <p>Guerin soon joined with Charlie Munger and Warren Buffett in the ownership of See's Candy and other public companies.</p>
+                    <p>He spearheaded one of Berkshire's greatest investments: the acquisition of Blue Chip Stamps. He had noticed there was a difference between the volume of stamps purchased and redeemed (called the "float"). And the beauty of this was that only 50% of stamps ever got redeemed. So, after buying 60% of the company, they used the "float" of Blue Chip Stamps to buy See's Candy with $25 million. Then they bought Wesco Financial for $25 million and the Buffalo Evening Post.</p>
+                    <p>See's Candy alone then went on to generate over $2 billion of income for Berkshire Hathaway to-date, and Wesco Financial now has a market capitalisation of around of $7 billion.</p>
+                    <p>Guerin also served as Chairman of the Pacific Coast Stock Exchange, chairman of Pacific Southwest Airlines and as Vice Chairman of the Daily Journal Corporation.</p>
+
+                    <h3>Investment Performance</h3>
+                    <p>In his article on "The Superinvestor of Graham-and-Doddsville", Warren Buffett noted that Pacific Partners Ltd generated an overall partnership return of 32.9% during the 19-year period between 1965 and 1983, with limited partners earning 23.6% per annum. This is in stark contrast to the Standard & Poor's (S&P 500) 7.8% annual compounded rate of return.</p>
+                    <p>However, there was a market drop in 1973 of 42%. Guerin followed up the drop in 1973 with another 34% drop in 1974. That would be a cumulative drop of almost 62% in two years. During that two-year period, the S&P 500 did drop more than 37%, but the 62% drop in Guerin's fund was almost catastrophic. The significant drops were due to his excessive use of leverage (discussed further below). While he subsequently recovered from the losses, many partners lost faith in him, just as Buffett and Munger did.</p>
+
+                    <h3>Investment Style, Philosophy & Principles</h3>
+                    <h4>Investment Style</h4>
+                    <p>Guerin's investment style was deeply rooted in the principles of value investing—a philosophy championed by investing luminaries such as Benjamin Graham and Warren Buffett. Central to Guerin's approach was the belief in seeking out undervalued assets with the potential for substantial long-term growth. He was renowned for his patient and disciplined approach to investing, focusing on the intrinsic value of a company rather than short-term market fluctuations.</p>
+
+                    <h4>Investment Philosophy</h4>
+                    <p>At the core of Guerin's investment philosophy was the principle of buying low and holding for the long term. He believed in investing in companies with strong fundamentals, robust management teams, and competitive advantages within their industries. Guerin emphasised the importance of thorough research and analysis, ensuring a deep understanding of a company's business model, market position, and growth prospects before making an investment.</p>
+
+                    <h4>Investment Principles</h4>
+                    <p>Guerin's investment principles revolved around a conservative approach to risk management. He advocated for a diversified portfolio, spreading investments across various industries and asset classes to mitigate risk. While he understood the potential rewards of taking calculated risks, he also emphasized the importance of preserving capital and protecting against downside losses.</p>
+                    <p>Asset Allocations</p>
+                    <p>Guerin often recommended a balanced approach tailored to individual risk tolerance and investment goals. He suggested allocating a significant portion of the portfolio to high-quality, undervalued stocks with strong growth potential. Additionally, he advised including a portion of the portfolio in fixed-income securities such as bonds to provide stability and income.</p>
+                    <p>Stock Selection</p>
+                    <p>Guerin had a rigorous set of criteria that he adhered to diligently. He looked for companies with solid earnings growth potential, low debt levels, consistent cash flow, and a history of shareholder-friendly management. He also sought out companies trading below their intrinsic value, indicating a margin of safety for investors.</p>
+                    <p>Valuation Methodology</p>
+                    <p>Guerin's valuation methodology for assessing stock involved a thorough analysis of a company's financial statements, earnings projections, and industry comparables. He utilised various valuation metrics such as price-to-earnings (P/E) ratio, price-to-book (P/B) ratio, and discounted cash flow (DCF) analysis to determine a stock's intrinsic value.</p>
+                    <p>Selling Stocks</p>
+                    <p>Guerin was known for his patience and conviction in holding onto quality investments. However, he would consider selling a stock if the underlying fundamentals of the company deteriorated, the stock became significantly overvalued, or if better investment opportunities arose elsewhere. He believed in letting winners run but also recognized the importance of cutting losses when necessary.</p>
+                    <p>Investment Mistake</p>
+                    <p>Despite his legendary success, Guerin made a monumental error in using excessive leverage to enhance his fund's investment performance, which eventually caused him to incur significant losses from which he was struggled to recover.</p>
+                    <p>Warren Buffet explained: "Charlie and I always knew that [we] would become incredibly wealthy. We were not in a hurry to get wealthy; we knew it would happen. Rick was just as smart as us, but he was in a hurry. And so actually what happened - some of this is public - was that in the '73, '74 downturn, Rick was levered with margin loans. And the stock market went down almost 70% in those two years, and so he got margin calls out the yin-yang, and he sold his Berkshire [Hathaway] stock to me. I bought Rick's Berkshire stock at under $40 apiece, and so Rick was forced to sell shares at ... $40 apiece because he was levered.</p>
+
+                    <h3>Selected Quotes</h3>
+                    <p>None found.</p>
+
+                    <h3>Literature</h3>
+                    <h4>Books by Rick Guerin</h4>
+                    <p>Guerin did not author any books.</p>
+
+                    <h4>Articles by Rick Guerin</h4>
+                    <p>None found.</p>
+
+                    <h4>Books about Rick Guerin</h4>
+                    <p>1. "The Snowball: Warren Buffett and the Business of Life" by Alice Schroeder (2008) – Even though the book is about Warren Buffett, Rick Guerin is mentioned throughout this book.</p>
+                    <p>2. "Poor Charlie's Almanack: The Wit and Wisdom of Charles T Munger" by Charlie Munger – Even though the book is about Charlie Munger, there are references to Guerin in this book.</p>
+
+                    <h4>Articles about Rick Guerin</h4>
+                    <p>1. "The Superinvestors of Graham-and-Doddsville" by Warren Buffett (1984)</p>
+                    <p>2. "Nobody Talks About Rick Anymore?" by Justin Vossen (26 May 2021)</p>
+                    <p>3. "Rick Guerin: The forgotten genius" by The Short Gear (20 April 2023)</p>
+                    <p>4. "How Warren Buffet's Long Forgotten Third Business Partner Lost Absolutely Everything – 3 Things Regular People Are Doing to Lose All Their Money in Investments (And What You Should Be Doing Instead)" by Anders Skagerberg (accessed 2 April 2024)</p>
+                    <p>5. "The Superinvestors of Graham-and-Doddsville: Rick Guerin" (23 March 2015)</p>
+                    <p>6. "JP 'Rick' Guerin Jr, 1929 – 2020: Self-made man succeeded with grit and intelligence", obituary (accessed on 2 April 2024)</p>
+
+                    <h4>Books Recommended by Rick Guerin</h4>
+                    <p>1. "The Intelligent Investor" by Benjamin Graham (1949). See also Revised Edition and Third Edition.</p>
+                    <p>Benjamin Graham's book is a classic guide to value investing, emphasising the importance of thorough analysis and a margin of safety when buying stocks. Graham's principles, including the concept of Mr Market and defensive investing, remain essential reading for investors seeking long-term success in the stock market.</p>
+                    <p>2. "Security Analysis" by Benjamin Graham and David Dodd, 1934</p>
+                    <p>This seminal work laid the foundation for value investing principles. It emphasised the importance of thorough analysis, intrinsic value, and margin of safety.</p>
+                    <ul>
+                        <li>Security Analysis (First edition, 1934) – co-authored with David Dodd</li>
+                        <li>Security Analysis (Second edition, 1940)– co-authored with David Dodd</li>
+                        <li>Security Analysis (Third edition, 1951) – co-authored with David Dodd</li>
+                        <li>Security Analysis (Fourth edition, 1962) – co-authored with David Dodd and Sidney Cottle</li>
+                        <li>Security Analysis (Fifth edition, 1988) – authored by Sidney Cottle, Roger Murray and Frank Block</li>
+                        <li>Security Analysis (Sixth edition, 2008) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
+                        <li>Security Analysis (Seventh edition, 2023) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett</li>
+                    </ul>
+                    <p>Graham's timeless principles of value investing, including the concept of margin of safety, influenced Guerin's own investment philosophy.</p>
+
+                    <h3>Other Trivia</h3>
+                    <h4>Charitable Work</h4>
+                    <p>1. He spent much of the last two decades serving as a reserve officer for the Los Angeles police and sheriff's departments. He volunteered as much as 90 hours a month even though the reserve program only asked for a commitment of 8 hours.</p>
+                    <p>2. He championed a program for helping the police better deal with people suffering from mental health issues. He paid for officers to receive special training. He bought the bicycles for the LAPD to start a bicycle patrol unit and therapy dogs for first responders.</p>
+                    <p>3. He paid for mentally ill children in detention to receive Christmas gifts each year and threw an annual Memorial Day barbecue for veterans suffering mental health issues.</p>
+                    <p>4. He started a program called Boots to Suits to provide professional clothing for veterans entering the civilian job</p>
+                    <p>5. He was passionate about Marlborough School in Hancock Park, enrolling three of his daughters in the middle and high school, where he served as a trustee for more than 30 years.</p>
+                    <h4>Other Little-Known Trivia</h4>
+                    <p>1. He was good friends with the famous Hollywood actor, Charlton Heston, and even brought him to the exchange on one occasion for a tour.</p>
+                    <p>2. He helped found Tapestry Films, which produced "Point Break," "Pay it Forward," and "Wedding Crashers."</p>
+                    <p>3. He shared his passions for skiing, horses, cycling, tennis, running, scuba diving and an all-around love for the outdoors, with his large family and was deeply engaged in the community.</p>
+                    <p>"He did what he liked doing," Munger said. "If he liked the police, he did the police. If he liked jumping out of airplanes and gliding in a parachute, he did that. If he liked skiing off mountains, he did that. He did what he wanted to do."</p>
+                    <h4>Websites Dedicated to Rick Guerin</h4>
+                    <p>Value Walk: https://www.valuewalk.com/rick-guerin/</p>
+
+                    <p><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>
+                `
+            },
+
+            'tom-knapp': {
+                title: 'Tom Knapp',
+                content: `
+                    <h2>Tom Knapp: A Value Investing Maestro</h2>
+
+                    <h3>Introduction</h3>
+                    <p>Tom Knapp is a distinguished value investor known for his meticulous research and disciplined approach to investing. With a keen eye for undervalued assets and a commitment to long-term growth, Knapp has established a reputation for generating impressive returns in the world of finance.</p>
+
+                    <h3>Personal Life</h3>
+                    <p>Thomas ("Tom") Paton Knapp, II, was born in around 1921 at Blue Point, New York in the United States. He lived in Vero Beach for 33 years, coming from Remsenburg, New York.</p>
+                    <p>He was married to Virginia Knapp for 38 years. He had four sons, Gideon Knapp, Jonathan Knapp, Shepard Knapp and David Schmitt, and three daughters, Jane Whelhan, Jessie Knapp Mendelsohn and Margie Knapp.</p>
+                    <p>He also had stepsons Russell Weisenbacher and Justin Weisenbacher as well as many grandchildren and many great-grandchildren.</p>
+                    <p>He died on 24 July 2011 at VNA Hospice House, Vero Beach. He was interred at John's Island Cemetery, Vero Beach, Florida surrounded by his immediate family.</p>
+
+                    <h3>Education</h3>
+                    <p>Knapp initially completed an undergraduate degree (majoring in chemistry) at Princeton University before WWII.</p>
+                    <p>During WWII, Knapp served as a Lieutenant in the US Navy.</p>
+                    <p>After the war, he was a "beach bum" (to use Warren Buffett's words) for a while. Then one day he read that David Dodd was giving a night lecture in investments at the Columbia Business School, which he decided to attend on a non-credit basis. He became so interested in the subject that he decided to enrol at the Columbia Business School where he got a Master of Business Administration (MBA) degree.</p>
+                    <p>Afterwards, he decided to take Dodd's course again and then took Benjamin Graham's renowned course on security analysis. He was, by then, completely hooked on value investing.</p>
+
+                    <h3>Work History</h3>
+                    <p>Knapp started his investing career working as a security analyst at Van Cleef, Jordan & Wood, an investment advisory firm located in the same building as Graham-Newman Corporation.</p>
+                    <p>He then commenced working for Graham-Newman Corporation alongside other investment luminaries such as Benjamin Graham himself, a young Warren Buffett and a young Walter Schloss, each of whom would become famous value investors.</p>
+                    <p>During the late 1950s, following Graham's retirement in 1956, Knapp came to Tweedy Browne (then a brokerage firm) with an idea that altered the firm's business model for good. He observed that the firm was sitting on some marvellous assets and had an excellent network to gather cheap stocks. So, instead of being a pure broker, he proposed that the firm should gather some capital and start investing. At the time, the firm did not have any theoretical investment framework to begin with, so Knapp brought his value investing expertise to the firm.</p>
+                    <p>In 1958, Knapp and Ed Anderson, also a Graham disciple, along with one or two other fellows of similar persuasion, restructured the firm and renamed it Tweedy, Browne & Knapp. The firm accepted its first outside money management clients as limited partners of this vehicle from this point onwards.</p>
+                    <p>During the 1970s, the firm would later come to be known simply as Tweedy, Browne. In 1975, Tweedy, Browne registered as an investment advisor and began managing separate accounts for individuals and institutions. As of 30 June 2016, the firm managed approximately $18 billion.</p>
+
+                    <h3>Investment Performance</h3>
+                    <p>In 1984, Warren Buffett published his famous article, "The Superinvestors of Graham-and-Doddsville" in the issue of Hermes, Columbia Business School magazine. In it, Buffett set out the investment performances of various value investors, including Knapp (of Tweedy, Browne & Knapp (TBK)). TBK's performance during Knapp's reign between 1968 and 1983 was noted to be an average annual compounded return of 20% (or 16% to limited partners).</p>
+                    <p>From the early 1980s to the late 2000s, Tweedy, Browne's investment strategies yielded average annual returns ranging from 15% to 20%, outperforming broader market indices.</p>
+                    <p>One of the hallmark achievements of Knapp's investment career was his adept management of the Tweedy, Browne Global Value Fund. Under his leadership, the fund consistently outpaced its benchmarks, delivering solid returns to investors. Knapp's keen eye for undervalued companies, coupled with a patient long-term approach, enabled the fund to weather market volatility and generate consistent growth. The Global Value Fund had $8.7 billion in assets under management as at 30 September 2014.</p>
+                    <p>Among Knapp's most notable investments was his stake in global consumer goods giant, The Coca-Cola Company. Recognising Coca-Cola's enduring brand strength and global market dominance, Knapp initiated a position in the company in the early 1990s. This investment proved to be highly lucrative, as Coca-Cola's stock price steadily climbed over the years, delivering substantial returns to Tweedy, Browne investors.</p>
+                    <p>Another standout investment in Knapp's portfolio was his position in Berkshire Hathaway, the conglomerate led by Warren Buffett. Knapp's early recognition of Berkshire Hathaway's exceptional management, diverse business portfolio, and strong financials resulted in significant gains for Tweedy, Browne clients.</p>
+
+                    <h3>Investment Style, Philosophy & Principles</h3>
+                    <h4>Investment Style & Principles</h4>
+                    <p>Knapp's investment style was rooted in the principles of value investing, a philosophy he embraced wholeheartedly throughout his career. He believed in purchasing shares of fundamentally strong companies trading below their intrinsic value, with a focus on long-term growth rather than short-term market fluctuations.</p>
+                    <p>Tweedy, Browne: "The investment management principles practiced by Tweedy, Browne derive from the work of the late Benjamin Graham, professor of investments at Columbia Business School and author of "Security Analysis" and "The Intelligent Investor"."</p>
+
+                    <h4>Investment Philosophy</h4>
+                    <p>Knapp's investment philosophy centred on the concept of margin of safety, emphasising the importance of buying assets at a significant discount to their true worth. He sought out companies with durable competitive advantages, strong cash flows, and solid management teams, viewing them as the bedrock of a successful investment portfolio.</p>
+
+                    <h4>Asset Allocation</h4>
+                    <p>Knapp recommended a diversified approach, spreading investments across various sectors and geographies to mitigate risk. He favoured a balanced mix of equities, fixed-income securities, and occasionally, alternative investments to provide stability and capital preservation.</p>
+                    <p>Tweedy, Browne: "To minimise errors in analysis or  which could adversely affect intrinsic values, [Tweedy, Browne] adheres to a policy of broad diversification within individual portfolios. No one issue generally accounts for more than 3% to 5% at cost of portfolio assets, no one industry group generally accounts for more than 15% to 20% of portfolio value, and no one country (except the US) generally accounts for ore than approximately 20% of portfolio value."</p>
+
+                    <h4>Stock Selection Criteria</h4>
+                    <p>Tom Knapp followed a rigorous set of criteria. He looked for companies with strong balance sheets, consistent earnings growth, and a history of shareholder-friendly practices such as dividends and share buybacks. Knapp also emphasised qualitative factors such as industry leadership, brand strength, and competitive positioning.</p>
+                    <p>Tweedy, Browne: "Investments are made at a significant discount to intrinsic value, which Graham called an investor's "margin of safety".</p>
+                    <p>"At Tweedy, Browne, the stock selection process is largely about measuring and confirming both quantitative and qualitative measures of value and includes a thorough analysis of financial statements, valuation modelling, competitive analysis, direct communication with company and competitors, and a review of available street research. Purchase and sale decisions are then made by a consensus of the firm's Investment Committee.</p>
+                    <p>Most investments in Tweedy, Browne portfolios have one or more of the following investment characteristics: low share price in relation to book value, low price-to-earnings ratio, low price-to-cash-flow ratio, above-average dividend yield, low price-to-sales ratio as compared to other companies in the same industry, low corporate leverage, low share price, purchase of a company's own stock by the company's officers and directors, company share repurchases, and a share price that has declined significantly from its previous high. Academic research and studies have indicated a historical statistical correlation between each of these investment characteristics and above-average investment rates of return over long term measurement periods."</p>
+
+                    <h4>Valuation Methodology</h4>
+                    <p>Knapp's valuation methodology seeks to appraise the worth of a company, referred to by Benjamin Graham as its intrinsic value. This involved a thorough analysis of a company's financial statements, cash flow projections, and comparison with industry peers. He utilised metrics such as price-to-earnings (P/E) ratio, price-to-book (P/B) ratio, and discounted cash flow (DCF) analysis to determine the intrinsic value of a stock.</p>
+                    <p>Tweedy, Browne: "In determining intrinsic value, Tweedy, Browne's research focuses on fundamental principles of balance sheet and income statement analysis, and a knowledge and understanding of actual corporate mergers, acquisitions, and liquidations. Utilising a variety of databases, they screen and rank more than 20,000 publicly traded corporation worldwide, and research and select for investment those issues selling at substantial discounts to their estimates of intrinsic value."</p>
+
+                    <h4>Selling Stocks</h4>
+                    <p>Knapp adhered to a disciplined approach, typically selling when a company's fundamentals deteriorated, its valuation became significantly overpriced, or better investment opportunities emerged elsewhere. He believed in letting winners run but was quick to cut losses if a thesis no longer held true.</p>
+                    <p>Tweedy Browne: "Investments are generally sold as the market price approaches intrinsic value, with the proceeds reinvested in other situations offering a greater discount to intrinsic value."</p>
+
+                    <h4>Investment Mistakes</h4>
+                    <p>While Knapp's investment track record was mostly stellar, he was not immune to mistakes. During the late 1950s, Knapp and Buffett once tried to corner the market in 1954 Blue Eagle four-cent airmail stamps for postcards, believing that the stamp might become a precious collectible someday. He said: "We got in his car. It took all day. We were talking about deals, and I said I had been reading in Linn's Stamp News about a Blue Eagle four-cent stamp that was being taken off the market for a 5-cent Red Eagle stamp." On their way home from an investment seminar, they stopped by numerous post offices to buy the stamps and ended up buying some 400,000 stamps for a $16,000 investment (or about $100,000 USD in today's dollars). They held the stamps for many years but the stamps never did become valuable.</p>
+                    <p>In 1982, some 23 years later, Buffett sold his stamps at a 10% discount under face value to a dealer. Knapp held on to his share of the Blue Eagles stamps, ironically using 4¢ stamps in combination as rates rose, as postage for the rest of his life.</p>
+
+                    <h3>Selected Quotes</h3>
+                    <p>None found.</p>
+
+                    <h3>Literature</h3>
+                    <h4>Books by Tom Knapp</h4>
+                    <p>Knapp did not author any books.</p>
+
+                    <h4>Articles by Tom Knapp</h4>
+                    <p>None found.</p>
+
+                    <h4>Books about Tom Knapp</h4>
+                    <p>1. "The Snowball: Warren Buffett and the Business of Life" by Alice Schroeder (2008) – Even though the book is about Warren Buffett, Knapp is mentioned throughout this book.</p>
+                    <p>2. "Of Permanent Value: The Story of Warren Buffett" by Andrew Kilpatrick (2012) – Even though the book is about Warren Buffett, Knapp is mentioned throughout this book.</p>
+
+                    <h4>Articles about Tom Knapp</h4>
+                    <p>1. "The Superinvestors of Graham-and-Doddsville" by Warren Buffett (1984)</p>
+                    <p>2. "The Superinvestors of Graham-and-Doddsville: Tweedy, Browne" (23 March 2015)</p>
+
+                    <h4>Books Recommended by Tom Knapp</h4>
+                    <p>1. "The Intelligent Investor" by Benjamin Graham (1949). See also Revised Edition and Third Edition.</p>
+                    <p>Benjamin Graham's book is a classic guide to value investing, emphasising the importance of thorough analysis and a margin of safety when buying stocks. Graham's principles, including the concept of Mr Market and defensive investing, remain essential reading for investors seeking long-term success in the stock market.</p>
+                    <p>2. "Security Analysis" by Benjamin Graham and David Dodd, 1934</p>
+                    <p>This seminal work laid the foundation for value investing principles. It emphasised the importance of thorough analysis, intrinsic value, and margin of safety.</p>
+                    <ul>
+                        <li>Security Analysis (First edition, 1934) – co-authored with David Dodd</li>
+                        <li>Security Analysis (Second edition, 1940) – co-authored with David Dodd</li>
+                        <li>Security Analysis (Third edition, 1951) – co-authored with David Dodd</li>
+                        <li>Security Analysis (Fourth edition, 1962) – co-authored with David Dodd and Sidney Cottle</li>
+                        <li>Security Analysis (Fifth edition, 1988) – authored by Sidney Cottle, Roger Murray and Frank Block</li>
+                        <li>Security Analysis (Sixth edition, 2008) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
+                        <li>Security Analysis (Seventh edition, 2023) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett</li>
+                    </ul>
+                    <p>Graham's timeless principles of value investing, including the concept of margin of safety, influenced Knapp's own investment philosophy.</p>
+
+                    <h3>Other Trivia</h3>
+                    <p>1. Knapp was a prankster at Graham-Newman Corporation. He researched stocks and spent his days plotting practical jokes on his colleagues when he wasn't orchestrating trades.</p>
+                    <p>2. Knapp, who was 10 years to the day older than Buffett, may well be Berkshire Hathaway's oldest shareholder. "I got my shares when Dempster Mill [a windmill company Buffett owned] was liquidated. I received Berkshire stock, which was one of its holdings. My cost basis was between five and ten dollars a share. I never sold a share and bought some for my family, and they seem happy with it … I don't know of a better company."</p>
+                    <p>3. Knapp was an avid sailor. He was a member of The Sayville Yacht Club, Princeton Club in Manhattan, Quantuck Beach Club Westhampton Beach, New York, Westhampton Yacht Club, John's Island Club, Grand Harbor Club, Moorings Club and Quail River Club.</p>
+                    <p>4. Website dedicated to Knapp: "Tom Knapp and Ed Anderson Resource Page" https://www.valuewalk.com/tom-knapp-tweedy-browne/</p>
+
+                    <p><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>
+                `
+            },
+
+            'stan-perlmeter': {
+                title: 'Stan Perlmeter',
+                content: `
+                    <h2>Stan Perlmeter: The Disciplined Value Investor</h2>
+
+                    <h3>Introduction</h3>
+                    <p>Stan Perlmeter, the esteemed value investor, is renowned for his meticulous investment approach and dedication to preserving capital while seeking long-term growth opportunities. With a track record of consistent returns and a commitment to thorough research, Perlmeter's investment philosophy has inspired many in the world of finance.</p>
+
+                    <h3>Personal Life</h3>
+                    <p>Stanley (Stan) Edward Perlmeter was born on 28 March 1926.</p>
+                    <p>He served in the US Navy in the post-war years, and then settled with his late wife, Janet Shapiro Perlmeter, in Omaha, Nebraska.</p>
+                    <p>A remarkable husband, father, grandfather, great-grandfather, son and brother, Perlmeter lived his life with zest and determination.</p>
+                    <p>He was a man who revelled in life's joys. His love for celebration and adventure knew no bounds, especially when surrounded by cherished friends and family. Whether it was in his hometown or the vibrant streets of Miami, Perlmeter's spirit thrived. In 1980, he and Jan embarked on a new chapter, relocating to Miami—a place that would forever hold a special place in their hearts.</p>
+                    <p>As a father, Perlmeter wore his pride like a badge of honour. Jeff, Michael (alongside his wife, Rosemary), and Rex (partnered with Rachel Hertzman) were his legacy. But his love extended beyond his immediate family. His grandchildren and great-grandchildren adored him.</p>
+                    <p>Life took an unexpected turn when Jan passed away in 2008 after 60 years of marriage. Amidst grief, Stan found solace in an extraordinary blessing—the chance to love again. Ronnie Koenigsberg Perlmeter entered his life, and their hearts aligned. In 2009, they exchanged vows, embarking on a journey of joyous companionship.</p>
+                    <p>Ronnie brought more than just her love into Stan's life. Her children, grandchildren, and great-grandchild became an integral part of their extended family. Together, they basked in the warmth of kinship, weaving new bonds that transcended bloodlines.</p>
+                    <p>He died on 18 December 2018 at the age of 92 in Key Biscayne, Miami-Dade County, Florida, USA. His wife, Ronnie, died 5 years later on 27 February 2023.</p>
+
+                    <h3>Education</h3>
+                    <p>Perlmeter was a liberal arts major at the University of Michigan (1947). He had no formal business education.</p>
+
+                    <h3>Work History</h3>
+                    <p>Perlmeter initially worked for the advertising agency of Bozell & Jacobs, where he rose to the position of Vice President. His office happened to be in the same building as Warren Buffet in Omaha. Buffett (1984) has noted that, in 1965, Perlmeter figured out Buffett had a better business than he did so he left advertising and joined the investment profession. Recognising the superior business model of value investing, he transitioned from the world of ads to the world of money management.</p>
+                    <p>He became the founder and General Partner of Perlmeter Investments Ltd from the time of its founding in 1965 to the day of his death. In the 1984 article, "The Superinvestors of Graham-and-Doddsville, Buffett identified him as a "superinvestor" who followed Benjamin Graham's value investing philosophy.</p>
+
+                    <h3>Investment Performance</h3>
+                    <p>In the 1984 article, Buffett reported that during the period 1 August 1965 to 31 October 1983, Perlmeter Investments Ltd generated an overall investment return of 23% (19% to the limited partners) compared to the Down Jones Industrial Averages (including dividends) of 7%.</p>
+                    <p>From the inception of Perlmeter Investments in 1985, Stan demonstrated a keen ability to identify undervalued securities and capitalise on market inefficiencies. Over the years, the firm achieved an impressive track record of annualised returns, with an average of 12% to 15% for its balanced portfolios.</p>
+
+                    <h3>Investment Style, Philosophy & Principles</h3>
+                    <h4>Investment Style</h4>
+                    <p>Perlmeter's investment style was characterised by a patient and meticulous approach to value investing. He sought to identify undervalued assets trading below their intrinsic worth, often overlooked by the broader market. Stan believed in the power of fundamental analysis, thorough research, and a long-term perspective in building wealth for his clients.</p>
+
+                    <h4>Investment Philosophy</h4>
+                    <p>At the core of Perlmeter's investment philosophy was the principle of buying businesses, not stocks. He viewed stocks as ownership stakes in real businesses, emphasising the importance of understanding the underlying company's fundamentals, competitive advantage and management quality. Stan's philosophy emphasised the preservation of capital, consistent returns, and the creation of enduring wealth.</p>
+                    <p>Buffett (1984): "[E]very time Perlmeter buys a stock it's because he's getting more for his money than he's paying. That's the only thing he's thinking about. He doesn't worry about whether it's January, he doesn't sorry about whether it's Monday, he doesn't worry about whether it's an election year. He simply says, if a business is worth a dollar and I can buy it 40 cents, something good may happen to me. And he does it over and over and over again. He owns many more stocks than I do – and is far less interested in the underlying nature of the business; I don't seem to have very much influence on Walter. That's one of his strengths: no one has much influence on him.</p>
+
+                    <h4>Investment Principles</h4>
+                    <p>Perlmeter adhered to several key investment principles that guided his decision-making process:</p>
+                    <p>1. Margin of Safety: He emphasised the concept of a margin of safety, ensuring that the purchase price of an asset was significantly below its intrinsic value. This provided a cushion against unforeseen market fluctuations and minimised downside risk.</p>
+                    <p>2. Long-Term Orientation: He believed in the benefits of a patient, long-term investment horizon. He was not swayed by short-term market volatility or noise, focusing instead on the underlying business fundamentals.</p>
+                    <p>3. Quality Over Quantity: Perlmeter preferred to invest in a concentrated portfolio of high-quality, well-managed companies with strong competitive advantages and predictable earnings streams. This approach allowed for deep research and a thorough understanding of each investment.</p>
+                    <p>4. Diversification: While he maintained a concentrated portfolio, Perlmeter also recognised the importance of diversification within sectors and industries to mitigate specific risks.</p>
+
+                    <h4>Recommended Asset Allocations</h4>
+                    <p>Perlmeter advocated for a balanced and diversified asset allocation strategy tailored to each client's risk tolerance and investment objectives. He typically recommended the following allocations:</p>
+                    <p>1. Equities: 60% to 80% of the portfolio allocated to equities, with a focus on undervalued, high-quality stocks.</p>
+                    <p>2. Bonds: 20% to 40% of the portfolio allocated to fixed-income securities, providing stability and income.</p>
+                    <p>3. Cash: A smaller allocation to cash reserves, held for liquidity purposes and to capitalise on investment opportunities.</p>
+
+                    <h4>Stock Selection Criteria</h4>
+                    <p>Perlmeter followed a rigorous set of criteria:</p>
+                    <p>1. Strong Fundamentals: Companies with solid financials, stable earnings growth, and a history of profitability.</p>
+                    <p>2. Competitive Advantage: Businesses with sustainable competitive advantages, such as strong brands, intellectual property, or unique market positioning.</p>
+                    <p>3. Quality Management: Companies led by competent and shareholder-friendly management teams with a track record of prudent capital allocation.</p>
+                    <p>4. Undervaluation: Stocks trading at a discount to their intrinsic value, as determined through thorough fundamental analysis.</p>
+
+                    <h4>Valuation Methodology</h4>
+                    <p>Perlmeter employed a blend of valuation methods to assess the fair value of a stock:</p>
+                    <p>1. Discounted Cash Flow (DCF) Analysis: Evaluating the present value of a company's future cash flows, factoring in growth rates and risk.</p>
+                    <p>2. Comparable Company Analysis: Comparing the target company's valuation metrics, such as price-to-earnings (P/E) ratio and price-to-book (P/B) ratio, to industry peers.</p>
+                    <p>3. Asset-Based Valuation: Assessing the value of a company's tangible and intangible assets, such as property, patents, and brands.</p>
+
+                    <h4>Criteria for Selling Stock</h4>
+                    <p>Perlmeter had clear criteria for selling a stock from his portfolio:</p>
+                    <p>1. Overvaluation: If a stock's price exceeded its intrinsic value, indicating that the market had fully priced in future growth prospects.</p>
+                    <p>2. Fundamental Deterioration: If the company's fundamentals, such as earnings quality, competitive position, or management integrity, deteriorated significantly.</p>
+                    <p>3. Better Investment Opportunities: Selling to reallocate capital to more compelling investment opportunities with higher potential returns.</p>
+
+                    <h4>Investment Mistakes</h4>
+                    <p>Perlmeter has acknowledged that no investor is immune to mistakes. One notable mistake was his investment in Bernie Madoff, the mastermind of a significant Ponzi scheme. It is unclear how much money was lost by Perlmeter Investments as there are no public records in relation to the firm's losses.</p>
+
+                    <h3>Selected Quotes</h3>
+                    <p>None found.</p>
+
+                    <h3>Literature</h3>
+                    <h4>Books by Stan Perlmeter</h4>
+                    <p>Perlmeter did not author any books.</p>
+
+                    <h4>Articles by Stan Perlmeter</h4>
+                    <p>None found.</p>
+
+                    <h4>Books about Stan Perlmeter</h4>
+                    <p>None found.</p>
+
+                    <h4>Articles about Stan Perlmeter</h4>
+                    <p>1. "The Superinvestors of Graham-and-Doddsville" by Warren Buffett (1984)</p>
+                    <p>2. "The Superinvestors of Graham-and-Doddsville: Stan Perlmeter" (23 March 2015)</p>
+                    <p>3. "Meet the 9 Fund Managers that Warren Buffett Knew Would Outperform the Market" (3 December 2010)</p>
+                    <p>4. "The 7 Superinvestors Featured in "Superinvestors of Graham & Doddsville" by Warren Buffett (8 December 2022)</p>
+
+                    <h4>Books Recommended by Stan Perlmeter</h4>
+                    <p>1. "The Intelligent Investor" by Benjamin Graham (1949). See also Revised Edition and Third Edition.</p>
+                    <p>Benjamin Graham's book is a classic guide to value investing, emphasising the importance of thorough analysis and a margin of safety when buying stocks. Graham's principles, including the concept of Mr Market and defensive investing, remain essential reading for investors seeking long-term success in the stock market.</p>
+                    <p>2. "Security Analysis" by Benjamin Graham and David Dodd, 1934</p>
+                    <p>This seminal work laid the foundation for value investing principles. It emphasised the importance of thorough analysis, intrinsic value, and margin of safety.</p>
+                    <ul>
+                        <li>Security Analysis (First edition, 1934) – co-authored with David Dodd</li>
+                        <li>Security Analysis (Second edition, 1940) – co-authored with David Dodd</li>
+                        <li>Security Analysis (Third edition, 1951) – co-authored with David Dodd</li>
+                        <li>Security Analysis (Fourth edition, 1962) – co-authored with David Dodd and Sidney Cottle</li>
+                        <li>Security Analysis (Fifth edition, 1988) – authored by Sidney Cottle, Roger Murray and Frank Block</li>
+                        <li>Security Analysis (Sixth edition, 2008) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
+                        <li>Security Analysis (Seventh edition, 2023) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett.</li>
+                    </ul>
+                    <p>Graham's timeless principles of value investing, including the concept of margin of safety, influenced Perlmeter's own investment philosophy.</p>
+
+                    <h3>Other Trivia</h3>
+                    <p>1. Perlmeter was an avid golfer and tennis player, continuing both activities well into his 80s.</p>
+                    <p>2. Webpage dedicated to Stan Perlmeter: "Stan Perlmeter Resource Page" https://www.valuewalk.com/stan-perlmeter/</p>
+
+                    <p><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>
+                `
+            },
+
+            'bill-ruane': {
+                title: 'Bill Ruane',
+                content: `
+                    <h2>Bill Ruane: The Sequoia Fund Pioneer</h2>
+
+                    <h3>Introduction</h3>
+                    <p>William (Bill) Ruane, the legendary value investor and founder of the Sequoia Fund, is celebrated for his exceptional investment acumen and unwavering commitment to value investing principles. With a remarkable track record spanning decades, Ruane's disciplined approach to investing has earned him a place among the most respected figures in finance.</p>
+
+                    <h3>Personal Life</h3>
+                    <p>William J. Ruane Jr. was born on 8 October 1925 in Chicago, Illinois, USA.</p>
+                    <p>Ruane was married to Roberta (Bobbie) Ruane, and together they had three children: William J. Ruane III, Robert Ruane, and Barbara Ruane.</p>
+                    <p>Bill Ruane passed away on 4 October 2005 at the age of 79 in New York City, New York, USA.</p>
+
+                    <h3>Education</h3>
+                    <p>Ruane graduated from Dartmouth College in 1947 with a degree in ABOUT. He then earned his MBA from Harvard Business School in 1949.</p>
+
+                    <h3>Work History</h3>
+                    <p>Ruane began his career at Kidder, Peabody & Co., where he worked as a securities analyst from 1949 to 1956. He then joined the investment firm of Tweedy, Browne & Knapp, where he worked as a partner from 1956 to 1961.</p>
+                    <p>In 1970, Ruane founded the Sequoia Fund, a mutual fund that became one of the most successful investment vehicles in history. He served as the fund's chairman and chief investment officer until his retirement in 2002.</p>
+                    <p>Ruane was also a director of Berkshire Hathaway and served on the board of directors of several other companies, including The Washington Post Company and The New York Times Company.</p>
+
+                    <h3>Investment Performance</h3>
+                    <p>The Sequoia Fund, under Ruane's leadership, achieved extraordinary long-term performance. From its inception in 1970 through Ruane's retirement in 2002, the fund delivered an average annual return of approximately 15.5%, significantly outperforming the S&P 500 Index.</p>
+                    <p>During the period from 1970 to 2002, the Sequoia Fund generated a cumulative return of over 16,000%, compared to approximately 2,500% for the S&P 500.</p>
+
+                    <h3>Investment Style, Philosophy & Principles</h3>
+                    <h4>Investment Style</h4>
+                    <p>Ruane's investment style was deeply rooted in value investing, following the principles established by Benjamin Graham and David Dodd. He focused on identifying undervalued companies with strong fundamentals, patient capital, and a long-term investment horizon.</p>
+
+                    <h4>Investment Philosophy</h4>
+                    <p>Ruane believed in buying wonderful businesses at fair prices and holding them for the long term. He emphasised the importance of understanding the business, its competitive advantages, and its management team. Ruane was known for his disciplined approach, avoiding speculative investments and focusing on companies with sustainable competitive advantages.</p>
+                    <p>Ruane was heavily influenced by Benjamin Graham and Warren Buffett. He was a close friend of Buffett and often sought his advice on investment matters. Ruane's philosophy aligned closely with Buffett's emphasis on buying businesses, not stocks, and investing in companies with strong moats and capable management.</p>
+
+                    <h4>Investment Principles</h4>
+                    <p>Ruane adhered to several key investment principles:</p>
+                    <p>1. Margin of Safety: He insisted on buying securities at a significant discount to their intrinsic value to protect against downside risk.</p>
+                    <p>2. Long-Term Perspective: Ruane believed in holding investments for the long term, allowing compounding to work its magic.</p>
+                    <p>3. Quality Focus: He sought companies with excellent management, strong balance sheets, and sustainable competitive advantages.</p>
+                    <p>4. Patience and Discipline: Ruane was known for his patience in waiting for the right investment opportunities and his discipline in sticking to his principles.</p>
+
+                    <h4>Recommended Asset Allocations</h4>
+                    <p>Ruane advocated for a concentrated portfolio approach, typically holding 10-20 high-quality stocks. He believed in diversification but not over-diversification, allowing investors to deeply understand their holdings.</p>
+
+                    <h4>Stock Selection Criteria</h4>
+                    <p>Ruane's stock selection criteria included:</p>
+                    <p>1. Strong Fundamentals: Companies with robust financials, consistent earnings growth, and solid balance sheets.</p>
+                    <p>2. Competitive Advantages: Businesses with durable moats, such as brand strength, network effects, or cost advantages.</p>
+                    <p>3. Quality Management: Companies led by honest, competent, and shareholder-oriented management teams.</p>
+                    <p>4. Attractive Valuations: Stocks trading at reasonable prices relative to their intrinsic value.</p>
+
+                    <h4>Valuation Methodology</h4>
+                    <p>Ruane employed fundamental analysis and valuation techniques, including:</p>
+                    <p>1. Discounted Cash Flow (DCF) Analysis: Assessing the present value of future cash flows.</p>
+                    <p>2. Comparable Company Analysis: Comparing valuation metrics to industry peers.</p>
+                    <p>3. Owner Earnings: Focusing on the true economic earnings of the business.</p>
+
+                    <h4>Criteria for Selling Stock</h4>
+                    <p>Ruane was a long-term holder and rarely sold stocks. He would consider selling if:</p>
+                    <p>1. The stock became significantly overvalued.</p>
+                    <p>2. The company's fundamentals deteriorated substantially.</p>
+                    <p>3. A better investment opportunity presented itself.</p>
+
+                    <h4>Investment Mistakes</h4>
+                    <p>Ruane acknowledged that even the best investors make mistakes. One notable mistake was his investment in certain technology stocks during the dot-com bubble, which led to temporary underperformance.</p>
+
+                    <h3>Selected Quotes</h3>
+                    <p>"The key to investing is not assessing how much an industry is going to affect society, or how much it will grow, but rather determining the competitive advantage of any given company and, above all, the durability of that advantage."</p>
+                    <p>"The most important thing in investing is to have a philosophy and stick to it."</p>
+                    <p>"You can't predict the future, but you can prepare for it."</p>
+
+                    <h3>Literature</h3>
+                    <h4>Books by Bill Ruane</h4>
+                    <p>Ruane did not author any books.</p>
+
+                    <h4>Articles by Bill Ruane</h4>
+                    <p>None found.</p>
+
+                    <h4>Books about Bill Ruane</h4>
+                    <p>1. "The Essays of Warren Buffett: Lessons for Corporate America" by Warren Buffett and Lawrence Cunningham (1997)</p>
+                    <p>This book includes references to Ruane and his investment philosophy.</p>
+
+                    <h4>Articles about Bill Ruane</h4>
+                    <p>1. "The Superinvestors of Graham-and-Doddsville" by Warren Buffett (1984)</p>
+                    <p>2. "Bill Ruane, 79, Founder of Sequoia Fund, Dies" by Jonathan Kandell (New York Times, 2005)</p>
+                    <p>3. "William J. Ruane Jr., 79; Founded Sequoia Fund" by Bloomberg News (2005)</p>
+
+                    <h4>Books Recommended by Bill Ruane</h4>
+                    <p>1. "The Intelligent Investor" by Benjamin Graham (1949)</p>
+                    <p>Ruane frequently recommended this classic as essential reading for value investors.</p>
+                    <p>2. "Security Analysis" by Benjamin Graham and David Dodd (1934)</p>
+                    <p>The foundational text that shaped Ruane's investment approach.</p>
+                    <p>3. "The Essays of Warren Buffett" by Warren Buffett and Lawrence Cunningham (1997)</p>
+                    <p>Ruane admired Buffett's writings and often referred to this collection.</p>
+
+                    <h3>Other Trivia</h3>
+                    <p>1. Ruane was known for his philanthropy, donating millions to educational and charitable causes.</p>
+                    <p>2. He was a member of the New York Stock Exchange and served on various industry committees.</p>
+                    <p>3. Ruane was inducted into the Investment Analysts Society of Chicago Hall of Fame.</p>
+
+                    <p><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>
+                `
+            },
+
+            'walter-schloss': {
+                title: 'Walter Schloss',
+                content: `
+                    <h2>Walter Schloss: The Original Value Investor</h2>
+
+                    <h3>Introduction</h3>
+                    <p>Walter Schloss, often called the "original value investor," was a pioneer in the field of value investing. With a career spanning over six decades, Schloss demonstrated that consistent, disciplined value investing could lead to extraordinary long-term results. His approach, heavily influenced by Benjamin Graham, focused on buying undervalued stocks and holding them patiently.</p>
+
+                    <h3>Personal Life</h3>
+                    <p>Walter Joseph Schloss was born on 28 August 1916 in New York City, New York, USA.</p>
+                    <p>Schloss was married to Louise Schloss, and together they had three children: Edwin, Carol, and Stephanie.</p>
+                    <p>Walter Schloss passed away on 19 February 2012 at the age of 95 in Manhattan, New York, USA.</p>
+
+                    <h3>Education</h3>
+                    <p>Schloss graduated from the University of Pennsylvania with a degree in accounting in 1937.</p>
+
+                    <h3>Work History</h3>
+                    <p>Schloss began his career as a runner on the New York Stock Exchange in 1934. He then worked as an auditor for a public accounting firm before joining Benjamin Graham's investment firm, Graham-Newman Corporation, in 1946.</p>
+                    <p>In 1955, Schloss founded his own investment partnership, Walter J. Schloss Associates, which he managed until 2000. The partnership achieved remarkable long-term performance, compounding at an average annual rate of over 15% for more than 45 years.</p>
+                    <p>Schloss was also a director of Berkshire Hathaway and served on the board of several other companies.</p>
+
+                    <h3>Investment Performance</h3>
+                    <p>Walter J. Schloss Associates achieved extraordinary long-term results. From 1956 to 2000, the partnership delivered an average annual return of 15.7%, compared to 10.1% for the S&P 500 Index.</p>
+                    <p>Over the 47-year period, the partnership's capital grew from $100,000 to over $200 million, representing a cumulative return of over 200,000 times the initial investment.</p>
+
+                    <h3>Investment Style, Philosophy & Principles</h3>
+                    <h4>Investment Style</h4>
+                    <p>Schloss's investment style was pure value investing, focusing on buying cheap stocks with a significant margin of safety. He was known for his willingness to invest in unpopular, out-of-favor companies that were trading at deep discounts to their intrinsic value.</p>
+
+                    <h4>Investment Philosophy</h4>
+                    <p>Schloss believed in buying stocks that were selling for less than their working capital per share, or at least at a low price relative to earnings and assets. He emphasised the importance of a margin of safety and was willing to hold cash when attractive opportunities were scarce.</p>
+                    <p>Schloss was heavily influenced by Benjamin Graham and followed his mentor's teachings closely. He believed that the key to successful investing was to buy assets at a discount and let time and compounding work their magic.</p>
+
+                    <h4>Investment Principles</h4>
+                    <p>Schloss adhered to several key principles:</p>
+                    <p>1. Margin of Safety: Always buy at a significant discount to intrinsic value.</p>
+                    <p>2. Patience: Be willing to wait for the right opportunities and hold investments long-term.</p>
+                    <p>3. Contrarian Approach: Buy when others are fearful and sell when others are greedy.</p>
+                    <p>4. Simplicity: Keep investment decisions straightforward and avoid complexity.</p>
+
+                    <h4>Recommended Asset Allocations</h4>
+                    <p>Schloss maintained a highly concentrated portfolio, often holding 20-30 stocks. He believed in putting a significant portion of capital into his best ideas.</p>
+
+                    <h4>Stock Selection Criteria</h4>
+                    <p>Schloss looked for:</p>
+                    <p>1. Low Price-to-Book Ratio: Stocks trading below their book value.</p>
+                    <p>2. Low Price-to-Earnings Ratio: Undervalued relative to earnings.</p>
+                    <p>3. Strong Balance Sheets: Companies with low debt and ample liquidity.</p>
+                    <p>4. Unpopular Industries: Out-of-favor sectors where fear had driven prices too low.</p>
+
+                    <h4>Valuation Methodology</h4>
+                    <p>Schloss used simple valuation metrics:</p>
+                    <p>1. Price-to-Book Value</p>
+                    <p>2. Price-to-Earnings Ratio</p>
+                    <p>3. Price-to-Working Capital</p>
+                    <p>4. Asset-Based Valuation</p>
+
+                    <h4>Criteria for Selling Stock</h4>
+                    <p>Schloss was a long-term holder but would sell if:</p>
+                    <p>1. The stock became fairly valued or overvalued.</p>
+                    <p>2. The company's fundamentals deteriorated.</p>
+                    <p>3. A better opportunity presented itself.</p>
+
+                    <h4>Investment Mistakes</h4>
+                    <p>Schloss acknowledged that he made mistakes, particularly in the 1970s when he invested in some cyclical companies that suffered during recessions. However, his overall discipline helped him recover from these setbacks.</p>
+
+                    <h3>Selected Quotes</h3>
+                    <p>"The best way to make money is to not lose money."</p>
+                    <p>"I like buying stocks where the market is not that interested."</p>
+                    <p>"You don't need a lot of intelligence to be a good investor, but you do need patience and discipline."</p>
+
+                    <h3>Literature</h3>
+                    <h4>Books by Walter Schloss</h4>
+                    <p>1. "The Memoirs of Walter Schloss" (unpublished, but excerpts available)</p>
+
+                    <h4>Articles by Walter Schloss</h4>
+                    <p>1. "A Philosphy of Investing" (Financial Analysts Journal, 1982)</p>
+
+                    <h4>Books about Walter Schloss</h4>
+                    <p>1. "The Essays of Warren Buffett: Lessons for Corporate America" by Warren Buffett and Lawrence Cunningham (1997)</p>
+
+                    <h4>Articles about Walter Schloss</h4>
+                    <p>1. "The Superinvestors of Graham-and-Doddsville" by Warren Buffett (1984)</p>
+                    <p>2. "Walter Schloss, 95, Investor Who Beat the Market" by Bruce Weber (New York Times, 2012)</p>
+
+                    <h4>Books Recommended by Walter Schloss</h4>
+                    <p>1. "The Intelligent Investor" by Benjamin Graham (1949)</p>
+                    <p>2. "Security Analysis" by Benjamin Graham and David Dodd (1934)</p>
+                    <p>3. "The Essays of Warren Buffett" by Warren Buffett and Lawrence Cunningham (1997)</p>
+
+                    <h3>Other Trivia</h3>
+                    <p>1. Schloss was known for his frugal lifestyle and simple approach to investing.</p>
+                    <p>2. He continued investing actively into his 90s.</p>
+                    <p>3. Schloss was a mentor to many young investors and shared his wisdom generously.</p>
+
+                    <p><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>
+                `
+            },
+
+            'edwin-schloss': {
+                title: 'Edwin Schloss',
+                content: `
+                    <h2>Edwin Schloss: The Value Investing Legacy</h2>
+
+                    <h3>Introduction</h3>
+                    <p>Edwin Schloss, son of the legendary Walter Schloss, carried forward his father's value investing legacy while developing his own distinctive approach. As a managing director at Walter & Edwin Schloss Associates, Edwin demonstrated that the principles of disciplined value investing could be successfully applied across generations.</p>
+
+                    <h3>Personal Life</h3>
+                    <p>Edwin Schloss was born in New York City, USA. He was the son of Walter Schloss and Louise Schloss.</p>
+                    <p>Edwin was married and had children. He passed away in 2020.</p>
+
+                    <h3>Education</h3>
+                    <p>Edwin Schloss graduated from Dartmouth College.</p>
+
+                    <h3>Work History</h3>
+                    <p>Edwin Schloss joined his father's investment firm, Walter J. Schloss Associates, and later became a managing director at Walter & Edwin Schloss Associates. He worked closely with his father, applying value investing principles to manage client portfolios.</p>
+
+                    <h3>Investment Performance</h3>
+                    <p>While specific performance figures for Edwin's individual contributions are not widely publicized, the firm Walter & Edwin Schloss Associates continued the tradition of strong long-term performance established by Walter Schloss.</p>
+
+                    <h3>Investment Style, Philosophy & Principles</h3>
+                    <h4>Investment Style</h4>
+                    <p>Edwin Schloss followed in his father's footsteps, employing a disciplined value investing approach focused on buying undervalued stocks with a significant margin of safety.</p>
+
+                    <h4>Investment Philosophy</h4>
+                    <p>Edwin believed in the Graham and Dodd principles of value investing, emphasizing the importance of buying assets at a discount to their intrinsic value and maintaining a long-term investment horizon.</p>
+
+                    <h4>Investment Principles</h4>
+                    <p>Edwin adhered to the core value investing principles:</p>
+                    <p>1. Margin of Safety: Always buy at a discount to intrinsic value.</p>
+                    <p>2. Patience and Discipline: Wait for the right opportunities and hold long-term.</p>
+                    <p>3. Fundamental Analysis: Thorough research of company fundamentals.</p>
+
+                    <h4>Recommended Asset Allocations</h4>
+                    <p>Edwin maintained a concentrated portfolio approach, similar to his father's strategy.</p>
+
+                    <h4>Stock Selection Criteria</h4>
+                    <p>Edwin looked for:</p>
+                    <p>1. Undervalued stocks with strong fundamentals.</p>
+                    <p>2. Companies with low debt and ample liquidity.</p>
+                    <p>3. Businesses trading below their intrinsic value.</p>
+
+                    <h4>Valuation Methodology</h4>
+                    <p>Edwin used traditional value investing valuation methods, including price-to-book ratios and asset-based valuations.</p>
+
+                    <h4>Criteria for Selling Stock</h4>
+                    <p>Edwin would sell when stocks reached fair value or if fundamentals deteriorated.</p>
+
+                    <h4>Investment Mistakes</h4>
+                    <p>As with any investor, Edwin experienced setbacks, but maintained discipline through market cycles.</p>
+
+                    <h3>Selected Quotes</h3>
+                    <p>"Value investing is about buying dollar bills for 50 cents."</p>
+
+                    <h3>Literature</h3>
+                    <h4>Books by Edwin Schloss</h4>
+                    <p>Edwin Schloss did not author any books.</p>
+
+                    <h4>Articles by Edwin Schloss</h4>
+                    <p>None found.</p>
+
+                    <h4>Books about Edwin Schloss</h4>
+                    <p>None found.</p>
+
+                    <h4>Articles about Edwin Schloss</h4>
+                    <p>1. "Edwin Schloss, Value Investor, Dies at 73" (various financial publications, 2020)</p>
+
+                    <h4>Books Recommended by Edwin Schloss</h4>
+                    <p>1. "The Intelligent Investor" by Benjamin Graham (1949)</p>
+                    <p>2. "Security Analysis" by Benjamin Graham and David Dodd (1934)</p>
+
+                    <h3>Other Trivia</h3>
+                    <p>1. Edwin Schloss continued his father's legacy in value investing.</p>
+                    <p>2. He was known for his integrity and commitment to client interests.</p>
+
+                    <p><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>
+                `
+            },
+            'ed-anderson': {
+                title: 'Ed Anderson',
+                content: `
+                    <h2>Ed Anderson: A Value Investing Pioneer</h2>
+
+                    <h3>Introduction</h3>
+                    <p>Ed Anderson was a renowned value investor known for his disciplined approach to stock selection, focusing on undervalued companies with strong fundamentals. He emphasised long-term holding, thorough research, and patience as key principles for achieving success in the stock market.</p>
+
+                    <h3>Personal Life</h3>
+                    <p>Edward "Ed" L. Anderson Jr, a notable figure in the world of investing, was born in the United States in 1928. Little is publicly known about Anderson's family background, as he maintained a private personal life throughout his years. Details about his parents and siblings are unknown.</p>
+                    <p>Anderson was married to Shirley Smith Anderson, his beloved wife. Together, they shared a life that included the joys of raising a family. Ed and Shirley were blessed with two sons: David Warren Anderson and Steven Bradley Anderson.</p>
+                    <p>David Warren Anderson and his wife, Deirdre (Cavanaugh) Anderson, resided in Hingham, Massachusetts, bringing up their family in the New England region. Steven Bradley Anderson, along with his wife Jennifer (Bork) Anderson, made their home in Davis, California.</p>
+                    <p>Sadly, Anderson faced the loss of his wife, Shirley, leaving a void in his life. However, life took an unexpected yet beautiful turn when he found love with Joan Elizabeth Parsons. Joan became Ed's partner, sharing 34 years of companionship.</p>
+                    <p>Anderson's role as a father extended beyond providing love and guidance to his sons. He also had the joy of being a grandfather to five grandchildren.</p>
+                    <p>On 9 February 2012, Anderson passed away at the age of 83 due to an incurable stomach cancer. His departure marked the end of an era, leaving behind a legacy of financial wisdom, a testament to his skill as an investor, and, most importantly, a legacy of love and devotion to his family.</p>
+
+                    <h3>Education</h3>
+                    <p>Anderson graduated from the University of Chicago, where he served as President of the Alumni Association and received the University's Alumni Citation Award in 1992.</p>
+                    <p>He received his doctorate in chemistry from Washington State University in 1952 and worked for the Atomic Energy Commission as a physicist prior to his investment career.</p>
+
+                    <h3>Work History</h3>
+                    <p>Anderson initially worked as an analyst for Charlie Munger, when the latter was still running his own investment partnership, Wheeler, Munger, based in Los Angeles, immediately prior to joining Tweedy, Browne.</p>
+                    <p>Tweedy, Browne was a brokerage firm which originally opened its doors during the 1920s as a market maker in small, thinly traded stocks.</p>
+                    <p>In 1959, the partners of the brokerage firm then known as Tweedy, Browne & Knapp (of whom Warren Buffett of Berkshire Hathaway was a client) pooled their capital into a partnership investment vehicle. In 1968, the firm accepted its first outside money management clients as limited partners of an investment firm.</p>
+                    <p>In 1968, Anderson joined fellow "superinvestor", Tom Knapp, and some other investors as a partner, after which the investment firm became known as Tweedy, Browne Partners.</p>
+                    <p>Anderson would spend his working days tracking down every single stock in the National Stock Summary and Polk's Bank Directory, which were like the yellow pages for stocks, and would then look for value picks that provided a good margin of safety.</p>
+                    <p>He was a partner of the firm until 1983, when he retired to pursue charitable and intellectual interests, including behavioural science and education.</p>
+                    <p>He was an original member of "The Graham Group" with Warren Buffett. He took great pleasure in the group's annual gatherings and learning from each of his fellow investors.</p>
+
+                    <h3>Investment Performance</h3>
+                    <p>Throughout the years since 1968, Tweedy, Browne consistently delivered impressive annual returns, outperforming the market and solidifying its reputation as a beacon of value investing.</p>
+                    <p>From 1968 to 1983, Tweedy, Browne generated an impressive 20% annual compounded rate of return overall over the course of 15 years, with limited partners receiving 16% annual compounded rate of return. This is to be contrasted with Standard & Poor's (S&P 500) which generated a mere 7% annual compounded rate of return over the same period.</p>
+                    <p>Among the myriad investments that Tweedy, Browne undertook, several standout as exemplars of their keen eye for value and long-term vision. One notable investment was their stake in British American Tobacco (BAT), a multinational tobacco company. Tweedy, Browne recognised BAT's solid fundamentals, global market presence, and attractive valuation, making a substantial investment that yielded handsome returns over time.</p>
+                    <p>Another noteworthy investment was their foray into the world of Japanese equities, particularly during the 1980s and 1990s. At a time when many investors were skeptical of the Japanese market's prospects, Tweedy, Browne saw opportunity in undervalued Japanese companies with strong balance sheets and competitive advantages. This contrarian approach paid off handsomely as Japan's economy rebounded, and the investments flourished.</p>
+
+                    <h3>Investment Style, Philosophy & Principles</h3>
+                    <h4>Investment Style</h4>
+                    <p>Anderson's investment style can be characterised as deeply rooted in the principles of value investing. He was a firm believer in diligently analysing companies to identify those that were undervalued by the market. This contrarian approach often led him to uncover hidden gems that others might have overlooked. His methodical and patient approach to investing stood in stark contrast to the frenetic pace of the market, emphasising the importance of long-term value creation over short-term gains.</p>
+
+                    <h4>Investment Philosophy</h4>
+                    <p>At the core of Anderson's investment philosophy was the belief that markets were not always efficient and that opportunities existed to exploit mispricings. He viewed investing as owning a piece of a business rather than merely trading stocks, focusing on the intrinsic value of companies. Anderson was a disciple of the teachings of Benjamin Graham and Warren Buffett, who emphasised the importance of margin of safety and a marginally undervalued stock.</p>
+
+                    <h4>Investment Principles</h4>
+                    <p>Anderson's investment principles were grounded in fundamental analysis and a deep understanding of company financials. He advocated for thorough research into a company's balance sheet, income statement, and cash flow statement. He looked for companies with strong competitive advantages, sustainable business models, and competent management teams.</p>
+                    <p>Recommended Asset Allocations</p>
+                    <p>For asset allocation, Anderson favoured a diversified approach. He believed in spreading risk across various asset classes, including stocks, bonds, and occasionally alternative investments. However, his focus remained on equities, particularly undervalued stocks that had the potential for long-term appreciation.</p>
+                    <p>Stock Selection Criteria</p>
+                    <p>Anderson's stock selection criteria revolved around several key factors. He sought out companies with a history of consistent earnings growth, a strong balance sheet with manageable debt levels, and a track record of generating free cash flow. He also favored companies with a competitive moat, a sustainable business model, and shareholder-friendly management.</p>
+                    <p>Valuation Methodology</p>
+                    <p>When valuing stocks, Anderson employed a conservative approach. He looked for companies trading below their intrinsic value, often using metrics such as price-to-earnings ratio, price-to-book ratio, and discounted cash flow analysis. His valuation methodology emphasised the importance of buying stocks at a significant discount to their true worth, ensuring a margin of safety for investors.</p>
+                    <p>Criteria for Selling Stock</p>
+                    <p>Anderson would typically sell if a company's fundamentals deteriorated, its competitive position weakened, or if the stock reached his estimated intrinsic value. He believed in letting winners run but also in cutting losses short, maintaining a disciplined approach to portfolio management.</p>
+                    <p>Investment Mistakes</p>
+                    <p>Despite his remarkable success, Anderson, like any seasoned investor, made mistakes. One of his notable errors was holding onto a few underperforming stocks for too long, sometimes overlooking warning signs of fundamental deterioration.</p>
+
+                    <h3>Selected Quotes</h3>
+                    <p>1. "Investing is owning a piece of a business, not just a piece of paper. Focus on the underlying value of the company, and the market's short-term fluctuations become mere noise."</p>
+                    <p>2. "The key to successful investing lies in buying when others are fearful and selling when others are greedy. Emotions often cloud judgment; discipline is the antidote."</p>
+                    <p>3. "A margin of safety is the bedrock of value investing. Buying stocks at a discount to their intrinsic value provides a cushion against market volatility and unforeseen risks."</p>
+                    <p>4. "Patience is a virtue in investing. Rome wasn't built in a day, and neither is a well-performing portfolio. Let time be your ally."</p>
+                    <p>5. "Diversification is essential, but it shouldn't dilute your best ideas. Concentrate your investments in your highest-conviction picks for maximum impact."</p>
+                    <p>6. "The stock market is a voting machine in the short term but a weighing machine in the long term. Quality companies will ultimately reflect their true worth."</p>
+                    <p>7. "Successful investing requires a contrarian mindset. Don't follow the herd; dare to be different and seek out opportunities where others fear to tread."</p>
+                    <p>8. "Investing without research is like sailing without a compass. Thoroughly understand the companies you invest in, from their financials to their competitive advantages."</p>
+                    <p>9. "Value investing is about buying dollars for fifty cents. Look for undervalued companies with strong fundamentals and patient management."</p>
+                    <p>10. "Remember, the stock market is there to serve you, not to instruct you. Stay disciplined, stick to your investment thesis, and tune out the noise."</p>
+
+                    <h3>Literature</h3>
+                    <h4>Books by Ed Anderson</h4>
+                    <p>Anderson has not authored any books.</p>
+
+                    <h4>Articles by Ed Anderson</h4>
+                    <p>None found.</p>
+
+                    <h4>Books about Ed Anderson</h4>
+                    <p>1. "The Value Investors: Lessons from the World's Top Fund Managers" (mentioned in Chapter 5 "On the Shoulders of Value Giants") by Ronald Chan</p>
+                    <p>2. "Forbes Greatest Investing Stories" (mentioned in Chapter 1 "Value Avatar: Benjamin Graham") by Richard Phalon</p>
+
+                    <h4>Articles about Ed Anderson</h4>
+                    <p>1. "The Superinvestors of Graham-and-Doddsville" by Warren Buffett (1984)</p>
+                    <p>2. "The Superinvestors of Graham-and-Doddsville: Tweedy, Browne" (23 March 2015)</p>
+
+                    <h4>Books Recommended by Ed Anderson</h4>
+                    <p>1. "The Intelligent Investor" by Benjamin Graham (1949). See also Revised Edition and Third Edition.</p>
+                    <p>Benjamin Graham's book is a classic guide to value investing, emphasising the importance of thorough analysis and a margin of safety when buying stocks. Graham's principles, including the concept of Mr Market and defensive investing, remain essential reading for investors seeking long-term success in the stock market.</p>
+                    <p>2. "Security Analysis" by Benjamin Graham and David Dodd, 1934</p>
+                    <p>This seminal work laid the foundation for value investing principles. It emphasised the importance of thorough analysis, intrinsic value, and margin of safety.</p>
+                    <ul>
+                        <li>Security Analysis (First edition, 1934) – co-authored with David Dodd</li>
+                        <li>Security Analysis (Second edition, 1940) – co-authored with David Dodd</li>
+                        <li>Security Analysis (Third edition, 1951) – co-authored with David Dodd</li>
+                        <li>Security Analysis (Fourth edition, 1962) – co-authored with David Dodd and Sidney Cottle</li>
+                        <li>Security Analysis (Fifth edition, 1988) – authored by Sidney Cottle, Roger Murray and Frank Block</li>
+                        <li>Security Analysis (Sixth edition, 2008) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
+                        <li>Security Analysis (Seventh edition, 2023) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett</li>
+                    </ul>
+                    <p>Anderson often cited this classic work by Benjamin Graham as essential reading for value investors. Graham's timeless principles of value investing, including the concept of margin of safety, influenced Anderson's own investment philosophy.</p>
+                    <p>3. "Common Stocks and Uncommon Profits" by Philip Fisher (1958)</p>
+                    <p>Anderson recommended this book by Philip Fisher for investors seeking to understand the importance of qualitative analysis in stock selection. Fisher's emphasis on evaluating a company's growth potential and management quality resonated with Anderson's investment approach.</p>
+                    <p>4. "Margin of Safety: Risk-Averse Value Investing Strategies for the Thoughtful Investor" by Seth Klarman (1991)</p>
+                    <p>Anderson recommended Klarman's book as a comprehensive guide to value investing. Klarman's emphasis on risk management, margin of safety, and contrarian thinking resonated strongly with Anderson's own investment principles.</p>
+                    <p>5. "One Up On Wall Street: How to Use What You Already Know to Make Money in the Market" by Peter Lynch (1989)</p>
+                    <p>Anderson appreciated Lynch's practical approach to investing and often recommended this book to novice investors. Lynch's insights on spotting investment opportunities in everyday life and the importance of staying informed resonated with Anderson's philosophy of staying vigilant in the market.</p>
+                    <p>6. "The Essays of Warren Buffett" by Warren Buffett and Lawrence Cunningham (Published in 1997)</p>
+                    <p>Anderson often referred to this collection of Buffett's letters and essays as a treasure trove of wisdom for investors. Buffett's straightforward, common-sense approach to investing, as showcased in these writings, aligned closely with Anderson's own beliefs.</p>
+
+                    <h3>Other Trivia</h3>
+                    <h4>Hobbies:</h4>
+                    <p>Mentorship: Anderson loved to educate others on his favourite subjects, and enthusiastically passed on his wisdom and experience with respect to security analysis, value investing and special situations to up-and-coming security analysts.</p>
+                    <h4>Charitable Work:</h4>
+                    <p>Education Scholarships: Anderson was a staunch supporter of education and believed in empowering the next generation. He established scholarship programs to assist deserving students in pursuing higher education, particularly in the fields of finance and ABOUT.</p>
+                    <p>Healthcare Initiatives: Anderson recognized the importance of accessible healthcare for all. He donated to hospitals and medical research institutions, aiming to improve healthcare facilities and advance medical science.</p>
+                    <h4>Personal Interests</h4>
+                    <p>Anderson was active in the field of behavior analysis, human sexuality and childhood education and wanted to be remembered for disseminating the research-based therapies of Dr O Ivar Lovaas for autistic children.</p>
+                    <p>He was also a co-founder of Headsprout, Inc. an education technology company that has taught hundreds of thousands of children to read and was acquired by Newell/Rubbermaid in 2011.</p>
+                    <h4>Other Trivia and Little-Known Facts</h4>
+                    <p>None found.</p>
+                    <h4>Websites Dedicated to Ed Anderson</h4>
+                    <p>Value Walk: https://www.valuewalk.com/tom-knapp-tweedy-browne/</p>
+
+                    <p><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>
+                `
+            },
+            'rick-guerin': {
+                title: 'Rick Guerin',
+                content: `
+                    <h2>Rick Guerin: The Forgotten Superinvestor</h2>
+
+                    <h3>Introduction</h3>
+                    <p>Rick Guerin, a value investor and former business partner of Warren Buffett, was known for his keen eye for undervalued assets and his successful investments in various companies. He gained recognition as one of Buffett's superinvestors, with remarkable success stories that solidified his legacy in the world of finance.</p>
+
+                    <h3>Personal Life</h3>
+                    <p>John Patrick "Rick" Guerin was born in Los Angeles in 1929 and grew up during the Great Depression. He had an incredible work ethic and began working at the age of six by delivering ice and newspapers.</p>
+                    <p>He had grown up with a "divorced father" and a "drunk mother", so he raised himself on the streets. Munger described him as a "rough-and-tumble guy who was scrambling to better himself."</p>
+                    <p>He graduated from Loyola High School in Los Angeles at 16 and lied about his age to join the Navy. He was deployed to the South Pacific at the end of World War II but saw no action.</p>
+                    <p>His friend, Charlie Munger, described Guerin as "a self-made man" who was "ferociously smart". He continued: "When Rick took the Navy's intelligence test, he finished early with an off-the-chart score. That's unheard of."</p>
+                    <p>He died on 13 October 2020 at the age of 90. He was survived by his wife Fabienne, and children Camille, Elizabeth, Patrick, Bianca, Michelle, Maggie and Riley.</p>
+
+                    <h3>Education</h3>
+                    <p>In the military, Guerin was a code breaker before training as a fighter pilot.</p>
+                    <p>Despite the GI Bill and side jobs in construction, modelling and ski patrol, Guerin could not afford to attend medical school, as was his dream. After graduating from UCLA with a math major, he accepted a job with IBM as a salesman. He then decided to pursue a career in money management despite having a non-business background.</p>
+
+                    <h3>Work History</h3>
+                    <p>Guerin became a stockbroker at a couple of small firms that peddled third-class stocks because they carried the highest profit, or "spread," for the firm.</p>
+                    <p>"In 1961", Guerin recalls, "a friend called and said he was going to buy into a downtown (LA) trading firm because someone [Jack Wheeler of Wheeler, Cruttenden & Company] was selling out". He decided that he too would join in the investment by buying Wheeler's 50% share using the only $40,000 he had. But when he arrived at the meeting place to settle the deal, he met Charlie Munger. The two of them started to talk. "I was just going to this meeting for the closing. I was going to deliver a check and take a stock certificate. We were joking with Munger, when this light went on in my brain. 'I'm on the wrong side of this transaction.' "</p>
+                    <p>Guerin eventually lost his entire investment in the partnership. However, as Munger later noted, "By then, he'd learned a lot and was doing very well." He went on emulate Buffett and Munger by establishing his own investment firm, Pacific Partners Ltd.</p>
+                    <p>Buffett explained: "With some, the idea of buying dollar bills for forty cents takes, and with some it doesn't take. It's like an inoculation. It's extraordinary to me. If it doesn't grab them right away, I find that you can talk to them for years and show them records—you can do everything—and it just doesn't make any difference. I've never seen anyone who became a convert over a ten-year period with this approach. It’s always instant recognition or nothing. Whatever it is, I've never understood it. But with a fellow like Rick Guerin – no business background in terms of studying it, but he saw it like that, he understood what it's about, and he was applying it five minutes later. And Rick was smart enough to know that you should get a great teacher, which is what I was lucky enough to do with Ben Graham."</p>
+                    <p>Guerin soon joined with Charlie Munger and Warren Buffett in the ownership of See's Candy and other public companies.</p>
+                    <p>He spearheaded one of Berkshire's greatest investments: the acquisition of Blue Chip Stamps. He had noticed there was a difference between the volume of stamps purchased and redeemed (called the "float"). And the beauty of this was that only 50% of stamps ever got redeemed. So, after buying 60% of the company, they used the "float" of Blue Chip Stamps to buy See's Candy with $25 million. Then they bought Wesco Financial for $25 million and the Buffalo Evening Post.</p>
+                    <p>See's Candy alone then went on to generate over $2 billion of income for Berkshire Hathaway to-date, and Wesco Financial now has a market capitalisation of around of $7 billion.</p>
+                    <p>Guerin also served as Chairman of the Pacific Coast Stock Exchange, chairman of Pacific Southwest Airlines and as Vice Chairman of the Daily Journal Corporation.</p>
+
+                    <h3>Investment Performance</h3>
+                    <p>In his article on "The Superinvestor of Graham-and-Doddsville", Warren Buffett noted that Pacific Partners Ltd generated an overall partnership return of 32.9% during the 19-year period between 1965 and 1983, with limited partners earning 23.6% per annum. This is in stark contrast to the Standard & Poor's (S&P 500) 7.8% annual compounded rate of return.</p>
+                    <p>However, there was a market drop in 1973 of 42%. Guerin followed up the drop in 1973 with another 34% drop in 1974. That would be a cumulative drop of almost 62% in two years. During that two-year period, the S&P 500 did drop more than 37%, but the 62% drop in Guerin's fund was almost catastrophic. The significant drops were due to his excessive use of leverage (discussed further below). While he subsequently recovered from the losses, many partners lost faith in him, just as Buffett and Munger did.</p>
+
+                    <h3>Investment Style, Philosophy & Principles</h3>
+                    <h4>Investment Style</h4>
+                    <p>Guerin's investment style was deeply rooted in the principles of value investing—a philosophy championed by investing luminaries such as Benjamin Graham and Warren Buffett. Central to Guerin's approach was the belief in seeking out undervalued assets with the potential for substantial long-term growth.</p>
+                    <p>He was renowned for his patient and disciplined approach to investing, focusing on the intrinsic value of a company rather than short-term market fluctuations.</p>
+
+                    <h4>Investment Philosophy</h4>
+                    <p>At the core of Guerin's investment philosophy was the principle of buying low and holding for the long term. He believed in investing in companies with strong fundamentals, robust management teams, and competitive advantages within their industries. Guerin emphasised the importance of thorough research and analysis, ensuring a deep understanding of a company's business model, market position, and growth prospects before making an investment.</p>
+
+                    <h4>Investment Principles</h4>
+                    <p>Guerin's investment principles revolved around a conservative approach to risk management. He advocated for a diversified portfolio, spreading investments across various industries and asset classes to mitigate risk. While he understood the potential rewards of taking calculated risks, he also emphasized the importance of preserving capital and protecting against downside losses.</p>
+                    <p>Asset Allocations</p>
+                    <p>Guerin often recommended a balanced approach tailored to individual risk tolerance and investment goals. He suggested allocating a significant portion of the portfolio to high-quality, undervalued stocks with strong growth potential. Additionally, he advised including a portion of the portfolio in fixed-income securities such as bonds to provide stability and income.</p>
+                    <p>Stock Selection</p>
+                    <p>Guerin had a rigorous set of criteria that he adhered to diligently. He looked for companies with solid earnings growth potential, low debt levels, consistent cash flow, and a history of shareholder-friendly management. He also sought out companies trading below their intrinsic value, indicating a margin of safety for investors.</p>
+                    <p>Valuation Methodology</p>
+                    <p>Guerin's valuation methodology for assessing stock involved a thorough analysis of a company's financial statements, earnings projections, and industry comparables. He utilised various valuation metrics such as price-to-earnings (P/E) ratio, price-to-book (P/B) ratio, and discounted cash flow (DCF) analysis to determine a stock's intrinsic value.</p>
+                    <p>Selling Stocks</p>
+                    <p>Guerin was known for his patience and conviction in holding onto quality investments. However, he would consider selling a stock if the underlying fundamentals of the company deteriorated, the stock became significantly overvalued, or if better investment opportunities arose elsewhere. He believed in letting winners run but also recognized the importance of cutting losses when necessary.</p>
+                    <p>Investment Mistake</p>
+                    <p>Despite his legendary success, Guerin made a monumental error in using excessive leverage to enhance his fund's investment performance, which eventually caused him to incur significant losses from which he was struggled to recover.</p>
+                    <p>Warren Buffet explained: "Charlie and I always knew that [we] would become incredibly wealthy. We were not in a hurry to get wealthy; we knew it would happen. Rick was just as smart as us, but he was in a hurry. And so actually what happened - some of this is public - was that in the '73, '74 downturn, Rick was levered with margin loans. And the stock market went down almost 70% in those two years, and so he got margin calls out the yin-yang, and he sold his Berkshire [Hathaway] stock to me. I bought Rick's Berkshire stock at under $40 apiece, and so Rick was forced to sell shares at ... $40 apiece because he was levered.</p>
+
+                    <h3>Selected Quotes</h3>
+                    <p>None found.</p>
+
+                    <h3>Literature</h3>
+                    <h4>Books by Rick Guerin</h4>
+                    <p>Guerin did not author any books.</p>
+
+                    <h4>Articles by Rick Guerin</h4>
+                    <p>None found.</p>
+
+                    <h4>Books about Rick Guerin</h4>
+                    <p>1. "The Snowball: Warren Buffett and the Business of Life" by Alice Schroeder (2008) – Even though the book is about Warren Buffett, Rick Guerin is mentioned throughout this book.</p>
+                    <p>2. "Poor Charlie's Almanack: The Wit and Wisdom of Charles T Munger" by Charlie Munger – Even though the book is about Charlie Munger, there are references to Guerin in this book.</p>
+
+                    <h4>Articles about Rick Guerin</h4>
+                    <p>1. "The Superinvestors of Graham-and-Doddsville" by Warren Buffett (1984)</p>
+                    <p>2. "Nobody Talks About Rick Anymore?" by Justin Vossen (26 May 2021)</p>
+                    <p>3. "Rick Guerin: The forgotten genius" by The Short Gear (20 April 2023)</p>
+                    <p>4. "How Warren Buffet's Long Forgotten Third Business Partner Lost Absolutely Everything – 3 Things Regular People Are Doing to Lose All Their Money in Investments (And What You Should Be Doing Instead)" by Anders Skagerberg (accessed 2 April 2024)</p>
+                    <p>5. "The Superinvestors of Graham-and-Doddsville: Rick Guerin" (23 March 2015)</p>
+                    <p>6. "JP 'Rick' Guerin Jr, 1929 – 2020: Self-made man succeeded with grit and intelligence", obituary (accessed on 2 April 2024)</p>
+
+                    <h4>Books Recommended by Rick Guerin</h4>
+                    <p>1. "The Intelligent Investor" by Benjamin Graham (1949). See also Revised Edition and Third Edition.</p>
+                    <p>Benjamin Graham's book is a classic guide to value investing, emphasising the importance of thorough analysis and a margin of safety when buying stocks. Graham's principles, including the concept of Mr Market and defensive investing, remain essential reading for investors seeking long-term success in the stock market.</p>
+                    <p>2. "Security Analysis" by Benjamin Graham and David Dodd, 1934</p>
+                    <p>This seminal work laid the foundation for value investing principles. It emphasised the importance of thorough analysis, intrinsic value, and margin of safety.</p>
+                    <ul>
+                        <li>Security Analysis (First edition, 1934) – co-authored with David Dodd</li>
+                        <li>Security Analysis (Second edition, 1940) – co-authored with David Dodd</li>
+                        <li>Security Analysis (Third edition, 1951) – co-authored with David Dodd</li>
+                        <li>Security Analysis (Fourth edition, 1962) – co-authored with David Dodd and Sidney Cottle</li>
+                        <li>Security Analysis (Fifth edition, 1988) – authored by Sidney Cottle, Roger Murray and Frank Block</li>
+                        <li>Security Analysis (Sixth edition, 2008) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
+                        <li>Security Analysis (Seventh edition, 2023) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett</li>
+                    </ul>
+                    <p>Graham's timeless principles of value investing, including the concept of margin of safety, influenced Guerin's own investment philosophy.</p>
+
+                    <h3>Other Trivia</h3>
+                    <h4>Charitable Work</h4>
+                    <p>1. He spent much of the last two decades serving as a reserve officer for the Los Angeles police and sheriff's departments. He volunteered as much as 90 hours a month even though the reserve program only asked for a commitment of 8 hours.</p>
+                    <p>2. He championed a program for helping the police better deal with people suffering from mental health issues. He paid for officers to receive special training. He bought the bicycles for the LAPD to start a bicycle patrol unit and therapy dogs for first responders.</p>
+                    <p>3. He paid for mentally ill children in detention to receive Christmas gifts each year and threw an annual Memorial Day barbecue for veterans suffering mental health issues.</p>
+                    <p>4. He started a program called Boots to Suits to provide professional clothing for veterans entering the civilian job</p>
+                    <p>5. He was passionate about Marlborough School in Hancock Park, enrolling three of his daughters in the middle and high school, where he served as a trustee for more than 30 years.</p>
+                    <h4>Other Little-Known Trivia</h4>
+                    <p>1. He was good friends with the famous Hollywood actor, Charlton Heston, and even brought him to the exchange on one occasion for a tour.</p>
+                    <p>2. He helped found Tapestry Films, which produced "Point Break," "Pay it Forward," and "Wedding Crashers."</p>
+                    <p>3. He shared his passions for skiing, horses, cycling, tennis, running, scuba diving and an all-around love for the outdoors, with his large family and was deeply engaged in the community.</p>
+                    <p>"He did what he liked doing," Munger said. "If he liked the police, he did the police. If he liked jumping out of airplanes and gliding in a parachute, he did that. If he liked skiing off mountains, he did that. He did what he wanted to do."</p>
+                    <h4>Websites Dedicated to Rick Guerin</h4>
+                    <p>Value Walk: https://www.valuewalk.com/rick-guerin/</p>
+
+                    <p><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>
+                `
+            },
+            'tom-knapp': {
+                title: 'Tom Knapp',
+                content: `
+                    <h2>Tom Knapp: The Tweedy, Browne Co-Founder</h2>
+
+                    <h3>Introduction</h3>
+                    <p>Tom Knapp is a distinguished value investor known for his meticulous research and disciplined approach to investing. With a keen eye for undervalued assets and a commitment to long-term growth, Knapp has established a reputation for generating impressive returns in the world of finance.</p>
+
+                    <h3>Personal Life</h3>
+                    <p>Thomas ("Tom") Paton Knapp, II, was born in around 1921 at Blue Point, New York in the United States. He lived in Vero Beach for 33 years, coming from Remsenburg, New York.</p>
+                    <p>He was married to Virginia Knapp for 38 years. He had four sons, Gideon Knapp, Jonathan Knapp, Shepard Knapp and David Schmitt, and three daughters, Jane Whelhan, Jessie Knapp Mendelsohn and Margie Knapp.</p>
+                    <p>He also had stepsons Russell Weisenbacher and Justin Weisenbacher as well as many grandchildren and many great-grandchildren.</p>
+                    <p>He died on 24 July 2011 at VNA Hospice House, Vero Beach. He was interred at John's Island Cemetery, Vero Beach, Florida surrounded by his immediate family.</p>
+
+                    <h3>Education</h3>
+                    <p>Knapp initially completed an undergraduate degree (majoring in chemistry) at Princeton University before WWII.</p>
+                    <p>During WWII, Knapp served as a Lieutenant in the US Navy.</p>
+                    <p>After the war, he was a "beach bum" (to use Warren Buffett's words) for a while. Then one day he read that David Dodd was giving a night lecture in investments at the Columbia Business School, which he decided to attend on a non-credit basis. He became so interested in the subject that he decided to enrol at the Columbia Business School where he got a Master of Business Administration (MBA) degree.</p>
+                    <p>Afterwards, he decided to take Dodd's course again and then took Benjamin Graham's renowned course on security analysis. He was, by then, completely hooked on value investing.</p>
+
+                    <h3>Work History</h3>
+                    <p>Knapp started his investing career working as a security analyst at Van Cleef, Jordan & Wood, an investment advisory firm located in the same building as Graham-Newman Corporation.</p>
+                    <p>He then commenced working for Graham-Newman Corporation alongside other investment luminaries such as Benjamin Graham himself, a young Warren Buffett and a young Walter Schloss, each of whom would become famous value investors.</p>
+                    <p>During the late 1950s, following Graham's retirement in 1956, Knapp came to Tweedy Browne (then a brokerage firm) with an idea that altered the firm's business model for good. He observed that the firm was sitting on some marvellous assets and had an excellent network to gather cheap stocks. So, instead of being a pure broker, he proposed that the firm should gather some capital and start investing. At the time, the firm did not have any theoretical investment framework to begin with, so Knapp brought his value investing expertise to the firm.</p>
+                    <p>In 1958, Knapp and Ed Anderson, also a Graham disciple, along with one or two other fellows of similar persuasion, restructured the firm and renamed it Tweedy, Browne & Knapp. The firm accepted its first outside money management clients as limited partners of this vehicle from this point onwards.</p>
+                    <p>During the 1970s, the firm would later come to be known simply as Tweedy, Browne. In 1975, Tweedy, Browne registered as an investment advisor and began managing separate accounts for individuals and institutions. As of 30 June 2016, the firm managed approximately $18 billion.</p>
+
+                    <h3>Investment Performance</h3>
+                    <p>In 1984, Warren Buffett published his famous article, "The Superinvestors of Graham-and-Doddsville" in the issue of Hermes, Columbia Business School magazine. In it, Buffett set out the investment performances of various value investors, including Knapp (of Tweedy, Browne & Knapp (TBK)). TBK's performance during Knapp's reign between 1968 and 1983 was noted to be an average annual compounded return of 20% (or 16% to limited partners).</p>
+                    <p>From the early 1980s to the late 2000s, Tweedy, Browne's investment strategies yielded average annual returns ranging from 15% to 20%, outperforming broader market indices.</p>
+                    <p>One of the hallmark achievements of Knapp's investment career was his adept management of the Tweedy, Browne Global Value Fund. Under his leadership, the fund consistently outpaced its benchmarks, delivering solid returns to investors. Knapp's keen eye for undervalued companies, coupled with a patient long-term approach, enabled the fund to weather market volatility and generate consistent growth. The Global Value Fund had $8.7 billion in assets under management as at 30 September 2014.</p>
+                    <p>Among Knapp's most notable investments was his stake in global consumer goods giant, The Coca-Cola Company. Recognising Coca-Cola's enduring brand strength and global market dominance, Knapp initiated a position in the company in the early 1990s. This investment proved to be highly lucrative, as Coca-Cola's stock price steadily climbed over the years, delivering substantial returns to Tweedy, Browne investors.</p>
+                    <p>Another standout investment in Knapp's portfolio was his position in Berkshire Hathaway, the conglomerate led by Warren Buffett. Knapp's early recognition of Berkshire Hathaway's exceptional management, diverse business portfolio, and strong financials resulted in significant gains for Tweedy, Browne clients.</p>
+
+                    <h3>Investment Style, Philosophy & Principles</h3>
+                    <h4>Investment Style & Principles</h4>
+                    <p>Knapp's investment style was rooted in the principles of value investing, a philosophy he embraced wholeheartedly throughout his career. He believed in purchasing shares of fundamentally strong companies trading below their intrinsic value, with a focus on long-term growth rather than short-term market fluctuations.</p>
+                    <p>Tweedy, Browne: "The investment management principles practiced by Tweedy, Browne derive from the work of the late Benjamin Graham, professor of investments at Columbia Business School and author of "Security Analysis" and "The Intelligent Investor"."</p>
+
+                    <h4>Investment Philosophy</h4>
+                    <p>Knapp's investment philosophy centred on the concept of margin of safety, emphasising the importance of buying assets at a significant discount to their true worth. He sought out companies with durable competitive advantages, strong cash flows, and solid management teams, viewing them as the bedrock of a successful investment portfolio.</p>
+
+                    <h4>Asset Allocation</h4>
+                    <p>Knapp recommended a diversified approach, spreading investments across various sectors and geographies to mitigate risk. He favoured a balanced mix of equities, fixed-income securities, and occasionally, alternative investments to provide stability and capital preservation.</p>
+                    <p>Tweedy, Browne: "To minimise errors in analysis or  which could adversely affect intrinsic values, [Tweedy, Browne] adheres to a policy of broad diversification within individual portfolios. No one issue generally accounts for more than 3% to 5% at cost of portfolio assets, no one industry group generally accounts for more than 15% to 20% of portfolio value, and no one country (except the US) accounts for ore than approximately 20% of portfolio value."</p>
+
+                    <h4>Stock Selection</h4>
+                    <p>Tom Knapp followed a rigorous set of criteria. He looked for companies with strong balance sheets, consistent earnings growth, and a history of shareholder-friendly practices such as dividends and share buybacks. Knapp also emphasised qualitative factors such as industry leadership, brand strength, and competitive positioning.</p>
+                    <p>Tweedy, Browne: "Investments are made at a significant discount to intrinsic value, which Graham called an investor's "margin of safety".</p>
+                    <p>"At Tweedy, Browne, the stock selection process is largely about measuring and confirming both quantitative and qualitative measures of value and includes a thorough analysis of financial statements, valuation modelling, competitive analysis, direct communication with company and competitors, and a review of available street research. Purchase and sale decisions are then made by a consensus of the firm's Investment Committee.</p>
+                    <p>Most investments in Tweedy, Browne portfolios have one or more of the following investment characteristics: low share price in relation to book value, low price-to-earnings ratio, low price-to-cash-flow ratio, above-average dividend yield, low price-to-sales ratio as compared to other companies in the same industry, low corporate leverage, low share price, purchase of a company's own stock by the company's officers and directors, company share repurchases, and a share price that has declined significantly from its previous high. Academic research and studies have indicated a historical statistical correlation between each of these investment characteristics and above-average investment rates of return over long term measurement periods."</p>
+
+                    <h4>Valuation Methodology</h4>
+                    <p>Knapp's valuation methodology seeks to appraise the worth of a company, referred to by Benjamin Graham as its intrinsic value. This involved a thorough analysis of a company's financial statements, cash flow projections, and comparison with industry peers. He utilised metrics such as price-to-earnings (P/E) ratio, price-to-book (P/B) ratio, and discounted cash flow (DCF) analysis to determine the intrinsic value of a stock.</p>
+                    <p>Tweedy, Browne: "In determining intrinsic value, Tweedy, Browne's research focuses on fundamental principles of balance sheet and income statement analysis, and a knowledge and understanding of actual corporate mergers, acquisitions, and liquidations. Utilising a variety of databases, they screen and rank more than 20,000 publicly traded corporation worldwide, and research and select for investment those issues selling at substantial discounts to their estimates of intrinsic value."</p>
+
+                    <h4>Selling Stocks</h4>
+                    <p>Knapp adhered to a disciplined approach, typically selling when a company's fundamentals deteriorated, its valuation became significantly overpriced, or better investment opportunities emerged elsewhere. He believed in letting winners run but was quick to cut losses if a thesis no longer held true.</p>
+                    <p>Tweedy Browne: "Investments are generally sold as the market price approaches intrinsic value, with the proceeds reinvested in other situations offering a greater discount to intrinsic value."</p>
+
+                    <h4>Investment Mistakes</h4>
+                    <p>While Knapp's investment track record was mostly stellar, he was not immune to mistakes. During the late 1950s, Knapp and Buffett once tried to corner the market in 1954 Blue Eagle four-cent airmail stamps for postcards, believing that the stamp might become a precious collectible someday. He said: "We got in his car. It took all day. We were talking about deals, and I had been reading in Linn's Stamp News about a Blue Eagle four-cent stamp that was being taken off the market for a 5-cent Red Eagle stamp." On their way home from an investment seminar, they stopped by numerous post offices to buy the stamps and ended up buying some 400,000 stamps for a $16,000 investment (or about $100,000 USD in today's dollars). They held the stamps for many years but the stamps never did become valuable.</p>
+                    <p>In 1982, some 23 years later, Buffett sold his stamps at a 10% discount under face value to a dealer. Knapp held on to his share of the Blue Eagles stamps, ironically using 4¢ stamps in combination as rates rose, as postage for the rest of his life.</p>
+
+                    <h3>Selected Quotes</h3>
+                    <p>None found.</p>
+
+                    <h3>Literature</h3>
+                    <h4>Books by Tom Knapp</h4>
+                    <p>Knapp did not author any books.</p>
+
+                    <h4>Articles by Tom Knapp</h4>
+                    <p>None found.</p>
+
+                    <h4>Books about Tom Knapp</h4>
+                    <p>1. "The Snowball: Warren Buffett and the Business of Life" by Alice Schroeder (2008) – Even though the book is about Warren Buffett, Knapp is mentioned throughout this book.</p>
+                    <p>2. "Of Permanent Value: The Story of Warren Buffett" by Andrew Kilpatrick (2012) – Even though the book is about Warren Buffett, Knapp is mentioned throughout this book.</p>
+
+                    <h4>Articles about Tom Knapp</h4>
+                    <p>1. "The Superinvestors of Graham-and-Doddsville" by Warren Buffett (1984)</p>
+                    <p>2. "The Superinvestors of Graham-and-Doddsville: Tweedy, Browne" (23 March 2015)</p>
+
+                    <h4>Books Recommended by Tom Knapp</h4>
+                    <p>1. "The Intelligent Investor" by Benjamin Graham (1949). See also Revised Edition and Third Edition.</p>
+                    <p>Benjamin Graham's book is a classic guide to value investing, emphasising the importance of thorough analysis and a margin of safety when buying stocks. Graham's principles, including the concept of Mr Market and defensive investing, remain essential reading for investors seeking long-term success in the stock market.</p>
+                    <p>2. "Security Analysis" by Benjamin Graham and David Dodd, 1934</p>
+                    <p>This seminal work laid the foundation for value investing principles. It emphasised the importance of thorough analysis, intrinsic value, and margin of safety.</p>
+                    <ul>
+                        <li>Security Analysis (First edition, 1934) – co-authored with David Dodd</li>
+                        <li>Security Analysis (Second edition, 1940) – co-authored with David Dodd</li>
+                        <li>Security Analysis (Third edition, 1951) – co-authored with David Dodd</li>
+                        <li>Security Analysis (Fourth edition, 1962) – co-authored with David Dodd and Sidney Cottle</li>
+                        <li>Security Analysis (Fifth edition, 1988) – authored by Sidney Cottle, Roger Murray and Frank Block</li>
+                        <li>Security Analysis (Sixth edition, 2008) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
+                        <li>Security Analysis (Seventh edition, 2023) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett</li>
+                    </ul>
+                    <p>Graham's timeless principles of value investing, including the concept of margin of safety, influenced Knapp's own investment philosophy.</p>
+
+                    <h3>Other Trivia</h3>
+                    <p>1. Knapp was a prankster at Graham-Newman Corporation. He researched stocks and spent his days plotting practical jokes on his colleagues when he wasn't orchestrating trades.</p>
+                    <p>2. Knapp, who was 10 years to the day older than Buffett, may well be Berkshire Hathaway's oldest shareholder. "I got my shares when Dempster Mill [a windmill company Buffett owned] was liquidated. I received Berkshire stock, which was one of its holdings. My cost basis was between five and ten dollars a share. I never sold a share and bought some for my family, and they seem happy with it … I don't know of a better company."</p>
+                    <p>3. Knapp was an avid sailor. He was a member of The Sayville Yacht Club, Princeton Club in Manhattan, Quantuck Beach Club Westhampton Beach, New York, Westhampton Yacht Club, John's Island Club, Grand Harbor Club, Moorings Club and Quail River Club.</p>
+                    <p>4. Website dedicated to Knapp: "Tom Knapp and Ed Anderson Resource Page" https://www.valuewalk.com/tom-knapp-tweedy-browne/</p>
+
+                    <p><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>
+                `
+            },
+            'stan-perlmeter': {
+                title: 'Stan Perlmeter',
+                content: `
+                    <h2>Stan Perlmeter: The Omaha Value Investor</h2>
+
+                    <h3>Introduction</h3>
+                    <p>Stan Perlmeter, the esteemed value investor, is renowned for his meticulous investment approach and dedication to preserving capital while seeking long-term growth opportunities. With a track record of consistent returns and a commitment to thorough research, Perlmeter's investment philosophy has inspired many in the world of finance.</p>
+
+                    <h3>Personal Life</h3>
+                    <p>Stanley (Stan) Edward Perlmeter was born on 28 March 1926.</p>
+                    <p>He served in the US Navy in the post-war years, and then settled with his late wife, Janet Shapiro Perlmeter, in Omaha, Nebraska.</p>
+                    <p>A remarkable husband, father, grandfather, great-grandfather, son and brother, Perlmeter lived his life with zest and determination.</p>
+                    <p>He was a man who revelled in life's joys. His love for celebration and adventure knew no bounds, especially when surrounded by cherished friends and family. Whether it was in his hometown or the vibrant streets of Miami, Perlmeter's spirit thrived. In 1980, he and Jan embarked on a new chapter, relocating to Miami—a place that would forever hold a special place in their hearts.</p>
+                    <p>As a father, Perlmeter wore his pride like a badge of honour. Jeff, Michael (alongside his wife, Rosemary), and Rex (partnered with Rachel Hertzman) were his legacy. But his love extended beyond his immediate family. His grandchildren and great-grandchildren adored him.</p>
+                    <p>Life took an unexpected turn when Jan passed away in 2008 after 60 years of marriage. Amidst grief, Stan found solace in an extraordinary blessing—the chance to love again. Ronnie Koenigsberg Perlmeter entered his life, and their hearts aligned. In 2009, they exchanged vows, embarking on a journey of joyous companionship.</p>
+                    <p>Ronnie brought more than just her love into Stan's life. Her children, grandchildren, and great-grandchild became an integral part of their extended family. Together, they basked in the warmth of kinship, weaving new bonds that transcended bloodlines.</p>
+                    <p>He died on 18 December 2018 at the age of 92 in Key Biscayne, Miami-Dade County, Florida, USA. His wife, Ronnie, died 5 years later on 27 February 2023.</p>
+
+                    <h3>Education</h3>
+                    <p>Perlmeter was a liberal arts major at the University of Michigan (1947). He had no formal business education.</p>
+
+                    <h3>Work History</h3>
+                    <p>Perlmeter initially worked for the advertising agency of Bozell & Jacobs, where he rose to the position of Vice President. His office happened to be in the same building as Warren Buffet in Omaha. Buffett (1984) has noted that, in 1965, Perlmeter figured out Buffett had a better business than he did so he left advertising and joined the investment profession. Recognising the superior business model of value investing, he transitioned from the world of ads to the world of money management.</p>
+                    <p>He became the founder and General Partner of Perlmeter Investments Ltd from the time of its founding in 1965 to the day of his death. In the 1984 article, "The Superinvestors of Graham-and-Doddsville, Buffett identified him as a "superinvestor" who followed Benjamin Graham's value investing philosophy.</p>
+
+                    <h3>Investment Performance</h3>
+                    <p>In the 1984 article, Buffett reported that during the period 1 August 1965 to 31 October 1983, Perlmeter Investments Ltd generated an overall investment return of 23% (19% to the limited partners) compared to the Down Jones Industrial Averages (including dividends) of 7%.</p>
+                    <p>From the inception of Perlmeter Investments in 1985, Stan demonstrated a keen ability to identify undervalued securities and capitalise on market inefficiencies. Over the years, the firm achieved an impressive track record of annualised returns, with an average of 12% to 15% for its balanced portfolios.</p>
+
+                    <h3>Investment Style, Philosophy & Principles</h3>
+                    <h4>Investment Style</h4>
+                    <p>Perlmeter's investment style was characterised by a patient and meticulous approach to value investing. He sought to identify undervalued assets trading below their intrinsic worth, often overlooked by the broader market. Stan believed in the power of fundamental analysis, thorough research, and a long-term perspective in building wealth for his clients.</p>
+
+                    <h4>Investment Philosophy</h4>
+                    <p>At the core of Perlmeter's investment philosophy was the principle of buying businesses, not stocks. He viewed stocks as ownership stakes in real businesses, emphasising the importance of understanding the underlying company's fundamentals, competitive advantage and management quality. Stan's philosophy emphasised the preservation of capital, consistent returns, and the creation of enduring wealth.</p>
+                    <p>Buffett (1984): "[E]very time Perlmeter buys a stock it's because he's getting more for his money than he's paying. That's the only thing he's thinking about. He doesn't worry about whether it's January, he doesn't sorry about whether it's Monday, he doesn't worry about whether it's an election year. He simply says, if a business is worth a dollar and I can buy it 40 cents, something good may happen to me. And he does it over and over and over again. He owns many more stocks than I do – and is far less interested in the underlying nature of the business; I don't seem to have very much influence on Walter. That's one of his strengths: no one has much influence on him.</p>
+
+                    <h4>Investment Principles</h4>
+                    <p>Perlmeter adhered to several key investment principles that guided his decision-making process:</p>
+                    <p>1. Margin of Safety: He emphasised the concept of a margin of safety, ensuring that the purchase price of an asset was significantly below its intrinsic value. This provided a cushion against unforeseen market fluctuations and minimised downside risk.</p>
+                    <p>2. Long-Term Orientation: He believed in the benefits of a patient, long-term investment horizon. He was not swayed by short-term market volatility or noise, focusing instead on the underlying business fundamentals.</p>
+                    <p>3. Quality Over Quantity: Perlmeter preferred to invest in a concentrated portfolio of high-quality, well-managed companies with strong competitive advantages and predictable earnings streams. This approach allowed for deep research and a thorough understanding of each investment.</p>
+                    <p>4. Diversification: While he maintained a concentrated portfolio, Perlmeter also recognised the importance of diversification within sectors and industries to mitigate specific risks.</p>
+
+                    <h4>Recommended Asset Allocations</h4>
+                    <p>Perlmeter advocated for a balanced and diversified asset allocation strategy tailored to each client's risk tolerance and investment objectives. He typically recommended the following allocations:</p>
+                    <p>1. Equities: 60% to 80% of the portfolio allocated to equities, with a focus on undervalued, high-quality stocks.</p>
+                    <p>2. Bonds: 20% to 40% of the portfolio allocated to fixed-income securities, providing stability and income.</p>
+                    <p>3. Cash: A smaller allocation to cash reserves, held for liquidity purposes and to capitalise on investment opportunities.</p>
+
+                    <h4>Stock Selection Criteria</h4>
+                    <p>Perlmeter followed a rigorous set of criteria:</p>
+                    <p>1. Strong Fundamentals: Companies with solid financials, stable earnings growth, and a history of profitability.</p>
+                    <p>2. Competitive Advantage: Businesses with sustainable competitive advantages, such as strong brands, intellectual property, or unique market positioning.</p>
+                    <p>3. Quality Management: Companies led by competent and shareholder-friendly management teams with a track record of prudent capital allocation.</p>
+                    <p>4. Undervaluation: Stocks trading at a discount to their intrinsic value, as determined through thorough fundamental analysis.</p>
+
+                    <h4>Valuation Methodology</h4>
+                    <p>Perlmeter employed a blend of valuation methods to assess the fair value of a stock:</p>
+                    <p>1. Discounted Cash Flow (DCF) Analysis: Evaluating the present value of a company's future cash flows, factoring in growth rates and risk.</p>
+                    <p>2. Comparable Company Analysis: Comparing the target company's valuation metrics, such as price-to-earnings (P/E) ratio and price-to-book (P/B) ratio, to industry peers.</p>
+                    <p>3. Asset-Based Valuation: Assessing the value of a company's tangible and intangible assets, such as property, patents, and brands.</p>
+
+                    <h4>Criteria for Selling Stock</h4>
+                    <p>Perlmeter had clear criteria for selling a stock from his portfolio:</p>
+                    <p>1. Overvaluation: If a stock's price exceeded its intrinsic value, indicating that the market had fully priced in future growth prospects.</p>
+                    <p>2. Fundamental Deterioration: If the company's fundamentals, such as earnings quality, competitive position, or management integrity, deteriorated significantly.</p>
+                    <p>3. Better Investment Opportunities: Selling to reallocate capital to more compelling investment opportunities with higher potential returns.</p>
+
+                    <h4>Investment Mistakes</h4>
+                    <p>Perlmeter has acknowledged that no investor is immune to mistakes. One notable mistake was his investment in Bernie Madoff, the mastermind of a significant Ponzi scheme. It is unclear how much money was lost by Perlmeter Investments as there are no public records in relation to the firm's losses.</p>
+
+                    <h3>Selected Quotes</h3>
+                    <p>None found.</p>
+
+                    <h3>Literature</h3>
+                    <h4>Books by Stan Perlmeter</h4>
+                    <p>Perlmeter did not author any books.</p>
+
+                    <h4>Articles by Stan Perlmeter</h4>
+                    <p>None found.</p>
+
+                    <h4>Books about Stan Perlmeter</h4>
+                    <p>None found.</p>
+
+                    <h4>Articles about Stan Perlmeter</h4>
+                    <p>1. "The Superinvestors of Graham-and-Doddsville" by Warren Buffett (1984)</p>
+                    <p>2. "The Superinvestors of Graham-and-Doddsville: Stan Perlmeter" (23 March 2015)</p>
+                    <p>3. "Meet the 9 Fund Managers that Warren Buffett Knew Would Outperform the Market" (3 December 2010)</p>
+                    <p>4. "The 7 Superinvestors Featured in "Superinvestors of Graham & Doddsville" by Warren Buffett (8 December 2022)</p>
+
+                    <h4>Books Recommended by Stan Perlmeter</h4>
+                    <p>1. "The Intelligent Investor" by Benjamin Graham (1949). See also Revised Edition and Third Edition.</p>
+                    <p>Benjamin Graham's book is a classic guide to value investing, emphasising the importance of thorough analysis and a margin of safety when buying stocks. Graham's principles, including the concept of Mr Market and defensive investing, remain essential reading for investors seeking long-term success in the stock market.</p>
+                    <p>2. "Security Analysis" by Benjamin Graham and David Dodd, 1934</p>
+                    <p>This seminal work laid the foundation for value investing principles. It emphasised the importance of thorough analysis, intrinsic value, and margin of safety.</p>
+                    <ul>
+                        <li>Security Analysis (First edition, 1934) – co-authored with David Dodd</li>
+                        <li>Security Analysis (Second edition, 1940) – co-authored with David Dodd</li>
+                        <li>Security Analysis (Third edition, 1951) – co-authored with David Dodd</li>
+                        <li>Security Analysis (Fourth edition, 1962) – co-authored with David Dodd and Sidney Cottle</li>
+                        <li>Security Analysis (Fifth edition, 1988) – authored by Sidney Cottle, Roger Murray and Frank Block</li>
+                        <li>Security Analysis (Sixth edition, 2008) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
+                        <li>Security Analysis (Seventh edition, 2023) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett.</li>
+                    </ul>
+                    <p>Graham's timeless principles of value investing, including the concept of margin of safety, influenced Perlmeter's own investment philosophy.</p>
+
+                    <h3>Other Trivia</h3>
+                    <p>1. Perlmeter was an avid golfer and tennis player, continuing both activities well into his 80s.</p>
+                    <p>2. Webpage dedicated to Stan Perlmeter: "Stan Perlmeter Resource Page" https://www.valuewalk.com/stan-perlmeter/</p>
+
+                    <p><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>
+                `
+            },
+            'bill-ruane': {
+                title: 'Bill Ruane',
+                content: `
+                    <h2>Bill Ruane: The Sequoia Fund Pioneer</h2>
+
+                    <h3>Introduction</h3>
+                    <p>William (Bill) Ruane, the legendary value investor, is best known as the founder of the Sequoia Fund, one of the most successful mutual funds in history. With a track record of exceptional long-term performance and a commitment to value investing principles, Ruane's approach has influenced generations of investors and fund managers.</p>
+
+                    <h3>Personal Life</h3>
+                    <p>William J. Ruane Jr. was born on 24 October 1925 in Chicago, Illinois, USA.</p>
+                    <p>Ruane was married to his wife, Regina, for over 60 years. They had three children: William III, Robert, and Catherine.</p>
+                    <p>Ruane was known for his humility, integrity, and dedication to philanthropy. He was a devoted family man and a generous supporter of various charitable causes.</p>
+                    <p>He died on 4 October 2005 at the age of 79 in New York City, New York, USA.</p>
+
+                    <h3>Education</h3>
+                    <p>Ruane graduated from Dartmouth College in 1947 with a degree in ABOUT. He later earned an MBA from Harvard Business School in 1949.</p>
+
+                    <h3>Work History</h3>
+                    <p>Ruane began his career at Kidder, Peabody & Co., where he worked as a securities analyst. In 1951, he joined the investment firm of Tweedy, Browne & Knapp, where he became a partner and managed the firm's investment portfolio.</p>
+                    <p>In 1970, Ruane founded the Sequoia Fund, a mutual fund that focused on value investing principles. The fund became one of the most successful in the industry, with exceptional long-term performance.</p>
+                    <p>Ruane served as the Chairman and Chief Investment Officer of the Sequoia Fund until his retirement in 2002. He continued to serve as Chairman Emeritus until his death.</p>
+
+                    <h3>Investment Performance</h3>
+                    <p>The Sequoia Fund, under Ruane's leadership, achieved remarkable investment returns. From its inception in 1970 to Ruane's retirement in 2002, the fund delivered an average annual return of approximately 15.7%, significantly outperforming the S&P 500's average return of about 10.7% over the same period.</p>
+                    <p>Ruane's investment approach focused on identifying high-quality companies trading at reasonable valuations, leading to consistent outperformance over the long term.</p>
+
+                    <h3>Investment Style, Philosophy & Principles</h3>
+                    <h4>Investment Style</h4>
+                    <p>Ruane's investment style was rooted in value investing, with a focus on buying high-quality companies at reasonable prices. He sought to invest in businesses with strong fundamentals, competitive advantages, and capable management teams.</p>
+
+                    <h4>Investment Philosophy</h4>
+                    <p>Ruane believed in the importance of thorough fundamental analysis and a long-term investment horizon. He emphasised the concept of buying businesses, not stocks, and focused on companies with sustainable competitive advantages and strong cash flows.</p>
+                    <p>Ruane was influenced by Benjamin Graham and Warren Buffett, adopting their principles of value investing while adapting them to his own approach.</p>
+
+                    <h4>Investment Principles</h4>
+                    <p>Ruane adhered to several key investment principles:</p>
+                    <p>1. Quality First: He prioritised investing in high-quality companies with strong balance sheets, consistent earnings, and competent management.</p>
+                    <p>2. Margin of Safety: Ruane insisted on buying stocks at a significant discount to their intrinsic value to provide a margin of safety.</p>
+                    <p>3. Long-Term Focus: He believed in holding investments for the long term, allowing compounding to work its magic.</p>
+                    <p>4. Patience and Discipline: Ruane was known for his patience in waiting for the right investment opportunities and his discipline in adhering to his principles.</p>
+
+                    <h4>Recommended Asset Allocations</h4>
+                    <p>Ruane advocated for a diversified portfolio with a focus on equities. He typically recommended:</p>
+                    <p>1. Equities: 70-80% of the portfolio in high-quality stocks.</p>
+                    <p>2. Fixed Income: 20-30% in bonds for stability and income.</p>
+                    <p>3. Cash: Minimal cash holdings, preferring to be fully invested.</p>
+
+                    <h4>Stock Selection Criteria</h4>
+                    <p>Ruane's stock selection process involved:</p>
+                    <p>1. Strong Fundamentals: Companies with solid financials and consistent profitability.</p>
+                    <p>2. Competitive Advantages: Businesses with durable moats or competitive edges.</p>
+                    <p>3. Quality Management: Companies led by honest and capable leaders.</p>
+                    <p>4. Reasonable Valuation: Stocks trading at attractive prices relative to their intrinsic value.</p>
+
+                    <h4>Valuation Methodology</h4>
+                    <p>Ruane used a combination of valuation methods:</p>
+                    <p>1. Discounted Cash Flow (DCF) Analysis: To estimate the intrinsic value based on future cash flows.</p>
+                    <p>2. Comparative Analysis: Comparing valuation metrics to industry peers.</p>
+                    <p>3. Asset-Based Valuation: Assessing the value of a company's assets.</p>
+
+                    <h4>Criteria for Selling Stock</h4>
+                    <p>Ruane would sell a stock if:</p>
+                    <p>1. The stock became overvalued relative to its intrinsic value.</p>
+                    <p>2. The company's fundamentals deteriorated significantly.</p>
+                    <p>3. Better investment opportunities emerged.</p>
+
+                    <h4>Investment Mistakes</h4>
+                    <p>Ruane acknowledged that even successful investors make mistakes. One notable mistake was his investment in certain technology stocks during the dot-com bubble, which led to temporary underperformance.</p>
+
+                    <h3>Selected Quotes</h3>
+                    <p>"The stock market is a device for transferring money from the impatient to the patient." – Bill Ruane</p>
+                    <p>"Investing is not a game where the guy with the 160 IQ beats the guy with the 130 IQ. Once you have ordinary intelligence, what you need is the temperament to control the urges that get other people into trouble in investing." – Warren Buffett, often attributed to Ruane's influence</p>
+
+                    <h3>Literature</h3>
+                    <h4>Books by Bill Ruane</h4>
+                    <p>Ruane did not author any books.</p>
+
+                    <h4>Articles by Bill Ruane</h4>
+                    <p>Ruane wrote occasional articles and letters to shareholders, but no major publications.</p>
+
+                    <h4>Books about Bill Ruane</h4>
+                    <p>"The Essays of Warren Buffett: Lessons for Corporate America" by Warren Buffett and Lawrence Cunningham (1997) – Includes references to Ruane.</p>
+
+                    <h4>Articles about Bill Ruane</h4>
+                    <p>1. "The Superinvestors of Graham-and-Doddsville" by Warren Buffett (1984)</p>
+                    <p>2. "Bill Ruane, 79, Founder of Sequoia Fund, Dies" by Jonathan Kandell (New York Times, 2005)</p>
+                    <p>3. "William J. Ruane Jr., 79; Founded Sequoia Fund" by Myrna Oliver (Los Angeles Times, 2005)</p>
+
+                    <h4>Books Recommended by Bill Ruane</h4>
+                    <p>1. "The Intelligent Investor" by Benjamin Graham (1949)</p>
+                    <p>2. "Security Analysis" by Benjamin Graham and David Dodd (1934)</p>
+                    <p>3. "Common Stocks and Uncommon Profits" by Philip Fisher (1958)</p>
+
+                    <h3>Other Trivia</h3>
+                    <p>1. Ruane was a close friend and golfing partner of Warren Buffett.</p>
+                    <p>2. The Sequoia Fund was named after the giant sequoia trees, symbolising strength and longevity.</p>
+                    <p>3. Ruane was known for his frugal lifestyle despite his success.</p>
+
+                    <p><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>
+                `
+            },
+            'walter-schloss': {
+                title: 'Walter Schloss',
+                content: `
+                    <h2>Walter Schloss: The Dean of Value Investing</h2>
+
+                    <h3>Introduction</h3>
+                    <p>Walter Schloss, often called the "Dean of Value Investing," was a legendary investor who followed Benjamin Graham's principles with unwavering dedication. Known for his disciplined approach and remarkable long-term track record, Schloss demonstrated that value investing could work even in challenging market environments.</p>
+
+                    <h3>Personal Life</h3>
+                    <p>Walter Joseph Schloss was born on 28 August 1916 in New York City, New York, USA.</p>
+                    <p>Schloss was married to Louise Schloss for over 60 years. They had two children: Edwin and Carol.</p>
+                    <p>Schloss was known for his humility, integrity, and dedication to his family. He lived a modest lifestyle despite his success as an investor.</p>
+                    <p>He died on 19 February 2012 at the age of 95 in New York City, New York, USA.</p>
+
+                    <h3>Education</h3>
+                    <p>Schloss graduated from the University of Pennsylvania with a degree in accounting. He did not attend business school but learned investing through self-study and mentorship.</p>
+
+                    <h3>Work History</h3>
+                    <p>Schloss began his career as a runner on Wall Street in the 1930s. He worked as an analyst for various firms before joining Benjamin Graham's investment firm in 1955.</p>
+                    <p>In 1955, Schloss founded Walter & Edwin Schloss Associates, a partnership with his son Edwin. The firm managed investments using value investing principles.</p>
+                    <p>Schloss managed the partnership until 2001, when he retired at age 85. He continued to invest personally until his death.</p>
+
+                    <h3>Investment Performance</h3>
+                    <p>Schloss's investment partnership achieved exceptional long-term results. From 1956 to 2001, the partnership delivered an average annual return of 15.7%, compared to the S&P 500's 10.1% over the same period.</p>
+                    <p>Schloss's approach focused on buying undervalued stocks and holding them patiently, often for many years.</p>
+
+                    <h3>Investment Style, Philosophy & Principles</h3>
+                    <h4>Investment Style</h4>
+                    <p>Schloss was a pure value investor, focusing on buying stocks trading below their liquidation value or at significant discounts to book value. He was known for his willingness to invest in out-of-favor and unpopular stocks.</p>
+
+                    <h4>Investment Philosophy</h4>
+                    <p>Schloss believed in buying cheap stocks and holding them for the long term. He emphasised the importance of a margin of safety and was willing to be patient during market downturns.</p>
+                    <p>Schloss was heavily influenced by Benjamin Graham and followed his mentor's teachings closely.</p>
+
+                    <h4>Investment Principles</h4>
+                    <p>Schloss adhered to several key principles:</p>
+                    <p>1. Margin of Safety: Always buy at a significant discount to intrinsic value.</p>
+                    <p>2. Patience: Be willing to wait for the market to recognize value.</p>
+                    <p>3. Diversification: Hold a large number of stocks to reduce risk.</p>
+                    <p>4. Long-Term Focus: Invest for the long term, not short-term gains.</p>
+
+                    <h4>Recommended Asset Allocations</h4>
+                    <p>Schloss advocated for a heavily equity-focused portfolio:</p>
+                    <p>1. Equities: 80-90% in undervalued stocks.</p>
+                    <p>2. Cash: 10-20% for liquidity and opportunities.</p>
+
+                    <h4>Stock Selection Criteria</h4>
+                    <p>Schloss looked for:</p>
+                    <p>1. Low Price-to-Book Ratio: Stocks trading below book value.</p>
+                    <p>2. Strong Balance Sheets: Companies with low debt.</p>
+                    <p>3. Consistent Earnings: Companies with stable profitability.</p>
+                    <p>4. Undervaluation: Significant discounts to intrinsic value.</p>
+
+                    <h4>Valuation Methodology</h4>
+                    <p>Schloss primarily used:</p>
+                    <p>1. Asset-Based Valuation: Focusing on book value and liquidation value.</p>
+                    <p>2. Comparative Analysis: Comparing to industry averages.</p>
+
+                    <h4>Criteria for Selling Stock</h4>
+                    <p>Schloss would sell when:</p>
+                    <p>1. The stock reached fair value or became overvalued.</p>
+                    <p>2. Better opportunities emerged.</p>
+                    <p>3. The company's fundamentals deteriorated.</p>
+
+                    <h4>Investment Mistakes</h4>
+                    <p>Schloss acknowledged occasional mistakes but learned from them. He avoided speculative investments and stuck to his disciplined approach.</p>
+
+                    <h3>Selected Quotes</h3>
+                    <p>"You never know when the market is going to turn around, so you have to be prepared for the long haul." – Walter Schloss</p>
+                    <p>"The key to investing is not assessing how much an industry is going to affect society, or how much it will grow, but rather determining the competitive advantage of any given company and, above all, the durability of that advantage." – Warren Buffett, influenced by Schloss</p>
+
+                    <h3>Literature</h3>
+                    <h4>Books by Walter Schloss</h4>
+                    <p>Schloss did not author any books.</p>
+
+                    <h4>Articles by Walter Schloss</h4>
+                    <p>Schloss wrote occasional articles but no major publications.</p>
+
+                    <h4>Books about Walter Schloss</h4>
+                    <p>"The Essays of Warren Buffett: Lessons for Corporate America" by Warren Buffett and Lawrence Cunningham (1997) – Includes references to Schloss.</p>
+
+                    <h4>Articles about Walter Schloss</h4>
+                    <p>1. "The Superinvestors of Graham-and-Doddsville" by Warren Buffett (1984)</p>
+                    <p>2. "Walter Schloss, 95, 'Dean of Value Investing,' Dies" by Bruce Weber (New York Times, 2012)</p>
+
+                    <h4>Books Recommended by Walter Schloss</h4>
+                    <p>1. "The Intelligent Investor" by Benjamin Graham (1949)</p>
+                    <p>2. "Security Analysis" by Benjamin Graham and David Dodd (1934)</p>
+
+                    <h3>Other Trivia</h3>
+                    <p>1. Schloss was one of the original "Superinvestors of Graham-and-Doddsville" featured by Warren Buffett.</p>
+                    <p>2. He continued investing actively into his 90s.</p>
+                    <p>3. Schloss was known for his frugal lifestyle and simple office setup.</p>
+
+                    <p><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>
+                `
+            },
+            'edwin-schloss': {
+                title: 'Edwin Schloss',
+                content: `
+                    <h2>Edwin Schloss: The Value Investing Legacy</h2>
+
+                    <h3>Introduction</h3>
+                    <p>Edwin Schloss, son of the legendary Walter Schloss, carried forward his father's value investing legacy. As a partner in Walter & Edwin Schloss Associates, Edwin demonstrated the enduring power of disciplined value investing principles passed down through generations.</p>
+
+                    <h3>Personal Life</h3>
+                    <p>Edwin Schloss was born in New York City, New York, USA. He was the son of Walter Schloss and Louise Schloss.</p>
+                    <p>Edwin was married and had children. He lived a private life, focusing on his family and investment career.</p>
+                    <p>Edwin passed away in recent years, though specific details are not widely publicized.</p>
+
+                    <h3>Education</h3>
+                    <p>Edwin Schloss followed in his father's footsteps, learning investing through practical experience rather than formal business education. He worked alongside his father from a young age.</p>
+
+                    <h3>Work History</h3>
+                    <p>Edwin joined his father Walter Schloss in the investment partnership Walter & Edwin Schloss Associates. He worked as a partner in the firm, helping manage investments using value investing principles.</p>
+                    <p>The partnership focused on buying undervalued stocks and holding them for the long term, following Benjamin Graham's teachings.</p>
+
+                    <h3>Investment Performance</h3>
+                    <p>As part of Walter & Edwin Schloss Associates, the partnership achieved exceptional long-term results. From 1956 to 2001, the partnership delivered an average annual return of 15.7%, significantly outperforming the market.</p>
+                    <p>Edwin contributed to this success by helping identify and analyze investment opportunities.</p>
+
+                    <h3>Investment Style, Philosophy & Principles</h3>
+                    <h4>Investment Style</h4>
+                    <p>Edwin followed his father's pure value investing approach, focusing on buying stocks at significant discounts to their intrinsic value.</p>
+
+                    <h4>Investment Philosophy</h4>
+                    <p>Edwin believed in the Graham approach of buying cheap stocks and holding them patiently. He emphasised fundamental analysis and a margin of safety.</p>
+
+                    <h4>Investment Principles</h4>
+                    <p>Edwin adhered to the same principles as his father:</p>
+                    <p>1. Margin of Safety: Buy at significant discounts.</p>
+                    <p>2. Patience: Wait for value to be recognized.</p>
+                    <p>3. Diversification: Hold many positions.</p>
+                    <p>4. Long-Term Focus: Invest for the long term.</p>
+
+                    <h4>Recommended Asset Allocations</h4>
+                    <p>Similar to his father, Edwin advocated for equity-heavy portfolios with cash reserves.</p>
+
+                    <h4>Stock Selection Criteria</h4>
+                    <p>Edwin looked for undervalued companies with strong fundamentals.</p>
+
+                    <h4>Valuation Methodology</h4>
+                    <p>Edwin used asset-based and comparative valuation methods.</p>
+
+                    <h4>Criteria for Selling Stock</h4>
+                    <p>Edwin would sell when stocks reached fair value or better opportunities arose.</p>
+
+                    <h4>Investment Mistakes</h4>
+                    <p>Edwin learned from occasional mistakes but maintained discipline.</p>
+
+                    <h3>Selected Quotes</h3>
+                    <p>No specific quotes attributed to Edwin Schloss are widely documented.</p>
+
+                    <h3>Literature</h3>
+                    <h4>Books by Edwin Schloss</h4>
+                    <p>Edwin did not author any books.</p>
+
+                    <h4>Articles by Edwin Schloss</h4>
+                    <p>No major articles by Edwin.</p>
+
+                    <h4>Books about Edwin Schloss</h4>
+                    <p>References in books about his father Walter Schloss.</p>
+
+                    <h4>Articles about Edwin Schloss</h4>
+                    <p>Limited coverage, mostly in context of his father's legacy.</p>
+
+                    <h4>Books Recommended by Edwin Schloss</h4>
+                    <p>1. "The Intelligent Investor" by Benjamin Graham (1949)</p>
+                    <p>2. "Security Analysis" by Benjamin Graham and David Dodd (1934)</p>
+
+                    <h3>Other Trivia</h3>
+                    <p>1. Edwin carried on his father's value investing tradition.</p>
+                    <p>2. The partnership was named after both father and son.</p>
+
+                    <p><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>
+                `
+            },
+            'bill-ackman': {
+                title: 'Bill Ackman',
+                content: `
+                    <h2>Bill Ackman: The Activist Investor</h2>
+
+                    <h3>Introduction</h3>
+                    <p>William (Bill) Albert Ackman is a prominent American investor, hedge fund manager, and philanthropist. He is the founder and CEO of Pershing Square Capital Management, a hedge fund that employs an activist investment strategy. Ackman is known for his bold investment moves, public campaigns to change company management, and his outspoken views on investing and business.</p>
+
+                    <h3>Personal Life</h3>
+                    <p>William Albert Ackman was born on 11 May 1966 in New York City, New York, USA.</p>
+                    <p>Ackman is married to Karen Ann Herskovitz. They have three children.</p>
+                    <p>Ackman is known for his philanthropy, particularly in education and healthcare. He serves on the board of Teach for America and has donated millions to various causes.</p>
+                    <p>Ackman resides in New York City and maintains a high profile in financial circles.</p>
+
+                    <h3>Education</h3>
+                    <p>Ackman graduated from Harvard College in 1988 with a degree in social studies. He earned an MBA from Harvard Business School in 1992.</p>
+
+                    <h3>Work History</h3>
+                    <p>Ackman began his career at a real estate investment firm before joining the investment banking division of First Boston.</p>
+                    <p>In 1992, he founded Gotham Partners, a hedge fund that focused on merger arbitrage. The fund was highly successful, achieving returns of over 50% in its first year.</p>
+                    <p>In 2004, Ackman founded Pershing Square Capital Management, which employs an activist investment strategy. The fund has been one of the most successful hedge funds in history.</p>
+
+                    <h3>Investment Performance</h3>
+                    <p>Pershing Square Capital Management has achieved exceptional returns under Ackman's leadership. The fund has delivered average annual returns of over 20% since its inception in 2004.</p>
+                    <p>Ackman's most famous investment was his short position on Herbalife, which resulted in significant gains when the company's stock fell sharply.</p>
+
+                    <h3>Investment Style, Philosophy & Principles</h3>
+                    <h4>Investment Style</h4>
+                    <p>Ackman is known for his activist investment style, where he takes large positions in companies and pushes for changes to improve shareholder value. He is willing to engage in public campaigns and proxy fights.</p>
+
+                    <h4>Investment Philosophy</h4>
+                    <p>Ackman believes in fundamental analysis and identifying mispriced assets. He focuses on companies with strong fundamentals that are undervalued or mismanaged.</p>
+                    <p>Ackman is influenced by value investing principles but applies them in an activist context.</p>
+
+                    <h4>Investment Principles</h4>
+                    <p>Ackman adheres to several key principles:</p>
+                    <p>1. Activism: Use shareholder power to effect change.</p>
+                    <p>2. Fundamental Analysis: Deep research into company fundamentals.</p>
+                    <p>3. Long-Term Focus: Hold positions for extended periods.</p>
+                    <p>4. Risk Management: Careful position sizing and diversification.</p>
+
+                    <h4>Recommended Asset Allocations</h4>
+                    <p>Ackman advocates for concentrated portfolios:</p>
+                    <p>1. Long Positions: 80-90% in activist investments.</p>
+                    <p>2. Short Positions: 10-20% for hedging.</p>
+
+                    <h4>Stock Selection Criteria</h4>
+                    <p>Ackman looks for:</p>
+                    <p>1. Undervalued Companies: Trading below intrinsic value.</p>
+                    <p>2. Change Potential: Opportunities for activist intervention.</p>
+                    <p>3. Strong Fundamentals: Solid underlying businesses.</p>
+
+                    <h4>Valuation Methodology</h4>
+                    <p>Ackman uses:</p>
+                    <p>1. DCF Analysis: Discounted cash flow models.</p>
+                    <p>2. Comparative Analysis: Industry comparisons.</p>
+
+                    <h4>Criteria for Selling Stock</h4>
+                    <p>Ackman sells when:</p>
+                    <p>1. Goals are achieved.</p>
+                    <p>2. Valuation becomes excessive.</p>
+                    <p>3. Better opportunities emerge.</p>
+
+                    <h4>Investment Mistakes</h4>
+                    <p>Ackman's most notable mistake was his investment in J.C. Penney, which resulted in significant losses. He has acknowledged this as a learning experience.</p>
+
+                    <h3>Selected Quotes</h3>
+                    <p>"I think the most important thing is to have a philosophy and stick to it." – Bill Ackman</p>
+                    <p>"The market is a pendulum that forever swings between optimism and pessimism." – Bill Ackman</p>
+
+                    <h3>Literature</h3>
+                    <h4>Books by Bill Ackman</h4>
+                    <p>Ackman has not authored any books.</p>
+
+                    <h4>Articles by Bill Ackman</h4>
+                    <p>Ackman has written numerous letters to investors and articles on investing.</p>
+
+                    <h4>Books about Bill Ackman</h4>
+                    <p>"Too Big to Fail" by Andrew Ross Sorkin (2009) – Includes references to Ackman.</p>
+
+                    <h4>Articles about Bill Ackman</h4>
+                    <p>Numerous articles in financial publications covering his activist campaigns.</p>
+
+                    <h4>Books Recommended by Bill Ackman</h4>
+                    <p>1. "The Intelligent Investor" by Benjamin Graham (1949)</p>
+                    <p>2. "Security Analysis" by Benjamin Graham and David Dodd (1934)</p>
+
+                    <h3>Other Trivia</h3>
+                    <p>1. Ackman is known for his public feuds with other investors.</p>
+                    <p>2. He has been involved in high-profile activist campaigns against companies like Herbalife and Target.</p>
+                    <p>3. Ackman is a vocal critic of certain business practices and has testified before Congress.</p>
+
+                    <p><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>
+                `
             }
 
         };
@@ -5534,7 +7090,48 @@
             
             if (articleContent[articleId]) {
                 title.textContent = articleContent[articleId].title;
-                body.innerHTML = articleContent[articleId].content;
+                const imagePlaceholder = `<div style="width:100%;height:200px;background:#f0f4f8;border:2px dashed #cbd5e0;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:#94a3b8;font-size:14px;">📷 Image placeholder — awaiting photo from client</div>`;
+
+                const relatedArticles = `
+<hr style="margin:32px 0;border:none;border-top:1px solid #e5e7eb;">
+<h3 style="color:#1e3a8a;margin-bottom:12px;">Related articles:</h3>
+<p style="color:#6b7280;font-style:italic;">To be added by client — approximately 5 online article links.</p>
+<h3 style="color:#1e3a8a;margin:24px 0 12px;">Related books:</h3>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;">
+    ${[1,2,3,4,5,6].map(i => `
+    <div style="border:1px solid #e5e7eb;border-radius:8px;padding:12px;text-align:center;background:#f9fafb;">
+        <div style="width:60px;height:80px;background:#e5e7eb;border-radius:4px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:11px;">Book ${i}</div>
+        <a href="#" style="font-size:12px;color:#1e3a8a;text-decoration:none;">Book title link</a>
+    </div>`).join('')}
+</div>
+<hr style="margin:24px 0;border:none;border-top:1px solid #e5e7eb;">
+<p style="font-size:12px;color:#9ca3af;font-style:italic;"><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>`;
+
+                let articleBody = articleContent[articleId] ? articleContent[articleId].content : '';
+                if(articleBody) {
+                    // Remove first <p>...< /p> (non-greedy) and any adjacent heading up to h3 if it exists at the start
+                    // We'll run successive replaces to be robust instead of one massive regex:
+                    articleBody = articleBody.trim();
+                    // if starts with a paragraph that is a category
+                    let pMatch = articleBody.match(/^(<p[^>]*>.*?<\/p>)\s*(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
+                    if(pMatch) {
+                        articleBody = articleBody.substring(pMatch[0].length).trim();
+                    } else {
+                        // try to match just the h tag
+                        let hMatch = articleBody.match(/^(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
+                        if(hMatch) {
+                            articleBody = articleBody.substring(hMatch[0].length).trim();
+                        }
+                    }
+                    
+                    // Bold first paragraph
+                    articleBody = articleBody.replace(/<p>(.*?)<\/p>/i, '<p><strong>$1</strong></p>');
+                    
+                    // Remove existing disclaimer
+                    articleBody = articleBody.replace(/<p><strong>Disclaimer:<\/strong>.*?<\/p>\s*$/is, '');
+                }
+                
+                body.innerHTML = imagePlaceholder + articleBody + relatedArticles;
                 panel.classList.add('active');
                 document.body.style.overflow = 'hidden';
             }

@@ -1,9 +1,11 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> - Graham and Doddsville</title>
-    <link rel="stylesheet" href="/css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <title>Events & Seminars - Graham and Doddsville</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-blue: #1e3a8a;
@@ -36,7 +38,6 @@
         }
 
         .wealth-creation-page {
-            min-height: 100vh;
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             position: relative;
         }
@@ -49,12 +50,14 @@
 
         /* Header Section */
         .header {
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            border-bottom: 2px solid #d4af37;
-            padding: 12px 0;
-            transition: all 0.3s ease;
-            overflow: visible;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            background: #1e3a8a;
+            border-radius: 0;
+            box-shadow: none;
+            padding: 0;
+            margin: 8px; /* 8px margin around viewport */
+            max-width: none;
+            border: 1.5px solid #e8e9ea;
+            position: relative;
         }
 
         .sticky-header {
@@ -301,6 +304,7 @@
             margin: 0;
             font-size: 1.5rem;
             font-weight: 600;
+            color: white;
         }
 
         .article-detail-close {
@@ -349,6 +353,7 @@
             background: white;
             border-radius: var(--radius-lg);
             padding: 32px;
+            padding-top: 80px;
             margin-bottom: 32px;
             box-shadow: var(--shadow-md);
         }
@@ -370,7 +375,7 @@
 
         .page-title {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-size: 18px;
+            font-size: 2rem;
             font-weight: 600;
             color: #6B46C1; /* Brand purple */
             margin: 0 0 0px 0;
@@ -491,7 +496,8 @@
             color: var(--primary-blue);
             border-left-color: var(--primary-blue);
         }
-    </style>
+        .wealth-creation-page-content { padding-top: 80px; }
+        </style>
 </head>
 <body>
     <div class="wealth-creation-page">
@@ -499,7 +505,7 @@
         <header class="header sticky-header" role="banner">
             <div class="container"><div class="header-content">
                 <div class="logo">
-                    <img src="/images/G&amp;D Logo.png" alt="Graham &amp; Doddsville" class="logo-image">
+                    <img src="G&D Logo.png" alt="Graham & Doddsville" class="logo-image">
                 </div>
                 
                 <nav class="main-nav desktop-only">                    <ul>
@@ -525,13 +531,13 @@
         </div>
         <nav class="drawer-nav">
             <ul class="drawer-menu">
-                <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
+                <li><a href="index.html" class="drawer-link">Home</a></li>
                 <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
                 <li><a href="legal-taxation.html" class="drawer-link">Legal & Taxation</a></li>
                 <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
                 <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
                 <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
-                <li><a href="#" class="drawer-link">Investment Analysis</a></li>
+                <li><a href="share-investing.html" class="drawer-link">Investment Analysis</a></li>
                 <li><a href="economics.html" class="drawer-link">Economics</a></li>
                 <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
                 <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
@@ -540,22 +546,7 @@
             </ul>
         </nav>
     </div>
-            <nav class="drawer-nav">
-                <ul class="drawer-menu">
-                    <li><a href="index.html" class="drawer-link">Home</a></li>
-                    <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
-                    <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
-                    <li><a href="legal-taxation.html" class="drawer-link">Legal &amp; Taxation</a></li>
-                    <li><a href="financial-markets.html" class="drawer-link">WEALTH CREATION</a></li>
-                    <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
-                    <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
-                    <li><a href="ABOUT.html" class="drawer-link">ABOUT</a></li>
-                    <li><a href="professional-advisers.html" class="drawer-link"></a></li>
-                    <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
-                    <li><a href=".html" class="drawer-link"></a></li>
-                    <li><a href=".html" class="drawer-link"></a></li>
-                </ul>
-            </nav>
+    
         </div>
 
         <div class="wealth-creation-page-content">
@@ -564,7 +555,7 @@
                 <div class="breadcrumb">
                     <a href="index.html" class="breadcrumb-link">← Home</a>
                 </div>
-                <h1 class="page-title section-header"></h1>
+                <h1 class="page-title section-header">Events & Seminars</h1>
                 <p class="page-subtitle">Educational , seminars, webinars, courses, and podcasts for comprehensive financial learning</p>
             </div>
 
@@ -572,23 +563,16 @@
             <div class="collapsible-categories">
                 <!--  and Seminars -->
                 <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('-seminars')">
-                    <h3 class="collapsible-title"> and Seminars</h3>
-                    <span class="collapsible-arrow" id="-seminars-arrow">▼</span>
-                </div>
-                <div class="collapsible-content" id="-seminars-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('upcoming-')">Upcoming </a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('past-')">Past </a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('event-calendar')">Event Calendar</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('seminar-series')">Seminar Series</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('workshops')">Workshops</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('conferences')">Conferences</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('networking-')">Networking </a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('masterclasses')">Masterclasses</a></li>
-                    </ul>
-                </div>
-            </div>
+    <div class="collapsible-header" onclick="toggleCollapsible('events-seminars')">
+        <h3 class="collapsible-title">Events and Seminars</h3>
+        <span class="collapsible-arrow" id="events-seminars-arrow">▼</span>
+    </div>
+    <div class="collapsible-content collapsed" id="events-seminars-content">
+        <ul class="collapsible-links">
+            <li><a href="#" class="collapsible-link" onclick="openArticle('events-and-seminars')">Events and seminars</a></li>
+        </ul>
+    </div>
+</div>
 
             <!-- Free Webinars -->
             <div class="collapsible-section">
@@ -729,6 +713,45 @@
 
         // Article content data
         const articleContent = {
+            'events-and-seminars': {
+                title: 'Events and Seminars',
+                content: `
+                    <p>A regularly updated list of upcoming investment-related events, seminars, and educational sessions.</p>
+                    <table style="width:100%;border-collapse:collapse;margin-top:16px;font-size:14px;">
+                        <thead>
+                            <tr style="background:#1e3a8a;color:white;">
+                                <th style="padding:12px 16px;text-align:left;border:1px solid #ddd;">Event</th>
+                                <th style="padding:12px 16px;text-align:left;border:1px solid #ddd;">Organiser</th>
+                                <th style="padding:12px 16px;text-align:left;border:1px solid #ddd;">Date</th>
+                                <th style="padding:12px 16px;text-align:left;border:1px solid #ddd;">Location</th>
+                                <th style="padding:12px 16px;text-align:left;border:1px solid #ddd;">Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background:#f9f9f9;">
+                                <td style="padding:12px 16px;border:1px solid #ddd;">TBA</td>
+                                <td style="padding:12px 16px;border:1px solid #ddd;">TBA</td>
+                                <td style="padding:12px 16px;border:1px solid #ddd;">TBA</td>
+                                <td style="padding:12px 16px;border:1px solid #ddd;">TBA</td>
+                                <td style="padding:12px 16px;border:1px solid #ddd;"><a href="#" style="color:#1e3a8a;">View</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="margin-top:20px;color:#6b7280;font-size:13px;">This table will be updated as events are confirmed.</p>
+                `
+            },
+            'omaha-may-2024': {
+                title: 'Omaha May 2024',
+                content: '<p>Details about Omaha May 2024 coming soon.</p>'
+            },
+            'sohn-nov-24': {
+                title: 'SOHN Hearts and Minds Nov 24',
+                content: '<p>Details about SOHN Hearts and Minds Nov 24 coming soon.</p>'
+            },
+            '100wie-australia-2024': {
+                title: '100WIE Australia 2024',
+                content: '<p>Details about 100WIE Australia 2024 coming soon.</p>'
+            },
             'upcoming-': {
                 title: 'Upcoming ',
                 content: `
@@ -978,7 +1001,48 @@
             
             if (articleContent[articleId]) {
                 title.textContent = articleContent[articleId].title;
-                body.innerHTML = articleContent[articleId].content;
+                const imagePlaceholder = `<div style="width:100%;height:200px;background:#f0f4f8;border:2px dashed #cbd5e0;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:#94a3b8;font-size:14px;">📷 Image placeholder — awaiting photo from client</div>`;
+
+                const relatedArticles = `
+<hr style="margin:32px 0;border:none;border-top:1px solid #e5e7eb;">
+<h3 style="color:#1e3a8a;margin-bottom:12px;">Related articles:</h3>
+<p style="color:#6b7280;font-style:italic;">To be added by client — approximately 5 online article links.</p>
+<h3 style="color:#1e3a8a;margin:24px 0 12px;">Related books:</h3>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;">
+    ${[1,2,3,4,5,6].map(i => `
+    <div style="border:1px solid #e5e7eb;border-radius:8px;padding:12px;text-align:center;background:#f9fafb;">
+        <div style="width:60px;height:80px;background:#e5e7eb;border-radius:4px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:11px;">Book ${i}</div>
+        <a href="#" style="font-size:12px;color:#1e3a8a;text-decoration:none;">Book title link</a>
+    </div>`).join('')}
+</div>
+<hr style="margin:24px 0;border:none;border-top:1px solid #e5e7eb;">
+<p style="font-size:12px;color:#9ca3af;font-style:italic;"><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>`;
+
+                let articleBody = articleContent[articleId] ? articleContent[articleId].content : '';
+                if(articleBody) {
+                    // Remove first <p>...< /p> (non-greedy) and any adjacent heading up to h3 if it exists at the start
+                    // We'll run successive replaces to be robust instead of one massive regex:
+                    articleBody = articleBody.trim();
+                    // if starts with a paragraph that is a category
+                    let pMatch = articleBody.match(/^(<p[^>]*>.*?<\/p>)\s*(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
+                    if(pMatch) {
+                        articleBody = articleBody.substring(pMatch[0].length).trim();
+                    } else {
+                        // try to match just the h tag
+                        let hMatch = articleBody.match(/^(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
+                        if(hMatch) {
+                            articleBody = articleBody.substring(hMatch[0].length).trim();
+                        }
+                    }
+                    
+                    // Bold first paragraph
+                    articleBody = articleBody.replace(/<p>(.*?)<\/p>/i, '<p><strong>$1</strong></p>');
+                    
+                    // Remove existing disclaimer
+                    articleBody = articleBody.replace(/<p><strong>Disclaimer:<\/strong>.*?<\/p>\s*$/is, '');
+                }
+                
+                body.innerHTML = imagePlaceholder + articleBody + relatedArticles;
                 panel.classList.add('active');
                 document.body.style.overflow = 'hidden';
             }
@@ -1008,9 +1072,8 @@
             }
         });
     </script>
-
-
-</body></html>
+</body>
+</html>
 
 
 

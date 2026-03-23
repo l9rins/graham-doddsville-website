@@ -1,9 +1,11 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wealth Creation Books - Graham and Doddsville</title>
-    <link rel="stylesheet" href="/css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-blue: #1e3a8a;
@@ -336,6 +338,92 @@
             transform: rotate(-45deg) translate(6px, -6px);
         }
 
+        /* Mobile Navigation Drawer */
+        .mobile-drawer {
+            position: fixed;
+            top: 0;
+            right: -80%;
+            width: 80%;
+            height: 100vh;
+            background: #fff;
+            z-index: 10000;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            display: block;
+        }
+
+        .mobile-drawer.open {
+            right: 0;
+        }
+
+        .drawer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 20px;
+            border-bottom: 1px solid #e0e0e0;
+            background: #1e3a8a;
+            color: white;
+        }
+
+        .drawer-logo {
+            max-height: 40px;
+            width: auto;
+            display: block;
+        }
+
+        .drawer-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.2s ease;
+        }
+
+        .drawer-close:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .drawer-nav {
+            padding: 20px;
+        }
+
+        .drawer-menu {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .drawer-menu li {
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .drawer-menu li:last-child {
+            border-bottom: none;
+        }
+
+        .drawer-link {
+            display: block;
+            padding: 6px 20px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .drawer-link:hover {
+            color: #1e3a8a;
+        }
+
         .mobile-only {
             display: none !important;
         }
@@ -350,43 +438,50 @@
 <body>
     <div class="books-page">
         <!-- Header -->
-        <header class="header sticky-header" id="main-header">
+        <header class="header sticky-header" role="banner">
             <div class="container"><div class="header-content">
                 <div class="logo">
                     <a href="index.html">
-                        <img src="/images/G&amp;D Logo.png" alt="Graham &amp; Doddsville Logo" class="logo-image">
+                        <img src="G&D Logo.png" alt="Graham & Doddsville Logo" class="logo-image">
                     </a>
                 </div>
 
-                <nav class="main-nav desktop-only">                    <ul>
+                <nav class="main-nav desktop-only">
+                    <ul>
                         <li><a href="index.html" class="nav-link">HOME</a></li>
                         <li><a href="classical-readings.html" class="nav-link">CLASSICAL READINGS</a></li>
-                        <li><a href="wealth-creation.html" class="nav-link">WEALTH CREATION</a></li>
-                        <li><a href="#" class="nav-link">ABOUT</a></li>
-                    </ul></nav>
+                        <li><a href="financial-markets.html" class="nav-link">FINANCIAL MARKETS</a></li>
+                        <li><a href="economics.html" class="nav-link">ECONOMICS</a></li>
+                        <li><a href="legal-taxation.html" class="nav-link">LEGAL & TAXATION</a></li>
+                        <li><a href="professional-advisers.html" class="nav-link">PROFESSIONAL ADVISERS</a></li>
+                        <li><a href="resources.html" class="nav-link">RESOURCES</a></li>
+                        <li><a href="events.html" class="nav-link">EVENTS</a></li>
+                    </ul>
+                </nav>
 
                 <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                 </button>
-            </div></header>
+            </div></div>
+        </header>
 
         <!-- Mobile Drawer -->
         <div class="mobile-drawer" id="mobile-drawer">
         <div class="drawer-header">
             <img src="G&D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
-            <button class="drawer-close" id="drawer-close" aria-label="Close menu"></button>
+            <button class="drawer-close" id="drawer-close" aria-label="Close menu">×</button>
         </div>
         <nav class="drawer-nav">
             <ul class="drawer-menu">
-                <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
+                <li><a href="index.html" class="drawer-link">Home</a></li>
                 <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
                 <li><a href="legal-taxation.html" class="drawer-link">Legal & Taxation</a></li>
                 <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
                 <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
                 <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
-                <li><a href="#" class="drawer-link">Investment Analysis</a></li>
+                <li><a href="share-investing.html" class="drawer-link">Investment Analysis</a></li>
                 <li><a href="economics.html" class="drawer-link">Economics</a></li>
                 <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
                 <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
@@ -395,24 +490,6 @@
             </ul>
         </nav>
     </div>
-            <nav class="drawer-nav">
-                <ul class="drawer-menu">
-                    <li><a href="index.html" class="drawer-link">Home</a></li>
-                    <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
-                    <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
-                    <li><a href="legal-taxation.html" class="drawer-link">Legal &amp; Taxation</a></li>
-                    <li><a href="financial-markets.html" class="drawer-link">WEALTH CREATION</a></li>
-                    <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
-                    <li><a href="#" class="drawer-link">Investment Analysis</a></li>
-                    <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
-                    <li><a href="ABOUT.html" class="drawer-link">ABOUT</a></li>
-                    <li><a href="professional-advisers.html" class="drawer-link"></a></li>
-                    <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
-                    <li><a href=".html" class="drawer-link"></a></li>
-                    <li><a href=".html" class="drawer-link"></a></li>
-                </ul>
-            </nav>
-        </div>
 
         <!-- Page Title Section -->
         <section class="page-title-section">
@@ -716,7 +793,7 @@
                                 <div class="book-title"><a href="https://www.amazon.com.au/Abundance-Now-Lisa-Nichols/dp/0063148053" target="_blank" rel="noopener noreferrer">Abundance Now</a></div>
                             </td>
                             <td>
-                                <div class="book-author">Lisa Nichols &amp; Janet Switzer</div>
+                                <div class="book-author">Lisa Nichols & Janet Switzer</div>
                             </td>
                             <td>
                                 <div class="book-price">$29.99</div>
@@ -815,7 +892,7 @@
                                 <div class="book-title"><a href="https://www.amazon.com.au/Investing-Kids-Dylin-Redling/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Investing for Kids</a></div>
                             </td>
                             <td>
-                                <div class="book-author">Dylin Redling &amp; Allison Tom</div>
+                                <div class="book-author">Dylin Redling & Allison Tom</div>
                             </td>
                             <td>
                                 <div class="book-price">$22.99</div>
@@ -859,7 +936,7 @@
                                 <div class="book-title"><a href="https://www.amazon.com.au/Smart-Money-Smart-Kids/dp/1414394692" target="_blank" rel="noopener noreferrer">Smart Money Smart Kids</a></div>
                             </td>
                             <td>
-                                <div class="book-author">Dave Ramsey &amp; Rachel Cruze</div>
+                                <div class="book-author">Dave Ramsey & Rachel Cruze</div>
                             </td>
                             <td>
                                 <div class="book-price">$24.99</div>
@@ -1002,7 +1079,7 @@
                                 <div class="book-title"><a href="https://www.amazon.com.au/Wealth-Mindset-Neville-Goddard/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">The Wealth Mindset</a></div>
                             </td>
                             <td>
-                                <div class="book-author">Neville Goddard &amp; Tim Grimes</div>
+                                <div class="book-author">Neville Goddard & Tim Grimes</div>
                             </td>
                             <td>
                                 <div class="book-price">$27.99</div>
@@ -1079,7 +1156,7 @@
                                 <div class="book-title"><a href="https://www.amazon.com.au/Millionaire-Next-Door-Thomas-Stanley/dp/1589795474" target="_blank" rel="noopener noreferrer">Millionaire Next Door</a></div>
                             </td>
                             <td>
-                                <div class="book-author">Thomas Stanley &amp; William Danko</div>
+                                <div class="book-author">Thomas Stanley & William Danko</div>
                             </td>
                             <td>
                                 <div class="book-price">$19.99</div>
@@ -1277,7 +1354,7 @@
                                 <div class="book-title"><a href="https://www.amazon.com.au/Missing-Billionaires-Victor-Haghani/dp/1119748088" target="_blank" rel="noopener noreferrer">The Missing Billionaires</a></div>
                             </td>
                             <td>
-                                <div class="book-author">Victor Haghani &amp; James White</div>
+                                <div class="book-author">Victor Haghani & James White</div>
                             </td>
                             <td>
                                 <div class="book-price">$34.99</div>
@@ -1299,7 +1376,7 @@
                                 <div class="book-title"><a href="https://www.amazon.com.au/9-Step-Path-Financial-Independence/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">A 9-Step Path To Financial Independence</a></div>
                             </td>
                             <td>
-                                <div class="book-author">Joe Dominguez, Vicki Robin &amp; Monica Wood</div>
+                                <div class="book-author">Joe Dominguez, Vicki Robin & Monica Wood</div>
                             </td>
                             <td>
                                 <div class="book-price">$27.99</div>
@@ -1438,7 +1515,7 @@
                 </div>
                 <div class="book-mobile-card">
                     <div class="book-mobile-title"><a href="https://www.amazon.com.au/Abundance-Now/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Abundance Now</a></div>
-                    <div class="book-mobile-author">Lisa Nichols &amp; Janet Switzer</div>
+                    <div class="book-mobile-author">Lisa Nichols & Janet Switzer</div>
                     <div class="book-mobile-price">$29.99</div>
                 </div>
                 <div class="book-mobile-card">
@@ -1483,7 +1560,7 @@
                 </div>
                 <div class="book-mobile-card">
                     <div class="book-mobile-title"><a href="https://www.amazon.com.au/Investing-Kids/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Investing for Kids</a></div>
-                    <div class="book-mobile-author">Dylin Redling &amp; Allison Tom</div>
+                    <div class="book-mobile-author">Dylin Redling & Allison Tom</div>
                     <div class="book-mobile-price">$22.99</div>
                 </div>
                 <div class="book-mobile-card">
@@ -1503,7 +1580,7 @@
                 </div>
                 <div class="book-mobile-card">
                     <div class="book-mobile-title"><a href="https://www.amazon.com.au/Smart-Money-Smart-Kids/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Smart Money Smart Kids</a></div>
-                    <div class="book-mobile-author">Dave Ramsey &amp; Rachel Cruze</div>
+                    <div class="book-mobile-author">Dave Ramsey & Rachel Cruze</div>
                     <div class="book-mobile-price">$24.99</div>
                 </div>
                 <div class="book-mobile-card">
@@ -1568,7 +1645,7 @@
                 </div>
                 <div class="book-mobile-card">
                     <div class="book-mobile-title"><a href="https://www.amazon.com.au/Wealth-Mindset/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">The Wealth Mindset</a></div>
-                    <div class="book-mobile-author">Neville Goddard &amp; Tim Grimes</div>
+                    <div class="book-mobile-author">Neville Goddard & Tim Grimes</div>
                     <div class="book-mobile-price">$27.99</div>
                 </div>
                 <div class="book-mobile-card">
@@ -1603,7 +1680,7 @@
                 </div>
                 <div class="book-mobile-card">
                     <div class="book-mobile-title"><a href="https://www.amazon.com.au/Millionaire-Next-Door/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Millionaire Next Door</a></div>
-                    <div class="book-mobile-author">Thomas Stanley &amp; William Danko</div>
+                    <div class="book-mobile-author">Thomas Stanley & William Danko</div>
                     <div class="book-mobile-price">$19.99</div>
                 </div>
                 <div class="book-mobile-card">
@@ -1693,7 +1770,7 @@
                 </div>
                 <div class="book-mobile-card">
                     <div class="book-mobile-title"><a href="https://www.amazon.com.au/Missing-Billionaires/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">The Missing Billionaires</a></div>
-                    <div class="book-mobile-author">Victor Haghani &amp; James White</div>
+                    <div class="book-mobile-author">Victor Haghani & James White</div>
                     <div class="book-mobile-price">$34.99</div>
                 </div>
                 <div class="book-mobile-card">
@@ -1703,7 +1780,7 @@
                 </div>
                 <div class="book-mobile-card">
                     <div class="book-mobile-title"><a href="https://www.amazon.com.au/9-Step-Path-Financial-Independence/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">A 9-Step Path To Financial Independence</a></div>
-                    <div class="book-mobile-author">Joe Dominguez, Vicki Robin &amp; Monica Wood</div>
+                    <div class="book-mobile-author">Joe Dominguez, Vicki Robin & Monica Wood</div>
                     <div class="book-mobile-price">$27.99</div>
                 </div>
             </div>
@@ -1797,13 +1874,8 @@
             window.addEventListener('resize', toggleMobileLayout);
         });
     </script>
-
-
-</body></html>
-
-
-
-
+</body>
+</html>
 
 
 

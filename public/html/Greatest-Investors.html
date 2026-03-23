@@ -1,9 +1,11 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Greatest Investors - Graham and Doddsville</title>
-    <link rel="stylesheet" href="/css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-blue: #1e3a8a;
@@ -65,14 +67,14 @@
         }
 
         .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 30px;
-            overflow: visible;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+            background: #1e3a8a;
+            border-radius: 0;
+            box-shadow: none;
+            padding: 0;
+            margin: 8px; /* 8px margin around viewport */
+            max-width: none;
+            border: 1.5px solid #e8e9ea;
+            position: relative;
         }
 
         .logo {
@@ -350,6 +352,7 @@
             background: white;
             border-radius: var(--radius-lg);
             padding: 32px;
+            padding-top: 80px;
             margin-bottom: 32px;
             box-shadow: var(--shadow-md);
         }
@@ -371,7 +374,7 @@
 
         .page-title {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-size: 18px;
+            font-size: 2rem;
             font-weight: 600;
             color: #6B46C1; /* Brand purple */
             margin: 0 0 0px 0;
@@ -492,15 +495,82 @@
             color: var(--primary-blue);
             border-left-color: var(--primary-blue);
         }
-    </style>
+
+        /* Philosophy Grid Styles */
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 20px 0;
+        }
+
+        .philosophy-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+            text-align: center;
+        }
+
+        .philosophy-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary-blue);
+        }
+
+        .philosophy-card h4 {
+            color: var(--primary-blue);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0 0 12px 0;
+        }
+
+        .philosophy-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Mobile responsive for philosophy grid */
+        @media (max-width: 768px) {
+            .philosophy-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+                padding: 16px 0;
+            }
+
+            .philosophy-card {
+                padding: 20px;
+            }
+
+            .philosophy-card h4 {
+                font-size: 1.1rem;
+            }
+
+            .philosophy-card p {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .philosophy-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .wealth-creation-page-content { padding-top: 80px; }
+        </style>
 </head>
 <body>
     <div class="wealth-creation-page">
         <!-- Header -->
         <header class="header sticky-header" role="banner">
-            <div class="container"><div class="header-content">
+            <div class="header-content">
                 <div class="logo">
-                    <img src="/images/G&amp;D Logo.png" alt="Graham &amp; Doddsville" class="logo-image">
+                    <img src="G&D Logo.png" alt="Graham & Doddsville" class="logo-image">
                 </div>
                 
                 <nav class="main-nav desktop-only">                    <ul>
@@ -516,23 +586,24 @@
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                 </button>
-            </div></header>
+            </div>
+        </header>
 
         <!-- Mobile Navigation Drawer -->
         <div class="mobile-drawer" id="mobile-drawer">
         <div class="drawer-header">
             <img src="G&D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
-            <button class="drawer-close" id="drawer-close" aria-label="Close menu"></button>
+            <button class="drawer-close" id="drawer-close" aria-label="Close menu">×</button>
         </div>
         <nav class="drawer-nav">
             <ul class="drawer-menu">
-                <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
+                <li><a href="index.html" class="drawer-link">Home</a></li>
                 <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
                 <li><a href="legal-taxation.html" class="drawer-link">Legal & Taxation</a></li>
                 <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
                 <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
                 <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
-                <li><a href="#" class="drawer-link">Investment Analysis</a></li>
+                <li><a href="share-investing.html" class="drawer-link">Investment Analysis</a></li>
                 <li><a href="economics.html" class="drawer-link">Economics</a></li>
                 <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
                 <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
@@ -541,23 +612,6 @@
             </ul>
         </nav>
     </div>
-            <nav class="drawer-nav">
-                <ul class="drawer-menu">
-                    <li><a href="index.html" class="drawer-link">Home</a></li>
-                    <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
-                    <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
-                    <li><a href="legal-taxation.html" class="drawer-link">Legal &amp; Taxation</a></li>
-                    <li><a href="financial-markets.html" class="drawer-link">WEALTH CREATION</a></li>
-                    <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
-                    <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
-                    <li><a href="ABOUT.html" class="drawer-link">ABOUT</a></li>
-                    <li><a href="professional-advisers.html" class="drawer-link"></a></li>
-                    <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
-                    <li><a href=".html" class="drawer-link"></a></li>
-                    <li><a href=".html" class="drawer-link"></a></li>
-                </ul>
-            </nav>
-        </div>
 
         <div class="wealth-creation-page-content">
             <!-- Page Title Section -->
@@ -566,7 +620,7 @@
                     <a href="index.html" class="breadcrumb-link">← Home</a>
                 </div>
                 <h1 class="page-title section-header">Greatest Investors</h1>
-                <p class="page-subtitle">Explore the lives and strategies of the world's most successful investors</p>
+                <p class="page-subtitle">Discover the legendary figures who shaped the world of value investing</p>
             </div>
 
             <!-- Collapsible Categories -->
@@ -688,11 +742,9 @@
                         </ul>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Article Detail Panel -->
+
+            </div>
     <div class="article-detail-panel" id="article-detail-panel">
         <div class="article-detail-content">
             <div class="article-detail-header">
@@ -739,6 +791,7 @@
             mobileToggle.addEventListener('click', () => {
                 console.log('Hamburger menu clicked!');
                 mobileDrawer.classList.add('open');
+                mobileToggle.classList.add('active');
                 document.body.style.overflow = 'hidden';
                 console.log('Drawer should be open now');
             });
@@ -747,6 +800,7 @@
         if (drawerClose && mobileDrawer) {
             drawerClose.addEventListener('click', () => {
                 mobileDrawer.classList.remove('open');
+                mobileToggle.classList.remove('active');
                 document.body.style.overflow = '';
             });
         }
@@ -756,6 +810,7 @@
             mobileDrawer.addEventListener('click', (e) => {
                 if (e.target === mobileDrawer) {
                     mobileDrawer.classList.remove('open');
+                    mobileToggle.classList.remove('active');
                     document.body.style.overflow = '';
                 }
             });
@@ -763,54 +818,88 @@
 
         // Article content data
         const articleContent = {
-            'benjamin-graham': {
-                title: 'Benjamin Graham',
-                content: `
-                    <p>Benjamin Graham (1894-1976) is widely regarded as the father of value investing and one of the most influential financial thinkers of the 20th century.</p>
-                    
-                    <h3>Early Life and Career</h3>
-                    <p>Born in London and raised in New York, Graham graduated from Columbia University and began his career on Wall Street in 1914. He co-founded the Graham-Newman partnership in 1926.</p>
-                    
-                    <h3>Investment Philosophy</h3>
-                    <p>Graham developed the concept of "intrinsic value" and the "margin of safety" - buying securities at a significant discount to their true worth to protect against losses.</p>
-                    
-                    <h3>Key Works</h3>
-                    <p>His books "Security Analysis" (1934) and "The Intelligent Investor" (1949) remain foundational texts for value investors worldwide.</p>
-                `
+            'investing-principles': {
+                title: 'Investing Principles',
+                content: `<div>
+                        <p>Buffett's investment principles are rooted in the teachings of Benjamin Graham, his mentor at Columbia Business School. Graham's philosophy of value investing—buying securities when they are undervalued and selling when they are overvalued—forms the foundation of Buffett's approach.</p>
+                        <h3>Value Investing</h3>
+                        <p>Buffett is a disciple of value investing, which involves buying stocks that are trading below their intrinsic value. He looks for companies with strong fundamentals, competitive advantages, and honest management.</p>
+                        <h3>Long-Term Perspective</h3>
+                        <p>Buffett doesn't focus on short-term market fluctuations. He believes in holding investments for the long term, allowing compounding to work its magic. "Our favorite holding period is forever," he says.</p>
+                        <h3>Margin of Safety</h3>
+                        <p>Buffett always insists on a margin of safety when investing. He buys stocks at a significant discount to their intrinsic value to protect against downside risk.</p>
+                        <h3>Circle of Competence</h3>
+                        <p>Buffett advises sticking to your circle of competence. Only invest in businesses you understand. "Know what you know and know what you don't know," he warns.</p>
+                        <p>Buffett uses Graham's "Mr. Market" analogy to explain market volatility. Mr. Market offers to buy or sell stocks at different prices each day, but you don't have to accept his offers. Buy when prices are low, sell when they're high.</p>
+                    </div>`
             },
-            'warren-buffett': {
-                title: 'Warren Buffett',
-                content: `
-                    <p>Warren Buffett, known as the "Oracle of Omaha," is one of the most successful investors in history and chairman of Berkshire Hathaway.</p>
-                    
-                    <h3>Investment Philosophy</h3>
-                    <p>Buffett follows a value investing approach, focusing on companies with strong fundamentals, competitive advantages, and competent management.</p>
-                    
-                    <h3>Key Principles</h3>
-                    <p>His investment principles include buying wonderful companies at fair prices, thinking long-term, and avoiding speculation.</p>
-                    
-                    <h3>Legacy</h3>
-                    <p>Buffett has pledged to give away 99% of his wealth to philanthropic causes, primarily through the Bill & Melinda Gates Foundation.</p>
-                `
+            'business-management': {
+                title: 'Business Management',
+                content: `<div>
+                        <p>Buffett's business management philosophy emphasizes simplicity, integrity, and long-term thinking. He believes that businesses should be run for the benefit of shareholders, not short-term profits.</p>
+                        <h3>Owner-Minded Management</h3>
+                        <p>Buffett looks for companies where management thinks like owners. He wants managers who are honest, competent, and focused on building long-term value rather than meeting quarterly earnings expectations.</p>
+                        <h3>Capital Allocation</h3>
+                        <p>Buffett is a master of capital allocation. He believes in reinvesting profits back into the business when it makes sense, paying dividends when it doesn't, and buying back shares when the stock is undervalued.</p>
+                        <h3>Culture Matters</h3>
+                        <p>Buffett places great importance on company culture. He believes that a strong, ethical culture leads to better long-term performance. "Culture eats strategy for breakfast," as Peter Drucker said.</p>
+                        <h3>Frugality</h3>
+                        <p>Buffett advocates for frugality in business. He believes in keeping costs low and avoiding unnecessary expenses. "Don't do dumb things," he advises.</p>
+                        <p>Buffett advocates for simplicity in business. He avoids complex financial engineering and focuses on straightforward businesses that anyone can understand.</p>
+                    </div>`
+            },
+            'life-lessons': {
+                title: 'Life Lessons',
+                content: `<div>
+                        <h2>Warren Buffett's Life Lessons and Wisdom</h2>
+                        <h3>The Power of Habits</h3>
+                        <p>Buffett emphasizes the importance of developing good habits early in life. He credits much of his success to habits like reading voraciously and thinking independently.</p>
+                        <h3>Continuous Learning</h3>
+                        <p>At 93 years old, Buffett still reads 5-6 hours a day. He believes that learning never stops and that curiosity is one of the most valuable traits a person can have.</p>
+                        <h3>Choose Your Heroes Wisely</h3>
+                        <p>Buffett advises choosing role models carefully. He chose Benjamin Graham as his hero and patterned his life after him. "Choose someone you admire and model your life after theirs," he says.</p>
+                        <h3>Live Below Your Means</h3>
+                        <p>Despite his immense wealth, Buffett lives frugally. He still lives in the same house he bought in 1958 for $31,500 and drives a modest car. He believes in saving and investing rather than conspicuous consumption.</p>
+                        <h3>Give Back</h3>
+                        <p>Buffett is one of the world's most generous philanthropists. He has pledged to give away more than 99% of his wealth to charitable causes, primarily through the Bill & Melinda Gates Foundation. He encourages others to give back, regardless of their means.</p>
+                    </div>`
             },
             'charlie-munger': {
                 title: 'Charlie Munger',
                 content: `
-                    <p>Charlie Munger is Warren Buffett's longtime business partner and vice chairman of Berkshire Hathaway, known for his multidisciplinary approach to investing.</p>
-                    
-                    <h3>Investment Philosophy</h3>
-                    <p>Munger emphasizes the importance of mental models, continuous learning, and understanding multiple disciplines to make better investment decisions.</p>
-                    
-                    <h3>Key Contributions</h3>
-                    <p>He introduced Buffett to the concept of buying great companies at fair prices rather than fair companies at great prices.</p>
-                    
-                    <h3>Wisdom</h3>
-                    <p>Munger is known for his wit and wisdom, often sharing insights about human psychology, business, and life through his speeches and writings.</p>
+                    <div>
+                        <p>He introduced Buffett to the concept of buying great companies at fair prices rather than fair companies at great prices.</p>
+                        <h3>Wisdom</h3>
+                        <p>Munger is known for his wit and wisdom, often sharing insights about human psychology, business, and life through his speeches and writings.</p>
+                    </div>
                 `
             },
             'ed-anderson': {
                 title: 'Ed Anderson',
                 content: `
+                    <p>Buffett's most famous market advice: "Be fearful when others are greedy, and be greedy when others are fearful." This contrarian approach has served him well throughout his career.</p>
+                    
+                    <h3>Market Timing is Foolish</h3>
+                    <p>Buffett doesn't try to time the market. He believes it's impossible to predict short-term market movements and that long-term investing is the only rational approach.</p>
+                    
+                    <h3>Volatility is Your Friend</h3>
+                    <p>Buffett views market volatility as an opportunity, not a threat. When stocks are cheap due to market panic, it's time to buy. When they're expensive due to euphoria, it's time to sell or hold cash.</p>
+                    
+                    <h3>Don't Follow the Crowd</h3>
+                    <p>Buffett advises against following investment fads or doing what everyone else is doing. He believes in independent thinking and going against the crowd when the crowd is wrong.</p>
+                    
+                    <h3>Understand What You Own</h3>
+                    <p>Buffett's rule: Never invest in a business you don't understand. If you can't explain why you own a stock in a few sentences, you shouldn't own it.</p>
+                    
+                    <h3>Patience Pays</h3>
+                    <p>Buffett has held some stocks for over 50 years. He believes that patience allows compounding to work and pr costly mistakes from short-term thinking.</p>
+                `
+            },
+
+            'ed-anderson': {
+                title: 'Ed Anderson',
+                content: `
+                    <div>
                     <h2>PERSONAL LIFE</h2>
                     <p>Edward "Ed" L. Anderson Jr, a notable figure in the world of investing, was born in the United States in 1928. Little is publicly known about Anderson's family background, as he maintained a private personal life throughout his years. Details about his parents and siblings are unknown.</p>
                     <p>Anderson was married to Shirley Smith Anderson, his beloved wife. Together, they shared a life that included the joys of raising a family. Ed and Shirley were blessed with two sons: David Warren Anderson and Steven Bradley Anderson.</p>
@@ -927,11 +1016,13 @@
 
                     <h3>Websites Dedicated to Ed Anderson</h3>
                     <p>Value Walk: https://www.valuewalk.com/tom-knapp-tweedy-browne/</p>
+                    </div>
                 `
             },
             'rick-guerin': {
                 title: 'Rick Guerin',
                 content: `
+                    <div>
                     <h2>PERSONAL LIFE</h2>
                     <p>John Patrick "Rick" Guerin was born in Los Angeles in 1929 and grew up during the Great Depression. He had an incredible work ethic and began working at the age of six by delivering ice and newspapers.</p>
                     <p>"In 1961", Guerin recalls, "a friend called and said he was going to buy into a downtown (LA) trading firm because someone [Jack Wheeler of Wheeler, Cruttenden & Company] was selling out". He decided that he too would join in the investment by buying Wheeler's 50% share using the only $40,000 he had. But when he arrived at the meeting place to settle the deal, he met Charlie Munger. The two of them started to talk. "I was just going to this meeting for the closing. I was going to deliver a check and take a stock certificate. We were joking with Munger, when this light went on in my brain. 'I'm on the wrong side of this transaction.'" Guerin eventually lost his entire investment in the partnership. However, as Munger later noted, "By then, he'd learned a lot and was doing very well."</p>
@@ -1034,11 +1125,13 @@
 
                     <h3>Websites Dedicated to Rick Guerin</h3>
                     <p>Value Walk: https://www.valuewalk.com/rick-guerin/</p>
+                    </div>
                 `
             },
             'tom-knapp': {
                 title: 'Tom Knapp',
                 content: `
+                    <div>
                     <h2>PERSONAL LIFE</h2>
                     <p>Thomas ("Tom") Paton Knapp, II, was born in around 1921 at Blue Point, New York in the United States. He lived in Vero Beach for 33 years, coming from Remsenburg, New York.</p>
                     <p>He was married to Virginia Knapp for 38 years. He had four sons, Gideon Knapp, Jonathan Knapp, Shepard Knapp and David Schmitt, and three daughters, Jane Whelhan, Jessie Knapp Mendelsohn and Margie Knapp.</p>
@@ -1130,11 +1223,13 @@
                     <p>2. Knapp, who was 10 years to the day older than Buffett, may well be Berkshire Hathaway's oldest shareholder. "I got my shares when Dempster Mill [a windmill company Buffett owned] was liquidated. I received Berkshire stock, which was one of its holdings. My cost basis was between five and ten dollars a share. I never sold a share and bought some for my family, and they seem happy with it … I don't know of a better company."</p>
                     <p>3. Knapp was an avid sailor. He was a member of The Sayville Yacht Club, Princeton Club in Manhattan, Quantuck Beach Club Westhampton Beach, New York, Westhampton Yacht Club, John's Island Club, Grand Harbor Club, Moorings Club and Quail River Club.</p>
                     <p>4. Website dedicated to Knapp: "Tom Knapp and Ed Anderson Resource Page" https://www.valuewalk.com/tom-knapp-tweedy-browne/</p>
+                    </div>
                 `
             },
             'stan-perlmeter': {
                 title: 'Stan Perlmeter',
                 content: `
+                    <div>
                     <h2>PERSONAL LIFE</h2>
                     <p>Stanley ("Stan") Perlmeter was born in 1925 in New York City, United States. He was a graduate of the Bronx High School of Science.</p>
                     <p>Perlmeter was married to his wife, Barbara, for 58 years. They had three children: a son, David, and two daughters, Susan and Ellen.</p>
@@ -1221,11 +1316,13 @@
                     <p>3. Perlmeter was a philanthropist who supported various educational and charitable causes, particularly those related to financial literacy.</p>
                     <p>4. He remained close friends with Warren Buffett throughout his life, often providing counsel and sharing investment ideas.</p>
                     <p>5. Perlmeter was known for his humility and reluctance to seek the spotlight, preferring to let his investment results speak for themselves.</p>
+                    </div>
                 `
             },
             'bill-ruane': {
                 title: 'Bill Ruane',
                 content: `
+                    <div>
                     <h2>PERSONAL LIFE</h2>
                     <p>William ("Bill") Ruane Jr. was born on 24 October 1925 in Chicago, Illinois, United States. He grew up during the Great Depression and World War II, which shaped his conservative investment approach.</p>
                     <p>Ruane was married to Elizabeth ("Betty") Ruane for over 50 years. They had four children: William III, Robert, Elizabeth, and Catherine.</p>
@@ -1337,12 +1434,14 @@
                     <p>3. Ruane was known for his philanthropy, donating millions to educational institutions and healthcare organisations.</p>
                     <p>4. He served on the board of trustees for Columbia University and other educational institutions.</p>
                     <p>5. Ruane was an avid golfer and enjoyed spending time with his family.</p>
-                    <p>6. He was known for his humility and reluctance to seek the spotlight, preferring to let his investment results speak for themselves.</p>
+                    <p>6. He was known for his humility and reluctance to seek publicity, preferring to let his investment results speak for themselves.</p>
+                    </div>
                 `
             },
             'walter-schloss': {
                 title: 'Walter Schloss',
                 content: `
+                    <div>
                     <h2>PERSONAL LIFE</h2>
                     <p>Walter Schloss was born on 28 August 1916 in New York City, United States. He grew up during the Great Depression, which profoundly influenced his investment philosophy.</p>
                     <p>Schloss was married to Louise Schloss for over 60 years. They had three children: Edwin, Carol, and Karen.</p>
@@ -1451,11 +1550,13 @@
                     <p>4. He was known for his humility and reluctance to seek publicity.</p>
                     <p>5. Schloss enjoyed playing tennis and was an avid reader.</p>
                     <p>6. He was a philanthropist who donated to educational and charitable causes.</p>
+                    </div>
                 `
             },
             'edwin-schloss': {
                 title: 'Edwin Schloss',
                 content: `
+                    <div>
                     <h2>PERSONAL LIFE</h2>
                     <p>Edwin Schloss was born in 1945 in New York City, United States. He is the son of legendary value investor Walter Schloss.</p>
                     <p>Edwin Schloss has been married and has children, though specific details about his family life are not widely publicized.</p>
@@ -1548,6 +1649,7 @@
                     <p>3. Edwin has successfully navigated the firm through various market cycles.</p>
                     <p>4. He continues to uphold Benjamin Graham's value investing principles.</p>
                     <p>5. Edwin Schloss represents the continuation of one of value investing's most storied lineages.</p>
+                    </div>
                 `
             }
         };
@@ -1560,7 +1662,48 @@
             
             if (articleContent[articleId]) {
                 title.textContent = articleContent[articleId].title;
-                body.innerHTML = articleContent[articleId].content;
+                const imagePlaceholder = `<div style="width:100%;height:200px;background:#f0f4f8;border:2px dashed #cbd5e0;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:#94a3b8;font-size:14px;">📷 Image placeholder — awaiting photo from client</div>`;
+
+                const relatedArticles = `
+<hr style="margin:32px 0;border:none;border-top:1px solid #e5e7eb;">
+<h3 style="color:#1e3a8a;margin-bottom:12px;">Related articles:</h3>
+<p style="color:#6b7280;font-style:italic;">To be added by client — approximately 5 online article links.</p>
+<h3 style="color:#1e3a8a;margin:24px 0 12px;">Related books:</h3>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;">
+    ${[1,2,3,4,5,6].map(i => `
+    <div style="border:1px solid #e5e7eb;border-radius:8px;padding:12px;text-align:center;background:#f9fafb;">
+        <div style="width:60px;height:80px;background:#e5e7eb;border-radius:4px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:11px;">Book ${i}</div>
+        <a href="#" style="font-size:12px;color:#1e3a8a;text-decoration:none;">Book title link</a>
+    </div>`).join('')}
+</div>
+<hr style="margin:24px 0;border:none;border-top:1px solid #e5e7eb;">
+<p style="font-size:12px;color:#9ca3af;font-style:italic;"><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>`;
+
+                let articleBody = articleContent[articleId] ? articleContent[articleId].content : '';
+                if(articleBody) {
+                    // Remove first <p>...< /p> (non-greedy) and any adjacent heading up to h3 if it exists at the start
+                    // We'll run successive replaces to be robust instead of one massive regex:
+                    articleBody = articleBody.trim();
+                    // if starts with a paragraph that is a category
+                    let pMatch = articleBody.match(/^(<p[^>]*>.*?<\/p>)\s*(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
+                    if(pMatch) {
+                        articleBody = articleBody.substring(pMatch[0].length).trim();
+                    } else {
+                        // try to match just the h tag
+                        let hMatch = articleBody.match(/^(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
+                        if(hMatch) {
+                            articleBody = articleBody.substring(hMatch[0].length).trim();
+                        }
+                    }
+                    
+                    // Bold first paragraph
+                    articleBody = articleBody.replace(/<p>(.*?)<\/p>/i, '<p><strong>$1</strong></p>');
+                    
+                    // Remove existing disclaimer
+                    articleBody = articleBody.replace(/<p><strong>Disclaimer:<\/strong>.*?<\/p>\s*$/is, '');
+                }
+                
+                body.innerHTML = imagePlaceholder + articleBody + relatedArticles;
                 panel.classList.add('active');
                 document.body.style.overflow = 'hidden';
             }
@@ -1590,9 +1733,8 @@
             }
         });
     </script>
-
-
-</body></html>
+</body>
+</html>
 
 
 

@@ -1,9 +1,11 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wealth Creation - Graham and Doddsville</title>
-    <link rel="stylesheet" href="/css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-blue: #1e3a8a;
@@ -36,7 +38,6 @@
         }
 
         .wealth-creation-page {
-            min-height: 100vh;
             background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             position: relative;
         }
@@ -148,9 +149,19 @@
             color: var(--primary-blue);
         }
 
+        /* Page Title Section */
+        .page-title-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            padding-top: 80px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
         .page-title {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-size: 18px;
+            font-size: 2rem;
             font-weight: 600;
             color: #6B46C1; /* Brand purple */
             margin: 0 0 0px 0;
@@ -448,19 +459,19 @@
         }
 
         .collapsible-content {
-            max-height: 0;
+            max-height: 1000px;
             overflow: hidden;
             transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
                         opacity 0.3s ease,
                         padding 0.3s ease;
-            opacity: 0;
-            padding: 0 24px;
-        }
-
-        .collapsible-content.expanded {
-            max-height: 1000px;
             opacity: 1;
             padding: 12px 24px 24px 24px;
+        }
+
+        .collapsible-content.collapsed {
+            max-height: 0;
+            opacity: 0;
+            padding: 0 24px;
         }
 
         .collapsible-links {
@@ -764,9 +775,10 @@
     <div class="wealth-creation-page">
         <!-- Header -->
         <header class="header sticky-header" role="banner">
-            <div class="container"><div class="header-content">
+            <div class="container">
+                <div class="header-content">
                     <div class="logo">
-                        <img src="/images/G&amp;D Logo.png" alt="Graham &amp; Doddsville" class="logo-image">
+                        <img src="G&D Logo.png" alt="Graham & Doddsville" class="logo-image">
                     </div>
                     
                     <nav class="main-nav desktop-only">                    <ul>
@@ -782,7 +794,9 @@
                         <span class="hamburger-line"></span>
                         <span class="hamburger-line"></span>
                     </button>
-                </div></header>
+                </div>
+            </div>
+        </header>
 
         <!-- Mobile Navigation Drawer -->
         <div class="mobile-drawer" id="mobile-drawer">
@@ -792,13 +806,13 @@
         </div>
         <nav class="drawer-nav">
             <ul class="drawer-menu">
-                <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
+                <li><a href="index.html" class="drawer-link">Home</a></li>
                 <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
                 <li><a href="legal-taxation.html" class="drawer-link">Legal & Taxation</a></li>
                 <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
                 <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
                 <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
-                <li><a href="#" class="drawer-link">Investment Analysis</a></li>
+                <li><a href="share-investing.html" class="drawer-link">Investment Analysis</a></li>
                 <li><a href="economics.html" class="drawer-link">Economics</a></li>
                 <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
                 <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
@@ -807,22 +821,6 @@
             </ul>
         </nav>
     </div>
-            <nav class="drawer-nav">
-                <ul class="drawer-menu">
-                    <li><a href="index.html" class="drawer-link">Home</a></li>
-                    <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
-                    <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
-                    <li><a href="legal-taxation.html" class="drawer-link">Legal &amp; Taxation</a></li>
-                    <li><a href="financial-markets.html" class="drawer-link">WEALTH CREATION</a></li>
-                    <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
-                    <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
-                    <li><a href="ABOUT.html" class="drawer-link">ABOUT</a></li>
-                    <li><a href="professional-advisers.html" class="drawer-link"></a></li>
-                    <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
-                    <li><a href=".html" class="drawer-link"></a></li>
-                    <li><a href=".html" class="drawer-link"></a></li>
-                </ul>
-            </nav>
         </div>
 
         <div class="wealth-creation-page-content">
@@ -866,16 +864,16 @@
                         <h3 class="collapsible-title">The Laws of Wealth</h3>
                         <span class="collapsible-arrow" id="laws-arrow">▼</span>
                     </div>
-                    <div class="collapsible-content" id="laws-content">
+                    <div class="collapsible-content collapsed" id="laws-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" data-article="laws-of-wealth-creation">Laws of Wealth Creation</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="common-money-myths">Common Money Myths</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="how-to-build-wealth-faster">How to build wealth faster</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="how-to-get-rich-quick">How to get rich quick</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="crosbys-laws-of-wealth">Crosby's Laws of Wealth</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="whittakers-golden-rules-of-wealth">Whittaker's Golden Rules of Wealth</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="mungers-rules-of-wealth">Munger's Rules of Wealth</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="hills-laws-of-success">Hill's Laws of Success</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('laws-of-wealth-creation')">Laws of Wealth Creation</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('common-money-myths')">Common Money Myths</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-build-wealth-faster')">How to build wealth faster</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-get-rich-quick')">How to get rich quick</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('crosbys-laws-of-wealth')">Crosby's Laws of Wealth</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('whittakers-golden-rules-of-wealth')">Whittaker's Golden Rules of Wealth</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('mungers-rules-of-wealth')">Munger's Rules of Wealth</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('hills-laws-of-success')">Hill's Laws of Success</a></li>
                         </ul>
                     </div>
                 </div>
@@ -886,16 +884,16 @@
                         <h3 class="collapsible-title">Personal Finance</h3>
                         <span class="collapsible-arrow" id="personal-arrow">▼</span>
                     </div>
-                    <div class="collapsible-content" id="personal-content">
+                    <div class="collapsible-content collapsed" id="personal-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" data-article="financial-literacy">Financial literacy</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="financial-planning">Financial planning</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="how-to-prepare-a-budget">How to prepare a budget</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="how-to-save-money">How to save money</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="how-to-reduce-taxes">How to reduce taxes</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="how-to-buy-property">How to buy property</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="how-to-sell-property">How to sell property</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="personal-insurances">Personal insurances</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('financial-literacy')">Financial literacy</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('financial-planning')">Financial planning</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-prepare-a-budget')">How to prepare a budget</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-save-money')">How to save money</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-reduce-taxes')">How to reduce taxes</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-buy-property')">How to buy property</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-sell-property')">How to sell property</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('personal-insurances')">Personal insurances</a></li>
                         </ul>
                     </div>
                 </div>
@@ -906,17 +904,17 @@
                         <h3 class="collapsible-title">Managing Debt</h3>
                         <span class="collapsible-arrow" id="debt-arrow">▼</span>
                     </div>
-                    <div class="collapsible-content" id="debt-content">
+                    <div class="collapsible-content collapsed" id="debt-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" data-article="basics-of-borrowing">Basics of borrowing</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="managing-debt">Managing debt</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="paying-off-your-credit-card">Paying off your credit card</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="debt-consolidation">Debt consolidation</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="handling-debt-collectors">Handling debt collectors</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="financial-counselling">Financial counselling</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="financial-hardship">Financial hardship</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="insolvency">Insolvency</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="bankruptcy">Bankruptcy</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('basics-of-borrowing')">Basics of borrowing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('managing-debt')">Managing debt</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('paying-off-your-credit-card')">Paying off your credit card</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('debt-consolidation')">Debt consolidation</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('handling-debt-collectors')">Handling debt collectors</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('financial-counselling')">Financial counselling</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('financial-hardship')">Financial hardship</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('insolvency')">Insolvency</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('bankruptcy')">Bankruptcy</a></li>
                         </ul>
                     </div>
                 </div>
@@ -927,17 +925,17 @@
                         <h3 class="collapsible-title">Investing for Beginners</h3>
                         <span class="collapsible-arrow" id="investing-arrow">▼</span>
                     </div>
-                    <div class="collapsible-content" id="investing-content">
+                    <div class="collapsible-content collapsed" id="investing-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" data-article="investor-mindset">Investor Mindset</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="magic-of-compounding">Magic of Compounding</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="asset-classes">Asset Classes</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="asset-allocation">Asset Allocation</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="investment-risks">Investment Risks</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="borrowing-to-invest">Borrowing to Invest</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="diversification">Diversification</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="financial-advice">Financial Advice</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="international-investing">International Investing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('investor-mindset')" >Investor Mindset</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('magic-of-compounding')" >Magic of Compounding</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('asset-classes')" >Asset Classes</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('asset-allocation')" >Asset Allocation</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('investment-risks')" >Investment Risks</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('borrowing-to-invest')" >Borrowing to Invest</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('diversification')" >Diversification</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('financial-advice')" >Financial Advice</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('international-investing')" >International Investing</a></li>
                         </ul>
                     </div>
                 </div>
@@ -948,16 +946,16 @@
                         <h3 class="collapsible-title">Investing in Australia</h3>
                         <span class="collapsible-arrow" id="australia-arrow">▼</span>
                     </div>
-                    <div class="collapsible-content" id="australia-content">
+                    <div class="collapsible-content collapsed" id="australia-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" data-article="key-facts-australia">Key Facts About Australia</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="why-invest-australia">Why Invest in Australia</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="australian-economy">Our Economy</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="regulatory-framework">Regulatory Framework</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="industry-groups">Industry Groups</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="financial-markets">WEALTH CREATION</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="firb-approval">FIRB Approval</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="investor-visas">Investor Visas</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('key-facts-australia')" >Key Facts About Australia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('why-invest-australia')" >Why Invest in Australia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('australian-economy')" >Our Economy</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('regulatory-framework')" >Regulatory Framework</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('industry-groups')" >Industry Groups</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('financial-markets')" >WEALTH CREATION</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('firb-approval')" >FIRB Approval</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('investor-visas')" >Investor Visas</a></li>
                         </ul>
                     </div>
                 </div>
@@ -968,12 +966,12 @@
                         <h3 class="collapsible-title">Rules for Success</h3>
                         <span class="collapsible-arrow" id="rules-arrow">▼</span>
                     </div>
-                    <div class="collapsible-content" id="rules-content">
+                    <div class="collapsible-content collapsed" id="rules-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" data-article="general-investing-rules">General Investing Rules</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="share-investing-rules">Share Investing Rules</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="pat-dorseys-rules">Pat Dorsey's 5 Rules</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="warren-buffett-rules">Warren Buffett's Rules</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('general-investing-rules')" >General Investing Rules</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('share-investing-rules')" >Share Investing Rules</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('pat-dorseys-rules')" >Pat Dorsey's 5 Rules</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('warren-buffett-rules')" >Warren Buffett's Rules</a></li>
                         </ul>
                     </div>
                 </div>
@@ -984,12 +982,12 @@
                         <h3 class="collapsible-title">Common Mistakes</h3>
                         <span class="collapsible-arrow" id="mistakes-arrow">▼</span>
                     </div>
-                    <div class="collapsible-content" id="mistakes-content">
+                    <div class="collapsible-content collapsed" id="mistakes-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" data-article="psychological-traps">Psychological Traps</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="common-mistakes">Common Mistakes</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="market-bubbles">Market Bubbles</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="valuation-errors">Valuation Errors</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('psychological-traps')" >Psychological Traps</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('common-mistakes')" >Common Mistakes</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('market-bubbles')" >Market Bubbles</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('valuation-errors')" >Valuation Errors</a></li>
                         </ul>
                     </div>
                 </div>
@@ -1000,17 +998,17 @@
                         <h3 class="collapsible-title">Investment Scams</h3>
                         <span class="collapsible-arrow" id="scams-arrow">▼</span>
                     </div>
-                    <div class="collapsible-content" id="scams-content">
+                    <div class="collapsible-content collapsed" id="scams-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" data-article="how-to-avoid-scams">How to Avoid Scams</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="identity-theft">Identity Theft</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="banking-scams">Banking Scams</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="credit-card-fraud">Credit Card Fraud</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="cheque-fraud">Cheque Fraud</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="unlicensed-companies">Unlicensed Companies</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="fake-regulators">Fake Regulators</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="investment-scams">Investment Scams</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="superannuation-scams">Superannuation Scams</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-avoid-scams')" >How to Avoid Scams</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('identity-theft')" >Identity Theft</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('banking-scams')" >Banking Scams</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('credit-card-fraud')" >Credit Card Fraud</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('cheque-fraud')" >Cheque Fraud</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('unlicensed-companies')" >Unlicensed Companies</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('fake-regulators')" >Fake Regulators</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('investment-scams')" >Investment Scams</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('superannuation-scams')" >Superannuation Scams</a></li>
                         </ul>
                     </div>
                 </div>
@@ -1023,7 +1021,7 @@
         <div class="article-detail-content">
             <div class="article-detail-header">
                 <h3 class="article-detail-title" id="article-detail-title">Article Title</h3>
-                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">×</button>
+                <button class="article-detail-close" id="article-detail-close" aria-label="Close article" onclick="closeArticlePanel()">×</button>
             </div>
             <div class="article-detail-body" id="article-detail-body">
                 <div class="loading-spinner">Loading article...</div>
@@ -1037,22 +1035,19 @@
             const content = document.getElementById(`${sectionId}-content`);
             const arrow = document.getElementById(`${sectionId}-arrow`);
 
-            if (content.style.maxHeight) {
-                content.style.maxHeight = null;
-                content.classList.remove('expanded');
-                arrow.innerHTML = '▼';
-            } else {
+            if (content.classList.contains('collapsed')) {
                 // Close all other open sections
-                document.querySelectorAll('.collapsible-content.expanded').forEach(openContent => {
-                    openContent.style.maxHeight = null;
-                    openContent.classList.remove('expanded');
+                document.querySelectorAll('.collapsible-content:not(.collapsed)').forEach(openContent => {
+                    openContent.classList.add('collapsed');
                     const openArrowId = openContent.id.replace('-content', '-arrow');
                     document.getElementById(openArrowId).innerHTML = '▼';
                 });
 
-                content.style.maxHeight = content.scrollHeight + "px";
-                content.classList.add('expanded');
+                content.classList.remove('collapsed');
                 arrow.innerHTML = '▲';
+            } else {
+                content.classList.add('collapsed');
+                arrow.innerHTML = '▼';
             }
         }
 
@@ -1093,6 +1088,8 @@
             'laws-of-wealth-creation': {
                 title: 'The 9 Laws of Wealth Creation: How to Get Rich The Safe and Sure-Fire Way',
                 content: `
+                    <h2>The 9 Laws of Wealth Creation: How to Get Rich The Safe and Sure-Fire Way</h2>
+                    
                     <p>If you want to be rich, the good news is that it possible. You need to understand though that this will not just happen by itself. You need to make it happen.</p>
                     
                     <p>There are many pathways to wealth, but there are fundamental rules that you will need to follow in order to guarantee your financial success. We refer to these rules as the laws of wealth creation:</p>
@@ -1104,7 +1101,7 @@
                     <p>We humans are goal-oriented creatures; we function at our best when we are working towards a specific goal. So besides having a purpose (why), you must set a specific goal (what) typically in the form of a monetary amount and a date by which you hope to have that money. For example, "I want to have a net worth of $5 million by the time I'm 35 years old". It is not so important if you do not achieve the goal by the deadline you have set; what matters is that you set a target for you to aim for. This is important because the goal becomes the guiding force behind all of your actions.</p>
                     
                     <h3>3. Education</h3>
-                    <p>The biggest investment you will (and should) ever make is in in yourself. You must "learn to earn". You cannot succeed financially unless you have a solid understanding of a range of money-related topics such as ABOUT, real estate, sharemarket, business and accounting. Go visit your library, buy books, attend seminars, join interest groups, read online articles, etc. Education will broaden your horizon, help you make the right decisions and help minimise the risk of making bad decisions. Commit to your life-long education and personal growth and increase your earning power. This will be, by far, the best investment you will ever make.</p>
+                    <p>The biggest investment you will (and should) ever make is in yourself. You must "learn to earn". You cannot succeed financially unless you have a solid understanding of a range of money-related topics such as ABOUT, real estate, sharemarket, business and accounting. Go visit your library, buy books, attend seminars, join interest groups, read online articles, etc. Education will broaden your horizon, help you make the right decisions and help minimise the risk of making bad decisions. Commit to your life-long education and personal growth and increase your earning power. This will be, by far, the best investment you will ever make.</p>
                     
                     <h3>4. Saving</h3>
                     <p>You must save a portion of your income regularly (at least 10%) no matter what your circumstances. This is sometimes referred to as "paying yourself first". Without savings (surplus income), you will have nothing to grow your wealth. You must therefore manage your spending wisely so that you can maximise your saving. Keep a close eye on your expenditures, particularly luxuries like eating out, travelling, entertainment, fancy clothes and footwear. Live frugally, avoid credit and shun instant gratification. Prepare a weekly, fortnightly or monthly budget of your household income and expenses so that you can live below your means.</p>
@@ -5331,25 +5328,64 @@
             const title = document.getElementById('article-detail-title');
             const body = document.getElementById('article-detail-body');
             
-            // Show loading state
-            body.innerHTML = '<div class="loading-spinner">Loading article...</div>';
-            panel.classList.add('active');
-            
-            // Simulate loading delay (in real implementation, this would be a server request)
-            setTimeout(() => {
-                if (articleContent[articleId]) {
-                    title.textContent = articleContent[articleId].title;
-                    body.innerHTML = articleContent[articleId].content;
-                } else {
-                    title.textContent = 'Article Not Found';
-                    body.innerHTML = '<p>Sorry, this article is not available at the moment.</p>';
+            if (articleContent[articleId]) {
+                title.textContent = articleContent[articleId].title;
+                const imagePlaceholder = `<div style="width:100%;height:200px;background:#f0f4f8;border:2px dashed #cbd5e0;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:#94a3b8;font-size:14px;">📷 Image placeholder — awaiting photo from client</div>`;
+
+                const relatedArticles = `
+<hr style="margin:32px 0;border:none;border-top:1px solid #e5e7eb;">
+<h3 style="color:#1e3a8a;margin-bottom:12px;">Related articles:</h3>
+<p style="color:#6b7280;font-style:italic;">To be added by client — approximately 5 online article links.</p>
+<h3 style="color:#1e3a8a;margin:24px 0 12px;">Related books:</h3>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;">
+    ${[1,2,3,4,5,6].map(i => `
+    <div style="border:1px solid #e5e7eb;border-radius:8px;padding:12px;text-align:center;background:#f9fafb;">
+        <div style="width:60px;height:80px;background:#e5e7eb;border-radius:4px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:11px;">Book ${i}</div>
+        <a href="#" style="font-size:12px;color:#1e3a8a;text-decoration:none;">Book title link</a>
+    </div>`).join('')}
+</div>
+<hr style="margin:24px 0;border:none;border-top:1px solid #e5e7eb;">
+<p style="font-size:12px;color:#9ca3af;font-style:italic;"><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>`;
+
+                let articleBody = articleContent[articleId] ? articleContent[articleId].content : '';
+                if(articleBody) {
+                    // Remove first <p>...< /p> (non-greedy) and any adjacent heading up to h3 if it exists at the start
+                    // We'll run successive replaces to be robust instead of one massive regex:
+                    articleBody = articleBody.trim();
+                    // if starts with a paragraph that is a category
+                    let pMatch = articleBody.match(/^(<p[^>]*>.*?<\/p>)\s*(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
+                    if(pMatch) {
+                        articleBody = articleBody.substring(pMatch[0].length).trim();
+                    } else {
+                        // try to match just the h tag
+                        let hMatch = articleBody.match(/^(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
+                        if(hMatch) {
+                            articleBody = articleBody.substring(hMatch[0].length).trim();
+                        }
+                    }
+                    
+                    // Bold first paragraph
+                    articleBody = articleBody.replace(/<p>(.*?)<\/p>/i, '<p><strong>$1</strong></p>');
+                    
+                    // Remove existing disclaimer
+                    articleBody = articleBody.replace(/<p><strong>Disclaimer:<\/strong>.*?<\/p>\s*$/is, '');
                 }
-            }, 500);
+                
+                body.innerHTML = imagePlaceholder + articleBody + relatedArticles;
+                panel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            } else {
+                title.textContent = 'Article Not Found';
+                body.innerHTML = '<p>Sorry, this article is not available at the moment.</p>';
+                panel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
         }
 
         function closeArticlePanel() {
             const panel = document.getElementById('article-detail-panel');
             panel.classList.remove('active');
+            document.body.style.overflow = '';
         }
 
         // Initialize the page
@@ -5396,21 +5432,16 @@
             }
             
             // Handle collapsible link clicks
-            document.querySelectorAll('.collapsible-link[data-article]').forEach(link => {
-                link.addEventListener('click', function(event) {
-                    event.preventDefault();
-                    const articleId = this.getAttribute('data-article');
-                    loadArticle(articleId);
-                });
-            });
+            const collapsibleLinks = document.querySelectorAll('.collapsible-link');
+            console.log('Found', collapsibleLinks.length, 'collapsible links');
+            // Note: Links now use onclick attributes instead of event listeners
             
             // All collapsible sections start closed by default
             console.log('Wealth Creation page loaded with collapsible sections');
         });
     </script>
-
-
-</body></html>
+</body>
+</html>
 
 
 

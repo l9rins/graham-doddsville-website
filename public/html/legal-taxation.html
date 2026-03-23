@@ -1,9 +1,11 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Legal &amp; Taxation - Graham and Doddsville</title>
-    <link rel="stylesheet" href="/css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <title>Legal & Taxation - Graham and Doddsville</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-blue: #1e3a8a;
@@ -65,14 +67,14 @@
         }
 
         .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 30px;
-            overflow: visible;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+            background: #1e3a8a;
+            border-radius: 0;
+            box-shadow: none;
+            padding: 0;
+            margin: 8px; /* 8px margin around viewport */
+            max-width: none;
+            border: 1.5px solid #e8e9ea;
+            position: relative;
         }
 
         .logo {
@@ -129,6 +131,7 @@
             background: white;
             border-radius: var(--radius-lg);
             padding: 32px;
+            padding-top: 80px;
             margin-bottom: 32px;
             box-shadow: var(--shadow-md);
         }
@@ -448,19 +451,19 @@
         }
 
         .collapsible-content {
-            max-height: 0;
+            max-height: 1000px;
             overflow: hidden;
             transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
                         opacity 0.3s ease,
                         padding 0.3s ease;
-            opacity: 0;
-            padding: 0 24px;
-        }
-
-        .collapsible-content.expanded {
-            max-height: 1000px;
             opacity: 1;
             padding: 12px 24px 24px 24px;
+        }
+
+        .collapsible-content.collapsed {
+            max-height: 0;
+            opacity: 0;
+            padding: 0 24px;
         }
 
         .collapsible-links {
@@ -758,15 +761,16 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-    </style>
+        .wealth-creation-page-content { padding-top: 80px; }
+        </style>
 </head>
 <body>
     <div class="legal-taxation-page">
         <!-- Header -->
         <header class="header sticky-header" role="banner">
-            <div class="container"><div class="header-content">
+            <div class="header-content">
                     <div class="logo">
-                        <img src="/images/G&amp;D Logo.png" alt="Graham &amp; Doddsville" class="logo-image">
+                        <img src="G&D Logo.png" alt="Graham & Doddsville" class="logo-image">
                     </div>
                     
                     <nav class="main-nav desktop-only">                    <ul>
@@ -782,7 +786,8 @@
                         <span class="hamburger-line"></span>
                         <span class="hamburger-line"></span>
                     </button>
-                </div></header>
+                </div>
+        </header>
 
         <!-- Mobile Navigation Drawer -->
         <div class="mobile-drawer" id="mobile-drawer">
@@ -792,13 +797,13 @@
         </div>
         <nav class="drawer-nav">
             <ul class="drawer-menu">
-                <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
+                <li><a href="index.html" class="drawer-link">Home</a></li>
                 <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
                 <li><a href="legal-taxation.html" class="drawer-link">Legal & Taxation</a></li>
                 <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
                 <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
                 <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
-                <li><a href="#" class="drawer-link">Investment Analysis</a></li>
+                <li><a href="share-investing.html" class="drawer-link">Investment Analysis</a></li>
                 <li><a href="economics.html" class="drawer-link">Economics</a></li>
                 <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
                 <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
@@ -807,23 +812,6 @@
             </ul>
         </nav>
     </div>
-            <nav class="drawer-nav">
-                <ul class="drawer-menu">
-                    <li><a href="index.html" class="drawer-link">Home</a></li>
-                    <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
-                    <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
-                    <li><a href="legal-taxation.html" class="drawer-link">Legal &amp; Taxation</a></li>
-                    <li><a href="financial-markets.html" class="drawer-link">WEALTH CREATION</a></li>
-                    <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
-                    <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
-                    <li><a href="ABOUT.html" class="drawer-link">ABOUT</a></li>
-                    <li><a href="professional-advisers.html" class="drawer-link"></a></li>
-                    <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
-                    <li><a href=".html" class="drawer-link"></a></li>
-                    <li><a href=".html" class="drawer-link"></a></li>
-                </ul>
-            </nav>
-        </div>
 
         <div class="legal-taxation-page-content">
             <!-- Page Title Section -->
@@ -831,15 +819,15 @@
                 <div class="breadcrumb">
                     <a href="index.html" class="breadcrumb-link">← Home</a>
                 </div>
-                <h1 class="page-title section-header">Legal &amp; Taxation</h1>
+                <h1 class="page-title section-header">Legal & Taxation</h1>
                 <p class="page-subtitle">Comprehensive legal and taxation  for business and personal finance</p>
             </div>
 
             <!--  Content (Hidden by default) -->
             <div id="legal-taxation-content" class="legal-taxation-content" style="display: none;">
                 <div class="legal-taxation-header">
-                    <a href="#" class="breadcrumb-link" onclick="showLegalTaxation()">← Legal &amp; Taxation</a>
-                    <h1>Legal &amp; Taxation </h1>
+                    <a href="#" class="breadcrumb-link" onclick="showLegalTaxation()">← </a>
+                    <h1> </h1>
                     <p class="page-subtitle">Comprehensive guides and tools for legal and taxation matters</p>
                 </div>
                 
@@ -862,136 +850,136 @@
             <div class="collapsible-categories">
                 <!-- Legal Structures -->
                 <div class="collapsible-section">
-                    <div class="collapsible-header" data-section="legal-structures">
+                    <div class="collapsible-header" onclick="toggleCollapsible('legal-structures')">
                         <h3 class="collapsible-title">Legal Structures</h3>
                         <span class="collapsible-arrow" id="legal-structures-arrow">▼</span>
                     </div>
-                    <div class="collapsible-content" id="legal-structures-content">
+                    <div class="collapsible-content collapsed" id="legal-structures-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" data-article="sole-trader">Sole Trader</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="partnership">Partnership</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="proprietary-company">Proprietary Company</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="public-company">Public Company</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="discretionary-trust">Discretionary Trust</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="unit-trust">Unit Trust</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="hybrid-trust">Hybrid Trust</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="bare-trust">Bare Trust</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="incorporated-association">Incorporated Association</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('sole-trader')" >Sole Trader</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('partnership')" >Partnership</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('proprietary-company')" >Proprietary Company</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('public-company')" >Public Company</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('discretionary-trust')" >Discretionary Trust</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('unit-trust')" >Unit Trust</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('hybrid-trust')" >Hybrid Trust</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('bare-trust')" >Bare Trust</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('incorporated-association')" >Incorporated Association</a></li>
                         </ul>
                     </div>
                 </div>
 
                 <!-- Asset Protection -->
                 <div class="collapsible-section">
-                    <div class="collapsible-header" data-section="asset-protection">
+                    <div class="collapsible-header" onclick="toggleCollapsible('asset-protection')">
                         <h3 class="collapsible-title">Asset Protection</h3>
                         <span class="collapsible-arrow" id="asset-protection-arrow">▼</span>
                     </div>
-                    <div class="collapsible-content" id="asset-protection-content">
+                    <div class="collapsible-content collapsed" id="asset-protection-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" data-article="asset-protection-strategies">Strategies</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="family-law">Family Law</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="bankruptcy">Bankruptcy</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('asset-protection-strategies')" >Strategies</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('family-law')" >Family Law</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('bankruptcy')" >Bankruptcy</a></li>
                         </ul>
                     </div>
                 </div>
 
                 <!-- CGT (Capital Gains Tax) -->
                 <div class="collapsible-section">
-                    <div class="collapsible-header" data-section="cgt">
-                        <h3 class="collapsible-title">CGT (Capital Gains Tax)</h3>
+                    <div class="collapsible-header" onclick="toggleCollapsible('cgt')">
+                        <h3 class="collapsible-title">Capital Gains Tax (CGT)</h3>
                         <span class="collapsible-arrow" id="cgt-arrow">▼</span>
                     </div>
-                    <div class="collapsible-content" id="cgt-content">
+                    <div class="collapsible-content collapsed" id="cgt-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" data-article="cgt-introduction">Introduction to CGT</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="cgt-calculation">Calculation of CGT</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="cgt-minimisation">How to Minimise CGT</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="shares-cgt">Shares and CGT</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="cgt-rollover">CGT Rollover</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="cgt-concessions">CGT Concessions</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="deceased-estates">Deceased Estates</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('cgt-introduction')" >Introduction to CGT</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('cgt-calculation')" >Calculation of CGT</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('cgt-minimisation')" >How to Minimise CGT</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('shares-cgt')" >Shares and CGT</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('cgt-rollover')" >CGT Rollover</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('cgt-concessions')" >CGT Concessions</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('deceased-estates')" >Deceased Estates</a></li>
                         </ul>
                     </div>
                 </div>
 
                 <!-- Income Tax -->
                 <div class="collapsible-section">
-                    <div class="collapsible-header" data-section="income-tax">
+                    <div class="collapsible-header" onclick="toggleCollapsible('income-tax')">
                         <h3 class="collapsible-title">Income Tax</h3>
                         <span class="collapsible-arrow" id="income-tax-arrow">▼</span>
                     </div>
-                    <div class="collapsible-content" id="income-tax-content">
+                    <div class="collapsible-content collapsed" id="income-tax-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" data-article="income-tax-introduction">Introduction to Income Tax</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="calculating-income-tax">Calculating Income Tax</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="taxation-dividends">Taxation of Dividends</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="minimise-tax">How to Minimise Tax</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="tax-offsets-rebates">Tax Offsets and Rebates</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('income-tax-introduction')" >Introduction to Income Tax</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('calculating-income-tax')" >Calculating Income Tax</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('taxation-dividends')" >Taxation of Dividends</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('minimise-tax')" >How to Minimise Tax</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('tax-offsets-rebates')" >Tax Offsets and Rebates</a></li>
                         </ul>
                     </div>
                 </div>
 
                 <!-- Estate Planning -->
                 <div class="collapsible-section">
-                    <div class="collapsible-header" data-section="estate-planning">
+                    <div class="collapsible-header" onclick="toggleCollapsible('estate-planning')">
                         <h3 class="collapsible-title">Estate Planning</h3>
                         <span class="collapsible-arrow" id="estate-planning-arrow">▼</span>
                     </div>
-                    <div class="collapsible-content" id="estate-planning-content">
+                    <div class="collapsible-content collapsed" id="estate-planning-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" data-article="what-estate-planning">What is Estate Planning</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="wills">Wills</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="testamentary-trusts">Testamentary Trusts</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="general-power-attorney">General Power of Attorney</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="enduring-power-attorney">Enduring Power of Attorney</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="advance-health-directives">Advance Health Directives</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="death-benefit-nomination">Death Benefit Nomination</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="business-succession">Business Succession</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-estate-planning')" >What is Estate Planning</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('wills')" >Wills</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('testamentary-trusts')" >Testamentary Trusts</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('general-power-attorney')" >General Power of Attorney</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('enduring-power-attorney')" >Enduring Power of Attorney</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('advance-health-directives')" >Advance Health Directives</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('death-benefit-nomination')" >Death Benefit Nomination</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('business-succession')" >Business Succession</a></li>
                         </ul>
                     </div>
                 </div>
 
                 <!-- Directors' Duties -->
                 <div class="collapsible-section">
-                    <div class="collapsible-header" data-section="directors-duties">
+                    <div class="collapsible-header" onclick="toggleCollapsible('directors-duties')">
                         <h3 class="collapsible-title">Directors' Duties</h3>
                         <span class="collapsible-arrow" id="directors-duties-arrow">▼</span>
                     </div>
-                    <div class="collapsible-content" id="directors-duties-content">
+                    <div class="collapsible-content collapsed" id="directors-duties-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" data-article="directors-duties">Director's Duties</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="insolvent-trading">Insolvent Trading</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="remuneration">Remuneration</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="personal-liability">Personal Liability</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('directors-duties')" >Director's Duties</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('insolvent-trading')" >Insolvent Trading</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('remuneration')" >Remuneration</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('personal-liability')" >Personal Liability</a></li>
                         </ul>
                     </div>
                 </div>
 
                 <!-- Shareholder Rights -->
                 <div class="collapsible-section">
-                    <div class="collapsible-header" data-section="shareholder-rights">
+                    <div class="collapsible-header" onclick="toggleCollapsible('shareholder-rights')">
                         <h3 class="collapsible-title">Shareholder Rights</h3>
                         <span class="collapsible-arrow" id="shareholder-rights-arrow">▼</span>
                     </div>
-                    <div class="collapsible-content" id="shareholder-rights-content">
+                    <div class="collapsible-content collapsed" id="shareholder-rights-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" data-article="shareholders-rights">Shareholders' Rights</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="shareholder-oppression">Shareholder Oppression</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="related-party-transaction">Related Party Transaction</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('shareholders-rights')" >Shareholders' Rights</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('shareholder-oppression')" >Shareholder Oppression</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('related-party-transaction')" >Related Party Transaction</a></li>
                         </ul>
                     </div>
                 </div>
 
                 <!-- Insurances -->
                 <div class="collapsible-section">
-                    <div class="collapsible-header" data-section="insurances">
+                    <div class="collapsible-header" onclick="toggleCollapsible('insurances')">
                         <h3 class="collapsible-title">Insurances</h3>
                         <span class="collapsible-arrow" id="insurances-arrow">▼</span>
                     </div>
-                    <div class="collapsible-content" id="insurances-content">
+                    <div class="collapsible-content collapsed" id="insurances-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" data-article="personal-insurances">Personal Insurances</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('personal-insurances')" >Personal Insurances</a></li>
                         </ul>
                     </div>
                 </div>
@@ -1004,7 +992,7 @@
         <div class="article-detail-content">
             <div class="article-detail-header">
                 <h3 class="article-detail-title" id="article-detail-title">Article Title</h3>
-                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">×</button>
+                <button class="article-detail-close" id="article-detail-close" aria-label="Close article" onclick="closeArticlePanel()">×</button>
             </div>
             <div class="article-detail-body" id="article-detail-body">
                 <div class="loading-spinner">Loading article...</div>
@@ -1018,22 +1006,19 @@
             const content = document.getElementById(`${sectionId}-content`);
             const arrow = document.getElementById(`${sectionId}-arrow`);
 
-            if (content.style.maxHeight) {
-                content.style.maxHeight = null;
-                content.classList.remove('expanded');
-                arrow.innerHTML = '▼';
-            } else {
+            if (content.classList.contains('collapsed')) {
                 // Close all other open sections
-                document.querySelectorAll('.collapsible-content.expanded').forEach(openContent => {
-                    openContent.style.maxHeight = null;
-                    openContent.classList.remove('expanded');
+                document.querySelectorAll('.collapsible-content:not(.collapsed)').forEach(openContent => {
+                    openContent.classList.add('collapsed');
                     const openArrowId = openContent.id.replace('-content', '-arrow');
                     document.getElementById(openArrowId).innerHTML = '▼';
                 });
 
-                content.style.maxHeight = content.scrollHeight + "px";
-                content.classList.add('expanded');
+                content.classList.remove('collapsed');
                 arrow.innerHTML = '▲';
+            } else {
+                content.classList.add('collapsed');
+                arrow.innerHTML = '▼';
             }
         }
 
@@ -7139,25 +7124,84 @@
             const title = document.getElementById('article-detail-title');
             const body = document.getElementById('article-detail-body');
             
-            // Show loading state
-            body.innerHTML = '<div class="loading-spinner">Loading article...</div>';
-            panel.classList.add('active');
-            
-            // Simulate loading delay (in real implementation, this would be a server request)
-            setTimeout(() => {
-                if (articleContent[articleId]) {
-                    title.textContent = articleContent[articleId].title;
-                    body.innerHTML = articleContent[articleId].content;
-                } else {
-                    title.textContent = 'Article Not Found';
-                    body.innerHTML = '<p>Sorry, this article is not available at the moment.</p>';
+            if (articleContent[articleId]) {
+                title.textContent = articleContent[articleId].title;
+                const imagePlaceholder = `<div style="width:100%;height:200px;background:#f0f4f8;border:2px dashed #cbd5e0;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:#94a3b8;font-size:14px;">📷 Image placeholder — awaiting photo from client</div>`;
+
+                const relatedArticles = `
+<hr style="margin:32px 0;border:none;border-top:1px solid #e5e7eb;">
+<h3 style="color:#1e3a8a;margin-bottom:12px;">Related articles:</h3>
+<p style="color:#6b7280;font-style:italic;">To be added by client — approximately 5 online article links.</p>
+<h3 style="color:#1e3a8a;margin:24px 0 12px;">Related books:</h3>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;">
+    ${[1,2,3,4,5,6].map(i => `
+    <div style="border:1px solid #e5e7eb;border-radius:8px;padding:12px;text-align:center;background:#f9fafb;">
+        <div style="width:60px;height:80px;background:#e5e7eb;border-radius:4px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:11px;">Book ${i}</div>
+        <a href="#" style="font-size:12px;color:#1e3a8a;text-decoration:none;">Book title link</a>
+    </div>`).join('')}
+</div>
+<hr style="margin:24px 0;border:none;border-top:1px solid #e5e7eb;">
+<p style="font-size:12px;color:#9ca3af;font-style:italic;"><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>`;
+
+                let articleBody = articleContent[articleId] ? articleContent[articleId].content : '';
+                if(articleBody) {
+                    // Remove first <p>...< /p> (non-greedy) and any adjacent heading up to h3 if it exists at the start
+                    // We'll run successive replaces to be robust instead of one massive regex:
+                    articleBody = articleBody.trim();
+                    // if starts with a paragraph that is a category
+                    let pMatch = articleBody.match(/^(<p[^>]*>.*?<\/p>)\s*(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
+                    if(pMatch) {
+                        articleBody = articleBody.substring(pMatch[0].length).trim();
+                    } else {
+                        // try to match just the h tag
+                        let hMatch = articleBody.match(/^(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
+                        if(hMatch) {
+                            articleBody = articleBody.substring(hMatch[0].length).trim();
+                        }
+                    }
+                    
+                    // Bold first paragraph
+                    articleBody = articleBody.replace(/<p>(.*?)<\/p>/i, '<p><strong>$1</strong></p>');
+                    
+                    // Remove existing disclaimer
+                    articleBody = articleBody.replace(/<p><strong>Disclaimer:<\/strong>.*?<\/p>\s*$/is, '');
                 }
-            }, 500);
+                
+                body.innerHTML = imagePlaceholder + articleBody + relatedArticles;
+                panel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            } else {
+                title.textContent = 'Article Not Found';
+                body.innerHTML = '<p>Sorry, this article is not available at the moment.</p>';
+                panel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
         }
 
         function closeArticlePanel() {
             const panel = document.getElementById('article-detail-panel');
             panel.classList.remove('active');
+        }
+
+        // Collapsible functionality
+        function toggleCollapsible(sectionId) {
+            const content = document.getElementById(`${sectionId}-content`);
+            const arrow = document.getElementById(`${sectionId}-arrow`);
+
+            if (content.classList.contains('collapsed')) {
+                // Close all other open sections
+                document.querySelectorAll('.collapsible-content:not(.collapsed)').forEach(openContent => {
+                    openContent.classList.add('collapsed');
+                    const openArrowId = openContent.id.replace('-content', '-arrow');
+                    document.getElementById(openArrowId).innerHTML = '▼';
+                });
+
+                content.classList.remove('collapsed');
+                arrow.innerHTML = '▲';
+            } else {
+                content.classList.add('collapsed');
+                arrow.innerHTML = '▼';
+            }
         }
 
         // Initialize the page
@@ -7203,14 +7247,6 @@
                 });
             }
             
-            // Handle collapsible header clicks
-            document.querySelectorAll('.collapsible-header[data-section]').forEach(header => {
-                header.addEventListener('click', function() {
-                    const sectionId = this.getAttribute('data-section');
-                    toggleCollapsible(sectionId);
-                });
-            });
-            
             // Handle collapsible link clicks
             document.querySelectorAll('.collapsible-link[data-article]').forEach(link => {
                 link.addEventListener('click', function(event) {
@@ -7224,9 +7260,8 @@
             console.log(' page loaded successfully');
         });
     </script>
-
-
-</body></html>
+</body>
+</html>
 
 
 
