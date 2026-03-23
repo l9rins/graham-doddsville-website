@@ -351,6 +351,7 @@
             background: white;
             border-radius: var(--radius-lg);
             padding: 32px;
+            padding-top: 80px;
             margin-bottom: 32px;
             box-shadow: var(--shadow-md);
         }
@@ -550,6 +551,29 @@
             color: var(--primary-blue);
             background: rgba(30, 58, 138, 0.05);
         }
+
+        .readings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        .reading-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-light);
+        }
+        .reading-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+        .reading-card-header { display: flex; gap: 16px; margin-bottom: 16px; }
+        .reading-content { flex: 1; }
+        .reading-title { font-size: 1.125rem; font-weight: 600; color: var(--text-primary); text-decoration: none; line-height: 1.4; display: block; margin-bottom: 8px; }
+        .reading-title:hover { color: var(--primary-blue); }
+        .reading-actions { display: flex; justify-content: flex-end; }
+        .btn-primary { background: var(--primary-blue); color: white; padding: 8px 16px; border-radius: var(--radius-sm); text-decoration: none; font-size: 14px; font-weight: 500; transition: all 0.2s ease; }
+        .btn-primary:hover { background: var(--primary-blue-dark); transform: translateY(-1px); }
     </style>
 </head>
 <body>
@@ -584,13 +608,13 @@
         </div>
         <nav class="drawer-nav">
             <ul class="drawer-menu">
-                <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
+                <li><a href="index.html" class="drawer-link">Home</a></li>
                 <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
                 <li><a href="legal-taxation.html" class="drawer-link">Legal & Taxation</a></li>
                 <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
                 <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
                 <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
-                <li><a href="#" class="drawer-link">Investment Analysis</a></li>
+                <li><a href="share-investing.html" class="drawer-link">Investment Analysis</a></li>
                 <li><a href="economics.html" class="drawer-link">Economics</a></li>
                 <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
                 <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
@@ -607,221 +631,31 @@
                     <a href="index.html" class="breadcrumb-link">← Home</a>
                 </div>
                 <h1 class="page-title">Resources</h1>
-                <p class="page-subtitle">Essential tools, publications, and  for informed financial decision-making</p>
+                <p class="page-subtitle">Essential tools, publications and other resources for informed financial decision-making</p>
             </div>
 
             <!-- Collapsible Categories -->
             <div class="collapsible-categories">
 
                 <!-- Industry Publications -->
-                <div class="main-category">
-                    <h2 class="main-category-title">Industry Publications</h2>
-                    <div class="category-content">
-
-                        <!-- SIAA Monthly -->
-                        <div class="collapsible-section">
-                            <div class="collapsible-header" onclick="toggleCollapsible('siaa-monthly')">
-                                <h3 class="collapsible-title">SIAA Monthly</h3>
-                                <span class="collapsible-arrow" id="siaa-monthly-arrow">▼</span>
-                            </div>
-                            <div class="collapsible-content" id="siaa-monthly-content">
-                                <ul class="collapsible-links">
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('siaa-april-2024')">SIAA Monthly – April 2024</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('siaa-march-2024')">SIAA Monthly – March 2024</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('siaa-february-2024')">SIAA Monthly – February 2024</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('siaa-december-2023')">SIAA Monthly – December 2023</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('siaa-november-2023')">SIAA Monthly – November 2023</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('siaa-october-2023')">SIAA Monthly – October 2023</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('siaa-september-2023')">SIAA Monthly – September 2023</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('siaa-august-2023')">SIAA Monthly – August 2023</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('siaa-july-2023')">SIAA Monthly – July 2023</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('siaa-june-2023')">SIAA Monthly – June 2023</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('siaa-may-2023')">SIAA Monthly – May 2023</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('siaa-april-2023')">SIAA Monthly – April 2023</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('siaa-december-2022')">SIAA Monthly – December 2022</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('siaa-november-2022')">SIAA Monthly – November 2022</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('siaa-october-2022')">SIAA Monthly – October 2022</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('siaa-september-2022')">SIAA Monthly – September 2022</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('siaa-august-2022')">SIAA Monthly – August 2022</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('siaa-july-2022')">SIAA Monthly – July 2022</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('siaa-december-2021')">SIAA Monthly – December 2021</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('siaa-november-2021')">SIAA Monthly – November 2021</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('siaa-october-2021')">SIAA Monthly – October 2021</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('siaa-september-2021')">SIAA Monthly – September 2021</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('siaa-august-2021')">SIAA Monthly – August 2021</a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- FAAA FPRJ -->
-                        <div class="collapsible-section">
-                            <div class="collapsible-header" onclick="toggleCollapsible('faaa-fprj')">
-                                <h3 class="collapsible-title">FAAA FPRJ</h3>
-                                <span class="collapsible-arrow" id="faaa-fprj-arrow">▼</span>
-                            </div>
-                            <div class="collapsible-content" id="faaa-fprj-content">
-                                <ul class="collapsible-links">
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fprj-volume-9-issue-1-2023')">Financial Planning Research Journal, Volume 9, Issue 1 – 2023</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fprj-volume-8-issue-1-2022')">Financial Planning Research Journal, Volume 8, Issue 1 – 2022</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fprj-volume-7-issue-1-2022')">Financial Planning Research Journal, Volume 7, Issue 1 - 2022</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fprj-volume-6-issue-1-2020')">Financial Planning Research Journal, Volume 6, Issue 1 - 2020</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fprj-volume-5-issue-1-2019')">Financial Planning Research Journal, Volume 5, Issue 1 - 2019</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fprj-volume-4-issue-1-2018')">Financial Planning Research Journal, Volume 4, Issue 1 - 2018</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fprj-volume-3-issue-2-2017')">Financial Planning Research Journal, Volume 3, Issue 2 - 2017</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fprj-volume-2-issue-1-2016')">Financial Planning Research Journal, Volume 2, Issue 1 – 2016</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fprj-volume-1-issue-1-2015')">Financial Planning Research Journal, Volume 1, Issue 1 - 2015</a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- CFA FAJ -->
-                        <div class="collapsible-section">
-                            <div class="collapsible-header" onclick="toggleCollapsible('cfa-faj')">
-                                <h3 class="collapsible-title">CFA FAJ</h3>
-                                <span class="collapsible-arrow" id="cfa-faj-arrow">▼</span>
-                            </div>
-                            <div class="collapsible-content" id="cfa-faj-content">
-                                <ul class="collapsible-links">
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('faj-volume-80-issue-3-2024')">Financial Analysts Journal, Volume 80, Issue 3 (29 April 2024)</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('faj-second-quarter-2024')">Financial Analysts Journal, Second Quarter, 2024, Volume 80 Issue 2</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('faj-first-quarter-2024')">Financial Analysts Journal, First Quarter, 2024, Vol. 80 Issue 1</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('faj-volume-79-issue-4-2023')">Financial Analysts Journal, Volume 79, Issue 4 (July-October 2023)</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('faj-volume-79-issue-3-2023')">Financial Analysts Journal, Volume 79, Issue 3 (Apr-Jun 2023)</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('faj-volume-79-issue-2-2023')">Financial Analysts Journal, Volume 79, Issue 2 (Feb-Apr 2023)</a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- ASIC InFocus -->
-                        <div class="collapsible-section">
-                            <div class="collapsible-header" onclick="toggleCollapsible('asic-infocus')">
-                                <h3 class="collapsible-title">ASIC InFocus</h3>
-                                <span class="collapsible-arrow" id="asic-infocus-arrow">▼</span>
-                            </div>
-                            <div class="collapsible-content" id="asic-infocus-content">
-                                <ul class="collapsible-links">
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('infocus-april-2024')">InFocus April 2024 – Volume 33 Issue 3</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('infocus-march-2024')">InFocus March 2024 - Volume 33 Issue 2</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('infocus-february-2024')">InFocus February 2024 - Volume 33 Issue 1</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('infocus-december-2023')">InFocus December 2023 - Volume 32 Issue 10</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('infocus-november-2023')">InFocus November 2023 - Volume 32 Issue 9</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('infocus-october-2023')">InFocus October 2023 - Volume 32 Issue 8</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('infocus-september-2023')">InFocus September 2023 - Volume 32 Issue 7</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('infocus-august-2023')">InFocus August 2023 - Volume 32 Issue 6</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('infocus-july-2023')">InFocus July 2023 - Volume 32 Issue 5</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('infocus-june-2023')">InFocus June 2023 - Volume 32 Issue 4</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('infocus-april-2023')">InFocus April 2023 - Volume 32 Issue 3</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('infocus-march-2023')">InFocus March 2023 - Volume 32 Issue 2</a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- RBA BULLETIN -->
-                        <div class="collapsible-section">
-                            <div class="collapsible-header" onclick="toggleCollapsible('rba-bulletin')">
-                                <h3 class="collapsible-title">RBA BULLETIN</h3>
-                                <span class="collapsible-arrow" id="rba-bulletin-arrow">▼</span>
-                            </div>
-                            <div class="collapsible-content" id="rba-bulletin-content">
-                                <ul class="collapsible-links">
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('bulletin-april-2024')">Bulletin, April 2024</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('bulletin-january-2024')">Bulletin, January 2024</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('bulletin-september-2023')">Bulletin, September 2023</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('bulletin-june-2023')">Bulletin, June 2023</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('bulletin-march-2023')">Bulletin, March 2023</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('bulletin-december-2022')">Bulletin, December 2022</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('bulletin-september-2022')">Bulletin, September 2022</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('bulletin-june-2022')">Bulletin, June 2022</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('bulletin-march-2022')">Bulletin, March 2022</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('bulletin-december-2021')">Bulletin, December 2021</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('bulletin-september-2021')">Bulletin, September 2021</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('bulletin-june-2021')">Bulletin, June 2021</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('bulletin-march-2021')">Bulletin, March 2021</a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- RBA SOMP -->
-                        <div class="collapsible-section">
-                            <div class="collapsible-header" onclick="toggleCollapsible('rba-somp')">
-                                <h3 class="collapsible-title">RBA SOMP</h3>
-                                <span class="collapsible-arrow" id="rba-somp-arrow">▼</span>
-                            </div>
-                            <div class="collapsible-content" id="rba-somp-content">
-                                <ul class="collapsible-links">
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('somp-february-2024')">Statement on Monetary Policy, February 2024</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('somp-november-2023')">Statement on Monetary Policy, November 2023</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('somp-august-2023')">Statement on Monetary Policy, August 2023</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('somp-may-2023')">Statement on Monetary Policy, May 2023</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('somp-february-2023')">Statement on Monetary Policy, February 2023</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('somp-november-2022')">Statement on Monetary Policy, November 2022</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('somp-august-2022')">Statement on Monetary Policy, August 2022</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('somp-may-2022')">Statement on Monetary Policy, May 2022</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('somp-february-2022')">Statement on Monetary Policy, February 2022</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('somp-november-2021')">Statement on Monetary Policy, November 2021</a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- RBA FSR -->
-                        <div class="collapsible-section">
-                            <div class="collapsible-header" onclick="toggleCollapsible('rba-fsr')">
-                                <h3 class="collapsible-title">RBA FSR</h3>
-                                <span class="collapsible-arrow" id="rba-fsr-arrow">▼</span>
-                            </div>
-                            <div class="collapsible-content" id="rba-fsr-content">
-                                <ul class="collapsible-links">
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fsr-march-2024')">Financial Stability Review, March 2024</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fsr-october-2023')">Financial Stability Review, October 2023</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fsr-april-2023')">Financial Stability Review, April 2023</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fsr-october-2022')">Financial Stability Review, October 2022</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fsr-april-2022')">Financial Stability Review, April 2022</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fsr-october-2021')">Financial Stability Review, October 2021</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fsr-april-2021')">Financial Stability Review, April 2021</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fsr-october-2020')">Financial Stability Review, October 2020</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fsr-april-2020')">Financial Stability Review, April 2020</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fsr-october-2019')">Financial Stability Review, October 2019</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fsr-april-2019')">Financial Stability Review, April 2019</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fsr-october-2018')">Financial Stability Review, October 2018</a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <!-- FSC reports -->
-                        <div class="collapsible-section">
-                            <div class="collapsible-header" onclick="toggleCollapsible('fsc-reports')">
-                                <h3 class="collapsible-title">FSC reports</h3>
-                                <span class="collapsible-arrow" id="fsc-reports-arrow">▼</span>
-                            </div>
-                            <div class="collapsible-content" id="fsc-reports-content">
-                                <ul class="collapsible-links">
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fsc-product-modernisation-2023')">Product Modernisation Research Report 2023</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fsc-state-funds-management-2023')">The State of the Funds Management Industry Report 2023</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fsc-retirement-income-policy')">A Roadmap For Australian Retirement Income Policy</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fsc-superannuation-taxation')">DPP FSC Superannuation Taxation Policy Options Analysis Final Report</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fsc-policy-priorities-2022')">FSC Policy Priorities 2022</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fsc-mental-health-analysis')">FSC KPMG Mental Health Analysis Summary Report June 2021</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fsc-affordable-advice')">Affordable and Accessible Advice FSC Green Paper on Financial Advice</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fsc-etf-covid-research')">Milliman ETF COVID19 Research Final Report</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fsc-future-advice')">Future of Advice Report</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fsc-pwc-financial-services')">PWC – Where Next For Financial Services</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fsc-accelerating-recovery')">FSC Report: Accelerating Australia\'s Economic Recovery</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fsc-elder-abuse')">The FSC Guide To The Prevention OF Elder Financial Abuse 2019</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fsc-state-industry-2019')">FSC State Of The Industry Report 2019</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fsc-policy-priorities-2019')">FSC Policy Priorities 2019</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fsc-women-advice')">Attitudes Towards Women In Financial Advice</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fsc-innovation-super')">Innovation In Superannuation: Smart MySuper Defaults</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fsc-ubs-industry-2017')">FSC/UBS State Of The Industry Report 2017</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fsc-super-tax-modelling')">PWC Super Taxation Modelling</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fsc-investment-managers')">2016 Australian Investment Managers Cross-Border Flows Report</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fsc-smsf-insights')">FSC/UBS SMSF Insights Report 2016</a></li>
-                                    <li><a href="#" class="collapsible-link" onclick="openArticle('fsc-falling-cracks')">Falling Through The Cracks: Report For FSC By Cadence ABOUT</a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
+                <div class="collapsible-section">
+    <div class="collapsible-header" onclick="toggleCollapsible('industry-publications')">
+        <h3 class="collapsible-title">Industry Publications</h3>
+        <span class="collapsible-arrow" id="industry-publications-arrow">▼</span>
+    </div>
+    <div class="collapsible-content collapsed" id="industry-publications-content">
+        <ul class="collapsible-links">
+            <li><a href="#" class="collapsible-link" onclick="openArticle('siaa-monthly')">SIAA Monthly</a></li>
+            <li><a href="#" class="collapsible-link" onclick="openArticle('faaa-fprj')">FAAA FPRJ</a></li>
+            <li><a href="#" class="collapsible-link" onclick="openArticle('cfa-faj')">CFA FAJ</a></li>
+            <li><a href="#" class="collapsible-link" onclick="openArticle('asic-infocus')">ASIC InFocus</a></li>
+            <li><a href="#" class="collapsible-link" onclick="openArticle('rba-bulletin')">RBA Bulletin</a></li>
+            <li><a href="#" class="collapsible-link" onclick="openArticle('rba-somp')">RBA SOMP</a></li>
+            <li><a href="#" class="collapsible-link" onclick="openArticle('rba-fsr')">RBA FSR</a></li>
+            <li><a href="#" class="collapsible-link" onclick="openArticle('fsc-reports')">FSC Reports</a></li>
+        </ul>
+    </div>
+</div>
 
                 <!-- Calculators -->
                 <div class="main-category">
@@ -1148,6 +982,26 @@
                     <p>Helps users make informed decisions about budgeting, saving, and debt management strategies.</p>
                 `
             },
+            'general-investing-calc': {
+                title: 'General Investing Calculator',
+                content: `<p>Interactive calculators for general investing projections and compound returns.</p>`
+            },
+            'share-investing-calc': {
+                title: 'Share Investing Calculator',
+                content: `<p>Valuation tools and calculators for share investing analysis.</p>`
+            },
+            'superannuation-calc': {
+                title: 'Superannuation Calculator',
+                content: `<p>Project your superannuation balance and retirement income.</p>`
+            },
+            'home-loans-calc': {
+                title: 'Home Loans Calculator',
+                content: `<p>Calculate mortgage repayments, borrowing power, and refinancing options.</p>`
+            },
+            'personal-loans-calc': {
+                title: 'Personal Loans Calculator',
+                content: `<p>Calculate personal loan repayments and interest costs over time.</p>`
+            },
             'glossary-a-e': {
                 title: 'Glossary - A to E',
                 content: `
@@ -1157,7 +1011,6 @@
                     <p><strong>AAA Rating:</strong> The highest rating of a bond given by a rating service, classifying the high level of certainty in the issuer meeting interest and principal repayments on time.</p>
                     <p><strong>Absentee Bid:</strong> Selling the property without warranties as to the condition and/or the fitness of the property for a particular use.</p>
                     <p><strong>Absolute Breadth Index ():</strong> A market indicator used to determine volatility levels in the market without factoring in price direction.</p>
-                    <p><a href="http://www.insightinvestment.com/uk/investmentglossary" target="_blank">http://www.insightinvestment.com/uk/investmentglossary</a></p>
                     <p><strong>Absolute Return:</strong> A measure of the gain or loss on an investment portfolio expressed as a percentage of invested capital. The adjective absolute is used to stress the distinction with the relative return measures often used by long-only equity funds.</p>
                     <p><strong>Absolute Return Funds:</strong> Funds aiming to deliver returns in both rising and falling markets. Compared to traditional fund managers, these funds have greater scope to use derivatives, short positions, and exotic securities.</p>
                     <p><strong>Accounting Cycle:</strong> The sequence of steps in preparing the financial statements for a given period. It refers to the fact that because financial reports are given each period (usually a year) there are a set of steps (cycle) taken each period that result in the reports and preparation for the next period or cycle.</p>
@@ -3363,7 +3216,48 @@
             
             if (articleContent[articleId]) {
                 title.textContent = articleContent[articleId].title;
-                body.innerHTML = articleContent[articleId].content;
+                const imagePlaceholder = `<div style="width:100%;height:200px;background:#f0f4f8;border:2px dashed #cbd5e0;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:#94a3b8;font-size:14px;">📷 Image placeholder — awaiting photo from client</div>`;
+
+                const relatedArticles = `
+<hr style="margin:32px 0;border:none;border-top:1px solid #e5e7eb;">
+<h3 style="color:#1e3a8a;margin-bottom:12px;">Related articles:</h3>
+<p style="color:#6b7280;font-style:italic;">To be added by client — approximately 5 online article links.</p>
+<h3 style="color:#1e3a8a;margin:24px 0 12px;">Related books:</h3>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;">
+    ${[1,2,3,4,5,6].map(i => `
+    <div style="border:1px solid #e5e7eb;border-radius:8px;padding:12px;text-align:center;background:#f9fafb;">
+        <div style="width:60px;height:80px;background:#e5e7eb;border-radius:4px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:11px;">Book ${i}</div>
+        <a href="#" style="font-size:12px;color:#1e3a8a;text-decoration:none;">Book title link</a>
+    </div>`).join('')}
+</div>
+<hr style="margin:24px 0;border:none;border-top:1px solid #e5e7eb;">
+<p style="font-size:12px;color:#9ca3af;font-style:italic;"><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>`;
+
+                let articleBody = articleContent[articleId] ? articleContent[articleId].content : '';
+                if(articleBody) {
+                    // Remove first <p>...< /p> (non-greedy) and any adjacent heading up to h3 if it exists at the start
+                    // We'll run successive replaces to be robust instead of one massive regex:
+                    articleBody = articleBody.trim();
+                    // if starts with a paragraph that is a category
+                    let pMatch = articleBody.match(/^(<p[^>]*>.*?<\/p>)\s*(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
+                    if(pMatch) {
+                        articleBody = articleBody.substring(pMatch[0].length).trim();
+                    } else {
+                        // try to match just the h tag
+                        let hMatch = articleBody.match(/^(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
+                        if(hMatch) {
+                            articleBody = articleBody.substring(hMatch[0].length).trim();
+                        }
+                    }
+                    
+                    // Bold first paragraph
+                    articleBody = articleBody.replace(/<p>(.*?)<\/p>/i, '<p><strong>$1</strong></p>');
+                    
+                    // Remove existing disclaimer
+                    articleBody = articleBody.replace(/<p><strong>Disclaimer:<\/strong>.*?<\/p>\s*$/is, '');
+                }
+                
+                body.innerHTML = imagePlaceholder + articleBody + relatedArticles;
                 panel.classList.add('active');
                 document.body.style.overflow = 'hidden';
             }

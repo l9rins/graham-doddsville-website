@@ -368,7 +368,7 @@
             }
 
             .page-title {
-                font-size: 2rem;
+                font-size: 1.25rem;
             }
 
             .financial-markets-page-content {
@@ -574,7 +574,7 @@
             background: none;
             border: none;
             color: white;
-            font-size: 2rem;
+            font-size: 1.25rem;
             cursor: pointer;
             padding: 0;
             width: 40px;
@@ -760,7 +760,8 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-    </style>
+        .wealth-creation-page-content { padding-top: 80px; }
+        </style>
 </head>
 <body>
     <div class="financial-markets-page">
@@ -795,13 +796,13 @@
         </div>
         <nav class="drawer-nav">
             <ul class="drawer-menu">
-                <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
+                <li><a href="index.html" class="drawer-link">Home</a></li>
                 <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
                 <li><a href="legal-taxation.html" class="drawer-link">Legal & Taxation</a></li>
                 <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
                 <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
                 <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
-                <li><a href="#" class="drawer-link">Investment Analysis</a></li>
+                <li><a href="share-investing.html" class="drawer-link">Investment Analysis</a></li>
                 <li><a href="economics.html" class="drawer-link">Economics</a></li>
                 <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
                 <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
@@ -825,8 +826,8 @@
             <div id="financial-markets-content" class="financial-markets-content" style="display: none;">
                 <div class="financial-markets-header">
                     <a href="index.html" class="breadcrumb-link">← Home</a>
-                    <h1>WEALTH CREATION </h1>
-                    <p class="page-subtitle">Comprehensive guides to global WEALTH CREATION</p>
+                    <h1>Financial Markets</h1>
+                    <p class="page-subtitle">Comprehensive guides to global Financial Markets</p>
                 </div>
                 
                 <div class="financial-markets-body">
@@ -856,6 +857,7 @@
                         <ul class="collapsible-links">
                             <li><a href="#" class="collapsible-link" data-article="overview-of-shares">Overview of shares</a></li>
                             <li><a href="#" class="collapsible-link" data-article="stockmarket">Stockmarket</a></li>
+                            <li><a href="#" class="collapsible-link" data-article="asx">ASX</a></li>
                             <li><a href="#" class="collapsible-link" data-article="nsx">NSX</a></li>
                             <li><a href="#" class="collapsible-link" data-article="market-sectors">Market sectors</a></li>
                             <li><a href="#" class="collapsible-link" data-article="industry-groups">Industry groups</a></li>
@@ -863,14 +865,6 @@
                             <li><a href="#" class="collapsible-link" data-article="getting-started-stocks">Getting started</a></li>
                             <li><a href="#" class="collapsible-link" data-article="setup-trading">Set up trading</a></li>
                             <li><a href="#" class="collapsible-link" data-article="stockbrokers">Stockbrokers</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="risks-disadvantages">Risks and disadvantages</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="allocate-capital">How to allocate capital</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="select-stocks">How to select stocks</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="open-account">How to open an account</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="diversify-portfolio">How to diversify</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="when-sell">When to sell</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="trading-platforms">Share trading platforms</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="stock-screeners">Stock screeners</a></li>
                         </ul>
                     </div>
                 </div>
@@ -1133,6 +1127,14 @@
 
         // Article content data
         const articleContent = {
+            'asx': {
+                title: 'Australian Securities Exchange (ASX)',
+                content: `<p>The Australian Securities Exchange (ASX) is Australia's primary national securities exchange, offering listings, trading, clearing, and settlement services across equities, derivatives, and fixed income markets. It is home to over 2,200 listed companies with a combined market capitalisation exceeding $2.5 trillion.</p>`
+            },
+            'investment-analysis': {
+                title: 'Investment Analysis',
+                content: `<p>Investment Analysis content to be added.</p>`
+            },
             'overview-of-shares': {
                 title: 'Overview of Share Investing in Australia',
                 content: `
@@ -17950,7 +17952,48 @@
             
             if (articleContent[articleId]) {
                 title.textContent = articleContent[articleId].title;
-                body.innerHTML = articleContent[articleId].content;
+                const imagePlaceholder = `<div style="width:100%;height:200px;background:#f0f4f8;border:2px dashed #cbd5e0;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:#94a3b8;font-size:14px;">📷 Image placeholder — awaiting photo from client</div>`;
+
+                const relatedArticles = `
+<hr style="margin:32px 0;border:none;border-top:1px solid #e5e7eb;">
+<h3 style="color:#1e3a8a;margin-bottom:12px;">Related articles:</h3>
+<p style="color:#6b7280;font-style:italic;">To be added by client — approximately 5 online article links.</p>
+<h3 style="color:#1e3a8a;margin:24px 0 12px;">Related books:</h3>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;">
+    ${[1,2,3,4,5,6].map(i => `
+    <div style="border:1px solid #e5e7eb;border-radius:8px;padding:12px;text-align:center;background:#f9fafb;">
+        <div style="width:60px;height:80px;background:#e5e7eb;border-radius:4px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:11px;">Book ${i}</div>
+        <a href="#" style="font-size:12px;color:#1e3a8a;text-decoration:none;">Book title link</a>
+    </div>`).join('')}
+</div>
+<hr style="margin:24px 0;border:none;border-top:1px solid #e5e7eb;">
+<p style="font-size:12px;color:#9ca3af;font-style:italic;"><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>`;
+
+                let articleBody = articleContent[articleId] ? articleContent[articleId].content : '';
+                if(articleBody) {
+                    // Remove first <p>...< /p> (non-greedy) and any adjacent heading up to h3 if it exists at the start
+                    // We'll run successive replaces to be robust instead of one massive regex:
+                    articleBody = articleBody.trim();
+                    // if starts with a paragraph that is a category
+                    let pMatch = articleBody.match(/^(<p[^>]*>.*?<\/p>)\s*(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
+                    if(pMatch) {
+                        articleBody = articleBody.substring(pMatch[0].length).trim();
+                    } else {
+                        // try to match just the h tag
+                        let hMatch = articleBody.match(/^(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
+                        if(hMatch) {
+                            articleBody = articleBody.substring(hMatch[0].length).trim();
+                        }
+                    }
+                    
+                    // Bold first paragraph
+                    articleBody = articleBody.replace(/<p>(.*?)<\/p>/i, '<p><strong>$1</strong></p>');
+                    
+                    // Remove existing disclaimer
+                    articleBody = articleBody.replace(/<p><strong>Disclaimer:<\/strong>.*?<\/p>\s*$/is, '');
+                }
+                
+                body.innerHTML = imagePlaceholder + articleBody + relatedArticles;
                 panel.classList.add('active');
                 document.body.style.overflow = 'hidden';
             } else {

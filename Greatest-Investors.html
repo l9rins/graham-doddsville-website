@@ -352,6 +352,7 @@
             background: white;
             border-radius: var(--radius-lg);
             padding: 32px;
+            padding-top: 80px;
             margin-bottom: 32px;
             box-shadow: var(--shadow-md);
         }
@@ -560,7 +561,8 @@
                 grid-template-columns: 1fr;
             }
         }
-    </style>
+        .wealth-creation-page-content { padding-top: 80px; }
+        </style>
 </head>
 <body>
     <div class="wealth-creation-page">
@@ -595,13 +597,13 @@
         </div>
         <nav class="drawer-nav">
             <ul class="drawer-menu">
-                <li><a href="classical-readings.html" class="drawer-link">Classical Readings</a></li>
+                <li><a href="index.html" class="drawer-link">Home</a></li>
                 <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
                 <li><a href="legal-taxation.html" class="drawer-link">Legal & Taxation</a></li>
                 <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
                 <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
                 <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
-                <li><a href="#" class="drawer-link">Investment Analysis</a></li>
+                <li><a href="share-investing.html" class="drawer-link">Investment Analysis</a></li>
                 <li><a href="economics.html" class="drawer-link">Economics</a></li>
                 <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
                 <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
@@ -632,7 +634,7 @@
                     <div class="collapsible-content" id="superinvestors-content">
                         <ul class="collapsible-links">
                             <li><a href="#" class="collapsible-link" onclick="openArticle('benjamin-graham')">Benjamin Graham</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('warren-buffett')">Warren Buffett</a> <a href="warren-buffett-philosophy.html" class="see-more-link">(see more)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('warren-buffett')">Warren Buffett</a></li>
                             <li><a href="#" class="collapsible-link" onclick="openArticle('charlie-munger')">Charlie Munger</a></li>
                             <li><a href="#" class="collapsible-link" onclick="openArticle('ed-anderson')">Ed Anderson</a></li>
                             <li><a href="#" class="collapsible-link" onclick="openArticle('rick-guerin')">Rick Guerin</a></li>
@@ -741,21 +743,7 @@
                     </div>
                 </div>
 
-                <!-- Warren Buffett on Everything -->
-                <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('buffett-everything')">
-                        <h3 class="collapsible-title">Warren Buffett on Everything</h3>
-                        <span class="collapsible-arrow" id="buffett-everything-arrow">▼</span>
-                    </div>
-                    <div class="collapsible-content" id="buffett-everything-content">
-                        <div class="buffett-overview">
-                            <p>Warren Buffett, often called the "Oracle of Omaha," is one of the most successful investors in history. His philosophy encompasses investing principles, business management, life lessons, and market wisdom that have guided generations of investors.</p>
-                            <div style="text-align: center; margin-top: 20px;">
-                                <a href="warren-buffett-philosophy.html" class="collapsible-link" style="display: inline-block; background: #1e3a8a; color: white; padding: 10px 20px; border-radius: 6px; text-decoration: none; font-weight: 600;">See more</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
     <div class="article-detail-panel" id="article-detail-panel">
         <div class="article-detail-content">
@@ -1674,7 +1662,48 @@
             
             if (articleContent[articleId]) {
                 title.textContent = articleContent[articleId].title;
-                body.innerHTML = articleContent[articleId].content;
+                const imagePlaceholder = `<div style="width:100%;height:200px;background:#f0f4f8;border:2px dashed #cbd5e0;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:#94a3b8;font-size:14px;">📷 Image placeholder — awaiting photo from client</div>`;
+
+                const relatedArticles = `
+<hr style="margin:32px 0;border:none;border-top:1px solid #e5e7eb;">
+<h3 style="color:#1e3a8a;margin-bottom:12px;">Related articles:</h3>
+<p style="color:#6b7280;font-style:italic;">To be added by client — approximately 5 online article links.</p>
+<h3 style="color:#1e3a8a;margin:24px 0 12px;">Related books:</h3>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;">
+    ${[1,2,3,4,5,6].map(i => `
+    <div style="border:1px solid #e5e7eb;border-radius:8px;padding:12px;text-align:center;background:#f9fafb;">
+        <div style="width:60px;height:80px;background:#e5e7eb;border-radius:4px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:11px;">Book ${i}</div>
+        <a href="#" style="font-size:12px;color:#1e3a8a;text-decoration:none;">Book title link</a>
+    </div>`).join('')}
+</div>
+<hr style="margin:24px 0;border:none;border-top:1px solid #e5e7eb;">
+<p style="font-size:12px;color:#9ca3af;font-style:italic;"><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>`;
+
+                let articleBody = articleContent[articleId] ? articleContent[articleId].content : '';
+                if(articleBody) {
+                    // Remove first <p>...< /p> (non-greedy) and any adjacent heading up to h3 if it exists at the start
+                    // We'll run successive replaces to be robust instead of one massive regex:
+                    articleBody = articleBody.trim();
+                    // if starts with a paragraph that is a category
+                    let pMatch = articleBody.match(/^(<p[^>]*>.*?<\/p>)\s*(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
+                    if(pMatch) {
+                        articleBody = articleBody.substring(pMatch[0].length).trim();
+                    } else {
+                        // try to match just the h tag
+                        let hMatch = articleBody.match(/^(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
+                        if(hMatch) {
+                            articleBody = articleBody.substring(hMatch[0].length).trim();
+                        }
+                    }
+                    
+                    // Bold first paragraph
+                    articleBody = articleBody.replace(/<p>(.*?)<\/p>/i, '<p><strong>$1</strong></p>');
+                    
+                    // Remove existing disclaimer
+                    articleBody = articleBody.replace(/<p><strong>Disclaimer:<\/strong>.*?<\/p>\s*$/is, '');
+                }
+                
+                body.innerHTML = imagePlaceholder + articleBody + relatedArticles;
                 panel.classList.add('active');
                 document.body.style.overflow = 'hidden';
             }
