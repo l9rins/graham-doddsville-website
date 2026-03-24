@@ -558,101 +558,72 @@
                 <p class="page-subtitle">Educational , seminars, webinars, courses, and podcasts for comprehensive financial learning</p>
             </div>
 
-            <!-- Collapsible Categories -->
-            <div class="collapsible-categories">
-                <!--  and Seminars -->
-                <div class="collapsible-section">
-    <div class="collapsible-header" onclick="toggleCollapsible('events-seminars')">
-        <h3 class="collapsible-title">Events and Seminars</h3>
-        <span class="collapsible-arrow" id="events-seminars-arrow">▼</span>
-    </div>
-    <div class="collapsible-content collapsed" id="events-seminars-content">
-        <ul class="collapsible-links">
-            <li><a href="#" class="collapsible-link" onclick="openArticle('events-and-seminars')">Events and seminars</a></li>
-        </ul>
-    </div>
-</div>
+            
+            <div class="events-content" style="background: white; border-radius: 12px; padding: 32px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 32px;">
+                <p style="font-size: 16px; color: #4b5563; margin-bottom: 24px;">A regularly updated list of upcoming investment-related events, seminars, and educational sessions.</p>
+                
+                <div style="background:#f8fafc; padding: 20px; border-radius: 8px; margin-bottom: 24px; border: 1px solid #e2e8f0;">
+                    <div style="display:flex; flex-wrap:wrap; gap: 20px; align-items:center; font-size: 14px; color: #334155;">
+                        <div style="display:flex; align-items:center; gap: 8px;">
+                            <span style="font-weight:600; min-width:80px;">Event Type:</span>
+                            <label style="cursor:pointer; display:flex; align-items:center; gap:4px;"><input type="checkbox" style="margin:0;"> Seminar</label>
+                            <label style="cursor:pointer; display:flex; align-items:center; gap:4px;"><input type="checkbox" style="margin:0;"> Discussion</label>
+                            <label style="cursor:pointer; display:flex; align-items:center; gap:4px;"><input type="checkbox" style="margin:0;"> Conference</label>
+                            <label style="cursor:pointer; display:flex; align-items:center; gap:4px;"><input type="checkbox" style="margin:0;"> Webinar</label>
+                        </div>
 
-            <!-- Free Webinars -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('free-webinars')">
-                    <h3 class="collapsible-title">Free Webinars</h3>
-                    <span class="collapsible-arrow" id="free-webinars-arrow">▼</span>
-                </div>
-                <div class="collapsible-content" id="free-webinars-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('free-webinars')">Free Webinars</a></li>
-                    </ul>
-                </div>
-            </div>
+                        <div style="display:flex; align-items:center; gap: 10px;">
+                            <span style="font-weight:600; min-width:80px;">Location:</span>
+                            <select style="padding:6px 10px; border:1px solid #cbd5e1; border-radius:4px; background:#fff; min-width:130px; color:#334155;">
+                                <option>State/Territory</option>
+                                <option>NSW</option><option>VIC</option><option>QLD</option><option>WA</option><option>SA</option><option>TAS</option><option>ACT</option><option>NT</option>
+                            </select>
+                            <select style="padding:6px 10px; border:1px solid #cbd5e1; border-radius:4px; background:#fff; min-width:120px; color:#334155;">
+                                <option>Capital City</option>
+                                <option>Sydney</option><option>Melbourne</option><option>Brisbane</option><option>Perth</option><option>Adelaide</option><option>Hobart</option><option>Canberra</option><option>Darwin</option>
+                            </select>
+                        </div>
 
-            <!-- Podcasts -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('podcasts')">
-                    <h3 class="collapsible-title">Podcasts</h3>
-                    <span class="collapsible-arrow" id="podcasts-arrow">▼</span>
-                </div>
-                <div class="collapsible-content" id="podcasts-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('podcasts')">Podcasts</a></li>
-                    </ul>
-                </div>
-            </div>
+                        <div style="width: 100%; height: 0; margin: -5px 0;"></div>
 
-            <!-- Free Online Courses -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('free-online-courses')">
-                    <h3 class="collapsible-title">Free Online Courses</h3>
-                    <span class="collapsible-arrow" id="free-online-courses-arrow">▼</span>
-                </div>
-                <div class="collapsible-content" id="free-online-courses-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('online-courses')">Free Online Courses</a></li>
-                    </ul>
-                </div>
-            </div>
+                        <div style="display:flex; align-items:center; gap: 8px;">
+                            <span style="font-weight:600; min-width:80px;">Features:</span>
+                            <label style="cursor:pointer; display:flex; align-items:center; gap:4px;"><input type="checkbox" style="margin:0;"> Free Event</label>
+                            <label style="cursor:pointer; display:flex; align-items:center; gap:4px;"><input type="checkbox" style="margin:0;"> Food Included</label>
+                        </div>
 
-            <!-- Industry Courses -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('industry-courses')">
-                    <h3 class="collapsible-title">Industry Courses</h3>
-                    <span class="collapsible-arrow" id="industry-courses-arrow">▼</span>
+                        <div style="display:flex; align-items:center; gap: 8px; margin-left: auto;">
+                            <span style="font-weight:600;">Period:</span>
+                            <select style="padding:6px 10px; border:1px solid #cbd5e1; border-radius:4px; background:#fff; min-width:110px; color:#334155;">
+                                <option>Month</option>
+                                <option>January</option><option>February</option><option>March</option><option>April</option><option>May</option><option>June</option><option>July</option><option>August</option><option>September</option><option>October</option><option>November</option><option>December</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
-                <div class="collapsible-content" id="industry-courses-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('industry-courses')">Industry Courses</a></li>
-                    </ul>
-                </div>
+                
+                <table style="width:100%;border-collapse:collapse;margin-top:20px;font-size:14px;">
+                    <thead>
+                        <tr style="background:#1e3a8a;color:white;">
+                            <th style="padding:16px 20px;text-align:left;border:1px solid #ddd;font-weight:500;">Event</th>
+                            <th style="padding:16px 20px;text-align:left;border:1px solid #ddd;font-weight:500;">Organiser</th>
+                            <th style="padding:16px 20px;text-align:left;border:1px solid #ddd;font-weight:500;">Date</th>
+                            <th style="padding:16px 20px;text-align:left;border:1px solid #ddd;font-weight:500;">Location</th>
+                            <th style="padding:16px 20px;text-align:left;border:1px solid #ddd;font-weight:500;">Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background:#f8fafc;border-bottom:1px solid #e2e8f0;">
+                            <td style="padding:16px 20px;border-left:1px solid #e2e8f0;border-right:1px solid #e2e8f0;">TBA</td>
+                            <td style="padding:16px 20px;border-right:1px solid #e2e8f0;">TBA</td>
+                            <td style="padding:16px 20px;border-right:1px solid #e2e8f0;">TBA</td>
+                            <td style="padding:16px 20px;border-right:1px solid #e2e8f0;">TBA</td>
+                            <td style="padding:16px 20px;border-right:1px solid #e2e8f0;"><a href="#" style="color:#1e3a8a;text-decoration:none;font-weight:500;">View</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top:20px;color:#64748b;font-size:13px;font-style:italic;">This table will be updated as events are confirmed.</p>
             </div>
-
-            <!-- Tertiary Courses -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('tertiary-courses')">
-                    <h3 class="collapsible-title">Tertiary Courses</h3>
-                    <span class="collapsible-arrow" id="tertiary-courses-arrow">▼</span>
-                </div>
-                <div class="collapsible-content" id="tertiary-courses-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('tertiary-courses')">Tertiary Courses</a></li>
-                    </ul>
-                </div>
-            </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Article Detail Panel -->
-    <div class="article-detail-panel" id="article-detail-panel">
-        <div class="article-detail-content">
-            <div class="article-detail-header">
-                <h3 class="article-detail-title" id="article-detail-title">Article Title</h3>
-                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">×</button>
-            </div>
-            <div class="article-detail-body" id="article-detail-body">
-                <div class="loading-spinner">Loading article...</div>
-            </div>
-        </div>
-    </div>
 
     <script>
         // Collapsible functionality
@@ -716,6 +687,45 @@
                 title: 'Events and Seminars',
                 content: `
                     <p>A regularly updated list of upcoming investment-related events, seminars, and educational sessions.</p>
+                    
+                    <div style="background:#f0f8ff; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #cce5ff;">
+                      <div style="display:flex; flex-wrap:wrap; gap: 15px; align-items:center; font-size: 14px; color: #333;">
+                        <div style="display:flex; align-items:center; gap: 8px; font-weight:600; min-width:80px;">Event Type:</div>
+                        <div style="display:flex; align-items:center; gap: 12px; margin-right: 10px;">
+                          <label style="cursor:pointer; display:flex; align-items:center; gap:4px; font-weight:normal;"><input type="checkbox" style="margin:0;"> Seminar</label>
+                          <label style="cursor:pointer; display:flex; align-items:center; gap:4px; font-weight:normal;"><input type="checkbox" style="margin:0;"> Discussion</label>
+                          <label style="cursor:pointer; display:flex; align-items:center; gap:4px; font-weight:normal;"><input type="checkbox" style="margin:0;"> Conference</label>
+                          <label style="cursor:pointer; display:flex; align-items:center; gap:4px; font-weight:normal;"><input type="checkbox" style="margin:0;"> Webinar</label>
+                        </div>
+
+                        <div style="display:flex; align-items:center; gap: 8px; font-weight:600; min-width:80px; margin-left: 10px;">Location:</div>
+                        <div style="display:flex; align-items:center; gap: 10px; margin-right: 10px;">
+                          <select style="padding:4px 8px; border:1px solid #bcd4eb; border-radius:4px; background:#fff; min-width:130px; font-size:13px; color:#444;">
+                            <option>State/Territory</option>
+                            <option>NSW</option><option>VIC</option><option>QLD</option><option>WA</option><option>SA</option><option>TAS</option><option>ACT</option><option>NT</option>
+                          </select>
+                          <select style="padding:4px 8px; border:1px solid #bcd4eb; border-radius:4px; background:#fff; min-width:120px; font-size:13px; color:#444;">
+                            <option>Capital City</option>
+                            <option>Sydney</option><option>Melbourne</option><option>Brisbane</option><option>Perth</option><option>Adelaide</option><option>Hobart</option><option>Canberra</option><option>Darwin</option>
+                          </select>
+                        </div>
+
+                        <div style="display:flex; align-items:center; gap: 8px; font-weight:600; min-width:80px;">Features:</div>
+                        <div style="display:flex; align-items:center; gap: 12px;">
+                          <label style="cursor:pointer; display:flex; align-items:center; gap:4px; font-weight:normal;"><input type="checkbox" style="margin:0;"> Free Event</label>
+                          <label style="cursor:pointer; display:flex; align-items:center; gap:4px; font-weight:normal;"><input type="checkbox" style="margin:0;"> Food Included</label>
+                        </div>
+
+                        <div style="display:flex; align-items:center; gap: 8px; font-weight:600; margin-left: auto;">
+                          Period:
+                          <select style="padding:4px 8px; border:1px solid #bcd4eb; border-radius:4px; background:#fff; min-width:100px; font-size:13px; color:#444;">
+                            <option>Month</option>
+                            <option>January</option><option>February</option><option>March</option><option>April</option><option>May</option><option>June</option><option>July</option><option>August</option><option>September</option><option>October</option><option>November</option><option>December</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    
                     <table style="width:100%;border-collapse:collapse;margin-top:16px;font-size:14px;">
                         <thead>
                             <tr style="background:#1e3a8a;color:white;">
