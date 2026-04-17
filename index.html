@@ -2328,66 +2328,61 @@
         <!-- MARKET QUOTES Section -->
         <section class="newspaper-section" id="mobile-market-quotes">
             <h2 class="section-header">MARKET QUOTES</h2>
-
-            <!-- Market Quotes Container -->
             <div class="market-quotes-container">
                 <!-- Quote 1 -->
-                <div class="market-quote-item" onclick="window.location.href='market-quotes.html#quote-1'">
+                <div class="market-quote-item">
                     <div class="quote-content">
-                        <p class="quote-text">"We expect year-ended growth in the US economy will slow to around a 1¾%
-                            pace by the end of 2024 and remain around that pace during 2025. The more moderate growth
-                            environment should allow demand and ..."</p>
-                        <div class="quote-meta">
-                            <span class="quote-author">John Doe</span>
-                            <span class="quote-position">Chief Economist</span>
-                            <span class="quote-company">Sample Investment Bank</span>
-                            <span class="quote-country">(USA)</span>
-                            <span class="quote-date">(26/7/2024)</span>
-                        </div>
+                        <a href="market-quotes.html#quote-1" class="quote-link" style="text-decoration:none;color:inherit;">
+                            <p class="quote-text">"We expect year-ended growth in the US economy will slow to around a 1¾% pace by the end of 2024 and remain around that pace during 2025. The more moderate growth environment should allow demand and ..."</p>
+                            <div class="quote-meta">
+                                <span class="quote-author">John Doe</span>
+                                <span class="quote-position">Chief Economist</span>
+                                <span class="quote-company">Sample Investment Bank</span>
+                                <span class="quote-country">(USA)</span>
+                                <span class="quote-date">(26/7/2024)</span>
+                            </div>
+                        </a>
                         <div class="quote-source">
                             <a href="#" onclick="event.stopPropagation(); openSourceLink('https://example.com/source1')" class="source-link">View source document</a>
                         </div>
                     </div>
                 </div>
-
                 <!-- Quote 2 -->
-                <div class="market-quote-item" onclick="window.location.href='market-quotes.html#quote-2'">
+                <div class="market-quote-item">
                     <div class="quote-content">
-                        <p class="quote-text">"The global economy always faces risks, but for the moment, the US is
-                            doing well, and prospects of another Trump presidency do not seem to be worrying the market
-                            at all. ..."</p>
-                        <div class="quote-meta">
-                            <span class="quote-author">Jane Smith</span>
-                            <span class="quote-position">Market Analyst</span>
-                            <span class="quote-company">Global Markets Inc</span>
-                            <span class="quote-country">(USA)</span>
-                            <span class="quote-date">(26/7/2024)</span>
-                        </div>
+                        <a href="market-quotes.html#quote-2" class="quote-link" style="text-decoration:none;color:inherit;">
+                            <p class="quote-text">"The global economy always faces risks, but for the moment, the US is doing well, and prospects of another Trump presidency do not seem to be worrying the market at all. ..."</p>
+                            <div class="quote-meta">
+                                <span class="quote-author">Jane Smith</span>
+                                <span class="quote-position">Market Analyst</span>
+                                <span class="quote-company">Global Markets Inc</span>
+                                <span class="quote-country">(USA)</span>
+                                <span class="quote-date">(26/7/2024)</span>
+                            </div>
+                        </a>
                         <div class="quote-source">
                             <a href="#" onclick="event.stopPropagation(); openSourceLink('https://example.com/source2')" class="source-link">View source document</a>
                         </div>
                     </div>
                 </div>
-
                 <!-- Quote 3 -->
-                <div class="market-quote-item" onclick="window.location.href='market-quotes.html#quote-3'">
+                <div class="market-quote-item">
                     <div class="quote-content">
-                        <p class="quote-text">"The Federal Reserve's (Fed's) aggressive post-pandemic rate-hiking and
-                            higher-for-longer rate strategy has helped underpin the U.S. dollar. This has significant
-                            consequences for global economies, curr ..."</p>
-                        <div class="quote-meta">
-                            <span class="quote-author">Michael Johnson</span>
-                            <span class="quote-position">Senior Economist</span>
-                            <span class="quote-company">Federal Reserve Watch</span>
-                            <span class="quote-country">(USA)</span>
-                            <span class="quote-date">(26/7/2024)</span>
-                        </div>
+                        <a href="market-quotes.html#quote-3" class="quote-link" style="text-decoration:none;color:inherit;">
+                            <p class="quote-text">"The Federal Reserve's (Fed's) aggressive post-pandemic rate-hiking and higher-for-longer rate strategy has helped underpin the U.S. dollar. This has significant consequences for global economies, curr ..."</p>
+                            <div class="quote-meta">
+                                <span class="quote-author">Michael Johnson</span>
+                                <span class="quote-position">Senior Economist</span>
+                                <span class="quote-company">Federal Reserve Watch</span>
+                                <span class="quote-country">(USA)</span>
+                                <span class="quote-date">(26/7/2024)</span>
+                            </div>
+                        </a>
                         <div class="quote-source">
                             <a href="#" onclick="event.stopPropagation(); openSourceLink('https://example.com/source3')" class="source-link">View source document</a>
                         </div>
                     </div>
                 </div>
-
                 <!-- See More Button -->
                 <div class="see-more-quotes">
                     <a href="market-quotes.html" class="see-more-btn" style="text-decoration: none; display: inline-block;">See more</a>
@@ -2397,7 +2392,7 @@
 
         <!-- FEATURE ARTICLES Section with Slider -->
         <section class="newspaper-section" id="mobile-feature-articles">
-            <h2 class="news-section-title">FEATURE ARTICLES</h2>
+            <h2 class="news-section-title section-header">FEATURE ARTICLES</h2>
 
             <!-- Filter Pills -->
             <div class="article-filters">
@@ -2595,7 +2590,42 @@
 
         <!-- RECOMMENDED BOOKS Section with Categories -->
         <section class="newspaper-section" id="mobile-books">
-            <h2 class="section-header">OUR RECOMMENDED BOOKS</h2>
+            <h2 class="section-header recommended-books-header">OUR RECOMMENDED BOOKS</h2>
+<style>
+/* Recommended Books Header - Prevent Overlap */
+.recommended-books-header {
+    background: #fff;
+    display: inline-block;
+    padding: 0 1.5rem;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 0.5rem;
+    margin-top: 2.5rem;
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-align: center;
+    color: #222;
+}
+.recommended-books-header + hr {
+    border: none;
+    border-top: 2px solid #bbb;
+    margin: 0 auto 0.5rem auto;
+    width: 80%;
+    position: relative;
+    top: -1.2rem;
+    z-index: 1;
+}
+.essential {
+    display: block;
+    text-align: center;
+    margin-top: -0.5rem;
+    font-size: 1.1rem;
+    color: #888;
+    position: relative;
+    z-index: 2;
+}
+</style>
 
             <!-- Book Category Navigation -->
             <div class="book-categories">
@@ -2628,7 +2658,7 @@
                                 <a href="https://www.amazon.com/Tap-Dancing-Railroad-Warren-Buffett/dp/1591846539" target="_blank">Tap Dancing to Work</a>
                             </div>
                             <div class="buffett-see-more-container">
-                                <a href="warren-buffett-books.html" class="buffett-see-more-link">See more</a>
+
                             </div>
                         </div>
 
@@ -3649,202 +3679,8 @@
                 <div class="buffett-tab active" id="philosophy-tab-mobile" data-tab="philosophy">
                     <div class="books-slider-container">
                         <div class="books-slider" id="philosophy-buffett-slider">
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Efficient Market Theory</h3>
-                                    <span class="news-source">(Investment Concepts)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Modern Portfolio Theory</h3>
-                                    <span class="news-source">(Investment Concepts)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Intrinsic Value</h3>
-                                    <span class="news-source">(Investment Concepts)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Wall Street and Mr Market</h3>
-                                    <span class="news-source">(Investment Concepts)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Circle of Competence</h3>
-                                    <span class="news-source">(Investment Concepts)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Margin of Safety</h3>
-                                    <span class="news-source">(Investment Concepts)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Frictional Costs</h3>
-                                    <span class="news-source">(Investment Concepts)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Capital Allocation</h3>
-                                    <span class="news-source">(Investment Concepts)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Security Analyst</h3>
-                                    <span class="news-source">(Investment Concepts)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Speculation</h3>
-                                    <span class="news-source">(Investment Concepts)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Long Term Investing</h3>
-                                    <span class="news-source">(Investment Concepts)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Conservatism</h3>
-                                    <span class="news-source">(Investment Philosophy)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Investment Philosophy</h3>
-                                    <span class="news-source">(Investment Philosophy)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Investment Objectives</h3>
-                                    <span class="news-source">(Investment Philosophy)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Performance Standards</h3>
-                                    <span class="news-source">(Investment Philosophy)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Performance Measurement</h3>
-                                    <span class="news-source">(Investment Philosophy)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Berkshire Disclosure</h3>
-                                    <span class="news-source">(Investment Philosophy)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Market Forecasting</h3>
-                                    <span class="news-source">(Investment Philosophy)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Market Timing</h3>
-                                    <span class="news-source">(Investment Philosophy)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Value Investing</h3>
-                                    <span class="news-source">(Investment Philosophy)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Successful Investing</h3>
-                                    <span class="news-source">(Investment Philosophy)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Exit Strategy</h3>
-                                    <span class="news-source">(Investment Philosophy)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Mistakes</h3>
-                                    <span class="news-source">(Investment Philosophy)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Market Bubble</h3>
-                                    <span class="news-source">(Bubbles and Crashes)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Market Crash</h3>
-                                    <span class="news-source">(Bubbles and Crashes)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Benjamin Graham</h3>
-                                    <span class="news-source">(Great Investors)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">David Dodd</h3>
-                                    <span class="news-source">(Great Investors)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Charlie Munger</h3>
-                                    <span class="news-source">(Great Investors)</span>
-                                </div>
-                            </div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Investment Philosophy, Investment Objectives,</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Modern Portfolio Theory, Value Investing, Successful Investing, Intrinsic Value, Wall Street and Mr Market, Circle of Competence, Long Term Investing, Conservatism, Security Analyst, Margin of Safety, Market Forecasting, Market Timing, Speculation, Performance Standards, Performance Measurement, Mistakes, Frictional Costs, Capital Allocation, Market Bubble, Market Downturn, Exit Strategy, Berkshire Disclosure, Value Investors</h3></div></div>
                         </div>
                     </div>
                 </div>
@@ -3852,223 +3688,10 @@
                 <div class="buffett-tab" id="investing-tab-mobile" data-tab="investing">
                     <div class="books-slider-container">
                         <div class="books-slider" id="investing-buffett-slider">
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Portfolio allocation</h3>
-                                    <span class="news-source">(Investment Basics)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Stock market</h3>
-                                    <span class="news-source">(Investment Basics)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Technical analysis</h3>
-                                    <span class="news-source">(Investment Basics)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Share buybacks</h3>
-                                    <span class="news-source">(Investment Basics)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Share issues</h3>
-                                    <span class="news-source">(Investment Basics)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Stock splits</h3>
-                                    <span class="news-source">(Investment Basics)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Book recommendations</h3>
-                                    <span class="news-source">(Investment Basics)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Stock Options</h3>
-                                    <span class="news-source">(Investment Basics)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Arbitrage</h3>
-                                    <span class="news-source">(Investing Strategies)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Cigar butt investing</h3>
-                                    <span class="news-source">(Investing Strategies)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Indexing</h3>
-                                    <span class="news-source">(Investing Strategies)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Investment advice</h3>
-                                    <span class="news-source">(Investing Strategies)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Buying criteria</h3>
-                                    <span class="news-source">(Investing Strategies)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Selling criteria</h3>
-                                    <span class="news-source">(Investing Strategies)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Mergers and acquisitions</h3>
-                                    <span class="news-source">(Investing Strategies)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Workouts</h3>
-                                    <span class="news-source">(Investing Strategies)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Investment Strategy</h3>
-                                    <span class="news-source">(Investing Strategies)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Derivatives</h3>
-                                    <span class="news-source">(Investment Risks)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Diversification</h3>
-                                    <span class="news-source">(Investment Risks)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Fees</h3>
-                                    <span class="news-source">(Investment Risks)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Investment risk</h3>
-                                    <span class="news-source">(Investment Risks)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Rumours</h3>
-                                    <span class="news-source">(Investment Risks)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Volatility</h3>
-                                    <span class="news-source">(Investment Risks)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Bonds</h3>
-                                    <span class="news-source">(Investment Assets)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Gold</h3>
-                                    <span class="news-source">(Investment Assets)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Initial public offering</h3>
-                                    <span class="news-source">(Investment Assets)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Convertible Preferred Stock</h3>
-                                    <span class="news-source">(Investment Assets)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Junk bonds</h3>
-                                    <span class="news-source">(Investment Assets)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Private equity</h3>
-                                    <span class="news-source">(Investment Assets)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Real estate</h3>
-                                    <span class="news-source">(Investment Assets)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">The Dow</h3>
-                                    <span class="news-source">(Investment Assets)</span>
-                                </div>
-                            </div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Stock Market, Portfolio Allocation, Buying Criteria, Selling Criteria, Investment Strategy,</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Investment Advice, Investment Risk, Volatility</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Rumours, Technical Analysis, Share Buybacks,</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Share Issues, Stock Splits, Stock Options, Book Recommendations, Indexing, Arbitrage, Cigar Butt Investing, Mergers and Acquisitions, Workouts, Derivatives, The Dow, Fees, Bonds, Gold, Diversification, Initial Public Offering, Convertible Preferred Stock, Junk Bonds, Private Equity, Real Estate</h3></div></div>
                         </div>
                     </div>
                 </div>
@@ -4076,258 +3699,7 @@
                 <div class="buffett-tab" id="businesses-tab-mobile" data-tab="businesses">
                     <div class="books-slider-container">
                         <div class="books-slider" id="businesses-buffett-slider">
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Banks</h3>
-                                    <span class="news-source">(Poor Businesses)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Retail</h3>
-                                    <span class="news-source">(Poor Businesses)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Derivatives business</h3>
-                                    <span class="news-source">(Poor Businesses)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Investment companies</h3>
-                                    <span class="news-source">(Poor Businesses)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Investment managers</h3>
-                                    <span class="news-source">(Poor Businesses)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Poor businesses</h3>
-                                    <span class="news-source">(Poor Businesses)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Poor managers</h3>
-                                    <span class="news-source">(Poor Businesses)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Shoe business</h3>
-                                    <span class="news-source">(Poor Businesses)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Textile business</h3>
-                                    <span class="news-source">(Poor Businesses)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Berkshire Hathaway</h3>
-                                    <span class="news-source">(Poor Businesses)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Auto insurance</h3>
-                                    <span class="news-source">(Great Businesses)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Competitive advantage</h3>
-                                    <span class="news-source">(Great Businesses)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Economic moat</h3>
-                                    <span class="news-source">(Great Businesses)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Good businesses</h3>
-                                    <span class="news-source">(Great Businesses)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Best managers</h3>
-                                    <span class="news-source">(Great Businesses)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Property casualty insurance</h3>
-                                    <span class="news-source">(Great Businesses)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Reinsurance</h3>
-                                    <span class="news-source">(Great Businesses)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Retroactive insurance</h3>
-                                    <span class="news-source">(Great Businesses)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Super cat insurance</h3>
-                                    <span class="news-source">(Great Businesses)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Television Networks</h3>
-                                    <span class="news-source">(Great Businesses)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Insurance Companies</h3>
-                                    <span class="news-source">(Great Businesses)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Airlines</h3>
-                                    <span class="news-source">(Industries)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Aviation services</h3>
-                                    <span class="news-source">(Industries)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Float</h3>
-                                    <span class="news-source">(Industries)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Insurance</h3>
-                                    <span class="news-source">(Industries)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Investment banks</h3>
-                                    <span class="news-source">(Industries)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Manufactured housing</h3>
-                                    <span class="news-source">(Industries)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Newspapers</h3>
-                                    <span class="news-source">(Industries)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Paper industry</h3>
-                                    <span class="news-source">(Industries)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Technology stocks</h3>
-                                    <span class="news-source">(Industries)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Utilities</h3>
-                                    <span class="news-source">(Industries)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Buffett Associates Ltd</h3>
-                                    <span class="news-source">(Other)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Consolidation</h3>
-                                    <span class="news-source">(Other)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Control</h3>
-                                    <span class="news-source">(Other)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Controlled Businesses</h3>
-                                    <span class="news-source">(Other)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Franchises</h3>
-                                    <span class="news-source">(Other)</span>
-                                </div>
-                            </div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Good Businesses, Economic Moat, Good Managers, Poor Businesses, Poor Managers, Airlines, Auto Insurance, Banks, Berkshire Hathaway, Controlled Businesses, Derivatives Business, Float, Franchises, Insurance, Investment Banks, Investment Companies, Investment Managers, Manufactured Housing, Paper, Property Casualty Insurance, Reinsurance, Retail, Retroactive Insurance, Shoes, Super Cat Insurance, Technology, Television, Textile, Transport, Utilities</h3></div></div>
                         </div>
                     </div>
                 </div>
@@ -4335,202 +3707,7 @@
                 <div class="buffett-tab" id="governance-tab-mobile" data-tab="governance">
                     <div class="books-slider-container">
                         <div class="books-slider" id="governance-buffett-slider">
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Directors' role</h3>
-                                    <span class="news-source">(Board of Directors)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Directors' weaknesses</h3>
-                                    <span class="news-source">(Board of Directors)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Director remuneration</h3>
-                                    <span class="news-source">(Board of Directors)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Independent directors</h3>
-                                    <span class="news-source">(Board of Directors)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Corporate Governance</h3>
-                                    <span class="news-source">(Board of Directors)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Succession</h3>
-                                    <span class="news-source">(Board of Directors)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">CEO compensation</h3>
-                                    <span class="news-source">(CEO)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">CEO mistakes</h3>
-                                    <span class="news-source">(CEO)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">CEO weaknesses</h3>
-                                    <span class="news-source">(CEO)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Berkshire compensation</h3>
-                                    <span class="news-source">(CEO)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Berkshire succession</h3>
-                                    <span class="news-source">(CEO)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Executive Compensation</h3>
-                                    <span class="news-source">(CEO)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Our Job</h3>
-                                    <span class="news-source">(CEO)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Audit Committee</h3>
-                                    <span class="news-source">(Committees)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Remuneration Committee</h3>
-                                    <span class="news-source">(Committees)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Auditors</h3>
-                                    <span class="news-source">(Committees)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Annual meetings</h3>
-                                    <span class="news-source">(Corporate)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Corporate charity</h3>
-                                    <span class="news-source">(Corporate)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Corporate culture</h3>
-                                    <span class="news-source">(Corporate)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Corporate responsibility</h3>
-                                    <span class="news-source">(Corporate)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Corporate strategy</h3>
-                                    <span class="news-source">(Corporate)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Dividend policy</h3>
-                                    <span class="news-source">(Corporate)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Greenmail</h3>
-                                    <span class="news-source">(Corporate)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Hiring and firing staff</h3>
-                                    <span class="news-source">(Corporate)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Manager owner relationship</h3>
-                                    <span class="news-source">(Corporate)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Organisational structure</h3>
-                                    <span class="news-source">(Corporate)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Corporate Expense</h3>
-                                    <span class="news-source">(Corporate)</span>
-                                </div>
-                            </div>
-                            <div class="buffett-item-mobile">
-                                <span class="news-bullet">-</span>
-                                <div class="news-content">
-                                    <h3 class="news-headline">Shareholders</h3>
-                                    <span class="news-source">(Corporate)</span>
-                                </div>
-                            </div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Annual meetings, Audit Committee, Auditors, Berkshire Compensation, CEO Compensation, CEO Mistakes, Corporate Charity, Corporate Culture, Corporate Expense, Corporate Governance, Corporate Responsibility, Corporate Strategy, Director Remuneration, Directors' Role, Directors' Weaknesses, Dividend Policy, Executive Compensation, Hiring and Firing, Independent Directors, Organisational Structure, Remuneration Committee, Shareholders, Succession</h3></div></div>
                         </div>
                     </div>
                 </div>
@@ -4540,230 +3717,7 @@
             <div class="buffett-tab" id="accounting-tab-mobile" data-tab="accounting">
                 <div class="books-slider-container">
                     <div class="books-slider" id="accounting-buffett-slider">
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">Capital gain</h3>
-                                <span class="news-source">(Accounting Concepts)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">Amortization</h3>
-                                <span class="news-source">(Accounting Concepts)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">Accounting goodwill</h3>
-                                <span class="news-source">(Accounting Concepts)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">Cash flow</h3>
-                                <span class="news-source">(Accounting Concepts)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">Book value</h3>
-                                <span class="news-source">(Accounting Concepts)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">Debt</h3>
-                                <span class="news-source">(Accounting Concepts)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">GAAP</h3>
-                                <span class="news-source">(Accounting Concepts)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">Depreciation</h3>
-                                <span class="news-source">(Accounting Concepts)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">Earnings</h3>
-                                <span class="news-source">(Accounting Concepts)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">EBITDA</h3>
-                                <span class="news-source">(Accounting Concepts)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">Economic goodwill</h3>
-                                <span class="news-source">(Accounting Concepts)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">Intangibles</h3>
-                                <span class="news-source">(Accounting Concepts)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">In Financial statements</h3>
-                                <span class="news-source">(Accounting Creativity)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">In Mergers and acquisitions</h3>
-                                <span class="news-source">(Accounting Creativity)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">Accounting fraud</h3>
-                                <span class="news-source">(Accounting Creativity)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">Compounded growth rate</h3>
-                                <span class="news-source">(Accounting Ratios)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">PE ratio</h3>
-                                <span class="news-source">(Accounting Ratios)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">Return on capital</h3>
-                                <span class="news-source">(Accounting Ratios)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">Return on equity</h3>
-                                <span class="news-source">(Accounting Ratios)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">Earnings Per Share</h3>
-                                <span class="news-source">(Accounting Ratios)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">Valuation</h3>
-                                <span class="news-source">(Accounting Ratios)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">Capital base</h3>
-                                <span class="news-source">(Other Concepts)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">Compounding</h3>
-                                <span class="news-source">(Other Concepts)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">Leverage</h3>
-                                <span class="news-source">(Other Concepts)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">Liquidation</h3>
-                                <span class="news-source">(Other Concepts)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">Look through earnings</h3>
-                                <span class="news-source">(Other Concepts)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">Owner earnings</h3>
-                                <span class="news-source">(Other Concepts)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">Pro forma reporting</h3>
-                                <span class="news-source">(Other Concepts)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">Realised gains and losses</h3>
-                                <span class="news-source">(Other Concepts)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">Retention of earnings</h3>
-                                <span class="news-source">(Other Concepts)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">Segment reporting</h3>
-                                <span class="news-source">(Other Concepts)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">Full and Fair Reporting</h3>
-                                <span class="news-source">(Other Concepts)</span>
-                            </div>
-                        </div>
+                        <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Accounting Creativity, Accounting Ratios, Accounting Goodwill, Amortization, Book Value, Capital Base, Capital Gain, Cash Flow, Compounding, Debt, Depreciation, Earnings, Earnings Per Share, EBITDA, Economic, Goodwill, Fraud, Full and Fair Reporting, Intangibles, GAAP, Leverage, Liquidation, Look through earnings, Owner Earnings, PE Ratio, Pro Forma Reporting, Realised Gains and Losses, Retention of Earning, Return on Capital, Return on Equity, Valuation</h3></div></div>
                     </div>
                 </div>
             </div>
@@ -4771,48 +3725,7 @@
             <div class="buffett-tab" id="economics-tab-mobile" data-tab="economics">
                 <div class="books-slider-container">
                     <div class="books-slider" id="economics-buffett-slider">
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">Inflation</h3>
-                                <span class="news-source">(Economics)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">Macroeconomics</h3>
-                                <span class="news-source">(Economics)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">Economy</h3>
-                                <span class="news-source">(Economics)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">Budget deficit</h3>
-                                <span class="news-source">(Balance of Trade)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">Trade imbalance</h3>
-                                <span class="news-source">(Balance of Trade)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">US economy</h3>
-                                <span class="news-source">(US Economy)</span>
-                            </div>
-                        </div>
+                        <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Budget Deficit, Currency, Globalisation, Global Economy, Gross Domestic Product, Inflation, Interest Rates, International Trade, Macroeconomics, Recession, Trade Imbalance, US Economy</h3></div></div>
                     </div>
                 </div>
             </div>
@@ -4820,34 +3733,7 @@
             <div class="buffett-tab" id="miscellaneous-tab-mobile" data-tab="miscellaneous">
                 <div class="books-slider-container">
                     <div class="books-slider" id="miscellaneous-buffett-slider">
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">Philanthropy</h3>
-                                <span class="news-source">(Miscellaneous)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">Public pension</h3>
-                                <span class="news-source">(Miscellaneous)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">Taxation</h3>
-                                <span class="news-source">(Miscellaneous)</span>
-                            </div>
-                        </div>
-                        <div class="buffett-item-mobile">
-                            <span class="news-bullet">-</span>
-                            <div class="news-content">
-                                <h3 class="news-headline">Unconventional commitments</h3>
-                                <span class="news-source">(Miscellaneous)</span>
-                            </div>
-                        </div>
+                        <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Benjamin Graham, Character, Charlie Munger, David Dodd, Happiness, Love, Partnership, Philanthropy, Public Pension, Success, Taxation, Unconventional Commitments</h3></div></div>
                     </div>
                 </div>
             </div>
@@ -5874,8 +4760,81 @@
 
             <!-- Recommended Books -->
             <section class="recommended-books">
-                <h2>OUR RECOMMENDED BOOKS</h2>
-                <div class="books-categories"><div class="book-category"><h3>Warren Buffett</h3><div class="book-links-horizontal">The Essays of Warren Buffett | The Snowball | The Warren Buffett Way | Warren Buffett Speaks | Tap Dancing to Work | Buffett: The Making of an American Capitalist | The Warren Buffett Portfolio | Warren Buffett: An Illustrated Biography | The Deals of Warren Buffett | Of Permanent Value</div></div><div class="book-category"><h3>Value Investing</h3><div class="book-links-horizontal">The Intelligent Investor | Security Analysis (1940) | Security Analysis (2008) | Benjamin Graham On Value Investing | Value Investing: From Graham to Buffett and Beyond | The Rediscovered Benjamin Graham | The Little Book of Value Investing | The Little Book That Beats the Market | You Can Be A Stock Market Genius | Modern Value Investing</div></div><div class="book-category"><h3>Share Investing</h3><div class="book-links-horizontal">How to Make Money in Stocks | One Up on Wall Street | A Beginner's Guide to the Stock Market | Common Sense on Mutual Funds | The Little Book of Common Sense Investing | Stocks for the Long Run | The Five Rules for Successful Stock Investing | The Little Book That Builds Wealth | Best Loser Wins | Stock Market Investing</div></div><div class="book-category"><h3>Wealth Creation</h3><div class="book-links-horizontal">How to Get Rich | Rich Dad Poor Dad | The Simple Path to Wealth | I Will Teach You to be Rich | The Richest Man in Babylon | The Millionaire Next Door | The Millionaire Mind | The Millionaire Fastlane | The Strategic Millionaire | Millionaire Mission</div></div><div class="book-category"><h3>Financial Analysis</h3><div class="book-links-horizontal">Financial Statements | How to Read a Financial Report | Financial Shenanigans | Bemused Investor's Guide to Company Accounts | Warren Buffett Accounting | Accounting for Beginners | Financial Intelligence | Balance Sheet Basics | Financial Statement Analysis for Value Investors | The Interpretation of Financial Statements</div></div><div class="book-category"><h3>Sales and Marketing</h3><div class="book-links-horizontal">$100M Offers | $100M Leads | Sell or Be Sold | This Is Marketing | The 1-Page Marketing Plan | 80/20 Sales and Marketing | Gap Selling | The Challenger Sale | The Psychology of Selling | Selling 101</div></div><div class="book-category"><h3>Self-Improvement</h3><div class="book-links-horizontal">Atomic Habits | The Mountain Is You | Good Vibes Good Life | The Power of Discipline | The Let Them Theory | Stop Overthinking | Breaking the Habits of Being Yourself | The 7 Habits of Highly Effective People | The 15 Invaluable Laws of Growth | Success</div></div><div class="book-category"><h3>Business &amp; Management</h3><div class="book-links-horizontal">Never Split the Difference | The Lean Startup | Leaders Eat Last | The Coaching Habit | The E-Myth Revisited | Traction | Surrounded By Idiots | Profit First | Personal MBA | The Infinite Game</div></div><div class="book-category"><h3>Miscellaneous</h3><div class="book-links-horizontal">The Big Short | Deep Simplicity | Moneyball | Flash Boys | Liar's Poker | The Fifth Risk | Bull! | Going Infinite | Tools and Weapons | The Third Chimpanzee</div></div></div>
+                                <h2>OUR RECOMMENDED BOOKS</h2>
+                                <div class="books-categories">
+                                    <div class="book-category"><h3>Warren Buffett</h3><ol class="books-list">
+                                        <li>The Essays of Warren Buffett</li>
+                                        <li>The Snowball</li>
+                                        <li>The Warren Buffett Way</li>
+                                        <li>Warren Buffett Speaks</li>
+                                        <li>Tap Dancing to Work</li>
+                                        <li>Buffett: The Making of an American Capitalist</li>
+                                        <li>The Warren Buffett Portfolio</li>
+                                        <li>Warren Buffett: An Illustrated Biography</li>
+                                        <li>The Deals of Warren Buffett</li>
+                                        <li>Of Permanent Value</li>
+                                    </ol></div>
+                                    <div class="book-category"><h3>Value Investing</h3><ol class="books-list">
+                                        <li>The Intelligent Investor</li>
+                                        <li>Security Analysis (1940)</li>
+                                        <li>Security Analysis (2008)</li>
+                                        <li>Benjamin Graham On Value Investing</li>
+                                        <li>Value Investing: From Graham to Buffett and Beyond</li>
+                                        <li>The Rediscovered Benjamin Graham</li>
+                                        <li>The Little Book of Value Investing</li>
+                                        <li>The Little Book That Beats the Market</li>
+                                        <li>You Can Be A Stock Market Genius</li>
+                                        <li>Modern Value Investing</li>
+                                    </ol></div>
+                                    <div class="book-category"><h3>Share Investing</h3><ol class="books-list">
+                                        <li>How to Make Money in Stocks</li>
+                                        <li>One Up on Wall Street</li>
+                                        <li>A Beginner’s Guide to the Stock Market</li>
+                                        <li>Common Sense on Mutual Funds</li>
+                                        <li>The Little Book of Common Sense Investing</li>
+                                        <li>Stocks for the Long Run</li>
+                                        <li>The Five Rules for Successful Stock Investing</li>
+                                        <li>The Little Book That Builds Wealth</li>
+                                        <li>Best Loser Wins</li>
+                                        <li>Stock Market Investing</li>
+                                    </ol></div>
+                                    <div class="book-category"><h3>Wealth Creation</h3><ol class="books-list">
+                                        <li>How to Get Rich</li>
+                                        <li>Rich Dad Poor Dad</li>
+                                        <li>The Simple Path to Wealth</li>
+                                        <li>I Will Teach You to be Rich</li>
+                                        <li>The Richest Man in Babylon</li>
+                                        <li>The Millionaire Next Door</li>
+                                        <li>The Millionaire Mind</li>
+                                        <li>The Millionaire Fastlane</li>
+                                        <li>The Strategic Millionaire</li>
+                                        <li>Millionaire Mission</li>
+                                    </ol></div>
+                                    <div class="book-category"><h3>Financial Analysis</h3><ol class="books-list">
+                                        <li>Financial Statements</li>
+                                        <li>How to Read a Financial Report</li>
+                                        <li>Financial Shenanigans</li>
+                                        <li>Bemused Investor’s Guide to Company Accounts</li>
+                                        <li>Warren Buffett Accounting</li>
+                                        <li>Accounting for Beginners</li>
+                                        <li>Financial Intelligence</li>
+                                        <li>Balance Sheet Basics</li>
+                                        <li>Financial Statement Analysis for Value Investors</li>
+                                        <li>The Interpretation of Financial Statements</li>
+                                    </ol></div>
+                                    <div class="book-category"><h3>Sales and Marketing</h3><ol class="books-list">
+                                        <li>$100M Offers</li>
+                                        <li>$100M Leads</li>
+                                        <li>Sell or Be Sold</li>
+                                        <li>This Is Marketing</li>
+                                        <li>The 1-Page Marketing Plan</li>
+                                        <li>80/20 Sales and Marketing</li>
+                                        <li>Gap Selling</li>
+                                        <li>The Challenger Sale</li>
+                                        <li>The Psychology of Selling</li>
+                                        <li>Selling 101</li>
+                                    </ol></div>
+                                </div>
                 <div style="text-align: center; margin-top: 24px;">
                     <a href="#" style="color: #1e3a8a; text-decoration: none; font-weight: 600;">See more</a>
                 </div>
@@ -10420,142 +9379,7 @@
             });
         });
     </script>
-    <!-- Mobile-only script for BUFFETT per-category pagination (show first 9, reveal more) -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            if (window.matchMedia && !window.matchMedia('(max-width: 768px)').matches) return; // only run on mobile
-
-            const VISIBLE_BATCH = 9;
-
-            function initBuffettList(sliderId) {
-                const slider = document.getElementById(sliderId);
-                if (!slider) return;
-                const items = Array.from(slider.querySelectorAll('.buffett-item-mobile'));
-                items.forEach(it => it.classList.remove('visible'));
-                items.slice(0, VISIBLE_BATCH).forEach(it => it.classList.add('visible'));
-                slider.dataset.shown = Math.min(items.length, VISIBLE_BATCH);
-                slider.dataset.expanded = 'false'; // Initialize as collapsed
-                updateBuffettSeeMoreState(sliderId);
-            }
-
-            function updateBuffettSeeMoreState(sliderId) {
-                const slider = document.getElementById(sliderId);
-                if (!slider) return;
-                const shown = parseInt(slider.dataset.shown || '0', 10);
-                const items = slider.querySelectorAll('.buffett-item-mobile');
-                const btn = document.querySelector('.buffett-see-more-link[data-list="' + sliderId + '"]');
-                if (!btn) return;
-
-                const isExpanded = slider.dataset.expanded === 'true';
-                const totalItems = items.length;
-                const initialBatch = 9; // VISIBLE_BATCH
-
-                if (isExpanded) {
-                    // Currently expanded - show "See less" to collapse back
-                    btn.textContent = 'See less';
-                    btn.classList.remove('disabled');
-                    btn.removeAttribute('aria-disabled');
-                    btn.style.pointerEvents = '';
-                } else if (totalItems > initialBatch) {
-                    // Currently collapsed and has more items - show "See more" to expand
-                    btn.textContent = 'See more';
-                    btn.classList.remove('disabled');
-                    btn.removeAttribute('aria-disabled');
-                    btn.style.pointerEvents = '';
-                } else {
-                    // No more items to show (all fit in initial batch)
-                    btn.classList.add('disabled');
-                    btn.setAttribute('aria-disabled', 'true');
-                    btn.style.pointerEvents = 'none';
-                }
-            }
-
-            // Reveal all remaining items for the slider (user requested: show 9 initially, reveal all on See more)
-            function revealAll(sliderId) {
-                const slider = document.getElementById(sliderId);
-                if (!slider) return;
-                const items = Array.from(slider.querySelectorAll('.buffett-item-mobile'));
-                items.forEach(it => it.classList.add('visible'));
-                slider.dataset.shown = items.length;
-                slider.dataset.expanded = 'true';
-                updateBuffettSeeMoreState(sliderId);
-            }
-
-            // Hide items back to initial batch (for See less functionality)
-            function hideItems(sliderId) {
-                const slider = document.getElementById(sliderId);
-                if (!slider) return;
-                const items = Array.from(slider.querySelectorAll('.buffett-item-mobile'));
-                // Hide all items beyond the initial batch
-                items.forEach((item, index) => {
-                    if (index >= VISIBLE_BATCH) {
-                        item.classList.remove('visible');
-                    }
-                });
-                slider.dataset.shown = VISIBLE_BATCH;
-                slider.dataset.expanded = 'false';
-                updateBuffettSeeMoreState(sliderId);
-            }
-
-            // Known Buffett slider IDs (safe to include; init will skip missing ones)
-            const sliderIds = [
-                'philosophy-buffett-slider',
-                'investing-buffett-slider',
-                'businesses-buffett-slider',
-                'governance-buffett-slider',
-                'accounting-buffett-slider',
-                'economics-buffett-slider',
-                'miscellaneous-buffett-slider'
-            ];
-
-            sliderIds.forEach(id => initBuffettList(id));
-
-            // Wire per-category See more links
-            document.querySelectorAll('.buffett-see-more-link').forEach(link => {
-                link.addEventListener('click', function (e) {
-                    const list = this.dataset.list;
-                    if (!list) return;
-
-                    e.preventDefault();
-                    const slider = document.getElementById(list);
-                    if (!slider) return;
-
-                    const isExpanded = slider.dataset.expanded === 'true';
-
-                    if (isExpanded) {
-                        // Currently expanded, hide items back to initial batch
-                        hideItems(list);
-                    } else {
-                        // Currently collapsed, reveal all items
-                        revealAll(list);
-                    }
-                });
-            });
-
-            // When switching Buffett tabs, initialize that category's slider (if present)
-            // The HTML uses buttons with class .buffett-tab-btn and data-tab="<category>" inside the .buffett-tabs-mobile container.
-            const buffettTabButtons = document.querySelectorAll('#mobile-buffett .buffett-tab-btn');
-            buffettTabButtons.forEach(btn => {
-                btn.addEventListener('click', function () {
-                    const cat = this.dataset.tab; // data-tab attribute on the button
-                    if (!cat) return;
-
-                    // Toggle active state on the tab buttons
-                    document.querySelectorAll('#mobile-buffett .buffett-tab-btn').forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-
-                    // Toggle active state on the content panes
-                    document.querySelectorAll('#mobile-buffett .buffett-tab').forEach(t => t.classList.remove('active'));
-                    const targetPane = document.querySelector('#mobile-buffett .buffett-tab[data-tab="' + cat + '"]');
-                    if (targetPane) targetPane.classList.add('active');
-
-                    // Initialize and show the first batch for the slider for this category
-                    const sliderId = cat + '-buffett-slider';
-                    initBuffettList(sliderId);
-                });
-            });
-        });
-
+    <!-- Mobile-only script for BUFFETT per-category pagination removed as requested -->
         // Market Quotes - Now links to dedicated page instead of modals
         // showFullQuote and showAllQuotes functions removed - replaced with navigation to market-quotes.html
 
