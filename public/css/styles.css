@@ -8076,24 +8076,26 @@ th {
 }
 
 /* PROFESSIONAL SECTION HEADER STYLING */
-.section-header {
+.section-header,
+.news-section-title,
+.newspaper-section h2,
+.category-heading,
+.sub-category-title,
+.feature-articles h2,
+.page-title {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 18px;
-    font-weight: 680;
-    color: #0D47A1;
-    /* Brand purple */
-    margin: 0 0 0px 0;
+    font-weight: 700;
+    color: #1e3a8a !important;
     text-transform: uppercase;
     letter-spacing: 1px;
     border-bottom: 2px solid #e0e0e0;
     padding: 4px 0 4px 4px;
-    /* 4px left padding inside bar */
     background: rgba(250, 251, 252, 0.65);
-    /* Reduced opacity by 20% */
     height: 32px;
-    /* Reduced from 36px to 32px */
     display: flex;
     align-items: center;
+    margin: 0 0 16px 0;
 }
 
 .news-list-mobile,
@@ -11816,23 +11818,7 @@ th {
     }
 }
 
-/* News Aggregator Updates */
-.section-header,
-.newspaper-section h2,
-.category-heading,
-.sub-category-title,
-.feature-articles h2 {
-    color: #1e3a8a !important;
-    font-weight: 700 !important;
-}
-
-.section-header,
-.newspaper-section h2,
-.category-heading,
-.feature-articles h2 {
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
+/* News Aggregator Updates handled by unified header styles above */
 
 .feature-articles h3 {
     font-size: 1.1rem !important;

@@ -9,7 +9,7 @@
             --primary-blue: #1e3a8a;
             --primary-blue-light: #3b82f6;
             --primary-blue-dark: #1e40af;
-            --secondary-gray: #f8f9fa;
+            --secondary-gray: #ffffff;
             --text-primary: #1f2937;
             --text-secondary: #6b7280;
             --text-muted: #9ca3af;
@@ -32,12 +32,12 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: var(--text-primary);
-            background: var(--secondary-gray);
+            background: #ffffff;
         }
 
         .wealth-creation-page {
             min-height: 100vh;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            background: #ffffff;
             position: relative;
         }
 
@@ -49,7 +49,7 @@
 
         /* Header Section */
         .header {
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            background: #ffffff;
             border-bottom: 2px solid #d4af37;
             padding: 12px 0;
             transition: all 0.3s ease;
@@ -360,7 +360,7 @@
         }
 
         .quote-footer {
-            background: var(--secondary-gray);
+            background: #ffffff;
             padding: 16px 24px;
             display: flex;
             justify-content: space-between;
@@ -545,7 +545,7 @@
                 
                 <nav class="main-nav desktop-only">                    <ul>
                         <li><a href="index.html" class="nav-link">HOME</a></li>
-                        <li><a href="wealth-creation.html" class="nav-link">WEALTH CREATION</a></li>
+                        <li><a href="wealth-creation.html" class="nav-link">Wealth Creation</a></li>
                         <li><a href="#" class="nav-link">ABOUT</a></li>
                     </ul></nav>
                 
@@ -565,7 +565,7 @@
         </div>
         <nav class="drawer-nav">
             <ul class="drawer-menu">
-                <li><a href="index.html" class="drawer-link">Home</a></li>
+                <li><a href="index.html" class="drawer-link" style="white-space: nowrap;">Home</a></li>
                 <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
                 <li><a href="legal-taxation.html" class="drawer-link">Legal &amp; Taxation</a></li>
                 <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
@@ -725,17 +725,30 @@
 
 
 <script id="quoteHighlightLogic">
-    document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
+    function handleDeepLink() {
         if (window.location.hash) {
-            setTimeout(() => {
-                const el = document.querySelector(window.location.hash);
-                if (el) {
-                    el.scrollIntoView({behavior: 'smooth', block: 'center'});
-                    el.style.transition = 'box-shadow 0.5s';
-                    el.style.boxShadow = '0 0 15px 5px #1e3a8a';
-                    setTimeout(() => el.style.boxShadow = '', 2000);
-                }
-            }, 500);
+            const target = document.querySelector(window.location.hash);
+            if (target) {
+                const headerOffset = 100; // Adjust based on your sticky header height
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+
+                target.style.outline = '2px solid #1e3a8a';
+                setTimeout(() => target.style.outline = '', 2000);
+            }
         }
-    });
+    }
+
+    // Handle initial load
+    setTimeout(handleDeepLink, 100);
+
+    // Handle hash change
+    window.addEventListener('hashchange', handleDeepLink);
+});
 </script></body></html>

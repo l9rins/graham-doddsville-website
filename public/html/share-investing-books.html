@@ -9,7 +9,7 @@
             --primary-blue: #1e3a8a;
             --primary-blue-light: #3b82f6;
             --primary-blue-dark: #1e40af;
-            --secondary-gray: #f8f9fa;
+            --secondary-gray: #ffffff;
             --text-primary: #1f2937;
             --text-secondary: #6b7280;
             --text-muted: #9ca3af;
@@ -32,12 +32,12 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: var(--text-primary);
-            background: var(--secondary-gray);
+            background: #ffffff;
         }
 
         .books-page {
             min-height: 100vh;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            background: #ffffff;
             position: relative;
         }
 
@@ -49,7 +49,7 @@
 
         /* Header Section */
         .header {
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            background: #ffffff;
             border-bottom: 2px solid #d4af37;
             padding: 12px 0;
             transition: all 0.3s ease;
@@ -248,23 +248,14 @@
         }
 
         .books-table tr:nth-child(even) {
-            background: var(--secondary-gray);
+            background: #ffffff;
         }
 
         .books-table tr:hover {
             background: #f1f5f9;
         }
 
-        .book-title {
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 4px;
-        }
 
-        .book-author {
-            color: var(--text-secondary);
-            font-size: 13px;
-        }
 
         .book-price {
             font-weight: 600;
@@ -364,9 +355,7 @@
 .book-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
 .book-card .book-cover { width: 100%; height: 250px; object-fit: cover; background: #eee; }
 .book-card .book-info { padding: 20px; display: flex; flex-direction: column; flex: 1; }
-.book-card .book-title { font-size: 1.1rem; font-weight: 600; margin: 0 0 8px 0; line-height: 1.4; font-family: 'Playfair Display', serif; }
-.book-card .book-title a { text-decoration: none; color: var(--text-primary); }
-.book-card .book-title a:hover { color: var(--primary-blue); }
+
 .book-card .book-summary { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 20px; flex: 1; }
 .book-card .book-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
 .book-card .book-price { font-weight: bold; color: #10b981; font-size: 1.1rem; }
@@ -411,7 +400,7 @@
         </div>
         <nav class="drawer-nav">
             <ul class="drawer-menu">
-                <li><a href="index.html" class="drawer-link">Home</a></li>
+                <li><a href="index.html" class="drawer-link" style="white-space: nowrap;">Home</a></li>
                 <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
                 <li><a href="legal-taxation.html" class="drawer-link">Legal &amp; Taxation</a></li>
                 <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
@@ -452,10 +441,8 @@
   </select>
 </div><div class="books-grid">
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/One-Up-Wall-Street/dp/0743200403" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="One Up On Wall Street" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/One-Up-Wall-Street/dp/0743200403" target="_blank" rel="noopener noreferrer">One Up On Wall Street</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$19.99</span>
           <a href="https://www.amazon.com.au/One-Up-Wall-Street/dp/0743200403" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -463,10 +450,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Best-Loser-Wins-Investing-Strategy/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Best Loser Wins" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Best-Loser-Wins-Investing-Strategy/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Best Loser Wins</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$24.99</span>
           <a href="https://www.amazon.com.au/Best-Loser-Wins-Investing-Strategy/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -474,10 +459,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Little-Book-Common-Sense-Investing/dp/0470102101" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Little Book of Common Sense Investing" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Little-Book-Common-Sense-Investing/dp/0470102101" target="_blank" rel="noopener noreferrer">The Little Book of Common Sense Investing</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$21.99</span>
           <a href="https://www.amazon.com.au/Little-Book-Common-Sense-Investing/dp/0470102101" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -485,10 +468,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Quality-Growth-Investor-2024-Edition/dp/B0D4Z8Z8Z8" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Quality Growth Investor (2024 Edition)" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Quality-Growth-Investor-2024-Edition/dp/B0D4Z8Z8Z8" target="_blank" rel="noopener noreferrer">The Quality Growth Investor (2024 Edition)</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$39.99</span>
           <a href="https://www.amazon.com.au/Quality-Growth-Investor-2024-Edition/dp/B0D4Z8Z8Z8" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -496,10 +477,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Neatest-Little-Guide-Stock-Market/dp/0966962672" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Neatest Little Guide to Stock Market Investing" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Neatest-Little-Guide-Stock-Market/dp/0966962672" target="_blank" rel="noopener noreferrer">The Neatest Little Guide to Stock Market Investing</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$16.99</span>
           <a href="https://www.amazon.com.au/Neatest-Little-Guide-Stock-Market/dp/0966962672" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -507,10 +486,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Stock-Market-Wizards-Interviews-Todays/dp/0887307201" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Stock Market Wizards" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Stock-Market-Wizards-Interviews-Todays/dp/0887307201" target="_blank" rel="noopener noreferrer">Stock Market Wizards</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$29.99</span>
           <a href="https://www.amazon.com.au/Stock-Market-Wizards-Interviews-Todays/dp/0887307201" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -518,10 +495,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Art-Quality-Investing/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Art of Quality Investing" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Art-Quality-Investing/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">The Art of Quality Investing</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$34.99</span>
           <a href="https://www.amazon.com.au/Art-Quality-Investing/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -529,10 +504,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Random-Walk-Down-Wall-Street/dp/0393352242" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="A Random Walk Down Wall Street" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Random-Walk-Down-Wall-Street/dp/0393352242" target="_blank" rel="noopener noreferrer">A Random Walk Down Wall Street</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$26.99</span>
           <a href="https://www.amazon.com.au/Random-Walk-Down-Wall-Street/dp/0393352242" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -540,10 +513,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Stocks-Long-Run-Definitive-Investment/dp/0071800514" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Stocks for the Long Run" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Stocks-Long-Run-Definitive-Investment/dp/0071800514" target="_blank" rel="noopener noreferrer">Stocks for the Long Run</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$34.99</span>
           <a href="https://www.amazon.com.au/Stocks-Long-Run-Definitive-Investment/dp/0071800514" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -551,10 +522,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Get-Started-Investing-Australia/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Get Started Investing" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Get-Started-Investing-Australia/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Get Started Investing</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$24.99</span>
           <a href="https://www.amazon.com.au/Get-Started-Investing-Australia/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -562,10 +531,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Girls-That-Invest-Breaking-Financial/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Girls That Invest" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Girls-That-Invest-Breaking-Financial/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Girls That Invest</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$22.99</span>
           <a href="https://www.amazon.com.au/Girls-That-Invest-Breaking-Financial/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -573,10 +540,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Trade-Like-Stock-Market-Wizard/dp/0071807225" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Trade Like a Stock Market Wizard" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Trade-Like-Stock-Market-Wizard/dp/0071807225" target="_blank" rel="noopener noreferrer">Trade Like a Stock Market Wizard</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$31.99</span>
           <a href="https://www.amazon.com.au/Trade-Like-Stock-Market-Wizard/dp/0071807225" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -584,10 +549,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Bogleheads-Guide-Investing/dp/1118921283" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Bogleheads' Guide to Investing" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Bogleheads-Guide-Investing/dp/1118921283" target="_blank" rel="noopener noreferrer">The Bogleheads' Guide to Investing</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$27.99</span>
           <a href="https://www.amazon.com.au/Bogleheads-Guide-Investing/dp/1118921283" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -595,10 +558,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Think-Trade-Like-Champion/dp/0071807225" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Think &amp; Trade Like a Champion" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Think-Trade-Like-Champion/dp/0071807225" target="_blank" rel="noopener noreferrer">Think &amp; Trade Like a Champion</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$32.99</span>
           <a href="https://www.amazon.com.au/Think-Trade-Like-Champion/dp/0071807225" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -606,10 +567,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Hedge-Fund-Market-Wizards-Top/dp/1118273044" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Hedge Fund Market Wizards" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Hedge-Fund-Market-Wizards-Top/dp/1118273044" target="_blank" rel="noopener noreferrer">Hedge Fund Market Wizards</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$33.99</span>
           <a href="https://www.amazon.com.au/Hedge-Fund-Market-Wizards-Top/dp/1118273044" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -617,10 +576,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Four-Pillars-Investing-Lessons-Learned/dp/0071747054" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Four Pillars of Investing" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Four-Pillars-Investing-Lessons-Learned/dp/0071747054" target="_blank" rel="noopener noreferrer">The Four Pillars of Investing</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$24.99</span>
           <a href="https://www.amazon.com.au/Four-Pillars-Investing-Lessons-Learned/dp/0071747054" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -628,10 +585,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Elements-Investing-Simple-Path-Wealth/dp/1118484872" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Elements of Investing" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Elements-Investing-Simple-Path-Wealth/dp/1118484872" target="_blank" rel="noopener noreferrer">The Elements of Investing</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$23.99</span>
           <a href="https://www.amazon.com.au/Elements-Investing-Simple-Path-Wealth/dp/1118484872" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -639,10 +594,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/New-Market-Wizards-Conversations-Todays/dp/0887308453" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The New Market Wizards" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/New-Market-Wizards-Conversations-Todays/dp/0887308453" target="_blank" rel="noopener noreferrer">The New Market Wizards</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$31.99</span>
           <a href="https://www.amazon.com.au/New-Market-Wizards-Conversations-Todays/dp/0887308453" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -650,10 +603,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Unknown-Market-Wizards-Untold-Story/dp/0857195617" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Unknown Market Wizards" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Unknown-Market-Wizards-Untold-Story/dp/0857195617" target="_blank" rel="noopener noreferrer">Unknown Market Wizards</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$35.99</span>
           <a href="https://www.amazon.com.au/Unknown-Market-Wizards-Untold-Story/dp/0857195617" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -661,10 +612,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Most-Important-Thing-Uncommon-Sense/dp/0231153686" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Most Important Thing" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Most-Important-Thing-Uncommon-Sense/dp/0231153686" target="_blank" rel="noopener noreferrer">The Most Important Thing</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$28.99</span>
           <a href="https://www.amazon.com.au/Most-Important-Thing-Uncommon-Sense/dp/0231153686" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -672,10 +621,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/What-Works-Wall-Street-Fourth/dp/0071626813" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="What Works on Wall Street (4th ed)" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/What-Works-Wall-Street-Fourth/dp/0071626813" target="_blank" rel="noopener noreferrer">What Works on Wall Street (4th ed)</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$39.99</span>
           <a href="https://www.amazon.com.au/What-Works-Wall-Street-Fourth/dp/0071626813" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -683,10 +630,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Little-Book-That-Builds-Wealth/dp/047022651X" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Little Book That Builds Wealth" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Little-Book-That-Builds-Wealth/dp/047022651X" target="_blank" rel="noopener noreferrer">The Little Book That Builds Wealth</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$22.99</span>
           <a href="https://www.amazon.com.au/Little-Book-That-Builds-Wealth/dp/047022651X" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -694,10 +639,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Five-Rules-Successful-Stock-Investing/dp/0470624159" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Five Rules for Successful Stock Investing" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Five-Rules-Successful-Stock-Investing/dp/0470624159" target="_blank" rel="noopener noreferrer">The Five Rules for Successful Stock Investing</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$23.99</span>
           <a href="https://www.amazon.com.au/Five-Rules-Successful-Stock-Investing/dp/0470624159" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -705,10 +648,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Stock-Market-101-Beginners-Investing/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Stock Market 101" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Stock-Market-101-Beginners-Investing/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Stock Market 101</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$19.99</span>
           <a href="https://www.amazon.com.au/Stock-Market-101-Beginners-Investing/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -716,10 +657,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Trading-Zone-Master-Skills-Discipline/dp/0735201447" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Trading in the Zone" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Trading-Zone-Master-Skills-Discipline/dp/0735201447" target="_blank" rel="noopener noreferrer">Trading in the Zone</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$26.99</span>
           <a href="https://www.amazon.com.au/Trading-Zone-Master-Skills-Discipline/dp/0735201447" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -727,10 +666,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Trading-Psychology-Master-Fear-Greed/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Trading Psychology" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Trading-Psychology-Master-Fear-Greed/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Trading Psychology</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$29.99</span>
           <a href="https://www.amazon.com.au/Trading-Psychology-Master-Fear-Greed/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -738,10 +675,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Charting-Technical-Analysis-Fred-McAllen/dp/0134757613" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Charting and Technical Analysis" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Charting-Technical-Analysis-Fred-McAllen/dp/0134757613" target="_blank" rel="noopener noreferrer">Charting and Technical Analysis</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$41.99</span>
           <a href="https://www.amazon.com.au/Charting-Technical-Analysis-Fred-McAllen/dp/0134757613" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -749,10 +684,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Technical-Analysis-Financial-Markets-Comprehensive/dp/0735200661" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Technical Analysis of the Financial Markets" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Technical-Analysis-Financial-Markets-Comprehensive/dp/0735200661" target="_blank" rel="noopener noreferrer">Technical Analysis of the WEALTH CREATION</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$49.99</span>
           <a href="https://www.amazon.com.au/Technical-Analysis-Financial-Markets-Comprehensive/dp/0735200661" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -760,10 +693,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Common-Sense-Mutual-Funds-Fully/dp/0470138134" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Common Sense on Mutual Funds" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Common-Sense-Mutual-Funds-Fully/dp/0470138134" target="_blank" rel="noopener noreferrer">Common Sense on Mutual Funds</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$25.99</span>
           <a href="https://www.amazon.com.au/Common-Sense-Mutual-Funds-Fully/dp/0470138134" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -771,10 +702,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Beating-Street-Peter-Lynch/dp/0743200403" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Beating the Street" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Beating-Street-Peter-Lynch/dp/0743200403" target="_blank" rel="noopener noreferrer">Beating the Street</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$21.99</span>
           <a href="https://www.amazon.com.au/Beating-Street-Peter-Lynch/dp/0743200403" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -782,10 +711,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Learn-Earn-Peter-Lynch/dp/0684811634" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Learn to Earn" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Learn-Earn-Peter-Lynch/dp/0684811634" target="_blank" rel="noopener noreferrer">Learn to Earn</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$18.99</span>
           <a href="https://www.amazon.com.au/Learn-Earn-Peter-Lynch/dp/0684811634" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -793,10 +720,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Common-Stocks-Uncommon-Profits/dp/0471445509" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Common Stocks and Uncommon Profits" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Common-Stocks-Uncommon-Profits/dp/0471445509" target="_blank" rel="noopener noreferrer">Common Stocks and Uncommon Profits</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$23.99</span>
           <a href="https://www.amazon.com.au/Common-Stocks-Uncommon-Profits/dp/0471445509" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -804,10 +729,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/How-Make-Money-Stocks/dp/0071614132" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="How to Make Money in Stocks" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/How-Make-Money-Stocks/dp/0071614132" target="_blank" rel="noopener noreferrer">How to Make Money in Stocks</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$29.99</span>
           <a href="https://www.amazon.com.au/How-Make-Money-Stocks/dp/0071614132" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -815,10 +738,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Investing-Growth-Terry-Smith/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Investing for Growth" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Investing-Growth-Terry-Smith/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Investing for Growth</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$32.99</span>
           <a href="https://www.amazon.com.au/Investing-Growth-Terry-Smith/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -826,10 +747,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Clash-Cultures-Investment-Banking/dp/1118238251" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Clash of the Cultures" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Clash-Cultures-Investment-Banking/dp/1118238251" target="_blank" rel="noopener noreferrer">The Clash of the Cultures</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$26.99</span>
           <a href="https://www.amazon.com.au/Clash-Cultures-Investment-Banking/dp/1118238251" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -837,10 +756,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/100-Baggers-Stocks-1000-Investor/dp/1982149890" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="100 Baggers" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/100-Baggers-Stocks-1000-Investor/dp/1982149890" target="_blank" rel="noopener noreferrer">100 Baggers</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$27.99</span>
           <a href="https://www.amazon.com.au/100-Baggers-Stocks-1000-Investor/dp/1982149890" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -848,10 +765,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Little-Book-That-Beats-Market/dp/0471730519" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Little Investment That Beats the Market" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Little-Book-That-Beats-Market/dp/0471730519" target="_blank" rel="noopener noreferrer">The Little Investment That Beats the Market</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$24.99</span>
           <a href="https://www.amazon.com.au/Little-Book-That-Beats-Market/dp/0471730519" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -859,10 +774,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Reminiscences-Stock-Operator-Edwin-Lefevre/dp/0471770886" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Reminiscences of a Stock Operator" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Reminiscences-Stock-Operator-Edwin-Lefevre/dp/0471770886" target="_blank" rel="noopener noreferrer">Reminiscences of a Stock Operator</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$19.99</span>
           <a href="https://www.amazon.com.au/Reminiscences-Stock-Operator-Edwin-Lefevre/dp/0471770886" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -870,10 +783,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Little-Book-Big-Dividends/dp/0470568110" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Little Book of Big Dividends" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Little-Book-Big-Dividends/dp/0470568110" target="_blank" rel="noopener noreferrer">The Little Book of Big Dividends</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$21.99</span>
           <a href="https://www.amazon.com.au/Little-Book-Big-Dividends/dp/0470568110" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -881,10 +792,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Extraordinary-Popular-Delusions-Madness-Crowds/dp/0486284584" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Extraordinary Popular Delusions" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Extraordinary-Popular-Delusions-Madness-Crowds/dp/0486284584" target="_blank" rel="noopener noreferrer">Extraordinary Popular Delusions</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$16.99</span>
           <a href="https://www.amazon.com.au/Extraordinary-Popular-Delusions-Madness-Crowds/dp/0486284584" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -892,10 +801,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/How-Pick-Quality-Shares/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="How to Pick Quality Shares" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/How-Pick-Quality-Shares/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">How to Pick Quality Shares</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$28.99</span>
           <a href="https://www.amazon.com.au/How-Pick-Quality-Shares/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -903,10 +810,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/How-Day-Trade-Living/dp/1535585951" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="How to Day Trade for a Living" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/How-Day-Trade-Living/dp/1535585951" target="_blank" rel="noopener noreferrer">How to Day Trade for a Living</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$24.99</span>
           <a href="https://www.amazon.com.au/How-Day-Trade-Living/dp/1535585951" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -914,10 +819,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/You-Can-Stock-Market-Genius/dp/0684840073" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="You Can Be a Stock Market Genius" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/You-Can-Stock-Market-Genius/dp/0684840073" target="_blank" rel="noopener noreferrer">You Can Be a Stock Market Genius</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$26.99</span>
           <a href="https://www.amazon.com.au/You-Can-Stock-Market-Genius/dp/0684840073" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -925,10 +828,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Man-Who-Solved-Market/dp/073521798X" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Man Who Solved the Market" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Man-Who-Solved-Market/dp/073521798X" target="_blank" rel="noopener noreferrer">The Man Who Solved the Market</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$29.99</span>
           <a href="https://www.amazon.com.au/Man-Who-Solved-Market/dp/073521798X" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -936,10 +837,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Piece-Action-How-Investors-Turned/dp/0470437664" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="A Piece of the Action" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Piece-Action-How-Investors-Turned/dp/0470437664" target="_blank" rel="noopener noreferrer">A Piece of the Action</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$31.99</span>
           <a href="https://www.amazon.com.au/Piece-Action-How-Investors-Turned/dp/0470437664" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -947,10 +846,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Where-Are-Customers-Yachts/dp/0471770894" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Where Are the Customers' Yachts?" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Where-Are-Customers-Yachts/dp/0471770894" target="_blank" rel="noopener noreferrer">Where Are the Customers' Yachts?</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$17.99</span>
           <a href="https://www.amazon.com.au/Where-Are-Customers-Yachts/dp/0471770894" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -958,10 +855,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Confidence-Game-Insiders-Tell/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Confidence Game" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Confidence-Game-Insiders-Tell/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Confidence Game</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$33.99</span>
           <a href="https://www.amazon.com.au/Confidence-Game-Insiders-Tell/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -969,10 +864,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/John-Bogle-Investing-Giants-Series/dp/0071637966" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="John Bogle on Investing" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/John-Bogle-Investing-Giants-Series/dp/0071637966" target="_blank" rel="noopener noreferrer">John Bogle on Investing</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$24.99</span>
           <a href="https://www.amazon.com.au/John-Bogle-Investing-Giants-Series/dp/0071637966" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -980,10 +873,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Paths-Wealth-Through-Common-Stocks/dp/0470139491" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Paths to Wealth through Common Stocks" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Paths-Wealth-Through-Common-Stocks/dp/0470139491" target="_blank" rel="noopener noreferrer">Paths to Wealth through Common Stocks</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$24.99</span>
           <a href="https://www.amazon.com.au/Paths-Wealth-Through-Common-Stocks/dp/0470139491" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -991,10 +882,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/How-Make-Money-Stocks-Beginners/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="How to Make Money in Stocks (Beginner's Guide)" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/How-Make-Money-Stocks-Beginners/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">How to Make Money in Stocks (Beginner's Guide)</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$22.99</span>
           <a href="https://www.amazon.com.au/How-Make-Money-Stocks-Beginners/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -1002,10 +891,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Bogle-Mutual-Funds-New-Perspective/dp/0071364384" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Bogle on Mutual Funds" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Bogle-Mutual-Funds-New-Perspective/dp/0071364384" target="_blank" rel="noopener noreferrer">Bogle on Mutual Funds</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$26.99</span>
           <a href="https://www.amazon.com.au/Bogle-Mutual-Funds-New-Perspective/dp/0071364384" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -1013,10 +900,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Beginners-Guide-Stock-Market/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="A Beginner's Guide to the Stock Market" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Beginners-Guide-Stock-Market/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">A Beginner's Guide to the Stock Market</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$19.99</span>
           <a href="https://www.amazon.com.au/Beginners-Guide-Stock-Market/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -1024,10 +909,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Irrational-Exuberance-Robert-Shiller/dp/0691173125" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Irrational Exuberance" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Irrational-Exuberance-Robert-Shiller/dp/0691173125" target="_blank" rel="noopener noreferrer">Irrational Exuberance</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$27.99</span>
           <a href="https://www.amazon.com.au/Irrational-Exuberance-Robert-Shiller/dp/0691173125" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -1035,10 +918,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Fooled-Randomness-Hidden-Markets/dp/0812975219" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Fooled by Randomness" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Fooled-Randomness-Hidden-Markets/dp/0812975219" target="_blank" rel="noopener noreferrer">Fooled by Randomness</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$24.99</span>
           <a href="https://www.amazon.com.au/Fooled-Randomness-Hidden-Markets/dp/0812975219" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -1046,10 +927,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Fooling-Some-People-All-Time/dp/0470077912" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Fooling Some of the People All of the Time" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Fooling-Some-People-All-Time/dp/0470077912" target="_blank" rel="noopener noreferrer">Fooling Some of the People All of the Time</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$29.99</span>
           <a href="https://www.amazon.com.au/Fooling-Some-People-All-Time/dp/0470077912" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -1057,10 +936,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Little-Book-Behavioral-Investing/dp/0470057806" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Little Book of Behavioral Investing" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Little-Book-Behavioral-Investing/dp/0470057806" target="_blank" rel="noopener noreferrer">The Little Book of Behavioral Investing</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$22.99</span>
           <a href="https://www.amazon.com.au/Little-Book-Behavioral-Investing/dp/0470057806" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -1068,10 +945,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Liars-Poker-Rising-Through-Nations/dp/039333869X" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Liar's Poker" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Liars-Poker-Rising-Through-Nations/dp/039333869X" target="_blank" rel="noopener noreferrer">Liar's Poker</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$21.99</span>
           <a href="https://www.amazon.com.au/Liars-Poker-Rising-Through-Nations/dp/039333869X" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -1079,10 +954,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Little-Book-Main-Street-Money/dp/0470045397" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Little Book of Main Street Money" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Little-Book-Main-Street-Money/dp/0470045397" target="_blank" rel="noopener noreferrer">The Little Book of Main Street Money</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$20.99</span>
           <a href="https://www.amazon.com.au/Little-Book-Main-Street-Money/dp/0470045397" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -1090,10 +963,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Little-Book-Bulletproof-Investing/dp/0470040476" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Little Book of Bulletproof Investing" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Little-Book-Bulletproof-Investing/dp/0470040476" target="_blank" rel="noopener noreferrer">The Little Book of Bulletproof Investing</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$19.99</span>
           <a href="https://www.amazon.com.au/Little-Book-Bulletproof-Investing/dp/0470040476" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -1101,10 +972,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Trading-Technical-Analysis-Masterclass/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Trading: Technical Analysis Masterclass" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Trading-Technical-Analysis-Masterclass/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Trading: Technical Analysis Masterclass</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$49.99</span>
           <a href="https://www.amazon.com.au/Trading-Technical-Analysis-Masterclass/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -1112,10 +981,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Great-Crash-1929-John-Galbraith/dp/0395859999" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Great Crash 1929" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Great-Crash-1929-John-Galbraith/dp/0395859999" target="_blank" rel="noopener noreferrer">The Great Crash 1929</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$18.99</span>
           <a href="https://www.amazon.com.au/Great-Crash-1929-John-Galbraith/dp/0395859999" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -1123,10 +990,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/How-Value-Real-Estate-Investment/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="How to Value Real Estate Investment Trusts (REITs) in Australia" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/How-Value-Real-Estate-Investment/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">How to Value Real Estate Investment Trusts (REITs) in Australia</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$29.99</span>
           <a href="https://www.amazon.com.au/How-Value-Real-Estate-Investment/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -1134,10 +999,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Stock-Investing-Beginners-Fantastic-Moats/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Stock Investing for Beginners: Fantastic Moats" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Stock-Investing-Beginners-Fantastic-Moats/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Stock Investing for Beginners: Fantastic Moats</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$17.99</span>
           <a href="https://www.amazon.com.au/Stock-Investing-Beginners-Fantastic-Moats/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -1145,10 +1008,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Alchemy-Finance-Reading-Riches-Markets/dp/0471445495" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Alchemy of Finance" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Alchemy-Finance-Reading-Riches-Markets/dp/0471445495" target="_blank" rel="noopener noreferrer">The Alchemy of Finance</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$26.99</span>
           <a href="https://www.amazon.com.au/Alchemy-Finance-Reading-Riches-Markets/dp/0471445495" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -1156,10 +1017,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Little-Book-Investing-Like-Pros/dp/0470624159" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Little Book of Investing Like the Pros" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Little-Book-Investing-Like-Pros/dp/0470624159" target="_blank" rel="noopener noreferrer">The Little Book of Investing Like the Pros</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$23.99</span>
           <a href="https://www.amazon.com.au/Little-Book-Investing-Like-Pros/dp/0470624159" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -1167,10 +1026,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Ultimate-Industry-Guide-Australian-Publicly/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Ultimate Industry Guide for Australian Publicly-Listed Companies" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Ultimate-Industry-Guide-Australian-Publicly/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">The Ultimate Industry Guide for Australian Publicly-Listed Companies</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$39.99</span>
           <a href="https://www.amazon.com.au/Ultimate-Industry-Guide-Australian-Publicly/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -1178,10 +1035,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/When-Wolves-Bite-Investors-Wall/dp/0071804234" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="When the Wolves Bite" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/When-Wolves-Bite-Investors-Wall/dp/0071804234" target="_blank" rel="noopener noreferrer">When the Wolves Bite</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$28.99</span>
           <a href="https://www.amazon.com.au/When-Wolves-Bite-Investors-Wall/dp/0071804234" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -1189,10 +1044,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Why-Are-So-Clueless-About/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Why Are We So Clueless About the Stock Market?" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Why-Are-So-Clueless-About/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Why Are We So Clueless About the Stock Market?</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$25.99</span>
           <a href="https://www.amazon.com.au/Why-Are-So-Clueless-About/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -1200,10 +1053,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Stock-Investing-Dummies-Paul-Mladjenovic/dp/1119371821" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Stock Investing For Dummies" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Stock-Investing-Dummies-Paul-Mladjenovic/dp/1119371821" target="_blank" rel="noopener noreferrer">Stock Investing For Dummies</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$26.99</span>
           <a href="https://www.amazon.com.au/Stock-Investing-Dummies-Paul-Mladjenovic/dp/1119371821" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -1211,10 +1062,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Little-Book-Safe-Money/dp/0470103154" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Little Book of Safe Money" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Little-Book-Safe-Money/dp/0470103154" target="_blank" rel="noopener noreferrer">The Little Book of Safe Money</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$21.99</span>
           <a href="https://www.amazon.com.au/Little-Book-Safe-Money/dp/0470103154" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -1222,10 +1071,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Little-Book-Bull-Moves-Updated/dp/0470643994" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Little Book of Bull Moves (Updated)" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Little-Book-Bull-Moves-Updated/dp/0470643994" target="_blank" rel="noopener noreferrer">The Little Book of Bull Moves (Updated)</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$23.99</span>
           <a href="https://www.amazon.com.au/Little-Book-Bull-Moves-Updated/dp/0470643994" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -1233,10 +1080,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Holy-Grail-Investing-Tony-Robbins/dp/147116461X" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Holy Grail of Investing" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Holy-Grail-Investing-Tony-Robbins/dp/147116461X" target="_blank" rel="noopener noreferrer">The Holy Grail of Investing</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$31.99</span>
           <a href="https://www.amazon.com.au/Holy-Grail-Investing-Tony-Robbins/dp/147116461X" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -1244,10 +1089,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Big-Mistakes-Michael-Batnick/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Big Mistakes" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Big-Mistakes-Michael-Batnick/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Big Mistakes</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$24.99</span>
           <a href="https://www.amazon.com.au/Big-Mistakes-Michael-Batnick/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -1255,10 +1098,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/How-Value-Major-Australian-Bank/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="How to Value a Major Australian Bank" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/How-Value-Major-Australian-Bank/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">How to Value a Major Australian Bank</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$27.99</span>
           <a href="https://www.amazon.com.au/How-Value-Major-Australian-Bank/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -1266,10 +1107,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Fundamental-Analysis-Essentials-Brian-Hale/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Fundamental Analysis Essentials" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Fundamental-Analysis-Essentials-Brian-Hale/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Fundamental Analysis Essentials</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$32.99</span>
           <a href="https://www.amazon.com.au/Fundamental-Analysis-Essentials-Brian-Hale/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -1277,10 +1116,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Success-Stock-Market-James-Emanuel/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Success in the Stock Market" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Success-Stock-Market-James-Emanuel/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">Success in the Stock Market</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$29.99</span>
           <a href="https://www.amazon.com.au/Success-Stock-Market-James-Emanuel/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -1288,10 +1125,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Complete-Idiots-Guide-Stock-Investing/dp/0028642488" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Complete Idiot's Guide to Stock Investing" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Complete-Idiots-Guide-Stock-Investing/dp/0028642488" target="_blank" rel="noopener noreferrer">The Complete Idiot's Guide to Stock Investing</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$24.99</span>
           <a href="https://www.amazon.com.au/Complete-Idiots-Guide-Stock-Investing/dp/0028642488" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -1299,10 +1134,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Little-Book-Big-Profits-Small/dp/0471713061" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Little Book of Big Profits from Small Stocks" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Little-Book-Big-Profits-Small/dp/0471713061" target="_blank" rel="noopener noreferrer">The Little Book of Big Profits from Small Stocks</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$22.99</span>
           <a href="https://www.amazon.com.au/Little-Book-Big-Profits-Small/dp/0471713061" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -1310,10 +1143,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Quick-Start-Guide-Investing/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Quick-Start Guide to Investing" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Quick-Start-Guide-Investing/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">The Quick-Start Guide to Investing</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$21.99</span>
           <a href="https://www.amazon.com.au/Quick-Start-Guide-Investing/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -1321,10 +1152,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Alpha-Masters-Maneet-Ahuja/dp/1118064741" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Alpha Masters" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Alpha-Masters-Maneet-Ahuja/dp/1118064741" target="_blank" rel="noopener noreferrer">The Alpha Masters</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$33.99</span>
           <a href="https://www.amazon.com.au/Alpha-Masters-Maneet-Ahuja/dp/1118064741" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -1332,10 +1161,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Little-Book-Trading-Michael-Covel/dp/0471776022" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Little Book of Trading" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Little-Book-Trading-Michael-Covel/dp/0471776022" target="_blank" rel="noopener noreferrer">The Little Book of Trading</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$23.99</span>
           <a href="https://www.amazon.com.au/Little-Book-Trading-Michael-Covel/dp/0471776022" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -1343,10 +1170,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/Biography-Bill-Ackman-Daniel-Gray/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Biography of Bill Ackman" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/Biography-Bill-Ackman-Daniel-Gray/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer">The Biography of Bill Ackman</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$26.99</span>
           <a href="https://www.amazon.com.au/Biography-Bill-Ackman-Daniel-Gray/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -1366,6 +1191,36 @@
     </div>
 
     <script>
+        // Sort functionality
+        function sortBooks(selectElement) {
+            const sortValue = selectElement.value;
+            const gridContainer = document.querySelector('.books-grid');
+            if (!gridContainer) return;
+            
+            const cards = Array.from(gridContainer.querySelectorAll('.book-card'));
+            
+            cards.sort((a, b) => {
+                let valA, valB;
+                if (sortValue === 'title') {
+                    valA = a.querySelector('.book-cover').alt.trim().toLowerCase();
+                    valB = b.querySelector('.book-cover').alt.trim().toLowerCase();
+                    return valA.localeCompare(valB);
+                } else if (sortValue === 'author') {
+                    valA = (a.querySelector('.book-author') || a.querySelector('.book-cover')).alt.toLowerCase();
+                    valB = (b.querySelector('.book-author') || b.querySelector('.book-cover')).alt.toLowerCase();
+                    return valA.localeCompare(valB);
+                } else if (sortValue === 'price') {
+                    valA = parseFloat(a.querySelector('.book-price').textContent.replace(/[^0-9.]/g, '')) || 0;
+                    valB = parseFloat(b.querySelector('.book-price').textContent.replace(/[^0-9.]/g, '')) || 0;
+                    return valA - valB;
+                }
+                return 0;
+            });
+            
+            gridContainer.innerHTML = '';
+            cards.forEach(card => gridContainer.appendChild(card));
+        }
+
         // Mobile menu functionality
         function toggleMobileMenu() {
             const drawer = document.getElementById('mobile-drawer');

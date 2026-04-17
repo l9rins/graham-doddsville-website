@@ -226,6 +226,14 @@ function generateArticleHash(title, source, publishedAt) {
 }
 
 function isArticleValid(article) {
+    const BLOCKED_DOMAINS = [
+        'vanityfair.com', 'pagesix.com', 'twistedsifter.com', 'bleedingcool.com',
+        'tmz.com', 'eonline.com', 'people.com', 'usmagazine.com',
+        'hollywoodreporter.com', 'variety.com', 'entertainmentweekly.com'
+    ];
+    const articleUrl = (article.url || article.link || '').toLowerCase();
+    if (BLOCKED_DOMAINS.some(domain => articleUrl.includes(domain))) return false;
+
     // Validation rules
     if (!article.title || article.title.length < 20 || article.title.length > 150) return false;
     if (!article.description || article.description.length < 50) return false;

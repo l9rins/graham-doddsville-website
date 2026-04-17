@@ -2422,7 +2422,7 @@
                         </div>
                         <div class="quote-source">
                             <a href="#" onclick="event.stopPropagation(); openSourceLink('https://example.com/source1')"
-                                class="source-link">View Source Document</a>
+                                class="source-link">View source document</a>
                         </div>
                     </div>
                 </div>
@@ -2442,7 +2442,7 @@
                         </div>
                         <div class="quote-source">
                             <a href="#" onclick="event.stopPropagation(); openSourceLink('https://example.com/source2')"
-                                class="source-link">View Source Document</a>
+                                class="source-link">View source document</a>
                         </div>
                     </div>
                 </div>
@@ -2462,7 +2462,7 @@
                         </div>
                         <div class="quote-source">
                             <a href="#" onclick="event.stopPropagation(); openSourceLink('https://example.com/source3')"
-                                class="source-link">View Source Document</a>
+                                class="source-link">View source document</a>
                         </div>
                     </div>
                 </div>
@@ -2679,11 +2679,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Single persistent See more button for mobile feature articles -->
-                <div class="feature-articles-footer">
-                    <button id="feature-see-more" class="see-more-mobile" aria-controls="mobile-feature-articles">See
-                        more</button>
-                </div>
+
             </div>
         </section>
 
@@ -9073,91 +9069,7 @@
     </footer>
 </body>
 
-<!-- Mobile-only script for FEATURE ARTICLES (mobile-feature-articles) -->
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        if (window.matchMedia && !window.matchMedia('(max-width: 768px)').matches) return; // only run on mobile
 
-        const VISIBLE_BATCH = 5;
-
-        // Initialize a list element: hide all then show first VISIBLE_BATCH
-        function initListElement(listEl) {
-            if (!listEl) return;
-            const items = Array.from(listEl.querySelectorAll('.article-item'));
-            items.forEach(it => it.classList.remove('visible'));
-            items.slice(0, VISIBLE_BATCH).forEach(it => it.classList.add('visible'));
-            listEl.dataset.shown = Math.min(items.length, VISIBLE_BATCH);
-            // Update the global See more button state
-            updateSeeMoreButtonState(listEl);
-        }
-
-        function updateSeeMoreButtonState(listEl) {
-            const btn = document.getElementById('feature-see-more');
-            if (!btn || !listEl) return;
-            const items = Array.from(listEl.querySelectorAll('.article-item'));
-            const shown = parseInt(listEl.dataset.shown || '0', 10);
-            if (shown >= items.length) {
-                btn.disabled = true;
-                btn.setAttribute('aria-disabled', 'true');
-            } else {
-                btn.disabled = false;
-                btn.removeAttribute('aria-disabled');
-            }
-        }
-
-        // Reveal next batch for the currently active slide
-        function revealNextBatchForActive() {
-            const activeSlide = document.querySelector('#mobile-feature-articles .article-slide.active');
-            if (!activeSlide) return;
-            const list = activeSlide.querySelector('.articles-list');
-            if (!list) return;
-            const items = Array.from(list.querySelectorAll('.article-item'));
-            const current = parseInt(list.dataset.shown || '0', 10);
-            const next = Math.min(items.length, current + VISIBLE_BATCH);
-            items.slice(current, next).forEach(it => it.classList.add('visible'));
-            list.dataset.shown = next;
-            updateSeeMoreButtonState(list);
-        }
-
-        // Initialize all lists (but keep only the active slide visible)
-        const allLists = ['investing-articles-list', 'economy-articles-list', 'industry-articles-list', 'super-articles-list', 'misc-articles-list'];
-        allLists.forEach(id => {
-            const el = document.getElementById(id);
-            if (el) initListElement(el);
-        });
-
-        // Wire up the single See more button
-        const globalSeeMore = document.getElementById('feature-see-more');
-        if (globalSeeMore) {
-            globalSeeMore.addEventListener('click', function (e) {
-                e.preventDefault();
-                revealNextBatchForActive();
-            });
-        }
-
-        // When switching filter tabs, reset visibility for the selected category
-        const tabs = document.querySelectorAll('#mobile-feature-articles .buffett-tabs-mobile');
-        tabs.forEach(tab => {
-            tab.addEventListener('click', function () {
-                // find the active slide category
-                const category = tab.dataset.filter;
-                // remove active from all tabs
-                document.querySelectorAll('#mobile-feature-articles .buffett-tabs-mobile').forEach(t => t.classList.remove('active'));
-                // add active to clicked tab
-                this.classList.add('active');
-                // hide other slides and set active
-                const slides = document.querySelectorAll('#mobile-feature-articles .article-slide');
-                slides.forEach(s => s.classList.remove('active'));
-                const activeSlide = document.querySelector('#mobile-feature-articles .article-slide[data-category="' + category + '"]');
-                if (activeSlide) activeSlide.classList.add('active');
-
-                // init list inside active slide
-                const list = activeSlide ? activeSlide.querySelector('.articles-list') : null;
-                if (list) initListElement(list);
-            });
-        });
-    });
-</script>
 <!-- Mobile-only script for BUFFETT per-category pagination (show first 9, reveal more) -->
 <script>
     document.addEventListener('DOMContentLoaded', function () {

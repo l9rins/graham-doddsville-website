@@ -9,7 +9,7 @@
             --primary-blue: #1e3a8a;
             --primary-blue-light: #3b82f6;
             --primary-blue-dark: #1e40af;
-            --secondary-gray: #f8f9fa;
+            --secondary-gray: #ffffff;
             --text-primary: #1f2937;
             --text-secondary: #6b7280;
             --text-muted: #9ca3af;
@@ -32,12 +32,12 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: var(--text-primary);
-            background: var(--secondary-gray);
+            background: #ffffff;
         }
 
         .books-page {
             min-height: 100vh;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            background: #ffffff;
             position: relative;
         }
 
@@ -49,7 +49,7 @@
 
         /* Header Section */
         .header {
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            background: #ffffff;
             border-bottom: 2px solid #d4af37;
             padding: 12px 0;
             transition: all 0.3s ease;
@@ -248,23 +248,14 @@
         }
 
         .books-table tr:nth-child(even) {
-            background: var(--secondary-gray);
+            background: #ffffff;
         }
 
         .books-table tr:hover {
             background: #f1f5f9;
         }
 
-        .book-title {
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 4px;
-        }
 
-        .book-author {
-            color: var(--text-secondary);
-            font-size: 13px;
-        }
 
         .book-price {
             font-weight: 600;
@@ -364,9 +355,7 @@
 .book-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
 .book-card .book-cover { width: 100%; height: 250px; object-fit: cover; background: #eee; }
 .book-card .book-info { padding: 20px; display: flex; flex-direction: column; flex: 1; }
-.book-card .book-title { font-size: 1.1rem; font-weight: 600; margin: 0 0 8px 0; line-height: 1.4; font-family: 'Playfair Display', serif; }
-.book-card .book-title a { text-decoration: none; color: var(--text-primary); }
-.book-card .book-title a:hover { color: var(--primary-blue); }
+
 .book-card .book-summary { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 20px; flex: 1; }
 .book-card .book-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
 .book-card .book-price { font-weight: bold; color: #10b981; font-size: 1.1rem; }
@@ -386,7 +375,7 @@
 
                 <nav class="main-nav desktop-only">                    <ul>
                         <li><a href="index.html" class="nav-link">HOME</a></li>
-                        <li><a href="wealth-creation.html" class="nav-link">WEALTH CREATION</a></li>
+                        <li><a href="wealth-creation.html" class="nav-link">Wealth Creation</a></li>
                         <li><a href="#" class="nav-link">ABOUT</a></li>
                     </ul></nav>
 
@@ -399,42 +388,24 @@
 
         <!-- Mobile Drawer -->
         <div class="mobile-drawer" id="mobile-drawer">
-        <div class="drawer-header">
-            <img src="G&amp;D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
-            <button class="drawer-close" id="drawer-close" aria-label="Close menu"></button>
-        </div>
-        <nav class="drawer-nav">
-            <ul class="drawer-menu">
-                <li><a href="index.html" class="drawer-link">Home</a></li>
-                <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
-                <li><a href="legal-taxation.html" class="drawer-link">Legal &amp; Taxation</a></li>
-                <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
-                <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
-                <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
-                <li><a href="investment-analysis.html" class="drawer-link">Investment Analysis</a></li>
-                <li><a href="economics.html" class="drawer-link">Economics</a></li>
-                <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
-                <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
-                <li><a href="resources.html" class="drawer-link">Resources</a></li>
-                <li><a href="events.html" class="drawer-link">Events &amp; Seminars</a></li>
-            </ul>
-        </nav>
-    </div>
+            <div class="drawer-header">
+                <img src="G&amp;D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
+                <button class="drawer-close" id="drawer-close" aria-label="Close menu"></button>
+            </div>
             <nav class="drawer-nav">
                 <ul class="drawer-menu">
-                    <li><a href="index.html" class="drawer-link">Home</a></li>
-                    <li><a href="index.html" class="drawer-link">Home</a></li>
+                    <li><a href="index.html" class="drawer-link" style="white-space: nowrap;">Home</a></li>
                     <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
-                    <li><a href="legal-taxation.html" class="drawer-link"></a></li>
-                    <li><a href="financial-markets.html" class="drawer-link">WEALTH CREATION</a></li>
+                    <li><a href="legal-taxation.html" class="drawer-link">Legal &amp; Taxation</a></li>
+                    <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
                     <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
-                    <li><a href="investment-analysis.html" class="drawer-link">Investment Analysis</a></li>
                     <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
-                    <li><a href="ABOUT.html" class="drawer-link">ABOUT</a></li>
-                    <li><a href="professional-advisers.html" class="drawer-link"></a></li>
+                    <li><a href="investment-analysis.html" class="drawer-link">Investment Analysis</a></li>
+                    <li><a href="economics.html" class="drawer-link">Economics</a></li>
+                    <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
                     <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
-                    <li><a href=".html" class="drawer-link"></a></li>
-                    <li><a href=".html" class="drawer-link"></a></li>
+                    <li><a href="resources.html" class="drawer-link">Resources</a></li>
+                    <li><a href="events.html" class="drawer-link">Events &amp; Seminars</a></li>
                 </ul>
             </nav>
         </div>
@@ -464,21 +435,17 @@
   </select>
 </div><div class="books-grid">
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=Basic+Economics&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Basic Economics" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=Basic+ABOUT&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Basic ABOUT</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$43.47</span>
-          <a href="https://www.amazon.com.au/s?k=Basic+ABOUT&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+          <a href="https://www.amazon.com.au/s?k=Basic+Economics&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
       </div>
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=Deep+Simplicity&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Deep Simplicity" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=Deep+Simplicity&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Deep Simplicity</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$48.72</span>
           <a href="https://www.amazon.com.au/s?k=Deep+Simplicity&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -486,10 +453,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=A+Really+Short+History+of+Nearly+Everything&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="A Really Short History of Nearly Everything" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=A+Really+Short+History+of+Nearly+Everything&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">A Really Short History of Nearly Everything</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$25.40</span>
           <a href="https://www.amazon.com.au/s?k=A+Really+Short+History+of+Nearly+Everything&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -497,10 +462,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=Made+to+Stick&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Made to Stick" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=Made+to+Stick&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Made to Stick</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$24.29</span>
           <a href="https://www.amazon.com.au/s?k=Made+to+Stick&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -508,10 +471,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=Never+Split+the+Difference&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Never Split the Difference" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=Never+Split+the+Difference&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Never Split the Difference</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$19.25</span>
           <a href="https://www.amazon.com.au/s?k=Never+Split+the+Difference&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -519,10 +480,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=The+Big+Short&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Big Short" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=The+Big+Short&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Big Short</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$19.25</span>
           <a href="https://www.amazon.com.au/s?k=The+Big+Short&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -530,10 +489,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=Moneyball&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Moneyball" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=Moneyball&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Moneyball</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$23.07</span>
           <a href="https://www.amazon.com.au/s?k=Moneyball&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -541,10 +498,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=General+Theory+of+Employment%2C+Interest+and+Money&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="General Theory of Employment, Interest and Money" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=General+Theory+of+Employment%2C+Interest+and+Money&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">General Theory of Employment, Interest and Money</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$16.40</span>
           <a href="https://www.amazon.com.au/s?k=General+Theory+of+Employment%2C+Interest+and+Money&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -552,10 +507,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=The+Ultimate+Quotable+Einstein&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Ultimate Quotable Einstein" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=The+Ultimate+Quotable+Einstein&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Ultimate Quotable Einstein</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$23.09</span>
           <a href="https://www.amazon.com.au/s?k=The+Ultimate+Quotable+Einstein&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -563,10 +516,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=The+Moment+of+Lift&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Moment of Lift" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=The+Moment+of+Lift&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Moment of Lift</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$25.40</span>
           <a href="https://www.amazon.com.au/s?k=The+Moment+of+Lift&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -574,10 +525,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=The+Selfish+Gene&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Selfish Gene" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=The+Selfish+Gene&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Selfish Gene</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$23.84</span>
           <a href="https://www.amazon.com.au/s?k=The+Selfish+Gene&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -585,10 +534,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=The+Third+Chimpanzee&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Third Chimpanzee" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=The+Third+Chimpanzee&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Third Chimpanzee</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$20.65</span>
           <a href="https://www.amazon.com.au/s?k=The+Third+Chimpanzee&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -596,10 +543,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=How+the+Scots+Invented+the+Modern+World&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="How the Scots Invented the Modern World" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=How+the+Scots+Invented+the+Modern+World&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">How the Scots Invented the Modern World</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$22.79</span>
           <a href="https://www.amazon.com.au/s?k=How+the+Scots+Invented+the+Modern+World&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -607,10 +552,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=Meditations&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Meditations" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=Meditations&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Meditations</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$13.85</span>
           <a href="https://www.amazon.com.au/s?k=Meditations&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -618,10 +561,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=A+Short+History+of+Nearly+Everything&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="A Short History of Nearly Everything" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=A+Short+History+of+Nearly+Everything&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">A Short History of Nearly Everything</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$19.25</span>
           <a href="https://www.amazon.com.au/s?k=A+Short+History+of+Nearly+Everything&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -629,10 +570,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=Extraordinary+Popular+Delusions+and+the+Madness+of+Crowds&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Extraordinary Popular Delusions and the Madness of Crowds" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=Extraordinary+Popular+Delusions+and+the+Madness+of+Crowds&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Extraordinary Popular Delusions and the Madness of Crowds</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$29.33</span>
           <a href="https://www.amazon.com.au/s?k=Extraordinary+Popular+Delusions+and+the+Madness+of+Crowds&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -640,10 +579,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=Misbehaving&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Misbehaving" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=Misbehaving&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Misbehaving</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$17.70</span>
           <a href="https://www.amazon.com.au/s?k=Misbehaving&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -651,10 +588,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=Interesting+Facts+for+Curious+Minds&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Interesting Facts for Curious Minds" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=Interesting+Facts+for+Curious+Minds&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Interesting Facts for Curious Minds</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$19.75</span>
           <a href="https://www.amazon.com.au/s?k=Interesting+Facts+for+Curious+Minds&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -662,10 +597,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=Flash+Boys&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Flash Boys" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=Flash+Boys&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Flash Boys</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$24.28</span>
           <a href="https://www.amazon.com.au/s?k=Flash+Boys&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -673,10 +606,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=The+Smartest+Guys+in+the+Room&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Smartest Guys in the Room" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=The+Smartest+Guys+in+the+Room&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Smartest Guys in the Room</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$27.99</span>
           <a href="https://www.amazon.com.au/s?k=The+Smartest+Guys+in+the+Room&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -684,10 +615,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=40+Chances&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="40 Chances" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=40+Chances&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">40 Chances</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$35.00</span>
           <a href="https://www.amazon.com.au/s?k=40+Chances&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -695,10 +624,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=Stress+Test&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Stress Test" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=Stress+Test&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Stress Test</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$24.70</span>
           <a href="https://www.amazon.com.au/s?k=Stress+Test&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -706,10 +633,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=Keeping+At+It&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Keeping At It" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=Keeping+At+It&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Keeping At It</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$26.80</span>
           <a href="https://www.amazon.com.au/s?k=Keeping+At+It&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -717,10 +642,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=Guns%2C+Germs+and+Steel&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Guns, Germs and Steel" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=Guns%2C+Germs+and+Steel&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Guns, Germs and Steel</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$19.25</span>
           <a href="https://www.amazon.com.au/s?k=Guns%2C+Germs+and+Steel&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -728,10 +651,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=The+Black+Swan&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Black Swan" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=The+Black+Swan&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Black Swan</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$19.25</span>
           <a href="https://www.amazon.com.au/s?k=The+Black+Swan&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -739,10 +660,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=Fooled+by+Randomness&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Fooled by Randomness" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=Fooled+by+Randomness&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Fooled by Randomness</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$24.77</span>
           <a href="https://www.amazon.com.au/s?k=Fooled+by+Randomness&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -750,10 +669,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=The+Autobiography+of+Benjamin+Franklin&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Autobiography of Benjamin Franklin" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=The+Autobiography+of+Benjamin+Franklin&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Autobiography of Benjamin Franklin</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$9.62</span>
           <a href="https://www.amazon.com.au/s?k=The+Autobiography+of+Benjamin+Franklin&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -761,10 +678,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=Surrounded+by+Idiots&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Surrounded by Idiots" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=Surrounded+by+Idiots&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Surrounded by Idiots</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$14.00</span>
           <a href="https://www.amazon.com.au/s?k=Surrounded+by+Idiots&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -772,10 +687,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=Interesting+Stories+for+Curious+People&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Interesting Stories for Curious People" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=Interesting+Stories+for+Curious+People&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Interesting Stories for Curious People</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$24.10</span>
           <a href="https://www.amazon.com.au/s?k=Interesting+Stories+for+Curious+People&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -783,10 +696,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=Liar%E2%80%99s+Poker&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Liar's Poker" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=Liar%E2%80%99s+Poker&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Liar's Poker</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$17.70</span>
           <a href="https://www.amazon.com.au/s?k=Liar%E2%80%99s+Poker&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -794,10 +705,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=The+Undoing+Project&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Undoing Project" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=The+Undoing+Project&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Undoing Project</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$19.25</span>
           <a href="https://www.amazon.com.au/s?k=The+Undoing+Project&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -805,10 +714,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=Bull%21&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Bull!" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=Bull%21&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Bull!</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$25.19</span>
           <a href="https://www.amazon.com.au/s?k=Bull%21&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -816,10 +723,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=Life+Is+What+You+Make+It&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Life Is What You Make It" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=Life+Is+What+You+Make+It&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Life Is What You Make It</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$34.32</span>
           <a href="https://www.amazon.com.au/s?k=Life+Is+What+You+Make+It&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -827,10 +732,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=Tools+and+Weapons&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Tools and Weapons" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=Tools+and+Weapons&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Tools and Weapons</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$24.99</span>
           <a href="https://www.amazon.com.au/s?k=Tools+and+Weapons&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -838,10 +741,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=Firefighting&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Firefighting" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=Firefighting&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Firefighting</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$31.16</span>
           <a href="https://www.amazon.com.au/s?k=Firefighting&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -849,10 +750,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=Ice+Age&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Ice Age" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=Ice+Age&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Ice Age</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$15.96</span>
           <a href="https://www.amazon.com.au/s?k=Ice+Age&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -860,10 +759,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=Man%E2%80%99s+Search+for+Meaning&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Man's Search for Meaning" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=Man%E2%80%99s+Search+for+Meaning&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Man's Search for Meaning</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$13.09</span>
           <a href="https://www.amazon.com.au/s?k=Man%E2%80%99s+Search+for+Meaning&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -871,10 +768,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=Eat+the+Rich&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Eat the Rich" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=Eat+the+Rich&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Eat the Rich</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$38.82</span>
           <a href="https://www.amazon.com.au/s?k=Eat+the+Rich&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -882,10 +777,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=Read+People+Like+a+Book&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Read People Like a Book" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=Read+People+Like+a+Book&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Read People Like a Book</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$24.39</span>
           <a href="https://www.amazon.com.au/s?k=Read+People+Like+a+Book&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -893,10 +786,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=The+Fifth+Risk&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Fifth Risk" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=The+Fifth+Risk&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">The Fifth Risk</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$17.70</span>
           <a href="https://www.amazon.com.au/s?k=The+Fifth+Risk&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -904,10 +795,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=Essays+in+Persuasion&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Essays in Persuasion" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=Essays+in+Persuasion&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Essays in Persuasion</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$17.26</span>
           <a href="https://www.amazon.com.au/s?k=Essays+in+Persuasion&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -915,10 +804,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=Theory+of+Investment+Value&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Theory of Investment Value" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=Theory+of+Investment+Value&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Theory of Investment Value</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$54.28</span>
           <a href="https://www.amazon.com.au/s?k=Theory+of+Investment+Value&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -926,10 +813,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=In+an+Uncertain+World&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="In an Uncertain World" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=In+an+Uncertain+World&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">In an Uncertain World</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$33.99</span>
           <a href="https://www.amazon.com.au/s?k=In+an+Uncertain+World&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -937,10 +822,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=Nuclear+Terrorism&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Nuclear Terrorism" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=Nuclear+Terrorism&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Nuclear Terrorism</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$38.96</span>
           <a href="https://www.amazon.com.au/s?k=Nuclear+Terrorism&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -948,10 +831,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=Showing+Up+for+Life&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Showing Up for Life" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=Showing+Up+for+Life&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Showing Up for Life</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$16.34</span>
           <a href="https://www.amazon.com.au/s?k=Showing+Up+for+Life&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -959,10 +840,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=Three+Scientists+and+Their+Gods&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Three Scientists and Their Gods" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=Three+Scientists+and+Their+Gods&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Three Scientists and Their Gods</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$46.63</span>
           <a href="https://www.amazon.com.au/s?k=Three+Scientists+and+Their+Gods&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -970,10 +849,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=Going+Infinite&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Going Infinite" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=Going+Infinite&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Going Infinite</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$24.99</span>
           <a href="https://www.amazon.com.au/s?k=Going+Infinite&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -981,10 +858,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=Investing+Between+the+Lines&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Investing Between the Lines" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=Investing+Between+the+Lines&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Investing Between the Lines</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$60.64</span>
           <a href="https://www.amazon.com.au/s?k=Investing+Between+the+Lines&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -992,10 +867,8 @@
   </div>
 </div>
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="https://www.amazon.com.au/s?k=Models+of+My+Life&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Models of My Life" class="book-cover"></a>
   <div class="book-info">
-      <h3 class="book-title"><a href="https://www.amazon.com.au/s?k=Models+of+My+Life&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer">Models of My Life</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">$102.00</span>
           <a href="https://www.amazon.com.au/s?k=Models+of+My+Life&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -1015,6 +888,36 @@
     
 
     <script>
+        // Sort functionality
+        function sortBooks(selectElement) {
+            const sortValue = selectElement.value;
+            const gridContainer = document.querySelector('.books-grid');
+            if (!gridContainer) return;
+            
+            const cards = Array.from(gridContainer.querySelectorAll('.book-card'));
+            
+            cards.sort((a, b) => {
+                let valA, valB;
+                if (sortValue === 'title') {
+                    valA = a.querySelector('.book-cover').alt.trim().toLowerCase();
+                    valB = b.querySelector('.book-cover').alt.trim().toLowerCase();
+                    return valA.localeCompare(valB);
+                } else if (sortValue === 'author') {
+                    valA = (a.querySelector('.book-author') || a.querySelector('.book-cover')).alt.toLowerCase();
+                    valB = (b.querySelector('.book-author') || b.querySelector('.book-cover')).alt.toLowerCase();
+                    return valA.localeCompare(valB);
+                } else if (sortValue === 'price') {
+                    valA = parseFloat(a.querySelector('.book-price').textContent.replace(/[^0-9.]/g, '')) || 0;
+                    valB = parseFloat(b.querySelector('.book-price').textContent.replace(/[^0-9.]/g, '')) || 0;
+                    return valA - valB;
+                }
+                return 0;
+            });
+            
+            gridContainer.innerHTML = '';
+            cards.forEach(card => gridContainer.appendChild(card));
+        }
+
         // Mobile menu functionality
         function toggleMobileMenu() {
             const drawer = document.getElementById('mobile-drawer');

@@ -27,7 +27,14 @@ class AustralianNewsScraper {
                 if (response.ok) {
                     const data = await response.json();
                     if (data.articles) {
-                        const reProcessedArticles = data.articles.map(article => ({
+                        const blockedSources = ['Daily Mail', 'Sun', 'Mirror', 'Daily Mirror', 'The Sun', 'NY Post', 'New York Post'];
+                        
+                        const filteredArticles = data.articles.filter(article => {
+                            const sourceName = (article.source?.name || article.source || '').toLowerCase();
+                            return !blockedSources.some(blocked => sourceName.includes(blocked.toLowerCase()));
+                        });
+
+                        const reProcessedArticles = filteredArticles.map(article => ({
                             ...article,
                             category: (article.category && ['Industry', 'Regulatory', 'Technology', 'Commodities'].includes(article.category))
                                 ? article.category
@@ -35,7 +42,7 @@ class AustralianNewsScraper {
                         }));
 
                         allNews.push(...reProcessedArticles);
-                        console.log(`Received ${data.articles.length} articles from backend`);
+                        console.log(`Received ${filteredArticles.length} articles from backend (after filtering ${data.articles.length - filteredArticles.length} blocked)`);
                     }
                 } else {
                     throw new Error('Backend responded with error');
