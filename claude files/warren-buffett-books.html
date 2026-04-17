@@ -1,17 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Warren Buffett Books - Graham and Doddsville</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <style>
         /* --- CORE VARIABLES & RESETS --- */
         :root {
             --primary-blue: #1e3a8a;
             --primary-blue-light: #3b82f6;
             --primary-blue-dark: #1e40af;
-            --secondary-gray: #f8f9fa;
+            --secondary-gray: #ffffff;
             --text-primary: #1f2937;
             --text-secondary: #6b7280;
             --border-light: #e5e7eb;
@@ -25,18 +23,18 @@
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: var(--text-primary);
-            background: var(--secondary-gray);
+            background: #ffffff;
             margin: 0;
         }
 
         .page-wrapper {
             min-height: 100vh;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            background: #ffffff;
         }
 
         /* --- HEADER STYLES (MATCHING PHILOSOPHY PAGE) --- */
         .header {
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            background: #ffffff;
             border-bottom: 2px solid #d4af37;
             padding: 12px 0;
             transition: all 0.3s ease;
@@ -62,7 +60,7 @@
 
         /* --- HEADER (MATCHING LEGAL & TAXATION) --- */
         .header {
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            background: #ffffff;
             border-bottom: 2px solid #d4af37;
             padding: 12px 0;
             transition: all 0.3s ease;
@@ -229,7 +227,7 @@
         }
 
         .drawer-menu li {
-            border-bottom: 1px solid #f0f0f0;
+            border-bottom: 1px solid #ffffff;
             margin-bottom: 6px;
             padding-left: 20px;
         }
@@ -244,7 +242,7 @@
         }
 
         .drawer-link:hover {
-            background: #f8f9fa;
+            background: #ffffff;
             color: #1e3a8a;
         }
 
@@ -324,11 +322,9 @@
             border-bottom: 1px solid var(--border-light);
         }
         
-        .books-table tr:nth-child(even) { background: var(--secondary-gray); }
+        .books-table tr:nth-child(even) { background: #ffffff; }
 
-        .book-title { font-weight: 600; color: var(--text-primary); }
-        .book-author { color: var(--text-secondary); font-size: 0.9rem; }
-        .book-price { font-weight: 600; color: #10b981; }
+
 
         /* Mobile Cards */
         .books-mobile-cards { display: none; }
@@ -406,6 +402,35 @@
         .collapsible-content.collapsed { display: none; }
         .arrow { transition: transform 0.3s; }
         .arrow.rotated { transform: rotate(180deg); }
+    
+/* Modern Book Cards Grid */
+.books-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 16px;
+    margin-bottom: 32px;
+}
+.book-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border-light);
+    transition: transform 0.2s;
+}
+.book-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.book-card .book-cover { width: 100%; height: 250px; object-fit: cover; background: #eee; }
+.book-card .book-info { padding: 20px; display: flex; flex-direction: column; flex: 1; }
+
+.book-card .book-summary { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 20px; flex: 1; }
+.book-card .book-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
+.book-card .book-price { font-weight: bold; color: #10b981; font-size: 1.1rem; }
+.book-card .btn-buy { background: var(--primary-blue); color: white; padding: 8px 16px; border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 500; text-decoration: none; transition: background 0.2s; }
+.book-card .btn-buy:hover { background: var(--primary-blue-dark); color: white; }
+
     </style>
 </head>
 <body>
@@ -414,12 +439,12 @@
         <header class="header sticky-header" role="banner">
             <div class="header-content">
                 <div class="logo">
-                    <img src="G&D Logo.png" alt="Graham and Doddsville" class="logo-image">
+                    <img src="G&amp;D Logo.png" alt="Graham and Doddsville" class="logo-image">
                 </div>
                 
                 <nav class="main-nav desktop-only">                    <ul>
                         <li><a href="index.html" class="nav-link">HOME</a></li>
-                        <li><a href="wealth-creation.html" class="nav-link">WEALTH CREATION</a></li>
+                        <li><a href="wealth-creation.html" class="nav-link">Wealth Creation</a></li>
                         <li><a href="#" class="nav-link">ABOUT</a></li>
                     </ul></nav>
                 
@@ -435,14 +460,14 @@
             <!-- Mobile Navigation Drawer -->
             <div class="mobile-drawer" id="mobile-drawer">
         <div class="drawer-header">
-            <img src="G&D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
+            <img src="G&amp;D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
             <button class="drawer-close" id="drawer-close" aria-label="Close menu"></button>
         </div>
         <nav class="drawer-nav">
             <ul class="drawer-menu">
-                <li><a href="index.html" class="drawer-link">Home</a></li>
+                <li><a href="index.html" class="drawer-link" style="white-space: nowrap;">Home</a></li>
                 <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
-                <li><a href="legal-taxation.html" class="drawer-link">Legal & Taxation</a></li>
+                <li><a href="legal-taxation.html" class="drawer-link">Legal &amp; Taxation</a></li>
                 <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
                 <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
                 <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
@@ -451,7 +476,7 @@
                 <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
                 <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
                 <li><a href="resources.html" class="drawer-link">Resources</a></li>
-                <li><a href="events.html" class="drawer-link">Events & Seminars</a></li>
+                <li><a href="events.html" class="drawer-link">Events &amp; Seminars</a></li>
             </ul>
         </nav>
     </div>
@@ -1565,7 +1590,7 @@ const bookData = [
         "price": "$41.99"
       },
       {
-        "title": "Technical Analysis of the WEALTH CREATION",
+        "title": "Technical Analysis of the financial markets",
         "author": "John Murphy",
         "price": "$49.99"
       },
@@ -3863,39 +3888,44 @@ function createCollapsibleSection(category, index) {
     content.id = `section-${index}`;
 
     // Desktop table
-    const tableContainer = document.createElement('div');
-    tableContainer.className = 'books-table-container desktop-only';
-
-    const table = document.createElement('table');
-    table.className = 'books-table';
-
-    const thead = document.createElement('thead');
-    thead.innerHTML = `<tr><th>📚 Title</th><th>✍️ Author(s)</th><th>💰 Price</th></tr>`;
-
-    const tbody = document.createElement('tbody');
+    
+    const sortControlHTML = `
+<div class="book-sort-controls" style="margin-bottom:12px; margin-top:20px;">
+  <label style="font-size:13px; margin-right:6px;">Sort by:</label>
+  <select class="book-sort" onchange="sortBooks(this)" style="font-size:13px; padding:4px 8px; border-radius:4px; border:1px solid #ccc;">
+    <option value="default">Default</option>
+    <option value="rating">Rating</option>
+    <option value="title">Title</option>
+    <option value="author">Author</option>
+    <option value="date">Date</option>
+    <option value="price">Price</option>
+  </select>
+</div>`;
+    
+    const gridContainer = document.createElement('div');
+    gridContainer.className = 'books-grid';
+    
     category.books.forEach(book => {
-        const row = document.createElement('tr');
-        row.innerHTML = `<td><div class="book-title">${book.title}</div></td><td><div class="book-author">${book.author}</div></td><td><div class="book-price">${book.price}</div></td>`;
-        tbody.appendChild(row);
+        let link = book.link || 'https://www.amazon.com/s?k=' + encodeURIComponent(book.title);
+        let price = book.price || '$XX.XX';
+        
+        gridContainer.innerHTML += `
+<div class="book-card">
+  <a href="${link}" target="_blank" rel="noopener noreferrer">
+    <img src="cover-placeholder.jpg" alt="${book.title}" class="book-cover">
+  </a>
+  <div class="book-info">
+      <div class="book-footer">
+          <span class="book-price">${price}</span>
+          <a href="${link}" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+      </div>
+  </div>
+</div>`;
     });
 
-    table.appendChild(thead);
-    table.appendChild(tbody);
-    tableContainer.appendChild(table);
+    content.innerHTML = sortControlHTML;
+    content.appendChild(gridContainer);
 
-    // Mobile cards
-    const mobileContainer = document.createElement('div');
-    mobileContainer.className = 'books-mobile-container mobile-only';
-
-    category.books.forEach(book => {
-        const card = document.createElement('div');
-        card.className = 'book-mobile-card';
-        card.innerHTML = `<div class="book-mobile-title">${book.title}</div><div class="book-mobile-author">${book.author}</div><div class="book-mobile-price">${book.price}</div>`;
-        mobileContainer.appendChild(card);
-    });
-
-    content.appendChild(tableContainer);
-    content.appendChild(mobileContainer);
 
     section.appendChild(header);
     section.appendChild(content);
@@ -3917,6 +3947,37 @@ function toggleSection(index) {
     } else {
         arrow.textContent = '▲';
     }
+}
+
+function sortBooks(selectElement) {
+    const sortValue = selectElement.value;
+    const contentDiv = selectElement.closest('.collapsible-content');
+    const gridContainer = contentDiv.querySelector('.books-grid');
+    if (!gridContainer) return;
+
+    const cards = Array.from(gridContainer.querySelectorAll('.book-card'));
+
+    cards.sort((a, b) => {
+        let valA, valB;
+        if (sortValue === 'title') {
+            valA = a.querySelector('.book-cover').alt.trim().toLowerCase();
+            valB = b.querySelector('.book-cover').alt.trim().toLowerCase();
+            return valA.localeCompare(valB);
+        } else if (sortValue === 'author') {
+            // Extract author from alt text if possible, or fallback to full title
+            valA = (a.querySelector('.book-author') || a.querySelector('.book-cover')).alt.toLowerCase();
+            valB = (b.querySelector('.book-author') || b.querySelector('.book-cover')).alt.toLowerCase();
+            return valA.localeCompare(valB);
+        } else if (sortValue === 'price') {
+            valA = parseFloat(a.querySelector('.book-price').textContent.replace(/[^0-9.]/g, '')) || 0;
+            valB = parseFloat(b.querySelector('.book-price').textContent.replace(/[^0-9.]/g, '')) || 0;
+            return valA - valB;
+        }
+        return 0;
+    });
+
+    gridContainer.innerHTML = '';
+    cards.forEach(card => gridContainer.appendChild(card));
 }
 
 function initializeBooksPage() {
@@ -3971,8 +4032,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileDrawer();
 });
 </script>
-</body>
-</html>
 
 
 
@@ -3983,3 +4042,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+
+</body></html>

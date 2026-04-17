@@ -495,6 +495,41 @@
             border-left-color: var(--primary-blue);
         }
         .wealth-creation-page-content { padding-top: 80px; }
+
+/* Mobile table formatting for events/seminars */
+@media (max-width: 767px) {
+  .events-table-wrap {
+    overflow-x: visible; /* no horizontal scroll */
+  }
+  .events-table {
+    width: 100%;
+    min-width: unset; /* remove the 500px override */
+  }
+  .events-table thead {
+    display: none; /* hide column headers; labels come from data-label */
+  }
+  .events-table tr {
+    display: block;
+    margin-bottom: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 8px 12px;
+    background: #fff;
+  }
+  .events-table td {
+    display: block;
+    text-align: left;
+    padding: 4px 0;
+    font-size: 13px;
+  }
+  .events-table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    display: inline-block;
+    width: 90px;
+    color: #555;
+  }
+}
         </style>
 </head>
 <body>
@@ -714,14 +749,28 @@
                 title: 'Events and Seminars',
                 content: `
                     <p>A regularly updated list of upcoming investment-related events, seminars, and educational sessions.</p>
-                    <div class="events-card-list" style="margin-top:16px;">
-                        <div class="event-card" style="border:1px solid #e2e8f0;border-radius:8px;padding:14px 16px;margin-bottom:12px;background:#f9f9f9;">
-                            <div style="font-weight:600;font-size:14px;color:#1e3a8a;margin-bottom:4px;">TBA</div>
-                            <div style="font-size:13px;color:#4a5568;margin-bottom:2px;"><strong>Organiser:</strong> TBA</div>
-                            <div style="font-size:13px;color:#4a5568;margin-bottom:2px;"><strong>Date:</strong> TBA</div>
-                            <div style="font-size:13px;color:#4a5568;margin-bottom:8px;"><strong>Location:</strong> TBA</div>
-                            <a href="#" style="font-size:13px;color:#1e3a8a;text-decoration:none;font-weight:600;">View details →</a>
-                        </div>
+                    <div class="events-table-wrap">
+                        <table class="events-table">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Event</th>
+                                    <th>Location</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td data-label="Date">14 May 2026</td>
+                                    <td data-label="Event">Value Investing Seminar</td>
+                                    <td data-label="Location">Sydney, Australia</td>
+                                </tr>
+                                <tr>
+                                    <td data-label="Date">21 May 2026</td>
+                                    <td data-label="Event">Warren Buffett Lecture</td>
+                                    <td data-label="Location">Melbourne, Australia</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                     <p style="margin-top:20px;color:#6b7280;font-size:13px;">This table will be updated as events are confirmed.</p>
                 `

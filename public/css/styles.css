@@ -7531,10 +7531,10 @@ th {
 
     /* Enhanced section spacing */
     .news-section-title {
-        margin-top: 32px;
-        margin-bottom: 32px;
+        margin-top: 16px;
+        margin-bottom: 16px;
         color: var(--color-primary);
-        font-size: 24px;
+        font-size: 18px;
         font-weight: bold;
         text-align: center;
         border-bottom: 2px solid var(--color-primary);
@@ -7682,10 +7682,10 @@ th {
     .news-section-title {
         color: var(--color-primary) !important;
         font-family: var(--font-primary);
-        font-size: 24px;
+        font-size: 18px;
         font-weight: 700;
         text-align: left;
-        margin: 0 0 20px 0;
+        margin: 0 0 16px 0;
         border-bottom: 2px solid var(--color-primary);
         padding-bottom: 8px;
     }
@@ -8098,6 +8098,13 @@ th {
     margin: 0 0 16px 0;
 }
 
+/* Ensure FEATURE ARTICLES h2 isn't affected by parent padding */
+#mobile-feature-articles .news-section-title {
+    margin-left: -16px;
+    padding-left: 20px;
+    width: calc(100% + 32px);
+}
+
 .news-list-mobile,
 .articles-list-mobile,
 .books-list-mobile,
@@ -8178,6 +8185,25 @@ th {
 
 .quote-author:hover {
     color: #d4af37;
+}
+
+/* Book sorting select */
+.book-sort-select {
+    margin-bottom: 12px;
+    padding: 8px 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    background: white;
+    font-size: 14px;
+    color: #4a5568;
+    cursor: pointer;
+    min-width: 150px;
+}
+
+.book-sort-select:focus {
+    outline: none;
+    border-color: #1e3a8a;
+    box-shadow: 0 0 0 2px rgba(30, 58, 138, 0.1);
 }
 
 /* Quotes Page Styles */

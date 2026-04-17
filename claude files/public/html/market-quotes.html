@@ -545,7 +545,7 @@
                 
                 <nav class="main-nav desktop-only">                    <ul>
                         <li><a href="index.html" class="nav-link">HOME</a></li>
-                        <li><a href="wealth-creation.html" class="nav-link">WEALTH CREATION</a></li>
+                        <li><a href="wealth-creation.html" class="nav-link">Wealth Creation</a></li>
                         <li><a href="#" class="nav-link">ABOUT</a></li>
                     </ul></nav>
                 
@@ -726,15 +726,29 @@
 
 <script id="quoteHighlightLogic">
 document.addEventListener('DOMContentLoaded', function() {
-    if (window.location.hash) {
-        const target = document.querySelector(window.location.hash);
-        if (target) {
-            setTimeout(() => {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    function handleDeepLink() {
+        if (window.location.hash) {
+            const target = document.querySelector(window.location.hash);
+            if (target) {
+                const headerOffset = 100; // Adjust based on your sticky header height
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+
                 target.style.outline = '2px solid #1e3a8a';
                 setTimeout(() => target.style.outline = '', 2000);
-            }, 100);
+            }
         }
     }
+
+    // Handle initial load
+    setTimeout(handleDeepLink, 100);
+
+    // Handle hash change
+    window.addEventListener('hashchange', handleDeepLink);
 });
 </script></body></html>

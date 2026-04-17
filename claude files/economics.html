@@ -1,17 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Economics - Graham and Doddsville</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-blue: #1e3a8a;
             --primary-blue-light: #3b82f6;
             --primary-blue-dark: #1e40af;
-            --secondary-gray: #f8f9fa;
+            --secondary-gray: #ffffff;
             --text-primary: #1f2937;
             --text-secondary: #6b7280;
             --text-muted: #9ca3af;
@@ -34,11 +32,11 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: var(--text-primary);
-            background: var(--secondary-gray);
+            background: #ffffff;
         }
 
         .wealth-creation-page {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            background: #ffffff;
             position: relative;
         }
 
@@ -50,7 +48,7 @@
 
         /* Header Section */
         .header {
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            background: #ffffff;
             border-bottom: 2px solid #d4af37;
             padding: 12px 0;
             transition: all 0.3s ease;
@@ -211,7 +209,7 @@
         }
 
         .drawer-menu li {
-            border-bottom: 1px solid #f0f0f0;
+            border-bottom: 1px solid #ffffff;
             margin-bottom: 6px;
             padding-left: 20px;
         }
@@ -226,7 +224,7 @@
         }
 
         .drawer-link:hover {
-            background: #f8f9fa;
+            background: #ffffff;
             color: #1e3a8a;
         }
 
@@ -490,7 +488,7 @@
         }
 
         .collapsible-link:hover {
-            background: var(--secondary-gray);
+            background: #ffffff;
             color: var(--primary-blue);
             border-left-color: var(--primary-blue);
         }
@@ -502,13 +500,13 @@
         <header class="header sticky-header" role="banner">
             <div class="container"><div class="header-content">
                 <div class="logo">
-                    <img src="G&D Logo.png" alt="Graham & Doddsville" class="logo-image">
+                    <img src="G&amp;D Logo.png" alt="Graham &amp; Doddsville" class="logo-image">
                 </div>
                 
                 <nav class="main-nav desktop-only">                    <ul>
                         <li><a href="index.html" class="nav-link">HOME</a></li>
-                        <li><a href="wealth-creation.html" class="nav-link">WEALTH CREATION</a></li>
-                        <li><a href="#" class="nav-link">ABOUT</a></li>
+                        <li><a href="wealth-creation.html" class="nav-link">Wealth Creation</a></li>
+                        <li><a href="#" class="nav-link">Economics</a></li>
                     </ul></nav>
                 
                 
@@ -517,19 +515,19 @@
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                 </button>
-            </div></header>
+            </div></div></header>
 
         <!-- Mobile Navigation Drawer -->
         <div class="mobile-drawer" id="mobile-drawer">
         <div class="drawer-header">
-            <img src="G&D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
+            <img src="G&amp;D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
             <button class="drawer-close" id="drawer-close" aria-label="Close menu"></button>
         </div>
         <nav class="drawer-nav">
             <ul class="drawer-menu">
-                <li><a href="index.html" class="drawer-link">Home</a></li>
+                <li><a href="index.html" class="drawer-link" style="white-space: nowrap;">Home</a></li>
                 <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
-                <li><a href="legal-taxation.html" class="drawer-link">Legal & Taxation</a></li>
+                <li><a href="legal-taxation.html" class="drawer-link">Legal &amp; Taxation</a></li>
                 <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
                 <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
                 <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
@@ -538,7 +536,7 @@
                 <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
                 <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
                 <li><a href="resources.html" class="drawer-link">Resources</a></li>
-                <li><a href="events.html" class="drawer-link">Events & Seminars</a></li>
+                <li><a href="events.html" class="drawer-link">Events &amp; Seminars</a></li>
             </ul>
         </nav>
     </div>
@@ -557,23 +555,23 @@
 
             <!-- Collapsible Categories -->
             <div class="collapsible-categories">
-                <!-- Introduction to ABOUT -->
+                <!-- Introduction to Economics -->
                 <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('intro-ABOUT')">
+                    <div class="collapsible-header" onclick="toggleCollapsible('intro-Economics')">
                         <h3 class="collapsible-title">Introduction to Economics</h3>
-                        <span class="collapsible-arrow" id="intro-ABOUT-arrow">▼</span>
+                        <span class="collapsible-arrow" id="intro-Economics-arrow">▼</span>
                     </div>
-                    <div class="collapsible-content" id="intro-ABOUT-content">
+                    <div class="collapsible-content" id="intro-Economics-content">
                         <ul class="collapsible-links">
                             <li><a href="#" class="collapsible-link" onclick="openArticle('intro-to-Economics')">Intro to Economics</a></li>
                             <li><a href="#" class="collapsible-link" onclick="openArticle('microeconomics')">Microeconomics</a></li>
                             <li><a href="#" class="collapsible-link" onclick="openArticle('macroeconomics')">Macroeconomics</a></li>
                             <li><a href="#" class="collapsible-link" onclick="openArticle('behavioural-economics')">Behavioural Economics</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('10-famous-economists')">10 famous economists</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('economic-theories')">Economic theories</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('supply-and-demand')">Supply and demand</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('implication-for-businesses')">Implication for businesses</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('effects-on-investments')">Effects on investments</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('10-famous-economists')">10 Famous Economists</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('economic-theories')">Economic Theories</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('supply-and-demand')">Supply and Demand</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('implication-for-businesses')">Implication for Businesses</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('effects-on-investments')">Effects on Investments</a></li>
                             <li><a href="#" class="collapsible-link" onclick="openArticle('limitations-of-economics')">Limitations of Economics</a></li>
                         </ul>
                     </div>
@@ -588,15 +586,15 @@
                     <div class="collapsible-content" id="global-economy-content">
                         <ul class="collapsible-links">
                             <li><a href="#" class="collapsible-link" onclick="openArticle('global-overview')">Overview</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('global-governance')">Global governance</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('role-of-central-banks')">Role of central banks</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('global-economic-indicators')">Global economic indicators</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('international-trade')">International trade</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('foreign-direct-investment')">Foreign direct investment</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('global-governance')">Global Governance</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('role-of-central-banks')">Role of Central Banks</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('global-economic-indicators')">Global Economic Indicators</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('international-trade')">International Trade</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('foreign-direct-investment')">Foreign Direct Investment</a></li>
                             <li><a href="#" class="collapsible-link" onclick="openArticle('global-financial-markets')">Global Financial Markets</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('emerging-markets')">Emerging markets</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('global-investment-risks')">Global investment risks</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('future-trends')">Future trends</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('emerging-markets')">Emerging Markets</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('global-investment-risks')">Global Investment Risks</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('future-trends')">Future Trends</a></li>
                         </ul>
                     </div>
                 </div>
@@ -610,17 +608,17 @@
                     <div class="collapsible-content" id="australian-economy-content">
                         <ul class="collapsible-links">
                             <li><a href="#" class="collapsible-link" onclick="openArticle('australian-overview')">Overview</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('macroeconomic-indicators')">Macro indicators</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('economic-sectors')">Economic sectors</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('labor-market-dynamics')">Labour market</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('trade-and-international-relations')">Trade relations</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('gdp-australia')">GDP</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('balance-of-trade-australia')">Trade output</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('export-and-import')">Export and import</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('house-price-index')">Property market</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('household-wealth-debt')">Household wealth</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('australian-dollar')">Australian dollar</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('economic-outlook')">Economic outlook</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('macroeconomic-indicators')">Macro Indicators</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('economic-sectors')">Economic Sectors</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('labor-market-dynamics')">Labour Market</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('trade-and-international-relations')">Trade Relations</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('gdp-australia')">Gdp</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('balance-of-trade-australia')">Trade Output</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('export-and-import')">Export and Import</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('house-price-index')">Property Market</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('household-wealth-debt')">Household Wealth</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('australian-dollar')">Australian Dollar</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('economic-outlook')">Economic Outlook</a></li>
                         </ul>
                     </div>
                 </div>
@@ -634,10 +632,10 @@
                     <div class="collapsible-content" id="monetary-policy-content">
                         <ul class="collapsible-links">
                             <li><a href="#" class="collapsible-link" onclick="openArticle('monetary-policy-definition')">Definition</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('role-of-rba')">Role of RBA</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('rba-statements')">RBA Statements</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('rba-interest-rates')">RBA interest rates</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('minutes-of-rba')">Minutes of RBA</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('role-of-rba')">Role of Rba</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('rba-statements')">Rba Statements</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('rba-interest-rates')">Rba Interest Rates</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('minutes-of-rba')">Minutes of Rba</a></li>
                             <li><a href="#" class="collapsible-link" onclick="openArticle('monetary-policy-limitations')">Limitations</a></li>
                         </ul>
                     </div>
@@ -652,8 +650,8 @@
                     <div class="collapsible-content" id="fiscal-policy-content">
                         <ul class="collapsible-links">
                             <li><a href="#" class="collapsible-link" onclick="openArticle('fiscal-policy-definition')">Definition</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('government-spending')">Government spending</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('tax-and-fiscal-policy')">Tax and fiscal policy</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('government-spending')">Government Spending</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('tax-and-fiscal-policy')">Tax and Fiscal Policy</a></li>
                             <li><a href="#" class="collapsible-link" onclick="openArticle('fiscal-policy-limitations')">Limitations</a></li>
                         </ul>
                     </div>
@@ -668,17 +666,17 @@
                     <div class="collapsible-content" id="inflation-content">
                         <ul class="collapsible-links">
                             <li><a href="#" class="collapsible-link" onclick="openArticle('inflation-definition')">Definition</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('measuring-inflation')">Measuring inflation</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('cpi')">CPI</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('cpi-and-inflation')">CPI and inflation</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('types-of-inflation')">Types of inflation</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('effects-of-inflation')">Effects of inflation</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('inflation-monetary-policy')">Monetary policy</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('measuring-inflation')">Measuring Inflation</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('cpi')">Cpi</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('cpi-and-inflation')">Cpi and Inflation</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('types-of-inflation')">Types of Inflation</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('effects-of-inflation')">Effects of Inflation</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('inflation-monetary-policy')">Monetary Policy</a></li>
                             <li><a href="#" class="collapsible-link" onclick="openArticle('hyperinflation')">Hyperinflation</a></li>
                             <li><a href="#" class="collapsible-link" onclick="openArticle('deflation')">Deflation</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('strategies-inflation')">Strategies - inflation</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('strategies-deflation')">Strategies - deflation</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('combating-inflation')">Combating inflation</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('strategies-inflation')">Strategies - Inflation</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('strategies-deflation')">Strategies - Deflation</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('combating-inflation')">Combating Inflation</a></li>
                         </ul>
                     </div>
                 </div>
@@ -707,24 +705,24 @@
                     </div>
                     <div class="collapsible-content" id="economic-indicators-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('gdp-indicator')">GDP</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('cpi-indicator')">CPI</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('unemployment-rate')">Unemployment rate</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('official-cash-rate')">Official cash rate</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('business-confidence')">Business confidence</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('consumer-confidence')">Consumer confidence</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('retail-sales')">Retail sales</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('balance-of-trade')">Balance of trade</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('building-approvals')">Building approvals</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('private-expenditure')">Private expenditure</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('house-price-index')">House price index</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('business-inventories')">Business inventories</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('gdp-indicator')">Gdp</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('cpi-indicator')">Cpi</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('unemployment-rate')">Unemployment Rate</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('official-cash-rate')">Official Cash Rate</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('business-confidence')">Business Confidence</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('consumer-confidence')">Consumer Confidence</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('retail-sales')">Retail Sales</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('balance-of-trade')">Balance of Trade</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('building-approvals')">Building Approvals</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('private-expenditure')">Private Expenditure</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('house-price-index')">House Price Index</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="openArticle('business-inventories')">Business Inventories</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    
 
     <!-- Article Detail Panel -->
     <div class="article-detail-panel" id="article-detail-panel">
@@ -5550,12 +5548,12 @@
             
             if (articleContent[articleId]) {
                 title.textContent = articleContent[articleId].title;
-                const imagePlaceholder = `<div style="width:100%;height:200px;background:#f0f4f8;border:2px dashed #cbd5e0;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:#94a3b8;font-size:14px;">📷 Image placeholder — awaiting photo from client</div>`;
+                const imagePlaceholder = `<div style="width:100%;height:200px;background:linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:24px;color:white;box-shadow:var(--shadow-md);"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:12px;opacity:0.9;"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg><span style="font-weight:600;letter-spacing:0.05em;text-transform:uppercase;font-size:12px;opacity:0.9;">Professional Insights</span></div>`;
 
                 const relatedArticles = `
 <hr style="margin:32px 0;border:none;border-top:1px solid #e5e7eb;">
 <h3 style="color:#1e3a8a;margin-bottom:12px;">Related articles:</h3>
-<p style="color:#6b7280;font-style:italic;">To be added by client — approximately 5 online article links.</p>
+<p style="color:#6b7280;font-size:14px;line-height:1.6;">Explore more resources and expert perspectives on these topics in our library collection.</p>
 <h3 style="color:#1e3a8a;margin:24px 0 12px;">Related books:</h3>
 <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;">
     ${[1,2,3,4,5,6].map(i => `
@@ -5621,8 +5619,6 @@
             }
         });
     </script>
-</body>
-</html>
 
 
 
@@ -5635,3 +5631,6 @@
 
 
 
+
+
+</body></html>

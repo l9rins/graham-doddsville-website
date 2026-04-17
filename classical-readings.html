@@ -830,7 +830,7 @@
             font-weight: 600;
             color: var(--text-primary);
             text-decoration: none;
-            line-height: 1.4;
+            line-height: 1.7; /* matches documents 1–7 */
             display: block;
             margin-bottom: 8px;
             transition: color 0.2s ease;
@@ -838,6 +838,13 @@
 
         .reading-title:hover {
             color: var(--primary-blue);
+        }
+
+        /* Also ensure the reading-card body text matches: */
+        .reading-card p,
+        .reading-description,
+        .reading-body {
+            line-height: 1.7;
         }
 
         .reading-meta {

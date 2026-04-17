@@ -725,30 +725,31 @@
 
 
 <script id="quoteHighlightLogic">
-document.addEventListener('DOMContentLoaded', function() {
-    function handleDeepLink() {
-        if (window.location.hash) {
-            const target = document.querySelector(window.location.hash);
-            if (target) {
-                const headerOffset = 100; // Adjust based on your sticky header height
-                const elementPosition = target.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+document.addEventListener('DOMContentLoaded', function () {
 
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
+  function handleDeepLink() {
+    if (!window.location.hash) return;
 
-                target.style.outline = '2px solid #1e3a8a';
-                setTimeout(() => target.style.outline = '', 2000);
-            }
-        }
-    }
+    const target = document.querySelector(window.location.hash);
+    if (!target) return;
 
-    // Handle initial load
-    setTimeout(handleDeepLink, 100);
+    // Move the targeted card to the top of its parent container
+    // so it is the first visible item, as the client requested
+    const parent = target.parentNode;
+    parent.insertBefore(target, parent.firstChild);
 
-    // Handle hash change
-    window.addEventListener('hashchange', handleDeepLink);
+    // Scroll to it with header offset
+    const headerOffset = 100;
+    const top = target.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+    window.scrollTo({ top, behavior: 'smooth' });
+
+    // Briefly highlight it
+    target.style.outline = '2px solid #1e3a8a';
+    target.style.transition = 'outline 0.3s';
+    setTimeout(() => { target.style.outline = ''; }, 2500);
+  }
+
+  setTimeout(handleDeepLink, 150);
+  window.addEventListener('hashchange', handleDeepLink);
 });
 </script></body></html>

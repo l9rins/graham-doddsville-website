@@ -456,6 +456,13 @@
 .book-card .book-price { font-weight: bold; color: #10b981; font-size: 1.1rem; }
 .book-card .btn-buy { background: var(--primary-blue); color: white; padding: 8px 16px; border-radius: var(--radius-sm); font-size: 0.9rem; font-weight: 500; text-decoration: none; transition: background 0.2s; }
 .book-card .btn-buy:hover { background: var(--primary-blue-dark); color: white; }
+
+/* Hide author names from all book cards as per client requirement */
+.book-author,
+.book-card .author,
+.book-card [class*="author"] {
+  display: none !important;
+}
 </style></head>
 <body>
     <div class="books-page">
@@ -534,6 +541,7 @@
 <div class="book-card">
   <a href="#" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Value Investing: From Graham to Buffett and Beyond (2nd edn)" class="book-cover"></a>
   <div class="book-info">
+      <a href="#" class="book-summary-link">Book summary</a>
       <div class="book-footer">
           <span class="book-price">$39.99</span>
           <a href="#" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>

@@ -1,17 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Investment Analysis - Graham and Doddsville</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-blue: #1e3a8a;
             --primary-blue-light: #3b82f6;
             --primary-blue-dark: #1e40af;
-            --secondary-gray: #f8f9fa;
+            --secondary-gray: #ffffff;
             --text-primary: #1f2937;
             --text-secondary: #6b7280;
             --text-muted: #9ca3af;
@@ -34,11 +32,11 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: var(--text-primary);
-            background: var(--secondary-gray);
+            background: #ffffff;
         }
 
         .wealth-creation-page {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            background: #ffffff;
             position: relative;
         }
 
@@ -50,7 +48,7 @@
 
         /* Header Section */
         .header {
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            background: #ffffff;
             border-bottom: 2px solid #d4af37;
             padding: 12px 0;
             transition: all 0.3s ease;
@@ -211,7 +209,7 @@
         }
 
         .drawer-menu li {
-            border-bottom: 1px solid #f0f0f0;
+            border-bottom: 1px solid #ffffff;
             margin-bottom: 6px;
             padding-left: 20px;
         }
@@ -226,7 +224,7 @@
         }
 
         .drawer-link:hover {
-            background: #f8f9fa;
+            background: #ffffff;
             color: #1e3a8a;
         }
 
@@ -490,7 +488,7 @@
         }
 
         .collapsible-link:hover {
-            background: var(--secondary-gray);
+            background: #ffffff;
             color: var(--primary-blue);
             border-left-color: var(--primary-blue);
         }
@@ -503,12 +501,12 @@
         <header class="header sticky-header" role="banner">
             <div class="container"><div class="header-content">
                 <div class="logo">
-                    <img src="G&D Logo.png" alt="Graham & Doddsville" class="logo-image">
+                    <img src="G&amp;D Logo.png" alt="Graham &amp; Doddsville" class="logo-image">
                 </div>
                 
                 <nav class="main-nav desktop-only">                    <ul>
                         <li><a href="index.html" class="nav-link">HOME</a></li>
-                        <li><a href="wealth-creation.html" class="nav-link">WEALTH CREATION</a></li>
+                        <li><a href="wealth-creation.html" class="nav-link">Wealth Creation</a></li>
                         <li><a href="#" class="nav-link">ABOUT</a></li>
                     </ul></nav>
                 
@@ -518,19 +516,19 @@
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                 </button>
-            </div></header>
+            </div></div></header>
 
         <!-- Mobile Navigation Drawer -->
         <div class="mobile-drawer" id="mobile-drawer">
         <div class="drawer-header">
-            <img src="G&D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
+            <img src="G&amp;D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
             <button class="drawer-close" id="drawer-close" aria-label="Close menu"></button>
         </div>
         <nav class="drawer-nav">
             <ul class="drawer-menu">
-                <li><a href="index.html" class="drawer-link">Home</a></li>
+                <li><a href="index.html" class="drawer-link" style="white-space: nowrap;">Home</a></li>
                 <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
-                <li><a href="legal-taxation.html" class="drawer-link">Legal & Taxation</a></li>
+                <li><a href="legal-taxation.html" class="drawer-link">Legal &amp; Taxation</a></li>
                 <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
                 <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
                 <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
@@ -539,12 +537,12 @@
                 <li><a href="investment-analysis.html" class="drawer-link">Investment Analysis</a></li>
                 <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
                 <li><a href="resources.html" class="drawer-link">Resources</a></li>
-                <li><a href="events.html" class="drawer-link">Events & Seminars</a></li>
+                <li><a href="events.html" class="drawer-link">Events &amp; Seminars</a></li>
             </ul>
         </nav>
     </div>
-                </ul>
-            </nav>
+                
+            
         </div>
 
         <div class="wealth-creation-page-content">
@@ -567,31 +565,31 @@
         </div>
         <div class="collapsible-content" id="industry-guides-content">
             <ul class="collapsible-links">
-                <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-automobiles-and-components')">Automobiles and components</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-automobiles-and-components')">Automobiles and Components</a></li>
                 <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-banking')">Banking</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-capital-goods')">Capital goods</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-commercial-and-professional-services')">Commercial and professional services</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-consumer-durable-and-apparel')">Consumer durable and apparel</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-consumer-services')">Consumer services</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-consumer-discretionary-retail')">Consumer discretionary & retail</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-energy-industry')">Energy industry</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-consumer-staples-distribution-retail')">Consumer staples distribution & retail</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-food-beverage-and-tobacco')">Food, beverage and tobacco</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-health-care-equipment-and-services')">Health care equipment and services</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-household-and-personal-products')">Household and personal products</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-capital-goods')">Capital Goods</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-commercial-and-professional-services')">Commercial and Professional Services</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-consumer-durable-and-apparel')">Consumer Durable and Apparel</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-consumer-services')">Consumer Services</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-consumer-discretionary-retail')">Consumer Discretionary &amp; Retail</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-energy-industry')">Energy Industry</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-consumer-staples-distribution-retail')">Consumer Staples Distribution &amp; Retail</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-food-beverage-and-tobacco')">Food, Beverage and Tobacco</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-health-care-equipment-and-services')">Health Care Equipment and Services</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-household-and-personal-products')">Household and Personal Products</a></li>
                 <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-insurance')">Insurance</a></li>
                 <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-materials')">Materials</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-media-and-entertainment')">Media and entertainment</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-pharmaceuticals-biotechnology-and-life-sciences')">Pharmaceuticals, biotechnology and life sciences</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-equity-real-estate-investment-trusts')">Equity real estate Investment trusts</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-financial-services')">Financial services</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-media-and-entertainment')">Media and Entertainment</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-pharmaceuticals-biotechnology-and-life-sciences')">Pharmaceuticals, Biotechnology and Life Sciences</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-equity-real-estate-investment-trusts')">Equity Real Estate Investment Trusts</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-financial-services')">Financial Services</a></li>
                 <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-semiconductors')">Semiconductors</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-software-and-services')">Software and services</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-technology-hardware')">Technology hardware</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-software-and-services')">Software and Services</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-technology-hardware')">Technology Hardware</a></li>
                 <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-telecommunications')">Telecommunications</a></li>
                 <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-transportation')">Transportation</a></li>
                 <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-utilities')">Utilities</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-real-estate-management-development')">Real estate management & development</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('industry-guides-real-estate-management-development')">Real Estate Management &amp; Development</a></li>
             </ul>
         </div>
     </div>
@@ -603,26 +601,26 @@
         </div>
         <div class="collapsible-content" id="financial-statement-analysis-content">
             <ul class="collapsible-links">
-                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-nature-and-purpose')">Nature and purpose</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-users-of-financial-statements')">Users of financial statements</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-basic-concepts-of-accounting')">Basic concepts of accounting</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-gaap-in-australia')">GAAP in Australia</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-ifrs-in-australia')">IFRS in Australia</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-types-of-financial-statements')">Types of financial statements</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-how-statements-interlink')">How statements interlink</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-what-is-financial-analysis')">What is financial analysis?</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-when-financials-are-misleading')">When financials are misleading</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-limitations-of-financial-analysis')">Limitations of financial analysis</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-12-signs-of-strong-companies')">12 signs of strong companies</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-12-signs-of-financial-distress')">12 signs of financial distress</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-nature-and-purpose')">Nature and Purpose</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-users-of-financial-statements')">Users of Financial Statements</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-basic-concepts-of-accounting')">Basic Concepts of Accounting</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-gaap-in-australia')">Gaap in Australia</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-ifrs-in-australia')">Ifrs in Australia</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-types-of-financial-statements')">Types of Financial Statements</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-how-statements-interlink')">How Statements Interlink</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-what-is-financial-analysis')">What is Financial Analysis?</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-when-financials-are-misleading')">When Financials Are Misleading</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-limitations-of-financial-analysis')">Limitations of Financial Analysis</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-12-signs-of-strong-companies')">12 Signs of Strong Companies</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-12-signs-of-financial-distress')">12 Signs of Financial Distress</a></li>
                 <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-the-altman-z-score')">The Altman Z-score</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-probability-of-bankruptcy')">Probability of bankruptcy</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-drivers-of-business-growth')">Drivers of business growth</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-the-top-5-questions-to-ask')">The top 5 questions to ask</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-how-to-read-financials')">How to read financials</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-signs-of-transparent-company')">Signs of transparent company</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-common-errors')">Common errors</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-12-management-mistakes')">12 management mistakes</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-probability-of-bankruptcy')">Probability of Bankruptcy</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-drivers-of-business-growth')">Drivers of Business Growth</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-the-top-5-questions-to-ask')">The Top 5 Questions to Ask</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-how-to-read-financials')">How to Read Financials</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-signs-of-transparent-company')">Signs of Transparent Company</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-common-errors')">Common Errors</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-statement-analysis-12-management-mistakes')">12 Management Mistakes</a></li>
             </ul>
         </div>
     </div>
@@ -634,16 +632,16 @@
         </div>
         <div class="collapsible-content" id="accounting-shenanigans-content">
             <ul class="collapsible-links">
-                <li><a href="#" class="collapsible-link" onclick="openArticle('accounting-shenanigans-intro-to-accounting-shenanigans')">Intro to accounting shenanigans</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('accounting-shenanigans-types-of-shenanigans')">Types of shenanigans</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('accounting-shenanigans-how-to-spot-red-flags')">How to spot red flags</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('accounting-shenanigans-revenue-recognition-tricks')">Revenue recognition tricks</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('accounting-shenanigans-expense-manipulation')">Expense manipulation</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('accounting-shenanigans-asset-overvaluation')">Asset overvaluation</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('accounting-shenanigans-liability-concealment')">Liability concealment</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('accounting-shenanigans-cash-flow-manipulation')">Cash flow manipulation</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('accounting-shenanigans-real-world-case-studies')">Real world case studies</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('accounting-shenanigans-forensic-accounting-tools')">Forensic accounting tools</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('accounting-shenanigans-intro-to-accounting-shenanigans')">Intro to Accounting Shenanigans</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('accounting-shenanigans-types-of-shenanigans')">Types of Shenanigans</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('accounting-shenanigans-how-to-spot-red-flags')">How to Spot Red Flags</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('accounting-shenanigans-revenue-recognition-tricks')">Revenue Recognition Tricks</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('accounting-shenanigans-expense-manipulation')">Expense Manipulation</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('accounting-shenanigans-asset-overvaluation')">Asset Overvaluation</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('accounting-shenanigans-liability-concealment')">Liability Concealment</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('accounting-shenanigans-cash-flow-manipulation')">Cash Flow Manipulation</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('accounting-shenanigans-real-world-case-studies')">Real World Case Studies</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('accounting-shenanigans-forensic-accounting-tools')">Forensic Accounting Tools</a></li>
             </ul>
         </div>
     </div>
@@ -655,16 +653,16 @@
         </div>
         <div class="collapsible-content" id="qualitative-factors-content">
             <ul class="collapsible-links">
-                <li><a href="#" class="collapsible-link" onclick="openArticle('qualitative-factors-management-quality')">Management quality</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('qualitative-factors-corporate-governance')">Corporate governance</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('qualitative-factors-competitive-advantage-moats')">Competitive advantage (Moats)</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('qualitative-factors-brand-value')">Brand value</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('qualitative-factors-industry-dynamics')">Industry dynamics</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('qualitative-factors-regulatory-environment')">Regulatory environment</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('qualitative-factors-technological-disruption')">Technological disruption</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('qualitative-factors-esg-considerations')">ESG considerations</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('qualitative-factors-customer-loyalty')">Customer loyalty</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('qualitative-factors-r-d-and-innovation')">R&D and innovation</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('qualitative-factors-management-quality')">Management Quality</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('qualitative-factors-corporate-governance')">Corporate Governance</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('qualitative-factors-competitive-advantage-moats')">Competitive Advantage (moats)</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('qualitative-factors-brand-value')">Brand Value</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('qualitative-factors-industry-dynamics')">Industry Dynamics</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('qualitative-factors-regulatory-environment')">Regulatory Environment</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('qualitative-factors-technological-disruption')">Technological Disruption</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('qualitative-factors-esg-considerations')">Esg Considerations</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('qualitative-factors-customer-loyalty')">Customer Loyalty</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('qualitative-factors-r-d-and-innovation')">R&amp;d and Innovation</a></li>
             </ul>
         </div>
     </div>
@@ -676,64 +674,64 @@
         </div>
         <div class="collapsible-content" id="stock-valuation-content">
             <ul class="collapsible-links">
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-intro-to-stock-valuation')">Intro to stock valuation</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-what-is-value')">What is value?</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-stock-valuation-process')">Stock valuation process</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-limitations-of-valuation')">Limitations of valuation</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-behavioural-biases')">Behavioural biases</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-use-of-discount-rates')">Use of discount rates</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-calculating-discount-rate')">Calculating discount rate</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-10-common-mistakes')">10 common mistakes</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-what-is-intrinsic-value')">What is intrinsic value?</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-calculating-intrinsic-value')">Calculating intrinsic value</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-buffett-s-intrinsic-value')">Buffett’s intrinsic value</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-graham-s-intrinsic-value')">Graham’s intrinsic value</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-limitations-of-value')">Limitations of value</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-intro-to-revenue-based-val')">Intro to revenue-based val</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-price-to-sales-ratio')">Price-to-sales ratio</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-sales-multiples')">Sales multiples</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-revenue-growth-rate')">Revenue growth rate</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-price-to-revenue-growth')">Price-to-revenue growth</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-price-to-earnings-ratio')">Price-to-earnings ratio</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-earnings-yield')">Earnings yield</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-pe-to-growth-peg-ratio')">PE-to-growth (PEG) ratio</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-ypeg-ratio')">YPEG ratio</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-future-maintainable-earnings')">Future maintainable earnings</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-discounted-future-earnings')">Discounted future earnings</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-earnings-power-value')">Earnings power value</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-residual-income')">Residual income</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-price-to-ebitda')">Price-to-EBITDA</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-discounted-cash-flow')">Discounted cash flow</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-reverse-dcf')">Reverse DCF</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-economic-value-added')">Economic value added</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-free-cash-flow-valuation')">Free cash flow valuation</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-book-value')">Book value</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-tangible-book-value')">Tangible book value</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-adjusted-net-assets')">Adjusted net assets</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-replacement-cost-method')">Replacement cost method</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-sum-of-the-parts')">Sum of the parts</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-liquidation-value')">Liquidation value</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-intro-to-stock-valuation')">Intro to Stock Valuation</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-what-is-value')">What is Value?</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-stock-valuation-process')">Stock Valuation Process</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-limitations-of-valuation')">Limitations of Valuation</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-behavioural-biases')">Behavioural Biases</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-use-of-discount-rates')">Use of Discount Rates</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-calculating-discount-rate')">Calculating Discount Rate</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-10-common-mistakes')">10 Common Mistakes</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-what-is-intrinsic-value')">What is Intrinsic Value?</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-calculating-intrinsic-value')">Calculating Intrinsic Value</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-buffett-s-intrinsic-value')">Buffett’s Intrinsic Value</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-graham-s-intrinsic-value')">Graham’s Intrinsic Value</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-limitations-of-value')">Limitations of Value</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-intro-to-revenue-based-val')">Intro to Revenue-based Val</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-price-to-sales-ratio')">Price-to-sales Ratio</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-sales-multiples')">Sales Multiples</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-revenue-growth-rate')">Revenue Growth Rate</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-price-to-revenue-growth')">Price-to-revenue Growth</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-price-to-earnings-ratio')">Price-to-earnings Ratio</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-earnings-yield')">Earnings Yield</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-pe-to-growth-peg-ratio')">Pe-to-growth (peg) Ratio</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-ypeg-ratio')">Ypeg Ratio</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-future-maintainable-earnings')">Future Maintainable Earnings</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-discounted-future-earnings')">Discounted Future Earnings</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-earnings-power-value')">Earnings Power Value</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-residual-income')">Residual Income</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-price-to-ebitda')">Price-to-ebitda</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-discounted-cash-flow')">Discounted Cash Flow</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-reverse-dcf')">Reverse Dcf</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-economic-value-added')">Economic Value Added</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-free-cash-flow-valuation')">Free Cash Flow Valuation</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-book-value')">Book Value</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-tangible-book-value')">Tangible Book Value</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-adjusted-net-assets')">Adjusted Net Assets</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-replacement-cost-method')">Replacement Cost Method</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-sum-of-the-parts')">Sum of the Parts</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-liquidation-value')">Liquidation Value</a></li>
                 <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-dividend-discount-model')">Dividend Discount Model</a></li>
                 <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-gordon-growth-model')">Gordon Growth Model</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-two-stage-dividend-growth')">Two-Stage Dividend Growth</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-two-stage-dividend-growth')">Two-stage Dividend Growth</a></li>
                 <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-dividend-payout-ratio')">Dividend Payout Ratio</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-price-to-book-value-ratio')">Price-to-book value ratio</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-enterprise-value')">Enterprise value</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-enterprise-value-to-ebitda')">Enterprise value to EBITDA</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-enterprise-value-to-sales')">Enterprise value to sales</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-graham-s-formulas')">Graham’s formulas</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-greenblatt-s-magic-formula')">Greenblatt’s magic formula</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-industry-rules-of-thumb')">Industry rules of thumb</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-intangible-assets')">Intangible assets</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-call-options')">Call options</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-put-options')">Put options</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-distressed-companies')">Distressed companies</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-bankrupt-companies')">Bankrupt companies</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-mergers-acquisitions')">Mergers & acquisitions</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-start-up-companies')">Start-up companies</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-pre-ipo-companies')">Pre-IPO companies</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-asset-heavy-companies')">Asset-heavy companies</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-emerging-markets')">Emerging markets</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-price-to-book-value-ratio')">Price-to-book Value Ratio</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-enterprise-value')">Enterprise Value</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-enterprise-value-to-ebitda')">Enterprise Value to Ebitda</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-enterprise-value-to-sales')">Enterprise Value to Sales</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-graham-s-formulas')">Graham’s Formulas</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-greenblatt-s-magic-formula')">Greenblatt’s Magic Formula</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-industry-rules-of-thumb')">Industry Rules of Thumb</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-intangible-assets')">Intangible Assets</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-call-options')">Call Options</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-put-options')">Put Options</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-distressed-companies')">Distressed Companies</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-bankrupt-companies')">Bankrupt Companies</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-mergers-acquisitions')">Mergers &amp; Acquisitions</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-start-up-companies')">Start-up Companies</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-pre-ipo-companies')">Pre-ipo Companies</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-asset-heavy-companies')">Asset-heavy Companies</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('stock-valuation-emerging-markets')">Emerging Markets</a></li>
             </ul>
         </div>
     </div>
@@ -772,8 +770,8 @@
                 <li><a href="#" class="collapsible-link" onclick="openArticle('accounting-standards-balance-sheet')">Balance Sheet</a></li>
                 <li><a href="#" class="collapsible-link" onclick="openArticle('accounting-standards-disclosures')">Disclosures</a></li>
                 <li><a href="#" class="collapsible-link" onclick="openArticle('accounting-standards-cash-flow')">Cash Flow</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('accounting-standards-aasb-work-in-progress')">AASB Work-In-Progress</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('accounting-standards-aasb-publications')">AASB Publications</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('accounting-standards-aasb-work-in-progress')">Aasb Work-in-progress</a></li>
+                <li><a href="#" class="collapsible-link" onclick="openArticle('accounting-standards-aasb-publications')">Aasb Publications</a></li>
             </ul>
         </div>
     </div>
@@ -781,7 +779,7 @@
 </div>
 
         </div>
-    </div>
+    
 
     <!-- Article Detail Panel -->
     <div class="article-detail-panel" id="article-detail-panel">
@@ -1711,12 +1709,12 @@
             
             if (articleContent[articleId]) {
                 title.textContent = articleContent[articleId].title;
-                const imagePlaceholder = `<div style="width:100%;height:200px;background:#f0f4f8;border:2px dashed #cbd5e0;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:#94a3b8;font-size:14px;">📷 Image placeholder — awaiting photo from client</div>`;
+                const imagePlaceholder = `<div style="width:100%;height:200px;background:linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:24px;color:white;box-shadow:var(--shadow-md);"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:12px;opacity:0.9;"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg><span style="font-weight:600;letter-spacing:0.05em;text-transform:uppercase;font-size:12px;opacity:0.9;">Professional Insights</span></div>`;
 
                 const relatedArticles = `
 <hr style="margin:32px 0;border:none;border-top:1px solid #e5e7eb;">
 <h3 style="color:#1e3a8a;margin-bottom:12px;">Related articles:</h3>
-<p style="color:#6b7280;font-style:italic;">To be added by client — approximately 5 online article links.</p>
+<p style="color:#6b7280;font-size:14px;line-height:1.6;">Explore more resources and expert perspectives on these topics in our library collection.</p>
 <h3 style="color:#1e3a8a;margin:24px 0 12px;">Related books:</h3>
 <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;">
     ${[1,2,3,4,5,6].map(i => `
@@ -1802,8 +1800,6 @@
 
         });
     </script>
-</body>
-</html>
 
 
 
@@ -1816,3 +1812,6 @@
 
 
 
+
+
+</body></html>

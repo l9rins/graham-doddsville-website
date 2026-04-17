@@ -180,6 +180,47 @@
         }
     }
     </script>
+    <style>
+/* FORCE Feature Articles to exactly match Latest News typography */
+@media (max-width: 768px) {
+
+  /* Match the article title to Latest News headline */
+  #mobile-feature-articles .article-item h5,
+  #mobile-feature-articles .article-item h5 a {
+    font-family: Georgia, serif !important;
+    font-size: 14px !important;   /* adjust to match Latest News — check and set the same value */
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Match the source label */
+  #mobile-feature-articles .article-item .article-source {
+    font-size: 11px !important;
+    line-height: 1.3 !important;
+  }
+
+  /* Match padding/spacing between items */
+  #mobile-feature-articles .article-item {
+    padding: 6px 0 !important;
+    margin: 0 !important;
+    border-bottom: none !important;
+  }
+}
+
+/* Fix secondary nav overlap */
+.secondary-nav-list li a,
+.secondary-nav-list li .dropdown-toggle {
+  white-space: nowrap;
+}
+
+/* If the nav is cramped, increase the gap between items */
+.secondary-nav-list {
+  gap: 16px; /* or increase padding */
+  flex-wrap: wrap; /* allow wrapping to next line rather than overlapping */
+}
+    </style>
 </head>
 
 <body>
@@ -1842,9 +1883,10 @@
         <!-- Companies Sub-Category -->
         <div class="sub-category">
             <div class="sub-category-header">
-                <h3 class="sub-category-title">Companies</h3><img src="images/image1.jpeg" alt="Companies" style="width: 100%; height: auto; margin-bottom: 12px; border-radius: 8px;">
+                <h3 class="sub-category-title">Companies</h3>
                 <a href="category.html?type=companies" class="see-more-link">See more</a>
             </div>
+            <img src="images/image1.jpeg" alt="Companies" style="display:block; width:calc(100% + 32px); margin-left:-16px; height:auto; margin-bottom:12px;">
             <div class="news-list-mobile" id="companies-news-mobile">
                 <!-- Loading Animation -->
                 <div class="mobile-news-loading" id="companies-loading">
@@ -1898,9 +1940,10 @@
         <!-- Markets Sub-Category -->
         <div class="sub-category">
             <div class="sub-category-header">
-                <h3 class="sub-category-title">Markets</h3><img src="images/image2.jpeg" alt="Markets" style="width: 100%; height: auto; margin-bottom: 12px; border-radius: 8px;">
+                <h3 class="sub-category-title">Markets</h3>
                 <a href="category.html?type=markets" class="see-more-link">See more</a>
             </div>
+            <img src="images/image2.jpeg" alt="Markets" style="display:block; width:calc(100% + 32px); margin-left:-16px; height:auto; margin-bottom:12px;">
             <div class="news-list-mobile" id="markets-news-mobile">
                 <!-- Loading Animation -->
                 <div class="mobile-news-loading" id="markets-loading">
@@ -1954,9 +1997,10 @@
         <!-- Economy Sub-Category -->
         <div class="sub-category">
             <div class="sub-category-header">
-                <h3 class="sub-category-title">Economy</h3><img src="images/image3.png" alt="Economy" style="width: 100%; height: auto; margin-bottom: 12px; border-radius: 8px;">
+                <h3 class="sub-category-title">Economy</h3>
                 <a href="category.html?type=economy" class="see-more-link">See more</a>
             </div>
+            <img src="images/image3.png" alt="Economy" style="display:block; width:calc(100% + 32px); margin-left:-16px; height:auto; margin-bottom:12px;">
             <div class="news-list-mobile" id="economy-news-mobile">
                 <!-- Loading Animation -->
                 <div class="mobile-news-loading" id="economy-loading">
@@ -2010,9 +2054,10 @@
         <!-- Industry Sub-Category -->
         <div class="sub-category">
             <div class="sub-category-header">
-                <h3 class="sub-category-title">Industry</h3><img src="images/image4.jpeg" alt="Industry" style="width: 100%; height: auto; margin-bottom: 12px; border-radius: 8px;">
+                <h3 class="sub-category-title">Industry</h3>
                 <a href="category.html?type=industry" class="see-more-link">See more</a>
             </div>
+            <img src="images/image4.jpeg" alt="Industry" style="display:block; width:calc(100% + 32px); margin-left:-16px; height:auto; margin-bottom:12px;">
             <div class="news-list-mobile" id="industry-news-mobile">
                 <!-- Loading Animation -->
                 <div class="mobile-news-loading" id="industry-loading">
@@ -2069,9 +2114,10 @@
         <!-- Regulatory Sub-Category -->
         <div class="sub-category">
             <div class="sub-category-header">
-                <h3 class="sub-category-title">Regulatory</h3><img src="images/image6.jpeg" alt="Regulatory" style="width: 100%; height: auto; margin-bottom: 12px; border-radius: 8px;">
+                <h3 class="sub-category-title">Regulatory</h3>
                 <a href="category.html?type=regulatory" class="see-more-link">See more</a>
             </div>
+            <img src="images/image6.jpeg" alt="Regulatory" style="display:block; width:calc(100% + 32px); margin-left:-16px; height:auto; margin-bottom:12px;">
             <div class="news-list-mobile" id="regulatory-news-mobile">
                 <!-- Loading Animation -->
                 <div class="mobile-news-loading" id="regulatory-loading">
@@ -2125,9 +2171,10 @@
         <!-- Guru Watch Sub-Category -->
         <div class="sub-category">
             <div class="sub-category-header">
-                <h3 class="sub-category-title">Guru Watch</h3><img src="images/image5.jpeg" alt="Guru Watch" style="width: 100%; height: auto; margin-bottom: 12px; border-radius: 8px;">
+                <h3 class="sub-category-title">Guru Watch</h3>
                 <a href="category.html?type=guru-watch" class="see-more-link">See more</a>
             </div>
+            <img src="images/image5.jpeg" alt="Guru Watch" style="display:block; width:calc(100% + 32px); margin-left:-16px; height:auto; margin-bottom:12px;">
             <div class="news-list-mobile" id="guru-watch-news-mobile">
                 <!-- Loading Animation -->
                 <div class="mobile-news-loading" id="guru-watch-loading">
@@ -2192,9 +2239,10 @@
             <!-- North America Sub-Category -->
             <div class="sub-category">
                 <div class="sub-category-header">
-                    <h3 class="sub-category-title">North America</h3><img src="images/image7.jpeg" alt="North America" style="width: 100%; height: auto; margin-bottom: 12px; border-radius: 8px;">
+                    <h3 class="sub-category-title">North America</h3>
                     <a href="category.html?type=north-america" class="see-more-link">See more</a>
                 </div>
+                <img src="images/image7.jpeg" alt="North America" style="display:block; width:calc(100% + 32px); margin-left:-16px; height:auto; margin-bottom:12px;">
                 <div class="news-list-mobile" id="north-america-news">
                     <!-- Loading Animation -->
                     <div class="mobile-news-loading" id="north-america-loading">
@@ -2213,9 +2261,10 @@
             <!-- Europe Sub-Category -->
             <div class="sub-category">
                 <div class="sub-category-header">
-                    <h3 class="sub-category-title">Europe</h3><img src="images/image8.jpeg" alt="Europe" style="width: 100%; height: auto; margin-bottom: 12px; border-radius: 8px;">
+                    <h3 class="sub-category-title">Europe</h3>
                     <a href="category.html?type=europe" class="see-more-link">See more</a>
                 </div>
+                <img src="images/image8.jpeg" alt="Europe" style="display:block; width:calc(100% + 32px); margin-left:-16px; height:auto; margin-bottom:12px;">
                 <div class="news-list-mobile" id="europe-news">
                     <!-- Loading Animation -->
                     <div class="mobile-news-loading" id="europe-loading">
@@ -2234,9 +2283,10 @@
             <!-- Asia Sub-Category -->
             <div class="sub-category">
                 <div class="sub-category-header">
-                    <h3 class="sub-category-title">Asia</h3><img src="images/image9.jpeg" alt="Asia" style="width: 100%; height: auto; margin-bottom: 12px; border-radius: 8px;">
+                    <h3 class="sub-category-title">Asia</h3>
                     <a href="category.html?type=asia" class="see-more-link">See more</a>
                 </div>
+                <img src="images/image9.jpeg" alt="Asia" style="display:block; width:calc(100% + 32px); margin-left:-16px; height:auto; margin-bottom:12px;">
                 <div class="news-list-mobile" id="asia-news">
                     <!-- Loading Animation -->
                     <div class="mobile-news-loading" id="asia-loading">
@@ -2255,9 +2305,10 @@
             <!-- Elsewhere Sub-Category -->
             <div class="sub-category">
                 <div class="sub-category-header">
-                    <h3 class="sub-category-title">Elsewhere</h3><img src="images/image10.jpeg" alt="Elsewhere" style="width: 100%; height: auto; margin-bottom: 12px; border-radius: 8px;">
+                    <h3 class="sub-category-title">Elsewhere</h3>
                     <a href="category.html?type=elsewhere" class="see-more-link">See more</a>
                 </div>
+                <img src="images/image10.jpeg" alt="Elsewhere" style="display:block; width:calc(100% + 32px); margin-left:-16px; height:auto; margin-bottom:12px;">
                 <div class="news-list-mobile" id="elsewhere-news">
                     <!-- Loading Animation -->
                     <div class="mobile-news-loading" id="elsewhere-loading">
@@ -2548,22 +2599,15 @@
 
             <!-- Book Category Navigation -->
             <div class="book-categories">
-                <button class="book-category-btn" data-category="buffett-munger" style="background: #1e3a8a; color: white; border: 1px solid #1e3a8a; border-radius: 8px; padding: 10px 10px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-right: 10px; margin-bottom: 10px;">WARREN
-                    BUFFETT</button>
-                <button class="book-category-btn" data-category="value-investing" style="background: #f7fafc; color: #4a5568; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 10px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-right: 10px; margin-bottom: 10px;">VALUE
-                    INVESTING</button>
-                <button class="book-category-btn" data-category="share-investing" style="background: #f7fafc; color: #4a5568; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 10px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-right: 10px; margin-bottom: 10px;">SHARE
-                    INVESTING</button>
-                <button class="book-category-btn" data-category="wealth-creation" style="background: #f7fafc; color: #4a5568; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 10px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-right: 10px; margin-bottom: 10px;">WEALTH
-                    CREATION</button>
-                <button class="book-category-btn" data-category="financial-analysis" style="background: #f7fafc; color: #4a5568; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 10px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-right: 10px; margin-bottom: 10px;">FINANCIAL
-                    ANALYSIS</button>
-                <button class="book-category-btn" data-category="sales-marketing" style="background: #f7fafc; color: #4a5568; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 10px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-right: 10px; margin-bottom: 10px;">SALES
-                    &amp; MARKETING</button>
-                <button class="book-category-btn" data-category="self-improvement" style="background: #f7fafc; color: #4a5568; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 10px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-right: 10px; margin-bottom: 10px;">SELF-IMPROVEMENT</button>
-                <button class="book-category-btn" data-category="business-management" style="background: #f7fafc; color: #4a5568; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 10px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-right: 10px; margin-bottom: 10px;">BUSINESS
-                    &amp; MANAGEMENT</button>
-                <button class="book-category-btn" data-category="miscellaneous" style="background: #f7fafc; color: #4a5568; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 10px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-right: 10px; margin-bottom: 10px;">MISCELLANEOUS</button>
+                <button class="book-category-btn" data-category="buffett-munger" style="background: #1e3a8a; color: white; border: 1px solid #1e3a8a; border-radius: 8px; padding: 10px 10px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-right: 10px; margin-bottom: 10px; white-space: nowrap;">Warren Buffett</button>
+                <button class="book-category-btn" data-category="value-investing" style="background: #f7fafc; color: #4a5568; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 10px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-right: 10px; margin-bottom: 10px; white-space: nowrap;">Value Investing</button>
+                <button class="book-category-btn" data-category="share-investing" style="background: #f7fafc; color: #4a5568; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 10px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-right: 10px; margin-bottom: 10px; white-space: nowrap;">Share Investing</button>
+                <button class="book-category-btn" data-category="wealth-creation" style="background: #f7fafc; color: #4a5568; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 10px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-right: 10px; margin-bottom: 10px; white-space: nowrap;">Wealth Creation</button>
+                <button class="book-category-btn" data-category="financial-analysis" style="background: #f7fafc; color: #4a5568; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 10px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-right: 10px; margin-bottom: 10px; white-space: nowrap;">Financial Analysis</button>
+                <button class="book-category-btn" data-category="sales-marketing" style="background: #f7fafc; color: #4a5568; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 10px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-right: 10px; margin-bottom: 10px; white-space: nowrap;">Sales & Marketing</button>
+                <button class="book-category-btn" data-category="self-improvement" style="background: #f7fafc; color: #4a5568; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 10px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-right: 10px; margin-bottom: 10px; white-space: nowrap;">Self-Improvement</button>
+                <button class="book-category-btn" data-category="business-management" style="background: #f7fafc; color: #4a5568; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 10px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-right: 10px; margin-bottom: 10px; white-space: nowrap;">Business & Management</button>
+                <button class="book-category-btn" data-category="miscellaneous" style="background: #f7fafc; color: #4a5568; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 10px; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s ease; margin-right: 10px; margin-bottom: 10px; white-space: nowrap;">Miscellaneous</button>
             </div>
 
             <!-- Book Content by Category -->

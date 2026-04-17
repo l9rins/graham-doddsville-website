@@ -324,9 +324,7 @@
         
         .books-table tr:nth-child(even) { background: #ffffff; }
 
-        .book-title { font-weight: 600; color: var(--text-primary); }
-        .book-author { color: var(--text-secondary); font-size: 0.9rem; }
-        .book-price { font-weight: 600; color: #10b981; }
+
 
         /* Mobile Cards */
         .books-mobile-cards { display: none; }
@@ -426,9 +424,7 @@
 .book-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
 .book-card .book-cover { width: 100%; height: 250px; object-fit: cover; background: #eee; }
 .book-card .book-info { padding: 20px; display: flex; flex-direction: column; flex: 1; }
-.book-card .book-title { font-size: 1.1rem; font-weight: 600; margin: 0 0 8px 0; line-height: 1.4; font-family: 'Playfair Display', serif; }
-.book-card .book-title a { text-decoration: none; color: var(--text-primary); }
-.book-card .book-title a:hover { color: var(--primary-blue); }
+
 .book-card .book-summary { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 20px; flex: 1; }
 .book-card .book-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; }
 .book-card .book-price { font-weight: bold; color: #10b981; font-size: 1.1rem; }
@@ -448,7 +444,7 @@
                 
                 <nav class="main-nav desktop-only">                    <ul>
                         <li><a href="index.html" class="nav-link">HOME</a></li>
-                        <li><a href="wealth-creation.html" class="nav-link">WEALTH CREATION</a></li>
+                        <li><a href="wealth-creation.html" class="nav-link">Wealth Creation</a></li>
                         <li><a href="#" class="nav-link">ABOUT</a></li>
                     </ul></nav>
                 
@@ -1594,7 +1590,7 @@ const bookData = [
         "price": "$41.99"
       },
       {
-        "title": "Technical Analysis of the WEALTH CREATION",
+        "title": "Technical Analysis of the financial markets",
         "author": "John Murphy",
         "price": "$49.99"
       },
@@ -3915,10 +3911,10 @@ function createCollapsibleSection(category, index) {
         
         gridContainer.innerHTML += `
 <div class="book-card">
-  <img src="cover-placeholder.jpg" alt="Book cover" class="book-cover">
+  <a href="${link}" target="_blank" rel="noopener noreferrer">
+    <img src="cover-placeholder.jpg" alt="${book.title}" class="book-cover">
+  </a>
   <div class="book-info">
-      <h3 class="book-title"><a href="${link}" target="_blank" rel="noopener noreferrer">${book.title}</a></h3>
-      <p class="book-summary">Brief description here.</p>
       <div class="book-footer">
           <span class="book-price">${price}</span>
           <a href="${link}" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
@@ -3951,6 +3947,37 @@ function toggleSection(index) {
     } else {
         arrow.textContent = '▲';
     }
+}
+
+function sortBooks(selectElement) {
+    const sortValue = selectElement.value;
+    const contentDiv = selectElement.closest('.collapsible-content');
+    const gridContainer = contentDiv.querySelector('.books-grid');
+    if (!gridContainer) return;
+
+    const cards = Array.from(gridContainer.querySelectorAll('.book-card'));
+
+    cards.sort((a, b) => {
+        let valA, valB;
+        if (sortValue === 'title') {
+            valA = a.querySelector('.book-cover').alt.trim().toLowerCase();
+            valB = b.querySelector('.book-cover').alt.trim().toLowerCase();
+            return valA.localeCompare(valB);
+        } else if (sortValue === 'author') {
+            // Extract author from alt text if possible, or fallback to full title
+            valA = (a.querySelector('.book-author') || a.querySelector('.book-cover')).alt.toLowerCase();
+            valB = (b.querySelector('.book-author') || b.querySelector('.book-cover')).alt.toLowerCase();
+            return valA.localeCompare(valB);
+        } else if (sortValue === 'price') {
+            valA = parseFloat(a.querySelector('.book-price').textContent.replace(/[^0-9.]/g, '')) || 0;
+            valB = parseFloat(b.querySelector('.book-price').textContent.replace(/[^0-9.]/g, '')) || 0;
+            return valA - valB;
+        }
+        return 0;
+    });
+
+    gridContainer.innerHTML = '';
+    cards.forEach(card => gridContainer.appendChild(card));
 }
 
 function initializeBooksPage() {
