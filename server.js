@@ -532,7 +532,9 @@ async function refreshNewsCache() {
                 category: 'Economy',
                 query: 'RBA OR "Australian economy" OR inflation OR "interest rate" Australia',
                 rssSources: ['abc-news-au', 'abc-business', 'afr', 'sydney-morning-herald',
-                    'the-australian', 'sbs-news'],
+                    'the-australian', 'sbs-news', 'the-age', 'news-com-au',
+                    'business-insider-au', 'smartcompany', 'crikey',
+                    'guardian-rss', 'bbc-rss', 'reuters-rss'],
                 baseAge: 48
             },
             {
@@ -556,8 +558,10 @@ async function refreshNewsCache() {
                 query: 'Buffett OR "Charlie Munger" OR "Ray Dalio" OR "value investing"',
                 // Includes the client's specifically configured Google News guru feeds
                 rssSources: ['google-news-guru', 'google-news-investment-gurus',
-                    'livewire-markets', 'stockhead'],
-                baseAge: 48
+                    'livewire-markets', 'stockhead', 'afr', 'abc-business',
+                    'sydney-morning-herald', 'the-australian', 'business-insider-au',
+                    'guardian-rss', 'reuters-rss', 'bbc-rss'],
+                baseAge: 168
             }
         ];
 
