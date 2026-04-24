@@ -1,0 +1,77 @@
+/* ================================================
+   Mobile UX Fixes — Graham & Doddsville
+   Shared stylesheet for mobile-first improvements.
+   Loaded after inline styles, so these override.
+   ================================================ */
+
+@media (max-width: 768px) {
+
+    /* P1: Compact collapsible headers – less padding, smaller font */
+    .collapsible-header {
+        padding: 14px 16px !important;
+    }
+
+    .collapsible-title {
+        font-size: 1rem !important;
+    }
+
+    /* P1: Reduce page title top padding (was 80px) */
+    .wealth-creation-page-content {
+        padding-top: 60px !important;
+    }
+
+    /* P1: Reduce page title section inner padding */
+    .page-title-section {
+        padding: 20px 16px !important;
+        padding-top: 60px !important;
+        margin-bottom: 20px !important;
+    }
+
+    /* P2: Breadcrumb — bigger tap target */
+    .breadcrumb-link {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        font-size: 15px;
+        padding: 4px 0;
+    }
+
+    /* P2: Collapsible section spacing */
+    .collapsible-categories {
+        gap: 10px !important;
+    }
+
+    .collapsible-section {
+        border-radius: 10px !important;
+    }
+
+    .collapsible-section:hover {
+        transform: none !important;
+    }
+
+    /* P3: Prevent text/URL overflow inside content sections */
+    .collapsible-content,
+    .collapsible-content p,
+    .collapsible-content a,
+    .article-detail-body,
+    .article-detail-body a {
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+
+    /* P3: Reduce collapsible content padding on mobile */
+    .collapsible-content.expanded {
+        padding: 10px 16px 16px 16px !important;
+    }
+
+    /* Collapsible link items — larger touch targets */
+    .collapsible-link {
+        padding: 14px 16px !important;
+        font-size: 14px;
+    }
+
+    /* Header — remove hover translate for mobile */
+    .collapsible-header:hover {
+        transform: none !important;
+    }
+}

@@ -208,7 +208,8 @@ const sourceHealth = new Map(); // Track source health
 const corsOptions = {
     origin: process.env.NODE_ENV === 'production'
         ? ['https://graham-doddsville.onrender.com',
-            'https://grahamanddoddsville.com.au']
+            'https://grahamanddoddsville.com.au',
+            'https://l9rins.github.io']
         : 'http://localhost:3051',
     methods: ['GET', 'POST'],
     credentials: true,

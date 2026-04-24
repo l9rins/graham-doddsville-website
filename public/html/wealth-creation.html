@@ -753,61 +753,44 @@
         }
 
         .loading-spinner::after {
-                      const imageMap = {
-                          '1.1.1': 'Laws of Wealth Creation.png',
-                          'laws-of-wealth-creation': 'Laws of Wealth Creation.png',
-                          '1.1.2': 'Common Money Myths.png',
-                          'common-money-myths': 'Common Money Myths.png',
-                          '1.1.3': 'How to build wealth faster.png',
-                          'how-to-build-wealth-faster': 'How to build wealth faster.png',
-                          '1.1.4': 'How to get rich quick.png',
-                          'how-to-get-rich-quick': 'How to get rich quick.png',
-                          '1.1.5': 'Crosby’s laws of wealth.png',
-                          'crosbys-laws-of-wealth': 'Crosby’s laws of wealth.png',
-                          '1.1.6': 'Whittaker’s golden rules of wealth.png',
-                          'whittakers-golden-rules-of-wealth': 'Whittaker’s golden rules of wealth.png',
-                          '1.1.7': 'Munger’s rules of wealth.jpeg',
-                          'mungers-rules-of-wealth': 'Munger’s rules of wealth.jpeg',
-                          '1.1.8': 'Hill’s laws of success.png',
-                          'hills-laws-of-success': 'Hill’s laws of success.png',
-                          'financial-literacy': 'Financial literacy.png',
-                          'financial-planning': 'Financial planning.png',
-                          'how-to-prepare-a-budget': 'How to prepare a budget.png',
-                          'how-to-save-money': 'How to save money.png',
-                          'how-to-reduce-taxes': 'How to reduce taxes.png',
-                          'how-to-buy-property': 'How to buy property in Australia.png',
-                          'how-to-sell-property': 'How to sell property in Australia.png',
-                          'personal-insurances': 'Personal insurances.png'
-                      };
-                      const imageAltMap = {
-                          '1.1.1': 'Laws of Wealth Creation',
-                          'laws-of-wealth-creation': 'Laws of Wealth Creation',
-                          '1.1.2': 'Common Money Myths',
-                          'common-money-myths': 'Common Money Myths',
-                          '1.1.3': 'How to Build Wealth Faster',
-                          'how-to-build-wealth-faster': 'How to Build Wealth Faster',
-                          '1.1.4': 'How to Get Rich Quick',
-                          'how-to-get-rich-quick': 'How to Get Rich Quick',
-                          '1.1.5': 'Crosby’s Laws of Wealth',
-                          'crosbys-laws-of-wealth': 'Crosby’s Laws of Wealth',
-                          '1.1.6': 'Whittaker’s Golden Rules of Wealth',
-                          'whittakers-golden-rules-of-wealth': 'Whittaker’s Golden Rules of Wealth',
-                          '1.1.7': 'Munger’s Rules of Wealth',
-                          'mungers-rules-of-wealth': 'Munger’s Rules of Wealth',
-                          '1.1.8': 'Hill’s Laws of Success',
-                          'hills-laws-of-success': 'Hill’s Laws of Success',
-                          'financial-literacy': 'Financial Literacy',
-                          'financial-planning': 'Financial Planning',
-                          'how-to-prepare-a-budget': 'How to Prepare a Budget',
-                          'how-to-save-money': 'How to Save Money',
-                          'how-to-reduce-taxes': 'How to Reduce Taxes',
-                          'how-to-buy-property': 'How to Buy Property in Australia',
-                          'how-to-sell-property': 'How to Sell Property in Australia',
-                          'personal-insurances': 'Personal Insurances'
-                      };
-                        <span class="hamburger-line"></span>
-                    </button>
+            content: '';
+            width: 24px;
+            height: 24px;
+            border: 3px solid #e5e7eb;
+            border-top-color: var(--primary-blue);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            display: inline-block;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+    <link rel="stylesheet" href="mobile-fixes.css">
+</head>
+<body>
+    <div class="wealth-creation-page">
+        <!-- Header -->
+        <header class="header sticky-header" role="banner">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="G&amp;D Logo.png" alt="Graham &amp; Doddsville" class="logo-image">
                 </div>
+                
+                <nav class="main-nav desktop-only">
+                    <ul>
+                        <li><a href="index.html" class="nav-link">HOME</a></li>
+                        <li><a href="wealth-creation.html" class="nav-link">WEALTH CREATION</a></li>
+                        <li><a href="#" class="nav-link">ABOUT</a></li>
+                    </ul>
+                </nav>
+                
+                <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
             </div>
         </header>
 
@@ -1059,37 +1042,7 @@
             }
         }
 
-        // Mobile menu functionality
-        // Mobile drawer functionality
-        const mobileToggle = document.getElementById('mobile-toggle');
-        const mobileDrawer = document.getElementById('mobile-drawer');
-        const drawerClose = document.getElementById('drawer-close');
-        
-        if (mobileToggle && mobileDrawer) {
-            mobileToggle.addEventListener('click', () => {
-                console.log('Hamburger menu clicked!');
-                mobileDrawer.classList.add('open');
-                document.body.style.overflow = 'hidden';
-                console.log('Drawer should be open now');
-            });
-        }
-        
-        if (drawerClose && mobileDrawer) {
-            drawerClose.addEventListener('click', () => {
-                mobileDrawer.classList.remove('open');
-                document.body.style.overflow = '';
-            });
-        }
-        
-        // Close drawer when clicking outside
-        if (mobileDrawer) {
-            mobileDrawer.addEventListener('click', (e) => {
-                if (e.target === mobileDrawer) {
-                    mobileDrawer.classList.remove('open');
-                    document.body.style.overflow = '';
-                }
-            });
-        }
+
 
         // Article content data
         const articleContent = {
@@ -5398,6 +5351,27 @@
             const panel = document.getElementById('article-detail-panel');
             panel.classList.remove('active');
             document.body.style.overflow = '';
+        }
+
+        function toggleMobileMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                if (mobileDrawer.classList.contains('open')) {
+                    mobileDrawer.classList.remove('open');
+                    document.body.style.overflow = '';
+                } else {
+                    mobileDrawer.classList.add('open');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+        }
+
+        function closeMobileMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            }
         }
 
         // Initialize the page

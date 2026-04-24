@@ -495,7 +495,416 @@
             border-left-color: var(--primary-blue);
         }
         .wealth-creation-page-content { padding-top: 80px; }
+
+        /* ===== Events Table Styles ===== */
+        .events-table-wrapper {
+            margin-top: 12px;
+        }
+
+        /* --- Filter Bar --- */
+        .events-filter-bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+        .events-filter-bar .evt-search-wrap {
+            flex: 1;
+            position: relative;
+        }
+        .events-filter-bar .evt-search-wrap input {
+            width: 100%;
+            padding: 9px 12px 9px 36px;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            font-family: inherit;
+            background: white;
+            transition: border-color 0.2s;
+        }
+        .events-filter-bar .evt-search-wrap input:focus {
+            outline: none;
+            border-color: var(--primary-blue-light);
+            box-shadow: 0 0 0 3px rgba(59,130,246,0.12);
+        }
+        .events-filter-bar .evt-search-icon {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            pointer-events: none;
+            font-size: 16px;
+        }
+        .evt-filter-toggle {
+            display: none;
+            align-items: center;
+            gap: 4px;
+            padding: 9px 14px;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            background: white;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: 500;
+            font-family: inherit;
+            color: var(--text-primary);
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+        .evt-filter-toggle:hover {
+            border-color: var(--primary-blue-light);
+            color: var(--primary-blue);
+        }
+        .evt-filter-toggle .filter-count {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 18px; height: 18px;
+            border-radius: 50%;
+            background: var(--primary-blue);
+            color: white;
+            font-size: 10px;
+            font-weight: 700;
+        }
+        .events-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 14px;
+            align-items: center;
+        }
+        .events-filters select {
+            padding: 8px 12px;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            font-size: 13px;
+            font-family: inherit;
+            background: white;
+            cursor: pointer;
+            min-width: 130px;
+            transition: border-color 0.2s;
+        }
+        .events-filters select:focus {
+            outline: none;
+            border-color: var(--primary-blue-light);
+        }
+        .evt-active-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+        .evt-active-filters:empty { display: none; }
+        .evt-filter-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 10px;
+            background: #e0e7ff;
+            color: #3730a3;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .evt-filter-chip button {
+            background: none; border: none; cursor: pointer;
+            color: #3730a3; font-size: 14px; padding: 0; line-height: 1;
+        }
+        .events-count {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* --- Desktop Table --- */
+        .events-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        .events-table thead th {
+            background: var(--primary-blue);
+            color: white;
+            padding: 10px 12px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            cursor: pointer;
+            user-select: none;
+        }
+        .events-table thead th:hover {
+            background: var(--primary-blue-dark);
+        }
+        .events-table tbody tr {
+            border-bottom: 1px solid var(--border-light);
+            transition: background 0.15s ease;
+        }
+        .events-table tbody tr:hover {
+            background: #f0f4ff;
+        }
+        .events-table tbody td {
+            padding: 10px 12px;
+            vertical-align: top;
+            color: var(--text-primary);
+        }
+        .events-table .evt-title {
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+        .events-table .evt-title a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+        .events-table .evt-title a:hover {
+            text-decoration: underline;
+        }
+
+        /* --- Event Type Badges --- */
+        .evt-type-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .evt-type-conference { background: #dbeafe; color: #1e40af; }
+        .evt-type-seminar { background: #fce7f3; color: #9d174d; }
+        .evt-type-discussion { background: #d1fae5; color: #065f46; }
+        .evt-type-webinar { background: #fef3c7; color: #92400e; }
+        .evt-expand-btn {
+            background: none;
+            border: none;
+            color: var(--primary-blue);
+            cursor: pointer;
+            font-size: 12px;
+            padding: 2px 0;
+            font-weight: 500;
+        }
+        .evt-expand-btn:hover { text-decoration: underline; }
+        .evt-detail-row td {
+            background: #f8fafc;
+            padding: 12px 16px;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+        .evt-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px 24px;
+        }
+        .evt-detail-grid .label {
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-size: 12px;
+            text-transform: uppercase;
+        }
+
+        /* --- Pagination --- */
+        .events-pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            margin-top: 16px;
+            flex-wrap: wrap;
+        }
+        .events-pagination button {
+            padding: 6px 12px;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            background: white;
+            cursor: pointer;
+            font-size: 13px;
+            font-family: inherit;
+            transition: all 0.15s ease;
+        }
+        .events-pagination button:hover {
+            background: #f0f4ff;
+            border-color: var(--primary-blue-light);
+        }
+        .events-pagination button.active {
+            background: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+        }
+        .events-pagination button:disabled {
+            opacity: 0.4;
+            cursor: default;
+        }
+
+        /* --- Mobile Cards --- */
+        .events-card-mobile {
+            display: none;
+        }
+        .event-mobile-card {
+            display: flex;
+            gap: 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 14px;
+            margin-bottom: 10px;
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.03);
+            transition: box-shadow 0.2s ease;
+        }
+        .event-mobile-card:active {
+            box-shadow: 0 0 0 2px rgba(59,130,246,0.15);
+        }
+        /* Calendar date chip */
+        .mc-date-chip {
+            flex-shrink: 0;
+            width: 48px;
+            text-align: center;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+            color: white;
+            padding: 6px 4px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 52px;
+        }
+        .mc-date-chip .mc-day {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+        .mc-date-chip .mc-month {
+            font-size: 10px;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            opacity: 0.9;
+        }
+        .mc-body {
+            flex: 1;
+            min-width: 0;
+        }
+        .mc-title-row {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 4px;
+        }
+        .event-mobile-card .mc-title {
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--primary-blue);
+            line-height: 1.3;
+        }
+        .event-mobile-card .mc-title a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+        .mc-meta-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 6px;
+            margin-top: 4px;
+        }
+        .mc-meta-item {
+            font-size: 12px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+        .mc-meta-item svg { width: 13px; height: 13px; flex-shrink: 0; }
+        .mc-meta-sep {
+            width: 3px; height: 3px;
+            background: #cbd5e1;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .mc-expand-details {
+            background: none;
+            border: none;
+            color: var(--primary-blue);
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 4px 0 0;
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+        .mc-detail-panel {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #f1f5f9;
+            font-size: 12px;
+            line-height: 1.6;
+            color: var(--text-primary);
+        }
+        .mc-detail-panel .mc-dl {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 4px 8px;
+        }
+        .mc-detail-panel .mc-dl dt {
+            font-weight: 600;
+            color: var(--text-secondary);
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+        .mc-detail-panel .mc-dl dd {
+            margin: 0;
+        }
+        .mc-detail-panel .mc-desc-text {
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px dashed #e5e7eb;
+            color: #374151;
+        }
+
+        /* --- Mobile Responsive --- */
+        @media (max-width: 768px) {
+            .events-table-desktop { display: none; }
+            .events-card-mobile { display: block; }
+            .evt-filter-toggle { display: flex; }
+            .events-filters {
+                flex-direction: column;
+                gap: 8px;
+                overflow: hidden;
+                max-height: 0;
+                margin: 0;
+                transition: max-height 0.3s ease, margin 0.3s ease;
+            }
+            .events-filters.mobile-open {
+                max-height: 200px;
+                margin-bottom: 14px;
+            }
+            .events-filters select { width: 100%; flex: none; }
+            .evt-detail-grid { grid-template-columns: 1fr; }
+            .events-pagination .page-num-btn { display: none; }
+            .events-pagination {
+                gap: 8px;
+            }
+            .events-pagination button {
+                padding: 10px 20px;
+                font-size: 14px;
+                border-radius: var(--radius-md);
+            }
+            .events-pagination .page-info-text {
+                font-size: 13px;
+                color: var(--text-secondary);
+            }
+        }
         </style>
+    <link rel="stylesheet" href="mobile-fixes.css">
 </head>
 <body>
     <div class="wealth-creation-page">
@@ -553,21 +962,92 @@
                     <a href="index.html" class="breadcrumb-link">← Home</a>
                 </div>
                 <h1 class="page-title section-header">Events &amp; Seminars</h1>
-                <p class="page-subtitle">Educational , seminars, webinars, courses, and podcasts for comprehensive financial learning</p>
+                <p class="page-subtitle">Educational events, seminars, webinars, courses, and podcasts for comprehensive financial learning</p>
             </div>
 
             <!-- Collapsible Categories -->
             <div class="collapsible-categories">
-                <!--  and Seminars -->
+                <!-- Events and Seminars -->
                 <div class="collapsible-section">
     <div class="collapsible-header" onclick="toggleCollapsible('events-seminars')">
         <h3 class="collapsible-title">Events and Seminars</h3>
         <span class="collapsible-arrow" id="events-seminars-arrow">▼</span>
     </div>
-    <div class="collapsible-content collapsed" id="events-seminars-content">
-        <ul class="collapsible-links">
-            <li><a href="#" class="collapsible-link" onclick="openArticle('events-and-seminars')">Events and Seminars</a></li>
-        </ul>
+    <div class="collapsible-content collapsed" id="events-seminars-content" style="max-height:none;">
+        <div class="events-table-wrapper">
+            <!-- Search + Filter Toggle -->
+            <div class="events-filter-bar">
+                <div class="evt-search-wrap">
+                    <span class="evt-search-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    </span>
+                    <input type="text" id="evt-search" placeholder="Search events..." oninput="filterEvents()">
+                </div>
+                <button class="evt-filter-toggle" id="evt-filter-toggle" onclick="toggleMobileFilters()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+                    Filters <span class="filter-count" id="filter-count" style="display:none">0</span>
+                </button>
+            </div>
+            <!-- Dropdown Filters -->
+            <div class="events-filters" id="evt-filters-panel">
+                <select id="evt-state" onchange="filterEvents()">
+                    <option value="">All States</option>
+                    <option value="NSW">NSW</option>
+                    <option value="VIC">VIC</option>
+                    <option value="QLD">QLD</option>
+                    <option value="WA">WA</option>
+                    <option value="SA">SA</option>
+                    <option value="TAS">TAS</option>
+                    <option value="ACT">ACT</option>
+                    <option value="NT">NT</option>
+                    <option value="Online">Online</option>
+                </select>
+                <select id="evt-type" onchange="filterEvents()">
+                    <option value="">All Types</option>
+                    <option value="Conference">Conference</option>
+                    <option value="Seminar">Seminar</option>
+                    <option value="Discussion">Discussion</option>
+                    <option value="Webinar">Webinar</option>
+                </select>
+                <select id="evt-month" onchange="filterEvents()">
+                    <option value="">All Months</option>
+                    <option value="2026-06">June 2026</option>
+                    <option value="2026-07">July 2026</option>
+                    <option value="2026-08">August 2026</option>
+                    <option value="2026-09">September 2026</option>
+                    <option value="2026-10">October 2026</option>
+                    <option value="2026-11">November 2026</option>
+                    <option value="2026-12">December 2026</option>
+                    <option value="2027-01">January 2027</option>
+                </select>
+            </div>
+            <!-- Active filter chips -->
+            <div class="evt-active-filters" id="evt-active-filters"></div>
+            <div class="events-count" id="evt-count">Loading events...</div>
+
+            <!-- Desktop Table -->
+            <div class="events-table-desktop">
+                <table class="events-table" id="events-table">
+                    <thead>
+                        <tr>
+                            <th onclick="sortEventsTable('date')">Date ▼</th>
+                            <th onclick="sortEventsTable('startTime')">Time</th>
+                            <th onclick="sortEventsTable('state')">State</th>
+                            <th onclick="sortEventsTable('eventType')">Type</th>
+                            <th onclick="sortEventsTable('title')">Title</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody id="evt-tbody"></tbody>
+                </table>
+            </div>
+
+            <!-- Mobile Cards -->
+            <div class="events-card-mobile" id="evt-mobile-cards"></div>
+
+            <!-- Pagination -->
+            <div class="events-pagination" id="evt-pagination"></div>
+        </div>
     </div>
 </div>
 
@@ -712,19 +1192,7 @@
         const articleContent = {
             'events-and-seminars': {
                 title: 'Events and Seminars',
-                content: `
-                    <p>A regularly updated list of upcoming investment-related events, seminars, and educational sessions.</p>
-                    <div class="events-card-list" style="margin-top:16px;">
-                        <div class="event-card" style="border:1px solid #e2e8f0;border-radius:8px;padding:14px 16px;margin-bottom:12px;background:#f9f9f9;">
-                            <div style="font-weight:600;font-size:14px;color:#1e3a8a;margin-bottom:4px;">TBA</div>
-                            <div style="font-size:13px;color:#4a5568;margin-bottom:2px;"><strong>Organiser:</strong> TBA</div>
-                            <div style="font-size:13px;color:#4a5568;margin-bottom:2px;"><strong>Date:</strong> TBA</div>
-                            <div style="font-size:13px;color:#4a5568;margin-bottom:8px;"><strong>Location:</strong> TBA</div>
-                            <a href="#" style="font-size:13px;color:#1e3a8a;text-decoration:none;font-weight:600;">View details →</a>
-                        </div>
-                    </div>
-                    <p style="margin-top:20px;color:#6b7280;font-size:13px;">This table will be updated as events are confirmed.</p>
-                `
+                content: `<p>Please browse the Events and Seminars table directly on the page — use the filters to search by state, type, or month.</p>`
             },
             'omaha-may-2024': {
                 title: 'Omaha May 2024',
@@ -1056,6 +1524,248 @@
                     }
                 });
             }
+        });
+
+        // ===== Events Table Logic =====
+        let allEventsData = [];
+        let filteredEvents = [];
+        let evtCurrentPage = 1;
+        const evtPerPage = 25;
+        let evtSortField = 'date';
+        let evtSortAsc = true;
+        let expandedRows = new Set();
+        let mobileExpandedCards = new Set();
+
+        // Load events data
+        fetch('events_data.json')
+            .then(r => r.json())
+            .then(data => {
+                allEventsData = data;
+                filterEvents();
+            })
+            .catch(err => {
+                document.getElementById('evt-count').textContent = 'Error loading events data.';
+                console.error('Failed to load events_data.json', err);
+            });
+
+        function toggleMobileFilters() {
+            const panel = document.getElementById('evt-filters-panel');
+            panel.classList.toggle('mobile-open');
+        }
+
+        function clearFilter(filterName) {
+            document.getElementById(filterName).value = '';
+            filterEvents();
+        }
+
+        function updateActiveFilters() {
+            const state = document.getElementById('evt-state').value;
+            const type = document.getElementById('evt-type').value;
+            const month = document.getElementById('evt-month').value;
+            let chips = '';
+            let count = 0;
+            if (state) { count++; chips += '<span class="evt-filter-chip">' + state + '<button onclick="clearFilter(\'evt-state\')">&times;</button></span>'; }
+            if (type) { count++; chips += '<span class="evt-filter-chip">' + type + '<button onclick="clearFilter(\'evt-type\')">&times;</button></span>'; }
+            if (month) {
+                count++;
+                const sel = document.getElementById('evt-month');
+                const label = sel.options[sel.selectedIndex].text;
+                chips += '<span class="evt-filter-chip">' + label + '<button onclick="clearFilter(\'evt-month\')">&times;</button></span>';
+            }
+            document.getElementById('evt-active-filters').innerHTML = chips;
+            const badge = document.getElementById('filter-count');
+            if (count > 0) { badge.textContent = count; badge.style.display = 'inline-flex'; }
+            else { badge.style.display = 'none'; }
+        }
+
+        function filterEvents() {
+            const search = (document.getElementById('evt-search').value || '').toLowerCase();
+            const state = document.getElementById('evt-state').value;
+            const type = document.getElementById('evt-type').value;
+            const month = document.getElementById('evt-month').value;
+
+            filteredEvents = allEventsData.filter(e => {
+                if (state && e.state !== state) return false;
+                if (type && e.eventType !== type) return false;
+                if (month && !e.date.startsWith(month)) return false;
+                if (search) {
+                    const haystack = (e.title + ' ' + e.description + ' ' + e.venue + ' ' + e.source + ' ' + e.city).toLowerCase();
+                    if (!haystack.includes(search)) return false;
+                }
+                return true;
+            });
+
+            filteredEvents.sort((a, b) => {
+                let va = a[evtSortField] || '';
+                let vb = b[evtSortField] || '';
+                if (evtSortField === 'date') {
+                    va = a.date + ' ' + a.startTime;
+                    vb = b.date + ' ' + b.startTime;
+                }
+                const cmp = va.localeCompare(vb);
+                return evtSortAsc ? cmp : -cmp;
+            });
+
+            evtCurrentPage = 1;
+            expandedRows.clear();
+            mobileExpandedCards.clear();
+            updateActiveFilters();
+            renderEventsTable();
+        }
+
+        function sortEventsTable(field) {
+            if (evtSortField === field) {
+                evtSortAsc = !evtSortAsc;
+            } else {
+                evtSortField = field;
+                evtSortAsc = true;
+            }
+            filterEvents();
+        }
+
+        function formatDate(dateStr) {
+            const d = new Date(dateStr + 'T00:00:00');
+            const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+            const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+            return days[d.getDay()] + ', ' + d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
+        }
+
+        function formatDateParts(dateStr) {
+            const d = new Date(dateStr + 'T00:00:00');
+            const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+            const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+            return { day: d.getDate(), month: months[d.getMonth()], dow: days[d.getDay()] };
+        }
+
+        function getTypeBadge(type) {
+            const cls = 'evt-type-' + type.toLowerCase();
+            return '<span class="evt-type-badge ' + cls + '">' + type + '</span>';
+        }
+
+        function toggleEventDetail(idx) {
+            if (expandedRows.has(idx)) expandedRows.delete(idx);
+            else expandedRows.add(idx);
+            renderEventsTable();
+        }
+
+        function toggleMobileCard(idx) {
+            if (mobileExpandedCards.has(idx)) mobileExpandedCards.delete(idx);
+            else mobileExpandedCards.add(idx);
+            renderEventsTable();
+        }
+
+        function renderEventsTable() {
+            const total = filteredEvents.length;
+            const totalPages = Math.ceil(total / evtPerPage);
+            const start = (evtCurrentPage - 1) * evtPerPage;
+            const end = Math.min(start + evtPerPage, total);
+            const pageEvents = filteredEvents.slice(start, end);
+
+            document.getElementById('evt-count').textContent = 'Showing ' + (total > 0 ? (start+1) : 0) + '–' + end + ' of ' + total + ' events';
+
+            // Desktop table
+            let html = '';
+            pageEvents.forEach((e, i) => {
+                const globalIdx = start + i;
+                const titleLink = e.url ? '<a href="' + e.url + '" target="_blank">' + e.title + '</a>' : e.title;
+                html += '<tr>';
+                html += '<td style="white-space:nowrap;">' + formatDate(e.date) + '</td>';
+                html += '<td style="white-space:nowrap;">' + e.startTime + (e.finishTime && e.finishTime !== 'TBA' ? ' – ' + e.finishTime : '') + '</td>';
+                html += '<td>' + e.state + '</td>';
+                html += '<td>' + getTypeBadge(e.eventType) + '</td>';
+                html += '<td class="evt-title">' + titleLink + '</td>';
+                html += '<td><button class="evt-expand-btn" onclick="toggleEventDetail(' + globalIdx + ')">' + (expandedRows.has(globalIdx) ? 'Hide ▲' : 'Details ▼') + '</button></td>';
+                html += '</tr>';
+                if (expandedRows.has(globalIdx)) {
+                    html += '<tr class="evt-detail-row"><td colspan="6"><div class="evt-detail-grid">';
+                    html += '<div><div class="label">Description</div>' + e.description + '</div>';
+                    html += '<div><div class="label">Venue</div>' + e.venue + '</div>';
+                    html += '<div><div class="label">Cost</div>' + e.cost + '</div>';
+                    html += '<div><div class="label">Food</div>' + e.food + '</div>';
+                    html += '<div><div class="label">Source</div>' + e.source + '</div>';
+                    html += '<div><div class="label">City</div>' + e.city + '</div>';
+                    if (e.url) html += '<div style="grid-column:1/-1;"><div class="label">Website</div><a href="' + e.url + '" target="_blank" style="color:#1e3a8a;word-break:break-all;">' + e.url + '</a></div>';
+                    html += '</div></td></tr>';
+                }
+            });
+            document.getElementById('evt-tbody').innerHTML = html;
+
+            // Mobile cards — redesigned with date chip + collapsible detail
+            let mobileHtml = '';
+            pageEvents.forEach((e, i) => {
+                const globalIdx = start + i;
+                const dp = formatDateParts(e.date);
+                const titleLink = e.url ? '<a href="' + e.url + '" target="_blank">' + e.title + '</a>' : e.title;
+                const isExpanded = mobileExpandedCards.has(globalIdx);
+                const locationText = e.state === 'Online' ? 'Online' : e.city + ', ' + e.state;
+
+                mobileHtml += '<div class="event-mobile-card">';
+                // Date chip
+                mobileHtml += '<div class="mc-date-chip"><span class="mc-day">' + dp.day + '</span><span class="mc-month">' + dp.month + '</span></div>';
+                // Body
+                mobileHtml += '<div class="mc-body">';
+                mobileHtml += '<div class="mc-title-row"><div class="mc-title">' + titleLink + '</div>' + getTypeBadge(e.eventType) + '</div>';
+                // Meta row with icons
+                mobileHtml += '<div class="mc-meta-row">';
+                mobileHtml += '<span class="mc-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>' + e.startTime + '</span>';
+                mobileHtml += '<span class="mc-meta-sep"></span>';
+                mobileHtml += '<span class="mc-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>' + locationText + '</span>';
+                if (e.cost && e.cost !== 'TBC') {
+                    mobileHtml += '<span class="mc-meta-sep"></span>';
+                    mobileHtml += '<span class="mc-meta-item" style="color:' + (e.cost === 'Free' ? '#059669' : '#92400e') + ';font-weight:600;">' + e.cost + '</span>';
+                }
+                mobileHtml += '</div>';
+                // Expand button
+                mobileHtml += '<button class="mc-expand-details" onclick="toggleMobileCard(' + globalIdx + ')">' + (isExpanded ? 'Hide details ▲' : 'More details ▼') + '</button>';
+                // Expandable detail panel
+                if (isExpanded) {
+                    mobileHtml += '<div class="mc-detail-panel">';
+                    mobileHtml += '<div class="mc-dl">';
+                    mobileHtml += '<dt>Venue</dt><dd>' + e.venue + '</dd>';
+                    mobileHtml += '<dt>Time</dt><dd>' + e.startTime + (e.finishTime && e.finishTime !== 'TBA' ? ' – ' + e.finishTime : '') + '</dd>';
+                    if (e.cost) { mobileHtml += '<dt>Cost</dt><dd>' + e.cost + '</dd>'; }
+                    if (e.food && e.food !== 'Unknown') { mobileHtml += '<dt>Food</dt><dd>' + e.food + '</dd>'; }
+                    mobileHtml += '<dt>Source</dt><dd>' + e.source + '</dd>';
+                    if (e.url) { mobileHtml += '<dt>Website</dt><dd><a href="' + e.url + '" target="_blank" style="color:#1e3a8a;word-break:break-all;">' + e.url + '</a></dd>'; }
+                    mobileHtml += '</div>';
+                    if (e.description) { mobileHtml += '<div class="mc-desc-text">' + e.description + '</div>'; }
+                    mobileHtml += '</div>';
+                }
+                mobileHtml += '</div>'; // mc-body
+                mobileHtml += '</div>'; // card
+            });
+            document.getElementById('evt-mobile-cards').innerHTML = mobileHtml;
+
+            // Pagination — simplified for mobile, full for desktop
+            let pag = '';
+            if (totalPages > 1) {
+                pag += '<button ' + (evtCurrentPage <= 1 ? 'disabled' : '') + ' onclick="goEvtPage(' + (evtCurrentPage - 1) + ')">&laquo; Prev</button>';
+                let startPage = Math.max(1, evtCurrentPage - 3);
+                let endPage = Math.min(totalPages, evtCurrentPage + 3);
+                if (startPage > 1) pag += '<button class="page-num-btn" onclick="goEvtPage(1)">1</button><span class="page-num-btn">...</span>';
+                for (let p = startPage; p <= endPage; p++) {
+                    pag += '<button class="page-num-btn ' + (p === evtCurrentPage ? 'active' : '') + '" onclick="goEvtPage(' + p + ')">' + p + '</button>';
+                }
+                if (endPage < totalPages) pag += '<span class="page-num-btn">...</span><button class="page-num-btn" onclick="goEvtPage(' + totalPages + ')">' + totalPages + '</button>';
+                pag += '<span class="page-info-text">Page ' + evtCurrentPage + ' of ' + totalPages + '</span>';
+                pag += '<button ' + (evtCurrentPage >= totalPages ? 'disabled' : '') + ' onclick="goEvtPage(' + (evtCurrentPage + 1) + ')">Next &raquo;</button>';
+            }
+            document.getElementById('evt-pagination').innerHTML = pag;
+        }
+
+        function goEvtPage(p) {
+            evtCurrentPage = p;
+            expandedRows.clear();
+            mobileExpandedCards.clear();
+            renderEventsTable();
+            document.getElementById('events-seminars-content').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        // Auto-expand the Events and Seminars section on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                toggleCollapsible('events-seminars');
+            }, 300);
         });
     </script>
 
