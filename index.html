@@ -6388,8 +6388,10 @@
                 console.log(`Set loading element ${loadingId} to display: block`);
             }
 
-            // Determine API URL - use relative for same origin
-            const apiUrl = `/api/news/region/${region}`;
+            // Determine API URL based on environment
+            const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+            const apiBase = isLocalhost ? 'http://localhost:3051/api' : 'https://graham-doddsville.onrender.com/api';
+            const apiUrl = `${apiBase}/news/region/${region}`;
             console.log(`Fetching ${region} news from:`, apiUrl);
 
             // Use AbortController for timeout
