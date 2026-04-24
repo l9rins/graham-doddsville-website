@@ -5441,7 +5441,7 @@
                                     console.log('DEBUG: No image found for articleId:', articleId);
                                 }
                                 const imagePlaceholder = imageMap[articleId]
-                                    ? `<img src="images/${imageMap[articleId]}" alt="${imageAltMap[articleId] || ''}" style="width:100%;height:auto;object-fit:cover;border-radius:8px;display:block;margin:0 auto 20px;box-shadow:0 2px 8px #e5e7eb;" loading="lazy">`
+                                    ? `<img src="images/${imageMap[articleId]}" alt="${imageAltMap[articleId] || ''}" style="width:100%;height:auto;object-fit:cover;border-radius:8px;display:block;margin:0 auto 20px;box-shadow:0 2px 8px #e5e7eb;">`
                                     : `<div style="width:100%;height:auto;aspect-ratio:16/9;background:#f0f4f8;border:2px dashed #cbd5e0;border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:#94a3b8;font-size:14px;">📷 Image placeholder — awaiting photo from client</div>`;
 
                 const relatedArticles = `
