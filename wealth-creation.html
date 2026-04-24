@@ -826,7 +826,7 @@
             <!-- Page Title Section -->
             <div class="page-title-section">
                 <div class="breadcrumb">
-                    <a href="index.html" class="breadcrumb-link">â† Home</a>
+                    <a href="index.html" class="breadcrumb-link">← Home</a>
                 </div>
                 <h1 class="page-title section-header">Wealth Creation</h1>
                 <p class="page-subtitle">Essential  for building long-term wealth through value investing</p>
@@ -835,7 +835,7 @@
             <!-- Wealth Creation Content (Hidden by default) -->
             <div id="wealth-creation-content" class="wealth-creation-content" style="display: none;">
                 <div class="wealth-creation-header">
-                    <a href="#" class="breadcrumb-link" onclick="showWealthCreation()">â† Wealth Creation</a>
+                    <a href="#" class="breadcrumb-link" onclick="showWealthCreation()">← Wealth Creation</a>
                     <h1>Wealth Creation </h1>
                     <p class="page-subtitle">Comprehensive guides and tools for building wealth</p>
                 </div>
@@ -861,7 +861,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('laws')">
                         <h3 class="collapsible-title">The Laws of Wealth</h3>
-                        <span class="collapsible-arrow" id="laws-arrow">â–¼</span>
+                        <span class="collapsible-arrow" id="laws-arrow">▼</span>
                     </div>
                     <div class="collapsible-content collapsed" id="laws-content">
                         <ul class="collapsible-links">
@@ -881,7 +881,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('personal')">
                         <h3 class="collapsible-title">Personal Finance</h3>
-                        <span class="collapsible-arrow" id="personal-arrow">â–¼</span>
+                        <span class="collapsible-arrow" id="personal-arrow">▼</span>
                     </div>
                     <div class="collapsible-content collapsed" id="personal-content">
                         <ul class="collapsible-links">
@@ -901,7 +901,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('debt')">
                         <h3 class="collapsible-title">Managing Debt</h3>
-                        <span class="collapsible-arrow" id="debt-arrow">â–¼</span>
+                        <span class="collapsible-arrow" id="debt-arrow">▼</span>
                     </div>
                     <div class="collapsible-content collapsed" id="debt-content">
                         <ul class="collapsible-links">
@@ -922,7 +922,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('investing')">
                         <h3 class="collapsible-title">Investing for Beginners</h3>
-                        <span class="collapsible-arrow" id="investing-arrow">â–¼</span>
+                        <span class="collapsible-arrow" id="investing-arrow">▼</span>
                     </div>
                     <div class="collapsible-content collapsed" id="investing-content">
                         <ul class="collapsible-links">
@@ -943,7 +943,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('australia')">
                         <h3 class="collapsible-title">Investing in Australia</h3>
-                        <span class="collapsible-arrow" id="australia-arrow">â–¼</span>
+                        <span class="collapsible-arrow" id="australia-arrow">▼</span>
                     </div>
                     <div class="collapsible-content collapsed" id="australia-content">
                         <ul class="collapsible-links">
@@ -963,7 +963,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('rules')">
                         <h3 class="collapsible-title">Rules for Success</h3>
-                        <span class="collapsible-arrow" id="rules-arrow">â–¼</span>
+                        <span class="collapsible-arrow" id="rules-arrow">▼</span>
                     </div>
                     <div class="collapsible-content collapsed" id="rules-content">
                         <ul class="collapsible-links">
@@ -979,7 +979,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('mistakes')">
                         <h3 class="collapsible-title">Common Mistakes</h3>
-                        <span class="collapsible-arrow" id="mistakes-arrow">â–¼</span>
+                        <span class="collapsible-arrow" id="mistakes-arrow">▼</span>
                     </div>
                     <div class="collapsible-content collapsed" id="mistakes-content">
                         <ul class="collapsible-links">
@@ -995,7 +995,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('scams')">
                         <h3 class="collapsible-title">Investment Scams</h3>
-                        <span class="collapsible-arrow" id="scams-arrow">â–¼</span>
+                        <span class="collapsible-arrow" id="scams-arrow">▼</span>
                     </div>
                     <div class="collapsible-content collapsed" id="scams-content">
                         <ul class="collapsible-links">
@@ -1020,7 +1020,7 @@
         <div class="article-detail-content">
             <div class="article-detail-header">
                 <h3 class="article-detail-title" id="article-detail-title">Article Title</h3>
-                <button class="article-detail-close" id="article-detail-close" aria-label="Close article" onclick="closeArticlePanel()">Ã—</button>
+                <button class="article-detail-close" id="article-detail-close" aria-label="Close article" onclick="closeArticlePanel()">×</button>
             </div>
             <div class="article-detail-body" id="article-detail-body">
                 <div class="loading-spinner">Loading article...</div>
@@ -1028,7 +1028,7 @@
         </div>
     </div>
 
-    <script src="js/article-image-helper.js"></script>
+    <script src="js/article-image-resolver.js"></script>
     <script>
         // Collapsible functionality
         function toggleCollapsible(sectionId) {
@@ -1040,47 +1040,37 @@
                 document.querySelectorAll('.collapsible-content:not(.collapsed)').forEach(openContent => {
                     openContent.classList.add('collapsed');
                     const openArrowId = openContent.id.replace('-content', '-arrow');
-                    document.getElementById(openArrowId).innerHTML = 'â–¼';
+                    document.getElementById(openArrowId).innerHTML = '▼';
                 });
 
                 content.classList.remove('collapsed');
-                arrow.innerHTML = 'â–²';
+                arrow.innerHTML = '▲';
             } else {
                 content.classList.add('collapsed');
-                arrow.innerHTML = 'â–¼';
+                arrow.innerHTML = '▼';
             }
         }
 
         // Mobile menu functionality
-        // Mobile drawer functionality
-        const mobileToggle = document.getElementById('mobile-toggle');
-        const mobileDrawer = document.getElementById('mobile-drawer');
-        const drawerClose = document.getElementById('drawer-close');
-        
-        if (mobileToggle && mobileDrawer) {
-            mobileToggle.addEventListener('click', () => {
-                console.log('Hamburger menu clicked!');
-                mobileDrawer.classList.add('open');
-                document.body.style.overflow = 'hidden';
-                console.log('Drawer should be open now');
-            });
-        }
-        
-        if (drawerClose && mobileDrawer) {
-            drawerClose.addEventListener('click', () => {
-                mobileDrawer.classList.remove('open');
-                document.body.style.overflow = '';
-            });
-        }
-        
-        // Close drawer when clicking outside
-        if (mobileDrawer) {
-            mobileDrawer.addEventListener('click', (e) => {
-                if (e.target === mobileDrawer) {
+        function toggleMobileMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                if (mobileDrawer.classList.contains('open')) {
                     mobileDrawer.classList.remove('open');
                     document.body.style.overflow = '';
+                } else {
+                    mobileDrawer.classList.add('open');
+                    document.body.style.overflow = 'hidden';
                 }
-            });
+            }
+        }
+
+        function closeMobileMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            }
         }
 
         // Article content data
@@ -5498,7 +5488,7 @@
             console.log('Wealth Creation page loaded with collapsible sections');
         });
     </script>
-    <script src="js/article-image-resolver.js"></script>`r`n</body>
+    </body>
 </html>
 
 
