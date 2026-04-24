@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head>
+﻿<!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Financial Products - Graham and Doddsville</title>
@@ -547,7 +547,7 @@
             <!-- Page Title Section -->
             <div class="page-title-section">
                 <div class="breadcrumb">
-                    <a href="index.html" class="breadcrumb-link">← Home</a>
+                    <a href="index.html" class="breadcrumb-link">â† Home</a>
                 </div>
                 <h1 class="page-title section-header">Financial Products</h1>
                 <p class="page-subtitle">Comprehensive guide to all types of financial products and investment vehicles</p>
@@ -559,7 +559,7 @@
                 <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('cash')">
                     <h3 class="collapsible-title">Cash</h3>
-                    <span class="collapsible-arrow" id="cash-arrow">▼</span>
+                    <span class="collapsible-arrow" id="cash-arrow">â–¼</span>
                 </div>
                 <div class="collapsible-content" id="cash-content">
                     <ul class="collapsible-links">
@@ -574,7 +574,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('fixed-income')">
                     <h3 class="collapsible-title">Fixed Income</h3>
-                    <span class="collapsible-arrow" id="fixed-income-arrow">▼</span>
+                    <span class="collapsible-arrow" id="fixed-income-arrow">â–¼</span>
                 </div>
                 <div class="collapsible-content" id="fixed-income-content">
                     <ul class="collapsible-links">
@@ -590,7 +590,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('equity')">
                     <h3 class="collapsible-title">Equity</h3>
-                    <span class="collapsible-arrow" id="equity-arrow">▼</span>
+                    <span class="collapsible-arrow" id="equity-arrow">â–¼</span>
                 </div>
                 <div class="collapsible-content" id="equity-content">
                     <ul class="collapsible-links">
@@ -609,7 +609,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('hybrids')">
                     <h3 class="collapsible-title">Hybrids</h3>
-                    <span class="collapsible-arrow" id="hybrids-arrow">▼</span>
+                    <span class="collapsible-arrow" id="hybrids-arrow">â–¼</span>
                 </div>
                 <div class="collapsible-content" id="hybrids-content">
                     <ul class="collapsible-links">
@@ -624,7 +624,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('derivative')">
                     <h3 class="collapsible-title">Derivative</h3>
-                    <span class="collapsible-arrow" id="derivative-arrow">▼</span>
+                    <span class="collapsible-arrow" id="derivative-arrow">â–¼</span>
                 </div>
                 <div class="collapsible-content" id="derivative-content">
                     <ul class="collapsible-links">
@@ -648,7 +648,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('property')">
                     <h3 class="collapsible-title">Property</h3>
-                    <span class="collapsible-arrow" id="property-arrow">▼</span>
+                    <span class="collapsible-arrow" id="property-arrow">â–¼</span>
                 </div>
                 <div class="collapsible-content" id="property-content">
                     <ul class="collapsible-links">
@@ -664,7 +664,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('commodities')">
                     <h3 class="collapsible-title">Commodities</h3>
-                    <span class="collapsible-arrow" id="commodities-arrow">▼</span>
+                    <span class="collapsible-arrow" id="commodities-arrow">â–¼</span>
                 </div>
                 <div class="collapsible-content" id="commodities-content">
                     <ul class="collapsible-links">
@@ -686,7 +686,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('miscellaneous')">
                     <h3 class="collapsible-title">Miscellaneous</h3>
-                    <span class="collapsible-arrow" id="miscellaneous-arrow">▼</span>
+                    <span class="collapsible-arrow" id="miscellaneous-arrow">â–¼</span>
                 </div>
                 <div class="collapsible-content" id="miscellaneous-content">
                     <ul class="collapsible-links">
@@ -712,7 +712,7 @@
         <div class="article-detail-content">
             <div class="article-detail-header">
                 <h3 class="article-detail-title" id="article-detail-title">Article Title</h3>
-                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">×</button>
+                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">Ã—</button>
             </div>
             <div class="article-detail-body" id="article-detail-body">
                 <div class="loading-spinner">Loading article...</div>
@@ -720,6 +720,7 @@
         </div>
     </div>
 
+    <script src="js/article-image-helper.js"></script>
     <script>
         // Collapsible functionality
         function toggleCollapsible(sectionId) {
@@ -729,19 +730,19 @@
             if (content.style.maxHeight) {
                 content.style.maxHeight = null;
                 content.classList.remove('expanded');
-                arrow.innerHTML = '▼';
+                arrow.innerHTML = 'â–¼';
             } else {
                 // Close all other open sections
                 document.querySelectorAll('.collapsible-content.expanded').forEach(openContent => {
                     openContent.style.maxHeight = null;
                     openContent.classList.remove('expanded');
                     const openArrowId = openContent.id.replace('-content', '-arrow');
-                    document.getElementById(openArrowId).innerHTML = '▼';
+                    document.getElementById(openArrowId).innerHTML = 'â–¼';
                 });
 
                 content.style.maxHeight = content.scrollHeight + "px";
                 content.classList.add('expanded');
-                arrow.innerHTML = '▲';
+                arrow.innerHTML = 'â–²';
             }
         }
 
@@ -1621,7 +1622,7 @@
             
             if (articleContent[articleId]) {
                 title.textContent = articleContent[articleId].title;
-                const imagePlaceholder = `<div style="width:100%;height:auto;aspect-ratio:16/9;background:linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:24px;color:white;box-shadow:var(--shadow-md);"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:12px;opacity:0.9;"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg><span style="font-weight:600;letter-spacing:0.05em;text-transform:uppercase;font-size:12px;opacity:0.9;">Professional Insights</span></div>`;
+                const imagePlaceholder = window.buildArticleImageHtml(articleId, articleContent[articleId]);
 
                 const relatedArticles = `
 <hr style="margin:32px 0;border:none;border-top:1px solid #e5e7eb;">
@@ -1706,4 +1707,8 @@
 
 
 
-</body></html>
+    <script src="js/article-image-resolver.js"></script>`r`n</body></html>
+
+
+
+

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head>
+﻿<!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resources - Graham and Doddsville</title>
@@ -626,7 +626,7 @@
             <!-- Page Title Section -->
             <div class="page-title-section">
                 <div class="breadcrumb">
-                    <a href="index.html" class="breadcrumb-link">← Home</a>
+                    <a href="index.html" class="breadcrumb-link">â† Home</a>
                 </div>
                 <h1 class="page-title">Resources</h1>
                 <p class="page-subtitle">Essential tools, publications and other resources for informed financial decision-making</p>
@@ -639,7 +639,7 @@
                 <div class="collapsible-section">
     <div class="collapsible-header" onclick="toggleCollapsible('industry-publications')">
         <h3 class="collapsible-title">Industry Publications</h3>
-        <span class="collapsible-arrow" id="industry-publications-arrow">▼</span>
+        <span class="collapsible-arrow" id="industry-publications-arrow">â–¼</span>
     </div>
     <div class="collapsible-content collapsed" id="industry-publications-content">
         <ul class="collapsible-links">
@@ -659,7 +659,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('calculators')">
                         <h3 class="collapsible-title">Calculators</h3>
-                        <span class="collapsible-arrow" id="calculators-arrow">▼</span>
+                        <span class="collapsible-arrow" id="calculators-arrow">â–¼</span>
                     </div>
                     <div class="collapsible-content collapsed" id="calculators-content">
 
@@ -679,7 +679,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('stock-screeners')">
                         <h3 class="collapsible-title">Stock Screeners</h3>
-                        <span class="collapsible-arrow" id="stock-screeners-arrow">▼</span>
+                        <span class="collapsible-arrow" id="stock-screeners-arrow">â–¼</span>
                     </div>
                     <div class="collapsible-content collapsed" id="stock-screeners-content">
 
@@ -699,7 +699,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('portfolio-creators')">
                         <h3 class="collapsible-title">Portfolio Creators</h3>
-                        <span class="collapsible-arrow" id="portfolio-creators-arrow">▼</span>
+                        <span class="collapsible-arrow" id="portfolio-creators-arrow">â–¼</span>
                     </div>
                     <div class="collapsible-content collapsed" id="portfolio-creators-content">
 
@@ -716,7 +716,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('stock-forums')">
                         <h3 class="collapsible-title">Stock Forums</h3>
-                        <span class="collapsible-arrow" id="stock-forums-arrow">▼</span>
+                        <span class="collapsible-arrow" id="stock-forums-arrow">â–¼</span>
                     </div>
                     <div class="collapsible-content collapsed" id="stock-forums-content">
 
@@ -736,7 +736,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('glossary')">
                         <h3 class="collapsible-title">Glossary</h3>
-                        <span class="collapsible-arrow" id="glossary-arrow">▼</span>
+                        <span class="collapsible-arrow" id="glossary-arrow">â–¼</span>
                     </div>
                     <div class="collapsible-content collapsed" id="glossary-content">
 
@@ -755,7 +755,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('useful-links')">
                         <h3 class="collapsible-title">Useful Links</h3>
-                        <span class="collapsible-arrow" id="useful-links-arrow">▼</span>
+                        <span class="collapsible-arrow" id="useful-links-arrow">â–¼</span>
                     </div>
                     <div class="collapsible-content collapsed" id="useful-links-content">
 
@@ -782,7 +782,7 @@
         <div class="article-detail-content">
             <div class="article-detail-header">
                 <h3 class="article-detail-title" id="article-detail-title">Article Title</h3>
-                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">×</button>
+                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">Ã—</button>
             </div>
             <div class="article-detail-body" id="article-detail-body">
                 <div class="loading-spinner">Loading article...</div>
@@ -790,6 +790,7 @@
         </div>
     </div>
 
+    <script src="js/article-image-helper.js"></script>
     <script>
         // Collapsible functionality
         function toggleCollapsible(sectionId) {
@@ -799,19 +800,19 @@
             if (content.style.maxHeight) {
                 content.style.maxHeight = null;
                 content.classList.remove('expanded');
-                arrow.innerHTML = '▼';
+                arrow.innerHTML = 'â–¼';
             } else {
                 // Close all other open sections
                 document.querySelectorAll('.collapsible-content.expanded').forEach(openContent => {
                     openContent.style.maxHeight = null;
                     openContent.classList.remove('expanded');
                     const openArrowId = openContent.id.replace('-content', '-arrow');
-                    document.getElementById(openArrowId).innerHTML = '▼';
+                    document.getElementById(openArrowId).innerHTML = 'â–¼';
                 });
 
                 content.style.maxHeight = content.scrollHeight + "px";
                 content.classList.add('expanded');
-                arrow.innerHTML = '▲';
+                arrow.innerHTML = 'â–²';
             }
         }
 
@@ -856,17 +857,17 @@
                     
                     <h3>2024</h3>
                     <ul>
-                        <li>SIAA Monthly – April 2024</li>
+                        <li>SIAA Monthly â€“ April 2024</li>
                         <li>Elizabeth Broderick AO on how to progress gender balance in stockbroking and investment advice</li>
                         <li>Carbon markets and the state of play</li>
                         <li>The suspenseful truth of the overused Suspense account</li>
                         <li>Alternative investments and private markets: Scaling up portfolio diversification for wholesale clients</li>
-                        <li>SIAA Monthly – March 2024</li>
+                        <li>SIAA Monthly â€“ March 2024</li>
                         <li>Navigating the challenges of global markets moving to T +1: How a strategic approach can help market participants</li>
                         <li>Harnessing opportunities in high-quality fixed income through a low cost vehicle</li>
                         <li>The good, the bad and the ugly this Reporting Season</li>
                         <li>Internationalisation of market businesses in Australia</li>
-                        <li>SIAA Monthly – February 2024</li>
+                        <li>SIAA Monthly â€“ February 2024</li>
                         <li>Treasury proposes a new Financial Product called a Digital Asset Facility'</li>
                         <li>Using options to 'Repair a stock position'</li>
                         <li>HNW investors embracing endowment-aligned strategies</li>
@@ -875,13 +876,13 @@
                     
                     <h3>2023</h3>
                     <ul>
-                        <li>SIAA Monthly – December 2023</li>
+                        <li>SIAA Monthly â€“ December 2023</li>
                         <li>Diversifiers to build a smarter portfolio in a less predictable world</li>
                         <li>Navigating the new digital battlefield: AI threats vs client call-backs</li>
                         <li>ASX unveils proposals for cash equities market in Service Release 15</li>
                         <li>The true cost of a security breach</li>
-                        <li>SIAA Monthly – November 2023</li>
-                        <li>SIAA Monthly – October 2023</li>
+                        <li>SIAA Monthly â€“ November 2023</li>
+                        <li>SIAA Monthly â€“ October 2023</li>
                         <li>How do you solve a problem like CHESS?</li>
                         <li>Navigating the challenges of deregistered companies</li>
                         <li>Short-term weakness in commodity prices creates opportunity</li>
@@ -889,31 +890,31 @@
                         <li>Adopting AI into your practice today</li>
                         <li>Rekindling the interest in bonds amid peaking rates</li>
                         <li>NETS upgrade implementation</li>
-                        <li>SIAA Monthly – September 2023</li>
+                        <li>SIAA Monthly â€“ September 2023</li>
                         <li>The Client File</li>
                         <li>A comprehensive guide to identity management in the Australian financial industry</li>
                         <li>Options can give you options</li>
                         <li>Artificial Intelligence has become a global sensation, capturing the imagination of people worldwide</li>
-                        <li>SIAA Monthly – August 2023</li>
+                        <li>SIAA Monthly â€“ August 2023</li>
                         <li>2H23 outlook: Transitions take time and require patience</li>
                         <li>Above and beyond: how client experience is key to building women's wealth</li>
                         <li>What are thematic ETFs and how do they work?</li>
                         <li>Global emerging markets year in review 2022-2023</li>
-                        <li>SIAA Monthly – July 2023</li>
-                        <li>A new framework for understanding the sustainability of business models – Part 2</li>
+                        <li>SIAA Monthly â€“ July 2023</li>
+                        <li>A new framework for understanding the sustainability of business models â€“ Part 2</li>
                         <li>How Aussie ETF disclosure works</li>
                         <li>From remediation to rigorous due diligence: Transforming AFSL practices for financial success</li>
-                        <li>Competitive advantage through digital empowerment: Part 2 – Wealth Management</li>
-                        <li>SIAA Monthly – June 2023</li>
-                        <li>Competitive advantage through digital empowerment: Part 1 – Market Access</li>
-                        <li>Pace of intergenerational wealth transfer has quickened: Most Baby Boomers will retire by 2028 – and the industry needs to be ready</li>
+                        <li>Competitive advantage through digital empowerment: Part 2 â€“ Wealth Management</li>
+                        <li>SIAA Monthly â€“ June 2023</li>
+                        <li>Competitive advantage through digital empowerment: Part 1 â€“ Market Access</li>
+                        <li>Pace of intergenerational wealth transfer has quickened: Most Baby Boomers will retire by 2028 â€“ and the industry needs to be ready</li>
                         <li>Seeking opportunities through call options in active ETFs</li>
-                        <li>SIAA Monthly – May 2023</li>
+                        <li>SIAA Monthly â€“ May 2023</li>
                         <li>The sprint to catch up: why Australia needs to move fast to regain its place in financial market innovation</li>
                         <li>Commercial real estate credit: an overlooked investment solution?</li>
                         <li>RegTech 3.0: The Future of Compliance technology in capital markets</li>
                         <li>Open letter to the SIAA Community from Cboe</li>
-                        <li>SIAA Monthly – April 2023</li>
+                        <li>SIAA Monthly â€“ April 2023</li>
                         <li>Developing advice tailored for women: why the time is now</li>
                         <li>A new framework for understanding the sustainability of business models [PART 1]</li>
                         <li>Working with the machine</li>
@@ -921,30 +922,30 @@
                     
                     <h3>2022</h3>
                     <ul>
-                        <li>SIAA Monthly – December 2022</li>
+                        <li>SIAA Monthly â€“ December 2022</li>
                         <li>Five consumer trends impacting advice and your selection of technology</li>
                         <li>Improving returns through smarter trading</li>
                         <li>ASX investment product trends</li>
                         <li>Are you tired of instability in the markets? Corporate bonds can help hedge against the next crash.</li>
-                        <li>SIAA Monthly – November 2022</li>
+                        <li>SIAA Monthly â€“ November 2022</li>
                         <li>From the roaring 1920s to 2022</li>
                         <li>Does Australia need nuclear energy to reach net-zero by 2050?</li>
-                        <li>THE ESSENTIAL EIGHT – strategies to improve your cyber security</li>
+                        <li>THE ESSENTIAL EIGHT â€“ strategies to improve your cyber security</li>
                         <li>Bridging the digital gap in the Australian wealth management industry</li>
-                        <li>SIAA Monthly – October 2022</li>
+                        <li>SIAA Monthly â€“ October 2022</li>
                         <li>Inside insider trading</li>
                         <li>Overseas listed infrastructure investment opportunities</li>
-                        <li>Tech migration – Defining markets to benefit all participants</li>
-                        <li>SIAA Monthly – September 2022</li>
+                        <li>Tech migration â€“ Defining markets to benefit all participants</li>
+                        <li>SIAA Monthly â€“ September 2022</li>
                         <li>Energising long-term returns</li>
                         <li>Managing cyber risk in your supply chain</li>
                         <li>Succession: Risk or opportunity?</li>
-                        <li>SIAA Monthly – August 2022</li>
+                        <li>SIAA Monthly â€“ August 2022</li>
                         <li>Going for broke: Reimagining the retail brokerage model in the age of digital disruption</li>
-                        <li>Listed investment companies – Celebrating the past and looking to the future</li>
+                        <li>Listed investment companies â€“ Celebrating the past and looking to the future</li>
                         <li>How to get the indexing edge for your clients</li>
                         <li>The inexorable shift from public to private: Capital and Debt</li>
-                        <li>SIAA Monthly – July 2022</li>
+                        <li>SIAA Monthly â€“ July 2022</li>
                         <li>Impact investing</li>
                         <li>The case for Australian equities</li>
                         <li>ESG and sustainable investing: Navigating adverse weather systems</li>
@@ -953,30 +954,30 @@
                     
                     <h3>2021</h3>
                     <ul>
-                        <li>SIAA Monthly – December 2021</li>
+                        <li>SIAA Monthly â€“ December 2021</li>
                         <li>The new nominal</li>
                         <li>How can renewable energy help address the global food problem?</li>
                         <li>Why investors should treat exotic ETFs with caution</li>
                         <li>An exchange of ideas: making investment style products mainstream</li>
-                        <li>SIAA Monthly – November 2021</li>
+                        <li>SIAA Monthly â€“ November 2021</li>
                         <li>Gold in the decade ahead</li>
                         <li>ESG: Driving change and generating alpha</li>
                         <li>An update on LICs and LITs</li>
-                        <li>Derivatives accreditation – increasing your worth as an adviser</li>
+                        <li>Derivatives accreditation â€“ increasing your worth as an adviser</li>
                         <li>Low volatility income the key in a rebounding market</li>
                         <li>Consulting on renewal of product intervention orders for retail OTC derivatives</li>
-                        <li>SIAA Monthly – October 2021</li>
+                        <li>SIAA Monthly â€“ October 2021</li>
                         <li>An introduction to ESG investing</li>
                         <li>Building a sustainable portfolio</li>
                         <li>How investors are using ETFs for global exposure</li>
                         <li>Social media led pump and dump stocks</li>
-                        <li>SIAA Monthly – September 2021</li>
+                        <li>SIAA Monthly â€“ September 2021</li>
                         <li>Summary of independent review of November's ASX Trade outrage</li>
                         <li>ETF opportunities for advisers, stockbrokers</li>
                         <li>Managing the Professional Year</li>
                         <li>Finding value in all corners of the market</li>
                         <li>Establishing sustainable finance: Comparing emerging markets and Australia</li>
-                        <li>SIAA Monthly – August 2021</li>
+                        <li>SIAA Monthly â€“ August 2021</li>
                         <li>Why we believe value stocks are poised to outperform growth</li>
                         <li>Get ready: Managed portfolio customisation technology is coming</li>
                         <li>Farming, Food and Fertiliser: Sulphate of Potash bringing a revolution in all three</li>
@@ -1222,13 +1223,13 @@
                     <p>FAAA Financial Planning Research Journal</p>
                     <p>The Financial Planning Research Journal (FPRJ) is a significant publication in the field of financial planning in Australia. It was collaboratively launched by the Financial Advice Association Australia (FAAA) and Griffith Business School, and holds the distinction of being Australia's first academic journal dedicated to financial planning.</p>
                     
-                    <h3>Financial Planning Research Journal, Volume 9, Issue 1 – 2023</h3>
+                    <h3>Financial Planning Research Journal, Volume 9, Issue 1 â€“ 2023</h3>
                     <ul>
                         <li>Canadian retirement planning behaviour: How reliance on a government pension relates to pre-retirement savings and planning behaviours.</li>
                         <li>Spend and repeat! Young adult's experiences with buy now pay later services.</li>
                     </ul>
                     
-                    <h3>Financial Planning Research Journal, Volume 8, Issue 1 – 2022</h3>
+                    <h3>Financial Planning Research Journal, Volume 8, Issue 1 â€“ 2022</h3>
                     <ul>
                         <li>Can personal budget management services improve debt repayments? A study using budget data</li>
                         <li>Retirees, financial planning horizon, and retirement satisfaction</li>
@@ -1271,10 +1272,10 @@
                         <li>Overconfidence in Financial Literacy: Implications for Planners</li>
                         <li>Customer intention to save for retirement using a professional financial services planner</li>
                         <li>Consumers of financial advice in New Zealand</li>
-                        <li>Equity holdings of Australian Baby Boomers – Comparing life cycle phases</li>
+                        <li>Equity holdings of Australian Baby Boomers â€“ Comparing life cycle phases</li>
                     </ul>
                     
-                    <h3>Financial Planning Research Journal, Volume 2, Issue 1 – 2016</h3>
+                    <h3>Financial Planning Research Journal, Volume 2, Issue 1 â€“ 2016</h3>
                     <ul>
                         <li>Characteristics of trust in personal financial planning</li>
                         <li>Can stakeholders be satisfied with accountants' education to act as advisors to self-managed superannuation funds?</li>
@@ -1306,7 +1307,7 @@
                     <h3>Financial Analysts Journal, Second Quarter, 2024, Volume 80 Issue 2</h3>
                     <ul>
                         <li>Fundamental Analysis via Machine Learning (21 March 2024)</li>
-                        <li>Empirical Evidence on the Stock–Bond Correlation (21 March 2024)</li>
+                        <li>Empirical Evidence on the Stockâ€“Bond Correlation (21 March 2024)</li>
                         <li>Smart Rebalancing (15 March 2024)</li>
                         <li>Private Equity Performance around the World (1 February 2024)</li>
                     </ul>
@@ -1329,7 +1330,7 @@
                         <li>Direct Lending Returns (10 October 2023)</li>
                         <li>Thematic Investing with Big Data: The Case of Private Equity (26 September 2023)</li>
                         <li>Harry Markowitz in Memoriam (13 September 2023)</li>
-                        <li>Applying ABOUT—Not Gut Feel—to ESG (12 September 2023)</li>
+                        <li>Applying ABOUTâ€”Not Gut Feelâ€”to ESG (12 September 2023)</li>
                         <li>Green Parity and the Decarbonization of Corporate Bond Portfolios (12 September 2023)</li>
                         <li>Swing Pricing Calibration: Using ETFs to Infer Swing Factors for Mutual Funds</li>
                         <li>Intermediaries' Incentives across Share Classes in the Same Fund</li>
@@ -3259,7 +3260,7 @@
             
             if (articleContent[articleId]) {
                 title.textContent = articleContent[articleId].title;
-                const imagePlaceholder = `<div style="width:100%;height:auto;aspect-ratio:16/9;background:linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:24px;color:white;box-shadow:var(--shadow-md);"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:12px;opacity:0.9;"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg><span style="font-weight:600;letter-spacing:0.05em;text-transform:uppercase;font-size:12px;opacity:0.9;">Professional Insights</span></div>`;
+                const imagePlaceholder = window.buildArticleImageHtml(articleId, articleContent[articleId]);
 
                 const relatedArticles = `
 <hr style="margin:32px 0;border:none;border-top:1px solid #e5e7eb;">
@@ -3344,4 +3345,9 @@
 
 
 
-</body></html>
+    <script src="js/article-image-resolver.js"></script>`r`n</body></html>
+
+
+
+
+

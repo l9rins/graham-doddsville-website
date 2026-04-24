@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head>
+﻿<!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Share Investing - Graham and Doddsville</title>
@@ -536,7 +536,7 @@
             <!-- Page Title Section -->
             <div class="page-title-section">
                 <div class="breadcrumb">
-                    <a href="index.html" class="breadcrumb-link">← Home</a>
+                    <a href="index.html" class="breadcrumb-link">â† Home</a>
                 </div>
                 <h1 class="page-title">Share Investing</h1>
                 <p class="page-subtitle">Master the art of stock market investing with comprehensive guides and strategies</p>
@@ -548,7 +548,7 @@
                 <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('introduction-shares')">
                     <h3 class="collapsible-title">Introduction to Shares</h3>
-                    <span class="collapsible-arrow" id="introduction-shares-arrow">▼</span>
+                    <span class="collapsible-arrow" id="introduction-shares-arrow">â–¼</span>
                 </div>
                 <div class="collapsible-content" id="introduction-shares-content">
                     <ul class="collapsible-links">
@@ -570,7 +570,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('investing-psychology')">
                     <h3 class="collapsible-title">Investing Psychology</h3>
-                    <span class="collapsible-arrow" id="investing-psychology-arrow">▼</span>
+                    <span class="collapsible-arrow" id="investing-psychology-arrow">â–¼</span>
                 </div>
                 <div class="collapsible-content" id="investing-psychology-content">
                     <ul class="collapsible-links">
@@ -592,7 +592,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('portfolio-construction')">
                     <h3 class="collapsible-title">Portfolio Construction</h3>
-                    <span class="collapsible-arrow" id="portfolio-construction-arrow">▼</span>
+                    <span class="collapsible-arrow" id="portfolio-construction-arrow">â–¼</span>
                 </div>
                 <div class="collapsible-content" id="portfolio-construction-content">
                     <ul class="collapsible-links">
@@ -614,7 +614,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('investing-styles')">
                     <h3 class="collapsible-title">Investing Styles</h3>
-                    <span class="collapsible-arrow" id="investing-styles-arrow">▼</span>
+                    <span class="collapsible-arrow" id="investing-styles-arrow">â–¼</span>
                 </div>
                 <div class="collapsible-content" id="investing-styles-content">
                     <ul class="collapsible-links">
@@ -638,7 +638,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('stockpicking-strategies')">
                     <h3 class="collapsible-title">Stockpicking Strategies</h3>
-                    <span class="collapsible-arrow" id="stockpicking-strategies-arrow">▼</span>
+                    <span class="collapsible-arrow" id="stockpicking-strategies-arrow">â–¼</span>
                 </div>
                 <div class="collapsible-content" id="stockpicking-strategies-content">
                     <ul class="collapsible-links">
@@ -662,7 +662,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('value-investing')">
                     <h3 class="collapsible-title">Value Investing</h3>
-                    <span class="collapsible-arrow" id="value-investing-arrow">▼</span>
+                    <span class="collapsible-arrow" id="value-investing-arrow">â–¼</span>
                 </div>
                 <div class="collapsible-content" id="value-investing-content">
                     <ul class="collapsible-links">
@@ -687,7 +687,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('technical-analysis')">
                     <h3 class="collapsible-title">Technical Analysis</h3>
-                    <span class="collapsible-arrow" id="technical-analysis-arrow">▼</span>
+                    <span class="collapsible-arrow" id="technical-analysis-arrow">â–¼</span>
                 </div>
                 <div class="collapsible-content" id="technical-analysis-content">
                     <ul class="collapsible-links">
@@ -709,7 +709,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('ipos')">
                     <h3 class="collapsible-title">IPOs</h3>
-                    <span class="collapsible-arrow" id="ipos-arrow">▼</span>
+                    <span class="collapsible-arrow" id="ipos-arrow">â–¼</span>
                 </div>
                 <div class="collapsible-content" id="ipos-content">
                     <ul class="collapsible-links">
@@ -736,7 +736,7 @@
         <div class="article-detail-content">
             <div class="article-detail-header">
                 <h3 class="article-detail-title" id="article-detail-title">Article Title</h3>
-                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">×</button>
+                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">Ã—</button>
             </div>
             <div class="article-detail-body" id="article-detail-body">
                 <div class="loading-spinner">Loading article...</div>
@@ -744,6 +744,7 @@
         </div>
     </div>
 
+    <script src="js/article-image-helper.js"></script>
     <script>
         // Collapsible functionality
         function toggleCollapsible(sectionId) {
@@ -754,16 +755,16 @@
             document.querySelectorAll('.collapsible-content.expanded').forEach(openContent => {
                 openContent.classList.remove('expanded');
                 const openArrowId = openContent.id.replace('-content', '-arrow');
-                document.getElementById(openArrowId).innerHTML = '▼';
+                document.getElementById(openArrowId).innerHTML = 'â–¼';
             });
 
             // Toggle this section
             if (content.classList.contains('expanded')) {
                 content.classList.remove('expanded');
-                arrow.innerHTML = '▼';
+                arrow.innerHTML = 'â–¼';
             } else {
                 content.classList.add('expanded');
-                arrow.innerHTML = '▲';
+                arrow.innerHTML = 'â–²';
             }
         }
 
@@ -846,7 +847,7 @@
                     <p>Value investing is a time-tested strategy that involves identifying and purchasing securities that are trading below their intrinsic value. Originating from the teachings of Benjamin Graham and popularized by Warren Buffett, this approach prioritizes fundamental analysis over market trends, aiming to capitalize on market inefficiencies where stocks are undervalued relative to their true worth.</p>
 
                     <h3>Key Principles and Concepts</h3>
-                    <p>At its core, value investing relies on rigorous fundamental analysis to determine a company's intrinsic value—the actual economic worth based on its assets, earnings, and cash flows. Key principles include:</p>
+                    <p>At its core, value investing relies on rigorous fundamental analysis to determine a company's intrinsic valueâ€”the actual economic worth based on its assets, earnings, and cash flows. Key principles include:</p>
                     <ul>
                     <li><strong>Margin of Safety:</strong> Purchasing assets at a significant discount to their intrinsic value to mitigate risks from valuation errors.</li>
                     <li><strong>Long-Term Focus:</strong> Emphasizing patient holding periods, often years, to allow market corrections to align prices with fundamentals.</li>
@@ -1706,7 +1707,7 @@
                     
 <p>Share Investing</p>
                     <h2>The 10 Best Stock Screeners in Australia</h2>
-                    <p>Are you ready to take your stock-picking game to the next level? Say goodbye to tedious research and manual analysis, and say hello to stock screeners—a powerful tool that helps you find investment opportunities in a flash. In this article, we'll walk you through the top 10 stock screeners in Australia. We'll explore their features, benefits, and drawbacks, so you can find the perfect tool to uncover winning stocks. Let's dive in and unleash the power of stock screeners!</p>
+                    <p>Are you ready to take your stock-picking game to the next level? Say goodbye to tedious research and manual analysis, and say hello to stock screenersâ€”a powerful tool that helps you find investment opportunities in a flash. In this article, we'll walk you through the top 10 stock screeners in Australia. We'll explore their features, benefits, and drawbacks, so you can find the perfect tool to uncover winning stocks. Let's dive in and unleash the power of stock screeners!</p>
                     <h3>CommSec's Stock Filter</h3>
                     <p><strong>Pros:</strong></p>
                     <ul>
@@ -1865,7 +1866,7 @@
                     
 <p>Share Investing</p>
                     <h2>Cognitive Biases in Investing: Navigating the Pitfalls of Decision-Making</h2>
-                    <p>Investing is a complex endeavor that requires rational decision-making. However, our minds are prone to cognitive biases—systematic errors in thinking that can cloud judgment and lead to suboptimal investment choices. By understanding and addressing these cognitive biases, Australian investors can make more objective and informed decisions. In this article, we will explore the ten most common cognitive biases in investing, provide insights on how to recognize them, and offer strategies to overcome them.</p>
+                    <p>Investing is a complex endeavor that requires rational decision-making. However, our minds are prone to cognitive biasesâ€”systematic errors in thinking that can cloud judgment and lead to suboptimal investment choices. By understanding and addressing these cognitive biases, Australian investors can make more objective and informed decisions. In this article, we will explore the ten most common cognitive biases in investing, provide insights on how to recognize them, and offer strategies to overcome them.</p>
                     <h3>Confirmation Bias</h3>
                     <p>Confirmation bias is the tendency to seek out information that confirms our existing beliefs while disregarding or downplaying contradictory evidence. In investing, this bias can lead us to selectively interpret information, reinforcing our preconceived notions about a stock or market. To overcome confirmation bias, it is important to actively seek diverse viewpoints, critically evaluate information, and challenge our own assumptions.</p>
                     <h3>Anchoring Bias</h3>
@@ -2152,7 +2153,7 @@
                     <p>Share Investing</p>
                     <h2>Nailing Down the Basics: An Investor's Guide to Core Portfolio Strategies</h2>
                     <p>Building a solid foundation for long-term portfolio growth is essential for achieving financial success.</p>
-                    <p>In this article, we'll dive into core portfolio strategies that can help you navigate the investing world with confidence. We'll explore the power of index funds, exchange-traded funds (ETFs), and managed funds—low-cost, passively managed investments that can provide a strong base for your investment journey.</p>
+                    <p>In this article, we'll dive into core portfolio strategies that can help you navigate the investing world with confidence. We'll explore the power of index funds, exchange-traded funds (ETFs), and managed fundsâ€”low-cost, passively managed investments that can provide a strong base for your investment journey.</p>
                     <h3>Understanding Core Portfolio Strategies</h3>
                     <p>Before we jump into specific investments, let's talk about core portfolio strategies. These strategies aim to create a diversified and stable foundation for your portfolio. They typically involve long-term investments with a focus on asset allocation and risk management.</p>
                     <h3>The Rise of Index Funds: Simple and Effective</h3>
@@ -2754,7 +2755,7 @@
                     <p>M - Market Direction: Assess the overall market direction and aim to invest during favorable market conditions.</p>
 
                     <h3>Popular Types of CANSLIM Investments</h3>
-                    <p>Growth Stocks: CANSLIM investors often target growth stocks—companies that demonstrate rapid earnings growth and possess a competitive edge in their respective industries.</p>
+                    <p>Growth Stocks: CANSLIM investors often target growth stocksâ€”companies that demonstrate rapid earnings growth and possess a competitive edge in their respective industries.</p>
                     <p>Technological Innovators: CANSLIM investors look for companies at the forefront of technological advancements, such as those in the technology, biotech, and healthcare sectors.</p>
                     <p>Industry Leaders: CANSLIM identifies industry leaders with strong market positions and robust growth potential. These companies often benefit from favorable market trends and have the ability to outperform competitors.</p>
 
@@ -3082,7 +3083,7 @@
                     <p>To calculate the Graham Screener for a particular stock, gather the company's EPS and BVPS figures. Multiply the EPS by 22.5, then multiply the result by the BVPS. Finally, take the square root of this product to obtain the Graham Number.</p>
 
                     <h3>Popular Types of Graham Screener Investments</h3>
-                    <p>Value Stocks: The Graham Screener is often used to identify value stocks – companies with low valuations and strong fundamentals. These stocks may offer substantial upside potential once the market recognizes their true worth.</p>
+                    <p>Value Stocks: The Graham Screener is often used to identify value stocks â€“ companies with low valuations and strong fundamentals. These stocks may offer substantial upside potential once the market recognizes their true worth.</p>
                     <p>Dividend Stocks: The Graham Screener can be applied to dividend stocks, as it helps investors identify companies that may have strong financials and the potential to generate consistent dividends.</p>
 
                     <h3>Strengths of the Graham Screener</h3>
@@ -3397,7 +3398,7 @@
                 title: 'The Fundamental Principles of Value Investing',
                 content: `
                     <h2>The Fundamental Principles of Value Investing</h2>
-                    <p>Investing in the stock market can be a thrilling rollercoaster ride, where fortunes can be made or lost in the blink of an eye. But amidst the frenzy of market speculation and hype, there lies a steadfast and timeless approach to investing – value investing.</p>
+                    <p>Investing in the stock market can be a thrilling rollercoaster ride, where fortunes can be made or lost in the blink of an eye. But amidst the frenzy of market speculation and hype, there lies a steadfast and timeless approach to investing â€“ value investing.</p>
                     
                     <p>Developed by the legendary Benjamin Graham and embraced by iconic investors like Warren Buffett, value investing is a philosophy that centers on astute analysis, patience, and a deep understanding of the businesses behind the stocks.</p>
                     
@@ -3409,7 +3410,7 @@
                     <p>According to Graham, speculators focus on identifying companies that have the potential for significant future value based on certain . On the other hand, value investors aim to purchase companies at significant discounts to their current intrinsic value. Their hope is that as time passes, other investors will come to realize the true value of the company and subsequently drive up the price of its stock.</p>
                     
                     <h3>Mr. Market and The Stock Market</h3>
-                    <p>In Graham's iconic analogy, the stock market is personified as Mr. Market, a moody and emotional character. Every day, Mr. Market offers to buy or sell stocks at varying prices, reflecting his ever-changing emotions – sometimes exuberant, and other times, despondent. As an investor, you have the choice to either follow Mr. Market's erratic lead or maintain a level-headed approach.</p>
+                    <p>In Graham's iconic analogy, the stock market is personified as Mr. Market, a moody and emotional character. Every day, Mr. Market offers to buy or sell stocks at varying prices, reflecting his ever-changing emotions â€“ sometimes exuberant, and other times, despondent. As an investor, you have the choice to either follow Mr. Market's erratic lead or maintain a level-headed approach.</p>
                     
                     <p>The Margin of Safety principle advises investors to detach themselves from Mr. Market's whims and focus on independent analysis. Instead of being swayed by daily market sentiment, value investors diligently assess a company's fundamentals, growth prospects, and financial health. By doing so, they can seize opportunities presented by Mr. Market's irrational pricing, buying stocks when they are undervalued and selling when they become overvalued.</p>
                     
@@ -3449,7 +3450,7 @@
                     <p>When undervalued stocks do emerge, value investors are encouraged to invest heavily. This approach may result in a portfolio with high risk based on traditional measures like beta. However, value investors believe that they can effectively monitor a few stocks at a time, providing a concentrated but well-researched investment approach.</p>
                     
                     <h3>Conclusion</h3>
-                    <p>As we conclude our exploration of the fundamental principles of value investing, we find ourselves equipped with a treasure trove of timeless wisdom. The distinction between investing and speculation becomes clear – it's not about chasing wild dreams of overnight riches but diligently analyzing the businesses we invest in and ensuring a margin of safety in every decision.</p>
+                    <p>As we conclude our exploration of the fundamental principles of value investing, we find ourselves equipped with a treasure trove of timeless wisdom. The distinction between investing and speculation becomes clear â€“ it's not about chasing wild dreams of overnight riches but diligently analyzing the businesses we invest in and ensuring a margin of safety in every decision.</p>
                     
                     <p>We learn to embrace Mr. Market's erratic nature, using it to our advantage by capitalizing on opportunities when the market offers stocks at prices that deviate from their true value. Rather than fixating solely on stock prices, we dive deep into the businesses we invest in, seeking well-managed companies with sound fundamentals and long-term growth potential.</p>
                     
@@ -3930,7 +3931,7 @@
                     <li><strong>Avoiding Risky Speculation:</strong> Volatile markets may tempt some investors to take excessive risks or engage in speculative trading. The Margin of Safety principle encourages a conservative and disciplined approach, steering investors away from high-risk ventures.</li>
                     <li><strong>Reevaluating Investments:</strong> During market downturns, investors can reassess their existing investments. Companies that were considered to have a sufficient Margin of Safety before the downturn might require reevaluation if their financial situation or prospects have significantly changed.</li>
                     <li><strong>Patience and Holding Power:</strong> The Margin of Safety principle reinforces the importance of patience and holding power during market downturns. Investors with a long-term perspective are more likely to reap the benefits of their undervalued investments as market conditions stabilize.</li>
-                    <li><strong>Avoiding Value Traps:</strong> While the Margin of Safety is meant to protect investors from overpaying for stocks, it also helps them avoid value traps – stocks that appear cheap but are actually in declining businesses with limited growth prospects.</li>
+                    <li><strong>Avoiding Value Traps:</strong> While the Margin of Safety is meant to protect investors from overpaying for stocks, it also helps them avoid value traps â€“ stocks that appear cheap but are actually in declining businesses with limited growth prospects.</li>
                     </ul>
                     
                     <h3>Limitations of Margin of Safety in Investing</h3>
@@ -4511,7 +4512,7 @@
                     <h3>Conclusion</h3>
                     <p>The future of value investing holds both challenges and opportunities. Embracing technology and data-driven analysis, understanding behavioral biases, integrating ESG considerations, diversifying across global markets, and adapting to industry disruptions are essential for value investors to stay relevant and successful in a changing investment landscape.</p>
                     
-                    <p>As markets continue to evolve, the principles of value investing remain steadfast. Conducting diligent research, staying disciplined, and focusing on long-term value creation will continue to be the foundation of successful value investing strategies. As Benjamin Graham once said, "The investor's chief problem—and even his worst enemy—is likely to be himself." By navigating the future of value investing with wisdom and adaptability, investors can build a prosperous financial future.</p>
+                    <p>As markets continue to evolve, the principles of value investing remain steadfast. Conducting diligent research, staying disciplined, and focusing on long-term value creation will continue to be the foundation of successful value investing strategies. As Benjamin Graham once said, "The investor's chief problemâ€”and even his worst enemyâ€”is likely to be himself." By navigating the future of value investing with wisdom and adaptability, investors can build a prosperous financial future.</p>
                     
                     <p><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>
                 `
@@ -4548,11 +4549,11 @@
 
                 <h4>Trends Exist</h4>
 
-                <p>Technical analysts recognize the existence of trends in price movements. Prices tend to move in trends—upwards, downwards, or sideways. Identifying and trading with the trend is a crucial aspect of technical analysis.</p>
+                <p>Technical analysts recognize the existence of trends in price movements. Prices tend to move in trendsâ€”upwards, downwards, or sideways. Identifying and trading with the trend is a crucial aspect of technical analysis.</p>
 
                 <h4>Support and Resistance Levels</h4>
 
-                <p>Prices often encounter barriers where they struggle to move beyond—known as support and resistance levels. Support is a price level at which a downtrend can be expected to pause due to a concentration of demand, while resistance is a price level at which an uptrend can be expected to pause due to a concentration of supply.</p>
+                <p>Prices often encounter barriers where they struggle to move beyondâ€”known as support and resistance levels. Support is a price level at which a downtrend can be expected to pause due to a concentration of demand, while resistance is a price level at which an uptrend can be expected to pause due to a concentration of supply.</p>
 
                 <h4>Volume Confirms Trends</h4>
 
@@ -5638,13 +5639,13 @@
                     <p>2. "Security Analysis" by Benjamin Graham and David Dodd, 1934</p>
                     <p>This seminal work laid the foundation for value investing principles. It emphasised the importance of thorough analysis, intrinsic value, and margin of safety.</p>
                     <ul>
-                        <li>Security Analysis (First edition, 1934) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Second edition, 1940)– co-authored with David Dodd</li>
-                        <li>Security Analysis (Third edition, 1951) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Fourth edition, 1962) – co-authored with David Dodd and Sidney Cottle</li>
-                        <li>Security Analysis (Fifth edition, 1988) – authored by Sidney Cottle, Roger Murray and Frank Block</li>
-                        <li>Security Analysis (Sixth edition, 2008) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
-                        <li>Security Analysis (Seventh edition, 2023)– co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett</li>
+                        <li>Security Analysis (First edition, 1934) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Second edition, 1940)â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Third edition, 1951) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Fourth edition, 1962) â€“ co-authored with David Dodd and Sidney Cottle</li>
+                        <li>Security Analysis (Fifth edition, 1988) â€“ authored by Sidney Cottle, Roger Murray and Frank Block</li>
+                        <li>Security Analysis (Sixth edition, 2008) â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
+                        <li>Security Analysis (Seventh edition, 2023)â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett</li>
                     </ul>
                     <p>Anderson often cited this classic work by Benjamin Graham as essential reading for value investors. Graham's timeless principles of value investing, including the concept of margin of safety, influenced Anderson's own investment philosophy.</p>
                     <p>3. "Common Stocks and Uncommon Profits" by Philip Fisher (1958)</p>
@@ -5698,7 +5699,7 @@
                     <p>Guerin became a stockbroker at a couple of small firms that peddled third-class stocks because they carried the highest profit, or "spread," for the firm.</p>
                     <p>"In 1961", Guerin recalls, "a friend called and said he was going to buy into a downtown (LA) trading firm because someone [Jack Wheeler of Wheeler, Cruttenden & Company] was selling out". He decided that he too would join in the investment by buying Wheeler's 50% share using the only $40,000 he had. But when he arrived at the meeting place to settle the deal, he met Charlie Munger. The two of them started to talk. "I was just going to this meeting for the closing. I was going to deliver a check and take a stock certificate. We were joking with Munger, when this light went on in my brain. 'I'm on the wrong side of this transaction.'" </p>
                     <p>Guerin eventually lost his entire investment in the partnership. However, as Munger later noted, "By then, he'd learned a lot and was doing very well." He went on emulate Buffett and Munger by establishing his own investment firm, Pacific Partners Ltd.</p>
-                    <p>Buffett explained: "With some, the idea of buying dollar bills for forty cents takes, and with some it doesn't take. It's like an inoculation. It's extraordinary to me. If it doesn't grab them right away, I find that you can talk to them for years and show them records—you can do everything—and it just doesn't make any difference. I've never seen anyone who became a convert over a ten-year period with this approach. It’s always instant recognition or nothing. Whatever it is, I’ve never understood it. But with a fellow like Rick Guerin – no business background in terms of studying it, but he saw it like that, he understood what it’s about, and he was applying it five minutes later. And Rick was smart enough to know that you should get a great teacher, which is what I was lucky enough to do with Ben Graham."</p>
+                    <p>Buffett explained: "With some, the idea of buying dollar bills for forty cents takes, and with some it doesn't take. It's like an inoculation. It's extraordinary to me. If it doesn't grab them right away, I find that you can talk to them for years and show them recordsâ€”you can do everythingâ€”and it just doesn't make any difference. I've never seen anyone who became a convert over a ten-year period with this approach. Itâ€™s always instant recognition or nothing. Whatever it is, Iâ€™ve never understood it. But with a fellow like Rick Guerin â€“ no business background in terms of studying it, but he saw it like that, he understood what itâ€™s about, and he was applying it five minutes later. And Rick was smart enough to know that you should get a great teacher, which is what I was lucky enough to do with Ben Graham."</p>
                     <p>Guerin soon joined with Charlie Munger and Warren Buffett in the ownership of See's Candy and other public companies.</p>
                     <p>He spearheaded one of Berkshire's greatest investments: the acquisition of Blue Chip Stamps. He had noticed there was a difference between the volume of stamps purchased and redeemed (called the "float"). And the beauty of this was that only 50% of stamps ever got redeemed. So, after buying 60% of the company, they used the "float" of Blue Chip Stamps to buy See's Candy with $25 million. Then they bought Wesco Financial for $25 million and the Buffalo Evening Post.</p>
                     <p>See's Candy alone then went on to generate over $2 billion of income for Berkshire Hathaway to-date, and Wesco Financial now has a market capitalisation of around of $7 billion.</p>
@@ -5710,7 +5711,7 @@
 
                     <h3>Investment Style, Philosophy & Principles</h3>
                     <h4>Investment Style</h4>
-                    <p>Guerin's investment style was deeply rooted in the principles of value investing—a philosophy championed by investing luminaries such as Benjamin Graham and Warren Buffett. Central to Guerin's approach was the belief in seeking out undervalued assets with the potential for substantial long-term growth. He was renowned for his patient and disciplined approach to investing, focusing on the intrinsic value of a company rather than short-term market fluctuations.</p>
+                    <p>Guerin's investment style was deeply rooted in the principles of value investingâ€”a philosophy championed by investing luminaries such as Benjamin Graham and Warren Buffett. Central to Guerin's approach was the belief in seeking out undervalued assets with the potential for substantial long-term growth. He was renowned for his patient and disciplined approach to investing, focusing on the intrinsic value of a company rather than short-term market fluctuations.</p>
 
                     <h4>Investment Philosophy</h4>
                     <p>At the core of Guerin's investment philosophy was the principle of buying low and holding for the long term. He believed in investing in companies with strong fundamentals, robust management teams, and competitive advantages within their industries. Guerin emphasised the importance of thorough research and analysis, ensuring a deep understanding of a company's business model, market position, and growth prospects before making an investment.</p>
@@ -5740,16 +5741,16 @@
                     <p>None found.</p>
 
                     <h4>Books about Rick Guerin</h4>
-                    <p>1. "The Snowball: Warren Buffett and the Business of Life" by Alice Schroeder (2008) – Even though the book is about Warren Buffett, Rick Guerin is mentioned throughout this book.</p>
-                    <p>2. "Poor Charlie's Almanack: The Wit and Wisdom of Charles T Munger" by Charlie Munger – Even though the book is about Charlie Munger, there are references to Guerin in this book.</p>
+                    <p>1. "The Snowball: Warren Buffett and the Business of Life" by Alice Schroeder (2008) â€“ Even though the book is about Warren Buffett, Rick Guerin is mentioned throughout this book.</p>
+                    <p>2. "Poor Charlie's Almanack: The Wit and Wisdom of Charles T Munger" by Charlie Munger â€“ Even though the book is about Charlie Munger, there are references to Guerin in this book.</p>
 
                     <h4>Articles about Rick Guerin</h4>
                     <p>1. "The Superinvestors of Graham-and-Doddsville" by Warren Buffett (1984)</p>
                     <p>2. "Nobody Talks About Rick Anymore?" by Justin Vossen (26 May 2021)</p>
                     <p>3. "Rick Guerin: The forgotten genius" by The Short Gear (20 April 2023)</p>
-                    <p>4. "How Warren Buffet's Long Forgotten Third Business Partner Lost Absolutely Everything – 3 Things Regular People Are Doing to Lose All Their Money in Investments (And What You Should Be Doing Instead)" by Anders Skagerberg (accessed 2 April 2024)</p>
+                    <p>4. "How Warren Buffet's Long Forgotten Third Business Partner Lost Absolutely Everything â€“ 3 Things Regular People Are Doing to Lose All Their Money in Investments (And What You Should Be Doing Instead)" by Anders Skagerberg (accessed 2 April 2024)</p>
                     <p>5. "The Superinvestors of Graham-and-Doddsville: Rick Guerin" (23 March 2015)</p>
-                    <p>6. "JP 'Rick' Guerin Jr, 1929 – 2020: Self-made man succeeded with grit and intelligence", obituary (accessed on 2 April 2024)</p>
+                    <p>6. "JP 'Rick' Guerin Jr, 1929 â€“ 2020: Self-made man succeeded with grit and intelligence", obituary (accessed on 2 April 2024)</p>
 
                     <h4>Books Recommended by Rick Guerin</h4>
                     <p>1. "The Intelligent Investor" by Benjamin Graham (1949). See also Revised Edition and Third Edition.</p>
@@ -5757,13 +5758,13 @@
                     <p>2. "Security Analysis" by Benjamin Graham and David Dodd, 1934</p>
                     <p>This seminal work laid the foundation for value investing principles. It emphasised the importance of thorough analysis, intrinsic value, and margin of safety.</p>
                     <ul>
-                        <li>Security Analysis (First edition, 1934) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Second edition, 1940)– co-authored with David Dodd</li>
-                        <li>Security Analysis (Third edition, 1951) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Fourth edition, 1962) – co-authored with David Dodd and Sidney Cottle</li>
-                        <li>Security Analysis (Fifth edition, 1988) – authored by Sidney Cottle, Roger Murray and Frank Block</li>
-                        <li>Security Analysis (Sixth edition, 2008) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
-                        <li>Security Analysis (Seventh edition, 2023) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett</li>
+                        <li>Security Analysis (First edition, 1934) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Second edition, 1940)â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Third edition, 1951) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Fourth edition, 1962) â€“ co-authored with David Dodd and Sidney Cottle</li>
+                        <li>Security Analysis (Fifth edition, 1988) â€“ authored by Sidney Cottle, Roger Murray and Frank Block</li>
+                        <li>Security Analysis (Sixth edition, 2008) â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
+                        <li>Security Analysis (Seventh edition, 2023) â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett</li>
                     </ul>
                     <p>Graham's timeless principles of value investing, including the concept of margin of safety, influenced Guerin's own investment philosophy.</p>
 
@@ -5849,7 +5850,7 @@
 
                     <h4>Investment Mistakes</h4>
                     <p>While Knapp's investment track record was mostly stellar, he was not immune to mistakes. During the late 1950s, Knapp and Buffett once tried to corner the market in 1954 Blue Eagle four-cent airmail stamps for postcards, believing that the stamp might become a precious collectible someday. He said: "We got in his car. It took all day. We were talking about deals, and I said I had been reading in Linn's Stamp News about a Blue Eagle four-cent stamp that was being taken off the market for a 5-cent Red Eagle stamp." On their way home from an investment seminar, they stopped by numerous post offices to buy the stamps and ended up buying some 400,000 stamps for a $16,000 investment (or about $100,000 USD in today's dollars). They held the stamps for many years but the stamps never did become valuable.</p>
-                    <p>In 1982, some 23 years later, Buffett sold his stamps at a 10% discount under face value to a dealer. Knapp held on to his share of the Blue Eagles stamps, ironically using 4¢ stamps in combination as rates rose, as postage for the rest of his life.</p>
+                    <p>In 1982, some 23 years later, Buffett sold his stamps at a 10% discount under face value to a dealer. Knapp held on to his share of the Blue Eagles stamps, ironically using 4Â¢ stamps in combination as rates rose, as postage for the rest of his life.</p>
 
                     <h3>Selected Quotes</h3>
                     <p>None found.</p>
@@ -5862,8 +5863,8 @@
                     <p>None found.</p>
 
                     <h4>Books about Tom Knapp</h4>
-                    <p>1. "The Snowball: Warren Buffett and the Business of Life" by Alice Schroeder (2008) – Even though the book is about Warren Buffett, Knapp is mentioned throughout this book.</p>
-                    <p>2. "Of Permanent Value: The Story of Warren Buffett" by Andrew Kilpatrick (2012) – Even though the book is about Warren Buffett, Knapp is mentioned throughout this book.</p>
+                    <p>1. "The Snowball: Warren Buffett and the Business of Life" by Alice Schroeder (2008) â€“ Even though the book is about Warren Buffett, Knapp is mentioned throughout this book.</p>
+                    <p>2. "Of Permanent Value: The Story of Warren Buffett" by Andrew Kilpatrick (2012) â€“ Even though the book is about Warren Buffett, Knapp is mentioned throughout this book.</p>
 
                     <h4>Articles about Tom Knapp</h4>
                     <p>1. "The Superinvestors of Graham-and-Doddsville" by Warren Buffett (1984)</p>
@@ -5875,19 +5876,19 @@
                     <p>2. "Security Analysis" by Benjamin Graham and David Dodd, 1934</p>
                     <p>This seminal work laid the foundation for value investing principles. It emphasised the importance of thorough analysis, intrinsic value, and margin of safety.</p>
                     <ul>
-                        <li>Security Analysis (First edition, 1934) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Second edition, 1940) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Third edition, 1951) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Fourth edition, 1962) – co-authored with David Dodd and Sidney Cottle</li>
-                        <li>Security Analysis (Fifth edition, 1988) – authored by Sidney Cottle, Roger Murray and Frank Block</li>
-                        <li>Security Analysis (Sixth edition, 2008) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
-                        <li>Security Analysis (Seventh edition, 2023) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett</li>
+                        <li>Security Analysis (First edition, 1934) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Second edition, 1940) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Third edition, 1951) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Fourth edition, 1962) â€“ co-authored with David Dodd and Sidney Cottle</li>
+                        <li>Security Analysis (Fifth edition, 1988) â€“ authored by Sidney Cottle, Roger Murray and Frank Block</li>
+                        <li>Security Analysis (Sixth edition, 2008) â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
+                        <li>Security Analysis (Seventh edition, 2023) â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett</li>
                     </ul>
                     <p>Graham's timeless principles of value investing, including the concept of margin of safety, influenced Knapp's own investment philosophy.</p>
 
                     <h3>Other Trivia</h3>
                     <p>1. Knapp was a prankster at Graham-Newman Corporation. He researched stocks and spent his days plotting practical jokes on his colleagues when he wasn't orchestrating trades.</p>
-                    <p>2. Knapp, who was 10 years to the day older than Buffett, may well be Berkshire Hathaway's oldest shareholder. "I got my shares when Dempster Mill [a windmill company Buffett owned] was liquidated. I received Berkshire stock, which was one of its holdings. My cost basis was between five and ten dollars a share. I never sold a share and bought some for my family, and they seem happy with it … I don't know of a better company."</p>
+                    <p>2. Knapp, who was 10 years to the day older than Buffett, may well be Berkshire Hathaway's oldest shareholder. "I got my shares when Dempster Mill [a windmill company Buffett owned] was liquidated. I received Berkshire stock, which was one of its holdings. My cost basis was between five and ten dollars a share. I never sold a share and bought some for my family, and they seem happy with it â€¦ I don't know of a better company."</p>
                     <p>3. Knapp was an avid sailor. He was a member of The Sayville Yacht Club, Princeton Club in Manhattan, Quantuck Beach Club Westhampton Beach, New York, Westhampton Yacht Club, John's Island Club, Grand Harbor Club, Moorings Club and Quail River Club.</p>
                     <p>4. Website dedicated to Knapp: "Tom Knapp and Ed Anderson Resource Page" https://www.valuewalk.com/tom-knapp-tweedy-browne/</p>
 
@@ -5908,9 +5909,9 @@
                     <p>Stanley (Stan) Edward Perlmeter was born on 28 March 1926.</p>
                     <p>He served in the US Navy in the post-war years, and then settled with his late wife, Janet Shapiro Perlmeter, in Omaha, Nebraska.</p>
                     <p>A remarkable husband, father, grandfather, great-grandfather, son and brother, Perlmeter lived his life with zest and determination.</p>
-                    <p>He was a man who revelled in life's joys. His love for celebration and adventure knew no bounds, especially when surrounded by cherished friends and family. Whether it was in his hometown or the vibrant streets of Miami, Perlmeter's spirit thrived. In 1980, he and Jan embarked on a new chapter, relocating to Miami—a place that would forever hold a special place in their hearts.</p>
+                    <p>He was a man who revelled in life's joys. His love for celebration and adventure knew no bounds, especially when surrounded by cherished friends and family. Whether it was in his hometown or the vibrant streets of Miami, Perlmeter's spirit thrived. In 1980, he and Jan embarked on a new chapter, relocating to Miamiâ€”a place that would forever hold a special place in their hearts.</p>
                     <p>As a father, Perlmeter wore his pride like a badge of honour. Jeff, Michael (alongside his wife, Rosemary), and Rex (partnered with Rachel Hertzman) were his legacy. But his love extended beyond his immediate family. His grandchildren and great-grandchildren adored him.</p>
-                    <p>Life took an unexpected turn when Jan passed away in 2008 after 60 years of marriage. Amidst grief, Stan found solace in an extraordinary blessing—the chance to love again. Ronnie Koenigsberg Perlmeter entered his life, and their hearts aligned. In 2009, they exchanged vows, embarking on a journey of joyous companionship.</p>
+                    <p>Life took an unexpected turn when Jan passed away in 2008 after 60 years of marriage. Amidst grief, Stan found solace in an extraordinary blessingâ€”the chance to love again. Ronnie Koenigsberg Perlmeter entered his life, and their hearts aligned. In 2009, they exchanged vows, embarking on a journey of joyous companionship.</p>
                     <p>Ronnie brought more than just her love into Stan's life. Her children, grandchildren, and great-grandchild became an integral part of their extended family. Together, they basked in the warmth of kinship, weaving new bonds that transcended bloodlines.</p>
                     <p>He died on 18 December 2018 at the age of 92 in Key Biscayne, Miami-Dade County, Florida, USA. His wife, Ronnie, died 5 years later on 27 February 2023.</p>
 
@@ -5931,7 +5932,7 @@
 
                     <h4>Investment Philosophy</h4>
                     <p>At the core of Perlmeter's investment philosophy was the principle of buying businesses, not stocks. He viewed stocks as ownership stakes in real businesses, emphasising the importance of understanding the underlying company's fundamentals, competitive advantage and management quality. Stan's philosophy emphasised the preservation of capital, consistent returns, and the creation of enduring wealth.</p>
-                    <p>Buffett (1984): "[E]very time Perlmeter buys a stock it's because he's getting more for his money than he's paying. That's the only thing he's thinking about. He doesn't worry about whether it's January, he doesn't sorry about whether it's Monday, he doesn't worry about whether it's an election year. He simply says, if a business is worth a dollar and I can buy it 40 cents, something good may happen to me. And he does it over and over and over again. He owns many more stocks than I do – and is far less interested in the underlying nature of the business; I don't seem to have very much influence on Walter. That's one of his strengths: no one has much influence on him.</p>
+                    <p>Buffett (1984): "[E]very time Perlmeter buys a stock it's because he's getting more for his money than he's paying. That's the only thing he's thinking about. He doesn't worry about whether it's January, he doesn't sorry about whether it's Monday, he doesn't worry about whether it's an election year. He simply says, if a business is worth a dollar and I can buy it 40 cents, something good may happen to me. And he does it over and over and over again. He owns many more stocks than I do â€“ and is far less interested in the underlying nature of the business; I don't seem to have very much influence on Walter. That's one of his strengths: no one has much influence on him.</p>
 
                     <h4>Investment Principles</h4>
                     <p>Perlmeter adhered to several key investment principles that guided his decision-making process:</p>
@@ -5993,13 +5994,13 @@
                     <p>2. "Security Analysis" by Benjamin Graham and David Dodd, 1934</p>
                     <p>This seminal work laid the foundation for value investing principles. It emphasised the importance of thorough analysis, intrinsic value, and margin of safety.</p>
                     <ul>
-                        <li>Security Analysis (First edition, 1934) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Second edition, 1940) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Third edition, 1951) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Fourth edition, 1962) – co-authored with David Dodd and Sidney Cottle</li>
-                        <li>Security Analysis (Fifth edition, 1988) – authored by Sidney Cottle, Roger Murray and Frank Block</li>
-                        <li>Security Analysis (Sixth edition, 2008) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
-                        <li>Security Analysis (Seventh edition, 2023) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett.</li>
+                        <li>Security Analysis (First edition, 1934) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Second edition, 1940) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Third edition, 1951) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Fourth edition, 1962) â€“ co-authored with David Dodd and Sidney Cottle</li>
+                        <li>Security Analysis (Fifth edition, 1988) â€“ authored by Sidney Cottle, Roger Murray and Frank Block</li>
+                        <li>Security Analysis (Sixth edition, 2008) â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
+                        <li>Security Analysis (Seventh edition, 2023) â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett.</li>
                     </ul>
                     <p>Graham's timeless principles of value investing, including the concept of margin of safety, influenced Perlmeter's own investment philosophy.</p>
 
@@ -6384,13 +6385,13 @@
                     <p>2. "Security Analysis" by Benjamin Graham and David Dodd, 1934</p>
                     <p>This seminal work laid the foundation for value investing principles. It emphasised the importance of thorough analysis, intrinsic value, and margin of safety.</p>
                     <ul>
-                        <li>Security Analysis (First edition, 1934) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Second edition, 1940) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Third edition, 1951) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Fourth edition, 1962) – co-authored with David Dodd and Sidney Cottle</li>
-                        <li>Security Analysis (Fifth edition, 1988) – authored by Sidney Cottle, Roger Murray and Frank Block</li>
-                        <li>Security Analysis (Sixth edition, 2008) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
-                        <li>Security Analysis (Seventh edition, 2023) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett</li>
+                        <li>Security Analysis (First edition, 1934) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Second edition, 1940) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Third edition, 1951) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Fourth edition, 1962) â€“ co-authored with David Dodd and Sidney Cottle</li>
+                        <li>Security Analysis (Fifth edition, 1988) â€“ authored by Sidney Cottle, Roger Murray and Frank Block</li>
+                        <li>Security Analysis (Sixth edition, 2008) â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
+                        <li>Security Analysis (Seventh edition, 2023) â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett</li>
                     </ul>
                     <p>Anderson often cited this classic work by Benjamin Graham as essential reading for value investors. Graham's timeless principles of value investing, including the concept of margin of safety, influenced Anderson's own investment philosophy.</p>
                     <p>3. "Common Stocks and Uncommon Profits" by Philip Fisher (1958)</p>
@@ -6443,7 +6444,7 @@
                     <p>Guerin became a stockbroker at a couple of small firms that peddled third-class stocks because they carried the highest profit, or "spread," for the firm.</p>
                     <p>"In 1961", Guerin recalls, "a friend called and said he was going to buy into a downtown (LA) trading firm because someone [Jack Wheeler of Wheeler, Cruttenden & Company] was selling out". He decided that he too would join in the investment by buying Wheeler's 50% share using the only $40,000 he had. But when he arrived at the meeting place to settle the deal, he met Charlie Munger. The two of them started to talk. "I was just going to this meeting for the closing. I was going to deliver a check and take a stock certificate. We were joking with Munger, when this light went on in my brain. 'I'm on the wrong side of this transaction.' "</p>
                     <p>Guerin eventually lost his entire investment in the partnership. However, as Munger later noted, "By then, he'd learned a lot and was doing very well." He went on emulate Buffett and Munger by establishing his own investment firm, Pacific Partners Ltd.</p>
-                    <p>Buffett explained: "With some, the idea of buying dollar bills for forty cents takes, and with some it doesn't take. It's like an inoculation. It's extraordinary to me. If it doesn't grab them right away, I find that you can talk to them for years and show them records—you can do everything—and it just doesn't make any difference. I've never seen anyone who became a convert over a ten-year period with this approach. It’s always instant recognition or nothing. Whatever it is, I've never understood it. But with a fellow like Rick Guerin – no business background in terms of studying it, but he saw it like that, he understood what it's about, and he was applying it five minutes later. And Rick was smart enough to know that you should get a great teacher, which is what I was lucky enough to do with Ben Graham."</p>
+                    <p>Buffett explained: "With some, the idea of buying dollar bills for forty cents takes, and with some it doesn't take. It's like an inoculation. It's extraordinary to me. If it doesn't grab them right away, I find that you can talk to them for years and show them recordsâ€”you can do everythingâ€”and it just doesn't make any difference. I've never seen anyone who became a convert over a ten-year period with this approach. Itâ€™s always instant recognition or nothing. Whatever it is, I've never understood it. But with a fellow like Rick Guerin â€“ no business background in terms of studying it, but he saw it like that, he understood what it's about, and he was applying it five minutes later. And Rick was smart enough to know that you should get a great teacher, which is what I was lucky enough to do with Ben Graham."</p>
                     <p>Guerin soon joined with Charlie Munger and Warren Buffett in the ownership of See's Candy and other public companies.</p>
                     <p>He spearheaded one of Berkshire's greatest investments: the acquisition of Blue Chip Stamps. He had noticed there was a difference between the volume of stamps purchased and redeemed (called the "float"). And the beauty of this was that only 50% of stamps ever got redeemed. So, after buying 60% of the company, they used the "float" of Blue Chip Stamps to buy See's Candy with $25 million. Then they bought Wesco Financial for $25 million and the Buffalo Evening Post.</p>
                     <p>See's Candy alone then went on to generate over $2 billion of income for Berkshire Hathaway to-date, and Wesco Financial now has a market capitalisation of around of $7 billion.</p>
@@ -6455,7 +6456,7 @@
 
                     <h3>Investment Style, Philosophy & Principles</h3>
                     <h4>Investment Style</h4>
-                    <p>Guerin's investment style was deeply rooted in the principles of value investing—a philosophy championed by investing luminaries such as Benjamin Graham and Warren Buffett. Central to Guerin's approach was the belief in seeking out undervalued assets with the potential for substantial long-term growth.</p>
+                    <p>Guerin's investment style was deeply rooted in the principles of value investingâ€”a philosophy championed by investing luminaries such as Benjamin Graham and Warren Buffett. Central to Guerin's approach was the belief in seeking out undervalued assets with the potential for substantial long-term growth.</p>
                     <p>He was renowned for his patient and disciplined approach to investing, focusing on the intrinsic value of a company rather than short-term market fluctuations.</p>
 
                     <h4>Investment Philosophy</h4>
@@ -6486,16 +6487,16 @@
                     <p>None found.</p>
 
                     <h4>Books about Rick Guerin</h4>
-                    <p>1. "The Snowball: Warren Buffett and the Business of Life" by Alice Schroeder (2008) – Even though the book is about Warren Buffett, Rick Guerin is mentioned throughout this book.</p>
-                    <p>2. "Poor Charlie's Almanack: The Wit and Wisdom of Charles T Munger" by Charlie Munger – Even though the book is about Charlie Munger, there are references to Guerin in this book.</p>
+                    <p>1. "The Snowball: Warren Buffett and the Business of Life" by Alice Schroeder (2008) â€“ Even though the book is about Warren Buffett, Rick Guerin is mentioned throughout this book.</p>
+                    <p>2. "Poor Charlie's Almanack: The Wit and Wisdom of Charles T Munger" by Charlie Munger â€“ Even though the book is about Charlie Munger, there are references to Guerin in this book.</p>
 
                     <h4>Articles about Rick Guerin</h4>
                     <p>1. "The Superinvestors of Graham-and-Doddsville" by Warren Buffett (1984)</p>
                     <p>2. "Nobody Talks About Rick Anymore?" by Justin Vossen (26 May 2021)</p>
                     <p>3. "Rick Guerin: The forgotten genius" by The Short Gear (20 April 2023)</p>
-                    <p>4. "How Warren Buffet's Long Forgotten Third Business Partner Lost Absolutely Everything – 3 Things Regular People Are Doing to Lose All Their Money in Investments (And What You Should Be Doing Instead)" by Anders Skagerberg (accessed 2 April 2024)</p>
+                    <p>4. "How Warren Buffet's Long Forgotten Third Business Partner Lost Absolutely Everything â€“ 3 Things Regular People Are Doing to Lose All Their Money in Investments (And What You Should Be Doing Instead)" by Anders Skagerberg (accessed 2 April 2024)</p>
                     <p>5. "The Superinvestors of Graham-and-Doddsville: Rick Guerin" (23 March 2015)</p>
-                    <p>6. "JP 'Rick' Guerin Jr, 1929 – 2020: Self-made man succeeded with grit and intelligence", obituary (accessed on 2 April 2024)</p>
+                    <p>6. "JP 'Rick' Guerin Jr, 1929 â€“ 2020: Self-made man succeeded with grit and intelligence", obituary (accessed on 2 April 2024)</p>
 
                     <h4>Books Recommended by Rick Guerin</h4>
                     <p>1. "The Intelligent Investor" by Benjamin Graham (1949). See also Revised Edition and Third Edition.</p>
@@ -6503,13 +6504,13 @@
                     <p>2. "Security Analysis" by Benjamin Graham and David Dodd, 1934</p>
                     <p>This seminal work laid the foundation for value investing principles. It emphasised the importance of thorough analysis, intrinsic value, and margin of safety.</p>
                     <ul>
-                        <li>Security Analysis (First edition, 1934) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Second edition, 1940) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Third edition, 1951) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Fourth edition, 1962) – co-authored with David Dodd and Sidney Cottle</li>
-                        <li>Security Analysis (Fifth edition, 1988) – authored by Sidney Cottle, Roger Murray and Frank Block</li>
-                        <li>Security Analysis (Sixth edition, 2008) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
-                        <li>Security Analysis (Seventh edition, 2023) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett</li>
+                        <li>Security Analysis (First edition, 1934) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Second edition, 1940) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Third edition, 1951) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Fourth edition, 1962) â€“ co-authored with David Dodd and Sidney Cottle</li>
+                        <li>Security Analysis (Fifth edition, 1988) â€“ authored by Sidney Cottle, Roger Murray and Frank Block</li>
+                        <li>Security Analysis (Sixth edition, 2008) â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
+                        <li>Security Analysis (Seventh edition, 2023) â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett</li>
                     </ul>
                     <p>Graham's timeless principles of value investing, including the concept of margin of safety, influenced Guerin's own investment philosophy.</p>
 
@@ -6594,7 +6595,7 @@
 
                     <h4>Investment Mistakes</h4>
                     <p>While Knapp's investment track record was mostly stellar, he was not immune to mistakes. During the late 1950s, Knapp and Buffett once tried to corner the market in 1954 Blue Eagle four-cent airmail stamps for postcards, believing that the stamp might become a precious collectible someday. He said: "We got in his car. It took all day. We were talking about deals, and I had been reading in Linn's Stamp News about a Blue Eagle four-cent stamp that was being taken off the market for a 5-cent Red Eagle stamp." On their way home from an investment seminar, they stopped by numerous post offices to buy the stamps and ended up buying some 400,000 stamps for a $16,000 investment (or about $100,000 USD in today's dollars). They held the stamps for many years but the stamps never did become valuable.</p>
-                    <p>In 1982, some 23 years later, Buffett sold his stamps at a 10% discount under face value to a dealer. Knapp held on to his share of the Blue Eagles stamps, ironically using 4¢ stamps in combination as rates rose, as postage for the rest of his life.</p>
+                    <p>In 1982, some 23 years later, Buffett sold his stamps at a 10% discount under face value to a dealer. Knapp held on to his share of the Blue Eagles stamps, ironically using 4Â¢ stamps in combination as rates rose, as postage for the rest of his life.</p>
 
                     <h3>Selected Quotes</h3>
                     <p>None found.</p>
@@ -6607,8 +6608,8 @@
                     <p>None found.</p>
 
                     <h4>Books about Tom Knapp</h4>
-                    <p>1. "The Snowball: Warren Buffett and the Business of Life" by Alice Schroeder (2008) – Even though the book is about Warren Buffett, Knapp is mentioned throughout this book.</p>
-                    <p>2. "Of Permanent Value: The Story of Warren Buffett" by Andrew Kilpatrick (2012) – Even though the book is about Warren Buffett, Knapp is mentioned throughout this book.</p>
+                    <p>1. "The Snowball: Warren Buffett and the Business of Life" by Alice Schroeder (2008) â€“ Even though the book is about Warren Buffett, Knapp is mentioned throughout this book.</p>
+                    <p>2. "Of Permanent Value: The Story of Warren Buffett" by Andrew Kilpatrick (2012) â€“ Even though the book is about Warren Buffett, Knapp is mentioned throughout this book.</p>
 
                     <h4>Articles about Tom Knapp</h4>
                     <p>1. "The Superinvestors of Graham-and-Doddsville" by Warren Buffett (1984)</p>
@@ -6620,19 +6621,19 @@
                     <p>2. "Security Analysis" by Benjamin Graham and David Dodd, 1934</p>
                     <p>This seminal work laid the foundation for value investing principles. It emphasised the importance of thorough analysis, intrinsic value, and margin of safety.</p>
                     <ul>
-                        <li>Security Analysis (First edition, 1934) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Second edition, 1940) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Third edition, 1951) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Fourth edition, 1962) – co-authored with David Dodd and Sidney Cottle</li>
-                        <li>Security Analysis (Fifth edition, 1988) – authored by Sidney Cottle, Roger Murray and Frank Block</li>
-                        <li>Security Analysis (Sixth edition, 2008) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
-                        <li>Security Analysis (Seventh edition, 2023) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett</li>
+                        <li>Security Analysis (First edition, 1934) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Second edition, 1940) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Third edition, 1951) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Fourth edition, 1962) â€“ co-authored with David Dodd and Sidney Cottle</li>
+                        <li>Security Analysis (Fifth edition, 1988) â€“ authored by Sidney Cottle, Roger Murray and Frank Block</li>
+                        <li>Security Analysis (Sixth edition, 2008) â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
+                        <li>Security Analysis (Seventh edition, 2023) â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett</li>
                     </ul>
                     <p>Graham's timeless principles of value investing, including the concept of margin of safety, influenced Knapp's own investment philosophy.</p>
 
                     <h3>Other Trivia</h3>
                     <p>1. Knapp was a prankster at Graham-Newman Corporation. He researched stocks and spent his days plotting practical jokes on his colleagues when he wasn't orchestrating trades.</p>
-                    <p>2. Knapp, who was 10 years to the day older than Buffett, may well be Berkshire Hathaway's oldest shareholder. "I got my shares when Dempster Mill [a windmill company Buffett owned] was liquidated. I received Berkshire stock, which was one of its holdings. My cost basis was between five and ten dollars a share. I never sold a share and bought some for my family, and they seem happy with it … I don't know of a better company."</p>
+                    <p>2. Knapp, who was 10 years to the day older than Buffett, may well be Berkshire Hathaway's oldest shareholder. "I got my shares when Dempster Mill [a windmill company Buffett owned] was liquidated. I received Berkshire stock, which was one of its holdings. My cost basis was between five and ten dollars a share. I never sold a share and bought some for my family, and they seem happy with it â€¦ I don't know of a better company."</p>
                     <p>3. Knapp was an avid sailor. He was a member of The Sayville Yacht Club, Princeton Club in Manhattan, Quantuck Beach Club Westhampton Beach, New York, Westhampton Yacht Club, John's Island Club, Grand Harbor Club, Moorings Club and Quail River Club.</p>
                     <p>4. Website dedicated to Knapp: "Tom Knapp and Ed Anderson Resource Page" https://www.valuewalk.com/tom-knapp-tweedy-browne/</p>
 
@@ -6652,9 +6653,9 @@
                     <p>Stanley (Stan) Edward Perlmeter was born on 28 March 1926.</p>
                     <p>He served in the US Navy in the post-war years, and then settled with his late wife, Janet Shapiro Perlmeter, in Omaha, Nebraska.</p>
                     <p>A remarkable husband, father, grandfather, great-grandfather, son and brother, Perlmeter lived his life with zest and determination.</p>
-                    <p>He was a man who revelled in life's joys. His love for celebration and adventure knew no bounds, especially when surrounded by cherished friends and family. Whether it was in his hometown or the vibrant streets of Miami, Perlmeter's spirit thrived. In 1980, he and Jan embarked on a new chapter, relocating to Miami—a place that would forever hold a special place in their hearts.</p>
+                    <p>He was a man who revelled in life's joys. His love for celebration and adventure knew no bounds, especially when surrounded by cherished friends and family. Whether it was in his hometown or the vibrant streets of Miami, Perlmeter's spirit thrived. In 1980, he and Jan embarked on a new chapter, relocating to Miamiâ€”a place that would forever hold a special place in their hearts.</p>
                     <p>As a father, Perlmeter wore his pride like a badge of honour. Jeff, Michael (alongside his wife, Rosemary), and Rex (partnered with Rachel Hertzman) were his legacy. But his love extended beyond his immediate family. His grandchildren and great-grandchildren adored him.</p>
-                    <p>Life took an unexpected turn when Jan passed away in 2008 after 60 years of marriage. Amidst grief, Stan found solace in an extraordinary blessing—the chance to love again. Ronnie Koenigsberg Perlmeter entered his life, and their hearts aligned. In 2009, they exchanged vows, embarking on a journey of joyous companionship.</p>
+                    <p>Life took an unexpected turn when Jan passed away in 2008 after 60 years of marriage. Amidst grief, Stan found solace in an extraordinary blessingâ€”the chance to love again. Ronnie Koenigsberg Perlmeter entered his life, and their hearts aligned. In 2009, they exchanged vows, embarking on a journey of joyous companionship.</p>
                     <p>Ronnie brought more than just her love into Stan's life. Her children, grandchildren, and great-grandchild became an integral part of their extended family. Together, they basked in the warmth of kinship, weaving new bonds that transcended bloodlines.</p>
                     <p>He died on 18 December 2018 at the age of 92 in Key Biscayne, Miami-Dade County, Florida, USA. His wife, Ronnie, died 5 years later on 27 February 2023.</p>
 
@@ -6675,7 +6676,7 @@
 
                     <h4>Investment Philosophy</h4>
                     <p>At the core of Perlmeter's investment philosophy was the principle of buying businesses, not stocks. He viewed stocks as ownership stakes in real businesses, emphasising the importance of understanding the underlying company's fundamentals, competitive advantage and management quality. Stan's philosophy emphasised the preservation of capital, consistent returns, and the creation of enduring wealth.</p>
-                    <p>Buffett (1984): "[E]very time Perlmeter buys a stock it's because he's getting more for his money than he's paying. That's the only thing he's thinking about. He doesn't worry about whether it's January, he doesn't sorry about whether it's Monday, he doesn't worry about whether it's an election year. He simply says, if a business is worth a dollar and I can buy it 40 cents, something good may happen to me. And he does it over and over and over again. He owns many more stocks than I do – and is far less interested in the underlying nature of the business; I don't seem to have very much influence on Walter. That's one of his strengths: no one has much influence on him.</p>
+                    <p>Buffett (1984): "[E]very time Perlmeter buys a stock it's because he's getting more for his money than he's paying. That's the only thing he's thinking about. He doesn't worry about whether it's January, he doesn't sorry about whether it's Monday, he doesn't worry about whether it's an election year. He simply says, if a business is worth a dollar and I can buy it 40 cents, something good may happen to me. And he does it over and over and over again. He owns many more stocks than I do â€“ and is far less interested in the underlying nature of the business; I don't seem to have very much influence on Walter. That's one of his strengths: no one has much influence on him.</p>
 
                     <h4>Investment Principles</h4>
                     <p>Perlmeter adhered to several key investment principles that guided his decision-making process:</p>
@@ -6737,13 +6738,13 @@
                     <p>2. "Security Analysis" by Benjamin Graham and David Dodd, 1934</p>
                     <p>This seminal work laid the foundation for value investing principles. It emphasised the importance of thorough analysis, intrinsic value, and margin of safety.</p>
                     <ul>
-                        <li>Security Analysis (First edition, 1934) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Second edition, 1940) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Third edition, 1951) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Fourth edition, 1962) – co-authored with David Dodd and Sidney Cottle</li>
-                        <li>Security Analysis (Fifth edition, 1988) – authored by Sidney Cottle, Roger Murray and Frank Block</li>
-                        <li>Security Analysis (Sixth edition, 2008) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
-                        <li>Security Analysis (Seventh edition, 2023) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett.</li>
+                        <li>Security Analysis (First edition, 1934) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Second edition, 1940) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Third edition, 1951) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Fourth edition, 1962) â€“ co-authored with David Dodd and Sidney Cottle</li>
+                        <li>Security Analysis (Fifth edition, 1988) â€“ authored by Sidney Cottle, Roger Murray and Frank Block</li>
+                        <li>Security Analysis (Sixth edition, 2008) â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
+                        <li>Security Analysis (Seventh edition, 2023) â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett.</li>
                     </ul>
                     <p>Graham's timeless principles of value investing, including the concept of margin of safety, influenced Perlmeter's own investment philosophy.</p>
 
@@ -6825,8 +6826,8 @@
                     <p>Ruane acknowledged that even successful investors make mistakes. One notable mistake was his investment in certain technology stocks during the dot-com bubble, which led to temporary underperformance.</p>
 
                     <h3>Selected Quotes</h3>
-                    <p>"The stock market is a device for transferring money from the impatient to the patient." – Bill Ruane</p>
-                    <p>"Investing is not a game where the guy with the 160 IQ beats the guy with the 130 IQ. Once you have ordinary intelligence, what you need is the temperament to control the urges that get other people into trouble in investing." – Warren Buffett, often attributed to Ruane's influence</p>
+                    <p>"The stock market is a device for transferring money from the impatient to the patient." â€“ Bill Ruane</p>
+                    <p>"Investing is not a game where the guy with the 160 IQ beats the guy with the 130 IQ. Once you have ordinary intelligence, what you need is the temperament to control the urges that get other people into trouble in investing." â€“ Warren Buffett, often attributed to Ruane's influence</p>
 
                     <h3>Literature</h3>
                     <h4>Books by Bill Ruane</h4>
@@ -6836,7 +6837,7 @@
                     <p>Ruane wrote occasional articles and letters to shareholders, but no major publications.</p>
 
                     <h4>Books about Bill Ruane</h4>
-                    <p>"The Essays of Warren Buffett: Lessons for Corporate America" by Warren Buffett and Lawrence Cunningham (1997) – Includes references to Ruane.</p>
+                    <p>"The Essays of Warren Buffett: Lessons for Corporate America" by Warren Buffett and Lawrence Cunningham (1997) â€“ Includes references to Ruane.</p>
 
                     <h4>Articles about Bill Ruane</h4>
                     <p>1. "The Superinvestors of Graham-and-Doddsville" by Warren Buffett (1984)</p>
@@ -6925,8 +6926,8 @@
                     <p>Schloss acknowledged occasional mistakes but learned from them. He avoided speculative investments and stuck to his disciplined approach.</p>
 
                     <h3>Selected Quotes</h3>
-                    <p>"You never know when the market is going to turn around, so you have to be prepared for the long haul." – Walter Schloss</p>
-                    <p>"The key to investing is not assessing how much an industry is going to affect society, or how much it will grow, but rather determining the competitive advantage of any given company and, above all, the durability of that advantage." – Warren Buffett, influenced by Schloss</p>
+                    <p>"You never know when the market is going to turn around, so you have to be prepared for the long haul." â€“ Walter Schloss</p>
+                    <p>"The key to investing is not assessing how much an industry is going to affect society, or how much it will grow, but rather determining the competitive advantage of any given company and, above all, the durability of that advantage." â€“ Warren Buffett, influenced by Schloss</p>
 
                     <h3>Literature</h3>
                     <h4>Books by Walter Schloss</h4>
@@ -6936,7 +6937,7 @@
                     <p>Schloss wrote occasional articles but no major publications.</p>
 
                     <h4>Books about Walter Schloss</h4>
-                    <p>"The Essays of Warren Buffett: Lessons for Corporate America" by Warren Buffett and Lawrence Cunningham (1997) – Includes references to Schloss.</p>
+                    <p>"The Essays of Warren Buffett: Lessons for Corporate America" by Warren Buffett and Lawrence Cunningham (1997) â€“ Includes references to Schloss.</p>
 
                     <h4>Articles about Walter Schloss</h4>
                     <p>1. "The Superinvestors of Graham-and-Doddsville" by Warren Buffett (1984)</p>
@@ -7103,8 +7104,8 @@
                     <p>Ackman's most notable mistake was his investment in J.C. Penney, which resulted in significant losses. He has acknowledged this as a learning experience.</p>
 
                     <h3>Selected Quotes</h3>
-                    <p>"I think the most important thing is to have a philosophy and stick to it." – Bill Ackman</p>
-                    <p>"The market is a pendulum that forever swings between optimism and pessimism." – Bill Ackman</p>
+                    <p>"I think the most important thing is to have a philosophy and stick to it." â€“ Bill Ackman</p>
+                    <p>"The market is a pendulum that forever swings between optimism and pessimism." â€“ Bill Ackman</p>
 
                     <h3>Literature</h3>
                     <h4>Books by Bill Ackman</h4>
@@ -7114,7 +7115,7 @@
                     <p>Ackman has written numerous letters to investors and articles on investing.</p>
 
                     <h4>Books about Bill Ackman</h4>
-                    <p>"Too Big to Fail" by Andrew Ross Sorkin (2009) – Includes references to Ackman.</p>
+                    <p>"Too Big to Fail" by Andrew Ross Sorkin (2009) â€“ Includes references to Ackman.</p>
 
                     <h4>Articles about Bill Ackman</h4>
                     <p>Numerous articles in financial publications covering his activist campaigns.</p>
@@ -7143,7 +7144,7 @@
             
             if (articleContent[articleId]) {
                 title.textContent = articleContent[articleId].title;
-                const imagePlaceholder = `<div style="width:100%;height:auto;aspect-ratio:16/9;background:linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:24px;color:white;box-shadow:var(--shadow-md);"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:12px;opacity:0.9;"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg><span style="font-weight:600;letter-spacing:0.05em;text-transform:uppercase;font-size:12px;opacity:0.9;">Professional Insights</span></div>`;
+                const imagePlaceholder = window.buildArticleImageHtml(articleId, articleContent[articleId]);
 
                 const relatedArticles = `
 <hr style="margin:32px 0;border:none;border-top:1px solid #e5e7eb;">
@@ -7228,4 +7229,8 @@
 
 
 
-</body></html>
+    <script src="js/article-image-resolver.js"></script>`r`n</body></html>
+
+
+
+

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head>
+﻿<!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events &amp; Seminars - Graham and Doddsville</title>
@@ -959,7 +959,7 @@
             <!-- Page Title Section -->
             <div class="page-title-section">
                 <div class="breadcrumb">
-                    <a href="index.html" class="breadcrumb-link">← Home</a>
+                    <a href="index.html" class="breadcrumb-link">â† Home</a>
                 </div>
                 <h1 class="page-title section-header">Events &amp; Seminars</h1>
                 <p class="page-subtitle">Educational events, seminars, webinars, courses, and podcasts for comprehensive financial learning</p>
@@ -971,7 +971,7 @@
                 <div class="collapsible-section">
     <div class="collapsible-header" onclick="toggleCollapsible('events-seminars')">
         <h3 class="collapsible-title">Events and Seminars</h3>
-        <span class="collapsible-arrow" id="events-seminars-arrow">▼</span>
+        <span class="collapsible-arrow" id="events-seminars-arrow">â–¼</span>
     </div>
     <div class="collapsible-content collapsed" id="events-seminars-content" style="max-height:none;">
         <div class="events-table-wrapper">
@@ -1030,7 +1030,7 @@
                 <table class="events-table" id="events-table">
                     <thead>
                         <tr>
-                            <th onclick="sortEventsTable('date')">Date ▼</th>
+                            <th onclick="sortEventsTable('date')">Date â–¼</th>
                             <th onclick="sortEventsTable('startTime')">Time</th>
                             <th onclick="sortEventsTable('state')">State</th>
                             <th onclick="sortEventsTable('eventType')">Type</th>
@@ -1055,7 +1055,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('free-webinars')">
                     <h3 class="collapsible-title">Free Webinars</h3>
-                    <span class="collapsible-arrow" id="free-webinars-arrow">▼</span>
+                    <span class="collapsible-arrow" id="free-webinars-arrow">â–¼</span>
                 </div>
                 <div class="collapsible-content" id="free-webinars-content">
                     <ul class="collapsible-links">
@@ -1068,7 +1068,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('podcasts')">
                     <h3 class="collapsible-title">Podcasts</h3>
-                    <span class="collapsible-arrow" id="podcasts-arrow">▼</span>
+                    <span class="collapsible-arrow" id="podcasts-arrow">â–¼</span>
                 </div>
                 <div class="collapsible-content" id="podcasts-content">
                     <ul class="collapsible-links">
@@ -1081,7 +1081,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('free-online-courses')">
                     <h3 class="collapsible-title">Free Online Courses</h3>
-                    <span class="collapsible-arrow" id="free-online-courses-arrow">▼</span>
+                    <span class="collapsible-arrow" id="free-online-courses-arrow">â–¼</span>
                 </div>
                 <div class="collapsible-content" id="free-online-courses-content">
                     <ul class="collapsible-links">
@@ -1094,7 +1094,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('industry-courses')">
                     <h3 class="collapsible-title">Industry Courses</h3>
-                    <span class="collapsible-arrow" id="industry-courses-arrow">▼</span>
+                    <span class="collapsible-arrow" id="industry-courses-arrow">â–¼</span>
                 </div>
                 <div class="collapsible-content" id="industry-courses-content">
                     <ul class="collapsible-links">
@@ -1107,7 +1107,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('tertiary-courses')">
                     <h3 class="collapsible-title">Tertiary Courses</h3>
-                    <span class="collapsible-arrow" id="tertiary-courses-arrow">▼</span>
+                    <span class="collapsible-arrow" id="tertiary-courses-arrow">â–¼</span>
                 </div>
                 <div class="collapsible-content" id="tertiary-courses-content">
                     <ul class="collapsible-links">
@@ -1124,7 +1124,7 @@
         <div class="article-detail-content">
             <div class="article-detail-header">
                 <h3 class="article-detail-title" id="article-detail-title">Article Title</h3>
-                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">×</button>
+                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">Ã—</button>
             </div>
             <div class="article-detail-body" id="article-detail-body">
                 <div class="loading-spinner">Loading article...</div>
@@ -1132,6 +1132,7 @@
         </div>
     </div>
 
+    <script src="js/article-image-helper.js"></script>
     <script>
         // Collapsible functionality
         function toggleCollapsible(sectionId) {
@@ -1141,7 +1142,7 @@
             if (content.classList.contains('expanded')) {
                 content.style.maxHeight = null;
                 content.classList.remove('expanded');
-                arrow.innerHTML = '▼';
+                arrow.innerHTML = 'â–¼';
             } else {
                 // Close all other open sections
                 document.querySelectorAll('.collapsible-content.expanded').forEach(openContent => {
@@ -1149,7 +1150,7 @@
                     openContent.classList.remove('expanded');
                     const openArrowId = openContent.id.replace('-content', '-arrow');
                     const openArrow = document.getElementById(openArrowId);
-                    if (openArrow) openArrow.innerHTML = '▼';
+                    if (openArrow) openArrow.innerHTML = 'â–¼';
                 });
 
                 content.classList.add('expanded');
@@ -1158,7 +1159,7 @@
                 } else {
                      content.style.maxHeight = content.scrollHeight + "px";
                 }
-                arrow.innerHTML = '▲';
+                arrow.innerHTML = 'â–²';
             }
         }
 
@@ -1199,7 +1200,7 @@
                 title: 'Events and Seminars',
                 content: `
                     
-<p>Please browse the Events and Seminars table directly on the page — use the filters to search by state, type, or month.</p>`
+<p>Please browse the Events and Seminars table directly on the page â€” use the filters to search by state, type, or month.</p>`
             },
             'omaha-may-2024': {
                 title: 'Omaha May 2024',
@@ -1405,10 +1406,10 @@
                 title: 'Industry Courses',
                 content: `
                     
-<p>For anyone wishing to master their skills in the financial or security analysis, there are several courses available in the financial services industry, the most prominent being the Chartered Financial Analyst® Program. These programs are thoughtfully designed to cater to ambitious individuals eager to acquire both academic rigor and real-world knowledge, ensuring immediate applicability in their professional journey.</p>
+<p>For anyone wishing to master their skills in the financial or security analysis, there are several courses available in the financial services industry, the most prominent being the Chartered Financial AnalystÂ® Program. These programs are thoughtfully designed to cater to ambitious individuals eager to acquire both academic rigor and real-world knowledge, ensuring immediate applicability in their professional journey.</p>
                     
-                    <h3>Chartered Financial Analyst® (CFA) Program - CFA Institute</h3>
-                    <p>If you want to achieve one of the highest distinctions in the investment management profession, you should become a Chartered Financial Analyst®. As a CFA® charterholder, you will have the knowledge and the skills to thrive in the competitive investing industry.</p>
+                    <h3>Chartered Financial AnalystÂ® (CFA) Program - CFA Institute</h3>
+                    <p>If you want to achieve one of the highest distinctions in the investment management profession, you should become a Chartered Financial AnalystÂ®. As a CFAÂ® charterholder, you will have the knowledge and the skills to thrive in the competitive investing industry.</p>
                     
                     <h3>Master of Applied Finance - Kaplan Professional</h3>
                     <p>Leading online degree designed for ambitious and savvy individuals who are looking for advanced academic rigour, but thrive on practical and real-world learning immediately applicable in the workplace, and directly relevant to future career roles.</p>
@@ -1467,7 +1468,7 @@
             
             if (articleContent[articleId]) {
                 title.textContent = articleContent[articleId].title;
-                const imagePlaceholder = `<div style="width:100%;height:auto;aspect-ratio:16/9;background:linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:24px;color:white;box-shadow:var(--shadow-md);"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:12px;opacity:0.9;"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg><span style="font-weight:600;letter-spacing:0.05em;text-transform:uppercase;font-size:12px;opacity:0.9;">Professional Insights</span></div>`;
+                const imagePlaceholder = window.buildArticleImageHtml(articleId, articleContent[articleId]);
 
                 const relatedArticles = `
 <hr style="margin:32px 0;border:none;border-top:1px solid #e5e7eb;">
@@ -1673,7 +1674,7 @@
             const end = Math.min(start + evtPerPage, total);
             const pageEvents = filteredEvents.slice(start, end);
 
-            document.getElementById('evt-count').textContent = 'Showing ' + (total > 0 ? (start+1) : 0) + '–' + end + ' of ' + total + ' events';
+            document.getElementById('evt-count').textContent = 'Showing ' + (total > 0 ? (start+1) : 0) + 'â€“' + end + ' of ' + total + ' events';
 
             // Desktop table
             let html = '';
@@ -1682,11 +1683,11 @@
                 const titleLink = e.url ? '<a href="' + e.url + '" target="_blank">' + e.title + '</a>' : e.title;
                 html += '<tr>';
                 html += '<td style="white-space:nowrap;">' + formatDate(e.date) + '</td>';
-                html += '<td style="white-space:nowrap;">' + e.startTime + (e.finishTime && e.finishTime !== 'TBA' ? ' – ' + e.finishTime : '') + '</td>';
+                html += '<td style="white-space:nowrap;">' + e.startTime + (e.finishTime && e.finishTime !== 'TBA' ? ' â€“ ' + e.finishTime : '') + '</td>';
                 html += '<td>' + e.state + '</td>';
                 html += '<td>' + getTypeBadge(e.eventType) + '</td>';
                 html += '<td class="evt-title">' + titleLink + '</td>';
-                html += '<td><button class="evt-expand-btn" onclick="toggleEventDetail(' + globalIdx + ')">' + (expandedRows.has(globalIdx) ? 'Hide ▲' : 'Details ▼') + '</button></td>';
+                html += '<td><button class="evt-expand-btn" onclick="toggleEventDetail(' + globalIdx + ')">' + (expandedRows.has(globalIdx) ? 'Hide â–²' : 'Details â–¼') + '</button></td>';
                 html += '</tr>';
                 if (expandedRows.has(globalIdx)) {
                     html += '<tr class="evt-detail-row"><td colspan="6"><div class="evt-detail-grid">';
@@ -1702,7 +1703,7 @@
             });
             document.getElementById('evt-tbody').innerHTML = html;
 
-            // Mobile cards — redesigned with date chip + collapsible detail
+            // Mobile cards â€” redesigned with date chip + collapsible detail
             let mobileHtml = '';
             pageEvents.forEach((e, i) => {
                 const globalIdx = start + i;
@@ -1728,13 +1729,13 @@
                 }
                 mobileHtml += '</div>';
                 // Expand button
-                mobileHtml += '<button class="mc-expand-details" onclick="toggleMobileCard(' + globalIdx + ')">' + (isExpanded ? 'Hide details ▲' : 'More details ▼') + '</button>';
+                mobileHtml += '<button class="mc-expand-details" onclick="toggleMobileCard(' + globalIdx + ')">' + (isExpanded ? 'Hide details â–²' : 'More details â–¼') + '</button>';
                 // Expandable detail panel
                 if (isExpanded) {
                     mobileHtml += '<div class="mc-detail-panel">';
                     mobileHtml += '<div class="mc-dl">';
                     mobileHtml += '<dt>Venue</dt><dd>' + e.venue + '</dd>';
-                    mobileHtml += '<dt>Time</dt><dd>' + e.startTime + (e.finishTime && e.finishTime !== 'TBA' ? ' – ' + e.finishTime : '') + '</dd>';
+                    mobileHtml += '<dt>Time</dt><dd>' + e.startTime + (e.finishTime && e.finishTime !== 'TBA' ? ' â€“ ' + e.finishTime : '') + '</dd>';
                     if (e.cost) { mobileHtml += '<dt>Cost</dt><dd>' + e.cost + '</dd>'; }
                     if (e.food && e.food !== 'Unknown') { mobileHtml += '<dt>Food</dt><dd>' + e.food + '</dd>'; }
                     mobileHtml += '<dt>Source</dt><dd>' + e.source + '</dd>';
@@ -1748,7 +1749,7 @@
             });
             document.getElementById('evt-mobile-cards').innerHTML = mobileHtml;
 
-            // Pagination — simplified for mobile, full for desktop
+            // Pagination â€” simplified for mobile, full for desktop
             let pag = '';
             if (totalPages > 1) {
                 pag += '<button ' + (evtCurrentPage <= 1 ? 'disabled' : '') + ' onclick="goEvtPage(' + (evtCurrentPage - 1) + ')">&laquo; Prev</button>';
@@ -1794,4 +1795,9 @@
 
 
 
-</body></html>
+    <script src="js/article-image-resolver.js"></script>`r`n</body></html>
+
+
+
+
+

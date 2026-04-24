@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head>
+﻿<!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Greatest Investors - Graham and Doddsville</title>
@@ -583,7 +583,7 @@
         <div class="mobile-drawer" id="mobile-drawer">
         <div class="drawer-header">
             <img src="G&amp;D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
-            <button class="drawer-close" id="drawer-close" aria-label="Close menu">×</button>
+            <button class="drawer-close" id="drawer-close" aria-label="Close menu">Ã—</button>
         </div>
         <nav class="drawer-nav">
             <ul class="drawer-menu">
@@ -607,7 +607,7 @@
             <!-- Page Title Section -->
             <div class="page-title-section">
                 <div class="breadcrumb">
-                    <a href="index.html" class="breadcrumb-link">← Home</a>
+                    <a href="index.html" class="breadcrumb-link">â† Home</a>
                 </div>
                 <h1 class="page-title section-header">Greatest Investors</h1>
                 <p class="page-subtitle">Discover the legendary figures who shaped the world of value investing</p>
@@ -619,7 +619,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('superinvestors')">
                         <h3 class="collapsible-title">The Superinvestors</h3>
-                        <span class="collapsible-arrow" id="superinvestors-arrow">▼</span>
+                        <span class="collapsible-arrow" id="superinvestors-arrow">â–¼</span>
                     </div>
                     <div class="collapsible-content" id="superinvestors-content">
                         <ul class="collapsible-links">
@@ -641,7 +641,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('value-investors')">
                         <h3 class="collapsible-title">Famous Value Investors</h3>
-                        <span class="collapsible-arrow" id="value-investors-arrow">▼</span>
+                        <span class="collapsible-arrow" id="value-investors-arrow">â–¼</span>
                     </div>
                     <div class="collapsible-content" id="value-investors-content">
                         <ul class="collapsible-links">
@@ -693,7 +693,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('other-investors')">
                         <h3 class="collapsible-title">Other Famous Investors</h3>
-                        <span class="collapsible-arrow" id="other-investors-arrow">▼</span>
+                        <span class="collapsible-arrow" id="other-investors-arrow">â–¼</span>
                     </div>
                     <div class="collapsible-content" id="other-investors-content">
                         <ul class="collapsible-links">
@@ -739,7 +739,7 @@
         <div class="article-detail-content">
             <div class="article-detail-header">
                 <h3 class="article-detail-title" id="article-detail-title">Article Title</h3>
-                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">×</button>
+                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">Ã—</button>
             </div>
             <div class="article-detail-body" id="article-detail-body">
                 <div class="loading-spinner">Loading article...</div>
@@ -747,6 +747,7 @@
         </div>
     </div>
 
+    <script src="js/article-image-helper.js"></script>
     <script>
         // Collapsible functionality
         function toggleCollapsible(sectionId) {
@@ -756,19 +757,19 @@
             if (content.style.maxHeight) {
                 content.style.maxHeight = null;
                 content.classList.remove('expanded');
-                arrow.innerHTML = '▼';
+                arrow.innerHTML = 'â–¼';
             } else {
                 // Close all other open sections
                 document.querySelectorAll('.collapsible-content.expanded').forEach(openContent => {
                     openContent.style.maxHeight = null;
                     openContent.classList.remove('expanded');
                     const openArrowId = openContent.id.replace('-content', '-arrow');
-                    document.getElementById(openArrowId).innerHTML = '▼';
+                    document.getElementById(openArrowId).innerHTML = 'â–¼';
                 });
 
                 content.style.maxHeight = content.scrollHeight + "px";
                 content.classList.add('expanded');
-                arrow.innerHTML = '▲';
+                arrow.innerHTML = 'â–²';
             }
         }
 
@@ -811,7 +812,7 @@
             'investing-principles': {
                 title: 'Investing Principles',
                 content: `<div>
-                        <p>Buffett's investment principles are rooted in the teachings of Benjamin Graham, his mentor at Columbia Business School. Graham's philosophy of value investing—buying securities when they are undervalued and selling when they are overvalued—forms the foundation of Buffett's approach.</p>
+                        <p>Buffett's investment principles are rooted in the teachings of Benjamin Graham, his mentor at Columbia Business School. Graham's philosophy of value investingâ€”buying securities when they are undervalued and selling when they are overvaluedâ€”forms the foundation of Buffett's approach.</p>
                         <h3>Value Investing</h3>
                         <p>Buffett is a disciple of value investing, which involves buying stocks that are trading below their intrinsic value. He looks for companies with strong fundamentals, competitive advantages, and honest management.</p>
                         <h3>Long-Term Perspective</h3>
@@ -974,13 +975,13 @@
                     <p>2. "Security Analysis" by Benjamin Graham and David Dodd, 1934</p>
                     <p>This seminal work laid the foundation for value investing principles. It emphasised the importance of thorough analysis, intrinsic value, and margin of safety.</p>
                     <ul>
-                        <li>Security Analysis (First edition, 1934) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Second edition, 1940) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Third edition, 1951) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Fourth edition, 1962) – co-authored with David Dodd and Sidney Cottle</li>
-                        <li>Security Analysis (Fifth edition, 1988) – authored by Sidney Cottle, Roger Murray and Frank Block</li>
-                        <li>Security Analysis (Sixth edition, 2008) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
-                        <li>Security Analysis (Seventh edition, 2023) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett</li>
+                        <li>Security Analysis (First edition, 1934) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Second edition, 1940) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Third edition, 1951) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Fourth edition, 1962) â€“ co-authored with David Dodd and Sidney Cottle</li>
+                        <li>Security Analysis (Fifth edition, 1988) â€“ authored by Sidney Cottle, Roger Murray and Frank Block</li>
+                        <li>Security Analysis (Sixth edition, 2008) â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
+                        <li>Security Analysis (Seventh edition, 2023) â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett</li>
                     </ul>
                     <p>Anderson often cited this classic work by Benjamin Graham as essential reading for value investors. Graham's timeless principles of value investing, including the concept of margin of safety, influenced Anderson's own investment philosophy.</p>
                     <p>3. "Common Stocks and Uncommon Profits" by Philip Fisher (1958)</p>
@@ -1030,7 +1031,7 @@
                     <p>Guerin became a stockbroker at a couple of small firms that peddled third-class stocks because they carried the highest profit, or "spread," for the firm.</p>
                     <p>In 1961, a friend called and said he was going to buy into a downtown (LA) trading firm because someone was selling out. He decided that he too would join in the investment by buying Wheeler's 50% share using the only $40,000 he had. But when he arrived at the meeting place to settle the deal, he met Charlie Munger. The two of them started to talk. "I was just going to this meeting for the closing. I was going to deliver a check and take a stock certificate. We were joking with Munger, when this light went on in my brain. 'I'm on the wrong side of this transaction.'"</p>
                     <p>Guerin eventually lost his entire investment in the partnership. However, as Munger later noted, "By then, he'd learned a lot and was doing very well." He went on emulate Buffett and Munger by establishing his own investment firm, Pacific Partners Ltd.</p>
-                    <p>Buffett explained: "With some, the idea of buying dollar bills for forty cents takes, and with some it doesn't take. It's like an inoculation. It’s extraordinary to me. If it doesn’t grab them right away, I find that you can talk to them for years and show them records—you can do everything—and it just doesn’t make any difference. I’ve never seen anyone who became a convert over a ten-year period with this approach. It’s always instant recognition or nothing. Whatever it is, I’ve never understood it. But with a fellow like Rick Guerin – no business background in terms of studying it, but he saw it like that, he understood what it’s about, and he was applying it five minutes later. And Rick was smart enough to know that you should get a great teacher, which is what I was lucky enough to do with Ben Graham."</p>
+                    <p>Buffett explained: "With some, the idea of buying dollar bills for forty cents takes, and with some it doesn't take. It's like an inoculation. Itâ€™s extraordinary to me. If it doesnâ€™t grab them right away, I find that you can talk to them for years and show them recordsâ€”you can do everythingâ€”and it just doesnâ€™t make any difference. Iâ€™ve never seen anyone who became a convert over a ten-year period with this approach. Itâ€™s always instant recognition or nothing. Whatever it is, Iâ€™ve never understood it. But with a fellow like Rick Guerin â€“ no business background in terms of studying it, but he saw it like that, he understood what itâ€™s about, and he was applying it five minutes later. And Rick was smart enough to know that you should get a great teacher, which is what I was lucky enough to do with Ben Graham."</p>
                     <p>Guerin soon joined with Charlie Munger and Warren Buffett in the ownership of See's Candy and other public companies.</p>
                     <p>He spearheaded one of Berkshire's greatest investments: the acquisition of Blue Chip Stamps. He had noticed there was a difference between the volume of stamps purchased and redeemed (called the "float"). And the beauty of this was that only 50% of stamps ever got redeemed. So, after buying 60% of the company, they used the "float" of Blue Chip Stamps to buy See's Candy with $25 million. Then they bought Wesco Financial for $25 million and the Buffalo Evening Post.</p>
                     <p>See's Candy alone then went on to generate over $2 billion of income for Berkshire Hathaway to-date, and Wesco Financial now has a market capitalisation of around of $7 billion.</p>
@@ -1042,7 +1043,7 @@
 
                     <h2>INVESTMENT STYLE, PHILOSOPHY & PRINCIPLES</h2>
                     <h3>Investment Style</h3>
-                    <p>Guerin's investment style was deeply rooted in the principles of value investing—a philosophy championed by investing luminaries such as Benjamin Graham and Warren Buffett. Central to Guerin's approach was the belief in seeking out undervalued assets with the potential for substantial long-term growth. He was renowned for his patient and disciplined approach to investing, focusing on the intrinsic value of a company rather than short-term market fluctuations.</p>
+                    <p>Guerin's investment style was deeply rooted in the principles of value investingâ€”a philosophy championed by investing luminaries such as Benjamin Graham and Warren Buffett. Central to Guerin's approach was the belief in seeking out undervalued assets with the potential for substantial long-term growth. He was renowned for his patient and disciplined approach to investing, focusing on the intrinsic value of a company rather than short-term market fluctuations.</p>
 
                     <h3>Investment Philosophy</h3>
                     <p>At the core of Guerin's investment philosophy was the principle of buying low and holding for the long term. He believed in investing in companies with strong fundamentals, robust management teams, and competitive advantages within their industries. Guerin emphasised the importance of thorough research and analysis, ensuring a deep understanding of a company's business model, market position, and growth prospects before making an investment.</p>
@@ -1076,16 +1077,16 @@
                     <p>None found.</p>
 
                     <h3>Books about Rick Guerin</h3>
-                    <p>1. "The Snowball: Warren Buffett and the Business of Life" by Alice Schroeder (2008) – Even though the book is about Warren Buffett, Rick Guerin is mentioned throughout this book.</p>
-                    <p>2. "Poor Charlie's Almanack: The Wit and Wisdom of Charles T Munger" by Charlie Munger – Even though the book is about Charlie Munger, there are references to Guerin in this book.</p>
+                    <p>1. "The Snowball: Warren Buffett and the Business of Life" by Alice Schroeder (2008) â€“ Even though the book is about Warren Buffett, Rick Guerin is mentioned throughout this book.</p>
+                    <p>2. "Poor Charlie's Almanack: The Wit and Wisdom of Charles T Munger" by Charlie Munger â€“ Even though the book is about Charlie Munger, there are references to Guerin in this book.</p>
 
                     <h3>Articles about Rick Guerin</h3>
                     <p>1. "The Superinvestors of Graham-and-Doddsville" by Warren Buffett (1984)</p>
                     <p>2. "Nobody Talks About Rick Anymore?" by Justin Vossen (26 May 2021)</p>
                     <p>3. "Rick Guerin: The forgotten genius" by The Short Gear (20 April 2023)</p>
-                    <p>4. "How Warren Buffett's Long Forgotten Third Business Partner Lost Absolutely Everything – 3 Things Regular People Are Doing to Lose All Their Money in Investments (And What You Should Be Doing Instead)" by Anders Skagerberg (accessed 2 April 2024)</p>
+                    <p>4. "How Warren Buffett's Long Forgotten Third Business Partner Lost Absolutely Everything â€“ 3 Things Regular People Are Doing to Lose All Their Money in Investments (And What You Should Be Doing Instead)" by Anders Skagerberg (accessed 2 April 2024)</p>
                     <p>5. "The Superinvestors of Graham-and-Doddsville: Rick Guerin" (23 March 2015)</p>
-                    <p>6. "JP 'Rick' Guerin Jr, 1929 – 2020: Self-made man succeeded with grit and intelligence", obituary (accessed on 2 April 2024)</p>
+                    <p>6. "JP 'Rick' Guerin Jr, 1929 â€“ 2020: Self-made man succeeded with grit and intelligence", obituary (accessed on 2 April 2024)</p>
 
                     <h3>Books Recommended by Rick Guerin</h3>
                     <p>1. "The Intelligent Investor" by Benjamin Graham (1949). See also Revised Edition and Third Edition.</p>
@@ -1093,13 +1094,13 @@
                     <p>2. "Security Analysis" by Benjamin Graham and David Dodd, 1934</p>
                     <p>This seminal work laid the foundation for value investing principles. It emphasised the importance of thorough analysis, intrinsic value, and margin of safety.</p>
                     <ul>
-                        <li>Security Analysis (First edition, 1934) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Second edition, 1940) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Third edition, 1951) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Fourth edition, 1962) – co-authored with David Dodd and Sidney Cottle</li>
-                        <li>Security Analysis (Fifth edition, 1988) – authored by Sidney Cottle, Roger Murray and Frank Block</li>
-                        <li>Security Analysis (Sixth edition, 2008) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
-                        <li>Security Analysis (Seventh edition, 2023) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett</li>
+                        <li>Security Analysis (First edition, 1934) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Second edition, 1940) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Third edition, 1951) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Fourth edition, 1962) â€“ co-authored with David Dodd and Sidney Cottle</li>
+                        <li>Security Analysis (Fifth edition, 1988) â€“ authored by Sidney Cottle, Roger Murray and Frank Block</li>
+                        <li>Security Analysis (Sixth edition, 2008) â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
+                        <li>Security Analysis (Seventh edition, 2023) â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett</li>
                     </ul>
                     <p>Graham's timeless principles of value investing, including the concept of margin of safety, influenced Guerin's own investment philosophy.</p>
 
@@ -1190,8 +1191,8 @@
                     <p>None found.</p>
 
                     <h3>Books about Tom Knapp</h3>
-                    <p>1. "The Snowball: Warren Buffett and the Business of Life" by Alice Schroeder (2008) – Even though the book is about Warren Buffett, Knapp is mentioned throughout this book.</p>
-                    <p>2. "Of Permanent Value: The Story of Warren Buffett" by Andrew Kilpatrick (2012) – Even though the book is about Warren Buffett, Knapp is mentioned throughout this book.</p>
+                    <p>1. "The Snowball: Warren Buffett and the Business of Life" by Alice Schroeder (2008) â€“ Even though the book is about Warren Buffett, Knapp is mentioned throughout this book.</p>
+                    <p>2. "Of Permanent Value: The Story of Warren Buffett" by Andrew Kilpatrick (2012) â€“ Even though the book is about Warren Buffett, Knapp is mentioned throughout this book.</p>
 
                     <h3>Articles about Tom Knapp</h3>
                     <p>1. "The Superinvestors of Graham-and-Doddsville" by Warren Buffett (1984)</p>
@@ -1203,19 +1204,19 @@
                     <p>2. "Security Analysis" by Benjamin Graham and David Dodd, 1934</p>
                     <p>This seminal work laid the foundation for value investing principles. It emphasised the importance of thorough analysis, intrinsic value, and margin of safety.</p>
                     <ul>
-                        <li>Security Analysis (First edition, 1934) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Second edition, 1940) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Third edition, 1951) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Fourth edition, 1962) – co-authored with David Dodd and Sidney Cottle</li>
-                        <li>Security Analysis (Fifth edition, 1988) – authored by Sidney Cottle, Roger Murray and Frank Block</li>
-                        <li>Security Analysis (Sixth edition, 2008) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
-                        <li>Security Analysis (Seventh edition, 2023) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett</li>
+                        <li>Security Analysis (First edition, 1934) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Second edition, 1940) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Third edition, 1951) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Fourth edition, 1962) â€“ co-authored with David Dodd and Sidney Cottle</li>
+                        <li>Security Analysis (Fifth edition, 1988) â€“ authored by Sidney Cottle, Roger Murray and Frank Block</li>
+                        <li>Security Analysis (Sixth edition, 2008) â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
+                        <li>Security Analysis (Seventh edition, 2023) â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett</li>
                     </ul>
                     <p>Graham's timeless principles of value investing, including the concept of margin of safety, influenced Knapp's own investment philosophy.</p>
 
                     <h2>OTHER TRIVIA</h2>
                     <p>1. Knapp was a prankster at Graham-Newman Corporation. He researched stocks and spent his days plotting practical jokes on his colleagues when he wasn't orchestrating trades.</p>
-                    <p>2. Knapp, who was 10 years to the day older than Buffett, may well be Berkshire Hathaway's oldest shareholder. "I got my shares when Dempster Mill [a windmill company Buffett owned] was liquidated. I received Berkshire stock, which was one of its holdings. My cost basis was between five and ten dollars a share. I never sold a share and bought some for my family, and they seem happy with it … I don't know of a better company."</p>
+                    <p>2. Knapp, who was 10 years to the day older than Buffett, may well be Berkshire Hathaway's oldest shareholder. "I got my shares when Dempster Mill [a windmill company Buffett owned] was liquidated. I received Berkshire stock, which was one of its holdings. My cost basis was between five and ten dollars a share. I never sold a share and bought some for my family, and they seem happy with it â€¦ I don't know of a better company."</p>
                     <p>3. Knapp was an avid sailor. He was a member of The Sayville Yacht Club, Princeton Club in Manhattan, Quantuck Beach Club Westhampton Beach, New York, Westhampton Yacht Club, John's Island Club, Grand Harbor Club, Moorings Club and Quail River Club.</p>
                     <p>4. Website dedicated to Knapp: "Tom Knapp and Ed Anderson Resource Page" https://www.valuewalk.com/tom-knapp-tweedy-browne/</p>
                     </div>
@@ -1277,11 +1278,11 @@
                     <p>One notable mistake was investing in some speculative stocks during market bubbles, which taught him the importance of discipline and sticking to value principles.</p>
 
                     <h2>QUOTES</h2>
-                    <p>1. "The key to successful investing is not predicting the future, but preparing for it." – Stan Perlmeter</p>
-                    <p>2. "Value investing is about buying dollars for fifty cents, not about buying growth at any price." – Stan Perlmeter</p>
-                    <p>3. "The market is a pendulum that forever swings between optimism and pessimism. The intelligent investor is a realist who sells to optimists and buys from pessimists." – Stan Perlmeter (paraphrasing Benjamin Graham)</p>
-                    <p>4. "Patience is the most important virtue in investing. The stock market is a device for transferring money from the impatient to the patient." – Stan Perlmeter</p>
-                    <p>5. "Risk comes from not knowing what you're doing. If you understand the business and buy at a discount to value, you're not taking risk – you're taking opportunity." – Stan Perlmeter</p>
+                    <p>1. "The key to successful investing is not predicting the future, but preparing for it." â€“ Stan Perlmeter</p>
+                    <p>2. "Value investing is about buying dollars for fifty cents, not about buying growth at any price." â€“ Stan Perlmeter</p>
+                    <p>3. "The market is a pendulum that forever swings between optimism and pessimism. The intelligent investor is a realist who sells to optimists and buys from pessimists." â€“ Stan Perlmeter (paraphrasing Benjamin Graham)</p>
+                    <p>4. "Patience is the most important virtue in investing. The stock market is a device for transferring money from the impatient to the patient." â€“ Stan Perlmeter</p>
+                    <p>5. "Risk comes from not knowing what you're doing. If you understand the business and buy at a discount to value, you're not taking risk â€“ you're taking opportunity." â€“ Stan Perlmeter</p>
 
                     <h2>LITERATURE</h2>
                     <h3>Books by Stan Perlmeter</h3>
@@ -1291,12 +1292,12 @@
                     <p>Perlmeter wrote occasional articles for investment publications, but none are widely known or archived.</p>
 
                     <h3>Books about Stan Perlmeter</h3>
-                    <p>1. "The Snowball: Warren Buffett and the Business of Life" by Alice Schroeder (2008) – Mentions Perlmeter's role at the Buffett Partnership.</p>
-                    <p>2. "Of Permanent Value: The Story of Warren Buffett" by Andrew Kilpatrick (2012) – Discusses Perlmeter's contributions to Buffett's early success.</p>
+                    <p>1. "The Snowball: Warren Buffett and the Business of Life" by Alice Schroeder (2008) â€“ Mentions Perlmeter's role at the Buffett Partnership.</p>
+                    <p>2. "Of Permanent Value: The Story of Warren Buffett" by Andrew Kilpatrick (2012) â€“ Discusses Perlmeter's contributions to Buffett's early success.</p>
 
                     <h3>Articles about Stan Perlmeter</h3>
-                    <p>1. "Stanley Perlmeter, Value Investor, Dies at 87" – Various financial publications (2012)</p>
-                    <p>2. "Remembering Stan Perlmeter" – Tweedy, Browne Company website (2012)</p>
+                    <p>1. "Stanley Perlmeter, Value Investor, Dies at 87" â€“ Various financial publications (2012)</p>
+                    <p>2. "Remembering Stan Perlmeter" â€“ Tweedy, Browne Company website (2012)</p>
 
                     <h3>Books Recommended by Stan Perlmeter</h3>
                     <p>1. "The Intelligent Investor" by Benjamin Graham (1949)</p>
@@ -1396,11 +1397,11 @@
                     <p>Ruane learned from his mistakes and became more disciplined in sticking to his value investing principles.</p>
 
                     <h2>QUOTES</h2>
-                    <p>1. "The stock market is a device for transferring money from the impatient to the patient." – Bill Ruane</p>
-                    <p>2. "You have to know what you own, and you have to know why you own it." – Bill Ruane</p>
-                    <p>3. "The key to successful investing is to buy wonderful businesses at reasonable prices." – Bill Ruane</p>
-                    <p>4. "Value investing is buying a dollar for 50 cents." – Bill Ruane</p>
-                    <p>5. "The most important thing in investing is to have a philosophy and stick to it." – Bill Ruane</p>
+                    <p>1. "The stock market is a device for transferring money from the impatient to the patient." â€“ Bill Ruane</p>
+                    <p>2. "You have to know what you own, and you have to know why you own it." â€“ Bill Ruane</p>
+                    <p>3. "The key to successful investing is to buy wonderful businesses at reasonable prices." â€“ Bill Ruane</p>
+                    <p>4. "Value investing is buying a dollar for 50 cents." â€“ Bill Ruane</p>
+                    <p>5. "The most important thing in investing is to have a philosophy and stick to it." â€“ Bill Ruane</p>
 
                     <h2>LITERATURE</h2>
                     <h3>Books by Bill Ruane</h3>
@@ -1410,12 +1411,12 @@
                     <p>Ruane wrote occasional articles and shareholder letters, but none are widely published.</p>
 
                     <h3>Books about Bill Ruane</h3>
-                    <p>1. "The Snowball: Warren Buffett and the Business of Life" by Alice Schroeder (2008) – Mentions Ruane's relationship with Buffett and the founding of Sequoia Fund.</p>
-                    <p>2. "Of Permanent Value: The Story of Warren Buffett" by Andrew Kilpatrick (2012) – Discusses Ruane's investment partnership with Buffett.</p>
+                    <p>1. "The Snowball: Warren Buffett and the Business of Life" by Alice Schroeder (2008) â€“ Mentions Ruane's relationship with Buffett and the founding of Sequoia Fund.</p>
+                    <p>2. "Of Permanent Value: The Story of Warren Buffett" by Andrew Kilpatrick (2012) â€“ Discusses Ruane's investment partnership with Buffett.</p>
 
                     <h3>Articles about Bill Ruane</h3>
-                    <p>1. "William Ruane, 79, Founder of Sequoia Fund, Dies" – The New York Times (2005)</p>
-                    <p>2. "Bill Ruane: The Man Behind the Sequoia Fund" – Various investment publications</p>
+                    <p>1. "William Ruane, 79, Founder of Sequoia Fund, Dies" â€“ The New York Times (2005)</p>
+                    <p>2. "Bill Ruane: The Man Behind the Sequoia Fund" â€“ Various investment publications</p>
 
                     <h3>Books Recommended by Bill Ruane</h3>
                     <p>1. "The Intelligent Investor" by Benjamin Graham (1949)</p>
@@ -1468,7 +1469,7 @@
                     <h2>INVESTMENT STYLE, PHILOSOPHY & PRINCIPLES</h2>
                     <h3>Investment Style & Principles</h3>
                     <p>Schloss was a pure value investor who strictly followed Benjamin Graham's principles of buying stocks at a significant discount to their intrinsic value.</p>
-                    <p>He believed in buying "cigar butt" companies – businesses that were undervalued and had some remaining value, even if they were not high-quality.</p>
+                    <p>He believed in buying "cigar butt" companies â€“ businesses that were undervalued and had some remaining value, even if they were not high-quality.</p>
                     <p>Schloss maintained a highly diversified portfolio, often holding 50-100 stocks to reduce risk.</p>
 
                     <h3>Investment Philosophy</h3>
@@ -1511,11 +1512,11 @@
                     <p>Schloss learned from his mistakes and became more disciplined in his approach.</p>
 
                     <h2>QUOTES</h2>
-                    <p>1. "The best way to make money in the stock market is to buy stocks when they are cheap and sell them when they are not." – Walter Schloss</p>
-                    <p>2. "You don't need to be a rocket scientist to be a good investor. You just need to be disciplined and patient." – Walter Schloss</p>
-                    <p>3. "The stock market is a device for transferring money from the impatient to the patient." – Walter Schloss</p>
-                    <p>4. "Value investing is simple, but it's not easy." – Walter Schloss</p>
-                    <p>5. "Buy when everyone else is selling and hold until everyone else is buying. That's value investing." – Walter Schloss</p>
+                    <p>1. "The best way to make money in the stock market is to buy stocks when they are cheap and sell them when they are not." â€“ Walter Schloss</p>
+                    <p>2. "You don't need to be a rocket scientist to be a good investor. You just need to be disciplined and patient." â€“ Walter Schloss</p>
+                    <p>3. "The stock market is a device for transferring money from the impatient to the patient." â€“ Walter Schloss</p>
+                    <p>4. "Value investing is simple, but it's not easy." â€“ Walter Schloss</p>
+                    <p>5. "Buy when everyone else is selling and hold until everyone else is buying. That's value investing." â€“ Walter Schloss</p>
 
                     <h2>LITERATURE</h2>
                     <h3>Books by Walter Schloss</h3>
@@ -1525,13 +1526,13 @@
                     <p>Schloss wrote occasional articles and gave interviews, but none are widely published as standalone works.</p>
 
                     <h3>Books about Walter Schloss</h3>
-                    <p>1. "The Snowball: Warren Buffett and the Business of Life" by Alice Schroeder (2008) – Mentions Schloss's role at Graham-Newman and his relationship with Buffett.</p>
-                    <p>2. "Of Permanent Value: The Story of Warren Buffett" by Andrew Kilpatrick (2012) – Discusses Schloss's investment partnership with Buffett.</p>
+                    <p>1. "The Snowball: Warren Buffett and the Business of Life" by Alice Schroeder (2008) â€“ Mentions Schloss's role at Graham-Newman and his relationship with Buffett.</p>
+                    <p>2. "Of Permanent Value: The Story of Warren Buffett" by Andrew Kilpatrick (2012) â€“ Discusses Schloss's investment partnership with Buffett.</p>
 
                     <h3>Articles about Walter Schloss</h3>
                     <p>1. "The Superinvestors of Graham-and-Doddsville" by Warren Buffett (1984)</p>
-                    <p>2. "Walter Schloss, Value Investor, Dies at 95" – The New York Times (2012)</p>
-                    <p>3. "Remembering Walter Schloss" – Various investment publications</p>
+                    <p>2. "Walter Schloss, Value Investor, Dies at 95" â€“ The New York Times (2012)</p>
+                    <p>3. "Remembering Walter Schloss" â€“ Various investment publications</p>
 
                     <h3>Books Recommended by Walter Schloss</h3>
                     <p>1. "The Intelligent Investor" by Benjamin Graham (1949)</p>
@@ -1617,11 +1618,11 @@
                     <p>The firm has navigated various market cycles, learning from both successes and challenges.</p>
 
                     <h2>QUOTES</h2>
-                    <p>1. "Value investing is about buying dollars for fifty cents." – Edwin Schloss</p>
-                    <p>2. "Patience is the key to successful investing." – Edwin Schloss</p>
-                    <p>3. "You have to be willing to be out of step with the market." – Edwin Schloss</p>
-                    <p>4. "The best opportunities often come when others are fearful." – Edwin Schloss</p>
-                    <p>5. "Stick to your principles, even when it's difficult." – Edwin Schloss</p>
+                    <p>1. "Value investing is about buying dollars for fifty cents." â€“ Edwin Schloss</p>
+                    <p>2. "Patience is the key to successful investing." â€“ Edwin Schloss</p>
+                    <p>3. "You have to be willing to be out of step with the market." â€“ Edwin Schloss</p>
+                    <p>4. "The best opportunities often come when others are fearful." â€“ Edwin Schloss</p>
+                    <p>5. "Stick to your principles, even when it's difficult." â€“ Edwin Schloss</p>
 
                     <h2>LITERATURE</h2>
                     <h3>Books by Edwin Schloss</h3>
@@ -1661,7 +1662,7 @@
             
             if (articleContent[articleId]) {
                 title.textContent = articleContent[articleId].title;
-                const imagePlaceholder = `<div style="width:100%;height:auto;aspect-ratio:16/9;background:linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:24px;color:white;box-shadow:var(--shadow-md);"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:12px;opacity:0.9;"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg><span style="font-weight:600;letter-spacing:0.05em;text-transform:uppercase;font-size:12px;opacity:0.9;">Professional Insights</span></div>`;
+                const imagePlaceholder = window.buildArticleImageHtml(articleId, articleContent[articleId]);
 
                 const relatedArticles = `
 <hr style="margin:32px 0;border:none;border-top:1px solid #e5e7eb;">
@@ -1746,4 +1747,9 @@
 
 
 
-</div></div></body></html>
+</div></div>    <script src="js/article-image-resolver.js"></script>`r`n</body></html>
+
+
+
+
+
