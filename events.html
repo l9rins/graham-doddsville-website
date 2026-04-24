@@ -1138,7 +1138,7 @@
             const content = document.getElementById(`${sectionId}-content`);
             const arrow = document.getElementById(`${sectionId}-arrow`);
 
-            if (content.style.maxHeight) {
+            if (content.classList.contains('expanded')) {
                 content.style.maxHeight = null;
                 content.classList.remove('expanded');
                 arrow.innerHTML = '▼';
@@ -1148,11 +1148,16 @@
                     openContent.style.maxHeight = null;
                     openContent.classList.remove('expanded');
                     const openArrowId = openContent.id.replace('-content', '-arrow');
-                    document.getElementById(openArrowId).innerHTML = '▼';
+                    const openArrow = document.getElementById(openArrowId);
+                    if (openArrow) openArrow.innerHTML = '▼';
                 });
 
-                content.style.maxHeight = content.scrollHeight + "px";
                 content.classList.add('expanded');
+                if(sectionId === 'events-seminars') {
+                     content.style.maxHeight = 'none'; // Allow dynamic height for async content
+                } else {
+                     content.style.maxHeight = content.scrollHeight + "px";
+                }
                 arrow.innerHTML = '▲';
             }
         }
