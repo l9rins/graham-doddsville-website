@@ -6,80 +6,395 @@ const path = require('path');
 const fetch = require('node-fetch');
 const fs = require('fs');
 const Parser = require('rss-parser');
-const { DOMParser } = require('xmldom');
 const crypto = require('crypto');
 const rateLimit = require('express-rate-limit');
+const compression = require('compression');
 const { newsSources, regionalNewsSources } = require('./news-sources-config');
 
-const parser = new Parser({
-    headers: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
-    }
-});
+// ─── Constants ────────────────────────────────────────────────────────────────
 
-// === EMERGENCY BACKUP DATA (For when all sources fail) ===
-const BACKUP_NEWS = [
-    {
-        title: "Service temporarily unavailable",
-        description: "News is currently being fetched. Please refresh in a moment.",
-        url: "#",
-        source: { name: "System Message" },
-        publishedAt: new Date().toISOString(),
-        category: "General"
-    }
-];
-
-const app = express();
 const PORT = process.env.PORT || 3051;
 const GNEWS_API_KEY = process.env.GNEWS_API_KEY;
-
-// Performance optimization constants
-const MAX_CONCURRENT_REQUESTS = 5;
-const REQUEST_TIMEOUT = 8000;
-const CACHE_DURATION = 4 * 60 * 60 * 1000; // 4 hours
-const MAX_ARTICLES_PER_SOURCE = 5;
-
-// CACHE SETTINGS
+const IS_PROD = process.env.NODE_ENV === 'production';
+const REQUEST_TIMEOUT = 8000;   // ms per fetch
+const MAX_AGE_HOURS = 48;     // strict article age cutoff
+const REFRESH_INTERVAL = 4 * 60 * 60 * 1000; // 4 hours
 const CACHE_DIR = path.join(__dirname, 'news-cache');
-const RSS_CACHE_TIME = 30 * 60 * 1000; // 30 minutes
+const SOURCE_FILE_TTL = 30 * 60 * 1000; // 30 min for /api/news/:sourceId cache
 
-// Ensure cache directory exists
-if (!fs.existsSync(CACHE_DIR)) {
-    fs.mkdirSync(CACHE_DIR);
-}
+const BLOCKED_DOMAINS = new Set([
+    'vanityfair.com', 'pagesix.com', 'twistedsifter.com', 'bleedingcool.com',
+    'tmz.com', 'eonline.com', 'people.com', 'usmagazine.com',
+    'hollywoodreporter.com', 'variety.com', 'entertainmentweekly.com'
+]);
 
-const CREDIBLE_DOMAINS = [
-    'reuters.com', 'bloomberg.com', 'ft.com', 'cnbc.com',
-    'investing.com', 'wsj.com', 'economist.com',
-    'afr.com', 'smh.com.au', 'theaustralian.com.au',
-    'abc.net.au', 'asx.com.au', 'rba.gov.au', 'asic.gov.au',
-    'news.com.au', 'businessinsider.com.au', 'marketwatch.com',
-    'finance.yahoo.com', 'seekingalpha.com', 'fool.com',
-    'livewiremarkets.com', 'stockhead.com.au', 'theguardian.com',
-    'bbc.com', 'ap.org', 'apnews.com'
+const FALLBACK_URLS = {
+    Companies: 'https://www.asx.com.au/prices/company-information.htm',
+    Markets: 'https://www.asx.com.au/markets/trade-our-cash-market.htm',
+    Economy: 'https://www.rba.gov.au/statistics/',
+    Industry: 'https://www.asx.com.au/markets/trade-our-cash-market/sector.htm',
+    Regulatory: 'https://asic.gov.au/about-asic/news-centre/',
+    'Guru Watch': 'https://www.berkshirehathaway.com/letters/letters.html'
+};
+
+// Categories with their GNews query + ordered RSS fallback sources
+const CATEGORIES = [
+    {
+        name: 'Companies',
+        gnewsQuery: 'ASX OR "Australian shares" OR "company earnings" OR "stock results"',
+        rssSources: [
+            'stockhead', 'livewire-markets', 'afr', 'abc-business',
+            'sydney-morning-herald', 'the-australian', 'business-insider-au',
+            'news-com-au', 'the-age', 'smartcompany', 'reuters-rss', 'guardian-rss'
+        ]
+    },
+    {
+        name: 'Markets',
+        gnewsQuery: 'ASX OR "stock market" OR "share market" Australia',
+        rssSources: [
+            'stockhead', 'livewire-markets', 'afr', 'abc-business',
+            'sydney-morning-herald', 'smartcompany', 'the-australian',
+            'business-insider-au', 'news-com-au', 'the-age',
+            'reuters-rss', 'bbc-rss', 'guardian-rss'
+        ]
+    },
+    {
+        name: 'Economy',
+        gnewsQuery: 'RBA OR "Australian economy" OR inflation OR "interest rate" Australia',
+        rssSources: [
+            'abc-news-au', 'abc-business', 'afr', 'sydney-morning-herald',
+            'the-australian', 'sbs-news', 'the-age', 'news-com-au',
+            'business-insider-au', 'smartcompany', 'crikey',
+            'guardian-rss', 'bbc-rss', 'reuters-rss'
+        ]
+    },
+    {
+        name: 'Industry',
+        gnewsQuery: 'Australia industry OR mining OR energy OR banking OR retail',
+        rssSources: [
+            'google-news-mining', 'google-news-retail', 'google-news-construction',
+            'australian-mining', 'mining-com-au', 'inside-retail', 'smartcompany',
+            'abc-business', 'afr', 'the-australian', 'reuters-rss', 'guardian-rss'
+        ]
+    },
+    {
+        name: 'Regulatory',
+        gnewsQuery: 'ASIC OR APRA OR ACCC OR "financial regulation" OR compliance Australia',
+        rssSources: [
+            'google-news-regulatory', 'abc-news-au', 'abc-business',
+            'afr', 'sydney-morning-herald', 'the-australian',
+            'sbs-news', 'the-age', 'news-com-au', 'business-insider-au',
+            'crikey', 'guardian-rss', 'reuters-rss', 'bbc-rss'
+        ]
+    },
+    {
+        name: 'Guru Watch',
+        gnewsQuery: 'Buffett OR "Charlie Munger" OR "Ray Dalio" OR "value investing"',
+        rssSources: [
+            'google-news-guru', 'google-news-investment-gurus',
+            'livewire-markets', 'stockhead', 'afr', 'abc-business',
+            'sydney-morning-herald', 'the-australian', 'business-insider-au',
+            'guardian-rss', 'reuters-rss', 'bbc-rss'
+        ]
+    }
 ];
 
-// Rate limiting
-const limiter = rateLimit({
-    windowMs: process.env.NODE_ENV === 'development' ? 60 * 1000 : 15 * 60 * 1000,
-    max: process.env.NODE_ENV === 'development' ? 1000 : 100,
-    message: 'Too many requests from this IP, please try again later.'
+// ─── Setup ────────────────────────────────────────────────────────────────────
+
+if (!fs.existsSync(CACHE_DIR)) fs.mkdirSync(CACHE_DIR, { recursive: true });
+
+const rssParser = new Parser({
+    timeout: REQUEST_TIMEOUT,
+    headers: {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+    }
 });
 
-// In-memory cache
-let newsCache = {
+// ─── In-memory state ──────────────────────────────────────────────────────────
+
+const newsCache = {
     articles: [],
     lastUpdated: null,
     isRefreshing: false
 };
 
-const keywordCache = new Map();
-const sourceHealth = new Map();
-const articleHashes = new Set();
+// Tracks consecutive failures per RSS source key
+const sourceFailures = new Map();
 
-// Enable CORS
+// ─── Helpers ──────────────────────────────────────────────────────────────────
+
+/** Returns true if a source has failed 3+ times in a row */
+function isSourceUnhealthy(sourceKey) {
+    return (sourceFailures.get(sourceKey) || 0) >= 3;
+}
+
+function recordSourceSuccess(sourceKey) {
+    sourceFailures.set(sourceKey, 0);
+}
+
+function recordSourceFailure(sourceKey) {
+    sourceFailures.set(sourceKey, (sourceFailures.get(sourceKey) || 0) + 1);
+}
+
+/** Article age in hours from now */
+function ageHours(publishedAt) {
+    return (Date.now() - new Date(publishedAt).getTime()) / 3_600_000;
+}
+
+/** Is this article within the MAX_AGE_HOURS window? */
+function isFresh(publishedAt) {
+    return ageHours(publishedAt) <= MAX_AGE_HOURS;
+}
+
+/** Strip HTML tags and truncate */
+function cleanText(text = '', maxLen = 150) {
+    return text.replace(/<[^>]*>/g, '').substring(0, maxLen) + (text.length > maxLen ? '...' : '');
+}
+
+/** Generate a placeholder image URL for a given source name */
+function placeholderImage(sourceName = 'News') {
+    const safe = sourceName.replace(/[^a-zA-Z0-9 ]/g, '');
+    return `https://placehold.co/600x400/1e3a8a/ffffff?text=${encodeURIComponent(safe)}`;
+}
+
+/** Stable dedupe key for an article */
+function articleKey(title, sourceName) {
+    return crypto
+        .createHash('md5')
+        .update(`${title.trim().toLowerCase()}__${sourceName.trim().toLowerCase()}`)
+        .digest('hex');
+}
+
+/** Is a URL from a blocked entertainment domain? */
+function isBlockedUrl(url = '') {
+    const lower = url.toLowerCase();
+    for (const domain of BLOCKED_DOMAINS) {
+        if (lower.includes(domain)) return true;
+    }
+    return false;
+}
+
+// ─── GNews fetch ──────────────────────────────────────────────────────────────
+
+/**
+ * Fetch up to 10 fresh articles from GNews for a given query + category.
+ * Returns [] on any error.
+ */
+async function fetchFromGNews(query, categoryName) {
+    if (!GNEWS_API_KEY) {
+        console.warn('⚠️  GNEWS_API_KEY not set — skipping GNews.');
+        return [];
+    }
+
+    const url = `https://gnews.io/api/v4/search?q=${encodeURIComponent(query)}&lang=en&country=au&max=10&apikey=${GNEWS_API_KEY}`;
+
+    try {
+        const controller = new AbortController();
+        const timer = setTimeout(() => controller.abort(), REQUEST_TIMEOUT);
+        const res = await fetch(url, { signal: controller.signal });
+        clearTimeout(timer);
+
+        if (!res.ok) throw new Error(`GNews HTTP ${res.status}`);
+
+        const data = await res.json();
+
+        if (!Array.isArray(data.articles)) {
+            if (data.errors) console.warn(`GNews error for ${categoryName}:`, data.errors);
+            return [];
+        }
+
+        const seen = new Set();
+        const articles = [];
+
+        for (const a of data.articles) {
+            if (!a.title || !a.url || !a.publishedAt) continue;
+            if (isBlockedUrl(a.url)) continue;
+            if (!isFresh(a.publishedAt)) continue;
+
+            const key = articleKey(a.title, a.source?.name || 'GNews');
+            if (seen.has(key)) continue;
+            seen.add(key);
+
+            articles.push({
+                title: a.title.trim(),
+                url: a.url.trim(),
+                publishedAt: new Date(a.publishedAt).toISOString(),
+                source: { name: a.source?.name || 'GNews' },
+                category: categoryName,
+                excerpt: cleanText(a.description || ''),
+                image: a.image || placeholderImage(a.source?.name)
+            });
+        }
+
+        console.log(`GNews: ${articles.length} fresh articles for ${categoryName}`);
+        return articles;
+
+    } catch (err) {
+        console.error(`GNews failed for ${categoryName}:`, err.message);
+        return [];
+    }
+}
+
+// ─── RSS fetch ────────────────────────────────────────────────────────────────
+
+/**
+ * Fetch fresh articles from a single RSS source.
+ * Returns [] if the source is unhealthy or errors.
+ */
+async function fetchFromRSS(sourceKey, categoryName) {
+    if (isSourceUnhealthy(sourceKey)) {
+        console.log(`Skipping unhealthy RSS source: ${sourceKey}`);
+        return [];
+    }
+
+    const sourceConfig = newsSources[sourceKey];
+    if (!sourceConfig || sourceConfig.type !== 'rss') return [];
+
+    try {
+        const feed = await rssParser.parseURL(sourceConfig.url);
+        const articles = [];
+
+        for (const item of (feed.items || [])) {
+            if (!item.title || !item.link) continue;
+            if (isBlockedUrl(item.link)) continue;
+
+            const publishedAt = item.pubDate
+                ? new Date(item.pubDate).toISOString()
+                : new Date().toISOString();
+
+            if (!isFresh(publishedAt)) continue;
+
+            articles.push({
+                title: item.title.trim(),
+                url: item.link.trim(),
+                publishedAt,
+                source: { name: sourceConfig.name },
+                category: categoryName,
+                excerpt: cleanText(item.contentSnippet || item.content || ''),
+                image: placeholderImage(sourceConfig.name)
+            });
+        }
+
+        recordSourceSuccess(sourceKey);
+        console.log(`RSS ${sourceConfig.name}: ${articles.length} fresh articles for ${categoryName}`);
+        return articles;
+
+    } catch (err) {
+        recordSourceFailure(sourceKey);
+        console.error(`RSS failed [${sourceKey}] for ${categoryName}:`, err.message);
+        return [];
+    }
+}
+
+// ─── Per-category refresh ─────────────────────────────────────────────────────
+
+/**
+ * Build 5 fresh articles for one category.
+ * Priority: GNews → RSS sources (parallel) → safety-net placeholders
+ */
+async function refreshCategory(config) {
+    const seen = new Set();
+    const result = [];
+
+    const addArticle = (a) => {
+        if (result.length >= 5) return;
+        const key = articleKey(a.title, a.source?.name || '');
+        if (seen.has(key)) return;
+        seen.add(key);
+        result.push(a);
+    };
+
+    // 1. GNews
+    const gnewsArticles = await fetchFromGNews(config.gnewsQuery, config.name);
+    gnewsArticles.forEach(addArticle);
+
+    // 2. RSS — fetch ALL configured sources in parallel, then fill gaps
+    if (result.length < 5) {
+        const rssResults = await Promise.allSettled(
+            config.rssSources.map(key => fetchFromRSS(key, config.name))
+        );
+
+        // Flatten all RSS results, preserving source order for priority
+        const rssArticles = rssResults
+            .filter(r => r.status === 'fulfilled')
+            .flatMap(r => r.value);
+
+        rssArticles.forEach(addArticle);
+    }
+
+    // 3. Safety net — only fires if both GNews and RSS couldn't find 5 fresh articles
+    if (result.length < 5) {
+        console.warn(`⚠️  Safety net for ${config.name}: only ${result.length}/5 found`);
+        const fallbackUrl = FALLBACK_URLS[config.name] || '#';
+        const now = Date.now();
+        const safetyArticles = [
+            { offset: 0, title: `Latest ${config.name} News — ${new Date().toLocaleDateString('en-AU', { weekday: 'long' })}`, excerpt: `Stay informed with the latest ${config.name.toLowerCase()} updates.` },
+            { offset: 3600000, title: `${config.name} Market Roundup`, excerpt: `Latest ${config.name.toLowerCase()} analysis and commentary for Australian investors.` },
+            { offset: 7200000, title: `${config.name} Weekly Overview`, excerpt: `Weekly ${config.name.toLowerCase()} summary for value investors.` },
+            { offset: 10800000, title: `${config.name} Investment Insights`, excerpt: `Expert ${config.name.toLowerCase()} insights from Graham & Doddsville.` },
+            { offset: 14400000, title: `${config.name} News Update`, excerpt: `Current ${config.name.toLowerCase()} news and market commentary.` }
+        ];
+        for (const s of safetyArticles) {
+            if (result.length >= 5) break;
+            addArticle({
+                title: s.title,
+                url: fallbackUrl,
+                publishedAt: new Date(now - s.offset).toISOString(),
+                source: { name: 'Graham & Doddsville' },
+                category: config.name,
+                excerpt: s.excerpt,
+                image: placeholderImage('Graham Doddsville')
+            });
+        }
+    }
+
+    return result;
+}
+
+// ─── Main refresh ─────────────────────────────────────────────────────────────
+
+async function refreshNewsCache() {
+    if (newsCache.isRefreshing) return;
+    newsCache.isRefreshing = true;
+    console.log('📰 Starting background news refresh...');
+    const start = Date.now();
+
+    try {
+        // All 6 categories refresh in parallel
+        const categoryResults = await Promise.allSettled(
+            CATEGORIES.map(config => refreshCategory(config))
+        );
+
+        const allArticles = categoryResults
+            .filter(r => r.status === 'fulfilled')
+            .flatMap(r => r.value)
+            .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+
+        if (allArticles.length > 0) {
+            newsCache.articles = allArticles;
+            newsCache.lastUpdated = new Date().toISOString();
+        }
+
+        const elapsed = ((Date.now() - start) / 1000).toFixed(1);
+        console.log(`✅ Refresh done in ${elapsed}s — ${newsCache.articles.length} articles cached`);
+
+    } catch (err) {
+        console.error('❌ Background refresh failed:', err.message);
+    } finally {
+        newsCache.isRefreshing = false;
+    }
+}
+
+// ─── Express app ──────────────────────────────────────────────────────────────
+
+const app = express();
+
+// Gzip compression — free performance win
+app.use(compression());
+
+// CORS
 const corsOptions = {
-    origin: process.env.NODE_ENV === 'production'
+    origin: IS_PROD
         ? ['https://graham-doddsville.onrender.com',
             'https://grahamanddoddsville.com.au',
             'https://l9rins.github.io']
@@ -88,64 +403,23 @@ const corsOptions = {
     credentials: true,
     maxAge: 3600
 };
-
 app.use(cors(corsOptions));
-app.use(limiter);
+
+// Rate limiting
+app.use(rateLimit({
+    windowMs: IS_PROD ? 15 * 60 * 1000 : 60 * 1000,
+    max: IS_PROD ? 100 : 1000,
+    message: 'Too many requests — please try again later.'
+}));
+
 app.use(express.json());
 
-// Deduplication helpers
-function generateArticleHash(title, source, publishedAt) {
-    const content = `${title.trim().toLowerCase()}_${source.trim().toLowerCase()}_${new Date(publishedAt).toDateString()}`;
-    return crypto.createHash('sha256').update(content).digest('hex');
-}
-
-function isArticleValid(article) {
-    const BLOCKED_DOMAINS = [
-        'vanityfair.com', 'pagesix.com', 'twistedsifter.com', 'bleedingcool.com',
-        'tmz.com', 'eonline.com', 'people.com', 'usmagazine.com',
-        'hollywoodreporter.com', 'variety.com', 'entertainmentweekly.com'
-    ];
-    const articleUrl = (article.url || article.link || '').toLowerCase();
-    if (BLOCKED_DOMAINS.some(domain => articleUrl.includes(domain))) return false;
-
-    if (!article.title || article.title.length < 20 || article.title.length > 150) return false;
-    if (!article.description || article.description.length < 50) return false;
-    if (!article.source || !article.source.name) return false;
-    if (!article.url) return false;
-    if (!article.publishedAt) return false;
-
-    const publishedDate = new Date(article.publishedAt);
-    const now = new Date();
-    const hoursDiff = (now - publishedDate) / (1000 * 60 * 60);
-    if (hoursDiff > 168) return false; // 7 days max
-
-    return true;
-}
-
-function deduplicateArticles(articles) {
-    const uniqueArticles = [];
-    const seenHashes = new Set();
-
-    for (const article of articles) {
-        const sourceName = article.source?.name || article.source || '';
-        const hash = generateArticleHash(article.title, sourceName, article.publishedAt);
-        if (!seenHashes.has(hash) && !articleHashes.has(hash)) {
-            seenHashes.add(hash);
-            articleHashes.add(hash);
-            uniqueArticles.push(article);
-        }
-    }
-
-    return uniqueArticles;
-}
-
-// Performance middleware
+// Cache-control headers middleware
 app.use((req, res, next) => {
-    if (req.url.match(/\.(css|js|png|jpg|jpeg|gif|ico|svg)$/)) {
-        res.setHeader('Cache-Control', 'public, max-age=31536000');
-        res.setHeader('Expires', new Date(Date.now() + 31536000000).toUTCString());
-    } else if (req.url.match(/\.(html)$/)) {
-        res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate, max-age=0');
+    if (/\.(css|js|png|jpg|jpeg|gif|ico|svg)$/.test(req.url)) {
+        res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+    } else if (/\.html$/.test(req.url)) {
+        res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
         res.setHeader('Pragma', 'no-cache');
         res.setHeader('Expires', '0');
     } else {
@@ -155,229 +429,35 @@ app.use((req, res, next) => {
     next();
 });
 
-// Enhanced RSS Feed Parser
-async function parseRSSFeed(url, sourceName, defaultCategory = null) {
-    try {
-        console.log(`Fetching RSS feed from ${sourceName}...`);
+// ─── API Routes ───────────────────────────────────────────────────────────────
 
-        if (sourceHealth.get(sourceName)?.isUnhealthy) {
-            console.log(`Skipping unhealthy source: ${sourceName}`);
-            return [];
-        }
-
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT);
-
-        const response = await fetch(url, {
-            headers: {
-                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-            },
-            signal: controller.signal
-        });
-
-        clearTimeout(timeoutId);
-
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-
-        let xmlText = await response.text();
-
-        xmlText = xmlText
-            .replace(/&nbsp;/g, ' ')
-            .replace(/&copy;/g, '©')
-            .replace(/&ndash;/g, '-')
-            .replace(/&mdash;/g, '-')
-            .replace(/&rsquo;/g, "'")
-            .replace(/&lsquo;/g, "'")
-            .replace(/&rdquo;/g, '"')
-            .replace(/&ldquo;/g, '"');
-
-        const domParser = new DOMParser();
-        const doc = domParser.parseFromString(xmlText, 'text/xml');
-        const items = doc.getElementsByTagName('item');
-        const articles = [];
-
-        for (let i = 0; i < Math.min(items.length, MAX_ARTICLES_PER_SOURCE); i++) {
-            const item = items[i];
-            const title = item.getElementsByTagName('title')[0]?.textContent || '';
-            const description = item.getElementsByTagName('description')[0]?.textContent || '';
-            const link = item.getElementsByTagName('link')[0]?.textContent || '';
-            const pubDate = item.getElementsByTagName('pubDate')[0]?.textContent || '';
-
-            if (title && link) {
-                let imageUrl = null;
-
-                const mediaContent = item.getElementsByTagName('media:content')[0];
-                if (mediaContent) imageUrl = mediaContent.getAttribute('url');
-
-                if (!imageUrl) {
-                    const enclosure = item.getElementsByTagName('enclosure')[0];
-                    if (enclosure && enclosure.getAttribute('type')?.startsWith('image')) {
-                        imageUrl = enclosure.getAttribute('url');
-                    }
-                }
-
-                if (!imageUrl && description) {
-                    const imgMatch = description.match(/<img[^>]+src="([^">]+)"/);
-                    if (imgMatch) imageUrl = imgMatch[1];
-                }
-
-                articles.push({
-                    title: title.trim(),
-                    excerpt: description ? description.replace(/<[^>]*>/g, '').substring(0, 150) + '...' : '',
-                    url: link.trim(),
-                    image: imageUrl || generatePlaceholderImage(sourceName),
-                    category: (defaultCategory && ['Industry', 'Regulatory', 'Technology', 'Guru Watch', 'Economy', 'Markets', 'Companies'].includes(defaultCategory))
-                        ? defaultCategory
-                        : categorizeNews(title + ' ' + description + ' ' + sourceName),
-                    source: { name: sourceName },
-                    publishedAt: pubDate ? new Date(pubDate).toISOString() : new Date().toISOString()
-                });
-            }
-        }
-
-        sourceHealth.set(sourceName, { isUnhealthy: false, lastSuccess: Date.now() });
-        console.log(`Successfully parsed ${articles.length} articles from ${sourceName}`);
-        return articles;
-
-    } catch (error) {
-        console.error(`Error parsing RSS feed for ${sourceName}:`, error.message);
-
-        const health = sourceHealth.get(sourceName) || { failures: 0 };
-        health.failures = (health.failures || 0) + 1;
-        if (health.failures >= 3) {
-            health.isUnhealthy = true;
-            console.log(`Marking ${sourceName} as unhealthy after ${health.failures} failures`);
-        }
-        sourceHealth.set(sourceName, health);
-        return [];
-    }
-}
-
-// Fetch news for a source
-async function fetchNews(sourceKey) {
-    const source = newsSources[sourceKey];
-    if (!source) return [];
-
-    if (source.type === 'rss') {
-        return await parseRSSFeed(source.url, source.name, source.category);
-    }
-    return [];
-}
-
-// Helper: get text content from XML element
-function getTextContent(parent, tagName) {
-    const elements = parent.getElementsByTagName(tagName);
-    return elements.length > 0 ? elements[0].textContent : '';
-}
-
-// Categorize news
-function categorizeNews(content) {
-    const lowerContent = content.toLowerCase();
-    if (lowerContent.includes('asx') || lowerContent.includes('market') || lowerContent.includes('stock') || lowerContent.includes('trading')) return 'Markets';
-    if (lowerContent.includes('company') || lowerContent.includes('business') || lowerContent.includes('corporate') || lowerContent.includes('startup')) return 'Companies';
-    if (lowerContent.includes('economy') || lowerContent.includes('gdp') || lowerContent.includes('inflation') || lowerContent.includes('unemployment')) return 'Economy';
-    if (lowerContent.includes('industry') || lowerContent.includes('sector') || lowerContent.includes('mining') || lowerContent.includes('manufacturing')) return 'Industry';
-    if (lowerContent.includes('rba') || lowerContent.includes('interest') || lowerContent.includes('rate') || lowerContent.includes('regulation') || lowerContent.includes('policy')) return 'Regulatory';
-    if (lowerContent.includes('commodity') || lowerContent.includes('gold') || lowerContent.includes('oil') || lowerContent.includes('iron ore')) return 'Commodities';
-    if (lowerContent.includes('property') || lowerContent.includes('housing') || lowerContent.includes('real estate')) return 'Property';
-    if (lowerContent.includes('bank') || lowerContent.includes('financial') || lowerContent.includes('fund') || lowerContent.includes('finance')) return 'Banking';
-    if (lowerContent.includes('tech') || lowerContent.includes('ai') || lowerContent.includes('digital') || lowerContent.includes('software')) return 'Technology';
-    if (lowerContent.includes('energy') || lowerContent.includes('renewable') || lowerContent.includes('coal')) return 'Energy';
-    if (lowerContent.includes('super') || lowerContent.includes('retirement') || lowerContent.includes('pension')) return 'Superannuation';
-    if (lowerContent.includes('retail') || lowerContent.includes('consumer') || lowerContent.includes('shopping')) return 'Consumer';
-    if (lowerContent.includes('buffett') || lowerContent.includes('munger') || lowerContent.includes('graham') || lowerContent.includes('guru') || lowerContent.includes('investor')) return 'Guru Watch';
-    if (lowerContent.includes('investment') || lowerContent.includes('value') || lowerContent.includes('portfolio')) return 'Investment';
-    return 'General';
-}
-
-// Generate placeholder image
-function generatePlaceholderImage(sourceName) {
-    const safeName = sourceName ? sourceName.replace(/[^a-zA-Z0-9 ]/g, '') : 'News';
-    return `https://placehold.co/600x400/1e3a8a/ffffff?text=${encodeURIComponent(safeName)}`;
-}
-
-// Helper: fetch source data (for /api/news/:sourceId)
-async function fetchSourceData(sourceId) {
-    const sourceConfig = newsSources[sourceId];
-    if (!sourceConfig) throw new Error('Source not found in config');
-
-    console.log(`[Server] Fetching fresh data for ${sourceId}...`);
-
-    if (sourceConfig.type === 'rss') {
-        const feed = await parser.parseURL(sourceConfig.url);
-        const articles = feed.items.map(item => ({
-            title: item.title,
-            description: item.contentSnippet || item.content,
-            url: item.link,
-            publishedAt: item.pubDate,
-            source: { name: sourceConfig.name },
-            urlToImage: null
-        }));
-        return { articles, timestamp: new Date().toISOString() };
-    }
-
-    throw new Error(`Unsupported source type: ${sourceConfig.type}`);
-}
-
-// ============================================================
-// API ROUTES
-// ============================================================
-
-app.get('/api/news/status', (req, res) => {
-    const nextRefresh = newsCache.lastUpdated
-        ? new Date(new Date(newsCache.lastUpdated).getTime() + 4 * 60 * 60 * 1000).toISOString()
+// Status
+app.get('/api/news/status', (_req, res) => {
+    const cacheAgeMs = newsCache.lastUpdated
+        ? Date.now() - new Date(newsCache.lastUpdated).getTime()
         : null;
-    const cacheAge = newsCache.lastUpdated ? (Date.now() - new Date(newsCache.lastUpdated).getTime()) / 1000 : 0;
 
     res.json({
-        cacheAge: `${Math.floor(cacheAge / 60)} minutes`,
+        cacheAge: cacheAgeMs ? `${Math.floor(cacheAgeMs / 60000)} minutes` : 'not cached yet',
         articleCount: newsCache.articles.length,
         lastUpdated: newsCache.lastUpdated,
-        nextRefresh,
+        nextRefresh: newsCache.lastUpdated
+            ? new Date(new Date(newsCache.lastUpdated).getTime() + REFRESH_INTERVAL).toISOString()
+            : null,
         gnewsEnabled: !!GNEWS_API_KEY
     });
 });
 
-app.get('/api/news/category/:category', async (req, res) => {
-    try {
-        const requestedCategory = req.params.category.toLowerCase();
-
-        if (newsCache.articles.length === 0) {
-            return res.status(503).json({
-                error: 'Service temporarily unavailable',
-                message: 'Cache is warming up. Please try again shortly.',
-                retryAfter: 60
-            });
-        }
-
-        const filteredArticles = newsCache.articles
-            .filter(article => article.category && article.category.toLowerCase() === requestedCategory)
-            .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))
-            .slice(0, 20);
-
-        res.json({
-            category: requestedCategory,
-            articles: filteredArticles,
-            count: filteredArticles.length,
-            lastUpdated: newsCache.lastUpdated,
-            isCached: true
-        });
-
-    } catch (error) {
-        console.error('Error fetching category news:', error);
-        res.status(500).json({ error: 'Internal server error' });
-    }
-});
-
-app.get('/api/news', (req, res) => {
+// All news (main endpoint used by frontend)
+app.get('/api/news', (_req, res) => {
     if (newsCache.articles.length === 0) {
         if (!newsCache.isRefreshing) refreshNewsCache();
         return res.json({
-            articles: BACKUP_NEWS,
-            count: BACKUP_NEWS.length,
+            articles: [],
+            count: 0,
             lastUpdated: null,
             isCached: false,
-            warning: 'Cache warming up, please refresh shortly'
+            warning: 'Cache warming up — please refresh in a moment'
         });
     }
 
@@ -389,482 +469,189 @@ app.get('/api/news', (req, res) => {
     });
 });
 
+// By category
+app.get('/api/news/category/:category', (req, res) => {
+    if (newsCache.articles.length === 0) {
+        return res.status(503).json({
+            error: 'Service temporarily unavailable',
+            message: 'Cache is warming up. Please try again shortly.',
+            retryAfter: 60
+        });
+    }
+
+    const cat = req.params.category.toLowerCase();
+    const articles = newsCache.articles
+        .filter(a => a.category?.toLowerCase() === cat)
+        .slice(0, 20);
+
+    res.json({ category: cat, articles, count: articles.length, lastUpdated: newsCache.lastUpdated });
+});
+
+// Regional news (Around the World sections)
 app.get('/api/news/region/:region', async (req, res) => {
+    const region = req.params.region.toLowerCase();
+    const sourceKeys = regionalNewsSources[region];
+
+    if (!sourceKeys) return res.status(404).json({ error: 'Region not found' });
+
     try {
-        const region = req.params.region.toLowerCase();
-        const sourceKeys = regionalNewsSources[region];
-
-        if (!sourceKeys) return res.status(404).json({ error: 'Region not found' });
-
-        const sources = sourceKeys.map(key => newsSources[key]).filter(source => source && source.name);
-        if (sources.length === 0) return res.status(404).json({ error: 'No sources found for region' });
-
-        const rssSources = sources.filter(s => s.type === 'rss');
-        let allArticles = [];
-
-        if (rssSources.length > 0) {
-            const rssSourceKeys = rssSources.map(s =>
-                Object.keys(newsSources).find(k => newsSources[k] === s)
-            ).filter(Boolean);
-
-            const results = await processBatch(rssSourceKeys.slice(0, 7), 4);
-            allArticles = results.flat();
-        }
-
-        const sevenDaysAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
-        allArticles = allArticles.filter(a => !a.publishedAt || new Date(a.publishedAt) >= sevenDaysAgo);
+        // Fetch all regional RSS sources in parallel
+        const results = await Promise.allSettled(
+            sourceKeys.map(key => fetchFromRSS(key, region))
+        );
 
         const seen = new Set();
-        allArticles = allArticles.filter(article => {
-            const key = article.title?.toLowerCase().trim();
-            if (!key || seen.has(key)) return false;
-            seen.add(key);
-            return true;
-        });
+        const articles = results
+            .filter(r => r.status === 'fulfilled')
+            .flatMap(r => r.value)
+            .filter(a => {
+                const key = articleKey(a.title, a.source?.name || '');
+                if (seen.has(key)) return false;
+                seen.add(key);
+                return true;
+            })
+            .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))
+            .slice(0, 5);
 
-        allArticles.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+        res.json({ region, articles, count: articles.length, timestamp: new Date().toISOString() });
 
-        res.json({
-            region,
-            articles: allArticles.slice(0, 5),
-            count: Math.min(allArticles.length, 5),
-            sources: sources.map(s => s.name),
-            timestamp: new Date().toISOString()
-        });
-
-    } catch (error) {
-        console.error(`Error fetching news for region ${req.params.region}:`, error);
-        res.status(500).json({ error: 'Failed to fetch regional news', message: error.message });
+    } catch (err) {
+        console.error(`Region ${region} error:`, err.message);
+        res.status(500).json({ error: 'Failed to fetch regional news' });
     }
 });
 
+// Single source by ID (with file cache)
 app.get('/api/news/:sourceId', async (req, res) => {
+    const { sourceId } = req.params;
+    const sourceConfig = newsSources[sourceId];
+    if (!sourceConfig) return res.status(404).json({ error: 'Source not configured' });
+
+    const cacheFile = path.join(CACHE_DIR, `${sourceId}.json`);
+
+    // Serve from file cache if still fresh
     try {
-        const sourceId = req.params.sourceId;
-        const cacheFile = path.join(CACHE_DIR, `${sourceId}.json`);
-        const sourceConfig = newsSources[sourceId];
-
-        if (!sourceConfig) return res.status(404).json({ error: 'Source not configured' });
-
         if (fs.existsSync(cacheFile)) {
-            const cachedJson = JSON.parse(fs.readFileSync(cacheFile, 'utf8'));
-            const fileTime = new Date(cachedJson.timestamp).getTime();
-
-            if ((Date.now() - fileTime) < RSS_CACHE_TIME) {
-                console.log(`[Server] Serving ${sourceId} from CACHE`);
-                return res.json(cachedJson);
+            const cached = JSON.parse(fs.readFileSync(cacheFile, 'utf8'));
+            if (Date.now() - new Date(cached.timestamp).getTime() < SOURCE_FILE_TTL) {
+                return res.json(cached);
             }
         }
+    } catch { /* stale or corrupt cache — fall through */ }
 
-        const freshData = await fetchSourceData(sourceId);
-        fs.writeFileSync(cacheFile, JSON.stringify(freshData, null, 2));
-        return res.json(freshData);
-
-    } catch (error) {
-        console.error(`[Server] Error processing ${req.params.sourceId}:`, error.message);
-
-        const cacheFile = path.join(CACHE_DIR, `${req.params.sourceId}.json`);
-        if (fs.existsSync(cacheFile)) {
-            console.log(`[Server] Serving STALE cache for ${req.params.sourceId}`);
-            return res.json(JSON.parse(fs.readFileSync(cacheFile, 'utf8')));
-        }
-
-        return res.status(500).json({ error: 'Failed to fetch news', details: error.message });
-    }
-});
-
-// Batch processing
-async function processBatch(sources, batchSize = MAX_CONCURRENT_REQUESTS) {
-    const results = [];
-
-    for (let i = 0; i < sources.length; i += batchSize) {
-        const batch = sources.slice(i, i + batchSize);
-        const batchPromises = batch.map(async (sourceKey) => {
-            try {
-                return await fetchNews(sourceKey);
-            } catch (error) {
-                console.error(`Error fetching from ${sourceKey}:`, error);
-                return [];
-            }
-        });
-
-        const batchResults = await Promise.all(batchPromises);
-        results.push(...batchResults);
-
-        if (i + batchSize < sources.length) {
-            await new Promise(resolve => setTimeout(resolve, 100));
-        }
-    }
-
-    return results;
-}
-
-// ============================================================
-// MAIN CACHE REFRESH
-// Priority order per category:
-//   1. GNews API (server-friendly free tier)
-//   2. Configured RSS sources from news-sources-config.js
-//   3. Safety net placeholders (last resort only)
-// ============================================================
-async function refreshNewsCache() {
-    if (newsCache.isRefreshing) return;
-    newsCache.isRefreshing = true;
-    console.log('📰 Starting background news refresh...');
-
+    // Fetch fresh
     try {
-        const categoriesConfig = [
-            {
-                category: 'Companies',
-                query: 'ASX OR "Australian shares" OR "company earnings" OR "stock results"',
-                // Configured RSS sources to pull from for this category
-                rssSources: ['stockhead', 'livewire-markets', 'afr', 'abc-business',
-                    'sydney-morning-herald', 'the-australian', 'business-insider-au'],
-                baseAge: 48
-            },
-            {
-                category: 'Markets',
-                query: 'ASX OR "stock market" OR "share market" Australia',
-                rssSources: ['stockhead', 'livewire-markets', 'afr', 'abc-business',
-                    'sydney-morning-herald', 'smartcompany'],
-                baseAge: 48
-            },
-            {
-                category: 'Economy',
-                query: 'RBA OR "Australian economy" OR inflation OR "interest rate" Australia',
-                rssSources: ['abc-news-au', 'abc-business', 'afr', 'sydney-morning-herald',
-                    'the-australian', 'sbs-news', 'the-age', 'news-com-au',
-                    'business-insider-au', 'smartcompany', 'crikey',
-                    'guardian-rss', 'bbc-rss', 'reuters-rss'],
-                baseAge: 48
-            },
-            {
-                category: 'Industry',
-                query: 'Australia industry OR mining OR energy OR banking OR retail',
-                // Includes the client's specifically configured Google News industry feeds
-                rssSources: ['google-news-mining', 'google-news-retail', 'google-news-construction',
-                    'australian-mining', 'mining-com-au', 'inside-retail', 'smartcompany'],
-                baseAge: 72
-            },
-            {
-                category: 'Regulatory',
-                query: 'ASIC OR APRA OR ACCC OR "financial regulation" OR compliance Australia',
-                // Includes the client's specifically configured Google News regulatory feed
-                rssSources: ['google-news-regulatory', 'abc-news-au', 'abc-business',
-                    'afr', 'sydney-morning-herald', 'the-australian'],
-                baseAge: 336
-            },
-            {
-                category: 'Guru Watch',
-                query: 'Buffett OR "Charlie Munger" OR "Ray Dalio" OR "value investing"',
-                // Includes the client's specifically configured Google News guru feeds
-                rssSources: ['google-news-guru', 'google-news-investment-gurus',
-                    'livewire-markets', 'stockhead', 'afr', 'abc-business',
-                    'sydney-morning-herald', 'the-australian', 'business-insider-au',
-                    'guardian-rss', 'reuters-rss', 'bbc-rss'],
-                baseAge: 168
-            }
-        ];
-
-        const fallbackUrls = {
-            'Companies': 'https://www.asx.com.au/prices/company-information.htm',
-            'Markets': 'https://www.asx.com.au/markets/trade-our-cash-market.htm',
-            'Economy': 'https://www.rba.gov.au/statistics/',
-            'Industry': 'https://www.asx.com.au/markets/trade-our-cash-market/sector.htm',
-            'Regulatory': 'https://asic.gov.au/about-asic/news-centre/',
-            'Guru Watch': 'https://www.berkshirehathaway.com/letters/letters.html'
+        const feed = await rssParser.parseURL(sourceConfig.url);
+        const data = {
+            articles: feed.items.map(item => ({
+                title: item.title,
+                description: item.contentSnippet || item.content,
+                url: item.link,
+                publishedAt: item.pubDate,
+                source: { name: sourceConfig.name }
+            })),
+            timestamp: new Date().toISOString()
         };
 
-        const allArticles = [];
+        fs.writeFileSync(cacheFile, JSON.stringify(data, null, 2));
+        return res.json(data);
 
-        const promises = categoriesConfig.map(async (config, index) => {
-            await new Promise(resolve => setTimeout(resolve, index * 500));
+    } catch (err) {
+        console.error(`[/api/news/${sourceId}] fetch failed:`, err.message);
 
-            let validArticles = [];
-            let currentAgeLimit = config.baseAge;
-            const MAX_AGE_LIMIT = currentAgeLimit + 336;
-
-            // ============================================================
-            // 1. PRIMARY: GNews API (works from servers on free tier)
-            // ============================================================
-            if (GNEWS_API_KEY) {
-                try {
-                    console.log(`Fetching GNews for ${config.category}...`);
-                    const gNewsUrl = `https://gnews.io/api/v4/search?q=${encodeURIComponent(config.query)}&lang=en&country=au&max=10&apikey=${GNEWS_API_KEY}`;
-
-                    const controller = new AbortController();
-                    const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT);
-                    const response = await fetch(gNewsUrl, { signal: controller.signal });
-                    clearTimeout(timeoutId);
-
-                    const data = await response.json();
-
-                    if (data.articles && Array.isArray(data.articles)) {
-                        const seenUrls = new Set();
-                        for (const article of data.articles) {
-                            if (!article.title || !article.url || !article.publishedAt) continue;
-
-                            const publishedDate = new Date(article.publishedAt);
-                            const hoursDiff = (new Date() - publishedDate) / (1000 * 60 * 60);
-
-                            if (hoursDiff <= MAX_AGE_LIMIT && !seenUrls.has(article.url)) {
-                                seenUrls.add(article.url);
-                                validArticles.push({
-                                    title: article.title.trim(),
-                                    url: article.url.trim(),
-                                    publishedAt: publishedDate.toISOString(),
-                                    source: { name: article.source?.name || 'GNews' },
-                                    category: config.category,
-                                    excerpt: article.description
-                                        ? article.description.replace(/<[^>]*>/g, '').substring(0, 150) + '...'
-                                        : '',
-                                    image: article.image || generatePlaceholderImage(article.source?.name || 'News')
-                                });
-                            }
-                        }
-                        console.log(`GNews returned ${validArticles.length} articles for ${config.category}`);
-                    } else if (data.errors) {
-                        console.warn(`GNews error for ${config.category}:`, data.errors);
-                    }
-                } catch (err) {
-                    console.error(`GNews failed for ${config.category}:`, err.message);
-                }
-            } else {
-                console.warn('⚠️  GNEWS_API_KEY not set — skipping GNews. Add it to your Render environment variables.');
+        // Serve stale cache as fallback
+        try {
+            if (fs.existsSync(cacheFile)) {
+                return res.json(JSON.parse(fs.readFileSync(cacheFile, 'utf8')));
             }
+        } catch { /* nothing to serve */ }
 
-            // Age filtering on GNews results
-            let filteredArticles = [];
-            while (filteredArticles.length < 5 && currentAgeLimit <= MAX_AGE_LIMIT) {
-                filteredArticles = validArticles.filter(a => {
-                    const hoursDiff = (new Date() - new Date(a.publishedAt)) / (1000 * 60 * 60);
-                    return hoursDiff <= currentAgeLimit;
-                });
-                if (filteredArticles.length < 5) currentAgeLimit += 24;
-            }
-
-            // ============================================================
-            // 2. FALLBACK: Configured RSS sources from news-sources-config.js
-            //    Pulls from the specific sources the client set up, in order,
-            //    until we have 5 articles for this category.
-            // ============================================================
-            if (filteredArticles.length < 5) {
-                console.log(`Falling back to configured RSS sources for ${config.category}`);
-                const seenUrls = new Set(filteredArticles.map(a => a.url));
-                currentAgeLimit = config.baseAge;
-
-                for (const sourceKey of config.rssSources) {
-                    if (filteredArticles.length >= 5) break;
-
-                    const sourceConfig = newsSources[sourceKey];
-                    if (!sourceConfig || sourceConfig.type !== 'rss') continue;
-
-                    try {
-                        const feed = await parser.parseURL(sourceConfig.url);
-                        const items = feed.items || [];
-
-                        for (const item of items) {
-                            if (filteredArticles.length >= 5) break;
-                            if (!item.title || !item.link) continue;
-
-                            const publishedDate = item.pubDate ? new Date(item.pubDate) : new Date();
-                            const hoursDiff = (new Date() - publishedDate) / (1000 * 60 * 60);
-
-                            if (hoursDiff <= MAX_AGE_LIMIT && !seenUrls.has(item.link)) {
-                                seenUrls.add(item.link);
-                                filteredArticles.push({
-                                    title: item.title.trim(),
-                                    url: item.link.trim(),
-                                    publishedAt: publishedDate.toISOString(),
-                                    source: { name: sourceConfig.name },
-                                    category: config.category,
-                                    excerpt: (item.contentSnippet || item.content || '')
-                                        .replace(/<[^>]*>/g, '').substring(0, 150) + '...',
-                                    image: generatePlaceholderImage(sourceConfig.name)
-                                });
-                            }
-                        }
-
-                        console.log(`${sourceConfig.name} → now have ${filteredArticles.length} for ${config.category}`);
-                    } catch (err) {
-                        console.error(`RSS failed for ${sourceKey} (${config.category}):`, err.message);
-                    }
-                }
-            }
-
-            // ============================================================
-            // 3. SAFETY NET: Placeholder articles (absolute last resort)
-            // ============================================================
-            if (filteredArticles.length < 5) {
-                console.log(`Safety net triggered for ${config.category}: only ${filteredArticles.length} articles found`);
-                const needed = 5 - filteredArticles.length;
-                const safetyArticles = [
-                    { title: `Latest ${config.category} News — ${new Date().toLocaleDateString('en-AU', { weekday: 'long' })}`, url: fallbackUrls[config.category], publishedAt: new Date().toISOString(), source: { name: 'Graham & Doddsville' }, category: config.category, excerpt: `Stay informed with the latest ${config.category.toLowerCase()} updates.` },
-                    { title: `${config.category} Market Roundup`, url: fallbackUrls[config.category], publishedAt: new Date(Date.now() - 3600000).toISOString(), source: { name: 'Graham & Doddsville' }, category: config.category, excerpt: `Latest ${config.category.toLowerCase()} analysis and commentary for Australian investors.` },
-                    { title: `${config.category} Weekly Overview`, url: fallbackUrls[config.category], publishedAt: new Date(Date.now() - 7200000).toISOString(), source: { name: 'Graham & Doddsville' }, category: config.category, excerpt: `Weekly ${config.category.toLowerCase()} summary for value investors.` },
-                    { title: `${config.category} Investment Insights`, url: fallbackUrls[config.category], publishedAt: new Date(Date.now() - 10800000).toISOString(), source: { name: 'Graham & Doddsville' }, category: config.category, excerpt: `Expert ${config.category.toLowerCase()} insights from Graham & Doddsville.` },
-                    { title: `${config.category} News Update`, url: fallbackUrls[config.category], publishedAt: new Date(Date.now() - 14400000).toISOString(), source: { name: 'Graham & Doddsville' }, category: config.category, excerpt: `Current ${config.category.toLowerCase()} news and market commentary for Australian investors.` }
-                ];
-                filteredArticles.push(...safetyArticles.slice(0, needed));
-            }
-
-            return filteredArticles.slice(0, 5);
-        });
-
-        const results = await Promise.allSettled(promises);
-        results.forEach(result => {
-            if (result.status === 'fulfilled') allArticles.push(...result.value);
-        });
-
-        allArticles.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
-
-        if (allArticles.length > 0) {
-            newsCache.articles = allArticles;
-            newsCache.lastUpdated = new Date().toISOString();
-        }
-
-    } catch (error) {
-        console.error('❌ Background refresh failed:', error.message);
-    } finally {
-        newsCache.isRefreshing = false;
-        console.log(`✅ Background refresh completed: ${newsCache.articles.length} articles cached`);
+        return res.status(500).json({ error: 'Failed to fetch source', source: sourceId });
     }
-}
-
-function cleanupCache() {
-    if (articleHashes.size > 1000) {
-        const hashesArray = Array.from(articleHashes);
-        const keepHashes = hashesArray.slice(-500);
-        articleHashes.clear();
-        keepHashes.forEach(hash => articleHashes.add(hash));
-    }
-
-    const now = Date.now();
-    for (const [key, value] of keywordCache.entries()) {
-        if (now - value.timestamp > CACHE_DURATION * 2) keywordCache.delete(key);
-    }
-
-    console.log(`🧹 Cache cleanup: ${articleHashes.size} hashes, ${keywordCache.size} keyword cache entries`);
-}
+});
 
 // Health check
-app.get('/api/health', (req, res) => {
-    const healthySources = Array.from(sourceHealth.entries())
-        .filter(([, health]) => !health.isUnhealthy)
-        .map(([name]) => name);
+app.get('/api/health', (_req, res) => {
+    const unhealthySources = [...sourceFailures.entries()]
+        .filter(([, failures]) => failures >= 3)
+        .map(([key]) => key);
 
     res.json({
         status: 'OK',
         timestamp: new Date().toISOString(),
         gnews: {
             enabled: !!GNEWS_API_KEY,
-            note: GNEWS_API_KEY ? 'GNews API key configured' : '⚠️ GNEWS_API_KEY not set — add to Render environment variables'
+            note: GNEWS_API_KEY ? 'GNews configured ✅' : '⚠️ GNEWS_API_KEY not set'
+        },
+        cache: {
+            articles: newsCache.articles.length,
+            lastUpdated: newsCache.lastUpdated,
+            isRefreshing: newsCache.isRefreshing
         },
         sources: {
             total: Object.keys(newsSources).length,
-            healthy: healthySources.length,
-            unhealthy: Object.keys(newsSources).length - healthySources.length
-        },
-        cache: {
-            cachedArticles: newsCache.articles.length,
-            lastUpdated: newsCache.lastUpdated,
-            keywordCacheSize: keywordCache.size,
-            deduplicationHashes: articleHashes.size
+            unhealthy: unhealthySources.length,
+            unhealthyList: unhealthySources
         }
     });
 });
 
-// Cache clear
-app.get('/api/cache/clear', (req, res) => {
+// Cache clear (useful when debugging)
+app.get('/api/cache/clear', (_req, res) => {
     newsCache.articles = [];
     newsCache.lastUpdated = null;
     newsCache.isRefreshing = false;
-    keywordCache.clear();
-    sourceHealth.clear();
-    articleHashes.clear();
-    res.json({ message: 'Cache cleared successfully' });
+    sourceFailures.clear();
+    res.json({ message: 'Cache cleared ✅' });
 });
 
-// Static file serving
-app.use('/html', express.static(path.join(__dirname, 'public', 'html'), {
-    setHeaders: (res) => {
-        res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
-        res.setHeader('Pragma', 'no-cache');
-        res.setHeader('Expires', '0');
-    }
-}));
+// ─── Static files ─────────────────────────────────────────────────────────────
 
-app.use('/css', express.static(path.join(__dirname, 'public', 'css'), {
-    setHeaders: (res) => {
-        res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
-    }
-}));
-
-app.use('/js', express.static(path.join(__dirname, 'public', 'js'), {
-    setHeaders: (res) => {
-        res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
-    }
-}));
-
-app.use('/images', express.static(path.join(__dirname, 'public', 'images'), {
-    setHeaders: (res) => {
-        res.setHeader('Cache-Control', 'public, max-age=604800');
-    }
-}));
-
+app.use('/html', express.static(path.join(__dirname, 'public', 'html'), { setHeaders: noCache }));
+app.use('/css', express.static(path.join(__dirname, 'public', 'css'), { setHeaders: longCache }));
+app.use('/js', express.static(path.join(__dirname, 'public', 'js'), { setHeaders: longCache }));
+app.use('/images', express.static(path.join(__dirname, 'public', 'images'), { setHeaders: weekCache }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(__dirname));
+app.get('/', (_req, res) => res.sendFile(path.join(__dirname, 'index.html')));
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
-});
+function noCache(res) { res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate'); }
+function longCache(res) { res.setHeader('Cache-Control', 'public, max-age=31536000, immutable'); }
+function weekCache(res) { res.setHeader('Cache-Control', 'public, max-age=604800'); }
 
-// Error handling
-app.use((req, res) => {
-    res.status(404).json({ error: 'Not Found', path: req.path });
-});
+// ─── Error handlers ───────────────────────────────────────────────────────────
 
-app.use((err, req, res, next) => {
+app.use((req, res) => res.status(404).json({ error: 'Not Found', path: req.path }));
+
+app.use((err, req, res, _next) => {
     console.error('❌ Server Error:', err.message);
     res.status(err.status || 500).json({
         error: 'Server Error',
-        message: process.env.NODE_ENV === 'production' ? 'An error occurred' : err.message,
-        timestamp: new Date().toISOString()
+        message: IS_PROD ? 'An error occurred' : err.message
     });
 });
 
-process.on('uncaughtException', (err) => {
-    console.error('💥 UNCAUGHT EXCEPTION:', err);
-    process.exit(1);
-});
+process.on('uncaughtException', (err) => { console.error('💥 UNCAUGHT EXCEPTION:', err); process.exit(1); });
+process.on('unhandledRejection', (err) => { console.error('💥 UNHANDLED REJECTION:', err); });
 
-process.on('unhandledRejection', (reason) => {
-    console.error('💥 UNHANDLED REJECTION:', reason);
-});
+// ─── Start ────────────────────────────────────────────────────────────────────
 
-// Start server
 const server = app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log(`🚀 Server running on port ${PORT}`);
+    console.log(`📡 GNews: ${GNEWS_API_KEY ? 'configured ✅' : '⚠️  not configured'}`);
 });
 
 server.on('error', (err) => console.error('Server error:', err));
-server.on('listening', () => console.log('Server is listening on all interfaces!'));
 
-// Schedule background refresh
+// Kick off first refresh 2s after boot, then every 4 hours
 setTimeout(() => {
-    console.log('📋 Scheduling background refresh...');
-    setTimeout(() => {
-        refreshNewsCache().catch(error => console.error('❌ Background refresh error:', error));
-    }, 1000);
+    refreshNewsCache().catch(err => console.error('Initial refresh error:', err));
 
-    const refreshInterval = setInterval(() => {
-        refreshNewsCache().catch(error => console.error('❌ Background refresh error:', error));
-    }, 4 * 60 * 60 * 1000); // every 4 hours
-
-    refreshInterval.unref();
-}, 1000);
-
-// Cache cleanup every 2 hours
-const cleanupInterval = setInterval(cleanupCache, 2 * 60 * 60 * 1000);
-cleanupInterval.unref();
+    const interval = setInterval(
+        () => refreshNewsCache().catch(err => console.error('Refresh error:', err)),
+        REFRESH_INTERVAL
+    );
+    interval.unref();
+}, 2000);
 
 module.exports = app;
