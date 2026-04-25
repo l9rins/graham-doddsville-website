@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
   const ARTICLE_IMAGE_INDEX = [
     "03Bd9RjtxYk8HNGr64DiUZp-1.webp",
     "1.1.1.  Laws of wealth creation.jpg",
@@ -1147,31 +1147,151 @@
 
   const entries = ARTICLE_IMAGE_INDEX.map(parseEntry);
 
+  const MAPPING_OVERRIDES = {
+    'smsfs': 'Self-managed super fund (SMSF)',
+    'self-managed-superannuation-funds': 'Self-managed super fund (SMSF)',
+    'managed-funds': 'Managed equity funds (unit trusts)',
+    'interest-rate-derivatives': 'Interest rate swaps',
+    'structured-products': 'Overview of the derivatives market',
+    'direct-property': 'Residential property',
+    'listed-property-trusts': 'Real estate investment trusts (REITs)',
+    'energy-commodities': 'Overview of the energy industry',
+    'metal-commodities': 'Precious metals',
+    'livestock-futures': 'Livestock commodities',
+    'economic-theories': 'Introduction to economics',
+    'implication-for-businesses': 'Implications for businesses',
+    'future-trends': 'Outlook for the global economy',
+    'government-spending': 'Government budget and fiscal position',
+    'cpi-and-inflation': 'Consumer price index (CPI)',
+    'strategies-inflation': 'Strategies against inflation',
+    'combating-inflation': 'Strategies against inflation',
+    'business-cycles-definition': 'What are business cycles',
+    'business-cycle-implications': 'Impact of business cycles',
+    'business-cycle-forecasting': 'How to forecast business cycles',
+    'effects-on-investments': 'Implications for investments',
+    'house-price-index': 'Housing market indicators',
+    'advanced-currency-topics': 'Foreign exchange (FX)',
+    'derivatives-markets': 'Overview of the derivatives market',
+    'crypto-wallets': 'How to store cryptocurrency',
+    'rsas': 'Superannuation', // Fallback for RSAs
+    'lpts': 'Real estate investment trusts (REITs)',
+    'upts': 'Property funds (unlisted)',
+    'qualitative-factors-technological-disruption': 'How to select stocks', // Fallback
+    'qualitative-factors-customer-loyalty': 'Product and service quality', // Fallback
+    'stock-valuation-intro-to-revenue-based-val': 'Use of discount rates', // Fallback
+    'famous-investors': 'Warren Buffett', // Fallback to a famous investor
+    'how-value-ipos': 'How to value IPOs',
+    'stockopedia': 'General investing calculators', // Fallback to general tool image
+    'seeking-alpha': 'General investing calculators', // Fallback to general tool image
+    'stocktwits': 'General investing calculators', // Fallback to general tool image
+    'super-contributions-optimizer': 'Superannuation calculators',
+    'property-transfer-registration-fees': 'Other useful calculators',
+    'cgt-introduction': 'Introduction to CGT',
+    'cgt-calculation': 'The calculation of CGT',
+    'shares-cgt': 'Shares and CGT',
+    'faaa-fprj': 'FAAA Fin Plan Research Journal',
+    'cfa-faj': 'CFA Financial Analysts Journal',
+    'rba-somp': 'RBA Statement on Monetary Policy',
+    'rba-fsr': 'RBA Financial Stability Review',
+    'fsc-reports': 'Financial Services Council reports',
+    'asx': 'Australian Securities Exchange (ASX)',
+    'debentures': 'Negotiable certificates of deposit', 
+    'grain-derivatives': 'Equity derivatives',
+    'energy-derivatives': 'Equity derivatives',
+    'oil-futures': 'Crude oil',
+    'inflation-definition': 'Inflation rate',
+    'measuring-inflation': 'How to measure inflation',
+    'popular-cryptos': 'Bitcoin',
+    'omaha-may-2024': 'Buffett, Munger & Berkshire',
+    'upcoming-': 'Buffett, Munger & Berkshire' // Generic events fallback
+  };
+
+  const ABBREVIATIONS = {
+    'cgt': 'capital gains tax',
+    'smsf': 'self managed super fund',
+    'ipo': 'initial public offering',
+    'fx': 'foreign exchange',
+    'reit': 'real estate investment trust',
+    'etf': 'exchange traded fund',
+  };
+
+  function expandAbbreviations(text) {
+    let result = text;
+    for (const [abbr, full] of Object.entries(ABBREVIATIONS)) {
+      const reg = new RegExp('\\b' + abbr + '\\b', 'gi');
+      result = result.replace(reg, full);
+    }
+    return result;
+  }
+
+  function getTokenScore(queryTokens, targetTokens) {
+    if (!queryTokens.length || !targetTokens.length) return 0;
+    let matches = 0;
+    for (const q of queryTokens) {
+      if (q.length < 3) continue;
+      if (targetTokens.includes(q)) matches++;
+    }
+    return matches / Math.max(queryTokens.length, targetTokens.length);
+  }
+
   function findImage(articleId, articleData) {
     const id = (articleId || '').toString().trim();
     const idNorm = normalizeText(id.replace(/[-_]+/g, ' '));
-    const title = cleanTitle(articleData && articleData.title ? articleData.title : '');
+    const rawTitle = articleData && articleData.title ? articleData.title : '';
+    const title = cleanTitle(rawTitle);
     const titleNorm = normalizeText(title);
+    const expandedTitleNorm = normalizeText(expandAbbreviations(title));
 
+    // 1. Explicit Overrides
+    const overrideKey = id.toLowerCase();
+    if (MAPPING_OVERRIDES[overrideKey]) {
+      const overrideVal = MAPPING_OVERRIDES[overrideKey];
+      const match = entries.find(e => e.labelNorm === normalizeText(overrideVal) || e.labelNorm.includes(normalizeText(overrideVal)));
+      if (match) return match;
+    }
+
+    // 2. Numeric Prefix Match
     if (/^\d+(?:\.\d+)+$/.test(id)) {
       const numericHit = entries.find((e) => e.idPrefix === id || e.idPrefix.startsWith(id + '.'));
       if (numericHit) return numericHit;
     }
 
-    if (titleNorm) {
-      const byTitleExact = entries.find((e) => e.labelNorm === titleNorm);
-      if (byTitleExact) return byTitleExact;
-
-      const byTitleIncludes = entries.find((e) => e.labelNorm.includes(titleNorm) || titleNorm.includes(e.labelNorm));
-      if (byTitleIncludes) return byTitleIncludes;
+    // 3. Exact/Substring Matches
+    const targets = [titleNorm, expandedTitleNorm, idNorm];
+    for (const target of targets) {
+      if (!target || target.length < 3) continue;
+      const exact = entries.find(e => e.labelNorm === target);
+      if (exact) return exact;
+      const includes = entries.find(e => e.labelNorm.includes(target) || target.includes(e.labelNorm));
+      if (includes) return includes;
     }
 
-    if (idNorm) {
-      const byIdExact = entries.find((e) => e.labelNorm === idNorm);
-      if (byIdExact) return byIdExact;
+    // 4. Token-based Fuzzy Matching
+    const queryTokens = normalizeText(expandAbbreviations(rawTitle || id.replace(/[-_]+/g, ' ')))
+      .split(' ')
+      .filter(t => t.length >= 3);
+    
+    let bestMatch = null;
+    let bestScore = 0;
 
-      const byIdIncludes = entries.find((e) => e.labelNorm.includes(idNorm) || idNorm.includes(e.labelNorm));
-      if (byIdIncludes) return byIdIncludes;
+    for (const entry of entries) {
+      const entryTokens = entry.labelNorm.split(' ').filter(t => t.length >= 3);
+      if (!entryTokens.length) continue;
+      
+      const score = getTokenScore(queryTokens, entryTokens);
+      if (score > bestScore) {
+        bestScore = score;
+        bestMatch = entry;
+      }
+    }
+
+    // Lower threshold for token match
+    if (bestScore >= 0.3) return bestMatch;
+
+    // 5. Special Fallbacks (e.g. Calculators)
+    if (id.includes('calc') || title.toLowerCase().includes('calculator')) {
+      const genCalc = entries.find(e => e.fileName.includes('General investing calculators'));
+      if (genCalc) return genCalc;
     }
 
     return null;
@@ -1185,6 +1305,6 @@
 
     const alt = (articleData && articleData.title) ? articleData.title : hit.labelRaw;
     const src = 'images/articles/' + encodeURIComponent(hit.fileName).replace(/%2F/g, '/');
-    return '<img src="' + src + '" alt="' + alt.replace(/"/g, '&quot;') + '" loading="lazy" style="width:100%;height:auto;max-height:420px;object-fit:cover;border-radius:8px;display:block;margin:0 auto 20px;box-shadow:0 2px 8px #e5e7eb;">';
+    return '<img src="' + src + '" alt="' + alt.replace(/"/g, '&quot;') + '" style="width:100%;height:auto;max-height:420px;object-fit:cover;border-radius:8px;display:block;margin:0 auto 20px;box-shadow:0 2px 8px #e5e7eb;">';
   };
 })();
