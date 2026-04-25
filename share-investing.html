@@ -2,7 +2,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Share Investing - Graham and Doddsville</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=3">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <style>
         :root {
@@ -548,7 +548,7 @@
                 <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('introduction-shares')">
                     <h3 class="collapsible-title">Introduction to Shares</h3>
-                    <span class="collapsible-arrow" id="introduction-shares-arrow">â–¼</span>
+                    <span class="collapsible-arrow" id="introduction-shares-arrow">▼</span>
                 </div>
                 <div class="collapsible-content" id="introduction-shares-content">
                     <ul class="collapsible-links">
@@ -570,7 +570,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('investing-psychology')">
                     <h3 class="collapsible-title">Investing Psychology</h3>
-                    <span class="collapsible-arrow" id="investing-psychology-arrow">â–¼</span>
+                    <span class="collapsible-arrow" id="investing-psychology-arrow">▼</span>
                 </div>
                 <div class="collapsible-content" id="investing-psychology-content">
                     <ul class="collapsible-links">
@@ -592,7 +592,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('portfolio-construction')">
                     <h3 class="collapsible-title">Portfolio Construction</h3>
-                    <span class="collapsible-arrow" id="portfolio-construction-arrow">â–¼</span>
+                    <span class="collapsible-arrow" id="portfolio-construction-arrow">▼</span>
                 </div>
                 <div class="collapsible-content" id="portfolio-construction-content">
                     <ul class="collapsible-links">
@@ -614,7 +614,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('investing-styles')">
                     <h3 class="collapsible-title">Investing Styles</h3>
-                    <span class="collapsible-arrow" id="investing-styles-arrow">â–¼</span>
+                    <span class="collapsible-arrow" id="investing-styles-arrow">▼</span>
                 </div>
                 <div class="collapsible-content" id="investing-styles-content">
                     <ul class="collapsible-links">
@@ -638,7 +638,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('stockpicking-strategies')">
                     <h3 class="collapsible-title">Stockpicking Strategies</h3>
-                    <span class="collapsible-arrow" id="stockpicking-strategies-arrow">â–¼</span>
+                    <span class="collapsible-arrow" id="stockpicking-strategies-arrow">▼</span>
                 </div>
                 <div class="collapsible-content" id="stockpicking-strategies-content">
                     <ul class="collapsible-links">
@@ -662,7 +662,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('value-investing')">
                     <h3 class="collapsible-title">Value Investing</h3>
-                    <span class="collapsible-arrow" id="value-investing-arrow">â–¼</span>
+                    <span class="collapsible-arrow" id="value-investing-arrow">▼</span>
                 </div>
                 <div class="collapsible-content" id="value-investing-content">
                     <ul class="collapsible-links">
@@ -687,7 +687,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('technical-analysis')">
                     <h3 class="collapsible-title">Technical Analysis</h3>
-                    <span class="collapsible-arrow" id="technical-analysis-arrow">â–¼</span>
+                    <span class="collapsible-arrow" id="technical-analysis-arrow">▼</span>
                 </div>
                 <div class="collapsible-content" id="technical-analysis-content">
                     <ul class="collapsible-links">
@@ -709,7 +709,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('ipos')">
                     <h3 class="collapsible-title">IPOs</h3>
-                    <span class="collapsible-arrow" id="ipos-arrow">â–¼</span>
+                    <span class="collapsible-arrow" id="ipos-arrow">▼</span>
                 </div>
                 <div class="collapsible-content" id="ipos-content">
                     <ul class="collapsible-links">
@@ -736,15 +736,13 @@
         <div class="article-detail-content">
             <div class="article-detail-header">
                 <h3 class="article-detail-title" id="article-detail-title">Article Title</h3>
-                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">Ã—</button>
+                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">×</button>
             </div>
             <div class="article-detail-body" id="article-detail-body">
                 <div class="loading-spinner">Loading article...</div>
             </div>
         </div>
     </div>
-
-    <script src="js/article-image-helper.js"></script>
     <script>
         // Collapsible functionality
         function toggleCollapsible(sectionId) {
@@ -755,16 +753,16 @@
             document.querySelectorAll('.collapsible-content.expanded').forEach(openContent => {
                 openContent.classList.remove('expanded');
                 const openArrowId = openContent.id.replace('-content', '-arrow');
-                document.getElementById(openArrowId).innerHTML = 'â–¼';
+                document.getElementById(openArrowId).innerHTML = '▼';
             });
 
             // Toggle this section
             if (content.classList.contains('expanded')) {
                 content.classList.remove('expanded');
-                arrow.innerHTML = 'â–¼';
+                arrow.innerHTML = '▼';
             } else {
                 content.classList.add('expanded');
-                arrow.innerHTML = 'â–²';
+                arrow.innerHTML = '▲';
             }
         }
 
@@ -5888,7 +5886,7 @@
 
                     <h3>Other Trivia</h3>
                     <p>1. Knapp was a prankster at Graham-Newman Corporation. He researched stocks and spent his days plotting practical jokes on his colleagues when he wasn't orchestrating trades.</p>
-                    <p>2. Knapp, who was 10 years to the day older than Buffett, may well be Berkshire Hathaway's oldest shareholder. "I got my shares when Dempster Mill [a windmill company Buffett owned] was liquidated. I received Berkshire stock, which was one of its holdings. My cost basis was between five and ten dollars a share. I never sold a share and bought some for my family, and they seem happy with it â€¦ I don't know of a better company."</p>
+                    <p>2. Knapp, who was 10 years to the day older than Buffett, may well be Berkshire Hathaway's oldest shareholder. "I got my shares when Dempster Mill [a windmill company Buffett owned] was liquidated. I received Berkshire stock, which was one of its holdings. My cost basis was between five and ten dollars a share. I never sold a share and bought some for my family, and they seem happy with it … I don't know of a better company."</p>
                     <p>3. Knapp was an avid sailor. He was a member of The Sayville Yacht Club, Princeton Club in Manhattan, Quantuck Beach Club Westhampton Beach, New York, Westhampton Yacht Club, John's Island Club, Grand Harbor Club, Moorings Club and Quail River Club.</p>
                     <p>4. Website dedicated to Knapp: "Tom Knapp and Ed Anderson Resource Page" https://www.valuewalk.com/tom-knapp-tweedy-browne/</p>
 
@@ -6633,7 +6631,7 @@
 
                     <h3>Other Trivia</h3>
                     <p>1. Knapp was a prankster at Graham-Newman Corporation. He researched stocks and spent his days plotting practical jokes on his colleagues when he wasn't orchestrating trades.</p>
-                    <p>2. Knapp, who was 10 years to the day older than Buffett, may well be Berkshire Hathaway's oldest shareholder. "I got my shares when Dempster Mill [a windmill company Buffett owned] was liquidated. I received Berkshire stock, which was one of its holdings. My cost basis was between five and ten dollars a share. I never sold a share and bought some for my family, and they seem happy with it â€¦ I don't know of a better company."</p>
+                    <p>2. Knapp, who was 10 years to the day older than Buffett, may well be Berkshire Hathaway's oldest shareholder. "I got my shares when Dempster Mill [a windmill company Buffett owned] was liquidated. I received Berkshire stock, which was one of its holdings. My cost basis was between five and ten dollars a share. I never sold a share and bought some for my family, and they seem happy with it … I don't know of a better company."</p>
                     <p>3. Knapp was an avid sailor. He was a member of The Sayville Yacht Club, Princeton Club in Manhattan, Quantuck Beach Club Westhampton Beach, New York, Westhampton Yacht Club, John's Island Club, Grand Harbor Club, Moorings Club and Quail River Club.</p>
                     <p>4. Website dedicated to Knapp: "Tom Knapp and Ed Anderson Resource Page" https://www.valuewalk.com/tom-knapp-tweedy-browne/</p>
 
@@ -7229,7 +7227,8 @@
 
 
 
-    <script src="js/article-image-resolver.js"></script>`r`n</body></html>
+    <script src="js/article-image-resolver.js?v=3"></script>
+</body></html>
 
 
 

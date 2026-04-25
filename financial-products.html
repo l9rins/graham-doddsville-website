@@ -2,7 +2,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Financial Products - Graham and Doddsville</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=3">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <style>
         :root {
@@ -559,7 +559,7 @@
                 <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('cash')">
                     <h3 class="collapsible-title">Cash</h3>
-                    <span class="collapsible-arrow" id="cash-arrow">â–¼</span>
+                    <span class="collapsible-arrow" id="cash-arrow">▼</span>
                 </div>
                 <div class="collapsible-content" id="cash-content">
                     <ul class="collapsible-links">
@@ -574,7 +574,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('fixed-income')">
                     <h3 class="collapsible-title">Fixed Income</h3>
-                    <span class="collapsible-arrow" id="fixed-income-arrow">â–¼</span>
+                    <span class="collapsible-arrow" id="fixed-income-arrow">▼</span>
                 </div>
                 <div class="collapsible-content" id="fixed-income-content">
                     <ul class="collapsible-links">
@@ -590,7 +590,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('equity')">
                     <h3 class="collapsible-title">Equity</h3>
-                    <span class="collapsible-arrow" id="equity-arrow">â–¼</span>
+                    <span class="collapsible-arrow" id="equity-arrow">▼</span>
                 </div>
                 <div class="collapsible-content" id="equity-content">
                     <ul class="collapsible-links">
@@ -609,7 +609,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('hybrids')">
                     <h3 class="collapsible-title">Hybrids</h3>
-                    <span class="collapsible-arrow" id="hybrids-arrow">â–¼</span>
+                    <span class="collapsible-arrow" id="hybrids-arrow">▼</span>
                 </div>
                 <div class="collapsible-content" id="hybrids-content">
                     <ul class="collapsible-links">
@@ -624,7 +624,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('derivative')">
                     <h3 class="collapsible-title">Derivative</h3>
-                    <span class="collapsible-arrow" id="derivative-arrow">â–¼</span>
+                    <span class="collapsible-arrow" id="derivative-arrow">▼</span>
                 </div>
                 <div class="collapsible-content" id="derivative-content">
                     <ul class="collapsible-links">
@@ -648,7 +648,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('property')">
                     <h3 class="collapsible-title">Property</h3>
-                    <span class="collapsible-arrow" id="property-arrow">â–¼</span>
+                    <span class="collapsible-arrow" id="property-arrow">▼</span>
                 </div>
                 <div class="collapsible-content" id="property-content">
                     <ul class="collapsible-links">
@@ -664,7 +664,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('commodities')">
                     <h3 class="collapsible-title">Commodities</h3>
-                    <span class="collapsible-arrow" id="commodities-arrow">â–¼</span>
+                    <span class="collapsible-arrow" id="commodities-arrow">▼</span>
                 </div>
                 <div class="collapsible-content" id="commodities-content">
                     <ul class="collapsible-links">
@@ -686,7 +686,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('miscellaneous')">
                     <h3 class="collapsible-title">Miscellaneous</h3>
-                    <span class="collapsible-arrow" id="miscellaneous-arrow">â–¼</span>
+                    <span class="collapsible-arrow" id="miscellaneous-arrow">▼</span>
                 </div>
                 <div class="collapsible-content" id="miscellaneous-content">
                     <ul class="collapsible-links">
@@ -712,15 +712,13 @@
         <div class="article-detail-content">
             <div class="article-detail-header">
                 <h3 class="article-detail-title" id="article-detail-title">Article Title</h3>
-                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">Ã—</button>
+                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">×</button>
             </div>
             <div class="article-detail-body" id="article-detail-body">
                 <div class="loading-spinner">Loading article...</div>
             </div>
         </div>
     </div>
-
-    <script src="js/article-image-helper.js"></script>
     <script>
         // Collapsible functionality
         function toggleCollapsible(sectionId) {
@@ -730,19 +728,19 @@
             if (content.style.maxHeight) {
                 content.style.maxHeight = null;
                 content.classList.remove('expanded');
-                arrow.innerHTML = 'â–¼';
+                arrow.innerHTML = '▼';
             } else {
                 // Close all other open sections
                 document.querySelectorAll('.collapsible-content.expanded').forEach(openContent => {
                     openContent.style.maxHeight = null;
                     openContent.classList.remove('expanded');
                     const openArrowId = openContent.id.replace('-content', '-arrow');
-                    document.getElementById(openArrowId).innerHTML = 'â–¼';
+                    document.getElementById(openArrowId).innerHTML = '▼';
                 });
 
                 content.style.maxHeight = content.scrollHeight + "px";
                 content.classList.add('expanded');
-                arrow.innerHTML = 'â–²';
+                arrow.innerHTML = '▲';
             }
         }
 
@@ -1707,7 +1705,8 @@
 
 
 
-    <script src="js/article-image-resolver.js"></script>`r`n</body></html>
+    <script src="js/article-image-resolver.js?v=3"></script>
+</body></html>
 
 
 

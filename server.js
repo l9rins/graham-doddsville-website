@@ -141,9 +141,16 @@ function deduplicateArticles(articles) {
 
 // Performance middleware
 app.use((req, res, next) => {
-    if (req.url.match(/\.(css|js|png|jpg|jpeg|gif|ico|svg)$/)) {
+    if (req.url.includes('article-image-resolver.js')) {
+        res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate, max-age=0');
+        res.setHeader('Pragma', 'no-cache');
+        res.setHeader('Expires', '0');
+    } else if (req.url.match(/\.(css|png|jpg|jpeg|gif|ico|svg)$/)) {
         res.setHeader('Cache-Control', 'public, max-age=31536000');
         res.setHeader('Expires', new Date(Date.now() + 31536000000).toUTCString());
+    } else if (req.url.match(/\.(js)$/)) {
+        // Standard JS files get shorter cache during updates
+        res.setHeader('Cache-Control', 'public, max-age=3600'); 
     } else if (req.url.match(/\.(html)$/)) {
         res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate, max-age=0');
         res.setHeader('Pragma', 'no-cache');

@@ -2,7 +2,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Legal &amp; Taxation - Graham and Doddsville</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=3">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <style>
         :root {
@@ -849,7 +849,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('legal-structures')">
                         <h3 class="collapsible-title">Legal Structures</h3>
-                        <span class="collapsible-arrow" id="legal-structures-arrow">â–¼</span>
+                        <span class="collapsible-arrow" id="legal-structures-arrow">▼</span>
                     </div>
                     <div class="collapsible-content collapsed" id="legal-structures-content">
                         <ul class="collapsible-links">
@@ -870,7 +870,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('asset-protection')">
                         <h3 class="collapsible-title">Asset Protection</h3>
-                        <span class="collapsible-arrow" id="asset-protection-arrow">â–¼</span>
+                        <span class="collapsible-arrow" id="asset-protection-arrow">▼</span>
                     </div>
                     <div class="collapsible-content collapsed" id="asset-protection-content">
                         <ul class="collapsible-links">
@@ -885,7 +885,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('cgt')">
                         <h3 class="collapsible-title">Capital Gains Tax (CGT)</h3>
-                        <span class="collapsible-arrow" id="cgt-arrow">â–¼</span>
+                        <span class="collapsible-arrow" id="cgt-arrow">▼</span>
                     </div>
                     <div class="collapsible-content collapsed" id="cgt-content">
                         <ul class="collapsible-links">
@@ -904,7 +904,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('income-tax')">
                         <h3 class="collapsible-title">Income Tax</h3>
-                        <span class="collapsible-arrow" id="income-tax-arrow">â–¼</span>
+                        <span class="collapsible-arrow" id="income-tax-arrow">▼</span>
                     </div>
                     <div class="collapsible-content collapsed" id="income-tax-content">
                         <ul class="collapsible-links">
@@ -921,7 +921,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('estate-planning')">
                         <h3 class="collapsible-title">Estate Planning</h3>
-                        <span class="collapsible-arrow" id="estate-planning-arrow">â–¼</span>
+                        <span class="collapsible-arrow" id="estate-planning-arrow">▼</span>
                     </div>
                     <div class="collapsible-content collapsed" id="estate-planning-content">
                         <ul class="collapsible-links">
@@ -941,7 +941,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('directors-duties')">
                         <h3 class="collapsible-title">Directors' Duties</h3>
-                        <span class="collapsible-arrow" id="directors-duties-arrow">â–¼</span>
+                        <span class="collapsible-arrow" id="directors-duties-arrow">▼</span>
                     </div>
                     <div class="collapsible-content collapsed" id="directors-duties-content">
                         <ul class="collapsible-links">
@@ -957,7 +957,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('shareholder-rights')">
                         <h3 class="collapsible-title">Shareholder Rights</h3>
-                        <span class="collapsible-arrow" id="shareholder-rights-arrow">â–¼</span>
+                        <span class="collapsible-arrow" id="shareholder-rights-arrow">▼</span>
                     </div>
                     <div class="collapsible-content collapsed" id="shareholder-rights-content">
                         <ul class="collapsible-links">
@@ -972,7 +972,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('insurances')">
                         <h3 class="collapsible-title">Insurances</h3>
-                        <span class="collapsible-arrow" id="insurances-arrow">â–¼</span>
+                        <span class="collapsible-arrow" id="insurances-arrow">▼</span>
                     </div>
                     <div class="collapsible-content collapsed" id="insurances-content">
                         <ul class="collapsible-links">
@@ -989,15 +989,13 @@
         <div class="article-detail-content">
             <div class="article-detail-header">
                 <h3 class="article-detail-title" id="article-detail-title">Article Title</h3>
-                <button class="article-detail-close" id="article-detail-close" aria-label="Close article" onclick="closeArticlePanel()">Ã—</button>
+                <button class="article-detail-close" id="article-detail-close" aria-label="Close article" onclick="closeArticlePanel()">×</button>
             </div>
             <div class="article-detail-body" id="article-detail-body">
                 <div class="loading-spinner">Loading article...</div>
             </div>
         </div>
     </div>
-
-    <script src="js/article-image-helper.js"></script>
     <script>
         // Collapsible functionality
         function toggleCollapsible(sectionId) {
@@ -1009,14 +1007,14 @@
                 document.querySelectorAll('.collapsible-content:not(.collapsed)').forEach(openContent => {
                     openContent.classList.add('collapsed');
                     const openArrowId = openContent.id.replace('-content', '-arrow');
-                    document.getElementById(openArrowId).innerHTML = 'â–¼';
+                    document.getElementById(openArrowId).innerHTML = '▼';
                 });
 
                 content.classList.remove('collapsed');
-                arrow.innerHTML = 'â–²';
+                arrow.innerHTML = '▲';
             } else {
                 content.classList.add('collapsed');
-                arrow.innerHTML = 'â–¼';
+                arrow.innerHTML = '▼';
             }
         }
 
@@ -7273,14 +7271,14 @@
                 document.querySelectorAll('.collapsible-content:not(.collapsed)').forEach(openContent => {
                     openContent.classList.add('collapsed');
                     const openArrowId = openContent.id.replace('-content', '-arrow');
-                    document.getElementById(openArrowId).innerHTML = 'â–¼';
+                    document.getElementById(openArrowId).innerHTML = '▼';
                 });
 
                 content.classList.remove('collapsed');
-                arrow.innerHTML = 'â–²';
+                arrow.innerHTML = '▲';
             } else {
                 content.classList.add('collapsed');
-                arrow.innerHTML = 'â–¼';
+                arrow.innerHTML = '▼';
             }
         }
 
@@ -7354,7 +7352,8 @@
 
 
 
-    <script src="js/article-image-resolver.js"></script>`r`n</body></html>
+    <script src="js/article-image-resolver.js?v=3"></script>
+</body></html>
 
 
 

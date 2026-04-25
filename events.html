@@ -2,7 +2,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events &amp; Seminars - Graham and Doddsville</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=3">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <style>
         :root {
@@ -971,7 +971,7 @@
                 <div class="collapsible-section">
     <div class="collapsible-header" onclick="toggleCollapsible('events-seminars')">
         <h3 class="collapsible-title">Events and Seminars</h3>
-        <span class="collapsible-arrow" id="events-seminars-arrow">â–¼</span>
+        <span class="collapsible-arrow" id="events-seminars-arrow">▼</span>
     </div>
     <div class="collapsible-content collapsed" id="events-seminars-content" style="max-height:none;">
         <div class="events-table-wrapper">
@@ -1030,7 +1030,7 @@
                 <table class="events-table" id="events-table">
                     <thead>
                         <tr>
-                            <th onclick="sortEventsTable('date')">Date â–¼</th>
+                            <th onclick="sortEventsTable('date')">Date ▼</th>
                             <th onclick="sortEventsTable('startTime')">Time</th>
                             <th onclick="sortEventsTable('state')">State</th>
                             <th onclick="sortEventsTable('eventType')">Type</th>
@@ -1055,7 +1055,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('free-webinars')">
                     <h3 class="collapsible-title">Free Webinars</h3>
-                    <span class="collapsible-arrow" id="free-webinars-arrow">â–¼</span>
+                    <span class="collapsible-arrow" id="free-webinars-arrow">▼</span>
                 </div>
                 <div class="collapsible-content" id="free-webinars-content">
                     <ul class="collapsible-links">
@@ -1068,7 +1068,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('podcasts')">
                     <h3 class="collapsible-title">Podcasts</h3>
-                    <span class="collapsible-arrow" id="podcasts-arrow">â–¼</span>
+                    <span class="collapsible-arrow" id="podcasts-arrow">▼</span>
                 </div>
                 <div class="collapsible-content" id="podcasts-content">
                     <ul class="collapsible-links">
@@ -1081,7 +1081,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('free-online-courses')">
                     <h3 class="collapsible-title">Free Online Courses</h3>
-                    <span class="collapsible-arrow" id="free-online-courses-arrow">â–¼</span>
+                    <span class="collapsible-arrow" id="free-online-courses-arrow">▼</span>
                 </div>
                 <div class="collapsible-content" id="free-online-courses-content">
                     <ul class="collapsible-links">
@@ -1094,7 +1094,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('industry-courses')">
                     <h3 class="collapsible-title">Industry Courses</h3>
-                    <span class="collapsible-arrow" id="industry-courses-arrow">â–¼</span>
+                    <span class="collapsible-arrow" id="industry-courses-arrow">▼</span>
                 </div>
                 <div class="collapsible-content" id="industry-courses-content">
                     <ul class="collapsible-links">
@@ -1107,7 +1107,7 @@
             <div class="collapsible-section">
                 <div class="collapsible-header" onclick="toggleCollapsible('tertiary-courses')">
                     <h3 class="collapsible-title">Tertiary Courses</h3>
-                    <span class="collapsible-arrow" id="tertiary-courses-arrow">â–¼</span>
+                    <span class="collapsible-arrow" id="tertiary-courses-arrow">▼</span>
                 </div>
                 <div class="collapsible-content" id="tertiary-courses-content">
                     <ul class="collapsible-links">
@@ -1124,15 +1124,13 @@
         <div class="article-detail-content">
             <div class="article-detail-header">
                 <h3 class="article-detail-title" id="article-detail-title">Article Title</h3>
-                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">Ã—</button>
+                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">×</button>
             </div>
             <div class="article-detail-body" id="article-detail-body">
                 <div class="loading-spinner">Loading article...</div>
             </div>
         </div>
     </div>
-
-    <script src="js/article-image-helper.js"></script>
     <script>
         // Collapsible functionality
         function toggleCollapsible(sectionId) {
@@ -1142,7 +1140,7 @@
             if (content.classList.contains('expanded')) {
                 content.style.maxHeight = null;
                 content.classList.remove('expanded');
-                arrow.innerHTML = 'â–¼';
+                arrow.innerHTML = '▼';
             } else {
                 // Close all other open sections
                 document.querySelectorAll('.collapsible-content.expanded').forEach(openContent => {
@@ -1150,7 +1148,7 @@
                     openContent.classList.remove('expanded');
                     const openArrowId = openContent.id.replace('-content', '-arrow');
                     const openArrow = document.getElementById(openArrowId);
-                    if (openArrow) openArrow.innerHTML = 'â–¼';
+                    if (openArrow) openArrow.innerHTML = '▼';
                 });
 
                 content.classList.add('expanded');
@@ -1159,7 +1157,7 @@
                 } else {
                      content.style.maxHeight = content.scrollHeight + "px";
                 }
-                arrow.innerHTML = 'â–²';
+                arrow.innerHTML = '▲';
             }
         }
 
@@ -1687,7 +1685,7 @@
                 html += '<td>' + e.state + '</td>';
                 html += '<td>' + getTypeBadge(e.eventType) + '</td>';
                 html += '<td class="evt-title">' + titleLink + '</td>';
-                html += '<td><button class="evt-expand-btn" onclick="toggleEventDetail(' + globalIdx + ')">' + (expandedRows.has(globalIdx) ? 'Hide â–²' : 'Details â–¼') + '</button></td>';
+                html += '<td><button class="evt-expand-btn" onclick="toggleEventDetail(' + globalIdx + ')">' + (expandedRows.has(globalIdx) ? 'Hide ▲' : 'Details ▼') + '</button></td>';
                 html += '</tr>';
                 if (expandedRows.has(globalIdx)) {
                     html += '<tr class="evt-detail-row"><td colspan="6"><div class="evt-detail-grid">';
@@ -1729,7 +1727,7 @@
                 }
                 mobileHtml += '</div>';
                 // Expand button
-                mobileHtml += '<button class="mc-expand-details" onclick="toggleMobileCard(' + globalIdx + ')">' + (isExpanded ? 'Hide details â–²' : 'More details â–¼') + '</button>';
+                mobileHtml += '<button class="mc-expand-details" onclick="toggleMobileCard(' + globalIdx + ')">' + (isExpanded ? 'Hide details ▲' : 'More details ▼') + '</button>';
                 // Expandable detail panel
                 if (isExpanded) {
                     mobileHtml += '<div class="mc-detail-panel">';
@@ -1795,7 +1793,8 @@
 
 
 
-    <script src="js/article-image-resolver.js"></script>`r`n</body></html>
+    <script src="js/article-image-resolver.js?v=3"></script>
+</body></html>
 
 
 

@@ -2,7 +2,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Economics - Graham and Doddsville</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=3">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <style>
         :root {
@@ -560,7 +560,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('intro-Economics')">
                         <h3 class="collapsible-title">Introduction to Economics</h3>
-                        <span class="collapsible-arrow" id="intro-Economics-arrow">â–¼</span>
+                        <span class="collapsible-arrow" id="intro-Economics-arrow">▼</span>
                     </div>
                     <div class="collapsible-content" id="intro-Economics-content">
                         <ul class="collapsible-links">
@@ -582,7 +582,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('global-economy')">
                         <h3 class="collapsible-title">Global Economy</h3>
-                        <span class="collapsible-arrow" id="global-economy-arrow">â–¼</span>
+                        <span class="collapsible-arrow" id="global-economy-arrow">▼</span>
                     </div>
                     <div class="collapsible-content" id="global-economy-content">
                         <ul class="collapsible-links">
@@ -604,7 +604,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('australian-economy')">
                         <h3 class="collapsible-title">Australian Economy</h3>
-                        <span class="collapsible-arrow" id="australian-economy-arrow">â–¼</span>
+                        <span class="collapsible-arrow" id="australian-economy-arrow">▼</span>
                     </div>
                     <div class="collapsible-content" id="australian-economy-content">
                         <ul class="collapsible-links">
@@ -628,7 +628,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('monetary-policy')">
                         <h3 class="collapsible-title">Monetary Policy</h3>
-                        <span class="collapsible-arrow" id="monetary-policy-arrow">â–¼</span>
+                        <span class="collapsible-arrow" id="monetary-policy-arrow">▼</span>
                     </div>
                     <div class="collapsible-content" id="monetary-policy-content">
                         <ul class="collapsible-links">
@@ -646,7 +646,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('fiscal-policy')">
                         <h3 class="collapsible-title">Fiscal Policy</h3>
-                        <span class="collapsible-arrow" id="fiscal-policy-arrow">â–¼</span>
+                        <span class="collapsible-arrow" id="fiscal-policy-arrow">▼</span>
                     </div>
                     <div class="collapsible-content" id="fiscal-policy-content">
                         <ul class="collapsible-links">
@@ -662,7 +662,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('inflation')">
                         <h3 class="collapsible-title">Inflation</h3>
-                        <span class="collapsible-arrow" id="inflation-arrow">â–¼</span>
+                        <span class="collapsible-arrow" id="inflation-arrow">▼</span>
                     </div>
                     <div class="collapsible-content" id="inflation-content">
                         <ul class="collapsible-links">
@@ -686,7 +686,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('business-cycles')">
                         <h3 class="collapsible-title">Business Cycles</h3>
-                        <span class="collapsible-arrow" id="business-cycles-arrow">â–¼</span>
+                        <span class="collapsible-arrow" id="business-cycles-arrow">▼</span>
                     </div>
                     <div class="collapsible-content" id="business-cycles-content">
                         <ul class="collapsible-links">
@@ -702,7 +702,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('economic-indicators')">
                         <h3 class="collapsible-title">Economic Indicators</h3>
-                        <span class="collapsible-arrow" id="economic-indicators-arrow">â–¼</span>
+                        <span class="collapsible-arrow" id="economic-indicators-arrow">▼</span>
                     </div>
                     <div class="collapsible-content" id="economic-indicators-content">
                         <ul class="collapsible-links">
@@ -730,15 +730,13 @@
         <div class="article-detail-content">
             <div class="article-detail-header">
                 <h3 class="article-detail-title" id="article-detail-title">Article Title</h3>
-                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">Ã—</button>
+                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">×</button>
             </div>
             <div class="article-detail-body" id="article-detail-body">
                 <div class="loading-spinner">Loading article...</div>
             </div>
         </div>
     </div>
-
-    <script src="js/article-image-helper.js"></script>
     <script>
         // Collapsible functionality
         function toggleCollapsible(sectionId) {
@@ -748,19 +746,19 @@
             if (content.style.maxHeight) {
                 content.style.maxHeight = null;
                 content.classList.remove('expanded');
-                arrow.innerHTML = 'â–¼';
+                arrow.innerHTML = '▼';
             } else {
                 // Close all other open sections
                 document.querySelectorAll('.collapsible-content.expanded').forEach(openContent => {
                     openContent.style.maxHeight = null;
                     openContent.classList.remove('expanded');
                     const openArrowId = openContent.id.replace('-content', '-arrow');
-                    document.getElementById(openArrowId).innerHTML = 'â–¼';
+                    document.getElementById(openArrowId).innerHTML = '▼';
                 });
 
                 content.style.maxHeight = content.scrollHeight + "px";
                 content.classList.add('expanded');
-                arrow.innerHTML = 'â–²';
+                arrow.innerHTML = '▲';
             }
         }
 
@@ -5673,7 +5671,8 @@
 
 
 
-    <script src="js/article-image-resolver.js"></script>`r`n</body></html>
+    <script src="js/article-image-resolver.js?v=3"></script>
+</body></html>
 
 
 

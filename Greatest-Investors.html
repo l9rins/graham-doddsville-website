@@ -2,7 +2,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Greatest Investors - Graham and Doddsville</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=3">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <style>
         :root {
@@ -583,7 +583,7 @@
         <div class="mobile-drawer" id="mobile-drawer">
         <div class="drawer-header">
             <img src="G&amp;D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
-            <button class="drawer-close" id="drawer-close" aria-label="Close menu">Ã—</button>
+            <button class="drawer-close" id="drawer-close" aria-label="Close menu">×</button>
         </div>
         <nav class="drawer-nav">
             <ul class="drawer-menu">
@@ -619,7 +619,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('superinvestors')">
                         <h3 class="collapsible-title">The Superinvestors</h3>
-                        <span class="collapsible-arrow" id="superinvestors-arrow">â–¼</span>
+                        <span class="collapsible-arrow" id="superinvestors-arrow">▼</span>
                     </div>
                     <div class="collapsible-content" id="superinvestors-content">
                         <ul class="collapsible-links">
@@ -641,7 +641,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('value-investors')">
                         <h3 class="collapsible-title">Famous Value Investors</h3>
-                        <span class="collapsible-arrow" id="value-investors-arrow">â–¼</span>
+                        <span class="collapsible-arrow" id="value-investors-arrow">▼</span>
                     </div>
                     <div class="collapsible-content" id="value-investors-content">
                         <ul class="collapsible-links">
@@ -693,7 +693,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('other-investors')">
                         <h3 class="collapsible-title">Other Famous Investors</h3>
-                        <span class="collapsible-arrow" id="other-investors-arrow">â–¼</span>
+                        <span class="collapsible-arrow" id="other-investors-arrow">▼</span>
                     </div>
                     <div class="collapsible-content" id="other-investors-content">
                         <ul class="collapsible-links">
@@ -739,15 +739,13 @@
         <div class="article-detail-content">
             <div class="article-detail-header">
                 <h3 class="article-detail-title" id="article-detail-title">Article Title</h3>
-                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">Ã—</button>
+                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">×</button>
             </div>
             <div class="article-detail-body" id="article-detail-body">
                 <div class="loading-spinner">Loading article...</div>
             </div>
         </div>
     </div>
-
-    <script src="js/article-image-helper.js"></script>
     <script>
         // Collapsible functionality
         function toggleCollapsible(sectionId) {
@@ -757,19 +755,19 @@
             if (content.style.maxHeight) {
                 content.style.maxHeight = null;
                 content.classList.remove('expanded');
-                arrow.innerHTML = 'â–¼';
+                arrow.innerHTML = '▼';
             } else {
                 // Close all other open sections
                 document.querySelectorAll('.collapsible-content.expanded').forEach(openContent => {
                     openContent.style.maxHeight = null;
                     openContent.classList.remove('expanded');
                     const openArrowId = openContent.id.replace('-content', '-arrow');
-                    document.getElementById(openArrowId).innerHTML = 'â–¼';
+                    document.getElementById(openArrowId).innerHTML = '▼';
                 });
 
                 content.style.maxHeight = content.scrollHeight + "px";
                 content.classList.add('expanded');
-                arrow.innerHTML = 'â–²';
+                arrow.innerHTML = '▲';
             }
         }
 
@@ -1216,7 +1214,7 @@
 
                     <h2>OTHER TRIVIA</h2>
                     <p>1. Knapp was a prankster at Graham-Newman Corporation. He researched stocks and spent his days plotting practical jokes on his colleagues when he wasn't orchestrating trades.</p>
-                    <p>2. Knapp, who was 10 years to the day older than Buffett, may well be Berkshire Hathaway's oldest shareholder. "I got my shares when Dempster Mill [a windmill company Buffett owned] was liquidated. I received Berkshire stock, which was one of its holdings. My cost basis was between five and ten dollars a share. I never sold a share and bought some for my family, and they seem happy with it â€¦ I don't know of a better company."</p>
+                    <p>2. Knapp, who was 10 years to the day older than Buffett, may well be Berkshire Hathaway's oldest shareholder. "I got my shares when Dempster Mill [a windmill company Buffett owned] was liquidated. I received Berkshire stock, which was one of its holdings. My cost basis was between five and ten dollars a share. I never sold a share and bought some for my family, and they seem happy with it … I don't know of a better company."</p>
                     <p>3. Knapp was an avid sailor. He was a member of The Sayville Yacht Club, Princeton Club in Manhattan, Quantuck Beach Club Westhampton Beach, New York, Westhampton Yacht Club, John's Island Club, Grand Harbor Club, Moorings Club and Quail River Club.</p>
                     <p>4. Website dedicated to Knapp: "Tom Knapp and Ed Anderson Resource Page" https://www.valuewalk.com/tom-knapp-tweedy-browne/</p>
                     </div>
@@ -1747,7 +1745,8 @@
 
 
 
-</div></div>    <script src="js/article-image-resolver.js"></script>`r`n</body></html>
+</div></div>    <script src="js/article-image-resolver.js?v=3"></script>
+</body></html>
 
 
 

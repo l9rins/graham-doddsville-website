@@ -2,7 +2,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resources - Graham and Doddsville</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=3">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <style>
         :root {
@@ -639,7 +639,7 @@
                 <div class="collapsible-section">
     <div class="collapsible-header" onclick="toggleCollapsible('industry-publications')">
         <h3 class="collapsible-title">Industry Publications</h3>
-        <span class="collapsible-arrow" id="industry-publications-arrow">â–¼</span>
+        <span class="collapsible-arrow" id="industry-publications-arrow">▼</span>
     </div>
     <div class="collapsible-content collapsed" id="industry-publications-content">
         <ul class="collapsible-links">
@@ -659,7 +659,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('calculators')">
                         <h3 class="collapsible-title">Calculators</h3>
-                        <span class="collapsible-arrow" id="calculators-arrow">â–¼</span>
+                        <span class="collapsible-arrow" id="calculators-arrow">▼</span>
                     </div>
                     <div class="collapsible-content collapsed" id="calculators-content">
 
@@ -679,7 +679,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('stock-screeners')">
                         <h3 class="collapsible-title">Stock Screeners</h3>
-                        <span class="collapsible-arrow" id="stock-screeners-arrow">â–¼</span>
+                        <span class="collapsible-arrow" id="stock-screeners-arrow">▼</span>
                     </div>
                     <div class="collapsible-content collapsed" id="stock-screeners-content">
 
@@ -699,7 +699,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('portfolio-creators')">
                         <h3 class="collapsible-title">Portfolio Creators</h3>
-                        <span class="collapsible-arrow" id="portfolio-creators-arrow">â–¼</span>
+                        <span class="collapsible-arrow" id="portfolio-creators-arrow">▼</span>
                     </div>
                     <div class="collapsible-content collapsed" id="portfolio-creators-content">
 
@@ -716,7 +716,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('stock-forums')">
                         <h3 class="collapsible-title">Stock Forums</h3>
-                        <span class="collapsible-arrow" id="stock-forums-arrow">â–¼</span>
+                        <span class="collapsible-arrow" id="stock-forums-arrow">▼</span>
                     </div>
                     <div class="collapsible-content collapsed" id="stock-forums-content">
 
@@ -736,7 +736,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('glossary')">
                         <h3 class="collapsible-title">Glossary</h3>
-                        <span class="collapsible-arrow" id="glossary-arrow">â–¼</span>
+                        <span class="collapsible-arrow" id="glossary-arrow">▼</span>
                     </div>
                     <div class="collapsible-content collapsed" id="glossary-content">
 
@@ -755,7 +755,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('useful-links')">
                         <h3 class="collapsible-title">Useful Links</h3>
-                        <span class="collapsible-arrow" id="useful-links-arrow">â–¼</span>
+                        <span class="collapsible-arrow" id="useful-links-arrow">▼</span>
                     </div>
                     <div class="collapsible-content collapsed" id="useful-links-content">
 
@@ -782,15 +782,13 @@
         <div class="article-detail-content">
             <div class="article-detail-header">
                 <h3 class="article-detail-title" id="article-detail-title">Article Title</h3>
-                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">Ã—</button>
+                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">×</button>
             </div>
             <div class="article-detail-body" id="article-detail-body">
                 <div class="loading-spinner">Loading article...</div>
             </div>
         </div>
     </div>
-
-    <script src="js/article-image-helper.js"></script>
     <script>
         // Collapsible functionality
         function toggleCollapsible(sectionId) {
@@ -800,19 +798,19 @@
             if (content.style.maxHeight) {
                 content.style.maxHeight = null;
                 content.classList.remove('expanded');
-                arrow.innerHTML = 'â–¼';
+                arrow.innerHTML = '▼';
             } else {
                 // Close all other open sections
                 document.querySelectorAll('.collapsible-content.expanded').forEach(openContent => {
                     openContent.style.maxHeight = null;
                     openContent.classList.remove('expanded');
                     const openArrowId = openContent.id.replace('-content', '-arrow');
-                    document.getElementById(openArrowId).innerHTML = 'â–¼';
+                    document.getElementById(openArrowId).innerHTML = '▼';
                 });
 
                 content.style.maxHeight = content.scrollHeight + "px";
                 content.classList.add('expanded');
-                arrow.innerHTML = 'â–²';
+                arrow.innerHTML = '▲';
             }
         }
 
@@ -3345,7 +3343,8 @@
 
 
 
-    <script src="js/article-image-resolver.js"></script>`r`n</body></html>
+    <script src="js/article-image-resolver.js?v=3"></script>
+</body></html>
 
 
 
