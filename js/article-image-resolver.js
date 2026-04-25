@@ -1176,7 +1176,7 @@
     'rsas': 'Superannuation', // Fallback for RSAs
     'lpts': 'Real estate investment trusts (REITs)',
     'upts': 'Property funds (unlisted)',
-    'qualitative-factors-technological-disruption': 'Industry dynamics', // Fallback
+    'qualitative-factors-technological-disruption': 'How to select stocks', // Fallback
     'qualitative-factors-customer-loyalty': 'Product and service quality', // Fallback
     'stock-valuation-intro-to-revenue-based-val': 'Use of discount rates', // Fallback
     'famous-investors': 'Warren Buffett', // Fallback to a famous investor
