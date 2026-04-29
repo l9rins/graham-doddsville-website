@@ -526,7 +526,7 @@ async function refreshNewsCache() {
                 // Configured RSS sources to pull from for this category
                 rssSources: ['stockhead', 'livewire-markets', 'afr', 'abc-business',
                     'sydney-morning-herald', 'the-australian', 'business-insider-au'],
-                baseAge: 48
+                baseAge: 72
             },
             {
                 category: 'Markets',
@@ -535,7 +535,7 @@ async function refreshNewsCache() {
                     'sydney-morning-herald', 'smartcompany', 'the-australian',
                     'business-insider-au', 'news-com-au', 'the-age',
                     'reuters-rss', 'bbc-rss', 'guardian-rss'],
-                baseAge: 48
+                baseAge: 72
             },
             {
                 category: 'Economy',
@@ -544,7 +544,7 @@ async function refreshNewsCache() {
                     'the-australian', 'sbs-news', 'the-age', 'news-com-au',
                     'business-insider-au', 'smartcompany', 'crikey',
                     'guardian-rss', 'bbc-rss', 'reuters-rss'],
-                baseAge: 48
+                baseAge: 72
             },
             {
                 category: 'Industry',
@@ -644,10 +644,10 @@ async function refreshNewsCache() {
             }
 
 
-            // Strict filter on GNews results based on category config
+            // Strict filter on GNews results based on category config (allow slightly older if needed)
             let filteredArticles = validArticles.filter(a => {
                 const hoursDiff = (new Date() - new Date(a.publishedAt)) / (1000 * 60 * 60);
-                return hoursDiff <= currentAgeLimit;
+                return hoursDiff <= (currentAgeLimit + 24); 
             });
 
             // ============================================================
@@ -674,7 +674,8 @@ async function refreshNewsCache() {
                             const publishedDate = item.pubDate ? new Date(item.pubDate) : new Date();
                             const hoursDiff = (new Date() - publishedDate) / (1000 * 60 * 60);
 
-                            if (hoursDiff <= currentAgeLimit && !seenUrls.has(item.link)) {
+                            // Be more lenient with RSS fallback timing (7 days max)
+                            if (hoursDiff <= 168 && !seenUrls.has(item.link)) {
                                 seenUrls.add(item.link);
                                 filteredArticles.push({
                                     title: item.title.trim(),
