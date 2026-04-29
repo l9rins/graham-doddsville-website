@@ -272,7 +272,13 @@ class NewsDisplayManager {
                 const container = document.getElementById(containerId);
 
                 if (container) {
-                    container.innerHTML = '';
+                    // GUARD: Don't overwrite containers already populated with real API data by the inline script
+                    const existingLinks = container.querySelectorAll('a[href*="http"]');
+                    if (existingLinks.length >= config.limit) {
+                        console.log(`Skipping ${containerId} — already has ${existingLinks.length} real articles from inline script`);
+                        return; // skip this container, it's already good
+                    }
+
                     let rawArticles = newsByCategory[category] || [];
 
                     // 1. Sort by Date (Newest First)
@@ -282,15 +288,14 @@ class NewsDisplayManager {
                     let selectedArticles = this.getSmartArticles(rawArticles, config.limit, config.freshLimit, config.hardLimit);
 
                     // 3. BACKFILL FROM TOTAL POOL (IF STILL EMPTY)
-                    if (selectedArticles.length === 0 && this.cachedNews && this.cachedNews.length > 0) {
-                        selectedArticles = this.getSmartArticles(this.cachedNews, config.limit, config.freshLimit, config.hardLimit);
+                    if (selectedArticles.length === 0 && news.length > 0) {
+                        selectedArticles = this.getSmartArticles(news, config.limit, config.freshLimit, config.hardLimit);
                     }
 
                     if (selectedArticles.length > 0) {
                         container.innerHTML = selectedArticles.map(item => this.createNewsItemHTML(item)).join('');
-                    } else {
-                        container.innerHTML = `<div class="no-news-in-category"><p>News coming soon...</p></div>`;
                     }
+                    // If still empty, don't touch container — let inline script's content stay
                 }
             });
         });

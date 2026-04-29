@@ -650,18 +650,32 @@ async function refreshNewsCache() {
                 return hoursDiff <= (currentAgeLimit + 24); 
             });
 
-            // ============================================================
-            // 2. FALLBACK: Configured RSS sources â€” strict 48h enforced
+            // ============================================================\n            // Relevance keywords per category — prevents off-topic articles from general RSS feeds
+            const categoryRelevanceKeywords = {
+                'Companies': ['company', 'companies', 'earnings', 'profit', 'revenue', 'shares', 'stock', 'asx', 'ceo', 'board', 'dividend', 'acquisition', 'merger', 'ipo', 'listing', 'corporate', 'business', 'firm', 'quarterly'],
+                'Markets': ['market', 'markets', 'asx', 'stock', 'shares', 'trading', 'investor', 'rally', 'bull', 'bear', 'index', 'dow', 'nasdaq', 'wall street', 'commodities', 'futures', 'bonds', 'equity', 'portfolio'],
+                'Economy': ['economy', 'economic', 'gdp', 'inflation', 'rba', 'interest rate', 'unemployment', 'jobs', 'wages', 'fiscal', 'monetary', 'recession', 'growth', 'treasury', 'budget', 'tax', 'trade', 'export', 'import', 'cpi', 'central bank', 'federal reserve', 'cost of living'],
+                'Industry': ['mining', 'energy', 'oil', 'gas', 'coal', 'iron ore', 'lithium', 'construction', 'manufacturing', 'retail', 'agriculture', 'technology', 'telecom', 'banking', 'insurance', 'infrastructure', 'renewable'],
+                'Regulatory': ['asic', 'apra', 'accc', 'regulation', 'regulatory', 'compliance', 'law', 'legislation', 'court', 'penalty', 'fine', 'enforcement', 'reform', 'policy', 'governance', 'watchdog'],
+                'Guru Watch': ['buffett', 'munger', 'dalio', 'ackman', 'soros', 'lynch', 'graham', 'value investing', 'investor', 'fund manager', 'hedge fund', 'portfolio', 'guru', 'berkshire', 'oracle of omaha']
+            };
+
+            // 2. FALLBACK: Configured RSS sources — with relevance filtering
             // ============================================================
             if (filteredArticles.length < 5) {
                 console.log(`Falling back to configured RSS sources for ${config.category}`);
                 const seenUrls = new Set(filteredArticles.map(a => a.url));
+                const relevanceKeywords = categoryRelevanceKeywords[config.category] || [];
 
                 for (const sourceKey of config.rssSources) {
                     if (filteredArticles.length >= 5) break;
 
                     const sourceConfig = newsSources[sourceKey];
                     if (!sourceConfig || sourceConfig.type !== 'rss') continue;
+
+                    // Category-specific feeds (e.g. google-news-guru) are always relevant
+                    const isCategorySpecificFeed = sourceKey.includes(config.category.toLowerCase().replace(' ', '-'))
+                        || sourceKey.startsWith('google-news-');
 
                     try {
                         const feed = await parser.parseURL(sourceConfig.url);
@@ -676,6 +690,13 @@ async function refreshNewsCache() {
 
                             // Be more lenient with RSS fallback timing (7 days max)
                             if (hoursDiff <= 168 && !seenUrls.has(item.link)) {
+                                // RELEVANCE CHECK: For general news sources, verify the article is on-topic
+                                if (!isCategorySpecificFeed && relevanceKeywords.length > 0) {
+                                    const combinedText = (item.title + ' ' + (item.contentSnippet || item.content || '')).toLowerCase();
+                                    const isRelevant = relevanceKeywords.some(kw => combinedText.includes(kw));
+                                    if (!isRelevant) continue; // Skip off-topic articles
+                                }
+
                                 seenUrls.add(item.link);
                                 filteredArticles.push({
                                     title: item.title.trim(),
@@ -689,7 +710,7 @@ async function refreshNewsCache() {
                                 });
                             }
                         }
-                        console.log(`${sourceConfig.name} â†’ now have ${filteredArticles.length} for ${config.category}`);
+                        console.log(`${sourceConfig.name} → now have ${filteredArticles.length} for ${config.category}`);
                     } catch (err) {
                         console.error(`RSS failed for ${sourceKey} (${config.category}):`, err.message);
                     }
