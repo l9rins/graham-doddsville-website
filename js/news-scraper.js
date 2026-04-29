@@ -281,10 +281,9 @@ class NewsDisplayManager {
                     // 2. SMART SELECTION
                     let selectedArticles = this.getSmartArticles(rawArticles, config.limit, config.freshLimit, config.hardLimit);
 
-                    // 3. BACKFILL FROM GENERAL (IF STILL EMPTY)
-                    if (selectedArticles.length === 0 && newsByCategory['General']) {
-                        const generalNews = newsByCategory['General'];
-                        selectedArticles = this.getSmartArticles(generalNews, config.limit, config.freshLimit, config.hardLimit);
+                    // 3. BACKFILL FROM TOTAL POOL (IF STILL EMPTY)
+                    if (selectedArticles.length === 0 && this.cachedNews && this.cachedNews.length > 0) {
+                        selectedArticles = this.getSmartArticles(this.cachedNews, config.limit, config.freshLimit, config.hardLimit);
                     }
 
                     if (selectedArticles.length > 0) {
