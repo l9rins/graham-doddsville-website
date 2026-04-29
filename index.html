@@ -221,6 +221,55 @@
   flex-wrap: wrap; /* allow wrapping to next line rather than overlapping */
 }
     </style>
+
+<style>
+/* === CLIENT REVIEW FIXES === */
+
+/* Section headings - bold dark blue */
+.news-section-title,
+.section-header {
+    font-weight: 700 !important;
+    color: #1e3a8a !important;
+}
+
+/* Classic Readings items 8-10 spacing normalization */
+.classic-reading-item-mobile {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+.classic-reading-item-mobile .news-headline,
+.classic-reading-item-mobile .news-headline a {
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: inherit;
+}
+
+/* Fix text too close to right margin */
+@media (max-width: 768px) {
+    .newspaper-categories,
+    .sub-category,
+    .news-list-mobile,
+    .article-slider,
+    .book-content,
+    .classic-readings-list-mobile,
+    .buffett-content-mobile {
+        padding-right: 16px !important;
+    }
+}
+
+/* WB on Everything - each term on its own line */
+.buffett-item-mobile {
+    margin-bottom: 4px;
+    padding: 4px 0;
+}
+.buffett-item-mobile .news-headline {
+    font-size: 13px !important;
+    line-height: 1.4 !important;
+    font-weight: 500 !important;
+    font-style: normal !important;
+}
+</style>
+
 </head>
 
 <body>
@@ -1511,28 +1560,6 @@
                                 </ul>
                             </div>
                             <div class="product-section">
-                                <h3>Commodities</h3>
-                                <ul>
-                                    <li><a href="#gold">Gold</a></li>
-                                    <li><a href="#silver">Silver</a></li>
-                                    <li><a href="#platinum">Platinum</a></li>
-                                    <li><a href="#palladium">Palladium</a></li>
-                                    <li><a href="#agricultural-commodities">Agricultural commodities</a></li>
-                                    <li><a href="#energy-commodities">Energy commodities</a></li>
-                                    <li><a href="#metal-commodities">Metal commodities</a></li>
-                                    <li><a href="#livestock-futures">Livestock futures</a></li>
-                                    <li><a href="#oil-futures">Oil futures</a></li>
-                                    <li><a href="#iron-ore-futures">Iron ore futures</a></li>
-                                    <li><a href="#precious-metals">Precious metals</a></li>
-                                    <li><a href="#base-metals">Base metals</a></li>
-                                    <li><a href="#soft-commodities">Soft commodities</a></li>
-                                    <li><a href="#hard-commodities">Hard commodities</a></li>
-                                    <li><a href="#commodity-etfs">Commodity ETFs</a></li>
-                                    <li><a href="#commodity-funds">Commodity funds</a></li>
-                                    <li><a href="#commodity-trading">Commodity trading</a></li>
-                                </ul>
-                            </div>
-                            <div class="product-section">
                                 <h3>Miscellaneous</h3>
                                 <ul>
                                     <li><a href="#margin-loans">Margin loans</a></li>
@@ -2646,933 +2673,265 @@
                     <div class="books-slider-container">
                         <div class="books-slider" id="buffett-books-slider">
                             <div class="book-links-horizontal">
-                                <a href="https://www.amazon.com/Poor-Charlies-Almanack-Charles-Munger/dp/1578645018" target="_blank">Poor Charlie's Almanack</a>
-                                <a href="https://www.amazon.com/Snowball-Warren-Buffett-Business-Life/dp/0553805096" target="_blank">The Snowball</a>
-                                <a href="https://www.amazon.com/Damn-Right-Behind-Scenes-Charlie/dp/0471441973" target="_blank">Damn Right!</a>
-                                <a href="https://www.amazon.com/Buffett-Making-American-Capitalist-Roger/dp/0553067689" target="_blank">Buffett: The Making of An American Capitalist</a>
-                                <a href="https://www.amazon.com/Essays-Warren-Buffett-Lessons-Corporate/dp/1611637584" target="_blank">The Essays of Warren Buffett: Lessons for Corporate America</a>
-                                <a href="https://www.amazon.com/Permanent-Value-Story-Warren-Buffett/dp/0966446100" target="_blank">Of Permanent Value</a>
-                                <a href="https://www.amazon.com/Warren-Buffett-Way-Investment-Strategies/dp/1118503252" target="_blank">The Warren Buffett Way</a>
-                                <a href="https://www.amazon.com/Warren-Buffett-Speaks-Wit-Solomon/dp/0470453667" target="_blank">Warren Buffett Speaks</a>
-                                <a href="https://www.amazon.com/Berkshire-Hathaway-Letters-Shareholders/dp/1605440273" target="_blank">Berkshire Hathaway Letters to Shareholders</a>
-                                <a href="https://www.amazon.com/Tap-Dancing-Railroad-Warren-Buffett/dp/1591846539" target="_blank">Tap Dancing to Work</a>
+                                <a href="#">The Essays of Warren Buffett</a>
+                                <a href="#">The Snowball</a>
+                                <a href="#">The Warren Buffett Way</a>
+                                <a href="#">Warren Buffett Speaks</a>
+                                <a href="#">Tap Dancing to Work</a>
+                                <a href="#">Buffett: The Making of an American Capitalist</a>
+                                <a href="#">The Warren Buffett Portfolio</a>
+                                <a href="#">Warren Buffett: An Illustrated Biography</a>
+                                <a href="#">The Deals of Warren Buffett</a>
+                                <a href="#">Of Permanent Value</a>
+                                <a href="#">The Essential Buffett</a>
+                                <a href="#">The Real Warren Buffett</a>
+                                <a href="#">Berkshire Hathaway Letters to Shareholders</a>
+                                <a href="#">Damn Right!</a>
+                                <a href="#">Poor Charlie's Almanack</a>
                             </div>
-                            <div class="buffett-see-more-container">
-
+                            <div class="buffett-munger-see-more-container">
+                                <a href="warren-buffett-books.html" class="buffett-munger-see-more-link">See more</a>
                             </div>
                         </div>
-
                     </div>
-
                 </div>
 
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <div class="book-category" data-category="value-investing">
-                <div class="books-slider-container">
-                    <div class="books-slider" id="value-investing-books-slider">
-                        <div class="book-links-horizontal">
-                            <a href="https://www.amazon.com/Little-Book-That-Beats-Market/dp/0471733064" target="_blank">The Little Book That Beats the Market</a>
-                            <a href="https://www.amazon.com/Little-Book-Value-Investing-Christopher/dp/0470055898" target="_blank">The Little Book of Value Investing</a>
-                            <a href="https://www.amazon.com/Benjamin-Graham-Value-Investing-Lessons/dp/1883249006" target="_blank">Benjamin Graham On Value Investing: Lessons from the Dean of Wall
-                                Street</a>
-                            <a href="https://www.amazon.com/Intelligent-Investor-Definitive-Investing-Essentials/dp/0060555661" target="_blank">The Intelligent Investor (3rd ed)</a>
-                            <a href="https://www.amazon.com/Modern-Value-Investing-Twenty-Five-Strategies/dp/1119606469" target="_blank">Modern Value Investing</a>
-                            <a href="https://www.amazon.com/Security-Analysis-Foreword-Buffett-Editions/dp/0071592539" target="_blank">Security Analysis (7th ed)</a>
-                            <a href="https://www.amazon.com/Interpretation-Financial-Statements-Evaluation/dp/0887309135" target="_blank">The Interpretation of Financial Statements</a>
-                            <a href="https://www.amazon.com/What-Works-Street-Quantitative/dp/0071626766" target="_blank">What Works on Wall Street</a>
-                            <a href="https://www.amazon.com/You-Can-Be-Stock-Market/dp/0743200403" target="_blank">You
-                                Can Be a Stock Market Genius</a>
-                            <a href="https://www.amazon.com/Value-Investing-Tools-Techniques/dp/0071386499" target="_blank">Value Investing: Tools and Techniques</a>
-                        </div>
-                        <div class="value-investing-see-more-container">
-                            <a href="value-investing-books.html" class="value-investing-see-more-link">See more</a>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <div class="book-category" data-category="share-investing">
-                <div class="books-slider-container">
-                    <div class="books-slider" id="share-investing-books-slider">
-                        <div class="book-links-horizontal">
-                            <a href="https://www.amazon.com/How-Make-Money-Stocks-Winning/dp/0071614133" target="_blank">How to Make Money in Stocks: A Winning System in Good Times and Bad</a>
-                            <a href="https://www.amazon.com/Paths-Wealth-through-Common-Stocks/dp/0471445502" target="_blank">Paths to Wealth through Common Stocks</a>
-                            <a href="https://www.amazon.com/One-Up-Wall-Street-Already/dp/0743200403" target="_blank">One Up On Wall Street: How To Use What You Already Know To Make Money In
-                                The Market</a>
-                            <a href="https://www.amazon.com/Common-Sense-Mutual-Funds-Anniversary/dp/0471322075" target="_blank">Common Sense on Mutual Funds</a>
-                        </div>
-                        <div class="share-investing-see-more-container">
-                            <a href="share-investing-books.html" class="share-investing-see-more-link">See more</a>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <div class="book-category" data-category="wealth-creation">
-                <div class="books-slider-container">
-                    <div class="books-slider" id="wealth-creation-books-slider">
-                        <div class="book-links-horizontal">
-                            <a href="https://www.amazon.com/Will-Teach-You-Rich-Second/dp/0761147489" target="_blank">I
-                                Will Teach You to Be Rich: No Guilt. No Excuses. Just a 6-Week Program That Works</a>
-                            <a href="https://www.amazon.com/Richest-Man-Babylon-George-Clason/dp/0451205367" target="_blank">The Richest Man in Babylon</a>
-                            <a href="https://www.amazon.com/Millionaire-Next-Door-Surprising-Americas/dp/0671015206" target="_blank">Millionaire Next Door: The Surprising Secrets of America's Wealthy</a>
-                            <a href="https://www.amazon.com/Science-Getting-Rich-Wallace-Wattles/dp/1604599312" target="_blank">The Science of Getting Rich</a>
-                        </div>
-                        <div class="wealth-see-more-container">
-                            <a href="wealth-creation-books.html" class="wealth-see-more-link">See more</a>
+                <div class="book-category" data-category="value-investing">
+                    <div class="books-slider-container">
+                        <div class="books-slider" id="value-investing-books-slider">
+                            <div class="book-links-horizontal">
+                                <a href="#">The Intelligent Investor</a>
+                                <a href="#">Security Analysis (1940)</a>
+                                <a href="#">Security Analysis (2008)</a>
+                                <a href="#">Benjamin Graham On Value Investing</a>
+                                <a href="#">Value Investing: From Graham to Buffett and Beyond</a>
+                                <a href="#">The Rediscovered Benjamin Graham</a>
+                                <a href="#">The Little Book of Value Investing</a>
+                                <a href="#">The Little Book That Beats the Market</a>
+                                <a href="#">You Can Be A Stock Market Genius</a>
+                                <a href="#">Modern Value Investing</a>
+                                <a href="#">Dhandho Investor</a>
+                                <a href="#">Margin of Safety</a>
+                                <a href="#">Value Investing: Tools and Techniques</a>
+                                <a href="#">Deep Value</a>
+                                <a href="#">F Wall St</a>
+                            </div>
+                            <div class="value-investing-see-more-container">
+                                <a href="value-investing-books.html" class="value-investing-see-more-link">See more</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <div class="book-category" data-category="financial-analysis">
-                <div class="books-slider-container">
-                    <div class="books-slider" id="financial-analysis-books-slider">
-                        <div class="book-links-horizontal">
-                            <a href="https://www.amazon.com/Warren-Buffett-Accounting-Book-Reading/dp/1118856844" target="_blank">Warren Buffett Accounting</a>
-                            <a href="https://www.amazon.com/Financial-Shenanigans-Detecting-Accounting-Financial/dp/0071386262" target="_blank">Financial Shenanigans: How to Detect Accounting Gimmicks and Fraud in
-                                Financial Reports</a>
-                            <a href="https://www.amazon.com/Bemused-Investors-Guide-Company-Accounts/dp/047084469X" target="_blank">Bemused Investor's Guide to Company Accounts</a>
-                            <a href="https://www.amazon.com/Balance-Sheet-Basics-Financial-Management/dp/0814408127" target="_blank">Balance Sheet Basics: Financial Management for Nonfinancial Managers</a>
-                        </div>
-                        <div class="financial-analysis-see-more-container">
-                            <a href="financial-analysis-books.html" class="financial-analysis-see-more-link">See
-                                more</a>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-
-
-
-
-
-            <div class="book-category" data-category="sales-marketing">
-                <div class="books-slider-container">
-                    <div class="books-slider" id="sales-marketing-books-slider">
-                        <div class="book-links-horizontal">
-                            <a href="https://www.amazon.com/Ogilvy-Advertising-David/dp/039472903X" target="_blank">Ogilvy on Advertising</a>
-                            <a href="https://www.amazon.com/Confessions-Advertising-Man-David-Ogilvy/dp/1904915377" target="_blank">Confessions of an Advertising Man</a>
-                            <a href="https://www.amazon.com/Instant-Cashflow-Brad-Sugars/dp/0731400049" target="_blank">Instant Cashflow</a>
-                            <a href="https://www.amazon.com/Copy-Book-Advertising-Writers-Advertising/dp/0500015154" target="_blank">The Copy Book: How Some of the Best Advertising Writers in the World
-                                Write Their Advertising</a>
-                            <a href="https://www.amazon.com/Secrets-Successful-Selling-Habits/dp/0471447378" target="_blank">Secrets of Successful Selling Habits</a>
-                        </div>
-                        <div class="sales-marketing-see-more-container">
-                            <a href="sales-marketing-books.html" class="sales-marketing-see-more-link">See more</a>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <div class="book-category" data-category="self-improvement">
-                <div class="books-slider-container">
-                    <div class="books-slider" id="self-improvement-books-slider">
-                        <div class="book-links-horizontal">
-                            <a href="https://www.amazon.com/As-Man-Thinketh-Original-1902/dp/1503032433" target="_blank">As A Man Thinketh (The Original 1902 Edition)</a>
-                            <a href="https://www.amazon.com/Law-Success-Napoleon-Hill/dp/1604599304" target="_blank">The
-                                Law of Success</a>
-                            <a href="https://www.amazon.com/How-Win-Friends-Influence-People/dp/0671027034" target="_blank">How to Win Friends and Influence People</a>
-                            <a href="https://www.amazon.com/Power-Positive-Thinking-Norman-Vincent/dp/0743250547" target="_blank">The Power of Positive Thinking</a>
-                            <a href="https://www.amazon.com/Awaken-Giant-Within-Immediate-Emotional/dp/0671791540" target="_blank">Awaken The Giant Within</a>
-                            <a href="https://www.amazon.com/Habits-Highly-Effective-People-Powerful/dp/1982137274" target="_blank">The 7 Habits of Highly Effective People</a>
-                        </div>
-                        <div class="self-improvement-see-more-container">
-                            <a href="self-improvement-books.html" class="self-improvement-see-more-link">See more</a>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            <div class="book-category" data-category="business-management">
-                <div class="books-slider-container">
-                    <div class="books-slider" id="business-management-books-slider">
-                        <div class="book-links-horizontal">
-                            <a href="https://www.amazon.com/100M-Offers-People-Feel-Stupid/dp/1737475715" target="_blank">$100M Offers: How To Make Offers So Good People Feel Stupid Saying
-                                No</a> |
-                            <a href="https://www.amazon.com/Personal-MBA-World-Class-Business-Education/dp/1591845572" target="_blank">The Personal MBA: A World-Class Business Education in a Single
-                                Volume</a> |
-                            <a href="https://www.amazon.com/How-Build-Billion-Dollar-Business-Purpose/dp/1119906204" target="_blank">How to Build a Billion-Dollar Business: On Purpose. For Profit. With
-                                Passion.</a>
-                        </div>
-                        <div class="business-management-see-more-container">
-                            <a href="business-management-books.html" class="business-management-see-more-link">See
-                                more</a>
+                <div class="book-category" data-category="share-investing">
+                    <div class="books-slider-container">
+                        <div class="books-slider" id="share-investing-books-slider">
+                            <div class="book-links-horizontal">
+                                <a href="#">How to Make Money in Stocks</a>
+                                <a href="#">One Up on Wall Street</a>
+                                <a href="#">A Beginner's Guide to the Stock Market</a>
+                                <a href="#">Common Sense on Mutual Funds</a>
+                                <a href="#">The Little Book of Common Sense Investing</a>
+                                <a href="#">Stocks for the Long Run</a>
+                                <a href="#">The Five Rules for Successful Stock Investing</a>
+                                <a href="#">The Little Book That Builds Wealth</a>
+                                <a href="#">Best Loser Wins</a>
+                                <a href="#">Stock Market Investing</a>
+                                <a href="#">The Bogleheads Guide to Investing</a>
+                                <a href="#">Learn to Earn</a>
+                                <a href="#">The Art of Quality Investing</a>
+                                <a href="#">A Random Walk Down Wall Street</a>
+                            </div>
+                            <div class="share-investing-see-more-container">
+                                <a href="share-investing-books.html" class="share-investing-see-more-link">See more</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="book-category" data-category="miscellaneous">
-                <div class="books-slider-container">
-                    <div class="books-slider" id="miscellaneous-books-slider">
-                        <div class="book-links-horizontal">
-                            <a href="https://www.amazon.com/Autobiography-Benjamin-Franklin-Dover-Thrift/dp/0486290735" target="_blank">The Autobiography of Benjamin Franklin</a> |
-                            <a href="https://www.amazon.com/Extraordinary-Popular-Delusions-Madness-Crowds/dp/1614277200" target="_blank">Extraordinary Popular Delusions and the Madness of Crowds</a> |
-                            <a href="https://www.amazon.com/Short-History-Nearly-Everything/dp/076790818X" target="_blank">A Short History of Nearly Everything</a> |
-                            <a href="https://www.amazon.com/Black-Swan-Impact-Highly-Improbable/dp/081297381X" target="_blank">The Black Swan: The Impact Of The Highly Improbable</a>
-                        </div>
-                        <div class="miscellaneous-see-more-container">
-                            <a href="miscellaneous-books.html" class="miscellaneous-see-more-link">See more</a>
+                <div class="book-category" data-category="wealth-creation">
+                    <div class="books-slider-container">
+                        <div class="books-slider" id="wealth-creation-books-slider">
+                            <div class="book-links-horizontal">
+                                <a href="#">How to Get Rich</a>
+                                <a href="#">Rich Dad Poor Dad</a>
+                                <a href="#">The Simple Path to Wealth</a>
+                                <a href="#">I Will Teach You to be Rich</a>
+                                <a href="#">The Richest Man in Babylon</a>
+                                <a href="#">The Millionaire Next Door</a>
+                                <a href="#">The Millionaire Mind</a>
+                                <a href="#">The Millionaire Fastlane</a>
+                                <a href="#">The Strategic Millionaire</a>
+                                <a href="#">Millionaire Mission</a>
+                                <a href="#">The Science of Getting Rich</a>
+                                <a href="#">Secrets of the Millionaire Mind</a>
+                                <a href="#">Simple Money Rich Life</a>
+                                <a href="#">$1M Money Models</a>
+                                <a href="#">Money Magnet</a>
+                                <a href="#">Cashflow Quadrant</a>
+                                <a href="#">Get Good With Money</a>
+                                <a href="#">Psychology of Money</a>
+                            </div>
+                            <div class="wealth-creation-see-more-container">
+                                <a href="wealth-creation-books.html" class="wealth-creation-see-more-link">See more</a>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <div class="book-category" data-category="financial-analysis">
+                    <div class="books-slider-container">
+                        <div class="books-slider" id="financial-analysis-books-slider">
+                            <div class="book-links-horizontal">
+                                <a href="#">Financial Statements</a>
+                                <a href="#">How to Read a Financial Report</a>
+                                <a href="#">Financial Shenanigans</a>
+                                <a href="#">Bemused Investor's Guide to Company Accounts</a>
+                                <a href="#">Warren Buffett Accounting</a>
+                                <a href="#">Accounting for Beginners</a>
+                                <a href="#">Financial Intelligence</a>
+                                <a href="#">Balance Sheet Basics</a>
+                                <a href="#">Financial Statement Analysis for Value Investors</a>
+                                <a href="#">The Interpretation of Financial Statements</a>
+                                <a href="#">How to Value Company Stocks</a>
+                                <a href="#">Valuation</a>
+                                <a href="#">Damodaran on Valuation</a>
+                                <a href="#">Buffettology</a>
+                            </div>
+                            <div class="financial-analysis-see-more-container">
+                                <a href="financial-analysis-books.html" class="financial-analysis-see-more-link">See more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="book-category" data-category="sales-marketing">
+                    <div class="books-slider-container">
+                        <div class="books-slider" id="sales-marketing-books-slider">
+                            <div class="book-links-horizontal">
+                                <a href="#">$100M Offers</a>
+                                <a href="#">$100M Leads</a>
+                                <a href="#">Sell or Be Sold</a>
+                                <a href="#">This Is Marketing</a>
+                                <a href="#">The 1-Page Marketing Plan</a>
+                                <a href="#">80/20 Sales and Marketing</a>
+                                <a href="#">Gap Selling</a>
+                                <a href="#">The Challenger Sale</a>
+                                <a href="#">The Psychology of Selling</a>
+                                <a href="#">Selling 101</a>
+                                <a href="#">Fanatical Prospecting</a>
+                                <a href="#">Secrets of Closing the Sale</a>
+                                <a href="#">Ninja Selling</a>
+                                <a href="#">Go Pro</a>
+                                <a href="#">Building a Story Brand</a>
+                                <a href="#">The 22 Immutable Laws of Marketing</a>
+                                <a href="#">Exactly What To Say</a>
+                                <a href="#">Sell Like Crazy</a>
+                                <a href="#">How to be a Great Salesperson</a>
+                                <a href="#">Way Of the Wolf</a>
+                                <a href="#">New Sales Simplified</a>
+                            </div>
+                            <div class="sales-marketing-see-more-container">
+                                <a href="sales-marketing-books.html" class="sales-marketing-see-more-link">See more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="book-category" data-category="self-improvement">
+                    <div class="books-slider-container">
+                        <div class="books-slider" id="self-improvement-books-slider">
+                            <div class="book-links-horizontal">
+                                <a href="#">Atomic Habits</a>
+                                <a href="#">The Mountain Is You</a>
+                                <a href="#">Good Vibes Good Life</a>
+                                <a href="#">The Power of Discipline</a>
+                                <a href="#">The Let Them Theory</a>
+                                <a href="#">Stop Overthinking</a>
+                                <a href="#">Breaking the Habits of Being Yourself</a>
+                                <a href="#">The 7 Habits of Highly Effective People</a>
+                                <a href="#">The 15 Invaluable Laws of Growth</a>
+                                <a href="#">Success</a>
+                                <a href="#">No Excuses!</a>
+                                <a href="#">The Master Key System</a>
+                                <a href="#">How to Talk to Anyone</a>
+                                <a href="#">When Things Fall Apart</a>
+                                <a href="#">Self Doubt Workbook for Women</a>
+                                <a href="#">Love Yourself Like Your Life Depends On It</a>
+                                <a href="#">Awaken The Giant Within</a>
+                            </div>
+                            <div class="self-improvement-see-more-container">
+                                <a href="self-improvement-books.html" class="self-improvement-see-more-link">See more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="book-category" data-category="business-management">
+                    <div class="books-slider-container">
+                        <div class="books-slider" id="business-management-books-slider">
+                            <div class="book-links-horizontal">
+                                <a href="#">Never Split the Difference</a>
+                                <a href="#">The Lean Startup</a>
+                                <a href="#">Leaders Eat Last</a>
+                                <a href="#">The Coaching Habit</a>
+                                <a href="#">The E-Myth Revisited</a>
+                                <a href="#">Traction</a>
+                                <a href="#">Surrounded By Idiots</a>
+                                <a href="#">Profit First</a>
+                                <a href="#">Personal MBA</a>
+                                <a href="#">The Infinite Game</a>
+                                <a href="#">Your Next Five Moves</a>
+                                <a href="#">Legacy</a>
+                                <a href="#">The Making of a Manager</a>
+                                <a href="#">The New One Minute Manager</a>
+                                <a href="#">The Diary of a CEO</a>
+                                <a href="#">Million Dollar Weekend</a>
+                                <a href="#">Build to Sell</a>
+                                <a href="#">Buy Back Your Time</a>
+                                <a href="#">Business Made Simple</a>
+                                <a href="#">12 Months to $1 Million</a>
+                                <a href="#">What's Your Dream</a>
+                                <a href="#">Business Book</a>
+                            </div>
+                            <div class="business-management-see-more-container">
+                                <a href="business-management-books.html" class="business-management-see-more-link">See more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="book-category" data-category="miscellaneous">
+                    <div class="books-slider-container">
+                        <div class="books-slider" id="miscellaneous-books-slider">
+                            <div class="book-links-horizontal">
+                                <a href="#">The Big Short</a>
+                                <a href="#">Deep Simplicity</a>
+                                <a href="#">Moneyball</a>
+                                <a href="#">Flash Boys</a>
+                                <a href="#">Liar's Poker</a>
+                                <a href="#">The Fifth Risk</a>
+                                <a href="#">Bull!</a>
+                                <a href="#">Going Infinite</a>
+                                <a href="#">Tools and Weapons</a>
+                                <a href="#">The Third Chimpanzee</a>
+                                <a href="#">Selfish Gene</a>
+                                <a href="#">Three Scientists and their Gods</a>
+                                <a href="#">Investing Between the Lines</a>
+                                <a href="#">The Autobiography of Benjamin Franklin</a>
+                                <a href="#">Extraordinary Popular Delusions and the Madness of Crowds</a>
+                                <a href="#">A Short History of Nearly Everything</a>
+                                <a href="#">The Black Swan</a>
+                                <a href="#">Fooled by Randomness</a>
+                                <a href="#">Smartest Guys in the Room</a>
+                            </div>
+                            <div class="miscellaneous-see-more-container">
+                                <a href="miscellaneous-books.html" class="miscellaneous-see-more-link">See more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         </section>
@@ -3679,8 +3038,17 @@
                 <div class="buffett-tab active" id="philosophy-tab-mobile" data-tab="philosophy">
                     <div class="books-slider-container">
                         <div class="books-slider" id="philosophy-buffett-slider">
-                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Investment Philosophy, Investment Objectives,</h3></div></div>
-                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Modern Portfolio Theory, Value Investing, Successful Investing, Intrinsic Value, Wall Street and Mr Market, Circle of Competence, Long Term Investing, Conservatism, Security Analyst, Margin of Safety, Market Forecasting, Market Timing, Speculation, Performance Standards, Performance Measurement, Mistakes, Frictional Costs, Capital Allocation, Market Bubble, Market Downturn, Exit Strategy, Berkshire Disclosure, Value Investors</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Investment Philosophy</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Investment Objectives</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Modern Portfolio Theory</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Value Investing, Successful Investing</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Intrinsic Value</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Wall Street and Mr Market, Circle of Competence</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Long Term Investing, Conservatism</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Security Analyst, Margin of Safety</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Market Forecasting, Market Timing, Speculation</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Performance Standards, Performance Measurement, Mistakes</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Frictional Costs, Capital Allocation, Market Bubble, Market Downturn, Exit Strategy, Berkshire Disclosure, Value Investors</h3></div></div>
                         </div>
                     </div>
                 </div>
@@ -3688,10 +3056,17 @@
                 <div class="buffett-tab" id="investing-tab-mobile" data-tab="investing">
                     <div class="books-slider-container">
                         <div class="books-slider" id="investing-buffett-slider">
-                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Stock Market, Portfolio Allocation, Buying Criteria, Selling Criteria, Investment Strategy,</h3></div></div>
-                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Investment Advice, Investment Risk, Volatility</h3></div></div>
-                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Rumours, Technical Analysis, Share Buybacks,</h3></div></div>
-                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Share Issues, Stock Splits, Stock Options, Book Recommendations, Indexing, Arbitrage, Cigar Butt Investing, Mergers and Acquisitions, Workouts, Derivatives, The Dow, Fees, Bonds, Gold, Diversification, Initial Public Offering, Convertible Preferred Stock, Junk Bonds, Private Equity, Real Estate</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Stock Market, Portfolio Allocation</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Buying Criteria, Selling Criteria</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Investment Strategy, Investment Advice</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Investment Risk, Volatility</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Rumours, Technical Analysis</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Share Buybacks, Share Issues, Stock Splits</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Stock Options, Book Recommendations, Indexing</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Arbitrage, Cigar Butt Investing</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Mergers and Acquisitions, Workouts, Derivatives</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">The Dow, Fees, Bonds, Gold, Diversification</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Initial Public Offering, Convertible Preferred Stock, Junk Bonds, Private Equity, Real Estate</h3></div></div>
                         </div>
                     </div>
                 </div>
@@ -3699,7 +3074,17 @@
                 <div class="buffett-tab" id="businesses-tab-mobile" data-tab="businesses">
                     <div class="books-slider-container">
                         <div class="books-slider" id="businesses-buffett-slider">
-                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Good Businesses, Economic Moat, Good Managers, Poor Businesses, Poor Managers, Airlines, Auto Insurance, Banks, Berkshire Hathaway, Controlled Businesses, Derivatives Business, Float, Franchises, Insurance, Investment Banks, Investment Companies, Investment Managers, Manufactured Housing, Paper, Property Casualty Insurance, Reinsurance, Retail, Retroactive Insurance, Shoes, Super Cat Insurance, Technology, Television, Textile, Transport, Utilities</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Good Businesses, Economic Moat</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Good Managers, Poor Businesses, Poor Managers</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Airlines, Auto Insurance, Banks</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Berkshire Hathaway, Controlled Businesses</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Derivatives Business, Float, Franchises</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Insurance, Investment Banks</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Investment Companies, Investment Managers</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Manufactured Housing, Paper</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Property Casualty Insurance, Reinsurance, Retail</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Retroactive Insurance, Shoes, Super Cat Insurance</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Technology, Television, Textile, Transport, Utilities</h3></div></div>
                         </div>
                     </div>
                 </div>
@@ -3707,35 +3092,75 @@
                 <div class="buffett-tab" id="governance-tab-mobile" data-tab="governance">
                     <div class="books-slider-container">
                         <div class="books-slider" id="governance-buffett-slider">
-                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Annual meetings, Audit Committee, Auditors, Berkshire Compensation, CEO Compensation, CEO Mistakes, Corporate Charity, Corporate Culture, Corporate Expense, Corporate Governance, Corporate Responsibility, Corporate Strategy, Director Remuneration, Directors' Role, Directors' Weaknesses, Dividend Policy, Executive Compensation, Hiring and Firing, Independent Directors, Organisational Structure, Remuneration Committee, Shareholders, Succession</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Annual meetings, Audit Committee, Auditors</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Berkshire Compensation, CEO Compensation</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">CEO Mistakes, Corporate Charity</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Corporate Culture, Corporate Expense</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Corporate Governance, Corporate Responsibility</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Corporate Strategy, Director Remuneration</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Directors' Role, Directors' Weaknesses</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Dividend Policy, Executive Compensation</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Hiring and Firing, Independent Directors</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Organisational Structure, Remuneration Committee</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Shareholders, Succession</h3></div></div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
 
-            <div class="buffett-tab" id="accounting-tab-mobile" data-tab="accounting">
-                <div class="books-slider-container">
-                    <div class="books-slider" id="accounting-buffett-slider">
-                        <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Accounting Creativity, Accounting Ratios, Accounting Goodwill, Amortization, Book Value, Capital Base, Capital Gain, Cash Flow, Compounding, Debt, Depreciation, Earnings, Earnings Per Share, EBITDA, Economic, Goodwill, Fraud, Full and Fair Reporting, Intangibles, GAAP, Leverage, Liquidation, Look through earnings, Owner Earnings, PE Ratio, Pro Forma Reporting, Realised Gains and Losses, Retention of Earning, Return on Capital, Return on Equity, Valuation</h3></div></div>
+                <div class="buffett-tab" id="accounting-tab-mobile" data-tab="accounting">
+                    <div class="books-slider-container">
+                        <div class="books-slider" id="accounting-buffett-slider">
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Accounting Creativity, Accounting Ratios, Accounting Goodwill</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Amortization, Book Value, Capital Base</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Capital Gain, Cash Flow, Compounding</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Debt, Depreciation, Earnings</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Earnings Per Share, EBITDA, Economic Goodwill</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Fraud, Full and Fair Reporting, Intangibles</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">GAAP, Leverage, Liquidation</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Look through earnings, Owner Earnings, PE Ratio</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Pro Forma Reporting, Realised Gains and Losses</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Retention of Earning, Return on Capital</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Return on Equity, Valuation</h3></div></div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="buffett-tab" id="economics-tab-mobile" data-tab="economics">
-                <div class="books-slider-container">
-                    <div class="books-slider" id="economics-buffett-slider">
-                        <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Budget Deficit, Currency, Globalisation, Global Economy, Gross Domestic Product, Inflation, Interest Rates, International Trade, Macroeconomics, Recession, Trade Imbalance, US Economy</h3></div></div>
+                <div class="buffett-tab" id="economics-tab-mobile" data-tab="economics">
+                    <div class="books-slider-container">
+                        <div class="books-slider" id="economics-buffett-slider">
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Budget Deficit</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Currency</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Globalisation</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Global Economy</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Gross Domestic Product</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Inflation</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Interest Rates</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">International Trade</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Macroeconomics</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Recession</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Trade Imbalance, US Economy</h3></div></div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="buffett-tab" id="miscellaneous-tab-mobile" data-tab="miscellaneous">
-                <div class="books-slider-container">
-                    <div class="books-slider" id="miscellaneous-buffett-slider">
-                        <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Benjamin Graham, Character, Charlie Munger, David Dodd, Happiness, Love, Partnership, Philanthropy, Public Pension, Success, Taxation, Unconventional Commitments</h3></div></div>
+                <div class="buffett-tab" id="miscellaneous-tab-mobile" data-tab="miscellaneous">
+                    <div class="books-slider-container">
+                        <div class="books-slider" id="miscellaneous-buffett-slider">
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Benjamin Graham</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Character</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Charlie Munger</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">David Dodd</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Happiness</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Love</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Partnership</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Philanthropy</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Public Pension</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Success</h3></div></div>
+                            <div class="buffett-item-mobile"><div class="news-content"><h3 class="news-headline">Taxation, Unconventional Commitments</h3></div></div>
+                        </div>
                     </div>
                 </div>
+
             </div>
             
             
