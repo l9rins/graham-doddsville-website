@@ -83,7 +83,7 @@ const corsOptions = {
         ? ['https://graham-doddsville.onrender.com',
             'https://grahamanddoddsville.com.au',
             'https://l9rins.github.io']
-        : 'http://localhost:3051',
+        : ['http://localhost:4012', 'http://localhost:4012'],
     methods: ['GET', 'POST'],
     credentials: true,
     maxAge: 3600
@@ -190,7 +190,7 @@ async function parseRSSFeed(url, sourceName, defaultCategory = null) {
 
         xmlText = xmlText
             .replace(/&nbsp;/g, ' ')
-            .replace(/&copy;/g, '©')
+            .replace(/&copy;/g, 'Â©')
             .replace(/&ndash;/g, '-')
             .replace(/&mdash;/g, '-')
             .replace(/&rsquo;/g, "'")
@@ -516,7 +516,7 @@ async function processBatch(sources, batchSize = MAX_CONCURRENT_REQUESTS) {
 async function refreshNewsCache() {
     if (newsCache.isRefreshing) return;
     newsCache.isRefreshing = true;
-    console.log('📰 Starting background news refresh...');
+    console.log('ðŸ“° Starting background news refresh...');
 
     try {
         const categoriesConfig = [
@@ -640,18 +640,18 @@ async function refreshNewsCache() {
                     console.error(`GNews failed for ${config.category}:`, err.message);
                 }
             } else {
-                console.warn('⚠️  GNEWS_API_KEY not set — skipping GNews. Add it to your Render environment variables.');
+                console.warn('âš ï¸  GNEWS_API_KEY not set â€” skipping GNews. Add it to your Render environment variables.');
             }
 
 
-            // Strict 48h filter on GNews results
+            // Strict filter on GNews results based on category config
             let filteredArticles = validArticles.filter(a => {
                 const hoursDiff = (new Date() - new Date(a.publishedAt)) / (1000 * 60 * 60);
-                return hoursDiff <= 48;
+                return hoursDiff <= currentAgeLimit;
             });
 
             // ============================================================
-            // 2. FALLBACK: Configured RSS sources — strict 48h enforced
+            // 2. FALLBACK: Configured RSS sources â€” strict 48h enforced
             // ============================================================
             if (filteredArticles.length < 5) {
                 console.log(`Falling back to configured RSS sources for ${config.category}`);
@@ -674,7 +674,7 @@ async function refreshNewsCache() {
                             const publishedDate = item.pubDate ? new Date(item.pubDate) : new Date();
                             const hoursDiff = (new Date() - publishedDate) / (1000 * 60 * 60);
 
-                            if (hoursDiff <= 48 && !seenUrls.has(item.link)) {
+                            if (hoursDiff <= currentAgeLimit && !seenUrls.has(item.link)) {
                                 seenUrls.add(item.link);
                                 filteredArticles.push({
                                     title: item.title.trim(),
@@ -688,7 +688,7 @@ async function refreshNewsCache() {
                                 });
                             }
                         }
-                        console.log(`${sourceConfig.name} → now have ${filteredArticles.length} for ${config.category}`);
+                        console.log(`${sourceConfig.name} â†’ now have ${filteredArticles.length} for ${config.category}`);
                     } catch (err) {
                         console.error(`RSS failed for ${sourceKey} (${config.category}):`, err.message);
                     }
@@ -703,11 +703,11 @@ async function refreshNewsCache() {
                 console.log(`Safety net triggered for ${config.category}: only ${filteredArticles.length} articles found`);
                 const needed = 5 - filteredArticles.length;
                 const safetyArticles = [
-                    { title: `Latest ${config.category} News — ${new Date().toLocaleDateString('en-AU', { weekday: 'long' })}`, url: fallbackUrls[config.category], publishedAt: new Date().toISOString(), source: { name: 'Graham & Doddsville' }, category: config.category, excerpt: `Stay informed with the latest ${config.category.toLowerCase()} updates.` },
-                    { title: `${config.category} Market Roundup`, url: fallbackUrls[config.category], publishedAt: new Date(Date.now() - 3600000).toISOString(), source: { name: 'Graham & Doddsville' }, category: config.category, excerpt: `Latest ${config.category.toLowerCase()} analysis and commentary for Australian investors.` },
-                    { title: `${config.category} Weekly Overview`, url: fallbackUrls[config.category], publishedAt: new Date(Date.now() - 7200000).toISOString(), source: { name: 'Graham & Doddsville' }, category: config.category, excerpt: `Weekly ${config.category.toLowerCase()} summary for value investors.` },
-                    { title: `${config.category} Investment Insights`, url: fallbackUrls[config.category], publishedAt: new Date(Date.now() - 10800000).toISOString(), source: { name: 'Graham & Doddsville' }, category: config.category, excerpt: `Expert ${config.category.toLowerCase()} insights from Graham & Doddsville.` },
-                    { title: `${config.category} News Update`, url: fallbackUrls[config.category], publishedAt: new Date(Date.now() - 14400000).toISOString(), source: { name: 'Graham & Doddsville' }, category: config.category, excerpt: `Current ${config.category.toLowerCase()} news and market commentary for Australian investors.` }
+                    { title: `Latest ${config.category} News — ${new Date().toLocaleDateString('en-AU', { weekday: 'long' })}`, url: fallbackUrls[config.category] + '?item=1', publishedAt: new Date().toISOString(), source: { name: 'Graham & Doddsville' }, category: config.category, excerpt: `Stay informed with the latest ${config.category.toLowerCase()} updates.` },
+                    { title: `${config.category} Market Roundup`, url: fallbackUrls[config.category] + '?item=2', publishedAt: new Date(Date.now() - 3600000).toISOString(), source: { name: 'Graham & Doddsville' }, category: config.category, excerpt: `Latest ${config.category.toLowerCase()} analysis and commentary for Australian investors.` },
+                    { title: `${config.category} Weekly Overview`, url: fallbackUrls[config.category] + '?item=3', publishedAt: new Date(Date.now() - 7200000).toISOString(), source: { name: 'Graham & Doddsville' }, category: config.category, excerpt: `Weekly ${config.category.toLowerCase()} summary for value investors.` },
+                    { title: `${config.category} Investment Insights`, url: fallbackUrls[config.category] + '?item=4', publishedAt: new Date(Date.now() - 10800000).toISOString(), source: { name: 'Graham & Doddsville' }, category: config.category, excerpt: `Expert ${config.category.toLowerCase()} insights from Graham & Doddsville.` },
+                    { title: `${config.category} News Update`, url: fallbackUrls[config.category] + '?item=5', publishedAt: new Date(Date.now() - 14400000).toISOString(), source: { name: 'Graham & Doddsville' }, category: config.category, excerpt: `Current ${config.category.toLowerCase()} news and market commentary for Australian investors.` }
                 ];
                 filteredArticles.push(...safetyArticles.slice(0, needed));
             }
@@ -728,10 +728,10 @@ async function refreshNewsCache() {
         }
 
     } catch (error) {
-        console.error('❌ Background refresh failed:', error.message);
+        console.error('âŒ Background refresh failed:', error.message);
     } finally {
         newsCache.isRefreshing = false;
-        console.log(`✅ Background refresh completed: ${newsCache.articles.length} articles cached`);
+        console.log(`âœ… Background refresh completed: ${newsCache.articles.length} articles cached`);
     }
 }
 
@@ -748,7 +748,7 @@ function cleanupCache() {
         if (now - value.timestamp > CACHE_DURATION * 2) keywordCache.delete(key);
     }
 
-    console.log(`🧹 Cache cleanup: ${articleHashes.size} hashes, ${keywordCache.size} keyword cache entries`);
+    console.log(`ðŸ§¹ Cache cleanup: ${articleHashes.size} hashes, ${keywordCache.size} keyword cache entries`);
 }
 
 // Health check
@@ -762,7 +762,7 @@ app.get('/api/health', (req, res) => {
         timestamp: new Date().toISOString(),
         gnews: {
             enabled: !!GNEWS_API_KEY,
-            note: GNEWS_API_KEY ? 'GNews API key configured' : '⚠️ GNEWS_API_KEY not set — add to Render environment variables'
+            note: GNEWS_API_KEY ? 'GNews API key configured' : 'âš ï¸ GNEWS_API_KEY not set â€” add to Render environment variables'
         },
         sources: {
             total: Object.keys(newsSources).length,
@@ -829,7 +829,7 @@ app.use((req, res) => {
 });
 
 app.use((err, req, res, next) => {
-    console.error('❌ Server Error:', err.message);
+    console.error('âŒ Server Error:', err.message);
     res.status(err.status || 500).json({
         error: 'Server Error',
         message: process.env.NODE_ENV === 'production' ? 'An error occurred' : err.message,
@@ -838,12 +838,12 @@ app.use((err, req, res, next) => {
 });
 
 process.on('uncaughtException', (err) => {
-    console.error('💥 UNCAUGHT EXCEPTION:', err);
+    console.error('ðŸ’¥ UNCAUGHT EXCEPTION:', err);
     process.exit(1);
 });
 
 process.on('unhandledRejection', (reason) => {
-    console.error('💥 UNHANDLED REJECTION:', reason);
+    console.error('ðŸ’¥ UNHANDLED REJECTION:', reason);
 });
 
 // Start server
@@ -856,13 +856,13 @@ server.on('listening', () => console.log('Server is listening on all interfaces!
 
 // Schedule background refresh
 setTimeout(() => {
-    console.log('📋 Scheduling background refresh...');
+    console.log('ðŸ“‹ Scheduling background refresh...');
     setTimeout(() => {
-        refreshNewsCache().catch(error => console.error('❌ Background refresh error:', error));
+        refreshNewsCache().catch(error => console.error('âŒ Background refresh error:', error));
     }, 1000);
 
     const refreshInterval = setInterval(() => {
-        refreshNewsCache().catch(error => console.error('❌ Background refresh error:', error));
+        refreshNewsCache().catch(error => console.error('âŒ Background refresh error:', error));
     }, 4 * 60 * 60 * 1000); // every 4 hours
 
     refreshInterval.unref();

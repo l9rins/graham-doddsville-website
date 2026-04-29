@@ -40,7 +40,7 @@
             // Smart API URL selection
             let apiUrl;
             if (isLocalhost) {
-                apiUrl = 'http://localhost:3051/api/news';
+                apiUrl = 'http://localhost:4012/api/news';
             } else if (isGitHubPages) {
                 // For GitHub Pages, try localhost first, then fallback to static
                 apiUrl = 'https://graham-doddsville.onrender.com/api/news';
@@ -6042,7 +6042,7 @@
 
             let apiUrl;
             if (isLocalhost) {
-                apiUrl = 'http://localhost:3001/api/news';
+                apiUrl = 'http://localhost:4012/api/news';
             } else if (isGitHubPages) {
                 apiUrl = 'https://l9rins.github.io/graham-doddsville-website/api/news';
             } else {
@@ -6390,7 +6390,7 @@
 
             // Determine API URL based on environment
             const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-            const apiBase = isLocalhost ? 'http://localhost:3051/api' : 'https://graham-doddsville.onrender.com/api';
+            const apiBase = isLocalhost ? 'http://localhost:4012/api' : 'https://graham-doddsville.onrender.com/api';
             const apiUrl = `${apiBase}/news/region/${region}`;
             console.log(`Fetching ${region} news from:`, apiUrl);
 
@@ -8651,9 +8651,9 @@
 
                     let apiUrl;
                     if (isLocalhost) {
-                        apiUrl = 'http://localhost:3051/api/news';
+                        apiUrl = 'http://localhost:4012/api/news';
                     } else if (isGitHubPages) {
-                        apiUrl = 'http://localhost:3051/api/news'; // Try localhost first
+                        apiUrl = 'http://localhost:4012/api/news'; // Try localhost first
                     } else {
                         apiUrl = 'https://l9rins.github.io/graham-doddsville-website/api/news';
                     }

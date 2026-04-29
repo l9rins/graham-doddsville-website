@@ -36,12 +36,22 @@ class AustralianNewsScraper {
 
                         const reProcessedArticles = filteredArticles.map(article => ({
                             ...article,
-                            category: (article.category && ['Industry', 'Regulatory', 'Technology', 'Commodities'].includes(article.category))
+                            category: (article.category && article.category !== 'General')
                                 ? article.category
-                                : this.categorizeNews(article.title, article.description || article.content, article.source.name || article.source)
+                                : this.categorizeNews(article.title, article.description || article.content, article.source?.name || article.source || '')
                         }));
 
-                        allNews.push(...reProcessedArticles);
+                        const seenUrls = new Set(allNews.map(a => a.url));
+                        const seenTitles = new Set(allNews.map(a => a.title?.trim().toLowerCase()));
+
+                        for (const article of reProcessedArticles) {
+                            const titleKey = article.title?.trim().toLowerCase();
+                            if (!seenUrls.has(article.url) && !seenTitles.has(titleKey)) {
+                                allNews.push(article);
+                                seenUrls.add(article.url);
+                                seenTitles.add(titleKey);
+                            }
+                        }
                         console.log(`Received ${filteredArticles.length} articles from backend (after filtering ${data.articles.length - filteredArticles.length} blocked)`);
                     }
                 } else {
@@ -78,6 +88,13 @@ class AustralianNewsScraper {
             return 'Guru Watch';
         }
 
+        if (text.includes('asx') || text.includes('nasdaq') || text.includes('s&p 500') ||
+            text.includes('dow jones') || text.includes('stock market') || text.includes('wall st') ||
+            text.includes('share market') || text.includes('index closed') || text.includes('market rally') ||
+            text.includes('market plunge')) {
+            return 'Markets';
+        }
+
         if (text.includes('rba') || text.includes('reserve bank') || text.includes('asic') ||
             text.includes('accc') || text.includes('tax') || text.includes('law') ||
             text.includes('legislation') || text.includes('government') || text.includes('policy') ||
@@ -98,13 +115,6 @@ class AustralianNewsScraper {
             text.includes('resources') || text.includes('construction') || text.includes('property') ||
             text.includes('real estate') || text.includes('sector')) {
             return 'Industry';
-        }
-
-        if (text.includes('asx') || text.includes('market') || text.includes('dow') ||
-            text.includes('nasdaq') || text.includes('s&p') || text.includes('index') ||
-            text.includes('rally') || text.includes('plunge') || text.includes('bull') ||
-            text.includes('bear') || text.includes('close') || text.includes('open')) {
-            return 'Markets';
         }
 
         if (text.includes('company') || text.includes('shares') || text.includes('stock') ||
@@ -223,6 +233,9 @@ class NewsDisplayManager {
     displayNews(news) {
         console.log('NewsDisplayManager: Displaying', news.length, 'news items');
 
+        // Prevent inline fallback scripts in index.html from overwriting our live API data
+        window.categorySectionsPopulated = true;
+
         if (!news || news.length === 0) {
             this.showErrorState();
             return;
@@ -256,11 +269,6 @@ class NewsDisplayManager {
 
             // Iterate over ALL possible IDs for this category
             config.ids.forEach(containerId => {
-                // Skip if real API data already populated the desktop sections
-                if (window.categorySectionsPopulated && !containerId.includes('-mobile')) {
-                    return;
-                }
-
                 const container = document.getElementById(containerId);
 
                 if (container) {
@@ -269,21 +277,6 @@ class NewsDisplayManager {
 
                     // 1. Sort by Date (Newest First)
                     rawArticles.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
-
-                    // BACKFILL STRATEGY: If fewer than 3 articles, supplement with General news
-                    // This creates a "Hybrid" feed where specific news takes precedence, but the section is never empty
-                    if (rawArticles.length < 3) {
-                        let generalNews = newsByCategory['General'] || [];
-                        generalNews.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
-
-                        // Filter out duplicates (by title)
-                        const existingTitles = new Set(rawArticles.map(a => a.title));
-                        const uniqueGeneral = generalNews.filter(a => !existingTitles.has(a.title));
-
-                        // Take enough to reach limit (or at least some)
-                        const needed = config.limit - rawArticles.length;
-                        rawArticles = rawArticles.concat(uniqueGeneral.slice(0, needed));
-                    }
 
                     // 2. SMART SELECTION
                     let selectedArticles = this.getSmartArticles(rawArticles, config.limit, config.freshLimit, config.hardLimit);
@@ -376,7 +369,7 @@ class NewsDisplayManager {
 let newsDisplayManager;
 document.addEventListener('DOMContentLoaded', () => {
     const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-    const apiUrl = isLocalhost ? 'http://localhost:3051/api' : 'https://graham-doddsville.onrender.com/api';
+    const apiUrl = isLocalhost ? 'http://localhost:4012/api' : 'https://graham-doddsville.onrender.com/api';
 
     newsDisplayManager = new NewsDisplayManager();
     newsDisplayManager.scraper = new AustralianNewsScraper(apiUrl);
