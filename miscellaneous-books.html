@@ -421,8 +421,1752 @@
 
         <!-- Books Content -->
         <section class="books-content">
+                <div id="book-sections-container" class="collapsible-categories">
+                    <!-- Books will be dynamically generated here -->
+                </div>
+            </section>
+    
 
-            
+    
+<script>
+const bookData = [
+  {
+    "name": "Miscellaneous / Biographies",
+    "books": [
+      {
+        "title": "Of Permanent Value",
+        "author": "Andrew Kilpatrick",
+        "price": "$434.99"
+      },
+      {
+        "title": "The Snowball",
+        "author": "Alice Schroeder",
+        "price": "$21.56"
+      },
+      {
+        "title": "Damn Right!",
+        "author": "Janet Lowe",
+        "price": "$39.32"
+      },
+      {
+        "title": "Tap Dancing To Work",
+        "author": "Carol Loomis",
+        "price": "$27.99"
+      },
+      {
+        "title": "Capital Allocation",
+        "author": "Jacob McDonough",
+        "price": "$32.52"
+      },
+      {
+        "title": "101 Reasons to Own the World\\u0027s Greatest Investment",
+        "author": "Robert Miles",
+        "price": "$38.74"
+      },
+      {
+        "title": "The Joys Of Compounding",
+        "author": "Gautam Baid",
+        "price": "$19.99"
+      },
+      {
+        "title": "The Little Book That Still Beats the Market",
+        "author": "Joel Greenblatt",
+        "price": "$24.99"
+      },
+      {
+        "title": "The Education of a Value Investor",
+        "author": "Guy Spier",
+        "price": "$35.99"
+      },
+      {
+        "title": "The Dhandho Investor",
+        "author": "Mohnish Pabrai",
+        "price": "$27.99"
+      },
+      {
+        "title": "Invest Like a Guru",
+        "author": "Charlie Tian",
+        "price": "$31.99"
+      },
+      {
+        "title": "Deep Value",
+        "author": "Tobias Carlisle",
+        "price": "$33.99"
+      },
+      {
+        "title": "The Manual of Ideas",
+        "author": "John Mihaljevic",
+        "price": "$49.99"
+      },
+      {
+        "title": "The Little Book That Beats the Market",
+        "author": "Joel Greenblatt",
+        "price": "$24.99"
+      },
+      {
+        "title": "Quantitative Value",
+        "author": "Wesley Gray and Tobias Carlisle",
+        "price": "$41.99"
+      },
+      {
+        "title": "The Acquirer\\u0027s Multiple",
+        "author": "Tobias Carlisle",
+        "price": "$37.99"
+      },
+      {
+        "title": "Value Trap",
+        "author": "Brian Nelson",
+        "price": "$38.99"
+      },
+      {
+        "title": "The Conscious Investor",
+        "author": "John Price",
+        "price": "$33.99"
+      },
+      {
+        "title": "F Wall Street",
+        "author": "Joe Ponzio",
+        "price": "$28.99"
+      },
+      {
+        "title": "Value.able",
+        "author": "Roger Montgomery",
+        "price": "$29.99"
+      },
+      {
+        "title": "The Value Investors",
+        "author": "Ronald Chan",
+        "price": "$38.99"
+      },
+      {
+        "title": "The Making of a Value Investor",
+        "author": "Gautam Baid",
+        "price": "$32.99"
+      },
+      {
+        "title": "Ben Graham Was a Quant",
+        "author": "Steven Greiner",
+        "price": "$34.99"
+      },
+      {
+        "title": "What Would Ben Graham Do Now?",
+        "author": "Jeffrey Towson",
+        "price": "$31.99"
+      },
+      {
+        "title": "Value Returns",
+        "author": "Randy Beeman and James Schneider",
+        "price": "$32.99"
+      },
+      {
+        "title": "Girls That Invest",
+        "author": "Simran Kaur",
+        "price": "$22.99"
+      },
+      {
+        "title": "Think & Trade Like a Champion",
+        "author": "Mark Minervini",
+        "price": "$32.99"
+      },
+      {
+        "title": "The Most Important Thing",
+        "author": "Howard Marks",
+        "price": "$28.99"
+      },
+      {
+        "title": "What Works on Wall Street (4th ed)",
+        "author": "James O'Shaughnessy",
+        "price": "$39.99"
+      },
+      {
+        "title": "Trading in the Zone",
+        "author": "Mark Douglas",
+        "price": "$26.99"
+      },
+      {
+        "title": "Trading Psychology",
+        "author": "Bennett Zamani & Matthew Pryzby",
+        "price": "$29.99"
+      },
+      {
+        "title": "100 Baggers",
+        "author": "Christopher Mayer",
+        "price": "$27.99"
+      },
+      {
+        "title": "The Little Investment That Beats the Market",
+        "author": "Joel Greenblatt",
+        "price": "$24.99"
+      },
+      {
+        "title": "The Little Book of Big Dividends",
+        "author": "Charles Carlson",
+        "price": "$21.99"
+      },
+      {
+        "title": "Extraordinary Popular Delusions",
+        "author": "Charles Mackay",
+        "price": "$16.99"
+      },
+      {
+        "title": "How to Pick Quality Shares",
+        "author": "Phil Oakley",
+        "price": "$28.99"
+      },
+      {
+        "title": "How to Day Trade for a Living",
+        "author": "Andrew Azia",
+        "price": "$24.99"
+      },
+      {
+        "title": "The Man Who Solved the Market",
+        "author": "Gregory Zuckerman",
+        "price": "$29.99"
+      },
+      {
+        "title": "A Piece of the Action",
+        "author": "Joe Nocera",
+        "price": "$31.99"
+      },
+      {
+        "title": "Where Are the Customers' Yachts?",
+        "author": "Fred Schwed Jr",
+        "price": "$17.99"
+      },
+      {
+        "title": "Confidence Game",
+        "author": "Christine Richard",
+        "price": "$33.99"
+      },
+      {
+        "title": "Fooled by Randomness",
+        "author": "Nassim Taleb",
+        "price": "$24.99"
+      },
+      {
+        "title": "Fooling Some of the People All of the Time",
+        "author": "David Einhorn",
+        "price": "$29.99"
+      },
+      {
+        "title": "Liar's Poker",
+        "author": "Michael Lewis",
+        "price": "$21.99"
+      },
+      {
+        "title": "The Little Book of Main Street Money",
+        "author": "Jonathan Clements",
+        "price": "$20.99"
+      },
+      {
+        "title": "The Great Crash 1929",
+        "author": "John Kenneth Galbraith",
+        "price": "$18.99"
+      },
+      {
+        "title": "How to Value Real Estate Investment Trusts (REITs) in Australia",
+        "author": "Carlos Abad",
+        "price": "$29.99"
+      },
+      {
+        "title": "The Alchemy of Finance",
+        "author": "George Soros",
+        "price": "$26.99"
+      },
+      {
+        "title": "The Ultimate Industry Guide for Australian Publicly-Listed Companies",
+        "author": "Carlos Abad",
+        "price": "$39.99"
+      },
+      {
+        "title": "When the Wolves Bite",
+        "author": "Scott Wapner",
+        "price": "$28.99"
+      },
+      {
+        "title": "The Little Book of Safe Money",
+        "author": "Jason Zweig",
+        "price": "$21.99"
+      },
+      {
+        "title": "The Little Book of Bull Moves (Updated)",
+        "author": "Peter Schiff",
+        "price": "$23.99"
+      },
+      {
+        "title": "Big Mistakes",
+        "author": "Michael Batnick",
+        "price": "$24.99"
+      },
+      {
+        "title": "How to Value a Major Australian Bank",
+        "author": "Carlos Abad",
+        "price": "$27.99"
+      },
+      {
+        "title": "The Alpha Masters",
+        "author": "Maneet Ahuja",
+        "price": "$33.99"
+      },
+      {
+        "title": "The Little Book of Trading",
+        "author": "Michael Covel",
+        "price": "$23.99"
+      },
+      {
+        "title": "The Biography of Bill Ackman",
+        "author": "Daniel Gray",
+        "price": "$26.99"
+      },
+      {
+        "title": "The Large-Cap Portfolio",
+        "author": "Thomas Villalta",
+        "price": "$34.99"
+      },
+      {
+        "title": "The Money Game",
+        "author": "Adam Smith",
+        "price": "$24.99"
+      },
+      {
+        "title": "Simple Money, Rich Life",
+        "author": "Bob Lotich",
+        "price": "$26.99"
+      },
+      {
+        "title": "Broken Money",
+        "author": "Lyn Alden",
+        "price": "$34.99"
+      },
+      {
+        "title": "The Barefoot Investor",
+        "author": "Scott Pape",
+        "price": "$22.99"
+      },
+      {
+        "title": "Get Good with Money",
+        "author": "Tiffany Aliche",
+        "price": "$28.99"
+      },
+      {
+        "title": "A Happy Pocket Full of Money",
+        "author": "David Cameron Gikandi",
+        "price": "$23.99"
+      },
+      {
+        "title": "It's Not Your Money",
+        "author": "Tosha Silver",
+        "price": "$26.99"
+      },
+      {
+        "title": "How Money Works",
+        "author": "Dorling Kindersley",
+        "price": "$19.99"
+      },
+      {
+        "title": "The Price of Money",
+        "author": "Rob Dix",
+        "price": "$31.99"
+      },
+      {
+        "title": "The White Coat Investor",
+        "author": "James Dahle",
+        "price": "$34.99"
+      },
+      {
+        "title": "Buy Back Your Time",
+        "author": "Dan Martell",
+        "price": "$27.99"
+      },
+      {
+        "title": "You Are a Badass at Making Money",
+        "author": "Jen Sincero",
+        "price": "$26.99"
+      },
+      {
+        "title": "Richer, Wiser, Happier",
+        "author": "William Green",
+        "price": "$32.99"
+      },
+      {
+        "title": "Rich As Fck*",
+        "author": "Amanda Frances",
+        "price": "$27.99"
+      },
+      {
+        "title": "Abundance Now",
+        "author": "Lisa Nichols & Janet Switzer",
+        "price": "$29.99"
+      },
+      {
+        "title": "The Magic of Manifesting Money",
+        "author": "Ryuu Shinohara",
+        "price": "$24.99"
+      },
+      {
+        "title": "Secrets of Six-Figure Women",
+        "author": "Barbara Stanny",
+        "price": "$26.99"
+      },
+      {
+        "title": "Money Magnet",
+        "author": "Steve McKnight",
+        "price": "$28.99"
+      },
+      {
+        "title": "Smart Women Finish Rich",
+        "author": "David Bach",
+        "price": "$24.99"
+      },
+      {
+        "title": "Your Next Five Moves",
+        "author": "Patrick Bet-David",
+        "price": "$25.40"
+      },
+      {
+        "title": "Profit First",
+        "author": "Mike Michalowicz",
+        "price": "$26.00"
+      },
+      {
+        "title": "The Compound Effect",
+        "author": "Darren Hardy",
+        "price": "$25.99"
+      },
+      {
+        "title": "I Will Teach You to Be Rich",
+        "author": "Ramit Sethi",
+        "price": "$24.99"
+      },
+      {
+        "title": "Principles: Life and Work",
+        "author": "Ray Dalio",
+        "price": "$39.99"
+      },
+      {
+        "title": "The Psychology of Money",
+        "author": "Morgan Housel",
+        "price": "$22.99"
+      },
+      {
+        "title": "Rich AF",
+        "author": "Vivian Tu",
+        "price": "$28.99"
+      },
+      {
+        "title": "The One Week Budget",
+        "author": "Tiffany Aliche",
+        "price": "$25.99"
+      },
+      {
+        "title": "You Need a Budget",
+        "author": "Jesse Mecham",
+        "price": "$24.99"
+      },
+      {
+        "title": "How to Get Rich",
+        "author": "Felix Dennis",
+        "price": "$29.99"
+      },
+      {
+        "title": "The Science of Getting Rich",
+        "author": "Wallace Wattles",
+        "price": "$14.99"
+      },
+      {
+        "title": "The Richest Man in Babylon",
+        "author": "George S. Clason",
+        "price": "$12.99"
+      },
+      {
+        "title": "How to Become Sustainably Rich",
+        "author": "Clay Clark",
+        "price": "$32.99"
+      },
+      {
+        "title": "Your Money or Your Life",
+        "author": "Vicki Robin",
+        "price": "$21.99"
+      },
+      {
+        "title": "Same as Ever",
+        "author": "Morgan Housel",
+        "price": "$28.99"
+      },
+      {
+        "title": "One Thousand Ways to Make $1000",
+        "author": "F.C. Minaker",
+        "price": "$18.99"
+      },
+      {
+        "title": "The 4-Hour Work Week",
+        "author": "Timothy Ferriss",
+        "price": "$26.99"
+      },
+      {
+        "title": "Supermoney",
+        "author": "Adam Smith",
+        "price": "$27.99"
+      },
+      {
+        "title": "How To Get Rich Before 30",
+        "author": "A.B. Stanley",
+        "price": "$24.99"
+      },
+      {
+        "title": "How to Become Rich and Successful",
+        "author": "Ernesto Martinez",
+        "price": "$29.99"
+      },
+      {
+        "title": "Jim Cramer's Get Rich Carefully",
+        "author": "James Cramer",
+        "price": "$31.99"
+      },
+      {
+        "title": "The Miracle Morning",
+        "author": "Hal Elrod",
+        "price": "$22.99"
+      },
+      {
+        "title": "Die With Zero",
+        "author": "Bill Perkins",
+        "price": "$26.99"
+      },
+      {
+        "title": "How To Be Rich",
+        "author": "J. Paul Getty",
+        "price": "$24.99"
+      },
+      {
+        "title": "Take on the Street",
+        "author": "Arthur Levitt",
+        "price": "$28.99"
+      },
+      {
+        "title": "The Missing Billionaires",
+        "author": "Victor Haghani & James White",
+        "price": "$34.99"
+      },
+      {
+        "title": "How To: $10M",
+        "author": "William Brown",
+        "price": "$21.44"
+      },
+      {
+        "title": "Undisruptable",
+        "author": "Aidan McCullen",
+        "price": "$33.84"
+      },
+      {
+        "title": "Valuepreneurs",
+        "author": "Steve Waddell",
+        "price": "$33.03"
+      },
+      {
+        "title": "$100M Offers",
+        "author": "Alex Hormozi",
+        "price": "$39.59"
+      },
+      {
+        "title": "$100M Leads",
+        "author": "Alex Hormozi",
+        "price": "$43.94"
+      },
+      {
+        "title": "The EXITPreneur's Playbook",
+        "author": "Joe Valley",
+        "price": "$28.10"
+      },
+      {
+        "title": "Million Dollar Weekend",
+        "author": "Noah Kagan",
+        "price": "$28.49"
+      },
+      {
+        "title": "Hustle Harder, Hustle Smarter",
+        "author": "Curtis \"50 Cent\" Jackson",
+        "price": "$22.32"
+      },
+      {
+        "title": "Extreme Revenue Growth",
+        "author": "Victor Cheng",
+        "price": "$41.37"
+      },
+      {
+        "title": "Microsoft Secrets",
+        "author": "Cusumano & Selby",
+        "price": "$41.41"
+      },
+      {
+        "title": "UNSCRIPTED",
+        "author": "MJ DeMarco",
+        "price": "$29.61"
+      },
+      {
+        "title": "Start Your Own Corporation",
+        "author": "Garrett Sutton",
+        "price": "$47.81"
+      },
+      {
+        "title": "From the Trash Man to the Cash Man",
+        "author": "Myron Golden",
+        "price": "$321.82"
+      },
+      {
+        "title": "12 Months to $1 Million",
+        "author": "Ryan Moran",
+        "price": "$38.50"
+      },
+      {
+        "title": "Steve Jobs",
+        "author": "Walter Isaacson",
+        "price": "$19.25"
+      },
+      {
+        "title": "The Prosperous Coach",
+        "author": "Chandler & Litvin",
+        "price": "$98.41"
+      },
+      {
+        "title": "Maverick!",
+        "author": "Ricardo Semler",
+        "price": "$24.99"
+      },
+      {
+        "title": "Competitive Strategy",
+        "author": "Michael Porter",
+        "price": "$25.40"
+      },
+      {
+        "title": "Built to Last",
+        "author": "Collins & Porras",
+        "price": "$25.16"
+      },
+      {
+        "title": "Who Moved My Cheese?",
+        "author": "Spencer Johnson",
+        "price": "$12.00"
+      },
+      {
+        "title": "The E Myth Revisited",
+        "author": "Michael Gerber",
+        "price": "$19.00"
+      },
+      {
+        "title": "Blue Ocean Strategy",
+        "author": "Kim & Mauborgne",
+        "price": "$34.99"
+      },
+      {
+        "title": "Traction",
+        "author": "Gino Wickman",
+        "price": "$18.19"
+      },
+      {
+        "title": "The Power of Broke",
+        "author": "Daymond John",
+        "price": "$31.59"
+      },
+      {
+        "title": "Titan",
+        "author": "Ron Chernow",
+        "price": "$40.39"
+      },
+      {
+        "title": "Dare to Lead",
+        "author": "Bren├⌐ Brown",
+        "price": "$16.00"
+      },
+      {
+        "title": "The Outsiders",
+        "author": "William Thorndike",
+        "price": "$22.77"
+      },
+      {
+        "title": "The Hard Thing About Hard Things",
+        "author": "Ben Horowitz",
+        "price": "$28.81"
+      },
+      {
+        "title": "Twelve and a Half",
+        "author": "Gary Vaynerchuk",
+        "price": "$34.99"
+      },
+      {
+        "title": "Jab, Jab, Jab, Right Hook",
+        "author": "Gary Vaynerchuk",
+        "price": "$30.79"
+      },
+      {
+        "title": "Sam Walton: Made In America",
+        "author": "Sam Walton",
+        "price": "$13.09"
+      },
+      {
+        "title": "No Rules Rules",
+        "author": "Hastings & Meyer",
+        "price": "$26.96"
+      },
+      {
+        "title": "First A Dream",
+        "author": "Jim Clayton",
+        "price": "$75.20"
+      },
+      {
+        "title": "The Man Behind the Microchip",
+        "author": "Leslie Berlin",
+        "price": "$51.95"
+      },
+      {
+        "title": "The Personal MBA",
+        "author": "Josh Kaufman",
+        "price": "$21.56"
+      },
+      {
+        "title": "The Lean Startup",
+        "author": "Eric Ries",
+        "price": "$21.95"
+      },
+      {
+        "title": "Crush It!",
+        "author": "Gary Vaynerchuk",
+        "price": "$20.40"
+      },
+      {
+        "title": "Winning",
+        "author": "Jack Welch",
+        "price": "$26.41"
+      },
+      {
+        "title": "Getting to Yes",
+        "author": "Ury & Fisher",
+        "price": "$19.25"
+      },
+      {
+        "title": "Drive",
+        "author": "Daniel Pink",
+        "price": "$20.72"
+      },
+      {
+        "title": "The Everything Store",
+        "author": "Brad Stone",
+        "price": "$17.70"
+      },
+      {
+        "title": "Outliers",
+        "author": "Malcolm Gladwell",
+        "price": "$19.25"
+      },
+      {
+        "title": "Start With Why",
+        "author": "Simon Sinek",
+        "price": "$19.25"
+      },
+      {
+        "title": "The Innovator's Dilemma",
+        "author": "Clayton Christensen",
+        "price": "$35.40"
+      },
+      {
+        "title": "The Coaching Habit",
+        "author": "Michael Bungay Stanier",
+        "price": "$19.23"
+      },
+      {
+        "title": "2600 Phrases for Effective Performance Reviews",
+        "author": "Paul Falcone",
+        "price": "$17.99"
+      },
+      {
+        "title": "Give and Take",
+        "author": "Adam Grant",
+        "price": "$19.25"
+      },
+      {
+        "title": "The Effective Executive",
+        "author": "Peter Drucker",
+        "price": "$24.57"
+      },
+      {
+        "title": "Dear Chairman",
+        "author": "Jeff Gramm",
+        "price": "$41.58"
+      },
+      {
+        "title": "Purple Cow",
+        "author": "Seth Godin",
+        "price": "$19.21"
+      },
+      {
+        "title": "The $100 Startup",
+        "author": "Chris Guillebeau",
+        "price": "$23.00"
+      },
+      {
+        "title": "Only the Paranoid Survive",
+        "author": "Andrew Grove",
+        "price": "$14.09"
+      },
+      {
+        "title": "Exactly What to Say",
+        "author": "Phil Jones",
+        "price": "$25.47"
+      },
+      {
+        "title": "Jack: Straight from the Gut",
+        "author": "Jack Welch",
+        "price": "$20.45"
+      },
+      {
+        "title": "Dream Big",
+        "author": "Cristiane Correa",
+        "price": "$60.55"
+      },
+      {
+        "title": "The Art of War",
+        "author": "Sun Tzu",
+        "price": "$9.46"
+      },
+      {
+        "title": "Zero to One",
+        "author": "Masters & Thiel",
+        "price": "$41.90"
+      },
+      {
+        "title": "Tribes",
+        "author": "Seth Godin",
+        "price": "$26.15"
+      },
+      {
+        "title": "Drive to Thrive",
+        "author": "Sharad Bajaj",
+        "price": "$19.51"
+      },
+      {
+        "title": "The Farmer from Merna",
+        "author": "Karl Schriftgeisser",
+        "price": "$150.07"
+      },
+      {
+        "title": "Limping on Water",
+        "author": "Phil Beuth",
+        "price": "$670.00"
+      },
+      {
+        "title": "The Investment Checklist",
+        "author": "Michael Shearn",
+        "price": "$34.99"
+      },
+      {
+        "title": "Quality of Earnings",
+        "author": "Thornton O'Glove",
+        "price": "$64.99"
+      },
+      {
+        "title": "The Theory of Investment Value",
+        "author": "John Burr Williams",
+        "price": "$34.99"
+      },
+      {
+        "title": "Balance Sheet Basics",
+        "author": "Ronald Spurga",
+        "price": "$19.99"
+      },
+      {
+        "title": "Dotcom Secrets",
+        "author": "Russell Brunson",
+        "price": "$23.09"
+      },
+      {
+        "title": "Traffic Secrets",
+        "author": "Russell Brunson",
+        "price": "$49.99"
+      },
+      {
+        "title": "Copywriting Secrets",
+        "author": "Jim Edwards",
+        "price": "$29.99"
+      },
+      {
+        "title": "Exactly What to Say: For Real Estate Agents",
+        "author": "Phil Jones, Chris Smith & Jimmy Mackin",
+        "price": "$34.99"
+      },
+      {
+        "title": "Ca$hvertising",
+        "author": "Drew Whitman",
+        "price": "$39.99"
+      },
+      {
+        "title": "Objections",
+        "author": "Jeb Blount",
+        "price": "$39.99"
+      },
+      {
+        "title": "The Art of Closing the Sale",
+        "author": "Brian Tracy",
+        "price": "$34.99"
+      },
+      {
+        "title": "Customers for Life",
+        "author": "Carl Sewell & Paul Brown",
+        "price": "$49.99"
+      },
+      {
+        "title": "My Life in Advertising and Scientific Advertising",
+        "author": "Claude Hopkins",
+        "price": "$34.99"
+      },
+      {
+        "title": "Day Trading Attention",
+        "author": "Gary Vaynerchuk",
+        "price": "$44.99"
+      },
+      {
+        "title": "Confessions of an Advertising Man",
+        "author": "David Ogilvy",
+        "price": "$24.99"
+      },
+      {
+        "title": "Ogilvy on Advertising",
+        "author": "David Ogilvy",
+        "price": "$34.99"
+      },
+      {
+        "title": "Pitch Anything",
+        "author": "Oren Klaff",
+        "price": "$34.99"
+      },
+      {
+        "title": "All Marketers are Liars",
+        "author": "Seth Godin",
+        "price": "$24.99"
+      },
+      {
+        "title": "Scientific Advertising",
+        "author": "Claude Hopkins",
+        "price": "$19.99"
+      },
+      {
+        "title": "One Million Followers",
+        "author": "Brendan Kane",
+        "price": "$39.99"
+      },
+      {
+        "title": "Instant Cashflow",
+        "author": "Bradley Sugars",
+        "price": "$34.99"
+      },
+      {
+        "title": "Go Big or Go Home",
+        "author": "Diana Kander & Tucker Trotter",
+        "price": "$34.99"
+      },
+      {
+        "title": "Quit Stalling and Build Your Brand",
+        "author": "Ben Leonard",
+        "price": "$24.99"
+      },
+      {
+        "title": "Super Duper Profitable Ads",
+        "author": "Laurel Porti├⌐",
+        "price": "$49.99"
+      },
+      {
+        "title": "The Six-Figure Author's Guide To Facebook Ads",
+        "author": "Matthew Holmes",
+        "price": "$39.99"
+      },
+      {
+        "title": "Tested Advertising Methods",
+        "author": "John Caples",
+        "price": "$24.99"
+      },
+      {
+        "title": "The Network Is Your Customer",
+        "author": "David Rogers",
+        "price": "$39.99"
+      },
+      {
+        "title": "Brands and Bullst.",
+        "author": "Bernhard Schroeder",
+        "price": "$29.99"
+      },
+      {
+        "title": "How to Win Customers and Keep Them for Life",
+        "author": "Michael LeBoeuf",
+        "price": "$34.99"
+      },
+      {
+        "title": "The Copy Book",
+        "author": "D&AD",
+        "price": "$59.99"
+      },
+      {
+        "title": "Fanatical Prospecting",
+        "author": "Jeb Blount",
+        "price": "$39.99"
+      },
+      {
+        "title": "Building A Story Brand",
+        "author": "Donald Miller",
+        "price": "$29.99"
+      },
+      {
+        "title": "The Diary of a CEO",
+        "author": "Steven Bartlett",
+        "price": "$22.00"
+      },
+      {
+        "title": "The 15 Invaluable Laws of Growth",
+        "author": "John Maxwell",
+        "price": "$26.95"
+      },
+      {
+        "title": "The Gift",
+        "author": "Dr Edith Eger",
+        "price": "$25.63"
+      },
+      {
+        "title": "The Power of One More",
+        "author": "Ed Mylett",
+        "price": "$36.15"
+      },
+      {
+        "title": "The Greatest You",
+        "author": "Trent Shelton",
+        "price": "$25.03"
+      },
+      {
+        "title": "The Success Principles Workbook",
+        "author": "Jack Canfield",
+        "price": "$23.09"
+      },
+      {
+        "title": "The Strangest Secret",
+        "author": "Earl Nightingale",
+        "price": "$17.21"
+      },
+      {
+        "title": "Beyond Order",
+        "author": "Jordan Peterson",
+        "price": "$14.00"
+      },
+      {
+        "title": "Psycho-Cybernetics",
+        "author": "Maxwell Maltz",
+        "price": "$23.15"
+      },
+      {
+        "title": "Never Finished",
+        "author": "David Goggins",
+        "price": "$41.60"
+      },
+      {
+        "title": "As A Man Thinketh",
+        "author": "James Allen",
+        "price": "$9.96"
+      },
+      {
+        "title": "The Game of Life & How to Play It",
+        "author": "Florence Shinn",
+        "price": "$21.94"
+      },
+      {
+        "title": "Act Like A Success, Think Like A Success",
+        "author": "Steve Harvey",
+        "price": "$24.85"
+      },
+      {
+        "title": "21 Indispensable Qualities of a Leader",
+        "author": "John Maxwell",
+        "price": "$16.95"
+      },
+      {
+        "title": "Goals",
+        "author": "Zig Ziglar",
+        "price": "$27.44"
+      },
+      {
+        "title": "Becoming Supernatural",
+        "author": "Joe Dispenza",
+        "price": "$19.00"
+      },
+      {
+        "title": "You Are the Placebo",
+        "author": "Joe Dispenza",
+        "price": "$20.79"
+      },
+      {
+        "title": "The Buddha and the Badass",
+        "author": "Vishen Lakhiani",
+        "price": "$34.89"
+      },
+      {
+        "title": "The Pivot Year",
+        "author": "Brianna Wiest",
+        "price": "$30.79"
+      },
+      {
+        "title": "Forgiving What You Can't Forget",
+        "author": "Lysa TerKeurst",
+        "price": "$23.09"
+      },
+      {
+        "title": "Awaken The Giant Within",
+        "author": "Tony Robbins",
+        "price": "$19.25"
+      },
+      {
+        "title": "Grit",
+        "author": "Angela Duckworth",
+        "price": "$19.25"
+      },
+      {
+        "title": "Road Less Traveled",
+        "author": "M. Scott Peck",
+        "price": "$19.25"
+      },
+      {
+        "title": "The Power of Moments",
+        "author": "Chip & Dan Heath",
+        "price": "$25.39"
+      },
+      {
+        "title": "The 10X Rule",
+        "author": "Grant Cardone",
+        "price": "$24.99"
+      },
+      {
+        "title": "The 48 Laws Of Power",
+        "author": "Robert Greene",
+        "price": "$27.99"
+      },
+      {
+        "title": "The Biology of Belief",
+        "author": "Bruce Lipton",
+        "price": "$16.99"
+      },
+      {
+        "title": "The Code of the Extraordinary Mind",
+        "author": "Vishen Lakhiani",
+        "price": "$25.40"
+      },
+      {
+        "title": "The Success System That Never Fails",
+        "author": "W. Clement Stone",
+        "price": "$28.19"
+      },
+      {
+        "title": "The Mountain Is You",
+        "author": "Brianna Wiest",
+        "price": "$31.56"
+      },
+      {
+        "title": "The Culture Code",
+        "author": "Daniel Coyle",
+        "price": "$19.25"
+      },
+      {
+        "title": "Think Again",
+        "author": "Adam Grant",
+        "price": "$19.25"
+      },
+      {
+        "title": "The Things You Can See Only When You Slow Down",
+        "author": "Haemin Sunim",
+        "price": "$19.25"
+      },
+      {
+        "title": "The Untethered Soul",
+        "author": "Michael Singer",
+        "price": "$19.37"
+      },
+      {
+        "title": "Daring Greatly",
+        "author": "Bren├⌐ Brown",
+        "price": "$19.00"
+      },
+      {
+        "title": "Good Vibes, Good Life",
+        "author": "Vex King",
+        "price": "$15.39"
+      },
+      {
+        "title": "Four Thousand Weeks",
+        "author": "Oliver Burkeman",
+        "price": "$17.70"
+      },
+      {
+        "title": "Pre-Suasion",
+        "author": "Robert Cialdini",
+        "price": "$19.25"
+      },
+      {
+        "title": "Getting Things Done",
+        "author": "David Allen",
+        "price": "$32.64"
+      },
+      {
+        "title": "12 Rules for Life",
+        "author": "Jordan Peterson",
+        "price": "$14.00"
+      },
+      {
+        "title": "The Silva Mind Control Method",
+        "author": "Jose Silva",
+        "price": "$18.99"
+      },
+      {
+        "title": "101 Essays That Will Change The Way You Think",
+        "author": "Brianna Wiest",
+        "price": "$24.17"
+      },
+      {
+        "title": "The Talent Code",
+        "author": "Daniel Coyle",
+        "price": "$19.54"
+      },
+      {
+        "title": "Unlimited Memory",
+        "author": "Kevin Horsley",
+        "price": "$27.49"
+      },
+      {
+        "title": "The Four Agreements",
+        "author": "Don Miguel Ruiz",
+        "price": "$15.37"
+      },
+      {
+        "title": "Ikigai",
+        "author": "H├⌐ctor Garc├¡a & Francesc Miralles",
+        "price": "$21.56"
+      },
+      {
+        "title": "Why Has Nobody Told Me This Before?",
+        "author": "Julie Smith",
+        "price": "$19.00"
+      },
+      {
+        "title": "Don't Believe Everything You Think",
+        "author": "Joseph Nguyen",
+        "price": "$13.36"
+      },
+      {
+        "title": "Unfck Your Brain*",
+        "author": "Faith Harper",
+        "price": "$22.99"
+      },
+      {
+        "title": "Feel-Good Productivity",
+        "author": "Ali Abdaal",
+        "price": "$24.00"
+      },
+      {
+        "title": "The Charisma Myth",
+        "author": "Olivia Cabane",
+        "price": "$17.70"
+      },
+      {
+        "title": "The Power of Discipline",
+        "author": "Daniel Walter",
+        "price": "$24.99"
+      },
+      {
+        "title": "Master Your Emotions",
+        "author": "Thibaut Meurisse",
+        "price": "$23.00"
+      },
+      {
+        "title": "The Tipping Point",
+        "author": "Malcolm Gladwell",
+        "price": "$19.25"
+      },
+      {
+        "title": "Blink",
+        "author": "Malcolm Gladwell",
+        "price": "$19.25"
+      },
+      {
+        "title": "Linchpin",
+        "author": "Seth Godin",
+        "price": "$22.57"
+      },
+      {
+        "title": "The Courage to Be Disliked",
+        "author": "Kishimi & Koga",
+        "price": "$32.12"
+      },
+      {
+        "title": "The Subtle Art of Not Giving a Fck*",
+        "author": "Mark Manson",
+        "price": "$19.00"
+      },
+      {
+        "title": "Make Your Bed",
+        "author": "William McRaven",
+        "price": "$19.25"
+      },
+      {
+        "title": "Quiet",
+        "author": "Susan Cain",
+        "price": "$19.25"
+      },
+      {
+        "title": "Noise",
+        "author": "Kahneman, Sibony & Sunstein",
+        "price": "$20.79"
+      },
+      {
+        "title": "How to Become a People Magnet",
+        "author": "Mark Reklau",
+        "price": "$18.00"
+      },
+      {
+        "title": "Dark Psychology and Manipulation",
+        "author": "William Cooper",
+        "price": "$27.84"
+      },
+      {
+        "title": "Everything Is Fcked*",
+        "author": "Mark Manson",
+        "price": "$18.00"
+      },
+      {
+        "title": "The Alchemist",
+        "author": "Paulo Coelho",
+        "price": "$14.00"
+      },
+      {
+        "title": "Better Small Talk",
+        "author": "Patrick King",
+        "price": "$25.98"
+      },
+      {
+        "title": "Dopamine Detox",
+        "author": "Thibaut Meurisse",
+        "price": "$16.49"
+      },
+      {
+        "title": "The 5am Club",
+        "author": "Robin Sharma",
+        "price": "$17.10"
+      },
+      {
+        "title": "How to Talk to Anyone",
+        "author": "Leil Lowndes",
+        "price": "$19.25"
+      },
+      {
+        "title": "Robert's Rules of Order Newly Revised",
+        "author": "Henry Robert et al.",
+        "price": "$25.40"
+      },
+      {
+        "title": "Developing the Leader Within You 2.0",
+        "author": "John Maxwell",
+        "price": "$23.09"
+      },
+      {
+        "title": "The Culture Map",
+        "author": "Erin Meyer",
+        "price": "$18.00"
+      },
+      {
+        "title": "101 Reasons to Own the World's Greatest Investment",
+        "author": "Robert Miles",
+        "price": "$38.74"
+      },
+      {
+        "title": "The Acquirer's Multiple",
+        "author": "Tobias Carlisle",
+        "price": "$37.99"
+      },
+      {
+        "title": "Bemused Investor's Guide to Company Accounts",
+        "author": "W.M. Jamieson",
+        "price": "$29.99"
+      },
+      {
+        "title": "Basic Economics",
+        "author": "Thomas Sowell",
+        "price": "$43.47"
+      },
+      {
+        "title": "Deep Simplicity",
+        "author": "John Gribbin",
+        "price": "$48.72"
+      },
+      {
+        "title": "A Really Short History of Nearly Everything",
+        "author": "Bill Bryson",
+        "price": "$25.40"
+      },
+      {
+        "title": "Made to Stick",
+        "author": "Chip & Dan Heath",
+        "price": "$24.29"
+      },
+      {
+        "title": "Never Split the Difference",
+        "author": "Chris Voss",
+        "price": "$19.25"
+      },
+      {
+        "title": "The Big Short",
+        "author": "Michael Lewis",
+        "price": "$19.25"
+      },
+      {
+        "title": "Moneyball",
+        "author": "Michael Lewis",
+        "price": "$23.07"
+      },
+      {
+        "title": "General Theory of Employment, Interest and Money",
+        "author": "John Maynard Keynes",
+        "price": "$16.40"
+      },
+      {
+        "title": "The Ultimate Quotable Einstein",
+        "author": "Alice Calaprice",
+        "price": "$23.09"
+      },
+      {
+        "title": "The Moment of Lift",
+        "author": "Melinda Gates",
+        "price": "$25.40"
+      },
+      {
+        "title": "The Third Chimpanzee",
+        "author": "Jared Diamond",
+        "price": "$20.65"
+      },
+      {
+        "title": "How the Scots Invented the Modern World",
+        "author": "Arthur Herman",
+        "price": "$22.79"
+      },
+      {
+        "title": "Meditations",
+        "author": "Marcus Aurelius",
+        "price": "$13.85"
+      },
+      {
+        "title": "A Short History of Nearly Everything",
+        "author": "Bill Bryson",
+        "price": "$19.25"
+      },
+      {
+        "title": "Extraordinary Popular Delusions and the Madness of Crowds",
+        "author": "Charles Mackay",
+        "price": "$29.33"
+      },
+      {
+        "title": "Misbehaving",
+        "author": "Richard Thaler",
+        "price": "$17.70"
+      },
+      {
+        "title": "Interesting Facts for Curious Minds",
+        "author": "Jordan Moore",
+        "price": "$19.75"
+      },
+      {
+        "title": "Flash Boys",
+        "author": "Michael Lewis",
+        "price": "$24.28"
+      },
+      {
+        "title": "The Smartest Guys in the Room",
+        "author": "Bethany McLean",
+        "price": "$27.99"
+      },
+      {
+        "title": "Stress Test",
+        "author": "Timothy Geithner",
+        "price": "$24.70"
+      },
+      {
+        "title": "Keeping At It",
+        "author": "Paul Volcker & Christine Harper",
+        "price": "$26.80"
+      },
+      {
+        "title": "Guns, Germs and Steel",
+        "author": "Jared Diamond",
+        "price": "$19.25"
+      },
+      {
+        "title": "The Black Swan",
+        "author": "Nassim Taleb",
+        "price": "$19.25"
+      },
+      {
+        "title": "The Autobiography of Benjamin Franklin",
+        "author": "Benjamin Franklin",
+        "price": "$9.62"
+      },
+      {
+        "title": "Surrounded by Idiots",
+        "author": "Thomas Erikson",
+        "price": "$14.00"
+      },
+      {
+        "title": "Interesting Stories for Curious People",
+        "author": "Bill O'Neill",
+        "price": "$24.10"
+      },
+      {
+        "title": "The Undoing Project",
+        "author": "Michael Lewis",
+        "price": "$19.25"
+      },
+      {
+        "title": "Bull!",
+        "author": "Maggie Mahar",
+        "price": "$25.19"
+      },
+      {
+        "title": "Tools and Weapons",
+        "author": "Brad Smith & Carol Ann Browne",
+        "price": "$24.99"
+      },
+      {
+        "title": "Firefighting",
+        "author": "Bernanke, Geithner & Paulson",
+        "price": "$31.16"
+      },
+      {
+        "title": "Ice Age",
+        "author": "John & Mary Gribbin",
+        "price": "$15.96"
+      },
+      {
+        "title": "Man's Search for Meaning",
+        "author": "Viktor Frankl",
+        "price": "$13.09"
+      },
+      {
+        "title": "Eat the Rich",
+        "author": "P.J. O'Rourke",
+        "price": "$38.82"
+      },
+      {
+        "title": "Read People Like a Book",
+        "author": "Patrick King",
+        "price": "$24.39"
+      },
+      {
+        "title": "The Fifth Risk",
+        "author": "Michael Lewis",
+        "price": "$17.70"
+      },
+      {
+        "title": "Essays in Persuasion",
+        "author": "John Maynard Keynes",
+        "price": "$17.26"
+      },
+      {
+        "title": "Theory of Investment Value",
+        "author": "John Burr Williams",
+        "price": "$54.28"
+      },
+      {
+        "title": "In an Uncertain World",
+        "author": "Robert Rubin",
+        "price": "$33.99"
+      },
+      {
+        "title": "Showing Up for Life",
+        "author": "Bill Gates Sr & Mary Mackin",
+        "price": "$16.34"
+      },
+      {
+        "title": "Three Scientists and Their Gods",
+        "author": "Robert Wright",
+        "price": "$46.63"
+      },
+      {
+        "title": "Going Infinite",
+        "author": "Michael Lewis",
+        "price": "$24.99"
+      },
+      {
+        "title": "Models of My Life",
+        "author": "Herbert Simon",
+        "price": "$102.00"
+      },
+      {
+        "title": "The Courage to Be Rich",
+        "author": "Suze Orman",
+        "price": "$21.17"
+      },
+      {
+        "title": "Best Loser Wins",
+        "author": "Tom Hougaard",
+        "price": "$24.99"
+      },
+      {
+        "title": "The Quality Growth Investor (2024 Edition)",
+        "author": "Long Equity",
+        "price": "$39.99"
+      },
+      {
+        "title": "Microsoft Secrets",
+        "author": "Cusumano &amp; Selby",
+        "price": "$41.41"
+      },
+      {
+        "title": "The Prosperous Coach",
+        "author": "Chandler &amp; Litvin",
+        "price": "$98.41"
+      },
+      {
+        "title": "Built to Last",
+        "author": "Collins &amp; Porras",
+        "price": "$25.16"
+      },
+      {
+        "title": "Blue Ocean Strategy",
+        "author": "Kim &amp; Mauborgne",
+        "price": "$34.99"
+      },
+      {
+        "title": "No Rules Rules",
+        "author": "Hastings &amp; Meyer",
+        "price": "$26.96"
+      },
+      {
+        "title": "Getting to Yes",
+        "author": "Ury &amp; Fisher",
+        "price": "$19.25"
+      },
+      {
+        "title": "Zero to One",
+        "author": "Masters &amp; Thiel",
+        "price": "$41.90"
+      },
+      {
+        "title": "Made to Stick",
+        "author": "Chip &amp; Dan Heath",
+        "price": "$24.29"
+      },
+      {
+        "title": "Keeping At It",
+        "author": "Paul Volcker &amp; Christine Harper",
+        "price": "$26.80"
+      },
+      {
+        "title": "Tools and Weapons",
+        "author": "Brad Smith &amp; Carol Ann Browne",
+        "price": "$24.99"
+      },
+      {
+        "title": "Firefighting",
+        "author": "Bernanke, Geithner &amp; Paulson",
+        "price": "$31.16"
+      },
+      {
+        "title": "Ice Age",
+        "author": "John &amp; Mary Gribbin",
+        "price": "$15.96"
+      },
+      {
+        "title": "Showing Up for Life",
+        "author": "Bill Gates Sr &amp; Mary Mackin",
+        "price": "$16.34"
+      },
+      {
+        "title": "Go Big or Go Home",
+        "author": "Diana Kander &amp; Tucker Trotter",
+        "price": "$34.99"
+      },
+      {
+        "title": "The Copy Book",
+        "author": "D&amp;AD",
+        "price": "$59.99"
+      },
+      {
+        "title": "Exactly What to Say: For Real Estate Agents",
+        "author": "Phil Jones, Chris Smith &amp; Jimmy Mackin",
+        "price": "$34.99"
+      },
+      {
+        "title": "Customers for Life",
+        "author": "Carl Sewell &amp; Paul Brown",
+        "price": "$49.99"
+      },
+      {
+        "title": "The Game of Life &amp; How to Play It",
+        "author": "Florence Shinn",
+        "price": "$21.94"
+      },
+      {
+        "title": "The Power of Moments",
+        "author": "Chip &amp; Dan Heath",
+        "price": "$25.39"
+      },
+      {
+        "title": "Ikigai",
+        "author": "H├⌐ctor Garc├¡a &amp; Francesc Miralles",
+        "price": "$21.56"
+      },
+      {
+        "title": "The Courage to Be Disliked",
+        "author": "Kishimi &amp; Koga",
+        "price": "$32.12"
+      },
+      {
+        "title": "Noise",
+        "author": "Kahneman, Sibony &amp; Sunstein",
+        "price": "$20.79"
+      },
+      {
+        "title": "Think &amp; Trade Like a Champion",
+        "author": "Mark Minervini",
+        "price": "$32.99"
+      },
+      {
+        "title": "Trading Psychology",
+        "author": "Bennett Zamani &amp; Matthew Pryzby",
+        "price": "$29.99"
+      },
+      {
+        "title": "Abundance Now",
+        "author": "Lisa Nichols &amp; Janet Switzer",
+        "price": "$29.99"
+      },
+      {
+        "title": "The Missing Billionaires",
+        "author": "Victor Haghani &amp; James White",
+        "price": "$34.99"
+      }
+    ]
+  }
+];
+
+function createCollapsibleSection(category, index) {
+    const section = document.createElement('div');
+    section.className = 'collapsible-section';
+
+    // Start CLOSED by default
+    const isCollapsed = true; 
+    const arrowState = isCollapsed ? '▼' : '▲';
+    const contentClass = isCollapsed ? 'collapsible-content collapsed' : 'collapsible-content';
+    const arrowClass = isCollapsed ? 'arrow' : 'arrow rotated';
+
+    const header = document.createElement('div');
+    header.className = 'collapsible-header';
+    header.innerHTML = `<span class="category-title">${category.name}</span><span class="book-count">(${category.books.length} books)</span><span class="${arrowClass}" id="arrow-${index}">${arrowState}</span>`;
+    header.onclick = () => toggleSection(index);
+
+    const content = document.createElement('div');
+    content.className = contentClass;
+    content.id = `section-${index}`;
+
+    const sortControlHTML = `
 <div class="book-sort-controls" style="margin-bottom:12px; margin-top:20px;">
   <label style="font-size:13px; margin-right:6px;">Sort by:</label>
   <select class="book-sort" onchange="sortBooks(this)" style="font-size:13px; padding:4px 8px; border-radius:4px; border:1px solid #ccc;">
@@ -433,583 +2177,142 @@
     <option value="date">Date</option>
     <option value="price">Price</option>
   </select>
-</div><div class="books-grid">
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=Basic+Economics&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Basic Economics" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$43.47</span>
-          <a href="https://www.amazon.com.au/s?k=Basic+Economics&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=Deep+Simplicity&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Deep Simplicity" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$48.72</span>
-          <a href="https://www.amazon.com.au/s?k=Deep+Simplicity&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=A+Really+Short+History+of+Nearly+Everything&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="A Really Short History of Nearly Everything" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$25.40</span>
-          <a href="https://www.amazon.com.au/s?k=A+Really+Short+History+of+Nearly+Everything&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=Made+to+Stick&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Made to Stick" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$24.29</span>
-          <a href="https://www.amazon.com.au/s?k=Made+to+Stick&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=Never+Split+the+Difference&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Never Split the Difference" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$19.25</span>
-          <a href="https://www.amazon.com.au/s?k=Never+Split+the+Difference&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=The+Big+Short&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Big Short" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$19.25</span>
-          <a href="https://www.amazon.com.au/s?k=The+Big+Short&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=Moneyball&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Moneyball" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$23.07</span>
-          <a href="https://www.amazon.com.au/s?k=Moneyball&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=General+Theory+of+Employment%2C+Interest+and+Money&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="General Theory of Employment, Interest and Money" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$16.40</span>
-          <a href="https://www.amazon.com.au/s?k=General+Theory+of+Employment%2C+Interest+and+Money&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=The+Ultimate+Quotable+Einstein&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Ultimate Quotable Einstein" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$23.09</span>
-          <a href="https://www.amazon.com.au/s?k=The+Ultimate+Quotable+Einstein&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=The+Moment+of+Lift&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Moment of Lift" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$25.40</span>
-          <a href="https://www.amazon.com.au/s?k=The+Moment+of+Lift&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=The+Selfish+Gene&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Selfish Gene" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$23.84</span>
-          <a href="https://www.amazon.com.au/s?k=The+Selfish+Gene&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=The+Third+Chimpanzee&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Third Chimpanzee" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$20.65</span>
-          <a href="https://www.amazon.com.au/s?k=The+Third+Chimpanzee&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=How+the+Scots+Invented+the+Modern+World&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="How the Scots Invented the Modern World" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$22.79</span>
-          <a href="https://www.amazon.com.au/s?k=How+the+Scots+Invented+the+Modern+World&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=Meditations&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Meditations" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$13.85</span>
-          <a href="https://www.amazon.com.au/s?k=Meditations&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=A+Short+History+of+Nearly+Everything&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="A Short History of Nearly Everything" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$19.25</span>
-          <a href="https://www.amazon.com.au/s?k=A+Short+History+of+Nearly+Everything&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=Extraordinary+Popular+Delusions+and+the+Madness+of+Crowds&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Extraordinary Popular Delusions and the Madness of Crowds" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$29.33</span>
-          <a href="https://www.amazon.com.au/s?k=Extraordinary+Popular+Delusions+and+the+Madness+of+Crowds&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=Misbehaving&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Misbehaving" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$17.70</span>
-          <a href="https://www.amazon.com.au/s?k=Misbehaving&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=Interesting+Facts+for+Curious+Minds&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Interesting Facts for Curious Minds" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$19.75</span>
-          <a href="https://www.amazon.com.au/s?k=Interesting+Facts+for+Curious+Minds&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=Flash+Boys&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Flash Boys" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$24.28</span>
-          <a href="https://www.amazon.com.au/s?k=Flash+Boys&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=The+Smartest+Guys+in+the+Room&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Smartest Guys in the Room" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$27.99</span>
-          <a href="https://www.amazon.com.au/s?k=The+Smartest+Guys+in+the+Room&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=40+Chances&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="40 Chances" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$35.00</span>
-          <a href="https://www.amazon.com.au/s?k=40+Chances&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=Stress+Test&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Stress Test" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$24.70</span>
-          <a href="https://www.amazon.com.au/s?k=Stress+Test&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=Keeping+At+It&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Keeping At It" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$26.80</span>
-          <a href="https://www.amazon.com.au/s?k=Keeping+At+It&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=Guns%2C+Germs+and+Steel&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Guns, Germs and Steel" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$19.25</span>
-          <a href="https://www.amazon.com.au/s?k=Guns%2C+Germs+and+Steel&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=The+Black+Swan&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Black Swan" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$19.25</span>
-          <a href="https://www.amazon.com.au/s?k=The+Black+Swan&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=Fooled+by+Randomness&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Fooled by Randomness" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$24.77</span>
-          <a href="https://www.amazon.com.au/s?k=Fooled+by+Randomness&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=The+Autobiography+of+Benjamin+Franklin&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Autobiography of Benjamin Franklin" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$9.62</span>
-          <a href="https://www.amazon.com.au/s?k=The+Autobiography+of+Benjamin+Franklin&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=Surrounded+by+Idiots&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Surrounded by Idiots" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$14.00</span>
-          <a href="https://www.amazon.com.au/s?k=Surrounded+by+Idiots&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=Interesting+Stories+for+Curious+People&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Interesting Stories for Curious People" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$24.10</span>
-          <a href="https://www.amazon.com.au/s?k=Interesting+Stories+for+Curious+People&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=Liar%E2%80%99s+Poker&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Liar's Poker" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$17.70</span>
-          <a href="https://www.amazon.com.au/s?k=Liar%E2%80%99s+Poker&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=The+Undoing+Project&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Undoing Project" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$19.25</span>
-          <a href="https://www.amazon.com.au/s?k=The+Undoing+Project&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=Bull%21&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Bull!" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$25.19</span>
-          <a href="https://www.amazon.com.au/s?k=Bull%21&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=Life+Is+What+You+Make+It&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Life Is What You Make It" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$34.32</span>
-          <a href="https://www.amazon.com.au/s?k=Life+Is+What+You+Make+It&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=Tools+and+Weapons&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Tools and Weapons" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$24.99</span>
-          <a href="https://www.amazon.com.au/s?k=Tools+and+Weapons&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=Firefighting&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Firefighting" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$31.16</span>
-          <a href="https://www.amazon.com.au/s?k=Firefighting&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=Ice+Age&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Ice Age" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$15.96</span>
-          <a href="https://www.amazon.com.au/s?k=Ice+Age&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=Man%E2%80%99s+Search+for+Meaning&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Man's Search for Meaning" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$13.09</span>
-          <a href="https://www.amazon.com.au/s?k=Man%E2%80%99s+Search+for+Meaning&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=Eat+the+Rich&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Eat the Rich" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$38.82</span>
-          <a href="https://www.amazon.com.au/s?k=Eat+the+Rich&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=Read+People+Like+a+Book&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Read People Like a Book" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$24.39</span>
-          <a href="https://www.amazon.com.au/s?k=Read+People+Like+a+Book&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=The+Fifth+Risk&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Fifth Risk" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$17.70</span>
-          <a href="https://www.amazon.com.au/s?k=The+Fifth+Risk&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=Essays+in+Persuasion&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Essays in Persuasion" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$17.26</span>
-          <a href="https://www.amazon.com.au/s?k=Essays+in+Persuasion&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=Theory+of+Investment+Value&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Theory of Investment Value" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$54.28</span>
-          <a href="https://www.amazon.com.au/s?k=Theory+of+Investment+Value&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=In+an+Uncertain+World&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="In an Uncertain World" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$33.99</span>
-          <a href="https://www.amazon.com.au/s?k=In+an+Uncertain+World&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=Nuclear+Terrorism&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Nuclear Terrorism" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$38.96</span>
-          <a href="https://www.amazon.com.au/s?k=Nuclear+Terrorism&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=Showing+Up+for+Life&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Showing Up for Life" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$16.34</span>
-          <a href="https://www.amazon.com.au/s?k=Showing+Up+for+Life&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=Three+Scientists+and+Their+Gods&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Three Scientists and Their Gods" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$46.63</span>
-          <a href="https://www.amazon.com.au/s?k=Three+Scientists+and+Their+Gods&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=Going+Infinite&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Going Infinite" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$24.99</span>
-          <a href="https://www.amazon.com.au/s?k=Going+Infinite&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=Investing+Between+the+Lines&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Investing Between the Lines" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$60.64</span>
-          <a href="https://www.amazon.com.au/s?k=Investing+Between+the+Lines&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/s?k=Models+of+My+Life&amp;tag=grahamdoddsvi-22" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Models of My Life" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$102.00</span>
-          <a href="https://www.amazon.com.au/s?k=Models+of+My+Life&amp;tag=grahamdoddsvi-22" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div></div>
-
-            <!-- Mobile Cards Layout (hidden on desktop, visible on mobile) -->
-            
-
-            <div class="books-description">
-                <p><strong>Note:</strong> Prices are in AUD and may vary depending on the retailer and availability. Some books may be available as digital editions at lower prices.</p>
-
-                <p><strong>Disclaimer:</strong> This list is for informational purposes only and does not constitute investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>
-            </div>
-        </section>
+</div>`;
     
+    const gridContainer = document.createElement('div');
+    gridContainer.className = 'books-grid';
+    
+    category.books.forEach(book => {
+        let link = book.link || 'https://www.amazon.com.au/s?k=' + encodeURIComponent(book.title);
+        let price = book.price || '$XX.XX';
+        
+        gridContainer.innerHTML += `
+<div class="book-card">
+  <a href="${link}" target="_blank" rel="noopener noreferrer">
+    <img src="cover-placeholder.jpg" alt="${book.title}" class="book-cover">
+  </a>
+  <div class="book-info">
+      <a href="#" class="book-summary-link">Book summary</a>
+      <div class="book-footer">
+          <span class="book-price">${price}</span>
+          <a href="${link}" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+      </div>
+  </div>
+</div>`;
+    });
 
-    <script>
-        // Sort functionality
-        function sortBooks(selectElement) {
-            const sortValue = selectElement.value;
-            const gridContainer = document.querySelector('.books-grid');
-            if (!gridContainer) return;
-            
-            const cards = Array.from(gridContainer.querySelectorAll('.book-card'));
-            
-            cards.sort((a, b) => {
-                let valA, valB;
-                if (sortValue === 'title') {
-                    valA = a.querySelector('.book-cover').alt.trim().toLowerCase();
-                    valB = b.querySelector('.book-cover').alt.trim().toLowerCase();
-                    return valA.localeCompare(valB);
-                } else if (sortValue === 'author') {
-                    valA = (a.querySelector('.book-author') || a.querySelector('.book-cover')).alt.toLowerCase();
-                    valB = (b.querySelector('.book-author') || b.querySelector('.book-cover')).alt.toLowerCase();
-                    return valA.localeCompare(valB);
-                } else if (sortValue === 'price') {
-                    valA = parseFloat(a.querySelector('.book-price').textContent.replace(/[^0-9.]/g, '')) || 0;
-                    valB = parseFloat(b.querySelector('.book-price').textContent.replace(/[^0-9.]/g, '')) || 0;
-                    return valA - valB;
-                }
-                return 0;
-            });
-            
-            gridContainer.innerHTML = '';
-            cards.forEach(card => gridContainer.appendChild(card));
+    content.innerHTML = sortControlHTML;
+    content.appendChild(gridContainer);
+
+    section.appendChild(header);
+    section.appendChild(content);
+
+    return section;
+}
+
+function toggleSection(index) {
+    const content = document.getElementById(`section-${index}`);
+    const arrow = document.getElementById(`arrow-${index}`);
+    
+    content.classList.toggle('collapsed');
+    arrow.classList.toggle('rotated');
+    
+    if (content.classList.contains('collapsed')) {
+        arrow.textContent = '▼';
+    } else {
+        arrow.textContent = '▲';
+    }
+}
+
+function sortBooks(selectElement) {
+    const sortValue = selectElement.value;
+    const contentDiv = selectElement.closest('.collapsible-content');
+    const gridContainer = contentDiv.querySelector('.books-grid');
+    if (!gridContainer) return;
+
+    const cards = Array.from(gridContainer.querySelectorAll('.book-card'));
+
+    cards.sort((a, b) => {
+        let valA, valB;
+        if (sortValue === 'title') {
+            valA = a.querySelector('.book-cover').alt.trim().toLowerCase();
+            valB = b.querySelector('.book-cover').alt.trim().toLowerCase();
+            return valA.localeCompare(valB);
+        } else if (sortValue === 'author') {
+            valA = (a.querySelector('.book-author') || a.querySelector('.book-cover')).alt.toLowerCase();
+            valB = (b.querySelector('.book-author') || b.querySelector('.book-cover')).alt.toLowerCase();
+            return valA.localeCompare(valB);
+        } else if (sortValue === 'price') {
+            valA = parseFloat(a.querySelector('.book-price').textContent.replace(/[^0-9.]/g, '')) || 0;
+            valB = parseFloat(b.querySelector('.book-price').textContent.replace(/[^0-9.]/g, '')) || 0;
+            return valA - valB;
         }
+        return 0;
+    });
 
-        // Mobile menu functionality
-        function toggleMobileMenu() {
-            const drawer = document.getElementById('mobile-drawer');
-            const toggle = document.getElementById('mobile-toggle');
+    gridContainer.innerHTML = '';
+    cards.forEach(card => gridContainer.appendChild(card));
+}
 
-            drawer.classList.toggle('open');
-            toggle.classList.toggle('open');
-        }
+// Mobile drawer logic
+function initMobileDrawer() {
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const mobileDrawer = document.getElementById('mobile-drawer');
+    const drawerClose = document.getElementById('drawer-close');
 
-        function closeMobileMenu() {
-            const drawer = document.getElementById('mobile-drawer');
-            const toggle = document.getElementById('mobile-toggle');
-
-            drawer.classList.remove('open');
-            toggle.classList.remove('open');
-        }
-
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu event listeners
-            const mobileToggle = document.getElementById('mobile-toggle');
-            const drawerClose = document.getElementById('drawer-close');
-
-            if (mobileToggle) {
-                mobileToggle.addEventListener('click', toggleMobileMenu);
-            }
-
-            if (drawerClose) {
-                drawerClose.addEventListener('click', closeMobileMenu);
-            }
-
-            // Close menu when clicking outside
-            document.addEventListener('click', function(event) {
-                const drawer = document.getElementById('mobile-drawer');
-                const toggle = document.getElementById('mobile-toggle');
-
-                if (drawer.classList.contains('open') &&
-                    !drawer.contains(event.target) &&
-                    !mobileToggle.contains(event.target)) {
-                    closeMobileMenu();
-                }
-            });
-
-            // Sticky header functionality
-            const header = document.getElementById('main-header');
-            const sticky = header.offsetTop;
-
-            function handleScroll() {
-                if (window.pageYOffset > sticky) {
-                    header.classList.add('sticky-header');
-                } else {
-                    header.classList.remove('sticky-header');
-                }
-            }
-
-            window.addEventListener('scroll', handleScroll);
-
-            // Mobile cards functionality
-            function toggleMobileLayout() {
-                const tableContainer = document.querySelector('.books-table-container');
-                const mobileCards = document.querySelector('.books-mobile-cards');
-                
-                if (window.innerWidth <= 768) {
-                    // Mobile: show cards, hide table
-                    if (tableContainer) tableContainer.style.display = 'none';
-                    if (mobileCards) mobileCards.style.display = 'block';
-                } else {
-                    // Desktop: show table, hide cards
-                    if (tableContainer) tableContainer.style.display = 'block';
-                    if (mobileCards) mobileCards.style.display = 'none';
-                }
-            }
-
-            // Initial check
-            toggleMobileLayout();
-
-            // Listen for window resize
-            window.addEventListener('resize', toggleMobileLayout);
+    if (mobileToggle && mobileDrawer) {
+        mobileToggle.addEventListener('click', () => {
+            mobileDrawer.classList.add('open');
+            document.body.style.overflow = 'hidden';
         });
-    </script>
+    }
 
+    if (drawerClose && mobileDrawer) {
+        drawerClose.addEventListener('click', () => {
+            mobileDrawer.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+    }
 
+    if (mobileDrawer) {
+        mobileDrawer.addEventListener('click', (e) => {
+            if (e.target === mobileDrawer) {
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+}
 
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize Books
+    const container = document.getElementById('book-sections-container');
+    if (container) {
+        bookData.forEach((category, index) => {
+            const section = createCollapsibleSection(category, index);
+            container.appendChild(section);
+            // Auto open the first section
+            if (index === 0) {
+                toggleSection(index);
+            }
+        });
+    }
 
-
-
-
-
-
-
-
-
-
-
-</body></html>
+    initMobileDrawer();
+    
+    // Sticky header functionality
+    const header = document.getElementById('main-header');
+    if (header) {
+        const sticky = header.offsetTop;
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > sticky) {
+                header.classList.add('sticky-header');
+            } else {
+                header.classList.remove('sticky-header');
+            }
+        });
+    }
+});
+</script>
+</body>
+</html>

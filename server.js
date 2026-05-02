@@ -526,7 +526,7 @@ async function refreshNewsCache() {
                 // Configured RSS sources to pull from for this category
                 rssSources: ['stockhead', 'livewire-markets', 'afr', 'abc-business',
                     'sydney-morning-herald', 'the-australian', 'business-insider-au'],
-                baseAge: 72
+                baseAge: 48
             },
             {
                 category: 'Markets',
@@ -535,7 +535,7 @@ async function refreshNewsCache() {
                     'sydney-morning-herald', 'smartcompany', 'the-australian',
                     'business-insider-au', 'news-com-au', 'the-age',
                     'reuters-rss', 'bbc-rss', 'guardian-rss'],
-                baseAge: 72
+                baseAge: 48
             },
             {
                 category: 'Economy',
@@ -544,7 +544,7 @@ async function refreshNewsCache() {
                     'the-australian', 'sbs-news', 'the-age', 'news-com-au',
                     'business-insider-au', 'smartcompany', 'crikey',
                     'guardian-rss', 'bbc-rss', 'reuters-rss'],
-                baseAge: 72
+                baseAge: 48
             },
             {
                 category: 'Industry',
@@ -552,7 +552,7 @@ async function refreshNewsCache() {
                 // Includes the client's specifically configured Google News industry feeds
                 rssSources: ['google-news-mining', 'google-news-retail', 'google-news-construction',
                     'australian-mining', 'mining-com-au', 'inside-retail', 'smartcompany'],
-                baseAge: 72
+                baseAge: 48
             },
             {
                 category: 'Regulatory',

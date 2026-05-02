@@ -525,8 +525,202 @@
 
         <!-- Books Content -->
         <section class="books-content">
+                <div id="book-sections-container" class="collapsible-categories">
+                    <!-- Books will be dynamically generated here -->
+                </div>
+            </section>
+    </div>
 
-            
+    
+<script>
+const bookData = [
+  {
+    "name": "Wealth Creation & Personal Finance",
+    "books": [
+      {
+        "title": "The Strategic Millionaire",
+        "author": "Armando Pantoja",
+        "price": "$29.99"
+      },
+      {
+        "title": "Millionaire Mission",
+        "author": "Brian Preston",
+        "price": "$27.99"
+      },
+      {
+        "title": "You're Already a Wealth Heiress!",
+        "author": "Linda Jones",
+        "price": "$24.99"
+      },
+      {
+        "title": "7 Strategies For Wealth And Happiness",
+        "author": "Jim John",
+        "price": "$25.99"
+      },
+      {
+        "title": "Poverty, Riches and Wealth",
+        "author": "Kris Vallotton",
+        "price": "$24.99"
+      },
+      {
+        "title": "Wealth Choice",
+        "author": "Dennis Kimbro",
+        "price": "$25.99"
+      },
+      {
+        "title": "The Simple Path to Wealth",
+        "author": "J.L. Collins",
+        "price": "$24.99"
+      },
+      {
+        "title": "The Millionaire Fastlane",
+        "author": "MJ DeMarco",
+        "price": "$29.99"
+      },
+      {
+        "title": "Tax-Free Wealth",
+        "author": "Tom Wheelwright",
+        "price": "$28.99"
+      },
+      {
+        "title": "Why the Rich Are Getting Richer",
+        "author": "Robert Kiyosaki",
+        "price": "$19.99"
+      },
+      {
+        "title": "Rich Dad's Increase Your Financial IQ",
+        "author": "Robert Kiyosaki",
+        "price": "$21.99"
+      },
+      {
+        "title": "The Total Money Makeover",
+        "author": "Dave Ramsey",
+        "price": "$23.99"
+      },
+      {
+        "title": "Dave Ramsey's Complete Guide to Money",
+        "author": "Dave Ramsey",
+        "price": "$29.99"
+      },
+      {
+        "title": "Smart Money Smart Kids",
+        "author": "Dave Ramsey & Rachel Cruze",
+        "price": "$24.99"
+      },
+      {
+        "title": "The Millionaire Mind",
+        "author": "Thomas Stanley",
+        "price": "$26.99"
+      },
+      {
+        "title": "Rich Dad Poor Dad",
+        "author": "Robert Kiyosaki",
+        "price": "$16.99"
+      },
+      {
+        "title": "Rich Dad's CASHFLOW Quadrant",
+        "author": "Robert Kiyosaki",
+        "price": "$19.99"
+      },
+      {
+        "title": "7 Steps to Wealth",
+        "author": "John Fitzgerald",
+        "price": "$26.99"
+      },
+      {
+        "title": "Rich Dad's Who Took My Money?",
+        "author": "Robert Kiyosaki",
+        "price": "$21.99"
+      },
+      {
+        "title": "Secrets Of The Millionaire Mind",
+        "author": "T. Harv Eker",
+        "price": "$23.99"
+      },
+      {
+        "title": "Retire Young Retire Rich",
+        "author": "Robert Kiyosaki",
+        "price": "$22.99"
+      },
+      {
+        "title": "The Wealth Mindset",
+        "author": "Neville Goddard & Tim Grimes",
+        "price": "$27.99"
+      },
+      {
+        "title": "Baby Steps Millionaires",
+        "author": "Dave Ramsey",
+        "price": "$26.99"
+      },
+      {
+        "title": "The Financial Peace Planner",
+        "author": "Dave Ramsey",
+        "price": "$31.99"
+      },
+      {
+        "title": "Millionaire Next Door",
+        "author": "Thomas Stanley & William Danko",
+        "price": "$19.99"
+      },
+      {
+        "title": "Rich Dad Poor Dad for Teens",
+        "author": "Robert Kiyosaki",
+        "price": "$18.99"
+      },
+      {
+        "title": "Blueprint to Wealth",
+        "author": "Gary Stone",
+        "price": "$31.99"
+      },
+      {
+        "title": "Rich Dad's Before You Quit Your Job",
+        "author": "Robert Kiyosaki",
+        "price": "$23.09"
+      },
+      {
+        "title": "The Little Book That Builds Wealth",
+        "author": "Pat Dorsey",
+        "price": "$22.99"
+      },
+      {
+        "title": "Smart Money Smart Kids",
+        "author": "Dave Ramsey &amp; Rachel Cruze",
+        "price": "$24.99"
+      },
+      {
+        "title": "The Wealth Mindset",
+        "author": "Neville Goddard &amp; Tim Grimes",
+        "price": "$27.99"
+      },
+      {
+        "title": "Millionaire Next Door",
+        "author": "Thomas Stanley &amp; William Danko",
+        "price": "$19.99"
+      }
+    ]
+  }
+];
+
+function createCollapsibleSection(category, index) {
+    const section = document.createElement('div');
+    section.className = 'collapsible-section';
+
+    // Start CLOSED by default
+    const isCollapsed = true; 
+    const arrowState = isCollapsed ? '▼' : '▲';
+    const contentClass = isCollapsed ? 'collapsible-content collapsed' : 'collapsible-content';
+    const arrowClass = isCollapsed ? 'arrow' : 'arrow rotated';
+
+    const header = document.createElement('div');
+    header.className = 'collapsible-header';
+    header.innerHTML = `<span class="category-title">${category.name}</span><span class="book-count">(${category.books.length} books)</span><span class="${arrowClass}" id="arrow-${index}">${arrowState}</span>`;
+    header.onclick = () => toggleSection(index);
+
+    const content = document.createElement('div');
+    content.className = contentClass;
+    content.id = `section-${index}`;
+
+    const sortControlHTML = `
 <div class="book-sort-controls" style="margin-bottom:12px; margin-top:20px;">
   <label style="font-size:13px; margin-right:6px;">Sort by:</label>
   <select class="book-sort" onchange="sortBooks(this)" style="font-size:13px; padding:4px 8px; border-radius:4px; border:1px solid #ccc;">
@@ -537,819 +731,142 @@
     <option value="date">Date</option>
     <option value="price">Price</option>
   </select>
-</div><div class="books-grid">
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Money-Game-Adam-Smith/dp/0394472226" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Money Game" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$24.99</span>
-          <a href="https://www.amazon.com.au/Money-Game-Adam-Smith/dp/0394472226" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Strategic-Millionaire-Armando-Pantoja/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Strategic Millionaire" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$29.99</span>
-          <a href="https://www.amazon.com.au/Strategic-Millionaire-Armando-Pantoja/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Simple-Money-Rich-Life/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Simple Money, Rich Life" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$26.99</span>
-          <a href="https://www.amazon.com.au/Simple-Money-Rich-Life/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Broken-Money-Lyn-Alden/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Broken Money" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$34.99</span>
-          <a href="https://www.amazon.com.au/Broken-Money-Lyn-Alden/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Millionaire-Mission-Brian-Preston/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Millionaire Mission" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$27.99</span>
-          <a href="https://www.amazon.com.au/Millionaire-Mission-Brian-Preston/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Youre-Already-Wealth-Heiress/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="You're Already a Wealth Heiress!" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$24.99</span>
-          <a href="https://www.amazon.com.au/Youre-Already-Wealth-Heiress/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Barefoot-Investor-Scott-Pape/dp/174379325X" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Barefoot Investor" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$22.99</span>
-          <a href="https://www.amazon.com.au/Barefoot-Investor-Scott-Pape/dp/174379325X" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Get-Good-Money-Tiffany-Aliche/dp/0593232747" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Get Good with Money" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$28.99</span>
-          <a href="https://www.amazon.com.au/Get-Good-Money-Tiffany-Aliche/dp/0593232747" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/7-Strategies-Wealth-Happiness/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="7 Strategies For Wealth And Happiness" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$25.99</span>
-          <a href="https://www.amazon.com.au/7-Strategies-Wealth-Happiness/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Happy-Pocket-Full-Money/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="A Happy Pocket Full of Money" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$23.99</span>
-          <a href="https://www.amazon.com.au/Happy-Pocket-Full-Money/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Its-Not-Your-Money/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="It's Not Your Money" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$26.99</span>
-          <a href="https://www.amazon.com.au/Its-Not-Your-Money/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Million-Dollar-Weekend-Noah-Kagan/dp/0062566189" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Million Dollar Weekend" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$29.99</span>
-          <a href="https://www.amazon.com.au/Million-Dollar-Weekend-Noah-Kagan/dp/0062566189" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Poverty-Riches-Wealth-Kris-Vallotton/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Poverty, Riches and Wealth" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$24.99</span>
-          <a href="https://www.amazon.com.au/Poverty-Riches-Wealth-Kris-Vallotton/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/How-Money-Works-Dorling-Kindersley/dp/024118947X" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="How Money Works" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$19.99</span>
-          <a href="https://www.amazon.com.au/How-Money-Works-Dorling-Kindersley/dp/024118947X" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Price-Money-Rob-Dix/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Price of Money" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$31.99</span>
-          <a href="https://www.amazon.com.au/Price-Money-Rob-Dix/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/White-Coat-Investor-James-Dahle/dp/0991433108" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The White Coat Investor" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$34.99</span>
-          <a href="https://www.amazon.com.au/White-Coat-Investor-James-Dahle/dp/0991433108" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Buy-Back-Your-Time/dp/0735210938" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Buy Back Your Time" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$27.99</span>
-          <a href="https://www.amazon.com.au/Buy-Back-Your-Time/dp/0735210938" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Wealth-Choice-Dennis-Kimbro/dp/1578660010" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Wealth Choice" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$25.99</span>
-          <a href="https://www.amazon.com.au/Wealth-Choice-Dennis-Kimbro/dp/1578660010" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Think-Grow-Rich-Napoleon-Hill/dp/1585424331" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Think And Grow Rich" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$16.99</span>
-          <a href="https://www.amazon.com.au/Think-Grow-Rich-Napoleon-Hill/dp/1585424331" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Simple-Path-Wealth-J-L-Collins/dp/1737724103" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Simple Path to Wealth" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$24.99</span>
-          <a href="https://www.amazon.com.au/Simple-Path-Wealth-J-L-Collins/dp/1737724103" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Millionaire-Fastlane-MJ-DeMarco/dp/0974356311" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Millionaire Fastlane" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$29.99</span>
-          <a href="https://www.amazon.com.au/Millionaire-Fastlane-MJ-DeMarco/dp/0974356311" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/You-Are-Badass-Making-Money/dp/0735223134" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="You Are a Badass at Making Money" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$26.99</span>
-          <a href="https://www.amazon.com.au/You-Are-Badass-Making-Money/dp/0735223134" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Richer-Wiser-Happier-William-Green/dp/1501164855" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Richer, Wiser, Happier" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$32.99</span>
-          <a href="https://www.amazon.com.au/Richer-Wiser-Happier-William-Green/dp/1501164855" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Tax-Free-Wealth-Tom-Wheelwright/dp/1944648636" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Tax-Free Wealth" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$28.99</span>
-          <a href="https://www.amazon.com.au/Tax-Free-Wealth-Tom-Wheelwright/dp/1944648636" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Rich-Fck-Amanda-Frances/dp/0062953849" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Rich As Fck*" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$27.99</span>
-          <a href="https://www.amazon.com.au/Rich-Fck-Amanda-Frances/dp/0062953849" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Abundance-Now-Lisa-Nichols/dp/0063148053" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Abundance Now" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$29.99</span>
-          <a href="https://www.amazon.com.au/Abundance-Now-Lisa-Nichols/dp/0063148053" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Magic-Manifesting-Money-Ryuu-Shinohara/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Magic of Manifesting Money" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$24.99</span>
-          <a href="https://www.amazon.com.au/Magic-Manifesting-Money-Ryuu-Shinohara/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Secrets-Six-Figure-Women-Barbara-Stanny/dp/0978994012" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Secrets of Six-Figure Women" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$26.99</span>
-          <a href="https://www.amazon.com.au/Secrets-Six-Figure-Women-Barbara-Stanny/dp/0978994012" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Why-Rich-Are-Getting-Richer/dp/1937832017" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Why the Rich Are Getting Richer" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$19.99</span>
-          <a href="https://www.amazon.com.au/Why-Rich-Are-Getting-Richer/dp/1937832017" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Rich-Dads-Increase-Your-Financial/dp/044658506X" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Rich Dad's Increase Your Financial IQ" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$21.99</span>
-          <a href="https://www.amazon.com.au/Rich-Dads-Increase-Your-Financial/dp/044658506X" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Money-Magnet-Steve-McKnight/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Money Magnet" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$28.99</span>
-          <a href="https://www.amazon.com.au/Money-Magnet-Steve-McKnight/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Smart-Women-Finish-Rich/dp/0761140187" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Smart Women Finish Rich" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$24.99</span>
-          <a href="https://www.amazon.com.au/Smart-Women-Finish-Rich/dp/0761140187" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Your-Next-Five-Moves/dp/1982154816" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Your Next Five Moves" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$31.99</span>
-          <a href="https://www.amazon.com.au/Your-Next-Five-Moves/dp/1982154816" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Profit-First-Mike-Michalowicz/dp/0735214143" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Profit First" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$27.99</span>
-          <a href="https://www.amazon.com.au/Profit-First-Mike-Michalowicz/dp/0735214143" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Investing-Kids-Dylin-Redling/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Investing for Kids" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$22.99</span>
-          <a href="https://www.amazon.com.au/Investing-Kids-Dylin-Redling/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Compound-Effect-Darren-Hardy/dp/159315724X" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Compound Effect" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$25.99</span>
-          <a href="https://www.amazon.com.au/Compound-Effect-Darren-Hardy/dp/159315724X" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Total-Money-Makeover-Dave-Ramsey/dp/0785288111" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Total Money Makeover" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$23.99</span>
-          <a href="https://www.amazon.com.au/Total-Money-Makeover-Dave-Ramsey/dp/0785288111" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Dave-Ramseys-Complete-Guide-Money/dp/076421029X" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Dave Ramsey's Complete Guide to Money" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$29.99</span>
-          <a href="https://www.amazon.com.au/Dave-Ramseys-Complete-Guide-Money/dp/076421029X" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Smart-Money-Smart-Kids/dp/1414394692" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Smart Money Smart Kids" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$24.99</span>
-          <a href="https://www.amazon.com.au/Smart-Money-Smart-Kids/dp/1414394692" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Millionaire-Mind-Thomas-Stanley/dp/0740718584" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Millionaire Mind" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$26.99</span>
-          <a href="https://www.amazon.com.au/Millionaire-Mind-Thomas-Stanley/dp/0740718584" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Rich-Dad-Poor-Dad/dp/1612680194" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Rich Dad Poor Dad" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$16.99</span>
-          <a href="https://www.amazon.com.au/Rich-Dad-Poor-Dad/dp/1612680194" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/I-Will-Teach-You-Rich/dp/0761147482" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="I Will Teach You to Be Rich" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$24.99</span>
-          <a href="https://www.amazon.com.au/I-Will-Teach-You-Rich/dp/0761147482" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Principles-Life-Work-Ray-Dalio/dp/1501124021" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Principles: Life and Work" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$39.99</span>
-          <a href="https://www.amazon.com.au/Principles-Life-Work-Ray-Dalio/dp/1501124021" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Psychology-Money-Morgan-Housel/dp/0857197681" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Psychology of Money" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$22.99</span>
-          <a href="https://www.amazon.com.au/Psychology-Money-Morgan-Housel/dp/0857197681" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Rich-Dads-Guide-Investing/dp/0446677469" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Rich Dad's Guide to Investing" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$24.99</span>
-          <a href="https://www.amazon.com.au/Rich-Dads-Guide-Investing/dp/0446677469" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Rich-Dads-CASHFLOW-Quadrant/dp/1612680054" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Rich Dad's CASHFLOW Quadrant" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$19.99</span>
-          <a href="https://www.amazon.com.au/Rich-Dads-CASHFLOW-Quadrant/dp/1612680054" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/7-Steps-Wealth-John-Fitzgerald/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="7 Steps to Wealth" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$26.99</span>
-          <a href="https://www.amazon.com.au/7-Steps-Wealth-John-Fitzgerald/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Rich-AF-Vivian-Tu/dp/0062957682" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Rich AF" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$28.99</span>
-          <a href="https://www.amazon.com.au/Rich-AF-Vivian-Tu/dp/0062957682" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Rich-Dads-Who-Took-Money/dp/0446695769" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Rich Dad's Who Took My Money?" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$21.99</span>
-          <a href="https://www.amazon.com.au/Rich-Dads-Who-Took-Money/dp/0446695769" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Secrets-Millionaire-Mind-T-Harv/dp/0060763280" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Secrets Of The Millionaire Mind" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$23.99</span>
-          <a href="https://www.amazon.com.au/Secrets-Millionaire-Mind-T-Harv/dp/0060763280" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Retire-Young-Retire-Rich/dp/0446695211" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Retire Young Retire Rich" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$22.99</span>
-          <a href="https://www.amazon.com.au/Retire-Young-Retire-Rich/dp/0446695211" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Wealth-Mindset-Neville-Goddard/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Wealth Mindset" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$27.99</span>
-          <a href="https://www.amazon.com.au/Wealth-Mindset-Neville-Goddard/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/One-Week-Budget-Tiffany-Aliche/dp/0062561892" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The One Week Budget" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$25.99</span>
-          <a href="https://www.amazon.com.au/One-Week-Budget-Tiffany-Aliche/dp/0062561892" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/You-Need-Budget-Jesse-Mecham/dp/0062567599" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="You Need a Budget" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$24.99</span>
-          <a href="https://www.amazon.com.au/You-Need-Budget-Jesse-Mecham/dp/0062567599" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Baby-Steps-Millionaires-Dave-Ramsey/dp/1492666876" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Baby Steps Millionaires" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$26.99</span>
-          <a href="https://www.amazon.com.au/Baby-Steps-Millionaires-Dave-Ramsey/dp/1492666876" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Financial-Peace-Planner-Dave-Ramsey/dp/1937077209" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Financial Peace Planner" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$31.99</span>
-          <a href="https://www.amazon.com.au/Financial-Peace-Planner-Dave-Ramsey/dp/1937077209" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/How-Get-Rich-Felix-Dennis/dp/1591842719" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="How to Get Rich" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$29.99</span>
-          <a href="https://www.amazon.com.au/How-Get-Rich-Felix-Dennis/dp/1591842719" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Science-Getting-Rich-Wallace-Wattles/dp/1603869028" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Science of Getting Rich" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$14.99</span>
-          <a href="https://www.amazon.com.au/Science-Getting-Rich-Wallace-Wattles/dp/1603869028" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Millionaire-Next-Door-Thomas-Stanley/dp/1589795474" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Millionaire Next Door" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$19.99</span>
-          <a href="https://www.amazon.com.au/Millionaire-Next-Door-Thomas-Stanley/dp/1589795474" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Richest-Man-Babylon-George-Clason/dp/0451205367" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Richest Man in Babylon" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$12.99</span>
-          <a href="https://www.amazon.com.au/Richest-Man-Babylon-George-Clason/dp/0451205367" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Think-Grow-Rich-Napoleon-Hill/dp/1585424331" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Think and Grow Rich (Original)" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$16.99</span>
-          <a href="https://www.amazon.com.au/Think-Grow-Rich-Napoleon-Hill/dp/1585424331" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/How-Become-Sustainably-Rich/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="How to Become Sustainably Rich" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$32.99</span>
-          <a href="https://www.amazon.com.au/How-Become-Sustainably-Rich/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Your-Money-Your-Life/dp/0143115766" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Your Money or Your Life" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$21.99</span>
-          <a href="https://www.amazon.com.au/Your-Money-Your-Life/dp/0143115766" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Same-Ever-Morgan-Housel/dp/0593332704" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Same as Ever" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$28.99</span>
-          <a href="https://www.amazon.com.au/Same-Ever-Morgan-Housel/dp/0593332704" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/One-Thousand-Ways-Make-1000/dp/1603869028" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="One Thousand Ways to Make $1000" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$18.99</span>
-          <a href="https://www.amazon.com.au/One-Thousand-Ways-Make-1000/dp/1603869028" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/4-Hour-Work-Week-Timothy-Ferriss/dp/0091929113" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The 4-Hour Work Week" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$26.99</span>
-          <a href="https://www.amazon.com.au/4-Hour-Work-Week-Timothy-Ferriss/dp/0091929113" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Supermoney-Adam-Smith/dp/0471612742" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Supermoney" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$27.99</span>
-          <a href="https://www.amazon.com.au/Supermoney-Adam-Smith/dp/0471612742" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/How-Get-Rich-Before-30/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="How To Get Rich Before 30" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$24.99</span>
-          <a href="https://www.amazon.com.au/How-Get-Rich-Before-30/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/How-Become-Rich-Successful/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="How to Become Rich and Successful" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$29.99</span>
-          <a href="https://www.amazon.com.au/How-Become-Rich-Successful/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Jim-Cramers-Get-Rich-Carefully/dp/0671047970" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Jim Cramer's Get Rich Carefully" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$31.99</span>
-          <a href="https://www.amazon.com.au/Jim-Cramers-Get-Rich-Carefully/dp/0671047970" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Miracle-Morning-Hal-Elrod/dp/0979019710" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Miracle Morning" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$22.99</span>
-          <a href="https://www.amazon.com.au/Miracle-Morning-Hal-Elrod/dp/0979019710" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Die-Zero-Bill-Perkins/dp/0062888363" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Die With Zero" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$26.99</span>
-          <a href="https://www.amazon.com.au/Die-Zero-Bill-Perkins/dp/0062888363" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/How-Be-Rich-J-Paul-Getty/dp/0465028785" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="How To Be Rich" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$24.99</span>
-          <a href="https://www.amazon.com.au/How-Be-Rich-J-Paul-Getty/dp/0465028785" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Take-Street-Arthur-Levitt/dp/0307472916" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Take on the Street" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$28.99</span>
-          <a href="https://www.amazon.com.au/Take-Street-Arthur-Levitt/dp/0307472916" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Rich-Dad-Poor-Dad-Teens/dp/0446585574" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Rich Dad Poor Dad for Teens" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$18.99</span>
-          <a href="https://www.amazon.com.au/Rich-Dad-Poor-Dad-Teens/dp/0446585574" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Blueprint-Wealth-Gary-Stone/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Blueprint to Wealth" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$31.99</span>
-          <a href="https://www.amazon.com.au/Blueprint-Wealth-Gary-Stone/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Missing-Billionaires-Victor-Haghani/dp/1119748088" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="The Missing Billionaires" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$34.99</span>
-          <a href="https://www.amazon.com.au/Missing-Billionaires-Victor-Haghani/dp/1119748088" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/Enough-John-Bogle/dp/1119026394" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="Enough" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$25.99</span>
-          <a href="https://www.amazon.com.au/Enough-John-Bogle/dp/1119026394" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div>
-<div class="book-card">
-  <a href="https://www.amazon.com.au/9-Step-Path-Financial-Independence/dp/B08L8Z8Z8Z" target="_blank" rel="noopener noreferrer"><img src="cover-placeholder.jpg" alt="A 9-Step Path To Financial Independence" class="book-cover"></a>
-  <div class="book-info">
-      <div class="book-footer">
-          <span class="book-price">$27.99</span>
-          <a href="https://www.amazon.com.au/9-Step-Path-Financial-Independence/dp/B08L8Z8Z8Z" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
-      </div>
-  </div>
-</div></div>
+</div>`;
+    
+    const gridContainer = document.createElement('div');
+    gridContainer.className = 'books-grid';
+    
+    category.books.forEach(book => {
+        let link = book.link || 'https://www.amazon.com.au/s?k=' + encodeURIComponent(book.title);
+        let price = book.price || '$XX.XX';
+        
+        gridContainer.innerHTML += `
+<div class="book-card">
+  <a href="${link}" target="_blank" rel="noopener noreferrer">
+    <img src="cover-placeholder.jpg" alt="${book.title}" class="book-cover">
+  </a>
+  <div class="book-info">
+      <a href="#" class="book-summary-link">Book summary</a>
+      <div class="book-footer">
+          <span class="book-price">${price}</span>
+          <a href="${link}" class="btn-buy" target="_blank" rel="noopener noreferrer">BUY NOW</a>
+      </div>
+  </div>
+</div>`;
+    });
 
-            <!-- Mobile Cards Layout (hidden on desktop, visible on mobile) -->
-            
+    content.innerHTML = sortControlHTML;
+    content.appendChild(gridContainer);
 
-            <div class="books-description">
-                <p><strong>Note:</strong> Prices are in AUD and may vary depending on the retailer and availability. Some books may be available as digital editions at lower prices.</p>
+    section.appendChild(header);
+    section.appendChild(content);
 
-                <p><strong>Disclaimer:</strong> This list is for informational purposes only and does not constitute investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>
-            </div>
-        </section>
-    </div>
+    return section;
+}
 
-    <script>
-        // Mobile menu functionality
-        function toggleMobileMenu() {
-            const drawer = document.getElementById('mobile-drawer');
-            const toggle = document.getElementById('mobile-toggle');
+function toggleSection(index) {
+    const content = document.getElementById(`section-${index}`);
+    const arrow = document.getElementById(`arrow-${index}`);
+    
+    content.classList.toggle('collapsed');
+    arrow.classList.toggle('rotated');
+    
+    if (content.classList.contains('collapsed')) {
+        arrow.textContent = '▼';
+    } else {
+        arrow.textContent = '▲';
+    }
+}
 
-            drawer.classList.toggle('open');
-            toggle.classList.toggle('active');
+function sortBooks(selectElement) {
+    const sortValue = selectElement.value;
+    const contentDiv = selectElement.closest('.collapsible-content');
+    const gridContainer = contentDiv.querySelector('.books-grid');
+    if (!gridContainer) return;
+
+    const cards = Array.from(gridContainer.querySelectorAll('.book-card'));
+
+    cards.sort((a, b) => {
+        let valA, valB;
+        if (sortValue === 'title') {
+            valA = a.querySelector('.book-cover').alt.trim().toLowerCase();
+            valB = b.querySelector('.book-cover').alt.trim().toLowerCase();
+            return valA.localeCompare(valB);
+        } else if (sortValue === 'author') {
+            valA = (a.querySelector('.book-author') || a.querySelector('.book-cover')).alt.toLowerCase();
+            valB = (b.querySelector('.book-author') || b.querySelector('.book-cover')).alt.toLowerCase();
+            return valA.localeCompare(valB);
+        } else if (sortValue === 'price') {
+            valA = parseFloat(a.querySelector('.book-price').textContent.replace(/[^0-9.]/g, '')) || 0;
+            valB = parseFloat(b.querySelector('.book-price').textContent.replace(/[^0-9.]/g, '')) || 0;
+            return valA - valB;
         }
+        return 0;
+    });
 
-        function closeMobileMenu() {
-            const drawer = document.getElementById('mobile-drawer');
-            const toggle = document.getElementById('mobile-toggle');
+    gridContainer.innerHTML = '';
+    cards.forEach(card => gridContainer.appendChild(card));
+}
 
-            drawer.classList.remove('open');
-            toggle.classList.remove('active');
-        }
+// Mobile drawer logic
+function initMobileDrawer() {
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const mobileDrawer = document.getElementById('mobile-drawer');
+    const drawerClose = document.getElementById('drawer-close');
 
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu event listeners
-            const mobileToggle = document.getElementById('mobile-toggle');
-            const drawerClose = document.getElementById('drawer-close');
-
-            if (mobileToggle) {
-                mobileToggle.addEventListener('click', toggleMobileMenu);
-            }
-
-            if (drawerClose) {
-                drawerClose.addEventListener('click', closeMobileMenu);
-            }
-
-            // Close menu when clicking outside
-            document.addEventListener('click', function(event) {
-                const drawer = document.getElementById('mobile-drawer');
-                const toggle = document.getElementById('mobile-toggle');
-
-                if (drawer.classList.contains('open') &&
-                    !drawer.contains(event.target) &&
-                    !mobileToggle.contains(event.target)) {
-                    closeMobileMenu();
-                }
-            });
-
-            // Sticky header functionality
-            const header = document.getElementById('main-header');
-            const sticky = header.offsetTop;
-
-            function handleScroll() {
-                if (window.pageYOffset > sticky) {
-                    header.classList.add('sticky-header');
-                } else {
-                    header.classList.remove('sticky-header');
-                }
-            }
-
-            window.addEventListener('scroll', handleScroll);
-
-            // Mobile cards functionality
-            function toggleMobileLayout() {
-                const tableContainer = document.querySelector('.books-table-container');
-                const mobileCards = document.querySelector('.books-mobile-cards');
-                
-                if (window.innerWidth <= 768) {
-                    // Mobile: show cards, hide table
-                    if (tableContainer) tableContainer.style.display = 'none';
-                    if (mobileCards) mobileCards.style.display = 'block';
-                } else {
-                    // Desktop: show table, hide cards
-                    if (tableContainer) tableContainer.style.display = 'block';
-                    if (mobileCards) mobileCards.style.display = 'none';
-                }
-            }
-
-            // Initial check
-            toggleMobileLayout();
-
-            // Listen for window resize
-            window.addEventListener('resize', toggleMobileLayout);
+    if (mobileToggle && mobileDrawer) {
+        mobileToggle.addEventListener('click', () => {
+            mobileDrawer.classList.add('open');
+            document.body.style.overflow = 'hidden';
         });
-    </script>
+    }
 
+    if (drawerClose && mobileDrawer) {
+        drawerClose.addEventListener('click', () => {
+            mobileDrawer.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+    }
 
+    if (mobileDrawer) {
+        mobileDrawer.addEventListener('click', (e) => {
+            if (e.target === mobileDrawer) {
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+}
 
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize Books
+    const container = document.getElementById('book-sections-container');
+    if (container) {
+        bookData.forEach((category, index) => {
+            const section = createCollapsibleSection(category, index);
+            container.appendChild(section);
+            // Auto open the first section
+            if (index === 0) {
+                toggleSection(index);
+            }
+        });
+    }
 
-
-
-
-
-
-
-</body></html>
+    initMobileDrawer();
+    
+    // Sticky header functionality
+    const header = document.getElementById('main-header');
+    if (header) {
+        const sticky = header.offsetTop;
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > sticky) {
+                header.classList.add('sticky-header');
+            } else {
+                header.classList.remove('sticky-header');
+            }
+        });
+    }
+});
+</script>
+</body>
+</html>

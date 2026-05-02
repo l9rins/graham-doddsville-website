@@ -255,13 +255,13 @@ class NewsDisplayManager {
         // Configuration:
         // Supports BOTH ID formats to override any other script
         const categoryContainers = {
-            'Companies': { ids: ['companies-news', 'top-companies-news', 'companies-news-mobile'], limit: 5, freshLimit: 72, hardLimit: 336 },
-            'Markets': { ids: ['markets-news', 'top-markets-news', 'markets-news-mobile'], limit: 5, freshLimit: 72, hardLimit: 336 },
-            'Economy': { ids: ['economy-news', 'top-economy-news', 'economy-news-mobile'], limit: 5, freshLimit: 72, hardLimit: 336 },
-            'Industry': { ids: ['industry-news', 'top-industry-news', 'industry-news-mobile'], limit: 5, freshLimit: 72, hardLimit: 336 },
+            'Companies': { ids: ['companies-news', 'top-companies-news', 'companies-news-mobile'], limit: 5, freshLimit: 48, hardLimit: 336 },
+            'Markets': { ids: ['markets-news', 'top-markets-news', 'markets-news-mobile'], limit: 5, freshLimit: 48, hardLimit: 336 },
+            'Economy': { ids: ['economy-news', 'top-economy-news', 'economy-news-mobile'], limit: 5, freshLimit: 48, hardLimit: 336 },
+            'Industry': { ids: ['industry-news', 'top-industry-news', 'industry-news-mobile'], limit: 5, freshLimit: 48, hardLimit: 336 },
             'Regulatory': { ids: ['regulatory-news', 'top-regulatory-news', 'regulatory-news-mobile'], limit: 5, freshLimit: 168, hardLimit: 504 },
             'Guru Watch': { ids: ['guru-watch-news', 'top-guru-watch-news', 'guru-watch-news-mobile'], limit: 5, freshLimit: 168, hardLimit: 720 },
-            'Feature Articles': { ids: ['feature-articles-container'], limit: 10, freshLimit: 72, hardLimit: 336 }
+            'Feature Articles': { ids: ['feature-articles-container'], limit: 10, freshLimit: 48, hardLimit: 336 }
         };
 
         Object.keys(categoryContainers).forEach(category => {
