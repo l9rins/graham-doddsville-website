@@ -11945,3 +11945,124 @@ th {
         grid-template-columns: 1fr;
     }
 }
+
+/* =========================================================
+   ARTICLE LAYOUT STANDARDISATION  (April 7 Checklist)
+   Applied globally via styles.css so every page benefits.
+   ========================================================= */
+
+/* 1. Bold first paragraph of each article */
+.article-detail-body > p:first-of-type {
+    font-weight: 700;
+}
+
+/* 2. Image placeholder — handled by JS (buildArticleImageHtml) so no CSS fallback needed */
+
+/* 3. Related Articles section */
+.article-related-articles {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 2px solid #e5e7eb;
+}
+
+.article-related-articles h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin: 0 0 12px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.article-related-articles ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.article-related-articles li {
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.article-related-articles li:last-child {
+    border-bottom: none;
+}
+
+.article-related-articles a {
+    color: #1e40af;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+}
+
+.article-related-articles a:hover {
+    color: #1e3a8a;
+    text-decoration: underline;
+}
+
+/* 4. Related Books section */
+.article-related-books {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.article-related-books h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin: 0 0 12px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.article-related-books .books-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+@media (max-width: 600px) {
+    .article-related-books .books-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.article-related-books .book-item {
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 12px;
+    border: 1px solid #e5e7eb;
+    transition: all 0.2s ease;
+}
+
+.article-related-books .book-item:hover {
+    background: #eef2ff;
+    border-color: #c7d2fe;
+    transform: translateY(-1px);
+}
+
+.article-related-books .book-item a {
+    color: #1e40af;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    display: block;
+}
+
+.article-related-books .book-item a:hover {
+    color: #1e3a8a;
+}
+
+/* 5. Disclaimer — always at the very bottom */
+.article-disclaimer {
+    margin-top: 32px;
+    padding-top: 16px;
+    border-top: 1px solid #e5e7eb;
+    font-size: 0.85rem;
+    color: #6b7280;
+    line-height: 1.5;
+    font-style: italic;
+}
