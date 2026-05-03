@@ -839,242 +839,262 @@
 
             <!-- Collapsible Categories -->
             <div class="collapsible-categories">
-                <!-- Stock Market -->
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('stock-market')">
                         <h3 class="collapsible-title">Stock Market</h3>
-                        <span class="collapsible-arrow" id="stock-market-arrow">▼</span>
+                        <span class="collapsible-arrow" id="stock-market-arrow">&#9660;</span>
                     </div>
                     <div class="collapsible-content collapsed" id="stock-market-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" data-article="overview-of-shares">Overview of Shares</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="stockmarket">Stockmarket</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="asx">Asx</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="nsx">Nsx</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="market-sectors">Market Sectors</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="industry-groups">Industry Groups</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="market-indices">Market Indices</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="getting-started-stocks">Getting Started</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="setup-trading">Set Up Trading</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="stockbrokers">Stockbrokers</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('overview-of-shares')">Overview of shares</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-is-the-stock-market')">What is the stock market?</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('australian-securities-exchange-asx')">Australian Securities Exchange (ASX)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('national-stock-exchange-of-australia-nsx')">National Stock Exchange of Australia (NSX)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('sydney-stock-exchange-ssx')">Sydney Stock Exchange (SSX)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('cboe-australia')">Cboe Australia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('market-sectors-in-australia')">Market sectors in Australia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('industry-groups-in-australia')">Industry groups in Australia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('getting-started-in-share-investing')">Getting started in share investing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-set-up-a-trading-account')">How to set up a trading account</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-select-a-stockbroker')">How to select a stockbroker</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('outlook-for-the-stock-market')">Outlook for the stock market</a></li>
                         </ul>
                     </div>
                 </div>
-
-                <!-- Currency Market -->
                 <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('currency-market')">
-                        <h3 class="collapsible-title">Currency Market</h3>
-                        <span class="collapsible-arrow" id="currency-market-arrow">▼</span>
+                    <div class="collapsible-header" onclick="toggleCollapsible('foreign-exchange-fx-market')">
+                        <h3 class="collapsible-title">Foreign Exchange (FX) Market</h3>
+                        <span class="collapsible-arrow" id="foreign-exchange-fx-market-arrow">&#9660;</span>
                     </div>
-                    <div class="collapsible-content collapsed" id="currency-market-content">
+                    <div class="collapsible-content collapsed" id="foreign-exchange-fx-market-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" data-article="currency-market-overview">Currency Market</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="currency-history">Currency History</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="currency-terminology">Terminology</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="influencing-factors">Influencing Factors</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="currency-technical-analysis">Technical Analysis</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="trading-strategies">Trading Strategies</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="currency-risk-management">Risk Management</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="advanced-currency-topics">Advanced Topics</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="currency-getting-started">Getting Started</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="currency-setup-trading">Set Up Trading</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('overview-of-the-fx-market')">Overview of the FX market</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('history-of-the-foreign-exchange')">History of the foreign exchange</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('terminology-in-the-fx-market')">Terminology in the FX market</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('factors-influencing-the-fx-market')">Factors influencing the FX market</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('fx-and-technical-analysis')">FX and technical analysis</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('fx-and-trading-strategies')">FX and trading strategies</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('fx-and-risk-management-strategies')">FX and risk management strategies</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('getting-started-in-fx-trading')">Getting started in FX trading</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('advanced-topics-in-fx-trading')">Advanced topics in FX trading</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-set-up-an-fx-trading-account')">How to set up an FX trading account</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('outlook-for-the-fx-market')">Outlook for the FX market</a></li>
                         </ul>
                     </div>
                 </div>
-
-                <!-- Commodities Market -->
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('commodities-market')">
                         <h3 class="collapsible-title">Commodities Market</h3>
-                        <span class="collapsible-arrow" id="commodities-market-arrow">▼</span>
+                        <span class="collapsible-arrow" id="commodities-market-arrow">&#9660;</span>
                     </div>
                     <div class="collapsible-content collapsed" id="commodities-market-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" data-article="commodities-market-overview">Commodities Market</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="key-commodities">Key Commodities</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="supply-demand-commodities">Supply and Demand</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="commodities-market-structures">Market Structures</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="commodities-price-determination">Price Determination</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="global-economic-commodities">Global Economic</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="emerging-trends-commodities">Emerging Trends</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="commodities-investment-strategies">Investment Strategies</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="commodities-trading-guide">Commodities Trading</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('overview-of-the-commodities-market')">Overview of the commodities market</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('key-commodities-in-the-commodities-market')">Key commodities in the commodities market</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('supply-and-demand-forces-in-the-commodities-market')">Supply and demand forces in the commodities market</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('market-structure-of-commodities-market-in-australia')">Market structure of commodities market in Australia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('price-determination-in-the-commodities-market-in-australia')">Price determination in the commodities market in Australia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('global-economic-factors-affecting-the-commodities-market')">Global economic factors affecting the commodities market</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('emerging-trends-in-the-commodities-market')">Emerging trends in the commodities market</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('investment-strategies-in-the-commodities-market')">Investment strategies in the commodities market</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('getting-started-in-commodities-trading')">Getting started in commodities trading</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-set-up-a-commodities-trading-account')">How to set up a commodities trading account</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('outlook-for-the-commodities-market')">Outlook for the commodities market</a></li>
                         </ul>
                     </div>
                 </div>
-
-                <!-- Bond Market -->
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('bond-market')">
                         <h3 class="collapsible-title">Bond Market</h3>
-                        <span class="collapsible-arrow" id="bond-market-arrow">▼</span>
+                        <span class="collapsible-arrow" id="bond-market-arrow">&#9660;</span>
                     </div>
                     <div class="collapsible-content collapsed" id="bond-market-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" data-article="bond-market-overview">Bond Market</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="structure-participants">Structure &amp; Participants</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="types-bonds">Types of Bonds</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="bond-issuance-trading">Bond Issuance and Trading</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="government-bonds">Government Bonds</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="corporate-bonds">Corporate Bonds</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="influence-prices">Influence on Prices</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="bond-trends-outlook">Trends and Outlook</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('overview-of-the-bond-market')">Overview of the bond market</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('structure-and-participants-of-the-bond-market')">Structure and participants of the bond market</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('types-of-bonds-in-the-bond-market')">Types of bonds in the bond market</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('bond-issuance-and-trading')">Bond issuance and trading</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-are-government-bonds')">What are government bonds?</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-are-corporate-bonds')">What are corporate bonds?</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('factors-affecting-the-bond-prices-and-yields')">Factors affecting the bond prices and yields</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('investment-strategies-in-the-bond-market')">Investment strategies in the bond market</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('getting-started-in-bond-investing')">Getting started in bond investing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('outlook-for-the-bond-market')">Outlook for the bond market</a></li>
                         </ul>
                     </div>
                 </div>
-
-                <!-- Gold & Precious Metal -->
                 <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('gold-precious')">
-                        <h3 class="collapsible-title">Gold &amp; Precious Metal</h3>
-                        <span class="collapsible-arrow" id="gold-precious-arrow">▼</span>
+                    <div class="collapsible-header" onclick="toggleCollapsible('gold-market')">
+                        <h3 class="collapsible-title">Gold Market</h3>
+                        <span class="collapsible-arrow" id="gold-market-arrow">&#9660;</span>
                     </div>
-                    <div class="collapsible-content collapsed" id="gold-precious-content">
+                    <div class="collapsible-content collapsed" id="gold-market-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" data-article="gold-market">Gold Market</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="silver-market">Silver Market</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="platinum">Platinum</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="palladium">Palladium</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="how-trade-gold">How to Trade Gold</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="introduction-gold">Introduction to Gold</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="gold-mining">Gold Mining</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="prices-gold">Prices of Gold</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="investing-gold">Investing in Gold</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="gold-trading-strategies">Trading Strategies</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="gold-trends-outlook">Trends and Outlook</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('overview-of-the-gold-market')">Overview of the gold market</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('role-of-central-banks-in-the-gold-market')">Role of central banks in the gold market</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-drives-the-price-of-gold')">What drives the price of gold?</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('gold-as-an-inflation-hedge-myth-vs-reality')">Gold as an inflation hedge: myth vs reality</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-invest-in-gold')">How to invest in gold</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('investment-strategies-for-gold')">Investment strategies for gold</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('gold-and-risk-management-strategies')">Gold and risk management strategies</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('taxation-of-gold-investments-in-australia')">Taxation of gold investments in Australia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('outlook-for-the-gold-market')">Outlook for the gold market</a></li>
                         </ul>
                     </div>
                 </div>
-
-                <!-- Oil & Gas -->
                 <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('oil-gas')">
-                        <h3 class="collapsible-title">Oil &amp; Gas</h3>
-                        <span class="collapsible-arrow" id="oil-gas-arrow">▼</span>
+                    <div class="collapsible-header" onclick="toggleCollapsible('precious-metals-market')">
+                        <h3 class="collapsible-title">Precious Metals Market</h3>
+                        <span class="collapsible-arrow" id="precious-metals-market-arrow">&#9660;</span>
                     </div>
-                    <div class="collapsible-content collapsed" id="oil-gas-content">
+                    <div class="collapsible-content collapsed" id="precious-metals-market-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" data-article="oil-gas-industry">Oil and Gas Industry</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="exploration-production">Exploration and Production</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="oil-gas-fields">Oil and Gas Fields</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="offshore-exploration">Offshore Exploration</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="onshore-exploration">Onshore Exploration</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="natural-gas-reserves">Natural Gas Reserves</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="major-oil-gas-companies">Major Oil and Gas Companies</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="how-trade-crude-oil">How to Trade Crude Oil</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="how-trade-gas">How to Trade in Gas</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('silver-market')">Silver market</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('platinum-market')">Platinum market</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('palladium-market')">Palladium market</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('rhodium-market')">Rhodium market</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('iridium-market')">Iridium market</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('ruthenium-market')">Ruthenium market</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('titanium-market')">Titanium market</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('osmium-market')">Osmium market</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-invest-in-precious-metals')">How to invest in precious metals</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('risk-considerations-for-precious-metals')">Risk considerations for precious metals</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('outlook-for-precious-metals')">Outlook for precious metals</a></li>
                         </ul>
                     </div>
                 </div>
-
-                <!-- Energy Market -->
                 <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('energy-market')">
-                        <h3 class="collapsible-title">Energy Market</h3>
-                        <span class="collapsible-arrow" id="energy-market-arrow">▼</span>
+                    <div class="collapsible-header" onclick="toggleCollapsible('oil-and-gas-industry')">
+                        <h3 class="collapsible-title">Oil and Gas Industry</h3>
+                        <span class="collapsible-arrow" id="oil-and-gas-industry-arrow">&#9660;</span>
                     </div>
-                    <div class="collapsible-content collapsed" id="energy-market-content">
+                    <div class="collapsible-content collapsed" id="oil-and-gas-industry-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" data-article="energy-industry">Energy Industry</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="fossil-fuels">Fossil Fuels</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="renewable-energy">Renewable Energy</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="electricity-generation">Electricity Generation</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="energy-consumption">Energy Consumption</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="environmental-impact">Environmental Impact</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="energy-policies">Energy Policies</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="future-prospects">Future Prospects</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="investing-energy">Investing in Energy</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('overview-of-oil-and-gas-industry')">Overview of oil and gas industry</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('key-factors-affecting-oil-and-gas-prices')">Key factors affecting oil and gas prices</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('offshore-exploration-in-australia')">Offshore exploration in Australia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('onshore-exploration-in-australia')">Onshore exploration in Australia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('natural-gas-reserves-in-australia')">Natural gas reserves in Australia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('major-oil-and-gas-companies')">Major oil and gas companies</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-trade-in-crude-oil')">How to trade in crude oil</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('crude-oil-and-risk-considerations')">Crude oil and risk considerations</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-trade-in-natural-gas')">How to trade in natural gas</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('natural-gas-and-risk-considerations')">Natural gas and risk considerations</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('outlook-for-the-oil-and-gas-industry')">Outlook for the oil and gas industry</a></li>
                         </ul>
                     </div>
                 </div>
-
-                <!-- Property Market -->
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('energy-industry')">
+                        <h3 class="collapsible-title">Energy Industry</h3>
+                        <span class="collapsible-arrow" id="energy-industry-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="energy-industry-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('overview-of-the-energy-industry')">Overview of the energy industry</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('fossil-fuels-in-australia')">Fossil fuels in Australia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('renewable-energy-in-australia')">Renewable energy in Australia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('electricity-generation-in-australia')">Electricity generation in Australia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('energy-consumption-in-australia')">Energy consumption in Australia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('environmental-impact')">Environmental impact</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('energy-policies-in-australia')">Energy policies in Australia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-invest-in-the-energy-industry')">How to invest in the energy industry</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('outlook-for-the-energy-industry')">Outlook for the energy industry</a></li>
+                        </ul>
+                    </div>
+                </div>
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('property-market')">
                         <h3 class="collapsible-title">Property Market</h3>
-                        <span class="collapsible-arrow" id="property-market-arrow">▼</span>
+                        <span class="collapsible-arrow" id="property-market-arrow">&#9660;</span>
                     </div>
                     <div class="collapsible-content collapsed" id="property-market-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" data-article="types-properties">Types of Properties</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="choosing-location">Choosing Location</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="property-financing">Financing</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="property-strategies">Strategies</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="property-management">Property Management</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="building-portfolio">Building a Portfolio</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="exit-strategies">Exit Strategies</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="invest-reits">Invest in Reits</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="invest-commercial">Invest in Commercial</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="invest-residential">Invest in Residential</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('overview-of-the-property-market')">Overview of the property market</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('types-of-properties')">Types of properties</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('factors-affecting-the-property-market')">Factors affecting the property market</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-choose-the-right-location')">How to choose the right location</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-finance-a-real-estate-purchase')">How to finance a real estate purchase</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('property-investment-strategies')">Property investment strategies</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-invest-in-residential-property')">How to invest in residential property</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-invest-in-commercial-property')">How to invest in commercial property</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-invest-in-industrial-property')">How to invest in industrial property</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-invest-in-reits')">How to invest in REITs</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('investment-property-management')">Investment property management</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-build-a-property-portfolio')">How to build a property portfolio</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('risks-in-property-investment')">Risks in property investment</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('exit-strategies-in-real-estate')">Exit strategies in real estate</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('outlook-for-the-property-market')">Outlook for the property market</a></li>
                         </ul>
                     </div>
                 </div>
-
-                <!-- Futures Market -->
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('futures-market')">
                         <h3 class="collapsible-title">Futures Market</h3>
-                        <span class="collapsible-arrow" id="futures-market-arrow">▼</span>
+                        <span class="collapsible-arrow" id="futures-market-arrow">&#9660;</span>
                     </div>
                     <div class="collapsible-content collapsed" id="futures-market-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" data-article="future-market-overview">Overview</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="intro-to-trading">Intro to Trading</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="futures-contracts">Futures Contracts</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="types-of-contracts">Types of Contracts</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="market-analysis">Market Analysis</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="risk-management-futures">Risk Management</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="regulation-and-clearing">Regulation and Clearing</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="trading-psychology">Trading Psychology</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="set-up-trading-account">Set Up Trading Account</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="advanced-strategies">Advanced Strategies</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('overview-of-the-futures-market')">Overview of the futures market</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-are-futures-contracts')">What are futures contracts?</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('types-of-futures-contracts')">Types of futures contracts</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-futures-trading-works')">How futures trading works</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-conduct-market-analysis')">How to conduct market analysis</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('supply-and-demand-fundamentals')">Supply and demand fundamentals</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('common-trading-strategies')">Common trading strategies</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('trading-psychology')">Trading psychology</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('advanced-trading-strategies')">Advanced trading strategies</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('risk-management-in-futures-trading')">Risk management in futures trading</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-set-up-a-futures-trading-account')">How to set up a futures trading account</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('outlook-for-the-futures-market')">Outlook for the futures market</a></li>
                         </ul>
                     </div>
                 </div>
-
-                <!-- Derivatives Market -->
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('derivatives-market')">
                         <h3 class="collapsible-title">Derivatives Market</h3>
-                        <span class="collapsible-arrow" id="derivatives-market-arrow">▼</span>
+                        <span class="collapsible-arrow" id="derivatives-market-arrow">&#9660;</span>
                     </div>
                     <div class="collapsible-content collapsed" id="derivatives-market-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" data-article="derivative-market-overview">Overview</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="derivatives-market-intro">Intro to Trading</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="derivatives-markets">Derivatives Markets</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="mechanics-of-trading">Mechanics of Trading</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="risks-and-rewards">Risks and Rewards</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="fundamental-analysis">Fundamental Analysis</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="technical-analysis">Technical Analysis</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="strategies">Strategies</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="risk-management">Risk Management</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('overview-of-the-derivatives-market')">Overview of the derivatives market</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-are-derivatives')">What are derivatives?</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('types-of-derivative-contracts')">Types of derivative contracts</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-derivatives-are-used-for-hedging')">How derivatives are used for hedging</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('speculation-and-leverage')">Speculation and leverage</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('options-trading-explained')">Options trading explained</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('fundamental-analysis-in-derivatives-trading')">Fundamental analysis in derivatives trading</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('technical-analysis-in-derivatives-trading')">Technical analysis in derivatives trading</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('trading-psychology')">Trading psychology</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('advanced-trading-strategies')">Advanced trading strategies</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('risks-of-derivatives-trading')">Risks of derivatives trading</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('regulation-of-derivatives-market')">Regulation of derivatives market</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('outlook-for-the-derivatives-market')">Outlook for the derivatives market</a></li>
                         </ul>
                     </div>
                 </div>
-
-                <!-- Crypto Currency -->
                 <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('crypto-currency')">
-                        <h3 class="collapsible-title">Crypto Currency</h3>
-                        <span class="collapsible-arrow" id="crypto-currency-arrow">▼</span>
+                    <div class="collapsible-header" onclick="toggleCollapsible('cryptocurrency-market')">
+                        <h3 class="collapsible-title">Cryptocurrency Market</h3>
+                        <span class="collapsible-arrow" id="cryptocurrency-market-arrow">&#9660;</span>
                     </div>
-                    <div class="collapsible-content collapsed" id="crypto-currency-content">
+                    <div class="collapsible-content collapsed" id="cryptocurrency-market-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" data-article="crypto-introduction">Introduction</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="blockchain-technology">Blockchain Technology</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="popular-cryptos">Popular Cryptos</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="investing-crypto">Investing in Crypto</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="crypto-wallets">Crypto Wallets</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="mining-consensus">Mining and Consensus</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="regulatory-landscape">Regulatory Landscape</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="crypto-exchanges">Crypto Exchanges</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="how-buy-crypto">How to Buy Crypto</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="bitcoin">Bitcoin</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="how-buy-bitcoin">How to Buy Bitcoin</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="crypto-scams">Crypto Scams</a></li>
-                            <li><a href="#" class="collapsible-link" data-article="crypto-outlook">Outlook</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('overview-of-cryptocurrency-market')">Overview of cryptocurrency market</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-is-cryptocurrency')">What is cryptocurrency?</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-blockchain-technology-works')">How blockchain technology works</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('types-of-cryptocurrency')">Types of cryptocurrency</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('bitcoin')">Bitcoin</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('mining-and-consensus')">Mining and consensus</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('cryptocurrency-exchanges')">Cryptocurrency exchanges</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-drives-cryptocurrency-prices')">What drives cryptocurrency prices?</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-trade-in-cryptocurrency')">How to trade in cryptocurrency</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-buy-cryptocurrency')">How to buy cryptocurrency</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-store-cryptocurrency')">How to store cryptocurrency</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('risks-in-cryptocurrency')">Risks in cryptocurrency</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('cryptocurrency-scams')">Cryptocurrency scams</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('regulatory-landscape')">Regulatory landscape</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('outlook-for-the-cryptocurrency-market')">Outlook for the cryptocurrency market</a></li>
                         </ul>
                     </div>
                 </div>

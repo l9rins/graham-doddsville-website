@@ -969,157 +969,75 @@
 
             <!-- Collapsible Categories -->
             <div class="collapsible-categories">
-                <!-- Events and Seminars -->
                 <div class="collapsible-section">
-    <div class="collapsible-header" onclick="toggleCollapsible('events-seminars')">
-        <h3 class="collapsible-title">Events and Seminars</h3>
-        <span class="collapsible-arrow" id="events-seminars-arrow">▼</span>
-    </div>
-    <div class="collapsible-content collapsed" id="events-seminars-content" style="max-height:none;">
-        <div class="events-table-wrapper">
-            <!-- Search + Filter Toggle -->
-            <div class="events-filter-bar">
-                <div class="evt-search-wrap">
-                    <span class="evt-search-icon">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                    </span>
-                    <input type="text" id="evt-search" placeholder="Search events..." oninput="filterEvents()">
+                    <div class="collapsible-header" onclick="toggleCollapsible('events-and-seminars')">
+                        <h3 class="collapsible-title">Events and Seminars</h3>
+                        <span class="collapsible-arrow" id="events-and-seminars-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="events-and-seminars-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('events-and-seminars')">Events and seminars</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <button class="evt-filter-toggle" id="evt-filter-toggle" onclick="toggleMobileFilters()">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
-                    Filters <span class="filter-count" id="filter-count" style="display:none">0</span>
-                </button>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('free-webinars')">
+                        <h3 class="collapsible-title">Free Webinars</h3>
+                        <span class="collapsible-arrow" id="free-webinars-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="free-webinars-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('free-webinars')">Free webinars</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('podcasts')">
+                        <h3 class="collapsible-title">Podcasts</h3>
+                        <span class="collapsible-arrow" id="podcasts-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="podcasts-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('podcasts')">Podcasts</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('free-online-courses')">
+                        <h3 class="collapsible-title">Free Online Courses</h3>
+                        <span class="collapsible-arrow" id="free-online-courses-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="free-online-courses-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('free-online-courses')">Free online courses</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('industry-courses')">
+                        <h3 class="collapsible-title">Industry Courses</h3>
+                        <span class="collapsible-arrow" id="industry-courses-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="industry-courses-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('industry-courses')">Industry courses</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('tertiary-courses')">
+                        <h3 class="collapsible-title">Tertiary Courses</h3>
+                        <span class="collapsible-arrow" id="tertiary-courses-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="tertiary-courses-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('tertiary-courses')">Tertiary courses</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <!-- Dropdown Filters -->
-            <div class="events-filters" id="evt-filters-panel">
-                <select id="evt-state" onchange="filterEvents()">
-                    <option value="">All States</option>
-                    <option value="NSW">NSW</option>
-                    <option value="VIC">VIC</option>
-                    <option value="QLD">QLD</option>
-                    <option value="WA">WA</option>
-                    <option value="SA">SA</option>
-                    <option value="TAS">TAS</option>
-                    <option value="ACT">ACT</option>
-                    <option value="NT">NT</option>
-                    <option value="Online">Online</option>
-                </select>
-                <select id="evt-type" onchange="filterEvents()">
-                    <option value="">All Types</option>
-                    <option value="Conference">Conference</option>
-                    <option value="Seminar">Seminar</option>
-                    <option value="Discussion">Discussion</option>
-                    <option value="Webinar">Webinar</option>
-                </select>
-                <select id="evt-month" onchange="filterEvents()">
-                    <option value="">All Months</option>
-                    <option value="2026-06">June 2026</option>
-                    <option value="2026-07">July 2026</option>
-                    <option value="2026-08">August 2026</option>
-                    <option value="2026-09">September 2026</option>
-                    <option value="2026-10">October 2026</option>
-                    <option value="2026-11">November 2026</option>
-                    <option value="2026-12">December 2026</option>
-                    <option value="2027-01">January 2027</option>
-                </select>
-            </div>
-            <!-- Active filter chips -->
-            <div class="evt-active-filters" id="evt-active-filters"></div>
-            <div class="events-count" id="evt-count">Loading events...</div>
-
-            <!-- Desktop Table -->
-            <div class="events-table-desktop">
-                <table class="events-table" id="events-table">
-                    <thead>
-                        <tr>
-                            <th onclick="sortEventsTable('date')">Date ▼</th>
-                            <th onclick="sortEventsTable('startTime')">Time</th>
-                            <th onclick="sortEventsTable('state')">State</th>
-                            <th onclick="sortEventsTable('eventType')">Type</th>
-                            <th onclick="sortEventsTable('title')">Title</th>
-                            <th>Details</th>
-                        </tr>
-                    </thead>
-                    <tbody id="evt-tbody"></tbody>
-                </table>
-            </div>
-
-            <!-- Mobile Cards -->
-            <div class="events-card-mobile" id="evt-mobile-cards"></div>
-
-            <!-- Pagination -->
-            <div class="events-pagination" id="evt-pagination"></div>
         </div>
     </div>
-</div>
-
-            <!-- Free Webinars -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('free-webinars')">
-                    <h3 class="collapsible-title">Free Webinars</h3>
-                    <span class="collapsible-arrow" id="free-webinars-arrow">▼</span>
-                </div>
-                <div class="collapsible-content" id="free-webinars-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('free-webinars')">Free Webinars</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Podcasts -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('podcasts')">
-                    <h3 class="collapsible-title">Podcasts</h3>
-                    <span class="collapsible-arrow" id="podcasts-arrow">▼</span>
-                </div>
-                <div class="collapsible-content" id="podcasts-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('podcasts')">Podcasts</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Free Online Courses -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('free-online-courses')">
-                    <h3 class="collapsible-title">Free Online Courses</h3>
-                    <span class="collapsible-arrow" id="free-online-courses-arrow">▼</span>
-                </div>
-                <div class="collapsible-content" id="free-online-courses-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('online-courses')">Free Online Courses</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Industry Courses -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('industry-courses')">
-                    <h3 class="collapsible-title">Industry Courses</h3>
-                    <span class="collapsible-arrow" id="industry-courses-arrow">▼</span>
-                </div>
-                <div class="collapsible-content" id="industry-courses-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('industry-courses')">Industry Courses</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Tertiary Courses -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('tertiary-courses')">
-                    <h3 class="collapsible-title">Tertiary Courses</h3>
-                    <span class="collapsible-arrow" id="tertiary-courses-arrow">▼</span>
-                </div>
-                <div class="collapsible-content" id="tertiary-courses-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('tertiary-courses')">Tertiary Courses</a></li>
-                    </ul>
-                </div>
-            </div>
-            </div>
-        </div>
-    
 
     <!-- Article Detail Panel -->
     <div class="article-detail-panel" id="article-detail-panel">

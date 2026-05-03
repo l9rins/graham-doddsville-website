@@ -557,157 +557,209 @@
 
             <!-- Collapsible Categories -->
             <div class="collapsible-categories">
-                <!-- Cash -->
                 <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('cash')">
-                    <h3 class="collapsible-title">Cash</h3>
-                    <span class="collapsible-arrow" id="cash-arrow">▼</span>
+                    <div class="collapsible-header" onclick="toggleCollapsible('cash')">
+                        <h3 class="collapsible-title">Cash</h3>
+                        <span class="collapsible-arrow" id="cash-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="cash-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('cash')">Cash</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('transaction-everyday-accounts')">Transaction (everyday) accounts</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('savings-accounts')">Savings accounts</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('high-interest-savings-accounts')">High-interest savings accounts</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('term-deposits')">Term deposits</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('cash-management-trusts')">Cash management trusts</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('money-market-funds')">Money market funds</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('treasury-notes')">Treasury notes</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('bank-bills')">Bank bills</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('negotiable-certificates-of-deposit')">Negotiable certificates of deposit</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="collapsible-content" id="cash-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('cash')">Cash</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('term-deposits')">Term Deposits</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('cash-management-trusts')">Cash Management Trusts</a></li>
-                    </ul>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('fixed-income')">
+                        <h3 class="collapsible-title">Fixed Income</h3>
+                        <span class="collapsible-arrow" id="fixed-income-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="fixed-income-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('australian-government-bonds')">Australian government bonds</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('treasury-indexed-bonds')">Treasury indexed bonds</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('semi-government-bonds')">Semi-government bonds</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('corporate-bonds')">Corporate bonds</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('floating-rate-notes')">Floating rate notes</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('bank-bonds-and-subordinated-debt')">Bank bonds and subordinated debt</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('asset-backed-securities')">Asset-backed securities</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('convertible-notes')">Convertible notes</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('fixed-income-etfs')">Fixed income ETFs</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('managed-fixed-income-funds')">Managed fixed income funds</a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-
-            <!-- Fixed Income -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('fixed-income')">
-                    <h3 class="collapsible-title">Fixed Income</h3>
-                    <span class="collapsible-arrow" id="fixed-income-arrow">▼</span>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('equity')">
+                        <h3 class="collapsible-title">Equity</h3>
+                        <span class="collapsible-arrow" id="equity-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="equity-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('ordinary-shares-common-stock')">Ordinary shares (common stock)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('preference-shares')">Preference shares</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('listed-investment-companies-lics')">Listed investment companies (LICs)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('exchange-traded-funds-etfs')">Exchange-traded funds (ETFs)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('managed-equity-funds-unit-trusts')">Managed equity funds (unit trusts)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('real-estate-investment-trusts-reits')">Real estate investment trusts (REITs)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('international-equities')">International equities</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('private-equity-unlisted-shares')">Private equity (unlisted shares)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('equity-derivatives')">Equity derivatives</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="collapsible-content" id="fixed-income-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('government-bonds')">Government Bonds</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('semi-government-bonds')">Semi-government Bonds</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('corporate-bonds')">Corporate Bonds</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('debentures')">Debentures</a></li>
-                    </ul>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('hybrids')">
+                        <h3 class="collapsible-title">Hybrids</h3>
+                        <span class="collapsible-arrow" id="hybrids-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="hybrids-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('preference-shares')">Preference shares</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('convertible-bonds')">Convertible bonds</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('exchangeable-bonds')">Exchangeable bonds</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('convertible-preference-shares')">Convertible preference shares</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('capital-notes-bank-hybrids')">Capital notes (bank hybrids)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('subordinated-notes-with-equity-conversion-features')">Subordinated notes with equity conversion features</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('perpetual-securities')">Perpetual securities</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('contingent-convertible-bonds-cocos')">Contingent convertible bonds (CoCos)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('income-stapled-securities')">Income stapled securities</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('reset-securities-step-up-hybrids')">Reset securities (step-up hybrids)</a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-
-            <!-- Equity -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('equity')">
-                    <h3 class="collapsible-title">Equity</h3>
-                    <span class="collapsible-arrow" id="equity-arrow">▼</span>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('derivatives')">
+                        <h3 class="collapsible-title">Derivatives</h3>
+                        <span class="collapsible-arrow" id="derivatives-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="derivatives-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('call-options')">Call options</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('put-options')">Put options</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('over-the-counter-options')">Over-the-counter options</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('forwards')">Forwards</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('exchange-traded-futures')">Exchange-traded futures</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('contracts-for-difference-cfds')">Contracts for difference (CFDs)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('warrants')">Warrants</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('interest-rate-swaps')">Interest rate swaps</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('currency-forwards')">Currency forwards</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('credit-derivatives')">Credit derivatives</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('commodity-derivatives')">Commodity derivatives</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('index-derivatives')">Index derivatives</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="collapsible-content" id="equity-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('shares')">Shares</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('superannuation')">Superannuation</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('smsfs')">Smsfs</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('rsas')">Rsas</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('etfs')">Etfs</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('lics')">Lics</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('managed-funds')">Managed Funds</a></li>
-                    </ul>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('property')">
+                        <h3 class="collapsible-title">Property</h3>
+                        <span class="collapsible-arrow" id="property-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="property-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('residential-property')">Residential property</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('commercial-office-property')">Commercial office property</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('retail-property')">Retail property</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('industrial-property')">Industrial property</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('real-estate-investment-trusts-reits')">Real estate investment trusts (REITs)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('property-funds-unlisted')">Property funds (unlisted)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('agricultural-property-farmland')">Agricultural property (farmland)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('development-sites')">Development sites</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('infrastructure-property')">Infrastructure property</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('student-accommodation')">Student accommodation</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('aged-care-facilities')">Aged care facilities</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('data-centres')">Data centres</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('self-storage-facilities')">Self-storage facilities</a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-
-            <!-- Hybrids -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('hybrids')">
-                    <h3 class="collapsible-title">Hybrids</h3>
-                    <span class="collapsible-arrow" id="hybrids-arrow">▼</span>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('commodities')">
+                        <h3 class="collapsible-title">Commodities</h3>
+                        <span class="collapsible-arrow" id="commodities-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="commodities-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('gold')">Gold</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('silver')">Silver</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('platinum')">Platinum</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('palladium')">Palladium</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('iron-ore')">Iron ore</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('copper')">Copper</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('aluminium')">Aluminium</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('nickel')">Nickel</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('crude-oil')">Crude oil</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('natural-gas')">Natural gas</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('coal')">Coal</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('agricultural-commodities-grains')">Agricultural commodities – grains</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('agricultural-commodities-softs')">Agricultural commodities – softs</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('livestock-commodities')">Livestock commodities</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('battery-and-critical-minerals')">Battery and critical minerals</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('water-rights-and-entitlements')">Water rights and entitlements</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="collapsible-content" id="hybrids-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('preference-shares')">Preference Shares</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('convertible-bonds')">Convertible Bonds</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('capital-notes')">Capital Notes</a></li>
-                    </ul>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('cryptocurrency')">
+                        <h3 class="collapsible-title">Cryptocurrency</h3>
+                        <span class="collapsible-arrow" id="cryptocurrency-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="cryptocurrency-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('bitcoin-btc')">Bitcoin (BTC)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('bitcoin-cash-bch')">Bitcoin Cash (BCH)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('ethereum-eth')">Ethereum (ETH)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('tether-usdt')">Tether (USDT)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('usd-coin-usdc')">USD Coin (USDC)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('bnb-bnb')">BNB (BNB)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('xrp-xrp')">XRP (XRP)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('cardano-ada')">Cardano (ADA)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('solana-sol')">Solana (SOL)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('dogecoin-doge')">Dogecoin (DOGE)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('chainlink-link')">Chainlink (LINK)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('litecoin-ltc')">Litecoin (LTC)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('tron-trx')">Tron (TRX)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('avalanche-avax')">Avalanche (AVAX)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('stellar-xlm')">Stellar (XLM)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('polygon-pol')">Polygon (POL)</a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-
-            <!-- Derivative -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('derivative')">
-                    <h3 class="collapsible-title">Derivative</h3>
-                    <span class="collapsible-arrow" id="derivative-arrow">▼</span>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('miscellaneous')">
+                        <h3 class="collapsible-title">Miscellaneous</h3>
+                        <span class="collapsible-arrow" id="miscellaneous-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="miscellaneous-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('margin-loan')">Margin loan</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('foreign-exchange-fx')">Foreign exchange (FX)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('private-equity')">Private equity</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('private-debt')">Private debt</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('hedge-funds')">Hedge funds</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('venture-capital')">Venture capital</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('infrastructure')">Infrastructure</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('collectibles')">Collectibles</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('art')">Art</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('royalties-and-intellectual-property')">Royalties and intellectual property</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('fine-wine')">Fine wine</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('farmland-and-agriculture')">Farmland and agriculture</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('timberland')">Timberland</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('carbon-credits-and-environmental-assets')">Carbon credits and environmental assets</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="collapsible-content" id="derivative-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('call-options')">Call Options</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('put-options')">Put Options</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('forwards')">Forwards</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('futures')">Futures</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('swaps')">Swaps</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('warrants')">Warrants</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('cfds')">Cfds</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('index-derivatives')">Index Derivatives</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('interest-rate-derivatives')">Interest Rate Derivative</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('grains-derivatives')">Grains Derivatives</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('energy-derivatives')">Energy Derivatives</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('structured-products')">Structured Products</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Property -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('property')">
-                    <h3 class="collapsible-title">Property</h3>
-                    <span class="collapsible-arrow" id="property-arrow">▼</span>
-                </div>
-                <div class="collapsible-content" id="property-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('direct-property')">Direct Property</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('reits')">Reits</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('lpts')">Lpts</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('upts')">Upts</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Commodities -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('commodities')">
-                    <h3 class="collapsible-title">Commodities</h3>
-                    <span class="collapsible-arrow" id="commodities-arrow">▼</span>
-                </div>
-                <div class="collapsible-content" id="commodities-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('gold')">Gold</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('silver')">Silver</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('platinum')">Platinum</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('palladium')">Palladium</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('agricultural-commodities')">Agricultural Commodities</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('energy-commodities')">Energy Commodities</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('metal-commodities')">Metal Commodities</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('livestock-futures')">Livestock Futures</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('oil-futures')">Oil Futures</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('iron-ore-futures')">Iron Ore Futures</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Miscellaneous -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('miscellaneous')">
-                    <h3 class="collapsible-title">Miscellaneous</h3>
-                    <span class="collapsible-arrow" id="miscellaneous-arrow">▼</span>
-                </div>
-                <div class="collapsible-content" id="miscellaneous-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('margin-loans')">Margin Loan</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('foreign-exchange')">Foreign Exchange</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('cryptocurrency')">Cryptocurrency</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('private-equity')">Private Equity</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('private-debt')">Private Debt</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('infrastructure-assets')">Infrastructure Assets</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('venture-capital')">Venture Capital</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('collectibles')">Collectibles</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('art-investments')">Art</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('fine-wine')">Fine Wine</a></li>
-                    </ul>
-                </div>
-            </div>
             </div>
         </div>
-    
+    </div>
 
     <!-- Article Detail Panel -->
     <div class="article-detail-panel" id="article-detail-panel">

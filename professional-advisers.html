@@ -560,209 +560,240 @@
 
             <!-- Collapsible Categories -->
             <div class="collapsible-categories">
-
-    <div class="collapsible-section">
-        <div class="collapsible-header" onclick="toggleCollapsible('accountants')">
-            <h3 class="collapsible-title">Accountants</h3>
-            <span class="collapsible-arrow" id="accountants-arrow">▼</span>
-        </div>
-        <div class="collapsible-content" id="accountants-content">
-            <ul class="collapsible-links">
-                <li><a href="#" class="collapsible-link" onclick="openArticle('accountants-overview')">Overview</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('accountants-pros-cons')">Pros and Cons</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('accountants-how-select')">How to Select</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('accountants-questions')">Questions to Ask</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('accountants-mistakes')">Mistakes to Avoid</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('accountants-leaders')">Market Leaders</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('accountants-complaints')">Complaints</a></li>
-            </ul>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('accountants')">
+                        <h3 class="collapsible-title">Accountants</h3>
+                        <span class="collapsible-arrow" id="accountants-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="accountants-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-are-accountants')">What are accountants?</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('types-of-accountants')">Types of accountants</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('financial-accounting')">Financial accounting</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('management-accounting')">Management accounting</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('tax-accounting')">Tax accounting</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('auditing-and-assurance')">Auditing and assurance</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-find-a-good-accountant')">How to find a good accountant</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('list-of-questions-to-ask')">List of questions to ask</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-accountants')">Limitations of accountants</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('top-accountants-in-australia')">Top accountants in Australia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-complain')">How to complain</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('lawyers')">
+                        <h3 class="collapsible-title">Lawyers</h3>
+                        <span class="collapsible-arrow" id="lawyers-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="lawyers-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-are-lawyers')">What are lawyers?</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('types-of-lawyers')">Types of lawyers</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('corporate-lawyers')">Corporate lawyers</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('contract-law-for-investors')">Contract law for investors</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('securities-and-financial-markets')">Securities and financial markets</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('regulation-and-compliance')">Regulation and compliance</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-find-a-good-lawyer')">How to find a good lawyer</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('list-of-questions-to-ask')">List of questions to ask</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-lawyers')">Limitations of lawyers</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('top-lawyers-in-australia')">Top lawyers in Australia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-complain')">How to complain</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('mortgage-brokers')">
+                        <h3 class="collapsible-title">Mortgage Brokers</h3>
+                        <span class="collapsible-arrow" id="mortgage-brokers-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="mortgage-brokers-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-are-mortgage-brokers')">What are mortgage brokers?</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-mortgage-brokers-get-paid')">How mortgage brokers get paid</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('home-loan-application-process')">Home loan application process</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('types-of-home-loans')">Types of home loans</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('borrowing-capacity-assessment')">Borrowing capacity assessment</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('regulation-of-mortgage-brokers')">Regulation of mortgage brokers</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-find-a-good-mortgage-broker')">How to find a good mortgage broker</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('list-of-questions-to-ask')">List of questions to ask</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-mortgage-brokers')">Limitations of mortgage brokers</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('top-mortgage-brokers-in-australia')">Top mortgage brokers in Australia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-complain')">How to complain</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('financial-planners')">
+                        <h3 class="collapsible-title">Financial Planners</h3>
+                        <span class="collapsible-arrow" id="financial-planners-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="financial-planners-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-are-financial-planners')">What are financial planners?</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('the-financial-planning-process')">The financial planning process</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('retirement-planning')">Retirement planning</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('risk-management-and-insurance')">Risk management and insurance</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('tax-planning-strategies')">Tax planning strategies</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('regulation-of-financial-planners')">Regulation of financial planners</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-find-a-good-financial-planner')">How to find a good financial planner</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('list-of-questions-to-ask')">List of questions to ask</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-financial-planners')">Limitations of financial planners</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('top-financial-planners-in-australia')">Top financial planners in Australia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-complain')">How to complain</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('insurance-brokers')">
+                        <h3 class="collapsible-title">Insurance Brokers</h3>
+                        <span class="collapsible-arrow" id="insurance-brokers-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="insurance-brokers-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-are-insurance-brokers')">What are insurance brokers?</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('the-insurance-broking-process')">The insurance broking process</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('types-of-insurance-products')">Types of insurance products</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('insurance-needs-analysis')">Insurance needs analysis</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('claims-management-support')">Claims management support</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('regulation-of-insurance-brokers')">Regulation of insurance brokers</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-find-a-good-insurance-broker')">How to find a good insurance broker</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('list-of-questions-to-ask')">List of questions to ask</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-insurance-brokers')">Limitations of insurance brokers</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('top-insurance-brokers-in-australia')">Top insurance brokers in Australia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-complain')">How to complain</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('stockbrokers')">
+                        <h3 class="collapsible-title">Stockbrokers</h3>
+                        <span class="collapsible-arrow" id="stockbrokers-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="stockbrokers-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-are-stockbrokers')">What are stockbrokers?</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('types-of-stockbrokers')">Types of stockbrokers</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-open-a-brokerage-account')">How to open a brokerage account</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('trading-platforms-and-tools')">Trading platforms and tools</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('custody-and-settlement-of-shares')">Custody and settlement of shares</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('regulation-of-stockbrokers')">Regulation of stockbrokers</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-find-a-good-stockbroker')">How to find a good stockbroker</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('list-of-questions-to-ask')">List of questions to ask</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-stockbrokers')">Limitations of stockbrokers</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('top-stockbrokers-in-australia')">Top stockbrokers in Australia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-complain')">How to complain</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('online-brokers')">
+                        <h3 class="collapsible-title">Online Brokers</h3>
+                        <span class="collapsible-arrow" id="online-brokers-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="online-brokers-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-are-online-brokers')">What are online brokers?</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-online-brokers-work')">How online brokers work</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('online-trading-platforms')">Online trading platforms</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('beginner-mistakes-in-online-trading')">Beginner mistakes in online trading</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('risks-on-online-trading')">Risks on online trading</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('regulation-of-online-brokers')">Regulation of online brokers</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-find-a-good-online-broker')">How to find a good online broker</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('list-of-questions-to-ask')">List of questions to ask</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-online-brokers')">Limitations of online brokers</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('top-online-brokers-in-australia')">Top online brokers in Australia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-complain')">How to complain</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('retail-bankers')">
+                        <h3 class="collapsible-title">Retail Bankers</h3>
+                        <span class="collapsible-arrow" id="retail-bankers-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="retail-bankers-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-are-retail-bankers')">What are retail bankers?</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('products-offered-by-retail-banks')">Products offered by retail banks</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-retail-banks-make-money')">How retail banks make money</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('the-lending-process')">The lending process</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('credit-risk-and-responsible-lending')">Credit risk and responsible lending</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('regulation-of-retail-banks')">Regulation of retail banks</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-find-a-good-retail-banker')">How to find a good retail banker</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('list-of-questions-to-ask')">List of questions to ask</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-retail-bankers')">Limitations of retail bankers</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('top-retail-bankers-in-australia')">Top retail bankers in Australia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-complain')">How to complain</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('investment-bankers')">
+                        <h3 class="collapsible-title">Investment Bankers</h3>
+                        <span class="collapsible-arrow" id="investment-bankers-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="investment-bankers-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-are-investment-bankers')">What are investment bankers?</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('initial-public-offerings-ipos')">Initial Public Offerings (IPOs)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('equity-capital-markets')">Equity capital markets</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('debt-capital-markets')">Debt capital markets</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('mergers-and-acquisitions-m-a')">Mergers and acquisitions (M&A)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('regulation-of-investment-bankers')">Regulation of investment bankers</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-find-a-good-investment-banker')">How to find a good investment banker</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('list-of-questions-to-ask')">List of questions to ask</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-investment-bankers')">Limitations of investment bankers</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('top-investment-bankers-in-australia')">Top investment bankers in Australia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-complain')">How to complain</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('research-houses')">
+                        <h3 class="collapsible-title">Research Houses</h3>
+                        <span class="collapsible-arrow" id="research-houses-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="research-houses-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-are-research-houses')">What are research houses?</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('equity-research')">Equity research</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-analysts-value-companies')">How analysts value companies</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-read-research-reports')">How to read research reports</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('conflicts-of-interest')">Conflicts of interest</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('regulation-of-research-houses')">Regulation of research houses</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-find-a-good-research-house')">How to find a good research house</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('list-of-questions-to-ask')">List of questions to ask</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-research-houses')">Limitations of research houses</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('top-research-houses-in-australia')">Top research houses in Australia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-complain')">How to complain</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('fund-managers')">
+                        <h3 class="collapsible-title">Fund Managers</h3>
+                        <span class="collapsible-arrow" id="fund-managers-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="fund-managers-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-are-fund-managers')">What are fund managers</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-fund-managers-make-money')">How fund managers make money</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('investment-strategies')">Investment strategies</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('fund-performance-measurement')">Fund performance measurement</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('risk-management-strategies')">Risk management strategies</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('regulation-of-fund-managers')">Regulation of fund managers</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-find-a-good-fund-manager')">How to find a good fund manager</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('list-of-questions-to-ask')">List of questions to ask</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-fund-managers')">Limitations of fund managers</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('top-fund-managers-in-australia')">Top fund managers in Australia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-complain')">How to complain</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
-    <div class="collapsible-section">
-        <div class="collapsible-header" onclick="toggleCollapsible('lawyers')">
-            <h3 class="collapsible-title">Lawyers</h3>
-            <span class="collapsible-arrow" id="lawyers-arrow">▼</span>
-        </div>
-        <div class="collapsible-content" id="lawyers-content">
-            <ul class="collapsible-links">
-                <li><a href="#" class="collapsible-link" onclick="openArticle('lawyers-overview')">Overview</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('lawyers-pros-cons')">Pros and Cons</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('lawyers-how-select')">How to Select</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('lawyers-questions')">Questions to Ask</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('lawyers-mistakes')">Mistakes to Avoid</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('lawyers-leaders')">Market Leaders</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('lawyers-complaints')">Complaints</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="collapsible-section">
-        <div class="collapsible-header" onclick="toggleCollapsible('mortgage-brokers')">
-            <h3 class="collapsible-title">Mortgage Brokers</h3>
-            <span class="collapsible-arrow" id="mortgage-brokers-arrow">▼</span>
-        </div>
-        <div class="collapsible-content" id="mortgage-brokers-content">
-            <ul class="collapsible-links">
-                <li><a href="#" class="collapsible-link" onclick="openArticle('mortgage-brokers-overview')">Overview</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('mortgage-brokers-pros-cons')">Pros and Cons</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('mortgage-brokers-how-select')">How to Select</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('mortgage-brokers-questions')">Questions to Ask</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('mortgage-brokers-mistakes')">Mistakes to Avoid</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('mortgage-brokers-leaders')">Market Leaders</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('mortgage-brokers-complaints')">Complaints</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="collapsible-section">
-        <div class="collapsible-header" onclick="toggleCollapsible('financial-planners')">
-            <h3 class="collapsible-title">Financial Planners</h3>
-            <span class="collapsible-arrow" id="financial-planners-arrow">▼</span>
-        </div>
-        <div class="collapsible-content" id="financial-planners-content">
-            <ul class="collapsible-links">
-                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-planners-overview')">Overview</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-planners-pros-cons')">Pros and Cons</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-planners-how-select')">How to Select</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-planners-questions')">Questions to Ask</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-planners-mistakes')">Mistakes to Avoid</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-planners-leaders')">Market Leaders</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('financial-planners-complaints')">Complaints</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="collapsible-section">
-        <div class="collapsible-header" onclick="toggleCollapsible('insurance-brokers')">
-            <h3 class="collapsible-title">Insurance Brokers</h3>
-            <span class="collapsible-arrow" id="insurance-brokers-arrow">▼</span>
-        </div>
-        <div class="collapsible-content" id="insurance-brokers-content">
-            <ul class="collapsible-links">
-                <li><a href="#" class="collapsible-link" onclick="openArticle('insurance-brokers-overview')">Overview</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('insurance-brokers-pros-cons')">Pros and Cons</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('insurance-brokers-how-select')">How to Select</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('insurance-brokers-questions')">Questions to Ask</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('insurance-brokers-mistakes')">Mistakes to Avoid</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('insurance-brokers-leaders')">Market Leaders</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('insurance-brokers-complaints')">Complaints</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="collapsible-section">
-        <div class="collapsible-header" onclick="toggleCollapsible('stockbrokers-tab')">
-            <h3 class="collapsible-title">Stockbrokers</h3>
-            <span class="collapsible-arrow" id="stockbrokers-tab-arrow">▼</span>
-        </div>
-        <div class="collapsible-content" id="stockbrokers-tab-content">
-            <ul class="collapsible-links">
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stockbrokers-overview')">Overview</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stockbrokers-pros-cons')">Pros and Cons</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stockbrokers-how-select')">How to Select</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stockbrokers-questions')">Questions to Ask</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stockbrokers-mistakes')">Mistakes to Avoid</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stockbrokers-leaders')">Market Leaders</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('stockbrokers-complaints')">Complaints</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="collapsible-section">
-        <div class="collapsible-header" onclick="toggleCollapsible('online-brokers')">
-            <h3 class="collapsible-title">Online Brokers</h3>
-            <span class="collapsible-arrow" id="online-brokers-arrow">▼</span>
-        </div>
-        <div class="collapsible-content" id="online-brokers-content">
-            <ul class="collapsible-links">
-                <li><a href="#" class="collapsible-link" onclick="openArticle('online-brokers-overview')">Overview</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('online-brokers-pros-cons')">Pros and Cons</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('online-brokers-how-select')">How to Select</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('online-brokers-questions')">Questions to Ask</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('online-brokers-mistakes')">Mistakes to Avoid</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('online-brokers-leaders')">Market Leaders</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('online-brokers-complaints')">Complaints</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="collapsible-section">
-        <div class="collapsible-header" onclick="toggleCollapsible('retail-bankers')">
-            <h3 class="collapsible-title">Retail Bankers</h3>
-            <span class="collapsible-arrow" id="retail-bankers-arrow">▼</span>
-        </div>
-        <div class="collapsible-content" id="retail-bankers-content">
-            <ul class="collapsible-links">
-                <li><a href="#" class="collapsible-link" onclick="openArticle('retail-bankers-overview')">Overview</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('retail-bankers-pros-cons')">Pros and Cons</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('retail-bankers-how-select')">How to Select</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('retail-bankers-questions')">Questions to Ask</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('retail-bankers-mistakes')">Mistakes to Avoid</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('retail-bankers-leaders')">Market Leaders</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('retail-bankers-complaints')">Complaints</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="collapsible-section">
-        <div class="collapsible-header" onclick="toggleCollapsible('investment-bankers')">
-            <h3 class="collapsible-title">Investment Bankers</h3>
-            <span class="collapsible-arrow" id="investment-bankers-arrow">▼</span>
-        </div>
-        <div class="collapsible-content" id="investment-bankers-content">
-            <ul class="collapsible-links">
-                <li><a href="#" class="collapsible-link" onclick="openArticle('investment-bankers-overview')">Overview</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('investment-bankers-pros-cons')">Pros and Cons</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('investment-bankers-how-select')">How to Select</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('investment-bankers-questions')">Questions to Ask</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('investment-bankers-mistakes')">Mistakes to Avoid</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('investment-bankers-leaders')">Market Leaders</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('investment-bankers-complaints')">Complaints</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="collapsible-section">
-        <div class="collapsible-header" onclick="toggleCollapsible('research-houses')">
-            <h3 class="collapsible-title">Research Houses</h3>
-            <span class="collapsible-arrow" id="research-houses-arrow">▼</span>
-        </div>
-        <div class="collapsible-content" id="research-houses-content">
-            <ul class="collapsible-links">
-                <li><a href="#" class="collapsible-link" onclick="openArticle('research-houses-overview')">Overview</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('research-houses-pros-cons')">Pros and Cons</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('research-houses-how-select')">How to Select</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('research-houses-questions')">Questions to Ask</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('research-houses-mistakes')">Mistakes to Avoid</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('research-houses-leaders')">Market Leaders</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('research-houses-complaints')">Complaints</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="collapsible-section">
-        <div class="collapsible-header" onclick="toggleCollapsible('fund-managers')">
-            <h3 class="collapsible-title">Fund Managers</h3>
-            <span class="collapsible-arrow" id="fund-managers-arrow">▼</span>
-        </div>
-        <div class="collapsible-content" id="fund-managers-content">
-            <ul class="collapsible-links">
-                <li><a href="#" class="collapsible-link" onclick="openArticle('fund-managers-overview')">Overview</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('fund-managers-pros-cons')">Pros and Cons</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('fund-managers-how-select')">How to Select</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('fund-managers-questions')">Questions to Ask</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('fund-managers-mistakes')">Mistakes to Avoid</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('fund-managers-leaders')">Market Leaders</a></li>
-                <li><a href="#" class="collapsible-link" onclick="openArticle('fund-managers-complaints')">Complaints</a></li>
-            </ul>
-        </div>
-    </div>
-
-</div>
-
-        </div>
-    
 
     <!-- Article Detail Panel -->
     <div class="article-detail-panel" id="article-detail-panel">

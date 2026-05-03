@@ -636,145 +636,131 @@
 
             <!-- Collapsible Categories -->
             <div class="collapsible-categories">
-
-                <!-- Industry Publications -->
                 <div class="collapsible-section">
-    <div class="collapsible-header" onclick="toggleCollapsible('industry-publications')">
-        <h3 class="collapsible-title">Industry Publications</h3>
-        <span class="collapsible-arrow" id="industry-publications-arrow">▼</span>
-    </div>
-    <div class="collapsible-content collapsed" id="industry-publications-content">
-        <ul class="collapsible-links">
-            <li><a href="#" class="collapsible-link" onclick="openArticle('siaa-monthly')">Siaa Monthly</a></li>
-            <li><a href="#" class="collapsible-link" onclick="openArticle('faaa-fprj')">Faaa Fprj</a></li>
-            <li><a href="#" class="collapsible-link" onclick="openArticle('cfa-faj')">Cfa Faj</a></li>
-            <li><a href="#" class="collapsible-link" onclick="openArticle('asic-infocus')">Asic Infocus</a></li>
-            <li><a href="#" class="collapsible-link" onclick="openArticle('rba-bulletin')">Rba Bulletin</a></li>
-            <li><a href="#" class="collapsible-link" onclick="openArticle('rba-somp')">Rba Somp</a></li>
-            <li><a href="#" class="collapsible-link" onclick="openArticle('rba-fsr')">Rba Fsr</a></li>
-            <li><a href="#" class="collapsible-link" onclick="openArticle('fsc-reports')">Fsc Reports</a></li>
-        </ul>
-    </div>
-</div>
-
-                <!-- Calculators -->
+                    <div class="collapsible-header" onclick="toggleCollapsible('industry-publications')">
+                        <h3 class="collapsible-title">Industry Publications</h3>
+                        <span class="collapsible-arrow" id="industry-publications-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="industry-publications-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('siaa-monthly')">SIAA Monthly</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('faaa-fin-plan-research-journal')">FAAA Fin Plan Research Journal</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('cfa-financial-analysts-journal')">CFA Financial Analysts Journal</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('asic-infocus')">ASIC InFocus</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('rba-bulletin')">RBA Bulletin</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('rba-statement-on-monetary-policy')">RBA Statement on Monetary Policy</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('rba-financial-stability-review')">RBA Financial Stability Review</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('financial-services-council-reports')">Financial Services Council reports</a></li>
+                        </ul>
+                    </div>
+                </div>
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('calculators')">
                         <h3 class="collapsible-title">Calculators</h3>
-                        <span class="collapsible-arrow" id="calculators-arrow">▼</span>
+                        <span class="collapsible-arrow" id="calculators-arrow">&#9660;</span>
                     </div>
                     <div class="collapsible-content collapsed" id="calculators-content">
-
-                        <div class="sub-category-links">
-                            <a href="#" class="sub-category-link" onclick="openArticle('money-management-calc')">Money Management</a>
-                            <a href="#" class="sub-category-link" onclick="openArticle('general-investing-calc')">General Investing</a>
-                            <a href="#" class="sub-category-link" onclick="openArticle('share-investing-calc')">Share Investing</a>
-                            <a href="#" class="sub-category-link" onclick="openArticle('superannuation-calc')">Superannuation</a>
-                            <a href="#" class="sub-category-link" onclick="openArticle('home-loans-calc')">Home Loans</a>
-                            <a href="#" class="sub-category-link" onclick="openArticle('personal-loans-calc')">Personal Loans</a>
-                        </div>
-
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('money-management')">Money management</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('general-investing-calculators')">General investing calculators</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('share-investing-calculators')">Share investing calculators</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('superannuation-calculators')">Superannuation calculators</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('home-loan-calculators')">Home loan calculators</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('personal-loan-calculators')">Personal loan calculators</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('other-useful-calculators')">Other useful calculators</a></li>
+                        </ul>
                     </div>
                 </div>
-
-                <!-- Stock Screeners -->
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('stock-screeners')">
                         <h3 class="collapsible-title">Stock Screeners</h3>
-                        <span class="collapsible-arrow" id="stock-screeners-arrow">▼</span>
+                        <span class="collapsible-arrow" id="stock-screeners-arrow">&#9660;</span>
                     </div>
                     <div class="collapsible-content collapsed" id="stock-screeners-content">
-
-                        <div class="sub-category-links">
-                            <a href="https://au.finance.yahoo.com/research-hub/screener/" class="sub-category-link" target="_blank">Yahoo Finance</a>
-                            <a href="https://au.investing.com/stock-screener" class="sub-category-link" target="_blank">Investing.com</a>
-                            <a href="https://www.barchart.com/au/stocks/stocks-screener?viewName=filter_view&amp;popularScreener=33156" class="sub-category-link" target="_blank">Bar Chart</a>
-                            <a href="https://finance.yahoo.com/" class="sub-category-link" target="_blank">Wallmine</a>
-                            <a href="https://www.ig.com/au" class="sub-category-link" target="_blank">IG</a>
-                            <a href="https://www.marketindex.com.au/scans" class="sub-category-link" target="_blank">Market Index</a>
-                        </div>
-
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('yahoo-finance')">Yahoo Finance</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('investing-com')">Investing.com</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('market-index')">Market Index</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('tradingview')">TradingView</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('moomoo')">Moomoo</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('barchart')">Barchart</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('finviz')">Finviz</a></li>
+                        </ul>
                     </div>
                 </div>
-
-                <!-- Portfolio Creators -->
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('portfolio-creators')">
                         <h3 class="collapsible-title">Portfolio Creators</h3>
-                        <span class="collapsible-arrow" id="portfolio-creators-arrow">▼</span>
+                        <span class="collapsible-arrow" id="portfolio-creators-arrow">&#9660;</span>
                     </div>
                     <div class="collapsible-content collapsed" id="portfolio-creators-content">
-
-                        <div class="sub-category-links">
-                            <a href="https://www.blackrock.com/au/financial-professionals/solutions/tools/etf-porfolio-builder-tool#/" class="sub-category-link" target="_blank">BlackRock Portfolio Builder</a>
-                            <a href="https://www.sharesight.com/au/" class="sub-category-link" target="_blank">Sharesight (registration required)</a>
-                            <a href="https://www.vanguard.com.au/adviser/tools/portfolio-builder" class="sub-category-link" target="_blank">Vanguard (registration required)</a>
-                        </div>
-
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('yahoo-finance')">Yahoo Finance</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('google-finance')">Google Finance</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('simply-wall-st')">Simply Wall St</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('tradingview')">TradingView</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('sharesight')">Sharesight</a></li>
+                        </ul>
                     </div>
                 </div>
-
-                <!-- Stock Forums -->
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('stock-forums')">
                         <h3 class="collapsible-title">Stock Forums</h3>
-                        <span class="collapsible-arrow" id="stock-forums-arrow">▼</span>
+                        <span class="collapsible-arrow" id="stock-forums-arrow">&#9660;</span>
                     </div>
                     <div class="collapsible-content collapsed" id="stock-forums-content">
-
-                        <div class="sub-category-links">
-                            <a href="https://hotcopper.com.au/" class="sub-category-link" target="_blank">HotCopper</a>
-                            <a href="https://www.aussiestockforums.com/" class="sub-category-link" target="_blank">Aussie Stock Forums</a>
-                            <a href="https://thestockexchange.com.au/" class="sub-category-link" target="_blank">The Stock Exchange</a>
-                            <a href="https://forums.whirlpool.net.au/" class="sub-category-link" target="_blank">Whirlpool Forums</a>
-                            <a href="https://www.propertychat.com.au/community/" class="sub-category-link" target="_blank">PropertyChat</a>
-                            <a href="https://www.reddit.com/r/ausstocks/?rdt=33213" class="sub-category-link" target="_blank">Reddit</a>
-                        </div>
-
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('hotcopper')">HotCopper</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('aussie-stock-forums')">Aussie Stock Forums</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('the-stock-exchange')">The Stock Exchange</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('whirlpool-forums-12-5-5-r-asx-bets')">Whirlpool Forums 12.5.5 : r ASX_Bets</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('reddit-r-ausfinance')">Reddit: r AusFinance</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('reddit-r-asx')">Reddit: r ASX</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('reddit-r-fiaustralia')">Reddit: r FIAustralia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('reddit-r-ausinvesting')">Reddit: r AusInvesting</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('reddit-r-ausstocks')">Reddit: r AusStocks</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('propertychat')">PropertyChat</a></li>
+                        </ul>
                     </div>
                 </div>
-
-                <!-- Glossary -->
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('glossary')">
                         <h3 class="collapsible-title">Glossary</h3>
-                        <span class="collapsible-arrow" id="glossary-arrow">▼</span>
+                        <span class="collapsible-arrow" id="glossary-arrow">&#9660;</span>
                     </div>
                     <div class="collapsible-content collapsed" id="glossary-content">
-
-                        <div class="sub-category-links">
-                            <a href="#" class="sub-category-link" onclick="openArticle('glossary-a-e')">Glossary - A to E</a>
-                            <a href="#" class="sub-category-link" onclick="openArticle('glossary-f-j')">Glossary - F to J</a>
-                            <a href="#" class="sub-category-link" onclick="openArticle('glossary-k-o')">Glossary - K to O</a>
-                            <a href="#" class="sub-category-link" onclick="openArticle('glossary-p-t')">Glossary - P to T</a>
-                            <a href="#" class="sub-category-link" onclick="openArticle('glossary-u-z')">Glossary - U to Z</a>
-                        </div>
-
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('glossary-a-to-b')">Glossary – A to B</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('glossary-c')">Glossary – C</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('glossary-d-to-e')">Glossary – D to E</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('glossary-f-to-h')">Glossary – F to H</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('glossary-i-to-l')">Glossary – I to L</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('glossary-m-to-o')">Glossary – M to O</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('glossary-p-to-r')">Glossary – P to R</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('glossary-s-to-t')">Glossary – S to T</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('glossary-u-to-z')">Glossary – U to Z</a></li>
+                        </ul>
                     </div>
                 </div>
-
-                <!-- Useful Links -->
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('useful-links')">
                         <h3 class="collapsible-title">Useful Links</h3>
-                        <span class="collapsible-arrow" id="useful-links-arrow">▼</span>
+                        <span class="collapsible-arrow" id="useful-links-arrow">&#9660;</span>
                     </div>
                     <div class="collapsible-content collapsed" id="useful-links-content">
-
-                        <div class="sub-category-links">
-                            <a href="#" class="sub-category-link" onclick="openArticle('buffett-munger')">Buffett &amp; Munger</a>
-                            <a href="#" class="sub-category-link" onclick="openArticle('value-investing-links')">Value Investing</a>
-                            <a href="#" class="sub-category-link" onclick="openArticle('general-investing-links')">General Investing</a>
-                            <a href="#" class="sub-category-link" onclick="openArticle('regulatory-bodies')">Regulatory Bodies</a>
-                            <a href="#" class="sub-category-link" onclick="openArticle('legal-accounting')">Legal &amp; Accounting</a>
-                            <a href="#" class="sub-category-link" onclick="openArticle('financial-institutions')">Financial Institutions</a>
-                            <a href="#" class="sub-category-link" onclick="openArticle('overseas-bodies')">Overseas Bodies</a>
-                            <a href="#" class="sub-category-link" onclick="openArticle('miscellaneous-links')">Miscellaneous</a>
-                        </div>
-
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('buffett-munger-berkshire')">Buffett, Munger & Berkshire</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('value-investing')">Value investing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('share-investing')">Share investing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('general-investing')">General investing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('regulatory-bodies')">Regulatory bodies</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('legal-and-accounting')">Legal and accounting</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('financial-institutions')">Financial institutions</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('overseas-bodies')">Overseas bodies</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('miscellaneous')">Miscellaneous</a></li>
+                        </ul>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
