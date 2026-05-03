@@ -479,6 +479,8 @@
                 <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
                 <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
                 <li><a href="investment-analysis.html" class="drawer-link">Investment Analysis</a></li>
+                <li><a href="financial-statement-analysis.html" class="drawer-link">Financial Statement Analysis</a></li>
+                <li><a href="stock-valuation.html" class="drawer-link">Stock Valuation</a></li>
                 <li><a href="economics.html" class="drawer-link">Economics</a></li>
                 <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
                 <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
@@ -492,7 +494,7 @@
             
             <div class="page-title-section">
                 <div class="breadcrumb">
-                    <a href="index.html" class="breadcrumb-link">← Home</a>
+                    <a href="index.html" class="breadcrumb-link">â† Home</a>
                 </div>
                 <h1 class="page-title">Warren Buffett Books</h1>
                 <p class="page-subtitle">Essential reading for understanding the Oracle of Omaha's investment philosophy and business wisdom</p>
@@ -822,7 +824,7 @@ function createCollapsibleSection(category, index) {
 
     // Start CLOSED by default
     const isCollapsed = true; 
-    const arrowState = isCollapsed ? '▼' : '▲';
+    const arrowState = isCollapsed ? 'â–¼' : 'â–²';
     const contentClass = isCollapsed ? 'collapsible-content collapsed' : 'collapsible-content';
     const arrowClass = isCollapsed ? 'arrow' : 'arrow rotated';
 
@@ -887,9 +889,9 @@ function toggleSection(index) {
     arrow.classList.toggle('rotated');
     
     if (content.classList.contains('collapsed')) {
-        arrow.textContent = '▼';
+        arrow.textContent = 'â–¼';
     } else {
-        arrow.textContent = '▲';
+        arrow.textContent = 'â–²';
     }
 }
 
