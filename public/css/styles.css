@@ -4966,12 +4966,11 @@ select:focus {
 }
 
 .book-links-horizontal a:not(:last-child)::after {
-    content: ",";
-    /* Fix 2: Changed to comma-space (the space is added via margin below) */
+    content: "|";
+    /* Fix 2: Changed to pipe-space */
     color: #666;
+    margin-left: 8px;
     margin-right: 4px;
-    /* Fix 2: Only right margin, no left margin */
-    margin-left: 0;
 }
 
 /* Remove the last separator to avoid extra "|" */
