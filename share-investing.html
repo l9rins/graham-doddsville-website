@@ -3,7 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Share Investing - Graham and Doddsville</title>
     <link rel="stylesheet" href="css/styles.css?v=3">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair←Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-blue: #1e3a8a;
@@ -3683,7 +3683,7 @@
                     
                     <h3>How to Analyse the Balance Sheet</h3>
                     <h4>What is a balance sheet?</h4>
-                    <p>The balance sheet is a snapshot of a company's financial position at a specific point in time. It provides a summary of a company's assets, liabilities, and shareholders' equity. The balance sheet follows a simple equation: Assets = Liabilities ← Shareholders' Equity. Assets represent what a company owns, while liabilities represent what it owes. Shareholders' equity represents the ownership interest of the shareholders in the company.</p>
+                    <p>The balance sheet is a snapshot of a company's financial position at a specific point in time. It provides a summary of a company's assets, liabilities, and shareholders' equity. The balance sheet follows a simple equation: Assets = Liabilities + Shareholders' Equity. Assets represent what a company owns, while liabilities represent what it owes. Shareholders' equity represents the ownership interest of the shareholders in the company.</p>
                     
                     <h4>Key components of a Balance Sheet</h4>
                     <p>The balance sheet includes several key components, each providing valuable insights into a company's financial strength and stability:</p>
@@ -3694,7 +3694,7 @@
                     
                     <p><strong>Shareholders' Equity:</strong> Shareholders' equity represents the residual interest in the company's assets after deducting its liabilities. It includes common stock, preferred stock, additional paid-in capital, retained earnings, and other comprehensive income.</p>
                     
-                    <p>The balance sheet follows the accounting equation: Assets = Liabilities ← Shareholders' Equity. This equation ensures that the total value of a company's assets is equal to the total value of its liabilities and shareholders' equity. The balance sheet provides a snapshot of a company's financial position at a specific point in time and is an essential tool in understanding a company's financial health and its ability to meet its obligations.</p>
+                    <p>The balance sheet follows the accounting equation: Assets = Liabilities + Shareholders' Equity. This equation ensures that the total value of a company's assets is equal to the total value of its liabilities and shareholders' equity. The balance sheet provides a snapshot of a company's financial position at a specific point in time and is an essential tool in understanding a company's financial health and its ability to meet its obligations.</p>
                     
                     <h4>Solvency ratios</h4>
                     <ul>
@@ -5288,7 +5288,7 @@
                     <p>The DCF analysis consists of several steps:</p>
                     <p>Estimating Future Cash Flows: The first step in DCF analysis is to forecast the future cash flows of the investment. This involves projecting revenues, expenses, taxes, and capital expenditures over a certain period, often using financial models.</p>
                     <p>Determining the Discount Rate: The discount rate, also known as the required rate of return or the cost of capital, is a crucial component of DCF analysis. It represents the minimum return investors expect to earn to compensate for the risk associated with the investment. The discount rate is often based on the risk-free rate of return (e.g., government bond yields) and a risk premium that accounts for the specific risks of the investment.</p>
-                    <p>Discounting Future Cash Flows: Once the future cash flows and discount rate are determined, the next step is to discount the projected cash flows back to their present value. This involves dividing each future cash flow by (1 ← discount rate) raised to the power of the number of periods between the future cash flow and the present.</p>
+                    <p>Discounting Future Cash Flows: Once the future cash flows and discount rate are determined, the next step is to discount the projected cash flows back to their present value. This involves dividing each future cash flow by (1 + discount rate) raised to the power of the number of periods between the future cash flow and the present.</p>
                     <p>Calculating Terminal Value: In many cases, the forecasted cash flows extend beyond the projection period. To capture the value of the investment beyond the projection period, analysts estimate the terminal value, which represents the value of all future cash flows beyond the projection period, discounted to their present value.</p>
                     <p>Summing the Present Values: The final step is to sum the present values of all projected cash flows, including the terminal value. The result is the estimated intrinsic value of the investment.</p>
                     <p>DCF analysis has its strengths and weaknesses. One of its primary advantages is that it is based on fundamental financial principles and requires a detailed understanding of the investment's cash flows and drivers. It is also a flexible approach that can be applied to various types of investments, from publicly traded companies to private businesses and projects.</p>
@@ -7181,7 +7181,7 @@
                     articleBody = articleBody.replace(/<p><strong>Disclaimer:<\/strong>.*?<\/p>\s*$/is, '');
                 }
                 
-                body.innerHTML = imagePlaceholder ← articleBody ← relatedArticles;
+                body.innerHTML = imagePlaceholder + articleBody + relatedArticles;
                 panel.classList.add('active');
                 document.body.style.overflow = 'hidden';
             }

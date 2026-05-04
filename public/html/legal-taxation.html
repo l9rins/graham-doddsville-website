@@ -3,7 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Legal &amp; Taxation - Graham and Doddsville</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair←Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-blue: #1e3a8a;
@@ -47,14 +47,13 @@
             padding: 24px;
         }
 
-        /* Header Section */
+                /* Standardized Header Styles */
         .header {
             background: #ffffff;
             border-bottom: 2px solid #d4af37;
-            padding: 12px 0;
+            padding: 0;
             transition: all 0.3s ease;
             overflow: visible;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
 
         .sticky-header {
@@ -65,11 +64,13 @@
         }
 
         .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             background: #1e3a8a;
             border-radius: 0;
-            box-shadow: none;
-            padding: 0;
-            margin: 8px; /* 8px margin around viewport */
+            padding: 10px 20px;
+            margin: 8px;
             max-width: none;
             border: 1.5px solid #e8e9ea;
             position: relative;
@@ -93,35 +94,151 @@
             display: flex;
             list-style: none;
             gap: 35px;
-            overflow: visible;
+            margin: 0;
+            padding: 0;
         }
 
-        .main-nav li {
-            position: relative;
-            overflow: visible;
-        }
-
-        .main-nav a {
-            color: var(--text-primary);
+        .nav-link {
+            color: #ffffff;
             text-decoration: none;
             font-weight: 500;
-            font-size: 16px;
-            transition: color 0.3s ease;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 30px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 2px;
+            background: #ffffff;
+            border-radius: 1px;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 2px 0;
+        }
+
+        .desktop-only { display: block; }
+        .mobile-only { display: none; }
+
+        @media (max-width: 768px) {
+            .desktop-only { display: none; }
+            .mobile-only { display: flex; }
+            .header-content { padding: 10px 15px; }
+        }
+
+                /* Standardized Header Styles */
+        .header {
+            background: #ffffff;
+            border-bottom: 2px solid #d4af37;
+            padding: 0;
+            transition: all 0.3s ease;
             overflow: visible;
         }
 
-        .main-nav a:hover {
-            color: var(--primary-blue);
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .desktop-only {
-            display: block;
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #1e3a8a;
+            border-radius: 0;
+            padding: 10px 20px;
+            margin: 8px;
+            max-width: none;
+            border: 1.5px solid #e8e9ea;
+            position: relative;
         }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 40px;
+            width: auto;
+        }
+
+        .main-nav {
+            overflow: visible;
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 30px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 2px;
+            background: #ffffff;
+            border-radius: 1px;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 2px 0;
+        }
+
+        .desktop-only { display: block; }
+        .mobile-only { display: none; }
 
         @media (max-width: 768px) {
-            .desktop-only {
-                display: none;
-            }
+            .desktop-only { display: none; }
+            .mobile-only { display: flex; }
+            .header-content { padding: 10px 15px; }
         }
 
         /* Page Title Section */
@@ -766,25 +883,26 @@
 <body>
     <div class="legal-taxation-page">
         <!-- Header -->
-        <header class="header sticky-header" role="banner">
+                        <header class="header sticky-header" role="banner">
             <div class="header-content">
-                    <div class="logo">
-                        <img src="G&amp;D Logo.png" alt="Graham &amp; Doddsville" class="logo-image">
-                    </div>
-                    
-                    <nav class="main-nav desktop-only">                    <ul>
-                        <li><a href="index.html" class="nav-link">HOME</a></li>
-                        <li><a href="wealth-creation.html" class="nav-link">Wealth Creation</a></li>
-                        <li><a href="#" class="nav-link">ABOUT</a></li>
-                    </ul></nav>
-                    
-                    
-                    <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
-                        <span class="hamburger-line"></span>
-                        <span class="hamburger-line"></span>
-                        <span class="hamburger-line"></span>
-                    </button>
+                <div class="logo">
+                    <img src="G&D Logo (for black background).png" alt="Graham & Doddsville" class="logo-image">
                 </div>
+                
+                <nav class="main-nav desktop-only">
+                    <ul>
+                        <li><a href="index.html" class="nav-link">HOME</a></li>
+                        <li><a href="wealth-creation.html" class="nav-link">WEALTH CREATION</a></li>
+                        <li><a href="resources.html" class="nav-link">RESOURCES</a></li>
+                    </ul>
+                </nav>
+                
+                <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
         </header>
 
         <!-- Mobile Navigation Drawer -->
@@ -5952,7 +6070,7 @@
                     
                     <p>You purchased 1,000 shares in Company X for $10,000 and incurred $200 in brokerage fees. After holding the shares for two years, you decide to sell them for $15,000, incurring another $200 in brokerage fees.</p>
                     
-                    <p><strong>Cost Base = Purchase Price ($10,000) ← Brokerage Fees ($200) = $10,200</strong></p>
+                    <p><strong>Cost Base = Purchase Price ($10,000) + Brokerage Fees ($200) = $10,200</strong></p>
                     <p><strong>Capital Gain = Sale Proceeds ($15,000) - Cost Base ($10,200) = $4,800</strong></p>
                     
                     <p>Assuming you fall into the 37% tax bracket, your CGT liability would be $1,776 (37% of $4,800).</p>
@@ -7165,7 +7283,7 @@
                     articleBody = articleBody.replace(/<p><strong>Disclaimer:<\/strong>.*?<\/p>\s*$/is, '');
                 }
                 
-                body.innerHTML = imagePlaceholder ← articleBody ← relatedArticles;
+                body.innerHTML = imagePlaceholder + articleBody + relatedArticles;
                 panel.classList.add('active');
                 document.body.style.overflow = 'hidden';
             } else {
