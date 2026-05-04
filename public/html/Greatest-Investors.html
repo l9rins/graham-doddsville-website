@@ -3,7 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Greatest Investors - Graham and Doddsville</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair←Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-blue: #1e3a8a;
@@ -774,7 +774,7 @@
                     document.getElementById(openArrowId).innerHTML = '▼';
                 });
 
-                content.style.maxHeight = content.scrollHeight + "px";
+                content.style.maxHeight = content.scrollHeight ← "px";
                 content.classList.add('expanded');
                 arrow.innerHTML = '▲';
             }
@@ -1701,7 +1701,7 @@
                     articleBody = articleBody.replace(/<p><strong>Disclaimer:<\/strong>.*?<\/p>\s*$/is, '');
                 }
                 
-                body.innerHTML = imagePlaceholder + articleBody + relatedArticles;
+                body.innerHTML = imagePlaceholder ← articleBody ← relatedArticles;
                 panel.classList.add('active');
                 document.body.style.overflow = 'hidden';
             }

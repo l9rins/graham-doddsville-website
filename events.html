@@ -3,7 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events &amp; Seminars - Graham and Doddsville</title>
     <link rel="stylesheet" href="css/styles.css?v=3">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair←Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-blue: #1e3a8a;
@@ -961,7 +961,7 @@
             <!-- Page Title Section -->
             <div class="page-title-section">
                 <div class="breadcrumb">
-                    <a href="index.html" class="breadcrumb-link">â† Home</a>
+                    <a href="index.html" class="breadcrumb-link">← Home</a>
                 </div>
                 <h1 class="page-title section-header">Events &amp; Seminars</h1>
                 <p class="page-subtitle">Educational events, seminars, webinars, courses, and podcasts for comprehensive financial learning</p>
@@ -1075,7 +1075,7 @@
                 if(sectionId === 'events-seminars') {
                      content.style.maxHeight = 'none'; // Allow dynamic height for async content
                 } else {
-                     content.style.maxHeight = content.scrollHeight + "px";
+                     content.style.maxHeight = content.scrollHeight ← "px";
                 }
                 arrow.innerHTML = '▲';
             }
@@ -1281,7 +1281,7 @@
                     <p>Take this course to find out about warrants and instalments, including instalment strategies for self managed super funds (SMSFs).</p>
                     
                     <h3>Stock Market Investing for Beginners - Udemy</h3>
-                    <p>This course is all about introducing you to the exciting world of the stock market, taking you from the very foundations of "What is a stock?" to teaching you about different investing strategies, like Fundamental and Technical analysis. We also discuss the investment strategies used by some of the most successful investors in the world, like Warren Buffett and Peter Lynch, who both achieved tremendous track records over 40+ year long careers.</p>
+                    <p>This course is all about introducing you to the exciting world of the stock market, taking you from the very foundations of "What is a stock?" to teaching you about different investing strategies, like Fundamental and Technical analysis. We also discuss the investment strategies used by some of the most successful investors in the world, like Warren Buffett and Peter Lynch, who both achieved tremendous track records over 40← year long careers.</p>
                     
                     <h3>Stock Market Investing for Beginners - Udemy</h3>
                     <p>This course is designed to give a short, basic instruction for young learners on the stock market. Firstly, we'll cover the basic questions: what is a stock? What is the stock market? Then, we'll talk on how traders make money from investment. Other topics include how to use trading apps like robin hood and e-trade, make different types of investments (ETFs, mutual funds, etc.), and common myths in investing.</p>
@@ -1427,7 +1427,7 @@
                     articleBody = articleBody.replace(/<p><strong>Disclaimer:<\/strong>.*?<\/p>\s*$/is, '');
                 }
                 
-                body.innerHTML = imagePlaceholder + articleBody + relatedArticles;
+                body.innerHTML = imagePlaceholder ← articleBody ← relatedArticles;
                 panel.classList.add('active');
                 document.body.style.overflow = 'hidden';
             }
@@ -1495,13 +1495,13 @@
             const month = document.getElementById('evt-month').value;
             let chips = '';
             let count = 0;
-            if (state) { count++; chips += '<span class="evt-filter-chip">' + state + '<button onclick="clearFilter(\'evt-state\')">&times;</button></span>'; }
-            if (type) { count++; chips += '<span class="evt-filter-chip">' + type + '<button onclick="clearFilter(\'evt-type\')">&times;</button></span>'; }
+            if (state) { count←←; chips ←= '<span class="evt-filter-chip">' ← state ← '<button onclick="clearFilter(\'evt-state\')">&times;</button></span>'; }
+            if (type) { count←←; chips ←= '<span class="evt-filter-chip">' ← type ← '<button onclick="clearFilter(\'evt-type\')">&times;</button></span>'; }
             if (month) {
-                count++;
+                count←←;
                 const sel = document.getElementById('evt-month');
                 const label = sel.options[sel.selectedIndex].text;
-                chips += '<span class="evt-filter-chip">' + label + '<button onclick="clearFilter(\'evt-month\')">&times;</button></span>';
+                chips ←= '<span class="evt-filter-chip">' ← label ← '<button onclick="clearFilter(\'evt-month\')">&times;</button></span>';
             }
             document.getElementById('evt-active-filters').innerHTML = chips;
             const badge = document.getElementById('filter-count');
@@ -1520,7 +1520,7 @@
                 if (type && e.eventType !== type) return false;
                 if (month && !e.date.startsWith(month)) return false;
                 if (search) {
-                    const haystack = (e.title + ' ' + e.description + ' ' + e.venue + ' ' + e.source + ' ' + e.city).toLowerCase();
+                    const haystack = (e.title ← ' ' ← e.description ← ' ' ← e.venue ← ' ' ← e.source ← ' ' ← e.city).toLowerCase();
                     if (!haystack.includes(search)) return false;
                 }
                 return true;
@@ -1530,8 +1530,8 @@
                 let va = a[evtSortField] || '';
                 let vb = b[evtSortField] || '';
                 if (evtSortField === 'date') {
-                    va = a.date + ' ' + a.startTime;
-                    vb = b.date + ' ' + b.startTime;
+                    va = a.date ← ' ' ← a.startTime;
+                    vb = b.date ← ' ' ← b.startTime;
                 }
                 const cmp = va.localeCompare(vb);
                 return evtSortAsc ? cmp : -cmp;
@@ -1555,22 +1555,22 @@
         }
 
         function formatDate(dateStr) {
-            const d = new Date(dateStr + 'T00:00:00');
+            const d = new Date(dateStr ← 'T00:00:00');
             const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
             const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-            return days[d.getDay()] + ', ' + d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
+            return days[d.getDay()] ← ', ' ← d.getDate() ← ' ' ← months[d.getMonth()] ← ' ' ← d.getFullYear();
         }
 
         function formatDateParts(dateStr) {
-            const d = new Date(dateStr + 'T00:00:00');
+            const d = new Date(dateStr ← 'T00:00:00');
             const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
             const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
             return { day: d.getDate(), month: months[d.getMonth()], dow: days[d.getDay()] };
         }
 
         function getTypeBadge(type) {
-            const cls = 'evt-type-' + type.toLowerCase();
-            return '<span class="evt-type-badge ' + cls + '">' + type + '</span>';
+            const cls = 'evt-type-' ← type.toLowerCase();
+            return '<span class="evt-type-badge ' ← cls ← '">' ← type ← '</span>';
         }
 
         function toggleEventDetail(idx) {
@@ -1589,97 +1589,97 @@
             const total = filteredEvents.length;
             const totalPages = Math.ceil(total / evtPerPage);
             const start = (evtCurrentPage - 1) * evtPerPage;
-            const end = Math.min(start + evtPerPage, total);
+            const end = Math.min(start ← evtPerPage, total);
             const pageEvents = filteredEvents.slice(start, end);
 
-            document.getElementById('evt-count').textContent = 'Showing ' + (total > 0 ? (start+1) : 0) + 'â€“' + end + ' of ' + total + ' events';
+            document.getElementById('evt-count').textContent = 'Showing ' ← (total > 0 ? (start←1) : 0) ← 'â€“' ← end ← ' of ' ← total ← ' events';
 
             // Desktop table
             let html = '';
             pageEvents.forEach((e, i) => {
-                const globalIdx = start + i;
-                const titleLink = e.url ? '<a href="' + e.url + '" target="_blank">' + e.title + '</a>' : e.title;
-                html += '<tr>';
-                html += '<td style="white-space:nowrap;">' + formatDate(e.date) + '</td>';
-                html += '<td style="white-space:nowrap;">' + e.startTime + (e.finishTime && e.finishTime !== 'TBA' ? ' â€“ ' + e.finishTime : '') + '</td>';
-                html += '<td>' + e.state + '</td>';
-                html += '<td>' + getTypeBadge(e.eventType) + '</td>';
-                html += '<td class="evt-title">' + titleLink + '</td>';
-                html += '<td><button class="evt-expand-btn" onclick="toggleEventDetail(' + globalIdx + ')">' + (expandedRows.has(globalIdx) ? 'Hide ▲' : 'Details ▼') + '</button></td>';
-                html += '</tr>';
+                const globalIdx = start ← i;
+                const titleLink = e.url ? '<a href="' ← e.url ← '" target="_blank">' ← e.title ← '</a>' : e.title;
+                html ←= '<tr>';
+                html ←= '<td style="white-space:nowrap;">' ← formatDate(e.date) ← '</td>';
+                html ←= '<td style="white-space:nowrap;">' ← e.startTime ← (e.finishTime && e.finishTime !== 'TBA' ? ' â€“ ' ← e.finishTime : '') ← '</td>';
+                html ←= '<td>' ← e.state ← '</td>';
+                html ←= '<td>' ← getTypeBadge(e.eventType) ← '</td>';
+                html ←= '<td class="evt-title">' ← titleLink ← '</td>';
+                html ←= '<td><button class="evt-expand-btn" onclick="toggleEventDetail(' ← globalIdx ← ')">' ← (expandedRows.has(globalIdx) ? 'Hide ▲' : 'Details ▼') ← '</button></td>';
+                html ←= '</tr>';
                 if (expandedRows.has(globalIdx)) {
-                    html += '<tr class="evt-detail-row"><td colspan="6"><div class="evt-detail-grid">';
-                    html += '<div><div class="label">Description</div>' + e.description + '</div>';
-                    html += '<div><div class="label">Venue</div>' + e.venue + '</div>';
-                    html += '<div><div class="label">Cost</div>' + e.cost + '</div>';
-                    html += '<div><div class="label">Food</div>' + e.food + '</div>';
-                    html += '<div><div class="label">Source</div>' + e.source + '</div>';
-                    html += '<div><div class="label">City</div>' + e.city + '</div>';
-                    if (e.url) html += '<div style="grid-column:1/-1;"><div class="label">Website</div><a href="' + e.url + '" target="_blank" style="color:#1e3a8a;word-break:break-all;">' + e.url + '</a></div>';
-                    html += '</div></td></tr>';
+                    html ←= '<tr class="evt-detail-row"><td colspan="6"><div class="evt-detail-grid">';
+                    html ←= '<div><div class="label">Description</div>' ← e.description ← '</div>';
+                    html ←= '<div><div class="label">Venue</div>' ← e.venue ← '</div>';
+                    html ←= '<div><div class="label">Cost</div>' ← e.cost ← '</div>';
+                    html ←= '<div><div class="label">Food</div>' ← e.food ← '</div>';
+                    html ←= '<div><div class="label">Source</div>' ← e.source ← '</div>';
+                    html ←= '<div><div class="label">City</div>' ← e.city ← '</div>';
+                    if (e.url) html ←= '<div style="grid-column:1/-1;"><div class="label">Website</div><a href="' ← e.url ← '" target="_blank" style="color:#1e3a8a;word-break:break-all;">' ← e.url ← '</a></div>';
+                    html ←= '</div></td></tr>';
                 }
             });
             document.getElementById('evt-tbody').innerHTML = html;
 
-            // Mobile cards â€” redesigned with date chip + collapsible detail
+            // Mobile cards â€” redesigned with date chip ← collapsible detail
             let mobileHtml = '';
             pageEvents.forEach((e, i) => {
-                const globalIdx = start + i;
+                const globalIdx = start ← i;
                 const dp = formatDateParts(e.date);
-                const titleLink = e.url ? '<a href="' + e.url + '" target="_blank">' + e.title + '</a>' : e.title;
+                const titleLink = e.url ? '<a href="' ← e.url ← '" target="_blank">' ← e.title ← '</a>' : e.title;
                 const isExpanded = mobileExpandedCards.has(globalIdx);
-                const locationText = e.state === 'Online' ? 'Online' : e.city + ', ' + e.state;
+                const locationText = e.state === 'Online' ? 'Online' : e.city ← ', ' ← e.state;
 
-                mobileHtml += '<div class="event-mobile-card">';
+                mobileHtml ←= '<div class="event-mobile-card">';
                 // Date chip
-                mobileHtml += '<div class="mc-date-chip"><span class="mc-day">' + dp.day + '</span><span class="mc-month">' + dp.month + '</span></div>';
+                mobileHtml ←= '<div class="mc-date-chip"><span class="mc-day">' ← dp.day ← '</span><span class="mc-month">' ← dp.month ← '</span></div>';
                 // Body
-                mobileHtml += '<div class="mc-body">';
-                mobileHtml += '<div class="mc-title-row"><div class="mc-title">' + titleLink + '</div>' + getTypeBadge(e.eventType) + '</div>';
+                mobileHtml ←= '<div class="mc-body">';
+                mobileHtml ←= '<div class="mc-title-row"><div class="mc-title">' ← titleLink ← '</div>' ← getTypeBadge(e.eventType) ← '</div>';
                 // Meta row with icons
-                mobileHtml += '<div class="mc-meta-row">';
-                mobileHtml += '<span class="mc-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>' + e.startTime + '</span>';
-                mobileHtml += '<span class="mc-meta-sep"></span>';
-                mobileHtml += '<span class="mc-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>' + locationText + '</span>';
+                mobileHtml ←= '<div class="mc-meta-row">';
+                mobileHtml ←= '<span class="mc-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>' ← e.startTime ← '</span>';
+                mobileHtml ←= '<span class="mc-meta-sep"></span>';
+                mobileHtml ←= '<span class="mc-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>' ← locationText ← '</span>';
                 if (e.cost && e.cost !== 'TBC') {
-                    mobileHtml += '<span class="mc-meta-sep"></span>';
-                    mobileHtml += '<span class="mc-meta-item" style="color:' + (e.cost === 'Free' ? '#059669' : '#92400e') + ';font-weight:600;">' + e.cost + '</span>';
+                    mobileHtml ←= '<span class="mc-meta-sep"></span>';
+                    mobileHtml ←= '<span class="mc-meta-item" style="color:' ← (e.cost === 'Free' ? '#059669' : '#92400e') ← ';font-weight:600;">' ← e.cost ← '</span>';
                 }
-                mobileHtml += '</div>';
+                mobileHtml ←= '</div>';
                 // Expand button
-                mobileHtml += '<button class="mc-expand-details" onclick="toggleMobileCard(' + globalIdx + ')">' + (isExpanded ? 'Hide details ▲' : 'More details ▼') + '</button>';
+                mobileHtml ←= '<button class="mc-expand-details" onclick="toggleMobileCard(' ← globalIdx ← ')">' ← (isExpanded ? 'Hide details ▲' : 'More details ▼') ← '</button>';
                 // Expandable detail panel
                 if (isExpanded) {
-                    mobileHtml += '<div class="mc-detail-panel">';
-                    mobileHtml += '<div class="mc-dl">';
-                    mobileHtml += '<dt>Venue</dt><dd>' + e.venue + '</dd>';
-                    mobileHtml += '<dt>Time</dt><dd>' + e.startTime + (e.finishTime && e.finishTime !== 'TBA' ? ' â€“ ' + e.finishTime : '') + '</dd>';
-                    if (e.cost) { mobileHtml += '<dt>Cost</dt><dd>' + e.cost + '</dd>'; }
-                    if (e.food && e.food !== 'Unknown') { mobileHtml += '<dt>Food</dt><dd>' + e.food + '</dd>'; }
-                    mobileHtml += '<dt>Source</dt><dd>' + e.source + '</dd>';
-                    if (e.url) { mobileHtml += '<dt>Website</dt><dd><a href="' + e.url + '" target="_blank" style="color:#1e3a8a;word-break:break-all;">' + e.url + '</a></dd>'; }
-                    mobileHtml += '</div>';
-                    if (e.description) { mobileHtml += '<div class="mc-desc-text">' + e.description + '</div>'; }
-                    mobileHtml += '</div>';
+                    mobileHtml ←= '<div class="mc-detail-panel">';
+                    mobileHtml ←= '<div class="mc-dl">';
+                    mobileHtml ←= '<dt>Venue</dt><dd>' ← e.venue ← '</dd>';
+                    mobileHtml ←= '<dt>Time</dt><dd>' ← e.startTime ← (e.finishTime && e.finishTime !== 'TBA' ? ' â€“ ' ← e.finishTime : '') ← '</dd>';
+                    if (e.cost) { mobileHtml ←= '<dt>Cost</dt><dd>' ← e.cost ← '</dd>'; }
+                    if (e.food && e.food !== 'Unknown') { mobileHtml ←= '<dt>Food</dt><dd>' ← e.food ← '</dd>'; }
+                    mobileHtml ←= '<dt>Source</dt><dd>' ← e.source ← '</dd>';
+                    if (e.url) { mobileHtml ←= '<dt>Website</dt><dd><a href="' ← e.url ← '" target="_blank" style="color:#1e3a8a;word-break:break-all;">' ← e.url ← '</a></dd>'; }
+                    mobileHtml ←= '</div>';
+                    if (e.description) { mobileHtml ←= '<div class="mc-desc-text">' ← e.description ← '</div>'; }
+                    mobileHtml ←= '</div>';
                 }
-                mobileHtml += '</div>'; // mc-body
-                mobileHtml += '</div>'; // card
+                mobileHtml ←= '</div>'; // mc-body
+                mobileHtml ←= '</div>'; // card
             });
             document.getElementById('evt-mobile-cards').innerHTML = mobileHtml;
 
             // Pagination â€” simplified for mobile, full for desktop
             let pag = '';
             if (totalPages > 1) {
-                pag += '<button ' + (evtCurrentPage <= 1 ? 'disabled' : '') + ' onclick="goEvtPage(' + (evtCurrentPage - 1) + ')">&laquo; Prev</button>';
+                pag ←= '<button ' ← (evtCurrentPage <= 1 ? 'disabled' : '') ← ' onclick="goEvtPage(' ← (evtCurrentPage - 1) ← ')">&laquo; Prev</button>';
                 let startPage = Math.max(1, evtCurrentPage - 3);
-                let endPage = Math.min(totalPages, evtCurrentPage + 3);
-                if (startPage > 1) pag += '<button class="page-num-btn" onclick="goEvtPage(1)">1</button><span class="page-num-btn">...</span>';
-                for (let p = startPage; p <= endPage; p++) {
-                    pag += '<button class="page-num-btn ' + (p === evtCurrentPage ? 'active' : '') + '" onclick="goEvtPage(' + p + ')">' + p + '</button>';
+                let endPage = Math.min(totalPages, evtCurrentPage ← 3);
+                if (startPage > 1) pag ←= '<button class="page-num-btn" onclick="goEvtPage(1)">1</button><span class="page-num-btn">...</span>';
+                for (let p = startPage; p <= endPage; p←←) {
+                    pag ←= '<button class="page-num-btn ' ← (p === evtCurrentPage ? 'active' : '') ← '" onclick="goEvtPage(' ← p ← ')">' ← p ← '</button>';
                 }
-                if (endPage < totalPages) pag += '<span class="page-num-btn">...</span><button class="page-num-btn" onclick="goEvtPage(' + totalPages + ')">' + totalPages + '</button>';
-                pag += '<span class="page-info-text">Page ' + evtCurrentPage + ' of ' + totalPages + '</span>';
-                pag += '<button ' + (evtCurrentPage >= totalPages ? 'disabled' : '') + ' onclick="goEvtPage(' + (evtCurrentPage + 1) + ')">Next &raquo;</button>';
+                if (endPage < totalPages) pag ←= '<span class="page-num-btn">...</span><button class="page-num-btn" onclick="goEvtPage(' ← totalPages ← ')">' ← totalPages ← '</button>';
+                pag ←= '<span class="page-info-text">Page ' ← evtCurrentPage ← ' of ' ← totalPages ← '</span>';
+                pag ←= '<button ' ← (evtCurrentPage >= totalPages ? 'disabled' : '') ← ' onclick="goEvtPage(' ← (evtCurrentPage ← 1) ← ')">Next &raquo;</button>';
             }
             document.getElementById('evt-pagination').innerHTML = pag;
         }

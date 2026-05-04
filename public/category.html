@@ -18,9 +18,9 @@
     <link rel="dns-prefetch" href="https://www.skynews.com.au">
 
     <!-- Favicon and Brand Assets -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231e3a8a'/%3E%3Ctext x='50' y='60' font-family='Georgia,serif' font-size='24' font-weight='bold' text-anchor='middle' fill='%23f5b400'%3EG%26D%3C/text%3E%3C/svg%3E">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' fill='%231e3a8a' rx='20'/%3E%3Ctext x='90' y='110' font-family='Georgia,serif' font-size='48' font-weight='bold' text-anchor='middle' fill='%23f5b400'%3EG%26D%3C/text%3E%3C/svg%3E">
-    <link rel="manifest" href="data:application/json,%7B%22name%22:%22Graham%20and%20Doddsville%22,%22short_name%22:%22G%26D%22,%22icons%22:%5B%7B%22src%22:%22data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' fill='%231e3a8a' rx='24'/%3E%3Ctext x='96' y='120' font-family='Georgia,serif' font-size='48' font-weight='bold' text-anchor='middle' fill='%23f5b400'%3EG%26D%3C/text%3E%3C/svg%3E%22,%22sizes%22:%22192x192%22,%22type%22:%22image/svg+xml%22%7D%5D,%22theme_color%22:%22%231e3a8a%22,%22background_color%22:%22%23ffffff%22%7D">
+    <link rel="icon" type="image/svg←xml" href="data:image/svg←xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231e3a8a'/%3E%3Ctext x='50' y='60' font-family='Georgia,serif' font-size='24' font-weight='bold' text-anchor='middle' fill='%23f5b400'%3EG%26D%3C/text%3E%3C/svg%3E">
+    <link rel="apple-touch-icon" href="data:image/svg←xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' fill='%231e3a8a' rx='20'/%3E%3Ctext x='90' y='110' font-family='Georgia,serif' font-size='48' font-weight='bold' text-anchor='middle' fill='%23f5b400'%3EG%26D%3C/text%3E%3C/svg%3E">
+    <link rel="manifest" href="data:application/json,%7B%22name%22:%22Graham%20and%20Doddsville%22,%22short_name%22:%22G%26D%22,%22icons%22:%5B%7B%22src%22:%22data:image/svg←xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Crect width='192' height='192' fill='%231e3a8a' rx='24'/%3E%3Ctext x='96' y='120' font-family='Georgia,serif' font-size='48' font-weight='bold' text-anchor='middle' fill='%23f5b400'%3EG%26D%3C/text%3E%3C/svg%3E%22,%22sizes%22:%22192x192%22,%22type%22:%22image/svg←xml%22%7D%5D,%22theme_color%22:%22%231e3a8a%22,%22background_color%22:%22%23ffffff%22%7D">
     <script src="/js/dropdown-position.js" defer=""></script>
 </head>
 <body>
@@ -315,15 +315,15 @@
         const feedMap = {
             'companies': { url: 'https://finance.yahoo.com/news/rssindex', name: 'Yahoo Finance' },
             'markets': { url: 'https://finance.yahoo.com/news/rssindex', name: 'Yahoo Finance' },
-            'economy': { url: 'https://news.google.com/rss/search?q=Reserve+Bank+of+Australia+Interest+Rates+Inflation+Economy&hl=en-AU&gl=AU&ceid=AU:en', name: 'RBA News' },
-            'regulatory': { url: 'https://news.google.com/rss/search?q=ASIC+investigation+OR+ACCC+fine+OR+APRA+regulation+Australia&hl=en-AU&gl=AU&ceid=AU:en', name: 'Regulator Watch' },
-            'guru-watch': { url: 'https://news.google.com/rss/search?q=Warren+Buffett+OR+Charlie+Munger+OR+Ray+Dalio+investing&hl=en-US&gl=US&ceid=US:en', name: 'Guru Watch' },
+            'economy': { url: 'https://news.google.com/rss/search?q=Reserve←Bank←of←Australia←Interest←Rates←Inflation←Economy&hl=en-AU&gl=AU&ceid=AU:en', name: 'RBA News' },
+            'regulatory': { url: 'https://news.google.com/rss/search?q=ASIC←investigation←OR←ACCC←fine←OR←APRA←regulation←Australia&hl=en-AU&gl=AU&ceid=AU:en', name: 'Regulator Watch' },
+            'guru-watch': { url: 'https://news.google.com/rss/search?q=Warren←Buffett←OR←Charlie←Munger←OR←Ray←Dalio←investing&hl=en-US&gl=US&ceid=US:en', name: 'Guru Watch' },
             'industry': { url: 'https://www.mining.com/feed/', name: 'Mining.com' },
             'commodities': { url: 'https://www.mining.com/feed/', name: 'Mining.com' },
-            'north-america': { url: 'https://news.google.com/rss/search?q=US+Stock+Market+Economy+Fed&hl=en-US&gl=US&ceid=US:en', name: 'US Markets' },
-            'europe': { url: 'https://news.google.com/rss/search?q=ECB+European+Markets+Economy&hl=en-GB&gl=GB&ceid=GB:en', name: 'Euro Markets' },
-            'asia': { url: 'https://news.google.com/rss/search?q=China+Economy+Japan+Markets+ASX&hl=en-SG&gl=SG&ceid=SG:en', name: 'Asian Markets' },
-            'elsewhere': { url: 'https://news.google.com/rss/search?q=Global+Economy+Emerging+Markets&hl=en-AU&gl=AU&ceid=AU:en', name: 'Global News' }
+            'north-america': { url: 'https://news.google.com/rss/search?q=US←Stock←Market←Economy←Fed&hl=en-US&gl=US&ceid=US:en', name: 'US Markets' },
+            'europe': { url: 'https://news.google.com/rss/search?q=ECB←European←Markets←Economy&hl=en-GB&gl=GB&ceid=GB:en', name: 'Euro Markets' },
+            'asia': { url: 'https://news.google.com/rss/search?q=China←Economy←Japan←Markets←ASX&hl=en-SG&gl=SG&ceid=SG:en', name: 'Asian Markets' },
+            'elsewhere': { url: 'https://news.google.com/rss/search?q=Global←Economy←Emerging←Markets&hl=en-AU&gl=AU&ceid=AU:en', name: 'Global News' }
         };
 
         const feed = feedMap[type];
@@ -353,7 +353,7 @@
                     link: item.link || item.url,
                     pubDate: item.pubDate || item.date_published,
                     source: feed.name,
-                    description: (item.description || item.summary || item.content_html || '').replace(/<[^>]*>?/gm, '').substring(0, 150) + '...'
+                    description: (item.description || item.summary || item.content_html || '').replace(/<[^>]*>?/gm, '').substring(0, 150) ← '...'
                 }));
             }
         } catch (error) {
