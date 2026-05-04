@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warren Buffett on Investment Strategies - Graham and Doddsville</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1e3a8a;
+            --primary-blue-light: #3b82f6;
+            --primary-blue-dark: #1e40af;
+            --secondary-gold: #d4af37;
+            --text-primary: #111827;
+            --text-secondary: #4b5563;
+            --bg-light: #f9fafb;
+            --border-color: #e5e7eb;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.05);
+            --radius-md: 8px;
+            --radius-lg: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--text-primary);
+            background: #ffffff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px 16px;
+        }
+
+        /* Top Header Navigation */
+        .header {
+            background: #ffffff;
+            border-bottom: 2px solid var(--secondary-gold);
+            padding: 12px 0;
+            margin-bottom: 32px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 40px;
+            width: auto;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--primary-blue-light);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+
+        .breadcrumb:hover {
+            color: var(--primary-blue);
+        }
+
+        /* Title Section */
+        .page-title-section {
+            margin-bottom: 36px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 16px;
+        }
+
+        .page-title-section h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .page-subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+        }
+
+        /* Subcategories & Lists */
+        .subcategory-section {
+            margin-bottom: 40px;
+        }
+
+        .subcategory-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-left: 4px solid var(--secondary-gold);
+            padding-left: 12px;
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .topic-card {
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .topic-card:hover {
+            transform: translateY(-2px);
+            background: #ffffff;
+            border-color: var(--primary-blue-light);
+            box-shadow: var(--shadow-md);
+            color: var(--primary-blue);
+        }
+
+        .topic-card::after {
+            content: "→";
+            font-size: 16px;
+            color: var(--primary-blue-light);
+            opacity: 0;
+            transition: transform 0.2s, opacity 0.2s;
+            transform: translateX(-4px);
+        }
+
+        .topic-card:hover::after {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 60px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 24px;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <a href="index.html" class="breadcrumb">← Back to Home</a>
+            <img src="images/G&D Logo.png" alt="Logo" class="logo-image">
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="page-title-section">
+            <h1>Warren Buffett on Investment Strategies</h1>
+            <p class="page-subtitle">A collection of essays, letters, and topics on investment strategies from Warren Buffett.</p>
+        </div>
+
+        
+        <section class="subcategory-section">
+            <h2 class="subcategory-title">Investment Basics</h2>
+            <div class="topics-grid">
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Portfolio%20allocation&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Portfolio allocation</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Stock%20market&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Stock market</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Technical%20analysis&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Technical analysis</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Share%20buybacks&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Share buybacks</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Share%20issues&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Share issues</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Stock%20splits&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Stock splits</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Book%20recommendations&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Book recommendations</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Stock%20Options&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Stock Options</span>
+                </a>
+                
+            </div>
+        </section>
+        
+        <section class="subcategory-section">
+            <h2 class="subcategory-title">Investing Strategies</h2>
+            <div class="topics-grid">
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Arbitrage&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Arbitrage</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Cigar%20butt%20investing&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Cigar butt investing</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Indexing&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Indexing</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Investment%20advice&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Investment advice</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Buying%20criteria&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Buying criteria</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Selling%20criteria&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Selling criteria</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Mergers%20and%20acquisitions&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Mergers and acquisitions</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Workouts&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Workouts</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Investment%20Strategy&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Investment Strategy</span>
+                </a>
+                
+            </div>
+        </section>
+        
+        <section class="subcategory-section">
+            <h2 class="subcategory-title">Investment Risks</h2>
+            <div class="topics-grid">
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Derivatives&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Derivatives</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Diversification&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Diversification</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Fees&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Fees</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Investment%20risk&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Investment risk</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Rumours&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Rumours</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Volatility&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Volatility</span>
+                </a>
+                
+            </div>
+        </section>
+        
+        <section class="subcategory-section">
+            <h2 class="subcategory-title">Investment Assets</h2>
+            <div class="topics-grid">
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Bonds&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Bonds</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Gold&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Gold</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Initial%20public%20offering&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Initial public offering</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Convertible%20Preferred%20Stock&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Convertible Preferred Stock</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Junk%20bonds&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Junk bonds</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Private%20equity&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Private equity</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Real%20estate&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Real estate</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+The%20Dow&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>The Dow</span>
+                </a>
+                
+            </div>
+        </section>
+        
+    </main>
+
+    <footer class="footer container">
+        <p>&copy; 2026 Graham and Doddsville. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

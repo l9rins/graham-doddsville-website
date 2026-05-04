@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warren Buffett on Corporate Governance - Graham and Doddsville</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1e3a8a;
+            --primary-blue-light: #3b82f6;
+            --primary-blue-dark: #1e40af;
+            --secondary-gold: #d4af37;
+            --text-primary: #111827;
+            --text-secondary: #4b5563;
+            --bg-light: #f9fafb;
+            --border-color: #e5e7eb;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.05);
+            --radius-md: 8px;
+            --radius-lg: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            color: var(--text-primary);
+            background: #ffffff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px 16px;
+        }
+
+        /* Top Header Navigation */
+        .header {
+            background: #ffffff;
+            border-bottom: 2px solid var(--secondary-gold);
+            padding: 12px 0;
+            margin-bottom: 32px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 40px;
+            width: auto;
+        }
+
+        .breadcrumb {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--primary-blue-light);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: color 0.2s;
+        }
+
+        .breadcrumb:hover {
+            color: var(--primary-blue);
+        }
+
+        /* Title Section */
+        .page-title-section {
+            margin-bottom: 36px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 16px;
+        }
+
+        .page-title-section h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+            letter-spacing: -0.02em;
+        }
+
+        .page-subtitle {
+            font-size: 16px;
+            color: var(--text-secondary);
+        }
+
+        /* Subcategories & Lists */
+        .subcategory-section {
+            margin-bottom: 40px;
+        }
+
+        .subcategory-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-left: 4px solid var(--secondary-gold);
+            padding-left: 12px;
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .topic-card {
+            background: var(--bg-light);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 16px;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .topic-card:hover {
+            transform: translateY(-2px);
+            background: #ffffff;
+            border-color: var(--primary-blue-light);
+            box-shadow: var(--shadow-md);
+            color: var(--primary-blue);
+        }
+
+        .topic-card::after {
+            content: "→";
+            font-size: 16px;
+            color: var(--primary-blue-light);
+            opacity: 0;
+            transition: transform 0.2s, opacity 0.2s;
+            transform: translateX(-4px);
+        }
+
+        .topic-card:hover::after {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 60px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 24px;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <a href="index.html" class="breadcrumb">← Back to Home</a>
+            <img src="images/G&D Logo.png" alt="Logo" class="logo-image">
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="page-title-section">
+            <h1>Warren Buffett on Corporate Governance</h1>
+            <p class="page-subtitle">A collection of essays, letters, and topics on corporate governance from Warren Buffett.</p>
+        </div>
+
+        
+        <section class="subcategory-section">
+            <h2 class="subcategory-title">Board of Directors</h2>
+            <div class="topics-grid">
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Directors'%20role&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Directors' role</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Directors'%20weaknesses&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Directors' weaknesses</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Director%20remuneration&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Director remuneration</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Independent%20directors&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Independent directors</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Corporate%20Governance&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Corporate Governance</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Succession&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Succession</span>
+                </a>
+                
+            </div>
+        </section>
+        
+        <section class="subcategory-section">
+            <h2 class="subcategory-title">CEO and Managers</h2>
+            <div class="topics-grid">
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+CEO%20compensation&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>CEO compensation</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+CEO%20mistakes&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>CEO mistakes</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+CEO%20weaknesses&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>CEO weaknesses</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Berkshire%20compensation&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Berkshire compensation</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Berkshire%20succession&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Berkshire succession</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Executive%20Compensation&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Executive Compensation</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Our%20Job&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Our Job</span>
+                </a>
+                
+            </div>
+        </section>
+        
+        <section class="subcategory-section">
+            <h2 class="subcategory-title">Committees</h2>
+            <div class="topics-grid">
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Audit%20Committee&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Audit Committee</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Remuneration%20Committee&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Remuneration Committee</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Auditors&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Auditors</span>
+                </a>
+                
+            </div>
+        </section>
+        
+        <section class="subcategory-section">
+            <h2 class="subcategory-title">Corporate Policies</h2>
+            <div class="topics-grid">
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Annual%20meetings&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Annual meetings</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Corporate%20charity&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Corporate charity</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Corporate%20culture&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Corporate culture</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Corporate%20responsibility&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Corporate responsibility</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Corporate%20strategy&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Corporate strategy</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Dividend%20policy&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Dividend policy</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Greenmail&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Greenmail</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Hiring%20and%20firing%20staff&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Hiring and firing staff</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Manager%20owner%20relationship&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Manager owner relationship</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Organisational%20structure&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Organisational structure</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Corporate%20Expense&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Corporate Expense</span>
+                </a>
+                
+                <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Shareholders&tag=grahamdoddsvi-22" class="topic-card" target="_blank" rel="noopener noreferrer">
+                    <span>Shareholders</span>
+                </a>
+                
+            </div>
+        </section>
+        
+    </main>
+
+    <footer class="footer container">
+        <p>&copy; 2026 Graham and Doddsville. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
