@@ -2,7 +2,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Resources - Graham and Doddsville</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=3">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <style>
         :root {
@@ -46,13 +46,14 @@
             padding: 24px;
         }
 
-                        /* Standardized Header Styles */
+        /* Header Section */
         .header {
             background: #ffffff;
             border-bottom: 2px solid #d4af37;
             padding: 12px 0;
             transition: all 0.3s ease;
             overflow: visible;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
 
         .sticky-header {
@@ -66,10 +67,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 30px;
+            overflow: visible;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
-            position: relative;
+            background: transparent;
         }
 
         .logo {
@@ -90,22 +93,21 @@
             display: flex;
             list-style: none;
             gap: 35px;
-            margin: 0;
-            padding: 0;
+            overflow: visible;
         }
 
         .nav-link {
-            color: #1f2937;
+            color: #000;
             text-decoration: none;
             font-weight: 500;
             font-size: 14px;
             letter-spacing: 0.5px;
             text-transform: uppercase;
             transition: all 0.3s ease;
+            position: relative;
         }
 
         .nav-link:hover {
-            color: #1e3a8a;
             text-decoration: underline;
         }
 
@@ -119,6 +121,10 @@
             border: none;
             cursor: pointer;
             padding: 0;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
         .hamburger-line {
@@ -131,15 +137,213 @@
             margin: 2px 0;
         }
 
-        .desktop-only { display: block; }
-        .mobile-only { display: none; }
-
-        @media (max-width: 768px) {
-            .desktop-only { display: none; }
-            .mobile-only { display: flex; }
-            .header-content { padding: 0 20px; }
+        /* Mobile Menu Toggle Animation */
+        .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
         }
 
+        .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Mobile Navigation Drawer */
+        .mobile-drawer {
+            position: fixed;
+            top: 0;
+            right: -80%;
+            width: 80%;
+            height: 100vh;
+            background: #fff;
+            z-index: 10000;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            display: block;
+        }
+
+        .mobile-drawer.open {
+            right: 0;
+        }
+
+        .drawer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 20px;
+            border-bottom: 1px solid #e0e0e0;
+            background: #1e3a8a;
+            color: white;
+        }
+
+        .drawer-logo {
+            max-height: 40px;
+            width: auto;
+            display: block;
+        }
+
+        .drawer-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .drawer-nav {
+            padding: 20px 0;
+        }
+
+        .drawer-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .drawer-menu li {
+            border-bottom: 1px solid #ffffff;
+            margin-bottom: 6px;
+            padding-left: 20px;
+        }
+
+        .drawer-link {
+            display: block;
+            padding: 6px 20px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+
+        .drawer-link:hover {
+            background: #ffffff;
+            color: #1e3a8a;
+        }
+
+        /* Mobile responsive styles */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .desktop-only {
+                display: none;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-only {
+                display: none;
+            }
+            
+            .mobile-drawer {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .wealth-creation-page-content {
+                padding: 16px;
+            }
+        }
+
+        /* Article Detail Panel */
+        .article-detail-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .article-detail-panel.active {
+            display: flex;
+        }
+
+        .article-detail-content {
+            background: white;
+            border-radius: 12px;
+            max-width: 800px;
+            max-height: 90vh;
+            width: 100%;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .article-detail-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .article-detail-title {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .article-detail-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.2s ease;
+        }
+
+        .article-detail-close:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .article-detail-body {
+            padding: 24px;
+            line-height: 1.7;
+        }
+
+        .article-detail-body h3 {
+            color: var(--primary-blue);
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+
+        .article-detail-body p {
+            margin-bottom: 16px;
+        }
+
+        .loading-spinner {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-secondary);
+        }
 
         /* Page Title Section */
         .page-title-section {
@@ -370,37 +574,127 @@
         .btn-primary { background: var(--primary-blue); color: white; padding: 8px 16px; border-radius: var(--radius-sm); text-decoration: none; font-size: 14px; font-weight: 500; transition: all 0.2s ease; }
         .btn-primary:hover { background: var(--primary-blue-dark); transform: translateY(-1px); }
     </style>
-    <link rel="stylesheet" href="css/mobile-fixes.css">
+
+    <style>
+        /* Scoped overrides for flat white design with gold header border */
+        html, body {
+            background-color: #ffffff !important;
+            background: #ffffff !important;
+        }
+
+        @media (max-width: 1024px) {
+            .container, .header, .header-content, .drawer-header, .wealth-creation-page, .wealth-creation-page-content, .article-detail-header, .financial-analysis-page, .stock-valuation-page {
+                background: #ffffff !important;
+                background-color: #ffffff !important;
+                border: 0px solid transparent !important;
+                box-shadow: none !important;
+            }
+            .header, .drawer-header {
+                border-bottom: 2px solid #d4af37 !important;
+            }
+            /* Remove jagged notebook border/shadow effect */
+            .container::before {
+                display: none !important;
+                content: none !important;
+                box-shadow: none !important;
+                filter: none !important;
+            }
+        }
+        
+        /* Apply to all viewports for specific elements */
+        .container, .header, .header-content, .drawer-header, .page-title-section, .collapsible-section, .article-detail-header {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            box-shadow: none !important;
+            border: 0px solid transparent !important;
+        }
+        
+        .header, .drawer-header {
+            border-bottom: 2px solid #d4af37 !important;
+        }
+
+        .collapsible-header, .collapsible-header:hover {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            border: 1px solid #e5e7eb !important;
+            color: #1e3a8a !important;
+            box-shadow: none !important;
+            transform: none !important;
+        }
+        
+        .collapsible-title, .collapsible-arrow, .article-detail-title, .article-detail-close {
+            color: #1e3a8a !important;
+        }
+        
+        /* Ensure the main page background is white */
+        body, .wealth-creation-page, .wealth-creation-page-content, .financial-analysis-page, .stock-valuation-page, .professional-advisers-page, .financial-products-page, .resources-page {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+        }
+        
+        /* Drawer close button visibility */
+        .drawer-close {
+            color: #1e3a8a !important;
+        }
+        .drawer-close::before {
+            color: #1e3a8a !important;
+        }
+        
+        /* Remove blue borders on links */
+        .collapsible-link:hover {
+            border-left-color: #1e3a8a !important;
+            background: #f8f9fa !important;
+        }
+        
+        /* Remove the blue glow from ALL elements */
+        * {
+            box-shadow: none !important;
+            text-shadow: none !important;
+        }
+
+        /* Hamburger menu colors */
+        .hamburger-line {
+            background-color: #1e3a8a !important;
+        }
+        
+        /* Footer disclaimer and other potential blue elements */
+        footer, .footer, .disclaimer-section {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            color: #666666 !important;
+            border-top: 1px solid #e5e7eb !important;
+        }
+    </style>
+
+
 </head>
 <body>
     <div class="wealth-creation-page">
         <!-- Header -->
-                                <header class="header sticky-header" role="banner">
+        <header class="header sticky-header" role="banner">
             <div class="header-content">
                 <div class="logo">
-                    <img src="G&D Logo.png" alt="Graham & Doddsville" class="logo-image">
+                    <img src="images/G&amp;D Logo.png" alt="Graham &amp; Doddsville" class="logo-image">
                 </div>
                 
-                <nav class="main-nav desktop-only">
-                    <ul>
+                <nav class="main-nav desktop-only">                    <ul>
                         <li><a href="index.html" class="nav-link">HOME</a></li>
-                        <li><a href="wealth-creation.html" class="nav-link">WEALTH CREATION</a></li>
-                        <li><a href="resources.html" class="nav-link">RESOURCES</a></li>
-                    </ul>
-                </nav>
+                        <li><a href="wealth-creation.html" class="nav-link">Wealth Creation</a></li>
+                        <li><a href="#" class="nav-link">ABOUT</a></li>
+                    </ul></nav>
+                
                 
                 <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                 </button>
-            </div>
-        </header>
+            </div></header>
 
         <!-- Mobile Navigation Drawer -->
         <div class="mobile-drawer" id="mobile-drawer">
         <div class="drawer-header">
-            <img src="G&amp;D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
+            <img src="images/G&amp;D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
             <button class="drawer-close" id="drawer-close" aria-label="Close menu"></button>
         </div>
         <nav class="drawer-nav">
@@ -412,7 +706,9 @@
                 <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
                 <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
                 <li><a href="investment-analysis.html" class="drawer-link">Investment Analysis</a></li>
-                <li><a href="economics.html" class="drawer-link">Economics</a></li>
+                <li><a href="financial-statement-analysis.html" class="drawer-link">Financial Statement Analysis</a></li>
+                <li><a href="stock-valuation.html" class="drawer-link">Stock Valuation</a></li>
+                <li><a href="sidebar-economics.html" class="drawer-link">Economics</a></li>
                 <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
                 <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
                 <li><a href="resources.html" class="drawer-link">Resources</a></li>
@@ -433,145 +729,131 @@
 
             <!-- Collapsible Categories -->
             <div class="collapsible-categories">
-
-                <!-- Industry Publications -->
                 <div class="collapsible-section">
-    <div class="collapsible-header" onclick="toggleCollapsible('industry-publications')">
-        <h3 class="collapsible-title">Industry Publications</h3>
-        <span class="collapsible-arrow" id="industry-publications-arrow">▼</span>
-    </div>
-    <div class="collapsible-content collapsed" id="industry-publications-content">
-        <ul class="collapsible-links">
-            <li><a href="#" class="collapsible-link" onclick="openArticle('siaa-monthly')">Siaa Monthly</a></li>
-            <li><a href="#" class="collapsible-link" onclick="openArticle('faaa-fprj')">Faaa Fprj</a></li>
-            <li><a href="#" class="collapsible-link" onclick="openArticle('cfa-faj')">Cfa Faj</a></li>
-            <li><a href="#" class="collapsible-link" onclick="openArticle('asic-infocus')">Asic Infocus</a></li>
-            <li><a href="#" class="collapsible-link" onclick="openArticle('rba-bulletin')">Rba Bulletin</a></li>
-            <li><a href="#" class="collapsible-link" onclick="openArticle('rba-somp')">Rba Somp</a></li>
-            <li><a href="#" class="collapsible-link" onclick="openArticle('rba-fsr')">Rba Fsr</a></li>
-            <li><a href="#" class="collapsible-link" onclick="openArticle('fsc-reports')">Fsc Reports</a></li>
-        </ul>
-    </div>
-</div>
-
-                <!-- Calculators -->
+                    <div class="collapsible-header" onclick="toggleCollapsible('industry-publications')">
+                        <h3 class="collapsible-title">Industry Publications</h3>
+                        <span class="collapsible-arrow" id="industry-publications-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="industry-publications-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('siaa-monthly')">SIAA Monthly</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('faaa-fin-plan-research-journal')">FAAA Fin Plan Research Journal</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('cfa-financial-analysts-journal')">CFA Financial Analysts Journal</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('asic-infocus')">ASIC InFocus</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('rba-bulletin')">RBA Bulletin</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('rba-statement-on-monetary-policy')">RBA Statement on Monetary Policy</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('rba-financial-stability-review')">RBA Financial Stability Review</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('financial-services-council-reports')">Financial Services Council reports</a></li>
+                        </ul>
+                    </div>
+                </div>
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('calculators')">
                         <h3 class="collapsible-title">Calculators</h3>
-                        <span class="collapsible-arrow" id="calculators-arrow">▼</span>
+                        <span class="collapsible-arrow" id="calculators-arrow">&#9660;</span>
                     </div>
                     <div class="collapsible-content collapsed" id="calculators-content">
-
-                        <div class="sub-category-links">
-                            <a href="#" class="sub-category-link" onclick="openArticle('money-management-calc')">Money Management</a>
-                            <a href="#" class="sub-category-link" onclick="openArticle('general-investing-calc')">General Investing</a>
-                            <a href="#" class="sub-category-link" onclick="openArticle('share-investing-calc')">Share Investing</a>
-                            <a href="#" class="sub-category-link" onclick="openArticle('superannuation-calc')">Superannuation</a>
-                            <a href="#" class="sub-category-link" onclick="openArticle('home-loans-calc')">Home Loans</a>
-                            <a href="#" class="sub-category-link" onclick="openArticle('personal-loans-calc')">Personal Loans</a>
-                        </div>
-
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('money-management')">Money management</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('general-investing-calculators')">General investing calculators</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('share-investing-calculators')">Share investing calculators</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('superannuation-calculators')">Superannuation calculators</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('home-loan-calculators')">Home loan calculators</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('personal-loan-calculators')">Personal loan calculators</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('other-useful-calculators')">Other useful calculators</a></li>
+                        </ul>
                     </div>
                 </div>
-
-                <!-- Stock Screeners -->
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('stock-screeners')">
                         <h3 class="collapsible-title">Stock Screeners</h3>
-                        <span class="collapsible-arrow" id="stock-screeners-arrow">▼</span>
+                        <span class="collapsible-arrow" id="stock-screeners-arrow">&#9660;</span>
                     </div>
                     <div class="collapsible-content collapsed" id="stock-screeners-content">
-
-                        <div class="sub-category-links">
-                            <a href="https://au.finance.yahoo.com/research-hub/screener/" class="sub-category-link" target="_blank">Yahoo Finance</a>
-                            <a href="https://au.investing.com/stock-screener" class="sub-category-link" target="_blank">Investing.com</a>
-                            <a href="https://www.barchart.com/au/stocks/stocks-screener?viewName=filter_view&amp;popularScreener=33156" class="sub-category-link" target="_blank">Bar Chart</a>
-                            <a href="https://finance.yahoo.com/" class="sub-category-link" target="_blank">Wallmine</a>
-                            <a href="https://www.ig.com/au" class="sub-category-link" target="_blank">IG</a>
-                            <a href="https://www.marketindex.com.au/scans" class="sub-category-link" target="_blank">Market Index</a>
-                        </div>
-
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('yahoo-finance')">Yahoo Finance</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('investing-com')">Investing.com</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('market-index')">Market Index</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('tradingview')">TradingView</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('moomoo')">Moomoo</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('barchart')">Barchart</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('finviz')">Finviz</a></li>
+                        </ul>
                     </div>
                 </div>
-
-                <!-- Portfolio Creators -->
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('portfolio-creators')">
                         <h3 class="collapsible-title">Portfolio Creators</h3>
-                        <span class="collapsible-arrow" id="portfolio-creators-arrow">▼</span>
+                        <span class="collapsible-arrow" id="portfolio-creators-arrow">&#9660;</span>
                     </div>
                     <div class="collapsible-content collapsed" id="portfolio-creators-content">
-
-                        <div class="sub-category-links">
-                            <a href="https://www.blackrock.com/au/financial-professionals/solutions/tools/etf-porfolio-builder-tool#/" class="sub-category-link" target="_blank">BlackRock Portfolio Builder</a>
-                            <a href="https://www.sharesight.com/au/" class="sub-category-link" target="_blank">Sharesight (registration required)</a>
-                            <a href="https://www.vanguard.com.au/adviser/tools/portfolio-builder" class="sub-category-link" target="_blank">Vanguard (registration required)</a>
-                        </div>
-
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('yahoo-finance')">Yahoo Finance</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('google-finance')">Google Finance</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('simply-wall-st')">Simply Wall St</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('tradingview')">TradingView</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('sharesight')">Sharesight</a></li>
+                        </ul>
                     </div>
                 </div>
-
-                <!-- Stock Forums -->
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('stock-forums')">
                         <h3 class="collapsible-title">Stock Forums</h3>
-                        <span class="collapsible-arrow" id="stock-forums-arrow">▼</span>
+                        <span class="collapsible-arrow" id="stock-forums-arrow">&#9660;</span>
                     </div>
                     <div class="collapsible-content collapsed" id="stock-forums-content">
-
-                        <div class="sub-category-links">
-                            <a href="https://hotcopper.com.au/" class="sub-category-link" target="_blank">HotCopper</a>
-                            <a href="https://www.aussiestockforums.com/" class="sub-category-link" target="_blank">Aussie Stock Forums</a>
-                            <a href="https://thestockexchange.com.au/" class="sub-category-link" target="_blank">The Stock Exchange</a>
-                            <a href="https://forums.whirlpool.net.au/" class="sub-category-link" target="_blank">Whirlpool Forums</a>
-                            <a href="https://www.propertychat.com.au/community/" class="sub-category-link" target="_blank">PropertyChat</a>
-                            <a href="https://www.reddit.com/r/ausstocks/?rdt=33213" class="sub-category-link" target="_blank">Reddit</a>
-                        </div>
-
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('hotcopper')">HotCopper</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('aussie-stock-forums')">Aussie Stock Forums</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('the-stock-exchange')">The Stock Exchange</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('whirlpool-forums-12-5-5-r-asx-bets')">Whirlpool Forums 12.5.5 : r ASX_Bets</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('reddit-r-ausfinance')">Reddit: r AusFinance</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('reddit-r-asx')">Reddit: r ASX</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('reddit-r-fiaustralia')">Reddit: r FIAustralia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('reddit-r-ausinvesting')">Reddit: r AusInvesting</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('reddit-r-ausstocks')">Reddit: r AusStocks</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('propertychat')">PropertyChat</a></li>
+                        </ul>
                     </div>
                 </div>
-
-                <!-- Glossary -->
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('glossary')">
                         <h3 class="collapsible-title">Glossary</h3>
-                        <span class="collapsible-arrow" id="glossary-arrow">▼</span>
+                        <span class="collapsible-arrow" id="glossary-arrow">&#9660;</span>
                     </div>
                     <div class="collapsible-content collapsed" id="glossary-content">
-
-                        <div class="sub-category-links">
-                            <a href="#" class="sub-category-link" onclick="openArticle('glossary-a-e')">Glossary - A to E</a>
-                            <a href="#" class="sub-category-link" onclick="openArticle('glossary-f-j')">Glossary - F to J</a>
-                            <a href="#" class="sub-category-link" onclick="openArticle('glossary-k-o')">Glossary - K to O</a>
-                            <a href="#" class="sub-category-link" onclick="openArticle('glossary-p-t')">Glossary - P to T</a>
-                            <a href="#" class="sub-category-link" onclick="openArticle('glossary-u-z')">Glossary - U to Z</a>
-                        </div>
-
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('glossary-a-to-b')">Glossary – A to B</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('glossary-c')">Glossary – C</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('glossary-d-to-e')">Glossary – D to E</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('glossary-f-to-h')">Glossary – F to H</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('glossary-i-to-l')">Glossary – I to L</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('glossary-m-to-o')">Glossary – M to O</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('glossary-p-to-r')">Glossary – P to R</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('glossary-s-to-t')">Glossary – S to T</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('glossary-u-to-z')">Glossary – U to Z</a></li>
+                        </ul>
                     </div>
                 </div>
-
-                <!-- Useful Links -->
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('useful-links')">
                         <h3 class="collapsible-title">Useful Links</h3>
-                        <span class="collapsible-arrow" id="useful-links-arrow">▼</span>
+                        <span class="collapsible-arrow" id="useful-links-arrow">&#9660;</span>
                     </div>
                     <div class="collapsible-content collapsed" id="useful-links-content">
-
-                        <div class="sub-category-links">
-                            <a href="#" class="sub-category-link" onclick="openArticle('buffett-munger')">Buffett &amp; Munger</a>
-                            <a href="#" class="sub-category-link" onclick="openArticle('value-investing-links')">Value Investing</a>
-                            <a href="#" class="sub-category-link" onclick="openArticle('general-investing-links')">General Investing</a>
-                            <a href="#" class="sub-category-link" onclick="openArticle('regulatory-bodies')">Regulatory Bodies</a>
-                            <a href="#" class="sub-category-link" onclick="openArticle('legal-accounting')">Legal &amp; Accounting</a>
-                            <a href="#" class="sub-category-link" onclick="openArticle('financial-institutions')">Financial Institutions</a>
-                            <a href="#" class="sub-category-link" onclick="openArticle('overseas-bodies')">Overseas Bodies</a>
-                            <a href="#" class="sub-category-link" onclick="openArticle('miscellaneous-links')">Miscellaneous</a>
-                        </div>
-
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('buffett-munger-berkshire')">Buffett, Munger & Berkshire</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('value-investing')">Value investing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('share-investing')">Share investing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('general-investing')">General investing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('regulatory-bodies')">Regulatory bodies</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('legal-and-accounting')">Legal and accounting</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('financial-institutions')">Financial institutions</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('overseas-bodies')">Overseas bodies</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('miscellaneous')">Miscellaneous</a></li>
+                        </ul>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -588,83 +870,174 @@
             </div>
         </div>
     </div>
-
+    
+    <script src="js/article-image-resolver.js?v=3"></script>
+    
+    <script src="js/article-image-resolver.js?v=3"></script>
+    
+    <script src="js/article-image-resolver.js?v=3"></script>
     <script>
         // Collapsible functionality
         function toggleCollapsible(sectionId) {
-            const content = document.getElementById(`${sectionId}-content`);
-            const arrow = document.getElementById(`${sectionId}-arrow`);
+            const content = document.getElementById(sectionId + '-content');
+            const arrow = document.getElementById(sectionId + '-arrow');
+            if (!content) return;
+            
+            const section = content.closest('.collapsible-section');
+            const isCurrentlyOpen = content.classList.contains('expanded');
+            
+            // Close all other open sections
+            document.querySelectorAll('.collapsible-content').forEach(c => {
+                if (c.id !== sectionId + '-content' && (c.classList.contains('expanded') || c.style.maxHeight)) {
+                    c.style.maxHeight = null;
+                    c.classList.remove('expanded');
+                    c.classList.add('collapsed');
+                    const s = c.closest('.collapsible-section');
+                    if (s) s.classList.remove('active');
+                    const a = document.getElementById(c.id.replace('-content', '-arrow'));
+                    if (a) a.innerHTML = '▼';
+                }
+            });
 
-            if (content.style.maxHeight) {
+            if (!isCurrentlyOpen) {
+                // OPENING
+                // First, remove collapsed and add expanded to ensure it's visible for scrollHeight calculation
+                content.classList.add('expanded');
+                content.classList.remove('collapsed');
+                
+                if(sectionId === 'events-seminars') {
+                    content.style.maxHeight = 'none';
+                } else {
+                    // Now measure scrollHeight
+                    const height = content.scrollHeight;
+                    content.style.maxHeight = height + "px";
+                }
+                
+                if (section) section.classList.add('active');
+                if (arrow) arrow.innerHTML = '▲';
+            } else {
+                // CLOSING
                 content.style.maxHeight = null;
                 content.classList.remove('expanded');
-                arrow.innerHTML = '▼';
-            } else {
-                // Close all other open sections
-                document.querySelectorAll('.collapsible-content.expanded').forEach(openContent => {
-                    openContent.style.maxHeight = null;
-                    openContent.classList.remove('expanded');
-                    const openArrowId = openContent.id.replace('-content', '-arrow');
-                    document.getElementById(openArrowId).innerHTML = '▼';
-                });
-
-                content.style.maxHeight = content.scrollHeight + "px";
-                content.classList.add('expanded');
-                arrow.innerHTML = '▲';
+                content.classList.add('collapsed');
+                if (section) section.classList.remove('active');
+                if (arrow) arrow.innerHTML = '▼';
             }
         }
 
         // Mobile drawer functionality
-        const mobileToggle = document.getElementById('mobile-toggle');
-        const mobileDrawer = document.getElementById('mobile-drawer');
-        const drawerClose = document.getElementById('drawer-close');
-        
-        if (mobileToggle && mobileDrawer) {
-            mobileToggle.addEventListener('click', () => {
-                console.log('Hamburger menu clicked!');
-                mobileDrawer.classList.add('open');
-                document.body.style.overflow = 'hidden';
-                console.log('Drawer should be open now');
-            });
-        }
-        
-        if (drawerClose && mobileDrawer) {
-            drawerClose.addEventListener('click', () => {
-                mobileDrawer.classList.remove('open');
-                document.body.style.overflow = '';
-            });
-        }
-        
-        // Close drawer when clicking outside
-        if (mobileDrawer) {
-            mobileDrawer.addEventListener('click', (e) => {
-                if (e.target === mobileDrawer) {
+        function toggleMobileMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                if (mobileDrawer.classList.contains('open')) {
                     mobileDrawer.classList.remove('open');
                     document.body.style.overflow = '';
+                } else {
+                    mobileDrawer.classList.add('open');
+                    document.body.style.overflow = 'hidden';
                 }
-            });
+            }
         }
 
-        // Article content data
+        function closeMobileMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Article loading functionality
+        function loadArticle(articleId) {
+            const panel = document.getElementById('article-detail-panel');
+            const title = document.getElementById('article-detail-title');
+            const body = document.getElementById('article-detail-body');
+            
+            if (!panel || !title || !body) return;
+
+            if (typeof articleContent !== 'undefined' && articleContent[articleId]) {
+                const article = articleContent[articleId];
+                title.textContent = article.title;
+                
+                let imageHtml = '';
+                if (typeof window.buildArticleImageHtml === 'function') {
+                    imageHtml = window.buildArticleImageHtml(articleId, article);
+                }
+                
+                body.innerHTML = imageHtml + article.content;
+                panel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                const contentContainer = panel.querySelector('.article-detail-content');
+                if (contentContainer) contentContainer.scrollTop = 0;
+            }
+        }
+
+        function closeArticlePanel() {
+            const panel = document.getElementById('article-detail-panel');
+            if (panel) {
+                panel.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            const drawerClose = document.getElementById('drawer-close');
+            
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    toggleMobileMenu();
+                });
+            }
+            
+            if (drawerClose) {
+                drawerClose.addEventListener('click', closeMobileMenu);
+            }
+            
+            if (mobileDrawer) {
+                mobileDrawer.addEventListener('click', (e) => {
+                    if (e.target === mobileDrawer) closeMobileMenu();
+                });
+            }
+
+            const articlePanel = document.getElementById('article-detail-panel');
+            if (articlePanel) {
+                articlePanel.addEventListener('click', (e) => {
+                    if (e.target === articlePanel) closeArticlePanel();
+                });
+            }
+            
+            const closeBtn = document.getElementById('article-detail-close');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeArticlePanel);
+            }
+        });
+
+        // Data from file
         const articleContent = {
             'siaa-monthly': {
                 title: 'SIAA Monthly',
                 content: `
-                    <p>The SIAA Monthly is a publication by the Stockbrokers and Investment Advisers Association (SIAA) in Australia. It provides insights, analysis, and updates related to the stockbroking and investment advisory industry. Below are the links to the most recent editions:</p>
+                    
+<p>The SIAA Monthly is a publication by the Stockbrokers and Investment Advisers Association (SIAA) in Australia. It provides insights, analysis, and updates related to the stockbroking and investment advisory industry. Below are the links to the most recent editions:</p>
                     
                     <h3>2024</h3>
                     <ul>
-                        <li>SIAA Monthly – April 2024</li>
+                        <li>SIAA Monthly â€“ April 2024</li>
                         <li>Elizabeth Broderick AO on how to progress gender balance in stockbroking and investment advice</li>
                         <li>Carbon markets and the state of play</li>
                         <li>The suspenseful truth of the overused Suspense account</li>
                         <li>Alternative investments and private markets: Scaling up portfolio diversification for wholesale clients</li>
-                        <li>SIAA Monthly – March 2024</li>
+                        <li>SIAA Monthly â€“ March 2024</li>
                         <li>Navigating the challenges of global markets moving to T +1: How a strategic approach can help market participants</li>
                         <li>Harnessing opportunities in high-quality fixed income through a low cost vehicle</li>
                         <li>The good, the bad and the ugly this Reporting Season</li>
                         <li>Internationalisation of market businesses in Australia</li>
-                        <li>SIAA Monthly – February 2024</li>
+                        <li>SIAA Monthly â€“ February 2024</li>
                         <li>Treasury proposes a new Financial Product called a Digital Asset Facility'</li>
                         <li>Using options to 'Repair a stock position'</li>
                         <li>HNW investors embracing endowment-aligned strategies</li>
@@ -673,13 +1046,13 @@
                     
                     <h3>2023</h3>
                     <ul>
-                        <li>SIAA Monthly – December 2023</li>
+                        <li>SIAA Monthly â€“ December 2023</li>
                         <li>Diversifiers to build a smarter portfolio in a less predictable world</li>
                         <li>Navigating the new digital battlefield: AI threats vs client call-backs</li>
                         <li>ASX unveils proposals for cash equities market in Service Release 15</li>
                         <li>The true cost of a security breach</li>
-                        <li>SIAA Monthly – November 2023</li>
-                        <li>SIAA Monthly – October 2023</li>
+                        <li>SIAA Monthly â€“ November 2023</li>
+                        <li>SIAA Monthly â€“ October 2023</li>
                         <li>How do you solve a problem like CHESS?</li>
                         <li>Navigating the challenges of deregistered companies</li>
                         <li>Short-term weakness in commodity prices creates opportunity</li>
@@ -687,31 +1060,31 @@
                         <li>Adopting AI into your practice today</li>
                         <li>Rekindling the interest in bonds amid peaking rates</li>
                         <li>NETS upgrade implementation</li>
-                        <li>SIAA Monthly – September 2023</li>
+                        <li>SIAA Monthly â€“ September 2023</li>
                         <li>The Client File</li>
                         <li>A comprehensive guide to identity management in the Australian financial industry</li>
                         <li>Options can give you options</li>
                         <li>Artificial Intelligence has become a global sensation, capturing the imagination of people worldwide</li>
-                        <li>SIAA Monthly – August 2023</li>
+                        <li>SIAA Monthly â€“ August 2023</li>
                         <li>2H23 outlook: Transitions take time and require patience</li>
                         <li>Above and beyond: how client experience is key to building women's wealth</li>
                         <li>What are thematic ETFs and how do they work?</li>
                         <li>Global emerging markets year in review 2022-2023</li>
-                        <li>SIAA Monthly – July 2023</li>
-                        <li>A new framework for understanding the sustainability of business models – Part 2</li>
+                        <li>SIAA Monthly â€“ July 2023</li>
+                        <li>A new framework for understanding the sustainability of business models â€“ Part 2</li>
                         <li>How Aussie ETF disclosure works</li>
                         <li>From remediation to rigorous due diligence: Transforming AFSL practices for financial success</li>
-                        <li>Competitive advantage through digital empowerment: Part 2 – Wealth Management</li>
-                        <li>SIAA Monthly – June 2023</li>
-                        <li>Competitive advantage through digital empowerment: Part 1 – Market Access</li>
-                        <li>Pace of intergenerational wealth transfer has quickened: Most Baby Boomers will retire by 2028 – and the industry needs to be ready</li>
+                        <li>Competitive advantage through digital empowerment: Part 2 â€“ Wealth Management</li>
+                        <li>SIAA Monthly â€“ June 2023</li>
+                        <li>Competitive advantage through digital empowerment: Part 1 â€“ Market Access</li>
+                        <li>Pace of intergenerational wealth transfer has quickened: Most Baby Boomers will retire by 2028 â€“ and the industry needs to be ready</li>
                         <li>Seeking opportunities through call options in active ETFs</li>
-                        <li>SIAA Monthly – May 2023</li>
+                        <li>SIAA Monthly â€“ May 2023</li>
                         <li>The sprint to catch up: why Australia needs to move fast to regain its place in financial market innovation</li>
                         <li>Commercial real estate credit: an overlooked investment solution?</li>
                         <li>RegTech 3.0: The Future of Compliance technology in capital markets</li>
                         <li>Open letter to the SIAA Community from Cboe</li>
-                        <li>SIAA Monthly – April 2023</li>
+                        <li>SIAA Monthly â€“ April 2023</li>
                         <li>Developing advice tailored for women: why the time is now</li>
                         <li>A new framework for understanding the sustainability of business models [PART 1]</li>
                         <li>Working with the machine</li>
@@ -719,30 +1092,30 @@
                     
                     <h3>2022</h3>
                     <ul>
-                        <li>SIAA Monthly – December 2022</li>
+                        <li>SIAA Monthly â€“ December 2022</li>
                         <li>Five consumer trends impacting advice and your selection of technology</li>
                         <li>Improving returns through smarter trading</li>
                         <li>ASX investment product trends</li>
                         <li>Are you tired of instability in the markets? Corporate bonds can help hedge against the next crash.</li>
-                        <li>SIAA Monthly – November 2022</li>
+                        <li>SIAA Monthly â€“ November 2022</li>
                         <li>From the roaring 1920s to 2022</li>
                         <li>Does Australia need nuclear energy to reach net-zero by 2050?</li>
-                        <li>THE ESSENTIAL EIGHT – strategies to improve your cyber security</li>
+                        <li>THE ESSENTIAL EIGHT â€“ strategies to improve your cyber security</li>
                         <li>Bridging the digital gap in the Australian wealth management industry</li>
-                        <li>SIAA Monthly – October 2022</li>
+                        <li>SIAA Monthly â€“ October 2022</li>
                         <li>Inside insider trading</li>
                         <li>Overseas listed infrastructure investment opportunities</li>
-                        <li>Tech migration – Defining markets to benefit all participants</li>
-                        <li>SIAA Monthly – September 2022</li>
+                        <li>Tech migration â€“ Defining markets to benefit all participants</li>
+                        <li>SIAA Monthly â€“ September 2022</li>
                         <li>Energising long-term returns</li>
                         <li>Managing cyber risk in your supply chain</li>
                         <li>Succession: Risk or opportunity?</li>
-                        <li>SIAA Monthly – August 2022</li>
+                        <li>SIAA Monthly â€“ August 2022</li>
                         <li>Going for broke: Reimagining the retail brokerage model in the age of digital disruption</li>
-                        <li>Listed investment companies – Celebrating the past and looking to the future</li>
+                        <li>Listed investment companies â€“ Celebrating the past and looking to the future</li>
                         <li>How to get the indexing edge for your clients</li>
                         <li>The inexorable shift from public to private: Capital and Debt</li>
-                        <li>SIAA Monthly – July 2022</li>
+                        <li>SIAA Monthly â€“ July 2022</li>
                         <li>Impact investing</li>
                         <li>The case for Australian equities</li>
                         <li>ESG and sustainable investing: Navigating adverse weather systems</li>
@@ -751,30 +1124,30 @@
                     
                     <h3>2021</h3>
                     <ul>
-                        <li>SIAA Monthly – December 2021</li>
+                        <li>SIAA Monthly â€“ December 2021</li>
                         <li>The new nominal</li>
                         <li>How can renewable energy help address the global food problem?</li>
                         <li>Why investors should treat exotic ETFs with caution</li>
                         <li>An exchange of ideas: making investment style products mainstream</li>
-                        <li>SIAA Monthly – November 2021</li>
+                        <li>SIAA Monthly â€“ November 2021</li>
                         <li>Gold in the decade ahead</li>
                         <li>ESG: Driving change and generating alpha</li>
                         <li>An update on LICs and LITs</li>
-                        <li>Derivatives accreditation – increasing your worth as an adviser</li>
+                        <li>Derivatives accreditation â€“ increasing your worth as an adviser</li>
                         <li>Low volatility income the key in a rebounding market</li>
                         <li>Consulting on renewal of product intervention orders for retail OTC derivatives</li>
-                        <li>SIAA Monthly – October 2021</li>
+                        <li>SIAA Monthly â€“ October 2021</li>
                         <li>An introduction to ESG investing</li>
                         <li>Building a sustainable portfolio</li>
                         <li>How investors are using ETFs for global exposure</li>
                         <li>Social media led pump and dump stocks</li>
-                        <li>SIAA Monthly – September 2021</li>
+                        <li>SIAA Monthly â€“ September 2021</li>
                         <li>Summary of independent review of November's ASX Trade outrage</li>
                         <li>ETF opportunities for advisers, stockbrokers</li>
                         <li>Managing the Professional Year</li>
                         <li>Finding value in all corners of the market</li>
                         <li>Establishing sustainable finance: Comparing emerging markets and Australia</li>
-                        <li>SIAA Monthly – August 2021</li>
+                        <li>SIAA Monthly â€“ August 2021</li>
                         <li>Why we believe value stocks are poised to outperform growth</li>
                         <li>Get ready: Managed portfolio customisation technology is coming</li>
                         <li>Farming, Food and Fertiliser: Sulphate of Potash bringing a revolution in all three</li>
@@ -785,7 +1158,8 @@
             'money-management-calc': {
                 title: 'Money Management Calculator',
                 content: `
-                    <p>Essential tool for calculating various money management scenarios and financial planning metrics.</p>
+                    
+<p>Essential tool for calculating various money management scenarios and financial planning metrics.</p>
                     
                     <h3>Key Functions</h3>
                     <p>Calculate savings goals, budget analysis, debt payoff schedules, and cash flow projections for better financial management.</p>
@@ -799,15 +1173,21 @@
             },
             'general-investing-calc': {
                 title: 'General Investing Calculator',
-                content: `<p>Interactive calculators for general investing projections and compound returns.</p>`
+                content: `
+                    
+<p>Interactive calculators for general investing projections and compound returns.</p>`
             },
             'share-investing-calc': {
                 title: 'Share Investing Calculator',
-                content: `<p>Valuation tools and calculators for share investing analysis.</p>`
+                content: `
+                    
+<p>Valuation tools and calculators for share investing analysis.</p>`
             },
             'superannuation-calc': {
                 title: 'Superannuation Calculator',
-                content: `<p>Project your superannuation balance and retirement income.</p>`
+                content: `
+                    
+<p>Project your superannuation balance and retirement income.</p>`
             },
             'home-loans-calc': {
                 title: 'Home Loans Calculator',
@@ -995,7 +1375,8 @@
             'buffett-munger': {
                 title: 'Buffett, Munger & Berkshire Hathaway',
                 content: `
-                    <p><strong>WEB SITE:</strong></p>
+                    
+<p><strong>WEB SITE:</strong></p>
                     <p><strong>DESCRIPTION</strong></p>
                     <p><a href="https://www.berkshirehathaway.com" target="_blank">www.berkshirehathaway.com</a> - Official website of Berkshire Hathaway</p>
                     <p><a href="https://en.wikipedia.org/wiki/Warren_Buffett" target="_blank">https://en.wikipedia.org/wiki/Warren_Buffett</a> - Wikipedia on Warren Buffett</p>
@@ -1012,13 +1393,13 @@
                     <p>FAAA Financial Planning Research Journal</p>
                     <p>The Financial Planning Research Journal (FPRJ) is a significant publication in the field of financial planning in Australia. It was collaboratively launched by the Financial Advice Association Australia (FAAA) and Griffith Business School, and holds the distinction of being Australia's first academic journal dedicated to financial planning.</p>
                     
-                    <h3>Financial Planning Research Journal, Volume 9, Issue 1 – 2023</h3>
+                    <h3>Financial Planning Research Journal, Volume 9, Issue 1 â€“ 2023</h3>
                     <ul>
                         <li>Canadian retirement planning behaviour: How reliance on a government pension relates to pre-retirement savings and planning behaviours.</li>
                         <li>Spend and repeat! Young adult's experiences with buy now pay later services.</li>
                     </ul>
                     
-                    <h3>Financial Planning Research Journal, Volume 8, Issue 1 – 2022</h3>
+                    <h3>Financial Planning Research Journal, Volume 8, Issue 1 â€“ 2022</h3>
                     <ul>
                         <li>Can personal budget management services improve debt repayments? A study using budget data</li>
                         <li>Retirees, financial planning horizon, and retirement satisfaction</li>
@@ -1061,10 +1442,10 @@
                         <li>Overconfidence in Financial Literacy: Implications for Planners</li>
                         <li>Customer intention to save for retirement using a professional financial services planner</li>
                         <li>Consumers of financial advice in New Zealand</li>
-                        <li>Equity holdings of Australian Baby Boomers – Comparing life cycle phases</li>
+                        <li>Equity holdings of Australian Baby Boomers â€“ Comparing life cycle phases</li>
                     </ul>
                     
-                    <h3>Financial Planning Research Journal, Volume 2, Issue 1 – 2016</h3>
+                    <h3>Financial Planning Research Journal, Volume 2, Issue 1 â€“ 2016</h3>
                     <ul>
                         <li>Characteristics of trust in personal financial planning</li>
                         <li>Can stakeholders be satisfied with accountants' education to act as advisors to self-managed superannuation funds?</li>
@@ -1096,7 +1477,7 @@
                     <h3>Financial Analysts Journal, Second Quarter, 2024, Volume 80 Issue 2</h3>
                     <ul>
                         <li>Fundamental Analysis via Machine Learning (21 March 2024)</li>
-                        <li>Empirical Evidence on the Stock–Bond Correlation (21 March 2024)</li>
+                        <li>Empirical Evidence on the Stockâ€“Bond Correlation (21 March 2024)</li>
                         <li>Smart Rebalancing (15 March 2024)</li>
                         <li>Private Equity Performance around the World (1 February 2024)</li>
                     </ul>
@@ -1119,7 +1500,7 @@
                         <li>Direct Lending Returns (10 October 2023)</li>
                         <li>Thematic Investing with Big Data: The Case of Private Equity (26 September 2023)</li>
                         <li>Harry Markowitz in Memoriam (13 September 2023)</li>
-                        <li>Applying ABOUT—Not Gut Feel—to ESG (12 September 2023)</li>
+                        <li>Applying ABOUTâ€”Not Gut Feelâ€”to ESG (12 September 2023)</li>
                         <li>Green Parity and the Decarbonization of Corporate Bond Portfolios (12 September 2023)</li>
                         <li>Swing Pricing Calibration: Using ETFs to Infer Swing Factors for Mutual Funds</li>
                         <li>Intermediaries' Incentives across Share Classes in the Same Fund</li>
@@ -1160,7 +1541,8 @@
             'asic-infocus': {
                 title: 'ASIC InFocus',
                 content: `
-                    <p></p>
+                    
+<p></p>
                     <p>ASIC InFocus</p>
                     <p>ASIC InFocus is a quarterly publication by the Australian Securities and Investments Commission (ASIC) that provides insights into ASIC's work, regulatory developments, and market trends. It covers a wide range of topics including financial services regulation, consumer protection, market integrity, and ASIC's enforcement activities. The publication is designed to inform industry participants, financial advisers, and the public about ASIC's priorities and initiatives.</p>
                     
@@ -1984,7 +2366,8 @@
             'rba-bulletin': {
                 title: 'RBA Bulletin',
                 content: `
-                    <p>Reserve Bank of Australia (RBA) Bulletin providing economic analysis and monetary policy insights.</p>
+                    
+<p>Reserve Bank of Australia (RBA) Bulletin providing economic analysis and monetary policy insights.</p>
                     
                     <h3>Key Features</h3>
                     <p>Economic indicators, monetary policy analysis, financial stability reports, and market commentary.</p>
@@ -2044,7 +2427,8 @@
             'general-investing-calc': {
                 title: 'General Investing Calculator',
                 content: `
-                    <p>Comprehensive calculator for various general investment scenarios and return calculations.</p>
+                    
+<p>Comprehensive calculator for various general investment scenarios and return calculations.</p>
                     
                     <h3>Key Functions</h3>
                     <p>Calculate investment returns, compound growth, inflation-adjusted returns, and investment timelines.</p>
@@ -2059,7 +2443,8 @@
             'share-investing-calc': {
                 title: 'Share Investing Calculator',
                 content: `
-                    <p>Specialized calculator for share investment analysis and portfolio planning.</p>
+                    
+<p>Specialized calculator for share investment analysis and portfolio planning.</p>
                     
                     <h3>Key Functions</h3>
                     <p>Calculate dividend yields, capital gains, portfolio diversification, and risk-adjusted returns.</p>
@@ -2074,7 +2459,8 @@
             'superannuation-calc': {
                 title: 'Superannuation Calculator',
                 content: `
-                    <p>Dedicated calculator for Australian superannuation planning and retirement calculations.</p>
+                    
+<p>Dedicated calculator for Australian superannuation planning and retirement calculations.</p>
                     
                     <h3>Key Functions</h3>
                     <p>Calculate superannuation balances, retirement projections, and required contribution levels.</p>
@@ -2149,7 +2535,8 @@
             'finviz': {
                 title: 'Finviz',
                 content: `
-                    <p>Popular financial visualization platform with screening and charting tools.</p>
+                    
+<p>Popular financial visualization platform with screening and charting tools.</p>
                     
                     <h3>Key Features</h3>
                     <p>Stock screener, charts, news, and fundamental data visualization.</p>
@@ -2239,7 +2626,8 @@
             'google-finance': {
                 title: 'Google Finance',
                 content: `
-                    <p>Google's financial data platform with market information and portfolio tools.</p>
+                    
+<p>Google's financial data platform with market information and portfolio tools.</p>
                     
                     <h3>Key Features</h3>
                     <p>Stock quotes, market data, portfolio tracking, and financial news.</p>
@@ -2461,7 +2849,8 @@
             'glossary-p-t': {
                 title: 'Glossary - P to T',
                 content: `
-                    <p><strong>GLOSSARY OF INVESTMENT TERMS</strong></p>
+                    
+<p><strong>GLOSSARY OF INVESTMENT TERMS</strong></p>
                     
                     <h3>P</h3>
                     <p><strong>Passive Income:</strong> Earnings generated from investments, rental properties, or other sources that require minimal ongoing effort.</p>
@@ -2680,7 +3069,8 @@
             'value-investing-links': {
                 title: 'Value Investing Links',
                 content: `
-                    <p><a href="https://www.valueinvestingworld.com/benjamin-graham-lectures/" target="_blank">Benjamin Graham Lectures</a> - Classic lectures by the father of value investing.</p>
+                    
+<p><a href="https://www.valueinvestingworld.com/benjamin-graham-lectures/" target="_blank">Benjamin Graham Lectures</a> - Classic lectures by the father of value investing.</p>
                     
                     <p><a href="https://www.tweedy.com/" target="_blank">Tweedy Browne</a> - Long-term value investment firm founded by descendants of Benjamin Graham.</p>
                     
@@ -2698,7 +3088,8 @@
             'general-investing-links': {
                 title: 'General Investing Links',
                 content: `
-                    <p><a href="https://www.fool.com/" target="_blank">The Motley Fool</a> - Investment advice, stock analysis, and educational content for individual investors.</p>
+                    
+<p><a href="https://www.fool.com/" target="_blank">The Motley Fool</a> - Investment advice, stock analysis, and educational content for individual investors.</p>
                     
                     <p><a href="https://investor.vanguard.com/investor--education" target="_blank">Vanguard</a> - Educational  on investing, retirement planning, and low-cost index funds.</p>
                     
@@ -2716,7 +3107,8 @@
             'regulatory-bodies': {
                 title: 'Regulatory Bodies',
                 content: `
-                    <p><a href="https://asic.gov.au/" target="_blank">ASIC</a> - Australian Securities and Investments Commission - regulates financial markets and consumer protection.</p>
+                    
+<p><a href="https://asic.gov.au/" target="_blank">ASIC</a> - Australian Securities and Investments Commission - regulates financial markets and consumer protection.</p>
                     
                     <p><a href="https://www.apra.gov.au/" target="_blank">APRA</a> - Australian Prudential Regulation Authority - oversees banks, insurance, and superannuation.</p>
                     
@@ -2752,7 +3144,8 @@
             'financial-institutions': {
                 title: 'Financial Institutions',
                 content: `
-                    <p><a href="https://www.commbank.com.au/" target="_blank">Commonwealth Bank</a> - Major Australian bank providing retail and business banking services.</p>
+                    
+<p><a href="https://www.commbank.com.au/" target="_blank">Commonwealth Bank</a> - Major Australian bank providing retail and business banking services.</p>
                     
                     <p><a href="https://www.westpac.com.au/" target="_blank">Westpac</a> - Australian banking and financial services group.</p>
                     
@@ -2776,7 +3169,8 @@
             'overseas-bodies': {
                 title: 'Overseas Bodies',
                 content: `
-                    <p><a href="https://www.imf.org/" target="_blank">IMF</a> - International Monetary Fund - promotes global monetary cooperation and financial stability.</p>
+                    
+<p><a href="https://www.imf.org/" target="_blank">IMF</a> - International Monetary Fund - promotes global monetary cooperation and financial stability.</p>
                     
                     <p><a href="https://www.worldbank.org/" target="_blank">World Bank</a> - International financial institution providing loans and grants for development projects.</p>
                     
@@ -2794,7 +3188,8 @@
             'miscellaneous-links': {
                 title: 'Miscellaneous Links',
                 content: `
-                    <p><a href="https://www.bloomberg.com/" target="_blank">Bloomberg</a> - Global business and financial news, data, and analytics platform.</p>
+                    
+<p><a href="https://www.bloomberg.com/" target="_blank">Bloomberg</a> - Global business and financial news, data, and analytics platform.</p>
                     
                     <p><a href="https://www.reuters.com/" target="_blank">Reuters</a> - International news organization providing financial and business news.</p>
                     
@@ -2903,7 +3298,9 @@
             },
             'warrants-calculator': {
                 title: 'Warrants calculator',
-                content: `<p>These calculators may be used to calculate the theoretical fair value for warrants under different circumstances:</p><p><strong>Providers:</strong> Hoadley (Black-Scholes without dividends) | Hoadley (Black-Scholes with dividends) | Hoadley (binomial) | Credit Suisse | HKEX</p>`
+                content: `
+                    
+<p>These calculators may be used to calculate the theoretical fair value for warrants under different circumstances:</p><p><strong>Providers:</strong> Hoadley (Black-Scholes without dividends) | Hoadley (Black-Scholes with dividends) | Hoadley (binomial) | Credit Suisse | HKEX</p>`
             },
             'futures-calculator': {
                 title: 'Futures calculator',
@@ -2919,7 +3316,9 @@
             },
             'superannuation-calculator': {
                 title: 'Superannuation calculator',
-                content: `<p>A superannuation calculator estimates the projected balance of your superannuation fund at your planned retirement age:</p><p><strong>Providers:</strong> Money Smart | Australian Super | Industry Super | Aware | REST</p>`
+                content: `
+                    
+<p>A superannuation calculator estimates the projected balance of your superannuation fund at your planned retirement age:</p><p><strong>Providers:</strong> Money Smart | Australian Super | Industry Super | Aware | REST</p>`
             },
             'super-contributions-optimizer': {
                 title: 'Super contributions optimizer',
@@ -3022,86 +3421,7 @@
                 content: `<p>The car loan repayment calculator works out your estimated monthly repayments for your car loan:</p><p><strong>Providers:</strong> St George | Westpac | Loans | Aussie | Regional Australia Bank</p>`
             }
         };
-
-        // Article panel functionality
-        function openArticle(articleId) {
-            const panel = document.getElementById('article-detail-panel');
-            const title = document.getElementById('article-detail-title');
-            const body = document.getElementById('article-detail-body');
-            
-            if (articleContent[articleId]) {
-                title.textContent = articleContent[articleId].title;
-                const imagePlaceholder = `<div style="width:100%;height:200px;background:linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:24px;color:white;box-shadow:var(--shadow-md);"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:12px;opacity:0.9;"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg><span style="font-weight:600;letter-spacing:0.05em;text-transform:uppercase;font-size:12px;opacity:0.9;">Professional Insights</span></div>`;
-
-                const relatedArticles = `
-<hr style="margin:32px 0;border:none;border-top:1px solid #e5e7eb;">
-<h3 style="color:#1e3a8a;margin-bottom:12px;">Related articles:</h3>
-<p style="color:#6b7280;font-size:14px;line-height:1.6;">Explore more resources and expert perspectives on these topics in our library collection.</p>
-<h3 style="color:#1e3a8a;margin:24px 0 12px;">Related books:</h3>
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;">
-    ${[1,2,3,4,5,6].map(i => `
-    <div style="border:1px solid #e5e7eb;border-radius:8px;padding:12px;text-align:center;background:#f9fafb;">
-        <div style="width:60px;height:80px;background:#e5e7eb;border-radius:4px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:11px;">Book ${i}</div>
-        <a href="#" style="font-size:12px;color:#1e3a8a;text-decoration:none;">Book title link</a>
-    </div>`).join('')}
-</div>
-<hr style="margin:24px 0;border:none;border-top:1px solid #e5e7eb;">
-<p style="font-size:12px;color:#9ca3af;font-style:italic;"><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>`;
-
-                let articleBody = articleContent[articleId] ? articleContent[articleId].content : '';
-                if(articleBody) {
-                    // Remove first <p>...< /p> (non-greedy) and any adjacent heading up to h3 if it exists at the start
-                    // We'll run successive replaces to be robust instead of one massive regex:
-                    articleBody = articleBody.trim();
-                    // if starts with a paragraph that is a category
-                    let pMatch = articleBody.match(/^(<p[^>]*>.*?<\/p>)\s*(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
-                    if(pMatch) {
-                        articleBody = articleBody.substring(pMatch[0].length).trim();
-                    } else {
-                        // try to match just the h tag
-                        let hMatch = articleBody.match(/^(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
-                        if(hMatch) {
-                            articleBody = articleBody.substring(hMatch[0].length).trim();
-                        }
-                    }
-                    
-                    // Bold first paragraph
-                    articleBody = articleBody.replace(/<p>(.*?)<\/p>/i, '<p><strong>$1</strong></p>');
-                    
-                    // Remove existing disclaimer
-                    articleBody = articleBody.replace(/<p><strong>Disclaimer:<\/strong>.*?<\/p>\s*$/is, '');
-                }
-                
-                body.innerHTML = imagePlaceholder + articleBody + relatedArticles;
-                panel.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        function closeArticlePanel() {
-            const panel = document.getElementById('article-detail-panel');
-            panel.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        // Event listeners
-        document.addEventListener('DOMContentLoaded', function() {
-            const articleClose = document.getElementById('article-detail-close');
-            const articlePanel = document.getElementById('article-detail-panel');
-            
-            if (articleClose) {
-                articleClose.addEventListener('click', closeArticlePanel);
-            }
-            
-            if (articlePanel) {
-                articlePanel.addEventListener('click', function(event) {
-                    if (event.target === articlePanel) {
-                        closeArticlePanel();
-                    }
-                });
-            }
-        });
     </script>
-
-
-</body></html>
+    </body>
+    </html>
+    

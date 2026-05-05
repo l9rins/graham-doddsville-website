@@ -682,17 +682,35 @@
         function toggleCollapsible(sectionId) {
             const content = document.getElementById(sectionId + '-content');
             const arrow = document.getElementById(sectionId + '-arrow');
+            if (!content) return;
+            const section = content.closest('.collapsible-section');
             
-            if (content.classList.contains('open')) {
-                content.classList.remove('open');
-                arrow.textContent = '▼';
-            } else {
-                content.classList.add('open');
-                arrow.textContent = '▲';
+            const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px' && content.style.maxHeight !== 'none';
+            
+            // Close all other open sections
+            document.querySelectorAll('.collapsible-content').forEach(c => {
+                c.style.maxHeight = null;
+                c.classList.remove('expanded');
+                c.classList.add('collapsed');
+                const s = c.closest('.collapsible-section');
+                if (s) s.classList.remove('active');
+                const a = document.getElementById(c.id.replace('-content', '-arrow'));
+                if (a) a.innerHTML = '▼';
+            });
+
+            if (!isOpen) {
+                if(sectionId === 'events-seminars') {
+                    content.style.maxHeight = 'none';
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+                content.classList.add('expanded');
+                content.classList.remove('collapsed');
+                if (section) section.classList.add('active');
+                if (arrow) arrow.innerHTML = '▲';
             }
         }
 
-        // Open article modal
         function openArticle(articleId) {
             const modal = document.getElementById('article-detail-panel');
             const titleElement = document.getElementById('article-detail-title');

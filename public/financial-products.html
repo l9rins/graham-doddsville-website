@@ -2,7 +2,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Financial Products - Graham and Doddsville</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=3">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <style>
         :root {
@@ -46,13 +46,14 @@
             padding: 24px;
         }
 
-                        /* Standardized Header Styles */
+        /* Header Section */
         .header {
             background: #ffffff;
             border-bottom: 2px solid #d4af37;
             padding: 12px 0;
             transition: all 0.3s ease;
             overflow: visible;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
 
         .sticky-header {
@@ -66,10 +67,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 30px;
+            overflow: visible;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
-            position: relative;
+            background: transparent;
         }
 
         .logo {
@@ -90,22 +93,21 @@
             display: flex;
             list-style: none;
             gap: 35px;
-            margin: 0;
-            padding: 0;
+            overflow: visible;
         }
 
         .nav-link {
-            color: #1f2937;
+            color: #000;
             text-decoration: none;
             font-weight: 500;
             font-size: 14px;
             letter-spacing: 0.5px;
             text-transform: uppercase;
             transition: all 0.3s ease;
+            position: relative;
         }
 
         .nav-link:hover {
-            color: #1e3a8a;
             text-decoration: underline;
         }
 
@@ -119,6 +121,10 @@
             border: none;
             cursor: pointer;
             padding: 0;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
         .hamburger-line {
@@ -131,15 +137,213 @@
             margin: 2px 0;
         }
 
-        .desktop-only { display: block; }
-        .mobile-only { display: none; }
-
-        @media (max-width: 768px) {
-            .desktop-only { display: none; }
-            .mobile-only { display: flex; }
-            .header-content { padding: 0 20px; }
+        /* Mobile Menu Toggle Animation */
+        .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
         }
 
+        .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Mobile Navigation Drawer */
+        .mobile-drawer {
+            position: fixed;
+            top: 0;
+            right: -80%;
+            width: 80%;
+            height: 100vh;
+            background: #fff;
+            z-index: 10000;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            display: block;
+        }
+
+        .mobile-drawer.open {
+            right: 0;
+        }
+
+        .drawer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 20px;
+            border-bottom: 1px solid #e0e0e0;
+            background: #1e3a8a;
+            color: white;
+        }
+
+        .drawer-logo {
+            max-height: 40px;
+            width: auto;
+            display: block;
+        }
+
+        .drawer-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .drawer-nav {
+            padding: 20px 0;
+        }
+
+        .drawer-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .drawer-menu li {
+            border-bottom: 1px solid #ffffff;
+            margin-bottom: 6px;
+            padding-left: 20px;
+        }
+
+        .drawer-link {
+            display: block;
+            padding: 6px 20px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+
+        .drawer-link:hover {
+            background: #ffffff;
+            color: #1e3a8a;
+        }
+
+        /* Mobile responsive styles */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .desktop-only {
+                display: none;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-only {
+                display: none;
+            }
+            
+            .mobile-drawer {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .wealth-creation-page-content {
+                padding: 16px;
+            }
+        }
+
+        /* Article Detail Panel */
+        .article-detail-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .article-detail-panel.active {
+            display: flex;
+        }
+
+        .article-detail-content {
+            background: white;
+            border-radius: 12px;
+            max-width: 800px;
+            max-height: 90vh;
+            width: 100%;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .article-detail-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .article-detail-title {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .article-detail-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.2s ease;
+        }
+
+        .article-detail-close:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .article-detail-body {
+            padding: 24px;
+            line-height: 1.7;
+        }
+
+        .article-detail-body h3 {
+            color: var(--primary-blue);
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+
+        .article-detail-body p {
+            margin-bottom: 16px;
+        }
+
+        .loading-spinner {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-secondary);
+        }
 
         /* Page Title Section */
         .page-title-section {
@@ -167,7 +371,7 @@
 
         .page-title {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-size: 20px;
+            font-size: 25px;
             font-weight: 600;
             color: #6B46C1; /* Brand purple */
             margin: 0 0 0px 0;
@@ -289,37 +493,133 @@
             border-left-color: var(--primary-blue);
         }
     </style>
-    <link rel="stylesheet" href="css/mobile-fixes.css">
+
+    <style>
+        /* Scoped overrides for flat white design with gold header border */
+        html, body {
+            background-color: #ffffff !important;
+            background: #ffffff !important;
+        }
+
+        @media (max-width: 1024px) {
+            .container, .header, .header-content, .drawer-header, .wealth-creation-page, .wealth-creation-page-content, .article-detail-header, .financial-analysis-page, .stock-valuation-page {
+                background: #ffffff !important;
+                background-color: #ffffff !important;
+                border: 0px solid transparent !important;
+                box-shadow: none !important;
+            }
+            .header, .drawer-header {
+                border-bottom: 2px solid #d4af37 !important;
+            }
+            /* Remove jagged notebook border/shadow effect */
+            .container::before {
+                display: none !important;
+                content: none !important;
+                box-shadow: none !important;
+                filter: none !important;
+            }
+        }
+        
+        /* Apply to all viewports for specific elements */
+        .container, .header, .header-content, .drawer-header, .page-title-section, .collapsible-section, .article-detail-header {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            box-shadow: none !important;
+            border: 0px solid transparent !important;
+        }
+        
+        .header, .drawer-header {
+            border-bottom: 2px solid #d4af37 !important;
+        }
+
+        .collapsible-header, .collapsible-header:hover {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            border: 1px solid #e5e7eb !important;
+            color: #1e3a8a !important;
+            box-shadow: none !important;
+            transform: none !important;
+        }
+        
+        .collapsible-title, .collapsible-arrow, .article-detail-title, .article-detail-close {
+            color: #1e3a8a !important;
+        }
+        
+        /* Ensure the main page background is white */
+        body, .wealth-creation-page, .wealth-creation-page-content, .financial-analysis-page, .stock-valuation-page, .professional-advisers-page, .financial-products-page, .resources-page {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+        }
+        
+        /* Drawer close button visibility */
+        .drawer-close {
+            color: #1e3a8a !important;
+        }
+        .drawer-close::before {
+            color: #1e3a8a !important;
+        }
+        
+        /* Remove blue borders on links */
+        .collapsible-link:hover {
+            border-left-color: #1e3a8a !important;
+            background: #f8f9fa !important;
+        }
+        
+        /* Remove the blue glow from ALL elements */
+        * {
+            box-shadow: none !important;
+            text-shadow: none !important;
+        }
+
+        /* Hamburger menu colors */
+        .hamburger-line {
+            background-color: #1e3a8a !important;
+        }
+        
+        /* Footer disclaimer and other potential blue elements */
+        footer, .footer, .disclaimer-section {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            color: #666666 !important;
+            border-top: 1px solid #e5e7eb !important;
+        }
+    </style>
+
+
+
+
+
+
+
+
 </head>
 <body>
     <div class="wealth-creation-page">
         <!-- Header -->
-                                <header class="header sticky-header" role="banner">
-            <div class="header-content">
+        <header class="header sticky-header" role="banner">
+            <div class="container"><div class="header-content">
                 <div class="logo">
-                    <img src="G&D Logo.png" alt="Graham & Doddsville" class="logo-image">
+                    <img src="images/G&amp;D Logo.png" alt="Graham &amp; Doddsville" class="logo-image">
                 </div>
                 
-                <nav class="main-nav desktop-only">
-                    <ul>
+                <nav class="main-nav desktop-only">                    <ul>
                         <li><a href="index.html" class="nav-link">HOME</a></li>
-                        <li><a href="wealth-creation.html" class="nav-link">WEALTH CREATION</a></li>
-                        <li><a href="resources.html" class="nav-link">RESOURCES</a></li>
-                    </ul>
-                </nav>
+                        <li><a href="wealth-creation.html" class="nav-link">Wealth Creation</a></li>
+                        <li><a href="#" class="nav-link">ABOUT</a></li>
+                    </ul></nav>
+                
                 
                 <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                 </button>
-            </div>
-        </header>
+            </div></div></header>
 
         <!-- Mobile Navigation Drawer -->
         <div class="mobile-drawer" id="mobile-drawer">
         <div class="drawer-header">
-            <img src="G&amp;D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
+            <img src="images/G&amp;D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
             <button class="drawer-close" id="drawer-close" aria-label="Close menu"></button>
         </div>
         <nav class="drawer-nav">
@@ -331,7 +631,9 @@
                 <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
                 <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
                 <li><a href="investment-analysis.html" class="drawer-link">Investment Analysis</a></li>
-                <li><a href="economics.html" class="drawer-link">Economics</a></li>
+                <li><a href="financial-statement-analysis.html" class="drawer-link">Financial Statement Analysis</a></li>
+                <li><a href="stock-valuation.html" class="drawer-link">Stock Valuation</a></li>
+                <li><a href="sidebar-economics.html" class="drawer-link">Economics</a></li>
                 <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
                 <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
                 <li><a href="resources.html" class="drawer-link">Resources</a></li>
@@ -354,157 +656,209 @@
 
             <!-- Collapsible Categories -->
             <div class="collapsible-categories">
-                <!-- Cash -->
                 <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('cash')">
-                    <h3 class="collapsible-title">Cash</h3>
-                    <span class="collapsible-arrow" id="cash-arrow">▼</span>
+                    <div class="collapsible-header" onclick="toggleCollapsible('cash')">
+                        <h3 class="collapsible-title">Cash</h3>
+                        <span class="collapsible-arrow" id="cash-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="cash-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('cash')">Cash</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('transaction-everyday-accounts')">Transaction (everyday) accounts</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('savings-accounts')">Savings accounts</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('high-interest-savings-accounts')">High-interest savings accounts</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('term-deposits')">Term deposits</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('cash-management-trusts')">Cash management trusts</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('money-market-funds')">Money market funds</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('treasury-notes')">Treasury notes</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('bank-bills')">Bank bills</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('negotiable-certificates-of-deposit')">Negotiable certificates of deposit</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="collapsible-content" id="cash-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('cash')">Cash</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('term-deposits')">Term Deposits</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('cash-management-trusts')">Cash Management Trusts</a></li>
-                    </ul>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('fixed-income')">
+                        <h3 class="collapsible-title">Fixed Income</h3>
+                        <span class="collapsible-arrow" id="fixed-income-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="fixed-income-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('australian-government-bonds')">Australian government bonds</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('treasury-indexed-bonds')">Treasury indexed bonds</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('semi-government-bonds')">Semi-government bonds</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('corporate-bonds')">Corporate bonds</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('floating-rate-notes')">Floating rate notes</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('bank-bonds-and-subordinated-debt')">Bank bonds and subordinated debt</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('asset-backed-securities')">Asset-backed securities</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('convertible-notes')">Convertible notes</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('fixed-income-etfs')">Fixed income ETFs</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('managed-fixed-income-funds')">Managed fixed income funds</a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-
-            <!-- Fixed Income -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('fixed-income')">
-                    <h3 class="collapsible-title">Fixed Income</h3>
-                    <span class="collapsible-arrow" id="fixed-income-arrow">▼</span>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('equity')">
+                        <h3 class="collapsible-title">Equity</h3>
+                        <span class="collapsible-arrow" id="equity-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="equity-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('ordinary-shares-common-stock')">Ordinary shares (common stock)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('preference-shares')">Preference shares</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('listed-investment-companies-lics')">Listed investment companies (LICs)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('exchange-traded-funds-etfs')">Exchange-traded funds (ETFs)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('managed-equity-funds-unit-trusts')">Managed equity funds (unit trusts)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('real-estate-investment-trusts-reits')">Real estate investment trusts (REITs)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('international-equities')">International equities</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('private-equity-unlisted-shares')">Private equity (unlisted shares)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('equity-derivatives')">Equity derivatives</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="collapsible-content" id="fixed-income-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('government-bonds')">Government Bonds</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('semi-government-bonds')">Semi-government Bonds</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('corporate-bonds')">Corporate Bonds</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('debentures')">Debentures</a></li>
-                    </ul>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('hybrids')">
+                        <h3 class="collapsible-title">Hybrids</h3>
+                        <span class="collapsible-arrow" id="hybrids-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="hybrids-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('preference-shares')">Preference shares</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('convertible-bonds')">Convertible bonds</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('exchangeable-bonds')">Exchangeable bonds</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('convertible-preference-shares')">Convertible preference shares</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('capital-notes-bank-hybrids')">Capital notes (bank hybrids)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('subordinated-notes-with-equity-conversion-features')">Subordinated notes with equity conversion features</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('perpetual-securities')">Perpetual securities</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('contingent-convertible-bonds-cocos')">Contingent convertible bonds (CoCos)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('income-stapled-securities')">Income stapled securities</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('reset-securities-step-up-hybrids')">Reset securities (step-up hybrids)</a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-
-            <!-- Equity -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('equity')">
-                    <h3 class="collapsible-title">Equity</h3>
-                    <span class="collapsible-arrow" id="equity-arrow">▼</span>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('derivatives')">
+                        <h3 class="collapsible-title">Derivatives</h3>
+                        <span class="collapsible-arrow" id="derivatives-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="derivatives-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('call-options')">Call options</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('put-options')">Put options</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('over-the-counter-options')">Over-the-counter options</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('forwards')">Forwards</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('exchange-traded-futures')">Exchange-traded futures</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('contracts-for-difference-cfds')">Contracts for difference (CFDs)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('warrants')">Warrants</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('interest-rate-swaps')">Interest rate swaps</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('currency-forwards')">Currency forwards</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('credit-derivatives')">Credit derivatives</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('commodity-derivatives')">Commodity derivatives</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('index-derivatives')">Index derivatives</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="collapsible-content" id="equity-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('shares')">Shares</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('superannuation')">Superannuation</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('smsfs')">Smsfs</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('rsas')">Rsas</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('etfs')">Etfs</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('lics')">Lics</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('managed-funds')">Managed Funds</a></li>
-                    </ul>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('property')">
+                        <h3 class="collapsible-title">Property</h3>
+                        <span class="collapsible-arrow" id="property-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="property-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('residential-property')">Residential property</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('commercial-office-property')">Commercial office property</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('retail-property')">Retail property</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('industrial-property')">Industrial property</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('real-estate-investment-trusts-reits')">Real estate investment trusts (REITs)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('property-funds-unlisted')">Property funds (unlisted)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('agricultural-property-farmland')">Agricultural property (farmland)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('development-sites')">Development sites</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('infrastructure-property')">Infrastructure property</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('student-accommodation')">Student accommodation</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('aged-care-facilities')">Aged care facilities</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('data-centres')">Data centres</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('self-storage-facilities')">Self-storage facilities</a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-
-            <!-- Hybrids -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('hybrids')">
-                    <h3 class="collapsible-title">Hybrids</h3>
-                    <span class="collapsible-arrow" id="hybrids-arrow">▼</span>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('commodities')">
+                        <h3 class="collapsible-title">Commodities</h3>
+                        <span class="collapsible-arrow" id="commodities-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="commodities-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('gold')">Gold</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('silver')">Silver</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('platinum')">Platinum</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('palladium')">Palladium</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('iron-ore')">Iron ore</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('copper')">Copper</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('aluminium')">Aluminium</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('nickel')">Nickel</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('crude-oil')">Crude oil</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('natural-gas')">Natural gas</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('coal')">Coal</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('agricultural-commodities-grains')">Agricultural commodities – grains</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('agricultural-commodities-softs')">Agricultural commodities – softs</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('livestock-commodities')">Livestock commodities</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('battery-and-critical-minerals')">Battery and critical minerals</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('water-rights-and-entitlements')">Water rights and entitlements</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="collapsible-content" id="hybrids-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('preference-shares')">Preference Shares</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('convertible-bonds')">Convertible Bonds</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('capital-notes')">Capital Notes</a></li>
-                    </ul>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('cryptocurrency')">
+                        <h3 class="collapsible-title">Cryptocurrency</h3>
+                        <span class="collapsible-arrow" id="cryptocurrency-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="cryptocurrency-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('bitcoin-btc')">Bitcoin (BTC)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('bitcoin-cash-bch')">Bitcoin Cash (BCH)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('ethereum-eth')">Ethereum (ETH)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('tether-usdt')">Tether (USDT)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('usd-coin-usdc')">USD Coin (USDC)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('bnb-bnb')">BNB (BNB)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('xrp-xrp')">XRP (XRP)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('cardano-ada')">Cardano (ADA)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('solana-sol')">Solana (SOL)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('dogecoin-doge')">Dogecoin (DOGE)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('chainlink-link')">Chainlink (LINK)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('litecoin-ltc')">Litecoin (LTC)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('tron-trx')">Tron (TRX)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('avalanche-avax')">Avalanche (AVAX)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('stellar-xlm')">Stellar (XLM)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('polygon-pol')">Polygon (POL)</a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-
-            <!-- Derivative -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('derivative')">
-                    <h3 class="collapsible-title">Derivative</h3>
-                    <span class="collapsible-arrow" id="derivative-arrow">▼</span>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('miscellaneous')">
+                        <h3 class="collapsible-title">Miscellaneous</h3>
+                        <span class="collapsible-arrow" id="miscellaneous-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="miscellaneous-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('margin-loan')">Margin loan</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('foreign-exchange-fx')">Foreign exchange (FX)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('private-equity')">Private equity</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('private-debt')">Private debt</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('hedge-funds')">Hedge funds</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('venture-capital')">Venture capital</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('infrastructure')">Infrastructure</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('collectibles')">Collectibles</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('art')">Art</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('royalties-and-intellectual-property')">Royalties and intellectual property</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('fine-wine')">Fine wine</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('farmland-and-agriculture')">Farmland and agriculture</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('timberland')">Timberland</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('carbon-credits-and-environmental-assets')">Carbon credits and environmental assets</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="collapsible-content" id="derivative-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('call-options')">Call Options</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('put-options')">Put Options</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('forwards')">Forwards</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('futures')">Futures</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('swaps')">Swaps</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('warrants')">Warrants</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('cfds')">Cfds</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('index-derivatives')">Index Derivatives</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('interest-rate-derivatives')">Interest Rate Derivative</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('grains-derivatives')">Grains Derivatives</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('energy-derivatives')">Energy Derivatives</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('structured-products')">Structured Products</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Property -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('property')">
-                    <h3 class="collapsible-title">Property</h3>
-                    <span class="collapsible-arrow" id="property-arrow">▼</span>
-                </div>
-                <div class="collapsible-content" id="property-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('direct-property')">Direct Property</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('reits')">Reits</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('lpts')">Lpts</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('upts')">Upts</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Commodities -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('commodities')">
-                    <h3 class="collapsible-title">Commodities</h3>
-                    <span class="collapsible-arrow" id="commodities-arrow">▼</span>
-                </div>
-                <div class="collapsible-content" id="commodities-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('gold')">Gold</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('silver')">Silver</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('platinum')">Platinum</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('palladium')">Palladium</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('agricultural-commodities')">Agricultural Commodities</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('energy-commodities')">Energy Commodities</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('metal-commodities')">Metal Commodities</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('livestock-futures')">Livestock Futures</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('oil-futures')">Oil Futures</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('iron-ore-futures')">Iron Ore Futures</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Miscellaneous -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('miscellaneous')">
-                    <h3 class="collapsible-title">Miscellaneous</h3>
-                    <span class="collapsible-arrow" id="miscellaneous-arrow">▼</span>
-                </div>
-                <div class="collapsible-content" id="miscellaneous-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('margin-loans')">Margin Loan</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('foreign-exchange')">Foreign Exchange</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('cryptocurrency')">Cryptocurrency</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('private-equity')">Private Equity</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('private-debt')">Private Debt</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('infrastructure-assets')">Infrastructure Assets</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('venture-capital')">Venture Capital</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('collectibles')">Collectibles</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('art-investments')">Art</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('fine-wine')">Fine Wine</a></li>
-                    </ul>
-                </div>
-            </div>
             </div>
         </div>
-    
+    </div>
 
     <!-- Article Detail Panel -->
     <div class="article-detail-panel" id="article-detail-panel">
@@ -518,69 +872,160 @@
             </div>
         </div>
     </div>
-
+    
+    <script src="js/article-image-resolver.js?v=3"></script>
+    
+    <script src="js/article-image-resolver.js?v=3"></script>
+    
+    <script src="js/article-image-resolver.js?v=3"></script>
     <script>
         // Collapsible functionality
         function toggleCollapsible(sectionId) {
-            const content = document.getElementById(`${sectionId}-content`);
-            const arrow = document.getElementById(`${sectionId}-arrow`);
+            const content = document.getElementById(sectionId + '-content');
+            const arrow = document.getElementById(sectionId + '-arrow');
+            if (!content) return;
+            
+            const section = content.closest('.collapsible-section');
+            const isCurrentlyOpen = content.classList.contains('expanded');
+            
+            // Close all other open sections
+            document.querySelectorAll('.collapsible-content').forEach(c => {
+                if (c.id !== sectionId + '-content' && (c.classList.contains('expanded') || c.style.maxHeight)) {
+                    c.style.maxHeight = null;
+                    c.classList.remove('expanded');
+                    c.classList.add('collapsed');
+                    const s = c.closest('.collapsible-section');
+                    if (s) s.classList.remove('active');
+                    const a = document.getElementById(c.id.replace('-content', '-arrow'));
+                    if (a) a.innerHTML = '▼';
+                }
+            });
 
-            if (content.style.maxHeight) {
+            if (!isCurrentlyOpen) {
+                // OPENING
+                // First, remove collapsed and add expanded to ensure it's visible for scrollHeight calculation
+                content.classList.add('expanded');
+                content.classList.remove('collapsed');
+                
+                if(sectionId === 'events-seminars') {
+                    content.style.maxHeight = 'none';
+                } else {
+                    // Now measure scrollHeight
+                    const height = content.scrollHeight;
+                    content.style.maxHeight = height + "px";
+                }
+                
+                if (section) section.classList.add('active');
+                if (arrow) arrow.innerHTML = '▲';
+            } else {
+                // CLOSING
                 content.style.maxHeight = null;
                 content.classList.remove('expanded');
-                arrow.innerHTML = '▼';
-            } else {
-                // Close all other open sections
-                document.querySelectorAll('.collapsible-content.expanded').forEach(openContent => {
-                    openContent.style.maxHeight = null;
-                    openContent.classList.remove('expanded');
-                    const openArrowId = openContent.id.replace('-content', '-arrow');
-                    document.getElementById(openArrowId).innerHTML = '▼';
-                });
-
-                content.style.maxHeight = content.scrollHeight + "px";
-                content.classList.add('expanded');
-                arrow.innerHTML = '▲';
+                content.classList.add('collapsed');
+                if (section) section.classList.remove('active');
+                if (arrow) arrow.innerHTML = '▼';
             }
         }
 
         // Mobile drawer functionality
-        const mobileToggle = document.getElementById('mobile-toggle');
-        const mobileDrawer = document.getElementById('mobile-drawer');
-        const drawerClose = document.getElementById('drawer-close');
-        
-        if (mobileToggle && mobileDrawer) {
-            mobileToggle.addEventListener('click', () => {
-                console.log('Hamburger menu clicked!');
-                mobileDrawer.classList.add('open');
-                document.body.style.overflow = 'hidden';
-                console.log('Drawer should be open now');
-            });
-        }
-        
-        if (drawerClose && mobileDrawer) {
-            drawerClose.addEventListener('click', () => {
-                mobileDrawer.classList.remove('open');
-                document.body.style.overflow = '';
-            });
-        }
-        
-        // Close drawer when clicking outside
-        if (mobileDrawer) {
-            mobileDrawer.addEventListener('click', (e) => {
-                if (e.target === mobileDrawer) {
+        function toggleMobileMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                if (mobileDrawer.classList.contains('open')) {
                     mobileDrawer.classList.remove('open');
                     document.body.style.overflow = '';
+                } else {
+                    mobileDrawer.classList.add('open');
+                    document.body.style.overflow = 'hidden';
                 }
-            });
+            }
         }
 
-        // Article content data
+        function closeMobileMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Article loading functionality
+        function loadArticle(articleId) {
+            const panel = document.getElementById('article-detail-panel');
+            const title = document.getElementById('article-detail-title');
+            const body = document.getElementById('article-detail-body');
+            
+            if (!panel || !title || !body) return;
+
+            if (typeof articleContent !== 'undefined' && articleContent[articleId]) {
+                const article = articleContent[articleId];
+                title.textContent = article.title;
+                
+                let imageHtml = '';
+                if (typeof window.buildArticleImageHtml === 'function') {
+                    imageHtml = window.buildArticleImageHtml(articleId, article);
+                }
+                
+                body.innerHTML = imageHtml + article.content;
+                panel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                const contentContainer = panel.querySelector('.article-detail-content');
+                if (contentContainer) contentContainer.scrollTop = 0;
+            }
+        }
+
+        function closeArticlePanel() {
+            const panel = document.getElementById('article-detail-panel');
+            if (panel) {
+                panel.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            const drawerClose = document.getElementById('drawer-close');
+            
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    toggleMobileMenu();
+                });
+            }
+            
+            if (drawerClose) {
+                drawerClose.addEventListener('click', closeMobileMenu);
+            }
+            
+            if (mobileDrawer) {
+                mobileDrawer.addEventListener('click', (e) => {
+                    if (e.target === mobileDrawer) closeMobileMenu();
+                });
+            }
+
+            const articlePanel = document.getElementById('article-detail-panel');
+            if (articlePanel) {
+                articlePanel.addEventListener('click', (e) => {
+                    if (e.target === articlePanel) closeArticlePanel();
+                });
+            }
+            
+            const closeBtn = document.getElementById('article-detail-close');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeArticlePanel);
+            }
+        });
+
+        // Data from file
         const articleContent = {
             'cash': {
                 title: 'Cash',
                 content: `
-                    <p>Cash represents the most liquid and safest form of holding money, providing immediate access and capital preservation.</p>
+                    
+<p>Cash represents the most liquid and safest form of holding money, providing immediate access and capital preservation.</p>
                     
                     <h3>Key Characteristics</h3>
                     <p>Cash includes physical currency and deposits in bank accounts that can be accessed on demand without penalty.</p>
@@ -595,7 +1040,8 @@
             'term-deposits': {
                 title: 'Term Deposits',
                 content: `
-                    <p>Term deposits are savings accounts with fixed interest rates and maturity dates, offering higher returns than regular savings accounts.</p>
+                    
+<p>Term deposits are savings accounts with fixed interest rates and maturity dates, offering higher returns than regular savings accounts.</p>
                     
                     <h3>Key Features</h3>
                     <p>Fixed interest rates, predetermined maturity periods (typically 1-5 years), and guaranteed returns make them attractive for conservative savers.</p>
@@ -610,7 +1056,8 @@
             'cash-management-trusts': {
                 title: 'Cash Management Trusts',
                 content: `
-                    <p>Cash management trusts are pooled investment vehicles that invest in short-term, high-quality money market instruments.</p>
+                    
+<p>Cash management trusts are pooled investment vehicles that invest in short-term, high-quality money market instruments.</p>
                     
                     <h3>Investment Focus</h3>
                     <p>These trusts invest in bank bills, certificates of deposit, and other short-term debt securities with maturities typically under 12 months.</p>
@@ -625,7 +1072,8 @@
             'government-bonds': {
                 title: 'Government Bonds',
                 content: `
-                    <p>Government bonds are debt securities issued by national governments, considered among the safest investments available.</p>
+                    
+<p>Government bonds are debt securities issued by national governments, considered among the safest investments available.</p>
                     
                     <h3>Types</h3>
                     <p>Include Treasury bonds, Treasury notes, and Treasury bills, each with different maturity periods and interest payment structures.</p>
@@ -640,7 +1088,8 @@
             'semi-government-bonds': {
                 title: 'Semi-Government Bonds',
                 content: `
-                    <p>Semi-government bonds are debt securities issued by state, provincial, or local government entities.</p>
+                    
+<p>Semi-government bonds are debt securities issued by state, provincial, or local government entities.</p>
                     
                     <h3>Key Features</h3>
                     <p>Issued by government agencies or authorities, often with specific purposes like infrastructure or education funding.</p>
@@ -655,7 +1104,8 @@
             'corporate-bonds': {
                 title: 'Corporate Bonds',
                 content: `
-                    <p>Corporate bonds are debt securities issued by companies to raise capital for business operations, expansion, or other corporate purposes.</p>
+                    
+<p>Corporate bonds are debt securities issued by companies to raise capital for business operations, expansion, or other corporate purposes.</p>
                     
                     <h3>Credit Ratings</h3>
                     <p>Rated by agencies like Standard & Poor's and Moody's, ranging from AAA (highest quality) to D (in default).</p>
@@ -685,7 +1135,8 @@
             'shares': {
                 title: 'Shares',
                 content: `
-                    <p>Shares represent ownership in a company and are one of the most popular investment vehicles for building long-term wealth.</p>
+                    
+<p>Shares represent ownership in a company and are one of the most popular investment vehicles for building long-term wealth.</p>
                     
                     <h3>Types of Shares</h3>
                     <p>Common shares provide voting rights and potential dividends, while preferred shares typically offer fixed dividends but limited voting rights.</p>
@@ -700,7 +1151,8 @@
             'superannuation': {
                 title: 'Superannuation',
                 content: `
-                    <p>Superannuation is a retirement savings system where employers and employees contribute to retirement funds managed by trustees.</p>
+                    
+<p>Superannuation is a retirement savings system where employers and employees contribute to retirement funds managed by trustees.</p>
                     
                     <h3>Australian Context</h3>
                     <p>In Australia, superannuation is mandatory with employer contributions of at least 11% of salary, plus voluntary employee contributions.</p>
@@ -745,7 +1197,8 @@
             'etfs': {
                 title: 'ETFs',
                 content: `
-                    <p>ETFs are investment funds that trade on stock exchanges, combining the diversification of mutual funds with the flexibility of stocks.</p>
+                    
+<p>ETFs are investment funds that trade on stock exchanges, combining the diversification of mutual funds with the flexibility of stocks.</p>
                     
                     <h3>Key Features</h3>
                     <p>ETFs provide instant diversification, low costs, tax efficiency, and the ability to trade throughout the day like individual stocks.</p>
@@ -760,7 +1213,8 @@
             'lics': {
                 title: 'LICs',
                 content: `
-                    <p>Listed Investment Companies (LICs) are closed-end investment funds that are listed on stock exchanges and invest in diversified portfolios.</p>
+                    
+<p>Listed Investment Companies (LICs) are closed-end investment funds that are listed on stock exchanges and invest in diversified portfolios.</p>
                     
                     <h3>Key Features</h3>
                     <p>LICs have a fixed number of shares, trade like stocks, and are managed by professional investment teams.</p>
@@ -790,7 +1244,8 @@
             'preference-shares': {
                 title: 'Preference Shares',
                 content: `
-                    <p>Preference shares are hybrid securities that combine characteristics of both debt and equity, offering fixed dividend payments.</p>
+                    
+<p>Preference shares are hybrid securities that combine characteristics of both debt and equity, offering fixed dividend payments.</p>
                     
                     <h3>Key Features</h3>
                     <p>Fixed dividend payments that must be paid before common shareholders, but typically no voting rights.</p>
@@ -805,7 +1260,8 @@
             'convertible-bonds': {
                 title: 'Convertible Bonds',
                 content: `
-                    <p>Convertible bonds are debt securities that can be converted into a predetermined number of the issuer's common shares.</p>
+                    
+<p>Convertible bonds are debt securities that can be converted into a predetermined number of the issuer's common shares.</p>
                     
                     <h3>Key Features</h3>
                     <p>Combines fixed income characteristics with equity participation potential, offering downside protection and upside potential.</p>
@@ -820,7 +1276,8 @@
             'capital-notes': {
                 title: 'Capital Notes',
                 content: `
-                    <p>Capital notes are hybrid securities issued by financial institutions that combine debt and equity characteristics.</p>
+                    
+<p>Capital notes are hybrid securities issued by financial institutions that combine debt and equity characteristics.</p>
                     
                     <h3>Key Features</h3>
                     <p>Typically perpetual (no maturity date), with discretionary dividend payments and ability to convert to equity under certain conditions.</p>
@@ -835,7 +1292,8 @@
             'call-options': {
                 title: 'Call Options',
                 content: `
-                    <p>Call options give the buyer the right, but not the obligation, to purchase an underlying asset at a specified price within a certain time period.</p>
+                    
+<p>Call options give the buyer the right, but not the obligation, to purchase an underlying asset at a specified price within a certain time period.</p>
                     
                     <h3>Key Components</h3>
                     <p>Strike price (exercise price), expiration date, and premium paid for the option contract.</p>
@@ -850,7 +1308,8 @@
             'put-options': {
                 title: 'Put Options',
                 content: `
-                    <p>Put options give the buyer the right, but not the obligation, to sell an underlying asset at a specified price within a certain time period.</p>
+                    
+<p>Put options give the buyer the right, but not the obligation, to sell an underlying asset at a specified price within a certain time period.</p>
                     
                     <h3>Key Components</h3>
                     <p>Strike price, expiration date, and premium, similar to call options but with opposite directional exposure.</p>
@@ -865,7 +1324,8 @@
             'forwards': {
                 title: 'Forwards',
                 content: `
-                    <p>Forwards are customized contracts between two parties to buy or sell an asset at a specified price on a future date.</p>
+                    
+<p>Forwards are customized contracts between two parties to buy or sell an asset at a specified price on a future date.</p>
                     
                     <h3>Key Features</h3>
                     <p>Customized terms, no exchange involvement, and typically used by sophisticated investors and institutions.</p>
@@ -880,7 +1340,8 @@
             'futures': {
                 title: 'Futures',
                 content: `
-                    <p>Futures are standardized contracts to buy or sell an asset at a predetermined price on a specified future date, traded on exchanges.</p>
+                    
+<p>Futures are standardized contracts to buy or sell an asset at a predetermined price on a specified future date, traded on exchanges.</p>
                     
                     <h3>Key Features</h3>
                     <p>Standardized contracts, daily settlement of gains/losses (marking to market), and leverage through margin requirements.</p>
@@ -895,7 +1356,8 @@
             'swaps': {
                 title: 'Swaps',
                 content: `
-                    <p>Swaps are derivative contracts where two parties exchange cash flows or financial instruments over a specified period.</p>
+                    
+<p>Swaps are derivative contracts where two parties exchange cash flows or financial instruments over a specified period.</p>
                     
                     <h3>Common Types</h3>
                     <p>Interest rate swaps, currency swaps, and credit default swaps, each exchanging different types of cash flows.</p>
@@ -910,7 +1372,8 @@
             'warrants': {
                 title: 'Warrants',
                 content: `
-                    <p>Warrants are derivative securities that give the holder the right to buy the underlying stock at a specific price within a certain time period.</p>
+                    
+<p>Warrants are derivative securities that give the holder the right to buy the underlying stock at a specific price within a certain time period.</p>
                     
                     <h3>Key Differences from Options</h3>
                     <p>Issued by the company itself rather than created by investors, and often have longer expiration periods.</p>
@@ -925,7 +1388,8 @@
             'cfds': {
                 title: 'CFDs',
                 content: `
-                    <p>Contracts for Difference (CFDs) are derivative products that allow traders to speculate on price movements without owning the underlying asset.</p>
+                    
+<p>Contracts for Difference (CFDs) are derivative products that allow traders to speculate on price movements without owning the underlying asset.</p>
                     
                     <h3>Key Features</h3>
                     <p>Leveraged trading, can be used for going long or short, and settle in cash based on price differences.</p>
@@ -940,7 +1404,8 @@
             'index-derivatives': {
                 title: 'Index Derivatives',
                 content: `
-                    <p>Index derivatives are financial contracts based on stock market indices, allowing investors to gain exposure to broad market movements.</p>
+                    
+<p>Index derivatives are financial contracts based on stock market indices, allowing investors to gain exposure to broad market movements.</p>
                     
                     <h3>Types</h3>
                     <p>Index futures, index options, and exchange-traded funds (ETFs) that track market indices.</p>
@@ -1030,7 +1495,8 @@
             'reits': {
                 title: 'REITs',
                 content: `
-                    <p>REITs are companies that own, operate, or finance income-producing real estate, allowing investors to access real estate markets without direct property ownership.</p>
+                    
+<p>REITs are companies that own, operate, or finance income-producing real estate, allowing investors to access real estate markets without direct property ownership.</p>
                     
                     <h3>Types of REITs</h3>
                     <p>Include equity REITs (own properties), mortgage REITs (finance properties), and hybrid REITs (both).</p>
@@ -1075,7 +1541,8 @@
             'gold': {
                 title: 'Gold',
                 content: `
-                    <p>Gold is a precious metal that has been used as a store of value and hedge against inflation for thousands of years.</p>
+                    
+<p>Gold is a precious metal that has been used as a store of value and hedge against inflation for thousands of years.</p>
                     
                     <h3>Investment Forms</h3>
                     <p>Physical gold (bars, coins), gold ETFs, gold mining shares, and gold futures contracts.</p>
@@ -1090,7 +1557,8 @@
             'silver': {
                 title: 'Silver',
                 content: `
-                    <p>Silver is both a precious metal and an industrial metal, used in jewelry, electronics, solar panels, and various industrial applications.</p>
+                    
+<p>Silver is both a precious metal and an industrial metal, used in jewelry, electronics, solar panels, and various industrial applications.</p>
                     
                     <h3>Dual Nature</h3>
                     <p>Silver benefits from both precious metal demand (safe haven) and industrial demand (economic growth).</p>
@@ -1105,7 +1573,8 @@
             'platinum': {
                 title: 'Platinum',
                 content: `
-                    <p>Platinum is a rare precious metal primarily used in automotive catalytic converters, jewelry, and industrial applications.</p>
+                    
+<p>Platinum is a rare precious metal primarily used in automotive catalytic converters, jewelry, and industrial applications.</p>
                     
                     <h3>Key Uses</h3>
                     <p>Over 50% of platinum demand comes from automotive industry for emission control devices.</p>
@@ -1120,7 +1589,8 @@
             'palladium': {
                 title: 'Palladium',
                 content: `
-                    <p>Palladium is a rare precious metal primarily used in automotive catalytic converters and increasingly in electronics and jewelry.</p>
+                    
+<p>Palladium is a rare precious metal primarily used in automotive catalytic converters and increasingly in electronics and jewelry.</p>
                     
                     <h3>Market Dynamics</h3>
                     <p>Supply is more constrained than platinum, leading to higher prices and greater price volatility.</p>
@@ -1135,7 +1605,8 @@
             'agricultural-commodities': {
                 title: 'Agricultural Commodities',
                 content: `
-                    <p>Agricultural commodities include crops and livestock products that are traded on global commodity markets.</p>
+                    
+<p>Agricultural commodities include crops and livestock products that are traded on global commodity markets.</p>
                     
                     <h3>Major Commodities</h3>
                     <p>Corn, soybeans, wheat, coffee, cocoa, sugar, cotton, and livestock futures.</p>
@@ -1210,7 +1681,8 @@
             'iron-ore-futures': {
                 title: 'Iron Ore Futures',
                 content: `
-                    <p>Iron ore futures contracts allow participants to hedge or speculate on iron ore price movements, a critical industrial commodity.</p>
+                    
+<p>Iron ore futures contracts allow participants to hedge or speculate on iron ore price movements, a critical industrial commodity.</p>
                     
                     <h3>Key Markets</h3>
                     <p>Dalian Commodity Exchange (China) and Singapore Exchange offer iron ore futures contracts.</p>
@@ -1225,7 +1697,8 @@
             'margin-loans': {
                 title: 'Margin Loans',
                 content: `
-                    <p>Margin loans allow investors to borrow money from brokers to purchase securities, using their existing investments as collateral.</p>
+                    
+<p>Margin loans allow investors to borrow money from brokers to purchase securities, using their existing investments as collateral.</p>
                     
                     <h3>How It Works</h3>
                     <p>Investors can borrow up to 50-70% of the value of their securities portfolio to invest in additional assets.</p>
@@ -1240,7 +1713,8 @@
             'foreign-exchange': {
                 title: 'Foreign Exchange',
                 content: `
-                    <p>Foreign exchange (FX) involves trading currencies against each other, either for speculation or hedging currency risk.</p>
+                    
+<p>Foreign exchange (FX) involves trading currencies against each other, either for speculation or hedging currency risk.</p>
                     
                     <h3>Major Pairs</h3>
                     <p>EUR/USD, USD/JPY, GBP/USD, and USD/CHF are the most actively traded currency pairs.</p>
@@ -1255,7 +1729,8 @@
             'cryptocurrency': {
                 title: 'Cryptocurrency',
                 content: `
-                    <p>Cryptocurrency is a digital or virtual currency that uses cryptography for security and operates independently of central banks.</p>
+                    
+<p>Cryptocurrency is a digital or virtual currency that uses cryptography for security and operates independently of central banks.</p>
                     
                     <h3>Popular Cryptocurrencies</h3>
                     <p>Bitcoin, Ethereum, and thousands of other altcoins offer different features, use cases, and risk profiles.</p>
@@ -1270,7 +1745,8 @@
             'private-equity': {
                 title: 'Private Equity',
                 content: `
-                    <p>Private equity involves investing in private companies that are not listed on public stock exchanges.</p>
+                    
+<p>Private equity involves investing in private companies that are not listed on public stock exchanges.</p>
                     
                     <h3>Investment Strategies</h3>
                     <p>Venture capital (early-stage), growth capital (expanding companies), and buyouts (mature companies).</p>
@@ -1285,7 +1761,8 @@
             'private-debt': {
                 title: 'Private Debt',
                 content: `
-                    <p>Private debt involves lending money directly to private companies, typically through private debt funds or direct lending.</p>
+                    
+<p>Private debt involves lending money directly to private companies, typically through private debt funds or direct lending.</p>
                     
                     <h3>Types</h3>
                     <p>Senior secured loans, subordinated debt, distressed debt, and venture debt.</p>
@@ -1300,7 +1777,8 @@
             'infrastructure-assets': {
                 title: 'Infrastructure Assets',
                 content: `
-                    <p>Infrastructure assets include investments in essential public services and facilities like roads, bridges, utilities, and transportation systems.</p>
+                    
+<p>Infrastructure assets include investments in essential public services and facilities like roads, bridges, utilities, and transportation systems.</p>
                     
                     <h3>Investment Vehicles</h3>
                     <p>Infrastructure funds, greenfield projects, brownfield assets, and listed infrastructure companies.</p>
@@ -1315,7 +1793,8 @@
             'venture-capital': {
                 title: 'Venture Capital',
                 content: `
-                    <p>Venture capital involves investing in early-stage, high-growth potential companies that are typically not yet profitable.</p>
+                    
+<p>Venture capital involves investing in early-stage, high-growth potential companies that are typically not yet profitable.</p>
                     
                     <h3>Stages</h3>
                     <p>Seed stage, early stage, and growth stage investments with different risk and return profiles.</p>
@@ -1330,7 +1809,8 @@
             'collectibles': {
                 title: 'Collectibles',
                 content: `
-                    <p>Collectibles include rare and valuable items such as art, antiques, coins, stamps, wine, and other tangible assets.</p>
+                    
+<p>Collectibles include rare and valuable items such as art, antiques, coins, stamps, wine, and other tangible assets.</p>
                     
                     <h3>Investment Appeal</h3>
                     <p>Diversification from traditional financial assets, potential for appreciation, and enjoyment of ownership.</p>
@@ -1345,7 +1825,8 @@
             'art-investments': {
                 title: 'Art',
                 content: `
-                    <p>Art investment involves purchasing paintings, sculptures, and other artworks with the expectation of future appreciation and potential income.</p>
+                    
+<p>Art investment involves purchasing paintings, sculptures, and other artworks with the expectation of future appreciation and potential income.</p>
                     
                     <h3>Market Segments</h3>
                     <p>Contemporary art, modern art, old masters, and emerging artists from different regions.</p>
@@ -1360,7 +1841,8 @@
             'fine-wine': {
                 title: 'Fine Wine',
                 content: `
-                    <p>Fine wine investment involves purchasing rare and collectible wines that appreciate in value over time.</p>
+                    
+<p>Fine wine investment involves purchasing rare and collectible wines that appreciate in value over time.</p>
                     
                     <h3>Key Regions</h3>
                     <p>Bordeaux, Burgundy, Napa Valley, and other premium wine-producing regions with established reputations.</p>
@@ -1373,86 +1855,7 @@
                 `
             }
         };
-
-        // Article panel functionality
-        function openArticle(articleId) {
-            const panel = document.getElementById('article-detail-panel');
-            const title = document.getElementById('article-detail-title');
-            const body = document.getElementById('article-detail-body');
-            
-            if (articleContent[articleId]) {
-                title.textContent = articleContent[articleId].title;
-                const imagePlaceholder = `<div style="width:100%;height:200px;background:linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:24px;color:white;box-shadow:var(--shadow-md);"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:12px;opacity:0.9;"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg><span style="font-weight:600;letter-spacing:0.05em;text-transform:uppercase;font-size:12px;opacity:0.9;">Professional Insights</span></div>`;
-
-                const relatedArticles = `
-<hr style="margin:32px 0;border:none;border-top:1px solid #e5e7eb;">
-<h3 style="color:#1e3a8a;margin-bottom:12px;">Related articles:</h3>
-<p style="color:#6b7280;font-size:14px;line-height:1.6;">Explore more resources and expert perspectives on these topics in our library collection.</p>
-<h3 style="color:#1e3a8a;margin:24px 0 12px;">Related books:</h3>
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;">
-    ${[1,2,3,4,5,6].map(i => `
-    <div style="border:1px solid #e5e7eb;border-radius:8px;padding:12px;text-align:center;background:#f9fafb;">
-        <div style="width:60px;height:80px;background:#e5e7eb;border-radius:4px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:11px;">Book ${i}</div>
-        <a href="#" style="font-size:12px;color:#1e3a8a;text-decoration:none;">Book title link</a>
-    </div>`).join('')}
-</div>
-<hr style="margin:24px 0;border:none;border-top:1px solid #e5e7eb;">
-<p style="font-size:12px;color:#9ca3af;font-style:italic;"><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>`;
-
-                let articleBody = articleContent[articleId] ? articleContent[articleId].content : '';
-                if(articleBody) {
-                    // Remove first <p>...< /p> (non-greedy) and any adjacent heading up to h3 if it exists at the start
-                    // We'll run successive replaces to be robust instead of one massive regex:
-                    articleBody = articleBody.trim();
-                    // if starts with a paragraph that is a category
-                    let pMatch = articleBody.match(/^(<p[^>]*>.*?<\/p>)\s*(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
-                    if(pMatch) {
-                        articleBody = articleBody.substring(pMatch[0].length).trim();
-                    } else {
-                        // try to match just the h tag
-                        let hMatch = articleBody.match(/^(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
-                        if(hMatch) {
-                            articleBody = articleBody.substring(hMatch[0].length).trim();
-                        }
-                    }
-                    
-                    // Bold first paragraph
-                    articleBody = articleBody.replace(/<p>(.*?)<\/p>/i, '<p><strong>$1</strong></p>');
-                    
-                    // Remove existing disclaimer
-                    articleBody = articleBody.replace(/<p><strong>Disclaimer:<\/strong>.*?<\/p>\s*$/is, '');
-                }
-                
-                body.innerHTML = imagePlaceholder + articleBody + relatedArticles;
-                panel.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        function closeArticlePanel() {
-            const panel = document.getElementById('article-detail-panel');
-            panel.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        // Event listeners
-        document.addEventListener('DOMContentLoaded', function() {
-            const articleClose = document.getElementById('article-detail-close');
-            const articlePanel = document.getElementById('article-detail-panel');
-            
-            if (articleClose) {
-                articleClose.addEventListener('click', closeArticlePanel);
-            }
-            
-            if (articlePanel) {
-                articlePanel.addEventListener('click', function(event) {
-                    if (event.target === articlePanel) {
-                        closeArticlePanel();
-                    }
-                });
-            }
-        });
     </script>
-
-
-</body></html>
+    </body>
+    </html>
+    

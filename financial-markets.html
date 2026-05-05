@@ -795,7 +795,7 @@
                 <li><a href="investment-analysis.html" class="drawer-link">Investment Analysis</a></li>
                 <li><a href="financial-statement-analysis.html" class="drawer-link">Financial Statement Analysis</a></li>
                 <li><a href="stock-valuation.html" class="drawer-link">Stock Valuation</a></li>
-                <li><a href="economics.html" class="drawer-link">Economics</a></li>
+                <li><a href="sidebar-economics.html" class="drawer-link">Economics</a></li>
                 <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
                 <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
                 <li><a href="resources.html" class="drawer-link">Resources</a></li>
@@ -1117,112 +1117,38 @@
     <script>
         // Collapsible functionality
         function toggleCollapsible(sectionId) {
-            const content = document.getElementById(`${sectionId}-content`);
-            const arrow = document.getElementById(`${sectionId}-arrow`);
+            const content = document.getElementById(sectionId + '-content');
+            const arrow = document.getElementById(sectionId + '-arrow');
+            if (!content) return;
+            const section = content.closest('.collapsible-section');
+            
+            const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px' && content.style.maxHeight !== 'none';
+            
+            // Close all other open sections
+            document.querySelectorAll('.collapsible-content').forEach(c => {
+                c.style.maxHeight = null;
+                c.classList.remove('expanded');
+                c.classList.add('collapsed');
+                const s = c.closest('.collapsible-section');
+                if (s) s.classList.remove('active');
+                const a = document.getElementById(c.id.replace('-content', '-arrow'));
+                if (a) a.innerHTML = '▼';
+            });
 
-            if (content.classList.contains('collapsed')) {
-                // Close all other open sections
-                document.querySelectorAll('.collapsible-content:not(.collapsed)').forEach(openContent => {
-                    openContent.classList.add('collapsed');
-                    const openArrowId = openContent.id.replace('-content', '-arrow');
-                    document.getElementById(openArrowId).innerHTML = '▼';
-                });
-
+            if (!isOpen) {
+                if(sectionId === 'events-seminars') {
+                    content.style.maxHeight = 'none';
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+                content.classList.add('expanded');
                 content.classList.remove('collapsed');
-                arrow.innerHTML = '▲';
-            } else {
-                content.classList.add('collapsed');
-                arrow.innerHTML = '▼';
+                if (section) section.classList.add('active');
+                if (arrow) arrow.innerHTML = '▲';
             }
         }
 
-        // Article content data
-        const articleContent = {
-            'asx': {
-                title: 'Australian Securities Exchange (ASX)',
-                content: `
-                    
-<p>The Australian Securities Exchange (ASX) is Australia's primary national securities exchange, offering listings, trading, clearing, and settlement services across equities, derivatives, and fixed income markets. It is home to over 2,200 listed companies with a combined market capitalisation exceeding $2.5 trillion.</p>`
-            },
-            'investment-analysis': {
-                title: 'Investment Analysis',
-                content: `
-                    
-<p>Investment Analysis content to be added.</p>`
-            },
-            'overview-of-shares': {
-                title: 'Overview of Share Investing in Australia',
-                content: `
-                    
-<p>Share investing is a popular way to invest money in Australia. It involves buying shares in companies listed on the Australian Securities Exchange (ASX).</p>
-                    
-                    <p>In this article, we will discuss what shares are, the parties involved in a share trade, the role of a stockbroker, the benefits and advantages of investing in shares, historical investment performance of shares in Australia, the risks and disadvantages of investing in shares, and the long-term forecast investment performance of shares in Australia.</p>
-
-                    <h3>What are Shares?</h3>
-                    <p>Shares are units of ownership in a company. When you buy shares in a company, you become a shareholder and own a part of that company. The value of your shares will increase or decrease depending on how well the company performs.</p>
-
-                    <h3>The Parties to a Share Trade</h3>
-                    <p>There are two parties involved in a share trade: the buyer and the seller. The buyer is the person who wants to buy shares in a company, while the seller is the person who wants to sell their shares.</p>
-
-                    <h3>The Role of the Stockbroker</h3>
-                    <p>A stockbroker is a licensed professional who buys and sells shares on behalf of their clients. They act as intermediaries between buyers and sellers and charge a fee for their services.</p>
-
-                    <h3>The Benefits and Advantages of Investing in Shares</h3>
-                    <p>Investing in shares has several benefits and advantages:</p>
-                    
-                    <p><strong>Growth Potential:</strong> Shares allow you to participate in a company's growth. As the company expands, its stock value may appreciate, potentially leading to higher returns compared to other investments.</p>
-                    
-                    <p><strong>Inflation Hedge:</strong> Historically, stocks have outpaced inflation. Over the long term, they provide a better chance of preserving purchasing power and safeguarding wealth.</p>
-                    
-                    <p><strong>Ease of Access:</strong> Buying shares is straightforward. You can invest through brokers, financial planners, or online platforms. Setting up an account and purchasing stocks is quick and convenient.</p>
-                    
-                    <p><strong>Low Entry Barrier:</strong> You don't need a large sum of money to start investing in stocks. Many brokers offer commission-free trades and allow fractional share purchases.</p>
-                    
-                    <p><strong>Dual Income Streams:</strong> Investors can earn from both price appreciation (buying low and selling high) and dividends (income paid by companies to shareholders).</p>
-                    
-                    <p><strong>Liquidity:</strong> Stocks are liquid assets. You can sell them quickly if needed.</p>
-
-                    <h3>The Risks and Disadvantages of Investing in Shares</h3>
-                    <p>Investing in shares also comes with risks and disadvantages:</p>
-                    
-                    <p><strong>Volatility:</strong> Share prices can be highly volatile. Market conditions, economic , and company-specific news can cause rapid fluctuations. Investors may experience significant gains or losses within short time frames.</p>
-                    
-                    <p><strong>Loss of Investment:</strong> If a company performs poorly or faces financial difficulties, shareholders may lose part or all of their investment. Unlike fixed-income investments, shares do not guarantee a return of capital.</p>
-                    
-                    <p><strong>Company-Specific Risks:</strong> Investing in individual companies exposes you to company-specific risks. Factors like poor management decisions, industry changes, or financial difficulties can impact share prices.</p>
-                    
-                    <p><strong>Bankruptcy Risk:</strong> If a company goes bankrupt, shareholders are typically last in line to receive any remaining assets after creditors and bondholders. In such cases, shareholders may lose their entire investment.</p>
-                    
-                    <p><strong>Liquidity Constraints:</strong> While shares are liquid assets, selling at the wrong time can lead to losses. Investors need to consider liquidity needs and timing when selling shares.</p>
-                    
-                    <p><strong>Capital Gains Tax:</strong> When selling shares for a profit, investors may be subject to capital gains tax. The tax rate depends on factors such as holding period and individual tax laws.</p>
-
-                    <h3>Historical Investment Performance of Shares in Australia</h3>
-                    <p>Shares have historically provided higher returns than other asset classes such as bonds or property. According to research conducted by Vanguard Investments Australia, Australian shares have returned an average of 8.9% per annum over the past 30 years. However, it is important to note that past performance is not indicative of future performance.</p>
-
-                    <h3>The Long-Term Forecast Investment Performance of Shares</h3>
-                    <p>Despite the risks associated with investing in shares, they remain a popular investment option for Australians due to their potential for high returns over the long term. According to research conducted by Vanguard Investments Australia, Australian shares are expected to return between 6% and 8% per annum over the next 10 years.</p>
-
-                    <h3>Conclusion</h3>
-                    <p>Share investing offers Australians a compelling opportunity to participate in the ownership of companies listed on the Australian Securities Exchange (ASX). As units of ownership, shares provide investors with a stake in the success of these companies, with the value of shares reflecting the performance of the underlying businesses. With the involvement of parties such as buyers and sellers, facilitated by stockbrokers who execute trades, share investing offers liquidity and the potential for higher returns compared to traditional savings accounts or term deposits.</p>
-                    
-                    <p>While historical data showcases the impressive average returns of Australian shares over the past 30 years, it is crucial for investors to be mindful of the inherent risks. Share prices can be volatile, influenced by market conditions and company performance, and investors may face the potential of losing their investment or being subject to capital gains tax. Despite these risks, the long-term forecast for Australian shares remains promising, with expectations of continued returns between 6% and 8% per annum over the next decade. As such, for those willing to navigate the fluctuations and uncertainties, share investing stands as a compelling avenue for wealth accumulation and participation in the growth of Australia's vibrant economy.</p>
-                    
-                    <p><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>
-                `
-            },
-            'laws-of-wealth-creation': {
-                title: 'The 9 Laws of Wealth Creation: How to Get Rich The Safe and Sure-Fire Way',
-                content: `
-                    <p>If you want to be rich, the good news is that it possible. You need to understand though that this will not just happen by itself. You need to make it happen.</p>
-                    
-                    <p>There are many pathways to wealth, but there are fundamental rules that you will need to follow in order to guarantee your financial success. We refer to these rules as the laws of wealth creation:</p>
-                    
-                    <h3>1. Purpose</h3>
-                    <p>Before you embark on your wealth creation journey, you must first have a clear purpose in mind. This is your why: why do you want to make money in the first place? Are you seeking financial freedom, a life of philanthropy, the means to travel the world, the ability to look after your family, the joy of owning your own business or something else? Without a clear purpose, you are like a ship without a rudder, wandering aimlessly across the waters with no destination in sight. It is your why that will give you the drive and the discipline to keep moving forward in your journey especially when times are tough. And it is your why that will help guide you when decisions need to be made.</p>
-                    
-                    <h3>2. Goals</h3>
-                    <p>We humans are goal-oriented creatures; we function at our best when we are working towards a specific goal. So besides having a purpose (why), you must set a specific goal (what) typically in the form of a monetary amount and a date by which you hope to have that money. For example, "I want to have a net worth of $5 million by the time I'm 35 years old". It is not so important if you do not achieve the goal by the deadline you have set; what matters is that you set a target for you to aim for. This is important because the goal becomes the guiding force behind all of your actions.</p>
+        function at our best when we are working towards a specific goal. So besides having a purpose (why), you must set a specific goal (what) typically in the form of a monetary amount and a date by which you hope to have that money. For example, "I want to have a net worth of $5 million by the time I'm 35 years old". It is not so important if you do not achieve the goal by the deadline you have set; what matters is that you set a target for you to aim for. This is important because the goal becomes the guiding force behind all of your actions.</p>
                     
                     <h3>3. Education</h3>
                     <p>The biggest investment you will (and should) ever make is in in yourself. You must "learn to earn". You cannot succeed financially unless you have a solid understanding of a range of money-related topics such as ABOUT, real estate, sharemarket, business and accounting. Go visit your library, buy books, attend seminars, join interest groups, read online articles, etc. Education will broaden your horizon, help you make the right decisions and help minimise the risk of making bad decisions. Commit to your life-long education and personal growth and increase your earning power. This will be, by far, the best investment you will ever make.</p>

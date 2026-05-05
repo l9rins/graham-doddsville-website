@@ -166,6 +166,109 @@
             font-size: 14px;
         }
     </style>
+
+    <style>
+        /* Scoped overrides for flat white design with gold header border */
+        html, body {
+            background-color: #ffffff !important;
+            background: #ffffff !important;
+        }
+
+        @media (max-width: 1024px) {
+            .container, .header, .header-content, .drawer-header, .wealth-creation-page, .wealth-creation-page-content, .article-detail-header, .financial-analysis-page, .stock-valuation-page {
+                background: #ffffff !important;
+                background-color: #ffffff !important;
+                border: 0px solid transparent !important;
+                box-shadow: none !important;
+            }
+            .header, .drawer-header {
+                border-bottom: 2px solid #d4af37 !important;
+            }
+            /* Remove jagged notebook border/shadow effect */
+            .container::before {
+                display: none !important;
+                content: none !important;
+                box-shadow: none !important;
+                filter: none !important;
+            }
+        }
+        
+        /* Apply to all viewports for specific elements */
+        .container, .header, .header-content, .drawer-header, .page-title-section, .collapsible-section, .article-detail-header {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            box-shadow: none !important;
+            border: 0px solid transparent !important;
+        }
+        
+        .header, .drawer-header {
+            border-bottom: 2px solid #d4af37 !important;
+        }
+
+        .collapsible-header, .collapsible-header:hover {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            border: 1px solid #e5e7eb !important;
+            color: #1e3a8a !important;
+            box-shadow: none !important;
+            transform: none !important;
+        }
+        
+        .collapsible-title, .collapsible-arrow, .article-detail-title, .article-detail-close {
+            color: #1e3a8a !important;
+        }
+        
+        /* Ensure the main page background is white */
+        body, .wealth-creation-page, .wealth-creation-page-content, .financial-analysis-page, .stock-valuation-page, .professional-advisers-page, .financial-products-page, .resources-page {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+        }
+        
+        /* Drawer close button visibility */
+        .drawer-close {
+            color: #1e3a8a !important;
+        }
+        .drawer-close::before {
+            color: #1e3a8a !important;
+        }
+        
+        /* Remove blue borders on links */
+        .collapsible-link:hover {
+            border-left-color: #1e3a8a !important;
+            background: #f8f9fa !important;
+        }
+        
+        /* Remove the blue glow from ALL elements */
+        * {
+            box-shadow: none !important;
+            text-shadow: none !important;
+        }
+
+        /* Hamburger menu colors */
+        .hamburger-line {
+            background-color: #1e3a8a !important;
+        }
+        
+        /* Footer disclaimer and other potential blue elements */
+        footer, .footer, .disclaimer-section {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            color: #666666 !important;
+            border-top: 1px solid #e5e7eb !important;
+        }
+    </style>
+
+
+
+
+
+
+
+
+
+
+
+
 </head>
 <body>
     <header class="header">
@@ -335,7 +438,40 @@ Within this gigantic auction arena, it is our job to select businesses with econ
                 closeTopicModal();
             }
         }
-    </script>
+    
+        function toggleCollapsible(sectionId) {
+            const content = document.getElementById(sectionId + '-content');
+            const arrow = document.getElementById(sectionId + '-arrow');
+            if (!content) return;
+            const section = content.closest('.collapsible-section');
+            
+            const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px' && content.style.maxHeight !== 'none';
+            
+            // Close all other open sections
+            document.querySelectorAll('.collapsible-content').forEach(c => {
+                c.style.maxHeight = null;
+                c.classList.remove('expanded');
+                c.classList.add('collapsed');
+                const s = c.closest('.collapsible-section');
+                if (s) s.classList.remove('active');
+                const a = document.getElementById(c.id.replace('-content', '-arrow'));
+                if (a) a.innerHTML = '▼';
+            });
+
+            if (!isOpen) {
+                if(sectionId === 'events-seminars') {
+                    content.style.maxHeight = 'none';
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+                content.classList.add('expanded');
+                content.classList.remove('collapsed');
+                if (section) section.classList.add('active');
+                if (arrow) arrow.innerHTML = '▲';
+            }
+        }
+
+        </script>
 
 </body>
 </html>

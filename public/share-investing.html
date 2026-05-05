@@ -2,7 +2,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Share Investing - Graham and Doddsville</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=3">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <style>
         :root {
@@ -46,13 +46,14 @@
             padding: 24px;
         }
 
-                        /* Standardized Header Styles */
+        /* Header Section */
         .header {
             background: #ffffff;
             border-bottom: 2px solid #d4af37;
             padding: 12px 0;
             transition: all 0.3s ease;
             overflow: visible;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
 
         .sticky-header {
@@ -63,13 +64,7 @@
         }
 
         .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
+            background: transparent;
         }
 
         .logo {
@@ -90,22 +85,21 @@
             display: flex;
             list-style: none;
             gap: 35px;
-            margin: 0;
-            padding: 0;
+            overflow: visible;
         }
 
         .nav-link {
-            color: #1f2937;
+            color: #000;
             text-decoration: none;
             font-weight: 500;
             font-size: 14px;
             letter-spacing: 0.5px;
             text-transform: uppercase;
             transition: all 0.3s ease;
+            position: relative;
         }
 
         .nav-link:hover {
-            color: #1e3a8a;
             text-decoration: underline;
         }
 
@@ -119,6 +113,10 @@
             border: none;
             cursor: pointer;
             padding: 0;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
         .hamburger-line {
@@ -131,15 +129,213 @@
             margin: 2px 0;
         }
 
-        .desktop-only { display: block; }
-        .mobile-only { display: none; }
-
-        @media (max-width: 768px) {
-            .desktop-only { display: none; }
-            .mobile-only { display: flex; }
-            .header-content { padding: 0 20px; }
+        /* Mobile Menu Toggle Animation */
+        .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
         }
 
+        .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Mobile Navigation Drawer */
+        .mobile-drawer {
+            position: fixed;
+            top: 0;
+            right: -80%;
+            width: 80%;
+            height: 100vh;
+            background: #fff;
+            z-index: 10000;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            display: block;
+        }
+
+        .mobile-drawer.open {
+            right: 0;
+        }
+
+        .drawer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 20px;
+            border-bottom: 1px solid #e0e0e0;
+            background: #1e3a8a;
+            color: white;
+        }
+
+        .drawer-logo {
+            max-height: 40px;
+            width: auto;
+            display: block;
+        }
+
+        .drawer-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .drawer-nav {
+            padding: 20px 0;
+        }
+
+        .drawer-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .drawer-menu li {
+            border-bottom: 1px solid #ffffff;
+            margin-bottom: 6px;
+            padding-left: 20px;
+        }
+
+        .drawer-link {
+            display: block;
+            padding: 6px 20px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+
+        .drawer-link:hover {
+            background: #ffffff;
+            color: #1e3a8a;
+        }
+
+        /* Mobile responsive styles */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .desktop-only {
+                display: none;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-only {
+                display: none;
+            }
+            
+            .mobile-drawer {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .wealth-creation-page-content {
+                padding: 16px;
+            }
+        }
+
+        /* Article Detail Panel */
+        .article-detail-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .article-detail-panel.active {
+            display: flex;
+        }
+
+        .article-detail-content {
+            background: white;
+            border-radius: 12px;
+            max-width: 800px;
+            max-height: 90vh;
+            width: 100%;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .article-detail-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .article-detail-title {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .article-detail-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.2s ease;
+        }
+
+        .article-detail-close:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .article-detail-body {
+            padding: 24px;
+            line-height: 1.7;
+        }
+
+        .article-detail-body h3 {
+            color: var(--primary-blue);
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+
+        .article-detail-body p {
+            margin-bottom: 16px;
+        }
+
+        .loading-spinner {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-secondary);
+        }
 
         /* Page Title Section */
         .page-title-section {
@@ -287,37 +483,133 @@
             border-left-color: var(--primary-blue);
         }
     </style>
-    <link rel="stylesheet" href="css/mobile-fixes.css">
+
+    <style>
+        /* Scoped overrides for flat white design with gold header border */
+        html, body {
+            background-color: #ffffff !important;
+            background: #ffffff !important;
+        }
+
+        @media (max-width: 1024px) {
+            .container, .header, .header-content, .drawer-header, .wealth-creation-page, .wealth-creation-page-content, .article-detail-header, .financial-analysis-page, .stock-valuation-page {
+                background: #ffffff !important;
+                background-color: #ffffff !important;
+                border: 0px solid transparent !important;
+                box-shadow: none !important;
+            }
+            .header, .drawer-header {
+                border-bottom: 2px solid #d4af37 !important;
+            }
+            /* Remove jagged notebook border/shadow effect */
+            .container::before {
+                display: none !important;
+                content: none !important;
+                box-shadow: none !important;
+                filter: none !important;
+            }
+        }
+        
+        /* Apply to all viewports for specific elements */
+        .container, .header, .header-content, .drawer-header, .page-title-section, .collapsible-section, .article-detail-header {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            box-shadow: none !important;
+            border: 0px solid transparent !important;
+        }
+        
+        .header, .drawer-header {
+            border-bottom: 2px solid #d4af37 !important;
+        }
+
+        .collapsible-header, .collapsible-header:hover {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            border: 1px solid #e5e7eb !important;
+            color: #1e3a8a !important;
+            box-shadow: none !important;
+            transform: none !important;
+        }
+        
+        .collapsible-title, .collapsible-arrow, .article-detail-title, .article-detail-close {
+            color: #1e3a8a !important;
+        }
+        
+        /* Ensure the main page background is white */
+        body, .wealth-creation-page, .wealth-creation-page-content, .financial-analysis-page, .stock-valuation-page, .professional-advisers-page, .financial-products-page, .resources-page {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+        }
+        
+        /* Drawer close button visibility */
+        .drawer-close {
+            color: #1e3a8a !important;
+        }
+        .drawer-close::before {
+            color: #1e3a8a !important;
+        }
+        
+        /* Remove blue borders on links */
+        .collapsible-link:hover {
+            border-left-color: #1e3a8a !important;
+            background: #f8f9fa !important;
+        }
+        
+        /* Remove the blue glow from ALL elements */
+        * {
+            box-shadow: none !important;
+            text-shadow: none !important;
+        }
+
+        /* Hamburger menu colors */
+        .hamburger-line {
+            background-color: #1e3a8a !important;
+        }
+        
+        /* Footer disclaimer and other potential blue elements */
+        footer, .footer, .disclaimer-section {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            color: #666666 !important;
+            border-top: 1px solid #e5e7eb !important;
+        }
+    </style>
+
+
+
+
+
+
+
+
 </head>
 <body>
     <div class="wealth-creation-page">
         <!-- Header -->
-                                <header class="header sticky-header" role="banner">
-            <div class="header-content">
+        <header class="header sticky-header" role="banner">
+            <div class="container"><div class="header-content">
                 <div class="logo">
-                    <img src="G&D Logo.png" alt="Graham & Doddsville" class="logo-image">
+                    <img src="images/G&amp;D Logo.png" alt="Graham &amp; Doddsville" class="logo-image">
                 </div>
                 
-                <nav class="main-nav desktop-only">
-                    <ul>
+                <nav class="main-nav desktop-only">                    <ul>
                         <li><a href="index.html" class="nav-link">HOME</a></li>
-                        <li><a href="wealth-creation.html" class="nav-link">WEALTH CREATION</a></li>
-                        <li><a href="resources.html" class="nav-link">RESOURCES</a></li>
-                    </ul>
-                </nav>
+                        <li><a href="wealth-creation.html" class="nav-link">Wealth Creation</a></li>
+                        <li><a href="#" class="nav-link">ABOUT</a></li>
+                    </ul></nav>
+                
                 
                 <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                 </button>
-            </div>
-        </header>
+            </div></div></header>
 
         <!-- Mobile Navigation Drawer -->
         <div class="mobile-drawer" id="mobile-drawer">
         <div class="drawer-header">
-            <img src="G&amp;D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
+            <img src="images/G&amp;D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
             <button class="drawer-close" id="drawer-close" aria-label="Close menu"></button>
         </div>
         <nav class="drawer-nav">
@@ -329,7 +621,9 @@
                 <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
                 <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
                 <li><a href="investment-analysis.html" class="drawer-link">Investment Analysis</a></li>
-                <li><a href="economics.html" class="drawer-link">Economics</a></li>
+                <li><a href="financial-statement-analysis.html" class="drawer-link">Financial Statement Analysis</a></li>
+                <li><a href="stock-valuation.html" class="drawer-link">Stock Valuation</a></li>
+                <li><a href="sidebar-economics.html" class="drawer-link">Economics</a></li>
                 <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
                 <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
                 <li><a href="resources.html" class="drawer-link">Resources</a></li>
@@ -351,192 +645,188 @@
 
             <!-- Collapsible Categories -->
             <div class="collapsible-categories">
-                <!-- Introduction to Shares -->
                 <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('introduction-shares')">
-                    <h3 class="collapsible-title">Introduction to Shares</h3>
-                    <span class="collapsible-arrow" id="introduction-shares-arrow">▼</span>
+                    <div class="collapsible-header" onclick="toggleCollapsible('introduction-to-shares')">
+                        <h3 class="collapsible-title">Introduction to Shares</h3>
+                        <span class="collapsible-arrow" id="introduction-to-shares-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="introduction-to-shares-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-the-stock-market-works')">How the stock market works</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('why-invest-in-shares')">Why invest in shares</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('risks-and-advantages')">Risks and advantages</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-allocate-capital')">How to allocate capital</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-select-stocks')">How to select stocks</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-open-a-trading-account')">How to open a trading account</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-diversify-your-portfolio')">How to diversify your portfolio</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('when-to-sell-your-shares')">When to sell your shares</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('share-trading-platforms')">Share trading platforms</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('stock-screeners-for-stock-selection')">Stock screeners for stock selection</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="collapsible-content" id="introduction-shares-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('how-market-works')">How the Market Works</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('why-invest-shares')">Why Invest in Shares</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('risks-disadvantages')">Risks and Disadvantages</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('how-allocate-capital')">How to Allocate Capital</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('how-select-stocks')">How to Select Stocks</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('how-open-account')">How to Open an Account</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('how-diversify')">How to Diversify</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('when-to-sell')">When to Sell</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('trading-platforms')">Share Trading Platforms</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('stock-screeners')">Stock Screeners</a></li>
-                    </ul>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('investing-psychology')">
+                        <h3 class="collapsible-title">Investing Psychology</h3>
+                        <span class="collapsible-arrow" id="investing-psychology-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="investing-psychology-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('the-psychology-of-investing')">The psychology of investing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('cognitive-biases')">Cognitive biases</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('fear-and-greed')">Fear and greed</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('herd-mentality')">Herd mentality</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('market-bubbles')">Market bubbles</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('economic-depression')">Economic depression</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('market-cycles')">Market cycles</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('risk-perception')">Risk perception</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('charlie-munger-s-psychology-of-human-misjudgement')">Charlie Munger's psychology of human misjudgement</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('building-a-resilient-mindset')">Building a resilient mindset</a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-
-            <!-- Investing Psychology -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('investing-psychology')">
-                    <h3 class="collapsible-title">Investing Psychology</h3>
-                    <span class="collapsible-arrow" id="investing-psychology-arrow">▼</span>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('portfolio-construction')">
+                        <h3 class="collapsible-title">Portfolio Construction</h3>
+                        <span class="collapsible-arrow" id="portfolio-construction-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="portfolio-construction-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-is-portfolio-construction')">What is portfolio construction?</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('types-of-asset-allocation')">Types of asset allocation</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('different-asset-classes')">Different asset classes</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('shares-vs-cash')">Shares vs cash</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('shares-vs-other-assets')">Shares vs other assets</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('modern-portfolio-theory')">Modern Portfolio Theory</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('portfolio-construction')">Portfolio construction</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('core-satellite-portfolio-strategy')">Core-satellite portfolio strategy</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('active-vs-passive-management')">Active vs passive management</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('incorporating-bonds-and-fixed-income')">Incorporating bonds and fixed income</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('incorporating-alternative-investments')">Incorporating alternative investments</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('index-funds')">Index funds</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('portfolio-rebalancing-strategies')">Portfolio rebalancing strategies</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('measuring-portfolio-performance')">Measuring portfolio performance</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="collapsible-content" id="investing-psychology-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('psychology-investing')">Psychology of Investing</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('cognitive-biases')">Cognitive Biases</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('fear-greed')">Fear and Greed</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('herd-mentality')">Herd Mentality</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('market-bubbles')">Market Bubbles</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('economic-depression')">Economic Depression</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('market-cycles')">Market Cycles</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('risk-perception')">Risk Perception</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('munger-psychology')">Munger's Psychology</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('resilient-mindset')">Resilient Mindset</a></li>
-                    </ul>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('investing-styles')">
+                        <h3 class="collapsible-title">Investing Styles</h3>
+                        <span class="collapsible-arrow" id="investing-styles-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="investing-styles-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('value-investing')">Value investing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('index-investing')">Index investing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('growth-investing')">Growth investing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('garp-investing')">GARP investing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('dividend-investing')">Dividend investing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('income-investing')">Income investing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('qualitative-analysis')">Qualitative analysis</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('contrarian-investing')">Contrarian investing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('esg-investing')">ESG investing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('momentum-investing')">Momentum investing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('low-volatility-investing')">Low volatility investing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('technical-analysis')">Technical analysis</a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-
-            <!-- Portfolio Construction -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('portfolio-construction')">
-                    <h3 class="collapsible-title">Portfolio Construction</h3>
-                    <span class="collapsible-arrow" id="portfolio-construction-arrow">▼</span>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('stockpicking-strategies')">
+                        <h3 class="collapsible-title">Stockpicking Strategies</h3>
+                        <span class="collapsible-arrow" id="stockpicking-strategies-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="stockpicking-strategies-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('joel-greenblatt-s-magic-formula')">Joel Greenblatt's magic formula</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('william-o-neil-s-canslim')">William O'Neil's CANSLIM</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('michael-higgins-dogs-of-the-dow')">Michael Higgins' Dogs of the Dow</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('small-cap-investing')">Small cap investing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('special-situations')">Special situations</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('benjamin-graham-s-net-net-investing')">Benjamin Graham's net net investing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('joseph-piotroski-s-score')">Joseph Piotroski's score</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('benjamin-graham-screener')">Benjamin Graham screener</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('james-o-shaughnessy-s-tiny-titans')">James O'Shaughnessy's tiny titans</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('warren-buffett-s-criteria')">Warren Buffett's criteria</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('charlie-munger-s-criteria')">Charlie Munger's criteria</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('benjamin-graham-s-criteria')">Benjamin Graham's criteria</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="collapsible-content" id="portfolio-construction-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('asset-allocation')">Type of Asset Allocation</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('asset-classes')">Asset Classes</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('shares-vs-cash')">Shares Vs Cash</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('shares-vs-other-assets')">Shares Vs Other Assets</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('portfolio-construction')">Portfolio Construction</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('core-portfolio-strategies')">Core Portfolio Strategies</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('active-management')">Active Management</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('bonds-fixed-income')">Bonds and Fixed Income</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('alternative-investments')">Alternative Investments</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('index-funds')">Index Funds</a></li>
-                    </ul>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('value-investing')">
+                        <h3 class="collapsible-title">Value Investing</h3>
+                        <span class="collapsible-arrow" id="value-investing-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="value-investing-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('introduction-to-value-investing')">Introduction to value investing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('principles-of-value-investing')">Principles of value investing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('types-of-value-investing')">Types of value investing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('fundamental-analysis')">Fundamental analysis</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('margin-of-safety')">Margin of safety</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('the-art-of-stock-valuation')">The art of stock valuation</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('psychology-of-value-investing')">Psychology of value investing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('buffett-s-tenets-of-value-investing')">Buffett's tenets of value investing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('case-studies-in-value-investing')">Case studies in value investing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-value-investing')">Limitations of value investing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('outlook-for-value-investing')">Outlook for value investing</a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-
-            <!-- Investing Styles -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('investing-styles')">
-                    <h3 class="collapsible-title">Investing Styles</h3>
-                    <span class="collapsible-arrow" id="investing-styles-arrow">▼</span>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('technical-analysis')">
+                        <h3 class="collapsible-title">Technical Analysis</h3>
+                        <span class="collapsible-arrow" id="technical-analysis-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="technical-analysis-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-is-technical-analysis')">What is technical analysis?</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('types-of-technical-analysis')">Types of technical analysis</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-read-stock-charts')">How to read stock charts</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('candlestick-analysis')">Candlestick analysis</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('support-and-resistance-levels')">Support and resistance levels</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('moving-averages-and-trend-indicators')">Moving averages and trend indicators</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('momentum-indicators')">Momentum indicators</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('volume-analysis-in-trading')">Volume analysis in trading</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('chart-patterns-and-price-formations')">Chart patterns and price formations</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('fibonacci-retracements-and-extensions')">Fibonacci retracements and extensions</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('multi-timeframe-analysis')">Multi-timeframe analysis</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('volatility-indicators')">Volatility indicators</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('breakout-trading-strategies')">Breakout trading strategies</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('trading-psychology-and-discipline')">Trading psychology and discipline</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('common-mistakes-in-technical-analysis')">Common mistakes in technical analysis</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('risk-management-in-technical-trading')">Risk management in technical trading</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('trading-software-for-technical-analysis')">Trading software for technical analysis</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('outlook-for-technical-analysis')">Outlook for technical analysis</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="collapsible-content" id="investing-styles-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('value-investing')">Value Investing</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('index-investing')">Index Investing</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('growth-investing')">Growth Investing</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('garp-investing')">Garp Investing</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('dividend-investing')">Dividend Investing</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('income-investing')">Income Investing</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('qualitative-analysis')">Qualitative Analysis</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('contrarian-investing')">Contrarian Investing</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('esg-investing')">Esg Investing</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('momentum-investing')">Momentum Investing</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('low-volatility-investing')">Low Volatility Investing</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('technical-analysis')">Technical Analysis</a></li>
-                    </ul>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('initial-public-offerings-ipos')">
+                        <h3 class="collapsible-title">Initial Public Offerings (IPOs)</h3>
+                        <span class="collapsible-arrow" id="initial-public-offerings-ipos-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="initial-public-offerings-ipos-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-are-ipos')">What are IPOs?</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('history-of-ipos-in-australia')">History of IPOs in Australia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('the-ipo-process-in-australia')">The IPO process in Australia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('advantages-and-disadvantages-of-ipos')">Advantages and disadvantages of IPOs</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-analyse-ipos')">How to analyse IPOs</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-value-ipos')">How to value IPOs</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('factors-influencing-ipo-investment')">Factors influencing IPO investment</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-access-ipos')">How to access IPOs</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-manage-ipos')">How to manage IPOs</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('common-mistakes-in-ipo-investment')">Common mistakes in IPO investment</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('ipo-and-risk-management')">IPO and risk management</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('latest-trends-in-ipos')">Latest trends in IPOs</a></li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-
-            <!-- Stockpicking Strategies -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('stockpicking-strategies')">
-                    <h3 class="collapsible-title">Stockpicking Strategies</h3>
-                    <span class="collapsible-arrow" id="stockpicking-strategies-arrow">▼</span>
-                </div>
-                <div class="collapsible-content" id="stockpicking-strategies-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('magic-formula')">Magic Formula</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('canslim')">Canslim</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('dogs-of-dow')">Dogs of the Dow</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('small-cap-investing')">Small Cap Investing</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('special-situations')">Special Situations</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('net-net-investing')">Net Net Investing</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('piotroski-score')">Piotroski's Score</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('graham-screener')">Graham Screener</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('tiny-titans')">Tiny Titans</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('buffet-criteria')">Buffet's Criteria</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('munger-criteria')">Munger's Criteria</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('graham-criteria')">Graham's Criteria</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Value Investing -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('value-investing')">
-                    <h3 class="collapsible-title">Value Investing</h3>
-                    <span class="collapsible-arrow" id="value-investing-arrow">▼</span>
-                </div>
-                <div class="collapsible-content" id="value-investing-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('value-introduction')">Introduction</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('value-principles')">Principles</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('value-types')">Types</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('financial-analysis')">Financial Analysis</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('margin-of-safety')">Margin of Safety</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('art-of-valuation')">Art of Valuation</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('value-psychology')">Psychology</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('value-case-studies')">Case Studies</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('famous-investors')">10 Famous Investors</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('buffet-tenets')">Buffet's Tenets</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('modern-society')">Modern Society</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('value-limitations')">Limitations</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('value-outlook')">Outlook</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Technical Analysis -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('technical-analysis')">
-                    <h3 class="collapsible-title">Technical Analysis</h3>
-                    <span class="collapsible-arrow" id="technical-analysis-arrow">▼</span>
-                </div>
-                <div class="collapsible-content" id="technical-analysis-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('tech-introduction')">Introduction</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('chart-patterns')">Chart Patterns</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('technical-indicators')">Technical Indicators</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('moving-averages')">Moving Averages</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('support-resistance')">Support and Resistance</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('candlestick-analysis')">Candlestick Analysis</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('fibonacci-retracements')">Fibonacci Retracements</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('trading-strategies')">Trading Strategies</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('trading-software')">Trading Software</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('tech-outlook')">Outlook</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- IPOs -->
-            <div class="collapsible-section">
-                <div class="collapsible-header" onclick="toggleCollapsible('ipos')">
-                    <h3 class="collapsible-title">IPOs</h3>
-                    <span class="collapsible-arrow" id="ipos-arrow">▼</span>
-                </div>
-                <div class="collapsible-content" id="ipos-content">
-                    <ul class="collapsible-links">
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('what-are-ipos')">What Are Ipos</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('ipo-process')">The Ipo Process</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('ipo-advantages-disadvantages')">Advantages and Disadvantages</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('how-analyse-ipos')">How to Analyse Ipos</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('how-value-ipos')">How to Value Ipos</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('influencing-factors')">Influencing Factors</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('how-access-ipos')">How to Access Ipos</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('how-manage-ipos')">How to Manage Ipos</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('common-mistakes')">Common Mistakes</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('alternative-strategies')">Alternative Strategies</a></li>
-                        <li><a href="#" class="collapsible-link" onclick="openArticle('latest-trends')">Latest Trends</a></li>
-                    </ul>
-                </div>
-            </div>
             </div>
         </div>
-    
+    </div>
 
     <!-- Article Detail Panel -->
     <div class="article-detail-panel" id="article-detail-panel">
@@ -550,66 +840,160 @@
             </div>
         </div>
     </div>
-
+    
+    <script src="js/article-image-resolver.js?v=3"></script>
+    
+    <script src="js/article-image-resolver.js?v=3"></script>
+    
+    <script src="js/article-image-resolver.js?v=3"></script>
     <script>
         // Collapsible functionality
         function toggleCollapsible(sectionId) {
-            const content = document.getElementById(`${sectionId}-content`);
-            const arrow = document.getElementById(`${sectionId}-arrow`);
-
+            const content = document.getElementById(sectionId + '-content');
+            const arrow = document.getElementById(sectionId + '-arrow');
+            if (!content) return;
+            
+            const section = content.closest('.collapsible-section');
+            const isCurrentlyOpen = content.classList.contains('expanded');
+            
             // Close all other open sections
-            document.querySelectorAll('.collapsible-content.expanded').forEach(openContent => {
-                openContent.classList.remove('expanded');
-                const openArrowId = openContent.id.replace('-content', '-arrow');
-                document.getElementById(openArrowId).innerHTML = '▼';
+            document.querySelectorAll('.collapsible-content').forEach(c => {
+                if (c.id !== sectionId + '-content' && (c.classList.contains('expanded') || c.style.maxHeight)) {
+                    c.style.maxHeight = null;
+                    c.classList.remove('expanded');
+                    c.classList.add('collapsed');
+                    const s = c.closest('.collapsible-section');
+                    if (s) s.classList.remove('active');
+                    const a = document.getElementById(c.id.replace('-content', '-arrow'));
+                    if (a) a.innerHTML = '▼';
+                }
             });
 
-            // Toggle this section
-            if (content.classList.contains('expanded')) {
-                content.classList.remove('expanded');
-                arrow.innerHTML = '▼';
-            } else {
+            if (!isCurrentlyOpen) {
+                // OPENING
+                // First, remove collapsed and add expanded to ensure it's visible for scrollHeight calculation
                 content.classList.add('expanded');
-                arrow.innerHTML = '▲';
+                content.classList.remove('collapsed');
+                
+                if(sectionId === 'events-seminars') {
+                    content.style.maxHeight = 'none';
+                } else {
+                    // Now measure scrollHeight
+                    const height = content.scrollHeight;
+                    content.style.maxHeight = height + "px";
+                }
+                
+                if (section) section.classList.add('active');
+                if (arrow) arrow.innerHTML = '▲';
+            } else {
+                // CLOSING
+                content.style.maxHeight = null;
+                content.classList.remove('expanded');
+                content.classList.add('collapsed');
+                if (section) section.classList.remove('active');
+                if (arrow) arrow.innerHTML = '▼';
             }
         }
 
         // Mobile drawer functionality
-        const mobileToggle = document.getElementById('mobile-toggle');
-        const mobileDrawer = document.getElementById('mobile-drawer');
-        const drawerClose = document.getElementById('drawer-close');
-        
-        if (mobileToggle && mobileDrawer) {
-            mobileToggle.addEventListener('click', () => {
-                console.log('Hamburger menu clicked!');
-                mobileDrawer.classList.add('open');
-                document.body.style.overflow = 'hidden';
-                console.log('Drawer should be open now');
-            });
-        }
-        
-        if (drawerClose && mobileDrawer) {
-            drawerClose.addEventListener('click', () => {
-                mobileDrawer.classList.remove('open');
-                document.body.style.overflow = '';
-            });
-        }
-        
-        // Close drawer when clicking outside
-        if (mobileDrawer) {
-            mobileDrawer.addEventListener('click', (e) => {
-                if (e.target === mobileDrawer) {
+        function toggleMobileMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                if (mobileDrawer.classList.contains('open')) {
                     mobileDrawer.classList.remove('open');
                     document.body.style.overflow = '';
+                } else {
+                    mobileDrawer.classList.add('open');
+                    document.body.style.overflow = 'hidden';
                 }
-            });
+            }
         }
 
-        // Article content data
+        function closeMobileMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Article loading functionality
+        function loadArticle(articleId) {
+            const panel = document.getElementById('article-detail-panel');
+            const title = document.getElementById('article-detail-title');
+            const body = document.getElementById('article-detail-body');
+            
+            if (!panel || !title || !body) return;
+
+            if (typeof articleContent !== 'undefined' && articleContent[articleId]) {
+                const article = articleContent[articleId];
+                title.textContent = article.title;
+                
+                let imageHtml = '';
+                if (typeof window.buildArticleImageHtml === 'function') {
+                    imageHtml = window.buildArticleImageHtml(articleId, article);
+                }
+                
+                body.innerHTML = imageHtml + article.content;
+                panel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                const contentContainer = panel.querySelector('.article-detail-content');
+                if (contentContainer) contentContainer.scrollTop = 0;
+            }
+        }
+
+        function closeArticlePanel() {
+            const panel = document.getElementById('article-detail-panel');
+            if (panel) {
+                panel.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            const drawerClose = document.getElementById('drawer-close');
+            
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    toggleMobileMenu();
+                });
+            }
+            
+            if (drawerClose) {
+                drawerClose.addEventListener('click', closeMobileMenu);
+            }
+            
+            if (mobileDrawer) {
+                mobileDrawer.addEventListener('click', (e) => {
+                    if (e.target === mobileDrawer) closeMobileMenu();
+                });
+            }
+
+            const articlePanel = document.getElementById('article-detail-panel');
+            if (articlePanel) {
+                articlePanel.addEventListener('click', (e) => {
+                    if (e.target === articlePanel) closeArticlePanel();
+                });
+            }
+            
+            const closeBtn = document.getElementById('article-detail-close');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeArticlePanel);
+            }
+        });
+
+        // Data from file
         const articleContent = {
             'investment-analysis': {
                 title: 'Investment Analysis',
-                content: `<p>Investment Analysis content to be added.</p>`
+                content: `
+                    
+<p>Investment Analysis content to be added.</p>`
             },
             'how-market-works': {
                 title: 'How the Market Works',
@@ -644,13 +1028,14 @@
             'value-investing': {
                 title: 'Value Investing',
                 content: `
-                    <h2>Value Investing</h2>
+                    
+<h2>Value Investing</h2>
 
                     <h3>Introduction/Overview</h3>
                     <p>Value investing is a time-tested strategy that involves identifying and purchasing securities that are trading below their intrinsic value. Originating from the teachings of Benjamin Graham and popularized by Warren Buffett, this approach prioritizes fundamental analysis over market trends, aiming to capitalize on market inefficiencies where stocks are undervalued relative to their true worth.</p>
 
                     <h3>Key Principles and Concepts</h3>
-                    <p>At its core, value investing relies on rigorous fundamental analysis to determine a company's intrinsic value—the actual economic worth based on its assets, earnings, and cash flows. Key principles include:</p>
+                    <p>At its core, value investing relies on rigorous fundamental analysis to determine a company's intrinsic valueâ€”the actual economic worth based on its assets, earnings, and cash flows. Key principles include:</p>
                     <ul>
                     <li><strong>Margin of Safety:</strong> Purchasing assets at a significant discount to their intrinsic value to mitigate risks from valuation errors.</li>
                     <li><strong>Long-Term Focus:</strong> Emphasizing patient holding periods, often years, to allow market corrections to align prices with fundamentals.</li>
@@ -693,7 +1078,8 @@
             'growth-investing': {
                 title: 'Growth investing',
                 content: `
-                    <h2>Growth Investing</h2>
+                    
+<h2>Growth Investing</h2>
 
                     <h3>Introduction/Overview</h3>
                     <p>Growth investing targets companies expected to grow at above-average rates, prioritizing future potential over current profitability. This strategy focuses on innovative firms in emerging industries, often at the expense of traditional valuation metrics.</p>
@@ -742,7 +1128,8 @@
             'garp-investing': {
                 title: 'GARP investing',
                 content: `
-                    <h2>GARP Investing</h2>
+                    
+<h2>GARP Investing</h2>
 
                     <h3>Introduction/Overview</h3>
                     <p>Growth at a Reasonable Price (GARP) combines growth and value principles, seeking companies with strong growth potential at fair valuations. Popularized by Peter Lynch, it balances upside from growth with downside protection from value metrics.</p>
@@ -791,7 +1178,8 @@
             'dividend-investing': {
                 title: 'Dividend investing',
                 content: `
-                    <h2>Dividend Investing</h2>
+                    
+<h2>Dividend Investing</h2>
 
                     <h3>Introduction/Overview</h3>
                     <p>Dividend investing focuses on stocks that pay regular dividends, providing income alongside potential capital growth. This strategy appeals to income-focused investors seeking stability.</p>
@@ -840,7 +1228,8 @@
             'income-investing': {
                 title: 'Income investing',
                 content: `
-                    <h2>Income Investing</h2>
+                    
+<h2>Income Investing</h2>
 
                     <h3>Introduction/Overview</h3>
                     <p>Income investing generates regular cash flow from investments like bonds, REITs, and dividend stocks, ideal for retirees or conservative investors.</p>
@@ -889,7 +1278,8 @@
             'qualitative-analysis': {
                 title: 'Qualitative analysis',
                 content: `
-                    <h2>Qualitative Analysis</h2>
+                    
+<h2>Qualitative Analysis</h2>
 
                     <h3>Introduction/Overview</h3>
                     <p>Qualitative analysis evaluates non-numerical factors like management quality and brand strength to assess investment potential.</p>
@@ -938,7 +1328,8 @@
             'contrarian-investing': {
                 title: 'Contrarian investing',
                 content: `
-                    <h2>Contrarian Investing</h2>
+                    
+<h2>Contrarian Investing</h2>
 
                     <h3>Introduction/Overview</h3>
                     <p>Contrarian investing buys when others sell and sells when others buy, capitalizing on market overreactions.</p>
@@ -987,7 +1378,8 @@
             'esg-investing': {
                 title: 'ESG investing',
                 content: `
-                    <h2>ESG Investing</h2>
+                    
+<h2>ESG Investing</h2>
 
                     <h3>Introduction/Overview</h3>
                     <p>Environmental, Social, and Governance (ESG) investing integrates sustainability and ethics into investment decisions.</p>
@@ -1036,7 +1428,8 @@
             'momentum-investing': {
                 title: 'Momentum investing',
                 content: `
-                    <h2>Momentum Investing</h2>
+                    
+<h2>Momentum Investing</h2>
 
                     <h3>Introduction/Overview</h3>
                     <p>Momentum investing rides trends by buying rising assets and selling falling ones.</p>
@@ -1085,7 +1478,8 @@
             'low-volatility-investing': {
                 title: 'Low volatility investing',
                 content: `
-                    <h2>Low Volatility Investing</h2>
+                    
+<h2>Low Volatility Investing</h2>
 
                     <h3>Introduction/Overview</h3>
                     <p>Low volatility investing selects stable assets to minimize price swings.</p>
@@ -1134,7 +1528,8 @@
             'technical-analysis': {
                 title: 'Technical analysis',
                 content: `
-                    <h2>Technical Analysis</h2>
+                    
+<h2>Technical Analysis</h2>
 
                     <h3>Introduction/Overview</h3>
                     <p>Technical analysis uses price charts and indicators to predict future movements.</p>
@@ -1183,7 +1578,8 @@
             'magic-formula': {
                 title: 'Magic Formula',
                 content: `
-                    <h2>Magic Formula</h2>
+                    
+<h2>Magic Formula</h2>
 
                     <h3>Introduction/Overview</h3>
                     <p>Investing in the Australian market can be an exciting yet daunting task. But what if there was a formula that could help you uncover promising investment opportunities with a systematic approach? Enter Joel Greenblatt's Magic Formula Investing.</p>
@@ -1431,7 +1827,8 @@
             'when-to-sell': {
                 title: 'When to sell',
                 content: `
-                    <p>Share Investing</p>
+                    
+<p>Share Investing</p>
                     <h2>How to Decide When to Sell Your Shares</h2>
                     <p>Knowing when to sell your shares is a critical aspect of successful investing. While buying the right stocks is important, selling at the appropriate time can help protect profits, manage risk, and optimize portfolio returns. Making informed decisions about when to sell requires careful consideration of various factors, including investment goals, market conditions, and individual stock performance. In this article, we will explore key considerations and strategies to help Australian investors determine when to sell their shares effectively.</p>
                     <h3>Reassess Your Investment Thesis</h3>
@@ -1458,7 +1855,8 @@
             'trading-platforms': {
                 title: 'Share trading platforms',
                 content: `
-                    <p>Share Investing</p>
+                    
+<p>Share Investing</p>
                     <h2>Share Trading Platforms: A Guide to the Top 5 Players in Australia</h2>
                     <p>Whether you're a seasoned trader or just starting out, having the right platform can make all the difference. In this article, we'll take you through a curated list of the top 5 share trading platforms in Australia. We'll explore their features, benefits, fees, and user experience, so you can make an informed choice that suits your investing style. Let's get started and find the perfect platform to kick-start your trading journey!</p>
                     <h3>CommSec: The Trusted Giant</h3>
@@ -1494,9 +1892,10 @@
             'stock-screeners': {
                 title: 'Stock screeners',
                 content: `
-                    <p>Share Investing</p>
+                    
+<p>Share Investing</p>
                     <h2>The 10 Best Stock Screeners in Australia</h2>
-                    <p>Are you ready to take your stock-picking game to the next level? Say goodbye to tedious research and manual analysis, and say hello to stock screeners—a powerful tool that helps you find investment opportunities in a flash. In this article, we'll walk you through the top 10 stock screeners in Australia. We'll explore their features, benefits, and drawbacks, so you can find the perfect tool to uncover winning stocks. Let's dive in and unleash the power of stock screeners!</p>
+                    <p>Are you ready to take your stock-picking game to the next level? Say goodbye to tedious research and manual analysis, and say hello to stock screenersâ€”a powerful tool that helps you find investment opportunities in a flash. In this article, we'll walk you through the top 10 stock screeners in Australia. We'll explore their features, benefits, and drawbacks, so you can find the perfect tool to uncover winning stocks. Let's dive in and unleash the power of stock screeners!</p>
                     <h3>CommSec's Stock Filter</h3>
                     <p><strong>Pros:</strong></p>
                     <ul>
@@ -1652,9 +2051,10 @@
             'cognitive-biases': {
                 title: 'Cognitive biases',
                 content: `
-                    <p>Share Investing</p>
+                    
+<p>Share Investing</p>
                     <h2>Cognitive Biases in Investing: Navigating the Pitfalls of Decision-Making</h2>
-                    <p>Investing is a complex endeavor that requires rational decision-making. However, our minds are prone to cognitive biases—systematic errors in thinking that can cloud judgment and lead to suboptimal investment choices. By understanding and addressing these cognitive biases, Australian investors can make more objective and informed decisions. In this article, we will explore the ten most common cognitive biases in investing, provide insights on how to recognize them, and offer strategies to overcome them.</p>
+                    <p>Investing is a complex endeavor that requires rational decision-making. However, our minds are prone to cognitive biasesâ€”systematic errors in thinking that can cloud judgment and lead to suboptimal investment choices. By understanding and addressing these cognitive biases, Australian investors can make more objective and informed decisions. In this article, we will explore the ten most common cognitive biases in investing, provide insights on how to recognize them, and offer strategies to overcome them.</p>
                     <h3>Confirmation Bias</h3>
                     <p>Confirmation bias is the tendency to seek out information that confirms our existing beliefs while disregarding or downplaying contradictory evidence. In investing, this bias can lead us to selectively interpret information, reinforcing our preconceived notions about a stock or market. To overcome confirmation bias, it is important to actively seek diverse viewpoints, critically evaluate information, and challenge our own assumptions.</p>
                     <h3>Anchoring Bias</h3>
@@ -1713,7 +2113,8 @@
             'herd-mentality': {
                 title: 'Herd mentality',
                 content: `
-                    <p>Share Investing</p>
+                    
+<p>Share Investing</p>
                     <h2>The Herd Mentality in Investing: Learning from Real-Life Case Histories</h2>
                     <p>The herd mentality, a psychological phenomenon deeply ingrained in human behavior, is a significant force that shapes investor decisions and can have a profound impact on financial markets. The tendency to follow the crowd can lead to irrational investment behavior, exaggerated market movements, and mispriced assets. In this article, we will explore the herd mentality in investing, examine real-life case histories that exemplify its influence, and discuss steps that could have been taken to prevent its detrimental effects.</p>
                     <h3>Case History 1: The Dot-Com Bubble</h3>
@@ -1739,7 +2140,8 @@
             'market-bubbles': {
                 title: 'Market bubbles',
                 content: `
-                    <p>Share Investing</p>
+                    
+<p>Share Investing</p>
                     <h2>Market Bubbles: Understanding, Identifying and Learning from History</h2>
                     <p>Investing in financial markets can be a rewarding endeavor, but it also comes with risks, including the possibility of market bubbles. Market bubbles are periods of excessive and unsustainable price increases in certain assets or markets. Understanding the characteristics, causes, stages, and historical examples of market bubbles is essential for Australian investors to navigate the financial landscape effectively. In this article, we will explore the concept of market bubbles, their features, types, causes, stages, real-life examples, and the lessons we can learn from history.</p>
                     <h3>What is a Market Bubble?</h3>
@@ -1783,7 +2185,8 @@
             'economic-depression': {
                 title: 'Economic depression',
                 content: `
-                    <p>Share Investing</p>
+                    
+<p>Share Investing</p>
                     <h2>Economic Depression: Understanding, Identifying and Learning from History</h2>
                     <p>An economic depression is a severe and prolonged downturn in economic activity characterized by a significant decline in GDP, high unemployment rates, decreased consumer spending, and a general contraction in business activity. As an Australian investor, understanding the features, types, causes, stages, and historical examples of economic depressions is crucial for navigating the financial landscape effectively. In this article, we will explore the concept of economic depressions, their features, types, causes, stages, real-life examples, and the lessons we can learn from history.</p>
                     <h3>What is an Economic Depression?</h3>
@@ -1821,7 +2224,8 @@
             'market-cycles': {
                 title: 'Market cycles',
                 content: `
-                    <p>Share Investing</p>
+                    
+<p>Share Investing</p>
                     <h2>Market Cycles and Investor Sentiment: Navigating the Psychology of Investing</h2>
                     <p>Market cycles are an inherent part of the financial landscape, characterized by alternating periods of expansion and contraction. Understanding the psychological aspects of market cycles and investor sentiment is vital for Australian investors seeking to navigate the markets successfully. In this article, we will delve into the stages of market cycles, including euphoria, panic, and recovery, and explore how investor sentiment can influence market trends. We will also discuss strategies for managing emotions during different market cycles and leveraging investor sentiment to identify potential opportunities or risks.</p>
                     <h3>The Psychological Rollercoaster of Market Cycles</h3>
@@ -1851,7 +2255,8 @@
             'risk-perception': {
                 title: 'Risk perception',
                 content: `
-                    <p>Share Investing</p>
+                    
+<p>Share Investing</p>
                     <h2>Risk Perception and Risk Management in Investing: Navigating Uncertainty with Confidence</h2>
                     <p>Investing inherently involves taking risks, but how individuals perceive and manage those risks can significantly impact their investment outcomes. Understanding risk perception, including concepts like loss aversion and the illusion of control, is crucial for Australian investors looking to make informed decisions. In this article, we will delve into risk perception and explore strategies for assessing and managing risk in investing. By developing a sound risk management framework, investors can navigate market uncertainties more effectively and achieve their long-term financial goals.</p>
                     <h3>The Psychology of Risk Perception</h3>
@@ -1905,7 +2310,8 @@
             'resilient-mindset': {
                 title: 'Resilient mindset',
                 content: `
-                    <p>Share Investing</p>
+                    
+<p>Share Investing</p>
                     <h2>Building a Resilient Investment Mindset: Navigating Market Volatility with Confidence</h2>
                     <p>Building a resilient investment mindset is crucial for Australian investors looking to weather market volatility and achieve long-term financial success. While market conditions may fluctuate, cultivating psychological traits and attitudes such as patience, discipline, and adaptability can help investors stay focused on their goals. In this article, we will explore the key elements of a resilient investment mindset, including continuous learning, staying informed, maintaining a growth mindset, and embracing diversification. By nurturing these qualities, individuals can navigate market uncertainties with confidence and resilience.</p>
                     <h3>Patience: The Power of Long-Term Thinking</h3>
@@ -1935,7 +2341,7 @@
                     <p>Share Investing</p>
                     <h2>Nailing Down the Basics: An Investor's Guide to Core Portfolio Strategies</h2>
                     <p>Building a solid foundation for long-term portfolio growth is essential for achieving financial success.</p>
-                    <p>In this article, we'll dive into core portfolio strategies that can help you navigate the investing world with confidence. We'll explore the power of index funds, exchange-traded funds (ETFs), and managed funds—low-cost, passively managed investments that can provide a strong base for your investment journey.</p>
+                    <p>In this article, we'll dive into core portfolio strategies that can help you navigate the investing world with confidence. We'll explore the power of index funds, exchange-traded funds (ETFs), and managed fundsâ€”low-cost, passively managed investments that can provide a strong base for your investment journey.</p>
                     <h3>Understanding Core Portfolio Strategies</h3>
                     <p>Before we jump into specific investments, let's talk about core portfolio strategies. These strategies aim to create a diversified and stable foundation for your portfolio. They typically involve long-term investments with a focus on asset allocation and risk management.</p>
                     <h3>The Rise of Index Funds: Simple and Effective</h3>
@@ -2113,7 +2519,8 @@
             'alternative-investments': {
                 title: 'Alternative investments',
                 content: `
-                    <p>Share Investing</p>
+                    
+<p>Share Investing</p>
                     <h2>Thinking Outside the Box: The Role of Alternative Investments in Your Portfolio</h2>
                     <p>When it comes to building a well-rounded portfolio, it's time to think beyond traditional stocks and bonds. Alternative investments offer a world of opportunities to diversify and manage risk.</p>
                     <p>In this article, we'll explore alternative investments such as real estate, commodities, hedge funds, and private equity. We'll dive into their characteristics, potential benefits, and how they can enhance your investment portfolio. So, grab your favorite brew and let's think outside the box!</p>
@@ -2292,7 +2699,8 @@
             'shares-vs-cash': {
                 title: 'Shares vs cash',
                 content: `
-                    <p>Share Investing</p>
+                    
+<p>Share Investing</p>
                     <h2>Striking the Right Balance: An Investor's Guide to Asset Allocation between Shares and Cash</h2>
                     <p>When it comes to investing, finding the right balance between risk and safety is key. Asset allocation plays a crucial role in achieving this balance, particularly when deciding how much to allocate between shares and cash.</p>
                     <p>In this article, we will provide an investor's guide to asset allocation between shares and cash, focusing on the considerations, benefits, and strategies for finding the optimal mix. By understanding the factors at play and employing sound asset allocation techniques, Australian investors can navigate the investing landscape with confidence.</p>
@@ -2327,7 +2735,8 @@
             'shares-vs-other-assets': {
                 title: 'Shares vs other assets',
                 content: `
-                    <p>Share Investing</p>
+                    
+<p>Share Investing</p>
                     <h2>Striking the Balance: A Beginner's Guide to Allocating Capital Between Shares and Other Asset Classes</h2>
                     <p>So, you've got some capital to invest, but you're not sure how much to allocate between shares and other asset classes. Don't worry, we've got you covered.</p>
                     <p>In this article, we'll take you through the steps of allocating capital between shares and a range of other asset classes, including bonds, managed funds, ETFs, index funds, real estate, commodities, derivatives, currencies, futures, and alternative investments. Let's dive in and find the perfect balance for your investment journey!</p>
@@ -2389,7 +2798,8 @@
             'portfolio-construction': {
                 title: 'Portfolio construction',
                 content: `
-                    <p>Share Investing</p>
+                    
+<p>Share Investing</p>
                     <h2>Constructing a Winning Portfolio: An Investor's Guide to Portfolio Construction</h2>
                     <p>Building a successful investment portfolio requires careful consideration, strategic planning, and a disciplined approach.</p>
                     <p>Portfolio construction involves the selection and allocation of various investments to achieve a well-diversified and balanced portfolio.</p>
@@ -2426,7 +2836,8 @@
             'index-funds': {
                 title: 'Index funds',
                 content: `
-                    <h2>Index Investing</h2>
+                    
+<h2>Index Investing</h2>
 
                     <h3>Introduction/Overview</h3>
                     <p>Index investing, also known as passive investing, involves buying securities that replicate the performance of a market index, such as the ASX 200. This strategy, championed by figures like John Bogle, aims to match market returns rather than outperform them, offering a low-cost alternative to active stock picking.</p>
@@ -2475,7 +2886,8 @@
             'asset-allocation': {
                 title: 'Type of asset allocation',
                 content: `
-                    <p>Share Investing</p>
+                    
+<p>Share Investing</p>
                     <h2>The Different Types of Asset Allocation Strategies</h2>
                     <p>Constructing a well-diversified investment portfolio is crucial for long-term investment success. Asset allocation plays a pivotal role in this process, as it determines how investments are distributed across different asset classes.</p>
                     <p>In this article, we will explore various types of asset allocation strategies commonly used by Australian investors. Understanding these strategies can help individuals make informed decisions about their investment portfolios and maximize their chances of achieving their financial goals.</p>
@@ -2501,7 +2913,8 @@
             'canslim': {
                 title: 'CANSLIM',
                 content: `
-                    <h2>CANSLIM</h2>
+                    
+<h2>CANSLIM</h2>
 
                     <h3>Introduction/Overview</h3>
                     <p>Investing in the Australian market can be a thrilling and rewarding experience, especially when armed with a proven investment strategy. CANSLIM, developed by legendary investor William J. O'Neil, has gained popularity among investors worldwide for its systematic approach to identifying high-potential stocks.</p>
@@ -2530,7 +2943,7 @@
                     <p>M - Market Direction: Assess the overall market direction and aim to invest during favorable market conditions.</p>
 
                     <h3>Popular Types of CANSLIM Investments</h3>
-                    <p>Growth Stocks: CANSLIM investors often target growth stocks—companies that demonstrate rapid earnings growth and possess a competitive edge in their respective industries.</p>
+                    <p>Growth Stocks: CANSLIM investors often target growth stocksâ€”companies that demonstrate rapid earnings growth and possess a competitive edge in their respective industries.</p>
                     <p>Technological Innovators: CANSLIM investors look for companies at the forefront of technological advancements, such as those in the technology, biotech, and healthcare sectors.</p>
                     <p>Industry Leaders: CANSLIM identifies industry leaders with strong market positions and robust growth potential. These companies often benefit from favorable market trends and have the ability to outperform competitors.</p>
 
@@ -2619,7 +3032,8 @@
             'small-cap-investing': {
                 title: 'Small cap investing',
                 content: `
-                    <h2>A Beginner's Guide to Small Cap Investing in Australia</h2>
+                    
+<h2>A Beginner's Guide to Small Cap Investing in Australia</h2>
 
                     <h3>Introduction/Overview</h3>
                     <p>Investing in the Australian stock market offers a plethora of opportunities, from blue-chip giants to hidden gems. Small cap investing, in particular, focuses on the untapped potential of smaller companies with promising growth prospects.</p>
@@ -2672,7 +3086,8 @@
             'special-situations': {
                 title: 'Special situations',
                 content: `
-                    <h2>Seizing Opportunities: An Investor's Guide to Special Situations Investing in Australia</h2>
+                    
+<h2>Seizing Opportunities: An Investor's Guide to Special Situations Investing in Australia</h2>
 
                     <h3>Introduction/Overview</h3>
                     <p>Investing in the Australian market presents a multitude of opportunities, with various strategies designed to unlock hidden potential. Special Situations investing is a unique approach that focuses on capitalising on specific  or circumstances that can create profitable investment opportunities.</p>
@@ -2726,7 +3141,8 @@
             'net-net-investing': {
                 title: 'Net net investing',
                 content: `
-                    <h2>Uncovering Hidden Gems: A Beginner's Guide to Net-Net Investing in Australia</h2>
+                    
+<h2>Uncovering Hidden Gems: A Beginner's Guide to Net-Net Investing in Australia</h2>
 
                     <h3>Introduction/Overview</h3>
                     <p>Investing in the Australian stock market can be an exciting and rewarding journey, filled with opportunities to uncover hidden gems. Net-Net investing, a lesser-known investment strategy, focuses on identifying deeply undervalued companies trading at a significant discount to their net current asset value.</p>
@@ -2834,7 +3250,8 @@
             'graham-screener': {
                 title: 'Graham screener',
                 content: `
-                    <h2>Unlocking Value: An Investor's Guide to the Graham Screener</h2>
+                    
+<h2>Unlocking Value: An Investor's Guide to the Graham Screener</h2>
 
                     <h3>Introduction/Overview</h3>
                     <p>Investing in the Australian stock market can be a thrilling yet challenging endeavor. For those seeking undervalued opportunities, the Graham Screener, inspired by the principles of Benjamin Graham, offers a powerful tool to identify potentially discounted stocks.</p>
@@ -2854,7 +3271,7 @@
                     <p>To calculate the Graham Screener for a particular stock, gather the company's EPS and BVPS figures. Multiply the EPS by 22.5, then multiply the result by the BVPS. Finally, take the square root of this product to obtain the Graham Number.</p>
 
                     <h3>Popular Types of Graham Screener Investments</h3>
-                    <p>Value Stocks: The Graham Screener is often used to identify value stocks – companies with low valuations and strong fundamentals. These stocks may offer substantial upside potential once the market recognizes their true worth.</p>
+                    <p>Value Stocks: The Graham Screener is often used to identify value stocks â€“ companies with low valuations and strong fundamentals. These stocks may offer substantial upside potential once the market recognizes their true worth.</p>
                     <p>Dividend Stocks: The Graham Screener can be applied to dividend stocks, as it helps investors identify companies that may have strong financials and the potential to generate consistent dividends.</p>
 
                     <h3>Strengths of the Graham Screener</h3>
@@ -2886,7 +3303,8 @@
             'tiny-titans': {
                 title: 'Tiny titans',
                 content: `
-                    <h2>An Investor's Guide to Tiny Titans Investing: Uncovering Opportunities in Smaller Stocks</h2>
+                    
+<h2>An Investor's Guide to Tiny Titans Investing: Uncovering Opportunities in Smaller Stocks</h2>
 
                     <h3>Introduction/Overview</h3>
                     <p>In the vast ocean of investment opportunities, there's a group of investors who specialise in uncovering hidden gems among smaller stocks. Known as Tiny Titans, these savvy investors employ a unique strategy that focuses on smaller companies with the potential for significant growth.</p>
@@ -3168,7 +3586,7 @@
                 title: 'The Fundamental Principles of Value Investing',
                 content: `
                     <h2>The Fundamental Principles of Value Investing</h2>
-                    <p>Investing in the stock market can be a thrilling rollercoaster ride, where fortunes can be made or lost in the blink of an eye. But amidst the frenzy of market speculation and hype, there lies a steadfast and timeless approach to investing – value investing.</p>
+                    <p>Investing in the stock market can be a thrilling rollercoaster ride, where fortunes can be made or lost in the blink of an eye. But amidst the frenzy of market speculation and hype, there lies a steadfast and timeless approach to investing â€“ value investing.</p>
                     
                     <p>Developed by the legendary Benjamin Graham and embraced by iconic investors like Warren Buffett, value investing is a philosophy that centers on astute analysis, patience, and a deep understanding of the businesses behind the stocks.</p>
                     
@@ -3180,7 +3598,7 @@
                     <p>According to Graham, speculators focus on identifying companies that have the potential for significant future value based on certain . On the other hand, value investors aim to purchase companies at significant discounts to their current intrinsic value. Their hope is that as time passes, other investors will come to realize the true value of the company and subsequently drive up the price of its stock.</p>
                     
                     <h3>Mr. Market and The Stock Market</h3>
-                    <p>In Graham's iconic analogy, the stock market is personified as Mr. Market, a moody and emotional character. Every day, Mr. Market offers to buy or sell stocks at varying prices, reflecting his ever-changing emotions – sometimes exuberant, and other times, despondent. As an investor, you have the choice to either follow Mr. Market's erratic lead or maintain a level-headed approach.</p>
+                    <p>In Graham's iconic analogy, the stock market is personified as Mr. Market, a moody and emotional character. Every day, Mr. Market offers to buy or sell stocks at varying prices, reflecting his ever-changing emotions â€“ sometimes exuberant, and other times, despondent. As an investor, you have the choice to either follow Mr. Market's erratic lead or maintain a level-headed approach.</p>
                     
                     <p>The Margin of Safety principle advises investors to detach themselves from Mr. Market's whims and focus on independent analysis. Instead of being swayed by daily market sentiment, value investors diligently assess a company's fundamentals, growth prospects, and financial health. By doing so, they can seize opportunities presented by Mr. Market's irrational pricing, buying stocks when they are undervalued and selling when they become overvalued.</p>
                     
@@ -3220,7 +3638,7 @@
                     <p>When undervalued stocks do emerge, value investors are encouraged to invest heavily. This approach may result in a portfolio with high risk based on traditional measures like beta. However, value investors believe that they can effectively monitor a few stocks at a time, providing a concentrated but well-researched investment approach.</p>
                     
                     <h3>Conclusion</h3>
-                    <p>As we conclude our exploration of the fundamental principles of value investing, we find ourselves equipped with a treasure trove of timeless wisdom. The distinction between investing and speculation becomes clear – it's not about chasing wild dreams of overnight riches but diligently analyzing the businesses we invest in and ensuring a margin of safety in every decision.</p>
+                    <p>As we conclude our exploration of the fundamental principles of value investing, we find ourselves equipped with a treasure trove of timeless wisdom. The distinction between investing and speculation becomes clear â€“ it's not about chasing wild dreams of overnight riches but diligently analyzing the businesses we invest in and ensuring a margin of safety in every decision.</p>
                     
                     <p>We learn to embrace Mr. Market's erratic nature, using it to our advantage by capitalizing on opportunities when the market offers stocks at prices that deviate from their true value. Rather than fixating solely on stock prices, we dive deep into the businesses we invest in, seeking well-managed companies with sound fundamentals and long-term growth potential.</p>
                     
@@ -3447,7 +3865,8 @@
             'financial-analysis': {
                 title: 'Understanding Fundamental Analysis In Investing',
                 content: `
-                    <h2>Understanding Fundamental Analysis In Investing</h2>
+                    
+<h2>Understanding Fundamental Analysis In Investing</h2>
                     <p>In the world of investing, making informed decisions is crucial to success. One of the most effective tools at an investor's disposal is fundamental analysis.</p>
                     
                     <p>This approach involves scrutinizing a company's financial statements to assess its true value and potential for growth.</p>
@@ -3639,7 +4058,8 @@
             'margin-of-safety': {
                 title: 'Margin of Safety: The Timeless Wisdom of Benjamin Graham and Warren Buffett',
                 content: `
-                    <h2>Margin of Safety: The Timeless Wisdom of Benjamin Graham and Warren Buffett</h2>
+                    
+<h2>Margin of Safety: The Timeless Wisdom of Benjamin Graham and Warren Buffett</h2>
                     <p>In the dynamic world of investing, where markets can swing unpredictably and uncertainty lurks around every corner, the concept of "Margin of Safety" stands tall as a beacon of prudent decision-making.</p>
                     
                     <p>Developed by the legendary investor Benjamin Graham, often hailed as the father of value investing, and embraced by his disciple Warren Buffett, the Margin of Safety principle has guided many successful investors throughout history. In this article, we delve into the essence of Margin of Safety, its origins, and its modern applications, while exploring its relevance in volatile markets and acknowledging its limitations.</p>
@@ -3699,7 +4119,7 @@
                     <li><strong>Avoiding Risky Speculation:</strong> Volatile markets may tempt some investors to take excessive risks or engage in speculative trading. The Margin of Safety principle encourages a conservative and disciplined approach, steering investors away from high-risk ventures.</li>
                     <li><strong>Reevaluating Investments:</strong> During market downturns, investors can reassess their existing investments. Companies that were considered to have a sufficient Margin of Safety before the downturn might require reevaluation if their financial situation or prospects have significantly changed.</li>
                     <li><strong>Patience and Holding Power:</strong> The Margin of Safety principle reinforces the importance of patience and holding power during market downturns. Investors with a long-term perspective are more likely to reap the benefits of their undervalued investments as market conditions stabilize.</li>
-                    <li><strong>Avoiding Value Traps:</strong> While the Margin of Safety is meant to protect investors from overpaying for stocks, it also helps them avoid value traps – stocks that appear cheap but are actually in declining businesses with limited growth prospects.</li>
+                    <li><strong>Avoiding Value Traps:</strong> While the Margin of Safety is meant to protect investors from overpaying for stocks, it also helps them avoid value traps â€“ stocks that appear cheap but are actually in declining businesses with limited growth prospects.</li>
                     </ul>
                     
                     <h3>Limitations of Margin of Safety in Investing</h3>
@@ -4280,7 +4700,7 @@
                     <h3>Conclusion</h3>
                     <p>The future of value investing holds both challenges and opportunities. Embracing technology and data-driven analysis, understanding behavioral biases, integrating ESG considerations, diversifying across global markets, and adapting to industry disruptions are essential for value investors to stay relevant and successful in a changing investment landscape.</p>
                     
-                    <p>As markets continue to evolve, the principles of value investing remain steadfast. Conducting diligent research, staying disciplined, and focusing on long-term value creation will continue to be the foundation of successful value investing strategies. As Benjamin Graham once said, "The investor's chief problem—and even his worst enemy—is likely to be himself." By navigating the future of value investing with wisdom and adaptability, investors can build a prosperous financial future.</p>
+                    <p>As markets continue to evolve, the principles of value investing remain steadfast. Conducting diligent research, staying disciplined, and focusing on long-term value creation will continue to be the foundation of successful value investing strategies. As Benjamin Graham once said, "The investor's chief problemâ€”and even his worst enemyâ€”is likely to be himself." By navigating the future of value investing with wisdom and adaptability, investors can build a prosperous financial future.</p>
                     
                     <p><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>
                 `
@@ -4317,11 +4737,11 @@
 
                 <h4>Trends Exist</h4>
 
-                <p>Technical analysts recognize the existence of trends in price movements. Prices tend to move in trends—upwards, downwards, or sideways. Identifying and trading with the trend is a crucial aspect of technical analysis.</p>
+                <p>Technical analysts recognize the existence of trends in price movements. Prices tend to move in trendsâ€”upwards, downwards, or sideways. Identifying and trading with the trend is a crucial aspect of technical analysis.</p>
 
                 <h4>Support and Resistance Levels</h4>
 
-                <p>Prices often encounter barriers where they struggle to move beyond—known as support and resistance levels. Support is a price level at which a downtrend can be expected to pause due to a concentration of demand, while resistance is a price level at which an uptrend can be expected to pause due to a concentration of supply.</p>
+                <p>Prices often encounter barriers where they struggle to move beyondâ€”known as support and resistance levels. Support is a price level at which a downtrend can be expected to pause due to a concentration of demand, while resistance is a price level at which an uptrend can be expected to pause due to a concentration of supply.</p>
 
                 <h4>Volume Confirms Trends</h4>
 
@@ -4364,7 +4784,8 @@
             'chart-patterns': {
                 title: 'Chart Patterns: Identifying Trends and Reversals',
                 content: `
-                <p>If you've ever looked at a stock price chart, you might have noticed some peculiar formations that resemble shapes or patterns. These chart patterns are not mere coincidences; they hold valuable information about the market's behavior.</p>
+                    
+<p>If you've ever looked at a stock price chart, you might have noticed some peculiar formations that resemble shapes or patterns. These chart patterns are not mere coincidences; they hold valuable information about the market's behavior.</p>
 
                 <p>Understanding these patterns can help investors and traders identify potential trend reversals and continuation signals. In this article, we'll delve into the fascinating world of chart patterns, including head and shoulders, double tops and bottoms, and triangles.</p>
 
@@ -4502,7 +4923,8 @@
             'moving-averages': {
                 title: 'Moving Averages: Trends, Crossovers and Signals',
                 content: `
-                <p>If you've ever wondered how to make sense of price fluctuations in the financial markets, moving averages might hold the key to understanding trends and potential trading opportunities.</p>
+                    
+<p>If you've ever wondered how to make sense of price fluctuations in the financial markets, moving averages might hold the key to understanding trends and potential trading opportunities.</p>
 
                 <p>These simple yet powerful technical indicators are widely used by traders and investors to analyse price data and identify key entry and exit points. In this article, we'll delve deeper into the world of moving averages, exploring different types like simple moving averages (SMA) and exponential moving averages (EMA).</p>
 
@@ -4634,7 +5056,8 @@
             'candlestick-analysis': {
                 title: 'Candlestick Analysis: Interpreting Price Action and Patterns',
                 content: `
-                <p>In the world of financial markets, understanding price action and market sentiment is crucial for successful trading and investing. Candlestick analysis is a popular and powerful method used by traders to interpret price movements and identify potential trends and reversals.</p>
+                    
+<p>In the world of financial markets, understanding price action and market sentiment is crucial for successful trading and investing. Candlestick analysis is a popular and powerful method used by traders to interpret price movements and identify potential trends and reversals.</p>
 
                 <p>This article will provide valuable insights into candlestick analysis, exploring different candlestick patterns and how they can be used to predict market reversals and trend continuations.</p>
 
@@ -4677,7 +5100,8 @@
             'fibonacci-retracements': {
                 title: 'Fibonacci Retracements and Extensions in Technical Analysis: Applying Mathematical Ratios',
                 content: `
-                <p>In the world of technical analysis, traders and investors often use various tools to identify potential price levels and targets. One of the most widely used and effective tools is Fibonacci retracements and extensions.</p>
+                    
+<p>In the world of technical analysis, traders and investors often use various tools to identify potential price levels and targets. One of the most widely used and effective tools is Fibonacci retracements and extensions.</p>
 
                 <p>Derived from the famous Fibonacci sequence, these mathematical ratios have proven to be valuable in identifying key support and resistance levels, as well as extension targets in price charts. This article will delve into the world of Fibonacci retracements and extensions, exploring their application in technical analysis to enhance decision-making and trading strategies.</p>
 
@@ -4738,7 +5162,8 @@
             'trading-strategies': {
                 title: 'Developing a Technical Trading Strategy: Putting It All Together',
                 content: `
-                <p>Trading in the financial markets can be a rewarding endeavor, but it also requires a well-thought-out strategy and disciplined execution. Technical analysis provides traders with a wide range of tools, indicators, and patterns to analyse price movements and make informed trading decisions.</p>
+                    
+<p>Trading in the financial markets can be a rewarding endeavor, but it also requires a well-thought-out strategy and disciplined execution. Technical analysis provides traders with a wide range of tools, indicators, and patterns to analyse price movements and make informed trading decisions.</p>
 
                 <p>In this article, we will guide you through the process of developing a comprehensive technical trading strategy, which combines various technical analysis tools to create a systematic and effective approach to trading. We will also emphasise the importance of risk management and discipline in executing your trading plan.</p>
 
@@ -4850,7 +5275,8 @@
             'outlook': {
                 title: 'The Future of Technical Analysis: Exploring the Latest Trends and Outlook',
                 content: `
-                <p>Technical analysis has been a popular stock investing strategy for decades, relying on historical price data and trading volume to predict future price movements. As technology and data analytics continue to evolve, the landscape of technical analysis is also undergoing significant changes.</p>
+                    
+<p>Technical analysis has been a popular stock investing strategy for decades, relying on historical price data and trading volume to predict future price movements. As technology and data analytics continue to evolve, the landscape of technical analysis is also undergoing significant changes.</p>
 
                 <p>In this article, we will explore the latest trends and recent developments in technical analysis and discuss the outlook for this stock investing strategy.</p>
 
@@ -4899,7 +5325,8 @@
             'what-are-ipos': {
                 title: 'What are Initial Public Offerings (IPOs) and Why Invest in Them?',
                 content: `
-                    <h2>What are Initial Public Offerings (IPOs) and Why Invest in Them?</h2>
+                    
+<h2>What are Initial Public Offerings (IPOs) and Why Invest in Them?</h2>
                     <p>Investing in Initial Public Offerings (IPOs) has long been an enticing avenue for investors seeking to tap into the potential of newly-listed companies.</p>
                     <p>IPOs offer a unique opportunity to be part of a company's growth journey from its early stages as a private entity to its public debut.</p>
                     <p>In this article, we will explore the definition and concepts of IPOs, the process and participants involved, and the main reasons and motivations for investing in IPOs. Additionally, we'll delve into historical and statistical data on IPO performance and characteristics in the Australian market.</p>
@@ -4934,7 +5361,8 @@
             'ipo-process': {
                 title: 'How the Initial Public Offering (IPO) Process Works',
                 content: `
-                    <h2>How the Initial Public Offering (IPO) Process Works</h2>
+                    
+<h2>How the Initial Public Offering (IPO) Process Works</h2>
                     <p>The Initial Public Offering (IPO) process marks a significant milestone for companies looking to raise capital and transition from privately held to publicly traded entities.</p>
                     <p>By going public, companies gain access to a broader investor base, increased visibility, and the ability to raise substantial funds for expansion and growth. In this comprehensive guide, we will delve into the intricate workings of the IPO process, exploring each stage in detail and shedding light on the vital role of various stakeholders.</p>
                     <h3>Preparing for the IPO</h3>
@@ -5198,7 +5626,8 @@
             'common-mistakes': {
                 title: 'Common Mistakes and Pitfalls when Investing in Initial Public Offerings (IPOs) and How to Avoid Them',
                 content: `
-                    <h2>Common Mistakes and Pitfalls when Investing in Initial Public Offerings (IPOs) and How to Avoid Them</h2>
+                    
+<h2>Common Mistakes and Pitfalls when Investing in Initial Public Offerings (IPOs) and How to Avoid Them</h2>
                     <p>Investing in Initial Public Offerings (IPOs) can be an exciting opportunity to get in on the ground floor of promising companies. However, the world of IPOs is not without its challenges.</p>
                     <p>As with any investment, there are risks involved, and making mistakes can be costly. In this article, we will explore some of the common mistakes and pitfalls that investors may encounter when investing in IPOs and offer strategies to avoid them.</p>
                     <h3>Chasing the Hype</h3>
@@ -5278,7 +5707,8 @@
             'latest-trends': {
                 title: 'The Latest Trends and Developments in Initial Public Offerings (IPOs)',
                 content: `
-                    <h2>The Latest Trends and Developments in Initial Public Offerings (IPOs)</h2>
+                    
+<h2>The Latest Trends and Developments in Initial Public Offerings (IPOs)</h2>
                     <p>The Initial Public Offering (IPO) market is dynamic and constantly evolving, influenced by changing economic conditions, investor sentiment, and technological advancements.</p>
                     <p>As a crucial avenue for companies to raise capital and become publicly traded entities, IPOs play a significant role in the financial landscape. In this article, we will explore the latest trends and developments in the IPO market, shedding light on emerging themes that are shaping the future of IPOs.</p>
                     <h3>Rise of Tech IPOs and the New Economy</h3>
@@ -5311,7 +5741,8 @@
             'ed-anderson': {
                 title: 'Ed Anderson',
                 content: `
-                    <h2>Ed Anderson: A Value Investing Pioneer</h2>
+                    
+<h2>Ed Anderson: A Value Investing Pioneer</h2>
 
                     <h3>Introduction</h3>
                     <p>Ed Anderson was a renowned value investor known for his disciplined approach to stock selection, focusing on undervalued companies with strong fundamentals. He emphasised long-term holding, thorough research, and patience as key principles for achieving success in the stock market.</p>
@@ -5396,13 +5827,13 @@
                     <p>2. "Security Analysis" by Benjamin Graham and David Dodd, 1934</p>
                     <p>This seminal work laid the foundation for value investing principles. It emphasised the importance of thorough analysis, intrinsic value, and margin of safety.</p>
                     <ul>
-                        <li>Security Analysis (First edition, 1934) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Second edition, 1940)– co-authored with David Dodd</li>
-                        <li>Security Analysis (Third edition, 1951) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Fourth edition, 1962) – co-authored with David Dodd and Sidney Cottle</li>
-                        <li>Security Analysis (Fifth edition, 1988) – authored by Sidney Cottle, Roger Murray and Frank Block</li>
-                        <li>Security Analysis (Sixth edition, 2008) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
-                        <li>Security Analysis (Seventh edition, 2023)– co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett</li>
+                        <li>Security Analysis (First edition, 1934) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Second edition, 1940)â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Third edition, 1951) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Fourth edition, 1962) â€“ co-authored with David Dodd and Sidney Cottle</li>
+                        <li>Security Analysis (Fifth edition, 1988) â€“ authored by Sidney Cottle, Roger Murray and Frank Block</li>
+                        <li>Security Analysis (Sixth edition, 2008) â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
+                        <li>Security Analysis (Seventh edition, 2023)â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett</li>
                     </ul>
                     <p>Anderson often cited this classic work by Benjamin Graham as essential reading for value investors. Graham's timeless principles of value investing, including the concept of margin of safety, influenced Anderson's own investment philosophy.</p>
                     <p>3. "Common Stocks and Uncommon Profits" by Philip Fisher (1958)</p>
@@ -5435,7 +5866,8 @@
             'rick-guerin': {
                 title: 'Rick Guerin',
                 content: `
-                    <h2>Rick Guerin: The Forgotten Superinvestor</h2>
+                    
+<h2>Rick Guerin: The Forgotten Superinvestor</h2>
 
                     <h3>Introduction</h3>
                     <p>Rick Guerin, a value investor and former business partner of Warren Buffett, was known for his keen eye for undervalued assets and his successful investments in various companies. He gained recognition as one of Buffett's superinvestors, with remarkable success stories that solidified his legacy in the world of finance.</p>
@@ -5455,7 +5887,7 @@
                     <p>Guerin became a stockbroker at a couple of small firms that peddled third-class stocks because they carried the highest profit, or "spread," for the firm.</p>
                     <p>"In 1961", Guerin recalls, "a friend called and said he was going to buy into a downtown (LA) trading firm because someone [Jack Wheeler of Wheeler, Cruttenden & Company] was selling out". He decided that he too would join in the investment by buying Wheeler's 50% share using the only $40,000 he had. But when he arrived at the meeting place to settle the deal, he met Charlie Munger. The two of them started to talk. "I was just going to this meeting for the closing. I was going to deliver a check and take a stock certificate. We were joking with Munger, when this light went on in my brain. 'I'm on the wrong side of this transaction.'" </p>
                     <p>Guerin eventually lost his entire investment in the partnership. However, as Munger later noted, "By then, he'd learned a lot and was doing very well." He went on emulate Buffett and Munger by establishing his own investment firm, Pacific Partners Ltd.</p>
-                    <p>Buffett explained: "With some, the idea of buying dollar bills for forty cents takes, and with some it doesn't take. It's like an inoculation. It's extraordinary to me. If it doesn't grab them right away, I find that you can talk to them for years and show them records—you can do everything—and it just doesn't make any difference. I've never seen anyone who became a convert over a ten-year period with this approach. It’s always instant recognition or nothing. Whatever it is, I’ve never understood it. But with a fellow like Rick Guerin – no business background in terms of studying it, but he saw it like that, he understood what it’s about, and he was applying it five minutes later. And Rick was smart enough to know that you should get a great teacher, which is what I was lucky enough to do with Ben Graham."</p>
+                    <p>Buffett explained: "With some, the idea of buying dollar bills for forty cents takes, and with some it doesn't take. It's like an inoculation. It's extraordinary to me. If it doesn't grab them right away, I find that you can talk to them for years and show them recordsâ€”you can do everythingâ€”and it just doesn't make any difference. I've never seen anyone who became a convert over a ten-year period with this approach. Itâ€™s always instant recognition or nothing. Whatever it is, Iâ€™ve never understood it. But with a fellow like Rick Guerin â€“ no business background in terms of studying it, but he saw it like that, he understood what itâ€™s about, and he was applying it five minutes later. And Rick was smart enough to know that you should get a great teacher, which is what I was lucky enough to do with Ben Graham."</p>
                     <p>Guerin soon joined with Charlie Munger and Warren Buffett in the ownership of See's Candy and other public companies.</p>
                     <p>He spearheaded one of Berkshire's greatest investments: the acquisition of Blue Chip Stamps. He had noticed there was a difference between the volume of stamps purchased and redeemed (called the "float"). And the beauty of this was that only 50% of stamps ever got redeemed. So, after buying 60% of the company, they used the "float" of Blue Chip Stamps to buy See's Candy with $25 million. Then they bought Wesco Financial for $25 million and the Buffalo Evening Post.</p>
                     <p>See's Candy alone then went on to generate over $2 billion of income for Berkshire Hathaway to-date, and Wesco Financial now has a market capitalisation of around of $7 billion.</p>
@@ -5467,7 +5899,7 @@
 
                     <h3>Investment Style, Philosophy & Principles</h3>
                     <h4>Investment Style</h4>
-                    <p>Guerin's investment style was deeply rooted in the principles of value investing—a philosophy championed by investing luminaries such as Benjamin Graham and Warren Buffett. Central to Guerin's approach was the belief in seeking out undervalued assets with the potential for substantial long-term growth. He was renowned for his patient and disciplined approach to investing, focusing on the intrinsic value of a company rather than short-term market fluctuations.</p>
+                    <p>Guerin's investment style was deeply rooted in the principles of value investingâ€”a philosophy championed by investing luminaries such as Benjamin Graham and Warren Buffett. Central to Guerin's approach was the belief in seeking out undervalued assets with the potential for substantial long-term growth. He was renowned for his patient and disciplined approach to investing, focusing on the intrinsic value of a company rather than short-term market fluctuations.</p>
 
                     <h4>Investment Philosophy</h4>
                     <p>At the core of Guerin's investment philosophy was the principle of buying low and holding for the long term. He believed in investing in companies with strong fundamentals, robust management teams, and competitive advantages within their industries. Guerin emphasised the importance of thorough research and analysis, ensuring a deep understanding of a company's business model, market position, and growth prospects before making an investment.</p>
@@ -5497,16 +5929,16 @@
                     <p>None found.</p>
 
                     <h4>Books about Rick Guerin</h4>
-                    <p>1. "The Snowball: Warren Buffett and the Business of Life" by Alice Schroeder (2008) – Even though the book is about Warren Buffett, Rick Guerin is mentioned throughout this book.</p>
-                    <p>2. "Poor Charlie's Almanack: The Wit and Wisdom of Charles T Munger" by Charlie Munger – Even though the book is about Charlie Munger, there are references to Guerin in this book.</p>
+                    <p>1. "The Snowball: Warren Buffett and the Business of Life" by Alice Schroeder (2008) â€“ Even though the book is about Warren Buffett, Rick Guerin is mentioned throughout this book.</p>
+                    <p>2. "Poor Charlie's Almanack: The Wit and Wisdom of Charles T Munger" by Charlie Munger â€“ Even though the book is about Charlie Munger, there are references to Guerin in this book.</p>
 
                     <h4>Articles about Rick Guerin</h4>
                     <p>1. "The Superinvestors of Graham-and-Doddsville" by Warren Buffett (1984)</p>
                     <p>2. "Nobody Talks About Rick Anymore?" by Justin Vossen (26 May 2021)</p>
                     <p>3. "Rick Guerin: The forgotten genius" by The Short Gear (20 April 2023)</p>
-                    <p>4. "How Warren Buffet's Long Forgotten Third Business Partner Lost Absolutely Everything – 3 Things Regular People Are Doing to Lose All Their Money in Investments (And What You Should Be Doing Instead)" by Anders Skagerberg (accessed 2 April 2024)</p>
+                    <p>4. "How Warren Buffet's Long Forgotten Third Business Partner Lost Absolutely Everything â€“ 3 Things Regular People Are Doing to Lose All Their Money in Investments (And What You Should Be Doing Instead)" by Anders Skagerberg (accessed 2 April 2024)</p>
                     <p>5. "The Superinvestors of Graham-and-Doddsville: Rick Guerin" (23 March 2015)</p>
-                    <p>6. "JP 'Rick' Guerin Jr, 1929 – 2020: Self-made man succeeded with grit and intelligence", obituary (accessed on 2 April 2024)</p>
+                    <p>6. "JP 'Rick' Guerin Jr, 1929 â€“ 2020: Self-made man succeeded with grit and intelligence", obituary (accessed on 2 April 2024)</p>
 
                     <h4>Books Recommended by Rick Guerin</h4>
                     <p>1. "The Intelligent Investor" by Benjamin Graham (1949). See also Revised Edition and Third Edition.</p>
@@ -5514,13 +5946,13 @@
                     <p>2. "Security Analysis" by Benjamin Graham and David Dodd, 1934</p>
                     <p>This seminal work laid the foundation for value investing principles. It emphasised the importance of thorough analysis, intrinsic value, and margin of safety.</p>
                     <ul>
-                        <li>Security Analysis (First edition, 1934) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Second edition, 1940)– co-authored with David Dodd</li>
-                        <li>Security Analysis (Third edition, 1951) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Fourth edition, 1962) – co-authored with David Dodd and Sidney Cottle</li>
-                        <li>Security Analysis (Fifth edition, 1988) – authored by Sidney Cottle, Roger Murray and Frank Block</li>
-                        <li>Security Analysis (Sixth edition, 2008) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
-                        <li>Security Analysis (Seventh edition, 2023) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett</li>
+                        <li>Security Analysis (First edition, 1934) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Second edition, 1940)â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Third edition, 1951) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Fourth edition, 1962) â€“ co-authored with David Dodd and Sidney Cottle</li>
+                        <li>Security Analysis (Fifth edition, 1988) â€“ authored by Sidney Cottle, Roger Murray and Frank Block</li>
+                        <li>Security Analysis (Sixth edition, 2008) â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
+                        <li>Security Analysis (Seventh edition, 2023) â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett</li>
                     </ul>
                     <p>Graham's timeless principles of value investing, including the concept of margin of safety, influenced Guerin's own investment philosophy.</p>
 
@@ -5546,7 +5978,8 @@
             'tom-knapp': {
                 title: 'Tom Knapp',
                 content: `
-                    <h2>Tom Knapp: A Value Investing Maestro</h2>
+                    
+<h2>Tom Knapp: A Value Investing Maestro</h2>
 
                     <h3>Introduction</h3>
                     <p>Tom Knapp is a distinguished value investor known for his meticulous research and disciplined approach to investing. With a keen eye for undervalued assets and a commitment to long-term growth, Knapp has established a reputation for generating impressive returns in the world of finance.</p>
@@ -5605,7 +6038,7 @@
 
                     <h4>Investment Mistakes</h4>
                     <p>While Knapp's investment track record was mostly stellar, he was not immune to mistakes. During the late 1950s, Knapp and Buffett once tried to corner the market in 1954 Blue Eagle four-cent airmail stamps for postcards, believing that the stamp might become a precious collectible someday. He said: "We got in his car. It took all day. We were talking about deals, and I said I had been reading in Linn's Stamp News about a Blue Eagle four-cent stamp that was being taken off the market for a 5-cent Red Eagle stamp." On their way home from an investment seminar, they stopped by numerous post offices to buy the stamps and ended up buying some 400,000 stamps for a $16,000 investment (or about $100,000 USD in today's dollars). They held the stamps for many years but the stamps never did become valuable.</p>
-                    <p>In 1982, some 23 years later, Buffett sold his stamps at a 10% discount under face value to a dealer. Knapp held on to his share of the Blue Eagles stamps, ironically using 4¢ stamps in combination as rates rose, as postage for the rest of his life.</p>
+                    <p>In 1982, some 23 years later, Buffett sold his stamps at a 10% discount under face value to a dealer. Knapp held on to his share of the Blue Eagles stamps, ironically using 4Â¢ stamps in combination as rates rose, as postage for the rest of his life.</p>
 
                     <h3>Selected Quotes</h3>
                     <p>None found.</p>
@@ -5618,8 +6051,8 @@
                     <p>None found.</p>
 
                     <h4>Books about Tom Knapp</h4>
-                    <p>1. "The Snowball: Warren Buffett and the Business of Life" by Alice Schroeder (2008) – Even though the book is about Warren Buffett, Knapp is mentioned throughout this book.</p>
-                    <p>2. "Of Permanent Value: The Story of Warren Buffett" by Andrew Kilpatrick (2012) – Even though the book is about Warren Buffett, Knapp is mentioned throughout this book.</p>
+                    <p>1. "The Snowball: Warren Buffett and the Business of Life" by Alice Schroeder (2008) â€“ Even though the book is about Warren Buffett, Knapp is mentioned throughout this book.</p>
+                    <p>2. "Of Permanent Value: The Story of Warren Buffett" by Andrew Kilpatrick (2012) â€“ Even though the book is about Warren Buffett, Knapp is mentioned throughout this book.</p>
 
                     <h4>Articles about Tom Knapp</h4>
                     <p>1. "The Superinvestors of Graham-and-Doddsville" by Warren Buffett (1984)</p>
@@ -5631,13 +6064,13 @@
                     <p>2. "Security Analysis" by Benjamin Graham and David Dodd, 1934</p>
                     <p>This seminal work laid the foundation for value investing principles. It emphasised the importance of thorough analysis, intrinsic value, and margin of safety.</p>
                     <ul>
-                        <li>Security Analysis (First edition, 1934) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Second edition, 1940) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Third edition, 1951) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Fourth edition, 1962) – co-authored with David Dodd and Sidney Cottle</li>
-                        <li>Security Analysis (Fifth edition, 1988) – authored by Sidney Cottle, Roger Murray and Frank Block</li>
-                        <li>Security Analysis (Sixth edition, 2008) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
-                        <li>Security Analysis (Seventh edition, 2023) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett</li>
+                        <li>Security Analysis (First edition, 1934) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Second edition, 1940) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Third edition, 1951) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Fourth edition, 1962) â€“ co-authored with David Dodd and Sidney Cottle</li>
+                        <li>Security Analysis (Fifth edition, 1988) â€“ authored by Sidney Cottle, Roger Murray and Frank Block</li>
+                        <li>Security Analysis (Sixth edition, 2008) â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
+                        <li>Security Analysis (Seventh edition, 2023) â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett</li>
                     </ul>
                     <p>Graham's timeless principles of value investing, including the concept of margin of safety, influenced Knapp's own investment philosophy.</p>
 
@@ -5654,7 +6087,8 @@
             'stan-perlmeter': {
                 title: 'Stan Perlmeter',
                 content: `
-                    <h2>Stan Perlmeter: The Disciplined Value Investor</h2>
+                    
+<h2>Stan Perlmeter: The Disciplined Value Investor</h2>
 
                     <h3>Introduction</h3>
                     <p>Stan Perlmeter, the esteemed value investor, is renowned for his meticulous investment approach and dedication to preserving capital while seeking long-term growth opportunities. With a track record of consistent returns and a commitment to thorough research, Perlmeter's investment philosophy has inspired many in the world of finance.</p>
@@ -5663,9 +6097,9 @@
                     <p>Stanley (Stan) Edward Perlmeter was born on 28 March 1926.</p>
                     <p>He served in the US Navy in the post-war years, and then settled with his late wife, Janet Shapiro Perlmeter, in Omaha, Nebraska.</p>
                     <p>A remarkable husband, father, grandfather, great-grandfather, son and brother, Perlmeter lived his life with zest and determination.</p>
-                    <p>He was a man who revelled in life's joys. His love for celebration and adventure knew no bounds, especially when surrounded by cherished friends and family. Whether it was in his hometown or the vibrant streets of Miami, Perlmeter's spirit thrived. In 1980, he and Jan embarked on a new chapter, relocating to Miami—a place that would forever hold a special place in their hearts.</p>
+                    <p>He was a man who revelled in life's joys. His love for celebration and adventure knew no bounds, especially when surrounded by cherished friends and family. Whether it was in his hometown or the vibrant streets of Miami, Perlmeter's spirit thrived. In 1980, he and Jan embarked on a new chapter, relocating to Miamiâ€”a place that would forever hold a special place in their hearts.</p>
                     <p>As a father, Perlmeter wore his pride like a badge of honour. Jeff, Michael (alongside his wife, Rosemary), and Rex (partnered with Rachel Hertzman) were his legacy. But his love extended beyond his immediate family. His grandchildren and great-grandchildren adored him.</p>
-                    <p>Life took an unexpected turn when Jan passed away in 2008 after 60 years of marriage. Amidst grief, Stan found solace in an extraordinary blessing—the chance to love again. Ronnie Koenigsberg Perlmeter entered his life, and their hearts aligned. In 2009, they exchanged vows, embarking on a journey of joyous companionship.</p>
+                    <p>Life took an unexpected turn when Jan passed away in 2008 after 60 years of marriage. Amidst grief, Stan found solace in an extraordinary blessingâ€”the chance to love again. Ronnie Koenigsberg Perlmeter entered his life, and their hearts aligned. In 2009, they exchanged vows, embarking on a journey of joyous companionship.</p>
                     <p>Ronnie brought more than just her love into Stan's life. Her children, grandchildren, and great-grandchild became an integral part of their extended family. Together, they basked in the warmth of kinship, weaving new bonds that transcended bloodlines.</p>
                     <p>He died on 18 December 2018 at the age of 92 in Key Biscayne, Miami-Dade County, Florida, USA. His wife, Ronnie, died 5 years later on 27 February 2023.</p>
 
@@ -5686,7 +6120,7 @@
 
                     <h4>Investment Philosophy</h4>
                     <p>At the core of Perlmeter's investment philosophy was the principle of buying businesses, not stocks. He viewed stocks as ownership stakes in real businesses, emphasising the importance of understanding the underlying company's fundamentals, competitive advantage and management quality. Stan's philosophy emphasised the preservation of capital, consistent returns, and the creation of enduring wealth.</p>
-                    <p>Buffett (1984): "[E]very time Perlmeter buys a stock it's because he's getting more for his money than he's paying. That's the only thing he's thinking about. He doesn't worry about whether it's January, he doesn't sorry about whether it's Monday, he doesn't worry about whether it's an election year. He simply says, if a business is worth a dollar and I can buy it 40 cents, something good may happen to me. And he does it over and over and over again. He owns many more stocks than I do – and is far less interested in the underlying nature of the business; I don't seem to have very much influence on Walter. That's one of his strengths: no one has much influence on him.</p>
+                    <p>Buffett (1984): "[E]very time Perlmeter buys a stock it's because he's getting more for his money than he's paying. That's the only thing he's thinking about. He doesn't worry about whether it's January, he doesn't sorry about whether it's Monday, he doesn't worry about whether it's an election year. He simply says, if a business is worth a dollar and I can buy it 40 cents, something good may happen to me. And he does it over and over and over again. He owns many more stocks than I do â€“ and is far less interested in the underlying nature of the business; I don't seem to have very much influence on Walter. That's one of his strengths: no one has much influence on him.</p>
 
                     <h4>Investment Principles</h4>
                     <p>Perlmeter adhered to several key investment principles that guided his decision-making process:</p>
@@ -5748,13 +6182,13 @@
                     <p>2. "Security Analysis" by Benjamin Graham and David Dodd, 1934</p>
                     <p>This seminal work laid the foundation for value investing principles. It emphasised the importance of thorough analysis, intrinsic value, and margin of safety.</p>
                     <ul>
-                        <li>Security Analysis (First edition, 1934) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Second edition, 1940) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Third edition, 1951) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Fourth edition, 1962) – co-authored with David Dodd and Sidney Cottle</li>
-                        <li>Security Analysis (Fifth edition, 1988) – authored by Sidney Cottle, Roger Murray and Frank Block</li>
-                        <li>Security Analysis (Sixth edition, 2008) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
-                        <li>Security Analysis (Seventh edition, 2023) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett.</li>
+                        <li>Security Analysis (First edition, 1934) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Second edition, 1940) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Third edition, 1951) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Fourth edition, 1962) â€“ co-authored with David Dodd and Sidney Cottle</li>
+                        <li>Security Analysis (Fifth edition, 1988) â€“ authored by Sidney Cottle, Roger Murray and Frank Block</li>
+                        <li>Security Analysis (Sixth edition, 2008) â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
+                        <li>Security Analysis (Seventh edition, 2023) â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett.</li>
                     </ul>
                     <p>Graham's timeless principles of value investing, including the concept of margin of safety, influenced Perlmeter's own investment philosophy.</p>
 
@@ -5769,7 +6203,8 @@
             'bill-ruane': {
                 title: 'Bill Ruane',
                 content: `
-                    <h2>Bill Ruane: The Sequoia Fund Pioneer</h2>
+                    
+<h2>Bill Ruane: The Sequoia Fund Pioneer</h2>
 
                     <h3>Introduction</h3>
                     <p>William (Bill) Ruane, the legendary value investor and founder of the Sequoia Fund, is celebrated for his exceptional investment acumen and unwavering commitment to value investing principles. With a remarkable track record spanning decades, Ruane's disciplined approach to investing has earned him a place among the most respected figures in finance.</p>
@@ -5872,7 +6307,8 @@
             'walter-schloss': {
                 title: 'Walter Schloss',
                 content: `
-                    <h2>Walter Schloss: The Original Value Investor</h2>
+                    
+<h2>Walter Schloss: The Original Value Investor</h2>
 
                     <h3>Introduction</h3>
                     <p>Walter Schloss, often called the "original value investor," was a pioneer in the field of value investing. With a career spanning over six decades, Schloss demonstrated that consistent, disciplined value investing could lead to extraordinary long-term results. His approach, heavily influenced by Benjamin Graham, focused on buying undervalued stocks and holding them patiently.</p>
@@ -5971,7 +6407,8 @@
             'edwin-schloss': {
                 title: 'Edwin Schloss',
                 content: `
-                    <h2>Edwin Schloss: The Value Investing Legacy</h2>
+                    
+<h2>Edwin Schloss: The Value Investing Legacy</h2>
 
                     <h3>Introduction</h3>
                     <p>Edwin Schloss, son of the legendary Walter Schloss, carried forward his father's value investing legacy while developing his own distinctive approach. As a managing director at Walter & Edwin Schloss Associates, Edwin demonstrated that the principles of disciplined value investing could be successfully applied across generations.</p>
@@ -6050,7 +6487,8 @@
             'ed-anderson': {
                 title: 'Ed Anderson',
                 content: `
-                    <h2>Ed Anderson: A Value Investing Pioneer</h2>
+                    
+<h2>Ed Anderson: A Value Investing Pioneer</h2>
 
                     <h3>Introduction</h3>
                     <p>Ed Anderson was a renowned value investor known for his disciplined approach to stock selection, focusing on undervalued companies with strong fundamentals. He emphasised long-term holding, thorough research, and patience as key principles for achieving success in the stock market.</p>
@@ -6135,13 +6573,13 @@
                     <p>2. "Security Analysis" by Benjamin Graham and David Dodd, 1934</p>
                     <p>This seminal work laid the foundation for value investing principles. It emphasised the importance of thorough analysis, intrinsic value, and margin of safety.</p>
                     <ul>
-                        <li>Security Analysis (First edition, 1934) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Second edition, 1940) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Third edition, 1951) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Fourth edition, 1962) – co-authored with David Dodd and Sidney Cottle</li>
-                        <li>Security Analysis (Fifth edition, 1988) – authored by Sidney Cottle, Roger Murray and Frank Block</li>
-                        <li>Security Analysis (Sixth edition, 2008) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
-                        <li>Security Analysis (Seventh edition, 2023) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett</li>
+                        <li>Security Analysis (First edition, 1934) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Second edition, 1940) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Third edition, 1951) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Fourth edition, 1962) â€“ co-authored with David Dodd and Sidney Cottle</li>
+                        <li>Security Analysis (Fifth edition, 1988) â€“ authored by Sidney Cottle, Roger Murray and Frank Block</li>
+                        <li>Security Analysis (Sixth edition, 2008) â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
+                        <li>Security Analysis (Seventh edition, 2023) â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett</li>
                     </ul>
                     <p>Anderson often cited this classic work by Benjamin Graham as essential reading for value investors. Graham's timeless principles of value investing, including the concept of margin of safety, influenced Anderson's own investment philosophy.</p>
                     <p>3. "Common Stocks and Uncommon Profits" by Philip Fisher (1958)</p>
@@ -6173,7 +6611,8 @@
             'rick-guerin': {
                 title: 'Rick Guerin',
                 content: `
-                    <h2>Rick Guerin: The Forgotten Superinvestor</h2>
+                    
+<h2>Rick Guerin: The Forgotten Superinvestor</h2>
 
                     <h3>Introduction</h3>
                     <p>Rick Guerin, a value investor and former business partner of Warren Buffett, was known for his keen eye for undervalued assets and his successful investments in various companies. He gained recognition as one of Buffett's superinvestors, with remarkable success stories that solidified his legacy in the world of finance.</p>
@@ -6193,7 +6632,7 @@
                     <p>Guerin became a stockbroker at a couple of small firms that peddled third-class stocks because they carried the highest profit, or "spread," for the firm.</p>
                     <p>"In 1961", Guerin recalls, "a friend called and said he was going to buy into a downtown (LA) trading firm because someone [Jack Wheeler of Wheeler, Cruttenden & Company] was selling out". He decided that he too would join in the investment by buying Wheeler's 50% share using the only $40,000 he had. But when he arrived at the meeting place to settle the deal, he met Charlie Munger. The two of them started to talk. "I was just going to this meeting for the closing. I was going to deliver a check and take a stock certificate. We were joking with Munger, when this light went on in my brain. 'I'm on the wrong side of this transaction.' "</p>
                     <p>Guerin eventually lost his entire investment in the partnership. However, as Munger later noted, "By then, he'd learned a lot and was doing very well." He went on emulate Buffett and Munger by establishing his own investment firm, Pacific Partners Ltd.</p>
-                    <p>Buffett explained: "With some, the idea of buying dollar bills for forty cents takes, and with some it doesn't take. It's like an inoculation. It's extraordinary to me. If it doesn't grab them right away, I find that you can talk to them for years and show them records—you can do everything—and it just doesn't make any difference. I've never seen anyone who became a convert over a ten-year period with this approach. It’s always instant recognition or nothing. Whatever it is, I've never understood it. But with a fellow like Rick Guerin – no business background in terms of studying it, but he saw it like that, he understood what it's about, and he was applying it five minutes later. And Rick was smart enough to know that you should get a great teacher, which is what I was lucky enough to do with Ben Graham."</p>
+                    <p>Buffett explained: "With some, the idea of buying dollar bills for forty cents takes, and with some it doesn't take. It's like an inoculation. It's extraordinary to me. If it doesn't grab them right away, I find that you can talk to them for years and show them recordsâ€”you can do everythingâ€”and it just doesn't make any difference. I've never seen anyone who became a convert over a ten-year period with this approach. Itâ€™s always instant recognition or nothing. Whatever it is, I've never understood it. But with a fellow like Rick Guerin â€“ no business background in terms of studying it, but he saw it like that, he understood what it's about, and he was applying it five minutes later. And Rick was smart enough to know that you should get a great teacher, which is what I was lucky enough to do with Ben Graham."</p>
                     <p>Guerin soon joined with Charlie Munger and Warren Buffett in the ownership of See's Candy and other public companies.</p>
                     <p>He spearheaded one of Berkshire's greatest investments: the acquisition of Blue Chip Stamps. He had noticed there was a difference between the volume of stamps purchased and redeemed (called the "float"). And the beauty of this was that only 50% of stamps ever got redeemed. So, after buying 60% of the company, they used the "float" of Blue Chip Stamps to buy See's Candy with $25 million. Then they bought Wesco Financial for $25 million and the Buffalo Evening Post.</p>
                     <p>See's Candy alone then went on to generate over $2 billion of income for Berkshire Hathaway to-date, and Wesco Financial now has a market capitalisation of around of $7 billion.</p>
@@ -6205,7 +6644,7 @@
 
                     <h3>Investment Style, Philosophy & Principles</h3>
                     <h4>Investment Style</h4>
-                    <p>Guerin's investment style was deeply rooted in the principles of value investing—a philosophy championed by investing luminaries such as Benjamin Graham and Warren Buffett. Central to Guerin's approach was the belief in seeking out undervalued assets with the potential for substantial long-term growth.</p>
+                    <p>Guerin's investment style was deeply rooted in the principles of value investingâ€”a philosophy championed by investing luminaries such as Benjamin Graham and Warren Buffett. Central to Guerin's approach was the belief in seeking out undervalued assets with the potential for substantial long-term growth.</p>
                     <p>He was renowned for his patient and disciplined approach to investing, focusing on the intrinsic value of a company rather than short-term market fluctuations.</p>
 
                     <h4>Investment Philosophy</h4>
@@ -6236,16 +6675,16 @@
                     <p>None found.</p>
 
                     <h4>Books about Rick Guerin</h4>
-                    <p>1. "The Snowball: Warren Buffett and the Business of Life" by Alice Schroeder (2008) – Even though the book is about Warren Buffett, Rick Guerin is mentioned throughout this book.</p>
-                    <p>2. "Poor Charlie's Almanack: The Wit and Wisdom of Charles T Munger" by Charlie Munger – Even though the book is about Charlie Munger, there are references to Guerin in this book.</p>
+                    <p>1. "The Snowball: Warren Buffett and the Business of Life" by Alice Schroeder (2008) â€“ Even though the book is about Warren Buffett, Rick Guerin is mentioned throughout this book.</p>
+                    <p>2. "Poor Charlie's Almanack: The Wit and Wisdom of Charles T Munger" by Charlie Munger â€“ Even though the book is about Charlie Munger, there are references to Guerin in this book.</p>
 
                     <h4>Articles about Rick Guerin</h4>
                     <p>1. "The Superinvestors of Graham-and-Doddsville" by Warren Buffett (1984)</p>
                     <p>2. "Nobody Talks About Rick Anymore?" by Justin Vossen (26 May 2021)</p>
                     <p>3. "Rick Guerin: The forgotten genius" by The Short Gear (20 April 2023)</p>
-                    <p>4. "How Warren Buffet's Long Forgotten Third Business Partner Lost Absolutely Everything – 3 Things Regular People Are Doing to Lose All Their Money in Investments (And What You Should Be Doing Instead)" by Anders Skagerberg (accessed 2 April 2024)</p>
+                    <p>4. "How Warren Buffet's Long Forgotten Third Business Partner Lost Absolutely Everything â€“ 3 Things Regular People Are Doing to Lose All Their Money in Investments (And What You Should Be Doing Instead)" by Anders Skagerberg (accessed 2 April 2024)</p>
                     <p>5. "The Superinvestors of Graham-and-Doddsville: Rick Guerin" (23 March 2015)</p>
-                    <p>6. "JP 'Rick' Guerin Jr, 1929 – 2020: Self-made man succeeded with grit and intelligence", obituary (accessed on 2 April 2024)</p>
+                    <p>6. "JP 'Rick' Guerin Jr, 1929 â€“ 2020: Self-made man succeeded with grit and intelligence", obituary (accessed on 2 April 2024)</p>
 
                     <h4>Books Recommended by Rick Guerin</h4>
                     <p>1. "The Intelligent Investor" by Benjamin Graham (1949). See also Revised Edition and Third Edition.</p>
@@ -6253,13 +6692,13 @@
                     <p>2. "Security Analysis" by Benjamin Graham and David Dodd, 1934</p>
                     <p>This seminal work laid the foundation for value investing principles. It emphasised the importance of thorough analysis, intrinsic value, and margin of safety.</p>
                     <ul>
-                        <li>Security Analysis (First edition, 1934) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Second edition, 1940) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Third edition, 1951) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Fourth edition, 1962) – co-authored with David Dodd and Sidney Cottle</li>
-                        <li>Security Analysis (Fifth edition, 1988) – authored by Sidney Cottle, Roger Murray and Frank Block</li>
-                        <li>Security Analysis (Sixth edition, 2008) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
-                        <li>Security Analysis (Seventh edition, 2023) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett</li>
+                        <li>Security Analysis (First edition, 1934) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Second edition, 1940) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Third edition, 1951) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Fourth edition, 1962) â€“ co-authored with David Dodd and Sidney Cottle</li>
+                        <li>Security Analysis (Fifth edition, 1988) â€“ authored by Sidney Cottle, Roger Murray and Frank Block</li>
+                        <li>Security Analysis (Sixth edition, 2008) â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
+                        <li>Security Analysis (Seventh edition, 2023) â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett</li>
                     </ul>
                     <p>Graham's timeless principles of value investing, including the concept of margin of safety, influenced Guerin's own investment philosophy.</p>
 
@@ -6284,7 +6723,8 @@
             'tom-knapp': {
                 title: 'Tom Knapp',
                 content: `
-                    <h2>Tom Knapp: The Tweedy, Browne Co-Founder</h2>
+                    
+<h2>Tom Knapp: The Tweedy, Browne Co-Founder</h2>
 
                     <h3>Introduction</h3>
                     <p>Tom Knapp is a distinguished value investor known for his meticulous research and disciplined approach to investing. With a keen eye for undervalued assets and a commitment to long-term growth, Knapp has established a reputation for generating impressive returns in the world of finance.</p>
@@ -6343,7 +6783,7 @@
 
                     <h4>Investment Mistakes</h4>
                     <p>While Knapp's investment track record was mostly stellar, he was not immune to mistakes. During the late 1950s, Knapp and Buffett once tried to corner the market in 1954 Blue Eagle four-cent airmail stamps for postcards, believing that the stamp might become a precious collectible someday. He said: "We got in his car. It took all day. We were talking about deals, and I had been reading in Linn's Stamp News about a Blue Eagle four-cent stamp that was being taken off the market for a 5-cent Red Eagle stamp." On their way home from an investment seminar, they stopped by numerous post offices to buy the stamps and ended up buying some 400,000 stamps for a $16,000 investment (or about $100,000 USD in today's dollars). They held the stamps for many years but the stamps never did become valuable.</p>
-                    <p>In 1982, some 23 years later, Buffett sold his stamps at a 10% discount under face value to a dealer. Knapp held on to his share of the Blue Eagles stamps, ironically using 4¢ stamps in combination as rates rose, as postage for the rest of his life.</p>
+                    <p>In 1982, some 23 years later, Buffett sold his stamps at a 10% discount under face value to a dealer. Knapp held on to his share of the Blue Eagles stamps, ironically using 4Â¢ stamps in combination as rates rose, as postage for the rest of his life.</p>
 
                     <h3>Selected Quotes</h3>
                     <p>None found.</p>
@@ -6356,8 +6796,8 @@
                     <p>None found.</p>
 
                     <h4>Books about Tom Knapp</h4>
-                    <p>1. "The Snowball: Warren Buffett and the Business of Life" by Alice Schroeder (2008) – Even though the book is about Warren Buffett, Knapp is mentioned throughout this book.</p>
-                    <p>2. "Of Permanent Value: The Story of Warren Buffett" by Andrew Kilpatrick (2012) – Even though the book is about Warren Buffett, Knapp is mentioned throughout this book.</p>
+                    <p>1. "The Snowball: Warren Buffett and the Business of Life" by Alice Schroeder (2008) â€“ Even though the book is about Warren Buffett, Knapp is mentioned throughout this book.</p>
+                    <p>2. "Of Permanent Value: The Story of Warren Buffett" by Andrew Kilpatrick (2012) â€“ Even though the book is about Warren Buffett, Knapp is mentioned throughout this book.</p>
 
                     <h4>Articles about Tom Knapp</h4>
                     <p>1. "The Superinvestors of Graham-and-Doddsville" by Warren Buffett (1984)</p>
@@ -6369,13 +6809,13 @@
                     <p>2. "Security Analysis" by Benjamin Graham and David Dodd, 1934</p>
                     <p>This seminal work laid the foundation for value investing principles. It emphasised the importance of thorough analysis, intrinsic value, and margin of safety.</p>
                     <ul>
-                        <li>Security Analysis (First edition, 1934) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Second edition, 1940) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Third edition, 1951) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Fourth edition, 1962) – co-authored with David Dodd and Sidney Cottle</li>
-                        <li>Security Analysis (Fifth edition, 1988) – authored by Sidney Cottle, Roger Murray and Frank Block</li>
-                        <li>Security Analysis (Sixth edition, 2008) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
-                        <li>Security Analysis (Seventh edition, 2023) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett</li>
+                        <li>Security Analysis (First edition, 1934) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Second edition, 1940) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Third edition, 1951) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Fourth edition, 1962) â€“ co-authored with David Dodd and Sidney Cottle</li>
+                        <li>Security Analysis (Fifth edition, 1988) â€“ authored by Sidney Cottle, Roger Murray and Frank Block</li>
+                        <li>Security Analysis (Sixth edition, 2008) â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
+                        <li>Security Analysis (Seventh edition, 2023) â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett</li>
                     </ul>
                     <p>Graham's timeless principles of value investing, including the concept of margin of safety, influenced Knapp's own investment philosophy.</p>
 
@@ -6391,7 +6831,8 @@
             'stan-perlmeter': {
                 title: 'Stan Perlmeter',
                 content: `
-                    <h2>Stan Perlmeter: The Omaha Value Investor</h2>
+                    
+<h2>Stan Perlmeter: The Omaha Value Investor</h2>
 
                     <h3>Introduction</h3>
                     <p>Stan Perlmeter, the esteemed value investor, is renowned for his meticulous investment approach and dedication to preserving capital while seeking long-term growth opportunities. With a track record of consistent returns and a commitment to thorough research, Perlmeter's investment philosophy has inspired many in the world of finance.</p>
@@ -6400,9 +6841,9 @@
                     <p>Stanley (Stan) Edward Perlmeter was born on 28 March 1926.</p>
                     <p>He served in the US Navy in the post-war years, and then settled with his late wife, Janet Shapiro Perlmeter, in Omaha, Nebraska.</p>
                     <p>A remarkable husband, father, grandfather, great-grandfather, son and brother, Perlmeter lived his life with zest and determination.</p>
-                    <p>He was a man who revelled in life's joys. His love for celebration and adventure knew no bounds, especially when surrounded by cherished friends and family. Whether it was in his hometown or the vibrant streets of Miami, Perlmeter's spirit thrived. In 1980, he and Jan embarked on a new chapter, relocating to Miami—a place that would forever hold a special place in their hearts.</p>
+                    <p>He was a man who revelled in life's joys. His love for celebration and adventure knew no bounds, especially when surrounded by cherished friends and family. Whether it was in his hometown or the vibrant streets of Miami, Perlmeter's spirit thrived. In 1980, he and Jan embarked on a new chapter, relocating to Miamiâ€”a place that would forever hold a special place in their hearts.</p>
                     <p>As a father, Perlmeter wore his pride like a badge of honour. Jeff, Michael (alongside his wife, Rosemary), and Rex (partnered with Rachel Hertzman) were his legacy. But his love extended beyond his immediate family. His grandchildren and great-grandchildren adored him.</p>
-                    <p>Life took an unexpected turn when Jan passed away in 2008 after 60 years of marriage. Amidst grief, Stan found solace in an extraordinary blessing—the chance to love again. Ronnie Koenigsberg Perlmeter entered his life, and their hearts aligned. In 2009, they exchanged vows, embarking on a journey of joyous companionship.</p>
+                    <p>Life took an unexpected turn when Jan passed away in 2008 after 60 years of marriage. Amidst grief, Stan found solace in an extraordinary blessingâ€”the chance to love again. Ronnie Koenigsberg Perlmeter entered his life, and their hearts aligned. In 2009, they exchanged vows, embarking on a journey of joyous companionship.</p>
                     <p>Ronnie brought more than just her love into Stan's life. Her children, grandchildren, and great-grandchild became an integral part of their extended family. Together, they basked in the warmth of kinship, weaving new bonds that transcended bloodlines.</p>
                     <p>He died on 18 December 2018 at the age of 92 in Key Biscayne, Miami-Dade County, Florida, USA. His wife, Ronnie, died 5 years later on 27 February 2023.</p>
 
@@ -6423,7 +6864,7 @@
 
                     <h4>Investment Philosophy</h4>
                     <p>At the core of Perlmeter's investment philosophy was the principle of buying businesses, not stocks. He viewed stocks as ownership stakes in real businesses, emphasising the importance of understanding the underlying company's fundamentals, competitive advantage and management quality. Stan's philosophy emphasised the preservation of capital, consistent returns, and the creation of enduring wealth.</p>
-                    <p>Buffett (1984): "[E]very time Perlmeter buys a stock it's because he's getting more for his money than he's paying. That's the only thing he's thinking about. He doesn't worry about whether it's January, he doesn't sorry about whether it's Monday, he doesn't worry about whether it's an election year. He simply says, if a business is worth a dollar and I can buy it 40 cents, something good may happen to me. And he does it over and over and over again. He owns many more stocks than I do – and is far less interested in the underlying nature of the business; I don't seem to have very much influence on Walter. That's one of his strengths: no one has much influence on him.</p>
+                    <p>Buffett (1984): "[E]very time Perlmeter buys a stock it's because he's getting more for his money than he's paying. That's the only thing he's thinking about. He doesn't worry about whether it's January, he doesn't sorry about whether it's Monday, he doesn't worry about whether it's an election year. He simply says, if a business is worth a dollar and I can buy it 40 cents, something good may happen to me. And he does it over and over and over again. He owns many more stocks than I do â€“ and is far less interested in the underlying nature of the business; I don't seem to have very much influence on Walter. That's one of his strengths: no one has much influence on him.</p>
 
                     <h4>Investment Principles</h4>
                     <p>Perlmeter adhered to several key investment principles that guided his decision-making process:</p>
@@ -6485,13 +6926,13 @@
                     <p>2. "Security Analysis" by Benjamin Graham and David Dodd, 1934</p>
                     <p>This seminal work laid the foundation for value investing principles. It emphasised the importance of thorough analysis, intrinsic value, and margin of safety.</p>
                     <ul>
-                        <li>Security Analysis (First edition, 1934) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Second edition, 1940) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Third edition, 1951) – co-authored with David Dodd</li>
-                        <li>Security Analysis (Fourth edition, 1962) – co-authored with David Dodd and Sidney Cottle</li>
-                        <li>Security Analysis (Fifth edition, 1988) – authored by Sidney Cottle, Roger Murray and Frank Block</li>
-                        <li>Security Analysis (Sixth edition, 2008) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
-                        <li>Security Analysis (Seventh edition, 2023) – co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett.</li>
+                        <li>Security Analysis (First edition, 1934) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Second edition, 1940) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Third edition, 1951) â€“ co-authored with David Dodd</li>
+                        <li>Security Analysis (Fourth edition, 1962) â€“ co-authored with David Dodd and Sidney Cottle</li>
+                        <li>Security Analysis (Fifth edition, 1988) â€“ authored by Sidney Cottle, Roger Murray and Frank Block</li>
+                        <li>Security Analysis (Sixth edition, 2008) â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett and prefaces by David L. Dodd, Warren Buffett and Seth Klarman.</li>
+                        <li>Security Analysis (Seventh edition, 2023) â€“ co-authored with David Dodd, edited by Seth Klarman. This edition also includes a foreword by Warren Buffett.</li>
                     </ul>
                     <p>Graham's timeless principles of value investing, including the concept of margin of safety, influenced Perlmeter's own investment philosophy.</p>
 
@@ -6505,7 +6946,8 @@
             'bill-ruane': {
                 title: 'Bill Ruane',
                 content: `
-                    <h2>Bill Ruane: The Sequoia Fund Pioneer</h2>
+                    
+<h2>Bill Ruane: The Sequoia Fund Pioneer</h2>
 
                     <h3>Introduction</h3>
                     <p>William (Bill) Ruane, the legendary value investor, is best known as the founder of the Sequoia Fund, one of the most successful mutual funds in history. With a track record of exceptional long-term performance and a commitment to value investing principles, Ruane's approach has influenced generations of investors and fund managers.</p>
@@ -6572,8 +7014,8 @@
                     <p>Ruane acknowledged that even successful investors make mistakes. One notable mistake was his investment in certain technology stocks during the dot-com bubble, which led to temporary underperformance.</p>
 
                     <h3>Selected Quotes</h3>
-                    <p>"The stock market is a device for transferring money from the impatient to the patient." – Bill Ruane</p>
-                    <p>"Investing is not a game where the guy with the 160 IQ beats the guy with the 130 IQ. Once you have ordinary intelligence, what you need is the temperament to control the urges that get other people into trouble in investing." – Warren Buffett, often attributed to Ruane's influence</p>
+                    <p>"The stock market is a device for transferring money from the impatient to the patient." â€“ Bill Ruane</p>
+                    <p>"Investing is not a game where the guy with the 160 IQ beats the guy with the 130 IQ. Once you have ordinary intelligence, what you need is the temperament to control the urges that get other people into trouble in investing." â€“ Warren Buffett, often attributed to Ruane's influence</p>
 
                     <h3>Literature</h3>
                     <h4>Books by Bill Ruane</h4>
@@ -6583,7 +7025,7 @@
                     <p>Ruane wrote occasional articles and letters to shareholders, but no major publications.</p>
 
                     <h4>Books about Bill Ruane</h4>
-                    <p>"The Essays of Warren Buffett: Lessons for Corporate America" by Warren Buffett and Lawrence Cunningham (1997) – Includes references to Ruane.</p>
+                    <p>"The Essays of Warren Buffett: Lessons for Corporate America" by Warren Buffett and Lawrence Cunningham (1997) â€“ Includes references to Ruane.</p>
 
                     <h4>Articles about Bill Ruane</h4>
                     <p>1. "The Superinvestors of Graham-and-Doddsville" by Warren Buffett (1984)</p>
@@ -6606,7 +7048,8 @@
             'walter-schloss': {
                 title: 'Walter Schloss',
                 content: `
-                    <h2>Walter Schloss: The Dean of Value Investing</h2>
+                    
+<h2>Walter Schloss: The Dean of Value Investing</h2>
 
                     <h3>Introduction</h3>
                     <p>Walter Schloss, often called the "Dean of Value Investing," was a legendary investor who followed Benjamin Graham's principles with unwavering dedication. Known for his disciplined approach and remarkable long-term track record, Schloss demonstrated that value investing could work even in challenging market environments.</p>
@@ -6671,8 +7114,8 @@
                     <p>Schloss acknowledged occasional mistakes but learned from them. He avoided speculative investments and stuck to his disciplined approach.</p>
 
                     <h3>Selected Quotes</h3>
-                    <p>"You never know when the market is going to turn around, so you have to be prepared for the long haul." – Walter Schloss</p>
-                    <p>"The key to investing is not assessing how much an industry is going to affect society, or how much it will grow, but rather determining the competitive advantage of any given company and, above all, the durability of that advantage." – Warren Buffett, influenced by Schloss</p>
+                    <p>"You never know when the market is going to turn around, so you have to be prepared for the long haul." â€“ Walter Schloss</p>
+                    <p>"The key to investing is not assessing how much an industry is going to affect society, or how much it will grow, but rather determining the competitive advantage of any given company and, above all, the durability of that advantage." â€“ Warren Buffett, influenced by Schloss</p>
 
                     <h3>Literature</h3>
                     <h4>Books by Walter Schloss</h4>
@@ -6682,7 +7125,7 @@
                     <p>Schloss wrote occasional articles but no major publications.</p>
 
                     <h4>Books about Walter Schloss</h4>
-                    <p>"The Essays of Warren Buffett: Lessons for Corporate America" by Warren Buffett and Lawrence Cunningham (1997) – Includes references to Schloss.</p>
+                    <p>"The Essays of Warren Buffett: Lessons for Corporate America" by Warren Buffett and Lawrence Cunningham (1997) â€“ Includes references to Schloss.</p>
 
                     <h4>Articles about Walter Schloss</h4>
                     <p>1. "The Superinvestors of Graham-and-Doddsville" by Warren Buffett (1984)</p>
@@ -6703,7 +7146,8 @@
             'edwin-schloss': {
                 title: 'Edwin Schloss',
                 content: `
-                    <h2>Edwin Schloss: The Value Investing Legacy</h2>
+                    
+<h2>Edwin Schloss: The Value Investing Legacy</h2>
 
                     <h3>Introduction</h3>
                     <p>Edwin Schloss, son of the legendary Walter Schloss, carried forward his father's value investing legacy. As a partner in Walter & Edwin Schloss Associates, Edwin demonstrated the enduring power of disciplined value investing principles passed down through generations.</p>
@@ -6783,7 +7227,8 @@
             'bill-ackman': {
                 title: 'Bill Ackman',
                 content: `
-                    <h2>Bill Ackman: The Activist Investor</h2>
+                    
+<h2>Bill Ackman: The Activist Investor</h2>
 
                     <h3>Introduction</h3>
                     <p>William (Bill) Albert Ackman is a prominent American investor, hedge fund manager, and philanthropist. He is the founder and CEO of Pershing Square Capital Management, a hedge fund that employs an activist investment strategy. Ackman is known for his bold investment moves, public campaigns to change company management, and his outspoken views on investing and business.</p>
@@ -6847,8 +7292,8 @@
                     <p>Ackman's most notable mistake was his investment in J.C. Penney, which resulted in significant losses. He has acknowledged this as a learning experience.</p>
 
                     <h3>Selected Quotes</h3>
-                    <p>"I think the most important thing is to have a philosophy and stick to it." – Bill Ackman</p>
-                    <p>"The market is a pendulum that forever swings between optimism and pessimism." – Bill Ackman</p>
+                    <p>"I think the most important thing is to have a philosophy and stick to it." â€“ Bill Ackman</p>
+                    <p>"The market is a pendulum that forever swings between optimism and pessimism." â€“ Bill Ackman</p>
 
                     <h3>Literature</h3>
                     <h4>Books by Bill Ackman</h4>
@@ -6858,7 +7303,7 @@
                     <p>Ackman has written numerous letters to investors and articles on investing.</p>
 
                     <h4>Books about Bill Ackman</h4>
-                    <p>"Too Big to Fail" by Andrew Ross Sorkin (2009) – Includes references to Ackman.</p>
+                    <p>"Too Big to Fail" by Andrew Ross Sorkin (2009) â€“ Includes references to Ackman.</p>
 
                     <h4>Articles about Bill Ackman</h4>
                     <p>Numerous articles in financial publications covering his activist campaigns.</p>
@@ -6877,87 +7322,7 @@
             }
 
         };
-
-
-        // Article panel functionality
-        function openArticle(articleId) {
-            const panel = document.getElementById('article-detail-panel');
-            const title = document.getElementById('article-detail-title');
-            const body = document.getElementById('article-detail-body');
-            
-            if (articleContent[articleId]) {
-                title.textContent = articleContent[articleId].title;
-                const imagePlaceholder = `<div style="width:100%;height:200px;background:linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:24px;color:white;box-shadow:var(--shadow-md);"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:12px;opacity:0.9;"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg><span style="font-weight:600;letter-spacing:0.05em;text-transform:uppercase;font-size:12px;opacity:0.9;">Professional Insights</span></div>`;
-
-                const relatedArticles = `
-<hr style="margin:32px 0;border:none;border-top:1px solid #e5e7eb;">
-<h3 style="color:#1e3a8a;margin-bottom:12px;">Related articles:</h3>
-<p style="color:#6b7280;font-size:14px;line-height:1.6;">Explore more resources and expert perspectives on these topics in our library collection.</p>
-<h3 style="color:#1e3a8a;margin:24px 0 12px;">Related books:</h3>
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;">
-    ${[1,2,3,4,5,6].map(i => `
-    <div style="border:1px solid #e5e7eb;border-radius:8px;padding:12px;text-align:center;background:#f9fafb;">
-        <div style="width:60px;height:80px;background:#e5e7eb;border-radius:4px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:11px;">Book ${i}</div>
-        <a href="#" style="font-size:12px;color:#1e3a8a;text-decoration:none;">Book title link</a>
-    </div>`).join('')}
-</div>
-<hr style="margin:24px 0;border:none;border-top:1px solid #e5e7eb;">
-<p style="font-size:12px;color:#9ca3af;font-style:italic;"><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>`;
-
-                let articleBody = articleContent[articleId] ? articleContent[articleId].content : '';
-                if(articleBody) {
-                    // Remove first <p>...< /p> (non-greedy) and any adjacent heading up to h3 if it exists at the start
-                    // We'll run successive replaces to be robust instead of one massive regex:
-                    articleBody = articleBody.trim();
-                    // if starts with a paragraph that is a category
-                    let pMatch = articleBody.match(/^(<p[^>]*>.*?<\/p>)\s*(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
-                    if(pMatch) {
-                        articleBody = articleBody.substring(pMatch[0].length).trim();
-                    } else {
-                        // try to match just the h tag
-                        let hMatch = articleBody.match(/^(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
-                        if(hMatch) {
-                            articleBody = articleBody.substring(hMatch[0].length).trim();
-                        }
-                    }
-                    
-                    // Bold first paragraph
-                    articleBody = articleBody.replace(/<p>(.*?)<\/p>/i, '<p><strong>$1</strong></p>');
-                    
-                    // Remove existing disclaimer
-                    articleBody = articleBody.replace(/<p><strong>Disclaimer:<\/strong>.*?<\/p>\s*$/is, '');
-                }
-                
-                body.innerHTML = imagePlaceholder + articleBody + relatedArticles;
-                panel.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        function closeArticlePanel() {
-            const panel = document.getElementById('article-detail-panel');
-            panel.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        // Event listeners
-        document.addEventListener('DOMContentLoaded', function() {
-            const articleClose = document.getElementById('article-detail-close');
-            const articlePanel = document.getElementById('article-detail-panel');
-            
-            if (articleClose) {
-                articleClose.addEventListener('click', closeArticlePanel);
-            }
-            
-            if (articlePanel) {
-                articlePanel.addEventListener('click', function(event) {
-                    if (event.target === articlePanel) {
-                        closeArticlePanel();
-                    }
-                });
-            }
-        });
     </script>
-
-
-</body></html>
+    </body>
+    </html>
+    

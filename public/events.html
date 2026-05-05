@@ -917,8 +917,121 @@
                 color: var(--text-secondary);
             }
         }
-        </style>
+        
+        /* Local Override for Container Style */
+        .container {
+            background-color: #ffffff !important;
+            border: 0px solid !important;
+            box-shadow: none !important;
+        }
+
+    </style>
     <link rel="stylesheet" href="css/mobile-fixes.css">
+
+    <style>
+        /* Scoped overrides for flat white design with gold header border */
+        html, body {
+            background-color: #ffffff !important;
+            background: #ffffff !important;
+        }
+
+        @media (max-width: 1024px) {
+            .container, .header, .header-content, .drawer-header, .wealth-creation-page, .wealth-creation-page-content, .article-detail-header, .financial-analysis-page, .stock-valuation-page {
+                background: #ffffff !important;
+                background-color: #ffffff !important;
+                border: 0px solid transparent !important;
+                box-shadow: none !important;
+            }
+            .header, .drawer-header {
+                border-bottom: 2px solid #d4af37 !important;
+            }
+            /* Remove jagged notebook border/shadow effect */
+            .container::before {
+                display: none !important;
+                content: none !important;
+                box-shadow: none !important;
+                filter: none !important;
+            }
+        }
+        
+        /* Apply to all viewports for specific elements */
+        .container, .header, .header-content, .drawer-header, .page-title-section, .collapsible-section, .article-detail-header {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            box-shadow: none !important;
+            border: 0px solid transparent !important;
+        }
+        
+        .header, .drawer-header {
+            border-bottom: 2px solid #d4af37 !important;
+        }
+
+        .collapsible-header, .collapsible-header:hover {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            border: 1px solid #e5e7eb !important;
+            color: #1e3a8a !important;
+            box-shadow: none !important;
+            transform: none !important;
+        }
+        
+        .collapsible-title, .collapsible-arrow, .article-detail-title, .article-detail-close {
+            color: #1e3a8a !important;
+        }
+        
+        /* Ensure the main page background is white */
+        body, .wealth-creation-page, .wealth-creation-page-content, .financial-analysis-page, .stock-valuation-page, .professional-advisers-page, .financial-products-page, .resources-page {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+        }
+        
+        /* Drawer close button visibility */
+        .drawer-close {
+            color: #1e3a8a !important;
+        }
+        .drawer-close::before {
+            color: #1e3a8a !important;
+        }
+        
+        /* Remove blue borders on links */
+        .collapsible-link:hover {
+            border-left-color: #1e3a8a !important;
+            background: #f8f9fa !important;
+        }
+        
+        /* Remove the blue glow from ALL elements */
+        * {
+            box-shadow: none !important;
+            text-shadow: none !important;
+        }
+
+        /* Hamburger menu colors */
+        .hamburger-line {
+            background-color: #1e3a8a !important;
+        }
+        
+        /* Footer disclaimer and other potential blue elements */
+        footer, .footer, .disclaimer-section {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            color: #666666 !important;
+            border-top: 1px solid #e5e7eb !important;
+        }
+    </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </head>
 <body>
     <div class="wealth-creation-page">
@@ -926,7 +1039,7 @@
         <header class="header sticky-header" role="banner">
             <div class="container"><div class="header-content">
                 <div class="logo">
-                    <img src="G&amp;D Logo.png" alt="Graham &amp; Doddsville" class="logo-image">
+                    <img src="images/G&amp;D Logo.png" alt="Graham &amp; Doddsville" class="logo-image">
                 </div>
                 
                 <nav class="main-nav desktop-only">                    <ul>
@@ -946,7 +1059,7 @@
         <!-- Mobile Navigation Drawer -->
         <div class="mobile-drawer" id="mobile-drawer">
         <div class="drawer-header">
-            <img src="G&amp;D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
+            <img src="images/G&amp;D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
             <button class="drawer-close" id="drawer-close" aria-label="Close menu"></button>
         </div>
         <nav class="drawer-nav">
@@ -958,7 +1071,7 @@
                 <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
                 <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
                 <li><a href="investment-analysis.html" class="drawer-link">Investment Analysis</a></li>
-                <li><a href="economics.html" class="drawer-link">Economics</a></li>
+                <li><a href="sidebar-economics.html" class="drawer-link">Economics</a></li>
                 <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
                 <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
                 <li><a href="resources.html" class="drawer-link">Resources</a></li>
@@ -1146,68 +1259,152 @@
         </div>
     </div>
 
+    
+    <script src="js/article-image-resolver.js?v=3"></script>
+    
+    <script src="js/article-image-resolver.js?v=3"></script>
     <script>
         // Collapsible functionality
         function toggleCollapsible(sectionId) {
-            const content = document.getElementById(`${sectionId}-content`);
-            const arrow = document.getElementById(`${sectionId}-arrow`);
+            const content = document.getElementById(sectionId + '-content');
+            const arrow = document.getElementById(sectionId + '-arrow');
+            if (!content) return;
+            
+            const section = content.closest('.collapsible-section');
+            const isCurrentlyOpen = content.classList.contains('expanded');
+            
+            // Close all other open sections
+            document.querySelectorAll('.collapsible-content').forEach(c => {
+                if (c.id !== sectionId + '-content' && (c.classList.contains('expanded') || c.style.maxHeight)) {
+                    c.style.maxHeight = null;
+                    c.classList.remove('expanded');
+                    c.classList.add('collapsed');
+                    const s = c.closest('.collapsible-section');
+                    if (s) s.classList.remove('active');
+                    const a = document.getElementById(c.id.replace('-content', '-arrow'));
+                    if (a) a.innerHTML = '▼';
+                }
+            });
 
-            if (content.classList.contains('expanded')) {
+            if (!isCurrentlyOpen) {
+                // OPENING
+                // First, remove collapsed and add expanded to ensure it's visible for scrollHeight calculation
+                content.classList.add('expanded');
+                content.classList.remove('collapsed');
+                
+                if(sectionId === 'events-seminars') {
+                    content.style.maxHeight = 'none';
+                } else {
+                    // Now measure scrollHeight
+                    const height = content.scrollHeight;
+                    content.style.maxHeight = height + "px";
+                }
+                
+                if (section) section.classList.add('active');
+                if (arrow) arrow.innerHTML = '▲';
+            } else {
+                // CLOSING
                 content.style.maxHeight = null;
                 content.classList.remove('expanded');
-                arrow.innerHTML = '▼';
-            } else {
-                // Close all other open sections
-                document.querySelectorAll('.collapsible-content.expanded').forEach(openContent => {
-                    openContent.style.maxHeight = null;
-                    openContent.classList.remove('expanded');
-                    const openArrowId = openContent.id.replace('-content', '-arrow');
-                    const openArrow = document.getElementById(openArrowId);
-                    if (openArrow) openArrow.innerHTML = '▼';
-                });
-
-                content.classList.add('expanded');
-                if(sectionId === 'events-seminars') {
-                     content.style.maxHeight = 'none'; // Allow dynamic height for async content
-                } else {
-                     content.style.maxHeight = content.scrollHeight + "px";
-                }
-                arrow.innerHTML = '▲';
+                content.classList.add('collapsed');
+                if (section) section.classList.remove('active');
+                if (arrow) arrow.innerHTML = '▼';
             }
         }
 
         // Mobile drawer functionality
-        const mobileToggle = document.getElementById('mobile-toggle');
-        const mobileDrawer = document.getElementById('mobile-drawer');
-        const drawerClose = document.getElementById('drawer-close');
-        
-        if (mobileToggle && mobileDrawer) {
-            mobileToggle.addEventListener('click', () => {
-                console.log('Hamburger menu clicked!');
-                mobileDrawer.classList.add('open');
-                document.body.style.overflow = 'hidden';
-                console.log('Drawer should be open now');
-            });
-        }
-        
-        if (drawerClose && mobileDrawer) {
-            drawerClose.addEventListener('click', () => {
-                mobileDrawer.classList.remove('open');
-                document.body.style.overflow = '';
-            });
-        }
-        
-        // Close drawer when clicking outside
-        if (mobileDrawer) {
-            mobileDrawer.addEventListener('click', (e) => {
-                if (e.target === mobileDrawer) {
+        function toggleMobileMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                if (mobileDrawer.classList.contains('open')) {
                     mobileDrawer.classList.remove('open');
                     document.body.style.overflow = '';
+                } else {
+                    mobileDrawer.classList.add('open');
+                    document.body.style.overflow = 'hidden';
                 }
-            });
+            }
         }
 
-        // Article content data
+        function closeMobileMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Article loading functionality
+        function loadArticle(articleId) {
+            const panel = document.getElementById('article-detail-panel');
+            const title = document.getElementById('article-detail-title');
+            const body = document.getElementById('article-detail-body');
+            
+            if (!panel || !title || !body) return;
+
+            if (typeof articleContent !== 'undefined' && articleContent[articleId]) {
+                const article = articleContent[articleId];
+                title.textContent = article.title;
+                
+                let imageHtml = '';
+                if (typeof window.buildArticleImageHtml === 'function') {
+                    imageHtml = window.buildArticleImageHtml(articleId, article);
+                }
+                
+                body.innerHTML = imageHtml + article.content;
+                panel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                const contentContainer = panel.querySelector('.article-detail-content');
+                if (contentContainer) contentContainer.scrollTop = 0;
+            }
+        }
+
+        function closeArticlePanel() {
+            const panel = document.getElementById('article-detail-panel');
+            if (panel) {
+                panel.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            const drawerClose = document.getElementById('drawer-close');
+            
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    toggleMobileMenu();
+                });
+            }
+            
+            if (drawerClose) {
+                drawerClose.addEventListener('click', closeMobileMenu);
+            }
+            
+            if (mobileDrawer) {
+                mobileDrawer.addEventListener('click', (e) => {
+                    if (e.target === mobileDrawer) closeMobileMenu();
+                });
+            }
+
+            const articlePanel = document.getElementById('article-detail-panel');
+            if (articlePanel) {
+                articlePanel.addEventListener('click', (e) => {
+                    if (e.target === articlePanel) closeArticlePanel();
+                });
+            }
+            
+            const closeBtn = document.getElementById('article-detail-close');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeArticlePanel);
+            }
+        });
+
+        // Data from file
         const articleContent = {
             'events-and-seminars': {
                 title: 'Events and Seminars',
@@ -1557,13 +1754,23 @@
 
         // Load events data
         fetch('events_data.json')
-            .then(r => r.json())
+            .then(r => {
+                if (!r.ok) throw new Error('Network response was not ok: ' + r.statusText);
+                return r.json();
+            })
             .then(data => {
                 allEventsData = data;
                 filterEvents();
             })
             .catch(err => {
-                document.getElementById('evt-count').textContent = 'Error loading events data.';
+                const isFileProtocol = window.location.protocol === 'file:';
+                let msg = 'Error loading events data.';
+                if (isFileProtocol) {
+                    msg = 'Browser Security: Fetching JSON fails on file:// protocol. Please use a local server (e.g. http://localhost:4012).';
+                }
+                document.getElementById('evt-count').textContent = msg;
+                document.getElementById('evt-count').style.color = '#dc2626';
+                document.getElementById('evt-count').style.fontWeight = 'bold';
                 console.error('Failed to load events_data.json', err);
             });
 
@@ -1654,151 +1861,7 @@
             const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
             const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
             return { day: d.getDate(), month: months[d.getMonth()], dow: days[d.getDay()] };
-        }
-
-        function getTypeBadge(type) {
-            const cls = 'evt-type-' + type.toLowerCase();
-            return '<span class="evt-type-badge ' + cls + '">' + type + '</span>';
-        }
-
-        function toggleEventDetail(idx) {
-            if (expandedRows.has(idx)) expandedRows.delete(idx);
-            else expandedRows.add(idx);
-            renderEventsTable();
-        }
-
-        function toggleMobileCard(idx) {
-            if (mobileExpandedCards.has(idx)) mobileExpandedCards.delete(idx);
-            else mobileExpandedCards.add(idx);
-            renderEventsTable();
-        }
-
-        function renderEventsTable() {
-            const total = filteredEvents.length;
-            const totalPages = Math.ceil(total / evtPerPage);
-            const start = (evtCurrentPage - 1) * evtPerPage;
-            const end = Math.min(start + evtPerPage, total);
-            const pageEvents = filteredEvents.slice(start, end);
-
-            document.getElementById('evt-count').textContent = 'Showing ' + (total > 0 ? (start+1) : 0) + '–' + end + ' of ' + total + ' events';
-
-            // Desktop table
-            let html = '';
-            pageEvents.forEach((e, i) => {
-                const globalIdx = start + i;
-                const titleLink = e.url ? '<a href="' + e.url + '" target="_blank">' + e.title + '</a>' : e.title;
-                html += '<tr>';
-                html += '<td style="white-space:nowrap;">' + formatDate(e.date) + '</td>';
-                html += '<td style="white-space:nowrap;">' + e.startTime + (e.finishTime && e.finishTime !== 'TBA' ? ' – ' + e.finishTime : '') + '</td>';
-                html += '<td>' + e.state + '</td>';
-                html += '<td>' + getTypeBadge(e.eventType) + '</td>';
-                html += '<td class="evt-title">' + titleLink + '</td>';
-                html += '<td><button class="evt-expand-btn" onclick="toggleEventDetail(' + globalIdx + ')">' + (expandedRows.has(globalIdx) ? 'Hide ▲' : 'Details ▼') + '</button></td>';
-                html += '</tr>';
-                if (expandedRows.has(globalIdx)) {
-                    html += '<tr class="evt-detail-row"><td colspan="6"><div class="evt-detail-grid">';
-                    html += '<div><div class="label">Description</div>' + e.description + '</div>';
-                    html += '<div><div class="label">Venue</div>' + e.venue + '</div>';
-                    html += '<div><div class="label">Cost</div>' + e.cost + '</div>';
-                    html += '<div><div class="label">Food</div>' + e.food + '</div>';
-                    html += '<div><div class="label">Source</div>' + e.source + '</div>';
-                    html += '<div><div class="label">City</div>' + e.city + '</div>';
-                    if (e.url) html += '<div style="grid-column:1/-1;"><div class="label">Website</div><a href="' + e.url + '" target="_blank" style="color:#1e3a8a;word-break:break-all;">' + e.url + '</a></div>';
-                    html += '</div></td></tr>';
-                }
-            });
-            document.getElementById('evt-tbody').innerHTML = html;
-
-            // Mobile cards — redesigned with date chip + collapsible detail
-            let mobileHtml = '';
-            pageEvents.forEach((e, i) => {
-                const globalIdx = start + i;
-                const dp = formatDateParts(e.date);
-                const titleLink = e.url ? '<a href="' + e.url + '" target="_blank">' + e.title + '</a>' : e.title;
-                const isExpanded = mobileExpandedCards.has(globalIdx);
-                const locationText = e.state === 'Online' ? 'Online' : e.city + ', ' + e.state;
-
-                mobileHtml += '<div class="event-mobile-card">';
-                // Date chip
-                mobileHtml += '<div class="mc-date-chip"><span class="mc-day">' + dp.day + '</span><span class="mc-month">' + dp.month + '</span></div>';
-                // Body
-                mobileHtml += '<div class="mc-body">';
-                mobileHtml += '<div class="mc-title-row"><div class="mc-title">' + titleLink + '</div>' + getTypeBadge(e.eventType) + '</div>';
-                // Meta row with icons
-                mobileHtml += '<div class="mc-meta-row">';
-                mobileHtml += '<span class="mc-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>' + e.startTime + '</span>';
-                mobileHtml += '<span class="mc-meta-sep"></span>';
-                mobileHtml += '<span class="mc-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>' + locationText + '</span>';
-                if (e.cost && e.cost !== 'TBC') {
-                    mobileHtml += '<span class="mc-meta-sep"></span>';
-                    mobileHtml += '<span class="mc-meta-item" style="color:' + (e.cost === 'Free' ? '#059669' : '#92400e') + ';font-weight:600;">' + e.cost + '</span>';
-                }
-                mobileHtml += '</div>';
-                // Expand button
-                mobileHtml += '<button class="mc-expand-details" onclick="toggleMobileCard(' + globalIdx + ')">' + (isExpanded ? 'Hide details ▲' : 'More details ▼') + '</button>';
-                // Expandable detail panel
-                if (isExpanded) {
-                    mobileHtml += '<div class="mc-detail-panel">';
-                    mobileHtml += '<div class="mc-dl">';
-                    mobileHtml += '<dt>Venue</dt><dd>' + e.venue + '</dd>';
-                    mobileHtml += '<dt>Time</dt><dd>' + e.startTime + (e.finishTime && e.finishTime !== 'TBA' ? ' – ' + e.finishTime : '') + '</dd>';
-                    if (e.cost) { mobileHtml += '<dt>Cost</dt><dd>' + e.cost + '</dd>'; }
-                    if (e.food && e.food !== 'Unknown') { mobileHtml += '<dt>Food</dt><dd>' + e.food + '</dd>'; }
-                    mobileHtml += '<dt>Source</dt><dd>' + e.source + '</dd>';
-                    if (e.url) { mobileHtml += '<dt>Website</dt><dd><a href="' + e.url + '" target="_blank" style="color:#1e3a8a;word-break:break-all;">' + e.url + '</a></dd>'; }
-                    mobileHtml += '</div>';
-                    if (e.description) { mobileHtml += '<div class="mc-desc-text">' + e.description + '</div>'; }
-                    mobileHtml += '</div>';
-                }
-                mobileHtml += '</div>'; // mc-body
-                mobileHtml += '</div>'; // card
-            });
-            document.getElementById('evt-mobile-cards').innerHTML = mobileHtml;
-
-            // Pagination — simplified for mobile, full for desktop
-            let pag = '';
-            if (totalPages > 1) {
-                pag += '<button ' + (evtCurrentPage <= 1 ? 'disabled' : '') + ' onclick="goEvtPage(' + (evtCurrentPage - 1) + ')">&laquo; Prev</button>';
-                let startPage = Math.max(1, evtCurrentPage - 3);
-                let endPage = Math.min(totalPages, evtCurrentPage + 3);
-                if (startPage > 1) pag += '<button class="page-num-btn" onclick="goEvtPage(1)">1</button><span class="page-num-btn">...</span>';
-                for (let p = startPage; p <= endPage; p++) {
-                    pag += '<button class="page-num-btn ' + (p === evtCurrentPage ? 'active' : '') + '" onclick="goEvtPage(' + p + ')">' + p + '</button>';
-                }
-                if (endPage < totalPages) pag += '<span class="page-num-btn">...</span><button class="page-num-btn" onclick="goEvtPage(' + totalPages + ')">' + totalPages + '</button>';
-                pag += '<span class="page-info-text">Page ' + evtCurrentPage + ' of ' + totalPages + '</span>';
-                pag += '<button ' + (evtCurrentPage >= totalPages ? 'disabled' : '') + ' onclick="goEvtPage(' + (evtCurrentPage + 1) + ')">Next &raquo;</button>';
-            }
-            document.getElementById('evt-pagination').innerHTML = pag;
-        }
-
-        function goEvtPage(p) {
-            evtCurrentPage = p;
-            expandedRows.clear();
-            mobileExpandedCards.clear();
-            renderEventsTable();
-            document.getElementById('events-seminars-content').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-
-        // Auto-expand the Events and Seminars section on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(function() {
-                toggleCollapsible('events-seminars');
-            }, 300);
-        });
     </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</body></html>
+    </body>
+    </html>
+    

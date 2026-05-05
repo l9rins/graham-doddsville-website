@@ -1,15 +1,17 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wealth Creation - Graham and Doddsville</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css?v=3">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-blue: #1e3a8a;
             --primary-blue-light: #3b82f6;
             --primary-blue-dark: #1e40af;
-            --secondary-gray: #ffffff;
+            --secondary-gray: #f8f9fa;
             --text-primary: #1f2937;
             --text-secondary: #6b7280;
             --text-muted: #9ca3af;
@@ -32,11 +34,11 @@
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: var(--text-primary);
-            background: #ffffff;
+            background: var(--secondary-gray);
         }
 
         .wealth-creation-page {
-            background: #ffffff;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
             position: relative;
         }
 
@@ -46,13 +48,14 @@
             padding: 24px;
         }
 
-                        /* Standardized Header Styles */
+        /* Header Section */
         .header {
-            background: #ffffff;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
             border-bottom: 2px solid #d4af37;
             padding: 12px 0;
             transition: all 0.3s ease;
             overflow: visible;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
 
         .sticky-header {
@@ -66,10 +69,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 30px;
+            overflow: visible;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
-            position: relative;
         }
 
         .logo {
@@ -90,56 +94,36 @@
             display: flex;
             list-style: none;
             gap: 35px;
-            margin: 0;
-            padding: 0;
+            overflow: visible;
         }
 
-        .nav-link {
-            color: #1f2937;
+        .main-nav li {
+            position: relative;
+            overflow: visible;
+        }
+
+        .main-nav a {
+            color: var(--text-primary);
             text-decoration: none;
             font-weight: 500;
-            font-size: 14px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
+            font-size: 16px;
+            transition: color 0.3s ease;
+            overflow: visible;
         }
 
-        .nav-link:hover {
-            color: #1e3a8a;
-            text-decoration: underline;
+        .main-nav a:hover {
+            color: var(--primary-blue);
         }
 
-        .mobile-menu-toggle {
-            display: none;
-            flex-direction: column;
-            justify-content: space-around;
-            width: 30px;
-            height: 30px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-        }
-
-        .hamburger-line {
-            width: 25px;
-            height: 2px;
-            background: #333;
-            border-radius: 1px;
-            transition: all 0.3s ease;
+        .desktop-only {
             display: block;
-            margin: 2px 0;
         }
-
-        .desktop-only { display: block; }
-        .mobile-only { display: none; }
 
         @media (max-width: 768px) {
-            .desktop-only { display: none; }
-            .mobile-only { display: flex; }
-            .header-content { padding: 0 20px; }
+            .desktop-only {
+                display: none;
+            }
         }
-
 
         /* Page Title Section */
         .page-title-section {
@@ -164,101 +148,6 @@
         .breadcrumb-link:hover {
             color: var(--primary-blue);
         }
-
-                        /* Standardized Header Styles */
-        .header {
-            background: #ffffff;
-            border-bottom: 2px solid #d4af37;
-            padding: 12px 0;
-            transition: all 0.3s ease;
-            overflow: visible;
-        }
-
-        .sticky-header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo-image {
-            height: 40px;
-            width: auto;
-        }
-
-        .main-nav {
-            overflow: visible;
-        }
-
-        .main-nav ul {
-            display: flex;
-            list-style: none;
-            gap: 35px;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav-link {
-            color: #1f2937;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 14px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: #1e3a8a;
-            text-decoration: underline;
-        }
-
-        .mobile-menu-toggle {
-            display: none;
-            flex-direction: column;
-            justify-content: space-around;
-            width: 30px;
-            height: 30px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-        }
-
-        .hamburger-line {
-            width: 25px;
-            height: 2px;
-            background: #333;
-            border-radius: 1px;
-            transition: all 0.3s ease;
-            display: block;
-            margin: 2px 0;
-        }
-
-        .desktop-only { display: block; }
-        .mobile-only { display: none; }
-
-        @media (max-width: 768px) {
-            .desktop-only { display: none; }
-            .mobile-only { display: flex; }
-            .header-content { padding: 0 20px; }
-        }
-
 
         /* Page Title Section */
         .page-title-section {
@@ -610,7 +499,7 @@
         }
 
         .collapsible-link:hover {
-            background: #ffffff;
+            background: var(--secondary-gray);
             color: var(--primary-blue);
             border-left-color: var(--primary-blue);
         }
@@ -715,7 +604,7 @@
         }
 
         .drawer-menu li {
-            border-bottom: 1px solid #ffffff;
+            border-bottom: 1px solid #f0f0f0;
             margin-bottom: 6px;
             padding-left: 20px;
         }
@@ -730,7 +619,7 @@
         }
 
         .drawer-link:hover {
-            background: #ffffff;
+            background: #f8f9fa;
             color: #1e3a8a;
         }
 
@@ -867,66 +756,168 @@
 
         .loading-spinner::after {
             content: '';
-            width: 24px;
-            height: 24px;
-            border: 3px solid #e5e7eb;
-            border-top-color: var(--primary-blue);
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border-light);
+            border-top: 2px solid var(--primary-blue);
             border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-            display: inline-block;
+            animation: spin 1s linear infinite;
+            margin-left: 12px;
         }
 
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
-    <link rel="stylesheet" href="css/mobile-fixes.css">
+
+    <style>
+        /* Scoped overrides for flat white design with gold header border */
+        html, body {
+            background-color: #ffffff !important;
+            background: #ffffff !important;
+        }
+
+        @media (max-width: 1024px) {
+            .container, .header, .header-content, .drawer-header, .wealth-creation-page, .wealth-creation-page-content, .article-detail-header, .financial-analysis-page, .stock-valuation-page {
+                background: #ffffff !important;
+                background-color: #ffffff !important;
+                border: 0px solid transparent !important;
+                box-shadow: none !important;
+            }
+            .header, .drawer-header {
+                border-bottom: 2px solid #d4af37 !important;
+            }
+            /* Remove jagged notebook border/shadow effect */
+            .container::before {
+                display: none !important;
+                content: none !important;
+                box-shadow: none !important;
+                filter: none !important;
+            }
+        }
+        
+        /* Apply to all viewports for specific elements */
+        .container, .header, .header-content, .drawer-header, .page-title-section, .collapsible-section, .article-detail-header {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            box-shadow: none !important;
+            border: 0px solid transparent !important;
+        }
+        
+        .header, .drawer-header {
+            border-bottom: 2px solid #d4af37 !important;
+        }
+
+        .collapsible-header, .collapsible-header:hover {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            border: 1px solid #e5e7eb !important;
+            color: #1e3a8a !important;
+            box-shadow: none !important;
+            transform: none !important;
+        }
+        
+        .collapsible-title, .collapsible-arrow, .article-detail-title, .article-detail-close {
+            color: #1e3a8a !important;
+        }
+        
+        /* Ensure the main page background is white */
+        body, .wealth-creation-page, .wealth-creation-page-content, .financial-analysis-page, .stock-valuation-page, .professional-advisers-page, .financial-products-page, .resources-page {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+        }
+        
+        /* Drawer close button visibility */
+        .drawer-close {
+            color: #1e3a8a !important;
+        }
+        .drawer-close::before {
+            color: #1e3a8a !important;
+        }
+        
+        /* Remove blue borders on links */
+        .collapsible-link:hover {
+            border-left-color: #1e3a8a !important;
+            background: #f8f9fa !important;
+        }
+        
+        /* Remove the blue glow from ALL elements */
+        * {
+            box-shadow: none !important;
+            text-shadow: none !important;
+        }
+
+        /* Hamburger menu colors */
+        .hamburger-line {
+            background-color: #1e3a8a !important;
+        }
+        
+        /* Footer disclaimer and other potential blue elements */
+        footer, .footer, .disclaimer-section {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            color: #666666 !important;
+            border-top: 1px solid #e5e7eb !important;
+        }
+    </style>
+
+
+
+
+
+
+
+
 </head>
 <body>
     <div class="wealth-creation-page">
         <!-- Header -->
-                                <header class="header sticky-header" role="banner">
-            <div class="header-content">
-                <div class="logo">
-                    <img src="G&D Logo.png" alt="Graham & Doddsville" class="logo-image">
-                </div>
-                
-                <nav class="main-nav desktop-only">
-                    <ul>
+        <header class="header sticky-header" role="banner">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <img src="images/G&D Logo.png" alt="Graham & Doddsville" class="logo-image">
+                    </div>
+                    
+                    <nav class="main-nav desktop-only">                    <ul>
                         <li><a href="index.html" class="nav-link">HOME</a></li>
                         <li><a href="wealth-creation.html" class="nav-link">WEALTH CREATION</a></li>
-                        <li><a href="resources.html" class="nav-link">RESOURCES</a></li>
-                    </ul>
-                </nav>
-                
-                <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                </button>
+                        <li><a href="#" class="nav-link">ABOUT</a></li>
+                    </ul></nav>
+                    
+                    
+                    <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
             </div>
         </header>
 
         <!-- Mobile Navigation Drawer -->
         <div class="mobile-drawer" id="mobile-drawer">
         <div class="drawer-header">
-            <img src="G&amp;D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
+            <img src="images/G&D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
             <button class="drawer-close" id="drawer-close" aria-label="Close menu"></button>
         </div>
         <nav class="drawer-nav">
             <ul class="drawer-menu">
-                <li><a href="index.html" class="drawer-link" style="white-space: nowrap;">Home</a></li>
+                <li><a href="index.html" class="drawer-link">Home</a></li>
                 <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
-                <li><a href="legal-taxation.html" class="drawer-link">Legal &amp; Taxation</a></li>
+                <li><a href="legal-taxation.html" class="drawer-link">Legal & Taxation</a></li>
                 <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
                 <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
                 <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
                 <li><a href="investment-analysis.html" class="drawer-link">Investment Analysis</a></li>
-                <li><a href="economics.html" class="drawer-link">Economics</a></li>
+                <li><a href="financial-statement-analysis.html" class="drawer-link">Financial Statement Analysis</a></li>
+                <li><a href="stock-valuation.html" class="drawer-link">Stock Valuation</a></li>
+                <li><a href="sidebar-economics.html" class="drawer-link">Economics</a></li>
                 <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
                 <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
                 <li><a href="resources.html" class="drawer-link">Resources</a></li>
-                <li><a href="events.html" class="drawer-link">Events &amp; Seminars</a></li>
+                <li><a href="events.html" class="drawer-link">Events & Seminars</a></li>
             </ul>
         </nav>
     </div>
@@ -967,158 +958,169 @@
 
             <!-- Collapsible Categories -->
             <div class="collapsible-categories">
-                <!-- The Laws of Wealth -->
                 <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('laws')">
+                    <div class="collapsible-header" onclick="toggleCollapsible('the-laws-of-wealth')">
                         <h3 class="collapsible-title">The Laws of Wealth</h3>
-                        <span class="collapsible-arrow" id="laws-arrow">▼</span>
+                        <span class="collapsible-arrow" id="the-laws-of-wealth-arrow">&#9660;</span>
                     </div>
-                    <div class="collapsible-content collapsed" id="laws-content">
-                <p>The Laws of Wealth Creation: How to Build Lasting Wealth</p>
-                <p>The 4 Universal Laws of Wealth Creation</p>
-                <p>Money: The 10 Immutable Laws of Building Wealth</p>
-                <p>Proven Wealth Creation Strategies: A Beginner's Guide</p>
-                <p>Top 10 Simple Principles for Building Your Wealth</p>
-            </div>
-                </div>
-
-                <!-- Personal Finance -->
-                <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('personal')">
-                        <h3 class="collapsible-title">Personal Finance</h3>
-                        <span class="collapsible-arrow" id="personal-arrow">▼</span>
-                    </div>
-                    <div class="collapsible-content collapsed" id="personal-content">
+                    <div class="collapsible-content collapsed" id="the-laws-of-wealth-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('financial-literacy')">Financial Literacy</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('financial-planning')">Financial Planning</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-prepare-a-budget')">How to Prepare a Budget</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-save-money')">How to Save Money</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-reduce-taxes')">How to Reduce Taxes</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-buy-property')">How to Buy Property</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-sell-property')">How to Sell Property</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('personal-insurances')">Personal Insurances</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('laws-of-wealth-creation')">Laws of wealth creation</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('common-money-myths')">Common money myths</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-build-wealth-faster')">How to build wealth faster</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-get-rich-quick')">How to get rich quick</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('crosby-s-laws-of-wealth')">Crosby's laws of wealth</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('whittaker-s-golden-rules-of-wealth')">Whittaker's golden rules of wealth</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('munger-s-rules-of-wealth')">Munger's rules of wealth</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('hill-s-laws-of-success')">Hill's laws of success</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('tracy-s-laws-of-luck')">Tracy's laws of luck</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('cole-s-12-irrefutable-laws-of-success')">Cole's 12 irrefutable laws of success</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('dr-harris-12-universal-laws-of-success')">Dr Harris' 12 universal laws of success</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('brown-s-12-laws-of-success')">Brown's 12 laws of success</a></li>
                         </ul>
                     </div>
                 </div>
-
-                <!-- Managing Debt -->
                 <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('debt')">
-                        <h3 class="collapsible-title">Managing Debt</h3>
-                        <span class="collapsible-arrow" id="debt-arrow">▼</span>
+                    <div class="collapsible-header" onclick="toggleCollapsible('personal-finance')">
+                        <h3 class="collapsible-title">Personal Finance</h3>
+                        <span class="collapsible-arrow" id="personal-finance-arrow">&#9660;</span>
                     </div>
-                    <div class="collapsible-content collapsed" id="debt-content">
+                    <div class="collapsible-content collapsed" id="personal-finance-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('basics-of-borrowing')">Basics of Borrowing</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('managing-debt')">Managing Debt</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('paying-off-your-credit-card')">Paying Off Your Credit Card</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('debt-consolidation')">Debt Consolidation</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('handling-debt-collectors')">Handling Debt Collectors</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('financial-counselling')">Financial Counselling</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('financial-hardship')">Financial Hardship</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('financial-literacy')">Financial literacy</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('financial-planning')">Financial planning</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-prepare-a-budget')">How to prepare a budget</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-save-money')">How to save money</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-reduce-taxes')">How to reduce taxes</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-buy-property-in-australia')">How to buy property in Australia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-manage-investment-property')">How to manage investment property</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-sell-property-in-australia')">How to sell property in Australia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('personal-insurances')">Personal insurances</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('managing-debt')">
+                        <h3 class="collapsible-title">Managing Debt</h3>
+                        <span class="collapsible-arrow" id="managing-debt-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="managing-debt-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('basics-of-borrowing')">Basics of borrowing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('managing-debt')">Managing debt</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('paying-off-your-credit-card')">Paying off your credit card</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('debt-consolidation')">Debt consolidation</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('handling-debt-collectors')">Handling debt collectors</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('financial-counselling')">Financial counselling</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('financial-hardship')">Financial hardship</a></li>
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('insolvency')">Insolvency</a></li>
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('bankruptcy')">Bankruptcy</a></li>
                         </ul>
                     </div>
                 </div>
-
-                <!-- Investing for Beginners -->
                 <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('investing')">
+                    <div class="collapsible-header" onclick="toggleCollapsible('investing-for-beginners')">
                         <h3 class="collapsible-title">Investing for Beginners</h3>
-                        <span class="collapsible-arrow" id="investing-arrow">▼</span>
+                        <span class="collapsible-arrow" id="investing-for-beginners-arrow">&#9660;</span>
                     </div>
-                    <div class="collapsible-content collapsed" id="investing-content">
+                    <div class="collapsible-content collapsed" id="investing-for-beginners-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('investor-mindset')">Investor Mindset</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('magic-of-compounding')">Magic of Compounding</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('asset-classes')">Asset Classes</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('asset-allocation')">Asset Allocation</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('investment-risks')">Investment Risks</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('borrowing-to-invest')">Borrowing to Invest</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('the-investor-mindset')">The investor mindset</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('the-magic-of-compounding')">The magic of compounding</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('asset-classes')">Asset classes</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('asset-allocation')">Asset allocation</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('investment-risks')">Investment risks</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('borrowing-to-invest')">Borrowing to invest</a></li>
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('diversification')">Diversification</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('financial-advice')">Financial Advice</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('international-investing')">International Investing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('financial-advice')">Financial advice</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('international-investing')">International investing</a></li>
                         </ul>
                     </div>
                 </div>
-
-                <!-- Investing in Australia -->
                 <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('australia')">
+                    <div class="collapsible-header" onclick="toggleCollapsible('investing-in-australia')">
                         <h3 class="collapsible-title">Investing in Australia</h3>
-                        <span class="collapsible-arrow" id="australia-arrow">▼</span>
+                        <span class="collapsible-arrow" id="investing-in-australia-arrow">&#9660;</span>
                     </div>
-                    <div class="collapsible-content collapsed" id="australia-content">
+                    <div class="collapsible-content collapsed" id="investing-in-australia-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('key-facts-australia')">Key Facts About Australia</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('why-invest-australia')">Why Invest in Australia</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('australian-economy')">Our Economy</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('regulatory-framework')">Regulatory Framework</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('industry-groups')">Industry Groups</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('financial-markets')">Financial Markets</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('firb-approval')">Firb Approval</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('investor-visas')">Investor Visas</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('key-facts-about-australia')">Key facts about Australia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('why-invest-in-australia')">Why invest in Australia?</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('the-australian-economy')">The Australian economy</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('regulatory-framework')">Regulatory framework</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('industry-groups-in-australia')">Industry groups in Australia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('financial-markets')">Financial markets</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('historical-investment-returns')">Historical investment returns</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('investment-risk-considerations')">Investment risk considerations</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('firb-approval')">FIRB approval</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('investor-visas')">Investor visas</a></li>
                         </ul>
                     </div>
                 </div>
-
-                <!-- Rules for Success -->
                 <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('rules')">
+                    <div class="collapsible-header" onclick="toggleCollapsible('rules-for-success')">
                         <h3 class="collapsible-title">Rules for Success</h3>
-                        <span class="collapsible-arrow" id="rules-arrow">▼</span>
+                        <span class="collapsible-arrow" id="rules-for-success-arrow">&#9660;</span>
                     </div>
-                    <div class="collapsible-content collapsed" id="rules-content">
+                    <div class="collapsible-content collapsed" id="rules-for-success-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('general-investing-rules')">General Investing Rules</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('share-investing-rules')">Share Investing Rules</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('pat-dorseys-rules')">Pat Dorsey's 5 Rules</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('warren-buffett-rules')">Warren Buffett's Rules</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('general-investing-rules')">General investing rules</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('share-investing-rules')">Share investing rules</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('pat-dorsey-s-5-rules-for-successful-stock-investing')">Pat Dorsey's 5 rules for successful stock investing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('warren-buffett-s-rules-for-investing')">Warren Buffett's rules for investing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('sir-john-templeton-s-16-rules-for-investment-success')">Sir John Templeton's 16 rules for investment success</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('burton-malkiel-10-rules-for-financial-success')">Burton Malkiel 10 rules for financial success</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('john-bogle-s-common-sense-investing')">John Bogle's common sense investing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('william-o-neil-s-24-essential-lessons-for-success')">William O'Neil's 24 essential lessons for success</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('david-gardner-s-rule-breaker-investing')">David Gardner's rule breaker investing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('harriman-s-book-of-investing-rules')">Harriman's book of investing rules</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('scott-reed-s-top-40-rules-of-investing')">Scott Reed's top 40 rules of investing</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('randall-stewart-s-50-stock-investment-rules')">Randall Stewart's 50 stock investment rules</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('tracey-edwards-5-simple-rules-for-stock-investing')">Tracey Edwards' 5 simple rules for stock investing</a></li>
                         </ul>
                     </div>
                 </div>
-
-                <!-- Common Mistakes -->
                 <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('mistakes')">
+                    <div class="collapsible-header" onclick="toggleCollapsible('common-mistakes')">
                         <h3 class="collapsible-title">Common Mistakes</h3>
-                        <span class="collapsible-arrow" id="mistakes-arrow">▼</span>
+                        <span class="collapsible-arrow" id="common-mistakes-arrow">&#9660;</span>
                     </div>
-                    <div class="collapsible-content collapsed" id="mistakes-content">
+                    <div class="collapsible-content collapsed" id="common-mistakes-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('psychological-traps')">Psychological Traps</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('common-mistakes')">Common Mistakes</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('market-bubbles')">Market Bubbles</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('valuation-errors')">Valuation Errors</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('cognitive-errors')">Cognitive errors</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('emotional-biases')">Emotional biases</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('trading-errors')">Trading errors</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('common-mistakes')">Common mistakes</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('market-bubbles')">Market bubbles</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('valuation-errors')">Valuation errors</a></li>
                         </ul>
                     </div>
                 </div>
-
-                <!-- Investment Scams -->
                 <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('scams')">
+                    <div class="collapsible-header" onclick="toggleCollapsible('investment-scams')">
                         <h3 class="collapsible-title">Investment Scams</h3>
-                        <span class="collapsible-arrow" id="scams-arrow">▼</span>
+                        <span class="collapsible-arrow" id="investment-scams-arrow">&#9660;</span>
                     </div>
-                    <div class="collapsible-content collapsed" id="scams-content">
+                    <div class="collapsible-content collapsed" id="investment-scams-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-avoid-scams')">How to Avoid Scams</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('identity-theft')">Identity Theft</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('banking-scams')">Banking Scams</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('credit-card-fraud')">Credit Card Fraud</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('cheque-fraud')">Cheque Fraud</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('unlicensed-companies')">Unlicensed Companies</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('fake-regulators')">Fake Regulators</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('investment-scams')">Investment Scams</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('superannuation-scams')">Superannuation Scams</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('identity-theft')">Identity theft</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('banking-scams')">Banking scams</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('credit-card-fraud')">Credit card fraud</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('cheque-fraud')">Cheque fraud</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('unlicensed-companies')">Unlicensed companies</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('fake-regulators')">Fake regulators</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('investment-scams')">Investment scams</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('superannuation-scams')">Superannuation scams</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('email-based-scams')">Email-based scams</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('telephone-based-scams')">Telephone-based scams</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('social-media-scams')">Social media scams</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-avoid-scams')">How to avoid scams</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-    
+    </div>
 
     <!-- Article Detail Panel -->
     <div class="article-detail-panel" id="article-detail-panel">
@@ -1133,30 +1135,155 @@
         </div>
     </div>
 
+    <script src="js/article-image-resolver.js?v=3"></script>
+    
+    <script src="js/article-image-resolver.js?v=3"></script>
+    
+    <script src="js/article-image-resolver.js?v=3"></script>
+    
+    <script src="js/article-image-resolver.js?v=3"></script>
     <script>
         // Collapsible functionality
         function toggleCollapsible(sectionId) {
-            const content = document.getElementById(`${sectionId}-content`);
-            const arrow = document.getElementById(`${sectionId}-arrow`);
+            const content = document.getElementById(sectionId + '-content');
+            const arrow = document.getElementById(sectionId + '-arrow');
+            if (!content) return;
+            
+            const section = content.closest('.collapsible-section');
+            const isCurrentlyOpen = content.classList.contains('expanded');
+            
+            // Close all other open sections
+            document.querySelectorAll('.collapsible-content').forEach(c => {
+                if (c.id !== sectionId + '-content' && (c.classList.contains('expanded') || c.style.maxHeight)) {
+                    c.style.maxHeight = null;
+                    c.classList.remove('expanded');
+                    c.classList.add('collapsed');
+                    const s = c.closest('.collapsible-section');
+                    if (s) s.classList.remove('active');
+                    const a = document.getElementById(c.id.replace('-content', '-arrow'));
+                    if (a) a.innerHTML = '▼';
+                }
+            });
 
-            if (content.classList.contains('collapsed')) {
-                // Close all other open sections
-                document.querySelectorAll('.collapsible-content:not(.collapsed)').forEach(openContent => {
-                    openContent.classList.add('collapsed');
-                    const openArrowId = openContent.id.replace('-content', '-arrow');
-                    document.getElementById(openArrowId).innerHTML = '▼';
-                });
-
+            if (!isCurrentlyOpen) {
+                // OPENING
+                // First, remove collapsed and add expanded to ensure it's visible for scrollHeight calculation
+                content.classList.add('expanded');
                 content.classList.remove('collapsed');
-                arrow.innerHTML = '▲';
+                
+                if(sectionId === 'events-seminars') {
+                    content.style.maxHeight = 'none';
+                } else {
+                    // Now measure scrollHeight
+                    const height = content.scrollHeight;
+                    content.style.maxHeight = height + "px";
+                }
+                
+                if (section) section.classList.add('active');
+                if (arrow) arrow.innerHTML = '▲';
             } else {
+                // CLOSING
+                content.style.maxHeight = null;
+                content.classList.remove('expanded');
                 content.classList.add('collapsed');
-                arrow.innerHTML = '▼';
+                if (section) section.classList.remove('active');
+                if (arrow) arrow.innerHTML = '▼';
             }
         }
 
+        // Mobile drawer functionality
+        function toggleMobileMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                if (mobileDrawer.classList.contains('open')) {
+                    mobileDrawer.classList.remove('open');
+                    document.body.style.overflow = '';
+                } else {
+                    mobileDrawer.classList.add('open');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+        }
 
-        // Article content data
+        function closeMobileMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Article loading functionality
+        function loadArticle(articleId) {
+            const panel = document.getElementById('article-detail-panel');
+            const title = document.getElementById('article-detail-title');
+            const body = document.getElementById('article-detail-body');
+            
+            if (!panel || !title || !body) return;
+
+            if (typeof articleContent !== 'undefined' && articleContent[articleId]) {
+                const article = articleContent[articleId];
+                title.textContent = article.title;
+                
+                let imageHtml = '';
+                if (typeof window.buildArticleImageHtml === 'function') {
+                    imageHtml = window.buildArticleImageHtml(articleId, article);
+                }
+                
+                body.innerHTML = imageHtml + article.content;
+                panel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                const contentContainer = panel.querySelector('.article-detail-content');
+                if (contentContainer) contentContainer.scrollTop = 0;
+            }
+        }
+
+        function closeArticlePanel() {
+            const panel = document.getElementById('article-detail-panel');
+            if (panel) {
+                panel.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            const drawerClose = document.getElementById('drawer-close');
+            
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    toggleMobileMenu();
+                });
+            }
+            
+            if (drawerClose) {
+                drawerClose.addEventListener('click', closeMobileMenu);
+            }
+            
+            if (mobileDrawer) {
+                mobileDrawer.addEventListener('click', (e) => {
+                    if (e.target === mobileDrawer) closeMobileMenu();
+                });
+            }
+
+            const articlePanel = document.getElementById('article-detail-panel');
+            if (articlePanel) {
+                articlePanel.addEventListener('click', (e) => {
+                    if (e.target === articlePanel) closeArticlePanel();
+                });
+            }
+            
+            const closeBtn = document.getElementById('article-detail-close');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeArticlePanel);
+            }
+        });
+
+        // Data from file
         const articleContent = {
             'laws-of-wealth-creation': {
                 title: 'The 9 Laws of Wealth Creation: How to Get Rich The Safe and Sure-Fire Way',
@@ -1186,7 +1313,7 @@
                     <p>If properly invested, your savings should generate interest. Compounding is the process whereby interest is earned on your savings plus previously earned interest. Thus, as your savings grow, you earn interest on a bigger and bigger pool of money (and the amount of interest grows with it). The magic of compounding is that, over time, the sums involved grow at an exponential rate, such that small incremental increases in the beginning gradually have a massive effect towards the end. The key takeaway here is to invest as early as possible go maximise the impact of compounding, and to invest for the long-term. Time adds value to money.</p>
                     
                     <h3>7. Diversification</h3>
-                    <p>You should manage your risks by investing in different asset classes. It's the old adage "Don't put all your eggs in one basket". The classic distribution is between property, shares and cash. As to the exact percentages, this is something that you will have to determine for yourself having regard to your perception of the risk profile of each asset, your risk tolerance and your personal objectives. But note that you can also achieve a level of diversification within an asset class itself – for example, if you are investing in shares, you can choose to invest different sizes (small caps vs large caps), different sectors (eg. banking, mining, technology, etc) and different geographies.</p>
+                    <p>You should manage your risks by investing in different asset classes. It's the old adage "Don't put all your eggs in one basket". The classic distribution is between property, shares and cash. As to the exact percentages, this is something that you will have to determine for yourself having regard to your perception of the risk profile of each asset, your risk tolerance and your personal objectives. But note that you can also achieve a level of diversification within an asset class itself â€“ for example, if you are investing in shares, you can choose to invest different sizes (small caps vs large caps), different sectors (eg. banking, mining, technology, etc) and different geographies.</p>
                     
                     <h3>8. Asset protection</h3>
                     <p>You need to put in place appropriate strategies to protect your assets from contingencies such as legal proceedings and creditor claims. Should you set up a company and/or trust to hold your assets (so that technically you are not the owner of the assets)? Should you transfer assets into your spouse's name (lower risk exposure)? Should you take out insurances and, if so, what? There are a number of things that you will need to consider if you are to ensure that your assets are adequately protected. As for personal risk insurance, we would recommend that you take at Life, Total Permanent Disablement, Trauma and Income Protection insurances at the very least.</p>
@@ -1205,7 +1332,8 @@
             'common-money-myths': {
                 title: 'The 10 Most Common Myths About Money: Uncover The Truth About Your Finances',
                 content: `
-                    <p>Most people don't realise that the reason they are not rich is not their circumstance, but their belief system. They have negative beliefs about money which are either untrue or exaggerated, and these beliefs invariably sabotage their wealth creation goals. Here are 10 of the most common myths that people have about money:</p>
+                    
+<p>Most people don't realise that the reason they are not rich is not their circumstance, but their belief system. They have negative beliefs about money which are either untrue or exaggerated, and these beliefs invariably sabotage their wealth creation goals. Here are 10 of the most common myths that people have about money:</p>
                     
                     <h3>Myth 1: "It's impossible for the average person to become rich."</h3>
                     <p>According to Wikipedia, there were 46.8 million people around the world who were millionaires as at 2020. This figure would no doubt be higher now. These wealthy individuals came from all walks of life (including from impoverished backgrounds) and the vast majority of them were self-made. Their sheer number, and the diversity of their backgrounds, contradict any suggestion that the average person cannot become rich.</p>
@@ -1243,7 +1371,8 @@
             'how-to-build-wealth-faster': {
                 title: 'How to Get Rich Faster Than Ever: A Step-By-Step Guide to Accelerating Your Wealth Creation',
                 content: `
-                    <p>When it comes to wealth-building, the conventional wisdom often centers around the earn-save-invest strategy—a tried-and-true approach that's delivered financial security to many over the years. However, in our rapidly changing world, where financial independence and enjoying the fruits of your labour are becoming increasingly important, you might be wondering if there's a way to accelerate the process.</p>
+                    
+<p>When it comes to wealth-building, the conventional wisdom often centers around the earn-save-invest strategyâ€”a tried-and-true approach that's delivered financial security to many over the years. However, in our rapidly changing world, where financial independence and enjoying the fruits of your labour are becoming increasingly important, you might be wondering if there's a way to accelerate the process.</p>
                     
                     <p>Imagine achieving your financial goals sooner, so you can experience life's pleasures while you're still young and energetic. While there's no magic formula for overnight riches, there are proven steps you can take to fast-track your wealth creation journey. In this article, we'll delve into these steps one by one, revealing a roadmap to help you get rich faster than you ever thought possible.</p>
                     
@@ -1313,14 +1442,15 @@
             'how-to-get-rich-quick': {
                 title: 'How to Get Rich Quick: A Guaranteed Roadmap To Becoming Super Rich in 3 to 5 Years',
                 content: `
-                    <p>Are you chasing the elusive dream of achieving wealth quickly? Is it possible to get rich quick? Can you really go from nothing to being a millionaire in under 5 years?</p>
+                    
+<p>Are you chasing the elusive dream of achieving wealth quickly? Is it possible to get rich quick? Can you really go from nothing to being a millionaire in under 5 years?</p>
                     
                     <p>This article will show you that rapid wealth creation is not only possible but also a journey undertaken by countless individuals worldwide. To embark on this path, you must embrace a distinct set of principles and strategies, referred to as the laws of wealth creation. These laws encompass unwavering belief, goal-setting, continuous self-education, entrepreneurship, and a creator's mindset, all aimed at creating a thriving business capable of being sold for a substantial sum.</p>
                     
                     <p>So, if you're ready to challenge conventional wisdom and venture into the world of "Get Rich Quick," read on to discover the blueprint for financial success in a fraction of the time.</p>
                     
                     <h3>1. Belief: The Foundation of Success</h3>
-                    <p>The journey to rapid wealth creation starts with one fundamental element—belief. You must genuinely believe that achieving financial prosperity in a shorter timeframe is not only feasible but within your grasp. Without this unwavering belief, self-limiting doubts can creep in and sabotage your efforts. To succeed, you must overcome your inner skeptic and cultivate the conviction that rapid wealth is not an elusive mirage but an attainable reality.</p>
+                    <p>The journey to rapid wealth creation starts with one fundamental elementâ€”belief. You must genuinely believe that achieving financial prosperity in a shorter timeframe is not only feasible but within your grasp. Without this unwavering belief, self-limiting doubts can creep in and sabotage your efforts. To succeed, you must overcome your inner skeptic and cultivate the conviction that rapid wealth is not an elusive mirage but an attainable reality.</p>
                     
                     <p>Belief is the cornerstone upon which you'll build your entire wealth creation journey. It empowers you to envision the possibilities and fuels the motivation to pursue them relentlessly. When challenges arise, as they inevitably will, your unwavering belief will be the driving force that propels you forward.</p>
                     
@@ -1344,26 +1474,26 @@
                     <h3>5. Gaining Control: The Freedom to Pursue Wealth</h3>
                     <p>In your quest for rapid wealth creation, gaining control over your life is non-negotiable. This means breaking free from the confines of a traditional 9-to-5 job and the limitations it imposes on your time, thinking, and actions. Achieving financial independence requires the freedom to chart your course, make strategic decisions, and allocate your  as you see fit.</p>
                     
-                    <p>The journey to rapid wealth often involves entrepreneurship—starting and running your own business. If you lack the appetite for entrepreneurship, the "Get Rich Quick" approach might not be suitable for you. Owning and operating a business provides the flexibility and potential for substantial earnings that traditional employment cannot match.</p>
+                    <p>The journey to rapid wealth often involves entrepreneurshipâ€”starting and running your own business. If you lack the appetite for entrepreneurship, the "Get Rich Quick" approach might not be suitable for you. Owning and operating a business provides the flexibility and potential for substantial earnings that traditional employment cannot match.</p>
                     
                     <p>Key points to consider when starting your business include finding ways to offer products or services more efficiently, selecting a business with the potential to impact millions of people, embracing online platforms for broader reach, ensuring that your business can function independently of your direct involvement, and targeting industries with high barriers to entry.</p>
                     
                     <h3>6. Entrepreneurial Mindset: The Creator's Perspective</h3>
-                    <p>To succeed in rapid wealth creation, you must adopt an entrepreneurial mindset—an outlook that distinguishes creators and producers from consumers. Creators and producers actively seek to develop new products and services that solve consumers' problems and provide value in the marketplace.</p>
+                    <p>To succeed in rapid wealth creation, you must adopt an entrepreneurial mindsetâ€”an outlook that distinguishes creators and producers from consumers. Creators and producers actively seek to develop new products and services that solve consumers' problems and provide value in the marketplace.</p>
                     
                     <p>Consumers, on the other hand, passively consume products and services without actively contributing to their creation. To accelerate your wealth-building journey, you must transition from a consumer mindset to a creator's perspective. This shift empowers you to identify opportunities, innovate, and seize them with determination.</p>
                     
                     <p>As a creator, you'll constantly seek ways to improve existing offerings or introduce groundbreaking solutions. Your focus will be on addressing genuine needs and delivering exceptional value to your target audience. This mindset shift is the essence of entrepreneurship and is instrumental in the rapid wealth creation process.</p>
                     
                     <h3>7. The End Game: Selling Your Business</h3>
-                    <p>While pursuing rapid wealth creation, it's vital never to lose sight of your end game. The ultimate objective is to create a business that is not only profitable but also attractive to potential buyers. Selling your business is the culmination of your efforts—a step that transforms your wealth from a concept into tangible assets in your bank account.</p>
+                    <p>While pursuing rapid wealth creation, it's vital never to lose sight of your end game. The ultimate objective is to create a business that is not only profitable but also attractive to potential buyers. Selling your business is the culmination of your effortsâ€”a step that transforms your wealth from a concept into tangible assets in your bank account.</p>
                     
                     <p>Once you've met your predetermined financial goals, don't hesitate to make the decision to sell promptly. Remember that you are not truly wealthy until that check is deposited into your bank account. The ability to sell your business for a substantial sum is the litmus test of your success in rapid wealth creation.</p>
                     
                     <h3>Conclusion</h3>
                     <p>In conclusion, the possibility of getting rich quickly is not just a pipe dream; it's a reality for those who wholeheartedly believe in this goal. While the world often promotes the "Get Rich Slow" approach, there's a distinct path for those daring enough to pursue the "Get Rich Quick" journey. It starts with unwavering belief, understanding the difference between the two approaches, and investing in continuous self-education.</p>
                     
-                    <p>Setting specific goals, gaining control of your time and actions, and embarking on entrepreneurship are critical steps. Notably, the choice of a business with wide-reaching potential, the capacity to operate independently, and high barriers to entry is paramount. Adopting a creator's mindset, focused on providing value, and keeping the end game in mind—selling your business—are the keys to turning the dream of quick wealth into a tangible reality. Remember, wealth creation is not just about accumulating riches but about achieving financial freedom and making a meaningful impact on your terms.</p>
+                    <p>Setting specific goals, gaining control of your time and actions, and embarking on entrepreneurship are critical steps. Notably, the choice of a business with wide-reaching potential, the capacity to operate independently, and high barriers to entry is paramount. Adopting a creator's mindset, focused on providing value, and keeping the end game in mindâ€”selling your businessâ€”are the keys to turning the dream of quick wealth into a tangible reality. Remember, wealth creation is not just about accumulating riches but about achieving financial freedom and making a meaningful impact on your terms.</p>
                     
                     <p><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>
                 `
@@ -1371,9 +1501,10 @@
             'mungers-rules-of-wealth': {
                 title: "Charlie Munger's Rules of Wealth",
                 content: `
-                    <p>In the world of investing, the name Charlie Munger is synonymous with wisdom, discipline, and remarkable success. As the Vice Chairman of Berkshire Hathaway and Warren Buffett's long-time business partner, Munger's insights have shaped the investment landscape for decades.</p>
                     
-                    <p>While Warren Buffett is often the face of Berkshire Hathaway, Charlie Munger's influence on the company's investment philosophy and principles cannot be overstated. In this article, we'll delve into Charlie Munger's Rules of Wealth—a collection of principles and wisdom that offer valuable lessons for investors seeking to navigate the complex world of finance.</p>
+<p>In the world of investing, the name Charlie Munger is synonymous with wisdom, discipline, and remarkable success. As the Vice Chairman of Berkshire Hathaway and Warren Buffett's long-time business partner, Munger's insights have shaped the investment landscape for decades.</p>
+                    
+                    <p>While Warren Buffett is often the face of Berkshire Hathaway, Charlie Munger's influence on the company's investment philosophy and principles cannot be overstated. In this article, we'll delve into Charlie Munger's Rules of Wealthâ€”a collection of principles and wisdom that offer valuable lessons for investors seeking to navigate the complex world of finance.</p>
                     
                     <h3>1. Develop a Multidisciplinary Mindset</h3>
                     <p>Charlie Munger is a strong advocate for developing a multidisciplinary mindset. He believes that one's ability to draw knowledge from various fields is instrumental in making sound investment decisions. In Munger's view, being well-versed in psychology, ABOUT, history, and other disciplines can provide valuable insights into human behavior and market dynamics.</p>
@@ -1396,7 +1527,7 @@
                     <p>Munger's advice is to stay calm and rational in the face of market fluctuations. Avoid the temptation to make impulsive decisions driven by fear or greed. Instead, focus on the fundamentals of the businesses you invest in and trust in the power of compounding over time.</p>
                     
                     <h3>5. Understand the Basics of Psychology</h3>
-                    <p>Human psychology plays a significant role in markets. Charlie Munger encourages investors to understand the basics of psychology and behavior. Behavioral biases, such as overconfidence, loss aversion, and herd mentality, can lead to irrational market movements.</p>
+                    <p>Human psychology plays a significant role in WEALTH CREATION. Charlie Munger encourages investors to understand the basics of psychology and behavior. Behavioral biases, such as overconfidence, loss aversion, and herd mentality, can lead to irrational market movements.</p>
                     
                     <p>By being aware of these biases, investors can make more informed and rational decisions. Recognizing the impact of psychology on markets can help you avoid common pitfalls and navigate turbulent times with greater confidence.</p>
                     
@@ -1437,12 +1568,13 @@
             'hills-laws-of-success': {
                 title: "Napoleon Hill's Laws of Success",
                 content: `
-                    <p>In the realm of personal development and success literature, few names resonate as profoundly as Napoleon Hill. His seminal work, "Think and Grow Rich," published in 1937, continues to inspire and guide individuals on their journey to financial success and personal fulfillment.</p>
                     
-                    <p>Hill's philosophy, rooted in a deep understanding of human potential, outlines a set of principles—though not explicitly labeled as "laws"—that serve as a roadmap to achieving one's goals and amassing wealth. In this article, we will delve into Napoleon Hill's timeless principles of success and explore how they can be applied to the world of investing, unlocking the path to financial prosperity.</p>
+<p>In the realm of personal development and success literature, few names resonate as profoundly as Napoleon Hill. His seminal work, "Think and Grow Rich," published in 1937, continues to inspire and guide individuals on their journey to financial success and personal fulfillment.</p>
+                    
+                    <p>Hill's philosophy, rooted in a deep understanding of human potential, outlines a set of principlesâ€”though not explicitly labeled as "laws"â€”that serve as a roadmap to achieving one's goals and amassing wealth. In this article, we will delve into Napoleon Hill's timeless principles of success and explore how they can be applied to the world of investing, unlocking the path to financial prosperity.</p>
                     
                     <h3>1. Definite Chief Aim</h3>
-                    <p>At the heart of Napoleon Hill's philosophy lies the concept of a "Definite Chief Aim." Hill understood that success requires a clearly defined goal or purpose. In investing, this translates to having a precise financial objective—an amount you aim to accumulate or a specific financial milestone you intend to reach. Having a definite chief aim provides a sense of direction and motivation, guiding your investment decisions.</p>
+                    <p>At the heart of Napoleon Hill's philosophy lies the concept of a "Definite Chief Aim." Hill understood that success requires a clearly defined goal or purpose. In investing, this translates to having a precise financial objectiveâ€”an amount you aim to accumulate or a specific financial milestone you intend to reach. Having a definite chief aim provides a sense of direction and motivation, guiding your investment decisions.</p>
                     
                     <h3>2. Faith</h3>
                     <p>Faith, in Hill's view, is not limited to religious beliefs; it encompasses faith in your ability to achieve your goals. In the context of investing, it means having confidence in your investment choices and strategies. Believing in your ability to make sound investment decisions can help you stay the course during market fluctuations and challenges.</p>
@@ -1481,7 +1613,7 @@
                     <p>Fear, especially the fear of financial loss, can paralyze investors. Hill's teachings encourage individuals to confront and conquer their fears. In the world of investing, this involves risk assessment, diversification, and maintaining a disciplined approach to risk management.</p>
                     
                     <h3>14. The Golden Rule</h3>
-                    <p>The Golden Rule, treating others as you wish to be treated, underscores the significance of ethical conduct in both life and investing. Upholding ethical standards in your financial dealings builds trust and integrity—a foundation for long-term success.</p>
+                    <p>The Golden Rule, treating others as you wish to be treated, underscores the significance of ethical conduct in both life and investing. Upholding ethical standards in your financial dealings builds trust and integrityâ€”a foundation for long-term success.</p>
                     
                     <h3>Conclusion</h3>
                     <p>Napoleon Hill's principles of success, as outlined in "Think and Grow Rich," are timeless and relevant to the world of investing. While these principles may not be labeled as "laws," they offer valuable insights and guidance for investors seeking financial prosperity.</p>
@@ -1494,7 +1626,8 @@
             'crosbys-laws-of-wealth': {
                 title: "Dr Daniel Crosby's Laws of Wealth",
                 content: `
-                    <p>Dr Daniel Crosby, a distinguished psychologist and renowned behavioral finance expert, has paved the way for individuals to achieve financial success through his groundbreaking "Laws of Wealth."</p>
+                    
+<p>Dr Daniel Crosby, a distinguished psychologist and renowned behavioral finance expert, has paved the way for individuals to achieve financial success through his groundbreaking "Laws of Wealth."</p>
                     
                     <p>These guiding principles are not just arbitrary rules but a profound understanding of human behavior and its impact on financial decisions. In this article, we will delve deep into each of Dr Crosby's Laws of Wealth, exploring their significance, real-world applications, and the wisdom they offer to those seeking to build and preserve their wealth in an ethically sound manner.</p>
                     
@@ -1521,7 +1654,7 @@
                     <h3>5. Forecasting Is for Weather, Not Wealth</h3>
                     <p>Dr Crosby advises readers to steer clear of the perilous trap of market predictions. Instead, he emphasizes the benefits of adhering to a disciplined investment strategy, free from the shackles of futile forecasting.</p>
                     
-                    <p>This fifth law highlights the inherent uncertainty of markets and the futility of attempting to predict their movements. It encourages readers to focus on long-term financial planning and sound investment principles rather than succumbing to the allure of short-term forecasts. Dr Crosby's wisdom reminds us that wealth creation is best achieved through consistency and a steadfast commitment to a well-defined strategy.</p>
+                    <p>This fifth law highlights the inherent uncertainty of WEALTH CREATION and the futility of attempting to predict their movements. It encourages readers to focus on long-term financial planning and sound investment principles rather than succumbing to the allure of short-term forecasts. Dr Crosby's wisdom reminds us that wealth creation is best achieved through consistency and a steadfast commitment to a well-defined strategy.</p>
                     
                     <h3>6. Excess Is Never Permanent</h3>
                     <p>In this chapter, we explore the pitfalls of overindulgence and extravagant spending. Dr Crosby's sixth law's wisdom reminds us of the importance of financial prudence and avoiding the dangerous allure of excess.</p>
@@ -1562,7 +1695,8 @@
             'whittakers-golden-rules-of-wealth': {
                 title: "Noel Whittaker's Golden Rules of Wealth",
                 content: `
-                    <p>In the world of personal finance, few names command as much respect and admiration as Noel Whittaker. An Australian financial expert and prolific author, Whittaker has spent decades sharing his wisdom on wealth-building and financial security.</p>
+                    
+<p>In the world of personal finance, few names command as much respect and admiration as Noel Whittaker. An Australian financial expert and prolific author, Whittaker has spent decades sharing his wisdom on wealth-building and financial security.</p>
                     
                     <p>His insights have helped countless individuals navigate the complex landscape of personal finance and achieve their financial goals. At the core of his teachings are the "Golden Rules of Wealth," a set of principles that provide a solid foundation for anyone seeking financial success. In this article, we'll delve into Noel Whittaker's Golden Rules of Wealth and explore how they can pave the way to financial prosperity.</p>
                     
@@ -1574,7 +1708,7 @@
                     <h3>Rule 2: Start Early</h3>
                     <p>Time is a powerful ally when it comes to wealth accumulation, and Noel Whittaker's second rule underscores this truth: "Start Early." The earlier you begin your financial journey, the more significant the impact of compounding interest. Compound interest is like a snowball rolling downhill; it starts small but gains momentum over time.</p>
                     
-                    <p>Starting early doesn't require large sums of money—it's about cultivating the habit of saving and investing as soon as possible. Whether you're in your twenties or fifties, taking action today can make a meaningful difference in your financial future. Time is a valuable asset that you can't afford to waste.</p>
+                    <p>Starting early doesn't require large sums of moneyâ€”it's about cultivating the habit of saving and investing as soon as possible. Whether you're in your twenties or fifties, taking action today can make a meaningful difference in your financial future. Time is a valuable asset that you can't afford to waste.</p>
                     
                     <h3>Rule 3: Budget and Track Expenses</h3>
                     <p>To gain control over your finances and implement the first two rules effectively, Noel Whittaker advises creating a budget and diligently tracking expenses. A budget is your financial roadmap, guiding you toward your goals. It helps you allocate your income to essential expenses, savings, and investments while curbing unnecessary spending.</p>
@@ -1599,7 +1733,7 @@
                     <h3>Rule 7: Save Regularly</h3>
                     <p>Consistency is a hallmark of successful wealth-building, and Noel Whittaker's seventh rule reinforces this principle: "Save Regularly." Saving isn't just a one-time endeavor; it's an ongoing commitment to your financial future. Whether you're saving for a rainy day, a major purchase, or retirement, regular contributions are key.</p>
                     
-                    <p>Even small, consistent contributions can add up significantly over time, thanks to the power of compounding. Establishing a savings habit—whether through automatic transfers to a savings account or contributions to retirement funds—is a critical step toward achieving your financial objectives.</p>
+                    <p>Even small, consistent contributions can add up significantly over time, thanks to the power of compounding. Establishing a savings habitâ€”whether through automatic transfers to a savings account or contributions to retirement fundsâ€”is a critical step toward achieving your financial objectives.</p>
                     
                     <h3>Rule 8: Stay Informed</h3>
                     <p>In today's dynamic financial landscape, staying informed is essential, and Whittaker's eighth rule highlights this imperative. Keeping up-to-date with financial news, investment trends, and economic developments allows you to make well-informed decisions.</p>
@@ -1642,7 +1776,7 @@
                         <li>those with lower incomes (household incomes under $20,000);</li>
                         <li>those with lower savings levels (under $5000);</li>
                         <li>single people; and</li>
-                        <li>people at both extremes of the age profile (18–24 year olds and those aged 70 years and over).</li>
+                        <li>people at both extremes of the age profile (18â€“24 year olds and those aged 70 years and over).</li>
                     </ul>
                     
                     <p>Deloitte Access ABOUT' 2018 Financial Consciousness Index has found that nearly one-third of the population is "financially vulnerable".</p>
@@ -1672,7 +1806,8 @@
             'financial-planning': {
                 title: "Beyond The Numbers: What You Can Expect From A Good Financial Planner When You See Them",
                 content: `
-                    <p>Are you considering going to a financial planner but don't know what's involved? Allow us to demystify this important process for you.</p>
+                    
+<p>Are you considering going to a financial planner but don't know what's involved? Allow us to demystify this important process for you.</p>
                     
                     <p>In this guide, we'll provide you with a clear and detailed overview of what you can expect when engaging with a financial planner. From in-depth discussions about your financial goals and current situation to personalized strategies and ongoing support, your journey towards financial well-being is about to become clearer than ever.</p>
                     
@@ -1763,7 +1898,8 @@
             'how-to-prepare-a-budget': {
                 title: "Mastering Your Money: The Ultimate Guide to Crafting an Effective Budget",
                 content: `
-                    <p>Every household needs to have a budget. Budgeting serves as your financial compass, allowing you to navigate the often tumultuous waters of personal finance with confidence.</p>
+                    
+<p>Every household needs to have a budget. Budgeting serves as your financial compass, allowing you to navigate the often tumultuous waters of personal finance with confidence.</p>
                     
                     <p>In this article, we'll delve into the essential aspects of budgeting, from understanding its significance to the step-by-step process of creating and using an effective budget. So, whether you're looking to get a grip on your spending, save for your dreams, or simply gain better control over your finances, join us on this journey to unlock the power of budgeting.</p>
                     
@@ -1803,7 +1939,8 @@
             'how-to-save-money': {
                 title: "Save Big, Live Large: Your Roadmap to Financial Freedom through Smart Saving",
                 content: `
-                    <p>The cost of living is higher than ever, so finding ways to save money has become a top priority for many. With numerous expenses vying for our hard-earned dollars, it's essential to adopt strategies that can help us build a financial cushion and achieve our financial goals.</p>
+                    
+<p>The cost of living is higher than ever, so finding ways to save money has become a top priority for many. With numerous expenses vying for our hard-earned dollars, it's essential to adopt strategies that can help us build a financial cushion and achieve our financial goals.</p>
                     
                     <p>While these money-saving tactics may appear small on their own, they can accumulate into substantial savings when employed collectively. In this article, we'll explore eighteen effective ways to save money, from budgeting and automation to cutting down on unnecessary expenses and maximizing your purchasing power. So why wait? Let's embark on this journey to financial freedom today!</p>
                     
@@ -1872,7 +2009,8 @@
             'how-to-reduce-taxes': {
                 title: "Unlocking Tax Savings: The Ultimate Guide to Paying Less to the Taxman",
                 content: `
-                    <p>There are many legitimate ways that you can reduce your tax liability in Australia.</p>
+                    
+<p>There are many legitimate ways that you can reduce your tax liability in Australia.</p>
                     
                     <p>In this article, we'll delve into the most common and effective tax-minimisation strategies available to individuals and businesses in Australia. From choosing the right tax structure and harnessing the power of discretionary trusts to salary sacrificing, charitable donations, and optimizing your superannuation contributions, these strategies can help you keep more of your hard-earned money while remaining fully compliant with tax regulations.</p>
                     
@@ -1931,7 +2069,8 @@
             'how-to-buy-property': {
                 title: "From Dream to Reality: The Step-by-Step Guide to Successful Property Buying",
                 content: `
-                    <p>So you're thinking of buying property but you're not quite sure what's involved?</p>
+                    
+<p>So you're thinking of buying property but you're not quite sure what's involved?</p>
                     
                     <p>This article will walk you through each crucial step of the property buying journey, demystifying the process along the way. From saving for the initial deposit and securing pre-approval from your bank to navigating house inspections, signing contracts, and engaging legal assistance, we will provide you with essential insights and tips to ensure a smooth and successful property purchase. So, whether you're a first-time homebuyer or looking to invest in real estate, let's embark on this journey together and turn your property dreams into a concrete reality.</p>
                     
@@ -1982,7 +2121,8 @@
             'how-to-sell-property': {
                 title: "Sell Smart, Not Hard: Proven Strategies for a Quick and Profitable Property Sale",
                 content: `
-                    <p>Thinking about selling your property? Selling a significant asset such as your property does not need to be stressful.</p>
+                    
+<p>Thinking about selling your property? Selling a significant asset such as your property does not need to be stressful.</p>
                     
                     <p>In this article, we will walk you through the key steps involved in selling your property, from initial preparations to the final settlement. Whether you're a seasoned property owner or a first-time seller, understanding this process can help ensure a smoother and more successful sale. So here are the steps you need to follow to make this process as seamless as possible:</p>
                     
@@ -2032,7 +2172,8 @@
             'personal-insurances': {
                 title: "Protecting Your Peace of Mind: The Essential Guide to Personal Insurances You Can't Afford to Ignore",
                 content: `
-                    <p>Life insurance is a crucial financial tool that provides security and peace of mind for you and your family when unexpected  occur.</p>
+                    
+<p>Life insurance is a crucial financial tool that provides security and peace of mind for you and your family when unexpected  occur.</p>
                     
                     <p>This article will explore the various types of life insurance products available to safeguard your financial future and support your loved ones during challenging times. Whether you're seeking life cover, total and permanent disability cover, trauma insurance, or income protection insurance, understanding the details of each policy is essential. So, let's delve into the specifics of these life insurance options to help you make informed decisions for your financial well-being.</p>
                     
@@ -2087,7 +2228,8 @@
             'basics-of-borrowing': {
                 title: "Borrowing 101: The Essential Guide to Borrowing Smart and Achieving Your Financial Goals",
                 content: `
-                    <p>Borrowing money is an integral part of managing finances in today's world, allowing individuals and businesses to achieve various goals and navigate financial challenges. Whether it's purchasing a home, funding education, or covering unexpected expenses, having a solid understanding of borrowing fundamentals is essential for making informed financial choices.</p>
+                    
+<p>Borrowing money is an integral part of managing finances in today's world, allowing individuals and businesses to achieve various goals and navigate financial challenges. Whether it's purchasing a home, funding education, or covering unexpected expenses, having a solid understanding of borrowing fundamentals is essential for making informed financial choices.</p>
                     
                     <p>In this article, we'll delve deeper into the key principles and considerations of borrowing, covering everything from the optimal timing for borrowing to the significance of maintaining a favorable credit record. Additionally, we'll explore the intricacies of the loan application process and highlight the importance of cultivating sensible borrowing habits.</p>
                     
@@ -2116,7 +2258,7 @@
                     
                     <p>A higher credit score, coupled with a stable income and prudent debt management practices, can significantly bolster the likelihood of loan approval and pave the way for securing more advantageous terms and conditions. By demonstrating fiscal responsibility and stability across these essential metrics, applicants can enhance their standing in the eyes of lenders and increase the prospects of securing the desired loan on favorable terms.</p>
                     
-                    <h3>6. The Loan Terms – Interest Rate, Security, and Term</h3>
+                    <h3>6. The Loan Terms â€“ Interest Rate, Security, and Term</h3>
                     <p>Loan terms encompass a myriad of facets, including but not limited to the interest rate, security requirements, and repayment term, which can vary significantly depending on the lender and the specific type of loan being considered. The interest rate assigned to the loan directly influences the overall cost of borrowing, making it a pivotal factor to consider when evaluating loan options. Secured loans necessitate the provision of collateral, such as real estate or vehicles, to mitigate the lender's risk, while unsecured loans do not require such collateral.</p>
                     
                     <p>Additionally, the loan term delineates the duration within which the borrower is obligated to repay the loan in full, with longer terms often resulting in lower monthly payments but higher overall interest costs. Grasping the intricacies of these loan terms is paramount for making informed borrowing decisions, enabling individuals to compare various loan offers comprehensively and select the option that aligns most closely with their financial needs and objectives.</p>
@@ -2142,7 +2284,8 @@
             'managing-debt': {
                 title: "Debt Demystified: The Ultimate Guide to Effective Debt Management",
                 content: `
-                    <p>Are you having problems getting on top of your mounting debt? The weight of debt can feel overwhelming, but there are effective strategies to help you regain control of your financial situation.</p>
+                    
+<p>Are you having problems getting on top of your mounting debt? The weight of debt can feel overwhelming, but there are effective strategies to help you regain control of your financial situation.</p>
                     
                     <p>Today, we will walk you through the essential steps to manage your debts effectively. From understanding your debt landscape and creating a repayment plan to prioritizing and renegotiating loans, you'll discover practical tips to tackle your debts head-on and pave the way for a debt-free future.</p>
                     
@@ -2199,7 +2342,8 @@
             'paying-off-your-credit-card': {
                 title: "Escape the Debt Trap: Strategies to Eliminate Credit Card Debt",
                 content: `
-                    <p>Credit card debt can feel like an insurmountable obstacle, casting a shadow over your financial future. However, with the right strategies and determination, you can break free from the debt trap, regain your financial stability, and pave the way to a debt-free future.</p>
+                    
+<p>Credit card debt can feel like an insurmountable obstacle, casting a shadow over your financial future. However, with the right strategies and determination, you can break free from the debt trap, regain your financial stability, and pave the way to a debt-free future.</p>
                     
                     <p>In this article, we'll explore key tactics to help you conquer your debts, from paying on time and making larger repayments to utilizing savings, reducing credit cards, and seeking professional help. By implementing these strategies, you can take control of your financial situation and embark on a journey towards lasting financial freedom.</p>
                     
@@ -2250,7 +2394,8 @@
             'debt-consolidation': {
                 title: "Emerge from Debt's Grip: The Ultimate Guide to Debt Consolidation",
                 content: `
-                    <p>Navigating the maze of multiple debts can be overwhelming, leaving you stressed and financially stretched. However, there's a powerful tool that can help you regain control and simplify your financial life: debt consolidation.</p>
+                    
+<p>Navigating the maze of multiple debts can be overwhelming, leaving you stressed and financially stretched. However, there's a powerful tool that can help you regain control and simplify your financial life: debt consolidation.</p>
                     
                     <p>In this article, we'll explore the ins and outs of debt consolidation, from understanding what it is to evaluating its benefits and risks. Whether you're drowning in credit card debt, personal loans, or other financial obligations, debt consolidation offers a path to financial freedom and peace of mind.</p>
                     
@@ -2288,7 +2433,8 @@
             'handling-debt-collectors': {
                 title: "Dealing with Debt Collectors: Your Ultimate Guide to Regain Control",
                 content: `
-                    <p>Dealing with debt collectors can be a daunting and stressful experience, but it's crucial to remember that you have rights and protections under the law. In Australia, strict regulations are in place to safeguard individuals from harassment, intimidation, and unethical practices by debt collectors.</p>
+                    
+<p>Dealing with debt collectors can be a daunting and stressful experience, but it's crucial to remember that you have rights and protections under the law. In Australia, strict regulations are in place to safeguard individuals from harassment, intimidation, and unethical practices by debt collectors.</p>
                     
                     <p>This article aims to empower you with knowledge about your legal rights, how to handle debt collector interactions, and steps to take when disputing a debt. By understanding the process and your rights, you can regain control of your financial situation and navigate the challenges of dealing with debt collectors with confidence.</p>
                     
@@ -2327,7 +2473,7 @@
             'financial-counselling': {
                 title: "Navigate Financial Challenges with Ease: A Concise Guide to Financial Counseling",
                 content: `
-                    <p>Today, many individuals find themselves facing overwhelming debts and financial challenges. Fortunately, there is a lifeline available to help those in need – financial counselling.</p>
+                    <p>Today, many individuals find themselves facing overwhelming debts and financial challenges. Fortunately, there is a lifeline available to help those in need â€“ financial counselling.</p>
                     
                     <p>This article explores the vital aspects of financial counselling, from what it is to the benefits it offers and the role of financial counsellors in guiding individuals toward financial stability. If you're grappling with debt-related stress or financial difficulties, read on to discover how financial counselling can be a beacon of hope on your journey to financial wellness.</p>
                     
@@ -2370,7 +2516,8 @@
             'financial-hardship': {
                 title: "When the Going Gets Tough: Your Guide to Dealing with Financial Hardship",
                 content: `
-                    <p>Financial hardship is a challenging and often overwhelming experience faced by many individuals and families. Life can throw unexpected curveballs, such as job loss, illness, or other unforeseen circumstances, making it difficult to meet financial obligations.</p>
+                    
+<p>Financial hardship is a challenging and often overwhelming experience faced by many individuals and families. Life can throw unexpected curveballs, such as job loss, illness, or other unforeseen circumstances, making it difficult to meet financial obligations.</p>
                     
                     <p>However, there are strategies and  available to help you navigate these trying times and regain control of your financial well-being. In this comprehensive guide, we will explore what financial hardship entails, how to seek assistance, prioritize debts, and access professional help when needed.</p>
                     
@@ -2412,7 +2559,8 @@
             'insolvency': {
                 title: "When Debt Overwhelms: How to Address Insolvency and Regain Financial Control",
                 content: `
-                    <p>Insolvency is a daunting financial predicament that can affect both individuals and businesses. It occurs when the inability to meet debt obligations becomes a stark reality.</p>
+                    
+<p>Insolvency is a daunting financial predicament that can affect both individuals and businesses. It occurs when the inability to meet debt obligations becomes a stark reality.</p>
                     
                     <p>In this article, we will delve into what insolvency means, explore various options available to address it, and shed light on the crucial concept of insolvent trading. Furthermore, we will discuss the vital role of seeking professional help when grappling with insolvency, emphasizing the importance of understanding your rights and responsibilities during challenging times.</p>
                     
@@ -2506,7 +2654,8 @@
             'bankruptcy': {
                 title: "Facing Bankruptcy? Here's What You Need to Know Before You Make a Move",
                 content: `
-                    <p>Bankruptcy, while often seen as a last resort, can provide a lifeline for individuals facing overwhelming debt.</p>
+                    
+<p>Bankruptcy, while often seen as a last resort, can provide a lifeline for individuals facing overwhelming debt.</p>
                     
                     <p>In this article, we'll explore the intricacies of bankruptcy - what it entails, the options available, and the critical considerations before taking this significant step. Understanding the consequences of bankruptcy, your legal obligations, and seeking professional guidance can help you make an informed decision and embark on a journey towards financial recovery.</p>
                     
@@ -2646,12 +2795,13 @@
             'investor-mindset': {
                 title: "Developing a Successful Investor Mindset: Principles from Seasoned Pros",
                 content: `
-                    <p>Investing is more than just a financial venture; it's a mindset, a strategic approach to wealth building that distinguishes successful investors from the rest.</p>
                     
-                    <p>In this article, we delve into the invaluable wisdom shared by seasoned professionals in the world of investing. These principles, which form the foundation of a successful investor's mindset, can empower both novice and experienced investors to make informed decisions, navigate the markets, and ultimately achieve their wealth-building goals.</p>
+<p>Investing is more than just a financial venture; it's a mindset, a strategic approach to wealth building that distinguishes successful investors from the rest.</p>
+                    
+                    <p>In this article, we delve into the invaluable wisdom shared by seasoned professionals in the world of investing. These principles, which form the foundation of a successful investor's mindset, can empower both novice and experienced investors to make informed decisions, navigate WEALTH CREATION, and ultimately achieve their wealth-building goals.</p>
                     
                     <h3>1. Investing vs. Speculation</h3>
-                    <p>Understanding the distinction between investing and speculation is crucial for anyone looking to navigate the markets successfully. This differentiation lies at the core of a prudent investor's philosophy and is a key factor in achieving long-term financial success.</p>
+                    <p>Understanding the distinction between investing and speculation is crucial for anyone looking to navigate the WEALTH CREATION successfully. This differentiation lies at the core of a prudent investor's philosophy and is a key factor in achieving long-term financial success.</p>
                     
                     <p>Investing is characterized by a methodical approach to growing wealth over time. It involves committing capital to an endeavour with the expectation of obtaining a future profit. The hallmark of investing is the reliance on thorough analysis and the pursuit of safety of principal along with an adequate return. Investments are typically held for the medium to long term, and investors seek to benefit from the inherent value of the assets they purchase, such as dividends from stocks or interest from bonds.</p>
                     
@@ -2711,7 +2861,8 @@
             'magic-of-compounding': {
                 title: "The Magic of Compounding: Building Wealth Over Time",
                 content: `
-                    <p>The concept of compounding is akin to a financial superpower. It's the magic that occurs when your money earns interest on interest, gradually multiplying your wealth over time.</p>
+                    
+<p>The concept of compounding is akin to a financial superpower. It's the magic that occurs when your money earns interest on interest, gradually multiplying your wealth over time.</p>
                     
                     <p>While it may not seem particularly remarkable in the short term, the true power of compounding becomes strikingly evident when you observe its effects over a more extended period. In this comprehensive article, we will delve into the fascinating world of compounding, exploring what it is, how it works, and how you can harness its incredible potential to achieve your financial goals.</p>
                     
@@ -2753,7 +2904,7 @@
                     <p>Notice the remarkable difference in the final amounts depending on the interest rate and the time horizon. Higher interest rates and longer investment periods result in significantly greater compounding.</p>
                     
                     <h3>3. A Further Illustration</h3>
-                    <p>To illustrate further, consider this scenario: You have an initial capital of $10,000, which you can invest at an annual interest rate of 10%. If you invest it for 30 years without interruptions, you will accumulate over $174,490 from your initial investment alone. However, if you delay your investment by just ten years, you'll end up with only $67,280—less than half of the amount you would have had by investing early.</p>
+                    <p>To illustrate further, consider this scenario: You have an initial capital of $10,000, which you can invest at an annual interest rate of 10%. If you invest it for 30 years without interruptions, you will accumulate over $174,490 from your initial investment alone. However, if you delay your investment by just ten years, you'll end up with only $67,280â€”less than half of the amount you would have had by investing early.</p>
                     
                     <p>This stark contrast highlights the pivotal role that time plays in compounding. The earlier you begin investing, the more time your money has to grow and multiply.</p>
                     
@@ -2779,7 +2930,8 @@
             'diversification': {
                 title: "Your Guide to a Balanced Investment Portfolio",
                 content: `
-                    <p>In the world of investments, where uncertainty and volatility are constant companions, diversification stands as a shield against financial storms.</p>
+                    
+<p>In the world of investments, where uncertainty and volatility are constant companions, diversification stands as a shield against financial storms.</p>
                     
                     <p>This strategic approach involves distributing your capital across a spectrum of assets, asset classes, industries, and risks, effectively reducing your exposure to any single element of your investment portfolio. The value of diversification lies in its ability to buffer your investments from the shocks of unpredictable markets, offering a balanced approach to risk management.</p>
                     
@@ -2789,7 +2941,7 @@
                     <h3>2. The Significance of Diversification</h3>
                     <p>Diversification is not just a fancy term thrown around in financial circles; it is a critical strategy with tangible benefits that every investor should understand. Here's why it holds a prominent place in the world of investing:</p>
                     
-                    <p><strong>(a) Volatility Mitigation:</strong> Financial markets are notorious for their unpredictability and rapid fluctuations. By diversifying your investments, you spread risk across various assets. This can significantly minimize the impact of one asset's decline on your overall portfolio.</p>
+                    <p><strong>(a) Volatility Mitigation:</strong> WEALTH CREATION are notorious for their unpredictability and rapid fluctuations. By diversifying your investments, you spread risk across various assets. This can significantly minimize the impact of one asset's decline on your overall portfolio.</p>
                     
                     <p><strong>(b) Risk Management:</strong> When you put all your funds into one or a few assets, you expose yourself to the risk of substantial loss if those assets perform poorly. Diversification acts as a safety net, helping you manage risk more effectively.</p>
                     
@@ -2829,7 +2981,7 @@
                     <h3>Conclusion</h3>
                     <p>Diversification stands as a cornerstone of sound investing. It is a strategy that offers a balanced approach to managing risks and creating a resilient portfolio.</p>
                     
-                    <p>By spreading your investments across different assets and asset classes, diversification reduces your exposure to any single element in your portfolio, promoting financial stability and long-term success. While it has its limitations, diversification remains a fundamental strategy that investors can harness to shield their wealth from the unpredictable tides of the financial markets.</p>
+                    <p>By spreading your investments across different assets and asset classes, diversification reduces your exposure to any single element in your portfolio, promoting financial stability and long-term success. While it has its limitations, diversification remains a fundamental strategy that investors can harness to shield their wealth from the unpredictable tides of the WEALTH CREATION.</p>
                     
                     <p><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>
                 `
@@ -2837,7 +2989,8 @@
             'asset-classes': {
                 title: "Beyond Stocks and Bonds: Exploring the World of Asset Classes for Savvy Investors",
                 content: `
-                    <p>Investing wisely requires more than just picking stocks or bonds. A crucial aspect of building a successful investment portfolio is understanding and harnessing the power of asset classes.</p>
+                    
+<p>Investing wisely requires more than just picking stocks or bonds. A crucial aspect of building a successful investment portfolio is understanding and harnessing the power of asset classes.</p>
                     
                     <p>Asset classes are groups of investments with similar financial characteristics, risk/return expectations, and behaviour in the marketplace. Each asset class serves a distinct purpose and offers unique advantages and disadvantages. In this article, we will delve into the fascinating world of asset classes, exploring what they are, how they work, and how you can leverage them to create a diversified and resilient investment portfolio.</p>
                     
@@ -2926,7 +3079,8 @@
             'asset-allocation': {
                 title: "Mastering the Art of Asset Allocation: Balancing Risk and Reward",
                 content: `
-                    <p>Asset allocation is the secret sauce of successful investing, a strategic blend that can significantly influence your financial well-being.</p>
+                    
+<p>Asset allocation is the secret sauce of successful investing, a strategic blend that can significantly influence your financial well-being.</p>
                     
                     <p>Think of it as the recipe that determines the flavor, texture, and overall quality of your investment portfolio. Just as a chef combines ingredients to create a delightful dish, investors combine different asset classes to craft a portfolio that meets their financial goals while managing risk.</p>
                     
@@ -3004,7 +3158,8 @@
             'financial-advice': {
                 title: "The Art of Wealth Building: How Financial Advice Can Transform Your Future",
                 content: `
-                    <p>Financial advice has the potential to be truly transformative. It serves as a guiding light in the complex world of finance, illuminating pathways toward financial security, growth, and prosperity.</p>
+                    
+<p>Financial advice has the potential to be truly transformative. It serves as a guiding light in the complex world of finance, illuminating pathways toward financial security, growth, and prosperity.</p>
                     
                     <p>The benefits of seeking financial advice are vast, providing individuals with the tools to pay off debts, accumulate wealth, optimize their superannuation, shield their income through insurance, build robust investment portfolios, and even secure a brighter future for their children.</p>
                     
@@ -3126,7 +3281,8 @@
             'international-investing': {
                 title: "From ASX to the World: Your Guide to International Investing",
                 content: `
-                    <p>In an increasingly interconnected world, international investing has become more accessible and important than ever. While it once seemed reserved for financial experts and institutions, today, individual investors can diversify their portfolios, access new opportunities, and spread their risk across different markets worldwide.</p>
+                    
+<p>In an increasingly interconnected world, international investing has become more accessible and important than ever. While it once seemed reserved for financial experts and institutions, today, individual investors can diversify their portfolios, access new opportunities, and spread their risk across different markets worldwide.</p>
                     
                     <p>In this article, we will explore international investing, its many benefits, types, risks, and how you can effectively participate in this global financial adventure.</p>
                     
@@ -3250,7 +3406,7 @@
                     <p><strong>Capital city:</strong> Canberra</p>
                     <p><strong>Population:</strong> 26 million (2022)</p>
                     <p><strong>Main cities:</strong> Sydney, Melbourne, Brisbane, Adelaide, Perth, Hobart, Darwin and Canberra</p>
-                    <p><strong>Land size:</strong> 7.69 million km²</p>
+                    <p><strong>Land size:</strong> 7.69 million kmÂ²</p>
                     <p><strong>Official language:</strong> English</p>
                     <p><strong>Government:</strong> Federal parliamentary democracy and constitutional monarchy</p>
                     <p><strong>Currency:</strong> Australian dollar (AUD)</p>
@@ -3270,7 +3426,7 @@
                         <li>World's sixth-largest country by total area (almost the same as mainland USA)</li>
                         <li>The only nation to govern an entire continent</li>
                         <li>Has 3 time zones</li>
-                        <li>Has more beaches that you could imagine – if you visited one new beach per day, it would take you approximately 27 years to cover all of them</li>
+                        <li>Has more beaches that you could imagine â€“ if you visited one new beach per day, it would take you approximately 27 years to cover all of them</li>
                     </ul>
                     
                     <h4>Political:</h4>
@@ -3332,7 +3488,7 @@
                     
                     <ul>
                         <li>Robust economy with a resilient financial services sector</li>
-                        <li>Rapidly growing, sophisticated financial markets</li>
+                        <li>Rapidly growing, sophisticated WEALTH CREATION</li>
                         <li>Open, efficient and transparent legal system</li>
                         <li>Business friendly regulatory environment</li>
                         <li>Politically stable democracy</li>
@@ -3342,7 +3498,7 @@
                         <li>Highly diverse, open and progressive culture</li>
                     </ul>
                     
-                    <p>Australia is increasingly recognized as a prime destination for overseas investors, offering a stable and prosperous environment for business growth and investment. The country's robust economy is supported by a resilient financial services sector, which has demonstrated strength and adaptability in the face of global economic fluctuations. This sector is backed by rapidly growing, sophisticated financial markets that are well-regulated and offer a diverse range of investment opportunities.</p>
+                    <p>Australia is increasingly recognized as a prime destination for overseas investors, offering a stable and prosperous environment for business growth and investment. The country's robust economy is supported by a resilient financial services sector, which has demonstrated strength and adaptability in the face of global economic fluctuations. This sector is backed by rapidly growing, sophisticated WEALTH CREATION that are well-regulated and offer a diverse range of investment opportunities.</p>
                     
                     <p>The legal system in Australia is open, efficient, and transparent, providing a solid foundation for business operations and investor confidence. The regulatory environment is business-friendly, encouraging innovation and competition while ensuring consumer protection and fair practices. As a politically stable democracy, Australia offers a predictable and secure political climate, which is essential for long-term investment planning.</p>
                     
@@ -3356,7 +3512,7 @@
                     
                     <p>The country's vibrant, technology-driven industries, powered by top tech talent, give Australia a competitive edge in global markets. The fintech industry, in particular, is highly regarded, ranking sixth globally and second in the Asia-Pacific region. Australia's abundant reserves of  and energy complement these industries, attracting tech investment in critical areas such as finance, regulation, medicine, and education.</p>
                     
-                    <p>Trade is also a key component of Australia's economic success, with strong commodity prices driving mineral exports higher in 2021 and resulting in a record trade surplus of over A$120 billion. The agricultural sector, one of the most productive globally, is on track to deliver a record A$61 billion export crop in 2021–22.</p>
+                    <p>Trade is also a key component of Australia's economic success, with strong commodity prices driving mineral exports higher in 2021 and resulting in a record trade surplus of over A$120 billion. The agricultural sector, one of the most productive globally, is on track to deliver a record A$61 billion export crop in 2021â€“22.</p>
                     
                     <p>Australia's commitment to openness in trade and investment is a cornerstone of its long-term prosperity. The country has established 16 free trade agreements and has been instrumental in forming multiple regional trade agreements in the Asia-Pacific region. With low tariffs and ready access to Asian markets, Australia is an ideal location for inward investment, with over 70% of its trade now occurring with the fast-growing economies of the Asia-Pacific region.</p>
                     
@@ -3368,7 +3524,8 @@
             'australian-economy': {
                 title: "A Snapshot of the Australian Economy",
                 content: `
-                    <p>Australia boasts a highly developed and resilient economy, affirming its status as an advanced nation. Its economic strength and stability have contributed to its global recognition.</p>
+                    
+<p>Australia boasts a highly developed and resilient economy, affirming its status as an advanced nation. Its economic strength and stability have contributed to its global recognition.</p>
                     
                     <p>Australia is renowned for its sophisticated and robust economy, which stands as a testament to its status as a leading, advanced nation on the global stage. The country's economic prowess and enduring stability have not only garnered it international acclaim but also positioned it as a beacon of prosperity.</p>
                     
@@ -3386,7 +3543,7 @@
                     
                     <p>The resilience of the Australian economy is further bolstered by a diverse array of competitive industries. In the fiscal year 2020-21, the services and goods industries collectively contributed approximately 81% and 19% to the real gross value added (GVA), respectively. Notably, the mining sector alone generated 10.6% of the GVA, followed closely by financial services at 9.3%, ownership of dwellings at 8.9%, and healthcare and social assistance at 8.2%. The technology-driven sectors, which encompass professional, scientific, and technical services, education, and information technology, collectively represent 15% of the total economic output.</p>
                     
-                    <p>Australia's natural resource wealth is formidable, ranking tenth globally in terms of total estimated value, which was valued at a staggering US$19.9 trillion in 2019. During the peak of the mining boom in 2009–10, the mining industry's contribution to the GDP reached 8.4%, highlighting the sector's pivotal role in the nation's economic landscape.</p>
+                    <p>Australia's natural resource wealth is formidable, ranking tenth globally in terms of total estimated value, which was valued at a staggering US$19.9 trillion in 2019. During the peak of the mining boom in 2009â€“10, the mining industry's contribution to the GDP reached 8.4%, highlighting the sector's pivotal role in the nation's economic landscape.</p>
                     
                     <p>The Australian Securities Exchange (ASX) stands as the 16th-largest stock exchange worldwide when measured by domestic market capitalization. It also boasts one of the most extensive interest rate derivatives markets in the Asia-Pacific region. The ASX is home to some of the largest and most influential companies, including industry giants such as BHP, CSL, CBA, Westpac, NAB, ANZ, Macquarie, Rio Tinto, Fortescue, Atlassian, Wesfarmers, Woolworths, and Telstra.</p>
                     
@@ -3396,11 +3553,12 @@
             'investor-visas': {
                 title: "Significant Investments, Significant Rewards: The Path to Australia through Investor Visas",
                 content: `
-                    <p>Australia, known for its vibrant economy and business-friendly environment, welcomes investors from around the world to partake in its diverse and lucrative opportunities.</p>
+                    
+<p>Australia, known for its vibrant economy and business-friendly environment, welcomes investors from around the world to partake in its diverse and lucrative opportunities.</p>
                     
                     <p>The Australian Government offers a range of investor visas designed to facilitate foreign investment in the country. These visas grant access to Australia's thriving business landscape, from innovative startups to well-established enterprises. In this comprehensive guide, we'll explore the Business Innovation and Investment (Provisional) Visa (Subclass 188) program, covering its various streams and eligibility criteria, allowing you to embark on your investment journey in the Land Down Under.</p>
                     
-                    <h3>1. Business Innovation and Investment (Provisional) Visa (Subclass 188) – Business Innovation Stream</h3>
+                    <h3>1. Business Innovation and Investment (Provisional) Visa (Subclass 188) â€“ Business Innovation Stream</h3>
                     
                     <p>The Business Stream of Subclass 188 is designed for individuals with an entrepreneurial spirit who aim to operate new or existing businesses within the Australian market. This stream provides the following benefits:</p>
                     
@@ -3426,7 +3584,7 @@
                     <p><strong>Cost:</strong> From $9,450.00 (as at 21 May 2024)</p>
                     <p><strong>Processing time:</strong> 90% processed at 50 months (as at 21 May 2024)</p>
                     
-                    <h3>2. Business Innovation and Investment (Provisional) Visa (Subclass 188) – Investor Stream</h3>
+                    <h3>2. Business Innovation and Investment (Provisional) Visa (Subclass 188) â€“ Investor Stream</h3>
                     
                     <p>This provisional visa requires you to invest at least $2.5 million in Australian investments that meet certain requirements and maintain business or investment activity in Australia.</p>
                     
@@ -3452,7 +3610,7 @@
                     <p><strong>Cost:</strong> From $9,450.00 (as at 21 May 2024)</p>
                     <p><strong>Processing time:</strong> 90% processed at 46 months (as at 21 May 2024)</p>
                     
-                    <h3>3. Business Innovation and Investment (Provisional) Visa (Subclass 188) – Significant Investor Stream</h3>
+                    <h3>3. Business Innovation and Investment (Provisional) Visa (Subclass 188) â€“ Significant Investor Stream</h3>
                     
                     <p>This provisional visa is for people who invest at least $5 million in Australian investments that meet certain requirements and maintain investment activity in Australia.</p>
                     
@@ -3482,7 +3640,8 @@
             'firb-approval': {
                 title: "Foreign Investments Down Under: Your Guide to the FIRB Approval Process",
                 content: `
-                    <p>Foreign investors eyeing the Australian market know that the land Down Under presents a multitude of opportunities, whether in the vibrant real estate sector or other investment avenues. However, gaining access to these opportunities often comes with a mandatory step: seeking approval from the Foreign Investment Review Board (FIRB).</p>
+                    
+<p>Foreign investors eyeing the Australian market know that the land Down Under presents a multitude of opportunities, whether in the vibrant real estate sector or other investment avenues. However, gaining access to these opportunities often comes with a mandatory step: seeking approval from the Foreign Investment Review Board (FIRB).</p>
                     
                     <p>FIRB approval is a crucial process that plays a significant role in how foreign investors engage with Australia's real estate market and other sectors. In this comprehensive guide, we'll delve into the ins and outs of FIRB approval, focusing on its various facets, application procedures, and the impact it has on foreign investment in Australia.</p>
                     
@@ -3526,9 +3685,10 @@
                 `
             },
             'financial-markets': {
-                title: "From ASX to Real Estate: Unlocking the Diversity of Australian Financial Markets",
+                title: "From ASX to Real Estate: Unlocking the Diversity of Australian WEALTH CREATION",
                 content: `
-                    <h3>CAPITAL MARKETS</h3>
+                    
+<h3>CAPITAL MARKETS</h3>
                     
                     <h4>Stock Market</h4>
                     <p><strong>Market operators:</strong> Australian Securities Exchange (ASX) and Chi-X</p>
@@ -3610,7 +3770,8 @@
             'regulatory-framework': {
                 title: "The Regulatory Framework for Financial Services in Australia",
                 content: `
-                    <p>Australia's financial services industry is subject to regulation by numerous authorities. Multiple regulatory bodies oversee the sector to ensure compliance, maintain orderly markets and protect consumers.</p>
+                    
+<p>Australia's financial services industry is subject to regulation by numerous authorities. Multiple regulatory bodies oversee the sector to ensure compliance, maintain orderly markets and protect consumers.</p>
                     
                     <p>These agencies play a pivotal role in maintaining the integrity and stability of Australia's financial services:</p>
                     
@@ -3715,7 +3876,7 @@
                     <h3>Australian Trade Commission (Austrade)</h3>
                     <p><strong>Website:</strong> www.austrade.gov.au</p>
                     
-                    <p>The Australian Trade and Investment Commission—Austrade—promotes Australian trade, investment, tourism and education to the world. It delivers services to grow Australia's economic prosperity.</p>
+                    <p>The Australian Trade and Investment Commissionâ€”Austradeâ€”promotes Australian trade, investment, tourism and education to the world. It delivers services to grow Australia's economic prosperity.</p>
                     
                     <p><strong>It contributes to Australia's prosperity by:</strong></p>
                     <ul>
@@ -3746,7 +3907,8 @@
             'industry-groups': {
                 title: "Industry Groups for Financial Services in Australia",
                 content: `
-                    <p>Below are the industry groups covering banking, superannuation, insurance, financial planning, stockbroking, accounting, private equity and financial services in general:</p>
+                    
+<p>Below are the industry groups covering banking, superannuation, insurance, financial planning, stockbroking, accounting, private equity and financial services in general:</p>
                     
                     <h3>Financial Services Council (FSC)</h3>
                     <p><strong>Website:</strong> www.fsc.org.au</p>
@@ -3818,10 +3980,10 @@
                     
                     <p>The Stockbrokers and Investment Advisers Association (SIAA) is the professional body for the stockbroking and investment advice industry in Australia, representing 8,000 professionals. Principal Members are Market Participants and Advisory firms that provide securities and investment advice, execution services and equity capital-raising for Australian investors, both retail and wholesale, and for businesses. Practitioner Members are suitably qualified professionals who are employed in the securities and derivatives industry.</p>
                     
-                    <h3>Australian Financial Markets Association</h3>
+                    <h3>Australian WEALTH CREATION Association</h3>
                     <p><strong>Website:</strong> www.afma.com.au</p>
                     
-                    <p>The Australian Financial Markets Association (AFMA) is the leading industry association promoting efficiency, integrity and professionalism in Australia's financial markets – including the capital, credit, derivatives, foreign exchange and other specialist markets.</p>
+                    <p>The Australian WEALTH CREATION Association (AFMA) is the leading industry association promoting efficiency, integrity and professionalism in Australia's WEALTH CREATION â€“ including the capital, credit, derivatives, foreign exchange and other specialist markets.</p>
                     
                     <p>It has more than 130 members, from Australian and international banks, leading brokers, securities companies and state government treasury corporations to fund managers, energy traders and industry service providers.</p>
                     
@@ -3843,7 +4005,8 @@
             'general-investing-rules': {
                 title: "Master the Art of Wealth Building: The 18 Essential Rules for Investing Success",
                 content: `
-                    <p>Investing can be both rewarding and challenging, and it's essential to approach it with a well-thought-out strategy. These general investing rules provide a roadmap for anyone looking to navigate the complex world of finance successfully.</p>
+                    
+<p>Investing can be both rewarding and challenging, and it's essential to approach it with a well-thought-out strategy. These general investing rules provide a roadmap for anyone looking to navigate the complex world of finance successfully.</p>
                     
                     <p>They encapsulate the wisdom of renowned investors like Benjamin Graham and Warren Buffett, offering valuable insights that can help you make informed decisions and build a robust investment portfolio. Whether you're a novice or a seasoned investor, these rules serve as timeless principles to guide you on your journey to financial prosperity.</p>
                     
@@ -3881,7 +4044,7 @@
                     <p>You need to buy when stocks are priced low. This might seem self-evident but the unfortunate reality is that people tend to sell when stocks are priced low, and only buy when the stock price is rallying upwards (ie. when the stock is expensive). This should strike you as illogical.</p>
                     
                     <h3>12. Avoid the crowd</h3>
-                    <p>You will make the most money from finding investments which are unloved or unpopular – anything that the crowd is not paying much attention to. Investment opportunities which the crowd already has its eyes set on are likely to be fully priced or even overpriced.</p>
+                    <p>You will make the most money from finding investments which are unloved or unpopular â€“ anything that the crowd is not paying much attention to. Investment opportunities which the crowd already has its eyes set on are likely to be fully priced or even overpriced.</p>
                     
                     <h3>13. Buy and hold</h3>
                     <p>You should buy an investment with the mindset that you will be holding it forever. Constant flipping or trading incurs too much transactional costs and slows down your ability to compound your investments.</p>
@@ -3904,7 +4067,7 @@
                     <h3>Conclusion</h3>
                     <p>In the ever-evolving landscape of finance, these general investing rules remain steadfast beacons of wisdom. They emphasize the importance of planning, discipline, and a rational mindset when it comes to investing.</p>
                     
-                    <p>Whether you're striving to secure your financial future, plan for retirement, or achieve other investment goals, these principles will serve as a valuable compass, helping you navigate the complexities of the financial markets. Remember that successful investing is a journey, and learning from your experiences is just as crucial as adhering to these rules. By following these guidelines, staying informed, and continuously honing your investment skills, you'll be better equipped to make sound financial decisions and work toward the future you envision.</p>
+                    <p>Whether you're striving to secure your financial future, plan for retirement, or achieve other investment goals, these principles will serve as a valuable compass, helping you navigate the complexities of the WEALTH CREATION. Remember that successful investing is a journey, and learning from your experiences is just as crucial as adhering to these rules. By following these guidelines, staying informed, and continuously honing your investment skills, you'll be better equipped to make sound financial decisions and work toward the future you envision.</p>
                     
                     <p><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>
                 `
@@ -3912,7 +4075,8 @@
             'share-investing-rules': {
                 title: "Master the Art of Share Investing: 12 Essential Rules for Building a Bulletproof Portfolio",
                 content: `
-                    <p>Investing in the stock market can be a rewarding journey, but it's essential to navigate it with caution and a well-thought-out strategy. These share investing rules offer a valuable blueprint for anyone looking to build a robust stock portfolio.</p>
+                    
+<p>Investing in the stock market can be a rewarding journey, but it's essential to navigate it with caution and a well-thought-out strategy. These share investing rules offer a valuable blueprint for anyone looking to build a robust stock portfolio.</p>
                     
                     <p>Whether you're a seasoned investor or just starting, these principles emphasize the importance of diligence, research, and a long-term perspective in the world of stock investing.</p>
                     
@@ -3941,7 +4105,7 @@
                     <p>The stock must clearly seem considerably undervalued based on a number of stock valuation methods, including P/E ratio and book value. If the stock is priced too closely to its determined intrinsic value, then there is little point in buying it.</p>
                     
                     <h3>9. Have a margin of safety</h3>
-                    <p>When calculating the intrinsic value of a stock, apply a margin of safety in case you are wrong. This typically ranges from 20–60% depending on how risky the company is or the certainty in your valuation.</p>
+                    <p>When calculating the intrinsic value of a stock, apply a margin of safety in case you are wrong. This typically ranges from 20â€“60% depending on how risky the company is or the certainty in your valuation.</p>
                     
                     <h3>10. Invest for the long-term</h3>
                     <p>Long term investing is far more favourable than short term investing. Over a long time horizon, your investments are less susceptible to the whims of the market and you will be taxed at a much lower rate on your capital gains.</p>
@@ -3950,7 +4114,7 @@
                     <p>You need to own a number of different stocks in order to diversify your portfolio. We would consider anywhere between 6 and 15 shares to be sufficient diversification, but we are aware that there are those that suggest holding as many as 25 shares.</p>
                     
                     <h3>12. Know when to sell</h3>
-                    <p>The four reasons to sell are: you made a mistake in your initial evaluation, the long-term fundamentals of the company have changed for the worse, you have a better investment option awaiting you and your portfolio is overly concentrated in one stock (over 10–15% in one stock).</p>
+                    <p>The four reasons to sell are: you made a mistake in your initial evaluation, the long-term fundamentals of the company have changed for the worse, you have a better investment option awaiting you and your portfolio is overly concentrated in one stock (over 10â€“15% in one stock).</p>
                     
                     <p>These share investing rules serve as invaluable guidelines for building a solid and resilient portfolio. They stress the significance of careful research, a deep understanding of the companies you invest in, and the importance of maintaining a long-term perspective.</p>
                     
@@ -3972,12 +4136,12 @@
                     <p>Dorsey's philosophy here is simple: if you can't explain the business to a 10-year-old, you probably shouldn't invest in it. A solid understanding of a company's core operations allows you to assess its long-term viability and potential for growth. By peeling back the layers and examining what makes a business tick, investors gain a competitive advantage in selecting stocks that align with their investment objectives.</p>
                     
                     <h3>Rule 2: Assess the Competitive Advantage</h3>
-                    <p>Dorsey's second rule places a spotlight on the competitive advantage—a critical factor that sets high-quality companies apart. Known as the economic moat, a company's competitive advantage is its ability to maintain profitability and fend off competition over time. Dorsey identifies four primary sources of competitive advantage: intangible assets, cost advantages, network effects, and switching costs.</p>
+                    <p>Dorsey's second rule places a spotlight on the competitive advantageâ€”a critical factor that sets high-quality companies apart. Known as the economic moat, a company's competitive advantage is its ability to maintain profitability and fend off competition over time. Dorsey identifies four primary sources of competitive advantage: intangible assets, cost advantages, network effects, and switching costs.</p>
                     
                     <p>Intangible assets can include powerful brand recognition, patents, licenses, or regulatory advantages that grant a company a unique position in its industry. Cost advantages arise when a business can produce goods or services at a lower cost than its competitors, giving it pricing power. Network effects come into play when a company's product or service becomes more valuable as more customers use it, creating a self-reinforcing cycle of growth. Lastly, switching costs occur when customers face significant barriers or costs when switching to a competitor's product or service.</p>
                     
                     <h3>Rule 3: Have a Margin of Safety</h3>
-                    <p>Dorsey's third rule—having a Margin of Safety—instills a vital concept from value investing. This principle suggests that investors should purchase stocks when they are trading at a price significantly below their intrinsic value. By doing so, you create a buffer against unexpected market downturns or adverse business developments.</p>
+                    <p>Dorsey's third ruleâ€”having a Margin of Safetyâ€”instills a vital concept from value investing. This principle suggests that investors should purchase stocks when they are trading at a price significantly below their intrinsic value. By doing so, you create a buffer against unexpected market downturns or adverse business developments.</p>
                     
                     <p>Determining intrinsic value can involve various valuation techniques, such as discounted cash flow (DCF) analysis, and comparing the current stock price to historical valuation metrics. The Margin of Safety approach ensures that investors protect themselves from permanent capital loss and enhances the potential for robust, long-term returns.</p>
                     
@@ -4002,7 +4166,8 @@
             'warren-buffett-rules': {
                 title: "Warren Buffett's Time-Tested Rules for Investing Success",
                 content: `
-                    <p>Warren Buffett, often referred to as the "Oracle of Omaha," is one of the most revered and successful investors of all time. With a net worth of $USD 138 billion and a track record spanning several decades, Buffett's investment wisdom is sought after by investors worldwide.</p>
+                    
+<p>Warren Buffett, often referred to as the "Oracle of Omaha," is one of the most revered and successful investors of all time. With a net worth of $USD 138 billion and a track record spanning several decades, Buffett's investment wisdom is sought after by investors worldwide.</p>
                     
                     <p>What sets Buffett apart isn't just his remarkable wealth; it's his simple yet profoundly effective set of rules for investing. In this article, we'll delve into Warren Buffett's time-tested rules for investing success and explore how they can help guide your investment journey.</p>
                     
@@ -4068,7 +4233,7 @@
                     <p>The sunk cost fallacy is a psychological trap where individuals continue a venture or project that isn't meeting expectations, solely due to the significant investment of time, money, or  they've already made. This irrational commitment overlooks current realities and potential losses, focusing instead on past investments that cannot be recovered. Recognizing this fallacy is crucial for making decisions that are rational and forward-looking, rather than being tethered to irrecoverable costs. It encourages a shift in perspective to evaluate ongoing endeavors based on future benefits, rather than historical expenditures.</p>
                     
                     <h3>3. Herding</h3>
-                    <p>Herding behavior is a psychological phenomenon where individuals mimic the actions of a larger group, often bypassing their own analysis in favor of the perceived security that comes with numbers. This instinctual behavior assumes that the collective has conducted thorough research, making it safe to follow suit. It's a common occurrence in various contexts, including financial markets, where investors may follow popular trends rather than relying on independent judgment, potentially leading to amplified market movements and bubbles. Awareness of herding can help individuals make more informed, autonomous decisions rather than simply following the crowd.</p>
+                    <p>Herding behavior is a psychological phenomenon where individuals mimic the actions of a larger group, often bypassing their own analysis in favor of the perceived security that comes with numbers. This instinctual behavior assumes that the collective has conducted thorough research, making it safe to follow suit. It's a common occurrence in various contexts, including WEALTH CREATION, where investors may follow popular trends rather than relying on independent judgment, potentially leading to amplified market movements and bubbles. Awareness of herding can help individuals make more informed, autonomous decisions rather than simply following the crowd.</p>
                     
                     <h3>4. Loss Aversion</h3>
                     <p>Loss aversion is a psychological principle where the discomfort of losing something is typically stronger than the pleasure of gaining something of equal value. For example, the distress felt from losing $100 usually outweighs the happiness of finding $100. This imbalance in emotional impact influences decision-making, often leading individuals to avoid losses rather than seeking equivalent gains, which can affect choices in various aspects of life, including financial decisions, risk assessment, and behavioral ABOUT. Understanding loss aversion can help in developing strategies to make more balanced and rational decisions.</p>
@@ -4106,7 +4271,8 @@
             'common-mistakes': {
                 title: "Money Moves: Dodging the Most Common Mistakes Investors Often Make",
                 content: `
-                    <p>Starting out in investing feels like stepping into a new world, and everyone makes mistakes. We're here to help you avoid the most common slip-ups that can mess up your plans.</p>
+                    
+<p>Starting out in investing feels like stepping into a new world, and everyone makes mistakes. We're here to help you avoid the most common slip-ups that can mess up your plans.</p>
                     
                     <p>From expecting too much to falling for the hype, we'll guide you through the pitfalls so you can make smarter decisions and grow your money the right way. Below are the most common mistakes that investors should avoid:</p>
                     
@@ -4117,7 +4283,7 @@
                     <p>Without a defined investment strategy, you lack a target and guidance, which are essential for financial progress. A clear plan serves as a roadmap, helping you set goals and navigate the complex world of investing. It provides structure to your financial decisions, ensuring that each step you take is aligned with your long-term objectives. Without this direction, it's easy to stray off course, miss opportunities, and fail to maximize your financial potential. Therefore, crafting a detailed investment plan is crucial for anyone looking to grow their wealth and achieve financial security.</p>
                     
                     <h3>3. Speculating instead of investing</h3>
-                    <p>Speculation differs significantly from investing. While investing involves a strategic approach to growing your wealth over time, speculation is akin to gambling—relying on chance rather than careful analysis. Speculators often chase high returns with high risks, disregarding the foundational principles of sound investing. This approach can lead to significant financial losses, as it is not grounded in research or a long-term perspective. In contrast, true investing is methodical and considers the investor's goals, risk tolerance, and the market's fundamentals, aiming for steady growth rather than unpredictable windfalls.</p>
+                    <p>Speculation differs significantly from investing. While investing involves a strategic approach to growing your wealth over time, speculation is akin to gamblingâ€”relying on chance rather than careful analysis. Speculators often chase high returns with high risks, disregarding the foundational principles of sound investing. This approach can lead to significant financial losses, as it is not grounded in research or a long-term perspective. In contrast, true investing is methodical and considers the investor's goals, risk tolerance, and the market's fundamentals, aiming for steady growth rather than unpredictable windfalls.</p>
                     
                     <h3>4. Buying high and selling low</h3>
                     <p>Purchasing assets at peak prices and selling them during a market dip often indicates a tendency to follow the masses, letting emotions rather than strategic analysis drive financial choices. This reactive approach can undermine the fundamental principle of investing: to buy low and sell high. Succumbing to market pressures and emotional responses can lead to suboptimal investment outcomes, emphasizing the importance of disciplined, research-based decision-making in managing investments.</p>
@@ -4144,7 +4310,7 @@
                     <p>Developing an affinity for a company solely due to its appealing name, attractive products, or the allure of its industry sector can be a precarious approach to investment. Such a decision, made without a thorough analysis of the company's underlying financial health and market performance, is fundamentally unsound. Even if the stock's value fortuitously increases post-purchase, the initial choice was made without the due diligence that is critical for informed investing. It's essential to base investment decisions on solid research rather than superficial attributes to ensure long-term success.</p>
                     
                     <h3>12. Lack of patience</h3>
-                    <p>In the realm of investing, haste can be an adversary. A lack of patience may lead to premature decisions, often resulting in financial losses or regrettable choices. It's important to take a measured approach, allowing time for careful consideration and analysis before committing to an investment. Rushing can cloud judgment, so it's wise to proceed with deliberation and patience to foster sound decision-making and potentially more profitable outcomes. Remember, in the financial world, patience isn't just a virtue—it's a strategic asset.</p>
+                    <p>In the realm of investing, haste can be an adversary. A lack of patience may lead to premature decisions, often resulting in financial losses or regrettable choices. It's important to take a measured approach, allowing time for careful consideration and analysis before committing to an investment. Rushing can cloud judgment, so it's wise to proceed with deliberation and patience to foster sound decision-making and potentially more profitable outcomes. Remember, in the financial world, patience isn't just a virtueâ€”it's a strategic asset.</p>
                     
                     <h3>13. Too much investment turnover</h3>
                     <p>Excessive trading within an investment portfolio often indicates a short-term mindset, where the focus is on speculative gains rather than long-term growth. This behavior can erode potential returns through increased costs and taxes, and often results from a lack of a strategic, long-term investment plan. It's crucial for investors to resist the temptation of frequent trading based on market fluctuations and instead adopt a more stable, long-term perspective that aligns with their financial goals and risk tolerance. Patience and a well-thought-out investment strategy are key to avoiding the pitfalls of high turnover.</p>
@@ -4164,7 +4330,8 @@
             'market-bubbles': {
                 title: "Riding the Market Rollercoaster: A Guide to Bubbles and Busts!",
                 content: `
-                    <p>A market bubble happens when prices of things like stocks or houses go way higher than they should based on their real value. It's like a temporary craze that excites people to buy, but it often leads to trouble.</p>
+                    
+<p>A market bubble happens when prices of things like stocks or houses go way higher than they should based on their real value. It's like a temporary craze that excites people to buy, but it often leads to trouble.</p>
                     
                     <p>Let's explore the different types of bubbles, how they grow, and what causes them. We'll look at examples from history, like the dot-com bubble when tech stocks skyrocketed, or the time when people paid a crazy amount for just one tulip!</p>
                     
@@ -4234,7 +4401,8 @@
             'how-to-avoid-scams': {
                 title: "Scam-Proof Your Wallet: 11 Smart Strategies to Keep Your Money Safe!",
                 content: `
-                    <p>Scams have unfortunately become part of our day-to-day life. But just as we are taught not to walk down a dark alley at night, there are simple, common-sense lessons to be learned in order to avoid being scammed out of our hard-earned money.</p>
+                    
+<p>Scams have unfortunately become part of our day-to-day life. But just as we are taught not to walk down a dark alley at night, there are simple, common-sense lessons to be learned in order to avoid being scammed out of our hard-earned money.</p>
                     
                     <p>Let's go through each of them in turn:</p>
                     
@@ -4476,7 +4644,8 @@
             'identity-theft': {
                 title: "Identity Theft Unveiled: Your Ultimate Guide to Outsmarting Cyber Crooks and Protecting Your Privacy!",
                 content: `
-                    <p>Identity theft has become a looming threat, with criminals finding various ways to access personal information and wreak havoc on individuals' lives.</p>
+                    
+<p>Identity theft has become a looming threat, with criminals finding various ways to access personal information and wreak havoc on individuals' lives.</p>
                     
                     <p>Whether through data breaches, phishing scams, or more traditional methods like mail theft, the risk is ever-present. Identity thieves can snatch critical details like your name, address, financial data, and even medical records, leading to unauthorized transactions, false claims, and a range of fraudulent activities. Understanding the common methods of identity theft and recognizing the signs can empower individuals to take proactive steps in safeguarding their personal information.</p>
                     
@@ -4579,7 +4748,7 @@
                         <li>File a police report.</li>
                     </ul>
                     
-                    <p>Identity theft is a pervasive concern, and staying vigilant is key to protecting yourself from the ever-evolving tactics of cybercriminals. From strong, unique passwords to regular monitoring of financial statements, there are practical steps to minimize the risk. If you suspect your identity has been compromised, swift action is crucial – contact your financial institutions, review your credit reports, and report the incident to the appropriate authorities. By adopting these precautionary measures and staying informed, individuals can fortify their defenses against identity theft and navigate the digital landscape with greater security and confidence.</p>
+                    <p>Identity theft is a pervasive concern, and staying vigilant is key to protecting yourself from the ever-evolving tactics of cybercriminals. From strong, unique passwords to regular monitoring of financial statements, there are practical steps to minimize the risk. If you suspect your identity has been compromised, swift action is crucial â€“ contact your financial institutions, review your credit reports, and report the incident to the appropriate authorities. By adopting these precautionary measures and staying informed, individuals can fortify their defenses against identity theft and navigate the digital landscape with greater security and confidence.</p>
                     
                     <p><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>
                 `
@@ -4587,7 +4756,8 @@
             'investment-risks': {
                 title: 'Understanding Investment Risks',
                 content: `
-                    <p>Investing always involves risk, and understanding these risks is crucial for making informed investment decisions. This comprehensive guide explores the various types of investment risks and how to manage them effectively.</p>
+                    
+<p>Investing always involves risk, and understanding these risks is crucial for making informed investment decisions. This comprehensive guide explores the various types of investment risks and how to manage them effectively.</p>
                     
                     <h3>Types of Investment Risks</h3>
                     
@@ -4632,7 +4802,8 @@
             'borrowing-to-invest': {
                 title: 'Borrowing to Invest: Risks and Opportunities',
                 content: `
-                    <p>Borrowing to invest, also known as leverage, can amplify both gains and losses. This strategy involves using borrowed money to purchase investments, potentially increasing returns but also increasing risk.</p>
+                    
+<p>Borrowing to invest, also known as leverage, can amplify both gains and losses. This strategy involves using borrowed money to purchase investments, potentially increasing returns but also increasing risk.</p>
                     
                     <h3>How Borrowing to Invest Works</h3>
                     <p>When you borrow to invest, you use borrowed funds to purchase assets, hoping that the returns on those assets will exceed the cost of borrowing. This can be done through:</p>
@@ -4684,7 +4855,8 @@
             'valuation-errors': {
                 title: 'Common Valuation Errors in Investment Analysis',
                 content: `
-                    <p>Valuation errors are among the most common mistakes investors make, often leading to poor investment decisions and significant losses. Understanding these errors can help you make more informed investment choices.</p>
+                    
+<p>Valuation errors are among the most common mistakes investors make, often leading to poor investment decisions and significant losses. Understanding these errors can help you make more informed investment choices.</p>
                     
                     <h3>Types of Valuation Errors</h3>
                     
@@ -4743,7 +4915,8 @@
             'banking-scams': {
                 title: 'Banking Scams: How to Protect Your Money',
                 content: `
-                    <p>Banking scams are becoming increasingly sophisticated, targeting individuals through various channels including phone calls, emails, text messages, and fake websites. Understanding these scams and how to protect yourself is crucial for safeguarding your financial security.</p>
+                    
+<p>Banking scams are becoming increasingly sophisticated, targeting individuals through various channels including phone calls, emails, text messages, and fake websites. Understanding these scams and how to protect yourself is crucial for safeguarding your financial security.</p>
                     
                     <h3>Common Types of Banking Scams</h3>
                     
@@ -4805,7 +4978,8 @@
             'credit-card-fraud': {
                 title: 'Credit Card Fraud: Prevention and Response',
                 content: `
-                    <p>Credit card fraud is one of the most common forms of financial crime, affecting millions of people worldwide. Understanding how to prevent it and what to do if you become a victim is essential for protecting your financial well-being.</p>
+                    
+<p>Credit card fraud is one of the most common forms of financial crime, affecting millions of people worldwide. Understanding how to prevent it and what to do if you become a victim is essential for protecting your financial well-being.</p>
                     
                     <h3>Types of Credit Card Fraud</h3>
                     
@@ -4889,7 +5063,8 @@
             'cheque-fraud': {
                 title: 'Cheque Fraud: Understanding and Prevention',
                 content: `
-                    <p>While digital payments have become more common, cheque fraud remains a significant threat. Understanding how cheque fraud works and how to protect yourself is important for maintaining financial security.</p>
+                    
+<p>While digital payments have become more common, cheque fraud remains a significant threat. Understanding how cheque fraud works and how to protect yourself is important for maintaining financial security.</p>
                     
                     <h3>Types of Cheque Fraud</h3>
                     
@@ -4980,7 +5155,8 @@
             'unlicensed-companies': {
                 title: 'Unlicensed Companies: How to Spot and Avoid Them',
                 content: `
-                    <p>Unlicensed companies pose a significant risk to investors, often operating without proper regulatory oversight and offering fraudulent or high-risk investment products. Understanding how to identify and avoid these companies is crucial for protecting your investments.</p>
+                    
+<p>Unlicensed companies pose a significant risk to investors, often operating without proper regulatory oversight and offering fraudulent or high-risk investment products. Understanding how to identify and avoid these companies is crucial for protecting your investments.</p>
                     
                     <h3>What Are Unlicensed Companies?</h3>
                     <p>Unlicensed companies are financial service providers that operate without the necessary licenses or regulatory approvals from relevant authorities. These companies may offer investment products, financial advice, or other financial services without proper oversight.</p>
@@ -5077,7 +5253,8 @@
             'fake-regulators': {
                 title: 'Fake Regulators: How to Spot and Avoid Them',
                 content: `
-                    <p>Fake regulators are sophisticated scams where fraudsters impersonate legitimate financial regulators to gain your trust and steal your money. These scams can be particularly convincing and dangerous.</p>
+                    
+<p>Fake regulators are sophisticated scams where fraudsters impersonate legitimate financial regulators to gain your trust and steal your money. These scams can be particularly convincing and dangerous.</p>
                     
                     <h3>What Are Fake Regulators?</h3>
                     <p>Fake regulators are scammers who create websites, emails, and documentation that appear to be from legitimate financial regulatory authorities. They use this fake authority to convince victims to invest in fraudulent schemes or pay fake fees.</p>
@@ -5168,7 +5345,8 @@
             'investment-scams': {
                 title: 'Investment Scams: How to Protect Yourself',
                 content: `
-                    <p>Investment scams are fraudulent schemes designed to steal your money by promising unrealistic returns or exploiting your trust. Understanding common investment scams and how to protect yourself is essential for safeguarding your financial future.</p>
+                    
+<p>Investment scams are fraudulent schemes designed to steal your money by promising unrealistic returns or exploiting your trust. Understanding common investment scams and how to protect yourself is essential for safeguarding your financial future.</p>
                     
                     <h3>Common Types of Investment Scams</h3>
                     
@@ -5277,7 +5455,8 @@
             'superannuation-scams': {
                 title: 'Superannuation Scams: Protecting Your Retirement Savings',
                 content: `
-                    <p>Superannuation scams target your retirement savings, often promising early access to your super or fraudulent investment opportunities. Understanding these scams is crucial for protecting your long-term financial security.</p>
+                    
+<p>Superannuation scams target your retirement savings, often promising early access to your super or fraudulent investment opportunities. Understanding these scams is crucial for protecting your long-term financial security.</p>
                     
                     <h3>Common Superannuation Scams</h3>
                     
@@ -5393,151 +5572,7 @@
                 `
             }
         };
-
-        // Title Case utility
-        function toTitleCase(str) {
-            return str.replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
-        }
-
-        // Dynamic article loading
-        function loadArticle(articleId) {
-            const panel = document.getElementById('article-detail-panel');
-            const title = document.getElementById('article-detail-title');
-            const body = document.getElementById('article-detail-body');
-            
-            if (articleContent[articleId]) {
-                title.textContent = toTitleCase(articleContent[articleId].title);
-                const imagePlaceholder = `<div style="width:100%;height:200px;background:linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;margin-bottom:24px;color:white;box-shadow:var(--shadow-md);"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:12px;opacity:0.9;"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg><span style="font-weight:600;letter-spacing:0.05em;text-transform:uppercase;font-size:12px;opacity:0.9;">Professional Insights</span></div>`;
-
-                const relatedArticles = `
-<hr style="margin:32px 0;border:none;border-top:1px solid #e5e7eb;">
-<h3 style="color:#1e3a8a;margin-bottom:12px;">Related articles:</h3>
-<p style="color:#6b7280;font-size:14px;line-height:1.6;">Explore more resources and expert perspectives on these topics in our library collection.</p>
-<h3 style="color:#1e3a8a;margin:24px 0 12px;">Related books:</h3>
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;">
-    ${[1,2,3,4,5,6].map(i => `
-    <div style="border:1px solid #e5e7eb;border-radius:8px;padding:12px;text-align:center;background:#f9fafb;">
-        <div style="width:60px;height:80px;background:#e5e7eb;border-radius:4px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:11px;">Book ${i}</div>
-        <a href="#" style="font-size:12px;color:#1e3a8a;text-decoration:none;">Book title link</a>
-    </div>`).join('')}
-</div>
-<hr style="margin:24px 0;border:none;border-top:1px solid #e5e7eb;">
-<p style="font-size:12px;color:#9ca3af;font-style:italic;"><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>`;
-
-                let articleBody = articleContent[articleId] ? articleContent[articleId].content : '';
-                if(articleBody) {
-                    // Remove first <p>...< /p> (non-greedy) and any adjacent heading up to h3 if it exists at the start
-                    // We'll run successive replaces to be robust instead of one massive regex:
-                    articleBody = articleBody.trim();
-                    // if starts with a paragraph that is a category
-                    let pMatch = articleBody.match(/^(<p[^>]*>.*?<\/p>)\s*(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
-                    if(pMatch) {
-                        articleBody = articleBody.substring(pMatch[0].length).trim();
-                    } else {
-                        // try to match just the h tag
-                        let hMatch = articleBody.match(/^(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
-                        if(hMatch) {
-                            articleBody = articleBody.substring(hMatch[0].length).trim();
-                        }
-                    }
-                    
-                    // Bold first paragraph
-                    articleBody = articleBody.replace(/<p>(.*?)<\/p>/i, '<p><strong>$1</strong></p>');
-                    
-                    // Remove existing disclaimer
-                    articleBody = articleBody.replace(/<p><strong>Disclaimer:<\/strong>.*?<\/p>\s*$/is, '');
-                }
-                
-                body.innerHTML = imagePlaceholder + articleBody + relatedArticles;
-                panel.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            } else {
-                title.textContent = 'Article Not Found';
-                body.innerHTML = '<p>Sorry, this article is not available at the moment.</p>';
-                panel.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        function closeArticlePanel() {
-            const panel = document.getElementById('article-detail-panel');
-            panel.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        function toggleMobileMenu() {
-            const mobileDrawer = document.getElementById('mobile-drawer');
-            if (mobileDrawer) {
-                if (mobileDrawer.classList.contains('open')) {
-                    mobileDrawer.classList.remove('open');
-                    document.body.style.overflow = '';
-                } else {
-                    mobileDrawer.classList.add('open');
-                    document.body.style.overflow = 'hidden';
-                }
-            }
-        }
-
-        function closeMobileMenu() {
-            const mobileDrawer = document.getElementById('mobile-drawer');
-            if (mobileDrawer) {
-                mobileDrawer.classList.remove('open');
-                document.body.style.overflow = '';
-            }
-        }
-
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu event listeners
-            const mobileToggle = document.getElementById('mobile-toggle');
-            const drawerClose = document.getElementById('drawer-close');
-            
-            if (mobileToggle) {
-                mobileToggle.addEventListener('click', toggleMobileMenu);
-            }
-            
-            if (drawerClose) {
-                drawerClose.addEventListener('click', closeMobileMenu);
-            }
-            
-            // Close menu when clicking outside
-            document.addEventListener('click', function(event) {
-                const drawer = document.getElementById('mobile-drawer');
-                const toggle = document.getElementById('mobile-toggle');
-                
-                if (drawer && drawer.classList.contains('open') && 
-                    !drawer.contains(event.target) && 
-                    !toggle.contains(event.target)) {
-                    closeMobileMenu();
-                }
-            });
-            
-            // Article detail panel event listeners
-            const articleClose = document.getElementById('article-detail-close');
-            const articlePanel = document.getElementById('article-detail-panel');
-            
-            if (articleClose) {
-                articleClose.addEventListener('click', closeArticlePanel);
-            }
-            
-            // Close article panel when clicking outside
-            if (articlePanel) {
-                articlePanel.addEventListener('click', function(event) {
-                    if (event.target === articlePanel) {
-                        closeArticlePanel();
-                    }
-                });
-            }
-            
-            // Handle collapsible link clicks
-            const collapsibleLinks = document.querySelectorAll('.collapsible-link');
-            console.log('Found', collapsibleLinks.length, 'collapsible links');
-            // Note: Links now use onclick attributes instead of event listeners
-            
-            // All collapsible sections start closed by default
-            console.log('Wealth Creation page loaded with collapsible sections');
-        });
     </script>
-
-
-</body></html>
+    </body>
+    </html>
+    

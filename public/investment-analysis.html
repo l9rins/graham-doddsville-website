@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financial Statement Analysis - Graham and Doddsville</title>
+    <title>Investment Analysis - Graham and Doddsville</title>
     <link rel="stylesheet" href="css/styles.css?v=3">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <style>
@@ -46,13 +46,14 @@
             padding: 24px;
         }
 
-                        /* Standardized Header Styles */
+        /* Header Section */
         .header {
             background: #ffffff;
             border-bottom: 2px solid #d4af37;
             padding: 12px 0;
             transition: all 0.3s ease;
             overflow: visible;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
 
         .sticky-header {
@@ -66,10 +67,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 30px;
+            overflow: visible;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
-            position: relative;
+            background: transparent;
         }
 
         .logo {
@@ -90,22 +93,21 @@
             display: flex;
             list-style: none;
             gap: 35px;
-            margin: 0;
-            padding: 0;
+            overflow: visible;
         }
 
         .nav-link {
-            color: #1f2937;
+            color: #000;
             text-decoration: none;
             font-weight: 500;
             font-size: 14px;
             letter-spacing: 0.5px;
             text-transform: uppercase;
             transition: all 0.3s ease;
+            position: relative;
         }
 
         .nav-link:hover {
-            color: #1e3a8a;
             text-decoration: underline;
         }
 
@@ -119,6 +121,10 @@
             border: none;
             cursor: pointer;
             padding: 0;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
         }
 
         .hamburger-line {
@@ -131,15 +137,213 @@
             margin: 2px 0;
         }
 
-        .desktop-only { display: block; }
-        .mobile-only { display: none; }
-
-        @media (max-width: 768px) {
-            .desktop-only { display: none; }
-            .mobile-only { display: flex; }
-            .header-content { padding: 0 20px; }
+        /* Mobile Menu Toggle Animation */
+        .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
         }
 
+        .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Mobile Navigation Drawer */
+        .mobile-drawer {
+            position: fixed;
+            top: 0;
+            right: -80%;
+            width: 80%;
+            height: 100vh;
+            background: #fff;
+            z-index: 10000;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            display: block;
+        }
+
+        .mobile-drawer.open {
+            right: 0;
+        }
+
+        .drawer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 20px;
+            border-bottom: 1px solid #e0e0e0;
+            background: #1e3a8a;
+            color: white;
+        }
+
+        .drawer-logo {
+            max-height: 40px;
+            width: auto;
+            display: block;
+        }
+
+        .drawer-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .drawer-nav {
+            padding: 20px 0;
+        }
+
+        .drawer-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .drawer-menu li {
+            border-bottom: 1px solid #ffffff;
+            margin-bottom: 6px;
+            padding-left: 20px;
+        }
+
+        .drawer-link {
+            display: block;
+            padding: 6px 20px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+
+        .drawer-link:hover {
+            background: #ffffff;
+            color: #1e3a8a;
+        }
+
+        /* Mobile responsive styles */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .desktop-only {
+                display: none;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-only {
+                display: none;
+            }
+            
+            .mobile-drawer {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .wealth-creation-page-content {
+                padding: 16px;
+            }
+        }
+
+        /* Article Detail Panel */
+        .article-detail-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .article-detail-panel.active {
+            display: flex;
+        }
+
+        .article-detail-content {
+            background: white;
+            border-radius: 12px;
+            max-width: 800px;
+            max-height: 90vh;
+            width: 100%;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .article-detail-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .article-detail-title {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .article-detail-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.2s ease;
+        }
+
+        .article-detail-close:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .article-detail-body {
+            padding: 24px;
+            line-height: 1.7;
+        }
+
+        .article-detail-body h3 {
+            color: var(--primary-blue);
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+
+        .article-detail-body p {
+            margin-bottom: 16px;
+        }
+
+        .loading-spinner {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-secondary);
+        }
 
         /* Page Title Section */
         .page-title-section {
@@ -168,7 +372,7 @@
 
         .page-title {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-size: 1.20rem;
+            font-size: 25px;
             font-weight: 600;
             color: #6B46C1; /* Brand purple */
             margin: 0 0 0px 0;
@@ -386,31 +590,33 @@
 
 
 
+
+
+
+
 </head>
 <body>
     <div class="wealth-creation-page">
         <!-- Header -->
-                                <header class="header sticky-header" role="banner">
-            <div class="header-content">
+        <header class="header sticky-header" role="banner">
+            <div class="container"><div class="header-content">
                 <div class="logo">
-                    <img src="public/html/G&D Logo.png" alt="Graham & Doddsville" class="logo-image">
+                    <img src="images/G&amp;D Logo.png" alt="Graham &amp; Doddsville" class="logo-image">
                 </div>
                 
-                <nav class="main-nav desktop-only">
-                    <ul>
+                <nav class="main-nav desktop-only">                    <ul>
                         <li><a href="index.html" class="nav-link">HOME</a></li>
-                        <li><a href="wealth-creation.html" class="nav-link">WEALTH CREATION</a></li>
-                        <li><a href="resources.html" class="nav-link">RESOURCES</a></li>
-                    </ul>
-                </nav>
+                        <li><a href="wealth-creation.html" class="nav-link">Wealth Creation</a></li>
+                        <li><a href="#" class="nav-link">ABOUT</a></li>
+                    </ul></nav>
+                
                 
                 <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                     <span class="hamburger-line"></span>
                 </button>
-            </div>
-        </header>
+            </div></div></header>
 
         <!-- Mobile Navigation Drawer -->
         <div class="mobile-drawer" id="mobile-drawer">
@@ -447,213 +653,130 @@
                 <div class="breadcrumb">
                     <a href="index.html" class="breadcrumb-link">← Home</a>
                 </div>
-                <h1 class="page-title">FINANCIAL STATEMENT ANALYSIS</h1>
+                <h1 class="page-title">Investment Analysis</h1>
                 <p class="page-subtitle">Comprehensive guides for analyzing investments, valuing stocks, and understanding financial statements</p>
             </div>
 
             <!-- Collapsible Categories -->
             <div class="collapsible-categories">
                 <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('introduction')">
-                        <h3 class="collapsible-title">Introduction</h3>
-                        <span class="collapsible-arrow" id="introduction-arrow">&#9660;</span>
+                    <div class="collapsible-header" onclick="toggleCollapsible('industry-guides')">
+                        <h3 class="collapsible-title">Industry Guides</h3>
+                        <span class="collapsible-arrow" id="industry-guides-arrow">&#9660;</span>
                     </div>
-                    <div class="collapsible-content collapsed" id="introduction-content">
+                    <div class="collapsible-content collapsed" id="industry-guides-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('nature-and-purpose')">Nature and purpose</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('users-of-financial-statements')">Users of financial statements</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('basic-concepts-of-accounting')">Basic concepts of accounting</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('gaap-in-australia')">GAAP in Australia</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('ifrs-in-australia')">IFRS in Australia</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('types-of-financial-statements')">Types of financial statements</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-financial-statements-interlink')">How financial statements interlink</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-is-financial-statements-interlink')">What is financial statements interlink</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('when-financials-are-misleading')">When financials are misleading</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-financial-analysis')">Limitations of financial analysis</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('automobiles-and-components')">Automobiles and components</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('banking')">Banking</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('capital-goods')">Capital goods</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('commercial-and-professional-services')">Commercial and professional services</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('consumer-durable-and-apparel')">Consumer durable and apparel</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('consumer-services')">Consumer services</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('consumer-discretionary-retail')">Consumer discretionary & retail</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('enegy-industry')">Enegy industry</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('consumer-staples-distribution-retail')">Consumer staples distribution & retail</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('food-beverage-and-tobacco')">Food, beverage and tobacco</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('health-care-equipment-and-services')">Health care equipment and services</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('household-and-personal-products')">Household and personal products</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('insurance')">Insurance</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('materials')">Materials</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('media-and-entertainment')">Media and entertainment</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('pharmaceuticals-biotechnology-and-life-sciences')">Pharmaceuticals, biotechnology and life sciences</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('equity-real-state-investment-trust')">Equity real state Investment trust</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('financial-services')">Financial services</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('semiconductors')">Semiconductors</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('software-and-services')">Software and services</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('technology-hardware')">Technology hardware</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('telecommunications')">Telecommunications</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('transportation')">Transportation</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('utilities')">Utilities</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('real-estate-management-development')">Real estate management & development</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('general-guidelines')">
-                        <h3 class="collapsible-title">General Guidelines</h3>
-                        <span class="collapsible-arrow" id="general-guidelines-arrow">&#9660;</span>
+                    <div class="collapsible-header" onclick="toggleCollapsible('qualitative-factors')">
+                        <h3 class="collapsible-title">Qualitative Factors</h3>
+                        <span class="collapsible-arrow" id="qualitative-factors-arrow">&#9660;</span>
                     </div>
-                    <div class="collapsible-content collapsed" id="general-guidelines-content">
+                    <div class="collapsible-content collapsed" id="qualitative-factors-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('the-7-signs-of-healthy-companies')">The 7 signs of healthy companies</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('the-7-signs-of-financial-distress')">The 7 signs of financial distress</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('the-7-signs-of-transparency')">The 7 signs of transparency</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('the-altman-z-score')">The Altman Z-score</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('the-probability-of-bankruptcy')">The probability of bankruptcy</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('key-drivers-of-business-growth')">Key drivers of business growth</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('top-7-questions-to-ask-management')">Top 7 questions to ask management</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('common-errors-in-statements')">Common errors in statements</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-read-financial-statements')">How to read financial statements</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('introduction-to-qualitative-analysis')">Introduction to qualitative analysis</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-conduct-swot-analysis')">How to conduct SWOT analysis</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-conduct-tows-analysis')">How to conduct TOWS analysis</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-conduct-pestel-analysis')">How to conduct PESTEL analysis</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('porter-s-5-forces-analysis')">Porter's 5 Forces analysis</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('sustainable-competitive-advantage')">Sustainable competitive advantage</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('governance')">Governance</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('industry-analysis')">Industry analysis</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('business-reputation')">Business reputation</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('product-and-service-quality')">Product and service quality</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('stakeholder-satisfaction')">Stakeholder satisfaction</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('competitors')">Competitors</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('tools-for-investors')">Tools for investors</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-qualitative-analysis')">Limitations of qualitative analysis</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('balance-sheet')">
-                        <h3 class="collapsible-title">Balance Sheet</h3>
-                        <span class="collapsible-arrow" id="balance-sheet-arrow">&#9660;</span>
+                    <div class="collapsible-header" onclick="toggleCollapsible('corporate-actions')">
+                        <h3 class="collapsible-title">Corporate Actions</h3>
+                        <span class="collapsible-arrow" id="corporate-actions-arrow">&#9660;</span>
                     </div>
-                    <div class="collapsible-content collapsed" id="balance-sheet-content">
+                    <div class="collapsible-content collapsed" id="corporate-actions-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-is-a-balance-sheet')">What is a balance sheet?</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('key-assets-in-the-balance-sheet')">Key assets in the balance sheet</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('key-liabilities-in-the-balance-sheet')">Key liabilities in the balance sheet</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('intangible-assets')">Intangible assets</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('impairment-of-assets')">Impairment of assets</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('equity-and-owner-s-capital')">Equity and owner's capital</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('off-balance-sheet-transactions')">Off-balance sheet transactions</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-the-balance-sheet')">Limitations of the balance sheet</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('red-flags-in-the-balance-sheet')">Red flags in the balance sheet</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('dividends')">Dividends</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('stock-splits')">Stock splits</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('share-buy-backs')">Share buy backs</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('rights-issues')">Rights issues</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('bonus-issues')">Bonus issues</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('options')">Options</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('warrants')">Warrants</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('mergers-and-acquisitions')">Mergers and acquisitions</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('divestments')">Divestments</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('administration')">Administration</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('liquidation')">Liquidation</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('profit-and-loss-statement')">
-                        <h3 class="collapsible-title">Profit and Loss Statement</h3>
-                        <span class="collapsible-arrow" id="profit-and-loss-statement-arrow">&#9660;</span>
+                    <div class="collapsible-header" onclick="toggleCollapsible('accounting-shenanigans')">
+                        <h3 class="collapsible-title">Accounting Shenanigans</h3>
+                        <span class="collapsible-arrow" id="accounting-shenanigans-arrow">&#9660;</span>
                     </div>
-                    <div class="collapsible-content collapsed" id="profit-and-loss-statement-content">
+                    <div class="collapsible-content collapsed" id="accounting-shenanigans-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-is-a-profit-and-loss-statement')">What is a profit and loss statement?</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('revenue-recognition')">Revenue recognition</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('cost-of-goods-sold-cogs')">Cost of goods sold (COGS)</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('depreciation-and-amortisation')">Depreciation and amortisation</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('operating-income')">Operating income</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('operating-expenses')">Operating expenses</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('non-operating-income')">Non-operating income</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('non-operating-expenses')">Non-operating expenses</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('income-taxes')">Income taxes</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('earnings-per-share-eps')">Earnings per share (EPS)</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-the-profit-and-loss')">Limitations of the profit and loss</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('red-flags-in-the-profit-and-loss')">Red flags in the profit and loss</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-evaluate-earnings-quality')">How to evaluate earnings quality</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('why-engage-in-accounting-shenanigans')">Why engage in accounting shenanigans?</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('role-of-corporate-governance')">Role of corporate governance</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('history-of-accounting-scandals')">History of accounting scandals</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('revenue-manipulation')">Revenue manipulation</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('earnings-manipulation')">Earnings manipulation</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('cash-flow-manipulation')">Cash flow manipulation</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('asset-manipulation')">Asset manipulation</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('liability-manipulation')">Liability manipulation</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('key-metric-manipulation')">Key metric manipulation</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('classic-case-studies')">Classic case studies</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('useful-tools-for-investors')">Useful tools for investors</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('cash-flow-statement')">
-                        <h3 class="collapsible-title">Cash Flow Statement</h3>
-                        <span class="collapsible-arrow" id="cash-flow-statement-arrow">&#9660;</span>
+                    <div class="collapsible-header" onclick="toggleCollapsible('accounting-standards')">
+                        <h3 class="collapsible-title">Accounting Standards</h3>
+                        <span class="collapsible-arrow" id="accounting-standards-arrow">&#9660;</span>
                     </div>
-                    <div class="collapsible-content collapsed" id="cash-flow-statement-content">
+                    <div class="collapsible-content collapsed" id="accounting-standards-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-is-a-cash-flow-statement')">What is a cash flow statement?</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('operating-cash-flow')">Operating cash flow</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('investing-cash-flow')">Investing cash flow</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('financing-cash-flow')">Financing cash flow</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('free-cash-flow')">Free cash flow</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('cashflow-vs-profit')">Cashflow vs profit</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('non-cash-transactions')">Non-cash transactions</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('effects-of-working-capital')">Effects of working capital</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-cash-flow-statement')">Limitations of cash flow statement</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('red-flags-with-cash-flow-statement')">Red flags with cash flow statement</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('statement-of-changes-in-equity')">
-                        <h3 class="collapsible-title">Statement of Changes in Equity</h3>
-                        <span class="collapsible-arrow" id="statement-of-changes-in-equity-arrow">&#9660;</span>
-                    </div>
-                    <div class="collapsible-content collapsed" id="statement-of-changes-in-equity-content">
-                        <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-is-a-soce')">What is a SOCE?</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('retained-earnings')">Retained earnings</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('dividends-and-impact-on-equity')">Dividends and impact on equity</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('share-issuances-and-capital-raising')">Share issuances and capital raising</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('share-buybacks-and-treasury-shares')">Share buybacks and treasury shares</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('other-comprehensive-income')">Other comprehensive income</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('reserves-and-equity-adjustments')">Reserves and equity adjustments</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('management-strategy-and-equity-changes')">Management strategy and equity changes</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-the-soce')">Limitations of the SOCE</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('red-flags-in-the-soce')">Red flags in the SOCE</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('notes-to-financial-statements')">
-                        <h3 class="collapsible-title">Notes to Financial Statements</h3>
-                        <span class="collapsible-arrow" id="notes-to-financial-statements-arrow">&#9660;</span>
-                    </div>
-                    <div class="collapsible-content collapsed" id="notes-to-financial-statements-content">
-                        <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-are-notes-to-financial-statements')">What are notes to financial statements?</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('significant-accounting-policies')">Significant accounting policies</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('consolidated-financial-statements')">Consolidated financial statements</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('estimates-and-assumptions')">Estimates and assumptions</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('revenue-recognition-policies')">Revenue recognition policies</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('breakdown-of-assets-and-liabilities')">Breakdown of assets and liabilities</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('contingent-liabilities')">Contingent liabilities</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('related-party-transactions')">Related party transactions</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('joint-ventures')">Joint ventures</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('lease-disclosures')">Lease disclosures</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('financial-instruments-and-risks')">Financial instruments and risks</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('segment-reporting-and-divisions')">Segment reporting and divisions</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('subsequent-events-and-disclosures')">Subsequent events and disclosures</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-the-notes')">Limitations of the notes</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('red-flags-in-the-notes')">Red flags in the notes</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('management-discussion')">
-                        <h3 class="collapsible-title">Management Discussion</h3>
-                        <span class="collapsible-arrow" id="management-discussion-arrow">&#9660;</span>
-                    </div>
-                    <div class="collapsible-content collapsed" id="management-discussion-content">
-                        <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('management-discussion-analysis')">Management discussion & analysis</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('structure-of-an-md-a')">Structure of an MD&A</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-analyse-an-md-a')">How to analyse an MD&A</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('directors-declaration')">Directors' declaration</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('auditor-s-independence')">Auditor's independence</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('independent-auditor-s-report')">Independent auditor's report</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-the-md-a')">Limitations of the MD&A</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('red-flags-in-the-md-a')">Red flags in the MD&A</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('financial-ratios')">
-                        <h3 class="collapsible-title">Financial Ratios</h3>
-                        <span class="collapsible-arrow" id="financial-ratios-arrow">&#9660;</span>
-                    </div>
-                    <div class="collapsible-content collapsed" id="financial-ratios-content">
-                        <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-are-financial-ratios')">What are financial ratios?</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('leverage-ratios')">Leverage ratios</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('liquidity-ratios')">Liquidity ratios</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('solvency-ratios')">Solvency ratios</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('profitability-ratios')">Profitability ratios</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('cash-flow-ratios')">Cash flow ratios</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('efficiency-ratios')">Efficiency ratios</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('coverage-ratios')">Coverage ratios</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('market-ratios')">Market ratios</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('growth-ratios')">Growth ratios</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('other-ratios')">Other ratios</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-financial-ratios')">Limitations of financial ratios</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('other-analytical-tools')">
-                        <h3 class="collapsible-title">Other Analytical Tools</h3>
-                        <span class="collapsible-arrow" id="other-analytical-tools-arrow">&#9660;</span>
-                    </div>
-                    <div class="collapsible-content collapsed" id="other-analytical-tools-content">
-                        <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('horizontal-analysis')">Horizontal analysis</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('vertical-analysis')">Vertical analysis</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('sensitivity-analysis')">Sensitivity analysis</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('financial-projections')">Financial projections</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('recasting-financial-statements')">Recasting financial statements</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('du-pont-analysis')">Du Pont analysis</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('segmental-analysis')">Segmental analysis</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('break-even-analysis')">Break even analysis</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('regulator-bodies')">Regulator bodies</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('standards-relating-to-financial-reporting')">Standards relating to financial reporting</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('standards-relating-to-p-l')">Standards relating to P&L</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('standards-relating-to-balance-sheet-pt1')">Standards relating to balance sheet (Pt1)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('standards-relating-to-balance-sheet-pt2')">Standards relating to balance sheet (Pt2)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('standards-relating-to-disclosures')">Standards relating to disclosures</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('standards-relating-to-cash-flow')">Standards relating to cash flow</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('other-aasb-standards')">Other AASB standards</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('aasb-work-in-progress')">AASB work-in-progress</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('other-aasb-publications')">Other AASB publications</a></li>
                         </ul>
                     </div>
                 </div>
@@ -673,72 +796,154 @@
             </div>
         </div>
     </div>
+    
+    <script src="js/article-image-resolver.js?v=3"></script>
+    
+    <script src="js/article-image-resolver.js?v=3"></script>
+    
+    <script src="js/article-image-resolver.js?v=3"></script>
     <script>
         // Collapsible functionality
         function toggleCollapsible(sectionId) {
             const content = document.getElementById(sectionId + '-content');
             const arrow = document.getElementById(sectionId + '-arrow');
             if (!content) return;
-            const section = content.closest('.collapsible-section');
             
-            const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px' && content.style.maxHeight !== 'none';
+            const section = content.closest('.collapsible-section');
+            const isCurrentlyOpen = content.classList.contains('expanded');
             
             // Close all other open sections
             document.querySelectorAll('.collapsible-content').forEach(c => {
-                c.style.maxHeight = null;
-                c.classList.remove('expanded');
-                c.classList.add('collapsed');
-                const s = c.closest('.collapsible-section');
-                if (s) s.classList.remove('active');
-                const a = document.getElementById(c.id.replace('-content', '-arrow'));
-                if (a) a.innerHTML = '▼';
+                if (c.id !== sectionId + '-content' && (c.classList.contains('expanded') || c.style.maxHeight)) {
+                    c.style.maxHeight = null;
+                    c.classList.remove('expanded');
+                    c.classList.add('collapsed');
+                    const s = c.closest('.collapsible-section');
+                    if (s) s.classList.remove('active');
+                    const a = document.getElementById(c.id.replace('-content', '-arrow'));
+                    if (a) a.innerHTML = '▼';
+                }
             });
 
-            if (!isOpen) {
+            if (!isCurrentlyOpen) {
+                // OPENING
+                // First, remove collapsed and add expanded to ensure it's visible for scrollHeight calculation
+                content.classList.add('expanded');
+                content.classList.remove('collapsed');
+                
                 if(sectionId === 'events-seminars') {
                     content.style.maxHeight = 'none';
                 } else {
-                    content.style.maxHeight = content.scrollHeight + "px";
+                    // Now measure scrollHeight
+                    const height = content.scrollHeight;
+                    content.style.maxHeight = height + "px";
                 }
-                content.classList.add('expanded');
-                content.classList.remove('collapsed');
+                
                 if (section) section.classList.add('active');
                 if (arrow) arrow.innerHTML = '▲';
+            } else {
+                // CLOSING
+                content.style.maxHeight = null;
+                content.classList.remove('expanded');
+                content.classList.add('collapsed');
+                if (section) section.classList.remove('active');
+                if (arrow) arrow.innerHTML = '▼';
             }
         }
 
         // Mobile drawer functionality
-        const mobileToggle = document.getElementById('mobile-toggle');
-        const mobileDrawer = document.getElementById('mobile-drawer');
-        const drawerClose = document.getElementById('drawer-close');
-        
-        if (mobileToggle && mobileDrawer) {
-            mobileToggle.addEventListener('click', () => {
-                console.log('Hamburger menu clicked!');
-                mobileDrawer.classList.add('open');
-                document.body.style.overflow = 'hidden';
-                console.log('Drawer should be open now');
-            });
-        }
-        
-        if (drawerClose && mobileDrawer) {
-            drawerClose.addEventListener('click', () => {
-                mobileDrawer.classList.remove('open');
-                document.body.style.overflow = '';
-            });
-        }
-        
-        // Close drawer when clicking outside
-        if (mobileDrawer) {
-            mobileDrawer.addEventListener('click', (e) => {
-                if (e.target === mobileDrawer) {
+        function toggleMobileMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                if (mobileDrawer.classList.contains('open')) {
                     mobileDrawer.classList.remove('open');
                     document.body.style.overflow = '';
+                } else {
+                    mobileDrawer.classList.add('open');
+                    document.body.style.overflow = 'hidden';
                 }
-            });
+            }
         }
 
-        // Article content data
+        function closeMobileMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Article loading functionality
+        function loadArticle(articleId) {
+            const panel = document.getElementById('article-detail-panel');
+            const title = document.getElementById('article-detail-title');
+            const body = document.getElementById('article-detail-body');
+            
+            if (!panel || !title || !body) return;
+
+            if (typeof articleContent !== 'undefined' && articleContent[articleId]) {
+                const article = articleContent[articleId];
+                title.textContent = article.title;
+                
+                let imageHtml = '';
+                if (typeof window.buildArticleImageHtml === 'function') {
+                    imageHtml = window.buildArticleImageHtml(articleId, article);
+                }
+                
+                body.innerHTML = imageHtml + article.content;
+                panel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                const contentContainer = panel.querySelector('.article-detail-content');
+                if (contentContainer) contentContainer.scrollTop = 0;
+            }
+        }
+
+        function closeArticlePanel() {
+            const panel = document.getElementById('article-detail-panel');
+            if (panel) {
+                panel.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            const drawerClose = document.getElementById('drawer-close');
+            
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    toggleMobileMenu();
+                });
+            }
+            
+            if (drawerClose) {
+                drawerClose.addEventListener('click', closeMobileMenu);
+            }
+            
+            if (mobileDrawer) {
+                mobileDrawer.addEventListener('click', (e) => {
+                    if (e.target === mobileDrawer) closeMobileMenu();
+                });
+            }
+
+            const articlePanel = document.getElementById('article-detail-panel');
+            if (articlePanel) {
+                articlePanel.addEventListener('click', (e) => {
+                    if (e.target === articlePanel) closeArticlePanel();
+                });
+            }
+            
+            const closeBtn = document.getElementById('article-detail-close');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeArticlePanel);
+            }
+        });
+
+        // Data from file
         const articleContent = {
             'industry-guides-automobiles-and-components': {
                 title: 'Automobiles and components',
@@ -1705,110 +1910,7 @@
                 `
             },
         };
-
-
-        // Article panel functionality
-        function openArticle(articleId) {
-            const panel = document.getElementById('article-detail-panel');
-            const title = document.getElementById('article-detail-title');
-            const body = document.getElementById('article-detail-body');
-            
-            if (articleContent[articleId]) {
-                title.textContent = articleContent[articleId].title;
-                const imagePlaceholder = window.buildArticleImageHtml(articleId, articleContent[articleId]);
-
-                const relatedArticles = `
-<hr style="margin:32px 0;border:none;border-top:1px solid #e5e7eb;">
-<h3 style="color:#1e3a8a;margin-bottom:12px;">Related articles:</h3>
-<p style="color:#6b7280;font-size:14px;line-height:1.6;">Explore more resources and expert perspectives on these topics in our library collection.</p>
-<h3 style="color:#1e3a8a;margin:24px 0 12px;">Related books:</h3>
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;">
-    ${[1,2,3,4,5,6].map(i => `
-    <div style="border:1px solid #e5e7eb;border-radius:8px;padding:12px;text-align:center;background:#f9fafb;">
-        <div style="width:60px;height:80px;background:#e5e7eb;border-radius:4px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:11px;">Book ${i}</div>
-        <a href="#" style="font-size:12px;color:#1e3a8a;text-decoration:none;">Book title link</a>
-    </div>`).join('')}
-</div>
-<hr style="margin:24px 0;border:none;border-top:1px solid #e5e7eb;">
-<p style="font-size:12px;color:#9ca3af;font-style:italic;"><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>`;
-
-                let articleBody = articleContent[articleId] ? articleContent[articleId].content : '';
-                if(articleBody) {
-                    // Remove first <p>...< /p> (non-greedy) and any adjacent heading up to h3 if it exists at the start
-                    // We'll run successive replaces to be robust instead of one massive regex:
-                    articleBody = articleBody.trim();
-                    // if starts with a paragraph that is a category
-                    let pMatch = articleBody.match(/^(<p[^>]*>.*?<\/p>)\s*(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
-                    if(pMatch) {
-                        articleBody = articleBody.substring(pMatch[0].length).trim();
-                    } else {
-                        // try to match just the h tag
-                        let hMatch = articleBody.match(/^(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
-                        if(hMatch) {
-                            articleBody = articleBody.substring(hMatch[0].length).trim();
-                        }
-                    }
-                    
-                    // Bold first paragraph
-                    articleBody = articleBody.replace(/<p>(.*?)<\/p>/i, '<p><strong>$1</strong></p>');
-                    
-                    // Remove existing disclaimer
-                    articleBody = articleBody.replace(/<p><strong>Disclaimer:<\/strong>.*?<\/p>\s*$/is, '');
-                }
-                
-                body.innerHTML = imagePlaceholder + articleBody + relatedArticles;
-                panel.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        function closeArticlePanel() {
-            const panel = document.getElementById('article-detail-panel');
-            panel.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        // Event listeners
-        document.addEventListener('DOMContentLoaded', function() {
-            const articleClose = document.getElementById('article-detail-close');
-            const articlePanel = document.getElementById('article-detail-panel');
-            
-            if (articleClose) {
-                articleClose.addEventListener('click', closeArticlePanel);
-            }
-            
-            if (articlePanel) {
-                articlePanel.addEventListener('click', function(event) {
-                    if (event.target === articlePanel) {
-                        closeArticlePanel();
-                    }
-                });
-            }
-
-            // Check for hash in URL and open corresponding article
-            if (window.location.hash) {
-                const hashValue = window.location.hash.substring(1);
-                // Look through articleContent keys to find a match
-                for (const key in articleContent) {
-                    if (key.endsWith(hashValue)) {
-                        // Expand the corresponding collapsible section
-                        const sectionId = key.substring(0, key.lastIndexOf('-' + hashValue));
-                        const sectionArrow = document.getElementById(sectionId + '-arrow');
-                        if (sectionArrow && document.getElementById(sectionId + '-content').classList.contains('collapsed')) {
-                            toggleCollapsible(sectionId);
-                        }
-                        // Open the article
-                        setTimeout(() => openArticle(key), 100);
-                        break;
-                    }
-                }
-            }
-
-        });
     </script>
-
-
-    <script src="js/article-image-resolver.js?v=3"></script>
-</body></html>
-
-
+    </body>
+    </html>
+    
