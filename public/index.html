@@ -4655,6 +4655,16 @@
 
     </main>
 
+    <!-- Topic Modal -->
+    <div id="topicModal" class="topic-modal" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5); backdrop-filter: blur(4px);">
+        <div class="topic-modal-content" style="background-color: #fefefe; margin: 8% auto; padding: 32px; border-radius: 12px; max-width: 750px; width: 90%; box-shadow: 0 10px 25px rgba(0,0,0,0.15); border: 1px solid #e5e7eb; max-height: 80vh; overflow-y: auto; position: relative;">
+            <span class="topic-modal-close" style="color: #6b7280; position: absolute; right: 24px; top: 16px; font-size: 28px; font-weight: bold; cursor: pointer; transition: color 0.2s;" onclick="closeTopicModal()">&times;</span>
+            <div id="topicModalBody" style="font-family: 'Inter', system-ui, sans-serif; color: #1f2937; line-height: 1.7; font-size: 15px;">
+                <!-- content goes here -->
+            </div>
+        </div>
+    </div>
+
     <!-- Video Modal -->
     <div id="videoModal" class="video-modal">
         <div class="video-modal-content">
@@ -8216,12 +8226,125 @@
             }
         });
 
+        // Buffett Topic Modal Logic
+        const buffettTopicsData = {
+            "investment philosophy": `
+                <h3 style="font-family: 'Playfair Display', serif; color: #1e3a8a; margin-bottom: 12px; font-size: 24px;">Investment Philosophy</h3>
+                <p><strong>Our goal</strong> in both forms of ownership is to make meaningful investments in businesses with both long-lasting favorable economic characteristics and trustworthy managers. Please note particularly that we own publicly-traded stocks based on our expectations about their long-term business performance, not because we view them as vehicles for adroit purchases and sales. That point is crucial: Charlie and I are not stock-pickers; we are business-pickers.</p>
+                <p style="font-style: italic; color: #6b7280; margin-bottom: 16px;">— [Warren Buffett, 2022 Letter to Shareholders]</p>
+
+                <p>Whatever our form of ownership, our goal is to have meaningful investments in businesses with both durable economic advantages and a first-class CEO. Please note particularly that we own stocks based upon our expectations about their long-term business performance and not because we view them as vehicles for timely market moves. That point is crucial: Charlie and I are not stock-pickers; we are business-pickers.</p>
+                <p style="font-style: italic; color: #6b7280; margin-bottom: 16px;">— [Warren Buffett, 2021 Letter to Shareholders]</p>
+
+                <p>Productive assets such as farms, real estate and, yes, business ownership produce wealth – lots of it. Most owners of such properties will be rewarded. All that’s required is the passage of time, an inner calm, ample diversification and a minimization of transactions and fees.</p>
+                <p style="font-style: italic; color: #6b7280; margin-bottom: 16px;">— [Warren Buffett, 2020 Letter to Shareholders]</p>
+
+                <p>My expectation of more stock purchases is not a market call. Charlie and I have no idea as to how stocks will behave next week or next year. Predictions of that sort have never been a part of our activities. Our thinking, rather, is focused on calculating whether a portion of an attractive business is worth more than its market price.</p>
+                <p style="font-style: italic; color: #6b7280; margin-bottom: 16px;">— [Warren Buffett, 2018 Letter to Shareholders]</p>
+
+                <p>Charlie and I view the marketable common stocks that Berkshire owns as interests in businesses, not as ticker symbols to be bought or sold based on their “chart” patterns, the “target” prices of analysts or the opinions of media pundits. Instead, we simply believe that if the businesses of the investees are successful (as we believe most will be) our investments will be successful as well. Sometimes the payoffs to us will be modest; occasionally the cash register will ring loudly. And sometimes I will make expensive mistakes. Overall – and over time – we should get decent results. In America, equity investors have the wind at their back.</p>
+                <p style="font-style: italic; color: #6b7280; margin-bottom: 16px;">— [Warren Buffett, 2017 Letter to Shareholders]</p>
+
+                <p>We view these holdings as partnership interests in wonderful businesses, not as marketable securities to be bought or sold based on their near-term prospects. Our share of their earnings, however, are far from fully reflected in our earnings; only the dividends we receive from these businesses show up in our financial reports. Over time, though, the undistributed earnings of these companies that are attributable to our ownership are of huge importance to us. That’s because they will be used in a variety of ways to increase future earnings and dividends of the investee. They may also be devoted to stock repurchases, which will increase our share of the company’s future earnings.</p>
+                <p style="font-style: italic; color: #6b7280; margin-bottom: 16px;">— [Warren Buffett, 2011 Letter to Shareholders]</p>
+
+                <p>We’ve put a lot of money to work during the chaos of the last two years. It’s been an ideal period for investors: A climate of fear is their best friend. Those who invest only when commentators are upbeat end up paying a heavy price for meaningless reassurance. In the end, what counts in investing is what you pay for a business – through the purchase of a small piece of it in the stock market – and what that business earns in the succeeding decade or two.</p>
+                <p style="font-style: italic; color: #6b7280; margin-bottom: 16px;">— [Warren Buffett, 2009 Letter to Shareholders]</p>
+
+                <p>A simple rule dictates my buying: Be fearful when others are greedy, and be greedy when others are fearful. And most certainly, fear is now widespread, gripping even seasoned investors. To be sure, investors are right to be wary of highly leveraged entities or businesses in weak competitive positions. But fears regarding the long-term prosperity of the nation’s many sound companies make no sense. These businesses will indeed suffer earnings hiccups, as they always have. But most major companies will be setting new profit records 5, 10 and 20 years from now.</p>
+                <p style="font-style: italic; color: #6b7280; margin-bottom: 16px;">— [Warren Buffett, "Buy American. I am", The New York Times, 16 October 2008]</p>
+            `,
+            "investment objectives": `
+                <h3 style="font-family: 'Playfair Display', serif; color: #1e3a8a; margin-bottom: 12px; font-size: 24px;">Investment Objectives</h3>
+                <p>To achieve a long-term compound rate of growth in business value that exceeds the S&P 500, while avoiding permanent capital loss. We test our results by measuring the growth in intrinsic value against the performance of the general market.</p>
+                <p style="font-style: italic; color: #6b7280; margin-bottom: 16px;">— [Warren Buffett, Owner's Manual]</p>
+            `,
+            "modern portfolio theory": `
+                <h3 style="font-family: 'Playfair Display', serif; color: #1e3a8a; margin-bottom: 12px; font-size: 24px;">Modern Portfolio Theory</h3>
+                <p>To invest successfully, you need not understand beta, efficient markets, modern portfolio theory, option pricing or emerging markets. You may, in fact, be better off knowing nothing of these. In our view, though, investment students need only two well-taught courses: How to Value a Business, and How to Think About Market Prices.</p>
+                <p style="font-style: italic; color: #6b7280; margin-bottom: 16px;">— [Warren Buffett, 1997 Letter to Shareholders]</p>
+            `,
+            "value investing": `
+                <h3 style="font-family: 'Playfair Display', serif; color: #1e3a8a; margin-bottom: 12px; font-size: 24px;">Value Investing</h3>
+                <p>We think the very term 'value investing' is redundant. What is 'investing' if it is not the act of seeking value at least sufficient to justify the amount paid? Consciously paying more for a stock than its calculated value in the hope that it can soon be sold for a still-higher price should be labeled speculation.</p>
+                <p style="font-style: italic; color: #6b7280; margin-bottom: 16px;">— [Warren Buffett, 1992 Letter to Shareholders]</p>
+            `,
+            "successful investing": `
+                <h3 style="font-family: 'Playfair Display', serif; color: #1e3a8a; margin-bottom: 12px; font-size: 24px;">Successful Investing</h3>
+                <p>The most important quality for an investor is temperament, not intellect. You need a temperament that neither derives great pleasure from being with the crowd or against the crowd.</p>
+                <p style="font-style: italic; color: #6b7280; margin-bottom: 16px;">— [Warren Buffett, 1997 Letter to Shareholders]</p>
+            `,
+            "intrinsic value": `
+                <h3 style="font-family: 'Playfair Display', serif; color: #1e3a8a; margin-bottom: 12px; font-size: 24px;">Intrinsic Value</h3>
+                <p>Intrinsic value is an all-important concept that offers the only logical approach to evaluating the relative attractiveness of investments and businesses. It is defined as the discounted value of the cash that can be taken out of a business during its remaining life.</p>
+                <p style="font-style: italic; color: #6b7280; margin-bottom: 16px;">— [Warren Buffett, Owner's Manual]</p>
+            `,
+            "wall street and mr market": `
+                <h3 style="font-family: 'Playfair Display', serif; color: #1e3a8a; margin-bottom: 12px; font-size: 24px;">Wall Street and Mr Market</h3>
+                <p>An investor will succeed by coupling good business judgment with an ability to insulate his thoughts and behavior from the super-contagious emotions that swirl about the marketplace.</p>
+                <p style="font-style: italic; color: #6b7280; margin-bottom: 16px;">— [Warren Buffett, 1987 Letter to Shareholders]</p>
+            `,
+            "circle of competence": `
+                <h3 style="font-family: 'Playfair Display', serif; color: #1e3a8a; margin-bottom: 12px; font-size: 24px;">Circle of Competence</h3>
+                <p>You don't need to be an expert on every company, or even many. You only need to be able to evaluate companies within your circle of competence. The size of that circle is not very important; knowing its boundaries, however, is vital.</p>
+                <p style="font-style: italic; color: #6b7280; margin-bottom: 16px;">— [Warren Buffett, 1996 Letter to Shareholders]</p>
+            `,
+            "long term investing": `
+                <h3 style="font-family: 'Playfair Display', serif; color: #1e3a8a; margin-bottom: 12px; font-size: 24px;">Long Term Investing</h3>
+                <p>When we own portions of outstanding businesses with outstanding managements, our favorite holding period is forever. We are just the opposite of those who hurry to sell and book profits when companies perform well but tenaciously hang on to businesses that disappoint.</p>
+                <p style="font-style: italic; color: #6b7280; margin-bottom: 16px;">— [Warren Buffett, 1988 Letter to Shareholders]</p>
+            `,
+            "conservatism": `
+                <h3 style="font-family: 'Playfair Display', serif; color: #1e3a8a; margin-bottom: 12px; font-size: 24px;">Conservatism</h3>
+                <p>The less the prudence with which others conduct their affairs, the greater the prudence with which we should conduct our own affairs.</p>
+                <p style="font-style: italic; color: #6b7280; margin-bottom: 16px;">— [Warren Buffett, 1988 Letter to Shareholders]</p>
+            `,
+            "security analyst": `
+                <h3 style="font-family: 'Playfair Display', serif; color: #1e3a8a; margin-bottom: 12px; font-size: 24px;">Security Analyst</h3>
+                <p>When investing, we view ourselves as business analysts - not as market analysts, not as macroeconomic analysts, and not even as security analysts.</p>
+                <p style="font-style: italic; color: #6b7280; margin-bottom: 16px;">— [Warren Buffett, 1987 Letter to Shareholders]</p>
+            `
+        };
+
+        function openTopicModal(topicTitle) {
+            const modal = document.getElementById('topicModal');
+            const modalBody = document.getElementById('topicModalBody');
+            if (!modal || !modalBody) return;
+            const normalizedTitle = topicTitle.trim().toLowerCase().replace(/\s+/g, ' ');
+            const content = buffettTopicsData[normalizedTitle] || `
+                <h3 style="font-family: 'Playfair Display', serif; color: #1e3a8a; margin-bottom: 12px; font-size: 24px;">${topicTitle}</h3>
+                <p>Information about <strong>${topicTitle}</strong> from Warren Buffett's letters and essays is coming soon. Stay tuned for a curated selection of insights and wisdom on this topic.</p>
+            `;
+            modalBody.innerHTML = content;
+            modal.style.display = 'block';
+        }
+
+        function closeTopicModal() {
+            const modal = document.getElementById('topicModal');
+            if (modal) modal.style.display = 'none';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const topicLinks = document.querySelectorAll('.buffett-content .buffett-topics a, .buffett-content-mobile .book-links-list a, .topic-card');
+            topicLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const href = link.getAttribute('href');
+                    if (!href || href === '#' || href.startsWith('https://www.amazon')) {
+                        e.preventDefault();
+                        const title = link.innerText || link.textContent;
+                        openTopicModal(title);
+                    }
+                });
+            });
+        });
+
         // Close modal when clicking outside
         window.onclick = function (event) {
             const videoModal = document.getElementById('videoModal');
             const aboutModal = document.getElementById('aboutModal');
             const contactModal = document.getElementById('contactModal');
             const advertiseModal = document.getElementById('advertiseModal');
+            const topicModal = document.getElementById('topicModal');
             if (event.target === videoModal) {
                 closeVideoModal();
             }
@@ -8233,6 +8356,9 @@
             }
             if (event.target === advertiseModal) {
                 closeAdvertisePage();
+            }
+            if (event.target === topicModal) {
+                closeTopicModal();
             }
         }
 
