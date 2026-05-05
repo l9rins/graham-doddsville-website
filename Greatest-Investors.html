@@ -555,98 +555,39 @@
         .wealth-creation-page-content { padding-top: 30px; }
         </style>
 
-    <style>
-        /* Scoped overrides for flat white design with gold header border */
-        html, body {
-            background-color: #ffffff !important;
-            background: #ffffff !important;
-        }
+    
 
-        @media (max-width: 1024px) {
-            .container, .header, .header-content, .drawer-header, .wealth-creation-page, .wealth-creation-page-content, .article-detail-header, .financial-analysis-page, .stock-valuation-page {
-                background: #ffffff !important;
-                background-color: #ffffff !important;
-                border: 0px solid transparent !important;
-                box-shadow: none !important;
-            }
-            .header, .drawer-header {
-                border-bottom: 2px solid #d4af37 !important;
-            }
-            /* Remove jagged notebook border/shadow effect */
-            .container::before {
-                display: none !important;
-                content: none !important;
-                box-shadow: none !important;
-                filter: none !important;
-            }
+
+
+    <style>
+        /* Scoped overrides for Blue Headers (Surgical Fix) */
+        .drawer-header {
+            background: #1e3a8a !important;
+            background-color: #1e3a8a !important;
+            color: #ffffff !important;
+        }
+        .drawer-header h2, .drawer-close {
+            color: #ffffff !important;
         }
         
-        /* Apply to all viewports for specific elements */
-        .container, .header, .header-content, .drawer-header, .page-title-section, .collapsible-section, .article-detail-header {
+        .collapsible-header {
+            background: #1e3a8a !important;
+            background-color: #1e3a8a !important;
+            color: #ffffff !important;
+        }
+        .collapsible-title, .collapsible-arrow {
+            color: #ffffff !important;
+        }
+        
+        /* Keep everything else as per the white theme requirements */
+        html, body, .container, .header, .header-content, .page-title-section, .collapsible-content, .article-detail-header {
             background: #ffffff !important;
             background-color: #ffffff !important;
-            box-shadow: none !important;
-            border: 0px solid transparent !important;
         }
-        
-        .header, .drawer-header {
+        .header {
             border-bottom: 2px solid #d4af37 !important;
         }
-
-        .collapsible-header, .collapsible-header:hover {
-            background: #ffffff !important;
-            background-color: #ffffff !important;
-            border: 1px solid #e5e7eb !important;
-            color: #1e3a8a !important;
-            box-shadow: none !important;
-            transform: none !important;
-        }
-        
-        .collapsible-title, .collapsible-arrow, .article-detail-title, .article-detail-close {
-            color: #1e3a8a !important;
-        }
-        
-        /* Ensure the main page background is white */
-        body, .wealth-creation-page, .wealth-creation-page-content, .financial-analysis-page, .stock-valuation-page, .professional-advisers-page, .financial-products-page, .resources-page {
-            background: #ffffff !important;
-            background-color: #ffffff !important;
-        }
-        
-        /* Drawer close button visibility */
-        .drawer-close {
-            color: #1e3a8a !important;
-        }
-        .drawer-close::before {
-            color: #1e3a8a !important;
-        }
-        
-        /* Remove blue borders on links */
-        .collapsible-link:hover {
-            border-left-color: #1e3a8a !important;
-            background: #f8f9fa !important;
-        }
-        
-        /* Remove the blue glow from ALL elements */
-        * {
-            box-shadow: none !important;
-            text-shadow: none !important;
-        }
-
-        /* Hamburger menu colors */
-        .hamburger-line {
-            background-color: #1e3a8a !important;
-        }
-        
-        /* Footer disclaimer and other potential blue elements */
-        footer, .footer, .disclaimer-section {
-            background: #ffffff !important;
-            background-color: #ffffff !important;
-            color: #666666 !important;
-            border-top: 1px solid #e5e7eb !important;
-        }
     </style>
-
-
 </head>
 <body>
     <div class="wealth-creation-page">
@@ -717,16 +658,16 @@
                     </div>
                     <div class="collapsible-content collapsed" id="the-superinvestors-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('benjamin-graham')">Benjamin Graham</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('warren-buffett')">Warren Buffett</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('charlie-munger')">Charlie Munger</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('ed-anderson')">Ed Anderson</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('rick-guerin')">Rick Guerin</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('tom-knapp')">Tom Knapp</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('stan-perlmeter')">Stan Perlmeter</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('bill-ruane')">Bill Ruane</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('walter-schloss')">Walter Schloss</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('edwin-schloss')">Edwin Schloss</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('benjamin-graham')">Benjamin Graham</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('warren-buffett')">Warren Buffett</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('charlie-munger')">Charlie Munger</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('ed-anderson')">Ed Anderson</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('rick-guerin')">Rick Guerin</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('tom-knapp')">Tom Knapp</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('stan-perlmeter')">Stan Perlmeter</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('bill-ruane')">Bill Ruane</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('walter-schloss')">Walter Schloss</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('edwin-schloss')">Edwin Schloss</a></li>
                         </ul>
                     </div>
                 </div>
@@ -737,46 +678,46 @@
                     </div>
                     <div class="collapsible-content collapsed" id="famous-value-investors-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('bill-ackman')">Bill Ackman</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('bruce-berkowitz')">Bruce Berkowitz</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('charles-brandes')">Charles Brandes</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('christopher-browne')">Christopher Browne</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('todd-combs')">Todd Combs</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('peter-cundill')">Peter Cundill</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('david-dreman')">David Dreman</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('david-einhorn')">David Einhorn</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('jean-marie-eveillard')">Jean-Marie Eveillard</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('mario-gabelli')">Mario Gabelli</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('tom-gayner')">Tom Gayner</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('glenn-greenberg')">Glenn Greenberg</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('joel-greenblatt')">Joel Greenblatt</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('william-gross')">William Gross</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('mason-hawkins')">Mason Hawkins</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('carl-icahn')">Carl Icahn</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('irving-kahn')">Irving Kahn</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('seth-klarman')">Seth Klarman</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('edward-lampert')">Edward Lampert</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('michael-larson')">Michael Larson</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('jorge-paulo-lemann')">Jorge Paulo Lemann</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('li-lu')">Li Lu</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('howard-marks')">Howard Marks</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('bill-milller')">Bill Milller</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('john-neff')">John Neff</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('bill-nygren')">Bill Nygren</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('robert-olstein')">Robert Olstein</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('mohnish-pabrai')">Mohnish Pabrai</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('michael-price')">Michael Price</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('julian-robertson')">Julian Robertson</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('thomas-rowe-price')">Thomas Rowe Price</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('lou-simpson')">Lou Simpson</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('guy-spier')">Guy Spier</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('al-waleed-bin-talal')">Al Waleed bin Talal</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('john-templeton')">John Templeton</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('whitney-tilson')">Whitney Tilson</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('laurence-tisch')">Laurence Tisch</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('charles-de-vaulx')">Charles de Vaulx</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('wallace-weitz')">Wallace Weitz</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('martin-whitman')">Martin Whitman</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('bill-ackman')">Bill Ackman</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('bruce-berkowitz')">Bruce Berkowitz</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('charles-brandes')">Charles Brandes</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('christopher-browne')">Christopher Browne</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('todd-combs')">Todd Combs</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('peter-cundill')">Peter Cundill</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('david-dreman')">David Dreman</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('david-einhorn')">David Einhorn</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('jean-marie-eveillard')">Jean-Marie Eveillard</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('mario-gabelli')">Mario Gabelli</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('tom-gayner')">Tom Gayner</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('glenn-greenberg')">Glenn Greenberg</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('joel-greenblatt')">Joel Greenblatt</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('william-gross')">William Gross</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('mason-hawkins')">Mason Hawkins</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('carl-icahn')">Carl Icahn</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('irving-kahn')">Irving Kahn</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('seth-klarman')">Seth Klarman</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('edward-lampert')">Edward Lampert</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('michael-larson')">Michael Larson</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('jorge-paulo-lemann')">Jorge Paulo Lemann</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('li-lu')">Li Lu</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('howard-marks')">Howard Marks</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('bill-milller')">Bill Milller</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('john-neff')">John Neff</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('bill-nygren')">Bill Nygren</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('robert-olstein')">Robert Olstein</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('mohnish-pabrai')">Mohnish Pabrai</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('michael-price')">Michael Price</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('julian-robertson')">Julian Robertson</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('thomas-rowe-price')">Thomas Rowe Price</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('lou-simpson')">Lou Simpson</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('guy-spier')">Guy Spier</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('al-waleed-bin-talal')">Al Waleed bin Talal</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('john-templeton')">John Templeton</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('whitney-tilson')">Whitney Tilson</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('laurence-tisch')">Laurence Tisch</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('charles-de-vaulx')">Charles de Vaulx</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('wallace-weitz')">Wallace Weitz</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('martin-whitman')">Martin Whitman</a></li>
                         </ul>
                     </div>
                 </div>
@@ -787,38 +728,38 @@
                     </div>
                     <div class="collapsible-content collapsed" id="other-famous-investors-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('philip-anschutz')">Philip Anschutz</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('bernard-baruch')">Bernard Baruch</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('john-bogle')">John Bogle</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('anthony-bolton')">Anthony Bolton</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('philip-carret')">Philip Carret</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('steven-cohen')">Steven Cohen</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('jim-cramer')">Jim Cramer</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('ray-dalio')">Ray Dalio</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('shelby-davis')">Shelby Davis</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('august-von-finck')">August von Finck</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('kenneth-fisher')">Kenneth Fisher</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('philip-fisher')">Philip Fisher</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('jeremy-grantham')">Jeremy Grantham</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('ken-griffin')">Ken Griffin</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('stephen-jarislowsky')">Stephen Jarislowsky</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('paul-tudor-jones')">Paul Tudor Jones</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('edward-johnson-iii')">Edward Johnson III</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('rupert-johnson')">Rupert Johnson</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('suleiman-kerimov')">Suleiman Kerimov</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('daniel-loeb')">Daniel Loeb</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('peter-lynch')">Peter Lynch</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('william-j-o-neill')">William J O' Neill</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('ron-perelman')">Ron Perelman</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('jim-rogers')">Jim Rogers</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('mikhailprokhorov')">MikhailProkhorov</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('harold-simmons')">Harold Simmons</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('james-simons')">James Simons</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('james-d-slater')">James D Slater</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('george-soros')">George Soros</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('michael-steinhardt')">Michael Steinhardt</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('david-tepper')">David Tepper</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="openArticle('ralph-wanger')">Ralph Wanger</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('philip-anschutz')">Philip Anschutz</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('bernard-baruch')">Bernard Baruch</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('john-bogle')">John Bogle</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('anthony-bolton')">Anthony Bolton</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('philip-carret')">Philip Carret</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('steven-cohen')">Steven Cohen</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('jim-cramer')">Jim Cramer</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('ray-dalio')">Ray Dalio</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('shelby-davis')">Shelby Davis</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('august-von-finck')">August von Finck</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('kenneth-fisher')">Kenneth Fisher</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('philip-fisher')">Philip Fisher</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('jeremy-grantham')">Jeremy Grantham</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('ken-griffin')">Ken Griffin</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('stephen-jarislowsky')">Stephen Jarislowsky</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('paul-tudor-jones')">Paul Tudor Jones</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('edward-johnson-iii')">Edward Johnson III</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('rupert-johnson')">Rupert Johnson</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('suleiman-kerimov')">Suleiman Kerimov</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('daniel-loeb')">Daniel Loeb</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('peter-lynch')">Peter Lynch</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('william-j-o-neill')">William J O' Neill</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('ron-perelman')">Ron Perelman</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('jim-rogers')">Jim Rogers</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('mikhailprokhorov')">MikhailProkhorov</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('harold-simmons')">Harold Simmons</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('james-simons')">James Simons</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('james-d-slater')">James D Slater</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('george-soros')">George Soros</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('michael-steinhardt')">Michael Steinhardt</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('david-tepper')">David Tepper</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('ralph-wanger')">Ralph Wanger</a></li>
                         </ul>
                     </div>
                 </div>
@@ -834,75 +775,139 @@
             </div>
         </div>
     </div>
+    
+    <script src="js/article-image-resolver.js?v=3"></script>
     <script>
         // Collapsible functionality
         function toggleCollapsible(sectionId) {
             const content = document.getElementById(sectionId + '-content');
             const arrow = document.getElementById(sectionId + '-arrow');
             if (!content) return;
-            const section = content.closest('.collapsible-section');
             
-            const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px' && content.style.maxHeight !== 'none';
+            const section = content.closest('.collapsible-section');
+            const isCurrentlyOpen = content.classList.contains('expanded');
             
             // Close all other open sections
             document.querySelectorAll('.collapsible-content').forEach(c => {
-                c.style.maxHeight = null;
-                c.classList.remove('expanded');
-                c.classList.add('collapsed');
-                const s = c.closest('.collapsible-section');
-                if (s) s.classList.remove('active');
-                const a = document.getElementById(c.id.replace('-content', '-arrow'));
-                if (a) a.innerHTML = '▼';
+                if (c.id !== sectionId + '-content' && (c.classList.contains('expanded') || c.style.maxHeight)) {
+                    c.style.maxHeight = null;
+                    c.classList.remove('expanded');
+                    c.classList.add('collapsed');
+                    const s = c.closest('.collapsible-section');
+                    if (s) s.classList.remove('active');
+                    const a = document.getElementById(c.id.replace('-content', '-arrow'));
+                    if (a) a.innerHTML = '▼';
+                }
             });
 
-            if (!isOpen) {
-                if(sectionId === 'events-seminars') {
-                    content.style.maxHeight = 'none';
-                } else {
-                    content.style.maxHeight = content.scrollHeight + "px";
-                }
+            if (!isCurrentlyOpen) {
                 content.classList.add('expanded');
                 content.classList.remove('collapsed');
+                const height = content.scrollHeight;
+                content.style.maxHeight = height + "px";
                 if (section) section.classList.add('active');
                 if (arrow) arrow.innerHTML = '▲';
+            } else {
+                content.style.maxHeight = null;
+                content.classList.remove('expanded');
+                content.classList.add('collapsed');
+                if (section) section.classList.remove('active');
+                if (arrow) arrow.innerHTML = '▼';
             }
         }
 
         // Mobile drawer functionality
-        const mobileToggle = document.getElementById('mobile-toggle');
-        const mobileDrawer = document.getElementById('mobile-drawer');
-        const drawerClose = document.getElementById('drawer-close');
-        
-        if (mobileToggle && mobileDrawer) {
-            mobileToggle.addEventListener('click', () => {
-                console.log('Hamburger menu clicked!');
-                mobileDrawer.classList.add('open');
-                mobileToggle.classList.add('active');
-                document.body.style.overflow = 'hidden';
-                console.log('Drawer should be open now');
-            });
-        }
-        
-        if (drawerClose && mobileDrawer) {
-            drawerClose.addEventListener('click', () => {
-                mobileDrawer.classList.remove('open');
-                mobileToggle.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        }
-        
-        // Close drawer when clicking outside
-        if (mobileDrawer) {
-            mobileDrawer.addEventListener('click', (e) => {
-                if (e.target === mobileDrawer) {
+        function toggleMobileMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                if (mobileDrawer.classList.contains('open')) {
                     mobileDrawer.classList.remove('open');
-                    mobileToggle.classList.remove('active');
                     document.body.style.overflow = '';
+                } else {
+                    mobileDrawer.classList.add('open');
+                    document.body.style.overflow = 'hidden';
                 }
-            });
+            }
         }
 
-        // Article content data
+        function closeMobileMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Article loading functionality
+        function loadArticle(articleId) {
+            const panel = document.getElementById('article-detail-panel');
+            const title = document.getElementById('article-detail-title');
+            const body = document.getElementById('article-detail-body');
+            
+            if (!panel || !title || !body) return;
+
+            if (typeof articleContent !== 'undefined' && articleContent[articleId]) {
+                const article = articleContent[articleId];
+                title.textContent = article.title;
+                
+                let imageHtml = '';
+                if (typeof window.buildArticleImageHtml === 'function') {
+                    imageHtml = window.buildArticleImageHtml(articleId, article);
+                }
+                
+                body.innerHTML = imageHtml + article.content;
+                panel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                const contentContainer = panel.querySelector('.article-detail-content');
+                if (contentContainer) contentContainer.scrollTop = 0;
+            }
+        }
+
+        function closeArticlePanel() {
+            const panel = document.getElementById('article-detail-panel');
+            if (panel) {
+                panel.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            const drawerClose = document.getElementById('drawer-close');
+            
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    toggleMobileMenu();
+                });
+            }
+            
+            if (drawerClose) {
+                drawerClose.addEventListener('click', closeMobileMenu);
+            }
+            
+            if (mobileDrawer) {
+                mobileDrawer.addEventListener('click', (e) => {
+                    if (e.target === mobileDrawer) closeMobileMenu();
+                });
+            }
+
+            const articlePanel = document.getElementById('article-detail-panel');
+            if (articlePanel) {
+                articlePanel.addEventListener('click', (e) => {
+                    if (e.target === articlePanel) closeArticlePanel();
+                });
+            }
+            
+            const closeBtn = document.getElementById('article-detail-close');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeArticlePanel);
+            }
+        });
+
         const articleContent = {
             'investing-principles': {
                 title: 'Investing Principles',
@@ -1748,104 +1753,7 @@
                 `
             }
         };
-
-        // Article panel functionality
-        function openArticle(articleId) {
-            const panel = document.getElementById('article-detail-panel');
-            const title = document.getElementById('article-detail-title');
-            const body = document.getElementById('article-detail-body');
-            
-            if (articleContent[articleId]) {
-                title.textContent = articleContent[articleId].title;
-                const imagePlaceholder = window.buildArticleImageHtml(articleId, articleContent[articleId]);
-
-                const relatedArticles = `
-<hr style="margin:32px 0;border:none;border-top:1px solid #e5e7eb;">
-<h3 style="color:#1e3a8a;margin-bottom:12px;">Related articles:</h3>
-<p style="color:#6b7280;font-size:14px;line-height:1.6;">Explore more resources and expert perspectives on these topics in our library collection.</p>
-<h3 style="color:#1e3a8a;margin:24px 0 12px;">Related books:</h3>
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;">
-    ${[1,2,3,4,5,6].map(i => `
-    <div style="border:1px solid #e5e7eb;border-radius:8px;padding:12px;text-align:center;background:#f9fafb;">
-        <div style="width:60px;height:80px;background:#e5e7eb;border-radius:4px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:11px;">Book ${i}</div>
-        <a href="#" style="font-size:12px;color:#1e3a8a;text-decoration:none;">Book title link</a>
-    </div>`).join('')}
-</div>
-<hr style="margin:24px 0;border:none;border-top:1px solid #e5e7eb;">
-<p style="font-size:12px;color:#9ca3af;font-style:italic;"><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>`;
-
-                let articleBody = articleContent[articleId] ? articleContent[articleId].content : '';
-                if(articleBody) {
-                    // Remove first <p>...< /p> (non-greedy) and any adjacent heading up to h3 if it exists at the start
-                    // We'll run successive replaces to be robust instead of one massive regex:
-                    articleBody = articleBody.trim();
-                    // if starts with a paragraph that is a category
-                    let pMatch = articleBody.match(/^(<p[^>]*>.*?<\/p>)\s*(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
-                    if(pMatch) {
-                        articleBody = articleBody.substring(pMatch[0].length).trim();
-                    } else {
-                        // try to match just the h tag
-                        let hMatch = articleBody.match(/^(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
-                        if(hMatch) {
-                            articleBody = articleBody.substring(hMatch[0].length).trim();
-                        }
-                    }
-                    
-                    // Bold first paragraph
-                    articleBody = articleBody.replace(/<p>(.*?)<\/p>/i, '<p><strong>$1</strong></p>');
-                    
-                    // Remove existing disclaimer
-                    articleBody = articleBody.replace(/<p><strong>Disclaimer:<\/strong>.*?<\/p>\s*$/is, '');
-                }
-                
-                body.innerHTML = imagePlaceholder + articleBody + relatedArticles;
-                panel.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        function closeArticlePanel() {
-            const panel = document.getElementById('article-detail-panel');
-            panel.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        // Event listeners
-        document.addEventListener('DOMContentLoaded', function() {
-            const articleClose = document.getElementById('article-detail-close');
-            const articlePanel = document.getElementById('article-detail-panel');
-            
-            if (articleClose) {
-                articleClose.addEventListener('click', closeArticlePanel);
-            }
-            
-            if (articlePanel) {
-                articlePanel.addEventListener('click', function(event) {
-                    if (event.target === articlePanel) {
-                        closeArticlePanel();
-                    }
-                });
-            }
-        });
     </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</div></div>    <script src="js/article-image-resolver.js?v=3"></script>
-</body></html>
-
-
-
-
-
+    </body>
+    </html>
+    

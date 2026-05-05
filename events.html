@@ -2,7 +2,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events &amp; Seminars - Graham and Doddsville</title>
-    <link rel="stylesheet" href="css/styles.css?v=3">
+    <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
     <style>
         :root {
@@ -917,108 +917,67 @@
                 color: var(--text-secondary);
             }
         }
-        </style>
+        
+        /* Local Override for Container Style */
+        .container {
+            background-color: #ffffff !important;
+            border: 0px solid !important;
+            box-shadow: none !important;
+        }
+
+    </style>
     <link rel="stylesheet" href="css/mobile-fixes.css">
 
-    <style>
-        /* Scoped overrides for flat white design with gold header border */
-        html, body {
-            background-color: #ffffff !important;
-            background: #ffffff !important;
-        }
+    
+    
+    
+    
+    
 
-        @media (max-width: 1024px) {
-            .container, .header, .header-content, .drawer-header, .wealth-creation-page, .wealth-creation-page-content, .article-detail-header, .financial-analysis-page, .stock-valuation-page {
-                background: #ffffff !important;
-                background-color: #ffffff !important;
-                border: 0px solid transparent !important;
-                box-shadow: none !important;
-            }
-            .header, .drawer-header {
-                border-bottom: 2px solid #d4af37 !important;
-            }
-            /* Remove jagged notebook border/shadow effect */
-            .container::before {
-                display: none !important;
-                content: none !important;
-                box-shadow: none !important;
-                filter: none !important;
-            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <style>
+        /* Scoped overrides for Blue Headers (Surgical Fix) */
+        .drawer-header {
+            background: #1e3a8a !important;
+            background-color: #1e3a8a !important;
+            color: #ffffff !important;
+        }
+        .drawer-header h2, .drawer-close {
+            color: #ffffff !important;
         }
         
-        /* Apply to all viewports for specific elements */
-        .container, .header, .header-content, .drawer-header, .page-title-section, .collapsible-section, .article-detail-header {
+        .collapsible-header {
+            background: #1e3a8a !important;
+            background-color: #1e3a8a !important;
+            color: #ffffff !important;
+        }
+        .collapsible-title, .collapsible-arrow {
+            color: #ffffff !important;
+        }
+        
+        /* Keep everything else as per the white theme requirements */
+        html, body, .container, .header, .header-content, .page-title-section, .collapsible-content, .article-detail-header {
             background: #ffffff !important;
             background-color: #ffffff !important;
-            box-shadow: none !important;
-            border: 0px solid transparent !important;
         }
-        
-        .header, .drawer-header {
+        .header {
             border-bottom: 2px solid #d4af37 !important;
         }
-
-        .collapsible-header, .collapsible-header:hover {
-            background: #ffffff !important;
-            background-color: #ffffff !important;
-            border: 1px solid #e5e7eb !important;
-            color: #1e3a8a !important;
-            box-shadow: none !important;
-            transform: none !important;
-        }
-        
-        .collapsible-title, .collapsible-arrow, .article-detail-title, .article-detail-close {
-            color: #1e3a8a !important;
-        }
-        
-        /* Ensure the main page background is white */
-        body, .wealth-creation-page, .wealth-creation-page-content, .financial-analysis-page, .stock-valuation-page, .professional-advisers-page, .financial-products-page, .resources-page {
-            background: #ffffff !important;
-            background-color: #ffffff !important;
-        }
-        
-        /* Drawer close button visibility */
-        .drawer-close {
-            color: #1e3a8a !important;
-        }
-        .drawer-close::before {
-            color: #1e3a8a !important;
-        }
-        
-        /* Remove blue borders on links */
-        .collapsible-link:hover {
-            border-left-color: #1e3a8a !important;
-            background: #f8f9fa !important;
-        }
-        
-        /* Remove the blue glow from ALL elements */
-        * {
-            box-shadow: none !important;
-            text-shadow: none !important;
-        }
-
-        /* Hamburger menu colors */
-        .hamburger-line {
-            background-color: #1e3a8a !important;
-        }
-        
-        /* Footer disclaimer and other potential blue elements */
-        footer, .footer, .disclaimer-section {
-            background: #ffffff !important;
-            background-color: #ffffff !important;
-            color: #666666 !important;
-            border-top: 1px solid #e5e7eb !important;
-        }
     </style>
-
-
-
-
-
-
-
-
-</head>
+    </head>
 <body>
     <div class="wealth-creation-page">
         <!-- Header -->
@@ -1057,8 +1016,6 @@
                 <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
                 <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
                 <li><a href="investment-analysis.html" class="drawer-link">Investment Analysis</a></li>
-                <li><a href="financial-statement-analysis.html" class="drawer-link">Financial Statement Analysis</a></li>
-                <li><a href="stock-valuation.html" class="drawer-link">Stock Valuation</a></li>
                 <li><a href="sidebar-economics.html" class="drawer-link">Economics</a></li>
                 <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
                 <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
@@ -1082,75 +1039,157 @@
 
             <!-- Collapsible Categories -->
             <div class="collapsible-categories">
+                <!-- Events and Seminars -->
                 <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('events-and-seminars')">
-                        <h3 class="collapsible-title">Events and Seminars</h3>
-                        <span class="collapsible-arrow" id="events-and-seminars-arrow">&#9660;</span>
-                    </div>
-                    <div class="collapsible-content collapsed" id="events-and-seminars-content">
-                        <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('events-and-seminars')">Events and seminars</a></li>
-                        </ul>
-                    </div>
+    <div class="collapsible-header" onclick="window.toggleCollapsible('events-seminars')">
+        <h3 class="collapsible-title">Events and Seminars</h3>
+        <span class="collapsible-arrow" id="events-seminars-arrow">▼</span>
+    </div>
+    <div class="collapsible-content collapsed" id="events-seminars-content" style="max-height:none;">
+        <div class="events-table-wrapper">
+            <!-- Search ← Filter Toggle -->
+            <div class="events-filter-bar">
+                <div class="evt-search-wrap">
+                    <span class="evt-search-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    </span>
+                    <input type="text" id="evt-search" placeholder="Search events..." oninput="window.filterEvents()">
                 </div>
-                <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('free-webinars')">
-                        <h3 class="collapsible-title">Free Webinars</h3>
-                        <span class="collapsible-arrow" id="free-webinars-arrow">&#9660;</span>
-                    </div>
-                    <div class="collapsible-content collapsed" id="free-webinars-content">
-                        <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('free-webinars')">Free webinars</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('podcasts')">
-                        <h3 class="collapsible-title">Podcasts</h3>
-                        <span class="collapsible-arrow" id="podcasts-arrow">&#9660;</span>
-                    </div>
-                    <div class="collapsible-content collapsed" id="podcasts-content">
-                        <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('podcasts')">Podcasts</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('free-online-courses')">
-                        <h3 class="collapsible-title">Free Online Courses</h3>
-                        <span class="collapsible-arrow" id="free-online-courses-arrow">&#9660;</span>
-                    </div>
-                    <div class="collapsible-content collapsed" id="free-online-courses-content">
-                        <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('free-online-courses')">Free online courses</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('industry-courses')">
-                        <h3 class="collapsible-title">Industry Courses</h3>
-                        <span class="collapsible-arrow" id="industry-courses-arrow">&#9660;</span>
-                    </div>
-                    <div class="collapsible-content collapsed" id="industry-courses-content">
-                        <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('industry-courses')">Industry courses</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('tertiary-courses')">
-                        <h3 class="collapsible-title">Tertiary Courses</h3>
-                        <span class="collapsible-arrow" id="tertiary-courses-arrow">&#9660;</span>
-                    </div>
-                    <div class="collapsible-content collapsed" id="tertiary-courses-content">
-                        <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('tertiary-courses')">Tertiary courses</a></li>
-                        </ul>
-                    </div>
-                </div>
+                <button class="evt-filter-toggle" id="evt-filter-toggle" onclick="window.toggleMobileFilters()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+                    Filters <span class="filter-count" id="filter-count" style="display:none">0</span>
+                </button>
             </div>
+            <!-- Dropdown Filters -->
+            <div class="events-filters" id="evt-filters-panel">
+                <select id="evt-state" onchange="window.filterEvents()">
+                    <option value="">All States</option>
+                    <option value="NSW">NSW</option>
+                    <option value="VIC">VIC</option>
+                    <option value="QLD">QLD</option>
+                    <option value="WA">WA</option>
+                    <option value="SA">SA</option>
+                    <option value="TAS">TAS</option>
+                    <option value="ACT">ACT</option>
+                    <option value="NT">NT</option>
+                    <option value="Online">Online</option>
+                </select>
+                <select id="evt-type" onchange="window.filterEvents()">
+                    <option value="">All Types</option>
+                    <option value="Conference">Conference</option>
+                    <option value="Seminar">Seminar</option>
+                    <option value="Discussion">Discussion</option>
+                    <option value="Webinar">Webinar</option>
+                </select>
+                <select id="evt-month" onchange="window.filterEvents()">
+                    <option value="">All Months</option>
+                    <option value="2026-06">June 2026</option>
+                    <option value="2026-07">July 2026</option>
+                    <option value="2026-08">August 2026</option>
+                    <option value="2026-09">September 2026</option>
+                    <option value="2026-10">October 2026</option>
+                    <option value="2026-11">November 2026</option>
+                    <option value="2026-12">December 2026</option>
+                    <option value="2027-01">January 2027</option>
+                </select>
+            </div>
+            <!-- Active filter chips -->
+            <div class="evt-active-filters" id="evt-active-filters"></div>
+            <div class="events-count" id="evt-count">Loading events...</div>
+
+            <!-- Desktop Table -->
+            <div class="events-table-desktop">
+                <table class="events-table" id="events-table">
+                    <thead>
+                        <tr>
+                            <th onclick="sortEventsTable('date')">Date ▼</th>
+                            <th onclick="sortEventsTable('startTime')">Time</th>
+                            <th onclick="sortEventsTable('state')">State</th>
+                            <th onclick="sortEventsTable('eventType')">Type</th>
+                            <th onclick="sortEventsTable('title')">Title</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody id="evt-tbody"></tbody>
+                </table>
+            </div>
+
+            <!-- Mobile Cards -->
+            <div class="events-card-mobile" id="evt-mobile-cards"></div>
+
+            <!-- Pagination -->
+            <div class="events-pagination" id="evt-pagination"></div>
         </div>
     </div>
+</div>
+
+            <!-- Free Webinars -->
+            <div class="collapsible-section">
+                <div class="collapsible-header" onclick="window.toggleCollapsible('free-webinars')">
+                    <h3 class="collapsible-title">Free Webinars</h3>
+                    <span class="collapsible-arrow" id="free-webinars-arrow">▼</span>
+                </div>
+                <div class="collapsible-content" id="free-webinars-content">
+                    <ul class="collapsible-links">
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('free-webinars')">Free Webinars</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Podcasts -->
+            <div class="collapsible-section">
+                <div class="collapsible-header" onclick="window.toggleCollapsible('podcasts')">
+                    <h3 class="collapsible-title">Podcasts</h3>
+                    <span class="collapsible-arrow" id="podcasts-arrow">▼</span>
+                </div>
+                <div class="collapsible-content" id="podcasts-content">
+                    <ul class="collapsible-links">
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('podcasts')">Podcasts</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Free Online Courses -->
+            <div class="collapsible-section">
+                <div class="collapsible-header" onclick="window.toggleCollapsible('free-online-courses')">
+                    <h3 class="collapsible-title">Free Online Courses</h3>
+                    <span class="collapsible-arrow" id="free-online-courses-arrow">▼</span>
+                </div>
+                <div class="collapsible-content" id="free-online-courses-content">
+                    <ul class="collapsible-links">
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('online-courses')">Free Online Courses</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Industry Courses -->
+            <div class="collapsible-section">
+                <div class="collapsible-header" onclick="window.toggleCollapsible('industry-courses')">
+                    <h3 class="collapsible-title">Industry Courses</h3>
+                    <span class="collapsible-arrow" id="industry-courses-arrow">▼</span>
+                </div>
+                <div class="collapsible-content" id="industry-courses-content">
+                    <ul class="collapsible-links">
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('industry-courses')">Industry Courses</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Tertiary Courses -->
+            <div class="collapsible-section">
+                <div class="collapsible-header" onclick="window.toggleCollapsible('tertiary-courses')">
+                    <h3 class="collapsible-title">Tertiary Courses</h3>
+                    <span class="collapsible-arrow" id="tertiary-courses-arrow">▼</span>
+                </div>
+                <div class="collapsible-content" id="tertiary-courses-content">
+                    <ul class="collapsible-links">
+                        <li><a href="#" class="collapsible-link" onclick="openArticle('tertiary-courses')">Tertiary Courses</a></li>
+                    </ul>
+                </div>
+            </div>
+            </div>
+        </div>
+    
 
     <!-- Article Detail Panel -->
     <div class="article-detail-panel" id="article-detail-panel">
@@ -1164,78 +1203,114 @@
             </div>
         </div>
     </div>
+
+    <script src="js/article-image-resolver.js?v=3"></script>
     <script>
         // Collapsible functionality
-        function toggleCollapsible(sectionId) {
+        window.toggleCollapsible = function(sectionId) {
             const content = document.getElementById(sectionId + '-content');
             const arrow = document.getElementById(sectionId + '-arrow');
             if (!content) return;
-            const section = content.closest('.collapsible-section');
             
-            const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px' && content.style.maxHeight !== 'none';
+            const section = content.closest('.collapsible-section');
+            const isCurrentlyOpen = content.classList.contains('expanded');
             
             // Close all other open sections
             document.querySelectorAll('.collapsible-content').forEach(c => {
-                c.style.maxHeight = null;
-                c.classList.remove('expanded');
-                c.classList.add('collapsed');
-                const s = c.closest('.collapsible-section');
-                if (s) s.classList.remove('active');
-                const a = document.getElementById(c.id.replace('-content', '-arrow'));
-                if (a) a.innerHTML = '▼';
+                if (c.id !== sectionId + '-content' && (c.classList.contains('expanded') || c.style.maxHeight)) {
+                    c.style.maxHeight = null;
+                    c.classList.remove('expanded');
+                    c.classList.add('collapsed');
+                    const s = c.closest('.collapsible-section');
+                    if (s) s.classList.remove('active');
+                    const a = document.getElementById(c.id.replace('-content', '-arrow'));
+                    if (a) a.innerHTML = '▼';
+                }
             });
 
-            if (!isOpen) {
-                if(sectionId === 'events-seminars') {
-                    content.style.maxHeight = 'none';
-                } else {
-                    content.style.maxHeight = content.scrollHeight + "px";
-                }
+            if (!isCurrentlyOpen) {
                 content.classList.add('expanded');
                 content.classList.remove('collapsed');
+                
+                if(sectionId === 'events-and-seminars' || sectionId === 'events-seminars') {
+                    content.style.maxHeight = 'none';
+                } else {
+                    const height = content.scrollHeight;
+                    content.style.maxHeight = height + "px";
+                }
+                
                 if (section) section.classList.add('active');
                 if (arrow) arrow.innerHTML = '▲';
+            } else {
+                content.style.maxHeight = null;
+                content.classList.remove('expanded');
+                content.classList.add('collapsed');
+                if (section) section.classList.remove('active');
+                if (arrow) arrow.innerHTML = '▼';
             }
-        }
+        };
 
         // Mobile drawer functionality
-        const mobileToggle = document.getElementById('mobile-toggle');
-        const mobileDrawer = document.getElementById('mobile-drawer');
-        const drawerClose = document.getElementById('drawer-close');
-        
-        if (mobileToggle && mobileDrawer) {
-            mobileToggle.addEventListener('click', () => {
-                console.log('Hamburger menu clicked!');
-                mobileDrawer.classList.add('open');
-                document.body.style.overflow = 'hidden';
-                console.log('Drawer should be open now');
-            });
-        }
-        
-        if (drawerClose && mobileDrawer) {
-            drawerClose.addEventListener('click', () => {
-                mobileDrawer.classList.remove('open');
-                document.body.style.overflow = '';
-            });
-        }
-        
-        // Close drawer when clicking outside
-        if (mobileDrawer) {
-            mobileDrawer.addEventListener('click', (e) => {
-                if (e.target === mobileDrawer) {
+        window.toggleMobileMenu = function() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                if (mobileDrawer.classList.contains('open')) {
                     mobileDrawer.classList.remove('open');
                     document.body.style.overflow = '';
+                } else {
+                    mobileDrawer.classList.add('open');
+                    document.body.style.overflow = 'hidden';
                 }
-            });
-        }
+            }
+        };
+
+        window.closeMobileMenu = function() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        };
+
+        // Article loading functionality
+        window.loadArticle = function(articleId) {
+            const panel = document.getElementById('article-detail-panel');
+            const title = document.getElementById('article-detail-title');
+            const body = document.getElementById('article-detail-body');
+            
+            if (!panel || !title || !body) return;
+
+            if (typeof articleContent !== 'undefined' && articleContent[articleId]) {
+                const article = articleContent[articleId];
+                title.textContent = article.title;
+                
+                let imageHtml = '';
+                if (typeof window.buildArticleImageHtml === 'function') {
+                    imageHtml = window.buildArticleImageHtml(articleId, article);
+                }
+                
+                body.innerHTML = imageHtml + article.content;
+                panel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                const contentContainer = panel.querySelector('.article-detail-content');
+                if (contentContainer) contentContainer.scrollTop = 0;
+            }
+        };
+
+        window.closeArticlePanel = function() {
+            const panel = document.getElementById('article-detail-panel');
+            if (panel) {
+                panel.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        };
 
         // Article content data
         const articleContent = {
             'events-and-seminars': {
                 title: 'Events and Seminars',
-                content: `
-                    
-<p>Please browse the Events and Seminars table directly on the page â€” use the filters to search by state, type, or month.</p>`
+                content: `<p>Please browse the Events and Seminars table directly on the page — use the filters to search by state, type, or month.</p>`
             },
             'omaha-may-2024': {
                 title: 'Omaha May 2024',
@@ -1267,8 +1342,7 @@
             'free-webinars': {
                 title: 'Free Webinars',
                 content: `
-                    
-<p>Here is a list of companies that provide free investment education webinars to empower Australians with valuable financial knowledge and insights. These webinars serve as a rich resource for anyone looking to enhance their understanding of various investment strategies, market dynamics, and financial instruments. Whether you're a novice seeking to grasp the basics or a seasoned investor looking to refine your skills, these webinars offer a wealth of information, ensuring that financial literacy is accessible to all.</p>
+                    <p>Here is a list of companies that provide free investment education webinars to empower Australians with valuable financial knowledge and insights. These webinars serve as a rich resource for anyone looking to enhance their understanding of various investment strategies, market dynamics, and financial instruments. Whether you're a novice seeking to grasp the basics or a seasoned investor looking to refine your skills, these webinars offer a wealth of information, ensuring that financial literacy is accessible to all.</p>
                     
                     <h3>Australian Investors Association</h3>
                     <p>The Australian Investment Association is a not for profit organisation dedicated to providing independent quality investment information helping Australians to decide their financial future. First formed in 1991, the association acts with integrity and are not aligned to any institution which allows it to filter and hand select the best possible information for its members.</p>
@@ -1306,8 +1380,7 @@
             'podcasts': {
                 title: 'Podcasts',
                 content: `
-                    
-<p>If you lean toward auditory or visual learning rather than delving into books, then investing podcasts are right up your alley. These podcasts span a wide spectrum of subjects, including shares, value investing, investment strategies, financial products, and captivating interviews with investors. Below, you'll find a compilation of the top 20 podcasts that resonate with enthusiasts of value and stock investing alike.</p>
+                    <p>If you lean toward auditory or visual learning rather than delving into books, then investing podcasts are right up your alley. These podcasts span a wide spectrum of subjects, including shares, value investing, investment strategies, financial products, and captivating interviews with investors. Below, you'll find a compilation of the top 20 podcasts that resonate with enthusiasts of value and stock investing alike.</p>
                     
                     <h3>1. Value Investor | Zacks.com</h3>
                     <p>Every week, Zacks Value Investing Strategist, Tracey Ryniec, discusses value investing philosophies and strategies, how to avoid value traps, and where to find value stocks using screening tools. She has managed the Value Investor newsletter since 2012.</p>
@@ -1373,8 +1446,7 @@
             'online-courses': {
                 title: 'Free Online Courses',
                 content: `
-                    
-<p>In today's digital age, there's an abundance of free online courses available to help you master various aspects of finance and investment. Whether you're a beginner looking to understand the fundamentals or an experienced investor seeking to expand your knowledge, these courses offer valuable insights. The topics covered include general investing, shares, options, bonds, ETFs, portfolio management or asset allocation. These free online courses can empower you with the knowledge and skills needed to make informed financial decisions and thrive in the world of finance and investment.</p>
+                    <p>In today's digital age, there's an abundance of free online courses available to help you master various aspects of finance and investment. Whether you're a beginner looking to understand the fundamentals or an experienced investor seeking to expand your knowledge, these courses offer valuable insights. The topics covered include general investing, shares, options, bonds, ETFs, portfolio management or asset allocation. These free online courses can empower you with the knowledge and skills needed to make informed financial decisions and thrive in the world of finance and investment.</p>
                     
                     <h3>Shares Course - ASX</h3>
                     <p>Learn about the essentials of investing in shares. This tutorial gives you a quick understanding of how the sharemarket works and what you will need to start trading.</p>
@@ -1440,11 +1512,10 @@
             'industry-courses': {
                 title: 'Industry Courses',
                 content: `
+                    <p>For anyone wishing to master their skills in the financial or security analysis, there are several courses available in the financial services industry, the most prominent being the Chartered Financial Analyst® Program. These programs are thoughtfully designed to cater to ambitious individuals eager to acquire both academic rigor and real-world knowledge, ensuring immediate applicability in their professional journey.</p>
                     
-<p>For anyone wishing to master their skills in the financial or security analysis, there are several courses available in the financial services industry, the most prominent being the Chartered Financial AnalystÂ® Program. These programs are thoughtfully designed to cater to ambitious individuals eager to acquire both academic rigor and real-world knowledge, ensuring immediate applicability in their professional journey.</p>
-                    
-                    <h3>Chartered Financial AnalystÂ® (CFA) Program - CFA Institute</h3>
-                    <p>If you want to achieve one of the highest distinctions in the investment management profession, you should become a Chartered Financial AnalystÂ®. As a CFAÂ® charterholder, you will have the knowledge and the skills to thrive in the competitive investing industry.</p>
+                    <h3>Chartered Financial Analyst® (CFA) Program - CFA Institute</h3>
+                    <p>If you want to achieve one of the highest distinctions in the investment management profession, you should become a Chartered Financial Analyst®. As a CFA® charterholder, you will have the knowledge and the skills to thrive in the competitive investing industry.</p>
                     
                     <h3>Master of Applied Finance - Kaplan Professional</h3>
                     <p>Leading online degree designed for ambitious and savvy individuals who are looking for advanced academic rigour, but thrive on practical and real-world learning immediately applicable in the workplace, and directly relevant to future career roles.</p>
@@ -1459,8 +1530,7 @@
             'tertiary-courses': {
                 title: 'Tertiary Courses',
                 content: `
-                    
-<p>Whether it's a Bachelor degree or a Masters degree, there are several practically-oriented courses available in Australian universities for anyone wishing to study financial or security analysis. In particular, these include programs from Swinburne University, Australian National University, University of Technology Sydney and University of Melbourne, tertiary institutions with world-wide reputation for delivering quality courses in business, management, finance and investment.</p>
+                    <p>Whether it's a Bachelor degree or a Masters degree, there are several practically-oriented courses available in Australian universities for anyone wishing to study financial or security analysis. In particular, these include programs from Swinburne University, Australian National University, University of Technology Sydney and University of Melbourne, tertiary institutions with world-wide reputation for delivering quality courses in business, management, finance and investment.</p>
                     
                     <h3>Bachelor of Business - Finance - Swinburne University</h3>
                     <p>Learn about emerging finance, such as cryptocurrency, as well as the traditional finance practices which underpin all businesses. Taught by skilled financial experts, you'll learn to manage risks, understand the value of shares and bonds, create investments, and use cutting-edge financial programming software.</p>
@@ -1495,85 +1565,6 @@
             }
         };
 
-        // Article panel functionality
-        function openArticle(articleId) {
-            const panel = document.getElementById('article-detail-panel');
-            const title = document.getElementById('article-detail-title');
-            const body = document.getElementById('article-detail-body');
-            
-            if (articleContent[articleId]) {
-                title.textContent = articleContent[articleId].title;
-                const imagePlaceholder = window.buildArticleImageHtml(articleId, articleContent[articleId]);
-
-                const relatedArticles = `
-<hr style="margin:32px 0;border:none;border-top:1px solid #e5e7eb;">
-<h3 style="color:#1e3a8a;margin-bottom:12px;">Related articles:</h3>
-<p style="color:#6b7280;font-size:14px;line-height:1.6;">Explore more resources and expert perspectives on these topics in our library collection.</p>
-<h3 style="color:#1e3a8a;margin:24px 0 12px;">Related books:</h3>
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;">
-    ${[1,2,3,4,5,6].map(i => `
-    <div style="border:1px solid #e5e7eb;border-radius:8px;padding:12px;text-align:center;background:#f9fafb;">
-        <div style="width:60px;height:80px;background:#e5e7eb;border-radius:4px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:11px;">Book ${i}</div>
-        <a href="#" style="font-size:12px;color:#1e3a8a;text-decoration:none;">Book title link</a>
-    </div>`).join('')}
-</div>
-<hr style="margin:24px 0;border:none;border-top:1px solid #e5e7eb;">
-<p style="font-size:12px;color:#9ca3af;font-style:italic;"><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>`;
-
-                let articleBody = articleContent[articleId] ? articleContent[articleId].content : '';
-                if(articleBody) {
-                    // Remove first <p>...< /p> (non-greedy) and any adjacent heading up to h3 if it exists at the start
-                    // We'll run successive replaces to be robust instead of one massive regex:
-                    articleBody = articleBody.trim();
-                    // if starts with a paragraph that is a category
-                    let pMatch = articleBody.match(/^(<p[^>]*>.*?<\/p>)\s*(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
-                    if(pMatch) {
-                        articleBody = articleBody.substring(pMatch[0].length).trim();
-                    } else {
-                        // try to match just the h tag
-                        let hMatch = articleBody.match(/^(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
-                        if(hMatch) {
-                            articleBody = articleBody.substring(hMatch[0].length).trim();
-                        }
-                    }
-                    
-                    // Bold first paragraph
-                    articleBody = articleBody.replace(/<p>(.*?)<\/p>/i, '<p><strong>$1</strong></p>');
-                    
-                    // Remove existing disclaimer
-                    articleBody = articleBody.replace(/<p><strong>Disclaimer:<\/strong>.*?<\/p>\s*$/is, '');
-                }
-                
-                body.innerHTML = imagePlaceholder + articleBody + relatedArticles;
-                panel.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        function closeArticlePanel() {
-            const panel = document.getElementById('article-detail-panel');
-            panel.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        // Event listeners
-        document.addEventListener('DOMContentLoaded', function() {
-            const articleClose = document.getElementById('article-detail-close');
-            const articlePanel = document.getElementById('article-detail-panel');
-            
-            if (articleClose) {
-                articleClose.addEventListener('click', closeArticlePanel);
-            }
-            
-            if (articlePanel) {
-                articlePanel.addEventListener('click', function(event) {
-                    if (event.target === articlePanel) {
-                        closeArticlePanel();
-                    }
-                });
-            }
-        });
-
         // ===== Events Table Logic =====
         let allEventsData = [];
         let filteredEvents = [];
@@ -1584,53 +1575,18 @@
         let expandedRows = new Set();
         let mobileExpandedCards = new Set();
 
-        // Load events data
-        fetch('events_data.json')
-            .then(r => r.json())
-            .then(data => {
-                allEventsData = data;
-                filterEvents();
-            })
-            .catch(err => {
-                document.getElementById('evt-count').textContent = 'Error loading events data.';
-                console.error('Failed to load events_data.json', err);
-            });
+        window.filterEvents = function() {
+            const searchInput = document.getElementById('evt-search');
+            const stateInput = document.getElementById('evt-state');
+            const typeInput = document.getElementById('evt-type');
+            const monthInput = document.getElementById('evt-month');
+            
+            if (!searchInput || !allEventsData.length) return;
 
-        function toggleMobileFilters() {
-            const panel = document.getElementById('evt-filters-panel');
-            panel.classList.toggle('mobile-open');
-        }
-
-        function clearFilter(filterName) {
-            document.getElementById(filterName).value = '';
-            filterEvents();
-        }
-
-        function updateActiveFilters() {
-            const state = document.getElementById('evt-state').value;
-            const type = document.getElementById('evt-type').value;
-            const month = document.getElementById('evt-month').value;
-            let chips = '';
-            let count = 0;
-            if (state) { count++; chips += '<span class="evt-filter-chip">' + state + '<button onclick="clearFilter(\'evt-state\')">&times;</button></span>'; }
-            if (type) { count++; chips += '<span class="evt-filter-chip">' + type + '<button onclick="clearFilter(\'evt-type\')">&times;</button></span>'; }
-            if (month) {
-                count++;
-                const sel = document.getElementById('evt-month');
-                const label = sel.options[sel.selectedIndex].text;
-                chips += '<span class="evt-filter-chip">' + label + '<button onclick="clearFilter(\'evt-month\')">&times;</button></span>';
-            }
-            document.getElementById('evt-active-filters').innerHTML = chips;
-            const badge = document.getElementById('filter-count');
-            if (count > 0) { badge.textContent = count; badge.style.display = 'inline-flex'; }
-            else { badge.style.display = 'none'; }
-        }
-
-        function filterEvents() {
-            const search = (document.getElementById('evt-search').value || '').toLowerCase();
-            const state = document.getElementById('evt-state').value;
-            const type = document.getElementById('evt-type').value;
-            const month = document.getElementById('evt-month').value;
+            const search = searchInput.value.toLowerCase();
+            const state = stateInput.value;
+            const type = typeInput.value;
+            const month = monthInput.value;
 
             filteredEvents = allEventsData.filter(e => {
                 if (state && e.state !== state) return false;
@@ -1657,25 +1613,71 @@
             evtCurrentPage = 1;
             expandedRows.clear();
             mobileExpandedCards.clear();
+            
             updateActiveFilters();
             renderEventsTable();
-        }
+        };
 
-        function sortEventsTable(field) {
+        window.sortEventsTable = function(field) {
             if (evtSortField === field) {
                 evtSortAsc = !evtSortAsc;
             } else {
                 evtSortField = field;
                 evtSortAsc = true;
             }
-            filterEvents();
+            window.filterEvents();
+        };
+
+        function updateActiveFilters() {
+            const state = document.getElementById('evt-state').value;
+            const type = document.getElementById('evt-type').value;
+            const month = document.getElementById('evt-month').value;
+            let chips = '';
+            let count = 0;
+            if (state) { count++; chips += '<span class="evt-filter-chip">' + state + '<button onclick="window.clearFilter(\'evt-state\')">&times;</button></span>'; }
+            if (type) { count++; chips += '<span class="evt-filter-chip">' + type + '<button onclick="window.clearFilter(\'evt-type\')">&times;</button></span>'; }
+            if (month) {
+                count++;
+                const sel = document.getElementById('evt-month');
+                const label = sel.options[sel.selectedIndex].text;
+                chips += '<span class="evt-filter-chip">' + label + '<button onclick="window.clearFilter(\'evt-month\')">&times;</button></span>';
+            }
+            const filterContainer = document.getElementById('evt-active-filters');
+            if (filterContainer) filterContainer.innerHTML = chips;
+            
+            const badge = document.getElementById('filter-count');
+            if (badge) {
+                if (count > 0) { badge.textContent = count; badge.style.display = 'inline-flex'; }
+                else { badge.style.display = 'none'; }
+            }
         }
 
+        window.toggleMobileFilters = function() {
+            const panel = document.getElementById('evt-filters-panel');
+            if (panel) {
+                panel.classList.toggle('active');
+            }
+        };
+
+        window.clearFilter = function(filterName) {
+            const el = document.getElementById(filterName);
+            if (el) {
+                el.value = '';
+                window.filterEvents();
+            }
+        };
+
         function formatDate(dateStr) {
+            if (!dateStr) return 'TBA';
             const d = new Date(dateStr + 'T00:00:00');
             const days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
             const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
             return days[d.getDay()] + ', ' + d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
+        }
+
+        function getTypeBadge(type) {
+            const cls = 'evt-type-' + (type || 'other').toLowerCase();
+            return '<span class="evt-type-badge ' + cls + '">' + (type || 'Event') + '</span>';
         }
 
         function formatDateParts(dateStr) {
@@ -1685,31 +1687,33 @@
             return { day: d.getDate(), month: months[d.getMonth()], dow: days[d.getDay()] };
         }
 
-        function getTypeBadge(type) {
-            const cls = 'evt-type-' + type.toLowerCase();
-            return '<span class="evt-type-badge ' + cls + '">' + type + '</span>';
-        }
-
-        function toggleEventDetail(idx) {
+        window.toggleEventDetail = function(idx) {
             if (expandedRows.has(idx)) expandedRows.delete(idx);
             else expandedRows.add(idx);
             renderEventsTable();
-        }
+        };
 
-        function toggleMobileCard(idx) {
+        window.toggleMobileCard = function(idx) {
             if (mobileExpandedCards.has(idx)) mobileExpandedCards.delete(idx);
             else mobileExpandedCards.add(idx);
             renderEventsTable();
-        }
+        };
 
         function renderEventsTable() {
+            const tbody = document.getElementById('evt-tbody');
+            const countEl = document.getElementById('evt-count');
+            const mobileCards = document.getElementById('evt-mobile-cards');
+            const pagination = document.getElementById('evt-pagination');
+            
+            if (!tbody || !countEl) return;
+
             const total = filteredEvents.length;
             const totalPages = Math.ceil(total / evtPerPage);
             const start = (evtCurrentPage - 1) * evtPerPage;
             const end = Math.min(start + evtPerPage, total);
             const pageEvents = filteredEvents.slice(start, end);
 
-            document.getElementById('evt-count').textContent = 'Showing ' + (total > 0 ? (start+1) : 0) + 'â€“' + end + ' of ' + total + ' events';
+            countEl.textContent = 'Showing ' + (total > 0 ? (start+1) : 0) + '-' + end + ' of ' + total + ' events';
 
             // Desktop table
             let html = '';
@@ -1717,123 +1721,105 @@
                 const globalIdx = start + i;
                 const titleLink = e.url ? '<a href="' + e.url + '" target="_blank">' + e.title + '</a>' : e.title;
                 html += '<tr>';
-                html += '<td style="white-space:nowrap;">' + formatDate(e.date) + '</td>';
-                html += '<td style="white-space:nowrap;">' + e.startTime + (e.finishTime && e.finishTime !== 'TBA' ? ' â€“ ' + e.finishTime : '') + '</td>';
+                html += '<td>' + formatDate(e.date) + '</td>';
+                html += '<td>' + e.startTime + (e.finishTime && e.finishTime !== 'TBA' ? ' - ' + e.finishTime : '') + '</td>';
                 html += '<td>' + e.state + '</td>';
                 html += '<td>' + getTypeBadge(e.eventType) + '</td>';
                 html += '<td class="evt-title">' + titleLink + '</td>';
-                html += '<td><button class="evt-expand-btn" onclick="toggleEventDetail(' + globalIdx + ')">' + (expandedRows.has(globalIdx) ? 'Hide ▲' : 'Details ▼') + '</button></td>';
+                html += '<td><button class="evt-expand-btn" onclick="window.toggleEventDetail(' + globalIdx + ')">' + (expandedRows.has(globalIdx) ? 'Hide' : 'Details') + '</button></td>';
                 html += '</tr>';
                 if (expandedRows.has(globalIdx)) {
                     html += '<tr class="evt-detail-row"><td colspan="6"><div class="evt-detail-grid">';
-                    html += '<div><div class="label">Description</div>' + e.description + '</div>';
-                    html += '<div><div class="label">Venue</div>' + e.venue + '</div>';
-                    html += '<div><div class="label">Cost</div>' + e.cost + '</div>';
-                    html += '<div><div class="label">Food</div>' + e.food + '</div>';
-                    html += '<div><div class="label">Source</div>' + e.source + '</div>';
-                    html += '<div><div class="label">City</div>' + e.city + '</div>';
-                    if (e.url) html += '<div style="grid-column:1/-1;"><div class="label">Website</div><a href="' + e.url + '" target="_blank" style="color:#1e3a8a;word-break:break-all;">' + e.url + '</a></div>';
+                    html += '<div><strong>Description:</strong> ' + e.description + '</div>';
+                    html += '<div><strong>Venue:</strong> ' + e.venue + '</div>';
+                    html += '<div><strong>Cost:</strong> ' + e.cost + '</div>';
+                    html += '<div><strong>Source:</strong> ' + e.source + '</div>';
                     html += '</div></td></tr>';
                 }
             });
-            document.getElementById('evt-tbody').innerHTML = html;
+            tbody.innerHTML = html;
 
-            // Mobile cards â€” redesigned with date chip + collapsible detail
+            // Mobile cards
             let mobileHtml = '';
             pageEvents.forEach((e, i) => {
                 const globalIdx = start + i;
-                const dp = formatDateParts(e.date);
-                const titleLink = e.url ? '<a href="' + e.url + '" target="_blank">' + e.title + '</a>' : e.title;
                 const isExpanded = mobileExpandedCards.has(globalIdx);
-                const locationText = e.state === 'Online' ? 'Online' : e.city + ', ' + e.state;
-
-                mobileHtml += '<div class="event-mobile-card">';
-                // Date chip
-                mobileHtml += '<div class="mc-date-chip"><span class="mc-day">' + dp.day + '</span><span class="mc-month">' + dp.month + '</span></div>';
-                // Body
-                mobileHtml += '<div class="mc-body">';
-                mobileHtml += '<div class="mc-title-row"><div class="mc-title">' + titleLink + '</div>' + getTypeBadge(e.eventType) + '</div>';
-                // Meta row with icons
-                mobileHtml += '<div class="mc-meta-row">';
-                mobileHtml += '<span class="mc-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>' + e.startTime + '</span>';
-                mobileHtml += '<span class="mc-meta-sep"></span>';
-                mobileHtml += '<span class="mc-meta-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>' + locationText + '</span>';
-                if (e.cost && e.cost !== 'TBC') {
-                    mobileHtml += '<span class="mc-meta-sep"></span>';
-                    mobileHtml += '<span class="mc-meta-item" style="color:' + (e.cost === 'Free' ? '#059669' : '#92400e') + ';font-weight:600;">' + e.cost + '</span>';
-                }
-                mobileHtml += '</div>';
-                // Expand button
-                mobileHtml += '<button class="mc-expand-details" onclick="toggleMobileCard(' + globalIdx + ')">' + (isExpanded ? 'Hide details ▲' : 'More details ▼') + '</button>';
-                // Expandable detail panel
-                if (isExpanded) {
-                    mobileHtml += '<div class="mc-detail-panel">';
-                    mobileHtml += '<div class="mc-dl">';
-                    mobileHtml += '<dt>Venue</dt><dd>' + e.venue + '</dd>';
-                    mobileHtml += '<dt>Time</dt><dd>' + e.startTime + (e.finishTime && e.finishTime !== 'TBA' ? ' â€“ ' + e.finishTime : '') + '</dd>';
-                    if (e.cost) { mobileHtml += '<dt>Cost</dt><dd>' + e.cost + '</dd>'; }
-                    if (e.food && e.food !== 'Unknown') { mobileHtml += '<dt>Food</dt><dd>' + e.food + '</dd>'; }
-                    mobileHtml += '<dt>Source</dt><dd>' + e.source + '</dd>';
-                    if (e.url) { mobileHtml += '<dt>Website</dt><dd><a href="' + e.url + '" target="_blank" style="color:#1e3a8a;word-break:break-all;">' + e.url + '</a></dd>'; }
-                    mobileHtml += '</div>';
-                    if (e.description) { mobileHtml += '<div class="mc-desc-text">' + e.description + '</div>'; }
-                    mobileHtml += '</div>';
-                }
-                mobileHtml += '</div>'; // mc-body
-                mobileHtml += '</div>'; // card
+                const dp = formatDateParts(e.date);
+                
+                mobileHtml += `
+                <div class="event-mobile-card">
+                    <div class="mc-date-chip">
+                        <span class="mc-day">${dp.day}</span>
+                        <span class="mc-month">${dp.month}</span>
+                    </div>
+                    <div class="mc-body">
+                        <div class="mc-title-row">
+                            <div class="mc-title">${e.url ? `<a href="${e.url}" target="_blank">${e.title}</a>` : e.title}</div>
+                        </div>
+                        <div class="mc-meta-row">
+                            <span class="mc-meta-item">${e.startTime}</span>
+                            <span class="mc-meta-sep"></span>
+                            <span class="mc-meta-item">${e.state}</span>
+                            <span class="mc-meta-sep"></span>
+                            <span class="mc-meta-item">${getTypeBadge(e.eventType)}</span>
+                        </div>
+                        <button class="mc-expand-details" onclick="window.toggleMobileCard(${globalIdx})">
+                            ${isExpanded ? 'Hide Details' : 'View Details'}
+                        </button>
+                        ${isExpanded ? `
+                        <div class="mc-detail-panel">
+                            <div class="mc-dl">
+                                <dt>Venue</dt><dd>${e.venue}</dd>
+                                <dt>Cost</dt><dd>${e.cost}</dd>
+                                <dt>Source</dt><dd>${e.source}</dd>
+                            </div>
+                            <div class="mc-desc-text">${e.description}</div>
+                        </div>` : ''}
+                    </div>
+                </div>`;
             });
-            document.getElementById('evt-mobile-cards').innerHTML = mobileHtml;
+            if (mobileCards) mobileCards.innerHTML = mobileHtml;
 
-            // Pagination â€” simplified for mobile, full for desktop
+            // Pagination
             let pag = '';
             if (totalPages > 1) {
-                pag += '<button ' + (evtCurrentPage <= 1 ? 'disabled' : '') + ' onclick="goEvtPage(' + (evtCurrentPage - 1) + ')">&laquo; Prev</button>';
-                let startPage = Math.max(1, evtCurrentPage - 3);
-                let endPage = Math.min(totalPages, evtCurrentPage + 3);
-                if (startPage > 1) pag += '<button class="page-num-btn" onclick="goEvtPage(1)">1</button><span class="page-num-btn">...</span>';
-                for (let p = startPage; p <= endPage; p++) {
-                    pag += '<button class="page-num-btn ' + (p === evtCurrentPage ? 'active' : '') + '" onclick="goEvtPage(' + p + ')">' + p + '</button>';
-                }
-                if (endPage < totalPages) pag += '<span class="page-num-btn">...</span><button class="page-num-btn" onclick="goEvtPage(' + totalPages + ')">' + totalPages + '</button>';
-                pag += '<span class="page-info-text">Page ' + evtCurrentPage + ' of ' + totalPages + '</span>';
-                pag += '<button ' + (evtCurrentPage >= totalPages ? 'disabled' : '') + ' onclick="goEvtPage(' + (evtCurrentPage + 1) + ')">Next &raquo;</button>';
+                pag += `<button ${evtCurrentPage <= 1 ? 'disabled' : ''} onclick="window.goEvtPage(${evtCurrentPage - 1})">Prev</button>`;
+                pag += `<span> Page ${evtCurrentPage} of ${totalPages} </span>`;
+                pag += `<button ${evtCurrentPage >= totalPages ? 'disabled' : ''} onclick="window.goEvtPage(${evtCurrentPage + 1})">Next</button>`;
             }
-            document.getElementById('evt-pagination').innerHTML = pag;
+            if (pagination) pagination.innerHTML = pag;
         }
 
-        function goEvtPage(p) {
+        window.goEvtPage = function(p) {
             evtCurrentPage = p;
-            expandedRows.clear();
-            mobileExpandedCards.clear();
             renderEventsTable();
-            document.getElementById('events-seminars-content').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
+        };
 
-        // Auto-expand the Events and Seminars section on page load
+        // Initialize
         document.addEventListener('DOMContentLoaded', function() {
-            setTimeout(function() {
-                toggleCollapsible('events-seminars');
+            const mobileToggle = document.getElementById('mobile-toggle');
+            if (mobileToggle) mobileToggle.addEventListener('click', window.toggleMobileMenu);
+            const drawerClose = document.getElementById('drawer-close');
+            if (drawerClose) drawerClose.addEventListener('click', window.closeMobileMenu);
+            const articleClose = document.getElementById('article-detail-close');
+            if (articleClose) articleClose.addEventListener('click', window.closeArticlePanel);
+
+            fetch('events_data.json')
+                .then(r => r.json())
+                .then(data => {
+                    allEventsData = data;
+                    window.filterEvents();
+                })
+                .catch(err => {
+                    console.error('Data load error:', err);
+                });
+
+            setTimeout(() => {
+                if (typeof window.toggleCollapsible === 'function') {
+                    window.toggleCollapsible('events-seminars');
+                }
             }, 300);
         });
     </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <script src="js/article-image-resolver.js?v=3"></script>
-</body></html>
-
-
-
-
-
+    </body>
+    </html>

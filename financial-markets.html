@@ -753,6 +753,36 @@
         }
         .wealth-creation-page-content { padding-top: 30px; }
         </style>
+
+    <style>
+        /* Scoped overrides for Blue Headers (Surgical Fix) */
+        .drawer-header {
+            background: #1e3a8a !important;
+            background-color: #1e3a8a !important;
+            color: #ffffff !important;
+        }
+        .drawer-header h2, .drawer-close {
+            color: #ffffff !important;
+        }
+        
+        .collapsible-header {
+            background: #1e3a8a !important;
+            background-color: #1e3a8a !important;
+            color: #ffffff !important;
+        }
+        .collapsible-title, .collapsible-arrow {
+            color: #ffffff !important;
+        }
+        
+        /* Keep everything else as per the white theme requirements */
+        html, body, .container, .header, .header-content, .page-title-section, .collapsible-content, .article-detail-header {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+        }
+        .header {
+            border-bottom: 2px solid #d4af37 !important;
+        }
+    </style>
 </head>
 <body>
     <div class="financial-markets-page">
@@ -1120,38 +1150,53 @@
             const content = document.getElementById(sectionId + '-content');
             const arrow = document.getElementById(sectionId + '-arrow');
             if (!content) return;
-            const section = content.closest('.collapsible-section');
             
-            const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px' && content.style.maxHeight !== 'none';
+            const section = content.closest('.collapsible-section');
+            const isCurrentlyOpen = content.classList.contains('expanded');
             
             // Close all other open sections
             document.querySelectorAll('.collapsible-content').forEach(c => {
-                c.style.maxHeight = null;
-                c.classList.remove('expanded');
-                c.classList.add('collapsed');
-                const s = c.closest('.collapsible-section');
-                if (s) s.classList.remove('active');
-                const a = document.getElementById(c.id.replace('-content', '-arrow'));
-                if (a) a.innerHTML = '▼';
+                if (c.id !== sectionId + '-content' && (c.classList.contains('expanded') || c.style.maxHeight)) {
+                    c.style.maxHeight = null;
+                    c.classList.remove('expanded');
+                    c.classList.add('collapsed');
+                    const s = c.closest('.collapsible-section');
+                    if (s) s.classList.remove('active');
+                    const a = document.getElementById(c.id.replace('-content', '-arrow'));
+                    if (a) a.innerHTML = '▼';
+                }
             });
 
-            if (!isOpen) {
-                if(sectionId === 'events-seminars') {
-                    content.style.maxHeight = 'none';
-                } else {
-                    content.style.maxHeight = content.scrollHeight + "px";
-                }
+            if (!isCurrentlyOpen) {
                 content.classList.add('expanded');
                 content.classList.remove('collapsed');
+                const height = content.scrollHeight;
+                content.style.maxHeight = height + "px";
                 if (section) section.classList.add('active');
                 if (arrow) arrow.innerHTML = '▲';
+            } else {
+                content.style.maxHeight = null;
+                content.classList.remove('expanded');
+                content.classList.add('collapsed');
+                if (section) section.classList.remove('active');
+                if (arrow) arrow.innerHTML = '▼';
             }
         }
 
-        function at our best when we are working towards a specific goal. So besides having a purpose (why), you must set a specific goal (what) typically in the form of a monetary amount and a date by which you hope to have that money. For example, "I want to have a net worth of $5 million by the time I'm 35 years old". It is not so important if you do not achieve the goal by the deadline you have set; what matters is that you set a target for you to aim for. This is important because the goal becomes the guiding force behind all of your actions.</p>
+        const articleContent = {
+            'laws-of-wealth-creation': {
+                title: 'The 9 Laws of Wealth Creation: A Roadmap to Financial Success',
+                content: `
+                    <p>Financial success is not merely a matter of luck or inheritance; it is often the result of following a set of time-tested principles. These principles, which we'll call the laws of wealth creation, provide a roadmap for anyone aspiring to build their financial fortune. In this article, we'll explore each of these laws and show you how to apply them to your own financial journey.</p>
+                    
+                    <h3>1. Purpose</h3>
+                    <p>The first step on your path to wealth is to have a clear and compelling purpose. Why do you want to be rich? Is it to provide for your family, to achieve financial freedom, or to make a positive impact on the world? Your purpose will be your "why" â€“ the driving force that keeps you motivated when challenges arise. Without a strong purpose, you may find it difficult to stay the course over the long term.</p>
+                    
+                    <h3>2. Goal Setting</h3>
+                    <p>We are at our best when we are working towards a specific goal. So besides having a purpose (why), you must set a specific goal (what) typically in the form of a monetary amount and a date by which you hope to have that money. For example, "I want to have a net worth of $5 million by the time I'm 35 years old". It is not so important if you do not achieve the goal by the deadline you have set; what matters is that you set a target for you to aim for. This is important because the goal becomes the guiding force behind all of your actions.</p>
                     
                     <h3>3. Education</h3>
-                    <p>The biggest investment you will (and should) ever make is in in yourself. You must "learn to earn". You cannot succeed financially unless you have a solid understanding of a range of money-related topics such as ABOUT, real estate, sharemarket, business and accounting. Go visit your library, buy books, attend seminars, join interest groups, read online articles, etc. Education will broaden your horizon, help you make the right decisions and help minimise the risk of making bad decisions. Commit to your life-long education and personal growth and increase your earning power. This will be, by far, the best investment you will ever make.</p>
+                    <p>The biggest investment you will (and should) ever make is in in yourself. You must "learn to earn". You cannot succeed financially unless you have a solid understanding of a range of money-related topics such as property, real estate, sharemarket, business and accounting. Go visit your library, buy books, attend seminars, join interest groups, read online articles, etc. Education will broaden your horizon, help you make the right decisions and help minimise the risk of making bad decisions. Commit to your life-long education and personal growth and increase your earning power. This will be, by far, the best investment you will ever make.</p>
                     
                     <h3>4. Saving</h3>
                     <p>You must save a portion of your income regularly (at least 10%) no matter what your circumstances. This is sometimes referred to as "paying yourself first". Without savings (surplus income), you will have nothing to grow your wealth. You must therefore manage your spending wisely so that you can maximise your saving. Keep a close eye on your expenditures, particularly luxuries like eating out, travelling, entertainment, fancy clothes and footwear. Live frugally, avoid credit and shun instant gratification. Prepare a weekly, fortnightly or monthly budget of your household income and expenses so that you can live below your means.</p>
@@ -18118,72 +18163,71 @@
         }
 
         // Mobile menu functions
+        // Mobile drawer functionality
         function toggleMobileMenu() {
-            const drawer = document.getElementById('mobile-drawer');
-            if (drawer) {
-                drawer.classList.toggle('open');
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                if (mobileDrawer.classList.contains('open')) {
+                    mobileDrawer.classList.remove('open');
+                    document.body.style.overflow = '';
+                } else {
+                    mobileDrawer.classList.add('open');
+                    document.body.style.overflow = 'hidden';
+                }
             }
         }
 
         function closeMobileMenu() {
-            const drawer = document.getElementById('mobile-drawer');
-            drawer.classList.remove('open');
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            }
         }
 
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', function() {
-            // Mobile menu event listeners
+        // Article loading functionality
+        function loadArticle(articleId) {
+            const panel = document.getElementById('article-detail-panel');
+            const title = document.getElementById('article-detail-title');
+            const body = document.getElementById('article-detail-body');
+            
+            if (typeof articleContent !== 'undefined' && articleContent[articleId]) {
+                title.textContent = articleContent[articleId].title;
+                const imagePlaceholder = window.buildArticleImageHtml ? window.buildArticleImageHtml(articleId, articleContent[articleId]) : '';
+                body.innerHTML = imagePlaceholder + articleContent[articleId].content;
+                panel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeArticlePanel() {
+            const panel = document.getElementById('article-detail-panel');
+            if (panel) {
+                panel.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', () => {
             const mobileToggle = document.getElementById('mobile-toggle');
             const drawerClose = document.getElementById('drawer-close');
             
             if (mobileToggle) {
-                mobileToggle.addEventListener('click', toggleMobileMenu);
+                mobileToggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    toggleMobileMenu();
+                });
             }
             
             if (drawerClose) {
                 drawerClose.addEventListener('click', closeMobileMenu);
             }
             
-            // Close menu when clicking outside
-            document.addEventListener('click', function(event) {
-                const drawer = document.getElementById('mobile-drawer');
-                const toggle = document.getElementById('mobile-toggle');
-                
-                if (drawer && drawer.classList.contains('open') && 
-                    !drawer.contains(event.target) && 
-                    !toggle.contains(event.target)) {
-                    closeMobileMenu();
-                }
-            });
-            
-            // Article detail panel event listeners
             const articleClose = document.getElementById('article-detail-close');
-            const articlePanel = document.getElementById('article-detail-panel');
-            
             if (articleClose) {
                 articleClose.addEventListener('click', closeArticlePanel);
             }
-            
-            // Close article panel when clicking outside
-            if (articlePanel) {
-                articlePanel.addEventListener('click', function(event) {
-                    if (event.target === articlePanel) {
-                        closeArticlePanel();
-                    }
-                });
-            }
-            
-            // Handle collapsible link clicks
-            document.querySelectorAll('.collapsible-link[data-article]').forEach(link => {
-                link.addEventListener('click', function(event) {
-                    event.preventDefault();
-                    const articleId = this.getAttribute('data-article');
-                    loadArticle(articleId);
-                });
-            });
-            
-            // All collapsible sections start closed by default
-            console.log('financial markets page loaded with collapsible sections');
         });
     </script>
 

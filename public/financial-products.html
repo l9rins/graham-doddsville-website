@@ -496,6 +496,18 @@
 
     
     
+    
+    
+    
+
+
+
+
+
+
+
+
+
     <style>
         /* Scoped overrides for Blue Headers (Surgical Fix) */
         .drawer-header {
@@ -525,17 +537,7 @@
             border-bottom: 2px solid #d4af37 !important;
         }
     </style>
-    
-    
-
-
-
-
-
-
-
-
-</head>
+    </head>
 <body>
     <div class="wealth-creation-page">
         <!-- Header -->
@@ -821,6 +823,8 @@
     <script src="js/article-image-resolver.js?v=3"></script>
     
     <script src="js/article-image-resolver.js?v=3"></script>
+    
+    <script src="js/article-image-resolver.js?v=3"></script>
     <script>
         // Collapsible functionality
         function toggleCollapsible(sectionId) {
@@ -845,23 +849,17 @@
             });
 
             if (!isCurrentlyOpen) {
-                // OPENING
-                // First, remove collapsed and add expanded to ensure it's visible for scrollHeight calculation
                 content.classList.add('expanded');
                 content.classList.remove('collapsed');
-                
                 if(sectionId === 'events-seminars') {
                     content.style.maxHeight = 'none';
                 } else {
-                    // Now measure scrollHeight
                     const height = content.scrollHeight;
                     content.style.maxHeight = height + "px";
                 }
-                
                 if (section) section.classList.add('active');
                 if (arrow) arrow.innerHTML = '▲';
             } else {
-                // CLOSING
                 content.style.maxHeight = null;
                 content.classList.remove('expanded');
                 content.classList.add('collapsed');
@@ -962,7 +960,6 @@
             }
         });
 
-        // Data from file
         const articleContent = {
             'cash': {
                 title: 'Cash',

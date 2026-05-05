@@ -292,100 +292,41 @@
         .wealth-creation-page-content { padding-top: 30px; }
         </style>
 
-    <style>
-        /* Scoped overrides for flat white design with gold header border */
-        html, body {
-            background-color: #ffffff !important;
-            background: #ffffff !important;
-        }
+    
 
-        @media (max-width: 1024px) {
-            .container, .header, .header-content, .drawer-header, .wealth-creation-page, .wealth-creation-page-content, .article-detail-header, .financial-analysis-page, .stock-valuation-page {
-                background: #ffffff !important;
-                background-color: #ffffff !important;
-                border: 0px solid transparent !important;
-                box-shadow: none !important;
-            }
-            .header, .drawer-header {
-                border-bottom: 2px solid #d4af37 !important;
-            }
-            /* Remove jagged notebook border/shadow effect */
-            .container::before {
-                display: none !important;
-                content: none !important;
-                box-shadow: none !important;
-                filter: none !important;
-            }
+
+
+
+    <style>
+        /* Scoped overrides for Blue Headers (Surgical Fix) */
+        .drawer-header {
+            background: #1e3a8a !important;
+            background-color: #1e3a8a !important;
+            color: #ffffff !important;
+        }
+        .drawer-header h2, .drawer-close {
+            color: #ffffff !important;
         }
         
-        /* Apply to all viewports for specific elements */
-        .container, .header, .header-content, .drawer-header, .page-title-section, .collapsible-section, .article-detail-header {
+        .collapsible-header {
+            background: #1e3a8a !important;
+            background-color: #1e3a8a !important;
+            color: #ffffff !important;
+        }
+        .collapsible-title, .collapsible-arrow {
+            color: #ffffff !important;
+        }
+        
+        /* Keep everything else as per the white theme requirements */
+        html, body, .container, .header, .header-content, .page-title-section, .collapsible-content, .article-detail-header {
             background: #ffffff !important;
             background-color: #ffffff !important;
-            box-shadow: none !important;
-            border: 0px solid transparent !important;
         }
-        
-        .header, .drawer-header {
+        .header {
             border-bottom: 2px solid #d4af37 !important;
         }
-
-        .collapsible-header, .collapsible-header:hover {
-            background: #ffffff !important;
-            background-color: #ffffff !important;
-            border: 1px solid #e5e7eb !important;
-            color: #1e3a8a !important;
-            box-shadow: none !important;
-            transform: none !important;
-        }
-        
-        .collapsible-title, .collapsible-arrow, .article-detail-title, .article-detail-close {
-            color: #1e3a8a !important;
-        }
-        
-        /* Ensure the main page background is white */
-        body, .wealth-creation-page, .wealth-creation-page-content, .financial-analysis-page, .stock-valuation-page, .professional-advisers-page, .financial-products-page, .resources-page {
-            background: #ffffff !important;
-            background-color: #ffffff !important;
-        }
-        
-        /* Drawer close button visibility */
-        .drawer-close {
-            color: #1e3a8a !important;
-        }
-        .drawer-close::before {
-            color: #1e3a8a !important;
-        }
-        
-        /* Remove blue borders on links */
-        .collapsible-link:hover {
-            border-left-color: #1e3a8a !important;
-            background: #f8f9fa !important;
-        }
-        
-        /* Remove the blue glow from ALL elements */
-        * {
-            box-shadow: none !important;
-            text-shadow: none !important;
-        }
-
-        /* Hamburger menu colors */
-        .hamburger-line {
-            background-color: #1e3a8a !important;
-        }
-        
-        /* Footer disclaimer and other potential blue elements */
-        footer, .footer, .disclaimer-section {
-            background: #ffffff !important;
-            background-color: #ffffff !important;
-            color: #666666 !important;
-            border-top: 1px solid #e5e7eb !important;
-        }
     </style>
-
-
-
-</head>
+    </head>
 <body>
     <div class="wealth-creation-page">
         <!-- Header -->
@@ -642,72 +583,143 @@
             </div>
         </div>
     </div>
+    
+    <script src="js/article-image-resolver.js?v=3"></script>
     <script>
         // Collapsible functionality
         function toggleCollapsible(sectionId) {
             const content = document.getElementById(sectionId + '-content');
             const arrow = document.getElementById(sectionId + '-arrow');
             if (!content) return;
-            const section = content.closest('.collapsible-section');
             
-            const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px' && content.style.maxHeight !== 'none';
+            const section = content.closest('.collapsible-section');
+            const isCurrentlyOpen = content.classList.contains('expanded');
             
             // Close all other open sections
             document.querySelectorAll('.collapsible-content').forEach(c => {
-                c.style.maxHeight = null;
-                c.classList.remove('expanded');
-                c.classList.add('collapsed');
-                const s = c.closest('.collapsible-section');
-                if (s) s.classList.remove('active');
-                const a = document.getElementById(c.id.replace('-content', '-arrow'));
-                if (a) a.innerHTML = '▼';
+                if (c.id !== sectionId + '-content' && (c.classList.contains('expanded') || c.style.maxHeight)) {
+                    c.style.maxHeight = null;
+                    c.classList.remove('expanded');
+                    c.classList.add('collapsed');
+                    const s = c.closest('.collapsible-section');
+                    if (s) s.classList.remove('active');
+                    const a = document.getElementById(c.id.replace('-content', '-arrow'));
+                    if (a) a.innerHTML = '▼';
+                }
             });
 
-            if (!isOpen) {
+            if (!isCurrentlyOpen) {
+                content.classList.add('expanded');
+                content.classList.remove('collapsed');
                 if(sectionId === 'events-seminars') {
                     content.style.maxHeight = 'none';
                 } else {
-                    content.style.maxHeight = content.scrollHeight + "px";
+                    const height = content.scrollHeight;
+                    content.style.maxHeight = height + "px";
                 }
-                content.classList.add('expanded');
-                content.classList.remove('collapsed');
                 if (section) section.classList.add('active');
                 if (arrow) arrow.innerHTML = '▲';
+            } else {
+                content.style.maxHeight = null;
+                content.classList.remove('expanded');
+                content.classList.add('collapsed');
+                if (section) section.classList.remove('active');
+                if (arrow) arrow.innerHTML = '▼';
             }
         }
 
         // Mobile drawer functionality
-        const mobileToggle = document.getElementById('mobile-toggle');
-        const mobileDrawer = document.getElementById('mobile-drawer');
-        const drawerClose = document.getElementById('drawer-close');
-        
-        if (mobileToggle && mobileDrawer) {
-            mobileToggle.addEventListener('click', () => {
-                console.log('Hamburger menu clicked!');
-                mobileDrawer.classList.add('open');
-                document.body.style.overflow = 'hidden';
-                console.log('Drawer should be open now');
-            });
-        }
-        
-        if (drawerClose && mobileDrawer) {
-            drawerClose.addEventListener('click', () => {
-                mobileDrawer.classList.remove('open');
-                document.body.style.overflow = '';
-            });
-        }
-        
-        // Close drawer when clicking outside
-        if (mobileDrawer) {
-            mobileDrawer.addEventListener('click', (e) => {
-                if (e.target === mobileDrawer) {
+        function toggleMobileMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                if (mobileDrawer.classList.contains('open')) {
                     mobileDrawer.classList.remove('open');
                     document.body.style.overflow = '';
+                } else {
+                    mobileDrawer.classList.add('open');
+                    document.body.style.overflow = 'hidden';
                 }
-            });
+            }
         }
 
-        // Article content data
+        function closeMobileMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Article loading functionality
+        function loadArticle(articleId) {
+            const panel = document.getElementById('article-detail-panel');
+            const title = document.getElementById('article-detail-title');
+            const body = document.getElementById('article-detail-body');
+            
+            if (!panel || !title || !body) return;
+
+            if (typeof articleContent !== 'undefined' && articleContent[articleId]) {
+                const article = articleContent[articleId];
+                title.textContent = article.title;
+                
+                let imageHtml = '';
+                if (typeof window.buildArticleImageHtml === 'function') {
+                    imageHtml = window.buildArticleImageHtml(articleId, article);
+                }
+                
+                body.innerHTML = imageHtml + article.content;
+                panel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                const contentContainer = panel.querySelector('.article-detail-content');
+                if (contentContainer) contentContainer.scrollTop = 0;
+            }
+        }
+
+        function closeArticlePanel() {
+            const panel = document.getElementById('article-detail-panel');
+            if (panel) {
+                panel.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            const drawerClose = document.getElementById('drawer-close');
+            
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    toggleMobileMenu();
+                });
+            }
+            
+            if (drawerClose) {
+                drawerClose.addEventListener('click', closeMobileMenu);
+            }
+            
+            if (mobileDrawer) {
+                mobileDrawer.addEventListener('click', (e) => {
+                    if (e.target === mobileDrawer) closeMobileMenu();
+                });
+            }
+
+            const articlePanel = document.getElementById('article-detail-panel');
+            if (articlePanel) {
+                articlePanel.addEventListener('click', (e) => {
+                    if (e.target === articlePanel) closeArticlePanel();
+                });
+            }
+            
+            const closeBtn = document.getElementById('article-detail-close');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeArticlePanel);
+            }
+        });
+
         const articleContent = {
             'industry-guides-automobiles-and-components': {
                 title: 'Automobiles and components',
@@ -1674,110 +1686,7 @@
                 `
             },
         };
-
-
-        // Article panel functionality
-        function openArticle(articleId) {
-            const panel = document.getElementById('article-detail-panel');
-            const title = document.getElementById('article-detail-title');
-            const body = document.getElementById('article-detail-body');
-            
-            if (articleContent[articleId]) {
-                title.textContent = articleContent[articleId].title;
-                const imagePlaceholder = window.buildArticleImageHtml(articleId, articleContent[articleId]);
-
-                const relatedArticles = `
-<hr style="margin:32px 0;border:none;border-top:1px solid #e5e7eb;">
-<h3 style="color:#1e3a8a;margin-bottom:12px;">Related articles:</h3>
-<p style="color:#6b7280;font-size:14px;line-height:1.6;">Explore more resources and expert perspectives on these topics in our library collection.</p>
-<h3 style="color:#1e3a8a;margin:24px 0 12px;">Related books:</h3>
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;">
-    ${[1,2,3,4,5,6].map(i => `
-    <div style="border:1px solid #e5e7eb;border-radius:8px;padding:12px;text-align:center;background:#f9fafb;">
-        <div style="width:60px;height:80px;background:#e5e7eb;border-radius:4px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:11px;">Book ${i}</div>
-        <a href="#" style="font-size:12px;color:#1e3a8a;text-decoration:none;">Book title link</a>
-    </div>`).join('')}
-</div>
-<hr style="margin:24px 0;border:none;border-top:1px solid #e5e7eb;">
-<p style="font-size:12px;color:#9ca3af;font-style:italic;"><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>`;
-
-                let articleBody = articleContent[articleId] ? articleContent[articleId].content : '';
-                if(articleBody) {
-                    // Remove first <p>...< /p> (non-greedy) and any adjacent heading up to h3 if it exists at the start
-                    // We'll run successive replaces to be robust instead of one massive regex:
-                    articleBody = articleBody.trim();
-                    // if starts with a paragraph that is a category
-                    let pMatch = articleBody.match(/^(<p[^>]*>.*?<\/p>)\s*(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
-                    if(pMatch) {
-                        articleBody = articleBody.substring(pMatch[0].length).trim();
-                    } else {
-                        // try to match just the h tag
-                        let hMatch = articleBody.match(/^(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
-                        if(hMatch) {
-                            articleBody = articleBody.substring(hMatch[0].length).trim();
-                        }
-                    }
-                    
-                    // Bold first paragraph
-                    articleBody = articleBody.replace(/<p>(.*?)<\/p>/i, '<p><strong>$1</strong></p>');
-                    
-                    // Remove existing disclaimer
-                    articleBody = articleBody.replace(/<p><strong>Disclaimer:<\/strong>.*?<\/p>\s*$/is, '');
-                }
-                
-                body.innerHTML = imagePlaceholder + articleBody + relatedArticles;
-                panel.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        function closeArticlePanel() {
-            const panel = document.getElementById('article-detail-panel');
-            panel.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        // Event listeners
-        document.addEventListener('DOMContentLoaded', function() {
-            const articleClose = document.getElementById('article-detail-close');
-            const articlePanel = document.getElementById('article-detail-panel');
-            
-            if (articleClose) {
-                articleClose.addEventListener('click', closeArticlePanel);
-            }
-            
-            if (articlePanel) {
-                articlePanel.addEventListener('click', function(event) {
-                    if (event.target === articlePanel) {
-                        closeArticlePanel();
-                    }
-                });
-            }
-
-            // Check for hash in URL and open corresponding article
-            if (window.location.hash) {
-                const hashValue = window.location.hash.substring(1);
-                // Look through articleContent keys to find a match
-                for (const key in articleContent) {
-                    if (key.endsWith(hashValue)) {
-                        // Expand the corresponding collapsible section
-                        const sectionId = key.substring(0, key.lastIndexOf('-' + hashValue));
-                        const sectionArrow = document.getElementById(sectionId + '-arrow');
-                        if (sectionArrow && document.getElementById(sectionId + '-content').classList.contains('collapsed')) {
-                            toggleCollapsible(sectionId);
-                        }
-                        // Open the article
-                        setTimeout(() => openArticle(key), 100);
-                        break;
-                    }
-                }
-            }
-
-        });
     </script>
-
-
-    <script src="js/article-image-resolver.js?v=3"></script>
-</body></html>
-
-
+    </body>
+    </html>
+    
