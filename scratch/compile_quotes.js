@@ -49,7 +49,18 @@ const cleanStr = (str) => {
     .trim();
 };
 
+const getInitials = (name) => {
+  if (!name) return 'GD';
+  const words = name.split(/\s+/).filter(w => w.length > 0);
+  if (words.length >= 2) {
+    return (words[0][0] + words[1][0]).toUpperCase();
+  }
+  return words[0].substring(0, 2).toUpperCase();
+};
+
 const quotes = rawData.map((row, idx) => {
+  const company = cleanStr(row.Company);
+  const author = cleanStr(row.Author);
   return {
     id: idx + 1,
     date: row.Date instanceof Date ? row.Date : new Date(row.Date),
@@ -59,9 +70,10 @@ const quotes = rawData.map((row, idx) => {
     specificHeading: cleanStr(row['Specific Heading']),
     generalHeading: cleanStr(row['General Heading']),
     quote: cleanStr(row.Quote),
-    author: cleanStr(row.Author),
+    author: author,
     jobTitle: cleanStr(row['Job Title']),
-    company: cleanStr(row.Company),
+    company: company,
+    avatarInitials: getInitials(company || author),
     companyUrl: cleanStr(row['Company URL']),
     documentUrl: cleanStr(row['Document URL'])
   };
@@ -94,37 +106,51 @@ const homePreviewsHtml = quotes.slice(0, 3).map((q, i) => {
                 </div>`;
 }).join('\n');
 
-// ─── 3. GENERATE FULL MARKET QUOTES HTML CARDS ──────────────────────────────
+// ─── 3. GENERATE FULL MARKET QUOTES HTML CARDS (CLIENT SPECIFICATION) ────────
 
 const fullCardsHtml = quotes.map((q) => {
-  // Make company name a functional link if URL is provided
   const companyLink = q.companyUrl
     ? `<a href="${q.companyUrl}" target="_blank" class="company-link" onclick="event.stopPropagation();">${q.company} ↗</a>`
     : q.company;
 
-  // Make a beautiful source document button in the card footer if URL is provided
-  const sourceButton = q.documentUrl
-    ? `<a href="${q.documentUrl}" target="_blank" class="source-btn" onclick="event.stopPropagation();">View Source ↗</a>`
-    : `<span class="quote-country">${q.country}</span>`;
+  const sourceButton = `
+            <a href="${q.documentUrl || q.companyUrl || '#'}" target="_blank" class="source-btn" onclick="event.stopPropagation();">
+                <svg style="width: 16px; height: 16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+                View Source
+            </a>`;
 
   return `
                 <!-- Quote ${q.id} -->
-                <div class="quote-card" id="quote-${q.id}">
-                    <div class="quote-header">
-                        <h3 class="quote-title">${q.specificHeading}</h3>
-                        <p class="quote-meta">${q.generalHeading}</p>
+                <div class="quote-card" id="quote-${q.id}" data-category="${q.generalHeading}">
+                    <!-- Header Row: Category Badge & Date -->
+                    <div class="card-top-row">
+                        <span class="category-badge">${q.generalHeading}</span>
+                        <span class="card-date">${q.dateFull}</span>
                     </div>
-                    <div class="quote-content">
-                        <p class="quote-text">"${q.quote}"</p>
 
-                        <div class="quote-author-info">
-                            <p class="quote-author">${q.author}</p>
-                            <p class="quote-position">${q.jobTitle}</p>
-                            <p class="quote-company">${companyLink}</p>
+                    <!-- Title Row -->
+                    <h2 class="card-title">${q.specificHeading}</h2>
+
+                    <!-- Quote Block with warm background & gold left border -->
+                    <div class="quote-text-block">
+                        <p class="quote-para"><span class="quote-mark">“</span>${q.quote}</p>
+                    </div>
+
+                    <!-- Author Row with circular avatar initials -->
+                    <div class="author-avatar-row">
+                        <div class="author-avatar">${q.avatarInitials}</div>
+                        <div class="author-details">
+                            <h4 class="author-name">${companyLink}</h4>
+                            <p class="author-subtitle">${q.author} • ${q.jobTitle}</p>
                         </div>
                     </div>
-                    <div class="quote-footer">
-                        <span class="quote-date">${q.dateFull}</span>
+
+                    <!-- Action Row: Full-Width View Source -->
+                    <div class="card-action-row">
                         ${sourceButton}
                     </div>
                 </div>`;
