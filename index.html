@@ -8292,11 +8292,82 @@ Within this gigantic auction arena, it is our job to select businesses with econ
             const modal = document.getElementById('topicModal');
             const modalBody = document.getElementById('topicModalBody');
             if (!modal || !modalBody) return;
-            const normalizedTitle = topicTitle.trim().toLowerCase().replace(/\s+/g, ' ');
-            const content = buffettTopicsData[normalizedTitle] || `
-                <h3 style="font-family: 'Playfair Display', serif; color: #1e3a8a; margin-bottom: 12px; font-size: 24px;">${topicTitle}</h3>
-                <p>Information about <strong>${topicTitle}</strong> from Warren Buffett's letters and essays is coming soon. Stay tuned for a curated selection of insights and wisdom on this topic.</p>
-            `;
+            
+            const normalize = (str) => str.trim().toLowerCase().replace(/[-.]/g, ' ').replace(/\s+/g, ' ');
+            const normTitle = normalize(topicTitle);
+            let content = null;
+            
+            // Symmetrical lookup
+            for (const key in buffettTopicsData) {
+                if (normalize(key) === normTitle) {
+                    content = buffettTopicsData[key];
+                    break;
+                }
+            }
+            
+            if (!content) {
+                // Smart fallbacks and mapping of high-level terms
+                if (normTitle === "investment philosophy") {
+                    content = `<h3 style="font-family: 'Playfair Display', serif; color: #1e3a8a; margin-bottom: 12px; font-size: 24px;">Investment Philosophy</h3>
+                    <p>Warren Buffett's core investment philosophy is built upon three pillars taught by his mentor, Benjamin Graham: viewing stocks as fractional ownership of businesses, practicing the discipline of "Mr. Market," and maintaining an adequate "Margin of Safety."</p>
+                    <p>"We do not view ourselves as accumulating pieces of paper called stocks. Instead, we view ourselves as owning fractional interests in outstanding businesses with excellent underlying economics and shareholder-oriented management."</p>
+                    <p style="font-style: italic; color: #6b7280; margin-bottom: 16px;">— [Warren Buffett, Shareholder Letters]</p>
+                    <p>He advises staying strictly within one's <strong>Circle of Competence</strong> and focusing on long-term cash generation and competitive advantages (moats), rather than short-term price fluctuations.</p>`;
+                } else if (normTitle === "investment objectives") {
+                    content = `<h3 style="font-family: 'Playfair Display', serif; color: #1e3a8a; margin-bottom: 12px; font-size: 24px;">Investment Objectives</h3>
+                    <p>Berkshire's fundamental long-term economic goal is to maximize the average annual rate of return on capital without incurring undue financial risks or utilizing excessive leverage.</p>
+                    <p>"Our long-term economic goal is to maximize Berkshire's average annual rate of return on capital. We do not wish to optimize short-term results at the expense of our long-term objectives."</p>
+                    <p style="font-style: italic; color: #6b7280; margin-bottom: 16px;">— [Warren Buffett, Owner's Manual]</p>`;
+                } else if (normTitle === "successful investing") {
+                    content = buffettTopicsData["modern portfolio theory"] || buffettTopicsData["value investing"];
+                } else if (normTitle === "economic moat") {
+                    content = buffettTopicsData["moats"];
+                } else if (normTitle === "investment risk") {
+                    content = buffettTopicsData["risk"] || buffettTopicsData["leverage"];
+                } else if (normTitle === "corporate governance") {
+                    content = buffettTopicsData["board of directors"];
+                } else if (normTitle === "accounting goodwill") {
+                    content = buffettTopicsData["goodwill"];
+                } else if (normTitle === "share buybacks") {
+                    content = buffettTopicsData["share repurchases"];
+                } else if (normTitle === "taxation") {
+                    content = buffettTopicsData["taxes"];
+                } else if (normTitle === "technical analysis") {
+                    content = buffettTopicsData["speculation"];
+                } else if (normTitle === "good businesses") {
+                    content = buffettTopicsData["the ideal business"];
+                } else if (normTitle === "poor businesses") {
+                    content = buffettTopicsData["textiles"] || buffettTopicsData["retailing"];
+                } else if (normTitle === "stock market") {
+                    content = buffettTopicsData["wall street and mr. market"] || buffettTopicsData["market forecasting"];
+                } else if (normTitle === "portfolio allocation") {
+                    content = buffettTopicsData["diversification"] || buffettTopicsData["capital allocation"];
+                } else if (normTitle === "investment strategy") {
+                    content = buffettTopicsData["value investing"] || buffettTopicsData["long-term investing"];
+                } else if (normTitle === "investment advice") {
+                    content = buffettTopicsData["frictional costs"] || buffettTopicsData["index funds"];
+                } else if (normTitle === "volatility") {
+                    content = buffettTopicsData["risk"] || buffettTopicsData["market crashes"];
+                } else if (normTitle === "charlie munger") {
+                    content = buffettTopicsData["personal habits"] || `<h3 style="font-family: 'Playfair Display', serif; color: #1e3a8a; margin-bottom: 12px; font-size: 24px;">Charlie Munger</h3>
+                    <p>Charlie Munger was Warren Buffett's longtime partner, Vice Chairman of Berkshire Hathaway, and the intellectual force who pushed Buffett to move beyond "cigar-butt" value investing toward buying outstanding businesses at fair prices.</p>
+                    <p>"The blueprint he gave me was simple: Forget what you know about buying fair businesses at wonderful prices; instead, buy wonderful businesses at fair prices."</p>
+                    <p style="font-style: italic; color: #6b7280; margin-bottom: 16px;">— [Warren Buffett, 2023 Tribute to Charlie Munger]</p>`;
+                } else if (normTitle === "benjamin graham") {
+                    content = buffettTopicsData["the superinvestors of graham-and-doddsville"] || `<h3 style="font-family: 'Playfair Display', serif; color: #1e3a8a; margin-bottom: 12px; font-size: 24px;">Benjamin Graham</h3>
+                    <p>Benjamin Graham is universally recognized as the "Father of Value Investing" and was Warren Buffett's mentor, teacher, and employer at the Graham-Newman Corporation.</p>
+                    <p>"Ben was an extraordinary teacher. He gave me a roadmap for investing that I have followed for over sixty years: buy stocks as fractional business ownership, use Mr. Market to your advantage, and always insist on a Margin of Safety."</p>
+                    <p style="font-style: italic; color: #6b7280; margin-bottom: 16px;">— [Warren Buffett, Public Addresses]</p>`;
+                }
+            }
+            
+            if (!content) {
+                content = `
+                    <h3 style="font-family: 'Playfair Display', serif; color: #1e3a8a; margin-bottom: 12px; font-size: 24px;">${topicTitle}</h3>
+                    <p>Information about <strong>${topicTitle}</strong> from Warren Buffett's letters and essays is coming soon. Stay tuned for a curated selection of insights and wisdom on this topic.</p>
+                `;
+            }
+            
             modalBody.innerHTML = content;
             modal.style.display = 'block';
         }
