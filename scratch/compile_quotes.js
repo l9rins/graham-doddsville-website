@@ -97,6 +97,16 @@ const homePreviewsHtml = quotes.slice(0, 3).map((q, i) => {
 // ─── 3. GENERATE FULL MARKET QUOTES HTML CARDS ──────────────────────────────
 
 const fullCardsHtml = quotes.map((q) => {
+  // Make company name a functional link if URL is provided
+  const companyLink = q.companyUrl
+    ? `<a href="${q.companyUrl}" target="_blank" class="company-link" onclick="event.stopPropagation();">${q.company} ↗</a>`
+    : q.company;
+
+  // Make a beautiful source document button in the card footer if URL is provided
+  const sourceButton = q.documentUrl
+    ? `<a href="${q.documentUrl}" target="_blank" class="source-btn" onclick="event.stopPropagation();">View Source ↗</a>`
+    : `<span class="quote-country">${q.country}</span>`;
+
   return `
                 <!-- Quote ${q.id} -->
                 <div class="quote-card" id="quote-${q.id}">
@@ -110,12 +120,12 @@ const fullCardsHtml = quotes.map((q) => {
                         <div class="quote-author-info">
                             <p class="quote-author">${q.author}</p>
                             <p class="quote-position">${q.jobTitle}</p>
-                            <p class="quote-company">${q.company}</p>
+                            <p class="quote-company">${companyLink}</p>
                         </div>
                     </div>
                     <div class="quote-footer">
                         <span class="quote-date">${q.dateFull}</span>
-                        <span class="quote-country">${q.country}</span>
+                        ${sourceButton}
                     </div>
                 </div>`;
 }).join('\n');
