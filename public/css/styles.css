@@ -12097,3 +12097,14 @@ th {
     font-size: 14px;
     font-weight: 600;
 }
+
+/* Fix line spacing and clamping for classic reading links to match non-link items */
+.classic-reading-item-mobile .news-headline a,
+.classic-readings-mobile .news-headline a {
+    display: inline !important;
+    -webkit-line-clamp: unset !important;
+    -webkit-box-orient: unset !important;
+    max-height: none !important;
+    line-height: inherit !important;
+    white-space: normal !important;
+}
