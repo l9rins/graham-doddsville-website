@@ -193,6 +193,109 @@ const newsSources = {
         category: 'Guru Watch'
     },
 
+    // --- Additional Guru Watch Feeds (individual investor targeting) ---
+    'google-news-buffett': {
+        name: 'Google News - Warren Buffett',
+        url: 'https://news.google.com/rss/search?q=%22Warren+Buffett%22+when:14d&hl=en-US&gl=US&ceid=US:en',
+        type: 'rss',
+        category: 'Guru Watch'
+    },
+    'google-news-bill-ackman': {
+        name: 'Google News - Bill Ackman',
+        url: 'https://news.google.com/rss/search?q=%22Bill+Ackman%22+investing+OR+Pershing+when:14d&hl=en-US&gl=US&ceid=US:en',
+        type: 'rss',
+        category: 'Guru Watch'
+    },
+    'google-news-ray-dalio': {
+        name: 'Google News - Ray Dalio',
+        url: 'https://news.google.com/rss/search?q=%22Ray+Dalio%22+investing+OR+Bridgewater+when:14d&hl=en-US&gl=US&ceid=US:en',
+        type: 'rss',
+        category: 'Guru Watch'
+    },
+    'google-news-cathie-wood': {
+        name: 'Google News - Cathie Wood',
+        url: 'https://news.google.com/rss/search?q=%22Cathie+Wood%22+ARK+investing+when:14d&hl=en-US&gl=US&ceid=US:en',
+        type: 'rss',
+        category: 'Guru Watch'
+    },
+    'google-news-berkshire': {
+        name: 'Google News - Berkshire Hathaway',
+        url: 'https://news.google.com/rss/search?q=%22Berkshire+Hathaway%22+when:14d&hl=en-US&gl=US&ceid=US:en',
+        type: 'rss',
+        category: 'Guru Watch'
+    },
+    'google-news-value-investing': {
+        name: 'Google News - Value Investing',
+        url: 'https://news.google.com/rss/search?q=%22value+investing%22+OR+%22value+investor%22+when:14d&hl=en-US&gl=US&ceid=US:en',
+        type: 'rss',
+        category: 'Guru Watch'
+    },
+    'google-news-hedge-fund': {
+        name: 'Google News - Hedge Fund Letters',
+        url: 'https://news.google.com/rss/search?q=hedge+fund+letter+OR+%2213F+filing%22+OR+%22SEC+filing%22+investor+when:14d&hl=en-US&gl=US&ceid=US:en',
+        type: 'rss',
+        category: 'Guru Watch'
+    },
+    'google-news-superinvestors': {
+        name: 'Google News - Superinvestors',
+        url: 'https://news.google.com/rss/search?q=%22George+Soros%22+OR+%22Carl+Icahn%22+OR+%22Michael+Burry%22+OR+%22Howard+Marks%22+when:14d&hl=en-US&gl=US&ceid=US:en',
+        type: 'rss',
+        category: 'Guru Watch'
+    },
+
+    // --- Additional Companies Feeds ---
+    'google-news-asx-earnings': {
+        name: 'Google News - ASX Earnings',
+        url: 'https://news.google.com/rss/search?q=ASX+earnings+OR+%22profit+result%22+OR+%22company+results%22+Australia+when:7d&hl=en-AU&gl=AU&ceid=AU:en',
+        type: 'rss',
+        category: 'Companies'
+    },
+    'google-news-asx-corporate': {
+        name: 'Google News - ASX Corporate',
+        url: 'https://news.google.com/rss/search?q=ASX+company+OR+corporate+OR+acquisition+OR+merger+Australia+when:7d&hl=en-AU&gl=AU&ceid=AU:en',
+        type: 'rss',
+        category: 'Companies'
+    },
+    'google-news-asx-ipo': {
+        name: 'Google News - ASX IPO',
+        url: 'https://news.google.com/rss/search?q=ASX+IPO+OR+listing+OR+%22capital+raising%22+Australia+when:7d&hl=en-AU&gl=AU&ceid=AU:en',
+        type: 'rss',
+        category: 'Companies'
+    },
+
+    // --- Additional Regulatory Feeds ---
+    'google-news-apra': {
+        name: 'Google News - APRA',
+        url: 'https://news.google.com/rss/search?q=APRA+prudential+regulation+Australia+when:14d&hl=en-AU&gl=AU&ceid=AU:en',
+        type: 'rss',
+        category: 'Regulatory'
+    },
+    'google-news-financial-regulation': {
+        name: 'Google News - Financial Regulation AU',
+        url: 'https://news.google.com/rss/search?q=%22financial+regulation%22+OR+%22compliance%22+OR+%22enforcement%22+Australia+ASIC+when:14d&hl=en-AU&gl=AU&ceid=AU:en',
+        type: 'rss',
+        category: 'Regulatory'
+    },
+
+    // === MISSING RSS SOURCES (referenced in server.js but never defined) ===
+    'guardian-rss': {
+        name: 'The Guardian Business',
+        url: 'https://www.theguardian.com/au/business/rss',
+        type: 'rss',
+        category: 'business'
+    },
+    'reuters-rss': {
+        name: 'Reuters Business',
+        url: 'https://news.google.com/rss/search?q=site:reuters.com+business+when:3d&hl=en-AU&gl=AU&ceid=AU:en',
+        type: 'rss',
+        category: 'business'
+    },
+    'bbc-rss': {
+        name: 'BBC Business',
+        url: 'https://feeds.bbci.co.uk/news/business/rss.xml',
+        type: 'rss',
+        category: 'business'
+    },
 
     // === AUSTRALIAN REGIONAL MEDIA ===
     'illawarra-mercury': {

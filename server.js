@@ -37,7 +37,7 @@ const GNEWS_API_KEY = process.env.GNEWS_API_KEY;
 const MAX_CONCURRENT_REQUESTS = 5;
 const REQUEST_TIMEOUT = 8000;
 const CACHE_DURATION = 4 * 60 * 60 * 1000; // 4 hours
-const MAX_ARTICLES_PER_SOURCE = 5;
+const MAX_ARTICLES_PER_SOURCE = 8;
 
 // CACHE SETTINGS
 const CACHE_DIR = path.join(__dirname, 'news-cache');
@@ -523,16 +523,16 @@ async function refreshNewsCache() {
             {
                 category: 'Companies',
                 query: 'ASX OR "Australian shares" OR "company earnings" OR "stock results"',
-                // Configured RSS sources to pull from for this category
-                rssSources: ['stockhead', 'livewire-markets', 'afr', 'abc-business',
-                    'sydney-morning-herald', 'the-australian', 'business-insider-au'],
+                // Google News targeted feeds first (most reliable), then general RSS
+                rssSources: ['google-news-asx-earnings', 'google-news-asx-corporate', 'google-news-asx-ipo',
+                    'afr', 'sydney-morning-herald', 'the-australian', 'business-insider-au',
+                    'guardian-rss', 'reuters-rss', 'bbc-rss'],
                 baseAge: 48
             },
             {
                 category: 'Markets',
                 query: 'ASX OR "stock market" OR "share market" Australia',
-                rssSources: ['stockhead', 'livewire-markets', 'afr', 'abc-business',
-                    'sydney-morning-herald', 'smartcompany', 'the-australian',
+                rssSources: ['afr', 'sydney-morning-herald', 'smartcompany', 'the-australian',
                     'business-insider-au', 'news-com-au', 'the-age',
                     'reuters-rss', 'bbc-rss', 'guardian-rss'],
                 baseAge: 48
@@ -540,7 +540,7 @@ async function refreshNewsCache() {
             {
                 category: 'Economy',
                 query: 'RBA OR "Australian economy" OR inflation OR "interest rate" Australia',
-                rssSources: ['abc-news-au', 'abc-business', 'afr', 'sydney-morning-herald',
+                rssSources: ['abc-news-au', 'afr', 'sydney-morning-herald',
                     'the-australian', 'sbs-news', 'the-age', 'news-com-au',
                     'business-insider-au', 'smartcompany', 'crikey',
                     'guardian-rss', 'bbc-rss', 'reuters-rss'],
@@ -549,7 +549,6 @@ async function refreshNewsCache() {
             {
                 category: 'Industry',
                 query: 'Australia industry OR mining OR energy OR banking OR retail',
-                // Includes the client's specifically configured Google News industry feeds
                 rssSources: ['google-news-mining', 'google-news-retail', 'google-news-construction',
                     'australian-mining', 'mining-com-au', 'inside-retail', 'smartcompany'],
                 baseAge: 48
@@ -557,9 +556,8 @@ async function refreshNewsCache() {
             {
                 category: 'Regulatory',
                 query: 'ASIC OR APRA OR ACCC OR "financial regulation" OR compliance Australia',
-                // Includes the client's specifically configured Google News regulatory feed
-                rssSources: ['google-news-regulatory', 'abc-news-au', 'abc-business',
-                    'afr', 'sydney-morning-herald', 'the-australian',
+                rssSources: ['google-news-regulatory', 'google-news-apra', 'google-news-financial-regulation',
+                    'abc-news-au', 'afr', 'sydney-morning-herald', 'the-australian',
                     'sbs-news', 'the-age', 'news-com-au', 'business-insider-au',
                     'crikey', 'guardian-rss', 'reuters-rss', 'bbc-rss'],
                 baseAge: 336
@@ -567,12 +565,13 @@ async function refreshNewsCache() {
             {
                 category: 'Guru Watch',
                 query: 'Buffett OR "Charlie Munger" OR "Ray Dalio" OR "value investing"',
-                // Includes the client's specifically configured Google News guru feeds
+                // 10 targeted Google News RSS feeds — free & unlimited
                 rssSources: ['google-news-guru', 'google-news-investment-gurus',
-                    'livewire-markets', 'stockhead', 'afr', 'abc-business',
-                    'sydney-morning-herald', 'the-australian', 'business-insider-au',
-                    'guardian-rss', 'reuters-rss', 'bbc-rss'],
-                baseAge: 168
+                    'google-news-buffett', 'google-news-bill-ackman', 'google-news-ray-dalio',
+                    'google-news-cathie-wood', 'google-news-berkshire', 'google-news-value-investing',
+                    'google-news-hedge-fund', 'google-news-superinvestors',
+                    'afr', 'the-australian', 'guardian-rss', 'reuters-rss', 'bbc-rss'],
+                baseAge: 336
             }
         ];
 
@@ -588,7 +587,7 @@ async function refreshNewsCache() {
         const allArticles = [];
 
         const promises = categoriesConfig.map(async (config, index) => {
-            await new Promise(resolve => setTimeout(resolve, index * 500));
+            await new Promise(resolve => setTimeout(resolve, index * 1500));
 
             let validArticles = [];
             let currentAgeLimit = config.baseAge;
@@ -656,19 +655,19 @@ async function refreshNewsCache() {
                 'Markets': ['market', 'markets', 'asx', 'stock', 'shares', 'trading', 'investor', 'rally', 'bull', 'bear', 'index', 'dow', 'nasdaq', 'wall street', 'commodities', 'futures', 'bonds', 'equity', 'portfolio'],
                 'Economy': ['economy', 'economic', 'gdp', 'inflation', 'rba', 'interest rate', 'unemployment', 'jobs', 'wages', 'fiscal', 'monetary', 'recession', 'growth', 'treasury', 'budget', 'tax', 'trade', 'export', 'import', 'cpi', 'central bank', 'federal reserve', 'cost of living'],
                 'Industry': ['mining', 'energy', 'oil', 'gas', 'coal', 'iron ore', 'lithium', 'construction', 'manufacturing', 'retail', 'agriculture', 'technology', 'telecom', 'banking', 'insurance', 'infrastructure', 'renewable'],
-                'Regulatory': ['asic', 'apra', 'accc', 'regulation', 'regulatory', 'compliance', 'law', 'legislation', 'court', 'penalty', 'fine', 'enforcement', 'reform', 'policy', 'governance', 'watchdog'],
-                'Guru Watch': ['buffett', 'munger', 'dalio', 'ackman', 'soros', 'lynch', 'graham', 'value investing', 'investor', 'fund manager', 'hedge fund', 'portfolio', 'guru', 'berkshire', 'oracle of omaha']
+                'Regulatory': ['asic', 'apra', 'accc', 'regulation', 'regulatory', 'compliance', 'law', 'legislation', 'court', 'penalty', 'fine', 'enforcement', 'reform', 'policy', 'governance', 'watchdog', 'austrac', 'oaic', 'firb', 'treasury'],
+                'Guru Watch': ['buffett', 'munger', 'dalio', 'ackman', 'soros', 'lynch', 'graham', 'value investing', 'investor', 'fund manager', 'hedge fund', 'portfolio', 'guru', 'berkshire', 'oracle of omaha', '13f', 'sec filing', 'quarterly letter', 'cathie wood', 'michael burry', 'carl icahn', 'howard marks', 'bridgewater', 'pershing square', 'ark invest', 'superinvestor', 'annual letter', 'shareholder letter']
             };
 
             // 2. FALLBACK: Configured RSS sources — with relevance filtering
             // ============================================================
-            if (filteredArticles.length < 5) {
+            if (filteredArticles.length < 10) {
                 console.log(`Falling back to configured RSS sources for ${config.category}`);
                 const seenUrls = new Set(filteredArticles.map(a => a.url));
                 const relevanceKeywords = categoryRelevanceKeywords[config.category] || [];
 
                 for (const sourceKey of config.rssSources) {
-                    if (filteredArticles.length >= 5) break;
+                    if (filteredArticles.length >= 10) break;
 
                     const sourceConfig = newsSources[sourceKey];
                     if (!sourceConfig || sourceConfig.type !== 'rss') continue;
@@ -682,7 +681,7 @@ async function refreshNewsCache() {
                         const items = feed.items || [];
 
                         for (const item of items) {
-                            if (filteredArticles.length >= 5) break;
+                            if (filteredArticles.length >= 10) break;
                             if (!item.title || !item.link) continue;
 
                             const publishedDate = item.pubDate ? new Date(item.pubDate) : new Date();
@@ -721,20 +720,19 @@ async function refreshNewsCache() {
             // ============================================================
             // 3. SAFETY NET: Placeholder articles (absolute last resort)
             // ============================================================
-            if (filteredArticles.length < 5) {
-                console.log(`Safety net triggered for ${config.category}: only ${filteredArticles.length} articles found`);
-                const needed = 5 - filteredArticles.length;
-                const safetyArticles = [
-                    { title: `Latest ${config.category} News — ${new Date().toLocaleDateString('en-AU', { weekday: 'long' })}`, url: fallbackUrls[config.category] + '?item=1', publishedAt: new Date().toISOString(), source: { name: 'Graham & Doddsville' }, category: config.category, excerpt: `Stay informed with the latest ${config.category.toLowerCase()} updates.` },
-                    { title: `${config.category} Market Roundup`, url: fallbackUrls[config.category] + '?item=2', publishedAt: new Date(Date.now() - 3600000).toISOString(), source: { name: 'Graham & Doddsville' }, category: config.category, excerpt: `Latest ${config.category.toLowerCase()} analysis and commentary for Australian investors.` },
-                    { title: `${config.category} Weekly Overview`, url: fallbackUrls[config.category] + '?item=3', publishedAt: new Date(Date.now() - 7200000).toISOString(), source: { name: 'Graham & Doddsville' }, category: config.category, excerpt: `Weekly ${config.category.toLowerCase()} summary for value investors.` },
-                    { title: `${config.category} Investment Insights`, url: fallbackUrls[config.category] + '?item=4', publishedAt: new Date(Date.now() - 10800000).toISOString(), source: { name: 'Graham & Doddsville' }, category: config.category, excerpt: `Expert ${config.category.toLowerCase()} insights from Graham & Doddsville.` },
-                    { title: `${config.category} News Update`, url: fallbackUrls[config.category] + '?item=5', publishedAt: new Date(Date.now() - 14400000).toISOString(), source: { name: 'Graham & Doddsville' }, category: config.category, excerpt: `Current ${config.category.toLowerCase()} news and market commentary for Australian investors.` }
-                ];
-                filteredArticles.push(...safetyArticles.slice(0, needed));
+            if (filteredArticles.length === 0) {
+                console.log(`Safety net triggered for ${config.category}: 0 articles found`);
+                filteredArticles.push({
+                    title: `Latest ${config.category} News`,
+                    url: fallbackUrls[config.category] || 'https://grahamanddoddsville.com.au',
+                    publishedAt: new Date().toISOString(),
+                    source: { name: 'Graham & Doddsville' },
+                    category: config.category,
+                    excerpt: `Visit our curated ${config.category.toLowerCase()} news sources for the latest updates.`
+                });
             }
 
-            return filteredArticles.slice(0, 5);
+            return filteredArticles.slice(0, 10);
         });
 
         const results = await Promise.allSettled(promises);
