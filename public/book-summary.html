@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Summary - Graham and Doddsville</title>
+    <link rel="stylesheet" href="css/styles.css?v=3">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1e3a8a;
+            --primary-blue-light: #3b82f6;
+            --primary-blue-dark: #1e40af;
+            --secondary-gray: #f8f9fa;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-muted: #9ca3af;
+            --border-light: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--secondary-gray);
+        }
+
+        .wealth-creation-page {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            position: relative;
+        }
+
+        .wealth-creation-page-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-bottom: 2px solid #d4af37;
+            padding: 12px 0;
+            transition: all 0.3s ease;
+            overflow: visible;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            overflow: visible;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 40px;
+            width: auto;
+        }
+
+        .main-nav {
+            overflow: visible;
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            overflow: visible;
+        }
+
+        .main-nav li {
+            position: relative;
+            overflow: visible;
+        }
+
+        .main-nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s ease;
+            overflow: visible;
+        }
+
+        .main-nav a:hover {
+            color: var(--primary-blue);
+        }
+
+        .desktop-only {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .desktop-only {
+                display: none;
+            }
+        }
+
+        /* Page Title Section */
+        .page-title-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .breadcrumb {
+            margin-bottom: 16px;
+        }
+
+        .breadcrumb-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .breadcrumb-link:hover {
+            color: var(--primary-blue);
+        }
+
+        /* Page Title Section */
+        .page-title-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            padding-top: 30px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .page-title {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #6B46C1; /* Brand purple */
+            margin: 0 0 0px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #e0e0e0;
+            padding: 4px 0 4px 4px; /* 4px left padding inside bar */
+            background: rgba(250, 251, 252, 0.65); /* Reduced opacity by 20% */
+            height: 32px; /* Reduced from 36px to 32px */
+            display: flex;
+            align-items: center;
+            letter-spacing: -0.02em;
+        }
+
+        .page-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin: 8px 0 0 0;
+        }
+
+        /* Wealth Creation Content */
+        .wealth-creation-content {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .wealth-creation-header {
+            margin-bottom: 32px;
+        }
+
+        .wealth-creation-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 16px 0 8px 0;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .wealth-creation-header .page-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin: 0 0 24px 0;
+        }
+
+        .wealth-creation-body p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .wealth-creation-body h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 32px 0 16px 0;
+            letter-spacing: -0.01em;
+        }
+
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 8px 12px;
+            min-width: 200px;
+        }
+
+        .search-box input {
+            border: none;
+            outline: none;
+            flex: 1;
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+
+        .search-box input::placeholder {
+            color: var(--text-muted);
+        }
+
+        /* Premium Reading Cards */
+        .readings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 28px;
+            margin-bottom: 40px;
+        }
+
+        .reading-card {
+            position: relative;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-lg);
+            padding: 28px;
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        /* Subtle glowing border top based on category accent */
+        .reading-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--card-accent, var(--primary-blue));
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .reading-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px -5px rgba(0, 0, 0, 0.1), 0 0 20px -5px var(--card-accent, rgba(0,0,0,0));
+            border-color: rgba(0,0,0,0.08);
+        }
+
+        .reading-card:hover::before {
+            opacity: 1;
+        }
+
+        .reading-card-header {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 24px;
+            align-items: flex-start;
+        }
+
+        /* Modern Number indicator (watermark style) */
+        .reading-number-watermark {
+            position: absolute;
+            top: -15px;
+            right: -10px;
+            font-size: 120px;
+            font-weight: 900;
+            color: var(--card-accent, var(--primary-blue));
+            opacity: 0.03;
+            z-index: -1;
+            font-family: 'Playfair Display', serif;
+            pointer-events: none;
+            transition: all 0.4s ease;
+        }
+        
+        .reading-card:hover .reading-number-watermark {
+            transform: scale(1.05) translate(-5px, 5px);
+            opacity: 0.05;
+        }
+
+        .reading-number {
+            background: var(--card-accent, var(--primary-blue));
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 14px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px -2px var(--card-accent, rgba(0,0,0,0.2));
+        }
+
+        .reading-content {
+            flex: 1;
+            z-index: 2;
+        }
+
+        .reading-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            line-height: 1.35;
+            display: block;
+            margin-bottom: 12px;
+            transition: color 0.2s ease;
+        }
+
+        .reading-title:hover {
+            color: var(--card-accent, var(--primary-blue));
+        }
+
+        .reading-meta {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        /* Sleek Pill Badges */
+        .reading-author, .reading-year {
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 99px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .reading-author {
+            background: rgba(0, 0, 0, 0.04);
+            color: var(--text-primary);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .reading-year {
+            background: transparent;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .reading-actions {
+            display: flex;
+            justify-content: flex-start;
+            margin-top: auto;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0,0,0,0.04);
+        }
+
+        /* Modern CTA Button */
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--card-accent, var(--primary-blue));
+            color: white !important;
+            padding: 8px 20px;
+            border-radius: 99px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px -3px var(--card-accent, rgba(0,0,0,0.2));
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px -3px var(--card-accent, rgba(0,0,0,0.3));
+            filter: brightness(1.1);
+        }
+
+        .btn-primary .arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .btn-primary:hover .arrow {
+            transform: translateX(4px);
+        }
+
+        /* Gradient Divider for Archive Section */
+        #archive-section {
+            border-bottom: 1px solid transparent !important;
+            border-image: linear-gradient(to right, transparent, rgba(0,0,0,0.1) 20%, rgba(0,0,0,0.1) 80%, transparent) 1 !important;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .readings-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+
+            .search-box {
+                width: 100%;
+            }
+
+            .page-title {
+                font-size: 1.25rem;
+            }
+
+            .wealth-creation-page-content {
+                padding: 16px;
+            }
+        }
+
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-secondary);
+        }
+
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-secondary);
+        }
+
+        .no-results h3 {
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        /* Collapsible Categories */
+        .collapsible-categories {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .collapsible-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            transition: transform 0.2s ease;
+        }
+
+        .collapsible-section:hover {
+            transform: translateY(-2px);
+        }
+
+        .collapsible-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            background: var(--primary-blue);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .collapsible-header:hover {
+            background: var(--primary-blue-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.15);
+        }
+
+        .collapsible-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0;
+            color: white;
+        }
+
+        .collapsible-arrow {
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            color: white;
+        }
+
+        .collapsible-arrow.rotated {
+            transform: rotate(180deg);
+        }
+
+        .collapsible-content {
+            max-height: 1000px;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                        opacity 0.3s ease,
+                        padding 0.3s ease;
+            opacity: 1;
+            padding: 12px 24px 24px 24px;
+        }
+
+        .collapsible-content.collapsed {
+            max-height: 0;
+            opacity: 0;
+            padding: 0 24px;
+        }
+
+        .collapsible-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .collapsible-links li {
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .collapsible-links li:last-child {
+            border-bottom: none;
+        }
+
+        .collapsible-link {
+            display: block;
+            padding: 16px 24px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .collapsible-link:hover {
+            background: var(--secondary-gray);
+            color: var(--primary-blue);
+            border-left-color: var(--primary-blue);
+        }
+
+        /* Mobile Menu Styles */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 30px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 2px;
+            background: #333;
+            border-radius: 1px;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 2px 0;
+        }
+
+        /* Mobile Menu Toggle Animation */
+        .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Mobile Navigation Drawer */
+        .mobile-drawer {
+            position: fixed;
+            top: 0;
+            right: -80%;
+            width: 80%;
+            height: 100vh;
+            background: #fff;
+            z-index: 10000;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            display: block;
+        }
+
+        .mobile-drawer.open {
+            right: 0;
+        }
+
+        .drawer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 20px;
+            border-bottom: 1px solid #e0e0e0;
+            background: #1e3a8a;
+            color: white;
+        }
+
+        .drawer-logo {
+            max-height: 40px;
+            width: auto;
+            display: block;
+        }
+
+        .drawer-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .drawer-nav {
+            padding: 20px 0;
+        }
+
+        .drawer-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .drawer-menu li {
+            border-bottom: 1px solid #f0f0f0;
+            margin-bottom: 6px;
+            padding-left: 20px;
+        }
+
+        .drawer-link {
+            display: block;
+            padding: 6px 20px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+
+        .drawer-link:hover {
+            background: #f8f9fa;
+            color: #1e3a8a;
+        }
+
+        /* Mobile responsive styles */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .desktop-only {
+                display: none;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-only {
+                display: none;
+            }
+            
+            .mobile-drawer {
+                display: none;
+            }
+        }
+
+        /* Article Detail Panel */
+        .article-detail-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .article-detail-panel.active {
+            display: flex;
+        }
+
+        .article-detail-content {
+            background: white;
+            border-radius: 12px;
+            max-width: 800px;
+            max-height: 90vh;
+            width: 100%;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .article-detail-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .article-detail-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0;
+            color: white;
+        }
+
+        .article-detail-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+            padding: 8px;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+        }
+
+        .article-detail-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .article-detail-body {
+            padding: 32px;
+            line-height: 1.7;
+            color: var(--text-primary);
+        }
+
+        .article-detail-body h1,
+        .article-detail-body h2,
+        .article-detail-body h3 {
+            color: var(--primary-blue);
+            margin-top: 32px;
+            margin-bottom: 16px;
+        }
+
+        .article-detail-body h1:first-child,
+        .article-detail-body h2:first-child,
+        .article-detail-body h3:first-child {
+            margin-top: 0;
+        }
+
+        .article-detail-body p {
+            margin-bottom: 16px;
+        }
+
+        .article-detail-body ul,
+        .article-detail-body ol {
+            margin: 16px 0;
+            padding-left: 24px;
+        }
+
+        .article-detail-body li {
+            margin-bottom: 8px;
+        }
+
+        .article-detail-body strong {
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        .loading-spinner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            color: var(--primary-blue);
+        }
+
+        .loading-spinner::after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border-light);
+            border-top: 2px solid var(--primary-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 12px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+
+    
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+    <style>
+        /* Scoped overrides for Blue Headers (Surgical Fix) */
+        .drawer-header {
+            background: #1e3a8a !important;
+            background-color: #1e3a8a !important;
+            color: #ffffff !important;
+        }
+        .drawer-header h2, .drawer-close {
+            color: #ffffff !important;
+        }
+        
+        .collapsible-header {
+            background: #1e3a8a !important;
+            background-color: #1e3a8a !important;
+            color: #ffffff !important;
+        }
+        .collapsible-title, .collapsible-arrow {
+            color: #ffffff !important;
+        }
+        
+        /* Keep everything else as per the white theme requirements */
+        html, body, .container, .header, .header-content, .page-title-section, .collapsible-content, .article-detail-header {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+        }
+        .header {
+            border-bottom: 2px solid #d4af37 !important;
+        }
+    </style>
+    </head>
+<body class="category-page">
+    <div class="wealth-creation-page">
+        <!-- Header -->
+        <header class="header sticky-header" role="banner">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <img src="images/G&amp;D Logo.png" alt="Graham &amp; Doddsville" class="logo-image">
+                    </div>
+                    
+                    <nav class="main-nav desktop-only">                    <ul>
+                        <li><a href="index.html" class="nav-link">HOME</a></li>
+                        <li><a href="wealth-creation.html" class="nav-link">WEALTH CREATION</a></li>
+                        <li><a href="#" class="nav-link">ABOUT</a></li>
+                    </ul></nav>
+                    
+                    
+                    <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Mobile Navigation Drawer -->
+        <div class="mobile-drawer" id="mobile-drawer">
+        <div class="drawer-header">
+            <img src="images/G&amp;D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
+            <button class="drawer-close" id="drawer-close" aria-label="Close menu"></button>
+        </div>
+        <nav class="drawer-nav">
+            <ul class="drawer-menu">
+                <li><a href="index.html" class="drawer-link">Home</a></li>
+                <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
+                <li><a href="legal-taxation.html" class="drawer-link">Legal &amp; Taxation</a></li>
+                <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
+                <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
+                <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
+                <li><a href="investment-analysis.html" class="drawer-link">Investment Analysis</a></li>
+                <li><a href="financial-statement-analysis.html" class="drawer-link">Financial Statement Analysis</a></li>
+                <li><a href="stock-valuation.html" class="drawer-link">Stock Valuation</a></li>
+                <li><a href="sidebar-economics.html" class="drawer-link">Economics</a></li>
+                <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
+                <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
+                <li><a href="resources.html" class="drawer-link">Resources</a></li>
+                <li><a href="events.html" class="drawer-link">Events &amp; Seminars</a></li>
+            </ul>
+        </nav>
+    </div>
+        </div>
+
+        <div class="wealth-creation-page-content" style="max-width: 1000px; margin: 0 auto;">
+    <div class="wealth-creation-header" style="text-align: left; border-bottom: 2px solid var(--border-light); padding-bottom: 24px; margin-bottom: 32px;">
+        <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 12px;">
+            <a href="index.html" style="color: var(--primary-blue); text-decoration: none; font-weight: 500; font-size: 14px;">← Back to Books</a>
+            <span style="color: var(--text-muted); font-size: 14px;">|</span>
+            <span id="book-category" style="background: rgba(30, 64, 175, 0.1); color: var(--primary-blue); padding: 4px 12px; border-radius: 99px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Category</span>
+        </div>
+        <h1 id="book-title" style="font-family: 'Playfair Display', Georgia, serif; font-size: 3rem; line-height: 1.2; margin-bottom: 16px; color: var(--text-primary);">Loading Summary...</h1>
+    </div>
+
+    <div style="display: flex; gap: 40px; flex-wrap: wrap;">
+        <!-- Left: Summary Content -->
+        <div id="summary-content" class="book-summary-text" style="flex: 1; min-width: 300px; font-size: 1.125rem; line-height: 1.8; color: var(--text-primary);">
+            <div class="loading">Loading summary text...</div>
+        </div>
+
+        <!-- Right: Sidebar -->
+        <div style="width: 320px; flex-shrink: 0;">
+            <div style="position: sticky; top: 120px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(0,0,0,0.05); border-radius: var(--radius-lg); padding: 24px; box-shadow: 0 10px 30px -5px rgba(0,0,0,0.08);">
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-top: 0; margin-bottom: 16px;">Get the Book</h3>
+                <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 24px;">Support the site by purchasing the full book through our Amazon affiliate link.</p>
+                <a id="amazon-link" href="#" target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: #FF9900; color: #111; padding: 14px 24px; border-radius: 99px; text-decoration: none; font-weight: 700; font-size: 16px; transition: all 0.2s ease; box-shadow: 0 4px 12px rgba(255, 153, 0, 0.3);">
+                    Buy on Amazon <span style="font-size: 18px;">→</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Styling for the injected Word HTML */
+    .book-summary-text h1, .book-summary-text h2, .book-summary-text h3 {
+        font-family: 'Playfair Display', Georgia, serif;
+        color: var(--text-primary);
+        margin-top: 2em;
+        margin-bottom: 1em;
+    }
+    .book-summary-text p {
+        margin-bottom: 1.5em;
+    }
+    .book-summary-text ul {
+        margin-bottom: 1.5em;
+        padding-left: 1.5em;
+    }
+    .book-summary-text li {
+        margin-bottom: 0.5em;
+    }
+</style>
+</div>
+
+
+<script src="js/book-summaries-data.js"></script>
+<script>
+    
+        // Mobile menu functionality
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        const drawerClose = document.getElementById('drawer-close');
+        
+        if (mobileToggle && mobileDrawer && drawerClose) {
+            mobileToggle.addEventListener('click', () => {
+                mobileDrawer.classList.add('open');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            drawerClose.addEventListener('click', () => {
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        }
+
+
+    (async function () {
+        'use strict';
+
+        // --- Parse URL parameters ---
+        const urlParams = new URLSearchParams(window.location.search);
+        const categoryType = urlParams.get('type') || '';
+
+        // --- Get DOM references ---
+        const sectionLabel = document.getElementById('section-label');
+        const categoryTitle = document.getElementById('category-title');
+        const categorySubtitle = document.getElementById('category-subtitle');
+        const categoryCount = document.getElementById('category-count');
+        const sourcesList = document.getElementById('sources-list');
+
+        // --- Check if data exists ---
+        if (typeof newsSourcesData === 'undefined' || typeof categoryMeta === 'undefined') {
+            sourcesList.innerHTML = '<div class="no-results"><h3>Data Error</h3><p>Could not load news sources data.</p></div>';
+            return;
+        }
+
+        // --- Get category data ---
+        const sources = newsSourcesData[categoryType];
+        const meta = categoryMeta[categoryType];
+
+        if (!sources || !meta) {
+            sourcesList.innerHTML = '<div class="no-results"><h3>Category Not Found</h3><p>The requested news category does not exist.</p></div>';
+            return;
+        }
+
+        // --- Update page title ---
+        document.title = `${meta.title} News Sources - Graham and Doddsville`;
+        categoryTitle.textContent = meta.section;
+        sectionLabel.textContent = meta.icon + ' ' + meta.title;
+        categoryCount.textContent = `${sources.length} curated source${sources.length !== 1 ? 's' : ''}`;
+
+        // --- Render source cards ---
+        const fragment = document.createDocumentFragment();
+
+        sources.forEach(function (source, index) {
+            const card = document.createElement('a');
+            card.href = source.url;
+            card.target = '_blank';
+            card.rel = 'noopener noreferrer';
+            card.className = 'reading-card';
+            card.setAttribute('aria-label', 'Open ' + source.name + ' in new tab');
+            card.style.textDecoration = 'none';
+            card.style.display = 'flex';
+            card.style.flexDirection = 'column';
+            card.style.justifyContent = 'space-between';
+            card.style.height = '100%';
+
+            // Extract domain for display
+            let domain = '';
+            try {
+                const urlObj = new URL(source.url);
+                domain = urlObj.hostname.replace('www.', '');
+            } catch (e) {
+                domain = source.url;
+            }
+
+            // Determine author style
+            let authorClass = 'author-graham'; // default blue
+            if (meta.section === 'Around the World') {
+                authorClass = 'author-tweedy'; // purple
+            } else if (categoryType === 'guru-watch') {
+                authorClass = 'author-buffett'; // orange
+            }
+
+            card.style.setProperty('--card-accent', meta.accent);
+            card.innerHTML =
+                '<div class="reading-number-watermark">' + (index + 1) + '</div>' +
+                '<div class="reading-card-header">' +
+                '  <span class="reading-number">' + (index + 1) + '</span>' +
+                '  <div class="reading-content">' +
+                '    <span class="reading-title">' + escapeHtml(source.name) + '</span>' +
+                '    <div class="reading-meta">' +
+                '      <span class="reading-author">' + escapeHtml(domain) + '</span>' +
+                '    </div>' +
+                '  </div>' +
+                '</div>' +
+                '<div class="reading-actions">' +
+                '  <span class="btn-primary">Visit Source <span class="arrow">→</span></span>' +
+                '</div>';
+
+            fragment.appendChild(card);
+        });
+
+        sourcesList.appendChild(fragment);
+
+        
+        // --- Archive News Logic ---
+        document.addEventListener('DOMContentLoaded', async () => {
+            const archiveSection = document.getElementById('archive-section');
+            const archiveList = document.getElementById('archived-articles-list');
+            
+            if (typeof AustralianNewsScraper !== 'undefined' && meta && meta.title) {
+                try {
+                const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+                const apiUrl = isLocalhost ? 'http://localhost:4012/api' : 'https://graham-doddsville.onrender.com/api';
+                
+                const scraper = new AustralianNewsScraper(apiUrl);
+                const allNews = await scraper.fetchNews();
+                
+                const categoryMatch = meta.title; 
+                
+                let categoryNews = allNews.filter(article => {
+                    const articleCat = article.category || 'General';
+                    return articleCat === categoryMatch;
+                });
+                
+                // Sort by date (newest first)
+                categoryNews.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+                
+                // Skip the first 5 (shown on index) and take the next 10
+                const archiveNews = categoryNews.slice(5, 15);
+                
+                if (archiveNews.length > 0) {
+                    archiveSection.style.display = 'block';
+                    
+                    const archiveFragment = document.createDocumentFragment();
+                    
+                    archiveNews.forEach((article, index) => {
+                        const card = document.createElement('a');
+                        card.href = article.url;
+                        card.target = '_blank';
+                        card.rel = 'noopener noreferrer';
+                        card.className = 'reading-card';
+                        card.style.textDecoration = 'none';
+                        card.style.display = 'flex';
+                        card.style.flexDirection = 'column';
+                        card.style.justifyContent = 'space-between';
+                        card.style.height = '100%';
+                        
+                        let dateStr = scraper.formatDate(article.publishedAt);
+                        let sourceName = article.source?.name || article.source || 'News';
+                        
+                        let authorClass = 'author-graham';
+                        if (meta.section === 'Around the World') {
+                            authorClass = 'author-tweedy';
+                        } else if (categoryType === 'guru-watch') {
+                            authorClass = 'author-buffett';
+                        }
+                        
+                        card.style.setProperty('--card-accent', meta.accent);
+                        card.innerHTML =
+                            '<div class="reading-number-watermark">' + (index + 6) + '</div>' +
+                            '<div class="reading-card-header">' +
+                            '  <span class="reading-number">' + (index + 6) + '</span>' +
+                            '  <div class="reading-content">' +
+                            '    <span class="reading-title">' + escapeHtml(article.title) + '</span>' +
+                            '    <div class="reading-meta">' +
+                            '      <span class="reading-author">' + escapeHtml(sourceName) + '</span>' +
+                            '      <span class="reading-year">' + escapeHtml(dateStr) + '</span>' +
+                            '    </div>' +
+                            '  </div>' +
+                            '</div>' +
+                            '<div class="reading-actions">' +
+                            '  <span class="btn-primary">Read Article <span class="arrow">→</span></span>' +
+                            '</div>';
+                            
+                        archiveFragment.appendChild(card);
+                    });
+                    
+                    archiveList.appendChild(archiveFragment);
+                }
+            } catch (e) {
+                console.error("Failed to load archive news", e);
+            }
+        }
+        });
+        // --- HTML escape helper ---
+        function escapeHtml(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+    })();
+</script>
+</body>
+</html>
