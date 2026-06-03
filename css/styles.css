@@ -643,14 +643,8 @@ body {
     /* hide bracketed labels */
 }
 
-/* Hide all items by default; JS will show the first N via .visible */
-/* Hide all items by default; JS will add .visible to show the first N */
+/* Ensure items are inline by default; JS manages max-height container */
 #mobile-buffett .buffett-item-mobile {
-    display: none !important;
-    /* ensure generic rules don't override this */
-}
-
-#mobile-buffett .buffett-item-mobile.visible {
     display: inline !important;
     /* show visible items inline like book links */
 }
