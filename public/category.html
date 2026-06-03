@@ -1,206 +1,1011 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="News Sources - Graham and Doddsville. Curated financial news sources for value investors covering Australian and international markets.">
-    <meta name="robots" content="index, follow">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
     <title>News Sources - Graham and Doddsville</title>
-    <link rel="stylesheet" href="/css/category.css">
-
-    <!-- Favicon (same as main site) -->
-    <link rel="icon" type="image/svg+xml"
-        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231e3a8a'/%3E%3Ctext x='50' y='60' font-family='Georgia,serif' font-size='24' font-weight='bold' text-anchor='middle' fill='%23f5b400'%3EG%26D%3C/text%3E%3C/svg%3E">
-
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "CollectionPage",
-        "name": "News Sources",
-        "description": "Curated financial news sources for value investors",
-        "publisher": {
-            "@type": "Organization",
-            "name": "Graham and Doddsville",
-            "url": "https://grahamanddoddsville.com.au"
+    <link rel="stylesheet" href="css/styles.css?v=3">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1e3a8a;
+            --primary-blue-light: #3b82f6;
+            --primary-blue-dark: #1e40af;
+            --secondary-gray: #f8f9fa;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-muted: #9ca3af;
+            --border-light: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
         }
-    }
-    </script>
-</head>
 
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--secondary-gray);
+        }
+
+        .wealth-creation-page {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            position: relative;
+        }
+
+        .wealth-creation-page-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-bottom: 2px solid #d4af37;
+            padding: 12px 0;
+            transition: all 0.3s ease;
+            overflow: visible;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+            overflow: visible;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 40px;
+            width: auto;
+        }
+
+        .main-nav {
+            overflow: visible;
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            overflow: visible;
+        }
+
+        .main-nav li {
+            position: relative;
+            overflow: visible;
+        }
+
+        .main-nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s ease;
+            overflow: visible;
+        }
+
+        .main-nav a:hover {
+            color: var(--primary-blue);
+        }
+
+        .desktop-only {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .desktop-only {
+                display: none;
+            }
+        }
+
+        /* Page Title Section */
+        .page-title-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .breadcrumb {
+            margin-bottom: 16px;
+        }
+
+        .breadcrumb-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .breadcrumb-link:hover {
+            color: var(--primary-blue);
+        }
+
+        /* Page Title Section */
+        .page-title-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            padding-top: 30px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .page-title {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #6B46C1; /* Brand purple */
+            margin: 0 0 0px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #e0e0e0;
+            padding: 4px 0 4px 4px; /* 4px left padding inside bar */
+            background: rgba(250, 251, 252, 0.65); /* Reduced opacity by 20% */
+            height: 32px; /* Reduced from 36px to 32px */
+            display: flex;
+            align-items: center;
+            letter-spacing: -0.02em;
+        }
+
+        .page-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin: 8px 0 0 0;
+        }
+
+        /* Wealth Creation Content */
+        .wealth-creation-content {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .wealth-creation-header {
+            margin-bottom: 32px;
+        }
+
+        .wealth-creation-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 16px 0 8px 0;
+            color: var(--text-primary);
+            letter-spacing: -0.02em;
+        }
+
+        .wealth-creation-header .page-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            margin: 0 0 24px 0;
+        }
+
+        .wealth-creation-body p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .wealth-creation-body h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 32px 0 16px 0;
+            letter-spacing: -0.01em;
+        }
+
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            padding: 8px 12px;
+            min-width: 200px;
+        }
+
+        .search-box input {
+            border: none;
+            outline: none;
+            flex: 1;
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+
+        .search-box input::placeholder {
+            color: var(--text-muted);
+        }
+
+        /* Reading Cards */
+        .readings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .reading-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-light);
+        }
+
+        .reading-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .reading-card-header {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .reading-number {
+            background: var(--primary-blue);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+
+        .reading-content {
+            flex: 1;
+        }
+
+        .reading-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-decoration: none;
+            line-height: 1.4;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .reading-title:hover {
+            color: var(--primary-blue);
+        }
+
+        .reading-meta {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .reading-author {
+            font-size: 14px;
+            font-weight: 500;
+            padding: 4px 8px;
+            border-radius: var(--radius-sm);
+        }
+
+        .author-buffett {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .author-graham {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .author-tweedy {
+            background: #f3e8ff;
+            color: #7c3aed;
+        }
+
+        .reading-year {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .reading-actions {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .btn-primary {
+            background: var(--primary-blue);
+            color: white;
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-blue-dark);
+            transform: translateY(-1px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .readings-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+
+            .search-box {
+                width: 100%;
+            }
+
+            .page-title {
+                font-size: 1.25rem;
+            }
+
+            .wealth-creation-page-content {
+                padding: 16px;
+            }
+        }
+
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-secondary);
+        }
+
+        /* No Results */
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-secondary);
+        }
+
+        .no-results h3 {
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        /* Collapsible Categories */
+        .collapsible-categories {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .collapsible-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            transition: transform 0.2s ease;
+        }
+
+        .collapsible-section:hover {
+            transform: translateY(-2px);
+        }
+
+        .collapsible-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            background: var(--primary-blue);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .collapsible-header:hover {
+            background: var(--primary-blue-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.15);
+        }
+
+        .collapsible-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0;
+            color: white;
+        }
+
+        .collapsible-arrow {
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            color: white;
+        }
+
+        .collapsible-arrow.rotated {
+            transform: rotate(180deg);
+        }
+
+        .collapsible-content {
+            max-height: 1000px;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                        opacity 0.3s ease,
+                        padding 0.3s ease;
+            opacity: 1;
+            padding: 12px 24px 24px 24px;
+        }
+
+        .collapsible-content.collapsed {
+            max-height: 0;
+            opacity: 0;
+            padding: 0 24px;
+        }
+
+        .collapsible-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .collapsible-links li {
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .collapsible-links li:last-child {
+            border-bottom: none;
+        }
+
+        .collapsible-link {
+            display: block;
+            padding: 16px 24px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .collapsible-link:hover {
+            background: var(--secondary-gray);
+            color: var(--primary-blue);
+            border-left-color: var(--primary-blue);
+        }
+
+        /* Mobile Menu Styles */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 30px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 2px;
+            background: #333;
+            border-radius: 1px;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 2px 0;
+        }
+
+        /* Mobile Menu Toggle Animation */
+        .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        /* Mobile Navigation Drawer */
+        .mobile-drawer {
+            position: fixed;
+            top: 0;
+            right: -80%;
+            width: 80%;
+            height: 100vh;
+            background: #fff;
+            z-index: 10000;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+            display: block;
+        }
+
+        .mobile-drawer.open {
+            right: 0;
+        }
+
+        .drawer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 20px;
+            border-bottom: 1px solid #e0e0e0;
+            background: #1e3a8a;
+            color: white;
+        }
+
+        .drawer-logo {
+            max-height: 40px;
+            width: auto;
+            display: block;
+        }
+
+        .drawer-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .drawer-nav {
+            padding: 20px 0;
+        }
+
+        .drawer-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .drawer-menu li {
+            border-bottom: 1px solid #f0f0f0;
+            margin-bottom: 6px;
+            padding-left: 20px;
+        }
+
+        .drawer-link {
+            display: block;
+            padding: 6px 20px;
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color 0.2s ease;
+        }
+
+        .drawer-link:hover {
+            background: #f8f9fa;
+            color: #1e3a8a;
+        }
+
+        /* Mobile responsive styles */
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            .desktop-only {
+                display: none;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-only {
+                display: none;
+            }
+            
+            .mobile-drawer {
+                display: none;
+            }
+        }
+
+        /* Article Detail Panel */
+        .article-detail-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .article-detail-panel.active {
+            display: flex;
+        }
+
+        .article-detail-content {
+            background: white;
+            border-radius: 12px;
+            max-width: 800px;
+            max-height: 90vh;
+            width: 100%;
+            overflow-y: auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .article-detail-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .article-detail-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0;
+            color: white;
+        }
+
+        .article-detail-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+            padding: 8px;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+        }
+
+        .article-detail-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .article-detail-body {
+            padding: 32px;
+            line-height: 1.7;
+            color: var(--text-primary);
+        }
+
+        .article-detail-body h1,
+        .article-detail-body h2,
+        .article-detail-body h3 {
+            color: var(--primary-blue);
+            margin-top: 32px;
+            margin-bottom: 16px;
+        }
+
+        .article-detail-body h1:first-child,
+        .article-detail-body h2:first-child,
+        .article-detail-body h3:first-child {
+            margin-top: 0;
+        }
+
+        .article-detail-body p {
+            margin-bottom: 16px;
+        }
+
+        .article-detail-body ul,
+        .article-detail-body ol {
+            margin: 16px 0;
+            padding-left: 24px;
+        }
+
+        .article-detail-body li {
+            margin-bottom: 8px;
+        }
+
+        .article-detail-body strong {
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        .loading-spinner {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            color: var(--primary-blue);
+        }
+
+        .loading-spinner::after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--border-light);
+            border-top: 2px solid var(--primary-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 12px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+
+    
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+    <style>
+        /* Scoped overrides for Blue Headers (Surgical Fix) */
+        .drawer-header {
+            background: #1e3a8a !important;
+            background-color: #1e3a8a !important;
+            color: #ffffff !important;
+        }
+        .drawer-header h2, .drawer-close {
+            color: #ffffff !important;
+        }
+        
+        .collapsible-header {
+            background: #1e3a8a !important;
+            background-color: #1e3a8a !important;
+            color: #ffffff !important;
+        }
+        .collapsible-title, .collapsible-arrow {
+            color: #ffffff !important;
+        }
+        
+        /* Keep everything else as per the white theme requirements */
+        html, body, .container, .header, .header-content, .page-title-section, .collapsible-content, .article-detail-header {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+        }
+        .header {
+            border-bottom: 2px solid #d4af37 !important;
+        }
+    </style>
+    </head>
 <body class="category-page">
+    <div class="wealth-creation-page">
+        <!-- Header -->
+        <header class="header sticky-header" role="banner">
+            <div class="container">
+                <div class="header-content">
+                    <div class="logo">
+                        <img src="images/G&amp;D Logo.png" alt="Graham &amp; Doddsville" class="logo-image">
+                    </div>
+                    
+                    <nav class="main-nav desktop-only">                    <ul>
+                        <li><a href="index.html" class="nav-link">HOME</a></li>
+                        <li><a href="wealth-creation.html" class="nav-link">WEALTH CREATION</a></li>
+                        <li><a href="#" class="nav-link">ABOUT</a></li>
+                    </ul></nav>
+                    
+                    
+                    <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+            </div>
+        </header>
 
-    <!-- Back Navigation Bar -->
-    <nav class="category-back-nav" id="back-nav" role="navigation" aria-label="Back navigation">
-        <a href="index.html" class="back-btn" id="back-link">
-            <span class="back-arrow">←</span>
-            <span class="back-label">Home</span>
-        </a>
-    </nav>
-
-    <!-- Hero Header -->
-    <header class="category-hero" id="category-hero">
-        <span class="category-section-label" id="section-label">Loading...</span>
-        <span class="category-icon" id="category-icon"></span>
-        <h1 class="category-title" id="category-title">News Sources</h1>
-        <p class="category-count" id="category-count"></p>
-    </header>
-
-    <!-- Divider -->
-    <div class="sources-container" id="sources-container">
-        <div class="sources-divider">
-            <div class="sources-divider-line"></div>
-            <span class="sources-divider-text" id="divider-text">Sources</span>
-            <div class="sources-divider-line"></div>
+        <!-- Mobile Navigation Drawer -->
+        <div class="mobile-drawer" id="mobile-drawer">
+        <div class="drawer-header">
+            <img src="images/G&amp;D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
+            <button class="drawer-close" id="drawer-close" aria-label="Close menu"></button>
+        </div>
+        <nav class="drawer-nav">
+            <ul class="drawer-menu">
+                <li><a href="index.html" class="drawer-link">Home</a></li>
+                <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
+                <li><a href="legal-taxation.html" class="drawer-link">Legal &amp; Taxation</a></li>
+                <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
+                <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
+                <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
+                <li><a href="investment-analysis.html" class="drawer-link">Investment Analysis</a></li>
+                <li><a href="financial-statement-analysis.html" class="drawer-link">Financial Statement Analysis</a></li>
+                <li><a href="stock-valuation.html" class="drawer-link">Stock Valuation</a></li>
+                <li><a href="sidebar-economics.html" class="drawer-link">Economics</a></li>
+                <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
+                <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
+                <li><a href="resources.html" class="drawer-link">Resources</a></li>
+                <li><a href="events.html" class="drawer-link">Events &amp; Seminars</a></li>
+            </ul>
+        </nav>
+    </div>
         </div>
 
-        <!-- Sources will be rendered here by JavaScript -->
-        <div id="sources-list"></div>
+        <div class="wealth-creation-page-content">
+    <!-- Page Title Section -->
+    <div class="page-title-section">
+        <div class="breadcrumb">
+            <a href="index.html" class="breadcrumb-link">← Home</a>
+        </div>
+        <h1 class="page-title section-header" id="category-title">News Sources</h1>
+        <p class="page-subtitle" id="category-subtitle">Curated financial news sources for value investors</p>
     </div>
 
-    <!-- Footer -->
-    <footer class="category-footer" id="category-footer">
-        <p class="footer-text">
-            Graham and Doddsville Pty Ltd<br>
-            <a href="index.html" class="footer-link">← Back to Home</a>
-        </p>
-    </footer>
+    <div class="wealth-creation-content">
+        <div class="wealth-creation-header">
+            <h1 id="section-label">Loading...</h1>
+            <p class="page-subtitle" id="category-count"></p>
+        </div>
+        
+        <div class="readings-grid" id="sources-list">
+            <!-- Sources will be rendered here by JavaScript -->
+        </div>
+    </div>
+</div>
 
-    <!-- Load the data -->
-    <script src="/news-sources-data.js"></script>
-
-    <!-- Page Logic -->
-    <script>
-        (function () {
-            'use strict';
-
-            // --- Parse URL parameters ---
-            const urlParams = new URLSearchParams(window.location.search);
-            const categoryType = urlParams.get('type') || '';
-
-            // --- Get DOM references ---
-            const backNav = document.getElementById('back-nav');
-            const sectionLabel = document.getElementById('section-label');
-            const categoryIcon = document.getElementById('category-icon');
-            const categoryTitle = document.getElementById('category-title');
-            const categoryCount = document.getElementById('category-count');
-            const categoryHero = document.getElementById('category-hero');
-            const sourcesList = document.getElementById('sources-list');
-            const sourcesContainer = document.getElementById('sources-container');
-            const dividerText = document.getElementById('divider-text');
-            const footer = document.getElementById('category-footer');
-
-            // --- Check if data exists ---
-            if (typeof newsSourcesData === 'undefined' || typeof categoryMeta === 'undefined') {
-                showEmpty('Data Error', 'Could not load news sources data.');
-                return;
-            }
-
-            // --- Get category data ---
-            const sources = newsSourcesData[categoryType];
-            const meta = categoryMeta[categoryType];
-
-            if (!sources || !meta) {
-                showEmpty('Category Not Found', 'The requested news category does not exist.');
-                return;
-            }
-
-            // --- Determine section type ---
-            const isWorldSection = meta.section === 'Around the World';
-
-            // --- Update page title ---
-            document.title = `${meta.title} News Sources - Graham and Doddsville`;
-
-            // --- Update meta description ---
-            const metaDesc = document.querySelector('meta[name="description"]');
-            if (metaDesc) {
-                metaDesc.content = `${meta.title} news sources curated by Graham and Doddsville. ${sources.length} trusted sources for ${meta.section.toLowerCase()} coverage.`;
-            }
-
-            // --- Apply section theming ---
-            if (isWorldSection) {
-                backNav.classList.add('world-section');
-                categoryHero.classList.add('world-section');
-                sourcesContainer.classList.add('world-variant');
-                footer.classList.add('world-variant');
-            }
-
-            // --- Populate header ---
-            sectionLabel.textContent = meta.section;
-            categoryIcon.textContent = meta.icon;
-            categoryTitle.textContent = meta.title;
-            categoryCount.textContent = `${sources.length} curated source${sources.length !== 1 ? 's' : ''}`;
-            dividerText.textContent = `${meta.title} Sources`;
-
-            // --- Set CSS accent variable ---
-            document.documentElement.style.setProperty('--card-accent', meta.accent);
-
-            // --- Render source cards ---
-            const fragment = document.createDocumentFragment();
-
-            sources.forEach(function (source, index) {
-                const card = document.createElement('a');
-                card.href = source.url;
-                card.target = '_blank';
-                card.rel = 'noopener noreferrer';
-                card.className = 'source-card';
-                card.id = 'source-' + (index + 1);
-                card.setAttribute('aria-label', 'Open ' + source.name + ' in new tab');
-
-                // Extract domain for display
-                let domain = '';
-                try {
-                    const urlObj = new URL(source.url);
-                    domain = urlObj.hostname.replace('www.', '');
-                } catch (e) {
-                    domain = source.url;
-                }
-
-                card.innerHTML =
-                    '<span class="source-number">' + (index + 1) + '</span>' +
-                    '<div class="source-info">' +
-                    '  <p class="source-name">' + escapeHtml(source.name) + '</p>' +
-                    '  <span class="source-domain">' + escapeHtml(domain) + '</span>' +
-                    '</div>' +
-                    '<span class="source-arrow">' +
-                    '  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">' +
-                    '    <path d="M7 17L17 7"/>' +
-                    '    <path d="M7 7h10v10"/>' +
-                    '  </svg>' +
-                    '</span>';
-
-                fragment.appendChild(card);
+<script src="/news-sources-data.js"></script>
+<script>
+    
+        // Mobile menu functionality
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        const drawerClose = document.getElementById('drawer-close');
+        
+        if (mobileToggle && mobileDrawer && drawerClose) {
+            mobileToggle.addEventListener('click', () => {
+                mobileDrawer.classList.add('open');
+                document.body.style.overflow = 'hidden';
             });
+            
+            drawerClose.addEventListener('click', () => {
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        }
 
-            sourcesList.appendChild(fragment);
 
-            // --- Empty state handler ---
-            function showEmpty(title, message) {
-                categoryHero.style.display = 'none';
-                sourcesContainer.innerHTML =
-                    '<div class="category-empty">' +
-                    '  <div class="empty-icon">📰</div>' +
-                    '  <h2 class="empty-title">' + escapeHtml(title) + '</h2>' +
-                    '  <p class="empty-text">' + escapeHtml(message) + '</p>' +
-                    '  <a href="index.html" class="empty-home-link">Go to Homepage</a>' +
-                    '</div>';
+    (function () {
+        'use strict';
+
+        // --- Parse URL parameters ---
+        const urlParams = new URLSearchParams(window.location.search);
+        const categoryType = urlParams.get('type') || '';
+
+        // --- Get DOM references ---
+        const sectionLabel = document.getElementById('section-label');
+        const categoryTitle = document.getElementById('category-title');
+        const categorySubtitle = document.getElementById('category-subtitle');
+        const categoryCount = document.getElementById('category-count');
+        const sourcesList = document.getElementById('sources-list');
+
+        // --- Check if data exists ---
+        if (typeof newsSourcesData === 'undefined' || typeof categoryMeta === 'undefined') {
+            sourcesList.innerHTML = '<div class="no-results"><h3>Data Error</h3><p>Could not load news sources data.</p></div>';
+            return;
+        }
+
+        // --- Get category data ---
+        const sources = newsSourcesData[categoryType];
+        const meta = categoryMeta[categoryType];
+
+        if (!sources || !meta) {
+            sourcesList.innerHTML = '<div class="no-results"><h3>Category Not Found</h3><p>The requested news category does not exist.</p></div>';
+            return;
+        }
+
+        // --- Update page title ---
+        document.title = `${meta.title} News Sources - Graham and Doddsville`;
+        categoryTitle.textContent = meta.section;
+        sectionLabel.textContent = meta.icon + ' ' + meta.title;
+        categoryCount.textContent = `${sources.length} curated source${sources.length !== 1 ? 's' : ''}`;
+
+        // --- Render source cards ---
+        const fragment = document.createDocumentFragment();
+
+        sources.forEach(function (source, index) {
+            const card = document.createElement('a');
+            card.href = source.url;
+            card.target = '_blank';
+            card.rel = 'noopener noreferrer';
+            card.className = 'reading-card';
+            card.setAttribute('aria-label', 'Open ' + source.name + ' in new tab');
+            card.style.textDecoration = 'none';
+            card.style.display = 'flex';
+            card.style.flexDirection = 'column';
+            card.style.justifyContent = 'space-between';
+            card.style.height = '100%';
+
+            // Extract domain for display
+            let domain = '';
+            try {
+                const urlObj = new URL(source.url);
+                domain = urlObj.hostname.replace('www.', '');
+            } catch (e) {
+                domain = source.url;
             }
 
-            // --- HTML escape helper ---
-            function escapeHtml(str) {
-                const div = document.createElement('div');
-                div.textContent = str;
-                return div.innerHTML;
+            // Determine author style
+            let authorClass = 'author-graham'; // default blue
+            if (meta.section === 'Around the World') {
+                authorClass = 'author-tweedy'; // purple
+            } else if (categoryType === 'guru-watch') {
+                authorClass = 'author-buffett'; // orange
             }
 
-        })();
-    </script>
+            card.innerHTML =
+                '<div class="reading-card-header">' +
+                '  <span class="reading-number" style="background: ' + meta.accent + '">' + (index + 1) + '</span>' +
+                '  <div class="reading-content">' +
+                '    <span class="reading-title">' + escapeHtml(source.name) + '</span>' +
+                '    <div class="reading-meta">' +
+                '      <span class="reading-author ' + authorClass + '">' + escapeHtml(domain) + '</span>' +
+                '    </div>' +
+                '  </div>' +
+                '</div>' +
+                '<div class="reading-actions">' +
+                '  <span class="btn-primary" style="background: ' + meta.accent + '">Visit Source</span>' +
+                '</div>';
 
+            fragment.appendChild(card);
+        });
+
+        sourcesList.appendChild(fragment);
+
+        // --- HTML escape helper ---
+        function escapeHtml(str) {
+            const div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+    })();
+</script>
 </body>
-
 </html>
