@@ -989,7 +989,7 @@
 
 <script src="js/book-summaries-data.js"></script>
 <script>
-    
+    document.addEventListener('DOMContentLoaded', () => {
         // Mobile menu functionality
         const mobileToggle = document.getElementById('mobile-toggle');
         const mobileDrawer = document.getElementById('mobile-drawer');
@@ -1007,185 +1007,40 @@
             });
         }
 
-
-    (async function () {
-        'use strict';
-
-        // --- Parse URL parameters ---
         const urlParams = new URLSearchParams(window.location.search);
-        const categoryType = urlParams.get('type') || '';
+        const bookSlug = urlParams.get('book');
 
-        // --- Get DOM references ---
-        const sectionLabel = document.getElementById('section-label');
-        const categoryTitle = document.getElementById('category-title');
-        const categorySubtitle = document.getElementById('category-subtitle');
-        const categoryCount = document.getElementById('category-count');
-        const sourcesList = document.getElementById('sources-list');
+        const titleEl = document.getElementById('book-title');
+        const categoryEl = document.getElementById('book-category');
+        const contentEl = document.getElementById('summary-content');
+        const amazonLink = document.getElementById('amazon-link');
 
-        // --- Check if data exists ---
-        if (typeof newsSourcesData === 'undefined' || typeof categoryMeta === 'undefined') {
-            sourcesList.innerHTML = '<div class="no-results"><h3>Data Error</h3><p>Could not load news sources data.</p></div>';
+        if (!bookSlug || typeof bookSummariesData === 'undefined' || !bookSummariesData[bookSlug]) {
+            titleEl.textContent = "Summary Not Found";
+            categoryEl.style.display = 'none';
+            contentEl.innerHTML = '<p>Sorry, we could not find the summary you are looking for.</p>';
+            amazonLink.style.display = 'none';
             return;
         }
 
-        // --- Get category data ---
-        const sources = newsSourcesData[categoryType];
-        const meta = categoryMeta[categoryType];
-
-        if (!sources || !meta) {
-            sourcesList.innerHTML = '<div class="no-results"><h3>Category Not Found</h3><p>The requested news category does not exist.</p></div>';
-            return;
-        }
-
-        // --- Update page title ---
-        document.title = `${meta.title} News Sources - Graham and Doddsville`;
-        categoryTitle.textContent = meta.section;
-        sectionLabel.textContent = meta.icon + ' ' + meta.title;
-        categoryCount.textContent = `${sources.length} curated source${sources.length !== 1 ? 's' : ''}`;
-
-        // --- Render source cards ---
-        const fragment = document.createDocumentFragment();
-
-        sources.forEach(function (source, index) {
-            const card = document.createElement('a');
-            card.href = source.url;
-            card.target = '_blank';
-            card.rel = 'noopener noreferrer';
-            card.className = 'reading-card';
-            card.setAttribute('aria-label', 'Open ' + source.name + ' in new tab');
-            card.style.textDecoration = 'none';
-            card.style.display = 'flex';
-            card.style.flexDirection = 'column';
-            card.style.justifyContent = 'space-between';
-            card.style.height = '100%';
-
-            // Extract domain for display
-            let domain = '';
-            try {
-                const urlObj = new URL(source.url);
-                domain = urlObj.hostname.replace('www.', '');
-            } catch (e) {
-                domain = source.url;
-            }
-
-            // Determine author style
-            let authorClass = 'author-graham'; // default blue
-            if (meta.section === 'Around the World') {
-                authorClass = 'author-tweedy'; // purple
-            } else if (categoryType === 'guru-watch') {
-                authorClass = 'author-buffett'; // orange
-            }
-
-            card.style.setProperty('--card-accent', meta.accent);
-            card.innerHTML =
-                '<div class="reading-number-watermark">' + (index + 1) + '</div>' +
-                '<div class="reading-card-header">' +
-                '  <span class="reading-number">' + (index + 1) + '</span>' +
-                '  <div class="reading-content">' +
-                '    <span class="reading-title">' + escapeHtml(source.name) + '</span>' +
-                '    <div class="reading-meta">' +
-                '      <span class="reading-author">' + escapeHtml(domain) + '</span>' +
-                '    </div>' +
-                '  </div>' +
-                '</div>' +
-                '<div class="reading-actions">' +
-                '  <span class="btn-primary">Visit Source <span class="arrow">→</span></span>' +
-                '</div>';
-
-            fragment.appendChild(card);
-        });
-
-        sourcesList.appendChild(fragment);
-
+        const book = bookSummariesData[bookSlug];
         
-        // --- Archive News Logic ---
-        document.addEventListener('DOMContentLoaded', async () => {
-            const archiveSection = document.getElementById('archive-section');
-            const archiveList = document.getElementById('archived-articles-list');
-            
-            if (typeof AustralianNewsScraper !== 'undefined' && meta && meta.title) {
-                try {
-                const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-                const apiUrl = isLocalhost ? 'http://localhost:4012/api' : 'https://graham-doddsville.onrender.com/api';
-                
-                const scraper = new AustralianNewsScraper(apiUrl);
-                const allNews = await scraper.fetchNews();
-                
-                const categoryMatch = meta.title; 
-                
-                let categoryNews = allNews.filter(article => {
-                    const articleCat = article.category || 'General';
-                    return articleCat === categoryMatch;
-                });
-                
-                // Sort by date (newest first)
-                categoryNews.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
-                
-                // Skip the first 5 (shown on index) and take the next 10
-                const archiveNews = categoryNews.slice(5, 15);
-                
-                if (archiveNews.length > 0) {
-                    archiveSection.style.display = 'block';
-                    
-                    const archiveFragment = document.createDocumentFragment();
-                    
-                    archiveNews.forEach((article, index) => {
-                        const card = document.createElement('a');
-                        card.href = article.url;
-                        card.target = '_blank';
-                        card.rel = 'noopener noreferrer';
-                        card.className = 'reading-card';
-                        card.style.textDecoration = 'none';
-                        card.style.display = 'flex';
-                        card.style.flexDirection = 'column';
-                        card.style.justifyContent = 'space-between';
-                        card.style.height = '100%';
-                        
-                        let dateStr = scraper.formatDate(article.publishedAt);
-                        let sourceName = article.source?.name || article.source || 'News';
-                        
-                        let authorClass = 'author-graham';
-                        if (meta.section === 'Around the World') {
-                            authorClass = 'author-tweedy';
-                        } else if (categoryType === 'guru-watch') {
-                            authorClass = 'author-buffett';
-                        }
-                        
-                        card.style.setProperty('--card-accent', meta.accent);
-                        card.innerHTML =
-                            '<div class="reading-number-watermark">' + (index + 6) + '</div>' +
-                            '<div class="reading-card-header">' +
-                            '  <span class="reading-number">' + (index + 6) + '</span>' +
-                            '  <div class="reading-content">' +
-                            '    <span class="reading-title">' + escapeHtml(article.title) + '</span>' +
-                            '    <div class="reading-meta">' +
-                            '      <span class="reading-author">' + escapeHtml(sourceName) + '</span>' +
-                            '      <span class="reading-year">' + escapeHtml(dateStr) + '</span>' +
-                            '    </div>' +
-                            '  </div>' +
-                            '</div>' +
-                            '<div class="reading-actions">' +
-                            '  <span class="btn-primary">Read Article <span class="arrow">→</span></span>' +
-                            '</div>';
-                            
-                        archiveFragment.appendChild(card);
-                    });
-                    
-                    archiveList.appendChild(archiveFragment);
-                }
-            } catch (e) {
-                console.error("Failed to load archive news", e);
-            }
-        }
-        });
-        // --- HTML escape helper ---
-        function escapeHtml(str) {
-            const div = document.createElement('div');
-            div.textContent = str;
-            return div.innerHTML;
+        document.title = book.title + " Summary - Graham and Doddsville";
+        titleEl.textContent = book.title;
+        categoryEl.textContent = book.category;
+        
+        if (book.amazonUrl) {
+            amazonLink.href = book.amazonUrl;
+        } else {
+            amazonLink.style.display = 'none';
         }
 
-    })();
+        if (book.summaryHtml) {
+            contentEl.innerHTML = book.summaryHtml;
+        } else {
+            contentEl.innerHTML = '<p>Summary text is being prepared.</p>';
+        }
+    });
 </script>
 </body>
 </html>
