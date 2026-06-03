@@ -1013,11 +1013,12 @@
 
         
         // --- Archive News Logic ---
-        const archiveSection = document.getElementById('archive-section');
-        const archiveList = document.getElementById('archived-articles-list');
-        
-        if (typeof AustralianNewsScraper !== 'undefined' && meta && meta.title) {
-            try {
+        document.addEventListener('DOMContentLoaded', async () => {
+            const archiveSection = document.getElementById('archive-section');
+            const archiveList = document.getElementById('archived-articles-list');
+            
+            if (typeof AustralianNewsScraper !== 'undefined' && meta && meta.title) {
+                try {
                 const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
                 const apiUrl = isLocalhost ? 'http://localhost:4012/api' : 'https://graham-doddsville.onrender.com/api';
                 
@@ -1088,7 +1089,7 @@
                 console.error("Failed to load archive news", e);
             }
         }
-
+        });
         // --- HTML escape helper ---
         function escapeHtml(str) {
             const div = document.createElement('div');
