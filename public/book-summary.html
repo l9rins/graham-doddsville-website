@@ -946,14 +946,14 @@
         <h1 id="book-title" style="font-family: 'Playfair Display', Georgia, serif; font-size: 3rem; line-height: 1.2; margin-bottom: 16px; color: var(--text-primary);">Loading Summary...</h1>
     </div>
 
-    <div style="display: flex; gap: 40px; flex-wrap: wrap;">
+    <div class="book-summary-layout" style="display: flex; gap: 40px; align-items: flex-start;">
         <!-- Left: Summary Content -->
-        <div id="summary-content" class="book-summary-text" style="flex: 1; min-width: 300px; font-size: 1.125rem; line-height: 1.8; color: var(--text-primary);">
+        <div id="summary-content" class="book-summary-text" style="flex: 1; min-width: 0; font-size: 1.125rem; line-height: 1.8; color: var(--text-primary);">
             <div class="loading">Loading summary text...</div>
         </div>
 
         <!-- Right: Sidebar -->
-        <div style="width: 320px; flex-shrink: 0;">
+        <div class="book-sidebar" style="width: 320px; flex-shrink: 0;">
             <div style="position: sticky; top: 120px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(0,0,0,0.05); border-radius: var(--radius-lg); padding: 24px; box-shadow: 0 10px 30px -5px rgba(0,0,0,0.08);">
                 <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-top: 0; margin-bottom: 16px;">Get the Book</h3>
                 <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 24px;">Support the site by purchasing the full book through our Amazon affiliate link.</p>
@@ -983,6 +983,80 @@
     .book-summary-text li {
         margin-bottom: 0.5em;
     }
+    
+    /* Layout */
+    @media (max-width: 900px) {
+        .book-summary-layout { flex-direction: column; }
+        .book-sidebar { width: 100% !important; }
+        .book-sidebar > div { position: static !important; }
+    }
+
+    /* Premium Typography Upgrades */
+    .premium-heading {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.75rem !important;
+        color: #1e3a8a !important;
+        margin-top: 2.5rem !important;
+        margin-bottom: 1rem !important;
+        position: relative;
+        padding-bottom: 0.5rem;
+    }
+    .premium-heading::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background: #d4af37;
+        border-radius: 2px;
+    }
+    
+    /* Metadata Card */
+    .metadata-card {
+        background: linear-gradient(135deg, rgba(30, 64, 175, 0.02) 0%, rgba(30, 64, 175, 0.05) 100%);
+        border: 1px solid rgba(30, 64, 175, 0.08);
+        border-radius: var(--radius-lg);
+        padding: 24px;
+        margin-bottom: 32px;
+    }
+    .meta-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px !important; }
+    .meta-author { font-size: 1.1rem; color: var(--primary-blue); font-weight: 600; margin-bottom: 16px !important; }
+    .meta-details { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 4px !important; }
+    
+    /* Reviews and Ratings */
+    .rating-field { display: flex; align-items: center; gap: 8px; font-size: 1.25rem; margin-bottom: 24px !important; }
+    .rating-field .stars { color: #f59e0b; font-size: 1.5rem; letter-spacing: 2px; }
+    .rating-field .score { font-weight: 700; color: var(--text-primary); }
+    .rating-field .count { color: var(--text-muted); font-size: 0.9rem; }
+    
+    .comments-header { font-weight: 700; color: var(--primary-blue); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 16px !important; }
+    .review-comment {
+        background: #f8fafc;
+        border-left: 4px solid #d4af37;
+        padding: 16px 20px;
+        margin-bottom: 16px !important;
+        border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        font-style: italic;
+        color: #334155;
+        font-size: 1.05rem;
+    }
+    
+    /* Price Tag */
+    .price-field {
+        margin-top: 32px !important;
+        padding: 20px;
+        background: #fffbeb;
+        border: 1px solid #fde68a;
+        border-radius: var(--radius-md);
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+    .price-field .price-label { color: #b45309; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+    .price-field .price-value { font-weight: 700; color: #92400e; font-size: 2rem; font-family: 'Playfair Display', serif; }
 </style>
 </div>
 
@@ -1037,6 +1111,88 @@
 
         if (book.summaryHtml) {
             contentEl.innerHTML = book.summaryHtml;
+            
+            // Upgrade raw text into premium UI components
+            const paragraphs = contentEl.querySelectorAll('p');
+            const knownHeadings = ['About', 'Product Description', 'Selective Summary', 'Book Reviews'];
+            
+            let metaElements = [];
+            let foundFirstHeading = false;
+            
+            paragraphs.forEach(p => {
+                let text = p.textContent.trim();
+                let cleanText = text.replace(/[^a-zA-Z ]/g, '').trim();
+                
+                // 1. Collect initial metadata (Title, Author, Publisher, etc.)
+                if (!foundFirstHeading) {
+                    if (knownHeadings.includes(cleanText)) {
+                        foundFirstHeading = true;
+                    } else if (text !== '') {
+                        metaElements.push(p);
+                    }
+                }
+                
+                if (foundFirstHeading) {
+                    // 2. Transform Headings
+                    if (knownHeadings.includes(cleanText)) {
+                        const h2 = document.createElement('h2');
+                        h2.className = 'premium-heading';
+                        h2.textContent = cleanText;
+                        p.parentNode.replaceChild(h2, p);
+                    }
+                    // 3. Transform Reviews
+                    else if (text.startsWith('Rating:')) {
+                        p.className = 'rating-field';
+                        let match = text.match(/Rating:\s*([\d.]+)\s*\|\s*\(([^)]+)\)/);
+                        if (match) {
+                            let score = parseFloat(match[1]);
+                            let count = match[2];
+                            let stars = '';
+                            for(let i=1; i<=5; i++) {
+                                if (score >= i) stars += '★';
+                                else if (score >= i - 0.5) stars += '☆'; // Half star fallback
+                                else stars += '☆';
+                            }
+                            p.innerHTML = `<span class="stars">${stars}</span> <span class="score">${score}</span> <span class="count">(${count} reviews)</span>`;
+                        }
+                    }
+                    else if (text.startsWith('Top comments:')) {
+                        p.className = 'comments-header';
+                        p.textContent = 'Top Comments';
+                    }
+                    else if (/^\d+\.\s/.test(text) || /^"[^"]+" –/.test(text)) {
+                        p.className = 'review-comment';
+                    }
+                    // 4. Transform Price & Buy Now
+                    else if (text.includes('Indicative Price:')) {
+                        p.className = 'price-field';
+                        let priceMatch = text.match(/\$\s*([\d.]+)/);
+                        if (priceMatch) {
+                            p.innerHTML = `<span class="price-label">Indicative Price</span> <span class="price-value">$${priceMatch[1]}</span>`;
+                        } else {
+                            p.innerHTML = `<span class="price-label">Indicative Price</span> <span class="price-value">${text.replace('Indicative Price:', '').trim()}</span>`;
+                        }
+                    }
+                    else if (text === 'BUY NOW') {
+                        p.style.display = 'none'; // Replaced by our shiny button
+                    }
+                }
+            });
+            
+            // 5. Build Metadata Card
+            if (metaElements.length > 0) {
+                let metaDataContainer = document.createElement('div');
+                metaDataContainer.className = 'metadata-card';
+                metaElements[0].parentNode.insertBefore(metaDataContainer, metaElements[0]);
+                
+                metaElements.forEach((p, index) => {
+                    if (index === 0) p.className = 'meta-title';
+                    else if (index === 1) p.className = 'meta-author';
+                    else p.className = 'meta-details';
+                    metaDataContainer.appendChild(p);
+                });
+            }
+            
         } else {
             contentEl.innerHTML = '<p>Summary text is being prepared.</p>';
         }
