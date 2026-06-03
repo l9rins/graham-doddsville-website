@@ -1023,6 +1023,29 @@
     .meta-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px !important; }
     .meta-author { font-size: 1.1rem; color: var(--primary-blue); font-weight: 600; margin-bottom: 16px !important; }
     .meta-details { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 4px !important; }
+     /* Summary specific styles */
+    .summary-paragraph {
+        font-size: 1.15rem;
+        line-height: 1.85;
+        color: #1e293b;
+        margin-bottom: 24px !important;
+    }
+    .first-summary-paragraph::first-letter {
+        font-family: 'Playfair Display', serif;
+        font-size: 4rem;
+        float: left;
+        line-height: 0.8;
+        padding-right: 12px;
+        padding-top: 8px;
+        color: #1e3a8a;
+        font-weight: 700;
+    }
+    .description-paragraph {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: #475569;
+        margin-bottom: 16px !important;
+    }
     
     /* Reviews and Ratings */
     .rating-field { display: flex; align-items: center; gap: 8px; font-size: 1.25rem; margin-bottom: 24px !important; }
@@ -1031,6 +1054,7 @@
     .rating-field .count { color: var(--text-muted); font-size: 0.9rem; }
     
     .comments-header { font-weight: 700; color: var(--primary-blue); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; margin-bottom: 16px !important; }
+    
     .review-comment {
         background: #f8fafc;
         border-left: 4px solid #d4af37;
@@ -1040,6 +1064,13 @@
         font-style: italic;
         color: #334155;
         font-size: 1.05rem;
+        list-style-position: outside;
+    }
+    .review-comment::marker {
+        font-weight: 700;
+        color: #1e3a8a;
+        font-style: normal;
+        font-size: 1.1rem;
     }
     
     /* Price Tag */
@@ -1059,7 +1090,6 @@
     .price-field .price-value { font-weight: 700; color: #92400e; font-size: 2rem; font-family: 'Playfair Display', serif; }
 </style>
 </div>
-
 
 <script src="js/book-summaries-data.js"></script>
 <script>
@@ -1113,73 +1143,104 @@
             contentEl.innerHTML = book.summaryHtml;
             
             // Upgrade raw text into premium UI components
-            const paragraphs = contentEl.querySelectorAll('p');
+            const elements = contentEl.querySelectorAll('p, li');
             const knownHeadings = ['About', 'Product Description', 'Selective Summary', 'Book Reviews'];
             
             let metaElements = [];
             let foundFirstHeading = false;
+            let currentSection = '';
+            let firstSummaryParagraphFound = false;
             
-            paragraphs.forEach(p => {
-                let text = p.textContent.trim();
+            elements.forEach(el => {
+                let text = el.textContent.trim();
                 let cleanText = text.replace(/[^a-zA-Z ]/g, '').trim();
+                let tagName = el.tagName.toLowerCase();
                 
                 // 1. Collect initial metadata (Title, Author, Publisher, etc.)
                 if (!foundFirstHeading) {
-                    if (knownHeadings.includes(cleanText)) {
+                    if (knownHeadings.includes(cleanText) && tagName === 'p') {
                         foundFirstHeading = true;
+                        currentSection = cleanText;
                     } else if (text !== '') {
-                        metaElements.push(p);
+                        metaElements.push(el);
                     }
+                } else if (knownHeadings.includes(cleanText) && tagName === 'p') {
+                    currentSection = cleanText;
                 }
                 
                 if (foundFirstHeading) {
                     // 2. Transform Headings
-                    if (knownHeadings.includes(cleanText)) {
+                    if (knownHeadings.includes(cleanText) && tagName === 'p') {
                         const h2 = document.createElement('h2');
                         h2.className = 'premium-heading';
                         h2.textContent = cleanText;
-                        p.parentNode.replaceChild(h2, p);
+                        el.parentNode.replaceChild(h2, el);
                     }
                     // 3. Transform Reviews
-                    else if (text.startsWith('Rating:')) {
-                        p.className = 'rating-field';
-                        let match = text.match(/Rating:\s*([\d.]+)\s*\|\s*\(([^)]+)\)/);
-                        if (match) {
-                            let score = parseFloat(match[1]);
-                            let count = match[2];
-                            let stars = '';
-                            for(let i=1; i<=5; i++) {
-                                if (score >= i) stars += '★';
-                                else if (score >= i - 0.5) stars += '☆'; // Half star fallback
-                                else stars += '☆';
+                    else if (currentSection === 'BookReviews') {
+                        if (text.startsWith('Rating:')) {
+                            el.className = 'rating-field';
+                            let match = text.match(/Rating:\s*([\d.]+)\s*\|\s*\(([^)]+)\)/);
+                            if (match) {
+                                let score = parseFloat(match[1]);
+                                let count = match[2];
+                                let stars = '';
+                                for(let i=1; i<=5; i++) {
+                                    if (score >= i) stars += '★';
+                                    else if (score >= i - 0.5) stars += '☆'; 
+                                    else stars += '☆';
+                                }
+                                el.innerHTML = `<span class="stars">${stars}</span> <span class="score">${score}</span> <span class="count">(${count} reviews)</span>`;
                             }
-                            p.innerHTML = `<span class="stars">${stars}</span> <span class="score">${score}</span> <span class="count">(${count} reviews)</span>`;
+                        }
+                        else if (text.startsWith('Top comments:')) {
+                            el.className = 'comments-header';
+                            el.textContent = 'Top Comments';
+                        }
+                        else if (tagName === 'li' || /^\d+\.\s/.test(text) || /^"[^"]+" –/.test(text)) {
+                            el.className = 'review-comment';
                         }
                     }
-                    else if (text.startsWith('Top comments:')) {
-                        p.className = 'comments-header';
-                        p.textContent = 'Top Comments';
+                    // 4. Transform Selective Summary text
+                    else if (currentSection === 'SelectiveSummary') {
+                        if (tagName === 'p' && text !== '') {
+                            el.className = 'summary-paragraph';
+                            if (!firstSummaryParagraphFound) {
+                                el.classList.add('first-summary-paragraph');
+                                firstSummaryParagraphFound = true;
+                            }
+                        }
                     }
-                    else if (/^\d+\.\s/.test(text) || /^"[^"]+" –/.test(text)) {
-                        p.className = 'review-comment';
+                    // 5. Transform About and Product Description text
+                    else if (currentSection === 'About' || currentSection === 'ProductDescription') {
+                        if (tagName === 'p' && text !== '') {
+                            el.className = 'description-paragraph';
+                        }
                     }
-                    // 4. Transform Price & Buy Now
+                    // 6. Transform Price & Buy Now
                     else if (text.includes('Indicative Price:')) {
-                        p.className = 'price-field';
+                        el.className = 'price-field';
                         let priceMatch = text.match(/\$\s*([\d.]+)/);
                         if (priceMatch) {
-                            p.innerHTML = `<span class="price-label">Indicative Price</span> <span class="price-value">$${priceMatch[1]}</span>`;
+                            el.innerHTML = `<span class="price-label">Indicative Price</span> <span class="price-value">$${priceMatch[1]}</span>`;
                         } else {
-                            p.innerHTML = `<span class="price-label">Indicative Price</span> <span class="price-value">${text.replace('Indicative Price:', '').trim()}</span>`;
+                            el.innerHTML = `<span class="price-label">Indicative Price</span> <span class="price-value">${text.replace('Indicative Price:', '').trim()}</span>`;
                         }
                     }
                     else if (text === 'BUY NOW') {
-                        p.style.display = 'none'; // Replaced by our shiny button
+                        el.style.display = 'none'; // Replaced by our shiny button
                     }
                 }
             });
             
-            // 5. Build Metadata Card
+            // Format OL to show numbers clearly with our styling
+            const ols = contentEl.querySelectorAll('ol');
+            ols.forEach(list => {
+                list.style.paddingLeft = '24px';
+                list.style.margin = '0 0 24px 0';
+            });
+            
+            // 7. Build Metadata Card
             if (metaElements.length > 0) {
                 let metaDataContainer = document.createElement('div');
                 metaDataContainer.className = 'metadata-card';
@@ -1195,6 +1256,7 @@
             
         } else {
             contentEl.innerHTML = '<p>Summary text is being prepared.</p>';
+        }';
         }
     });
 </script>
