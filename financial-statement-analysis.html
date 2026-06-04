@@ -1,146 +1,146 @@
-<!DOCTYPE html><html lang="en"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Financial Statement Analysis - Graham and Doddsville</title>
-    <link rel="stylesheet" href="css/styles.css?v=3">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary-blue: #1e3a8a;
-            --primary-blue-light: #3b82f6;
-            --primary-blue-dark: #1e40af;
-            --secondary-gray: #ffffff;
-            --text-primary: #1f2937;
-            --text-secondary: #6b7280;
-            --text-muted: #9ca3af;
-            --border-light: #e5e7eb;
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            --radius-sm: 6px;
-            --radius-md: 8px;
-            --radius-lg: 12px;
-            --radius-xl: 16px;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background: #ffffff;
-        }
-
-        .wealth-creation-page {
-            background: #ffffff;
-            position: relative;
-        }
-
-        .wealth-creation-page-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 24px;
-        }
-
-                        /* Standardized Header Styles */
-        .header {
-            background: #ffffff;
-            border-bottom: 2px solid #d4af37;
-            padding: 12px 0;
-            transition: all 0.3s ease;
-            overflow: visible;
-        }
-
-        .sticky-header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo-image {
-            height: 40px;
-            width: auto;
-        }
-
-        .main-nav {
-            overflow: visible;
-        }
-
-        .main-nav ul {
-            display: flex;
-            list-style: none;
-            gap: 35px;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav-link {
-            color: #1f2937;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 14px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: #1e3a8a;
-            text-decoration: underline;
-        }
-
-        .mobile-menu-toggle {
-            display: none;
-            flex-direction: column;
-            justify-content: space-around;
-            width: 30px;
-            height: 30px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-        }
-
-        .hamburger-line {
-            width: 25px;
-            height: 2px;
-            background: #333;
-            border-radius: 1px;
-            transition: all 0.3s ease;
-            display: block;
-            margin: 2px 0;
-        }
-
-        .desktop-only { display: block; }
-        .mobile-only { display: none; }
-
-        @media (max-width: 768px) {
-            .desktop-only { display: none; }
-            .mobile-only { display: flex; }
-            .header-content { padding: 0 20px; }
-        }
-
-
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Statement Analysis - Graham and Doddsville</title>
+    <link rel="stylesheet" href="css/styles.css?v=3">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1e3a8a;
+            --primary-blue-light: #3b82f6;
+            --primary-blue-dark: #1e40af;
+            --secondary-gray: #ffffff;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --text-muted: #9ca3af;
+            --border-light: #e5e7eb;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: #ffffff;
+        }
+
+        .wealth-creation-page {
+            background: #ffffff;
+            position: relative;
+        }
+
+        .wealth-creation-page-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+                        /* Standardized Header Styles */
+        .header {
+            background: #ffffff;
+            border-bottom: 2px solid #d4af37;
+            padding: 12px 0;
+            transition: all 0.3s ease;
+            overflow: visible;
+        }
+
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 40px;
+            width: auto;
+        }
+
+        .main-nav {
+            overflow: visible;
+        }
+
+        .main-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-link {
+            color: #1f2937;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #1e3a8a;
+            text-decoration: underline;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 30px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .hamburger-line {
+            width: 25px;
+            height: 2px;
+            background: #333;
+            border-radius: 1px;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 2px 0;
+        }
+
+        .desktop-only { display: block; }
+        .mobile-only { display: none; }
+
+        @media (max-width: 768px) {
+            .desktop-only { display: none; }
+            .mobile-only { display: flex; }
+            .header-content { padding: 0 20px; }
+        }
+
+
 
         /* Article Detail Panel */
         .article-detail-panel {
@@ -231,1674 +231,1665 @@
             color: var(--text-secondary);
         }
 
-        /* Page Title Section */
-        .page-title-section {
-            background: white;
-            border-radius: var(--radius-lg);
-            padding: 32px;
-            padding-top: 30px;
-            margin-bottom: 32px;
-            box-shadow: var(--shadow-md);
-        }
-
-        .breadcrumb {
-            margin-bottom: 16px;
-        }
-
-        .breadcrumb-link {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .breadcrumb-link:hover {
-            color: var(--primary-blue);
-        }
-
-        .page-title {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            font-size: 1.20rem;
-            font-weight: 600;
-            color: #6B46C1; /* Brand purple */
-            margin: 0 0 0px 0;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-bottom: 2px solid #e0e0e0;
-            padding: 4px 0 4px 4px; /* 4px left padding inside bar */
-            background: rgba(250, 251, 252, 0.65); /* Reduced opacity by 20% */
-            height: 32px; /* Reduced from 36px to 32px */
-            display: flex;
-            align-items: center;
-            letter-spacing: -0.02em;
-        }
-
-        .page-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin: 0;
-            line-height: 1.5;
-        }
-
-        /* Collapsible Categories */
-        .collapsible-categories {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .collapsible-section {
-            background: white;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-md);
-            overflow: hidden;
-            transition: transform 0.2s ease;
-        }
-
-        .collapsible-section:hover {
-            transform: translateY(-2px);
-        }
-
-        .collapsible-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 24px;
-            background: var(--primary-blue);
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .collapsible-header:hover {
-            background: var(--primary-blue-dark);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.15);
-        }
-
-        .collapsible-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin: 0;
-            color: white;
-        }
-
-        .collapsible-arrow {
-            font-size: 1.2rem;
-            font-weight: bold;
-            transition: transform 0.3s ease;
-            color: white;
-        }
-
-        .collapsible-arrow.rotated {
-            transform: rotate(180deg);
-        }
-
-        .collapsible-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
-                        opacity 0.3s ease,
-                        padding 0.3s ease;
-            opacity: 0;
-            padding: 0 24px;
-        }
-
-        .collapsible-content.expanded {
-            max-height: 1000px;
-            opacity: 1;
-            padding: 12px 24px 24px 24px;
-        }
-
-        .collapsible-links {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .collapsible-links li {
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .collapsible-links li:last-child {
-            border-bottom: none;
-        }
-
-        .collapsible-link {
-            display: block;
-            padding: 16px 24px;
-            color: var(--text-primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            border-left: 3px solid transparent;
-        }
-
-        .collapsible-link:hover {
-            background: #ffffff;
-            color: var(--primary-blue);
-            border-left-color: var(--primary-blue);
-        }
-        .wealth-creation-page-content { padding-top: 30px; }
-        </style>
-
-    <style>
-        /* Scoped overrides for flat white design with gold header border */
-        html, body {
-            background-color: #ffffff !important;
-            background: #ffffff !important;
-        }
-
-        @media (max-width: 1024px) {
-            .container, .header, .header-content, .drawer-header, .wealth-creation-page, .wealth-creation-page-content, .article-detail-header, .financial-analysis-page, .stock-valuation-page {
-                background: #ffffff !important;
-                background-color: #ffffff !important;
-                border: 0px solid transparent !important;
-                box-shadow: none !important;
-            }
-            .header, .drawer-header {
-                border-bottom: 2px solid #d4af37 !important;
-            }
-            /* Remove jagged notebook border/shadow effect */
-            .container::before {
-                display: none !important;
-                content: none !important;
-                box-shadow: none !important;
-                filter: none !important;
-            }
-        }
-        
-        /* Apply to all viewports for specific elements */
-        .container, .header, .header-content, .drawer-header, .page-title-section, .collapsible-section, .article-detail-header {
-            background: #ffffff !important;
-            background-color: #ffffff !important;
-            box-shadow: none !important;
-            border: 0px solid transparent !important;
-        }
-        
-        .header, .drawer-header {
-            border-bottom: 2px solid #d4af37 !important;
-        }
-
-        .collapsible-header, .collapsible-header:hover {
-            background: #ffffff !important;
-            background-color: #ffffff !important;
-            border: 1px solid #e5e7eb !important;
-            color: #1e3a8a !important;
-            box-shadow: none !important;
-            transform: none !important;
-        }
-        
-        .collapsible-title, .collapsible-arrow, .article-detail-title, .article-detail-close {
-            color: #1e3a8a !important;
-        }
-        
-        /* Ensure the main page background is white */
-        body, .wealth-creation-page, .wealth-creation-page-content, .financial-analysis-page, .stock-valuation-page, .professional-advisers-page, .financial-products-page, .resources-page {
-            background: #ffffff !important;
-            background-color: #ffffff !important;
-        }
-        
-        /* Drawer close button visibility */
-        .drawer-close {
-            color: #1e3a8a !important;
-        }
-        .drawer-close::before {
-            color: #1e3a8a !important;
-        }
-        
-        /* Remove blue borders on links */
-        .collapsible-link:hover {
-            border-left-color: #1e3a8a !important;
-            background: #f8f9fa !important;
-        }
-        
-        /* Remove the blue glow from ALL elements */
-        * {
-            box-shadow: none !important;
-            text-shadow: none !important;
-        }
-
-        /* Hamburger menu colors */
-        .hamburger-line {
-            background-color: #1e3a8a !important;
-        }
-        
-        /* Footer disclaimer and other potential blue elements */
-        footer, .footer, .disclaimer-section {
-            background: #ffffff !important;
-            background-color: #ffffff !important;
-            color: #666666 !important;
-            border-top: 1px solid #e5e7eb !important;
-        }
-    </style>
-
-
-
-
-</head>
-<body>
-    <div class="wealth-creation-page">
-        <!-- Header -->
-                                <header class="header sticky-header" role="banner">
-            <div class="header-content">
-                <div class="logo">
-                    <img src="public/html/G&D Logo.png" alt="Graham & Doddsville" class="logo-image">
-                </div>
-                
-                <nav class="main-nav desktop-only">
-                    <ul>
-                        <li><a href="index.html" class="nav-link">HOME</a></li>
-                        <li><a href="wealth-creation.html" class="nav-link">WEALTH CREATION</a></li>
-                        <li><a href="resources.html" class="nav-link">RESOURCES</a></li>
-                    </ul>
-                </nav>
-                
-                <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                </button>
-            </div>
-        </header>
-
-        <!-- Mobile Navigation Drawer -->
-        <div class="mobile-drawer" id="mobile-drawer">
-        <div class="drawer-header">
-            <img src="images/G&amp;D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
-            <button class="drawer-close" id="drawer-close" aria-label="Close menu"></button>
-        </div>
-        <nav class="drawer-nav">
-            <ul class="drawer-menu">
-                <li><a href="index.html" class="drawer-link" style="white-space: nowrap;">Home</a></li>
-                <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
-                <li><a href="legal-taxation.html" class="drawer-link">Legal &amp; Taxation</a></li>
-                <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
-                <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
-                <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
-                <li><a href="investment-analysis.html" class="drawer-link">Investment Analysis</a></li>
-                <li><a href="financial-statement-analysis.html" class="drawer-link">Financial Statement Analysis</a></li>
-                <li><a href="stock-valuation.html" class="drawer-link">Stock Valuation</a></li>
-                <li><a href="sidebar-economics.html" class="drawer-link">Economics</a></li>
-                <li><a href="investment-analysis.html" class="drawer-link">Investment Analysis</a></li>
-                <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
-                <li><a href="resources.html" class="drawer-link">Resources</a></li>
-                <li><a href="events.html" class="drawer-link">Events &amp; Seminars</a></li>
-            </ul>
-        </nav>
-    </div>
-                
-            
-        </div>
-
-        <div class="wealth-creation-page-content">
-            <!-- Page Title Section -->
-            <div class="page-title-section">
-                <div class="breadcrumb">
-                    <a href="index.html" class="breadcrumb-link">← Home</a>
-                </div>
-                <h1 class="page-title">FINANCIAL STATEMENT ANALYSIS</h1>
-                <p class="page-subtitle">Comprehensive guides for analyzing investments, valuing stocks, and understanding financial statements</p>
-            </div>
-
-            <!-- Collapsible Categories -->
-            <div class="collapsible-categories">
-                <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('introduction')">
-                        <h3 class="collapsible-title">Introduction</h3>
-                        <span class="collapsible-arrow" id="introduction-arrow">&#9660;</span>
-                    </div>
-                    <div class="collapsible-content collapsed" id="introduction-content">
-                        <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('nature-and-purpose')">Nature and purpose</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('users-of-financial-statements')">Users of financial statements</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('basic-concepts-of-accounting')">Basic concepts of accounting</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('gaap-in-australia')">GAAP in Australia</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('ifrs-in-australia')">IFRS in Australia</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('types-of-financial-statements')">Types of financial statements</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-financial-statements-interlink')">How financial statements interlink</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-is-financial-statements-interlink')">What is financial statements interlink</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('when-financials-are-misleading')">When financials are misleading</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-financial-analysis')">Limitations of financial analysis</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('general-guidelines')">
-                        <h3 class="collapsible-title">General Guidelines</h3>
-                        <span class="collapsible-arrow" id="general-guidelines-arrow">&#9660;</span>
-                    </div>
-                    <div class="collapsible-content collapsed" id="general-guidelines-content">
-                        <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('the-7-signs-of-healthy-companies')">The 7 signs of healthy companies</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('the-7-signs-of-financial-distress')">The 7 signs of financial distress</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('the-7-signs-of-transparency')">The 7 signs of transparency</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('the-altman-z-score')">The Altman Z-score</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('the-probability-of-bankruptcy')">The probability of bankruptcy</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('key-drivers-of-business-growth')">Key drivers of business growth</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('top-7-questions-to-ask-management')">Top 7 questions to ask management</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('common-errors-in-statements')">Common errors in statements</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-read-financial-statements')">How to read financial statements</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('balance-sheet')">
-                        <h3 class="collapsible-title">Balance Sheet</h3>
-                        <span class="collapsible-arrow" id="balance-sheet-arrow">&#9660;</span>
-                    </div>
-                    <div class="collapsible-content collapsed" id="balance-sheet-content">
-                        <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-is-a-balance-sheet')">What is a balance sheet?</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('key-assets-in-the-balance-sheet')">Key assets in the balance sheet</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('key-liabilities-in-the-balance-sheet')">Key liabilities in the balance sheet</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('intangible-assets')">Intangible assets</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('impairment-of-assets')">Impairment of assets</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('equity-and-owner-s-capital')">Equity and owner's capital</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('off-balance-sheet-transactions')">Off-balance sheet transactions</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-the-balance-sheet')">Limitations of the balance sheet</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('red-flags-in-the-balance-sheet')">Red flags in the balance sheet</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('profit-and-loss-statement')">
-                        <h3 class="collapsible-title">Profit and Loss Statement</h3>
-                        <span class="collapsible-arrow" id="profit-and-loss-statement-arrow">&#9660;</span>
-                    </div>
-                    <div class="collapsible-content collapsed" id="profit-and-loss-statement-content">
-                        <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-is-a-profit-and-loss-statement')">What is a profit and loss statement?</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('revenue-recognition')">Revenue recognition</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('cost-of-goods-sold-cogs')">Cost of goods sold (COGS)</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('depreciation-and-amortisation')">Depreciation and amortisation</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('operating-income')">Operating income</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('operating-expenses')">Operating expenses</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('non-operating-income')">Non-operating income</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('non-operating-expenses')">Non-operating expenses</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('income-taxes')">Income taxes</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('earnings-per-share-eps')">Earnings per share (EPS)</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-the-profit-and-loss')">Limitations of the profit and loss</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('red-flags-in-the-profit-and-loss')">Red flags in the profit and loss</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-evaluate-earnings-quality')">How to evaluate earnings quality</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('cash-flow-statement')">
-                        <h3 class="collapsible-title">Cash Flow Statement</h3>
-                        <span class="collapsible-arrow" id="cash-flow-statement-arrow">&#9660;</span>
-                    </div>
-                    <div class="collapsible-content collapsed" id="cash-flow-statement-content">
-                        <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-is-a-cash-flow-statement')">What is a cash flow statement?</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('operating-cash-flow')">Operating cash flow</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('investing-cash-flow')">Investing cash flow</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('financing-cash-flow')">Financing cash flow</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('free-cash-flow')">Free cash flow</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('cashflow-vs-profit')">Cashflow vs profit</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('non-cash-transactions')">Non-cash transactions</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('effects-of-working-capital')">Effects of working capital</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-cash-flow-statement')">Limitations of cash flow statement</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('red-flags-with-cash-flow-statement')">Red flags with cash flow statement</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('statement-of-changes-in-equity')">
-                        <h3 class="collapsible-title">Statement of Changes in Equity</h3>
-                        <span class="collapsible-arrow" id="statement-of-changes-in-equity-arrow">&#9660;</span>
-                    </div>
-                    <div class="collapsible-content collapsed" id="statement-of-changes-in-equity-content">
-                        <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-is-a-soce')">What is a SOCE?</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('retained-earnings')">Retained earnings</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('dividends-and-impact-on-equity')">Dividends and impact on equity</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('share-issuances-and-capital-raising')">Share issuances and capital raising</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('share-buybacks-and-treasury-shares')">Share buybacks and treasury shares</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('other-comprehensive-income')">Other comprehensive income</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('reserves-and-equity-adjustments')">Reserves and equity adjustments</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('management-strategy-and-equity-changes')">Management strategy and equity changes</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-the-soce')">Limitations of the SOCE</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('red-flags-in-the-soce')">Red flags in the SOCE</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('notes-to-financial-statements')">
-                        <h3 class="collapsible-title">Notes to Financial Statements</h3>
-                        <span class="collapsible-arrow" id="notes-to-financial-statements-arrow">&#9660;</span>
-                    </div>
-                    <div class="collapsible-content collapsed" id="notes-to-financial-statements-content">
-                        <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-are-notes-to-financial-statements')">What are notes to financial statements?</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('significant-accounting-policies')">Significant accounting policies</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('consolidated-financial-statements')">Consolidated financial statements</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('estimates-and-assumptions')">Estimates and assumptions</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('revenue-recognition-policies')">Revenue recognition policies</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('breakdown-of-assets-and-liabilities')">Breakdown of assets and liabilities</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('contingent-liabilities')">Contingent liabilities</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('related-party-transactions')">Related party transactions</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('joint-ventures')">Joint ventures</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('lease-disclosures')">Lease disclosures</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('financial-instruments-and-risks')">Financial instruments and risks</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('segment-reporting-and-divisions')">Segment reporting and divisions</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('subsequent-events-and-disclosures')">Subsequent events and disclosures</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-the-notes')">Limitations of the notes</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('red-flags-in-the-notes')">Red flags in the notes</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('management-discussion')">
-                        <h3 class="collapsible-title">Management Discussion</h3>
-                        <span class="collapsible-arrow" id="management-discussion-arrow">&#9660;</span>
-                    </div>
-                    <div class="collapsible-content collapsed" id="management-discussion-content">
-                        <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('management-discussion-analysis')">Management discussion & analysis</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('structure-of-an-md-a')">Structure of an MD&A</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-analyse-an-md-a')">How to analyse an MD&A</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('directors-declaration')">Directors' declaration</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('auditor-s-independence')">Auditor's independence</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('independent-auditor-s-report')">Independent auditor's report</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-the-md-a')">Limitations of the MD&A</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('red-flags-in-the-md-a')">Red flags in the MD&A</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('financial-ratios')">
-                        <h3 class="collapsible-title">Financial Ratios</h3>
-                        <span class="collapsible-arrow" id="financial-ratios-arrow">&#9660;</span>
-                    </div>
-                    <div class="collapsible-content collapsed" id="financial-ratios-content">
-                        <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-are-financial-ratios')">What are financial ratios?</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('leverage-ratios')">Leverage ratios</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('liquidity-ratios')">Liquidity ratios</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('solvency-ratios')">Solvency ratios</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('profitability-ratios')">Profitability ratios</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('cash-flow-ratios')">Cash flow ratios</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('efficiency-ratios')">Efficiency ratios</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('coverage-ratios')">Coverage ratios</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('market-ratios')">Market ratios</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('growth-ratios')">Growth ratios</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('other-ratios')">Other ratios</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-financial-ratios')">Limitations of financial ratios</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="collapsible-section">
-                    <div class="collapsible-header" onclick="toggleCollapsible('other-analytical-tools')">
-                        <h3 class="collapsible-title">Other Analytical Tools</h3>
-                        <span class="collapsible-arrow" id="other-analytical-tools-arrow">&#9660;</span>
-                    </div>
-                    <div class="collapsible-content collapsed" id="other-analytical-tools-content">
-                        <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('horizontal-analysis')">Horizontal analysis</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('vertical-analysis')">Vertical analysis</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('sensitivity-analysis')">Sensitivity analysis</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('financial-projections')">Financial projections</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('recasting-financial-statements')">Recasting financial statements</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('du-pont-analysis')">Du Pont analysis</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('segmental-analysis')">Segmental analysis</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('break-even-analysis')">Break even analysis</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Article Detail Panel -->
-    <div class="article-detail-panel" id="article-detail-panel">
-        <div class="article-detail-content">
-            <div class="article-detail-header">
-                <h3 class="article-detail-title" id="article-detail-title">Article Title</h3>
-                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">×</button>
-            </div>
-            <div class="article-detail-body" id="article-detail-body">
-                <div class="article-loading">Loading article...</div>
-            </div>
-        </div>
-    </div>
-    <script>
-        // Collapsible functionality
-        function toggleCollapsible(sectionId) {
-            const content = document.getElementById(sectionId + '-content');
-            const arrow = document.getElementById(sectionId + '-arrow');
-            if (!content) return;
-            const section = content.closest('.collapsible-section');
-            
-            const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px' && content.style.maxHeight !== 'none';
-            
-            // Close all other open sections
-            document.querySelectorAll('.collapsible-content').forEach(c => {
-                c.style.maxHeight = null;
-                c.classList.remove('expanded');
-                c.classList.add('collapsed');
-                const s = c.closest('.collapsible-section');
-                if (s) s.classList.remove('active');
-                const a = document.getElementById(c.id.replace('-content', '-arrow'));
-                if (a) a.innerHTML = '▼';
-            });
-
-            if (!isOpen) {
-                if(sectionId === 'events-seminars') {
-                    content.style.maxHeight = 'none';
-                } else {
-                    content.style.maxHeight = content.scrollHeight + "px";
-                }
-                content.classList.add('expanded');
-                content.classList.remove('collapsed');
-                if (section) section.classList.add('active');
-                if (arrow) arrow.innerHTML = '▲';
-            }
-        }
-
-        // Mobile drawer functionality
-        const mobileToggle = document.getElementById('mobile-toggle');
-        const mobileDrawer = document.getElementById('mobile-drawer');
-        const drawerClose = document.getElementById('drawer-close');
-        
-        if (mobileToggle && mobileDrawer) {
-            mobileToggle.addEventListener('click', () => {
-                console.log('Hamburger menu clicked!');
-                mobileDrawer.classList.add('open');
-                document.body.style.overflow = 'hidden';
-                console.log('Drawer should be open now');
-            });
-        }
-        
-        if (drawerClose && mobileDrawer) {
-            drawerClose.addEventListener('click', () => {
-                mobileDrawer.classList.remove('open');
-                document.body.style.overflow = '';
-            });
-        }
-        
-        // Close drawer when clicking outside
-        if (mobileDrawer) {
-            mobileDrawer.addEventListener('click', (e) => {
-                if (e.target === mobileDrawer) {
-                    mobileDrawer.classList.remove('open');
-                    document.body.style.overflow = '';
-                }
-            });
-        }
-
-        // Article content data
-        const articleContent = {
-            'industry-guides-automobiles-and-components': {
-                title: 'Automobiles and components',
-                content: `
-                    
-<p>Dummy content for Automobiles and components goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'industry-guides-banking': {
-                title: 'Banking',
-                content: `
-                    
-<p>Dummy content for Banking goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'industry-guides-capital-goods': {
-                title: 'Capital goods',
-                content: `
-                    
-<p>Dummy content for Capital goods goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'industry-guides-commercial-and-professional-services': {
-                title: 'Commercial and professional services',
-                content: `
-                    
-<p>Dummy content for Commercial and professional services goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'industry-guides-consumer-durable-and-apparel': {
-                title: 'Consumer durable and apparel',
-                content: `
-                    
-<p>Dummy content for Consumer durable and apparel goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'industry-guides-consumer-services': {
-                title: 'Consumer services',
-                content: `
-                    
-<p>Dummy content for Consumer services goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'industry-guides-consumer-discretionary-retail': {
-                title: 'Consumer discretionary & retail',
-                content: `
-                    
-<p>Dummy content for Consumer discretionary & retail goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'industry-guides-energy-industry': {
-                title: 'Energy industry',
-                content: `
-                    <p>Dummy content for Energy industry goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'industry-guides-consumer-staples-distribution-retail': {
-                title: 'Consumer staples distribution & retail',
-                content: `
-                    
-<p>Dummy content for Consumer staples distribution & retail goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'industry-guides-food-beverage-and-tobacco': {
-                title: 'Food, beverage and tobacco',
-                content: `
-                    
-<p>Dummy content for Food, beverage and tobacco goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'industry-guides-health-care-equipment-and-services': {
-                title: 'Health care equipment and services',
-                content: `
-                    
-<p>Dummy content for Health care equipment and services goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'industry-guides-household-and-personal-products': {
-                title: 'Household and personal products',
-                content: `
-                    
-<p>Dummy content for Household and personal products goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'industry-guides-insurance': {
-                title: 'Insurance',
-                content: `
-                    
-<p>Dummy content for Insurance goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'industry-guides-materials': {
-                title: 'Materials',
-                content: `
-                    
-<p>Dummy content for Materials goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'industry-guides-media-and-entertainment': {
-                title: 'Media and entertainment',
-                content: `
-                    
-<p>Dummy content for Media and entertainment goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'industry-guides-pharmaceuticals-biotechnology-and-life-sciences': {
-                title: 'Pharmaceuticals, biotechnology and life sciences',
-                content: `
-                    
-<p>Dummy content for Pharmaceuticals, biotechnology and life sciences goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'industry-guides-equity-real-estate-investment-trusts': {
-                title: 'Equity real estate Investment trusts',
-                content: `
-                    <p>Dummy content for Equity real estate Investment trusts goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'industry-guides-financial-services': {
-                title: 'Financial services',
-                content: `
-                    
-<p>Dummy content for Financial services goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'industry-guides-semiconductors': {
-                title: 'Semiconductors',
-                content: `
-                    
-<p>Dummy content for Semiconductors goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'industry-guides-software-and-services': {
-                title: 'Software and services',
-                content: `
-                    
-<p>Dummy content for Software and services goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'industry-guides-technology-hardware': {
-                title: 'Technology hardware',
-                content: `
-                    
-<p>Dummy content for Technology hardware goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'industry-guides-telecommunications': {
-                title: 'Telecommunications',
-                content: `
-                    
-<p>Dummy content for Telecommunications goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'industry-guides-transportation': {
-                title: 'Transportation',
-                content: `
-                    
-<p>Dummy content for Transportation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'industry-guides-utilities': {
-                title: 'Utilities',
-                content: `
-                    
-<p>Dummy content for Utilities goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'industry-guides-real-estate-management-development': {
-                title: 'Real estate management & development',
-                content: `
-                    
-<p>Dummy content for Real estate management & development goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'financial-statement-analysis-nature-and-purpose': {
-                title: 'Nature and purpose',
-                content: `
-                    
-<p>Dummy content for Nature and purpose goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'financial-statement-analysis-users-of-financial-statements': {
-                title: 'Users of financial statements',
-                content: `
-                    
-<p>Dummy content for Users of financial statements goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'financial-statement-analysis-basic-concepts-of-accounting': {
-                title: 'Basic concepts of accounting',
-                content: `
-                    
-<p>Dummy content for Basic concepts of accounting goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'financial-statement-analysis-gaap-in-australia': {
-                title: 'GAAP in Australia',
-                content: `
-                    
-<p>Dummy content for GAAP in Australia goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'financial-statement-analysis-ifrs-in-australia': {
-                title: 'IFRS in Australia',
-                content: `
-                    
-<p>Dummy content for IFRS in Australia goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'financial-statement-analysis-types-of-financial-statements': {
-                title: 'Types of financial statements',
-                content: `
-                    
-<p>Dummy content for Types of financial statements goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'financial-statement-analysis-how-statements-interlink': {
-                title: 'How statements interlink',
-                content: `
-                    
-<p>Dummy content for How statements interlink goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'financial-statement-analysis-what-is-financial-analysis': {
-                title: 'What is financial analysis?',
-                content: `
-                    
-<p>Dummy content for What is financial analysis? goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'financial-statement-analysis-when-financials-are-misleading': {
-                title: 'When financials are misleading',
-                content: `
-                    
-<p>Dummy content for When financials are misleading goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'financial-statement-analysis-limitations-of-financial-analysis': {
-                title: 'Limitations of financial analysis',
-                content: `
-                    
-<p>Dummy content for Limitations of financial analysis goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'financial-statement-analysis-12-signs-of-strong-companies': {
-                title: '12 signs of strong companies',
-                content: `
-                    
-<p>Dummy content for 12 signs of strong companies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'financial-statement-analysis-12-signs-of-financial-distress': {
-                title: '12 signs of financial distress',
-                content: `
-                    
-<p>Dummy content for 12 signs of financial distress goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'financial-statement-analysis-the-altman-z-score': {
-                title: 'The Altman Z-score',
-                content: `
-                    
-<p>Dummy content for The Altman Z-score goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'financial-statement-analysis-probability-of-bankruptcy': {
-                title: 'Probability of bankruptcy',
-                content: `
-                    
-<p>Dummy content for Probability of bankruptcy goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'financial-statement-analysis-drivers-of-business-growth': {
-                title: 'Drivers of business growth',
-                content: `
-                    
-<p>Dummy content for Drivers of business growth goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'financial-statement-analysis-the-top-5-questions-to-ask': {
-                title: 'The top 5 questions to ask',
-                content: `
-                    
-<p>Dummy content for The top 5 questions to ask goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'financial-statement-analysis-how-to-read-financials': {
-                title: 'How to read financials',
-                content: `
-                    
-<p>Dummy content for How to read financials goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'financial-statement-analysis-signs-of-transparent-company': {
-                title: 'Signs of transparent company',
-                content: `
-                    
-<p>Dummy content for Signs of transparent company goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'financial-statement-analysis-common-errors': {
-                title: 'Common errors',
-                content: `
-                    
-<p>Dummy content for Common errors goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'financial-statement-analysis-12-management-mistakes': {
-                title: '12 management mistakes',
-                content: `
-                    
-<p>Dummy content for 12 management mistakes goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'accounting-shenanigans-intro-to-accounting-shenanigans': {
-                title: 'Intro to accounting shenanigans',
-                content: `
-                    <p>Dummy content for Intro to accounting shenanigans goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'accounting-shenanigans-types-of-shenanigans': {
-                title: 'Types of shenanigans',
-                content: `
-                    <p>Dummy content for Types of shenanigans goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'accounting-shenanigans-how-to-spot-red-flags': {
-                title: 'How to spot red flags',
-                content: `
-                    <p>Dummy content for How to spot red flags goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'accounting-shenanigans-revenue-recognition-tricks': {
-                title: 'Revenue recognition tricks',
-                content: `
-                    
-<p>Dummy content for Revenue recognition tricks goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'accounting-shenanigans-expense-manipulation': {
-                title: 'Expense manipulation',
-                content: `
-                    <p>Dummy content for Expense manipulation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'accounting-shenanigans-asset-overvaluation': {
-                title: 'Asset overvaluation',
-                content: `
-                    <p>Dummy content for Asset overvaluation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'accounting-shenanigans-liability-concealment': {
-                title: 'Liability concealment',
-                content: `
-                    <p>Dummy content for Liability concealment goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'accounting-shenanigans-cash-flow-manipulation': {
-                title: 'Cash flow manipulation',
-                content: `
-                    
-<p>Dummy content for Cash flow manipulation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'accounting-shenanigans-real-world-case-studies': {
-                title: 'Real world case studies',
-                content: `
-                    <p>Dummy content for Real world case studies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'accounting-shenanigans-forensic-accounting-tools': {
-                title: 'Forensic accounting tools',
-                content: `
-                    <p>Dummy content for Forensic accounting tools goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'qualitative-factors-management-quality': {
-                title: 'Management quality',
-                content: `
-                    <p>Dummy content for Management quality goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'qualitative-factors-corporate-governance': {
-                title: 'Corporate governance',
-                content: `
-                    
-<p>Dummy content for Corporate governance goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'qualitative-factors-competitive-advantage-moats': {
-                title: 'Competitive advantage (Moats)',
-                content: `
-                    <p>Dummy content for Competitive advantage (Moats) goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'qualitative-factors-brand-value': {
-                title: 'Brand value',
-                content: `
-                    <p>Dummy content for Brand value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'qualitative-factors-industry-dynamics': {
-                title: 'Industry dynamics',
-                content: `
-                    <p>Dummy content for Industry dynamics goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'qualitative-factors-regulatory-environment': {
-                title: 'Regulatory environment',
-                content: `
-                    <p>Dummy content for Regulatory environment goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'qualitative-factors-technological-disruption': {
-                title: 'Technological disruption',
-                content: `
-                    <p>Dummy content for Technological disruption goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'qualitative-factors-esg-considerations': {
-                title: 'ESG considerations',
-                content: `
-                    <p>Dummy content for ESG considerations goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'qualitative-factors-customer-loyalty': {
-                title: 'Customer loyalty',
-                content: `
-                    <p>Dummy content for Customer loyalty goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'qualitative-factors-r-d-and-innovation': {
-                title: 'R&D and innovation',
-                content: `
-                    <p>Dummy content for R&D and innovation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-intro-to-stock-valuation': {
-                title: 'Intro to stock valuation',
-                content: `
-                    
-<p>Dummy content for Intro to stock valuation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-what-is-value': {
-                title: 'What is value?',
-                content: `
-                    
-<p>Dummy content for What is value? goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-stock-valuation-process': {
-                title: 'Stock valuation process',
-                content: `
-                    
-<p>Dummy content for Stock valuation process goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-limitations-of-valuation': {
-                title: 'Limitations of valuation',
-                content: `
-                    
-<p>Dummy content for Limitations of valuation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-behavioural-biases': {
-                title: 'Behavioural biases',
-                content: `
-                    
-<p>Dummy content for Behavioural biases goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-use-of-discount-rates': {
-                title: 'Use of discount rates',
-                content: `
-                    
-<p>Dummy content for Use of discount rates goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-calculating-discount-rate': {
-                title: 'Calculating discount rate',
-                content: `
-                    
-<p>Dummy content for Calculating discount rate goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-10-common-mistakes': {
-                title: '10 common mistakes',
-                content: `
-                    
-<p>Dummy content for 10 common mistakes goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-what-is-intrinsic-value': {
-                title: 'What is intrinsic value?',
-                content: `
-                    
-<p>Dummy content for What is intrinsic value? goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-calculating-intrinsic-value': {
-                title: 'Calculating intrinsic value',
-                content: `
-                    
-<p>Dummy content for Calculating intrinsic value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-buffett-s-intrinsic-value': {
-                title: 'Buffettâ€™s intrinsic value',
-                content: `
-                    
-<p>Dummy content for Buffettâ€™s intrinsic value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-graham-s-intrinsic-value': {
-                title: 'Grahamâ€™s intrinsic value',
-                content: `
-                    
-<p>Dummy content for Grahamâ€™s intrinsic value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-limitations-of-value': {
-                title: 'Limitations of value',
-                content: `
-                    
-<p>Dummy content for Limitations of value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-intro-to-revenue-based-val': {
-                title: 'Intro to revenue-based val',
-                content: `
-                    
-<p>Dummy content for Intro to revenue-based val goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-price-to-sales-ratio': {
-                title: 'Price-to-sales ratio',
-                content: `
-                    
-<p>Dummy content for Price-to-sales ratio goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-sales-multiples': {
-                title: 'Sales multiples',
-                content: `
-                    
-<p>Dummy content for Sales multiples goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-revenue-growth-rate': {
-                title: 'Revenue growth rate',
-                content: `
-                    
-<p>Dummy content for Revenue growth rate goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-price-to-revenue-growth': {
-                title: 'Price-to-revenue growth',
-                content: `
-                    
-<p>Dummy content for Price-to-revenue growth goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-price-to-earnings-ratio': {
-                title: 'Price-to-earnings ratio',
-                content: `
-                    
-<p>Dummy content for Price-to-earnings ratio goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-earnings-yield': {
-                title: 'Earnings yield',
-                content: `
-                    
-<p>Dummy content for Earnings yield goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-pe-to-growth-peg-ratio': {
-                title: 'PE-to-growth (PEG) ratio',
-                content: `
-                    
-<p>Dummy content for PE-to-growth (PEG) ratio goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-ypeg-ratio': {
-                title: 'YPEG ratio',
-                content: `
-                    
-<p>Dummy content for YPEG ratio goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-future-maintainable-earnings': {
-                title: 'Future maintainable earnings',
-                content: `
-                    
-<p>Dummy content for Future maintainable earnings goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-discounted-future-earnings': {
-                title: 'Discounted future earnings',
-                content: `
-                    
-<p>Dummy content for Discounted future earnings goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-earnings-power-value': {
-                title: 'Earnings power value',
-                content: `
-                    
-<p>Dummy content for Earnings power value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-residual-income': {
-                title: 'Residual income',
-                content: `
-                    
-<p>Dummy content for Residual income goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-price-to-ebitda': {
-                title: 'Price-to-EBITDA',
-                content: `
-                    
-<p>Dummy content for Price-to-EBITDA goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-discounted-cash-flow': {
-                title: 'Discounted cash flow',
-                content: `
-                    
-<p>Dummy content for Discounted cash flow goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-reverse-dcf': {
-                title: 'Reverse DCF',
-                content: `
-                    
-<p>Dummy content for Reverse DCF goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-economic-value-added': {
-                title: 'Economic value added',
-                content: `
-                    
-<p>Dummy content for Economic value added goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-free-cash-flow-valuation': {
-                title: 'Free cash flow valuation',
-                content: `
-                    
-<p>Dummy content for Free cash flow valuation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-book-value': {
-                title: 'Book value',
-                content: `
-                    
-<p>Dummy content for Book value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-tangible-book-value': {
-                title: 'Tangible book value',
-                content: `
-                    
-<p>Dummy content for Tangible book value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-adjusted-net-assets': {
-                title: 'Adjusted net assets',
-                content: `
-                    
-<p>Dummy content for Adjusted net assets goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-replacement-cost-method': {
-                title: 'Replacement cost method',
-                content: `
-                    
-<p>Dummy content for Replacement cost method goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-sum-of-the-parts': {
-                title: 'Sum of the parts',
-                content: `
-                    
-<p>Dummy content for Sum of the parts goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-liquidation-value': {
-                title: 'Liquidation value',
-                content: `
-                    
-<p>Dummy content for Liquidation value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-dividend-discount-model': {
-                title: 'Dividend Discount Model',
-                content: `
-                    
-<p>Dummy content for Dividend Discount Model goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-gordon-growth-model': {
-                title: 'Gordon Growth Model',
-                content: `
-                    
-<p>Dummy content for Gordon Growth Model goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-two-stage-dividend-growth': {
-                title: 'Two-Stage Dividend Growth',
-                content: `
-                    
-<p>Dummy content for Two-Stage Dividend Growth goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-dividend-payout-ratio': {
-                title: 'Dividend Payout Ratio',
-                content: `
-                    
-<p>Dummy content for Dividend Payout Ratio goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-price-to-book-value-ratio': {
-                title: 'Price-to-book value ratio',
-                content: `
-                    
-<p>Dummy content for Price-to-book value ratio goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-enterprise-value': {
-                title: 'Enterprise value',
-                content: `
-                    
-<p>Dummy content for Enterprise value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-enterprise-value-to-ebitda': {
-                title: 'Enterprise value to EBITDA',
-                content: `
-                    
-<p>Dummy content for Enterprise value to EBITDA goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-enterprise-value-to-sales': {
-                title: 'Enterprise value to sales',
-                content: `
-                    
-<p>Dummy content for Enterprise value to sales goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-graham-s-formulas': {
-                title: 'Grahamâ€™s formulas',
-                content: `
-                    
-<p>Dummy content for Grahamâ€™s formulas goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-greenblatt-s-magic-formula': {
-                title: 'Greenblattâ€™s magic formula',
-                content: `
-                    
-<p>Dummy content for Greenblattâ€™s magic formula goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-industry-rules-of-thumb': {
-                title: 'Industry rules of thumb',
-                content: `
-                    
-<p>Dummy content for Industry rules of thumb goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-intangible-assets': {
-                title: 'Intangible assets',
-                content: `
-                    
-<p>Dummy content for Intangible assets goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-call-options': {
-                title: 'Call options',
-                content: `
-                    
-<p>Dummy content for Call options goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-put-options': {
-                title: 'Put options',
-                content: `
-                    
-<p>Dummy content for Put options goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-distressed-companies': {
-                title: 'Distressed companies',
-                content: `
-                    
-<p>Dummy content for Distressed companies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-bankrupt-companies': {
-                title: 'Bankrupt companies',
-                content: `
-                    
-<p>Dummy content for Bankrupt companies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-mergers-acquisitions': {
-                title: 'Mergers & acquisitions',
-                content: `
-                    
-<p>Dummy content for Mergers & acquisitions goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-start-up-companies': {
-                title: 'Start-up companies',
-                content: `
-                    
-<p>Dummy content for Start-up companies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-pre-ipo-companies': {
-                title: 'Pre-IPO companies',
-                content: `
-                    
-<p>Dummy content for Pre-IPO companies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-asset-heavy-companies': {
-                title: 'Asset-heavy companies',
-                content: `
-                    
-<p>Dummy content for Asset-heavy companies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'stock-valuation-emerging-markets': {
-                title: 'Emerging markets',
-                content: `
-                    
-<p>Dummy content for Emerging markets goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'corporate-actions-dividends': {
-                title: 'Dividends',
-                content: `
-                    
-<p>Dummy content for Dividends goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'corporate-actions-stock-splits': {
-                title: 'Stock Splits',
-                content: `
-                    
-<p>Dummy content for Stock Splits goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'corporate-actions-share-buy-backs': {
-                title: 'Share Buy Backs',
-                content: `
-                    
-<p>Dummy content for Share Buy Backs goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'corporate-actions-rights-issues': {
-                title: 'Rights Issues',
-                content: `
-                    
-<p>Dummy content for Rights Issues goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'corporate-actions-bonus-issues': {
-                title: 'Bonus Issues',
-                content: `
-                    
-<p>Dummy content for Bonus Issues goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'corporate-actions-options-and-warrants': {
-                title: 'Options and Warrants',
-                content: `
-                    
-<p>Dummy content for Options and Warrants goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'corporate-actions-mergers-and-acquisitions': {
-                title: 'Mergers and Acquisitions',
-                content: `
-                    
-<p>Dummy content for Mergers and Acquisitions goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'corporate-actions-divestments': {
-                title: 'Divestments',
-                content: `
-                    
-<p>Dummy content for Divestments goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'corporate-actions-administration': {
-                title: 'Administration',
-                content: `
-                    
-<p>Dummy content for Administration goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'corporate-actions-liquidation': {
-                title: 'Liquidation',
-                content: `
-                    
-<p>Dummy content for Liquidation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'accounting-standards-regulatory-bodies': {
-                title: 'Regulatory Bodies',
-                content: `
-                    
-<p>Dummy content for Regulatory Bodies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'accounting-standards-standards-relating-to-financial-reporting': {
-                title: 'Standards Relating to Financial Reporting',
-                content: `
-                    
-<p>Dummy content for Standards Relating to Financial Reporting goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'accounting-standards-profit-and-loss': {
-                title: 'Profit and Loss',
-                content: `
-                    <p>Dummy content for Profit and Loss goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'accounting-standards-balance-sheet': {
-                title: 'Balance Sheet',
-                content: `
-                    <p>Dummy content for Balance Sheet goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'accounting-standards-disclosures': {
-                title: 'Disclosures',
-                content: `
-                    <p>Dummy content for Disclosures goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'accounting-standards-cash-flow': {
-                title: 'Cash Flow',
-                content: `
-                    
-<p>Dummy content for Cash Flow goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'accounting-standards-aasb-work-in-progress': {
-                title: 'AASB Work-In-Progress',
-                content: `
-                    
-<p>Dummy content for AASB Work-In-Progress goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-            'accounting-standards-aasb-publications': {
-                title: 'AASB Publications',
-                content: `
-                    <p>Dummy content for AASB Publications goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
-                `
-            },
-        };
-
-
-        // Article panel functionality
-        function openArticle(articleId) {
-            const panel = document.getElementById('article-detail-panel');
-            const title = document.getElementById('article-detail-title');
-            const body = document.getElementById('article-detail-body');
-            
-            if (articleContent[articleId]) {
-                title.textContent = articleContent[articleId].title;
-                const imagePlaceholder = window.buildArticleImageHtml(articleId, articleContent[articleId]);
-
-                const relatedArticles = `
-<hr style="margin:32px 0;border:none;border-top:1px solid #e5e7eb;">
-<h3 style="color:#1e3a8a;margin-bottom:12px;">Related articles:</h3>
-<p style="color:#6b7280;font-size:14px;line-height:1.6;">Explore more resources and expert perspectives on these topics in our library collection.</p>
-<h3 style="color:#1e3a8a;margin:24px 0 12px;">Related books:</h3>
-<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;">
-    ${[1,2,3,4,5,6].map(i => `
-    <div style="border:1px solid #e5e7eb;border-radius:8px;padding:12px;text-align:center;background:#f9fafb;">
-        <div style="width:60px;height:80px;background:#e5e7eb;border-radius:4px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:11px;">Book ${i}</div>
-        <a href="#" style="font-size:12px;color:#1e3a8a;text-decoration:none;">Book title link</a>
-    </div>`).join('')}
-</div>
-<hr style="margin:24px 0;border:none;border-top:1px solid #e5e7eb;">
-<p style="font-size:12px;color:#9ca3af;font-style:italic;"><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>`;
-
-                let articleBody = articleContent[articleId] ? articleContent[articleId].content : '';
-                if(articleBody) {
-                    // Remove first <p>...< /p> (non-greedy) and any adjacent heading up to h3 if it exists at the start
-                    // We'll run successive replaces to be robust instead of one massive regex:
-                    articleBody = articleBody.trim();
-                    // if starts with a paragraph that is a category
-                    let pMatch = articleBody.match(/^(<p[^>]*>.*?<\/p>)\s*(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
-                    if(pMatch) {
-                        articleBody = articleBody.substring(pMatch[0].length).trim();
-                    } else {
-                        // try to match just the h tag
-                        let hMatch = articleBody.match(/^(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
-                        if(hMatch) {
-                            articleBody = articleBody.substring(hMatch[0].length).trim();
-                        }
-                    }
-                    
-                    // Bold first paragraph
-                    articleBody = articleBody.replace(/<p>(.*?)<\/p>/i, '<p><strong>$1</strong></p>');
-                    
-                    // Remove existing disclaimer
-                    articleBody = articleBody.replace(/<p><strong>Disclaimer:<\/strong>.*?<\/p>\s*$/is, '');
-                }
-                
-                body.innerHTML = imagePlaceholder + articleBody + relatedArticles;
-                panel.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
-        }
-
-        function closeArticlePanel() {
-            const panel = document.getElementById('article-detail-panel');
-            panel.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        // Event listeners
-        document.addEventListener('DOMContentLoaded', function() {
-            const articleClose = document.getElementById('article-detail-close');
-            const articlePanel = document.getElementById('article-detail-panel');
-            
-            if (articleClose) {
-                articleClose.addEventListener('click', closeArticlePanel);
-            }
-            
-            if (articlePanel) {
-                articlePanel.addEventListener('click', function(event) {
-                    if (event.target === articlePanel) {
-                        closeArticlePanel();
-                    }
-                });
-            }
-
-            // Check for hash in URL and open corresponding article
-            if (window.location.hash) {
-                const hashValue = window.location.hash.substring(1);
-                // Look through articleContent keys to find a match
-                for (const key in articleContent) {
-                    if (key.endsWith(hashValue)) {
-                        // Expand the corresponding collapsible section
-                        const sectionId = key.substring(0, key.lastIndexOf('-' + hashValue));
-                        const sectionArrow = document.getElementById(sectionId + '-arrow');
-                        if (sectionArrow && document.getElementById(sectionId + '-content').classList.contains('collapsed')) {
-                            toggleCollapsible(sectionId);
-                        }
-                        // Open the article
-                        setTimeout(() => openArticle(key), 100);
-                        break;
-                    }
-                }
-            }
-
-        });
-    </script>
-
-
-    <script src="js/article-image-resolver.js?v=3"></script>
-</body></html>
-
-
+        /* Page Title Section */
+        .page-title-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            padding-top: 30px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .breadcrumb {
+            margin-bottom: 16px;
+        }
+
+        .breadcrumb-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .breadcrumb-link:hover {
+            color: var(--primary-blue);
+        }
+
+        .page-title {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 1.20rem;
+            font-weight: 600;
+            color: #6B46C1; /* Brand purple */
+            margin: 0 0 0px 0;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 2px solid #e0e0e0;
+            padding: 4px 0 4px 4px; /* 4px left padding inside bar */
+            background: rgba(250, 251, 252, 0.65); /* Reduced opacity by 20% */
+            height: 32px; /* Reduced from 36px to 32px */
+            display: flex;
+            align-items: center;
+            letter-spacing: -0.02em;
+        }
+
+        .page-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Collapsible Categories */
+        .collapsible-categories {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .collapsible-section {
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            transition: transform 0.2s ease;
+        }
+
+        .collapsible-section:hover {
+            transform: translateY(-2px);
+        }
+
+        .collapsible-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 24px;
+            background: var(--primary-blue);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .collapsible-header:hover {
+            background: var(--primary-blue-dark);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.15);
+        }
+
+        .collapsible-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0;
+            color: white;
+        }
+
+        .collapsible-arrow {
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            color: white;
+        }
+
+        .collapsible-arrow.rotated {
+            transform: rotate(180deg);
+        }
+
+        .collapsible-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                        opacity 0.3s ease,
+                        padding 0.3s ease;
+            opacity: 0;
+            padding: 0 24px;
+        }
+
+        .collapsible-content.expanded {
+            max-height: 1000px;
+            opacity: 1;
+            padding: 12px 24px 24px 24px;
+        }
+
+        .collapsible-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .collapsible-links li {
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .collapsible-links li:last-child {
+            border-bottom: none;
+        }
+
+        .collapsible-link {
+            display: block;
+            padding: 16px 24px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .collapsible-link:hover {
+            background: #ffffff;
+            color: var(--primary-blue);
+            border-left-color: var(--primary-blue);
+        }
+        .wealth-creation-page-content { padding-top: 30px; }
+        </style>
+
+    <style>
+        /* Scoped overrides for flat white design with gold header border */
+        html, body {
+            background-color: #ffffff !important;
+            background: #ffffff !important;
+        }
+
+        @media (max-width: 1024px) {
+            .container, .header, .header-content, .drawer-header, .wealth-creation-page, .wealth-creation-page-content, .article-detail-header, .financial-analysis-page, .stock-valuation-page {
+                background: #ffffff !important;
+                background-color: #ffffff !important;
+                border: 0px solid transparent !important;
+                box-shadow: none !important;
+            }
+            .header, .drawer-header {
+                border-bottom: 2px solid #d4af37 !important;
+            }
+            /* Remove jagged notebook border/shadow effect */
+            .container::before {
+                display: none !important;
+                content: none !important;
+                box-shadow: none !important;
+                filter: none !important;
+            }
+        }
+        
+        /* Apply to all viewports for specific elements */
+        .container, .header, .header-content, .drawer-header, .page-title-section, .collapsible-section, .article-detail-header {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            box-shadow: none !important;
+            border: 0px solid transparent !important;
+        }
+        
+        .header, .drawer-header {
+            border-bottom: 2px solid #d4af37 !important;
+        }
+
+
+        
+
+        
+        /* Ensure the main page background is white */
+        body, .wealth-creation-page, .wealth-creation-page-content, .financial-analysis-page, .stock-valuation-page, .professional-advisers-page, .financial-products-page, .resources-page {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+        }
+        
+        /* Drawer close button visibility */
+        .drawer-close {
+            color: #1e3a8a !important;
+        }
+        .drawer-close::before {
+            color: #1e3a8a !important;
+        }
+        
+        /* Remove blue borders on links */
+        .collapsible-link:hover {
+            border-left-color: #1e3a8a !important;
+            background: #f8f9fa !important;
+        }
+        
+        /* Remove the blue glow from ALL elements */
+        * {
+            box-shadow: none !important;
+            text-shadow: none !important;
+        }
+
+        /* Hamburger menu colors */
+        .hamburger-line {
+            background-color: #1e3a8a !important;
+        }
+        
+        /* Footer disclaimer and other potential blue elements */
+        footer, .footer, .disclaimer-section {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            color: #666666 !important;
+            border-top: 1px solid #e5e7eb !important;
+        }
+    </style>
+
+
+
+
+</head>
+<body>
+    <div class="wealth-creation-page">
+        <!-- Header -->
+                                <header class="header sticky-header" role="banner">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="public/html/G&D Logo.png" alt="Graham & Doddsville" class="logo-image">
+                </div>
+                
+                <nav class="main-nav desktop-only">
+                    <ul>
+                        <li><a href="index.html" class="nav-link">HOME</a></li>
+                        <li><a href="wealth-creation.html" class="nav-link">WEALTH CREATION</a></li>
+                        <li><a href="resources.html" class="nav-link">RESOURCES</a></li>
+                    </ul>
+                </nav>
+                
+                <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Mobile Navigation Drawer -->
+        <div class="mobile-drawer" id="mobile-drawer">
+        <div class="drawer-header">
+            <img src="images/G&amp;D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
+            <button class="drawer-close" id="drawer-close" aria-label="Close menu"></button>
+        </div>
+        <nav class="drawer-nav">
+            <ul class="drawer-menu">
+                <li><a href="index.html" class="drawer-link" style="white-space: nowrap;">Home</a></li>
+                <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
+                <li><a href="legal-taxation.html" class="drawer-link">Legal &amp; Taxation</a></li>
+                <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
+                <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
+                <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
+                <li><a href="investment-analysis.html" class="drawer-link">Investment Analysis</a></li>
+                <li><a href="financial-statement-analysis.html" class="drawer-link">Financial Statement Analysis</a></li>
+                <li><a href="stock-valuation.html" class="drawer-link">Stock Valuation</a></li>
+                <li><a href="sidebar-economics.html" class="drawer-link">Economics</a></li>
+                <li><a href="investment-analysis.html" class="drawer-link">Investment Analysis</a></li>
+                <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
+                <li><a href="resources.html" class="drawer-link">Resources</a></li>
+                <li><a href="events.html" class="drawer-link">Events &amp; Seminars</a></li>
+            </ul>
+        </nav>
+    </div>
+                
+            
+        </div>
+
+        <div class="wealth-creation-page-content">
+            <!-- Page Title Section -->
+            <div class="page-title-section">
+                <div class="breadcrumb">
+                    <a href="index.html" class="breadcrumb-link">← Home</a>
+                </div>
+                <h1 class="page-title">FINANCIAL STATEMENT ANALYSIS</h1>
+                <p class="page-subtitle">Comprehensive guides for analyzing investments, valuing stocks, and understanding financial statements</p>
+            </div>
+
+            <!-- Collapsible Categories -->
+            <div class="collapsible-categories">
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('introduction')">
+                        <h3 class="collapsible-title">Introduction</h3>
+                        <span class="collapsible-arrow" id="introduction-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="introduction-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('nature-and-purpose')">Nature and purpose</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('users-of-financial-statements')">Users of financial statements</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('basic-concepts-of-accounting')">Basic concepts of accounting</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('gaap-in-australia')">GAAP in Australia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('ifrs-in-australia')">IFRS in Australia</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('types-of-financial-statements')">Types of financial statements</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-financial-statements-interlink')">How financial statements interlink</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-is-financial-statements-interlink')">What is financial statements interlink</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('when-financials-are-misleading')">When financials are misleading</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-financial-analysis')">Limitations of financial analysis</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('general-guidelines')">
+                        <h3 class="collapsible-title">General Guidelines</h3>
+                        <span class="collapsible-arrow" id="general-guidelines-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="general-guidelines-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('the-7-signs-of-healthy-companies')">The 7 signs of healthy companies</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('the-7-signs-of-financial-distress')">The 7 signs of financial distress</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('the-7-signs-of-transparency')">The 7 signs of transparency</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('the-altman-z-score')">The Altman Z-score</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('the-probability-of-bankruptcy')">The probability of bankruptcy</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('key-drivers-of-business-growth')">Key drivers of business growth</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('top-7-questions-to-ask-management')">Top 7 questions to ask management</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('common-errors-in-statements')">Common errors in statements</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-read-financial-statements')">How to read financial statements</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('balance-sheet')">
+                        <h3 class="collapsible-title">Balance Sheet</h3>
+                        <span class="collapsible-arrow" id="balance-sheet-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="balance-sheet-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-is-a-balance-sheet')">What is a balance sheet?</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('key-assets-in-the-balance-sheet')">Key assets in the balance sheet</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('key-liabilities-in-the-balance-sheet')">Key liabilities in the balance sheet</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('intangible-assets')">Intangible assets</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('impairment-of-assets')">Impairment of assets</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('equity-and-owner-s-capital')">Equity and owner's capital</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('off-balance-sheet-transactions')">Off-balance sheet transactions</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-the-balance-sheet')">Limitations of the balance sheet</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('red-flags-in-the-balance-sheet')">Red flags in the balance sheet</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('profit-and-loss-statement')">
+                        <h3 class="collapsible-title">Profit and Loss Statement</h3>
+                        <span class="collapsible-arrow" id="profit-and-loss-statement-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="profit-and-loss-statement-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-is-a-profit-and-loss-statement')">What is a profit and loss statement?</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('revenue-recognition')">Revenue recognition</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('cost-of-goods-sold-cogs')">Cost of goods sold (COGS)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('depreciation-and-amortisation')">Depreciation and amortisation</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('operating-income')">Operating income</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('operating-expenses')">Operating expenses</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('non-operating-income')">Non-operating income</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('non-operating-expenses')">Non-operating expenses</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('income-taxes')">Income taxes</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('earnings-per-share-eps')">Earnings per share (EPS)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-the-profit-and-loss')">Limitations of the profit and loss</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('red-flags-in-the-profit-and-loss')">Red flags in the profit and loss</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-evaluate-earnings-quality')">How to evaluate earnings quality</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('cash-flow-statement')">
+                        <h3 class="collapsible-title">Cash Flow Statement</h3>
+                        <span class="collapsible-arrow" id="cash-flow-statement-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="cash-flow-statement-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-is-a-cash-flow-statement')">What is a cash flow statement?</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('operating-cash-flow')">Operating cash flow</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('investing-cash-flow')">Investing cash flow</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('financing-cash-flow')">Financing cash flow</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('free-cash-flow')">Free cash flow</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('cashflow-vs-profit')">Cashflow vs profit</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('non-cash-transactions')">Non-cash transactions</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('effects-of-working-capital')">Effects of working capital</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-cash-flow-statement')">Limitations of cash flow statement</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('red-flags-with-cash-flow-statement')">Red flags with cash flow statement</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('statement-of-changes-in-equity')">
+                        <h3 class="collapsible-title">Statement of Changes in Equity</h3>
+                        <span class="collapsible-arrow" id="statement-of-changes-in-equity-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="statement-of-changes-in-equity-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-is-a-soce')">What is a SOCE?</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('retained-earnings')">Retained earnings</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('dividends-and-impact-on-equity')">Dividends and impact on equity</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('share-issuances-and-capital-raising')">Share issuances and capital raising</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('share-buybacks-and-treasury-shares')">Share buybacks and treasury shares</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('other-comprehensive-income')">Other comprehensive income</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('reserves-and-equity-adjustments')">Reserves and equity adjustments</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('management-strategy-and-equity-changes')">Management strategy and equity changes</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-the-soce')">Limitations of the SOCE</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('red-flags-in-the-soce')">Red flags in the SOCE</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('notes-to-financial-statements')">
+                        <h3 class="collapsible-title">Notes to Financial Statements</h3>
+                        <span class="collapsible-arrow" id="notes-to-financial-statements-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="notes-to-financial-statements-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-are-notes-to-financial-statements')">What are notes to financial statements?</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('significant-accounting-policies')">Significant accounting policies</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('consolidated-financial-statements')">Consolidated financial statements</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('estimates-and-assumptions')">Estimates and assumptions</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('revenue-recognition-policies')">Revenue recognition policies</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('breakdown-of-assets-and-liabilities')">Breakdown of assets and liabilities</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('contingent-liabilities')">Contingent liabilities</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('related-party-transactions')">Related party transactions</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('joint-ventures')">Joint ventures</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('lease-disclosures')">Lease disclosures</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('financial-instruments-and-risks')">Financial instruments and risks</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('segment-reporting-and-divisions')">Segment reporting and divisions</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('subsequent-events-and-disclosures')">Subsequent events and disclosures</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-the-notes')">Limitations of the notes</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('red-flags-in-the-notes')">Red flags in the notes</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('management-discussion')">
+                        <h3 class="collapsible-title">Management Discussion</h3>
+                        <span class="collapsible-arrow" id="management-discussion-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="management-discussion-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('management-discussion-analysis')">Management discussion & analysis</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('structure-of-an-md-a')">Structure of an MD&A</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-analyse-an-md-a')">How to analyse an MD&A</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('directors-declaration')">Directors' declaration</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('auditor-s-independence')">Auditor's independence</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('independent-auditor-s-report')">Independent auditor's report</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-the-md-a')">Limitations of the MD&A</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('red-flags-in-the-md-a')">Red flags in the MD&A</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('financial-ratios')">
+                        <h3 class="collapsible-title">Financial Ratios</h3>
+                        <span class="collapsible-arrow" id="financial-ratios-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="financial-ratios-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-are-financial-ratios')">What are financial ratios?</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('leverage-ratios')">Leverage ratios</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('liquidity-ratios')">Liquidity ratios</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('solvency-ratios')">Solvency ratios</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('profitability-ratios')">Profitability ratios</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('cash-flow-ratios')">Cash flow ratios</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('efficiency-ratios')">Efficiency ratios</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('coverage-ratios')">Coverage ratios</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('market-ratios')">Market ratios</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('growth-ratios')">Growth ratios</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('other-ratios')">Other ratios</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-financial-ratios')">Limitations of financial ratios</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="collapsible-section">
+                    <div class="collapsible-header" onclick="toggleCollapsible('other-analytical-tools')">
+                        <h3 class="collapsible-title">Other Analytical Tools</h3>
+                        <span class="collapsible-arrow" id="other-analytical-tools-arrow">&#9660;</span>
+                    </div>
+                    <div class="collapsible-content collapsed" id="other-analytical-tools-content">
+                        <ul class="collapsible-links">
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('horizontal-analysis')">Horizontal analysis</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('vertical-analysis')">Vertical analysis</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('sensitivity-analysis')">Sensitivity analysis</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('financial-projections')">Financial projections</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('recasting-financial-statements')">Recasting financial statements</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('du-pont-analysis')">Du Pont analysis</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('segmental-analysis')">Segmental analysis</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('break-even-analysis')">Break even analysis</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Article Detail Panel -->
+    <div class="article-detail-panel" id="article-detail-panel">
+        <div class="article-detail-content">
+            <div class="article-detail-header">
+                <h3 class="article-detail-title" id="article-detail-title">Article Title</h3>
+                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">×</button>
+            </div>
+            <div class="article-detail-body" id="article-detail-body">
+                <div class="article-loading">Loading article...</div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Collapsible functionality
+        function toggleCollapsible(sectionId) {
+            const content = document.getElementById(sectionId + '-content');
+            const arrow = document.getElementById(sectionId + '-arrow');
+            if (!content) return;
+            const section = content.closest('.collapsible-section');
+            
+            const isOpen = content.style.maxHeight && content.style.maxHeight !== '0px' && content.style.maxHeight !== 'none';
+            
+            // Close all other open sections
+            document.querySelectorAll('.collapsible-content').forEach(c => {
+                c.style.maxHeight = null;
+                c.classList.remove('expanded');
+                c.classList.add('collapsed');
+                const s = c.closest('.collapsible-section');
+                if (s) s.classList.remove('active');
+                const a = document.getElementById(c.id.replace('-content', '-arrow'));
+                if (a) a.innerHTML = '▼';
+            });
+
+            if (!isOpen) {
+                if(sectionId === 'events-seminars') {
+                    content.style.maxHeight = 'none';
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+                content.classList.add('expanded');
+                content.classList.remove('collapsed');
+                if (section) section.classList.add('active');
+                if (arrow) arrow.innerHTML = '▲';
+            }
+        }
+
+        // Mobile drawer functionality
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        const drawerClose = document.getElementById('drawer-close');
+        
+        if (mobileToggle && mobileDrawer) {
+            mobileToggle.addEventListener('click', () => {
+                console.log('Hamburger menu clicked!');
+                mobileDrawer.classList.add('open');
+                document.body.style.overflow = 'hidden';
+                console.log('Drawer should be open now');
+            });
+        }
+        
+        if (drawerClose && mobileDrawer) {
+            drawerClose.addEventListener('click', () => {
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            });
+        }
+        
+        // Close drawer when clicking outside
+        if (mobileDrawer) {
+            mobileDrawer.addEventListener('click', (e) => {
+                if (e.target === mobileDrawer) {
+                    mobileDrawer.classList.remove('open');
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+
+        // Article content data
+        const articleContent = {
+            'industry-guides-automobiles-and-components': {
+                title: 'Automobiles and components',
+                content: `
+                    
+<p>Dummy content for Automobiles and components goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-banking': {
+                title: 'Banking',
+                content: `
+                    
+<p>Dummy content for Banking goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-capital-goods': {
+                title: 'Capital goods',
+                content: `
+                    
+<p>Dummy content for Capital goods goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-commercial-and-professional-services': {
+                title: 'Commercial and professional services',
+                content: `
+                    
+<p>Dummy content for Commercial and professional services goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-consumer-durable-and-apparel': {
+                title: 'Consumer durable and apparel',
+                content: `
+                    
+<p>Dummy content for Consumer durable and apparel goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-consumer-services': {
+                title: 'Consumer services',
+                content: `
+                    
+<p>Dummy content for Consumer services goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-consumer-discretionary-retail': {
+                title: 'Consumer discretionary & retail',
+                content: `
+                    
+<p>Dummy content for Consumer discretionary & retail goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-energy-industry': {
+                title: 'Energy industry',
+                content: `
+                    <p>Dummy content for Energy industry goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-consumer-staples-distribution-retail': {
+                title: 'Consumer staples distribution & retail',
+                content: `
+                    
+<p>Dummy content for Consumer staples distribution & retail goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-food-beverage-and-tobacco': {
+                title: 'Food, beverage and tobacco',
+                content: `
+                    
+<p>Dummy content for Food, beverage and tobacco goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-health-care-equipment-and-services': {
+                title: 'Health care equipment and services',
+                content: `
+                    
+<p>Dummy content for Health care equipment and services goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-household-and-personal-products': {
+                title: 'Household and personal products',
+                content: `
+                    
+<p>Dummy content for Household and personal products goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-insurance': {
+                title: 'Insurance',
+                content: `
+                    
+<p>Dummy content for Insurance goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-materials': {
+                title: 'Materials',
+                content: `
+                    
+<p>Dummy content for Materials goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-media-and-entertainment': {
+                title: 'Media and entertainment',
+                content: `
+                    
+<p>Dummy content for Media and entertainment goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-pharmaceuticals-biotechnology-and-life-sciences': {
+                title: 'Pharmaceuticals, biotechnology and life sciences',
+                content: `
+                    
+<p>Dummy content for Pharmaceuticals, biotechnology and life sciences goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-equity-real-estate-investment-trusts': {
+                title: 'Equity real estate Investment trusts',
+                content: `
+                    <p>Dummy content for Equity real estate Investment trusts goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-financial-services': {
+                title: 'Financial services',
+                content: `
+                    
+<p>Dummy content for Financial services goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-semiconductors': {
+                title: 'Semiconductors',
+                content: `
+                    
+<p>Dummy content for Semiconductors goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-software-and-services': {
+                title: 'Software and services',
+                content: `
+                    
+<p>Dummy content for Software and services goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-technology-hardware': {
+                title: 'Technology hardware',
+                content: `
+                    
+<p>Dummy content for Technology hardware goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-telecommunications': {
+                title: 'Telecommunications',
+                content: `
+                    
+<p>Dummy content for Telecommunications goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-transportation': {
+                title: 'Transportation',
+                content: `
+                    
+<p>Dummy content for Transportation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-utilities': {
+                title: 'Utilities',
+                content: `
+                    
+<p>Dummy content for Utilities goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-real-estate-management-development': {
+                title: 'Real estate management & development',
+                content: `
+                    
+<p>Dummy content for Real estate management & development goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-nature-and-purpose': {
+                title: 'Nature and purpose',
+                content: `
+                    
+<p>Dummy content for Nature and purpose goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-users-of-financial-statements': {
+                title: 'Users of financial statements',
+                content: `
+                    
+<p>Dummy content for Users of financial statements goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-basic-concepts-of-accounting': {
+                title: 'Basic concepts of accounting',
+                content: `
+                    
+<p>Dummy content for Basic concepts of accounting goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-gaap-in-australia': {
+                title: 'GAAP in Australia',
+                content: `
+                    
+<p>Dummy content for GAAP in Australia goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-ifrs-in-australia': {
+                title: 'IFRS in Australia',
+                content: `
+                    
+<p>Dummy content for IFRS in Australia goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-types-of-financial-statements': {
+                title: 'Types of financial statements',
+                content: `
+                    
+<p>Dummy content for Types of financial statements goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-how-statements-interlink': {
+                title: 'How statements interlink',
+                content: `
+                    
+<p>Dummy content for How statements interlink goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-what-is-financial-analysis': {
+                title: 'What is financial analysis?',
+                content: `
+                    
+<p>Dummy content for What is financial analysis? goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-when-financials-are-misleading': {
+                title: 'When financials are misleading',
+                content: `
+                    
+<p>Dummy content for When financials are misleading goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-limitations-of-financial-analysis': {
+                title: 'Limitations of financial analysis',
+                content: `
+                    
+<p>Dummy content for Limitations of financial analysis goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-12-signs-of-strong-companies': {
+                title: '12 signs of strong companies',
+                content: `
+                    
+<p>Dummy content for 12 signs of strong companies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-12-signs-of-financial-distress': {
+                title: '12 signs of financial distress',
+                content: `
+                    
+<p>Dummy content for 12 signs of financial distress goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-the-altman-z-score': {
+                title: 'The Altman Z-score',
+                content: `
+                    
+<p>Dummy content for The Altman Z-score goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-probability-of-bankruptcy': {
+                title: 'Probability of bankruptcy',
+                content: `
+                    
+<p>Dummy content for Probability of bankruptcy goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-drivers-of-business-growth': {
+                title: 'Drivers of business growth',
+                content: `
+                    
+<p>Dummy content for Drivers of business growth goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-the-top-5-questions-to-ask': {
+                title: 'The top 5 questions to ask',
+                content: `
+                    
+<p>Dummy content for The top 5 questions to ask goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-how-to-read-financials': {
+                title: 'How to read financials',
+                content: `
+                    
+<p>Dummy content for How to read financials goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-signs-of-transparent-company': {
+                title: 'Signs of transparent company',
+                content: `
+                    
+<p>Dummy content for Signs of transparent company goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-common-errors': {
+                title: 'Common errors',
+                content: `
+                    
+<p>Dummy content for Common errors goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-12-management-mistakes': {
+                title: '12 management mistakes',
+                content: `
+                    
+<p>Dummy content for 12 management mistakes goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'accounting-shenanigans-intro-to-accounting-shenanigans': {
+                title: 'Intro to accounting shenanigans',
+                content: `
+                    <p>Dummy content for Intro to accounting shenanigans goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'accounting-shenanigans-types-of-shenanigans': {
+                title: 'Types of shenanigans',
+                content: `
+                    <p>Dummy content for Types of shenanigans goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'accounting-shenanigans-how-to-spot-red-flags': {
+                title: 'How to spot red flags',
+                content: `
+                    <p>Dummy content for How to spot red flags goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'accounting-shenanigans-revenue-recognition-tricks': {
+                title: 'Revenue recognition tricks',
+                content: `
+                    
+<p>Dummy content for Revenue recognition tricks goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'accounting-shenanigans-expense-manipulation': {
+                title: 'Expense manipulation',
+                content: `
+                    <p>Dummy content for Expense manipulation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'accounting-shenanigans-asset-overvaluation': {
+                title: 'Asset overvaluation',
+                content: `
+                    <p>Dummy content for Asset overvaluation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'accounting-shenanigans-liability-concealment': {
+                title: 'Liability concealment',
+                content: `
+                    <p>Dummy content for Liability concealment goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'accounting-shenanigans-cash-flow-manipulation': {
+                title: 'Cash flow manipulation',
+                content: `
+                    
+<p>Dummy content for Cash flow manipulation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'accounting-shenanigans-real-world-case-studies': {
+                title: 'Real world case studies',
+                content: `
+                    <p>Dummy content for Real world case studies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'accounting-shenanigans-forensic-accounting-tools': {
+                title: 'Forensic accounting tools',
+                content: `
+                    <p>Dummy content for Forensic accounting tools goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'qualitative-factors-management-quality': {
+                title: 'Management quality',
+                content: `
+                    <p>Dummy content for Management quality goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'qualitative-factors-corporate-governance': {
+                title: 'Corporate governance',
+                content: `
+                    
+<p>Dummy content for Corporate governance goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'qualitative-factors-competitive-advantage-moats': {
+                title: 'Competitive advantage (Moats)',
+                content: `
+                    <p>Dummy content for Competitive advantage (Moats) goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'qualitative-factors-brand-value': {
+                title: 'Brand value',
+                content: `
+                    <p>Dummy content for Brand value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'qualitative-factors-industry-dynamics': {
+                title: 'Industry dynamics',
+                content: `
+                    <p>Dummy content for Industry dynamics goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'qualitative-factors-regulatory-environment': {
+                title: 'Regulatory environment',
+                content: `
+                    <p>Dummy content for Regulatory environment goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'qualitative-factors-technological-disruption': {
+                title: 'Technological disruption',
+                content: `
+                    <p>Dummy content for Technological disruption goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'qualitative-factors-esg-considerations': {
+                title: 'ESG considerations',
+                content: `
+                    <p>Dummy content for ESG considerations goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'qualitative-factors-customer-loyalty': {
+                title: 'Customer loyalty',
+                content: `
+                    <p>Dummy content for Customer loyalty goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'qualitative-factors-r-d-and-innovation': {
+                title: 'R&D and innovation',
+                content: `
+                    <p>Dummy content for R&D and innovation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-intro-to-stock-valuation': {
+                title: 'Intro to stock valuation',
+                content: `
+                    
+<p>Dummy content for Intro to stock valuation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-what-is-value': {
+                title: 'What is value?',
+                content: `
+                    
+<p>Dummy content for What is value? goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-stock-valuation-process': {
+                title: 'Stock valuation process',
+                content: `
+                    
+<p>Dummy content for Stock valuation process goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-limitations-of-valuation': {
+                title: 'Limitations of valuation',
+                content: `
+                    
+<p>Dummy content for Limitations of valuation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-behavioural-biases': {
+                title: 'Behavioural biases',
+                content: `
+                    
+<p>Dummy content for Behavioural biases goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-use-of-discount-rates': {
+                title: 'Use of discount rates',
+                content: `
+                    
+<p>Dummy content for Use of discount rates goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-calculating-discount-rate': {
+                title: 'Calculating discount rate',
+                content: `
+                    
+<p>Dummy content for Calculating discount rate goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-10-common-mistakes': {
+                title: '10 common mistakes',
+                content: `
+                    
+<p>Dummy content for 10 common mistakes goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-what-is-intrinsic-value': {
+                title: 'What is intrinsic value?',
+                content: `
+                    
+<p>Dummy content for What is intrinsic value? goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-calculating-intrinsic-value': {
+                title: 'Calculating intrinsic value',
+                content: `
+                    
+<p>Dummy content for Calculating intrinsic value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-buffett-s-intrinsic-value': {
+                title: 'Buffettâ€™s intrinsic value',
+                content: `
+                    
+<p>Dummy content for Buffettâ€™s intrinsic value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-graham-s-intrinsic-value': {
+                title: 'Grahamâ€™s intrinsic value',
+                content: `
+                    
+<p>Dummy content for Grahamâ€™s intrinsic value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-limitations-of-value': {
+                title: 'Limitations of value',
+                content: `
+                    
+<p>Dummy content for Limitations of value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-intro-to-revenue-based-val': {
+                title: 'Intro to revenue-based val',
+                content: `
+                    
+<p>Dummy content for Intro to revenue-based val goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-price-to-sales-ratio': {
+                title: 'Price-to-sales ratio',
+                content: `
+                    
+<p>Dummy content for Price-to-sales ratio goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-sales-multiples': {
+                title: 'Sales multiples',
+                content: `
+                    
+<p>Dummy content for Sales multiples goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-revenue-growth-rate': {
+                title: 'Revenue growth rate',
+                content: `
+                    
+<p>Dummy content for Revenue growth rate goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-price-to-revenue-growth': {
+                title: 'Price-to-revenue growth',
+                content: `
+                    
+<p>Dummy content for Price-to-revenue growth goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-price-to-earnings-ratio': {
+                title: 'Price-to-earnings ratio',
+                content: `
+                    
+<p>Dummy content for Price-to-earnings ratio goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-earnings-yield': {
+                title: 'Earnings yield',
+                content: `
+                    
+<p>Dummy content for Earnings yield goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-pe-to-growth-peg-ratio': {
+                title: 'PE-to-growth (PEG) ratio',
+                content: `
+                    
+<p>Dummy content for PE-to-growth (PEG) ratio goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-ypeg-ratio': {
+                title: 'YPEG ratio',
+                content: `
+                    
+<p>Dummy content for YPEG ratio goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-future-maintainable-earnings': {
+                title: 'Future maintainable earnings',
+                content: `
+                    
+<p>Dummy content for Future maintainable earnings goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-discounted-future-earnings': {
+                title: 'Discounted future earnings',
+                content: `
+                    
+<p>Dummy content for Discounted future earnings goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-earnings-power-value': {
+                title: 'Earnings power value',
+                content: `
+                    
+<p>Dummy content for Earnings power value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-residual-income': {
+                title: 'Residual income',
+                content: `
+                    
+<p>Dummy content for Residual income goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-price-to-ebitda': {
+                title: 'Price-to-EBITDA',
+                content: `
+                    
+<p>Dummy content for Price-to-EBITDA goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-discounted-cash-flow': {
+                title: 'Discounted cash flow',
+                content: `
+                    
+<p>Dummy content for Discounted cash flow goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-reverse-dcf': {
+                title: 'Reverse DCF',
+                content: `
+                    
+<p>Dummy content for Reverse DCF goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-economic-value-added': {
+                title: 'Economic value added',
+                content: `
+                    
+<p>Dummy content for Economic value added goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-free-cash-flow-valuation': {
+                title: 'Free cash flow valuation',
+                content: `
+                    
+<p>Dummy content for Free cash flow valuation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-book-value': {
+                title: 'Book value',
+                content: `
+                    
+<p>Dummy content for Book value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-tangible-book-value': {
+                title: 'Tangible book value',
+                content: `
+                    
+<p>Dummy content for Tangible book value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-adjusted-net-assets': {
+                title: 'Adjusted net assets',
+                content: `
+                    
+<p>Dummy content for Adjusted net assets goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-replacement-cost-method': {
+                title: 'Replacement cost method',
+                content: `
+                    
+<p>Dummy content for Replacement cost method goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-sum-of-the-parts': {
+                title: 'Sum of the parts',
+                content: `
+                    
+<p>Dummy content for Sum of the parts goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-liquidation-value': {
+                title: 'Liquidation value',
+                content: `
+                    
+<p>Dummy content for Liquidation value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-dividend-discount-model': {
+                title: 'Dividend Discount Model',
+                content: `
+                    
+<p>Dummy content for Dividend Discount Model goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-gordon-growth-model': {
+                title: 'Gordon Growth Model',
+                content: `
+                    
+<p>Dummy content for Gordon Growth Model goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-two-stage-dividend-growth': {
+                title: 'Two-Stage Dividend Growth',
+                content: `
+                    
+<p>Dummy content for Two-Stage Dividend Growth goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-dividend-payout-ratio': {
+                title: 'Dividend Payout Ratio',
+                content: `
+                    
+<p>Dummy content for Dividend Payout Ratio goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-price-to-book-value-ratio': {
+                title: 'Price-to-book value ratio',
+                content: `
+                    
+<p>Dummy content for Price-to-book value ratio goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-enterprise-value': {
+                title: 'Enterprise value',
+                content: `
+                    
+<p>Dummy content for Enterprise value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-enterprise-value-to-ebitda': {
+                title: 'Enterprise value to EBITDA',
+                content: `
+                    
+<p>Dummy content for Enterprise value to EBITDA goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-enterprise-value-to-sales': {
+                title: 'Enterprise value to sales',
+                content: `
+                    
+<p>Dummy content for Enterprise value to sales goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-graham-s-formulas': {
+                title: 'Grahamâ€™s formulas',
+                content: `
+                    
+<p>Dummy content for Grahamâ€™s formulas goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-greenblatt-s-magic-formula': {
+                title: 'Greenblattâ€™s magic formula',
+                content: `
+                    
+<p>Dummy content for Greenblattâ€™s magic formula goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-industry-rules-of-thumb': {
+                title: 'Industry rules of thumb',
+                content: `
+                    
+<p>Dummy content for Industry rules of thumb goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-intangible-assets': {
+                title: 'Intangible assets',
+                content: `
+                    
+<p>Dummy content for Intangible assets goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-call-options': {
+                title: 'Call options',
+                content: `
+                    
+<p>Dummy content for Call options goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-put-options': {
+                title: 'Put options',
+                content: `
+                    
+<p>Dummy content for Put options goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-distressed-companies': {
+                title: 'Distressed companies',
+                content: `
+                    
+<p>Dummy content for Distressed companies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-bankrupt-companies': {
+                title: 'Bankrupt companies',
+                content: `
+                    
+<p>Dummy content for Bankrupt companies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-mergers-acquisitions': {
+                title: 'Mergers & acquisitions',
+                content: `
+                    
+<p>Dummy content for Mergers & acquisitions goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-start-up-companies': {
+                title: 'Start-up companies',
+                content: `
+                    
+<p>Dummy content for Start-up companies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-pre-ipo-companies': {
+                title: 'Pre-IPO companies',
+                content: `
+                    
+<p>Dummy content for Pre-IPO companies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-asset-heavy-companies': {
+                title: 'Asset-heavy companies',
+                content: `
+                    
+<p>Dummy content for Asset-heavy companies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-emerging-markets': {
+                title: 'Emerging markets',
+                content: `
+                    
+<p>Dummy content for Emerging markets goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'corporate-actions-dividends': {
+                title: 'Dividends',
+                content: `
+                    
+<p>Dummy content for Dividends goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'corporate-actions-stock-splits': {
+                title: 'Stock Splits',
+                content: `
+                    
+<p>Dummy content for Stock Splits goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'corporate-actions-share-buy-backs': {
+                title: 'Share Buy Backs',
+                content: `
+                    
+<p>Dummy content for Share Buy Backs goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'corporate-actions-rights-issues': {
+                title: 'Rights Issues',
+                content: `
+                    
+<p>Dummy content for Rights Issues goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'corporate-actions-bonus-issues': {
+                title: 'Bonus Issues',
+                content: `
+                    
+<p>Dummy content for Bonus Issues goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'corporate-actions-options-and-warrants': {
+                title: 'Options and Warrants',
+                content: `
+                    
+<p>Dummy content for Options and Warrants goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'corporate-actions-mergers-and-acquisitions': {
+                title: 'Mergers and Acquisitions',
+                content: `
+                    
+<p>Dummy content for Mergers and Acquisitions goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'corporate-actions-divestments': {
+                title: 'Divestments',
+                content: `
+                    
+<p>Dummy content for Divestments goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'corporate-actions-administration': {
+                title: 'Administration',
+                content: `
+                    
+<p>Dummy content for Administration goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'corporate-actions-liquidation': {
+                title: 'Liquidation',
+                content: `
+                    
+<p>Dummy content for Liquidation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'accounting-standards-regulatory-bodies': {
+                title: 'Regulatory Bodies',
+                content: `
+                    
+<p>Dummy content for Regulatory Bodies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'accounting-standards-standards-relating-to-financial-reporting': {
+                title: 'Standards Relating to Financial Reporting',
+                content: `
+                    
+<p>Dummy content for Standards Relating to Financial Reporting goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'accounting-standards-profit-and-loss': {
+                title: 'Profit and Loss',
+                content: `
+                    <p>Dummy content for Profit and Loss goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'accounting-standards-balance-sheet': {
+                title: 'Balance Sheet',
+                content: `
+                    <p>Dummy content for Balance Sheet goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'accounting-standards-disclosures': {
+                title: 'Disclosures',
+                content: `
+                    <p>Dummy content for Disclosures goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'accounting-standards-cash-flow': {
+                title: 'Cash Flow',
+                content: `
+                    
+<p>Dummy content for Cash Flow goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'accounting-standards-aasb-work-in-progress': {
+                title: 'AASB Work-In-Progress',
+                content: `
+                    
+<p>Dummy content for AASB Work-In-Progress goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'accounting-standards-aasb-publications': {
+                title: 'AASB Publications',
+                content: `
+                    <p>Dummy content for AASB Publications goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+        };
+
+
+        // Article panel functionality
+        function openArticle(articleId) {
+            const panel = document.getElementById('article-detail-panel');
+            const title = document.getElementById('article-detail-title');
+            const body = document.getElementById('article-detail-body');
+            
+            if (articleContent[articleId]) {
+                title.textContent = articleContent[articleId].title;
+                const imagePlaceholder = window.buildArticleImageHtml(articleId, articleContent[articleId]);
+
+                const relatedArticles = `
+<hr style="margin:32px 0;border:none;border-top:1px solid #e5e7eb;">
+<h3 style="color:#1e3a8a;margin-bottom:12px;">Related articles:</h3>
+<p style="color:#6b7280;font-size:14px;line-height:1.6;">Explore more resources and expert perspectives on these topics in our library collection.</p>
+<h3 style="color:#1e3a8a;margin:24px 0 12px;">Related books:</h3>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;">
+    ${[1,2,3,4,5,6].map(i => `
+    <div style="border:1px solid #e5e7eb;border-radius:8px;padding:12px;text-align:center;background:#f9fafb;">
+        <div style="width:60px;height:80px;background:#e5e7eb;border-radius:4px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:11px;">Book ${i}</div>
+        <a href="#" style="font-size:12px;color:#1e3a8a;text-decoration:none;">Book title link</a>
+    </div>`).join('')}
+</div>
+<hr style="margin:24px 0;border:none;border-top:1px solid #e5e7eb;">
+<p style="font-size:12px;color:#9ca3af;font-style:italic;"><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>`;
+
+                let articleBody = articleContent[articleId] ? articleContent[articleId].content : '';
+                if(articleBody) {
+                    // Remove first <p>...< /p> (non-greedy) and any adjacent heading up to h3 if it exists at the start
+                    // We'll run successive replaces to be robust instead of one massive regex:
+                    articleBody = articleBody.trim();
+                    // if starts with a paragraph that is a category
+                    let pMatch = articleBody.match(/^(<p[^>]*>.*?<\/p>)\s*(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
+                    if(pMatch) {
+                        articleBody = articleBody.substring(pMatch[0].length).trim();
+                    } else {
+                        // try to match just the h tag
+                        let hMatch = articleBody.match(/^(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
+                        if(hMatch) {
+                            articleBody = articleBody.substring(hMatch[0].length).trim();
+                        }
+                    }
+                    
+                    // Bold first paragraph
+                    articleBody = articleBody.replace(/<p>(.*?)<\/p>/i, '<p><strong>$1</strong></p>');
+                    
+                    // Remove existing disclaimer
+                    articleBody = articleBody.replace(/<p><strong>Disclaimer:<\/strong>.*?<\/p>\s*$/is, '');
+                }
+                
+                body.innerHTML = imagePlaceholder + articleBody + relatedArticles;
+                panel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeArticlePanel() {
+            const panel = document.getElementById('article-detail-panel');
+            panel.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            const articleClose = document.getElementById('article-detail-close');
+            const articlePanel = document.getElementById('article-detail-panel');
+            
+            if (articleClose) {
+                articleClose.addEventListener('click', closeArticlePanel);
+            }
+            
+            if (articlePanel) {
+                articlePanel.addEventListener('click', function(event) {
+                    if (event.target === articlePanel) {
+                        closeArticlePanel();
+                    }
+                });
+            }
+
+            // Check for hash in URL and open corresponding article
+            if (window.location.hash) {
+                const hashValue = window.location.hash.substring(1);
+                // Look through articleContent keys to find a match
+                for (const key in articleContent) {
+                    if (key.endsWith(hashValue)) {
+                        // Expand the corresponding collapsible section
+                        const sectionId = key.substring(0, key.lastIndexOf('-' + hashValue));
+                        const sectionArrow = document.getElementById(sectionId + '-arrow');
+                        if (sectionArrow && document.getElementById(sectionId + '-content').classList.contains('collapsed')) {
+                            toggleCollapsible(sectionId);
+                        }
+                        // Open the article
+                        setTimeout(() => openArticle(key), 100);
+                        break;
+                    }
+                }
+            }
+
+        });
+    </script>
+
+
+    <script src="js/article-image-resolver.js?v=3"></script>
+</body></html>
+
+
