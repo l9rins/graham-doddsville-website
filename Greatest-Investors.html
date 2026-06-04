@@ -803,8 +803,12 @@
             if (!isCurrentlyOpen) {
                 content.classList.add('expanded');
                 content.classList.remove('collapsed');
-                const height = content.scrollHeight;
-                content.style.maxHeight = height + "px";
+                if(sectionId === 'events-seminars') {
+                    content.style.maxHeight = 'none';
+                } else {
+                    const height = content.scrollHeight;
+                    content.style.maxHeight = height + "px";
+                }
                 if (section) section.classList.add('active');
                 if (arrow) arrow.innerHTML = '▲';
             } else {
