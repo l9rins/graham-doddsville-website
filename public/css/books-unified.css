@@ -478,17 +478,18 @@
 
 .book-card-detailed:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
-    border-bottom: 3px solid var(--secondary-gold, #d4af37);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    border-color: var(--secondary-gold, #d4af37);
 }
 
 .book-card-top {
     display: flex;
     flex-direction: row;
-    padding: 16px;
-    gap: 16px;
-    background: #f1f5f9;
+    padding: 24px;
+    gap: 20px;
+    background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
     border-bottom: 1px solid var(--border-light, #e2e8f0);
+    order: 2;
 }
 
 .book-card-detailed .book-cover-link {
@@ -497,34 +498,42 @@
     justify-content: center;
     align-items: center;
     text-decoration: none;
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
 }
 
 .book-card-detailed .book-cover {
     width: 100%;
-    max-width: 130px;
+    max-width: 140px;
     height: auto;
     object-fit: contain;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    border-radius: 2px;
 }
 
 .book-card-actions {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    gap: 12px;
-    width: 110px;
+    align-items: stretch;
+    gap: 10px;
+    width: 120px;
     flex-shrink: 0;
 }
 
 .book-card-detailed .book-price {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #10b981;
-    background: #fff;
-    padding: 4px 12px;
-    border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    font-family: 'Inter', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #059669;
+    background: #ecfdf5;
+    padding: 8px 12px;
+    border-radius: 6px;
+    text-align: center;
+    margin-bottom: 4px;
+    border: 1px solid #a7f3d0;
 }
 
 .book-card-detailed .btn-buy,
@@ -532,52 +541,91 @@
     display: inline-block;
     width: 100%;
     text-align: center;
-    padding: 8px;
-    border-radius: 4px;
-    font-size: 0.85rem;
-    font-weight: 600;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 700;
     text-decoration: none;
-    color: white;
-    background: var(--primary-blue, #1e3a8a);
-    transition: background 0.2s ease;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
     border: none;
     cursor: pointer;
 }
 
-.book-card-detailed .btn-buy:hover,
-.book-card-detailed .btn-summary:hover {
-    background: #172554;
+.book-card-detailed .btn-buy {
     color: white;
-    text-decoration: none;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
+    box-shadow: 0 4px 10px rgba(30, 58, 138, 0.2);
+}
+
+.book-card-detailed .btn-summary {
+    color: var(--primary-blue);
+    background: white;
+    border: 1px solid var(--primary-blue);
+}
+
+.book-card-detailed .btn-buy:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(30, 58, 138, 0.3);
+}
+
+.book-card-detailed .btn-summary:hover {
+    background: #f8fafc;
+    color: var(--primary-blue-dark);
 }
 
 .book-card-summary {
-    padding: 16px;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    color: #4b5563;
+    padding: 20px 24px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #475569;
     border-bottom: 1px solid var(--border-light, #e2e8f0);
     flex-grow: 1;
+    order: 3;
+    background: white;
+}
+
+.book-card-summary p {
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .book-card-bottom {
-    padding: 16px;
+    padding: 20px 24px;
     background: #ffffff;
+    order: 1;
+    border-bottom: 1px solid var(--border-light, #e2e8f0);
+    position: relative;
+}
+
+.book-card-bottom::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--secondary-gold);
 }
 
 .book-card-detailed .book-title {
-    font-family: Georgia, serif;
-    font-size: 1.1rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
     font-weight: 700;
-    color: #1f2937;
-    margin: 0 0 4px 0;
+    color: #1e293b;
+    margin: 0 0 6px 0;
     line-height: 1.3;
 }
 
 .book-card-detailed .book-author {
-    font-size: 0.9rem;
-    color: #6b7280;
-    font-style: italic;
+    font-size: 0.95rem;
+    color: #64748b;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 /* Detailed grid overrides */
