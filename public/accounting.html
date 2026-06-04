@@ -782,6 +782,14 @@
 
     <script src="js/article-image-resolver.js?v=3"></script>
     <script>
+        function closeMobileMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        }
+
 
         // Buffett Topic Modal Logic
 

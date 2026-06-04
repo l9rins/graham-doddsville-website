@@ -1542,6 +1542,14 @@
     
 
     <script>
+        function closeMobileMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        }
+
         // Reading data for dynamic generation
         const readingsData = [
             {

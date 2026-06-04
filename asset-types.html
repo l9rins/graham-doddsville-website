@@ -270,6 +270,14 @@
         </div>
     </div>
     <script>
+        function closeMobileMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        }
+
         // Article content data
         const articleContent = {
             'cash': {

@@ -877,8 +877,8 @@
                     <div class="collapsible-content collapsed" id="stock-market-content">
                         <ul class="collapsible-links">
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('overview-of-shares')">Overview of shares</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('what-is-the-stock-market')">What is the stock market?</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('australian-securities-exchange-asx')">Australian Securities Exchange (ASX)</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('stockmarket')">What is the stock market?</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('stockmarket')">Australian Securities Exchange (ASX)</a></li>
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('national-stock-exchange-of-australia-nsx')">National Stock Exchange of Australia (NSX)</a></li>
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('sydney-stock-exchange-ssx')">Sydney Stock Exchange (SSX)</a></li>
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('cboe-australia')">Cboe Australia</a></li>
@@ -898,7 +898,7 @@
                     </div>
                     <div class="collapsible-content collapsed" id="foreign-exchange-fx-market-content">
                         <ul class="collapsible-links">
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('overview-of-the-fx-market')">Overview of the FX market</a></li>
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('currency-market-overview')">Overview of the FX market</a></li>
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('history-of-the-foreign-exchange')">History of the foreign exchange</a></li>
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('terminology-in-the-fx-market')">Terminology in the FX market</a></li>
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('factors-influencing-the-fx-market')">Factors influencing the FX market</a></li>
@@ -9041,7 +9041,9 @@ const articleContent = {
             }
         };
 
-                function loadArticle(articleId) {
+                function closeMobileMenu() { const mobileDrawer = document.getElementById('mobile-drawer'); if (mobileDrawer) { mobileDrawer.classList.remove('open'); document.body.style.overflow = ''; } }
+
+        function loadArticle(articleId) {
             const panel = document.getElementById('article-detail-panel');
             const title = document.getElementById('article-detail-title');
             const body = document.getElementById('article-detail-body');

@@ -1093,6 +1093,14 @@
 
 <script src="js/book-summaries-data.js?v=1.1"></script>
 <script>
+        function closeMobileMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        }
+
     document.addEventListener('DOMContentLoaded', () => {
         // Mobile menu functionality
         const mobileToggle = document.getElementById('mobile-toggle');

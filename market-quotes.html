@@ -640,6 +640,14 @@
     </style>
 
     <script>
+        function closeMobileMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        }
+
         // Mobile menu functionality
         document.addEventListener('DOMContentLoaded', function() {
             const mobileToggle = document.getElementById('mobile-toggle');

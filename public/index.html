@@ -9865,6 +9865,14 @@ Within this gigantic auction arena, it is our job to select businesses with econ
 
     <!-- Book sorting functionality -->
     <script>
+        function closeMobileMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', function () {
             // Save original order on page load
             document.querySelectorAll('.book-links-horizontal').forEach(container => {

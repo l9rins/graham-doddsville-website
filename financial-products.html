@@ -1725,6 +1725,14 @@
     </div>
 
     <script>
+        function closeMobileMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        }
+
 
         // Collapsible functionality
         function toggleCollapsible(sectionId) {
