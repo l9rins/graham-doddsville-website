@@ -769,7 +769,13 @@
                 } else {
                     mobileDrawer.classList.add('open');
                     document.body.style.overflow = 'hidden';
-                }
+                } else {
+                title.textContent = 'Article Not Found';
+                body.innerHTML = '<p style="padding: 20px; color: #6b7280;">Sorry, the content for this article ("' + articleId + '") could not be found or has not been added yet.</p>';
+                panel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                console.error('Article not found:', articleId);
+            }
             }
         }
 

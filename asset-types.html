@@ -4082,7 +4082,7 @@
 
             if (articleContent[articleId]) {
                 title.textContent = articleContent[articleId].title;
-                const imagePlaceholder = window.buildArticleImageHtml(articleId, articleContent[articleId]);
+                const imagePlaceholder = typeof window.buildArticleImageHtml === 'function' ? window.buildArticleImageHtml(articleId, articleContent[articleId]) : '';
 
                 const relatedArticles = `
 <hr style="margin:32px 0;border:none;border-top:1px solid #e5e7eb;">

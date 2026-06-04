@@ -11370,7 +11370,7 @@
 
                 title.textContent = articleContent[articleId].title;
 
-                const imagePlaceholder = window.buildArticleImageHtml(articleId, articleContent[articleId]);
+                const imagePlaceholder = typeof window.buildArticleImageHtml === 'function' ? window.buildArticleImageHtml(articleId, articleContent[articleId]) : '';
 
 
 
