@@ -30,7 +30,7 @@ const BACKUP_NEWS = [
 ];
 
 const app = express();
-const PORT = process.env.PORT || 3051;
+const PORT = process.env.PORT || 4012;
 const GNEWS_API_KEY = process.env.GNEWS_API_KEY;
 
 // Performance optimization constants
@@ -83,7 +83,7 @@ const corsOptions = {
         ? ['https://graham-doddsville.onrender.com',
             'https://grahamanddoddsville.com.au',
             'https://l9rins.github.io']
-        : ['http://localhost:4012', 'http://localhost:4012'],
+        : ['http://localhost:4012', 'http://localhost:8080', 'http://127.0.0.1:8080'],
     methods: ['GET', 'POST'],
     credentials: true,
     maxAge: 3600
