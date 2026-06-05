@@ -1793,15 +1793,8 @@
     </div>
 
     <script>
-        function closeMobileMenu() {
-            const mobileDrawer = document.getElementById('mobile-drawer');
-            if (mobileDrawer) {
-                mobileDrawer.classList.remove('open');
-                document.body.style.overflow = '';
-            }
-        }
-
-
+</script>
+    <script>
         // Collapsible functionality
         function toggleCollapsible(sectionId) {
             const content = document.getElementById(sectionId + '-content');
@@ -1845,68 +1838,102 @@
         }
 
         // Mobile drawer functionality
-
-        const mobileToggle = document.getElementById('mobile-toggle');
-
-        const mobileDrawer = document.getElementById('mobile-drawer');
-
-        const drawerClose = document.getElementById('drawer-close');
-
-        
-
-        if (mobileToggle && mobileDrawer) {
-
-            mobileToggle.addEventListener('click', () => {
-
-                console.log('Hamburger menu clicked!');
-
-                mobileDrawer.classList.add('open');
-
-                document.body.style.overflow = 'hidden';
-
-                console.log('Drawer should be open now');
-
-            });
-
-        }
-
-        
-
-        if (drawerClose && mobileDrawer) {
-
-            drawerClose.addEventListener('click', () => {
-
-                mobileDrawer.classList.remove('open');
-
-                document.body.style.overflow = '';
-
-            });
-
-        }
-
-        
-
-        // Close drawer when clicking outside
-
-        if (mobileDrawer) {
-
-            mobileDrawer.addEventListener('click', (e) => {
-
-                if (e.target === mobileDrawer) {
-
+        function toggleMobileMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                if (mobileDrawer.classList.contains('open')) {
                     mobileDrawer.classList.remove('open');
-
                     document.body.style.overflow = '';
-
+                } else {
+                    mobileDrawer.classList.add('open');
+                    document.body.style.overflow = 'hidden';
                 }
-
-            });
-
+            }
         }
 
+        function closeMobileMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        }
 
+        // Article loading functionality
+        function loadArticle(articleId) {
+            const panel = document.getElementById('article-detail-panel');
+            const title = document.getElementById('article-detail-title');
+            const body = document.getElementById('article-detail-body');
+            
+            if (!panel || !title || !body) return;
 
-        // Article content data
+            if (typeof articleContent !== 'undefined' && articleContent[articleId]) {
+                const article = articleContent[articleId];
+                title.textContent = article.title;
+                
+                let imageHtml = '';
+                if (typeof window.buildArticleImageHtml === 'function') {
+                    imageHtml = window.buildArticleImageHtml(articleId, article);
+                }
+                
+                body.innerHTML = imageHtml + article.content;
+                panel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                const contentContainer = panel.querySelector('.article-detail-content');
+                if (contentContainer) contentContainer.scrollTop = 0;
+            } else {
+                title.textContent = 'Article Not Found';
+                body.innerHTML = '<p style="padding: 20px; color: #6b7280;">Sorry, the content for this article ("' + articleId + '") could not be found or has not been added yet.</p>';
+                panel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                console.error('Article not found:', articleId);
+            }
+        }
+
+        function closeArticlePanel() {
+            const panel = document.getElementById('article-detail-panel');
+            if (panel) {
+                panel.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            const drawerClose = document.getElementById('drawer-close');
+            
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    toggleMobileMenu();
+                });
+            }
+            
+            if (drawerClose) {
+                drawerClose.addEventListener('click', closeMobileMenu);
+            }
+            
+            if (mobileDrawer) {
+                mobileDrawer.addEventListener('click', (e) => {
+                    if (e.target === mobileDrawer) closeMobileMenu();
+                });
+            }
+
+            const articlePanel = document.getElementById('article-detail-panel');
+            if (articlePanel) {
+                articlePanel.addEventListener('click', (e) => {
+                    if (e.target === articlePanel) closeArticlePanel();
+                });
+            }
+            
+            const closeBtn = document.getElementById('article-detail-close');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeArticlePanel);
+            }
+        });
 
         const articleContent = {
 
