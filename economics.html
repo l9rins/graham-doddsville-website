@@ -1822,6 +1822,559 @@
         });
 
         const articleContent = {
+'introduction-to-economics': {
+        title: 'Introduction to Economics',
+        content: `
+            <p>Economics is fundamentally the study of how societies allocate scarce resources. It examines the mechanisms through which individuals, businesses, governments, and nations make choices about producing, distributing, and consuming goods and services.</p>
+            <h3>Micro vs. Macro</h3>
+            <p><strong>Microeconomics</strong> focuses on individual agents (consumers and firms) and how their specific interactions determine prices and resource allocation. <strong>Macroeconomics</strong> zooms out to view the entire economy, focusing on aggregates like total output (GDP), aggregate unemployment, inflation, and government policy.</p>
+        `
+    },
+    'classical-economics': {
+        title: 'Classical Economics',
+        content: `
+            <p>Originating with Adam Smith's "The Wealth of Nations" (1776), classical economics asserts that free markets can regulate themselves through the "invisible hand."</p>
+            <h3>Self-Correction</h3>
+            <p>Classical economists believe that markets naturally tend toward a state of equilibrium and full employment. If there is a recession, wages and prices will quickly fall until businesses can afford to hire again. Therefore, government intervention is generally viewed as unnecessary and counterproductive.</p>
+        `
+    },
+    'keynesian-economics': {
+        title: 'Keynesian Economics',
+        content: `
+            <p>Developed by John Maynard Keynes during the Great Depression, this school of thought revolutionized macroeconomics by challenging the classical view that markets self-correct quickly.</p>
+            <h3>The Role of Aggregate Demand</h3>
+            <p>Keynes argued that recessions occur due to a collapse in Aggregate Demand (spending). Because wages and prices are "sticky" (they don't fall quickly), a recession can last for years. To fix it, Keynes prescribed active government intervention: the government must step in and spend money (running deficits) to artificially boost demand until the private sector recovers.</p>
+        `
+    },
+    'behavioural-economics': {
+        title: 'Behavioural Economics',
+        content: `
+            <p>A modern branch of economics that integrates psychological insights into economic theory, challenging the core classical assumption that humans are perfectly rational, utility-maximizing robots (Homo economicus).</p>
+            <h3>Irrationality is Predictable</h3>
+            <p>Behavioural economists (like Daniel Kahneman and Richard Thaler) demonstrated that humans suffer from systemic cognitive biases: loss aversion, overconfidence, anchoring, and herd behavior. Understanding these biases is critical for explaining why stock markets experience irrational bubbles and crashes.</p>
+        `
+    },
+    'development-economics': {
+        title: 'Development Economics',
+        content: `
+            <p>A specialized branch focusing on improving the economic, social, and political conditions in developing and low-income nations.</p>
+            <h3>Beyond GDP</h3>
+            <p>Unlike pure macroeconomics, development economics looks beyond simple GDP growth. It focuses on health, education, gender equality, institution building, and the structural transformation from agricultural societies to industrialized ones. It attempts to answer why some nations remain trapped in poverty while others rapidly converge with the developed world.</p>
+        `
+    },
+    'environmental-economics': {
+        title: 'Environmental Economics',
+        content: `
+            <p>This sub-field studies the economic impact of environmental policies and how market forces can be harnessed to protect natural resources.</p>
+            <h3>Externalities</h3>
+            <p>Its core focus is on "negative externalities"—costs imposed on society that are not reflected in a product's price (like a factory polluting a river). Environmental economists design mechanisms like carbon taxes or cap-and-trade systems to force businesses to internalize these costs, aligning capitalist incentives with environmental preservation.</p>
+        `
+    },
+    'international-economics': {
+        title: 'International Economics',
+        content: `
+            <p>Examines the effects of international differences in productive resources and consumer preferences on global trade, and the international institutions that govern them.</p>
+            <h3>Trade and Finance</h3>
+            <p>It is split into two halves: International Trade (studying comparative advantage, tariffs, and quotas) and International Finance (studying exchange rates, capital flows, and the balance of payments). In a highly globalized world, understanding these dynamics is crucial for any macro investor.</p>
+        `
+    },
+    'health-economics': {
+        title: 'Health Economics',
+        content: `
+            <p>A rapidly growing field that applies economic theories to the healthcare sector, focusing on the allocation of healthcare resources and the efficiency of healthcare delivery systems.</p>
+            <h3>Market Failures in Healthcare</h3>
+            <p>Healthcare is plagued by extreme market failures: asymmetric information (doctors know more than patients), moral hazard (insurance encourages riskier behavior or over-consumption), and inelastic demand (people will pay any price to save their life). Health economics attempts to design systems to manage these inherent flaws.</p>
+        `
+    },
+    'industrial-managerial-economics': {
+        title: 'Industrial & Managerial Economics',
+        content: `
+            <p>Applies microeconomic theory directly to business management and strategic decision-making within specific industries.</p>
+            <h3>Market Structure</h3>
+            <p>It deeply analyzes market structures (perfect competition, monopolies, oligopolies) and how businesses should optimally set pricing strategies, scale production, and manage supply chains to maximize profits within those specific structures.</p>
+        `
+    },
+    'implications-for-businesses': {
+        title: 'Economic Implications for Businesses',
+        content: `
+            <p>Macroeconomic shifts act as the tide that raises or lowers all corporate ships. Business leaders must constantly monitor economic indicators to adjust their corporate strategy.</p>
+            <h3>Strategic Adjustments</h3>
+            <p>If leading indicators point to an imminent recession, a prudent CEO will freeze hiring, delay capital expenditure, and stockpile cash. Conversely, in a low-interest-rate expansionary phase, businesses are heavily incentivized to take on cheap debt to fund rapid expansion or acquire competitors.</p>
+        `
+    },
+    'implications-for-investments': {
+        title: 'Economic Implications for Investments',
+        content: `
+            <p>Economics forms the foundation of top-down investing. Asset classes perform drastically differently depending on the macroeconomic environment.</p>
+            <h3>The Cycle Allocation</h3>
+            <p>During an economic expansion, equities (especially growth and cyclical stocks) outperform. During a recession, government bonds and defensive stocks (like utilities and healthcare) protect capital. During periods of high inflation, real assets like commodities, gold, and real estate are required to maintain purchasing power.</p>
+        `
+    },
+    'limitations-of-economics': {
+        title: 'Limitations of Economics',
+        content: `
+            <p>Despite heavy reliance on complex mathematical models, economics is a social science, not a hard science like physics. It studies human behavior, which is inherently unpredictable.</p>
+            <h3>The Physics Envy</h3>
+            <p>Economic models often rely on unrealistic assumptions ("ceteris paribus"—all else being equal). The global economy is a complex, chaotic, non-linear system. No model can accurately predict sudden geopolitical shocks, pandemics, or sudden shifts in collective human psychology, which is why economic forecasts are frequently and spectacularly wrong.</p>
+        `
+    },
+    'overview-of-the-global-economy': {
+        title: 'Overview of the Global Economy',
+        content: `
+            <p>The global economy is a highly interconnected system comprising the economic output of all nations, linked together through international trade, global capital markets, and multinational supply chains.</p>
+            <h3>The Interconnected Web</h3>
+            <p>A housing crash in the United States (2008) can bankrupt banks in Europe and cause unemployment in Asian manufacturing hubs. No economy operates in isolation. The primary engines of this global system are the US, China, and the European Union, whose domestic policies ripple instantly across the globe.</p>
+        `
+    },
+    'key-drivers-of-the-global-economy': {
+        title: 'Key Drivers of the Global Economy',
+        content: `
+            <p>Global economic growth is fundamentally driven by three core pillars over the long term.</p>
+            <h3>The Three Pillars</h3>
+            <p><strong>1. Population Growth:</strong> More people means more consumers and more workers. <strong>2. Capital Accumulation:</strong> Investment in infrastructure, factories, and technology. <strong>3. Productivity Growth:</strong> The most important driver—producing more output per hour worked, driven almost entirely by technological innovation and improved education.</p>
+        `
+    },
+    'exchange-rates-and-currency-markets': {
+        title: 'Exchange Rates and Currency Markets',
+        content: `
+            <p>The Foreign Exchange (Forex) market is the largest financial market in the world, where currencies are traded against one another, determining exchange rates.</p>
+            <h3>Trade and Capital Flows</h3>
+            <p>Exchange rates act as a shock absorber. If a country runs a massive trade deficit (importing more than it exports), its currency will naturally depreciate. A weaker currency makes its exports cheaper globally, eventually helping to correct the trade imbalance. Capital flows (investors moving money seeking higher interest rates) also violently impact short-term exchange rates.</p>
+        `
+    },
+    'international-monetary-policy': {
+        title: 'International Monetary Policy',
+        content: `
+            <p>While central banks focus on their domestic economies, the extreme size and dominance of the US Federal Reserve makes it the de facto global central bank.</p>
+            <h3>The Dollar Hegemony</h3>
+            <p>Because global commodities (like oil) and international debts are primarily priced in US Dollars, when the US Federal Reserve raises interest rates, it tightens financial conditions globally. Emerging markets are particularly vulnerable, as higher US rates can cause massive capital flight out of their countries, destroying their local currencies.</p>
+        `
+    },
+    'impact-of-globalisation': {
+        title: 'Impact of Globalisation',
+        content: `
+            <p>Globalisation is the process of integrating national economies into a single global market through the removal of trade barriers and the free flow of capital.</p>
+            <h3>The Double-Edged Sword</h3>
+            <p>It has lifted billions out of poverty in developing nations by offshoring manufacturing, and drastically lowered consumer prices in developed nations. However, it has also hollowed out the manufacturing working class in developed nations, leading to rising wealth inequality and a recent political backlash (protectionism and tariffs).</p>
+        `
+    },
+    'global-economic-crises': {
+        title: 'Global Economic Crises',
+        content: `
+            <p>Systemic crises occur when severe financial shocks overwhelm the banking system and cascade into the real economy globally.</p>
+            <h3>Anatomy of a Crisis</h3>
+            <p>They usually follow a predictable pattern: A period of prolonged low interest rates fuels rapid credit expansion, leading to a speculative asset bubble (dot-com stocks, subprime housing). When the bubble inevitably bursts, highly leveraged financial institutions face insolvency, credit freezes, businesses collapse, and a global recession ensues.</p>
+        `
+    },
+    'outlook-for-the-global-economy': {
+        title: 'Outlook for the Global Economy',
+        content: `
+            <p>The global economic outlook is constantly shifting based on geopolitical tensions, technological breakthroughs, and demographic changes.</p>
+            <h3>Structural Headwinds</h3>
+            <p>Currently, the global economy faces structural headwinds from aging populations in the developed world and China, massive sovereign debt burdens, and the splintering of global trade networks into competing geopolitical blocs. However, rapid advancements in Artificial Intelligence and green energy transition offer powerful new engines for future productivity growth.</p>
+        `
+    },
+    'overview-of-the-australian-economy': {
+        title: 'Overview of the Australian Economy',
+        content: `
+            <p>The Australian economy is one of the largest and most resilient advanced economies in the world, famously avoiding a technical recession for nearly 30 years prior to the 2020 pandemic.</p>
+            <h3>The Dual Engine</h3>
+            <p>It is heavily characterized by two main engines: A massive, capital-intensive mining sector exporting commodities (iron ore, coal, LNG) primarily to Asia, combined with a heavily service-oriented domestic economy (finance, education, healthcare) driven by high population growth via immigration.</p>
+        `
+    },
+    'gross-domestic-product-gdp': {
+        title: 'Gross Domestic Product (GDP)',
+        content: `
+            <p>GDP is the total monetary value of all finished goods and services produced within a country's borders in a specific time period. It is the broadest scorecard of economic health.</p>
+            <h3>Real vs Nominal</h3>
+            <p><strong>Nominal GDP</strong> measures raw output. <strong>Real GDP</strong> adjusts that output for inflation. If Nominal GDP grows by 5%, but inflation is 3%, Real GDP only grew by 2%. Investors focus almost exclusively on Real GDP growth to measure true economic progress.</p>
+        `
+    },
+    'inflation-rate': {
+        title: 'Inflation Rate',
+        content: `
+            <p>The rate at which the general level of prices for goods and services is rising, eroding the purchasing power of currency.</p>
+            <h3>The Sweet Spot</h3>
+            <p>Central banks generally target a low, stable inflation rate (usually 2-3%). Too high, and consumer purchasing power is destroyed, causing social unrest. Too low (deflation), and consumers delay spending because things will be cheaper tomorrow, causing the economy to grind to a halt.</p>
+        `
+    },
+    'wage-growth': {
+        title: 'Wage Growth',
+        content: `
+            <p>A critical metric tracking the increase in workers' pay over time. It is heavily monitored by central banks to assess inflation risks.</p>
+            <h3>The Wage-Price Spiral</h3>
+            <p>If inflation rises, workers demand higher wages to maintain their living standards. If businesses grant these wage hikes, their costs increase. To protect profit margins, businesses raise prices again, prompting workers to demand even higher wages. This highly destructive loop is a central bank's worst nightmare.</p>
+        `
+    },
+'trade-balance': {
+        title: 'Trade Balance',
+        content: `
+            <p>The calculation of a country's exports minus its imports. A fundamental component of the broader Balance of Payments.</p>
+            <h3>Surplus vs Deficit</h3>
+            <p>A Trade Surplus (exporting more than importing) indicates strong global demand for the nation's goods, injecting capital into the domestic economy. Australia frequently runs massive trade surpluses driven by iron ore and coal exports. A Trade Deficit means capital is leaving the country to buy foreign goods, which must eventually be balanced by foreign investment into the country.</p>
+        `
+    },
+    'business-and-consumer-confidence': {
+        title: 'Business and Consumer Confidence',
+        content: `
+            <p>Leading indicators based on survey data that measure the degree of optimism that businesses and consumers feel regarding the overall state of the economy.</p>
+            <h3>The Self-Fulfilling Prophecy</h3>
+            <p>If consumers are confident, they spend money. If businesses are confident, they invest in new factories and hire workers. This spending creates economic growth. If confidence collapses due to a shock, spending freezes, and the economy can plunge into a recession purely based on psychology, even if underlying fundamentals are okay.</p>
+        `
+    },
+    'housing-market-indicators': {
+        title: 'Housing Market Indicators',
+        content: `
+            <p>Metrics tracking building approvals, housing credit, auction clearance rates, and dwelling prices. Essential for understanding the Australian economy.</p>
+            <h3>The Wealth Effect</h3>
+            <p>A vast portion of Australian household wealth is tied up in residential real estate. When housing prices rise, homeowners feel wealthier and increase consumption ("The Wealth Effect"). A severe housing crash would instantly destroy consumer confidence, collapse the construction sector, and threaten the heavily exposed banking system.</p>
+        `
+    },
+    'government-budget-and-fiscal-position': {
+        title: 'Government Budget and Fiscal Position',
+        content: `
+            <p>The balance of government tax revenues versus government spending. It dictates the nation's sovereign debt trajectory.</p>
+            <h3>Deficits and Debt</h3>
+            <p>Governments rarely balance their budgets; they run Fiscal Deficits, borrowing money (issuing bonds) to cover the shortfall. While acceptable during crises, chronic deficits lead to mounting Sovereign Debt. If debt levels become unsustainable, global bond markets will demand higher interest rates, crippling the government's ability to fund essential services.</p>
+        `
+    },
+    'current-account-and-capital-flows': {
+        title: 'Current Account and Capital Flows',
+        content: `
+            <p>The Current Account tracks the flow of goods, services, and primary income (like dividends and interest) between a nation and the rest of the world.</p>
+            <h3>The Balancing Act</h3>
+            <p>If a country runs a Current Account Deficit, it is mathematically required to run a Capital Account Surplus—meaning it must attract foreign investment to fund its lifestyle. Australia historically ran current account deficits, relying on massive foreign capital inflows to fund its capital-intensive mining operations and banking sector.</p>
+        `
+    },
+    'commodity-prices': {
+        title: 'Commodity Prices',
+        content: `
+            <p>The global market prices for raw materials like iron ore, coal, gold, copper, oil, and agricultural products.</p>
+            <h3>The Terms of Trade</h3>
+            <p>For a resource-heavy economy like Australia, commodity prices dictate the "Terms of Trade" (export prices relative to import prices). When iron ore prices boom, national income surges, government tax revenues explode, and the currency strengthens. A collapse in commodity prices triggers severe economic pain across the entire country.</p>
+        `
+    },
+    'outlook-for-the-australian-economy': {
+        title: 'Outlook for the Australian Economy',
+        content: `
+            <p>The long-term trajectory of the Australian economy remains heavily tethered to the growth and industrialization of Asia, particularly China and India.</p>
+            <h3>The Balancing Act</h3>
+            <p>The primary macroeconomic challenges include navigating the global green energy transition (which threatens coal exports but boosts critical minerals like lithium), managing extreme household debt levels tied to the inflated property market, and boosting lagging labor productivity to ensure living standards continue to rise.</p>
+        `
+    },
+    'what-is-monetary-policy': {
+        title: 'What is Monetary Policy?',
+        content: `
+            <p>Monetary policy is the process by which a nation's central bank controls the money supply and interest rates to achieve macroeconomic goals like low inflation and maximum employment.</p>
+            <h3>The Price of Money</h3>
+            <p>By altering interest rates, the central bank essentially dictates the "price of money." Lowering rates makes borrowing cheap, encouraging businesses and consumers to take on debt and spend, accelerating the economy. Raising rates makes debt expensive, suffocating borrowing and cooling down an overheated economy.</p>
+        `
+    },
+    'role-of-reserve-bank-of-australia': {
+        title: 'Role of the Reserve Bank of Australia',
+        content: `
+            <p>The RBA is Australia's independent central bank. Its statutory mandate is to ensure the stability of the currency, maintain full employment, and ensure the economic prosperity and welfare of the Australian people.</p>
+            <h3>The Inflation Target</h3>
+            <p>In practice, the RBA's primary operational focus is Inflation Targeting. It adjusts monetary policy with the goal of keeping consumer price inflation within a target band of 2-3%, on average, over the business cycle.</p>
+        `
+    },
+    'the-official-cash-rate': {
+        title: 'The Official Cash Rate (OCR)',
+        content: `
+            <p>The primary tool of the RBA. The OCR is the interest rate that banks pay to borrow funds from each other in the overnight money market.</p>
+            <h3>The Transmission Mechanism</h3>
+            <p>While the RBA only sets the overnight rate, this acts as the foundational baseline for the entire financial system. When the RBA raises the OCR, commercial banks immediately raise their variable mortgage rates and business loan rates, transmitting the tightening effect directly to consumers and businesses.</p>
+        `
+    },
+    'contractionary-monetary-policy': {
+        title: 'Contractionary Monetary Policy',
+        content: `
+            <p>Deployed when the economy is overheating and inflation is rising above the target band.</p>
+            <h3>Hitting the Brakes</h3>
+            <p>The central bank raises the cash rate. This immediately increases mortgage repayments, leaving consumers with less disposable income to spend at the shops. It also makes business expansion too expensive to finance. Demand collapses, businesses stop raising prices (curbing inflation), and unemployment usually rises as a consequence.</p>
+        `
+    },
+    'expansionary-monetary-policy': {
+        title: 'Expansionary Monetary Policy',
+        content: `
+            <p>Deployed during a recession or period of high unemployment to stimulate economic activity.</p>
+            <h3>Hitting the Gas</h3>
+            <p>The central bank slashes the cash rate toward zero. Mortgages become cheaper, freeing up consumer cash. Debt becomes virtually free for businesses, encouraging them to invest and hire. If cutting rates to zero isn't enough, the central bank may resort to Quantitative Easing (printing money to buy government bonds and force long-term interest rates down).</p>
+        `
+    },
+    'impact-of-monetary-policy-on-assets': {
+        title: 'Impact of Monetary Policy on Assets',
+        content: `
+            <p>Monetary policy is the primary driver of modern financial asset pricing. It acts as gravity on valuations.</p>
+            <h3>The Discount Rate Effect</h3>
+            <p>When interest rates are cut to zero, the discount rate used to value stocks plummets, causing stock valuations (P/E multiples) to explode upward. Free money also fuels massive speculation in real estate and crypto. Conversely, when rates rise sharply, the gravity returns; high-flying growth stocks and real estate valuations get crushed.</p>
+        `
+    },
+    'exchange-rates-and-monetary-policy': {
+        title: 'Exchange Rates and Monetary Policy',
+        content: `
+            <p>Interest rates directly dictate the strength of a nation's currency in the global foreign exchange markets.</p>
+            <h3>Chasing Yield</h3>
+            <p>If the RBA raises interest rates to 5% while the US Federal Reserve keeps rates at 2%, global capital will flood into Australia to earn that higher 5% yield. To invest in Australia, they must buy Australian Dollars, driving the AUD exchange rate higher. A strong currency makes imports cheaper (helping fight inflation) but hurts exporters.</p>
+        `
+    },
+    'minutes-of-the-rba': {
+        title: 'Minutes of the RBA',
+        content: `
+            <p>A detailed document released two weeks after the RBA Board meets to decide the Official Cash Rate. It outlines the specific economic reasoning behind their decision.</p>
+            <h3>Reading the Tea Leaves</h3>
+            <p>Financial markets scrutinize every single word in the Minutes to gauge the RBA's "bias." If the language shifts slightly from "monitoring inflation risks" to "concerned about inflation risks," bond traders will instantly price in a higher probability of an upcoming rate hike, moving the market before the hike even occurs.</p>
+        `
+    },
+    'limitations-of-the-rba': {
+        title: 'Limitations of the RBA',
+        content: `
+            <p>Monetary policy is often described as a blunt instrument. It cannot precisely target specific sectors of the economy.</p>
+            <h3>Pushing on a String</h3>
+            <p>While the RBA can easily crush inflation by hiking rates and causing a recession, it struggles to *force* growth during a crisis. If consumers are terrified and heavily indebted, cutting rates to zero won't make them borrow and spend more. This limitation is known as "pushing on a string," requiring the government to step in with Fiscal Policy.</p>
+        `
+    },
+    'what-is-fiscal-policy': {
+        title: 'What is Fiscal Policy?',
+        content: `
+            <p>Fiscal policy is the use of government spending and taxation to influence the economy. Unlike the independent central bank, fiscal policy is controlled directly by the elected government (the Treasury).</p>
+            <h3>Targeted Action</h3>
+            <p>While monetary policy acts like a blanket over the whole economy, fiscal policy can be highly targeted. The government can choose to specifically subsidize childcare, build a new highway to create construction jobs, or cut taxes for low-income earners.</p>
+        `
+    },
+    'government-budget': {
+        title: 'The Government Budget',
+        content: `
+            <p>The annual blueprint outlining exactly how the government plans to extract money from the economy (Tax Revenue) and inject money back into the economy (Government Spending).</p>
+            <h3>The Fiscal Stance</h3>
+            <p>If the budget aims to spend more than it taxes (a Deficit), the fiscal stance is Expansionary—injecting net stimulus into the economy. If it taxes more than it spends (a Surplus), the stance is Contractionary—draining cash out of the private sector to pay down national debt.</p>
+        `
+    },
+    'contractionary-fiscal-policy': {
+        title: 'Contractionary Fiscal Policy',
+        content: `
+            <p>Implemented when the economy is overheating and inflation is out of control, or when sovereign debt levels become dangerously high.</p>
+            <h3>Austerity</h3>
+            <p>The government raises taxes (leaving consumers with less money to spend) and cuts government spending (canceling infrastructure projects, freezing public sector wages). This drastically reduces Aggregate Demand, cooling inflation, but is extremely politically unpopular.</p>
+        `
+    },
+    'expansionary-fiscal-policy': {
+        title: 'Expansionary Fiscal Policy',
+        content: `
+            <p>Deployed during severe economic downturns to prevent a recession from turning into a depression.</p>
+            <h3>Stimulus</h3>
+            <p>The government borrows massive amounts of money to fund tax cuts and direct cash handouts (like the COVID-19 stimulus checks), or initiates massive public works projects. This injects cash directly into consumers' pockets, artificially boosting demand to keep businesses alive until the private sector recovers.</p>
+        `
+    },
+    'automatic-stabilisers-in-fiscal-policy': {
+        title: 'Automatic Stabilisers',
+        content: `
+            <p>Built-in features of the tax and welfare system that naturally counteract economic cycles without any active legislation required by politicians.</p>
+            <h3>The Shock Absorbers</h3>
+            <p>During a recession, people lose their jobs. Automatically, government tax revenue plummets (because fewer people are paying income tax), and government spending skyrockets (because more people claim unemployment benefits). This automatic surge in the budget deficit instantly cushions the blow of the recession.</p>
+        `
+    },
+    'discretionary-fiscal-policy': {
+        title: 'Discretionary Fiscal Policy',
+        content: `
+            <p>Deliberate, active changes in taxation or spending laws passed by parliament specifically to alter the course of the economy.</p>
+            <h3>The Implementation Lag</h3>
+            <p>Unlike monetary policy (where a rate cut takes effect tomorrow), discretionary fiscal policy requires drafting legislation, political debate, and bureaucratic implementation. By the time a massive infrastructure stimulus package actually starts pouring concrete, the recession might already be over, causing the stimulus to accidentally trigger massive inflation instead.</p>
+        `
+    },
+    'fiscal-policy-tools': {
+        title: 'Fiscal Policy Tools',
+        content: `
+            <p>The specific levers the government pulls to alter economic activity.</p>
+            <h3>Taxes and Transfers</h3>
+            <p><strong>Taxation:</strong> Altering income tax brackets, corporate tax rates, or consumption taxes (GST/VAT) to alter behavior. <strong>Government Spending:</strong> Direct procurement of goods and infrastructure. <strong>Transfer Payments:</strong> Welfare, pensions, and unemployment benefits designed to redistribute wealth to those with the highest propensity to spend it immediately.</p>
+        `
+    },
+'fiscal-policy-and-economic-growth': {
+        title: 'Fiscal Policy and Economic Growth',
+        content: `
+            <p>Fiscal policy is the primary engine for long-term structural economic growth.</p>
+            <h3>Investing in the Future</h3>
+            <p>While monetary policy merely manipulates demand by making borrowing cheaper, fiscal policy can increase the actual productive capacity of the nation (Supply-Side Economics). When the government invests heavily in education, research & development, and national infrastructure (ports, rail networks, broadband), it permanently increases the nation's productivity, raising long-term GDP growth potential.</p>
+        `
+    },
+    'fiscal-policy-and-inflation': {
+        title: 'Fiscal Policy and Inflation',
+        content: `
+            <p>Aggressive expansionary fiscal policy is highly inflationary if the economy is already near full capacity.</p>
+            <h3>Too Much Money, Too Few Goods</h3>
+            <p>If unemployment is 3% and factories are running at 100% capacity, and the government suddenly hands out $1000 to every citizen, production cannot increase to meet the sudden surge in demand. The only possible outcome is that businesses raise prices, creating massive inflation. This forces the central bank to hike interest rates, pitting fiscal and monetary policy against each other.</p>
+        `
+    },
+    'limitations-of-fiscal-policy': {
+        title: 'Limitations of Fiscal Policy',
+        content: `
+            <p>Fiscal policy is plagued by severe political constraints and the "crowding out" effect.</p>
+            <h3>The Political Cycle</h3>
+            <p>Politicians have a strong incentive to run massive, deficit-funded stimulus packages right before an election to buy votes, even if the economy is already booming. Conversely, they rarely implement necessary contractionary policy (raising taxes) because it guarantees they will be voted out. Furthermore, massive government borrowing can "crowd out" the private sector by driving up bond yields.</p>
+        `
+    },
+    'what-is-inflation': {
+        title: 'What is Inflation?',
+        content: `
+            <p>Inflation is the persistent, broad-based increase in the general price level of goods and services in an economy over time. It represents the destruction of a currency's purchasing power.</p>
+            <h3>The Silent Tax</h3>
+            <p>If you hold $100 in cash under your mattress, and inflation runs at 5% a year, after a decade, that $100 will only buy roughly $60 worth of goods. Inflation acts as a silent, unlegislated tax that transfers wealth from savers (whose cash loses value) to borrowers (whose debts become cheaper to repay in inflated dollars).</p>
+        `
+    },
+    'consumer-price-index-cpi': {
+        title: 'Consumer Price Index (CPI)',
+        content: `
+            <p>The CPI is the most widely used measure of inflation. It tracks the changing cost of a specific "basket" of goods and services commonly purchased by an average household.</p>
+            <h3>The Basket</h3>
+            <p>The basket includes housing, food, transportation, healthcare, and education. If the total cost of the basket was $100 last year and $105 this year, headline CPI inflation is 5%. Analysts also closely watch "Core CPI," which strips out highly volatile food and energy prices to reveal the underlying inflation trend.</p>
+        `
+    },
+    'how-to-measure-inflation': {
+        title: 'How to Measure Inflation',
+        content: `
+            <p>While CPI is the headline number, central banks and economists use a variety of metrics to triangulate true inflation.</p>
+            <h3>Alternative Metrics</h3>
+            <p><strong>Producer Price Index (PPI):</strong> Measures inflation at the wholesale/manufacturing level. A spike in PPI usually precedes a spike in CPI as businesses pass costs to consumers. <strong>Trimmed Mean:</strong> A measure that throws out the most extreme price spikes and price drops in the CPI basket to find the true central tendency of inflation.</p>
+        `
+    },
+    'the-causes-of-inflation': {
+        title: 'The Causes of Inflation',
+        content: `
+            <p>Inflation is generally driven by two distinct macroeconomic forces.</p>
+            <h3>Demand-Pull vs Cost-Push</h3>
+            <p><strong>Demand-Pull:</strong> "Too much money chasing too few goods." Occurs when the economy is booming, unemployment is low, and consumers have excess cash (often fueled by low interest rates or government stimulus). <strong>Cost-Push:</strong> Driven by a sudden supply shock. If a war halts global oil production, the cost of manufacturing and transporting everything skyrockets, forcing businesses to raise prices regardless of consumer demand.</p>
+        `
+    },
+    'the-effects-of-inflation': {
+        title: 'The Effects of Inflation',
+        content: `
+            <p>High and volatile inflation is highly destructive to an economy because it destroys price discovery and long-term planning.</p>
+            <h3>Economic Paralysis</h3>
+            <p>If a business doesn't know what its raw materials will cost next year, it won't invest in a new factory. If workers see their wages buying less food every week, they strike. High inflation destroys the bond market (as yields must rise to compensate for lost purchasing power), which crushes equity valuations and halts corporate borrowing.</p>
+        `
+    },
+    'strategies-against-inflation': {
+        title: 'Strategies Against Inflation',
+        content: `
+            <p>Investors must aggressively position their portfolios to survive high-inflation regimes, as traditional stocks and bonds will both lose real value.</p>
+            <h3>Real Assets</h3>
+            <p>The best defense is owning "Real Assets." Commodities (oil, gold, copper) naturally rise in price during inflation. Real estate is excellent, as the property value rises with inflation while the fixed-rate mortgage debt used to buy it is inflated away. Finally, equities of companies with immense "Pricing Power" (monopolies that can raise prices at will) are essential.</p>
+        `
+    },
+    'strategies-against-deflation': {
+        title: 'Strategies Against Deflation',
+        content: `
+            <p>Deflation (falling prices) is arguably worse than inflation, as it leads to a collapse in consumer spending and mass bankruptcies as the real value of debt increases.</p>
+            <h3>Cash and High-Grade Bonds</h3>
+            <p>During deflation, the purchasing power of cash actually *increases* every day. Holding cash is highly profitable. Long-term, high-grade Government Bonds are the ultimate safe haven, as central banks will slash interest rates to zero to fight the deflation, causing the value of existing high-yielding bonds to skyrocket.</p>
+        `
+    },
+    'history-of-inflation-in-australia': {
+        title: 'History of Inflation in Australia',
+        content: `
+            <p>Australia's inflation history is defined by the turbulent 1970s and the subsequent implementation of inflation targeting.</p>
+            <h3>The RBA Era</h3>
+            <p>During the 1970s and 80s, Australia suffered from double-digit inflation and deeply entrenched wage-price spirals. In the early 1990s, the RBA formally adopted the 2-3% inflation target and gained political independence. This ushered in an unprecedented three-decade era of low, stable inflation, which only recently ended due to the post-pandemic global supply shocks.</p>
+        `
+    },
+    'limitations-of-inflation-analysis': {
+        title: 'Limitations of Inflation Analysis',
+        content: `
+            <p>Measuring inflation is highly subjective and controversial. Many argue the CPI vastly underestimates the true cost of living.</p>
+            <h3>Quality Adjustments and Substitution</h3>
+            <p>If steak becomes too expensive, the CPI formula assumes consumers "substitute" chicken instead, artificially lowering the reported inflation rate (even though the consumer's quality of life decreased). Furthermore, the CPI struggles to account for "Hedonic Adjustments"—a $1000 smartphone today is infinitely better than a $1000 phone in 2010, technically making the "quality-adjusted" price cheaper.</p>
+        `
+    },
+    'what-are-business-cycles': {
+        title: 'What are Business Cycles?',
+        content: `
+            <p>The business cycle represents the natural, recurring fluctuations of economic activity (GDP, employment, industrial production) over several years.</p>
+            <h3>The Four Phases</h3>
+            <p>The cycle consists of four phases: <strong>Expansion</strong> (growth, falling unemployment, rising markets), <strong>Peak</strong> (the economy overheats, inflation spikes), <strong>Contraction/Recession</strong> (growth turns negative, unemployment rises, markets crash), and <strong>Trough</strong> (the absolute bottom, paving the way for the next recovery).</p>
+        `
+    },
+    'key-drivers-of-business-cycles': {
+        title: 'Key Drivers of Business Cycles',
+        content: `
+            <p>Business cycles are primarily driven by fluctuations in Aggregate Demand, usually fueled by the expansion and contraction of credit.</p>
+            <h3>The Credit Cycle</h3>
+            <p>When credit is cheap and easily available, businesses borrow heavily to expand and consumers borrow to buy houses, fueling a massive expansion. Eventually, debt levels become unsustainable, central banks raise rates, defaults rise, banks stop lending, and the resulting credit crunch forces the economy into a painful contraction to clear the bad debt.</p>
+        `
+    },
+    'how-to-track-business-cycles': {
+        title: 'How to Track Business Cycles',
+        content: `
+            <p>Investors track the cycle by monitoring a dashboard of leading, coincident, and lagging economic indicators.</p>
+            <h3>Leading Indicators</h3>
+            <p>You cannot rely on GDP data (a lagging indicator) to track the cycle, because by the time a recession is officially declared, the stock market has already crashed. Investors focus on Leading Indicators: the yield curve, new manufacturing orders, building permits, and consumer confidence, which signal turns in the cycle months in advance.</p>
+        `
+    },
+    'recession': {
+        title: 'Recession',
+        content: `
+            <p>A recession is a significant, widespread, and prolonged decline in economic activity. The common technical definition is two consecutive quarters of negative Real GDP growth.</p>
+            <h3>The Cleansing Fire</h3>
+            <p>While devastating to workers who lose their jobs, recessions are a necessary feature of capitalism. They act as a cleansing fire, destroying inefficient "zombie" companies that only survived due to cheap credit, thereby reallocating capital and labor to more productive, innovative sectors of the economy for the next expansion.</p>
+        `
+    },
+    'depression': {
+        title: 'Depression',
+        content: `
+            <p>A depression is an extreme, severe, and multi-year recession. While there is no strict technical definition, it is characterized by catastrophic drops in GDP (e.g., >10%) and massive structural unemployment (e.g., >20%).</p>
+            <h3>Systemic Failure</h3>
+            <p>Depressions occur when standard monetary policy fails. During the Great Depression, the banking system completely collapsed, wiping out the savings of millions and causing a catastrophic deflationary spiral that could only be broken by the massive fiscal spending of World War II.</p>
+        `
+    },
+    'role-of-monetary-policy': {
+        title: 'Role of Monetary Policy in the Cycle',
+        content: `
+            <p>Central banks attempt to "smooth" the business cycle, theoretically removing the extreme highs and extreme lows.</p>
+            <h3>Taking Away the Punchbowl</h3>
+            <p>As the expansion phase reaches its peak and turns into a speculative bubble with rising inflation, the central bank's job is to "take away the punchbowl just as the party gets going" by raising interest rates. Conversely, when the cycle turns into a recession, they aggressively slash rates to cushion the fall and initiate the next recovery phase.</p>
+        `
+    },
+    'role-of-fiscal-policy': {
+        title: 'Role of Fiscal Policy in the Cycle',
+        content: `
+            <p>Governments use fiscal policy to act as the ultimate backstop when the business cycle enters a severe contraction.</p>
+            <h3>Bridging the Chasm</h3>
+            <p>During a severe recession, the private sector is paralyzed by fear and refuses to spend, regardless of how low interest rates go. The government must step in and act as the "spender of last resort," running massive deficits to artificially bridge the demand gap until private sector confidence returns.</p>
+        `
+    },
+    'impact-of-business-cycles': {
+        title: 'Impact of Business Cycles on Financial Markets',
+        content: `
+            <p>Financial markets anticipate the business cycle. The stock market usually peaks 6 months *before* the economic expansion ends, and bottoms out 6 months *before* the recession ends.</p>
+            <h3>Sector Rotation</h3>
+            <p>Savvy investors rotate their portfolios based on the cycle. In Early Expansion, they buy financials and industrials. In Late Expansion, they shift to energy and materials. In Recession, they hide in consumer staples, healthcare, and long-term government bonds.</p>
+        `
+    },
+    'how-to-forecast-business-cycles': {
+        title: 'How to Forecast Business Cycles',
+        content: `
+            <p>Forecasting the exact turning points of the business cycle is the holy grail of macro investing, but it is notoriously difficult.</p>
+            <h3>The Yield Curve</h3>
+            <p>The single most reliable forecasting tool historically has been the Inverted Yield Curve (when short-term 2-year government bonds yield more than long-term 10-year bonds). This signals that bond markets believe central banks have hiked rates too high and a recession is imminent, forcing them to slash rates in the near future.</p>
+        `
+    },
+    'inflation-cpi-indicators': {
+        title: 'Inflation & CPI Indicators',
+        content: `
+            <p>Critical metrics used to forecast the path of monetary policy. If CPI indicators show inflation is "sticky" and refusing to drop, markets will instantly price in higher interest rates for longer.</p>
+            <h3>The Breadth of Inflation</h3>
+            <p>Analysts don't just look at the headline CPI number; they look at the *breadth*. If inflation is only high because used car prices spiked, it's transient. If inflation is high because rent, services, and wages are all rising simultaneously, it is structurally embedded and will require a severe recession to eradicate.</p>
+        `
+    },
+    'business-confidence': {
+        title: 'Business Confidence as a Predictor',
+        content: `
+            <p>Surveys like the Purchasing Managers' Index (PMI) are the fastest, most reliable leading indicators of the business cycle.</p>
+            <h3>The 50 Line</h3>
+            <p>The PMI surveys hundreds of corporate executives every month, asking if their new orders, hiring, and production are expanding or contracting. A PMI above 50 signals economic expansion; below 50 signals contraction. Because it is real-time data directly from the factory floor, it is vastly superior to backward-looking GDP data.</p>
+        `
+    },
+
 
             'intro-to-Economics': {
 
