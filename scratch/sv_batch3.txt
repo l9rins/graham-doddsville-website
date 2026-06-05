@@ -1,0 +1,184 @@
+    'liquidation-value': {
+        title: 'Liquidation Value',
+        content: `
+            <p>The absolute floor of valuation. It is the estimated amount of cash that would remain if a company immediately closed its doors, sold all its assets in a fire sale, and paid off all its liabilities.</p>
+            <h3>The Fire Sale Haircut</h3>
+            <p>Liquidation value is always far lower than Book Value. Inventory might only fetch 30 cents on the dollar, and specialized factory equipment might only sell for scrap metal value. If a stock is trading below its Liquidation Value, it is essentially priced for bankruptcy, offering a deep-value opportunity if the company actually survives.</p>
+        `
+    },
+    'limitations-of-value': {
+        title: 'Limitations of Value Models',
+        content: `
+            <p>Asset-based valuation models (Book Value, Liquidation Value) have severe limitations in the modern economy.</p>
+            <h3>The Intangible Economy</h3>
+            <p>They completely fail to value technology and service businesses. Microsoft's true value is its software ecosystem and brand monopoly, not the physical office buildings on its balance sheet. Asset models are only highly relevant for capital-heavy industries like banking, property trusts, and mining.</p>
+        `
+    },
+    'dividend-discount-model-ddm': {
+        title: 'Dividend Discount Model (DDM)',
+        content: `
+            <p>A specialized valuation method that calculates the intrinsic value of a stock based solely on the present value of its expected future dividend payments.</p>
+            <h3>The Premise</h3>
+            <p>The DDM argues that a share of stock is worth exactly the cash you can extract from it. It is highly effective for valuing mature, slow-growing utility companies or REITs that pay out the majority of their earnings as dividends.</p>
+        `
+    },
+    'gordon-growth-model-ggm': {
+        title: 'Gordon Growth Model (GGM)',
+        content: `
+            <p>The most common variant of the DDM. It assumes that a company's dividend will grow at a constant rate into perpetuity.</p>
+            <h3>The Formula</h3>
+            <p><strong>Value = Expected Dividend Per Share / (Discount Rate - Dividend Growth Rate).</strong> It is beautifully simple but highly dangerous. If you assume a growth rate that is even slightly higher than the overall economy's growth rate, the math breaks down and outputs an infinite valuation.</p>
+        `
+    },
+    'two-stage-dividend-growth-model': {
+        title: 'Two-Stage Dividend Growth Model',
+        content: `
+            <p>An improvement over the GGM. It assumes two distinct phases of growth: an initial period of high, rapid dividend growth (perhaps driven by a new product cycle), followed by a terminal period of slow, stable, perpetual growth.</p>
+            <h3>Flexibility</h3>
+            <p>This allows analysts to value maturing companies realistically without assuming hyper-growth will last forever. It bridges the gap between a high-growth startup phase and a mature "cash cow" phase.</p>
+        `
+    },
+    'dividend-payout-ratio': {
+        title: 'Dividend Payout Ratio',
+        content: `
+            <p>The percentage of Net Income paid out to shareholders as dividends (Dividends / Net Income).</p>
+            <h3>Yield vs Safety</h3>
+            <p>A stock with an 8% dividend yield looks attractive, but if its payout ratio is 110% (meaning it pays out more than it earns), the dividend is unsustainable and an imminent cut will likely crash the share price. A healthy payout ratio (e.g., 40-60%) indicates the dividend is safe and has room to grow.</p>
+        `
+    },
+    'price-to-book-value-ratio': {
+        title: 'Price-to-Book Value Ratio',
+        content: `
+            <p>The P/B ratio compares a company's market capitalization to its accounting book value (Total Assets - Liabilities).</p>
+            <h3>The Value Floor</h3>
+            <p>Historically, a P/B below 1.0 indicated a deeply undervalued "cigar butt" stock. Today, a P/B below 1.0 is common for distressed banks holding toxic assets. For modern banks, analysts focus strictly on Price to *Tangible* Book Value, ensuring they aren't paying for inflated goodwill.</p>
+        `
+    },
+    'enterprise-value-ev': {
+        title: 'Enterprise Value (EV)',
+        content: `
+            <p>The absolute true cost to buy an entire company. It strips away the illusion of market capitalization.</p>
+            <h3>The Calculation</h3>
+            <p><strong>EV = Market Capitalization + Total Debt - Cash.</strong> If you buy a house for $500k, but it has a $400k mortgage, the true cost is $900k. EV applies this logic to corporations. It is the only metric that allows you to compare the valuations of a heavily indebted company and a cash-rich company accurately.</p>
+        `
+    },
+    'enterprise-value-to-ebitda': {
+        title: 'Enterprise Value to EBITDA (EV/EBITDA)',
+        content: `
+            <p>The single most heavily used valuation multiple in professional finance and M&A.</p>
+            <h3>The Universal Metric</h3>
+            <p>Unlike the P/E ratio, EV/EBITDA is capital-structure neutral. It compares the total cost of the business (EV) to the cash flow available to all investors (EBITDA) before interest and taxes distort the picture. Private equity firms almost exclusively buy and sell businesses based on EV/EBITDA multiples.</p>
+        `
+    },
+    'enterprise-value-to-sales': {
+        title: 'Enterprise Value to Sales (EV/Sales)',
+        content: `
+            <p>A top-line valuation multiple that accounts for debt.</p>
+            <h3>The SaaS Metric</h3>
+            <p>Because software-as-a-service (SaaS) companies often generate negative earnings and negative EBITDA while intentionally spending heavily to acquire customers, EV/Sales is often the only mathematically viable multiple. It measures how much the market is paying for the recurring revenue base.</p>
+        `
+    },
+    'ben-graham-s-formulas': {
+        title: "Ben Graham's Formulas",
+        content: `
+            <p>Beyond Net-Nets, Graham created a famous shorthand formula to quickly estimate intrinsic value for defensive stocks.</p>
+            <h3>The Graham Formula</h3>
+            <p><strong>V = EPS x (8.5 + 2g)</strong>, where 8.5 is the P/E base for a no-growth company, and 'g' is the expected 7-to-10 year growth rate. Later revised to adjust for current corporate bond rates, it remains a quick "back of the napkin" reality check against wildly inflated growth expectations.</p>
+        `
+    },
+    'joel-greenblatt-s-magic-formula': {
+        title: "Joel Greenblatt's Magic Formula",
+        content: `
+            <p>A systematic valuation strategy designed to buy "good companies at bargain prices."</p>
+            <h3>The Two Metrics</h3>
+            <p>The formula ranks every stock in the market based on just two metrics: <strong>Earnings Yield</strong> (EBIT / Enterprise Value) to find cheapness, and <strong>Return on Capital</strong> (EBIT / Net Working Capital + Net Fixed Assets) to find quality. Buying a basket of the top-ranked stocks has historically crushed broader market indices.</p>
+        `
+    },
+    'industry-rules-of-thumb': {
+        title: 'Industry Rules of Thumb',
+        content: `
+            <p>Every industry has its own specialized valuation shorthand that professionals use before running complex DCFs.</p>
+            <h3>Sector Specifics</h3>
+            <p><strong>Retail:</strong> EV/EBITDAR (adding back Rent). <strong>Oil & Gas:</strong> EV/Proven Reserves. <strong>SaaS:</strong> EV/Annual Recurring Revenue (ARR). <strong>Telecoms:</strong> EV/Subscriber. Knowing the specific rule of thumb for an industry is essential to speak the same language as the sector analysts.</p>
+        `
+    },
+    'intangible-assets': {
+        title: 'Valuing Intangible Assets',
+        content: `
+            <p>The hardest challenge in modern valuation is pricing assets that cannot be touched, such as brands, algorithms, and network effects.</p>
+            <h3>The Excess Earnings Method</h3>
+            <p>One method calculates the expected return on the company's tangible assets. Any actual profit generated *above* that baseline return is considered "Excess Earnings" generated by the intangibles (the brand or moat). These excess earnings are then capitalized to estimate the value of the intangible asset.</p>
+        `
+    },
+    'call-options': {
+        title: 'Call Options as Valuation',
+        content: `
+            <p>In distressed scenarios, the equity of a heavily indebted company is mathematically identical to a Call Option on the company's assets, with the strike price equal to the debt face value.</p>
+            <h3>The Merton Model</h3>
+            <p>If the assets are worth less than the debt, standard equity valuation is zero. But an option pricing model gives the equity value because there is a small *probability* (based on asset volatility) that the assets might surge in value before the debt comes due, putting the equity "in the money."</p>
+        `
+    },
+    'put-options': {
+        title: 'Put Options in Valuation',
+        content: `
+            <p>While call options model equity, put options model the risk of default on the debt.</p>
+            <h3>Credit Risk</h3>
+            <p>By valuing the "put option" that equity holders essentially hold (the option to walk away and hand the assets to the bondholders if the company fails), analysts can precisely calculate the fair interest rate (credit spread) a distressed company should be paying on its debt.</p>
+        `
+    },
+    'distressed-companies': {
+        title: 'Valuing Distressed Companies',
+        content: `
+            <p>Standard DCF and P/E models completely fail when a company is bleeding cash and approaching bankruptcy.</p>
+            <h3>The Restructuring Math</h3>
+            <p>Distressed valuation requires estimating the probability of default, the legal priority of different debt tranches (who gets paid first), and the liquidation value of the assets. Analysts value the company assuming a Chapter 11 restructuring, calculating what the "new" post-bankruptcy equity will be worth once the current debt is wiped out.</p>
+        `
+    },
+    'bankrupt-companies': {
+        title: 'Valuing Bankrupt Companies',
+        content: `
+            <p>Once a company is formally bankrupt, the equity is almost always worthless. Valuation shifts entirely to the bondholders.</p>
+            <h3>Recovery Rates</h3>
+            <p>Analysts model the "waterfall." If the liquidated assets generate $100M, the senior secured bank debt might get 100 cents on the dollar, the senior unsecured bonds might get 40 cents, and the subordinated bonds get zero. Distressed debt investors buy those unsecured bonds at 20 cents, betting their valuation model proves the recovery will actually be 40 cents.</p>
+        `
+    },
+    'mergers-acquisitions': {
+        title: 'Mergers & Acquisitions (M&A) Valuation',
+        content: `
+            <p>M&A valuation involves calculating what a strategic buyer should pay for a target company, which is always higher than the standalone intrinsic value.</p>
+            <h3>Control Premium and Synergies</h3>
+            <p>Buyers pay a "Control Premium" (often 20-30% above the current stock price) to acquire voting control. They justify this premium by modeling "Synergies"—the cost savings (firing duplicate staff) or revenue boosts achieved by combining the two companies. M&A modeling is heavily focused on proving that these expected synergies mathematically justify the massive premium paid.</p>
+        `
+    },
+    'start-up-companies': {
+        title: 'Valuing Start-up Companies',
+        content: `
+            <p>Startups have no history, no profits, and highly uncertain futures. Traditional valuation is impossible.</p>
+            <h3>Venture Capital Method</h3>
+            <p>VCs estimate what the company could be sold for in 5-7 years (the Terminal Value, often based on high EV/Sales multiples). They then discount that future value back to today using a massive discount rate (often 40-70%) to account for the massive probability that the startup will simply fail and go to zero.</p>
+        `
+    },
+    'pre-ipo-companies': {
+        title: 'Valuing Pre-IPO Companies',
+        content: `
+            <p>Late-stage private companies preparing to go public require precise valuation to set the IPO price.</p>
+            <h3>Comparable Company Analysis (Comps)</h3>
+            <p>Investment banks rely heavily on "Comps." They find 5 similar public companies, calculate their average EV/EBITDA and EV/Sales multiples, and apply those exact multiples to the private company's financials. They then apply an "IPO Discount" (usually 10-15%) to incentivize early buyers to purchase the stock on opening day.</p>
+        `
+    },
+    'asset-heavy-companies': {
+        title: 'Valuing Asset-Heavy Companies',
+        content: `
+            <p>Companies like real estate trusts (REITs), shipping lines, or infrastructure funds require unique valuation approaches.</p>
+            <h3>Net Asset Value (NAV)</h3>
+            <p>For a REIT, earnings (Net Income) are useless due to massive non-cash depreciation of buildings. Analysts use Funds From Operations (FFO) to measure cash, and calculate NAV by assessing the current open-market value of every single property in the portfolio, subtracting debt. The stock trades at a premium or discount to this NAV.</p>
+        `
+    },
+    'emerging-markets': {
+        title: 'Valuing Emerging Markets',
+        content: `
+            <p>Valuing companies in developing nations requires layering massive macro risk premiums onto standard models.</p>
+            <h3>Country Risk Premium</h3>
+            <p>When building a DCF for an Indonesian or Brazilian company, the analyst must add a "Country Risk Premium" to the discount rate. This accounts for the high risk of sudden currency devaluation, political instability, or government expropriation of assets. This higher discount rate mathematically suppresses the valuation compared to an identical US company.</p>
+        `
+    }

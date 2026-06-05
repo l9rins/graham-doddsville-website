@@ -1,0 +1,76 @@
+function loadArticle(articleId) {
+            const panel = document.getElementById('article-detail-panel');
+            const title = document.getElementById('article-detail-title');
+            const body = document.getElementById('article-detail-body');
+            
+            if (!panel || !title || !body) return;
+
+            if (typeof articleContent !== 'undefined' && articleContent[articleId]) {
+                const article = articleContent[articleId];
+                title.textContent = article.title;
+                
+                let imageHtml = '';
+                if (typeof window.buildArticleImageHtml === 'function') {
+                    imageHtml = window.buildArticleImageHtml(articleId, article);
+                }
+                
+                body.innerHTML = imageHtml + article.content;
+                panel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                const contentContainer = panel.querySelector('.article-detail-content');
+                if (contentContainer) contentContainer.scrollTop = 0;
+            } else {
+                title.textContent = 'Article Not Found';
+                body.innerHTML = '<p style="padding: 20px; color: #6b7280;">Sorry, the content for this article ("' + articleId + '") could not be found or has not been added yet.</p>';
+                panel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                console.error('Article not found:', articleId);
+            }
+        }
+
+        function closeArticlePanel() {
+            const panel = document.getElementById('article-detail-panel');
+            if (panel) {
+                panel.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            const drawerClose = document.getElementById('drawer-close');
+            
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    toggleMobileMenu();
+                });
+            }
+            
+            if (drawerClose) {
+                drawerClose.addEventListener('click', closeMobileMenu);
+            }
+            
+            if (mobileDrawer) {
+                mobileDrawer.addEventListener('click', (e) => {
+                    if (e.target === mobileDrawer) closeMobileMenu();
+                });
+            }
+
+            const articlePanel = document.getElementById('article-detail-panel');
+            if (articlePanel) {
+                articlePanel.addEventListener('click', (e) => {
+                    if (e.target === articlePanel) closeArticlePanel();
+                });
+            }
+            
+            const closeBtn = document.getElementById('article-detail-close');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeArticlePanel);
+            }
+        });
+
+        

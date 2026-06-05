@@ -1,0 +1,83 @@
+ssList.remove('collapsed');
+                if(sectionId === 'events-seminars') {
+                    content.style.maxHeight = 'none';
+                } else {
+                    const height = content.scrollHeight;
+                    content.style.maxHeight = height + "px";
+                }
+                if (section) section.classList.add('active');
+                if (arrow) arrow.innerHTML = '▲';
+            } else {
+                content.style.maxHeight = null;
+                content.classList.remove('expanded');
+                content.classList.add('collapsed');
+                if (section) section.classList.remove('active');
+                if (arrow) arrow.innerHTML = '▼';
+            }
+        }
+
+        // Mobile drawer functionality
+
+        const mobileToggle = document.getElementById('mobile-toggle');
+
+        const mobileDrawer = document.getElementById('mobile-drawer');
+
+        const drawerClose = document.getElementById('drawer-close');
+
+        
+
+        if (mobileToggle && mobileDrawer) {
+
+            mobileToggle.addEventListener('click', () => {
+
+                console.log('Hamburger menu clicked!');
+
+                mobileDrawer.classList.add('open');
+
+                document.body.style.overflow = 'hidden';
+
+                console.log('Drawer should be open now');
+
+            });
+
+        }
+
+        
+
+        if (drawerClose && mobileDrawer) {
+
+            drawerClose.addEventListener('click', () => {
+
+                mobileDrawer.classList.remove('open');
+
+                document.body.style.overflow = '';
+
+            });
+
+        }
+
+        
+
+        // Close drawer when clicking outside
+
+        if (mobileDrawer) {
+
+            mobileDrawer.addEventListener('click', (e) => {
+
+                if (e.target === mobileDrawer) {
+
+                    mobileDrawer.classList.remove('open');
+
+                    document.body.style.overflow = '';
+
+                }
+
+            });
+
+        }
+
+
+
+        // Article content data
+
+        

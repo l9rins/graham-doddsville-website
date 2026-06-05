@@ -1,0 +1,3046 @@
+
+        function closeMobileMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        }
+
+
+        // Collapsible functionality
+        function toggleCollapsible(sectionId) {
+            const content = document.getElementById(sectionId + '-content');
+            const arrow = document.getElementById(sectionId + '-arrow');
+            if (!content) return;
+            
+            const section = content.closest('.collapsible-section');
+            const isCurrentlyOpen = content.classList.contains('expanded');
+            
+            // Close all other open sections
+            document.querySelectorAll('.collapsible-content').forEach(c => {
+                if (c.id !== sectionId + '-content' && (c.classList.contains('expanded') || c.style.maxHeight)) {
+                    c.style.maxHeight = null;
+                    c.classList.remove('expanded');
+                    c.classList.add('collapsed');
+                    const s = c.closest('.collapsible-section');
+                    if (s) s.classList.remove('active');
+                    const a = document.getElementById(c.id.replace('-content', '-arrow'));
+                    if (a) a.innerHTML = '▼';
+                }
+            });
+
+            if (!isCurrentlyOpen) {
+                content.classList.add('expanded');
+                content.classList.remove('collapsed');
+                if(sectionId === 'events-seminars') {
+                    content.style.maxHeight = 'none';
+                } else {
+                    const height = content.scrollHeight;
+                    content.style.maxHeight = height + "px";
+                }
+                if (section) section.classList.add('active');
+                if (arrow) arrow.innerHTML = '▲';
+            } else {
+                content.style.maxHeight = null;
+                content.classList.remove('expanded');
+                content.classList.add('collapsed');
+                if (section) section.classList.remove('active');
+                if (arrow) arrow.innerHTML = '▼';
+            }
+        }
+
+        // Mobile drawer functionality
+
+        const mobileToggle = document.getElementById('mobile-toggle');
+
+        const mobileDrawer = document.getElementById('mobile-drawer');
+
+        const drawerClose = document.getElementById('drawer-close');
+
+        
+
+        if (mobileToggle && mobileDrawer) {
+
+            mobileToggle.addEventListener('click', () => {
+
+                console.log('Hamburger menu clicked!');
+
+                mobileDrawer.classList.add('open');
+
+                document.body.style.overflow = 'hidden';
+
+                console.log('Drawer should be open now');
+
+            });
+
+        }
+
+        
+
+        if (drawerClose && mobileDrawer) {
+
+            drawerClose.addEventListener('click', () => {
+
+                mobileDrawer.classList.remove('open');
+
+                document.body.style.overflow = '';
+
+            });
+
+        }
+
+        
+
+        // Close drawer when clicking outside
+
+        if (mobileDrawer) {
+
+            mobileDrawer.addEventListener('click', (e) => {
+
+                if (e.target === mobileDrawer) {
+
+                    mobileDrawer.classList.remove('open');
+
+                    document.body.style.overflow = '';
+
+                }
+
+            });
+
+        }
+
+
+
+        // Article content data
+
+        const articleContent = {
+'automobiles-and-components': {
+        title: 'Automobiles & Components',
+        content: `
+            <p>The Automobiles & Components sector encompasses companies involved in the manufacturing of passenger cars, commercial vehicles, motorcycles, and the various parts and accessories required to build them.</p>
+            <h3>Industry Dynamics</h3>
+            <p>This is a highly cyclical, capital-intensive industry heavily dependent on consumer confidence, interest rates (for auto financing), and raw material costs (steel, aluminium, lithium). The industry is currently undergoing a massive structural shift from internal combustion engines (ICE) to electric vehicles (EVs).</p>
+            <h3>Key Value Drivers</h3>
+            <p>Analysts focus on unit sales volumes, capacity utilisation, regulatory compliance (emissions standards), and supply chain resilience. The transition to autonomous driving and "software-defined vehicles" is shifting value from hardware manufacturers to tech-focused component suppliers.</p>
+        `
+    },
+    'banking': {
+        title: 'Banking',
+        content: `
+            <p>The Banking sector is the backbone of the global economy, comprising retail banks, commercial banks, investment banks, and universal banks that provide credit and liquidity to consumers and businesses.</p>
+            <h3>Revenue Models</h3>
+            <p>Banks generate revenue primarily through Net Interest Income (the spread between interest earned on loans and interest paid on deposits) and Non-Interest Income (fees, wealth management, trading revenue, and investment banking advisory fees).</p>
+            <h3>Key Value Drivers</h3>
+            <p>Valuation relies on the Net Interest Margin (NIM), loan growth, asset quality (measured by non-performing loans and provisions), and operating efficiency (cost-to-income ratio). In Australia, the "Big Four" banks dominate and are highly sensitive to the domestic housing market.</p>
+        `
+    },
+    'capital-goods': {
+        title: 'Capital Goods',
+        content: `
+            <p>The Capital Goods sector manufactures machinery, equipment, and components used by other businesses to produce consumer goods or provide services. It includes aerospace, defense, construction machinery, electrical equipment, and industrial conglomerates.</p>
+            <h3>Industry Dynamics</h3>
+            <p>This sector is highly sensitive to macroeconomic cycles, particularly corporate capital expenditure (CapEx) budgets and government infrastructure spending. Lead times are long, and order backlogs are a critical indicator of future revenue.</p>
+            <h3>Key Value Drivers</h3>
+            <p>Analysts monitor the book-to-bill ratio, order backlog growth, operating margins, and the shift toward "servitisation" (generating recurring revenue from maintenance and software attached to the physical machinery).</p>
+        `
+    },
+    'commercial-and-professional-services': {
+        title: 'Commercial & Professional Services',
+        content: `
+            <p>This sector includes companies providing services to other businesses, such as human resources, legal, accounting, environmental services, office services, and security.</p>
+            <h3>Industry Dynamics</h3>
+            <p>Generally less capital-intensive than manufacturing, these businesses often enjoy high returns on invested capital. The sector is highly fragmented, providing significant opportunities for growth through acquisition (roll-ups).</p>
+            <h3>Key Value Drivers</h3>
+            <p>Key metrics include client retention rates, billable hours (utilization rates), wage inflation, and the ability to pass on cost increases to clients. The shift toward outsourcing non-core functions drives secular growth in this sector.</p>
+        `
+    },
+    'consumer-durable-and-apparel': {
+        title: 'Consumer Durables & Apparel',
+        content: `
+            <p>This sector includes manufacturers of household appliances, home building materials, consumer electronics, and clothing/footwear.</p>
+            <h3>Industry Dynamics</h3>
+            <p>Demand is highly discretionary and tied to consumer confidence, disposable income, and the housing market (for durables). The apparel segment is heavily influenced by rapidly changing fashion trends and brand perception.</p>
+            <h3>Key Value Drivers</h3>
+            <p>Inventory management is critical; excess inventory leads to discounting and margin destruction. Analysts track same-store sales, gross margins, brand equity, and the successful execution of direct-to-consumer (D2C) online strategies.</p>
+        `
+    },
+    'consumer-services': {
+        title: 'Consumer Services',
+        content: `
+            <p>Consumer Services encompasses companies providing leisure facilities, restaurants, hotels, casinos, education, and travel services directly to consumers.</p>
+            <h3>Industry Dynamics</h3>
+            <p>This sector is heavily reliant on discretionary spending and is highly sensitive to economic downturns. It is also acutely vulnerable to external shocks (as seen during the COVID-19 pandemic) but can rebound sharply during recoveries.</p>
+            <h3>Key Value Drivers</h3>
+            <p>Analysts focus on RevPAR (Revenue Per Available Room) for hotels, same-store sales for restaurants, customer acquisition costs (CAC), and lifetime value (LTV) for subscription-based services. Labour availability and wage costs are significant headwinds.</p>
+        `
+    },
+    'consumer-discretionary-retail': {
+        title: 'Consumer Discretionary Retail',
+        content: `
+            <p>This sector includes retailers selling non-essential goods: department stores, specialty apparel, electronics retailers, and automotive dealers.</p>
+            <h3>Industry Dynamics</h3>
+            <p>The industry is in a state of structural disruption due to the rise of e-commerce (the "Amazon effect"). Traditional brick-and-mortar retailers are forced to invest heavily in omnichannel capabilities while managing expensive real estate footprints.</p>
+            <h3>Key Value Drivers</h3>
+            <p>Crucial metrics include comparable store sales growth, gross margin expansion, inventory turnover, and the percentage of sales derived from online channels. Successful retailers differentiate through exclusive brands or exceptional in-store experiences.</p>
+        `
+    },
+    'enegy-industry': {
+        title: 'Energy Industry',
+        content: `
+            <p>The Energy sector comprises companies involved in the exploration, production, refining, and marketing of oil, gas, and consumable fuels, as well as companies providing energy equipment and services.</p>
+            <h3>Industry Dynamics</h3>
+            <p>Energy is a highly cyclical, capital-intensive commodity business. Profitability is entirely dependent on global benchmark prices for oil and gas, which are driven by geopolitics, OPEC decisions, and global economic growth.</p>
+            <h3>Key Value Drivers</h3>
+            <p>Analysts value energy companies based on their proven reserves, finding and development (F&D) costs, breakeven cost per barrel, and capital discipline. The sector faces an existential long-term threat from the global transition to renewable energy.</p>
+        `
+    },
+    'consumer-staples-distribution-retail': {
+        title: 'Consumer Staples Distribution & Retail',
+        content: `
+            <p>This sector includes supermarkets, drug stores, and wholesale distributors of food and essential household goods.</p>
+            <h3>Industry Dynamics</h3>
+            <p>Considered a highly defensive sector, consumer staples generate stable, predictable cash flows regardless of economic conditions (people must eat and buy basic necessities). Competition is fierce, and margins are extremely thin.</p>
+            <h3>Key Value Drivers</h3>
+            <p>Because gross margins are thin (often 2-4% for supermarkets), profitability relies on massive scale and high inventory turnover. Analysts monitor market share, supply chain efficiency, private label penetration (which carries higher margins), and store network expansion.</p>
+        `
+    },
+    'food-beverage-and-tobacco': {
+        title: 'Food, Beverage & Tobacco',
+        content: `
+            <p>This sector comprises manufacturers and processors of agricultural products, packaged foods, beverages (alcoholic and non-alcoholic), and tobacco products.</p>
+            <h3>Industry Dynamics</h3>
+            <p>Like staples retail, this is a defensive sector. However, food and beverage manufacturers are facing changing consumer preferences toward healthier, organic, and plant-based options. Tobacco companies face declining volumes offset by aggressive pricing and a shift to vaping/heat-not-burn products.</p>
+            <h3>Key Value Drivers</h3>
+            <p>Pricing power is critical—the ability to pass on rising agricultural commodity costs to consumers without losing volume. Analysts assess brand strength, geographic diversification, and the ability to innovate and acquire high-growth niche brands.</p>
+        `
+    },
+    'health-care-equipment-and-services': {
+        title: 'Health Care Equipment & Services',
+        content: `
+            <p>This broad sector includes manufacturers of medical devices, hospital operators, health insurance providers, and healthcare IT companies.</p>
+            <h3>Industry Dynamics</h3>
+            <p>The sector benefits from the powerful demographic tailwind of aging populations in developed nations. It is highly regulated, and profitability can be significantly impacted by changes in government reimbursement policies (e.g., Medicare/Medicaid in the US, PBS in Australia).</p>
+            <h3>Key Value Drivers</h3>
+            <p>For equipment manufacturers, R&D pipeline and intellectual property protection are vital. For service providers, analysts focus on patient volumes, bed occupancy rates, and the ability to control rising clinical labour costs.</p>
+        `
+    },
+    'household-and-personal-products': {
+        title: 'Household & Personal Products',
+        content: `
+            <p>This sector includes manufacturers of cosmetics, toiletries, cleaning supplies, and non-durable household goods.</p>
+            <h3>Industry Dynamics</h3>
+            <p>These are defensive, brand-driven businesses that generate reliable cash flows. The industry is dominated by massive global conglomerates (e.g., P&G, Unilever, L'Oréal) that benefit from economies of scale in marketing and distribution.</p>
+            <h3>Key Value Drivers</h3>
+            <p>Brand equity is the primary moat. Analysts look at organic revenue growth, advertising spend as a percentage of sales, emerging market penetration, and the ability to command premium pricing in a highly competitive retail environment.</p>
+        `
+    },
+    'insurance': {
+        title: 'Insurance',
+        content: `
+            <p>The Insurance sector includes life, health, property and casualty (P&C), and reinsurance companies that underwrite risk in exchange for premiums.</p>
+            <h3>Industry Dynamics</h3>
+            <p>Insurers have two profit engines: underwriting profit (premiums collected minus claims and expenses paid) and investment income (returns generated by investing the "float"—the premiums held before claims are paid). Insurers benefit from a rising interest rate environment.</p>
+            <h3>Key Value Drivers</h3>
+            <p>The critical metric is the Combined Ratio (claims + expenses divided by premiums); a ratio below 100% indicates profitable underwriting. Analysts also assess the quality of the investment portfolio, catastrophe exposure, and regulatory capital adequacy.</p>
+        `
+    },
+    'materials': {
+        title: 'Materials',
+        content: `
+            <p>The Materials sector includes companies that extract, process, and produce raw materials: mining (iron ore, gold, copper), chemicals, construction materials, paper, and packaging.</p>
+            <h3>Industry Dynamics</h3>
+            <p>This is a quintessential commodity sector, highly cyclical and dependent on global economic growth (particularly China's infrastructure and property sectors). Companies are "price takers," meaning they have no control over the price of the goods they sell.</p>
+            <h3>Key Value Drivers</h3>
+            <p>Because they cannot control prices, materials companies are valued on their position on the industry cost curve. The lowest-cost producers generate cash in downturns and massive profits in upcycles. Analysts focus on production volumes, all-in sustaining costs (AISC), and mine life.</p>
+        `
+    },
+    'media-and-entertainment': {
+        title: 'Media & Entertainment',
+        content: `
+            <p>This sector comprises advertising agencies, broadcasting networks, cable companies, movie studios, and interactive home entertainment (gaming).</p>
+            <h3>Industry Dynamics</h3>
+            <p>The industry is undergoing massive disruption from digital streaming and social media. Traditional linear television and print media are in structural decline, while direct-to-consumer streaming and digital advertising duopolies (Google/Meta) dominate.</p>
+            <h3>Key Value Drivers</h3>
+            <p>Content is king. Analysts evaluate intellectual property portfolios, subscriber growth, churn rates, average revenue per user (ARPU), and the massive content acquisition costs required to compete in the "streaming wars."</p>
+        `
+    },
+    'pharmaceuticals-biotechnology-and-life-sciences': {
+        title: 'Pharmaceuticals, Biotechnology & Life Sciences',
+        content: `
+            <p>This sector involves the research, development, manufacturing, and marketing of drugs and therapies. It ranges from massive, diversified pharma giants to single-molecule, pre-revenue biotech startups.</p>
+            <h3>Industry Dynamics</h3>
+            <p>This is a high-risk, high-reward sector. Drug development is incredibly expensive and time-consuming, with high failure rates in clinical trials. Successful drugs are protected by patents, providing temporary monopolies with exceptionally high margins until the "patent cliff" allows generic competition.</p>
+            <h3>Key Value Drivers</h3>
+            <p>Valuation hinges on the clinical pipeline. Analysts assess the probability of FDA/TGA approval for phase I-III trials, peak sales potential for approved drugs, patent expiration timelines, and the threat of regulatory price controls.</p>
+        `
+    },
+    'equity-real-state-investment-trust': {
+        title: 'Equity Real Estate Investment Trusts (REITs)',
+        content: `
+            <p>REITs are companies that own, operate, or finance income-producing real estate across a range of property sectors, including office, retail, industrial, healthcare, and residential.</p>
+            <h3>Industry Dynamics</h3>
+            <p>REITs provide investors with a liquid way to invest in physical property. They are mandated to distribute the vast majority of their taxable income as dividends, making them highly attractive to yield-seeking investors. They are very sensitive to interest rate movements.</p>
+            <h3>Key Value Drivers</h3>
+            <p>Analysts focus on Funds From Operations (FFO), Net Asset Value (NAV) discounts/premiums, portfolio occupancy rates, Weighted Average Lease Expiry (WALE), capitalization rates (cap rates), and the cost of debt refinancing.</p>
+        `
+    },
+    'financial-services': {
+        title: 'Financial Services',
+        content: `
+            <p>This sector excludes banks and insurers, focusing on asset management, investment banking, brokerage, consumer finance, and financial exchanges.</p>
+            <h3>Industry Dynamics</h3>
+            <p>Asset managers and brokers are highly sensitive to market levels—when stock markets rise, their Assets Under Management (AUM) and fee revenue rise automatically. Exchanges (like the ASX) operate as highly profitable, natural monopolies.</p>
+            <h3>Key Value Drivers</h3>
+            <p>For asset managers, net fund inflows/outflows, AUM growth, and fee compression (due to the rise of passive indexing) are critical. For consumer finance, net interest margins and bad debt provisions are the primary focus.</p>
+        `
+    },
+    'semiconductors': {
+        title: 'Semiconductors & Semiconductor Equipment',
+        content: `
+            <p>This sector includes manufacturers of microchips (memory, logic, analog) and the highly specialized companies that build the equipment required to manufacture those chips.</p>
+            <h3>Industry Dynamics</h3>
+            <p>Historically highly cyclical, the industry is becoming more secularly driven due to the insatiable demand for computing power from AI, cloud computing, EVs, and the Internet of Things (IoT). The manufacturing process is incredibly complex and consolidated among a few dominant players (e.g., TSMC, ASML).</p>
+            <h3>Key Value Drivers</h3>
+            <p>Analysts monitor capital expenditure cycles, inventory levels in the supply chain, node progression (Moore's Law), and geopolitical risks (given the concentration of manufacturing in Taiwan and US export restrictions to China).</p>
+        `
+    },
+    'software-and-services': {
+        title: 'Software & Services',
+        content: `
+            <p>This sector comprises IT consulting, data processing, and software developers across enterprise, cloud, and cybersecurity domains.</p>
+            <h3>Industry Dynamics</h3>
+            <p>The industry has largely transitioned from selling perpetual licenses to Software-as-a-Service (SaaS) subscription models. Once a software product is developed, the marginal cost of selling an additional copy is near zero, allowing for massive gross margins and scalability.</p>
+            <h3>Key Value Drivers</h3>
+            <p>Key SaaS metrics include Annual Recurring Revenue (ARR) growth, Net Revenue Retention (NRR - do existing customers spend more over time?), Customer Acquisition Cost (CAC) payback periods, and churn rates. Unprofitable growth is increasingly scrutinized in high-interest-rate environments.</p>
+        `
+    },
+    'technology-hardware': {
+        title: 'Technology Hardware & Equipment',
+        content: `
+            <p>This sector includes manufacturers of computers, mobile phones, networking equipment, electronic components, and peripherals.</p>
+            <h3>Industry Dynamics</h3>
+            <p>Unlike software, hardware is capital-intensive and subject to rapid commoditization. Margins are generally lower, and product cycles are relentless. The exception is Apple, which has successfully built a high-margin ecosystem around its hardware.</p>
+            <h3>Key Value Drivers</h3>
+            <p>Analysts track shipment volumes, average selling prices (ASP), gross margins, supply chain bottlenecks, and the upgrade cycles driven by new technology standards (e.g., the rollout of 5G infrastructure).</p>
+        `
+    },
+    'telecommunications': {
+        title: 'Telecommunications',
+        content: `
+            <p>The Telecom sector consists of companies operating wireless networks, fixed-line networks, and broadband infrastructure.</p>
+            <h3>Industry Dynamics</h3>
+            <p>Telecoms are characterized by massive, recurring capital expenditures required to upgrade networks (e.g., 4G to 5G). However, they generate highly predictable, utility-like cash flows because connectivity is now considered a basic human necessity.</p>
+            <h3>Key Value Drivers</h3>
+            <p>Because the service is largely commoditized, competition is intense. Analysts monitor Average Revenue Per User (ARPU), subscriber churn, spectrum auction costs, and the dividend yield (as telecom stocks are traditionally held by income investors).</p>
+        `
+    },
+    'transportation': {
+        title: 'Transportation',
+        content: `
+            <p>This sector encompasses airlines, railways, marine shipping, trucking, and logistics infrastructure (airports, toll roads, seaports).</p>
+            <h3>Industry Dynamics</h3>
+            <p>The sector is a barometer for global economic health and trade volumes. Airlines and shipping are highly cyclical, capital-intensive, and vulnerable to fuel price spikes. Conversely, infrastructure assets like toll roads (e.g., Transurban) offer stable, inflation-linked cash flows.</p>
+            <h3>Key Value Drivers</h3>
+            <p>For airlines: load factors, passenger yield, and jet fuel hedging. For freight: tonnage, freight rates, and operating ratios. For infrastructure: traffic volumes and regulatory tariff agreements.</p>
+        `
+    },
+    'utilities': {
+        title: 'Utilities',
+        content: `
+            <p>The Utilities sector includes companies that generate, transmit, and distribute electricity, water, and natural gas.</p>
+            <h3>Industry Dynamics</h3>
+            <p>Utilities are the ultimate defensive sector. They operate as regulated monopolies, providing essential services with guaranteed rates of return set by government regulators. They are highly sensitive to interest rates, trading as bond proxies.</p>
+            <h3>Key Value Drivers</h3>
+            <p>Analysts focus on the regulatory environment (allowed return on equity), the transition from fossil fuels to renewable generation, capital expenditure plans (rate base growth), and the security and sustainability of the dividend.</p>
+        `
+    },
+    'real-estate-management-development': {
+        title: 'Real Estate Management & Development',
+        content: `
+            <p>This sub-sector differs from REITs; it includes companies that develop properties for sale, provide real estate brokerage services, and manage properties on behalf of others.</p>
+            <h3>Industry Dynamics</h3>
+            <p>Unlike REITs, which hold assets for yield, developers generate lumpy, cyclical profits based on project completions and sales. They are highly sensitive to residential property prices, interest rates, and construction costs.</p>
+            <h3>Key Value Drivers</h3>
+            <p>For developers, the critical metrics are the land bank pipeline, pre-sales rates, construction margins, and settlement default rates. For managers, growth in Funds Under Management (FUM) and performance fees are key drivers.</p>
+        `
+    },
+'introduction-to-qualitative-analysis': {
+        title: 'Introduction to Qualitative Analysis',
+        content: `
+            <p>While quantitative analysis focuses on numbers, financial ratios, and models, qualitative analysis focuses on the non-quantifiable aspects of a business that dictate its long-term success or failure.</p>
+            <h3>The Limits of Numbers</h3>
+            <p>Financial statements tell you what happened in the past. Qualitative factors—management integrity, brand power, corporate culture, and industry structure—tell you what is likely to happen in the future. As Warren Buffett notes, "You can't make a good deal with a bad person," a fact no spreadsheet will ever reveal.</p>
+            <h3>The Synthesis</h3>
+            <p>The best investors synthesize both. A company with excellent qualitative characteristics but an exorbitant valuation is a poor investment. Conversely, a statistically cheap company with terrible management and a dying product is a value trap. Qualitative analysis provides the context required to interpret the numbers correctly.</p>
+        `
+    },
+    'how-to-conduct-swot-analysis': {
+        title: 'How to Conduct SWOT Analysis',
+        content: `
+            <p>SWOT Analysis (Strengths, Weaknesses, Opportunities, Threats) is a foundational framework for evaluating a company's strategic position in its competitive environment.</p>
+            <h3>Internal Factors</h3>
+            <p><strong>Strengths:</strong> What does the company do better than anyone else? (e.g., proprietary technology, strong brand, low-cost production). <strong>Weaknesses:</strong> Where is the company vulnerable? (e.g., high debt, reliance on a single supplier, outdated IT systems).</p>
+            <h3>External Factors</h3>
+            <p><strong>Opportunities:</strong> What external trends can the company exploit? (e.g., emerging markets, changing consumer demographics, new regulatory subsidies). <strong>Threats:</strong> What external factors could damage the business? (e.g., new competitors, economic recession, disruptive technology).</p>
+            <h3>Application for Investors</h3>
+            <p>Investors use SWOT to verify if a company's strategy aligns with its reality. If a company's strategy relies on exploiting an opportunity where it actually has a weakness, execution failure is highly probable.</p>
+        `
+    },
+    'how-to-conduct-tows-analysis': {
+        title: 'How to Conduct TOWS Analysis',
+        content: `
+            <p>While SWOT lists internal and external factors, the TOWS Matrix takes the next step by combining them to generate actionable strategic options.</p>
+            <h3>The Four Strategies</h3>
+            <p><strong>SO (Maxi-Maxi):</strong> How can the company use its Strengths to exploit Opportunities? (e.g., Using strong cash flow to acquire a struggling competitor). <strong>ST (Maxi-Mini):</strong> How can it use Strengths to avoid Threats? (e.g., Using brand loyalty to defend against a new low-cost entrant).</p>
+            <p><strong>WO (Mini-Maxi):</strong> How can it overcome Weaknesses by taking advantage of Opportunities? (e.g., Forming a joint venture to access new technology). <strong>WT (Mini-Mini):</strong> How can it minimize Weaknesses and avoid Threats? (e.g., Divesting a loss-making division before a recession hits).</p>
+            <h3>Investor Value</h3>
+            <p>TOWS analysis helps investors anticipate management's next moves and evaluate whether corporate actions (like M&A or divestments) make strategic sense given the company's competitive reality.</p>
+        `
+    },
+    'how-to-conduct-pestel-analysis': {
+        title: 'How to Conduct PESTEL Analysis',
+        content: `
+            <p>PESTEL analysis evaluates the macro-environmental factors that affect an industry or company, providing context for long-term forecasting.</p>
+            <h3>The Six Dimensions</h3>
+            <p><strong>Political:</strong> Tax policies, trade tariffs, political stability. <strong>Economic:</strong> Interest rates, inflation, exchange rates, economic growth. <strong>Social:</strong> Demographic shifts, lifestyle trends, cultural attitudes. <strong>Technological:</strong> R&D activity, automation, disruptive innovations.</p>
+            <p><strong>Environmental:</strong> Climate change regulations, sustainability mandates, carbon taxes. <strong>Legal:</strong> Employment laws, antitrust regulations, consumer protection laws.</p>
+            <h3>Why It Matters</h3>
+            <p>No company operates in a vacuum. A brilliant business model will fail if macro-environmental factors turn against it (e.g., a highly leveraged business facing rapidly rising interest rates, or a fossil fuel company facing aggressive carbon taxation).</p>
+        `
+    },
+    'porter-s-5-forces-analysis': {
+        title: "Porter's 5 Forces Analysis",
+        content: `
+            <p>Developed by Michael Porter in 1979, this framework analyzes the competitive intensity and, therefore, the structural profitability of an industry.</p>
+            <h3>The Five Forces</h3>
+            <p><strong>1. Threat of New Entrants:</strong> How easy is it for new competitors to start up? (Barriers to entry like capital requirements or patents). <strong>2. Bargaining Power of Suppliers:</strong> Can suppliers dictate prices? (e.g., Intel selling chips to PC makers). <strong>3. Bargaining Power of Buyers:</strong> Can customers demand lower prices? (e.g., Walmart negotiating with small suppliers).</p>
+            <p><strong>4. Threat of Substitutes:</strong> Can customers use a different product to solve the same problem? (e.g., Zoom substituting for business travel). <strong>5. Industry Rivalry:</strong> How intense is the competition among existing players? (Price wars destroy industry profitability).</p>
+            <h3>The Investor's Lens</h3>
+            <p>The ideal investment is a company operating in an industry where all five forces are weak, allowing the company to generate persistently high returns on invested capital without fear of competition eroding profits.</p>
+        `
+    },
+    'sustainable-competitive-advantage': {
+        title: 'Sustainable Competitive Advantage',
+        content: `
+            <p>Often referred to by Warren Buffett as an "economic moat," a sustainable competitive advantage is the structural characteristic that protects a company's profits from competitors over a long period.</p>
+            <h3>Types of Moats</h3>
+            <p><strong>Intangible Assets:</strong> Brands (Coca-Cola), patents (Pfizer), or regulatory licenses that prevent competition. <strong>Switching Costs:</strong> Products that are difficult or expensive to abandon (e.g., enterprise software like Oracle or SAP). <strong>Network Effects:</strong> A service that becomes more valuable as more people use it (Mastercard, Facebook).</p>
+            <p><strong>Cost Advantage:</strong> The ability to produce goods or services cheaper than anyone else due to scale or process (Costco, Geico).</p>
+            <h3>The Key to Compounding</h3>
+            <p>Without a moat, high profits attract competition, which drives down prices and destroys returns. A company can only compound wealth for decades if it possesses a moat wide and deep enough to keep competitors at bay.</p>
+        `
+    },
+    'governance': {
+        title: 'Governance',
+        content: `
+            <p>Corporate governance refers to the system of rules, practices, and processes by which a company is directed and controlled, balancing the interests of all stakeholders.</p>
+            <h3>Board Independence</h3>
+            <p>A strong board of directors must be independent of management to provide effective oversight. Investors should check if the Chairman and CEO roles are separated, and if the board has relevant industry expertise rather than just being "friends of the CEO."</p>
+            <h3>Executive Compensation</h3>
+            <p>Show me the incentive, and I will show you the outcome. Are executives rewarded for short-term stock price bumps, or for long-term returns on invested capital? Compensation should heavily feature deferred equity to align management's interests with long-term shareholders.</p>
+            <h3>Capital Allocation Track Record</h3>
+            <p>Governance is most visible in how management spends the shareholders' money. Do they engage in empire-building acquisitions? Do they buy back stock when it's cheap (good) or when it's expensive (bad)? A history of poor capital allocation is a massive red flag.</p>
+        `
+    },
+    'industry-analysis': {
+        title: 'Industry Analysis',
+        content: `
+            <p>Before analyzing a specific company, an investor must understand the economics of the industry in which it operates. A mediocre company in a great industry often outperforms a great company in a terrible industry.</p>
+            <h3>Industry Life Cycle</h3>
+            <p>Industries progress through stages: <strong>Introduction</strong> (high risk, low revenue), <strong>Growth</strong> (rapid revenue expansion, fierce competition), <strong>Maturity</strong> (consolidation, high cash flows, dividends), and <strong>Decline</strong> (shrinking revenues, price wars). Valuations and expectations must match the life cycle stage.</p>
+            <h3>Cyclical vs. Secular</h3>
+            <p>Is the industry cyclical (profits tied to the economic cycle, like auto manufacturing) or secular (driven by long-term structural trends, like cloud computing)? Cyclical stocks look cheapest at the top of the cycle (when earnings are peak) and most expensive at the bottom.</p>
+            <h3>Fragmentation vs. Consolidation</h3>
+            <p>Highly fragmented industries often suffer from irrational price competition. Consolidated industries (oligopolies, like Australian banking or supermarkets) tend to exhibit rational pricing behavior and higher profit margins for the remaining players.</p>
+        `
+    },
+    'business-reputation': {
+        title: 'Business Reputation',
+        content: `
+            <p>A company's reputation is an intangible asset that can take decades to build and minutes to destroy. It is a critical component of qualitative analysis.</p>
+            <h3>The Cost of a Bad Reputation</h3>
+            <p>Companies with poor reputations face higher customer acquisition costs, struggle to attract top talent, and attract harsher regulatory scrutiny. Conversely, companies with stellar reputations enjoy pricing power and the benefit of the doubt during crises.</p>
+            <h3>Measuring Reputation</h3>
+            <p>While intangible, reputation can be tracked through metrics like Net Promoter Score (NPS), employee turnover rates, Glassdoor reviews, and media sentiment analysis. Actions during crises are the truest test of corporate character.</p>
+            <h3>ESG Considerations</h3>
+            <p>Environmental, Social, and Governance (ESG) factors are increasingly tied to corporate reputation. A scandal involving environmental damage, labor exploitation, or data privacy breaches can cause immediate, severe, and permanent destruction of shareholder value.</p>
+        `
+    },
+    'product-and-service-quality': {
+        title: 'Product and Service Quality',
+        content: `
+            <p>Financial engineering can temporarily boost earnings, but long-term success requires a product or service that consistently delivers value to the end user.</p>
+            <h3>The "Scuttlebutt" Approach</h3>
+            <p>Phil Fisher coined the term "scuttlebutt" to describe the process of investigating product quality by talking to customers, suppliers, former employees, and competitors. Visiting a company's stores, using its software, or buying its products provides insights no financial model can replicate.</p>
+            <h3>Pricing Power as Proof</h3>
+            <p>The ultimate proof of product quality is pricing power. If a company can raise prices faster than inflation without losing market share, it has a superior product. If a company must constantly discount to maintain sales, its product is commoditized.</p>
+            <h3>Innovation Pipeline</h3>
+            <p>Quality must be maintained. Does the company invest adequately in Research & Development? A declining R&D budget relative to peers often signals that management is harvesting short-term profits at the expense of future product quality.</p>
+        `
+    },
+    'stakeholder-satisfaction': {
+        title: 'Stakeholder Satisfaction',
+        content: `
+            <p>Modern qualitative analysis recognizes that maximizing long-term shareholder value requires satisfying multiple other stakeholders: employees, customers, suppliers, and the community.</p>
+            <h3>Employee Satisfaction</h3>
+            <p>In the modern knowledge economy, human capital is the primary driver of value. Companies with high employee satisfaction (measured via surveys, turnover rates, and reviews) exhibit higher productivity, better customer service, and greater innovation.</p>
+            <h3>Supplier Relationships</h3>
+            <p>Does the company squeeze its suppliers to the point of bankruptcy, or treat them as partners? During supply chain crises (like the COVID-19 pandemic), suppliers prioritize customers who have treated them fairly during normal times.</p>
+            <h3>The Costco Model</h3>
+            <p>Costco is the premier example of stakeholder capitalism: they pay employees significantly above minimum wage, cap their markup to ensure customer value, and work closely with suppliers. The result is fiercely loyal customers, low employee turnover, and extraordinary long-term shareholder returns.</p>
+        `
+    },
+    'competitors': {
+        title: 'Competitors',
+        content: `
+            <p>A company cannot be analyzed in isolation; it must be evaluated relative to its competitors. Understanding the competitive landscape is crucial for assessing the durability of profits.</p>
+            <h3>Identifying True Competitors</h3>
+            <p>Competitors aren't just companies making identical products; they are companies solving the same problem. The greatest threat often comes from asymmetric competitors (e.g., Apple's iPhone replacing dedicated digital cameras and GPS devices).</p>
+            <h3>Relative Benchmarking</h3>
+            <p>Compare the target company against its peers on key metrics: gross margins (who has the lowest cost of production?), revenue growth (who is taking market share?), and Return on Invested Capital (who allocates capital most efficiently?).</p>
+            <h3>The "Competitor's Competitor"</h3>
+            <p>Speak to management of competing firms. If you ask a CEO, "If you had to put all your net worth into a competitor's stock for 10 years, which one would you choose?", the answer will often reveal the true quality leader in the industry.</p>
+        `
+    },
+    'tools-for-investors': {
+        title: 'Tools for Investors',
+        content: `
+            <p>Qualitative analysis requires gathering information from diverse, non-traditional sources to build a complete picture of a company's prospects.</p>
+            <h3>Primary Sources</h3>
+            <p><strong>Annual Reports (10-K/Annual Report):</strong> Beyond the numbers, read the "Management's Discussion and Analysis" (MD&A) and the Risk Factors. <strong>Earnings Call Transcripts:</strong> Listen to the Q&A session to see how management handles difficult questions from analysts. Do they obfuscate or answer directly?</p>
+            <h3>Alternative Data</h3>
+            <p><strong>Employee Reviews:</strong> Glassdoor and Seek reviews can highlight toxic cultures before they impact financials. <strong>Customer Reviews:</strong> Trustpilot, App Store ratings, and social media sentiment provide real-time feedback on product quality. <strong>Industry Publications:</strong> Trade journals offer insights into industry trends that mainstream financial press ignores.</p>
+            <h3>The Scuttlebutt Method</h3>
+            <p>There is no substitute for primary research. Visit the retail stores. Use the software. Talk to industry experts. The most valuable qualitative insights are often gathered far away from a computer screen.</p>
+        `
+    },
+    'limitations-of-qualitative-analysis': {
+        title: 'Limitations of Qualitative Analysis',
+        content: `
+            <p>While essential, qualitative analysis has inherent limitations and is highly susceptible to cognitive biases.</p>
+            <h3>Subjectivity and Bias</h3>
+            <p>Qualitative analysis is entirely subjective. Investors are prone to "confirmation bias"—interpreting qualitative data to support their pre-existing belief about a stock. A charismatic CEO can easily create a "halo effect" that blinds an investor to deteriorating financials.</p>
+            <h3>Unquantifiable Impact</h3>
+            <p>Even if a qualitative assessment is correct (e.g., "this company has a great corporate culture"), it is impossible to quantify exactly how much that culture is worth per share. It does not provide a precise valuation.</p>
+            <h3>The Narrative Fallacy</h3>
+            <p>Humans love stories. A compelling qualitative narrative (e.g., "this technology will change the world") can cause investors to ignore disastrous financial realities and extreme overvaluation. Qualitative analysis must always be anchored by rigorous quantitative valuation to prevent investing in a good story at a terrible price.</p>
+        `
+    },
+    'dividends': {
+        title: 'Dividends',
+        content: `
+            <p>Dividends are distributions of a portion of a company's earnings to its shareholders, usually paid as cash but sometimes as additional stock.</p>
+            <h3>The Signaling Effect</h3>
+            <p>Dividends are a powerful signal of management's confidence in the future. Because cutting a dividend severely damages the stock price, boards only initiate or raise dividends when they are highly confident that future cash flows can sustain the payout.</p>
+            <h3>The Australian Context: Franking Credits</h3>
+            <p>Australia's dividend imputation system attaches "franking credits" to dividends, passing on the corporate tax already paid by the company to the shareholder. This eliminates double taxation and makes fully franked dividends highly valuable, particularly for retirees and self-managed super funds (SMSFs).</p>
+            <h3>Dividend Reinvestment Plans (DRPs)</h3>
+            <p>Many companies offer DRPs, allowing shareholders to automatically reinvest their cash dividends into new shares, often at a slight discount to the market price and without brokerage fees. This is a powerful mechanism for compound growth.</p>
+        `
+    },
+    'stock-splits': {
+        title: 'Stock Splits',
+        content: `
+            <p>A stock split increases the number of a company's outstanding shares by dividing each existing share, which lowers the price per share proportionally without changing the total market value of the company.</p>
+            <h3>The Mechanics</h3>
+            <p>In a 2-for-1 split, a shareholder owning 100 shares at $100 (total $10,000) will suddenly own 200 shares at $50 (still $10,000). The underlying value of the company and the shareholder's proportional ownership remain exactly the same. It is akin to cutting a pizza into 8 slices instead of 4.</p>
+            <h3>Why Companies Do It</h3>
+            <p>The primary reason is psychological. As a share price rises (e.g., to $500), it may feel "too expensive" for retail investors. Splitting the stock makes it appear more affordable and increases liquidity. Though irrational, stock splits often result in a short-term price bump due to increased retail participation.</p>
+            <h3>Reverse Stock Splits</h3>
+            <p>A reverse split consolidates shares (e.g., 1-for-10) to artificially raise the share price. This is usually a sign of distress, often done to prevent the stock from being delisted from an exchange that requires a minimum share price.</p>
+        `
+    },
+    'share-buy-backs': {
+        title: 'Share Buy-backs',
+        content: `
+            <p>A share buy-back (or repurchase) occurs when a company buys its own shares on the open market and cancels them, reducing the total number of outstanding shares.</p>
+            <h3>The Financial Engineering</h3>
+            <p>By reducing the denominator (total shares), buy-backs automatically increase Earnings Per Share (EPS), even if total net income remains flat. This concentrated ownership makes each remaining share mathematically more valuable, representing a larger slice of the corporate pie.</p>
+            <h3>When Are They Good?</h3>
+            <p>Buy-backs create massive value when executed while the stock is trading significantly below intrinsic value. It is the company investing in itself at a bargain price, which Warren Buffett considers the ultimate sign of smart capital allocation.</p>
+            <h3>When Are They Bad?</h3>
+            <p>Buy-backs destroy value when management buys back stock at peak valuations (buying high), or when they use debt to fund the buy-back to artificially boost EPS and trigger executive bonuses, thereby weakening the balance sheet.</p>
+        `
+    },
+    'rights-issues': {
+        title: 'Rights Issues',
+        content: `
+            <p>A rights issue is an invitation to existing shareholders to purchase additional new shares in the company, usually at a discount to the current market price, in proportion to their existing holding.</p>
+            <h3>The Mechanics</h3>
+            <p>A company might offer a "1-for-5 rights issue," allowing you to buy one new share for every five you currently own. The "rights" themselves are often tradable; if you don't want to buy the new shares, you can sell the right to someone else.</p>
+            <h3>The Purpose</h3>
+            <p>Companies use rights issues to raise capital quickly. This can be for positive reasons (funding a major acquisition, expanding operations) or negative reasons (desperately paying down debt to avoid insolvency).</p>
+            <h3>The Dilution Threat</h3>
+            <p>If you choose not to participate (and do not sell your rights), your ownership percentage in the company will be diluted. Your existing slice of the pie becomes smaller because the company has issued millions of new shares.</p>
+        `
+    },
+    'bonus-issues': {
+        title: 'Bonus Issues',
+        content: `
+            <p>A bonus issue is an offer of free additional shares to existing shareholders, distributed in proportion to their current holdings.</p>
+            <h3>Accounting Mechanics</h3>
+            <p>Unlike a rights issue, no new capital is raised. The company simply transfers funds from its reserves (retained earnings) into share capital and issues new shares. If a 1-for-1 bonus issue is declared, a shareholder with 1,000 shares receives another 1,000 free.</p>
+            <h3>Economic Impact</h3>
+            <p>Like a stock split, a bonus issue does not change the intrinsic value of the company or the shareholder's proportional ownership. Because more shares exist, the price per share will adjust downward proportionately. You have more shares, but each is worth less.</p>
+            <h3>Why Do It?</h3>
+            <p>It is primarily a signalling mechanism. It indicates that the company has strong reserves and confidence in future earnings. It also brings the share price down to a more "accessible" level for retail investors, potentially increasing liquidity.</p>
+        `
+    },
+    'options': {
+        title: 'Options',
+        content: `
+            <p>An option is a financial derivative that gives the buyer the right, but not the obligation, to buy (Call) or sell (Put) an underlying stock at an agreed-upon price (Strike Price) on or before a specific date (Expiry).</p>
+            <h3>Call vs. Put Options</h3>
+            <p><strong>Call Option:</strong> You buy this if you expect the stock price to rise. If the stock soars past the strike price, you can buy it at the cheaper strike price. <strong>Put Option:</strong> You buy this if you expect the stock to fall, or to hedge an existing portfolio. It gives you the right to sell at the strike price, protecting you from a crash.</p>
+            <h3>Leverage and Decay</h3>
+            <p>Options offer immense leverage—you control 100 shares of stock for a fraction of the cost. However, options are wasting assets. Their "time value" decays as expiration approaches. If the stock doesn't reach the strike price before expiry, the option expires worthless, resulting in a 100% loss of the premium paid.</p>
+            <h3>Corporate Options</h3>
+            <p>Companies also issue options to executives as compensation. When exercised, these create new shares, diluting existing shareholders. Investors must factor in "fully diluted" share counts when valuing a company.</p>
+        `
+    },
+    'warrants': {
+        title: 'Warrants',
+        content: `
+            <p>A warrant is a derivative that gives the holder the right to purchase a company's stock at a specific price before a specific date. They are highly similar to call options, but with key structural differences.</p>
+            <h3>Warrants vs. Options</h3>
+            <p>While options are traded between investors on an exchange, warrants are issued directly by the company itself. When a warrant is exercised, the company issues brand-new shares to fulfill the transaction, resulting in shareholder dilution. (Options do not create new shares; they just transfer existing ones).</p>
+            <h3>Why Companies Issue Them</h3>
+            <p>Warrants are often used as "sweeteners" to entice investors to buy new bond issues or participate in capital raisings. By offering warrants, the company can often secure a lower interest rate on its debt.</p>
+            <h3>Longer Timeframes</h3>
+            <p>Warrants typically have much longer time horizons than standard exchange-traded options—often lasting for several years before expiration, making them attractive for long-term speculation or hedging.</p>
+        `
+    },
+    'mergers-and-acquisitions': {
+        title: 'Mergers and Acquisitions (M&A)',
+        content: `
+            <p>M&A involves the consolidation of companies or assets. A merger implies two roughly equal companies combining, while an acquisition occurs when one company outright buys another.</p>
+            <h3>The Strategic Rationale</h3>
+            <p>Companies pursue M&A to accelerate growth, eliminate competition, acquire new technology, or achieve economies of scale ("synergies" where 1+1=3). When a takeover is announced, the target company's stock usually surges to the offer price, while the acquirer's stock often falls.</p>
+            <h3>The Reality of M&A</h3>
+            <p>Academic studies consistently show that 70-90% of acquisitions fail to create value for the acquiring company's shareholders. Cultural clashes, overestimating synergies, and the "winner's curse" (paying too high a premium in a bidding war) frequently destroy value.</p>
+            <h3>Evaluating M&A as an Investor</h3>
+            <p>Investors must scrutinize acquisitions carefully. Is it a logical, "bolt-on" acquisition in a familiar market, or a massive, transformative "empire-building" exercise by an egomaniacal CEO? The method of payment matters: using cash is generally better than issuing new shares, which dilutes existing owners.</p>
+        `
+    },
+    'divestments': {
+        title: 'Divestments',
+        content: `
+            <p>A divestment (or divestiture) is the partial or full disposal of a business unit through sale, exchange, closure, or bankruptcy. It is the opposite of an acquisition.</p>
+            <h3>Strategic Shrinking</h3>
+            <p>Companies divest assets to shed non-core operations, pay down crippling debt, satisfy anti-monopoly regulators, or focus management attention on the most profitable core business. As Peter Lynch noted, "diworsification" (acquiring unrelated businesses) often requires eventual divestment to fix.</p>
+            <h3>Spinoffs</h3>
+            <p>A popular form of divestment is the "spinoff," where a division is separated into a brand-new, independent public company, and shares are distributed to existing shareholders. Spinoffs frequently unlock significant shareholder value, as the newly independent management team is highly incentivized and free from corporate bureaucracy.</p>
+            <h3>Investor Implications</h3>
+            <p>Divestments are generally viewed positively by the market if they simplify a complex conglomerate, improve overall profit margins, or raise cash to fund special dividends or share buy-backs.</p>
+        `
+    },
+    'administration': {
+        title: 'Administration',
+        content: `
+            <p>Voluntary administration is a legal process initiated when a company is insolvent (unable to pay its debts as and when they fall due) or likely to become insolvent.</p>
+            <h3>The Process</h3>
+            <p>Control of the company is handed from the directors to an independent, registered liquidator (the Administrator). Their objective is to quickly assess the company's viability and decide whether the business can be saved, reorganized, or must be liquidated. Trading of the company's shares on the ASX is immediately suspended.</p>
+            <h3>The Deed of Company Arrangement (DOCA)</h3>
+            <p>If the business is salvageable, the Administrator may propose a DOCA—a binding agreement between the company and its creditors outlining how affairs will be dealt with. Creditors may agree to accept a fraction of what they are owed to allow the company to survive.</p>
+            <h3>The Shareholder's Position</h3>
+            <p>In the capital structure hierarchy, ordinary equity shareholders are at the absolute bottom. Secured creditors, employees, and unsecured creditors must be paid in full before shareholders see a cent. In the vast majority of administration cases, the equity is wiped out completely, resulting in a 100% loss for shareholders.</p>
+        `
+    },
+'liquidation': {
+        title: 'Liquidation',
+        content: `
+            <p>Liquidation (or winding up) is the formal process of dismantling a defunct company. It occurs when a company is insolvent and cannot be saved by administration, or when shareholders of a solvent company decide to shut it down.</p>
+            <h3>The Process</h3>
+            <p>A Liquidator takes control of the company, sells all its remaining assets (inventory, property, intellectual property), and distributes the proceeds to creditors in a strict legal order of priority.</p>
+            <h3>The Waterfall of Payment</h3>
+            <p>The priority is: 1) The costs of the liquidation itself. 2) Secured creditors (banks holding mortgages over property). 3) Priority unsecured creditors (mostly employee entitlements like unpaid wages and superannuation). 4) Unsecured creditors (suppliers, the ATO). 5) Shareholders.</p>
+            <h3>The Outcome for Investors</h3>
+            <p>In an insolvent liquidation, there is rarely enough money to satisfy the unsecured creditors, let alone shareholders. Investors must mentally write off the investment as a 100% loss the moment a company enters liquidation. However, this crystallized loss can be used to offset capital gains elsewhere in your portfolio for tax purposes.</p>
+        `
+    },
+    'why-engage-in-accounting-shenanigans': {
+        title: 'Why Engage in Accounting Shenanigans?',
+        content: `
+            <p>Accounting shenanigans are actions taken by management that intentionally distort a company's financial performance or condition. But why risk criminal prosecution to do so?</p>
+            <h3>Incentive Structures</h3>
+            <p>The primary driver is executive compensation. If a CEO's multi-million-dollar bonus is contingent on hitting a specific Earnings Per Share (EPS) target, the temptation to "find" an extra penny of EPS through aggressive accounting is overwhelming. "Show me the incentive, and I will show you the outcome."</p>
+            <h3>Wall Street Expectations</h3>
+            <p>Public companies face immense pressure to meet or beat quarterly analyst estimates. Missing an estimate by a single cent can wipe billions off the market capitalization. Management may use accounting tricks to smooth earnings, pulling revenue forward to hide a bad quarter or hiding profits in a good quarter for future use.</p>
+            <h3>Survival and Hubris</h3>
+            <p>In some cases, companies manipulate books merely to survive—hiding debt covenant breaches to prevent banks from pulling credit lines. In other cases, it is driven by the sheer hubris of executives who believe they can temporarily hide a problem until the underlying business turns around.</p>
+        `
+    },
+    'role-of-corporate-governance': {
+        title: 'Role of Corporate Governance',
+        content: `
+            <p>Corporate governance is the primary defense mechanism against accounting shenanigans. When governance fails, fraud flourishes.</p>
+            <h3>The Board of Directors</h3>
+            <p>The Board is elected by shareholders to oversee management. A weak, compliant board packed with the CEO's friends will rarely challenge aggressive accounting. The Audit Committee, composed exclusively of independent directors with financial expertise, must vigorously scrutinize the numbers.</p>
+            <h3>External Auditors</h3>
+            <p>Auditors (like PwC, EY, Deloitte, KPMG) are paid by the company to verify the financial statements. This creates an inherent conflict of interest. While auditors catch many issues, history shows they can be manipulated, misled, or simply incompetent when faced with sophisticated fraud.</p>
+            <h3>The Tone at the Top</h3>
+            <p>Governance starts with corporate culture. If the CEO fosters a culture where missing targets is punished severely and questioning authority is discouraged, mid-level accountants will inevitably bend the rules. Investors must assess management's integrity before looking at any spreadsheet.</p>
+        `
+    },
+    'history-of-accounting-scandals': {
+        title: 'History of Accounting Scandals',
+        content: `
+            <p>Financial history is littered with massive accounting frauds, each exposing new loopholes and resulting in stricter (yet imperfect) regulations.</p>
+            <h3>Enron (2001)</h3>
+            <p>The gold standard of corporate fraud. Enron used off-balance-sheet Special Purpose Entities (SPEs) to hide massive debts and toxic assets from investors and creditors, while booking future projected revenue as current profit (mark-to-market accounting). It led to the collapse of the Arthur Andersen accounting firm and the creation of the Sarbanes-Oxley Act.</p>
+            <h3>WorldCom (2002)</h3>
+            <p>A staggering $3.8 billion fraud where the telecommunications giant simply reclassified routine operating expenses (like line costs) as capital investments. This falsely inflated both profits (by hiding expenses) and assets.</p>
+            <h3>Wirecard (2020)</h3>
+            <p>A modern European tragedy where the German payment processor claimed to have €1.9 billion in cash sitting in Asian bank accounts. The money simply did not exist. It highlighted that massive, blatant fraud is still entirely possible in the modern, highly regulated era.</p>
+        `
+    },
+    'revenue-manipulation': {
+        title: 'Revenue Manipulation',
+        content: `
+            <p>Revenue is the most manipulated metric because it drives all subsequent profitability metrics. Most frauds start at the top line.</p>
+            <h3>Recording Revenue Too Soon</h3>
+            <p>Companies may book revenue before a service is fully provided, or ship products to distributors (channel stuffing) at the end of the quarter, recording the sale even though the distributor has the right to return unsold inventory.</p>
+            <h3>Bogus Revenue</h3>
+            <p>Recording sales to phantom customers, or engaging in "round-tripping"—where Company A sells a product to Company B, and Company B simultaneously sells a different product back to Company A for the exact same amount. No actual economic value changes hands, but both companies report higher revenues.</p>
+            <h3>Red Flags</h3>
+            <p>Investors should look for Accounts Receivable growing significantly faster than Revenue. If sales are booming but cash isn't being collected, the revenue may be artificial or sold to customers who cannot pay.</p>
+        `
+    },
+    'earnings-manipulation': {
+        title: 'Earnings Manipulation',
+        content: `
+            <p>If revenue cannot be artificially inflated, management may turn to manipulating expenses to artificially boost earnings (profit).</p>
+            <h3>Capitalizing Operating Expenses</h3>
+            <p>The WorldCom method: taking everyday operating expenses (which immediately reduce profit) and classifying them as capital expenditures (which become assets and are slowly depreciated over many years). This instantly, but fraudulently, boosts current-year earnings.</p>
+            <h3>Cookie Jar Reserves</h3>
+            <p>In highly profitable years, management might overestimate liabilities (like warranty costs or bad debts), creating a "cookie jar" of hidden profits. In a future bad year, they reverse these liabilities, artificially boosting earnings to meet Wall Street estimates.</p>
+            <h3>The "One-Time" Charge Abuse</h3>
+            <p>Management often excludes "one-time" restructuring charges from "adjusted earnings." If a company reports massive "one-time" charges every single year, they are not one-time events—they are regular operating expenses being hidden to make the core business look more profitable.</p>
+        `
+    },
+    'cash-flow-manipulation': {
+        title: 'Cash Flow Manipulation',
+        content: `
+            <p>Investors are often taught that "earnings are an opinion, cash is a fact." While harder to manipulate than net income, Operating Cash Flow (OCF) is not immune to shenanigans.</p>
+            <h3>Shifting Financing Cash Flows</h3>
+            <p>A company might boost Operating Cash Flow by delaying payments to suppliers (stretching accounts payable) right before the quarter ends. Alternatively, they might classify cash received from borrowing (a financing activity) as operating cash.</p>
+            <h3>Selling Accounts Receivable</h3>
+            <p>Factoring—selling unpaid customer invoices to a third party at a discount for immediate cash—artificially inflates Operating Cash Flow in the current period. It steals future cash flows to make the present look better.</p>
+            <h3>The Free Cash Flow Mirage</h3>
+            <p>Free Cash Flow (OCF minus CapEx) can be manipulated if management deliberately starves the company of necessary maintenance Capital Expenditure. This boosts Free Cash Flow today but destroys the business's long-term competitive position.</p>
+        `
+    },
+    'asset-manipulation': {
+        title: 'Asset Manipulation',
+        content: `
+            <p>Manipulating assets artificially inflates the size and perceived stability of a company's balance sheet.</p>
+            <h3>Inventory Shenanigans</h3>
+            <p>Failing to write down obsolete inventory (like unsold technology or outdated fashion) overstates assets and understates Cost of Goods Sold (boosting profit). Investors must watch the Inventory Turnover ratio; if inventory is growing much faster than sales, a write-down is imminent.</p>
+            <h3>Goodwill and Intangibles</h3>
+            <p>When a company acquires another for more than its book value, the difference is recorded as "Goodwill." Management may refuse to write down (impair) this Goodwill even when the acquired business is clearly failing, thereby keeping the balance sheet artificially inflated.</p>
+            <h3>Ghost Assets</h3>
+            <p>The most brazen form of asset manipulation is simply inventing assets that do not exist (e.g., Parmalat's forged bank letters claiming billions in cash, or Wirecard's missing €1.9 billion). This requires massive, systemic failure of external auditing.</p>
+        `
+    },
+    'liability-manipulation': {
+        title: 'Liability Manipulation',
+        content: `
+            <p>Hiding debt and obligations makes a company appear significantly less risky and more solvent than it actually is.</p>
+            <h3>Off-Balance-Sheet Entities</h3>
+            <p>The tactic made famous by Enron. Creating complex Special Purpose Vehicles (SPVs) to hold massive amounts of corporate debt, keeping it legally separated from the parent company's balance sheet, thus hiding the true leverage from investors.</p>
+            <h3>Understating Contingent Liabilities</h3>
+            <p>Companies face future risks like pending lawsuits, environmental cleanup costs, or massive warranty claims. Management may refuse to record these as liabilities, claiming they are "unlikely to occur," drastically understating the true risk to the business.</p>
+            <h3>Pension Underfunding</h3>
+            <p>For older industrial companies with defined benefit pension plans, manipulating the assumed rate of return on pension assets can artificially reduce the reported liability. If the assumption is too aggressive, the company is secretly accumulating massive unfunded obligations.</p>
+        `
+    },
+    'key-metric-manipulation': {
+        title: 'Key Metric Manipulation',
+        content: `
+            <p>In the modern era, many companies are valued not on GAAP earnings, but on non-GAAP or industry-specific metrics. These are highly susceptible to manipulation because they are largely unregulated.</p>
+            <h3>EBITDA Adjustments</h3>
+            <p>EBITDA (Earnings Before Interest, Taxes, Depreciation, and Amortization) is often heavily "adjusted" by management to exclude share-based compensation, restructuring costs, and acquisition expenses. Often, these "Community Adjusted" EBITDA figures bear no resemblance to economic reality.</p>
+            <h3>SaaS Metrics</h3>
+            <p>In software, metrics like Annual Recurring Revenue (ARR) and Net Revenue Retention (NRR) drive valuation. Companies may classify one-off consulting fees as "recurring" revenue, or manipulate the churn calculation to make retention look healthier than it is.</p>
+            <h3>Same-Store Sales</h3>
+            <p>Retailers may manipulate "Comparable Store Sales" by altering the definition of a "comparable" store, excluding underperforming stores from the calculation, or expanding the floor space of existing stores without classifying them as "new."</p>
+        `
+    },
+    'classic-case-studies': {
+        title: 'Classic Case Studies',
+        content: `
+            <p>Studying historical frauds provides investors with pattern recognition skills to spot future blow-ups.</p>
+            <h3>HIH Insurance (Australia, 2001)</h3>
+            <p>Australia's largest corporate collapse ($5.3 billion shortfall). HIH systematically underpriced insurance premiums to win market share while massively understating their liabilities (provisions for future claims). When the claims inevitably rolled in, the company had no cash to pay them. The collapse devastated the Australian building industry.</p>
+            <h3>ABC Learning (Australia, 2008)</h3>
+            <p>The childcare center operator used aggressive acquisition accounting to mask a failing core business. By constantly acquiring new centers, they capitalized expenses and inflated profits. When credit markets froze in 2008 and they could no longer acquire, the house of cards collapsed, leaving 100,000 children without care.</p>
+            <h3>Theranos (USA, 2015)</h3>
+            <p>A masterclass in qualitative deception. Elizabeth Holmes built a $9 billion valuation on a blood-testing machine that simply did not work. The fraud was sustained by a high-profile, technologically illiterate board of directors and a culture of extreme secrecy and intimidation.</p>
+        `
+    },
+    'useful-tools-for-investors': {
+        title: 'Useful Tools for Investors',
+        content: `
+            <p>Detecting accounting shenanigans requires skepticism and a few analytical tools designed to spot inconsistencies between the income statement and the cash flow statement.</p>
+            <h3>The Beneish M-Score</h3>
+            <p>A mathematical model created by Professor Messod Beneish that uses eight financial ratios to identify whether a company is likely manipulating its earnings. It successfully flagged Enron before its collapse. A score greater than -1.78 suggests a high probability of manipulation.</p>
+            <h3>Days Sales Outstanding (DSO)</h3>
+            <p>Calculate DSO to track how long it takes a company to collect cash after making a sale. If DSO is spiking rapidly (e.g., from 40 days to 70 days), the company may be booking fake revenue or stuffing channels with inventory customers can't pay for.</p>
+            <h3>Read the Footnotes</h3>
+            <p>Shenanigans are rarely found on the front page of the annual report. They are buried in the footnotes. Look specifically for changes in revenue recognition policies, changes in depreciation schedules, or massive related-party transactions.</p>
+        `
+    },
+    'regulator-bodies': {
+        title: 'Regulator Bodies',
+        content: `
+            <p>Financial reporting is governed by a complex web of national and international regulatory bodies designed to ensure transparency and consistency.</p>
+            <h3>ASIC (Australia)</h3>
+            <p>The Australian Securities and Investments Commission (ASIC) is the primary corporate regulator. It enforces company and financial services laws to protect consumers, investors, and creditors. ASIC has the power to prosecute directors for breaches of the Corporations Act.</p>
+            <h3>AASB and IASB</h3>
+            <p>The Australian Accounting Standards Board (AASB) develops the specific accounting standards used in Australia. Since 2005, these have been strictly based on the International Financial Reporting Standards (IFRS) developed by the International Accounting Standards Board (IASB), ensuring global comparability.</p>
+            <h3>The SEC (United States)</h3>
+            <p>The Securities and Exchange Commission regulates the US markets. Because many Australian companies are dual-listed or raise capital in the US, they must also comply with SEC regulations and US Generally Accepted Accounting Principles (US GAAP), which can differ significantly from IFRS.</p>
+        `
+    },
+    'standards-relating-to-financial-reporting': {
+        title: 'Standards Relating to Financial Reporting',
+        content: `
+            <p>The foundation of all financial analysis relies on companies adhering to standardized reporting frameworks.</p>
+            <h3>AASB 101: Presentation of Financial Statements</h3>
+            <p>This standard sets the overall requirements for the presentation of financial statements, guidelines for their structure, and minimum requirements for their content. It ensures that a company's financials are comparable both with its own historical data and with other entities.</p>
+            <h3>Going Concern Principle</h3>
+            <p>A fundamental assumption of all financial reporting is the "going concern" basis—the assumption that the company will remain in business for the foreseeable future. If management or auditors doubt this, they must explicitly state a "material uncertainty regarding going concern," which is a massive red flag for investors.</p>
+            <h3>Fair Value Measurement (AASB 13)</h3>
+            <p>Dictates how companies must calculate the "fair value" of assets and liabilities. It establishes a hierarchy of inputs: Level 1 (quoted prices in active markets - highly reliable) down to Level 3 (unobservable inputs based on management models - highly subjective and prone to manipulation).</p>
+        `
+    },
+    'standards-relating-to-p-l': {
+        title: 'Standards Relating to P&L',
+        content: `
+            <p>The Profit & Loss (Income) Statement is governed by strict rules on when to recognize revenue and how to match expenses.</p>
+            <h3>AASB 15: Revenue from Contracts with Customers</h3>
+            <p>A critical standard that establishes a five-step model for revenue recognition. The core principle is that a company must only recognize revenue when it transfers control of the promised goods or services to the customer, and only in an amount that reflects the consideration it expects to receive.</p>
+            <h3>The Matching Principle</h3>
+            <p>Expenses must be matched to the revenue they helped generate in the same accounting period, regardless of when the cash was actually paid. If a company buys a machine that will generate revenue for 10 years, the cost of that machine must be depreciated as an expense over 10 years, not all at once.</p>
+            <h3>Share-Based Payment (AASB 2)</h3>
+            <p>Requires companies to recognize the expense of share options given to employees. Previously, options were treated as "free" because no cash changed hands. Now, they must be valued and expensed on the P&L, providing a truer picture of executive compensation costs.</p>
+        `
+    },
+    'standards-relating-to-balance-sheet-pt1': {
+        title: 'Standards Relating to Balance Sheet (Pt1)',
+        content: `
+            <p>The Balance Sheet provides a snapshot of a company's financial position (Assets = Liabilities + Equity) at a specific moment in time.</p>
+            <h3>AASB 116: Property, Plant and Equipment</h3>
+            <p>Dictates the accounting treatment for physical assets. Companies can choose the cost model (historical cost minus depreciation) or the revaluation model (carrying the asset at its fair market value). Revaluation can create large swings in equity that have nothing to do with core business performance.</p>
+            <h3>AASB 138: Intangible Assets</h3>
+            <p>Governs non-physical assets like patents, trademarks, and software. Crucially, internally generated brands (like the Coca-Cola brand) cannot be recognized as assets on the balance sheet. Only intangibles acquired from third parties can be capitalized.</p>
+            <h3>AASB 136: Impairment of Assets</h3>
+            <p>Requires companies to regularly test their assets to ensure they are not carried at a value higher than their recoverable amount. If an asset is worth less than its book value, the company must take an immediate "impairment charge" (write-down), which directly hits profits.</p>
+        `
+    },
+    'standards-relating-to-balance-sheet-pt2': {
+        title: 'Standards Relating to Balance Sheet (Pt2)',
+        content: `
+            <p>Further critical standards govern complex assets, leases, and financial instruments on the balance sheet.</p>
+            <h3>AASB 16: Leases</h3>
+            <p>A revolutionary standard introduced in 2019 that ended the practice of "off-balance-sheet" operating leases. Previously, airlines could lease planes or retailers could lease stores without showing the massive lease liability on their balance sheet. AASB 16 requires all significant leases to be recognized as both an asset (Right of Use) and a liability, dramatically altering debt ratios for retail and transport sectors.</p>
+            <h3>AASB 9: Financial Instruments</h3>
+            <p>Governs the classification and measurement of financial assets (like loans given out by banks). It introduced the "Expected Credit Loss" model, requiring banks to provision for bad debts based on future expectations of defaults, rather than waiting for an actual default event to occur. This forces faster recognition of economic deterioration.</p>
+            <h3>AASB 3: Business Combinations</h3>
+            <p>Dictates how acquisitions are accounted for. Any purchase price paid above the fair value of the target's identifiable net assets must be recorded as "Goodwill." This Goodwill must be tested annually for impairment (AASB 136).</p>
+        `
+    },
+    'standards-relating-to-disclosures': {
+        title: 'Standards Relating to Disclosures',
+        content: `
+            <p>Accounting numbers alone are insufficient; standards require extensive narrative disclosures to explain the context, risks, and assumptions behind the numbers.</p>
+            <h3>AASB 108: Accounting Policies, Changes and Errors</h3>
+            <p>Management cannot arbitrarily change accounting policies (e.g., switching from FIFO to LIFO inventory accounting) to manipulate earnings. If a policy is changed, it must be justified as providing more relevant information, and previous years' financials must usually be restated for comparability.</p>
+            <h3>AASB 124: Related Party Disclosures</h3>
+            <p>A critical defense against fraud. Requires disclosure of transactions between the company and its directors, executives, or major shareholders. If the CEO is forcing the public company to rent office space from a private building he owns at exorbitant rates, it must be disclosed here.</p>
+            <h3>AASB 8: Operating Segments</h3>
+            <p>Requires large companies to break down their revenue and profits by business segment or geographic region. This prevents a company from hiding a disastrous, cash-burning division by blending its numbers into the broader, profitable conglomerate.</p>
+        `
+    },
+    'standards-relating-to-cash-flow': {
+        title: 'Standards Relating to Cash Flow',
+        content: `
+            <p>The Cash Flow Statement (governed by AASB 107) reconciles the theoretical P&L profit with the actual movement of cash in and out of the bank account.</p>
+            <h3>The Three Categories</h3>
+            <p>Cash flows must be strictly categorized into: <strong>Operating</strong> (day-to-day business activities), <strong>Investing</strong> (buying/selling property, equipment, or other companies), and <strong>Financing</strong> (raising debt/equity or paying dividends/buy-backs).</p>
+            <h3>Classification Flexibility</h3>
+            <p>While strict, the standard allows some flexibility. For example, interest paid can be classified as either an operating or financing cash flow. Dividends paid can be operating or financing. Investors must check the company's stated policy to ensure they are comparing apples to apples across different businesses.</p>
+            <h3>The Crucial Metric: Free Cash Flow</h3>
+            <p>While not an official AASB metric, investors calculate Free Cash Flow by taking Operating Cash Flow and subtracting Capital Expenditures (found in the Investing section). This represents the actual cash available to be returned to shareholders or used to pay down debt.</p>
+        `
+    },
+    'other-aasb-standards': {
+        title: 'Other AASB Standards',
+        content: `
+            <p>Several industry-specific or specialized standards impact niche sectors of the market.</p>
+            <h3>AASB 141: Agriculture</h3>
+            <p>Requires biological assets (like timber plantations, cattle, or grapevines) to be measured at fair value less costs to sell. As a tree grows or market prices rise, the increase in value is booked as profit immediately, even though no cash has been realized. This makes agricultural company earnings highly volatile and detached from cash flow.</p>
+            <h3>AASB 6: Exploration for and Evaluation of Mineral Resources</h3>
+            <p>Vital for the Australian market. Allows mining exploration companies to capitalize (treat as an asset) the massive costs of searching for minerals, rather than expensing them immediately. If the exploration fails, the asset must be impaired (written off to zero).</p>
+            <h3>AASB 112: Income Taxes</h3>
+            <p>Governs the complex creation of Deferred Tax Assets (DTAs) and Deferred Tax Liabilities (DTLs). A company that loses money can create a DTA (an asset representing future tax savings). However, this asset is only valuable if the company eventually makes a profit; otherwise, it must be written off.</p>
+        `
+    },
+    'aasb-work-in-progress': {
+        title: 'AASB Work in Progress',
+        content: `
+            <p>Accounting standards are not static; they continually evolve to address new business models, financial complexities, and societal demands.</p>
+            <h3>Sustainability and Climate Reporting</h3>
+            <p>The most massive shift currently underway is the move toward mandatory climate and sustainability reporting. The AASB (aligning with the new International Sustainability Standards Board - ISSB) is developing frameworks to force companies to quantify and disclose their exposure to climate risks, carbon emissions (Scope 1, 2, and 3), and transition strategies.</p>
+            <h3>Digital Assets and Cryptocurrency</h3>
+            <p>Current standards are struggling to deal with cryptocurrencies on corporate balance sheets. Are they cash? Intangible assets? Financial instruments? The lack of specific guidance leads to inconsistent reporting, and regulatory bodies are actively working to draft comprehensive standards for digital assets.</p>
+            <h3>Primary Financial Statements Project</h3>
+            <p>The IASB is working on replacing the old presentation standard (IAS 1/AASB 101) to introduce more rigor into the structure of the income statement, specifically defining subtotals like "Operating Profit" and reigning in the wild west of "Management Performance Measures" (Non-GAAP metrics).</p>
+        `
+    },
+    'other-aasb-publications': {
+        title: 'Other AASB Publications',
+        content: `
+            <p>Beyond the strict, enforceable accounting standards, the AASB issues other critical guidance documents that inform how financial reporting is executed in Australia.</p>
+            <h3>Conceptual Framework for Financial Reporting</h3>
+            <p>This is the philosophical bedrock of all accounting standards. It defines what an asset, liability, equity, income, and expense actually are. When a new, bizarre financial instrument is invented that doesn't fit existing rules, accountants refer back to this framework to determine how it should be treated.</p>
+            <h3>Interpretations (AASB IC)</h3>
+            <p>When an existing standard is ambiguous and companies begin applying it inconsistently, the AASB Issues Interpretations. These are legally binding clarifications on exactly how a specific standard must be applied to a specific, complex scenario.</p>
+            <h3>Practice Statements</h3>
+            <p>The AASB issues Practice Statements to provide non-mandatory guidance. A prominent example is the Practice Statement on "Making Materiality Judgements," which helps companies decide whether an item is significant enough to warrant disclosure, combating the problem of "disclosure overload" where important information is buried in hundreds of pages of trivial details.</p>
+        `
+    },
+
+
+            'industry-guides-automobiles-and-components': {
+
+                title: 'Automobiles and components',
+
+                content: `
+
+                    
+
+<p>Dummy content for Automobiles and components goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-banking': {
+
+                title: 'Banking',
+
+                content: `
+
+                    
+
+<p>Dummy content for Banking goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-capital-goods': {
+
+                title: 'Capital goods',
+
+                content: `
+
+                    
+
+<p>Dummy content for Capital goods goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-commercial-and-professional-services': {
+
+                title: 'Commercial and professional services',
+
+                content: `
+
+                    
+
+<p>Dummy content for Commercial and professional services goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-consumer-durable-and-apparel': {
+
+                title: 'Consumer durable and apparel',
+
+                content: `
+
+                    
+
+<p>Dummy content for Consumer durable and apparel goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-consumer-services': {
+
+                title: 'Consumer services',
+
+                content: `
+
+                    
+
+<p>Dummy content for Consumer services goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-consumer-discretionary-retail': {
+
+                title: 'Consumer discretionary & retail',
+
+                content: `
+
+                    
+
+<p>Dummy content for Consumer discretionary & retail goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-energy-industry': {
+
+                title: 'Energy industry',
+
+                content: `
+
+                    <p>Dummy content for Energy industry goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-consumer-staples-distribution-retail': {
+
+                title: 'Consumer staples distribution & retail',
+
+                content: `
+
+                    
+
+<p>Dummy content for Consumer staples distribution & retail goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-food-beverage-and-tobacco': {
+
+                title: 'Food, beverage and tobacco',
+
+                content: `
+
+                    
+
+<p>Dummy content for Food, beverage and tobacco goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-health-care-equipment-and-services': {
+
+                title: 'Health care equipment and services',
+
+                content: `
+
+                    
+
+<p>Dummy content for Health care equipment and services goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-household-and-personal-products': {
+
+                title: 'Household and personal products',
+
+                content: `
+
+                    
+
+<p>Dummy content for Household and personal products goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-insurance': {
+
+                title: 'Insurance',
+
+                content: `
+
+                    
+
+<p>Dummy content for Insurance goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-materials': {
+
+                title: 'Materials',
+
+                content: `
+
+                    
+
+<p>Dummy content for Materials goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-media-and-entertainment': {
+
+                title: 'Media and entertainment',
+
+                content: `
+
+                    
+
+<p>Dummy content for Media and entertainment goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-pharmaceuticals-biotechnology-and-life-sciences': {
+
+                title: 'Pharmaceuticals, biotechnology and life sciences',
+
+                content: `
+
+                    
+
+<p>Dummy content for Pharmaceuticals, biotechnology and life sciences goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-equity-real-estate-investment-trusts': {
+
+                title: 'Equity real estate Investment trusts',
+
+                content: `
+
+                    <p>Dummy content for Equity real estate Investment trusts goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-financial-services': {
+
+                title: 'Financial services',
+
+                content: `
+
+                    
+
+<p>Dummy content for Financial services goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-semiconductors': {
+
+                title: 'Semiconductors',
+
+                content: `
+
+                    
+
+<p>Dummy content for Semiconductors goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-software-and-services': {
+
+                title: 'Software and services',
+
+                content: `
+
+                    
+
+<p>Dummy content for Software and services goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-technology-hardware': {
+
+                title: 'Technology hardware',
+
+                content: `
+
+                    
+
+<p>Dummy content for Technology hardware goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-telecommunications': {
+
+                title: 'Telecommunications',
+
+                content: `
+
+                    
+
+<p>Dummy content for Telecommunications goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-transportation': {
+
+                title: 'Transportation',
+
+                content: `
+
+                    
+
+<p>Dummy content for Transportation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-utilities': {
+
+                title: 'Utilities',
+
+                content: `
+
+                    
+
+<p>Dummy content for Utilities goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-real-estate-management-development': {
+
+                title: 'Real estate management & development',
+
+                content: `
+
+                    
+
+<p>Dummy content for Real estate management & development goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-nature-and-purpose': {
+
+                title: 'Nature and purpose',
+
+                content: `
+
+                    
+
+<p>Dummy content for Nature and purpose goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-users-of-financial-statements': {
+
+                title: 'Users of financial statements',
+
+                content: `
+
+                    
+
+<p>Dummy content for Users of financial statements goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-basic-concepts-of-accounting': {
+
+                title: 'Basic concepts of accounting',
+
+                content: `
+
+                    
+
+<p>Dummy content for Basic concepts of accounting goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-gaap-in-australia': {
+
+                title: 'GAAP in Australia',
+
+                content: `
+
+                    
+
+<p>Dummy content for GAAP in Australia goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-ifrs-in-australia': {
+
+                title: 'IFRS in Australia',
+
+                content: `
+
+                    
+
+<p>Dummy content for IFRS in Australia goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-types-of-financial-statements': {
+
+                title: 'Types of financial statements',
+
+                content: `
+
+                    
+
+<p>Dummy content for Types of financial statements goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-how-statements-interlink': {
+
+                title: 'How statements interlink',
+
+                content: `
+
+                    
+
+<p>Dummy content for How statements interlink goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-what-is-financial-analysis': {
+
+                title: 'What is financial analysis?',
+
+                content: `
+
+                    
+
+<p>Dummy content for What is financial analysis? goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-when-financials-are-misleading': {
+
+                title: 'When financials are misleading',
+
+                content: `
+
+                    
+
+<p>Dummy content for When financials are misleading goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-limitations-of-financial-analysis': {
+
+                title: 'Limitations of financial analysis',
+
+                content: `
+
+                    
+
+<p>Dummy content for Limitations of financial analysis goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-12-signs-of-strong-companies': {
+
+                title: '12 signs of strong companies',
+
+                content: `
+
+                    
+
+<p>Dummy content for 12 signs of strong companies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-12-signs-of-financial-distress': {
+
+                title: '12 signs of financial distress',
+
+                content: `
+
+                    
+
+<p>Dummy content for 12 signs of financial distress goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-the-altman-z-score': {
+
+                title: 'The Altman Z-score',
+
+                content: `
+
+                    
+
+<p>Dummy content for The Altman Z-score goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-probability-of-bankruptcy': {
+
+                title: 'Probability of bankruptcy',
+
+                content: `
+
+                    
+
+<p>Dummy content for Probability of bankruptcy goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-drivers-of-business-growth': {
+
+                title: 'Drivers of business growth',
+
+                content: `
+
+                    
+
+<p>Dummy content for Drivers of business growth goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-the-top-5-questions-to-ask': {
+
+                title: 'The top 5 questions to ask',
+
+                content: `
+
+                    
+
+<p>Dummy content for The top 5 questions to ask goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-how-to-read-financials': {
+
+                title: 'How to read financials',
+
+                content: `
+
+                    
+
+<p>Dummy content for How to read financials goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-signs-of-transparent-company': {
+
+                title: 'Signs of transparent company',
+
+                content: `
+
+                    
+
+<p>Dummy content for Signs of transparent company goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-common-errors': {
+
+                title: 'Common errors',
+
+                content: `
+
+                    
+
+<p>Dummy content for Common errors goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-12-management-mistakes': {
+
+                title: '12 management mistakes',
+
+                content: `
+
+                    
+
+<p>Dummy content for 12 management mistakes goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'accounting-shenanigans-intro-to-accounting-shenanigans': {
+
+                title: 'Intro to accounting shenanigans',
+
+                content: `
+
+                    <p>Dummy content for Intro to accounting shenanigans goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'accounting-shenanigans-types-of-shenanigans': {
+
+                title: 'Types of shenanigans',
+
+                content: `
+
+                    <p>Dummy content for Types of shenanigans goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'accounting-shenanigans-how-to-spot-red-flags': {
+
+                title: 'How to spot red flags',
+
+                content: `
+
+                    <p>Dummy content for How to spot red flags goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'accounting-shenanigans-revenue-recognition-tricks': {
+
+                title: 'Revenue recognition tricks',
+
+                content: `
+
+                    
+
+<p>Dummy content for Revenue recognition tricks goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'accounting-shenanigans-expense-manipulation': {
+
+                title: 'Expense manipulation',
+
+                content: `
+
+                    <p>Dummy content for Expense manipulation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'accounting-shenanigans-asset-overvaluation': {
+
+                title: 'Asset overvaluation',
+
+                content: `
+
+                    <p>Dummy content for Asset overvaluation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'accounting-shenanigans-liability-concealment': {
+
+                title: 'Liability concealment',
+
+                content: `
+
+                    <p>Dummy content for Liability concealment goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'accounting-shenanigans-cash-flow-manipulation': {
+
+                title: 'Cash flow manipulation',
+
+                content: `
+
+                    
+
+<p>Dummy content for Cash flow manipulation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'accounting-shenanigans-real-world-case-studies': {
+
+                title: 'Real world case studies',
+
+                content: `
+
+                    <p>Dummy content for Real world case studies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'accounting-shenanigans-forensic-accounting-tools': {
+
+                title: 'Forensic accounting tools',
+
+                content: `
+
+                    <p>Dummy content for Forensic accounting tools goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'qualitative-factors-management-quality': {
+
+                title: 'Management quality',
+
+                content: `
+
+                    <p>Dummy content for Management quality goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'qualitative-factors-corporate-governance': {
+
+                title: 'Corporate governance',
+
+                content: `
+
+                    
+
+<p>Dummy content for Corporate governance goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'qualitative-factors-competitive-advantage-moats': {
+
+                title: 'Competitive advantage (Moats)',
+
+                content: `
+
+                    <p>Dummy content for Competitive advantage (Moats) goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'qualitative-factors-brand-value': {
+
+                title: 'Brand value',
+
+                content: `
+
+                    <p>Dummy content for Brand value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'qualitative-factors-industry-dynamics': {
+
+                title: 'Industry dynamics',
+
+                content: `
+
+                    <p>Dummy content for Industry dynamics goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'qualitative-factors-regulatory-environment': {
+
+                title: 'Regulatory environment',
+
+                content: `
+
+                    <p>Dummy content for Regulatory environment goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'qualitative-factors-technological-disruption': {
+
+                title: 'Technological disruption',
+
+                content: `
+
+                    <p>Dummy content for Technological disruption goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'qualitative-factors-esg-considerations': {
+
+                title: 'ESG considerations',
+
+                content: `
+
+                    <p>Dummy content for ESG considerations goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'qualitative-factors-customer-loyalty': {
+
+                title: 'Customer loyalty',
+
+                content: `
+
+                    <p>Dummy content for Customer loyalty goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'qualitative-factors-r-d-and-innovation': {
+
+                title: 'R&D and innovation',
+
+                content: `
+
+                    <p>Dummy content for R&D and innovation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-intro-to-stock-valuation': {
+
+                title: 'Intro to stock valuation',
+
+                content: `
+
+                    
+
+<p>Dummy content for Intro to stock valuation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-what-is-value': {
+
+                title: 'What is value?',
+
+                content: `
+
+                    
+
+<p>Dummy content for What is value? goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-stock-valuation-process': {
+
+                title: 'Stock valuation process',
+
+                content: `
+
+                    
+
+<p>Dummy content for Stock valuation process goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-limitations-of-valuation': {
+
+                title: 'Limitations of valuation',
+
+                content: `
+
+                    
+
+<p>Dummy content for Limitations of valuation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-behavioural-biases': {
+
+                title: 'Behavioural biases',
+
+                content: `
+
+                    
+
+<p>Dummy content for Behavioural biases goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-use-of-discount-rates': {
+
+                title: 'Use of discount rates',
+
+                content: `
+
+                    
+
+<p>Dummy content for Use of discount rates goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-calculating-discount-rate': {
+
+                title: 'Calculating discount rate',
+
+                content: `
+
+                    
+
+<p>Dummy content for Calculating discount rate goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-10-common-mistakes': {
+
+                title: '10 common mistakes',
+
+                content: `
+
+                    
+
+<p>Dummy content for 10 common mistakes goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-what-is-intrinsic-value': {
+
+                title: 'What is intrinsic value?',
+
+                content: `
+
+                    
+
+<p>Dummy content for What is intrinsic value? goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-calculating-intrinsic-value': {
+
+                title: 'Calculating intrinsic value',
+
+                content: `
+
+                    
+
+<p>Dummy content for Calculating intrinsic value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-buffett-s-intrinsic-value': {
+
+                title: 'Buffettâ€™s intrinsic value',
+
+                content: `
+
+                    
+
+<p>Dummy content for Buffettâ€™s intrinsic value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-graham-s-intrinsic-value': {
+
+                title: 'Grahamâ€™s intrinsic value',
+
+                content: `
+
+                    
+
+<p>Dummy content for Grahamâ€™s intrinsic value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-limitations-of-value': {
+
+                title: 'Limitations of value',
+
+                content: `
+
+                    
+
+<p>Dummy content for Limitations of value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-intro-to-revenue-based-val': {
+
+                title: 'Intro to revenue-based val',
+
+                content: `
+
+                    
+
+<p>Dummy content for Intro to revenue-based val goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-price-to-sales-ratio': {
+
+                title: 'Price-to-sales ratio',
+
+                content: `
+
+                    
+
+<p>Dummy content for Price-to-sales ratio goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-sales-multiples': {
+
+                title: 'Sales multiples',
+
+                content: `
+
+                    
+
+<p>Dummy content for Sales multiples goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-revenue-growth-rate': {
+
+                title: 'Revenue growth rate',
+
+                content: `
+
+                    
+
+<p>Dummy content for Revenue growth rate goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-price-to-revenue-growth': {
+
+                title: 'Price-to-revenue growth',
+
+                content: `
+
+                    
+
+<p>Dummy content for Price-to-revenue growth goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-price-to-earnings-ratio': {
+
+                title: 'Price-to-earnings ratio',
+
+                content: `
+
+                    
+
+<p>Dummy content for Price-to-earnings ratio goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-earnings-yield': {
+
+                title: 'Earnings yield',
+
+                content: `
+
+                    
+
+<p>Dummy content for Earnings yield goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-pe-to-growth-peg-ratio': {
+
+                title: 'PE-to-growth (PEG) ratio',
+
+                content: `
+
+                    
+
+<p>Dummy content for PE-to-growth (PEG) ratio goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-ypeg-ratio': {
+
+                title: 'YPEG ratio',
+
+                content: `
+
+                    
+
+<p>Dummy content for YPEG ratio goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-future-maintainable-earnings': {
+
+                title: 'Future maintainable earnings',
+
+                content: `
+
+                    
+
+<p>Dummy content for Future maintainable earnings goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-discounted-future-earnings': {
+
+                title: 'Discounted future earnings',
+
+                content: `
+
+                    
+
+<p>Dummy content for Discounted future earnings goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-earnings-power-value': {
+
+                title: 'Earnings power value',
+
+                content: `
+
+                    
+
+<p>Dummy content for Earnings power value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-residual-income': {
+
+                title: 'Residual income',
+
+                content: `
+
+                    
+
+<p>Dummy content for Residual income goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-price-to-ebitda': {
+
+                title: 'Price-to-EBITDA',
+
+                content: `
+
+                    
+
+<p>Dummy content for Price-to-EBITDA goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-discounted-cash-flow': {
+
+                title: 'Discounted cash flow',
+
+                content: `
+
+                    
+
+<p>Dummy content for Discounted cash flow goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-reverse-dcf': {
+
+                title: 'Reverse DCF',
+
+                content: `
+
+                    
+
+<p>Dummy content for Reverse DCF goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-economic-value-added': {
+
+                title: 'Economic value added',
+
+                content: `
+
+                    
+
+<p>Dummy content for Economic value added goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-free-cash-flow-valuation': {
+
+                title: 'Free cash flow valuation',
+
+                content: `
+
+                    
+
+<p>Dummy content for Free cash flow valuation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-book-value': {
+
+                title: 'Book value',
+
+                content: `
+
+                    
+
+<p>Dummy content for Book value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-tangible-book-value': {
+
+                title: 'Tangible book value',
+
+                content: `
+
+                    
+
+<p>Dummy content for Tangible book value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-adjusted-net-assets': {
+
+                title: 'Adjusted net assets',
+
+                content: `
+
+                    
+
+<p>Dummy content for Adjusted net assets goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-replacement-cost-method': {
+
+                title: 'Replacement cost method',
+
+                content: `
+
+                    
+
+<p>Dummy content for Replacement cost method goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-sum-of-the-parts': {
+
+                title: 'Sum of the parts',
+
+                content: `
+
+                    
+
+<p>Dummy content for Sum of the parts goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-liquidation-value': {
+
+                title: 'Liquidation value',
+
+                content: `
+
+                    
+
+<p>Dummy content for Liquidation value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-dividend-discount-model': {
+
+                title: 'Dividend Discount Model',
+
+                content: `
+
+                    
+
+<p>Dummy content for Dividend Discount Model goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-gordon-growth-model': {
+
+                title: 'Gordon Growth Model',
+
+                content: `
+
+                    
+
+<p>Dummy content for Gordon Growth Model goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-two-stage-dividend-growth': {
+
+                title: 'Two-Stage Dividend Growth',
+
+                content: `
+
+                    
+
+<p>Dummy content for Two-Stage Dividend Growth goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-dividend-payout-ratio': {
+
+                title: 'Dividend Payout Ratio',
+
+                content: `
+
+                    
+
+<p>Dummy content for Dividend Payout Ratio goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-price-to-book-value-ratio': {
+
+                title: 'Price-to-book value ratio',
+
+                content: `
+
+                    
+
+<p>Dummy content for Price-to-book value ratio goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-enterprise-value': {
+
+                title: 'Enterprise value',
+
+                content: `
+
+                    
+
+<p>Dummy content for Enterprise value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-enterprise-value-to-ebitda': {
+
+                title: 'Enterprise value to EBITDA',
+
+                content: `
+
+                    
+
+<p>Dummy content for Enterprise value to EBITDA goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-enterprise-value-to-sales': {
+
+                title: 'Enterprise value to sales',
+
+                content: `
+
+                    
+
+<p>Dummy content for Enterprise value to sales goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-graham-s-formulas': {
+
+                title: 'Grahamâ€™s formulas',
+
+                content: `
+
+                    
+
+<p>Dummy content for Grahamâ€™s formulas goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-greenblatt-s-magic-formula': {
+
+                title: 'Greenblattâ€™s magic formula',
+
+                content: `
+
+                    
+
+<p>Dummy content for Greenblattâ€™s magic formula goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-industry-rules-of-thumb': {
+
+                title: 'Industry rules of thumb',
+
+                content: `
+
+                    
+
+<p>Dummy content for Industry rules of thumb goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-intangible-assets': {
+
+                title: 'Intangible assets',
+
+                content: `
+
+                    
+
+<p>Dummy content for Intangible assets goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-call-options': {
+
+                title: 'Call options',
+
+                content: `
+
+                    
+
+<p>Dummy content for Call options goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-put-options': {
+
+                title: 'Put options',
+
+                content: `
+
+                    
+
+<p>Dummy content for Put options goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-distressed-companies': {
+
+                title: 'Distressed companies',
+
+                content: `
+
+                    
+
+<p>Dummy content for Distressed companies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-bankrupt-companies': {
+
+                title: 'Bankrupt companies',
+
+                content: `
+
+                    
+
+<p>Dummy content for Bankrupt companies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-mergers-acquisitions': {
+
+                title: 'Mergers & acquisitions',
+
+                content: `
+
+                    
+
+<p>Dummy content for Mergers & acquisitions goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-start-up-companies': {
+
+                title: 'Start-up companies',
+
+                content: `
+
+                    
+
+<p>Dummy content for Start-up companies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-pre-ipo-companies': {
+
+                title: 'Pre-IPO companies',
+
+                content: `
+
+                    
+
+<p>Dummy content for Pre-IPO companies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-asset-heavy-companies': {
+
+                title: 'Asset-heavy companies',
+
+                content: `
+
+                    
+
+<p>Dummy content for Asset-heavy companies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-emerging-markets': {
+
+                title: 'Emerging markets',
+
+                content: `
+
+                    
+
+<p>Dummy content for Emerging markets goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'corporate-actions-dividends': {
+
+                title: 'Dividends',
+
+                content: `
+
+                    
+
+<p>Dummy content for Dividends goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'corporate-actions-stock-splits': {
+
+                title: 'Stock Splits',
+
+                content: `
+
+                    
+
+<p>Dummy content for Stock Splits goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'corporate-actions-share-buy-backs': {
+
+                title: 'Share Buy Backs',
+
+                content: `
+
+                    
+
+<p>Dummy content for Share Buy Backs goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'corporate-actions-rights-issues': {
+
+                title: 'Rights Issues',
+
+                content: `
+
+                    
+
+<p>Dummy content for Rights Issues goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'corporate-actions-bonus-issues': {
+
+                title: 'Bonus Issues',
+
+                content: `
+
+                    
+
+<p>Dummy content for Bonus Issues goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'corporate-actions-options-and-warrants': {
+
+                title: 'Options and Warrants',
+
+                content: `
+
+                    
+
+<p>Dummy content for Options and Warrants goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'corporate-actions-mergers-and-acquisitions': {
+
+                title: 'Mergers and Acquisitions',
+
+                content: `
+
+                    
+
+<p>Dummy content for Mergers and Acquisitions goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'corporate-actions-divestments': {
+
+                title: 'Divestments',
+
+                content: `
+
+                    
+
+<p>Dummy content for Divestments goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'corporate-actions-administration': {
+
+                title: 'Administration',
+
+                content: `
+
+                    
+
+<p>Dummy content for Administration goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'corporate-actions-liquidation': {
+
+                title: 'Liquidation',
+
+                content: `
+
+                    
+
+<p>Dummy content for Liquidation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'accounting-standards-regulatory-bodies': {
+
+                title: 'Regulatory Bodies',
+
+                content: `
+
+                    
+
+<p>Dummy content for Regulatory Bodies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'accounting-standards-standards-relating-to-financial-reporting': {
+
+                title: 'Standards Relating to Financial Reporting',
+
+                content: `
+
+                    
+
+<p>Dummy content for Standards Relating to Financial Reporting goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'accounting-standards-profit-and-loss': {
+
+                title: 'Profit and Loss',
+
+                content: `
+
+                    <p>Dummy content for Profit and Loss goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'accounting-standards-balance-sheet': {
+
+                title: 'Balance Sheet',
+
+                content: `
+
+                    <p>Dummy content for Balance Sheet goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'accounting-standards-disclosures': {
+
+                title: 'Disclosures',
+
+                content: `
+
+                    <p>Dummy content for Disclosures goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'accounting-standards-cash-flow': {
+
+                title: 'Cash Flow',
+
+                content: `
+
+                    
+
+<p>Dummy content for Cash Flow goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'accounting-standards-aasb-work-in-progress': {
+
+                title: 'AASB Work-In-Progress',
+
+                content: `
+
+                    
+
+<p>Dummy content for AASB Work-In-Progress goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'accounting-standards-aasb-publications': {
+
+                title: 'AASB Publications',
+
+                content: `
+
+                    <p>Dummy content for AASB Publications goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+        };
+
+
+
+
+
+        // Article panel functionality
+
+        function openArticle(articleId) {
+
+            const panel = document.getElementById('article-detail-panel');
+
+            const title = document.getElementById('article-detail-title');
+
+            const body = document.getElementById('article-detail-body');
+
+            
+
+            if (articleContent[articleId]) {
+
+                title.textContent = articleContent[articleId].title;
+
+                const imagePlaceholder = typeof window.buildArticleImageHtml === 'function' ? window.buildArticleImageHtml(articleId, articleContent[articleId]) : '';
+
+
+
+                const relatedArticles = `
+
+<hr style="margin:32px 0;border:none;border-top:1px solid #e5e7eb;">
+
+<h3 style="color:#1e3a8a;margin-bottom:12px;">Related articles:</h3>
+
+<p style="color:#6b7280;font-size:14px;line-height:1.6;">Explore more resources and expert perspectives on these topics in our library collection.</p>
+
+<h3 style="color:#1e3a8a;margin:24px 0 12px;">Related books:</h3>
+
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;">
+
+    ${[1,2,3,4,5,6].map(i => `
+
+    <div style="border:1px solid #e5e7eb;border-radius:8px;padding:12px;text-align:center;background:#f9fafb;">
+
+        <div style="width:60px;height:80px;background:#e5e7eb;border-radius:4px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:11px;">Book ${i}</div>
+
+        <a href="#" style="font-size:12px;color:#1e3a8a;text-decoration:none;">Book title link</a>
+
+    </div>`).join('')}
+
+</div>
+
+<hr style="margin:24px 0;border:none;border-top:1px solid #e5e7eb;">
+
+<p style="font-size:12px;color:#9ca3af;font-style:italic;"><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>`;
+
+
+
+                let articleBody = articleContent[articleId] ? articleContent[articleId].content : '';
+
+                if(articleBody) {
+
+                    // Remove first <p>...< /p> (non-greedy) and any adjacent heading up to h3 if it exists at the start
+
+                    // We'll run successive replaces to be robust instead of one massive regex:
+
+                    articleBody = articleBody.trim();
+
+                    // if starts with a paragraph that is a category
+
+                    let pMatch = articleBody.match(/^(<p[^>]*>.*?<\/p>)\s*(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
+
+                    if(pMatch) {
+
+                        articleBody = articleBody.substring(pMatch[0].length).trim();
+
+                    } else {
+
+                        // try to match just the h tag
+
+                        let hMatch = articleBody.match(/^(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
+
+                        if(hMatch) {
+
+                            articleBody = articleBody.substring(hMatch[0].length).trim();
+
+                        }
+
+                    }
+
+                    
+
+                    // Bold first paragraph
+
+                    articleBody = articleBody.replace(/<p>(.*?)<\/p>/i, '<p><strong>$1</strong></p>');
+
+                    
+
+                    // Remove existing disclaimer
+
+                    articleBody = articleBody.replace(/<p><strong>Disclaimer:<\/strong>.*?<\/p>\s*$/is, '');
+
+                }
+
+                
+
+                body.innerHTML = imagePlaceholder + articleBody + relatedArticles;
+
+                panel.classList.add('active');
+
+                document.body.style.overflow = 'hidden';
+
+            }
+
+        }
+
+
+
+        function closeArticlePanel() {
+
+            const panel = document.getElementById('article-detail-panel');
+
+            panel.classList.remove('active');
+
+            document.body.style.overflow = '';
+
+        }
+
+
+
+        // Event listeners
+
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const articleClose = document.getElementById('article-detail-close');
+
+            const articlePanel = document.getElementById('article-detail-panel');
+
+            
+
+            if (articleClose) {
+
+                articleClose.addEventListener('click', closeArticlePanel);
+
+            }
+
+            
+
+            if (articlePanel) {
+
+                articlePanel.addEventListener('click', function(event) {
+
+                    if (event.target === articlePanel) {
+
+                        closeArticlePanel();
+
+                    }
+
+                });
+
+            }
+
+
+
+            // Check for hash in URL and open corresponding article
+
+            if (window.location.hash) {
+
+                const hashValue = window.location.hash.substring(1);
+
+                // Look through articleContent keys to find a match
+
+                for (const key in articleContent) {
+
+                    if (key.endsWith(hashValue)) {
+
+                        // Expand the corresponding collapsible section
+
+                        const sectionId = key.substring(0, key.lastIndexOf('-' + hashValue));
+
+                        const sectionArrow = document.getElementById(sectionId + '-arrow');
+
+                        if (sectionArrow && document.getElementById(sectionId + '-content').classList.contains('collapsed')) {
+
+                            toggleCollapsible(sectionId);
+
+                        }
+
+                        // Open the article
+
+                        setTimeout(() => openArticle(key), 100);
+
+                        break;
+
+                    }
+
+                }
+
+            }
+
+
+
+        });
+
+    

@@ -1,0 +1,3315 @@
+
+        // Collapsible functionality
+        function toggleCollapsible(sectionId) {
+            const content = document.getElementById(sectionId + '-content');
+            const arrow = document.getElementById(sectionId + '-arrow');
+            if (!content) return;
+            
+            const section = content.closest('.collapsible-section');
+            const isCurrentlyOpen = content.classList.contains('expanded');
+            
+            // Close all other open sections
+            document.querySelectorAll('.collapsible-content').forEach(c => {
+                if (c.id !== sectionId + '-content' && (c.classList.contains('expanded') || c.style.maxHeight)) {
+                    c.style.maxHeight = null;
+                    c.classList.remove('expanded');
+                    c.classList.add('collapsed');
+                    const s = c.closest('.collapsible-section');
+                    if (s) s.classList.remove('active');
+                    const a = document.getElementById(c.id.replace('-content', '-arrow'));
+                    if (a) a.innerHTML = '▼';
+                }
+            });
+
+            if (!isCurrentlyOpen) {
+                content.classList.add('expanded');
+                content.classList.remove('collapsed');
+                if(sectionId === 'events-seminars') {
+                    content.style.maxHeight = 'none';
+                } else {
+                    const height = content.scrollHeight;
+                    content.style.maxHeight = height + "px";
+                }
+                if (section) section.classList.add('active');
+                if (arrow) arrow.innerHTML = '▲';
+            } else {
+                content.style.maxHeight = null;
+                content.classList.remove('expanded');
+                content.classList.add('collapsed');
+                if (section) section.classList.remove('active');
+                if (arrow) arrow.innerHTML = '▼';
+            }
+        }
+
+        // Mobile drawer functionality
+        function toggleMobileMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                if (mobileDrawer.classList.contains('open')) {
+                    mobileDrawer.classList.remove('open');
+                    document.body.style.overflow = '';
+                } else {
+                    mobileDrawer.classList.add('open');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+        }
+
+        function closeMobileMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Article loading functionality
+        function loadArticle(articleId) {
+            const panel = document.getElementById('article-detail-panel');
+            const title = document.getElementById('article-detail-title');
+            const body = document.getElementById('article-detail-body');
+            
+            if (!panel || !title || !body) return;
+
+            if (typeof articleContent !== 'undefined' && articleContent[articleId]) {
+                const article = articleContent[articleId];
+                title.textContent = article.title;
+                
+                let imageHtml = '';
+                if (typeof window.buildArticleImageHtml === 'function') {
+                    imageHtml = window.buildArticleImageHtml(articleId, article);
+                }
+                
+                body.innerHTML = imageHtml + article.content;
+                panel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                const contentContainer = panel.querySelector('.article-detail-content');
+                if (contentContainer) contentContainer.scrollTop = 0;
+            } else {
+                title.textContent = 'Article Not Found';
+                body.innerHTML = '<p style="padding: 20px; color: #6b7280;">Sorry, the content for this article ("' + articleId + '") could not be found or has not been added yet.</p>';
+                panel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                console.error('Article not found:', articleId);
+            }
+        }
+
+        function closeArticlePanel() {
+            const panel = document.getElementById('article-detail-panel');
+            if (panel) {
+                panel.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            const drawerClose = document.getElementById('drawer-close');
+            
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    toggleMobileMenu();
+                });
+            }
+            
+            if (drawerClose) {
+                drawerClose.addEventListener('click', closeMobileMenu);
+            }
+            
+            if (mobileDrawer) {
+                mobileDrawer.addEventListener('click', (e) => {
+                    if (e.target === mobileDrawer) closeMobileMenu();
+                });
+            }
+
+            const articlePanel = document.getElementById('article-detail-panel');
+            if (articlePanel) {
+                articlePanel.addEventListener('click', (e) => {
+                    if (e.target === articlePanel) closeArticlePanel();
+                });
+            }
+            
+            const closeBtn = document.getElementById('article-detail-close');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeArticlePanel);
+            }
+        });
+
+        const articleContent = {
+'nature-and-purpose': {
+        title: 'Nature and Purpose',
+        content: `
+            <p>Financial statements are the formal records of the financial activities and position of a business. They provide a structured representation of historical financial reality, translated into a standardized numeric language.</p>
+            <h3>The Primary Purpose</h3>
+            <p>The core purpose is to provide highly relevant, reliable, and comparable information about a company's financial position, performance, and cash flows to a wide range of external users. They answer the fundamental questions: Is the company making a profit? Can it pay its bills? Where did its cash come from, and where did it go?</p>
+            <h3>Historical vs Predictive</h3>
+            <p>Crucially, financial statements are inherently backward-looking. They detail what *has* happened up to a specific date. However, investors use this historical data as the foundation for building predictive models about what *will* happen in the future.</p>
+        `
+    },
+    'users-of-financial-statements': {
+        title: 'Users of Financial Statements',
+        content: `
+            <p>Financial statements serve a diverse audience, each with different objectives and analytical focuses.</p>
+            <h3>Investors and Analysts</h3>
+            <p>Equity investors look for profitability, growth, and the ability to generate free cash flow to support dividends and capital appreciation. They are primarily focused on the Income Statement and Cash Flow Statement.</p>
+            <h3>Creditors and Lenders</h3>
+            <p>Banks and bondholders care about downside protection. They focus heavily on the Balance Sheet and Cash Flow Statement to ensure the company has sufficient liquidity and solvency to cover interest payments and repay principal.</p>
+            <h3>Other Stakeholders</h3>
+            <p>Management uses them to track internal KPIs against competitors. Suppliers assess the risk of extending trade credit. Regulators (like ASIC or the ATO) use them to ensure compliance with corporate law and to calculate tax obligations.</p>
+        `
+    },
+    'basic-concepts-of-accounting': {
+        title: 'Basic Concepts of Accounting',
+        content: `
+            <p>All financial statements are built upon a foundation of core accounting principles that ensure consistency and reliability.</p>
+            <h3>The Accrual Principle</h3>
+            <p>The most important concept: transactions are recorded when they occur, regardless of when cash changes hands. If you deliver a product in December but aren't paid until January, the revenue is recorded in December.</p>
+            <h3>The Matching Principle</h3>
+            <p>Expenses must be recorded in the same period as the revenues they helped generate. This ensures profit is not overstated in one period and understated in another.</p>
+            <h3>Conservatism</h3>
+            <p>When faced with uncertainty, accountants must choose the path that is least likely to overstate assets or income. Anticipate all losses, but never anticipate profits.</p>
+        `
+    },
+    'gaap-in-australia': {
+        title: 'GAAP in Australia',
+        content: `
+            <p>Generally Accepted Accounting Principles (GAAP) is the common set of accounting rules and standards that dictate how financial statements are prepared.</p>
+            <h3>Australian GAAP</h3>
+            <p>In Australia, GAAP is defined by the Australian Accounting Standards Board (AASB). These standards carry the force of law under the Corporations Act 2001 for all reporting entities (public companies, large private companies).</p>
+            <h3>GAAP vs Non-GAAP</h3>
+            <p>While GAAP provides the standardized statutory numbers, management often provides "Non-GAAP" or "Underlying" metrics (like "Underlying EBITDA"). These exclude one-off items to supposedly show the "true" performance of the business. Investors must heavily scrutinize Non-GAAP numbers, as they are unregulated and often used to hide poor performance.</p>
+        `
+    },
+    'ifrs-in-australia': {
+        title: 'IFRS in Australia',
+        content: `
+            <p>International Financial Reporting Standards (IFRS) are a globally recognized set of accounting standards designed to make corporate reporting comparable across international borders.</p>
+            <h3>The 2005 Adoption</h3>
+            <p>In 2005, Australia fully adopted IFRS. The Australian Accounting Standards Board (AASB) simply issues the international standards as Australian standards (e.g., IFRS 15 becomes AASB 15). This means an Australian public company's financials are directly comparable to a European or Canadian company's.</p>
+            <h3>The US Exception</h3>
+            <p>Crucially, the United States does *not* use IFRS; it uses US GAAP. While the two systems have converged significantly over the last two decades, major differences remain (such as the treatment of inventory and R&D expenses), which investors must adjust for when comparing an ASX stock to a US peer.</p>
+        `
+    },
+    'types-of-financial-statements': {
+        title: 'Types of Financial Statements',
+        content: `
+            <p>A complete set of financial statements comprises four primary documents that must be read together to understand the full picture.</p>
+            <h3>The Core Three</h3>
+            <p><strong>1. Statement of Financial Position (Balance Sheet):</strong> A snapshot of what the company owns and owes at a specific date. <strong>2. Statement of Profit or Loss (Income Statement):</strong> The summary of revenues and expenses over a period. <strong>3. Statement of Cash Flows:</strong> The actual movement of cash in and out of the bank account.</p>
+            <h3>The Fourth Statement</h3>
+            <p><strong>4. Statement of Changes in Equity (SOCE):</strong> Reconciles the opening and closing balances of shareholder equity, detailing dividends paid, shares issued, and retained earnings.</p>
+        `
+    },
+    'how-financial-statements-interlink': {
+        title: 'How Financial Statements Interlink',
+        content: `
+            <p>The financial statements are not isolated documents; they are a highly integrated, closed-loop system where a change in one ripples through to the others.</p>
+            <h3>The Flow of Profit</h3>
+            <p>Net Income from the bottom of the <strong>Income Statement</strong> flows into Retained Earnings on the <strong>Balance Sheet</strong> (via the Statement of Changes in Equity). It is also the starting point for calculating Operating Cash Flow on the <strong>Cash Flow Statement</strong>.</p>
+            <h3>The Flow of Cash</h3>
+            <p>The net increase or decrease in cash from the bottom of the <strong>Cash Flow Statement</strong> must exactly equal the change in the Cash asset account on the <strong>Balance Sheet</strong> from the previous year to the current year.</p>
+        `
+    },
+    'what-is-financial-statements-interlink': {
+        title: 'What is Financial Statements Interlink?',
+        content: `
+            <p>Understanding the interlinkages between statements is the key to spotting accounting manipulation and modeling future performance.</p>
+            <h3>The Double-Entry Anchor</h3>
+            <p>Because of double-entry bookkeeping (every transaction has a debit and a credit), if management artificially inflates revenue on the Income Statement, an asset (like Accounts Receivable) must simultaneously increase on the Balance Sheet. This interlinkage makes it difficult to fake one statement without leaving a trail of anomalies in the others.</p>
+            <h3>Financial Modeling</h3>
+            <p>When analysts build DCF models, they project the Income Statement first. These projections then drive the working capital and CapEx assumptions on the Cash Flow Statement, which in turn drive the debt and cash balances on the projected Balance Sheet. If the model doesn't balance, the assumptions are flawed.</p>
+        `
+    },
+    'when-financials-are-misleading': {
+        title: 'When Financials are Misleading',
+        content: `
+            <p>Even perfectly legal, fully audited, GAAP-compliant financial statements can be fundamentally misleading regarding the true economic reality of a business.</p>
+            <h3>The Problem of Historical Cost</h3>
+            <p>Under GAAP, most assets are recorded at their original purchase price. A prime piece of Sydney real estate bought in 1980 will be carried on the balance sheet at its 1980 cost, massively understating the company's true current net worth.</p>
+            <h3>Intangible Value Ignored</h3>
+            <p>Internally generated intangible assets (like the Apple brand, or a highly trained workforce) are largely ignored by accounting standards because their value cannot be objectively measured. Thus, the most valuable assets of modern tech companies do not appear on their balance sheets at all.</p>
+        `
+    },
+    'limitations-of-financial-analysis': {
+        title: 'Limitations of Financial Analysis',
+        content: `
+            <p>Relying solely on financial statement analysis has severe limitations that investors must mitigate with qualitative research.</p>
+            <h3>Looking in the Rear-View Mirror</h3>
+            <p>Financial statements are historical documents. Analyzing them is like driving a car while only looking in the rear-view mirror. An industry can be entirely disrupted by new technology before the impact ever shows up in the target company's trailing 12-month earnings.</p>
+            <h3>Susceptibility to Manipulation</h3>
+            <p>Management possesses significant discretion over accounting estimates (e.g., useful life of assets, bad debt provisions). Aggressive management can legally pull future earnings forward or push current expenses into the future, creating a temporarily beautiful but ultimately fictitious financial picture.</p>
+        `
+    },
+    'the-7-signs-of-healthy-companies': {
+        title: 'The 7 Signs of Healthy Companies',
+        content: `
+            <p>While every business is unique, fundamentally healthy companies generally exhibit a consistent set of financial characteristics.</p>
+            <h3>The Core Signs</h3>
+            <p><strong>1. Consistent Revenue Growth:</strong> Driven by volume increases, not just price hikes or acquisitions. <strong>2. Expanding Margins:</strong> Gross and operating margins are stable or growing, indicating pricing power. <strong>3. High ROIC:</strong> Return on Invested Capital consistently exceeds the cost of capital. <strong>4. Cash Conversion:</strong> Operating cash flow is consistently higher than net income.</p>
+            <p><strong>5. Conservative Leverage:</strong> Debt is easily serviceable from free cash flow, not just from refinancing. <strong>6. Low Capital Intensity:</strong> The business doesn't require massive CapEx just to stand still. <strong>7. Share Count Reduction:</strong> The share count is flat or shrinking due to intelligent buybacks, not exploding due to stock-based compensation.</p>
+        `
+    },
+    'the-7-signs-of-financial-distress': {
+        title: 'The 7 Signs of Financial Distress',
+        content: `
+            <p>Financial distress rarely happens overnight. It leaves a trail of breadcrumbs in the financial statements over several reporting periods.</p>
+            <h3>The Warning Signals</h3>
+            <p><strong>1. Declining Margins:</strong> Forced discounting to maintain sales volume. <strong>2. Inventory Buildup:</strong> Inventory growing much faster than revenue (stuffing the channel). <strong>3. Exploding Receivables:</strong> Days Sales Outstanding (DSO) spiking as customers delay payment or fake sales are booked.</p>
+            <p><strong>4. Negative Free Cash Flow:</strong> The core business bleeds cash, requiring constant capital raising. <strong>5. Breaching Covenants:</strong> Approaching the limits of bank debt agreements. <strong>6. Auditor Turnover:</strong> Changing audit firms unexpectedly or receiving a "going concern" qualification. <strong>7. Spiking Interest Expense:</strong> A rising portion of operating income consumed simply to service debt.</p>
+        `
+    },
+    'the-7-signs-of-transparency': {
+        title: 'The 7 Signs of Transparency',
+        content: `
+            <p>A company's financial reporting can be either a window into the business or a wall to hide behind. Transparent companies are easier to value and carry lower risk premiums.</p>
+            <h3>Hallmarks of Good Disclosure</h3>
+            <p><strong>1. Plain English:</strong> MD&A sections that explain *why* something happened, not just repeating the numbers. <strong>2. Granular Segment Reporting:</strong> Breaking down revenue and profit by specific products/geographies, not lumping unrelated businesses together. <strong>3. Clean Non-GAAP:</strong> Rare use of "adjusted" metrics; when used, reconciliations to GAAP are crystal clear.</p>
+            <p><strong>4. Admitting Mistakes:</strong> Management openly discussing failures and write-downs rather than burying them. <strong>5. Consistent KPIs:</strong> Not changing the performance metrics every time a metric turns negative. <strong>6. Detailed Footnotes:</strong> Clear explanations of accounting estimates and related-party transactions. <strong>7. Accessible Management:</strong> Willingness to take tough questions from skeptical analysts on earnings calls.</p>
+        `
+    },
+    'the-altman-z-score': {
+        title: 'The Altman Z-Score',
+        content: `
+            <p>Developed by Edward Altman in 1968, the Z-Score is a quantitative formula used to predict the probability that a firm will go into bankruptcy within two years.</p>
+            <h3>The Formula</h3>
+            <p>The classic model uses five weighted financial ratios: Working Capital/Total Assets (Liquidity), Retained Earnings/Total Assets (Cumulative Profitability), EBIT/Total Assets (Operating Efficiency), Market Value of Equity/Total Liabilities (Market Leverage), and Sales/Total Assets (Asset Turnover).</p>
+            <h3>Interpreting the Score</h3>
+            <p><strong>Z > 2.99:</strong> "Safe" Zone - bankruptcy is unlikely. <strong>Z between 1.81 and 2.99:</strong> "Grey" Zone - caution required. <strong>Z < 1.81:</strong> "Distress" Zone - high probability of bankruptcy. While originally designed for manufacturing firms, modified versions exist for non-manufacturing and private companies.</p>
+        `
+    },
+    'the-probability-of-bankruptcy': {
+        title: 'The Probability of Bankruptcy',
+        content: `
+            <p>Beyond the Altman Z-score, investors must continuously assess the probability of bankruptcy (default risk) when analyzing highly leveraged companies or turnaround situations.</p>
+            <h3>Market-Based Signals</h3>
+            <p>Credit markets are usually smarter than equity markets. If a company's corporate bonds are trading at 50 cents on the dollar, the bond market is pricing in a massive probability of default, even if the equity is still heavily traded by retail speculators.</p>
+            <h3>The "Merton Model" Concept</h3>
+            <p>Advanced structural models treat a company's equity as a call option on its assets, with the debt being the strike price. If asset volatility is high and the value of the assets falls near the value of the debt, the "option" (equity) approaches zero, and bankruptcy probability spikes.</p>
+        `
+    },
+    'key-drivers-of-business-growth': {
+        title: 'Key Drivers of Business Growth',
+        content: `
+            <p>When analyzing historical growth in financial statements, it is crucial to decompose *how* that growth was achieved, as not all growth is equally valuable or sustainable.</p>
+            <h3>Organic vs Acquisitive</h3>
+            <p>Organic growth (selling more widgets to more customers) is highly valuable and sustainable. Acquisitive growth (buying a competitor to boost top-line revenue) is risky, often destroys shareholder value, and masks a deteriorating core business.</p>
+            <h3>Price vs Volume</h3>
+            <p>Did revenue grow because the company sold 10% more units (volume growth), or because they sold the same number of units but raised prices by 10% (pricing power)? The latter indicates a strong moat, but the former shows expanding market share.</p>
+        `
+    },
+    'top-7-questions-to-ask-management': {
+        title: 'Top 7 Questions to Ask Management',
+        content: `
+            <p>When analyzing statements, specific anomalies should prompt direct questions to management (or listening for these answers on earnings calls).</p>
+            <h3>The Key Inquiries</h3>
+            <p>1. Why is operating cash flow diverging so significantly from net income? 2. What specific factors drove the change in gross margins this quarter? 3. Can you break down the organic growth rate vs the growth from recent acquisitions? 4. Why are inventory levels rising faster than sales?</p>
+            <p>5. What is the expected ROI and payback period on this year's elevated CapEx? 6. Can you detail the nature of the "one-time restructuring charges" that have occurred for three consecutive years? 7. Under what scenarios would you consider cutting the dividend or breaching debt covenants?</p>
+        `
+    },
+    'common-errors-in-statements': {
+        title: 'Common Errors in Statements',
+        content: `
+            <p>Even without malicious intent to defraud, financial statements frequently contain errors due to the immense complexity of accounting standards and the reliance on subjective estimates.</p>
+            <h3>Types of Errors</h3>
+            <p><strong>Classification Errors:</strong> Incorrectly classifying an operating lease as a short-term expense. <strong>Cut-off Errors:</strong> Recording sales in December that actually shipped in January. <strong>Estimation Errors:</strong> Wildly underestimating the warranty costs associated with a newly launched product.</p>
+            <h3>The Restatement Red Flag</h3>
+            <p>When an error is discovered, the company must issue a "restatement" of prior financials. While sometimes minor, a restatement is a massive red flag regarding the competence of the CFO and the internal financial controls of the business.</p>
+        `
+    },
+    'how-to-read-financial-statements': {
+        title: 'How to Read Financial Statements',
+        content: `
+            <p>Reading financial statements is a skill that requires a structured, top-down approach rather than diving blindly into the numbers.</p>
+            <h3>The Structured Approach</h3>
+            <p><strong>1. Start with the Auditor's Report:</strong> Is it an unqualified (clean) opinion? <strong>2. Read the MD&A:</strong> Get management's narrative of the year. <strong>3. Review the Core Three:</strong> Look at the Income Statement, Balance Sheet, and Cash Flow Statement sequentially to spot major trends and year-over-year changes.</p>
+            <p><strong>4. Dive into the Footnotes:</strong> This is where the bodies are buried. Check the accounting policies, segment breakdowns, and debt maturity schedules. <strong>5. Calculate Ratios:</strong> Translate the absolute numbers into ratios to compare against competitors and historical performance.</p>
+        `
+    },
+    'what-is-a-balance-sheet': {
+        title: 'What is a Balance Sheet?',
+        content: `
+            <p>The Statement of Financial Position, commonly known as the Balance Sheet, provides a snapshot of a company's financial health at a specific, frozen moment in time (usually the last day of the financial year).</p>
+            <h3>The Fundamental Equation</h3>
+            <p>The entire statement is governed by the accounting equation: <strong>Assets = Liabilities + Shareholders' Equity</strong>. Everything the company owns (Assets) was financed either by borrowing money (Liabilities) or from the owners' capital and retained profits (Equity).</p>
+            <h3>Current vs Non-Current</h3>
+            <p>The balance sheet is split into "Current" (expected to be converted to cash or paid within 12 months) and "Non-Current" (long-term). This structure allows investors to immediately assess short-term liquidity (Can they pay their bills this month?) versus long-term solvency.</p>
+        `
+    },
+    'key-assets-in-the-balance-sheet': {
+        title: 'Key Assets in the Balance Sheet',
+        content: `
+            <p>Assets are resources controlled by the entity as a result of past events, from which future economic benefits are expected to flow.</p>
+            <h3>Current Assets</h3>
+            <p><strong>Cash and Equivalents:</strong> The most liquid asset. <strong>Accounts Receivable:</strong> Money owed by customers for goods already delivered. <strong>Inventory:</strong> Raw materials and finished goods waiting to be sold. A buildup here is a major red flag.</p>
+            <h3>Non-Current Assets</h3>
+            <p><strong>Property, Plant & Equipment (PP&E):</strong> The physical factories, land, and machinery used to operate the business (carried at cost minus depreciation). <strong>Intangible Assets & Goodwill:</strong> Non-physical assets like patents, brands, and the premium paid for acquisitions.</p>
+        `
+    },
+    'key-liabilities-in-the-balance-sheet': {
+        title: 'Key Liabilities in the Balance Sheet',
+        content: `
+            <p>Liabilities are present obligations arising from past events, the settlement of which is expected to result in an outflow of economic resources.</p>
+            <h3>Current Liabilities</h3>
+            <p><strong>Accounts Payable:</strong> Money the company owes to its suppliers. <strong>Short-Term Debt:</strong> Bank loans or bonds that must be repaid within 12 months. <strong>Unearned Revenue:</strong> Cash received from customers before the service is provided (e.g., an annual software subscription paid upfront).</p>
+            <h3>Non-Current Liabilities</h3>
+            <p><strong>Long-Term Debt:</strong> Bonds and bank facilities maturing in more than a year. <strong>Lease Liabilities:</strong> The present value of future lease payments for properties or equipment. <strong>Deferred Tax Liabilities:</strong> Taxes that will be owed in the future due to temporary accounting differences.</p>
+        `
+    },
+    'intangible-assets': {
+        title: 'Intangible Assets',
+        content: `
+            <p>Intangible assets lack physical substance but represent immense legal or competitive value. They are increasingly the primary drivers of value in the modern, technology-driven economy.</p>
+            <h3>Identifiable vs Unidentifiable</h3>
+            <p>Identifiable intangibles include patents, copyrights, software, and customer lists. These have a finite useful life and are amortized (gradually expensed) over time. Unidentifiable intangibles, primarily "Goodwill," arise only during acquisitions and have an indefinite life (they are not amortized but tested for impairment).</p>
+            <h3>The Accounting Flaw</h3>
+            <p>Because internally generated intangibles (like Apple's R&D creating the iPhone, or Nike's marketing creating its brand) are expensed immediately rather than capitalized on the balance sheet, the balance sheets of modern companies often drastically understate their true economic assets.</p>
+        `
+    },
+    'impairment-of-assets': {
+        title: 'Impairment of Assets',
+        content: `
+            <p>Impairment occurs when the carrying value of an asset on the balance sheet exceeds its "recoverable amount" (the higher of its fair market value or its value-in-use based on future cash flows).</p>
+            <h3>The Write-Down</h3>
+            <p>When impaired, the asset's value on the balance sheet is immediately reduced, and the difference is recorded as a massive, non-cash expense on the Income Statement. This is often seen when a company admits it wildly overpaid for a past acquisition (impairing Goodwill) or when a mining company's resource reserves become unprofitable to extract.</p>
+            <h3>Management Discretion</h3>
+            <p>Because calculating "value-in-use" relies entirely on management's projections of future cash flows, impairment testing is highly subjective. Management often delays taking the hit, waiting for a "kitchen sink" quarter (often under a new CEO) to write off all bad assets at once.</p>
+        `
+    },
+    'equity-and-owner-s-capital': {
+        title: 'Equity and Owner\'s Capital',
+        content: `
+            <p>Shareholders' Equity is the residual interest in the assets of the entity after deducting all its liabilities (Net Assets). It is the theoretical amount that would be returned to shareholders if all assets were liquidated and all debt paid off.</p>
+            <h3>Components of Equity</h3>
+            <p><strong>Share Capital:</strong> The actual cash injected into the company by shareholders when buying new shares. <strong>Retained Earnings:</strong> The cumulative total of all profits the company has ever made, minus all the dividends it has ever paid out. This is the primary engine of long-term wealth compounding.</p>
+            <h3>Negative Equity</h3>
+            <p>If a company accumulates years of massive losses (destroying Retained Earnings), Total Equity can become negative. This means liabilities exceed assets. While highly risky, some SaaS companies or aggressive buyback companies (like McDonald's) operate successfully with negative equity due to massive, predictable cash flows.</p>
+        `
+    },
+'off-balance-sheet-transactions': {
+        title: 'Off-Balance-Sheet Transactions',
+        content: `
+            <p>Off-balance-sheet (OBS) financing refers to assets or liabilities that do not appear on a company's balance sheet but still represent significant financial risks or obligations.</p>
+            <h3>Historical Abuses</h3>
+            <p>Historically, operating leases (leasing an airplane instead of buying it) and Special Purpose Vehicles (SPVs, notoriously used by Enron) allowed companies to hide massive debts. They enjoyed the economic benefit of the asset without showing the corresponding liability, artificially inflating their Return on Assets (ROA) and hiding leverage.</p>
+            <h3>Modern Regulation</h3>
+            <p>Recent accounting standards (like AASB 16/IFRS 16) have aggressively cracked down on OBS items. Almost all leases must now be capitalized and shown on the balance sheet. However, some items, like joint venture debt where the parent company does not have absolute control, can still remain hidden in the footnotes.</p>
+        `
+    },
+    'limitations-of-the-balance-sheet': {
+        title: 'Limitations of the Balance Sheet',
+        content: `
+            <p>While critical, the balance sheet presents several structural limitations that investors must adjust for.</p>
+            <h3>Book Value vs Market Value</h3>
+            <p>The balance sheet relies on historical cost. A mining company's land might be recorded at a 1950 purchase price of $1M, while its actual market value today is $500M. The balance sheet completely ignores this massive hidden equity.</p>
+            <h3>Static Snapshot</h3>
+            <p>It is a snapshot of a single day (e.g., June 30). A highly seasonal retailer might show a massive cash balance on December 31st (post-Christmas) and zero cash in October (pre-Christmas inventory build). A single day's snapshot does not represent the average working capital requirements of the business.</p>
+        `
+    },
+    'red-flags-in-the-balance-sheet': {
+        title: 'Red Flags in the Balance Sheet',
+        content: `
+            <p>Deterioration on the balance sheet is often the first leading indicator of future profit collapse.</p>
+            <h3>The Inventory / Receivables Warning</h3>
+            <p>If Inventory or Accounts Receivable are growing significantly faster than Revenue for consecutive quarters, it signals severe trouble. The company is either manufacturing products it cannot sell (inventory buildup) or "selling" products to customers who cannot or will not pay (receivables buildup).</p>
+            <h3>The Debt Wall</h3>
+            <p>Look at the composition of debt. If short-term debt (due within 12 months) is massive compared to cash reserves, the company faces a liquidity crisis. If they cannot roll over (refinance) this debt in the credit markets, they face immediate insolvency.</p>
+        `
+    },
+    'what-is-a-profit-and-loss-statement': {
+        title: 'What is a Profit and Loss Statement?',
+        content: `
+            <p>The Profit and Loss Statement (P&L), or Income Statement, shows a company's financial performance over a specific period (usually a quarter or a year). It tells the story of how revenue is transformed into net income.</p>
+            <h3>The Staircase to Profit</h3>
+            <p>It reads like a staircase, stepping down from the top line to the bottom line. It starts with total Revenue, subtracts the direct costs of making the product (Gross Profit), subtracts the costs of running the business (Operating Profit), and finally subtracts interest and taxes to arrive at Net Income (The Bottom Line).</p>
+            <h3>Accrual Basis</h3>
+            <p>Crucially, the P&L is prepared on an accrual basis. It measures economic value created and consumed during the period, which is rarely identical to the actual cash received and paid during that same period.</p>
+        `
+    },
+    'revenue-recognition': {
+        title: 'Revenue Recognition',
+        content: `
+            <p>Revenue is the top line of the P&L and the engine of the business. The rules governing *when* revenue can be recorded are the most critical—and manipulated—in accounting.</p>
+            <h3>The Core Principle (AASB 15)</h3>
+            <p>A company must only recognize revenue when it transfers control of a promised good or service to the customer. If you pay an airline $1,000 in January for a flight in July, the airline cannot record that $1,000 as revenue in January. It is recorded as a liability (Unearned Revenue). The revenue is only recognized in July when the flight actually occurs.</p>
+            <h3>Manipulation Risks</h3>
+            <p>Management under pressure to hit targets may aggressively book revenue early (e.g., shipping products to distributors who haven't actually agreed to buy them) or engage in complex long-term contracts where "percentage of completion" estimates can be manipulated.</p>
+        `
+    },
+    'cost-of-goods-sold-cogs': {
+        title: 'Cost of Goods Sold (COGS)',
+        content: `
+            <p>COGS represents the direct costs attributable to the production of the goods sold by a company. This includes the cost of raw materials and the direct labor used to create the product.</p>
+            <h3>Gross Profit and Margin</h3>
+            <p>Revenue minus COGS equals Gross Profit. The Gross Margin (Gross Profit / Revenue) is a vital metric indicating a company's pricing power and manufacturing efficiency. A high and stable Gross Margin suggests a strong competitive moat; a declining margin suggests fierce competition and price discounting.</p>
+            <h3>Inventory Accounting</h3>
+            <p>In periods of inflation, the method used to account for inventory (FIFO vs LIFO) dramatically impacts COGS. FIFO (First-In, First-Out) assumes the oldest, cheapest inventory is sold first, leading to lower COGS and higher reported profits. (Note: LIFO is banned under IFRS in Australia, but common in the US).</p>
+        `
+    },
+    'depreciation-and-amortisation': {
+        title: 'Depreciation and Amortisation',
+        content: `
+            <p>These are non-cash expenses that allocate the cost of a long-term asset over its useful life, matching the expense to the revenue it helps generate.</p>
+            <h3>The Mechanics</h3>
+            <p>If a mining company buys a truck for $1,000,000 that will last 10 years, they do not record a $1M expense on day one. Instead, they record a Depreciation expense of $100,000 on the P&L every year for 10 years. Amortization is the exact same concept applied to intangible assets like patents.</p>
+            <h3>EBITDA</h3>
+            <p>Because Depreciation and Amortization (D&A) are non-cash accounting entries, analysts often add them back to Operating Profit to calculate EBITDA (Earnings Before Interest, Taxes, Depreciation, and Amortization), which serves as a rough proxy for operating cash flow.</p>
+        `
+    },
+    'operating-income': {
+        title: 'Operating Income',
+        content: `
+            <p>Operating Income (often referred to as EBIT - Earnings Before Interest and Taxes) is the profit a company generates from its core business operations, excluding the impacts of its capital structure and tax rates.</p>
+            <h3>The Purest Metric</h3>
+            <p>For evaluating a company's actual business model, Operating Income is arguably more important than Net Income. It shows whether the company's products and services are actually profitable before the financial engineering of debt (interest) and government regulation (taxes) obscure the picture.</p>
+            <h3>Operating Margin</h3>
+            <p>The Operating Margin (Operating Income / Revenue) measures how efficiently a company manages its overhead costs (SG&A). Software companies typically boast massive operating margins due to low marginal costs, while supermarkets operate on razor-thin margins.</p>
+        `
+    },
+    'operating-expenses': {
+        title: 'Operating Expenses',
+        content: `
+            <p>Often grouped as SG&A (Selling, General, and Administrative expenses), these are the indirect costs of running the business that are not tied directly to the production of goods.</p>
+            <h3>Fixed vs Variable</h3>
+            <p>SG&A includes marketing, executive salaries, office rent, IT systems, and legal fees. Analyzing SG&A requires understanding which costs are fixed (must be paid regardless of sales volume) and which are variable. High fixed costs create "operating leverage"—profits will explode if revenue rises, but collapse violently if revenue falls.</p>
+            <h3>The R&D Debate</h3>
+            <p>Research & Development is typically expensed immediately under SG&A. However, successful R&D creates massive future value. Therefore, heavily expensing R&D depresses current profits, making innovative companies look artificially expensive on a P/E basis.</p>
+        `
+    },
+    'non-operating-income': {
+        title: 'Non-Operating Income',
+        content: `
+            <p>This section captures gains that have absolutely nothing to do with the company's core business activities.</p>
+            <h3>One-Off Gains</h3>
+            <p>Examples include a retailer selling its headquarters building for a massive profit, a successful lawsuit settlement, or gains from foreign exchange translations. These must be segregated from Operating Income because they are non-recurring.</p>
+            <h3>The Analyst's Adjustment</h3>
+            <p>When modeling future earnings, analysts completely strip out Non-Operating Income. A company reporting record Net Income driven entirely by selling an asset is a "low-quality" earnings beat, masking stagnation in the core business.</p>
+        `
+    },
+    'non-operating-expenses': {
+        title: 'Non-Operating Expenses',
+        content: `
+            <p>Similar to non-operating income, these are losses outside the normal course of business.</p>
+            <h3>Interest Expense</h3>
+            <p>The most common recurring non-operating expense is Interest paid on debt. It is considered non-operating because it relates to *how* the company is financed, not *what* the company does. Two identical businesses will have identical Operating Incomes, but wildly different Net Incomes if one uses heavy debt and the other uses equity.</p>
+            <h3>Impairments and Restructuring</h3>
+            <p>Massive asset write-downs or the costs of laying off thousands of workers are recorded here. While management loves to label these as "one-time," if a company has "one-time" restructuring charges every single year, investors should treat them as regular operating expenses.</p>
+        `
+    },
+    'income-taxes': {
+        title: 'Income Taxes',
+        content: `
+            <p>The income tax expense on the P&L rarely matches the actual cash tax paid to the ATO due to the difference between Accounting Profit (GAAP) and Taxable Profit (Tax Law).</p>
+            <h3>Deferred Tax Assets and Liabilities</h3>
+            <p>Because accounting depreciation rules often differ from the accelerated depreciation allowed by tax authorities, a company might pay less cash tax today but owe more in the future. This creates a Deferred Tax Liability on the balance sheet. Conversely, tax losses carried forward create Deferred Tax Assets, which can be used to shield future profits from taxation.</p>
+            <h3>The Effective Tax Rate</h3>
+            <p>Investors track the Effective Tax Rate (Tax Expense / Pre-Tax Income). If a company consistently reports a tax rate drastically lower than the statutory corporate rate (30% in Australia), it may be aggressively utilizing offshore tax havens—a potential regulatory risk.</p>
+        `
+    },
+    'earnings-per-share-eps': {
+        title: 'Earnings Per Share (EPS)',
+        content: `
+            <p>EPS is the portion of a company's profit allocated to each outstanding share of common stock. It is the most widely followed metric on Wall Street and the denominator in the famous P/E ratio.</p>
+            <h3>Basic vs Diluted EPS</h3>
+            <p><strong>Basic EPS</strong> uses the current number of shares. <strong>Diluted EPS</strong> is the crucial metric; it assumes all convertible bonds are converted and all executive stock options are exercised. Diluted EPS shows the "worst-case scenario" for your slice of the pie and is the only metric investors should use.</p>
+            <h3>The EPS Illusion</h3>
+            <p>EPS can be heavily manipulated without improving the business. If Net Income is flat, but management uses debt to buy back millions of shares, the share count drops, and EPS mechanically rises. This financial engineering creates the illusion of growth.</p>
+        `
+    },
+    'limitations-of-the-profit-and-loss': {
+        title: 'Limitations of the Profit and Loss',
+        content: `
+            <p>The P&L is highly informative but fundamentally constrained by accounting rules and management estimates.</p>
+            <h3>The Accrual Disconnect</h3>
+            <p>The P&L does not measure cash. A rapidly growing, highly profitable company on the P&L can still go bankrupt if its profits are entirely tied up in unpaid invoices (Receivables) and it runs out of actual cash to pay employees. Profit is an accounting opinion; cash is a fact.</p>
+            <h3>Subjectivity</h3>
+            <p>Net Income is heavily influenced by subjective estimates: how long will an asset last? What percentage of customers will default on their payments? By tweaking these assumptions, management can legally manufacture or erase millions in reported profit.</p>
+        `
+    },
+    'red-flags-in-the-profit-and-loss': {
+        title: 'Red Flags in the Profit and Loss',
+        content: `
+            <p>Inconsistencies between P&L line items often reveal deteriorating business fundamentals.</p>
+            <h3>Gross Margin Compression</h3>
+            <p>If Revenue is growing but Gross Profit is flat, the Gross Margin is compressing. The company is likely slashing prices to maintain market share, or suffering from supply chain inflation it cannot pass on to customers. This usually foreshadows a collapse in Net Income.</p>
+            <h3>The SG&A Divergence</h3>
+            <p>If Operating Expenses (SG&A) are growing at 15% while Revenue is only growing at 5%, the business model is losing leverage. Management is throwing more money at marketing and administration with diminishing returns.</p>
+        `
+    },
+    'how-to-evaluate-earnings-quality': {
+        title: 'How to Evaluate Earnings Quality',
+        content: `
+            <p>High-quality earnings are repeatable, backed by cash flow, and generated from core operations. Low-quality earnings are the opposite.</p>
+            <h3>The Cash Flow Test</h3>
+            <p>The ultimate test of earnings quality is comparing Net Income to Operating Cash Flow. If a company consistently reports $100M in Net Income but only generates $20M in Operating Cash Flow, the earnings are very low quality, driven by accounting accruals rather than actual cash generation.</p>
+            <h3>Recurring vs Non-Recurring</h3>
+            <p>Remove all one-time gains (asset sales, tax adjustments) from Net Income. If the remaining "core" earnings are shrinking, the headline Net Income figure is an illusion. High-quality earnings come from selling more products at better margins, not from financial engineering.</p>
+        `
+    },
+    'what-is-a-cash-flow-statement': {
+        title: 'What is a Cash Flow Statement?',
+        content: `
+            <p>The Cash Flow Statement strips away the accrual accounting rules of the P&L to show the brutal reality: exactly how much actual cash entered the bank account, and how much left, during the period.</p>
+            <h3>The Antidote to Manipulation</h3>
+            <p>While management can manipulate "profit" via depreciation schedules or revenue recognition policies, it is incredibly difficult to fake cash. The Cash Flow statement acts as a reality check on the Income Statement.</p>
+            <h3>The Three Sections</h3>
+            <p>The statement is strictly divided into three activities: <strong>Operating</strong> (cash from the core business), <strong>Investing</strong> (cash spent on assets or acquisitions), and <strong>Financing</strong> (cash from debt, issuing shares, or paying dividends).</p>
+        `
+    },
+    'operating-cash-flow': {
+        title: 'Operating Cash Flow',
+        content: `
+            <p>Operating Cash Flow (OCF) represents the cash generated by the company's day-to-day core business operations. It is the lifeblood of the company.</p>
+            <h3>The Indirect Method</h3>
+            <p>Most companies calculate OCF using the indirect method: start with Net Income from the P&L, add back non-cash expenses (like Depreciation), and then adjust for changes in Working Capital (inventory, receivables, payables).</p>
+            <h3>The Rule of Thumb</h3>
+            <p>A healthy, mature company must generate positive Operating Cash Flow. If a company consistently reports positive Net Income but negative Operating Cash Flow, it is "growing broke" and will inevitably require external funding to survive.</p>
+        `
+    },
+    'investing-cash-flow': {
+        title: 'Investing Cash Flow',
+        content: `
+            <p>This section details the cash spent on or generated from long-term investments.</p>
+            <h3>Capital Expenditure (CapEx)</h3>
+            <p>The most critical line item here is CapEx—the cash spent buying or maintaining physical assets (PP&E). For capital-intensive businesses (miners, telcos), CapEx consumes a massive portion of operating cash flow.</p>
+            <h3>Acquisitions and Disposals</h3>
+            <p>Cash spent buying other companies (M&A) is recorded here, as is cash received from selling off business divisions or property. A company generating massive cash from selling its assets, rather than from operations, is liquidating itself, not growing.</p>
+        `
+    },
+    'financing-cash-flow': {
+        title: 'Financing Cash Flow',
+        content: `
+            <p>This section tracks the flow of cash between the company and its capital providers (owners and creditors).</p>
+            <h3>Debt and Equity</h3>
+            <p>Cash inflows occur when the company issues new shares or takes on new bank loans/bonds. Cash outflows occur when the company repays the principal on its debt or buys back its own stock.</p>
+            <h3>Dividends Paid</h3>
+            <p>Crucially, actual cash dividends paid to shareholders are recorded here as an outflow. By comparing Operating Cash Flow minus CapEx to Dividends Paid, investors can instantly see if the dividend is sustainable or if the company is borrowing money just to pay the dividend.</p>
+        `
+    },
+    'free-cash-flow': {
+        title: 'Free Cash Flow',
+        content: `
+            <p>Free Cash Flow (FCF) is arguably the single most important financial metric. It represents the actual cash left over after a company has paid all its operating expenses and funded its Capital Expenditure (CapEx) required to maintain the business.</p>
+            <h3>The Calculation</h3>
+            <p><strong>FCF = Operating Cash Flow - Capital Expenditure.</strong></p>
+            <h3>The True Yield</h3>
+            <p>FCF is the money available to reward shareholders (dividends, buybacks), pay down debt, or acquire new businesses without needing external financing. The Free Cash Flow Yield (FCF per share / Share Price) is a far superior valuation metric to the traditional P/E ratio, as it uses hard cash rather than manipulable accounting profit.</p>
+        `
+    },
+    'cashflow-vs-profit': {
+        title: 'Cashflow vs Profit',
+        content: `
+            <p>Understanding the difference between cash flow and profit is the first major hurdle for novice investors.</p>
+            <h3>The Timing Difference</h3>
+            <p>Profit (Net Income) is an accrual concept. If you sell a $1M software system on December 31st, you record $1M in profit immediately. However, if the customer has 90 days to pay, your cash flow is zero. The business looks highly profitable but cannot use that profit to pay wages.</p>
+            <h3>The Capital Expenditure Difference</h3>
+            <p>When you buy a $10M factory, Cash Flow immediately drops by $10M. But Profit is barely affected today, because the $10M cost is capitalized and slowly depreciated on the P&L over 20 years. Profit ignores massive upfront capital outlays; cash flow captures them ruthlessly.</p>
+        `
+    },
+    'non-cash-transactions': {
+        title: 'Non-Cash Transactions',
+        content: `
+            <p>Because the P&L includes expenses that do not require cash outlays, the Cash Flow Statement must adjust for them to find the true cash position.</p>
+            <h3>Depreciation and Amortization</h3>
+            <p>The biggest non-cash adjustments. These are added back to Net Income because, while they reduced reported profit, no actual cash left the bank account this year (the cash left years ago when the asset was originally purchased).</p>
+            <h3>Share-Based Compensation</h3>
+            <p>When a tech company pays its engineers in stock options rather than cash salary, it reduces Net Income. However, because no cash was used, it is added back on the Cash Flow Statement. While this boosts operating cash flow, investors must remember that it dilutes their ownership.</p>
+        `
+    },
+    'effects-of-working-capital': {
+        title: 'Effects of Working Capital',
+        content: `
+            <p>Changes in Working Capital (Current Assets - Current Liabilities) have a massive impact on cash flow, representing cash tied up in the daily operations of the business.</p>
+            <h3>The Cash Drain</h3>
+            <p>If Accounts Receivable increases, it means the company sold goods but hasn't collected the cash yet. This is a negative adjustment (a drain) on cash flow. Similarly, if Inventory increases, cash is trapped in warehouses, reducing cash flow.</p>
+            <h3>The Cash Source</h3>
+            <p>If Accounts Payable increases, it means the company is delaying payment to its suppliers. By holding onto that cash longer, the company artificially boosts its short-term operating cash flow. Exceptional companies (like Amazon or major supermarkets) operate with negative working capital—they sell inventory and collect cash from customers long before they have to pay their suppliers.</p>
+        `
+    },
+    'limitations-of-cash-flow-statement': {
+        title: 'Limitations of Cash Flow Statement',
+        content: `
+            <p>While cash is harder to manipulate than profit, the Cash Flow Statement has its own blind spots.</p>
+            <h3>Classification Games</h3>
+            <p>Management has some discretion over classifying cash flows. A company might aggressively capitalize software development costs (moving the outflow to Investing Cash Flow) rather than expensing them (Operating Cash Flow). This artificially inflates Operating Cash Flow, making the core business look stronger than it is.</p>
+            <h3>Ignores Accrual Reality</h3>
+            <p>A pure focus on cash flow ignores economic obligations that are building up. A company might show great cash flow today by refusing to pay its suppliers, but that mounting Accounts Payable liability will eventually trigger a massive cash outflow and potential insolvency.</p>
+        `
+    },
+    'red-flags-with-cash-flow-statement': {
+        title: 'Red Flags with Cash Flow Statement',
+        content: `
+            <p>The Cash Flow Statement is the ultimate lie detector for the Income Statement.</p>
+            <h3>The Ultimate Divergence</h3>
+            <p>The biggest red flag in all of finance: Net Income is growing rapidly, but Operating Cash Flow is stagnant or declining. This means the profits are purely accounting fictions driven by uncollected receivables or capitalized expenses. It is the classic precursor to an accounting scandal.</p>
+            <h3>Borrowing to Pay Dividends</h3>
+            <p>If Free Cash Flow is $50M, but the company pays a $100M dividend, where did the extra $50M come from? The Financing section will show they issued debt. Borrowing money to pay a dividend is unsustainable and often precedes a massive dividend cut and share price collapse.</p>
+        `
+    },
+'what-is-a-soce': {
+        title: 'What is a SOCE?',
+        content: `
+            <p>The Statement of Changes in Equity (SOCE) acts as the bridge between the Income Statement and the Balance Sheet. It details exactly how and why the Shareholders' Equity section of the balance sheet changed from the beginning of the year to the end.</p>
+            <h3>The Reconciliation</h3>
+            <p>It reconciles the opening equity balance to the closing balance by adding Net Income (from the P&L), subtracting dividends paid, adding capital from newly issued shares, and adjusting for stock buybacks or complex accounting reserves.</p>
+            <h3>Why It Matters</h3>
+            <p>While often ignored by casual investors, the SOCE reveals management's capital allocation strategy. It shows exactly how much wealth is being retained to grow the business versus how much is being distributed back to owners, and whether the owners' stake is being diluted by new share issuances.</p>
+        `
+    },
+    'retained-earnings': {
+        title: 'Retained Earnings',
+        content: `
+            <p>Retained Earnings is the most crucial line item in the SOCE. It represents the cumulative total of every dollar of profit the company has ever made, minus every dollar of dividends it has ever paid out.</p>
+            <h3>The Compounding Engine</h3>
+            <p>For long-term investors (like Warren Buffett), Retained Earnings is the holy grail. A company that generates high returns on capital should ideally retain its earnings and reinvest them into the business to compound wealth, rather than paying them out as dividends.</p>
+            <h3>Negative Retained Earnings</h3>
+            <p>Often called an "Accumulated Deficit." Startups and biotech companies frequently have massive accumulated deficits because they have lost money for years while developing a product. Established companies with sudden accumulated deficits are usually in severe distress.</p>
+        `
+    },
+    'dividends-and-impact-on-equity': {
+        title: 'Dividends and Impact on Equity',
+        content: `
+            <p>When a company pays a cash dividend, it is directly transferring wealth from the corporate balance sheet to the shareholders' personal bank accounts.</p>
+            <h3>The Accounting Impact</h3>
+            <p>Paying a dividend reduces Cash (an Asset) and equally reduces Retained Earnings (Equity). Therefore, on the exact day a stock goes "ex-dividend," its share price drops mechanically by the exact amount of the dividend, reflecting the cash that has left the company.</p>
+            <h3>The Capital Allocation Choice</h3>
+            <p>A high dividend payout ratio (Dividends / Net Income) means management believes they cannot reinvest the cash internally at a high rate of return. Mature utilities pay high dividends; high-growth software companies pay zero dividends.</p>
+        `
+    },
+    'share-issuances-and-capital-raising': {
+        title: 'Share Issuances and Capital Raising',
+        content: `
+            <p>When a company needs money for expansion, acquisitions, or simply to survive, it can issue new shares to the public or institutional investors.</p>
+            <h3>The Dilution Effect</h3>
+            <p>Issuing new shares increases Total Equity (bringing in fresh cash), but it expands the total number of shares outstanding. This dilutes the ownership percentage of existing shareholders. If you owned 10% of a company, and they double the share count, you now only own 5%.</p>
+            <h3>Serial Diluters</h3>
+            <p>Companies that constantly issue shares to fund operating losses (common in junior mining explorers or speculative biotech) continually destroy shareholder value, even if the overall market capitalization of the company grows.</p>
+        `
+    },
+    'share-buybacks-and-treasury-shares': {
+        title: 'Share Buybacks and Treasury Shares',
+        content: `
+            <p>The exact opposite of a share issuance. When a company believes its stock is undervalued, it uses cash to buy its own shares on the open market and cancels them.</p>
+            <h3>Financial Engineering</h3>
+            <p>Buybacks reduce Total Equity (cash leaves the business) and reduce the number of shares outstanding. This concentrates ownership for the remaining shareholders and automatically boosts Earnings Per Share (EPS), even if net income is completely flat.</p>
+            <h3>Value Creation vs Destruction</h3>
+            <p>Buybacks create immense value if executed when the stock is cheap. They destroy massive value if management buys back stock at the peak of a bubble merely to artificially boost EPS and trigger executive bonuses.</p>
+        `
+    },
+    'other-comprehensive-income': {
+        title: 'Other Comprehensive Income (OCI)',
+        content: `
+            <p>OCI is the dumping ground for unrealized gains and losses that accounting rules dictate should bypass the main P&L to prevent wild swings in reported Net Income.</p>
+            <h3>Common OCI Items</h3>
+            <p>The most common items include foreign currency translation adjustments (when an Australian company's US subsidiary fluctuates in value due to the AUD/USD exchange rate), unrealized gains on certain financial derivatives, and changes in the valuation of defined benefit pension plans.</p>
+            <h3>The Analyst's Dilemma</h3>
+            <p>Because OCI items bypass Net Income, they are often ignored by automated screening tools. However, consistent, massive losses hidden in OCI (like toxic currency hedges) will eventually crystallize and destroy shareholder equity. Savvy analysts always check OCI.</p>
+        `
+    },
+    'reserves-and-equity-adjustments': {
+        title: 'Reserves and Equity Adjustments',
+        content: `
+            <p>Reserves are portions of equity set aside for specific purposes or generated by specific accounting revaluations.</p>
+            <h3>Revaluation Reserves</h3>
+            <p>If a company chooses to revalue its property (e.g., land) upwards to match current market prices, the increase does not go through the P&L as profit. Instead, it creates a Revaluation Reserve in the equity section. This boosts Book Value but does not generate any cash.</p>
+            <h3>Foreign Currency Translation Reserve (FCTR)</h3>
+            <p>Holds the cumulative translation differences arising from consolidating foreign subsidiaries into the parent company's reporting currency. In highly volatile currency markets, this reserve can fluctuate wildly, expanding or contracting total equity without any change in the underlying business.</p>
+        `
+    },
+    'management-strategy-and-equity-changes': {
+        title: 'Management Strategy and Equity Changes',
+        content: `
+            <p>The SOCE is the clearest numerical record of management's strategic priorities regarding capital.</p>
+            <h3>Growth vs Yield</h3>
+            <p>A SOCE showing rising Retained Earnings and zero dividends indicates a management team aggressively pursuing long-term growth. A SOCE showing flat Retained Earnings and massive dividend payouts indicates a mature, "cash cow" business model.</p>
+            <h3>The Leverage Strategy</h3>
+            <p>If a company is consistently buying back shares while simultaneously taking on massive long-term debt (visible on the balance sheet), management is executing a leveraged recapitalization. They are replacing expensive equity with cheap debt to artificially boost Return on Equity (ROE), drastically increasing the financial risk profile of the business.</p>
+        `
+    },
+    'limitations-of-the-soce': {
+        title: 'Limitations of the SOCE',
+        content: `
+            <p>While vital for understanding capital structure, the SOCE has distinct limitations.</p>
+            <h3>Complexity Obscuring Reality</h3>
+            <p>The SOCE in modern multinational corporations is incredibly complex, filled with derivative hedges, complex tax reserves, and minority interests. This complexity can obscure the simple reality of whether the core business is actually retaining real cash profits.</p>
+            <h3>Backward Looking</h3>
+            <p>Like all statements, it reflects past decisions. A massive buyback program executed last year (visible on the SOCE) might be suspended tomorrow if credit markets freeze. It tells you what management *did*, not necessarily what they will have the capacity to do next year.</p>
+        `
+    },
+    'red-flags-in-the-soce': {
+        title: 'Red Flags in the SOCE',
+        content: `
+            <p>Anomalies in the SOCE often reveal value destruction that headline earnings figures obscure.</p>
+            <h3>The Dilution Treadmill</h3>
+            <p>If a company is buying back millions of dollars in shares, but the total share count isn't shrinking, it's a massive red flag. Management is using shareholder cash to buy back stock simply to offset the dilution caused by granting themselves millions of stock options. This is a transfer of wealth from shareholders to executives.</p>
+            <h3>Plunging OCI</h3>
+            <p>Consistent, large negative figures appearing in Other Comprehensive Income (OCI) often suggest that management has engaged in terrible currency or interest rate hedging strategies. While technically "unrealized," these losses deplete total equity and often eventually force cash outflows.</p>
+        `
+    },
+    'what-are-notes-to-financial-statements': {
+        title: 'What are Notes to Financial Statements?',
+        content: `
+            <p>The Notes (or Footnotes) are the detailed disclosures appended to the four primary financial statements. They provide the narrative, the accounting assumptions, and the granular breakdowns required to actually understand the numbers.</p>
+            <h3>The Most Important Section</h3>
+            <p>Professional analysts spend 80% of their time reading the footnotes and 20% reading the actual statements. The primary statements provide the summary; the footnotes provide the truth. Without the footnotes, the financial statements are essentially meaningless.</p>
+            <h3>Statutory Requirement</h3>
+            <p>Under accounting standards (AASB/IFRS), the notes are a mandatory, audited part of the financial report. Omitting material information from the footnotes is a breach of continuous disclosure laws.</p>
+        `
+    },
+    'significant-accounting-policies': {
+        title: 'Significant Accounting Policies',
+        content: `
+            <p>Usually the very first note, this section details the specific accounting rules management chose to apply when compiling the statements.</p>
+            <h3>Why It Matters</h3>
+            <p>Accounting is not an exact science; standards often allow multiple ways to treat a transaction (e.g., straight-line vs accelerated depreciation). This note tells you exactly which path management chose. If you are comparing two companies, you must check this note to ensure you are comparing apples to apples.</p>
+            <h3>Changes in Policy</h3>
+            <p>A sudden change in accounting policy is a massive red flag. If a company suddenly changes how it recognizes revenue, it is often a desperate attempt to manufacture profit to hit a Wall Street target, rather than a genuine reflection of changing business economics.</p>
+        `
+    },
+    'consolidated-financial-statements': {
+        title: 'Consolidated Financial Statements',
+        content: `
+            <p>Most large publicly traded entities are not single companies, but "groups" comprising a parent company and dozens (or hundreds) of subsidiaries.</p>
+            <h3>The Consolidation Process</h3>
+            <p>Consolidated statements combine the financials of the parent and all its controlled subsidiaries into a single set of books, eliminating intra-group transactions (e.g., Subsidiary A selling to Subsidiary B). This presents the entire group as a single economic entity.</p>
+            <h3>Non-Controlling Interests</h3>
+            <p>If the parent owns 80% of a subsidiary, it consolidates 100% of the subsidiary's assets and profits. To balance this, it creates a "Non-Controlling Interest" (or Minority Interest) line item to represent the 20% of the subsidiary's equity and profit that belongs to outside investors.</p>
+        `
+    },
+    'estimates-and-assumptions': {
+        title: 'Estimates and Assumptions',
+        content: `
+            <p>Financial statements are riddled with educated guesses. This crucial note details the most significant assumptions management made that carry a high risk of material adjustment.</p>
+            <h3>Key Areas of Subjectivity</h3>
+            <p>Common estimates include: the useful life of machinery (determines depreciation expense), the percentage of customers who won't pay their bills (Allowance for Doubtful Accounts), and the future cash flows used to justify the value of Goodwill.</p>
+            <h3>The Manipulation Vector</h3>
+            <p>Because these are estimates, they are the primary vector for legal earnings manipulation. By slightly tweaking the assumed default rate on customer loans, a bank can instantly manufacture hundreds of millions in reported profit without a single extra dollar of actual cash.</p>
+        `
+    },
+    'revenue-recognition-policies': {
+        title: 'Revenue Recognition Policies',
+        content: `
+            <p>This note breaks down exactly when and how the company recognizes its top-line revenue, specific to its various product lines or contracts.</p>
+            <h3>Complexity in Software and Construction</h3>
+            <p>For a retail store, revenue recognition is simple (cash at the register). For a construction company building a multi-year dam project, or a software company selling a 3-year enterprise license with ongoing support, it is incredibly complex. The note details how revenue is apportioned over time (percentage of completion).</p>
+            <h3>The "Deferred Revenue" Link</h3>
+            <p>This policy directly dictates the "Unearned/Deferred Revenue" liability on the balance sheet. Understanding this note is critical for analyzing SaaS companies, where billing occurs upfront but revenue is recognized slowly over 12 months.</p>
+        `
+    },
+    'breakdown-of-assets-and-liabilities': {
+        title: 'Breakdown of Assets and Liabilities',
+        content: `
+            <p>The primary balance sheet aggregates data into single lines (e.g., "Property, Plant & Equipment: $500M"). The footnotes break this single number down into granular detail.</p>
+            <h3>Looking Under the Hood</h3>
+            <p>The note will reveal that the $500M comprises $100M in land, $300M in specialized factory machinery, and $100M in office buildings, along with the accumulated depreciation for each category. This allows analysts to see exactly where the capital is tied up.</p>
+            <h3>Debt Maturities</h3>
+            <p>Crucially, the notes break down "Long-Term Debt" into a maturity schedule, showing exactly how much debt must be repaid in Year 1, Year 2, Year 3, etc. This is essential for forecasting liquidity crises and refinancing risks.</p>
+        `
+    },
+    'contingent-liabilities': {
+        title: 'Contingent Liabilities',
+        content: `
+            <p>These are potential future obligations that depend on the outcome of an uncertain future event (like a pending lawsuit or an environmental cleanup order).</p>
+            <h3>The Accounting Rule</h3>
+            <p>If the liability is "probable" and the amount can be reasonably estimated, it must be recorded on the balance sheet. However, if it is only "possible" or cannot be reliably estimated, it is *not* on the balance sheet—it is only disclosed here in the footnotes.</p>
+            <h3>The Hidden Danger</h3>
+            <p>Investors must read this note carefully. A company might have a pristine balance sheet, but a footnote detailing a massive, pending class-action lawsuit or a patent infringement claim that could bankrupt the firm if the court rules against them.</p>
+        `
+    },
+    'related-party-transactions': {
+        title: 'Related Party Transactions',
+        content: `
+            <p>This note discloses any transactions between the company and its directors, executives, major shareholders, or their family members.</p>
+            <h3>The Ultimate Red Flag</h3>
+            <p>This is where corporate looting is most visible. If the public company is leasing its headquarters from a private trust owned by the CEO at twice the market rate, it must be disclosed here. If the company is buying supplies from the Chairman's brother-in-law, it is in this note.</p>
+            <h3>Evaluating Integrity</h3>
+            <p>While some related-party transactions are benign or necessary (especially in smaller companies), an excessive number of them strongly suggests that management is prioritizing personal wealth extraction over shareholder returns. Many major corporate frauds begin with opaque related-party transactions.</p>
+        `
+    },
+    'joint-ventures': {
+        title: 'Joint Ventures',
+        content: `
+            <p>When a company partners with another entity to undertake a specific project, the accounting treatment depends on the level of control.</p>
+            <h3>Equity Accounting</h3>
+            <p>If the company has "significant influence" but not outright control (typically owning between 20% and 50%), it usually uses the Equity Method. The investment is recorded as a single line item on the balance sheet, and a single line of profit is recognized on the P&L.</p>
+            <h3>The Hidden Leverage</h3>
+            <p>Because the joint venture's assets and liabilities are not fully consolidated into the parent's balance sheet, massive amounts of debt held within the joint venture remain completely hidden from the parent's primary balance sheet, accessible only by digging into this specific footnote.</p>
+        `
+    },
+    'lease-disclosures': {
+        title: 'Lease Disclosures',
+        content: `
+            <p>Under modern accounting standards (AASB 16), most leases are now capitalized on the balance sheet. The lease footnote provides the granular detail behind these massive numbers.</p>
+            <h3>The Commitments Schedule</h3>
+            <p>The note outlines the total future minimum lease payments committed to over the next 1, 2, 5, and 10+ years. For retailers with hundreds of stores or airlines with massive fleets, these lease commitments represent billions of dollars in inflexible future cash outflows.</p>
+            <h3>Variable vs Fixed</h3>
+            <p>The note also details whether lease payments are fixed, or variable (e.g., tied to inflation/CPI or a percentage of store sales). In an inflationary environment, variable leases tied to CPI can destroy retail profit margins as rent costs automatically surge.</p>
+        `
+    },
+    'financial-instruments-and-risks': {
+        title: 'Financial Instruments and Risks',
+        content: `
+            <p>This dense, highly technical note outlines the company's exposure to financial market risks: interest rates, foreign exchange rates, and credit defaults.</p>
+            <h3>Hedging Strategies</h3>
+            <p>It details the derivative instruments (swaps, options, forwards) the company uses to protect itself. For example, an Australian exporter will detail its forward contracts used to lock in the AUD/USD exchange rate to protect its profit margins.</p>
+            <h3>Sensitivity Analysis</h3>
+            <p>Crucially, this note includes mandatory sensitivity analyses. It explicitly states: "If interest rates rise by 1%, our profit will decrease by $X million." "If the AUD appreciates by 10%, our equity will decrease by $Y million." This is gold for financial modelers.</p>
+        `
+    },
+    'segment-reporting-and-divisions': {
+        title: 'Segment Reporting and Divisions',
+        content: `
+            <p>Large companies are often conglomerates operating in wildly different industries. This note forces management to break down revenue, profit, and assets by operating segment.</p>
+            <h3>Spotting the Winners and Losers</h3>
+            <p>The consolidated P&L might show a stagnant business. But the segment note might reveal that the legacy "Print Media" division is dying rapidly, while a hidden "Digital Software" division is growing at 50% a year with massive margins. This is how value investors find hidden gems.</p>
+            <h3>Management Obfuscation</h3>
+            <p>Management often plays games here by constantly redefining what constitutes a "segment" or lumping a terrible, cash-burning acquisition into a highly profitable core segment to hide its failure. Consistent segment definitions over time are a sign of transparency.</p>
+        `
+    },
+    'subsequent-events-and-disclosures': {
+        title: 'Subsequent Events and Disclosures',
+        content: `
+            <p>The financial year might end on June 30, but the statements aren't published until August. This note details any massive, material events that occurred in that limbo period between the balance date and the publication date.</p>
+            <h3>Material Impacts</h3>
+            <p>If a company's main factory burns down on July 15th, the June 30th balance sheet is technically accurate, but highly misleading. The subsequent events note must disclose the fire, the estimated financial impact, and the insurance coverage status.</p>
+            <h3>Types of Events</h3>
+            <p>Common subsequent events include major acquisitions, sudden regulatory changes, the outbreak of war/pandemics, or the sudden bankruptcy of a major customer. These events don't change the historical numbers, but drastically alter the future trajectory.</p>
+        `
+    },
+    'limitations-of-the-notes': {
+        title: 'Limitations of the Notes',
+        content: `
+            <p>While the notes are the most valuable part of the financial report, they are not a panacea and present distinct challenges for investors.</p>
+            <h3>Information Overload</h3>
+            <p>Modern annual reports routinely exceed 200 pages. Management can effectively hide devastating truths in plain sight by burying a critical two-sentence admission within 50 pages of dense, boilerplate legal jargon about accounting policies.</p>
+            <h3>Complexity and Jargon</h3>
+            <p>The notes regarding financial derivatives, tax reconciliation, and pension accounting require near CPA-level knowledge to decipher. Retail investors often lack the technical training to interpret the implications of a massive "Level 3 Fair Value Asset" adjustment.</p>
+        `
+    },
+    'red-flags-in-the-notes': {
+        title: 'Red Flags in the Notes',
+        content: `
+            <p>Specific phrases or structural changes in the footnotes should trigger immediate skepticism.</p>
+            <h3>The Word "Change"</h3>
+            <p>Any note detailing a "change in accounting estimate" (e.g., lengthening the assumed life of machinery to reduce depreciation) or a "change in accounting policy" is a red flag. Management rarely changes rules to make profits look worse; they change them to hit bonuses when the underlying business is failing.</p>
+            <h3>Related-Party Explosion</h3>
+            <p>A sudden increase in related-party loans (especially loans *from* the company *to* the CEO to buy stock) or complex joint ventures with opaque offshore entities usually precedes massive shareholder value destruction. When the footnotes read like a complex legal thriller, sell the stock.</p>
+        `
+    },
+    'management-discussion-analysis': {
+        title: 'Management Discussion & Analysis (MD&A)',
+        content: `
+            <p>The MD&A (often called the Directors' Report or Operating and Financial Review in Australia) is the narrative section preceding the financial statements where management explains the company's performance in their own words.</p>
+            <h3>The "Why" Behind the Numbers</h3>
+            <p>While the financial statements provide the "what," the MD&A is supposed to provide the "why." If revenue dropped 10%, the MD&A must explain whether this was due to losing a major client, broader macroeconomic weakness, or divesting a division.</p>
+            <h3>The Subjectivity Risk</h3>
+            <p>Unlike the financial statements, the MD&A is largely unaudited narrative. It is heavily influenced by investor relations and corporate lawyers, designed to put the most positive spin possible on terrible results. It is a marketing document as much as a financial one.</p>
+        `
+    },
+'structure-of-an-md-a': {
+        title: 'Structure of an MD&A',
+        content: `
+            <p>While unregulated compared to the financial tables, a high-quality MD&A follows a logical, structured format to explain the business trajectory.</p>
+            <h3>Core Components</h3>
+            <p>It typically begins with an Executive Summary of the year, followed by a detailed review of operations (broken down by business segment). It then covers the financial condition (liquidity, debt levels, capital resources), a discussion of key risks, and finally, management's outlook or guidance for the coming year.</p>
+            <h3>The Outlook Section</h3>
+            <p>For investors, the "Outlook" or "Guidance" section is often the most market-moving part of the entire annual report. It is the only place where management formally tells the market what they expect to happen next year regarding revenue growth, margins, and capital expenditure.</p>
+        `
+    },
+    'how-to-analyse-an-md-a': {
+        title: 'How to Analyse an MD&A',
+        content: `
+            <p>Analyzing the MD&A requires reading between the lines and aggressively comparing the current narrative to past promises.</p>
+            <h3>The Tone at the Top</h3>
+            <p>Is the tone promotional or factual? Do they take responsibility for failures, or blame everything on "unprecedented macroeconomic headwinds"? Great CEOs write MD&As that read like honest letters to a smart partner (the Warren Buffett style); poor CEOs write MD&As that read like press releases.</p>
+            <h3>The Consistency Check</h3>
+            <p>The most powerful technique is to pull up the MD&A from three years ago. What strategic initiatives did management promise then? Did they actually execute them? If management constantly announces new, "transformational" strategies every year but never delivers on the old ones, the narrative is worthless.</p>
+        `
+    },
+    'directors-declaration': {
+        title: "Directors' Declaration",
+        content: `
+            <p>Under the Australian Corporations Act, the Directors' Declaration is a mandatory legal statement signed by the board of directors.</p>
+            <h3>The Legal Commitment</h3>
+            <p>The directors must explicitly state that, in their opinion, the financial statements comply with accounting standards and give a "true and fair view" of the company's financial position and performance. Crucially, they must also state that there are reasonable grounds to believe the company will be able to pay its debts as and when they become due (the solvency declaration).</p>
+            <h3>Personal Liability</h3>
+            <p>If directors sign this declaration knowing the company is insolvent, or knowing the accounts are fraudulent, they are trading while insolvent and face severe personal liability, massive fines, and potential imprisonment.</p>
+        `
+    },
+    'auditor-s-independence': {
+        title: "Auditor's Independence",
+        content: `
+            <p>The entire system of financial reporting relies on the premise that the external auditor is completely independent from the management team they are auditing.</p>
+            <h3>The Inherent Conflict</h3>
+            <p>A structural conflict of interest exists: the auditor is paid by the company they are auditing. If the auditor is too aggressive, management might fire them and hire a more compliant firm (opinion shopping). To combat this, strict independence rules exist.</p>
+            <h3>Independence Disclosures</h3>
+            <p>The annual report must include an "Auditor's Independence Declaration." Furthermore, the notes must disclose exactly how much the audit firm was paid for the audit, versus how much they were paid for "non-audit services" (like tax consulting). If a firm is paid $1M for the audit but $10M for consulting, their independence is highly compromised.</p>
+        `
+    },
+    'independent-auditor-s-report': {
+        title: "Independent Auditor's Report",
+        content: `
+            <p>This is the official opinion provided by the external audit firm (e.g., PwC, EY) after reviewing the financial statements. It is the first thing a professional investor reads.</p>
+            <h3>The Unqualified Opinion</h3>
+            <p>This is the "clean bill of health." The auditor states that the financials present a "true and fair view" in accordance with accounting standards. Almost all public companies receive an unqualified opinion.</p>
+            <h3>The Qualified Opinion and Going Concern</h3>
+            <p>If the auditor disagrees with a specific accounting treatment, they issue a "Qualified" opinion (a major red flag). If they doubt the company can survive the next 12 months, they add an "Emphasis of Matter regarding Going Concern" (a catastrophic red flag, usually causing an immediate massive share price drop).</p>
+        `
+    },
+    'limitations-of-the-md-a': {
+        title: 'Limitations of the MD&A',
+        content: `
+            <p>The MD&A is fundamentally an advocacy document, not an objective analysis.</p>
+            <h3>The Omission Bias</h3>
+            <p>Management will eagerly dedicate five pages to explaining a 10% increase in revenue in a minor division, but use only one vague sentence to dismiss a massive write-down in their core business. They emphasize the good and obfuscate the bad.</p>
+            <h3>The Non-GAAP Mirage</h3>
+            <p>The MD&A is the primary vehicle for promoting Non-GAAP/Underlying metrics. Management will heavily highlight an "Adjusted EBITDA" that shows massive growth, while burying the fact that Statutory GAAP Net Income actually collapsed due to very real, cash-draining "restructuring" costs.</p>
+        `
+    },
+    'red-flags-in-the-md-a': {
+        title: 'Red Flags in the MD&A',
+        content: `
+            <p>Semantic analysis of the MD&A often reveals distress long before the numbers do.</p>
+            <h3>The Blame Game</h3>
+            <p>When a company performs poorly, does management take responsibility, or do they blame the weather, currency fluctuations, the government, or "unprecedented supply chain issues"? Great managers own their failures; poor managers blame the macro environment.</p>
+            <h3>Changing the Goalposts</h3>
+            <p>If management focused heavily on "Revenue Growth" for three years, but suddenly stops mentioning revenue and entirely focuses on "Margin Expansion," it usually means revenue growth has stalled. If they stop reporting a metric they previously highlighted, assume the metric has turned deeply negative.</p>
+        `
+    },
+    'what-are-financial-ratios': {
+        title: 'What are Financial Ratios?',
+        content: `
+            <p>Financial ratios are mathematical calculations using data from the financial statements to evaluate various aspects of a company's operational and financial performance.</p>
+            <h3>The Power of Relativity</h3>
+            <p>Absolute numbers are meaningless. Knowing a company made $100M in profit is useless unless you know how much capital it took to generate that profit, or how much revenue was required. Ratios provide scale, allowing you to compare a $1B company directly against a $100B company.</p>
+            <h3>Trend and Peer Analysis</h3>
+            <p>A single ratio in isolation is also useless. Ratios must be analyzed across time (Trend Analysis - is the margin improving or deteriorating over 5 years?) and against industry competitors (Peer Analysis - is a 10% margin good or bad for the retail sector?).</p>
+        `
+    },
+    'leverage-ratios': {
+        title: 'Leverage Ratios',
+        content: `
+            <p>Leverage ratios assess the extent to which a company uses debt to finance its assets, indicating the level of financial risk.</p>
+            <h3>Debt-to-Equity (D/E) Ratio</h3>
+            <p>Calculated as Total Debt / Shareholders' Equity. A D/E of 2.0 means the company uses $2 of debt for every $1 of equity. Acceptable levels vary wildly by industry; utilities can safely handle a D/E of 2.0, while a software company with a D/E of 2.0 is highly risky.</p>
+            <h3>Net Debt to EBITDA</h3>
+            <p>Calculated as (Total Debt - Cash) / EBITDA. This is the primary metric used by banks to assess lending risk. It roughly answers: "How many years of current cash flow would it take to pay off all the debt?" A ratio over 3.0 is generally considered high leverage; over 5.0 is distress territory.</p>
+        `
+    },
+    'liquidity-ratios': {
+        title: 'Liquidity Ratios',
+        content: `
+            <p>Liquidity ratios measure a company's ability to meet its short-term debt obligations (bills due within 12 months) without raising external capital.</p>
+            <h3>The Current Ratio</h3>
+            <p>Calculated as Current Assets / Current Liabilities. A ratio above 1.0 means the company has enough liquid assets (cash, receivables, inventory) to pay its short-term bills. A ratio below 1.0 indicates a potential liquidity crunch, though supermarkets (like Coles or Woolworths) routinely operate below 1.0 due to high inventory turnover.</p>
+            <h3>The Quick Ratio (Acid Test)</h3>
+            <p>Calculated as (Cash + Equivalents + Receivables) / Current Liabilities. This is a far stricter test than the Current Ratio because it completely excludes Inventory (which might be obsolete and impossible to sell quickly for cash). It measures immediate survival capacity.</p>
+        `
+    },
+    'solvency-ratios': {
+        title: 'Solvency Ratios',
+        content: `
+            <p>While liquidity measures short-term survival, solvency ratios measure a company's ability to sustain operations indefinitely by meeting its long-term debt obligations.</p>
+            <h3>Interest Coverage Ratio</h3>
+            <p>Calculated as Operating Income (EBIT) / Interest Expense. This is the ultimate solvency test. It answers: "How many times can the company pay its interest bill from its core profits?" A ratio of 5.0 means profit could fall 80% and the company could still pay its interest. A ratio below 1.5 is extremely dangerous.</p>
+            <h3>Debt to Asset Ratio</h3>
+            <p>Calculated as Total Debt / Total Assets. This shows the proportion of the company's assets that are financed by creditors rather than owners. A ratio of 0.60 means 60% of the assets are debt-financed, leaving a 40% equity cushion if asset values crash.</p>
+        `
+    },
+    'profitability-ratios': {
+        title: 'Profitability Ratios',
+        content: `
+            <p>Profitability ratios assess a company's ability to generate earnings relative to its revenue, operating costs, balance sheet assets, or shareholder equity.</p>
+            <h3>Margin Ratios</h3>
+            <p>These measure efficiency at different stages of the P&L. <strong>Gross Margin</strong> (Gross Profit/Revenue) shows production efficiency and pricing power. <strong>Operating Margin</strong> (EBIT/Revenue) shows overhead efficiency. <strong>Net Margin</strong> (Net Income/Revenue) shows the final bottom-line efficiency.</p>
+            <h3>Return Ratios</h3>
+            <p>These measure how effectively capital is deployed. <strong>Return on Equity (ROE)</strong> (Net Income / Shareholders' Equity) measures the return generated on the owners' money. <strong>Return on Invested Capital (ROIC)</strong> measures the return generated on all capital (Debt + Equity), making it the purest measure of management's capital allocation skill.</p>
+        `
+    },
+    'cash-flow-ratios': {
+        title: 'Cash Flow Ratios',
+        content: `
+            <p>Because accounting profit can be manipulated, cash flow ratios are used to verify the true financial health of the business.</p>
+            <h3>Operating Cash Flow to Net Income Ratio</h3>
+            <p>Calculated as Operating Cash Flow / Net Income. This is the ultimate test of "Earnings Quality." If the ratio is consistently greater than 1.0, the profits are real and backed by cash. If it is consistently below 1.0, the profits are accounting fictions.</p>
+            <h3>Free Cash Flow Margin</h3>
+            <p>Calculated as Free Cash Flow / Revenue. It shows exactly how many cents of hard, distributable cash the company generates for every dollar of sales. A software company with a 30% FCF margin is an extraordinary compounding machine; an airline might have a 2% FCF margin.</p>
+        `
+    },
+    'efficiency-ratios': {
+        title: 'Efficiency Ratios',
+        content: `
+            <p>Also known as Activity Ratios, these measure how effectively a company utilizes its assets to generate revenue and cash.</p>
+            <h3>Inventory Turnover</h3>
+            <p>Calculated as COGS / Average Inventory. It shows how many times a company sells and replaces its inventory over a year. A higher number is better. If the turnover is slowing down, it means inventory is piling up, risking obsolescence and forced discounting.</p>
+            <h3>Days Sales Outstanding (DSO)</h3>
+            <p>Calculated as (Accounts Receivable / Revenue) x 365. It measures how many days, on average, it takes a company to collect cash after making a sale. If DSO spikes from 45 to 70 days, the company is either offering desperate credit terms to boost sales, or customers are refusing to pay.</p>
+        `
+    },
+    'coverage-ratios': {
+        title: 'Coverage Ratios',
+        content: `
+            <p>Coverage ratios are specialized solvency ratios focused specifically on cash flows and fixed obligations, heavily utilized by credit analysts and bondholders.</p>
+            <h3>Fixed Charge Coverage Ratio</h3>
+            <p>A stricter version of the Interest Coverage ratio. Calculated as (EBIT + Fixed Charges) / (Interest Expense + Fixed Charges). "Fixed Charges" include massive off-balance-sheet obligations like long-term property leases. It provides a truer picture of default risk for retailers and airlines.</p>
+            <h3>Debt Service Coverage Ratio (DSCR)</h3>
+            <p>Used heavily in real estate and project finance. Calculated as Net Operating Income / Total Debt Service (Principal Repayments + Interest). A DSCR below 1.0 means the asset does not generate enough cash to pay its mortgage, requiring the owners to inject fresh capital just to prevent foreclosure.</p>
+        `
+    },
+    'market-ratios': {
+        title: 'Market Ratios',
+        content: `
+            <p>Market ratios relate a company's financial metrics to its current share price, helping investors determine if a stock is cheap or expensive (Valuation).</p>
+            <h3>Price-to-Earnings (P/E) Ratio</h3>
+            <p>Calculated as Share Price / Earnings Per Share. It represents how much investors are willing to pay for $1 of current earnings. A high P/E implies high growth expectations. The P/E is popular but flawed, as it uses manipulable Net Income and ignores debt.</p>
+            <h3>Enterprise Value to EBITDA (EV/EBITDA)</h3>
+            <p>The superior valuation metric. Enterprise Value (Market Cap + Debt - Cash) represents the true cost to buy the entire business. EBITDA represents the cash flow available to the buyer. This ratio allows investors to compare companies with wildly different debt levels accurately.</p>
+        `
+    },
+    'growth-ratios': {
+        title: 'Growth Ratios',
+        content: `
+            <p>These track the historical expansion (or contraction) of key financial metrics over multiple periods, used to extrapolate future trajectories.</p>
+            <h3>Compound Annual Growth Rate (CAGR)</h3>
+            <p>CAGR smooths out volatility to show the steady, annualized growth rate over a specific time horizon (e.g., 5 years). A company might grow revenue 20%, then -5%, then 15%; the CAGR provides the average compounding rate.</p>
+            <h3>The Rule of 40</h3>
+            <p>A specialized metric used for evaluating SaaS and cloud companies. Calculated as (Revenue Growth Rate + Free Cash Flow Margin). If the sum exceeds 40%, the company is considered an elite, sustainable software business, balancing aggressive growth with efficient cash generation.</p>
+        `
+    },
+    'other-ratios': {
+        title: 'Other Ratios',
+        content: `
+            <p>Investors often look at niche or sector-specific ratios to gain deeper insights.</p>
+            <h3>Dividend Yield and Payout Ratio</h3>
+            <p><strong>Dividend Yield</strong> (Annual Dividend / Share Price) shows the cash return on investment. <strong>Payout Ratio</strong> (Dividends / Net Income) shows how safe that dividend is. A payout ratio over 80% is highly vulnerable to being cut if earnings drop.</p>
+            <h3>Book-to-Bill Ratio</h3>
+            <p>Used heavily in technology, aerospace, and capital goods. Calculated as Orders Received / Orders Shipped. A ratio > 1.0 means demand is outstripping supply and future revenue will grow. A ratio < 1.0 means the backlog is shrinking and future revenue will likely fall.</p>
+        `
+    },
+    'limitations-of-financial-ratios': {
+        title: 'Limitations of Financial Ratios',
+        content: `
+            <p>Ratios are only as good as the raw accounting data fed into them. If the underlying data is manipulated, the ratio is a mathematical illusion.</p>
+            <h3>The Cross-Industry Fallacy</h3>
+            <p>Comparing ratios across different industries is lethal. A Current Ratio of 0.8 is a bankruptcy warning for a heavy manufacturer, but a sign of brilliant efficiency for a major supermarket chain. Ratios must only be compared to direct peers.</p>
+            <h3>The Inflation Distortion</h3>
+            <p>In periods of high inflation, historical cost accounting distorts ratios. A company with old, fully depreciated factories will show artificially high ROIC and margins compared to a competitor that recently built a new factory at inflated prices, even if the competitor is far more efficient.</p>
+        `
+    },
+    'horizontal-analysis': {
+        title: 'Horizontal Analysis',
+        content: `
+            <p>Horizontal analysis (or Trend Analysis) involves comparing financial statement line items over multiple consecutive periods (years or quarters) to identify growth trajectories and anomalies.</p>
+            <h3>Spotting the Trend</h3>
+            <p>You establish a base year (Year 1) and express all subsequent years as a percentage of that base. If Revenue was $100M in Year 1, $110M in Year 2 (110%), and $130M in Year 3 (130%), the trend is clearly accelerating.</p>
+            <h3>The Power of Divergence</h3>
+            <p>Horizontal analysis is most powerful when comparing two linked items. If you see Revenue grew 10% over three years, but Accounts Receivable grew 40% over the same three years, you have immediately identified a massive, structural collection problem that a single-year analysis would miss.</p>
+        `
+    },
+    'vertical-analysis': {
+        title: 'Vertical Analysis',
+        content: `
+            <p>Vertical analysis (or Common-Size Analysis) involves expressing every line item on a financial statement as a percentage of a base figure, usually within a single period.</p>
+            <h3>The Common-Size Income Statement</h3>
+            <p>Every line item is expressed as a percentage of Total Revenue. If Revenue is $100M, and COGS is $40M, COGS is 40%. This instantly reveals the company's margin structure (Gross Margin = 60%).</p>
+            <h3>The True Peer Comparison</h3>
+            <p>Vertical analysis is the only way to compare a massive industry giant against a small upstart. Comparing Apple's absolute R&D spend to a small competitor is useless. But comparing Apple's R&D as a *percentage of revenue* to the competitor's reveals exactly who is prioritizing innovation.</p>
+        `
+    },
+    'sensitivity-analysis': {
+        title: 'Sensitivity Analysis',
+        content: `
+            <p>Financial analysis must look forward. Sensitivity analysis tests how vulnerable a company's projected profits or cash flows are to changes in key assumptions.</p>
+            <h3>Stress Testing the Model</h3>
+            <p>If you project a company will generate $100M in cash next year, you must ask "What if?" What if the cost of raw materials rises by 10%? What if interest rates rise by 2%? What if sales volume drops by 5%?</p>
+            <h3>Identifying the Primary Risk Vector</h3>
+            <p>Sensitivity analysis identifies the "swing factor." You might discover that a 10% drop in sales volume wipes out 50% of the profit (high operating leverage), while a 2% rise in interest rates only reduces profit by 2%. You now know to focus all your research on customer demand, not macroeconomic interest rates.</p>
+        `
+    },
+    'financial-projections': {
+        title: 'Financial Projections',
+        content: `
+            <p>Projecting future financial statements (Pro Forma modeling) is the ultimate synthesis of historical analysis and qualitative forecasting.</p>
+            <h3>The Revenue Anchor</h3>
+            <p>All projections begin with Revenue. Analysts use qualitative factors (market share, pricing power, macro trends) to forecast top-line growth. Every subsequent line item (COGS, SG&A, Working Capital) is then projected as a historical percentage of that forecasted revenue.</p>
+            <h3>Garbage In, Garbage Out</h3>
+            <p>A projection model is mathematically precise but fundamentally fragile. If your revenue growth assumption is wrong by 2%, the projected Free Cash Flow three years out will be wildly inaccurate. Great analysts focus on getting the three core assumptions right, rather than building overly complex, 500-line spreadsheet models.</p>
+        `
+    },
+    'recasting-financial-statements': {
+        title: 'Recasting Financial Statements',
+        content: `
+            <p>Professional analysts rarely use the statutory GAAP financial statements as published. They "recast" or "normalize" them to reflect the true economic reality of the core business.</p>
+            <h3>Stripping the Noise</h3>
+            <p>Recasting involves systematically removing all non-recurring items (lawsuit settlements, asset sales, genuine restructuring costs) from the historical Income Statement. This provides a "clean" base of core operating earnings to use for projecting the future.</p>
+            <h3>Capitalizing Operating Leases and R&D</h3>
+            <p>Advanced analysts will also recast the statements by treating Operating Leases as Debt (adjusting the balance sheet) and capitalizing R&D (treating it as an investment that decays over time, rather than an immediate expense). This drastically alters reported ROIC and provides a truer picture of economic returns.</p>
+        `
+    },
+    'du-pont-analysis': {
+        title: 'Du Pont Analysis',
+        content: `
+            <p>Created by the DuPont Corporation in the 1920s, this framework breaks down Return on Equity (ROE) into three distinct components to reveal exactly *how* a company is generating its returns.</p>
+            <h3>The Three Components</h3>
+            <p><strong>ROE = Net Margin x Asset Turnover x Financial Leverage.</strong></p>
+            <p>(Net Income/Sales) x (Sales/Total Assets) x (Total Assets/Shareholders' Equity).</p>
+            <h3>Isolating the Edge</h3>
+            <p>A software company achieves high ROE through massive Net Margins. A supermarket achieves high ROE through massive Asset Turnover (selling cheap inventory very quickly). A bank achieves high ROE through massive Financial Leverage (using debt). DuPont analysis tells you exactly which lever management is pulling.</p>
+        `
+    },
+    'segmental-analysis': {
+        title: 'Segmental Analysis',
+        content: `
+            <p>For conglomerates, analyzing the consolidated financial statements is useless. The business must be broken down and analyzed piece by piece using the segment footnotes.</p>
+            <h3>Sum of the Parts (SOTP)</h3>
+            <p>Analysts project the revenues, margins, and cash flows for each individual division separately. They then value each division using peer multiples specific to that industry. Adding these individual valuations together (minus corporate overhead) provides a "Sum of the Parts" valuation.</p>
+            <h3>Unlocking Value</h3>
+            <p>Often, a conglomerate will trade at a massive "conglomerate discount." The market values the combined entity at $10B, but segmental analysis reveals that if the three divisions were spun off into independent companies, they would be worth $15B. This is the hunting ground for activist investors.</p>
+        `
+    },
+    'break-even-analysis': {
+        title: 'Break-Even Analysis',
+        content: `
+            <p>Break-even analysis determines the exact level of sales required to cover all fixed and variable costs, resulting in a profit of zero. Any sale beyond this point generates profit.</p>
+            <h3>The Calculation</h3>
+            <p><strong>Break-Even Point (Units) = Fixed Costs / (Price Per Unit - Variable Cost Per Unit).</strong> The denominator is known as the "Contribution Margin."</p>
+            <h3>Operating Leverage</h3>
+            <p>This analysis reveals a company's risk profile. A software company has massive fixed costs (R&D, servers) and near-zero variable costs. Its break-even point is very high, making it highly risky early on. But once break-even is achieved, almost 100% of every new dollar of revenue drops straight to the bottom line as pure profit (high operating leverage).</p>
+        `
+    },
+
+
+            'industry-guides-automobiles-and-components': {
+
+                title: 'Automobiles and components',
+
+                content: `
+
+                    
+
+<p>Dummy content for Automobiles and components goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-banking': {
+
+                title: 'Banking',
+
+                content: `
+
+                    
+
+<p>Dummy content for Banking goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-capital-goods': {
+
+                title: 'Capital goods',
+
+                content: `
+
+                    
+
+<p>Dummy content for Capital goods goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-commercial-and-professional-services': {
+
+                title: 'Commercial and professional services',
+
+                content: `
+
+                    
+
+<p>Dummy content for Commercial and professional services goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-consumer-durable-and-apparel': {
+
+                title: 'Consumer durable and apparel',
+
+                content: `
+
+                    
+
+<p>Dummy content for Consumer durable and apparel goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-consumer-services': {
+
+                title: 'Consumer services',
+
+                content: `
+
+                    
+
+<p>Dummy content for Consumer services goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-consumer-discretionary-retail': {
+
+                title: 'Consumer discretionary & retail',
+
+                content: `
+
+                    
+
+<p>Dummy content for Consumer discretionary & retail goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-energy-industry': {
+
+                title: 'Energy industry',
+
+                content: `
+
+                    <p>Dummy content for Energy industry goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-consumer-staples-distribution-retail': {
+
+                title: 'Consumer staples distribution & retail',
+
+                content: `
+
+                    
+
+<p>Dummy content for Consumer staples distribution & retail goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-food-beverage-and-tobacco': {
+
+                title: 'Food, beverage and tobacco',
+
+                content: `
+
+                    
+
+<p>Dummy content for Food, beverage and tobacco goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-health-care-equipment-and-services': {
+
+                title: 'Health care equipment and services',
+
+                content: `
+
+                    
+
+<p>Dummy content for Health care equipment and services goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-household-and-personal-products': {
+
+                title: 'Household and personal products',
+
+                content: `
+
+                    
+
+<p>Dummy content for Household and personal products goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-insurance': {
+
+                title: 'Insurance',
+
+                content: `
+
+                    
+
+<p>Dummy content for Insurance goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-materials': {
+
+                title: 'Materials',
+
+                content: `
+
+                    
+
+<p>Dummy content for Materials goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-media-and-entertainment': {
+
+                title: 'Media and entertainment',
+
+                content: `
+
+                    
+
+<p>Dummy content for Media and entertainment goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-pharmaceuticals-biotechnology-and-life-sciences': {
+
+                title: 'Pharmaceuticals, biotechnology and life sciences',
+
+                content: `
+
+                    
+
+<p>Dummy content for Pharmaceuticals, biotechnology and life sciences goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-equity-real-estate-investment-trusts': {
+
+                title: 'Equity real estate Investment trusts',
+
+                content: `
+
+                    <p>Dummy content for Equity real estate Investment trusts goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-financial-services': {
+
+                title: 'Financial services',
+
+                content: `
+
+                    
+
+<p>Dummy content for Financial services goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-semiconductors': {
+
+                title: 'Semiconductors',
+
+                content: `
+
+                    
+
+<p>Dummy content for Semiconductors goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-software-and-services': {
+
+                title: 'Software and services',
+
+                content: `
+
+                    
+
+<p>Dummy content for Software and services goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-technology-hardware': {
+
+                title: 'Technology hardware',
+
+                content: `
+
+                    
+
+<p>Dummy content for Technology hardware goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-telecommunications': {
+
+                title: 'Telecommunications',
+
+                content: `
+
+                    
+
+<p>Dummy content for Telecommunications goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-transportation': {
+
+                title: 'Transportation',
+
+                content: `
+
+                    
+
+<p>Dummy content for Transportation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-utilities': {
+
+                title: 'Utilities',
+
+                content: `
+
+                    
+
+<p>Dummy content for Utilities goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'industry-guides-real-estate-management-development': {
+
+                title: 'Real estate management & development',
+
+                content: `
+
+                    
+
+<p>Dummy content for Real estate management & development goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-nature-and-purpose': {
+
+                title: 'Nature and purpose',
+
+                content: `
+
+                    
+
+<p>Dummy content for Nature and purpose goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-users-of-financial-statements': {
+
+                title: 'Users of financial statements',
+
+                content: `
+
+                    
+
+<p>Dummy content for Users of financial statements goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-basic-concepts-of-accounting': {
+
+                title: 'Basic concepts of accounting',
+
+                content: `
+
+                    
+
+<p>Dummy content for Basic concepts of accounting goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-gaap-in-australia': {
+
+                title: 'GAAP in Australia',
+
+                content: `
+
+                    
+
+<p>Dummy content for GAAP in Australia goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-ifrs-in-australia': {
+
+                title: 'IFRS in Australia',
+
+                content: `
+
+                    
+
+<p>Dummy content for IFRS in Australia goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-types-of-financial-statements': {
+
+                title: 'Types of financial statements',
+
+                content: `
+
+                    
+
+<p>Dummy content for Types of financial statements goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-how-statements-interlink': {
+
+                title: 'How statements interlink',
+
+                content: `
+
+                    
+
+<p>Dummy content for How statements interlink goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-what-is-financial-analysis': {
+
+                title: 'What is financial analysis?',
+
+                content: `
+
+                    
+
+<p>Dummy content for What is financial analysis? goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-when-financials-are-misleading': {
+
+                title: 'When financials are misleading',
+
+                content: `
+
+                    
+
+<p>Dummy content for When financials are misleading goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-limitations-of-financial-analysis': {
+
+                title: 'Limitations of financial analysis',
+
+                content: `
+
+                    
+
+<p>Dummy content for Limitations of financial analysis goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-12-signs-of-strong-companies': {
+
+                title: '12 signs of strong companies',
+
+                content: `
+
+                    
+
+<p>Dummy content for 12 signs of strong companies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-12-signs-of-financial-distress': {
+
+                title: '12 signs of financial distress',
+
+                content: `
+
+                    
+
+<p>Dummy content for 12 signs of financial distress goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-the-altman-z-score': {
+
+                title: 'The Altman Z-score',
+
+                content: `
+
+                    
+
+<p>Dummy content for The Altman Z-score goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-probability-of-bankruptcy': {
+
+                title: 'Probability of bankruptcy',
+
+                content: `
+
+                    
+
+<p>Dummy content for Probability of bankruptcy goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-drivers-of-business-growth': {
+
+                title: 'Drivers of business growth',
+
+                content: `
+
+                    
+
+<p>Dummy content for Drivers of business growth goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-the-top-5-questions-to-ask': {
+
+                title: 'The top 5 questions to ask',
+
+                content: `
+
+                    
+
+<p>Dummy content for The top 5 questions to ask goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-how-to-read-financials': {
+
+                title: 'How to read financials',
+
+                content: `
+
+                    
+
+<p>Dummy content for How to read financials goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-signs-of-transparent-company': {
+
+                title: 'Signs of transparent company',
+
+                content: `
+
+                    
+
+<p>Dummy content for Signs of transparent company goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-common-errors': {
+
+                title: 'Common errors',
+
+                content: `
+
+                    
+
+<p>Dummy content for Common errors goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'financial-statement-analysis-12-management-mistakes': {
+
+                title: '12 management mistakes',
+
+                content: `
+
+                    
+
+<p>Dummy content for 12 management mistakes goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'accounting-shenanigans-intro-to-accounting-shenanigans': {
+
+                title: 'Intro to accounting shenanigans',
+
+                content: `
+
+                    <p>Dummy content for Intro to accounting shenanigans goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'accounting-shenanigans-types-of-shenanigans': {
+
+                title: 'Types of shenanigans',
+
+                content: `
+
+                    <p>Dummy content for Types of shenanigans goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'accounting-shenanigans-how-to-spot-red-flags': {
+
+                title: 'How to spot red flags',
+
+                content: `
+
+                    <p>Dummy content for How to spot red flags goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'accounting-shenanigans-revenue-recognition-tricks': {
+
+                title: 'Revenue recognition tricks',
+
+                content: `
+
+                    
+
+<p>Dummy content for Revenue recognition tricks goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'accounting-shenanigans-expense-manipulation': {
+
+                title: 'Expense manipulation',
+
+                content: `
+
+                    <p>Dummy content for Expense manipulation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'accounting-shenanigans-asset-overvaluation': {
+
+                title: 'Asset overvaluation',
+
+                content: `
+
+                    <p>Dummy content for Asset overvaluation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'accounting-shenanigans-liability-concealment': {
+
+                title: 'Liability concealment',
+
+                content: `
+
+                    <p>Dummy content for Liability concealment goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'accounting-shenanigans-cash-flow-manipulation': {
+
+                title: 'Cash flow manipulation',
+
+                content: `
+
+                    
+
+<p>Dummy content for Cash flow manipulation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'accounting-shenanigans-real-world-case-studies': {
+
+                title: 'Real world case studies',
+
+                content: `
+
+                    <p>Dummy content for Real world case studies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'accounting-shenanigans-forensic-accounting-tools': {
+
+                title: 'Forensic accounting tools',
+
+                content: `
+
+                    <p>Dummy content for Forensic accounting tools goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'qualitative-factors-management-quality': {
+
+                title: 'Management quality',
+
+                content: `
+
+                    <p>Dummy content for Management quality goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'qualitative-factors-corporate-governance': {
+
+                title: 'Corporate governance',
+
+                content: `
+
+                    
+
+<p>Dummy content for Corporate governance goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'qualitative-factors-competitive-advantage-moats': {
+
+                title: 'Competitive advantage (Moats)',
+
+                content: `
+
+                    <p>Dummy content for Competitive advantage (Moats) goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'qualitative-factors-brand-value': {
+
+                title: 'Brand value',
+
+                content: `
+
+                    <p>Dummy content for Brand value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'qualitative-factors-industry-dynamics': {
+
+                title: 'Industry dynamics',
+
+                content: `
+
+                    <p>Dummy content for Industry dynamics goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'qualitative-factors-regulatory-environment': {
+
+                title: 'Regulatory environment',
+
+                content: `
+
+                    <p>Dummy content for Regulatory environment goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'qualitative-factors-technological-disruption': {
+
+                title: 'Technological disruption',
+
+                content: `
+
+                    <p>Dummy content for Technological disruption goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'qualitative-factors-esg-considerations': {
+
+                title: 'ESG considerations',
+
+                content: `
+
+                    <p>Dummy content for ESG considerations goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'qualitative-factors-customer-loyalty': {
+
+                title: 'Customer loyalty',
+
+                content: `
+
+                    <p>Dummy content for Customer loyalty goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'qualitative-factors-r-d-and-innovation': {
+
+                title: 'R&D and innovation',
+
+                content: `
+
+                    <p>Dummy content for R&D and innovation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-intro-to-stock-valuation': {
+
+                title: 'Intro to stock valuation',
+
+                content: `
+
+                    
+
+<p>Dummy content for Intro to stock valuation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-what-is-value': {
+
+                title: 'What is value?',
+
+                content: `
+
+                    
+
+<p>Dummy content for What is value? goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-stock-valuation-process': {
+
+                title: 'Stock valuation process',
+
+                content: `
+
+                    
+
+<p>Dummy content for Stock valuation process goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-limitations-of-valuation': {
+
+                title: 'Limitations of valuation',
+
+                content: `
+
+                    
+
+<p>Dummy content for Limitations of valuation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-behavioural-biases': {
+
+                title: 'Behavioural biases',
+
+                content: `
+
+                    
+
+<p>Dummy content for Behavioural biases goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-use-of-discount-rates': {
+
+                title: 'Use of discount rates',
+
+                content: `
+
+                    
+
+<p>Dummy content for Use of discount rates goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-calculating-discount-rate': {
+
+                title: 'Calculating discount rate',
+
+                content: `
+
+                    
+
+<p>Dummy content for Calculating discount rate goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-10-common-mistakes': {
+
+                title: '10 common mistakes',
+
+                content: `
+
+                    
+
+<p>Dummy content for 10 common mistakes goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-what-is-intrinsic-value': {
+
+                title: 'What is intrinsic value?',
+
+                content: `
+
+                    
+
+<p>Dummy content for What is intrinsic value? goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-calculating-intrinsic-value': {
+
+                title: 'Calculating intrinsic value',
+
+                content: `
+
+                    
+
+<p>Dummy content for Calculating intrinsic value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-buffett-s-intrinsic-value': {
+
+                title: 'Buffettâ€™s intrinsic value',
+
+                content: `
+
+                    
+
+<p>Dummy content for Buffettâ€™s intrinsic value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-graham-s-intrinsic-value': {
+
+                title: 'Grahamâ€™s intrinsic value',
+
+                content: `
+
+                    
+
+<p>Dummy content for Grahamâ€™s intrinsic value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-limitations-of-value': {
+
+                title: 'Limitations of value',
+
+                content: `
+
+                    
+
+<p>Dummy content for Limitations of value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-intro-to-revenue-based-val': {
+
+                title: 'Intro to revenue-based val',
+
+                content: `
+
+                    
+
+<p>Dummy content for Intro to revenue-based val goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-price-to-sales-ratio': {
+
+                title: 'Price-to-sales ratio',
+
+                content: `
+
+                    
+
+<p>Dummy content for Price-to-sales ratio goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-sales-multiples': {
+
+                title: 'Sales multiples',
+
+                content: `
+
+                    
+
+<p>Dummy content for Sales multiples goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-revenue-growth-rate': {
+
+                title: 'Revenue growth rate',
+
+                content: `
+
+                    
+
+<p>Dummy content for Revenue growth rate goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-price-to-revenue-growth': {
+
+                title: 'Price-to-revenue growth',
+
+                content: `
+
+                    
+
+<p>Dummy content for Price-to-revenue growth goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-price-to-earnings-ratio': {
+
+                title: 'Price-to-earnings ratio',
+
+                content: `
+
+                    
+
+<p>Dummy content for Price-to-earnings ratio goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-earnings-yield': {
+
+                title: 'Earnings yield',
+
+                content: `
+
+                    
+
+<p>Dummy content for Earnings yield goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-pe-to-growth-peg-ratio': {
+
+                title: 'PE-to-growth (PEG) ratio',
+
+                content: `
+
+                    
+
+<p>Dummy content for PE-to-growth (PEG) ratio goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-ypeg-ratio': {
+
+                title: 'YPEG ratio',
+
+                content: `
+
+                    
+
+<p>Dummy content for YPEG ratio goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-future-maintainable-earnings': {
+
+                title: 'Future maintainable earnings',
+
+                content: `
+
+                    
+
+<p>Dummy content for Future maintainable earnings goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-discounted-future-earnings': {
+
+                title: 'Discounted future earnings',
+
+                content: `
+
+                    
+
+<p>Dummy content for Discounted future earnings goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-earnings-power-value': {
+
+                title: 'Earnings power value',
+
+                content: `
+
+                    
+
+<p>Dummy content for Earnings power value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-residual-income': {
+
+                title: 'Residual income',
+
+                content: `
+
+                    
+
+<p>Dummy content for Residual income goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-price-to-ebitda': {
+
+                title: 'Price-to-EBITDA',
+
+                content: `
+
+                    
+
+<p>Dummy content for Price-to-EBITDA goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-discounted-cash-flow': {
+
+                title: 'Discounted cash flow',
+
+                content: `
+
+                    
+
+<p>Dummy content for Discounted cash flow goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-reverse-dcf': {
+
+                title: 'Reverse DCF',
+
+                content: `
+
+                    
+
+<p>Dummy content for Reverse DCF goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-economic-value-added': {
+
+                title: 'Economic value added',
+
+                content: `
+
+                    
+
+<p>Dummy content for Economic value added goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-free-cash-flow-valuation': {
+
+                title: 'Free cash flow valuation',
+
+                content: `
+
+                    
+
+<p>Dummy content for Free cash flow valuation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-book-value': {
+
+                title: 'Book value',
+
+                content: `
+
+                    
+
+<p>Dummy content for Book value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-tangible-book-value': {
+
+                title: 'Tangible book value',
+
+                content: `
+
+                    
+
+<p>Dummy content for Tangible book value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-adjusted-net-assets': {
+
+                title: 'Adjusted net assets',
+
+                content: `
+
+                    
+
+<p>Dummy content for Adjusted net assets goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-replacement-cost-method': {
+
+                title: 'Replacement cost method',
+
+                content: `
+
+                    
+
+<p>Dummy content for Replacement cost method goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-sum-of-the-parts': {
+
+                title: 'Sum of the parts',
+
+                content: `
+
+                    
+
+<p>Dummy content for Sum of the parts goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-liquidation-value': {
+
+                title: 'Liquidation value',
+
+                content: `
+
+                    
+
+<p>Dummy content for Liquidation value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-dividend-discount-model': {
+
+                title: 'Dividend Discount Model',
+
+                content: `
+
+                    
+
+<p>Dummy content for Dividend Discount Model goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-gordon-growth-model': {
+
+                title: 'Gordon Growth Model',
+
+                content: `
+
+                    
+
+<p>Dummy content for Gordon Growth Model goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-two-stage-dividend-growth': {
+
+                title: 'Two-Stage Dividend Growth',
+
+                content: `
+
+                    
+
+<p>Dummy content for Two-Stage Dividend Growth goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-dividend-payout-ratio': {
+
+                title: 'Dividend Payout Ratio',
+
+                content: `
+
+                    
+
+<p>Dummy content for Dividend Payout Ratio goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-price-to-book-value-ratio': {
+
+                title: 'Price-to-book value ratio',
+
+                content: `
+
+                    
+
+<p>Dummy content for Price-to-book value ratio goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-enterprise-value': {
+
+                title: 'Enterprise value',
+
+                content: `
+
+                    
+
+<p>Dummy content for Enterprise value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-enterprise-value-to-ebitda': {
+
+                title: 'Enterprise value to EBITDA',
+
+                content: `
+
+                    
+
+<p>Dummy content for Enterprise value to EBITDA goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-enterprise-value-to-sales': {
+
+                title: 'Enterprise value to sales',
+
+                content: `
+
+                    
+
+<p>Dummy content for Enterprise value to sales goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-graham-s-formulas': {
+
+                title: 'Grahamâ€™s formulas',
+
+                content: `
+
+                    
+
+<p>Dummy content for Grahamâ€™s formulas goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-greenblatt-s-magic-formula': {
+
+                title: 'Greenblattâ€™s magic formula',
+
+                content: `
+
+                    
+
+<p>Dummy content for Greenblattâ€™s magic formula goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-industry-rules-of-thumb': {
+
+                title: 'Industry rules of thumb',
+
+                content: `
+
+                    
+
+<p>Dummy content for Industry rules of thumb goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-intangible-assets': {
+
+                title: 'Intangible assets',
+
+                content: `
+
+                    
+
+<p>Dummy content for Intangible assets goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-call-options': {
+
+                title: 'Call options',
+
+                content: `
+
+                    
+
+<p>Dummy content for Call options goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-put-options': {
+
+                title: 'Put options',
+
+                content: `
+
+                    
+
+<p>Dummy content for Put options goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-distressed-companies': {
+
+                title: 'Distressed companies',
+
+                content: `
+
+                    
+
+<p>Dummy content for Distressed companies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-bankrupt-companies': {
+
+                title: 'Bankrupt companies',
+
+                content: `
+
+                    
+
+<p>Dummy content for Bankrupt companies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-mergers-acquisitions': {
+
+                title: 'Mergers & acquisitions',
+
+                content: `
+
+                    
+
+<p>Dummy content for Mergers & acquisitions goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-start-up-companies': {
+
+                title: 'Start-up companies',
+
+                content: `
+
+                    
+
+<p>Dummy content for Start-up companies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-pre-ipo-companies': {
+
+                title: 'Pre-IPO companies',
+
+                content: `
+
+                    
+
+<p>Dummy content for Pre-IPO companies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-asset-heavy-companies': {
+
+                title: 'Asset-heavy companies',
+
+                content: `
+
+                    
+
+<p>Dummy content for Asset-heavy companies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'stock-valuation-emerging-markets': {
+
+                title: 'Emerging markets',
+
+                content: `
+
+                    
+
+<p>Dummy content for Emerging markets goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'corporate-actions-dividends': {
+
+                title: 'Dividends',
+
+                content: `
+
+                    
+
+<p>Dummy content for Dividends goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'corporate-actions-stock-splits': {
+
+                title: 'Stock Splits',
+
+                content: `
+
+                    
+
+<p>Dummy content for Stock Splits goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'corporate-actions-share-buy-backs': {
+
+                title: 'Share Buy Backs',
+
+                content: `
+
+                    
+
+<p>Dummy content for Share Buy Backs goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'corporate-actions-rights-issues': {
+
+                title: 'Rights Issues',
+
+                content: `
+
+                    
+
+<p>Dummy content for Rights Issues goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'corporate-actions-bonus-issues': {
+
+                title: 'Bonus Issues',
+
+                content: `
+
+                    
+
+<p>Dummy content for Bonus Issues goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'corporate-actions-options-and-warrants': {
+
+                title: 'Options and Warrants',
+
+                content: `
+
+                    
+
+<p>Dummy content for Options and Warrants goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'corporate-actions-mergers-and-acquisitions': {
+
+                title: 'Mergers and Acquisitions',
+
+                content: `
+
+                    
+
+<p>Dummy content for Mergers and Acquisitions goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'corporate-actions-divestments': {
+
+                title: 'Divestments',
+
+                content: `
+
+                    
+
+<p>Dummy content for Divestments goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'corporate-actions-administration': {
+
+                title: 'Administration',
+
+                content: `
+
+                    
+
+<p>Dummy content for Administration goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'corporate-actions-liquidation': {
+
+                title: 'Liquidation',
+
+                content: `
+
+                    
+
+<p>Dummy content for Liquidation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'accounting-standards-regulatory-bodies': {
+
+                title: 'Regulatory Bodies',
+
+                content: `
+
+                    
+
+<p>Dummy content for Regulatory Bodies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'accounting-standards-standards-relating-to-financial-reporting': {
+
+                title: 'Standards Relating to Financial Reporting',
+
+                content: `
+
+                    
+
+<p>Dummy content for Standards Relating to Financial Reporting goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'accounting-standards-profit-and-loss': {
+
+                title: 'Profit and Loss',
+
+                content: `
+
+                    <p>Dummy content for Profit and Loss goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'accounting-standards-balance-sheet': {
+
+                title: 'Balance Sheet',
+
+                content: `
+
+                    <p>Dummy content for Balance Sheet goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'accounting-standards-disclosures': {
+
+                title: 'Disclosures',
+
+                content: `
+
+                    <p>Dummy content for Disclosures goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'accounting-standards-cash-flow': {
+
+                title: 'Cash Flow',
+
+                content: `
+
+                    
+
+<p>Dummy content for Cash Flow goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'accounting-standards-aasb-work-in-progress': {
+
+                title: 'AASB Work-In-Progress',
+
+                content: `
+
+                    
+
+<p>Dummy content for AASB Work-In-Progress goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+            'accounting-standards-aasb-publications': {
+
+                title: 'AASB Publications',
+
+                content: `
+
+                    <p>Dummy content for AASB Publications goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+
+                `
+
+            },
+
+        };
+
+
+
+
+
+        // Article panel functionality
+
+        function openArticle(articleId) {
+
+            const panel = document.getElementById('article-detail-panel');
+
+            const title = document.getElementById('article-detail-title');
+
+            const body = document.getElementById('article-detail-body');
+
+            
+
+            if (articleContent[articleId]) {
+
+                title.textContent = articleContent[articleId].title;
+
+                const imagePlaceholder = typeof window.buildArticleImageHtml === 'function' ? window.buildArticleImageHtml(articleId, articleContent[articleId]) : '';
+
+
+
+                const relatedArticles = `
+
+<hr style="margin:32px 0;border:none;border-top:1px solid #e5e7eb;">
+
+<h3 style="color:#1e3a8a;margin-bottom:12px;">Related articles:</h3>
+
+<p style="color:#6b7280;font-size:14px;line-height:1.6;">Explore more resources and expert perspectives on these topics in our library collection.</p>
+
+<h3 style="color:#1e3a8a;margin:24px 0 12px;">Related books:</h3>
+
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;">
+
+    ${[1,2,3,4,5,6].map(i => `
+
+    <div style="border:1px solid #e5e7eb;border-radius:8px;padding:12px;text-align:center;background:#f9fafb;">
+
+        <div style="width:60px;height:80px;background:#e5e7eb;border-radius:4px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:11px;">Book ${i}</div>
+
+        <a href="#" style="font-size:12px;color:#1e3a8a;text-decoration:none;">Book title link</a>
+
+    </div>`).join('')}
+
+</div>
+
+<hr style="margin:24px 0;border:none;border-top:1px solid #e5e7eb;">
+
+<p style="font-size:12px;color:#9ca3af;font-style:italic;"><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>`;
+
+
+
+                let articleBody = articleContent[articleId] ? articleContent[articleId].content : '';
+
+                if(articleBody) {
+
+                    // Remove first <p>...< /p> (non-greedy) and any adjacent heading up to h3 if it exists at the start
+
+                    // We'll run successive replaces to be robust instead of one massive regex:
+
+                    articleBody = articleBody.trim();
+
+                    // if starts with a paragraph that is a category
+
+                    let pMatch = articleBody.match(/^(<p[^>]*>.*?<\/p>)\s*(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
+
+                    if(pMatch) {
+
+                        articleBody = articleBody.substring(pMatch[0].length).trim();
+
+                    } else {
+
+                        // try to match just the h tag
+
+                        let hMatch = articleBody.match(/^(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
+
+                        if(hMatch) {
+
+                            articleBody = articleBody.substring(hMatch[0].length).trim();
+
+                        }
+
+                    }
+
+                    
+
+                    // Bold first paragraph
+
+                    articleBody = articleBody.replace(/<p>(.*?)<\/p>/i, '<p><strong>$1</strong></p>');
+
+                    
+
+                    // Remove existing disclaimer
+
+                    articleBody = articleBody.replace(/<p><strong>Disclaimer:<\/strong>.*?<\/p>\s*$/is, '');
+
+                }
+
+                
+
+                body.innerHTML = imagePlaceholder + articleBody + relatedArticles;
+
+                panel.classList.add('active');
+
+                document.body.style.overflow = 'hidden';
+
+            }
+
+        }
+
+
+
+        function closeArticlePanel() {
+
+            const panel = document.getElementById('article-detail-panel');
+
+            panel.classList.remove('active');
+
+            document.body.style.overflow = '';
+
+        }
+
+
+
+        // Event listeners
+
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const articleClose = document.getElementById('article-detail-close');
+
+            const articlePanel = document.getElementById('article-detail-panel');
+
+            
+
+            if (articleClose) {
+
+                articleClose.addEventListener('click', closeArticlePanel);
+
+            }
+
+            
+
+            if (articlePanel) {
+
+                articlePanel.addEventListener('click', function(event) {
+
+                    if (event.target === articlePanel) {
+
+                        closeArticlePanel();
+
+                    }
+
+                });
+
+            }
+
+
+
+            // Check for hash in URL and open corresponding article
+
+            if (window.location.hash) {
+
+                const hashValue = window.location.hash.substring(1);
+
+                // Look through articleContent keys to find a match
+
+                for (const key in articleContent) {
+
+                    if (key.endsWith(hashValue)) {
+
+                        // Expand the corresponding collapsible section
+
+                        const sectionId = key.substring(0, key.lastIndexOf('-' + hashValue));
+
+                        const sectionArrow = document.getElementById(sectionId + '-arrow');
+
+                        if (sectionArrow && document.getElementById(sectionId + '-content').classList.contains('collapsed')) {
+
+                            toggleCollapsible(sectionId);
+
+                        }
+
+                        // Open the article
+
+                        setTimeout(() => openArticle(key), 100);
+
+                        break;
+
+                    }
+
+                }
+
+            }
+
+
+
+        });
+
+    

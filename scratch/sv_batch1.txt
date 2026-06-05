@@ -1,0 +1,176 @@
+    'introduction-to-stock-valuation': {
+        title: 'Introduction to Stock Valuation',
+        content: `
+            <p>Stock valuation is the core discipline of fundamental investing. It is the process of calculating the theoretical true value of a company (its intrinsic value) to determine whether its current stock price on the market is overvalued or undervalued.</p>
+            <h3>Price vs. Value</h3>
+            <p>The foundation of valuation rests on a single concept: <strong>Price is what you pay; Value is what you get.</strong> The market dictates the price every second of the trading day, driven by emotion, momentum, and macroeconomics. Valuation attempts to dictate the actual underlying worth, driven purely by cash flows, assets, and business economics.</p>
+        `
+    },
+    'what-is-value': {
+        title: 'What is Value?',
+        content: `
+            <p>In finance, "value" is not an abstract concept; it is mathematically defined as the present value of all future cash flows a business will generate over its lifetime.</p>
+            <h3>The Golden Goose</h3>
+            <p>If you own a goose that lays one golden egg every year, the "value" of the goose is the total sum of all those future golden eggs, discounted back to today's money (because an egg today is worth more than an egg in 10 years). The same applies to a business generating cash.</p>
+        `
+    },
+    'stock-valuation-process': {
+        title: 'Stock Valuation Process',
+        content: `
+            <p>Valuation is not a single calculation; it is a multi-step process that combines qualitative analysis with quantitative modeling.</p>
+            <h3>The Core Steps</h3>
+            <p><strong>1. Understand the Business:</strong> How do they make money? What is their moat? <strong>2. Forecast Financial Performance:</strong> Projecting future revenue, margins, and cash flows. <strong>3. Select a Valuation Model:</strong> Choosing DCF, Earnings Power Value, or relative multiples based on the industry. <strong>4. Apply Discount Rates:</strong> Adjusting for the riskiness of the cash flows. <strong>5. Arrive at Intrinsic Value:</strong> And comparing it to the current market price.</p>
+        `
+    },
+    'behavioural-biases': {
+        title: 'Behavioural Biases in Valuation',
+        content: `
+            <p>The biggest threat to a valuation model is not the math; it's the psychological bias of the analyst building it.</p>
+            <h3>Common Biases</h3>
+            <p><strong>Anchoring:</strong> Valuing a stock at $100 simply because it traded at $100 last year, ignoring deteriorating fundamentals. <strong>Confirmation Bias:</strong> Building a model to justify a purchase you've already emotionally decided to make, rather than letting the model dictate the decision. <strong>Over-optimism:</strong> Assuming a company can sustain 30% growth forever, which capitalism rarely allows.</p>
+        `
+    },
+    'use-of-discount-rates': {
+        title: 'Use of Discount Rates',
+        content: `
+            <p>The discount rate represents the required rate of return an investor demands for taking on the risk of the investment. It accounts for both the time value of money and the uncertainty of future cash flows.</p>
+            <h3>The Impact on Value</h3>
+            <p>Valuation is highly sensitive to the discount rate. If you demand a 10% return (discount rate), a company's projected future cash flows are worth significantly less *today* than if you only demanded a 5% return. A higher perceived risk mandates a higher discount rate, which mathematically crushes the present intrinsic value.</p>
+        `
+    },
+    'limitations-of-valuation': {
+        title: 'Limitations of Valuation',
+        content: `
+            <p>Valuation is an imprecise art disguised as a precise science. It relies entirely on projecting the future, which is inherently unknowable.</p>
+            <h3>The Illusion of Precision</h3>
+            <p>A spreadsheet might calculate a stock's intrinsic value down to the penny (e.g., $43.27), but this implies a false level of accuracy. If your revenue growth assumption is off by just 2%, or your discount rate is off by 1%, that $43.27 value could easily swing to $25 or $60. Valuation provides a *range* of probabilities, not an absolute truth.</p>
+        `
+    },
+    'common-valuation-errors': {
+        title: 'Common Valuation Errors',
+        content: `
+            <p>Analysts frequently make structural errors that completely invalidate their valuation models.</p>
+            <h3>The Main Culprits</h3>
+            <p><strong>1. Ignoring Dilution:</strong> Valuing the total company but dividing by today's share count, ignoring millions of executive stock options that will vest. <strong>2. Double Counting Growth:</strong> Paying a high P/E multiple for growth, while also assuming high growth in a DCF model. <strong>3. Using the Wrong Metric:</strong> Valuing a capital-intensive mining company using an EBITDA multiple (which completely ignores the massive CapEx required to survive).</p>
+        `
+    },
+    'what-is-intrinsic-value': {
+        title: 'What is Intrinsic Value?',
+        content: `
+            <p>Intrinsic value is the absolute, true, underlying worth of an asset based solely on its ability to generate cash over its lifetime, independent of its current market price.</p>
+            <h3>The North Star</h3>
+            <p>For value investors, intrinsic value is the North Star. If a stock trades at $50, but a rigorous analysis determines its intrinsic value is $100, the investor buys the stock with a massive "Margin of Safety," trusting that eventually, the market price will converge with the intrinsic value.</p>
+        `
+    },
+    'how-to-calculate-intrinsic-value': {
+        title: 'How to Calculate Intrinsic Value',
+        content: `
+            <p>There is no single formula for intrinsic value. It is calculated using a variety of absolute valuation models, primarily the Discounted Cash Flow (DCF) model.</p>
+            <h3>The Formulaic Approach</h3>
+            <p>The standard academic approach: Project the Free Cash Flow (FCF) for the next 5-10 years. Calculate a Terminal Value for all cash flows beyond year 10. Discount all these future cash flows back to "Present Value" using a discount rate (usually the WACC). Sum the present values, subtract net debt, and divide by the number of shares.</p>
+        `
+    },
+    'ben-graham-s-intrinsic-value': {
+        title: "Ben Graham's Intrinsic Value",
+        content: `
+            <p>Benjamin Graham, the father of value investing, favored a highly conservative, asset-based approach to intrinsic value, rather than projecting highly uncertain future cash flows.</p>
+            <h3>Net-Net Valuation</h3>
+            <p>Graham's ultimate definition of intrinsic value was "Net Current Asset Value." He looked for companies trading below their current liquid assets (cash + receivables + inventory) minus *all* total liabilities. If you bought a stock below this value, you were essentially getting the physical business and all future profits for free.</p>
+        `
+    },
+    'warren-buffett-s-intrinsic-value': {
+        title: "Warren Buffett's Intrinsic Value",
+        content: `
+            <p>Buffett evolved Graham's approach. While Graham focused on liquidating assets, Buffett focuses on a company's ability to compound cash as a going concern.</p>
+            <h3>Owner Earnings</h3>
+            <p>Buffett defined intrinsic value based on "Owner Earnings": Reported Net Income + Depreciation/Amortization - Maintenance Capital Expenditure. He looks for companies with a durable competitive advantage (a moat) that allows them to generate massive Owner Earnings with very little required capital reinvestment.</p>
+        `
+    },
+    'seth-klarman-s-intrinsic-value': {
+        title: "Seth Klarman's Intrinsic Value",
+        content: `
+            <p>Seth Klarman, author of <em>Margin of Safety</em>, approaches intrinsic value with extreme skepticism regarding the future. He emphasizes downside protection above all else.</p>
+            <h3>Multiple Scenarios</h3>
+            <p>Klarman rarely relies on a single DCF. He calculates intrinsic value under highly pessimistic scenarios (e.g., zero growth, contracting margins). He also relies heavily on Liquidation Value and Private Market Value (what a private equity firm would pay to acquire the whole business) as hard anchors for intrinsic value.</p>
+        `
+    },
+    'irving-kahn-s-intrinsic-value': {
+        title: "Irving Kahn's Intrinsic Value",
+        content: `
+            <p>Irving Kahn, one of Graham's original disciples, remained a staunch advocate of Net-Net investing throughout his long career, but adapted it for modern markets.</p>
+            <h3>The Balance Sheet Fortress</h3>
+            <p>Kahn sought intrinsic value not in future growth, but in iron-clad balance sheets. He looked for companies trading below Book Value that possessed massive, hidden assets (like fully depreciated real estate) and zero debt. For Kahn, intrinsic value was about what the company *owned*, not what it *might earn*.</p>
+        `
+    },
+    'christopher-browne-s-intrinsic-value': {
+        title: "Christopher Browne's Intrinsic Value",
+        content: `
+            <p>Christopher Browne of Tweedy, Browne adopted a highly systematic, rules-based approach to defining intrinsic value, often combining Graham's asset approach with Buffett's franchise approach.</p>
+            <h3>Appraisal Value</h3>
+            <p>Browne often looked at "Appraisal Value"—valuing a company based on the actual multiples paid in recent M&A transactions for similar businesses in the real world. If private buyers were consistently paying 10x EBITDA for food companies, Browne considered that the baseline intrinsic value for public food companies.</p>
+        `
+    },
+    'howard-marks-intrinsic-value': {
+        title: "Howard Marks' Intrinsic Value",
+        content: `
+            <p>Howard Marks emphasizes that intrinsic value is deeply cyclical and psychological. He focuses heavily on credit cycles and distressed debt to find extreme mispricings.</p>
+            <h3>Second-Level Thinking</h3>
+            <p>Marks believes that calculating standard intrinsic value is not enough, because every analyst does it. To find true mispriced value, you need "second-level thinking"—understanding not just the asset's value, but understanding *why* the market psychology has temporarily priced it so far below that value (usually due to forced liquidation or sheer panic).</p>
+        `
+    },
+    'li-lu-s-intrinsic-value': {
+        title: "Li Lu's Intrinsic Value",
+        content: `
+            <p>Li Lu, heavily endorsed by Charlie Munger, combines deep fundamental value investing with an intense focus on management integrity and long-term compounding in Asian markets.</p>
+            <h3>The Certainty of Survival</h3>
+            <p>Li Lu defines intrinsic value by looking for businesses with absolute certainty of survival. He focuses on extreme downside scenarios. If a business can survive the worst possible macroeconomic shock and still generate cash, its long-term intrinsic value is almost certainly higher than its current price during a panic.</p>
+        `
+    },
+    'mohnish-pabrai-s-intrinsic-value': {
+        title: "Mohnish Pabrai's Intrinsic Value",
+        content: `
+            <p>Mohnish Pabrai approaches intrinsic value using the "Dhandho" framework: "Heads I win; tails, I don't lose much."</p>
+            <h3>Low Risk, High Uncertainty</h3>
+            <p>Pabrai looks for intrinsic value in situations where risk is actually very low (asset-backed, no debt), but *uncertainty* is very high (bad news, structural changes). The market confuses uncertainty with risk, crushing the stock price. Pabrai buys when the intrinsic value is protected by hard assets, knowing that if the uncertainty resolves positively, the upside is massive.</p>
+        `
+    },
+    'peter-lynch-s-intrinsic-value': {
+        title: "Peter Lynch's Intrinsic Value",
+        content: `
+            <p>Peter Lynch deviated from strict asset-based value, popularizing the concept of GARP (Growth At a Reasonable Price).</p>
+            <h3>The PEG Ratio</h3>
+            <p>Lynch defined a stock's intrinsic value relative to its growth rate. He popularized the PEG Ratio (P/E Ratio divided by Earnings Growth Rate). If a company is growing earnings at 25% a year, a P/E of 25 is "fair value" (PEG of 1.0). If you can buy that 25% grower at a P/E of 15 (PEG of 0.6), it is trading well below intrinsic value.</p>
+        `
+    },
+    'john-neff-s-intrinsic-value': {
+        title: "John Neff's Intrinsic Value",
+        content: `
+            <p>John Neff was a classic contrarian value investor who focused heavily on low P/E stocks combined with high dividend yields.</p>
+            <h3>Total Return Value</h3>
+            <p>Neff calculated intrinsic value based on a "Total Return" formula: (Earnings Growth Rate + Dividend Yield) / P/E Ratio. He sought solid, boring companies where the dividend alone provided a massive floor under the intrinsic value, while waiting for the market to eventually recognize the low P/E and re-rate the stock higher.</p>
+        `
+    },
+    'john-templeton-s-intrinsic-value': {
+        title: "John Templeton's Intrinsic Value",
+        content: `
+            <p>Sir John Templeton was the pioneer of global value investing, seeking intrinsic value anywhere in the world where pessimism was at its maximum.</p>
+            <h3>The Point of Maximum Pessimism</h3>
+            <p>Templeton defined intrinsic value comparatively across borders. If Japanese chemical companies were trading at 5x earnings while US chemical companies traded at 15x, Templeton found intrinsic value in Japan. He famously bought every US stock trading under $1 at the exact onset of WWII, realizing that war production would eventually unlock their hidden intrinsic value.</p>
+        `
+    },
+    'aswath-damodaran-s-intrinsic-value': {
+        title: "Aswath Damodaran's Intrinsic Value",
+        content: `
+            <p>Aswath Damodaran, the "Dean of Valuation," champions a rigorous, academically sound, but highly adaptable approach to DCF modeling.</p>
+            <h3>Narrative and Numbers</h3>
+            <p>Damodaran insists that intrinsic value cannot be calculated purely with a spreadsheet. You must first craft a logical "Narrative" about the company's future (e.g., "Uber will dominate global logistics"), and then translate that narrative directly into the "Numbers" (revenue growth, margins, target market size). If the numbers don't support the narrative, the valuation is flawed.</p>
+        `
+    },
+    'limitations-of-intrinsic-value': {
+        title: 'Limitations of Intrinsic Value',
+        content: `
+            <p>While conceptually perfect, intrinsic value is notoriously difficult to rely upon in practice.</p>
+            <h3>The Moving Target</h3>
+            <p>Intrinsic value is not a static number; it changes every day as the business environment changes. A sudden technological disruption or a change in government regulation can instantly destroy a company's "moat," reducing its intrinsic value by 80% overnight. Clinging to an outdated intrinsic value calculation is a common investor trap.</p>
+        `
+    }

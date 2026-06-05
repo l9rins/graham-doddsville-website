@@ -1,0 +1,182 @@
+    'price-to-sales-ratio': {
+        title: 'Price-to-Sales Ratio',
+        content: `
+            <p>The P/S ratio (Market Capitalization / Total Revenue) values a company purely on its top-line sales, ignoring profit margins entirely.</p>
+            <h3>When to Use It</h3>
+            <p>It is primarily used for early-stage companies (like SaaS startups) that are intentionally losing money to capture market share, making the P/E ratio useless. It assumes that eventually, the company will achieve standard industry profit margins on those sales.</p>
+            <h3>The Danger</h3>
+            <p>Sales do not equal cash. A company can have massive sales but structurally negative margins. Paying 10x Sales for a hardware company with 5% margins is a recipe for disaster; paying 10x Sales for a software company with 85% gross margins might be a bargain.</p>
+        `
+    },
+    'sales-multiples': {
+        title: 'Sales Multiples',
+        content: `
+            <p>Sales multiples compare a company's valuation to its revenue relative to its peers.</p>
+            <h3>Enterprise Value to Sales (EV/Sales)</h3>
+            <p>This is the superior version of the P/S ratio because it accounts for debt. If two companies both trade at 2x Sales, but Company A has $1B in debt and Company B has $1B in cash, Company B is drastically cheaper on an EV/Sales basis. EV/Sales is standard in M&A valuation.</p>
+        `
+    },
+    'revenue-growth-rate': {
+        title: 'Revenue Growth Rate',
+        content: `
+            <p>The pace at which top-line sales are expanding. It is the primary driver of high valuations in modern equity markets.</p>
+            <h3>Sustainable vs Unsustainable</h3>
+            <p>A 50% growth rate driven by massive, unrepeatable marketing spend is low-quality growth. A 20% growth rate driven by a deeply ingrained "network effect" (like Visa or Facebook) is high-quality, highly valuable growth. Analysts must always separate organic growth from acquisition-driven growth.</p>
+        `
+    },
+    'price-to-revenue-growth': {
+        title: 'Price to Revenue Growth',
+        content: `
+            <p>Similar to the PEG ratio, this compares the Price/Sales multiple to the expected revenue growth rate.</p>
+            <h3>The Growth Premium</h3>
+            <p>If a company trades at 15x Sales but is growing revenue at 60% year-over-year, it might be cheaper than a company trading at 4x Sales growing at only 5%. This metric helps investors standardize the massive valuations often applied to hyper-growth tech stocks.</p>
+        `
+    },
+    'price-to-earnings-ratio': {
+        title: 'Price-to-Earnings Ratio',
+        content: `
+            <p>The P/E Ratio (Share Price / Earnings Per Share) is the most famous and widely misused valuation metric in the world.</p>
+            <h3>What It Means</h3>
+            <p>It tells you how much the market is willing to pay for $1 of current accounting profit. A P/E of 20 means you are paying $20 for every $1 of earnings (a 5% yield). High P/E implies high expected growth; low P/E implies stagnation or distress.</p>
+            <h3>The Trap</h3>
+            <p>Because "Earnings" (Net Income) is heavily manipulable by management (via depreciation schedules, buybacks, and tax games), a low P/E can be a "value trap"—the earnings are artificially inflated and are about to collapse.</p>
+        `
+    },
+    'earnings-yield': {
+        title: 'Earnings Yield',
+        content: `
+            <p>The Earnings Yield (Earnings Per Share / Share Price) is simply the inverse of the P/E ratio.</p>
+            <h3>The Interest Rate Comparison</h3>
+            <p>A P/E of 20 equals an Earnings Yield of 5%. Expressing it as a yield allows investors to directly compare stocks against risk-free government bonds. If the 10-year Treasury bond yields 4%, a stock with a 5% Earnings Yield only offers a 1% "Equity Risk Premium," which is usually not enough to compensate for the risk of owning equities.</p>
+        `
+    },
+    'pe-to-growth-peg-ratio': {
+        title: 'PE-to-Growth (PEG) Ratio',
+        content: `
+            <p>Popularized by Peter Lynch, the PEG ratio (P/E Ratio / Annual EPS Growth Rate) contextualizes the P/E multiple by factoring in the company's growth trajectory.</p>
+            <h3>The Magic 1.0</h3>
+            <p>A PEG of 1.0 is historically considered "fair value." A company with a P/E of 20 growing at 20% (PEG 1.0) is fairly priced. A company with a P/E of 15 growing at 30% (PEG 0.5) is severely undervalued. However, in modern markets, high-quality companies rarely trade below a PEG of 1.5.</p>
+        `
+    },
+    'ypeg-ratio': {
+        title: 'YPEG Ratio',
+        content: `
+            <p>The Yield-Adjusted PEG Ratio improves upon the traditional PEG by factoring in the dividend yield, which is critical for mature, slower-growing companies.</p>
+            <h3>The Formula</h3>
+            <p>YPEG = P/E Ratio / (Annual EPS Growth Rate + Dividend Yield). A utility company might only grow earnings at 3% (giving it a terrible traditional PEG), but if it pays a 6% dividend, the YPEG captures that 9% total return, revealing that the stock is actually fairly valued.</p>
+        `
+    },
+    'future-maintainable-earnings': {
+        title: 'Future Maintainable Earnings',
+        content: `
+            <p>FME is the estimated level of profit a business is expected to generate consistently in the future, assuming normal operating conditions.</p>
+            <h3>Stripping the Noise</h3>
+            <p>To calculate FME, analysts take historical earnings and remove all one-off anomalies (e.g., a massive lawsuit settlement, a government pandemic subsidy, or a temporary supply chain shock). FME is the absolute baseline input for most capitalization-of-earnings valuation models.</p>
+        `
+    },
+    'discounted-future-earnings': {
+        title: 'Discounted Future Earnings',
+        content: `
+            <p>A valuation method that projects a company's Net Income into the future and discounts those earnings back to the present value.</p>
+            <h3>Earnings vs Cash Flow</h3>
+            <p>While simpler than a full DCF, this method is highly flawed because it relies on accounting "earnings" rather than actual "cash." A company can have massive projected earnings but go bankrupt because those earnings are tied up in inventory and receivables, never converting to cash.</p>
+        `
+    },
+    'earnings-power-value': {
+        title: 'Earnings Power Value (EPV)',
+        content: `
+            <p>Popularized by Bruce Greenwald, EPV is a valuation method that assumes zero future growth. It values the company based solely on its current, normalized, sustainable cash flow.</p>
+            <h3>The Conservative Anchor</h3>
+            <p>EPV = Adjusted Current Cash Flow / Cost of Capital. If the EPV is $50 a share, and the stock trades at $40, you are buying the current business at a discount and getting all future growth absolutely for free. It is the ultimate tool for conservative value investors.</p>
+        `
+    },
+    'residual-income': {
+        title: 'Residual Income Valuation',
+        content: `
+            <p>This model values a company based on its Book Value plus the present value of its expected future Residual Income (Economic Profit).</p>
+            <h3>Cost of Equity Deduction</h3>
+            <p>Residual Income is the Net Income minus a strict "capital charge" (the cost of the equity capital). If a company earns $10M, but its required cost of equity is $12M, its Residual Income is negative $2M. Despite reporting an accounting profit, it is destroying shareholder value, and its intrinsic value will be lower than its book value.</p>
+        `
+    },
+    'price-to-ebitda': {
+        title: 'Price to EBITDA',
+        content: `
+            <p>A rough valuation multiple (Market Cap / EBITDA) often used as a quick proxy for cash flow multiples.</p>
+            <h3>The Flaws</h3>
+            <p>It is generally inferior to EV/EBITDA because Market Cap (the numerator) ignores debt, while EBITDA (the denominator) is the profit available to *both* debt and equity holders. It represents a mismatched ratio and should generally be avoided by serious analysts.</p>
+        `
+    },
+    'discounted-cash-flow-dcf': {
+        title: 'Discounted Cash Flow (DCF)',
+        content: `
+            <p>The DCF is the gold standard of absolute valuation. It calculates intrinsic value by projecting a company's future Free Cash Flows and discounting them back to today's value.</p>
+            <h3>The Architecture</h3>
+            <p><strong>1. Forecast FCF:</strong> Usually 5 to 10 years out. <strong>2. Calculate Terminal Value:</strong> The value of all cash flows into perpetuity after year 10 (often using the Gordon Growth Model). <strong>3. Discount:</strong> Apply the WACC to bring it all to Present Value. <strong>4. Subtract Net Debt:</strong> To find the Equity Value.</p>
+            <h3>The Danger</h3>
+            <p>A DCF is highly sensitive. Tweaking the terminal growth rate from 2% to 3% can artificially double the final valuation. It is a tool for understanding assumptions, not a machine that outputs absolute truth.</p>
+        `
+    },
+    'revenue-dcf': {
+        title: 'Revenue DCF',
+        content: `
+            <p>A variation of the standard DCF used for early-stage companies with no current cash flows or profits (e.g., biotech, pre-revenue SaaS).</p>
+            <h3>Projecting the Top Line</h3>
+            <p>Instead of starting with historical cash flows, the analyst projects Total Market Size and Market Share to estimate future Revenue. They then apply an assumed future operating margin (e.g., "In year 5, they will reach the industry average 20% margin") to artificially calculate a future cash flow, which is then discounted back. It is highly speculative.</p>
+        `
+    },
+    'economic-value-added-eva': {
+        title: 'Economic Value Added (EVA)',
+        content: `
+            <p>EVA is a measure of a company's true economic profit, calculated as Net Operating Profit After Taxes (NOPAT) minus the total dollar cost of capital (Debt + Equity) deployed to generate that profit.</p>
+            <h3>The Capital Charge</h3>
+            <p>Unlike standard accounting, EVA forces management to pay for the equity they use. If a company generates a 10% Return on Capital, but its Cost of Capital is 12%, its EVA is negative. It is destroying value, even if the P&L shows a "profit." Management compensation is increasingly tied to EVA rather than EPS.</p>
+        `
+    },
+    'free-cash-flow-valuation': {
+        title: 'Free Cash Flow Valuation',
+        content: `
+            <p>This approach bypasses accounting earnings entirely and focuses purely on Free Cash Flow Yield (FCF / Enterprise Value).</p>
+            <h3>The Owner's Yield</h3>
+            <p>If a company generates $100M in FCF and has an EV of $1B, the FCF Yield is 10%. This means that theoretically, if you bought the entire company, you could pay yourself a 10% cash dividend every year without harming the business operations. A consistently high FCF yield is the hallmark of a deeply undervalued compounding machine.</p>
+        `
+    },
+    'book-value': {
+        title: 'Book Value',
+        content: `
+            <p>Book Value (Total Assets - Total Liabilities) represents the net accounting value of a company's equity on its balance sheet.</p>
+            <h3>The Historical Artifact</h3>
+            <p>In the 1950s, buying stocks below Book Value (P/B < 1) was Ben Graham's primary strategy. Today, it is largely irrelevant for technology companies whose primary assets (software, brands, networks) are not capitalized on the balance sheet. However, it remains a critical valuation anchor for banks and insurance companies.</p>
+        `
+    },
+    'tangible-book-value': {
+        title: 'Tangible Book Value',
+        content: `
+            <p>Tangible Book Value (TBV) takes Book Value and strips out all intangible assets (Goodwill, patents, trademarks).</p>
+            <h3>The Hard Floor</h3>
+            <p>TBV represents the hard, physical assets (cash, factories, land) backing the stock. In a bankruptcy scenario, intangibles usually become worthless; TBV is what is actually left to sell. Value investors often seek companies trading near TBV to ensure massive downside protection.</p>
+        `
+    },
+    'adjusted-net-assets': {
+        title: 'Adjusted Net Asset Valuation',
+        content: `
+            <p>This method takes the standard balance sheet and manually adjusts every asset and liability from its historical accounting cost to its current Fair Market Value.</p>
+            <h3>Finding Hidden Value</h3>
+            <p>An analyst might discover that a retailer's real estate, carried on the books at a 1980 cost of $10M, is actually worth $100M today. By adjusting the net assets to reflect this hidden $90M, the analyst calculates a new, much higher "Adjusted Intrinsic Value" that the broader market is missing.</p>
+        `
+    },
+    'replacement-cost-method': {
+        title: 'Replacement Cost Method',
+        content: `
+            <p>Also known as "Tobin's Q," this method values a company based on exactly how much it would cost to build an identical competitor from scratch today.</p>
+            <h3>The Barrier to Entry</h3>
+            <p>If a steel mill trades for $500M, but it would cost a competitor $2B to buy the land, build the blast furnaces, and secure the regulatory permits today, the steel mill is massively undervalued based on its replacement cost. This method is highly effective for heavy industries, pipelines, and infrastructure.</p>
+        `
+    },
+    'sum-of-the-parts': {
+        title: 'Sum-of-the-Parts (SOTP)',
+        content: `
+            <p>SOTP valuation is used for conglomerates. It involves valuing every individual business division separately and adding them together to find the Total Enterprise Value.</p>
+            <h3>The Conglomerate Discount</h3>
+            <p>Often, the market prices a conglomerate at $5B due to inefficiency. But an SOTP analysis might reveal the Media division is worth $3B, the Tech division is worth $4B, and the Retail division is worth $1B (Total $8B). Activist investors use SOTP to force management to break up the company and unlock that hidden $3B in value.</p>
+        `
+    }

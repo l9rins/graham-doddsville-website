@@ -1,0 +1,260 @@
+    'off-balance-sheet-transactions': {
+        title: 'Off-Balance-Sheet Transactions',
+        content: `
+            <p>Off-balance-sheet (OBS) financing refers to assets or liabilities that do not appear on a company's balance sheet but still represent significant financial risks or obligations.</p>
+            <h3>Historical Abuses</h3>
+            <p>Historically, operating leases (leasing an airplane instead of buying it) and Special Purpose Vehicles (SPVs, notoriously used by Enron) allowed companies to hide massive debts. They enjoyed the economic benefit of the asset without showing the corresponding liability, artificially inflating their Return on Assets (ROA) and hiding leverage.</p>
+            <h3>Modern Regulation</h3>
+            <p>Recent accounting standards (like AASB 16/IFRS 16) have aggressively cracked down on OBS items. Almost all leases must now be capitalized and shown on the balance sheet. However, some items, like joint venture debt where the parent company does not have absolute control, can still remain hidden in the footnotes.</p>
+        `
+    },
+    'limitations-of-the-balance-sheet': {
+        title: 'Limitations of the Balance Sheet',
+        content: `
+            <p>While critical, the balance sheet presents several structural limitations that investors must adjust for.</p>
+            <h3>Book Value vs Market Value</h3>
+            <p>The balance sheet relies on historical cost. A mining company's land might be recorded at a 1950 purchase price of $1M, while its actual market value today is $500M. The balance sheet completely ignores this massive hidden equity.</p>
+            <h3>Static Snapshot</h3>
+            <p>It is a snapshot of a single day (e.g., June 30). A highly seasonal retailer might show a massive cash balance on December 31st (post-Christmas) and zero cash in October (pre-Christmas inventory build). A single day's snapshot does not represent the average working capital requirements of the business.</p>
+        `
+    },
+    'red-flags-in-the-balance-sheet': {
+        title: 'Red Flags in the Balance Sheet',
+        content: `
+            <p>Deterioration on the balance sheet is often the first leading indicator of future profit collapse.</p>
+            <h3>The Inventory / Receivables Warning</h3>
+            <p>If Inventory or Accounts Receivable are growing significantly faster than Revenue for consecutive quarters, it signals severe trouble. The company is either manufacturing products it cannot sell (inventory buildup) or "selling" products to customers who cannot or will not pay (receivables buildup).</p>
+            <h3>The Debt Wall</h3>
+            <p>Look at the composition of debt. If short-term debt (due within 12 months) is massive compared to cash reserves, the company faces a liquidity crisis. If they cannot roll over (refinance) this debt in the credit markets, they face immediate insolvency.</p>
+        `
+    },
+    'what-is-a-profit-and-loss-statement': {
+        title: 'What is a Profit and Loss Statement?',
+        content: `
+            <p>The Profit and Loss Statement (P&L), or Income Statement, shows a company's financial performance over a specific period (usually a quarter or a year). It tells the story of how revenue is transformed into net income.</p>
+            <h3>The Staircase to Profit</h3>
+            <p>It reads like a staircase, stepping down from the top line to the bottom line. It starts with total Revenue, subtracts the direct costs of making the product (Gross Profit), subtracts the costs of running the business (Operating Profit), and finally subtracts interest and taxes to arrive at Net Income (The Bottom Line).</p>
+            <h3>Accrual Basis</h3>
+            <p>Crucially, the P&L is prepared on an accrual basis. It measures economic value created and consumed during the period, which is rarely identical to the actual cash received and paid during that same period.</p>
+        `
+    },
+    'revenue-recognition': {
+        title: 'Revenue Recognition',
+        content: `
+            <p>Revenue is the top line of the P&L and the engine of the business. The rules governing *when* revenue can be recorded are the most critical—and manipulated—in accounting.</p>
+            <h3>The Core Principle (AASB 15)</h3>
+            <p>A company must only recognize revenue when it transfers control of a promised good or service to the customer. If you pay an airline $1,000 in January for a flight in July, the airline cannot record that $1,000 as revenue in January. It is recorded as a liability (Unearned Revenue). The revenue is only recognized in July when the flight actually occurs.</p>
+            <h3>Manipulation Risks</h3>
+            <p>Management under pressure to hit targets may aggressively book revenue early (e.g., shipping products to distributors who haven't actually agreed to buy them) or engage in complex long-term contracts where "percentage of completion" estimates can be manipulated.</p>
+        `
+    },
+    'cost-of-goods-sold-cogs': {
+        title: 'Cost of Goods Sold (COGS)',
+        content: `
+            <p>COGS represents the direct costs attributable to the production of the goods sold by a company. This includes the cost of raw materials and the direct labor used to create the product.</p>
+            <h3>Gross Profit and Margin</h3>
+            <p>Revenue minus COGS equals Gross Profit. The Gross Margin (Gross Profit / Revenue) is a vital metric indicating a company's pricing power and manufacturing efficiency. A high and stable Gross Margin suggests a strong competitive moat; a declining margin suggests fierce competition and price discounting.</p>
+            <h3>Inventory Accounting</h3>
+            <p>In periods of inflation, the method used to account for inventory (FIFO vs LIFO) dramatically impacts COGS. FIFO (First-In, First-Out) assumes the oldest, cheapest inventory is sold first, leading to lower COGS and higher reported profits. (Note: LIFO is banned under IFRS in Australia, but common in the US).</p>
+        `
+    },
+    'depreciation-and-amortisation': {
+        title: 'Depreciation and Amortisation',
+        content: `
+            <p>These are non-cash expenses that allocate the cost of a long-term asset over its useful life, matching the expense to the revenue it helps generate.</p>
+            <h3>The Mechanics</h3>
+            <p>If a mining company buys a truck for $1,000,000 that will last 10 years, they do not record a $1M expense on day one. Instead, they record a Depreciation expense of $100,000 on the P&L every year for 10 years. Amortization is the exact same concept applied to intangible assets like patents.</p>
+            <h3>EBITDA</h3>
+            <p>Because Depreciation and Amortization (D&A) are non-cash accounting entries, analysts often add them back to Operating Profit to calculate EBITDA (Earnings Before Interest, Taxes, Depreciation, and Amortization), which serves as a rough proxy for operating cash flow.</p>
+        `
+    },
+    'operating-income': {
+        title: 'Operating Income',
+        content: `
+            <p>Operating Income (often referred to as EBIT - Earnings Before Interest and Taxes) is the profit a company generates from its core business operations, excluding the impacts of its capital structure and tax rates.</p>
+            <h3>The Purest Metric</h3>
+            <p>For evaluating a company's actual business model, Operating Income is arguably more important than Net Income. It shows whether the company's products and services are actually profitable before the financial engineering of debt (interest) and government regulation (taxes) obscure the picture.</p>
+            <h3>Operating Margin</h3>
+            <p>The Operating Margin (Operating Income / Revenue) measures how efficiently a company manages its overhead costs (SG&A). Software companies typically boast massive operating margins due to low marginal costs, while supermarkets operate on razor-thin margins.</p>
+        `
+    },
+    'operating-expenses': {
+        title: 'Operating Expenses',
+        content: `
+            <p>Often grouped as SG&A (Selling, General, and Administrative expenses), these are the indirect costs of running the business that are not tied directly to the production of goods.</p>
+            <h3>Fixed vs Variable</h3>
+            <p>SG&A includes marketing, executive salaries, office rent, IT systems, and legal fees. Analyzing SG&A requires understanding which costs are fixed (must be paid regardless of sales volume) and which are variable. High fixed costs create "operating leverage"—profits will explode if revenue rises, but collapse violently if revenue falls.</p>
+            <h3>The R&D Debate</h3>
+            <p>Research & Development is typically expensed immediately under SG&A. However, successful R&D creates massive future value. Therefore, heavily expensing R&D depresses current profits, making innovative companies look artificially expensive on a P/E basis.</p>
+        `
+    },
+    'non-operating-income': {
+        title: 'Non-Operating Income',
+        content: `
+            <p>This section captures gains that have absolutely nothing to do with the company's core business activities.</p>
+            <h3>One-Off Gains</h3>
+            <p>Examples include a retailer selling its headquarters building for a massive profit, a successful lawsuit settlement, or gains from foreign exchange translations. These must be segregated from Operating Income because they are non-recurring.</p>
+            <h3>The Analyst's Adjustment</h3>
+            <p>When modeling future earnings, analysts completely strip out Non-Operating Income. A company reporting record Net Income driven entirely by selling an asset is a "low-quality" earnings beat, masking stagnation in the core business.</p>
+        `
+    },
+    'non-operating-expenses': {
+        title: 'Non-Operating Expenses',
+        content: `
+            <p>Similar to non-operating income, these are losses outside the normal course of business.</p>
+            <h3>Interest Expense</h3>
+            <p>The most common recurring non-operating expense is Interest paid on debt. It is considered non-operating because it relates to *how* the company is financed, not *what* the company does. Two identical businesses will have identical Operating Incomes, but wildly different Net Incomes if one uses heavy debt and the other uses equity.</p>
+            <h3>Impairments and Restructuring</h3>
+            <p>Massive asset write-downs or the costs of laying off thousands of workers are recorded here. While management loves to label these as "one-time," if a company has "one-time" restructuring charges every single year, investors should treat them as regular operating expenses.</p>
+        `
+    },
+    'income-taxes': {
+        title: 'Income Taxes',
+        content: `
+            <p>The income tax expense on the P&L rarely matches the actual cash tax paid to the ATO due to the difference between Accounting Profit (GAAP) and Taxable Profit (Tax Law).</p>
+            <h3>Deferred Tax Assets and Liabilities</h3>
+            <p>Because accounting depreciation rules often differ from the accelerated depreciation allowed by tax authorities, a company might pay less cash tax today but owe more in the future. This creates a Deferred Tax Liability on the balance sheet. Conversely, tax losses carried forward create Deferred Tax Assets, which can be used to shield future profits from taxation.</p>
+            <h3>The Effective Tax Rate</h3>
+            <p>Investors track the Effective Tax Rate (Tax Expense / Pre-Tax Income). If a company consistently reports a tax rate drastically lower than the statutory corporate rate (30% in Australia), it may be aggressively utilizing offshore tax havens—a potential regulatory risk.</p>
+        `
+    },
+    'earnings-per-share-eps': {
+        title: 'Earnings Per Share (EPS)',
+        content: `
+            <p>EPS is the portion of a company's profit allocated to each outstanding share of common stock. It is the most widely followed metric on Wall Street and the denominator in the famous P/E ratio.</p>
+            <h3>Basic vs Diluted EPS</h3>
+            <p><strong>Basic EPS</strong> uses the current number of shares. <strong>Diluted EPS</strong> is the crucial metric; it assumes all convertible bonds are converted and all executive stock options are exercised. Diluted EPS shows the "worst-case scenario" for your slice of the pie and is the only metric investors should use.</p>
+            <h3>The EPS Illusion</h3>
+            <p>EPS can be heavily manipulated without improving the business. If Net Income is flat, but management uses debt to buy back millions of shares, the share count drops, and EPS mechanically rises. This financial engineering creates the illusion of growth.</p>
+        `
+    },
+    'limitations-of-the-profit-and-loss': {
+        title: 'Limitations of the Profit and Loss',
+        content: `
+            <p>The P&L is highly informative but fundamentally constrained by accounting rules and management estimates.</p>
+            <h3>The Accrual Disconnect</h3>
+            <p>The P&L does not measure cash. A rapidly growing, highly profitable company on the P&L can still go bankrupt if its profits are entirely tied up in unpaid invoices (Receivables) and it runs out of actual cash to pay employees. Profit is an accounting opinion; cash is a fact.</p>
+            <h3>Subjectivity</h3>
+            <p>Net Income is heavily influenced by subjective estimates: how long will an asset last? What percentage of customers will default on their payments? By tweaking these assumptions, management can legally manufacture or erase millions in reported profit.</p>
+        `
+    },
+    'red-flags-in-the-profit-and-loss': {
+        title: 'Red Flags in the Profit and Loss',
+        content: `
+            <p>Inconsistencies between P&L line items often reveal deteriorating business fundamentals.</p>
+            <h3>Gross Margin Compression</h3>
+            <p>If Revenue is growing but Gross Profit is flat, the Gross Margin is compressing. The company is likely slashing prices to maintain market share, or suffering from supply chain inflation it cannot pass on to customers. This usually foreshadows a collapse in Net Income.</p>
+            <h3>The SG&A Divergence</h3>
+            <p>If Operating Expenses (SG&A) are growing at 15% while Revenue is only growing at 5%, the business model is losing leverage. Management is throwing more money at marketing and administration with diminishing returns.</p>
+        `
+    },
+    'how-to-evaluate-earnings-quality': {
+        title: 'How to Evaluate Earnings Quality',
+        content: `
+            <p>High-quality earnings are repeatable, backed by cash flow, and generated from core operations. Low-quality earnings are the opposite.</p>
+            <h3>The Cash Flow Test</h3>
+            <p>The ultimate test of earnings quality is comparing Net Income to Operating Cash Flow. If a company consistently reports $100M in Net Income but only generates $20M in Operating Cash Flow, the earnings are very low quality, driven by accounting accruals rather than actual cash generation.</p>
+            <h3>Recurring vs Non-Recurring</h3>
+            <p>Remove all one-time gains (asset sales, tax adjustments) from Net Income. If the remaining "core" earnings are shrinking, the headline Net Income figure is an illusion. High-quality earnings come from selling more products at better margins, not from financial engineering.</p>
+        `
+    },
+    'what-is-a-cash-flow-statement': {
+        title: 'What is a Cash Flow Statement?',
+        content: `
+            <p>The Cash Flow Statement strips away the accrual accounting rules of the P&L to show the brutal reality: exactly how much actual cash entered the bank account, and how much left, during the period.</p>
+            <h3>The Antidote to Manipulation</h3>
+            <p>While management can manipulate "profit" via depreciation schedules or revenue recognition policies, it is incredibly difficult to fake cash. The Cash Flow statement acts as a reality check on the Income Statement.</p>
+            <h3>The Three Sections</h3>
+            <p>The statement is strictly divided into three activities: <strong>Operating</strong> (cash from the core business), <strong>Investing</strong> (cash spent on assets or acquisitions), and <strong>Financing</strong> (cash from debt, issuing shares, or paying dividends).</p>
+        `
+    },
+    'operating-cash-flow': {
+        title: 'Operating Cash Flow',
+        content: `
+            <p>Operating Cash Flow (OCF) represents the cash generated by the company's day-to-day core business operations. It is the lifeblood of the company.</p>
+            <h3>The Indirect Method</h3>
+            <p>Most companies calculate OCF using the indirect method: start with Net Income from the P&L, add back non-cash expenses (like Depreciation), and then adjust for changes in Working Capital (inventory, receivables, payables).</p>
+            <h3>The Rule of Thumb</h3>
+            <p>A healthy, mature company must generate positive Operating Cash Flow. If a company consistently reports positive Net Income but negative Operating Cash Flow, it is "growing broke" and will inevitably require external funding to survive.</p>
+        `
+    },
+    'investing-cash-flow': {
+        title: 'Investing Cash Flow',
+        content: `
+            <p>This section details the cash spent on or generated from long-term investments.</p>
+            <h3>Capital Expenditure (CapEx)</h3>
+            <p>The most critical line item here is CapEx—the cash spent buying or maintaining physical assets (PP&E). For capital-intensive businesses (miners, telcos), CapEx consumes a massive portion of operating cash flow.</p>
+            <h3>Acquisitions and Disposals</h3>
+            <p>Cash spent buying other companies (M&A) is recorded here, as is cash received from selling off business divisions or property. A company generating massive cash from selling its assets, rather than from operations, is liquidating itself, not growing.</p>
+        `
+    },
+    'financing-cash-flow': {
+        title: 'Financing Cash Flow',
+        content: `
+            <p>This section tracks the flow of cash between the company and its capital providers (owners and creditors).</p>
+            <h3>Debt and Equity</h3>
+            <p>Cash inflows occur when the company issues new shares or takes on new bank loans/bonds. Cash outflows occur when the company repays the principal on its debt or buys back its own stock.</p>
+            <h3>Dividends Paid</h3>
+            <p>Crucially, actual cash dividends paid to shareholders are recorded here as an outflow. By comparing Operating Cash Flow minus CapEx to Dividends Paid, investors can instantly see if the dividend is sustainable or if the company is borrowing money just to pay the dividend.</p>
+        `
+    },
+    'free-cash-flow': {
+        title: 'Free Cash Flow',
+        content: `
+            <p>Free Cash Flow (FCF) is arguably the single most important financial metric. It represents the actual cash left over after a company has paid all its operating expenses and funded its Capital Expenditure (CapEx) required to maintain the business.</p>
+            <h3>The Calculation</h3>
+            <p><strong>FCF = Operating Cash Flow - Capital Expenditure.</strong></p>
+            <h3>The True Yield</h3>
+            <p>FCF is the money available to reward shareholders (dividends, buybacks), pay down debt, or acquire new businesses without needing external financing. The Free Cash Flow Yield (FCF per share / Share Price) is a far superior valuation metric to the traditional P/E ratio, as it uses hard cash rather than manipulable accounting profit.</p>
+        `
+    },
+    'cashflow-vs-profit': {
+        title: 'Cashflow vs Profit',
+        content: `
+            <p>Understanding the difference between cash flow and profit is the first major hurdle for novice investors.</p>
+            <h3>The Timing Difference</h3>
+            <p>Profit (Net Income) is an accrual concept. If you sell a $1M software system on December 31st, you record $1M in profit immediately. However, if the customer has 90 days to pay, your cash flow is zero. The business looks highly profitable but cannot use that profit to pay wages.</p>
+            <h3>The Capital Expenditure Difference</h3>
+            <p>When you buy a $10M factory, Cash Flow immediately drops by $10M. But Profit is barely affected today, because the $10M cost is capitalized and slowly depreciated on the P&L over 20 years. Profit ignores massive upfront capital outlays; cash flow captures them ruthlessly.</p>
+        `
+    },
+    'non-cash-transactions': {
+        title: 'Non-Cash Transactions',
+        content: `
+            <p>Because the P&L includes expenses that do not require cash outlays, the Cash Flow Statement must adjust for them to find the true cash position.</p>
+            <h3>Depreciation and Amortization</h3>
+            <p>The biggest non-cash adjustments. These are added back to Net Income because, while they reduced reported profit, no actual cash left the bank account this year (the cash left years ago when the asset was originally purchased).</p>
+            <h3>Share-Based Compensation</h3>
+            <p>When a tech company pays its engineers in stock options rather than cash salary, it reduces Net Income. However, because no cash was used, it is added back on the Cash Flow Statement. While this boosts operating cash flow, investors must remember that it dilutes their ownership.</p>
+        `
+    },
+    'effects-of-working-capital': {
+        title: 'Effects of Working Capital',
+        content: `
+            <p>Changes in Working Capital (Current Assets - Current Liabilities) have a massive impact on cash flow, representing cash tied up in the daily operations of the business.</p>
+            <h3>The Cash Drain</h3>
+            <p>If Accounts Receivable increases, it means the company sold goods but hasn't collected the cash yet. This is a negative adjustment (a drain) on cash flow. Similarly, if Inventory increases, cash is trapped in warehouses, reducing cash flow.</p>
+            <h3>The Cash Source</h3>
+            <p>If Accounts Payable increases, it means the company is delaying payment to its suppliers. By holding onto that cash longer, the company artificially boosts its short-term operating cash flow. Exceptional companies (like Amazon or major supermarkets) operate with negative working capital—they sell inventory and collect cash from customers long before they have to pay their suppliers.</p>
+        `
+    },
+    'limitations-of-cash-flow-statement': {
+        title: 'Limitations of Cash Flow Statement',
+        content: `
+            <p>While cash is harder to manipulate than profit, the Cash Flow Statement has its own blind spots.</p>
+            <h3>Classification Games</h3>
+            <p>Management has some discretion over classifying cash flows. A company might aggressively capitalize software development costs (moving the outflow to Investing Cash Flow) rather than expensing them (Operating Cash Flow). This artificially inflates Operating Cash Flow, making the core business look stronger than it is.</p>
+            <h3>Ignores Accrual Reality</h3>
+            <p>A pure focus on cash flow ignores economic obligations that are building up. A company might show great cash flow today by refusing to pay its suppliers, but that mounting Accounts Payable liability will eventually trigger a massive cash outflow and potential insolvency.</p>
+        `
+    },
+    'red-flags-with-cash-flow-statement': {
+        title: 'Red Flags with Cash Flow Statement',
+        content: `
+            <p>The Cash Flow Statement is the ultimate lie detector for the Income Statement.</p>
+            <h3>The Ultimate Divergence</h3>
+            <p>The biggest red flag in all of finance: Net Income is growing rapidly, but Operating Cash Flow is stagnant or declining. This means the profits are purely accounting fictions driven by uncollected receivables or capitalized expenses. It is the classic precursor to an accounting scandal.</p>
+            <h3>Borrowing to Pay Dividends</h3>
+            <p>If Free Cash Flow is $50M, but the company pays a $100M dividend, where did the extra $50M come from? The Financing section will show they issued debt. Borrowing money to pay a dividend is unsustainable and often precedes a massive dividend cut and share price collapse.</p>
+        `
+    }

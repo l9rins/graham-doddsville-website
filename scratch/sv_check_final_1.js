@@ -1,0 +1,1651 @@
+
+        // Collapsible functionality
+        function toggleCollapsible(sectionId) {
+            const content = document.getElementById(sectionId + '-content');
+            const arrow = document.getElementById(sectionId + '-arrow');
+            if (!content) return;
+            
+            const section = content.closest('.collapsible-section');
+            const isCurrentlyOpen = content.classList.contains('expanded');
+            
+            // Close all other open sections
+            document.querySelectorAll('.collapsible-content').forEach(c => {
+                if (c.id !== sectionId + '-content' && (c.classList.contains('expanded') || c.style.maxHeight)) {
+                    c.style.maxHeight = null;
+                    c.classList.remove('expanded');
+                    c.classList.add('collapsed');
+                    const s = c.closest('.collapsible-section');
+                    if (s) s.classList.remove('active');
+                    const a = document.getElementById(c.id.replace('-content', '-arrow'));
+                    if (a) a.innerHTML = '▼';
+                }
+            });
+
+            if (!isCurrentlyOpen) {
+                content.classList.add('expanded');
+                content.classList.remove('collapsed');
+                if(sectionId === 'events-seminars') {
+                    content.style.maxHeight = 'none';
+                } else {
+                    const height = content.scrollHeight;
+                    content.style.maxHeight = height + "px";
+                }
+                if (section) section.classList.add('active');
+                if (arrow) arrow.innerHTML = '▲';
+            } else {
+                content.style.maxHeight = null;
+                content.classList.remove('expanded');
+                content.classList.add('collapsed');
+                if (section) section.classList.remove('active');
+                if (arrow) arrow.innerHTML = '▼';
+            }
+        }
+
+        // Mobile drawer functionality
+        function toggleMobileMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                if (mobileDrawer.classList.contains('open')) {
+                    mobileDrawer.classList.remove('open');
+                    document.body.style.overflow = '';
+                } else {
+                    mobileDrawer.classList.add('open');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+        }
+
+        function closeMobileMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                mobileDrawer.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Article loading functionality
+        function loadArticle(articleId) {
+            const panel = document.getElementById('article-detail-panel');
+            const title = document.getElementById('article-detail-title');
+            const body = document.getElementById('article-detail-body');
+            
+            if (!panel || !title || !body) return;
+
+            if (typeof articleContent !== 'undefined' && articleContent[articleId]) {
+                const article = articleContent[articleId];
+                title.textContent = article.title;
+                
+                let imageHtml = '';
+                if (typeof window.buildArticleImageHtml === 'function') {
+                    imageHtml = window.buildArticleImageHtml(articleId, article);
+                }
+                
+                body.innerHTML = imageHtml + article.content;
+                panel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                const contentContainer = panel.querySelector('.article-detail-content');
+                if (contentContainer) contentContainer.scrollTop = 0;
+            } else {
+                title.textContent = 'Article Not Found';
+                body.innerHTML = '<p style="padding: 20px; color: #6b7280;">Sorry, the content for this article ("' + articleId + '") could not be found or has not been added yet.</p>';
+                panel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                console.error('Article not found:', articleId);
+            }
+        }
+
+        function closeArticlePanel() {
+            const panel = document.getElementById('article-detail-panel');
+            if (panel) {
+                panel.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            const drawerClose = document.getElementById('drawer-close');
+            
+            if (mobileToggle) {
+                mobileToggle.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    toggleMobileMenu();
+                });
+            }
+            
+            if (drawerClose) {
+                drawerClose.addEventListener('click', closeMobileMenu);
+            }
+            
+            if (mobileDrawer) {
+                mobileDrawer.addEventListener('click', (e) => {
+                    if (e.target === mobileDrawer) closeMobileMenu();
+                });
+            }
+
+            const articlePanel = document.getElementById('article-detail-panel');
+            if (articlePanel) {
+                articlePanel.addEventListener('click', (e) => {
+                    if (e.target === articlePanel) closeArticlePanel();
+                });
+            }
+            
+            const closeBtn = document.getElementById('article-detail-close');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeArticlePanel);
+            }
+        });
+
+        const articleContent = {
+'introduction-to-stock-valuation': {
+        title: 'Introduction to Stock Valuation',
+        content: `
+            <p>Stock valuation is the core discipline of fundamental investing. It is the process of calculating the theoretical true value of a company (its intrinsic value) to determine whether its current stock price on the market is overvalued or undervalued.</p>
+            <h3>Price vs. Value</h3>
+            <p>The foundation of valuation rests on a single concept: <strong>Price is what you pay; Value is what you get.</strong> The market dictates the price every second of the trading day, driven by emotion, momentum, and macroeconomics. Valuation attempts to dictate the actual underlying worth, driven purely by cash flows, assets, and business economics.</p>
+        `
+    },
+    'what-is-value': {
+        title: 'What is Value?',
+        content: `
+            <p>In finance, "value" is not an abstract concept; it is mathematically defined as the present value of all future cash flows a business will generate over its lifetime.</p>
+            <h3>The Golden Goose</h3>
+            <p>If you own a goose that lays one golden egg every year, the "value" of the goose is the total sum of all those future golden eggs, discounted back to today's money (because an egg today is worth more than an egg in 10 years). The same applies to a business generating cash.</p>
+        `
+    },
+    'stock-valuation-process': {
+        title: 'Stock Valuation Process',
+        content: `
+            <p>Valuation is not a single calculation; it is a multi-step process that combines qualitative analysis with quantitative modeling.</p>
+            <h3>The Core Steps</h3>
+            <p><strong>1. Understand the Business:</strong> How do they make money? What is their moat? <strong>2. Forecast Financial Performance:</strong> Projecting future revenue, margins, and cash flows. <strong>3. Select a Valuation Model:</strong> Choosing DCF, Earnings Power Value, or relative multiples based on the industry. <strong>4. Apply Discount Rates:</strong> Adjusting for the riskiness of the cash flows. <strong>5. Arrive at Intrinsic Value:</strong> And comparing it to the current market price.</p>
+        `
+    },
+    'behavioural-biases': {
+        title: 'Behavioural Biases in Valuation',
+        content: `
+            <p>The biggest threat to a valuation model is not the math; it's the psychological bias of the analyst building it.</p>
+            <h3>Common Biases</h3>
+            <p><strong>Anchoring:</strong> Valuing a stock at $100 simply because it traded at $100 last year, ignoring deteriorating fundamentals. <strong>Confirmation Bias:</strong> Building a model to justify a purchase you've already emotionally decided to make, rather than letting the model dictate the decision. <strong>Over-optimism:</strong> Assuming a company can sustain 30% growth forever, which capitalism rarely allows.</p>
+        `
+    },
+    'use-of-discount-rates': {
+        title: 'Use of Discount Rates',
+        content: `
+            <p>The discount rate represents the required rate of return an investor demands for taking on the risk of the investment. It accounts for both the time value of money and the uncertainty of future cash flows.</p>
+            <h3>The Impact on Value</h3>
+            <p>Valuation is highly sensitive to the discount rate. If you demand a 10% return (discount rate), a company's projected future cash flows are worth significantly less *today* than if you only demanded a 5% return. A higher perceived risk mandates a higher discount rate, which mathematically crushes the present intrinsic value.</p>
+        `
+    },
+    'limitations-of-valuation': {
+        title: 'Limitations of Valuation',
+        content: `
+            <p>Valuation is an imprecise art disguised as a precise science. It relies entirely on projecting the future, which is inherently unknowable.</p>
+            <h3>The Illusion of Precision</h3>
+            <p>A spreadsheet might calculate a stock's intrinsic value down to the penny (e.g., $43.27), but this implies a false level of accuracy. If your revenue growth assumption is off by just 2%, or your discount rate is off by 1%, that $43.27 value could easily swing to $25 or $60. Valuation provides a *range* of probabilities, not an absolute truth.</p>
+        `
+    },
+    'common-valuation-errors': {
+        title: 'Common Valuation Errors',
+        content: `
+            <p>Analysts frequently make structural errors that completely invalidate their valuation models.</p>
+            <h3>The Main Culprits</h3>
+            <p><strong>1. Ignoring Dilution:</strong> Valuing the total company but dividing by today's share count, ignoring millions of executive stock options that will vest. <strong>2. Double Counting Growth:</strong> Paying a high P/E multiple for growth, while also assuming high growth in a DCF model. <strong>3. Using the Wrong Metric:</strong> Valuing a capital-intensive mining company using an EBITDA multiple (which completely ignores the massive CapEx required to survive).</p>
+        `
+    },
+    'what-is-intrinsic-value': {
+        title: 'What is Intrinsic Value?',
+        content: `
+            <p>Intrinsic value is the absolute, true, underlying worth of an asset based solely on its ability to generate cash over its lifetime, independent of its current market price.</p>
+            <h3>The North Star</h3>
+            <p>For value investors, intrinsic value is the North Star. If a stock trades at $50, but a rigorous analysis determines its intrinsic value is $100, the investor buys the stock with a massive "Margin of Safety," trusting that eventually, the market price will converge with the intrinsic value.</p>
+        `
+    },
+    'how-to-calculate-intrinsic-value': {
+        title: 'How to Calculate Intrinsic Value',
+        content: `
+            <p>There is no single formula for intrinsic value. It is calculated using a variety of absolute valuation models, primarily the Discounted Cash Flow (DCF) model.</p>
+            <h3>The Formulaic Approach</h3>
+            <p>The standard academic approach: Project the Free Cash Flow (FCF) for the next 5-10 years. Calculate a Terminal Value for all cash flows beyond year 10. Discount all these future cash flows back to "Present Value" using a discount rate (usually the WACC). Sum the present values, subtract net debt, and divide by the number of shares.</p>
+        `
+    },
+    'ben-graham-s-intrinsic-value': {
+        title: "Ben Graham's Intrinsic Value",
+        content: `
+            <p>Benjamin Graham, the father of value investing, favored a highly conservative, asset-based approach to intrinsic value, rather than projecting highly uncertain future cash flows.</p>
+            <h3>Net-Net Valuation</h3>
+            <p>Graham's ultimate definition of intrinsic value was "Net Current Asset Value." He looked for companies trading below their current liquid assets (cash + receivables + inventory) minus *all* total liabilities. If you bought a stock below this value, you were essentially getting the physical business and all future profits for free.</p>
+        `
+    },
+    'warren-buffett-s-intrinsic-value': {
+        title: "Warren Buffett's Intrinsic Value",
+        content: `
+            <p>Buffett evolved Graham's approach. While Graham focused on liquidating assets, Buffett focuses on a company's ability to compound cash as a going concern.</p>
+            <h3>Owner Earnings</h3>
+            <p>Buffett defined intrinsic value based on "Owner Earnings": Reported Net Income + Depreciation/Amortization - Maintenance Capital Expenditure. He looks for companies with a durable competitive advantage (a moat) that allows them to generate massive Owner Earnings with very little required capital reinvestment.</p>
+        `
+    },
+    'seth-klarman-s-intrinsic-value': {
+        title: "Seth Klarman's Intrinsic Value",
+        content: `
+            <p>Seth Klarman, author of <em>Margin of Safety</em>, approaches intrinsic value with extreme skepticism regarding the future. He emphasizes downside protection above all else.</p>
+            <h3>Multiple Scenarios</h3>
+            <p>Klarman rarely relies on a single DCF. He calculates intrinsic value under highly pessimistic scenarios (e.g., zero growth, contracting margins). He also relies heavily on Liquidation Value and Private Market Value (what a private equity firm would pay to acquire the whole business) as hard anchors for intrinsic value.</p>
+        `
+    },
+    'irving-kahn-s-intrinsic-value': {
+        title: "Irving Kahn's Intrinsic Value",
+        content: `
+            <p>Irving Kahn, one of Graham's original disciples, remained a staunch advocate of Net-Net investing throughout his long career, but adapted it for modern markets.</p>
+            <h3>The Balance Sheet Fortress</h3>
+            <p>Kahn sought intrinsic value not in future growth, but in iron-clad balance sheets. He looked for companies trading below Book Value that possessed massive, hidden assets (like fully depreciated real estate) and zero debt. For Kahn, intrinsic value was about what the company *owned*, not what it *might earn*.</p>
+        `
+    },
+    'christopher-browne-s-intrinsic-value': {
+        title: "Christopher Browne's Intrinsic Value",
+        content: `
+            <p>Christopher Browne of Tweedy, Browne adopted a highly systematic, rules-based approach to defining intrinsic value, often combining Graham's asset approach with Buffett's franchise approach.</p>
+            <h3>Appraisal Value</h3>
+            <p>Browne often looked at "Appraisal Value"—valuing a company based on the actual multiples paid in recent M&A transactions for similar businesses in the real world. If private buyers were consistently paying 10x EBITDA for food companies, Browne considered that the baseline intrinsic value for public food companies.</p>
+        `
+    },
+    'howard-marks-intrinsic-value': {
+        title: "Howard Marks' Intrinsic Value",
+        content: `
+            <p>Howard Marks emphasizes that intrinsic value is deeply cyclical and psychological. He focuses heavily on credit cycles and distressed debt to find extreme mispricings.</p>
+            <h3>Second-Level Thinking</h3>
+            <p>Marks believes that calculating standard intrinsic value is not enough, because every analyst does it. To find true mispriced value, you need "second-level thinking"—understanding not just the asset's value, but understanding *why* the market psychology has temporarily priced it so far below that value (usually due to forced liquidation or sheer panic).</p>
+        `
+    },
+    'li-lu-s-intrinsic-value': {
+        title: "Li Lu's Intrinsic Value",
+        content: `
+            <p>Li Lu, heavily endorsed by Charlie Munger, combines deep fundamental value investing with an intense focus on management integrity and long-term compounding in Asian markets.</p>
+            <h3>The Certainty of Survival</h3>
+            <p>Li Lu defines intrinsic value by looking for businesses with absolute certainty of survival. He focuses on extreme downside scenarios. If a business can survive the worst possible macroeconomic shock and still generate cash, its long-term intrinsic value is almost certainly higher than its current price during a panic.</p>
+        `
+    },
+    'mohnish-pabrai-s-intrinsic-value': {
+        title: "Mohnish Pabrai's Intrinsic Value",
+        content: `
+            <p>Mohnish Pabrai approaches intrinsic value using the "Dhandho" framework: "Heads I win; tails, I don't lose much."</p>
+            <h3>Low Risk, High Uncertainty</h3>
+            <p>Pabrai looks for intrinsic value in situations where risk is actually very low (asset-backed, no debt), but *uncertainty* is very high (bad news, structural changes). The market confuses uncertainty with risk, crushing the stock price. Pabrai buys when the intrinsic value is protected by hard assets, knowing that if the uncertainty resolves positively, the upside is massive.</p>
+        `
+    },
+    'peter-lynch-s-intrinsic-value': {
+        title: "Peter Lynch's Intrinsic Value",
+        content: `
+            <p>Peter Lynch deviated from strict asset-based value, popularizing the concept of GARP (Growth At a Reasonable Price).</p>
+            <h3>The PEG Ratio</h3>
+            <p>Lynch defined a stock's intrinsic value relative to its growth rate. He popularized the PEG Ratio (P/E Ratio divided by Earnings Growth Rate). If a company is growing earnings at 25% a year, a P/E of 25 is "fair value" (PEG of 1.0). If you can buy that 25% grower at a P/E of 15 (PEG of 0.6), it is trading well below intrinsic value.</p>
+        `
+    },
+    'john-neff-s-intrinsic-value': {
+        title: "John Neff's Intrinsic Value",
+        content: `
+            <p>John Neff was a classic contrarian value investor who focused heavily on low P/E stocks combined with high dividend yields.</p>
+            <h3>Total Return Value</h3>
+            <p>Neff calculated intrinsic value based on a "Total Return" formula: (Earnings Growth Rate + Dividend Yield) / P/E Ratio. He sought solid, boring companies where the dividend alone provided a massive floor under the intrinsic value, while waiting for the market to eventually recognize the low P/E and re-rate the stock higher.</p>
+        `
+    },
+    'john-templeton-s-intrinsic-value': {
+        title: "John Templeton's Intrinsic Value",
+        content: `
+            <p>Sir John Templeton was the pioneer of global value investing, seeking intrinsic value anywhere in the world where pessimism was at its maximum.</p>
+            <h3>The Point of Maximum Pessimism</h3>
+            <p>Templeton defined intrinsic value comparatively across borders. If Japanese chemical companies were trading at 5x earnings while US chemical companies traded at 15x, Templeton found intrinsic value in Japan. He famously bought every US stock trading under $1 at the exact onset of WWII, realizing that war production would eventually unlock their hidden intrinsic value.</p>
+        `
+    },
+    'aswath-damodaran-s-intrinsic-value': {
+        title: "Aswath Damodaran's Intrinsic Value",
+        content: `
+            <p>Aswath Damodaran, the "Dean of Valuation," champions a rigorous, academically sound, but highly adaptable approach to DCF modeling.</p>
+            <h3>Narrative and Numbers</h3>
+            <p>Damodaran insists that intrinsic value cannot be calculated purely with a spreadsheet. You must first craft a logical "Narrative" about the company's future (e.g., "Uber will dominate global logistics"), and then translate that narrative directly into the "Numbers" (revenue growth, margins, target market size). If the numbers don't support the narrative, the valuation is flawed.</p>
+        `
+    },
+    'limitations-of-intrinsic-value': {
+        title: 'Limitations of Intrinsic Value',
+        content: `
+            <p>While conceptually perfect, intrinsic value is notoriously difficult to rely upon in practice.</p>
+            <h3>The Moving Target</h3>
+            <p>Intrinsic value is not a static number; it changes every day as the business environment changes. A sudden technological disruption or a change in government regulation can instantly destroy a company's "moat," reducing its intrinsic value by 80% overnight. Clinging to an outdated intrinsic value calculation is a common investor trap.</p>
+        `
+    },
+'price-to-sales-ratio': {
+        title: 'Price-to-Sales Ratio',
+        content: `
+            <p>The P/S ratio (Market Capitalization / Total Revenue) values a company purely on its top-line sales, ignoring profit margins entirely.</p>
+            <h3>When to Use It</h3>
+            <p>It is primarily used for early-stage companies (like SaaS startups) that are intentionally losing money to capture market share, making the P/E ratio useless. It assumes that eventually, the company will achieve standard industry profit margins on those sales.</p>
+            <h3>The Danger</h3>
+            <p>Sales do not equal cash. A company can have massive sales but structurally negative margins. Paying 10x Sales for a hardware company with 5% margins is a recipe for disaster; paying 10x Sales for a software company with 85% gross margins might be a bargain.</p>
+        `
+    },
+    'sales-multiples': {
+        title: 'Sales Multiples',
+        content: `
+            <p>Sales multiples compare a company's valuation to its revenue relative to its peers.</p>
+            <h3>Enterprise Value to Sales (EV/Sales)</h3>
+            <p>This is the superior version of the P/S ratio because it accounts for debt. If two companies both trade at 2x Sales, but Company A has $1B in debt and Company B has $1B in cash, Company B is drastically cheaper on an EV/Sales basis. EV/Sales is standard in M&A valuation.</p>
+        `
+    },
+    'revenue-growth-rate': {
+        title: 'Revenue Growth Rate',
+        content: `
+            <p>The pace at which top-line sales are expanding. It is the primary driver of high valuations in modern equity markets.</p>
+            <h3>Sustainable vs Unsustainable</h3>
+            <p>A 50% growth rate driven by massive, unrepeatable marketing spend is low-quality growth. A 20% growth rate driven by a deeply ingrained "network effect" (like Visa or Facebook) is high-quality, highly valuable growth. Analysts must always separate organic growth from acquisition-driven growth.</p>
+        `
+    },
+    'price-to-revenue-growth': {
+        title: 'Price to Revenue Growth',
+        content: `
+            <p>Similar to the PEG ratio, this compares the Price/Sales multiple to the expected revenue growth rate.</p>
+            <h3>The Growth Premium</h3>
+            <p>If a company trades at 15x Sales but is growing revenue at 60% year-over-year, it might be cheaper than a company trading at 4x Sales growing at only 5%. This metric helps investors standardize the massive valuations often applied to hyper-growth tech stocks.</p>
+        `
+    },
+    'price-to-earnings-ratio': {
+        title: 'Price-to-Earnings Ratio',
+        content: `
+            <p>The P/E Ratio (Share Price / Earnings Per Share) is the most famous and widely misused valuation metric in the world.</p>
+            <h3>What It Means</h3>
+            <p>It tells you how much the market is willing to pay for $1 of current accounting profit. A P/E of 20 means you are paying $20 for every $1 of earnings (a 5% yield). High P/E implies high expected growth; low P/E implies stagnation or distress.</p>
+            <h3>The Trap</h3>
+            <p>Because "Earnings" (Net Income) is heavily manipulable by management (via depreciation schedules, buybacks, and tax games), a low P/E can be a "value trap"—the earnings are artificially inflated and are about to collapse.</p>
+        `
+    },
+    'earnings-yield': {
+        title: 'Earnings Yield',
+        content: `
+            <p>The Earnings Yield (Earnings Per Share / Share Price) is simply the inverse of the P/E ratio.</p>
+            <h3>The Interest Rate Comparison</h3>
+            <p>A P/E of 20 equals an Earnings Yield of 5%. Expressing it as a yield allows investors to directly compare stocks against risk-free government bonds. If the 10-year Treasury bond yields 4%, a stock with a 5% Earnings Yield only offers a 1% "Equity Risk Premium," which is usually not enough to compensate for the risk of owning equities.</p>
+        `
+    },
+    'pe-to-growth-peg-ratio': {
+        title: 'PE-to-Growth (PEG) Ratio',
+        content: `
+            <p>Popularized by Peter Lynch, the PEG ratio (P/E Ratio / Annual EPS Growth Rate) contextualizes the P/E multiple by factoring in the company's growth trajectory.</p>
+            <h3>The Magic 1.0</h3>
+            <p>A PEG of 1.0 is historically considered "fair value." A company with a P/E of 20 growing at 20% (PEG 1.0) is fairly priced. A company with a P/E of 15 growing at 30% (PEG 0.5) is severely undervalued. However, in modern markets, high-quality companies rarely trade below a PEG of 1.5.</p>
+        `
+    },
+    'ypeg-ratio': {
+        title: 'YPEG Ratio',
+        content: `
+            <p>The Yield-Adjusted PEG Ratio improves upon the traditional PEG by factoring in the dividend yield, which is critical for mature, slower-growing companies.</p>
+            <h3>The Formula</h3>
+            <p>YPEG = P/E Ratio / (Annual EPS Growth Rate + Dividend Yield). A utility company might only grow earnings at 3% (giving it a terrible traditional PEG), but if it pays a 6% dividend, the YPEG captures that 9% total return, revealing that the stock is actually fairly valued.</p>
+        `
+    },
+    'future-maintainable-earnings': {
+        title: 'Future Maintainable Earnings',
+        content: `
+            <p>FME is the estimated level of profit a business is expected to generate consistently in the future, assuming normal operating conditions.</p>
+            <h3>Stripping the Noise</h3>
+            <p>To calculate FME, analysts take historical earnings and remove all one-off anomalies (e.g., a massive lawsuit settlement, a government pandemic subsidy, or a temporary supply chain shock). FME is the absolute baseline input for most capitalization-of-earnings valuation models.</p>
+        `
+    },
+    'discounted-future-earnings': {
+        title: 'Discounted Future Earnings',
+        content: `
+            <p>A valuation method that projects a company's Net Income into the future and discounts those earnings back to the present value.</p>
+            <h3>Earnings vs Cash Flow</h3>
+            <p>While simpler than a full DCF, this method is highly flawed because it relies on accounting "earnings" rather than actual "cash." A company can have massive projected earnings but go bankrupt because those earnings are tied up in inventory and receivables, never converting to cash.</p>
+        `
+    },
+    'earnings-power-value': {
+        title: 'Earnings Power Value (EPV)',
+        content: `
+            <p>Popularized by Bruce Greenwald, EPV is a valuation method that assumes zero future growth. It values the company based solely on its current, normalized, sustainable cash flow.</p>
+            <h3>The Conservative Anchor</h3>
+            <p>EPV = Adjusted Current Cash Flow / Cost of Capital. If the EPV is $50 a share, and the stock trades at $40, you are buying the current business at a discount and getting all future growth absolutely for free. It is the ultimate tool for conservative value investors.</p>
+        `
+    },
+    'residual-income': {
+        title: 'Residual Income Valuation',
+        content: `
+            <p>This model values a company based on its Book Value plus the present value of its expected future Residual Income (Economic Profit).</p>
+            <h3>Cost of Equity Deduction</h3>
+            <p>Residual Income is the Net Income minus a strict "capital charge" (the cost of the equity capital). If a company earns $10M, but its required cost of equity is $12M, its Residual Income is negative $2M. Despite reporting an accounting profit, it is destroying shareholder value, and its intrinsic value will be lower than its book value.</p>
+        `
+    },
+    'price-to-ebitda': {
+        title: 'Price to EBITDA',
+        content: `
+            <p>A rough valuation multiple (Market Cap / EBITDA) often used as a quick proxy for cash flow multiples.</p>
+            <h3>The Flaws</h3>
+            <p>It is generally inferior to EV/EBITDA because Market Cap (the numerator) ignores debt, while EBITDA (the denominator) is the profit available to *both* debt and equity holders. It represents a mismatched ratio and should generally be avoided by serious analysts.</p>
+        `
+    },
+    'discounted-cash-flow-dcf': {
+        title: 'Discounted Cash Flow (DCF)',
+        content: `
+            <p>The DCF is the gold standard of absolute valuation. It calculates intrinsic value by projecting a company's future Free Cash Flows and discounting them back to today's value.</p>
+            <h3>The Architecture</h3>
+            <p><strong>1. Forecast FCF:</strong> Usually 5 to 10 years out. <strong>2. Calculate Terminal Value:</strong> The value of all cash flows into perpetuity after year 10 (often using the Gordon Growth Model). <strong>3. Discount:</strong> Apply the WACC to bring it all to Present Value. <strong>4. Subtract Net Debt:</strong> To find the Equity Value.</p>
+            <h3>The Danger</h3>
+            <p>A DCF is highly sensitive. Tweaking the terminal growth rate from 2% to 3% can artificially double the final valuation. It is a tool for understanding assumptions, not a machine that outputs absolute truth.</p>
+        `
+    },
+    'revenue-dcf': {
+        title: 'Revenue DCF',
+        content: `
+            <p>A variation of the standard DCF used for early-stage companies with no current cash flows or profits (e.g., biotech, pre-revenue SaaS).</p>
+            <h3>Projecting the Top Line</h3>
+            <p>Instead of starting with historical cash flows, the analyst projects Total Market Size and Market Share to estimate future Revenue. They then apply an assumed future operating margin (e.g., "In year 5, they will reach the industry average 20% margin") to artificially calculate a future cash flow, which is then discounted back. It is highly speculative.</p>
+        `
+    },
+    'economic-value-added-eva': {
+        title: 'Economic Value Added (EVA)',
+        content: `
+            <p>EVA is a measure of a company's true economic profit, calculated as Net Operating Profit After Taxes (NOPAT) minus the total dollar cost of capital (Debt + Equity) deployed to generate that profit.</p>
+            <h3>The Capital Charge</h3>
+            <p>Unlike standard accounting, EVA forces management to pay for the equity they use. If a company generates a 10% Return on Capital, but its Cost of Capital is 12%, its EVA is negative. It is destroying value, even if the P&L shows a "profit." Management compensation is increasingly tied to EVA rather than EPS.</p>
+        `
+    },
+    'free-cash-flow-valuation': {
+        title: 'Free Cash Flow Valuation',
+        content: `
+            <p>This approach bypasses accounting earnings entirely and focuses purely on Free Cash Flow Yield (FCF / Enterprise Value).</p>
+            <h3>The Owner's Yield</h3>
+            <p>If a company generates $100M in FCF and has an EV of $1B, the FCF Yield is 10%. This means that theoretically, if you bought the entire company, you could pay yourself a 10% cash dividend every year without harming the business operations. A consistently high FCF yield is the hallmark of a deeply undervalued compounding machine.</p>
+        `
+    },
+    'book-value': {
+        title: 'Book Value',
+        content: `
+            <p>Book Value (Total Assets - Total Liabilities) represents the net accounting value of a company's equity on its balance sheet.</p>
+            <h3>The Historical Artifact</h3>
+            <p>In the 1950s, buying stocks below Book Value (P/B < 1) was Ben Graham's primary strategy. Today, it is largely irrelevant for technology companies whose primary assets (software, brands, networks) are not capitalized on the balance sheet. However, it remains a critical valuation anchor for banks and insurance companies.</p>
+        `
+    },
+    'tangible-book-value': {
+        title: 'Tangible Book Value',
+        content: `
+            <p>Tangible Book Value (TBV) takes Book Value and strips out all intangible assets (Goodwill, patents, trademarks).</p>
+            <h3>The Hard Floor</h3>
+            <p>TBV represents the hard, physical assets (cash, factories, land) backing the stock. In a bankruptcy scenario, intangibles usually become worthless; TBV is what is actually left to sell. Value investors often seek companies trading near TBV to ensure massive downside protection.</p>
+        `
+    },
+    'adjusted-net-assets': {
+        title: 'Adjusted Net Asset Valuation',
+        content: `
+            <p>This method takes the standard balance sheet and manually adjusts every asset and liability from its historical accounting cost to its current Fair Market Value.</p>
+            <h3>Finding Hidden Value</h3>
+            <p>An analyst might discover that a retailer's real estate, carried on the books at a 1980 cost of $10M, is actually worth $100M today. By adjusting the net assets to reflect this hidden $90M, the analyst calculates a new, much higher "Adjusted Intrinsic Value" that the broader market is missing.</p>
+        `
+    },
+    'replacement-cost-method': {
+        title: 'Replacement Cost Method',
+        content: `
+            <p>Also known as "Tobin's Q," this method values a company based on exactly how much it would cost to build an identical competitor from scratch today.</p>
+            <h3>The Barrier to Entry</h3>
+            <p>If a steel mill trades for $500M, but it would cost a competitor $2B to buy the land, build the blast furnaces, and secure the regulatory permits today, the steel mill is massively undervalued based on its replacement cost. This method is highly effective for heavy industries, pipelines, and infrastructure.</p>
+        `
+    },
+    'sum-of-the-parts': {
+        title: 'Sum-of-the-Parts (SOTP)',
+        content: `
+            <p>SOTP valuation is used for conglomerates. It involves valuing every individual business division separately and adding them together to find the Total Enterprise Value.</p>
+            <h3>The Conglomerate Discount</h3>
+            <p>Often, the market prices a conglomerate at $5B due to inefficiency. But an SOTP analysis might reveal the Media division is worth $3B, the Tech division is worth $4B, and the Retail division is worth $1B (Total $8B). Activist investors use SOTP to force management to break up the company and unlock that hidden $3B in value.</p>
+        `
+    },
+'liquidation-value': {
+        title: 'Liquidation Value',
+        content: `
+            <p>The absolute floor of valuation. It is the estimated amount of cash that would remain if a company immediately closed its doors, sold all its assets in a fire sale, and paid off all its liabilities.</p>
+            <h3>The Fire Sale Haircut</h3>
+            <p>Liquidation value is always far lower than Book Value. Inventory might only fetch 30 cents on the dollar, and specialized factory equipment might only sell for scrap metal value. If a stock is trading below its Liquidation Value, it is essentially priced for bankruptcy, offering a deep-value opportunity if the company actually survives.</p>
+        `
+    },
+    'limitations-of-value': {
+        title: 'Limitations of Value Models',
+        content: `
+            <p>Asset-based valuation models (Book Value, Liquidation Value) have severe limitations in the modern economy.</p>
+            <h3>The Intangible Economy</h3>
+            <p>They completely fail to value technology and service businesses. Microsoft's true value is its software ecosystem and brand monopoly, not the physical office buildings on its balance sheet. Asset models are only highly relevant for capital-heavy industries like banking, property trusts, and mining.</p>
+        `
+    },
+    'dividend-discount-model-ddm': {
+        title: 'Dividend Discount Model (DDM)',
+        content: `
+            <p>A specialized valuation method that calculates the intrinsic value of a stock based solely on the present value of its expected future dividend payments.</p>
+            <h3>The Premise</h3>
+            <p>The DDM argues that a share of stock is worth exactly the cash you can extract from it. It is highly effective for valuing mature, slow-growing utility companies or REITs that pay out the majority of their earnings as dividends.</p>
+        `
+    },
+    'gordon-growth-model-ggm': {
+        title: 'Gordon Growth Model (GGM)',
+        content: `
+            <p>The most common variant of the DDM. It assumes that a company's dividend will grow at a constant rate into perpetuity.</p>
+            <h3>The Formula</h3>
+            <p><strong>Value = Expected Dividend Per Share / (Discount Rate - Dividend Growth Rate).</strong> It is beautifully simple but highly dangerous. If you assume a growth rate that is even slightly higher than the overall economy's growth rate, the math breaks down and outputs an infinite valuation.</p>
+        `
+    },
+    'two-stage-dividend-growth-model': {
+        title: 'Two-Stage Dividend Growth Model',
+        content: `
+            <p>An improvement over the GGM. It assumes two distinct phases of growth: an initial period of high, rapid dividend growth (perhaps driven by a new product cycle), followed by a terminal period of slow, stable, perpetual growth.</p>
+            <h3>Flexibility</h3>
+            <p>This allows analysts to value maturing companies realistically without assuming hyper-growth will last forever. It bridges the gap between a high-growth startup phase and a mature "cash cow" phase.</p>
+        `
+    },
+    'dividend-payout-ratio': {
+        title: 'Dividend Payout Ratio',
+        content: `
+            <p>The percentage of Net Income paid out to shareholders as dividends (Dividends / Net Income).</p>
+            <h3>Yield vs Safety</h3>
+            <p>A stock with an 8% dividend yield looks attractive, but if its payout ratio is 110% (meaning it pays out more than it earns), the dividend is unsustainable and an imminent cut will likely crash the share price. A healthy payout ratio (e.g., 40-60%) indicates the dividend is safe and has room to grow.</p>
+        `
+    },
+    'price-to-book-value-ratio': {
+        title: 'Price-to-Book Value Ratio',
+        content: `
+            <p>The P/B ratio compares a company's market capitalization to its accounting book value (Total Assets - Liabilities).</p>
+            <h3>The Value Floor</h3>
+            <p>Historically, a P/B below 1.0 indicated a deeply undervalued "cigar butt" stock. Today, a P/B below 1.0 is common for distressed banks holding toxic assets. For modern banks, analysts focus strictly on Price to *Tangible* Book Value, ensuring they aren't paying for inflated goodwill.</p>
+        `
+    },
+    'enterprise-value-ev': {
+        title: 'Enterprise Value (EV)',
+        content: `
+            <p>The absolute true cost to buy an entire company. It strips away the illusion of market capitalization.</p>
+            <h3>The Calculation</h3>
+            <p><strong>EV = Market Capitalization + Total Debt - Cash.</strong> If you buy a house for $500k, but it has a $400k mortgage, the true cost is $900k. EV applies this logic to corporations. It is the only metric that allows you to compare the valuations of a heavily indebted company and a cash-rich company accurately.</p>
+        `
+    },
+    'enterprise-value-to-ebitda': {
+        title: 'Enterprise Value to EBITDA (EV/EBITDA)',
+        content: `
+            <p>The single most heavily used valuation multiple in professional finance and M&A.</p>
+            <h3>The Universal Metric</h3>
+            <p>Unlike the P/E ratio, EV/EBITDA is capital-structure neutral. It compares the total cost of the business (EV) to the cash flow available to all investors (EBITDA) before interest and taxes distort the picture. Private equity firms almost exclusively buy and sell businesses based on EV/EBITDA multiples.</p>
+        `
+    },
+    'enterprise-value-to-sales': {
+        title: 'Enterprise Value to Sales (EV/Sales)',
+        content: `
+            <p>A top-line valuation multiple that accounts for debt.</p>
+            <h3>The SaaS Metric</h3>
+            <p>Because software-as-a-service (SaaS) companies often generate negative earnings and negative EBITDA while intentionally spending heavily to acquire customers, EV/Sales is often the only mathematically viable multiple. It measures how much the market is paying for the recurring revenue base.</p>
+        `
+    },
+    'ben-graham-s-formulas': {
+        title: "Ben Graham's Formulas",
+        content: `
+            <p>Beyond Net-Nets, Graham created a famous shorthand formula to quickly estimate intrinsic value for defensive stocks.</p>
+            <h3>The Graham Formula</h3>
+            <p><strong>V = EPS x (8.5 + 2g)</strong>, where 8.5 is the P/E base for a no-growth company, and 'g' is the expected 7-to-10 year growth rate. Later revised to adjust for current corporate bond rates, it remains a quick "back of the napkin" reality check against wildly inflated growth expectations.</p>
+        `
+    },
+    'joel-greenblatt-s-magic-formula': {
+        title: "Joel Greenblatt's Magic Formula",
+        content: `
+            <p>A systematic valuation strategy designed to buy "good companies at bargain prices."</p>
+            <h3>The Two Metrics</h3>
+            <p>The formula ranks every stock in the market based on just two metrics: <strong>Earnings Yield</strong> (EBIT / Enterprise Value) to find cheapness, and <strong>Return on Capital</strong> (EBIT / Net Working Capital + Net Fixed Assets) to find quality. Buying a basket of the top-ranked stocks has historically crushed broader market indices.</p>
+        `
+    },
+    'industry-rules-of-thumb': {
+        title: 'Industry Rules of Thumb',
+        content: `
+            <p>Every industry has its own specialized valuation shorthand that professionals use before running complex DCFs.</p>
+            <h3>Sector Specifics</h3>
+            <p><strong>Retail:</strong> EV/EBITDAR (adding back Rent). <strong>Oil & Gas:</strong> EV/Proven Reserves. <strong>SaaS:</strong> EV/Annual Recurring Revenue (ARR). <strong>Telecoms:</strong> EV/Subscriber. Knowing the specific rule of thumb for an industry is essential to speak the same language as the sector analysts.</p>
+        `
+    },
+    'intangible-assets': {
+        title: 'Valuing Intangible Assets',
+        content: `
+            <p>The hardest challenge in modern valuation is pricing assets that cannot be touched, such as brands, algorithms, and network effects.</p>
+            <h3>The Excess Earnings Method</h3>
+            <p>One method calculates the expected return on the company's tangible assets. Any actual profit generated *above* that baseline return is considered "Excess Earnings" generated by the intangibles (the brand or moat). These excess earnings are then capitalized to estimate the value of the intangible asset.</p>
+        `
+    },
+    'call-options': {
+        title: 'Call Options as Valuation',
+        content: `
+            <p>In distressed scenarios, the equity of a heavily indebted company is mathematically identical to a Call Option on the company's assets, with the strike price equal to the debt face value.</p>
+            <h3>The Merton Model</h3>
+            <p>If the assets are worth less than the debt, standard equity valuation is zero. But an option pricing model gives the equity value because there is a small *probability* (based on asset volatility) that the assets might surge in value before the debt comes due, putting the equity "in the money."</p>
+        `
+    },
+    'put-options': {
+        title: 'Put Options in Valuation',
+        content: `
+            <p>While call options model equity, put options model the risk of default on the debt.</p>
+            <h3>Credit Risk</h3>
+            <p>By valuing the "put option" that equity holders essentially hold (the option to walk away and hand the assets to the bondholders if the company fails), analysts can precisely calculate the fair interest rate (credit spread) a distressed company should be paying on its debt.</p>
+        `
+    },
+    'distressed-companies': {
+        title: 'Valuing Distressed Companies',
+        content: `
+            <p>Standard DCF and P/E models completely fail when a company is bleeding cash and approaching bankruptcy.</p>
+            <h3>The Restructuring Math</h3>
+            <p>Distressed valuation requires estimating the probability of default, the legal priority of different debt tranches (who gets paid first), and the liquidation value of the assets. Analysts value the company assuming a Chapter 11 restructuring, calculating what the "new" post-bankruptcy equity will be worth once the current debt is wiped out.</p>
+        `
+    },
+    'bankrupt-companies': {
+        title: 'Valuing Bankrupt Companies',
+        content: `
+            <p>Once a company is formally bankrupt, the equity is almost always worthless. Valuation shifts entirely to the bondholders.</p>
+            <h3>Recovery Rates</h3>
+            <p>Analysts model the "waterfall." If the liquidated assets generate $100M, the senior secured bank debt might get 100 cents on the dollar, the senior unsecured bonds might get 40 cents, and the subordinated bonds get zero. Distressed debt investors buy those unsecured bonds at 20 cents, betting their valuation model proves the recovery will actually be 40 cents.</p>
+        `
+    },
+    'mergers-acquisitions': {
+        title: 'Mergers & Acquisitions (M&A) Valuation',
+        content: `
+            <p>M&A valuation involves calculating what a strategic buyer should pay for a target company, which is always higher than the standalone intrinsic value.</p>
+            <h3>Control Premium and Synergies</h3>
+            <p>Buyers pay a "Control Premium" (often 20-30% above the current stock price) to acquire voting control. They justify this premium by modeling "Synergies"—the cost savings (firing duplicate staff) or revenue boosts achieved by combining the two companies. M&A modeling is heavily focused on proving that these expected synergies mathematically justify the massive premium paid.</p>
+        `
+    },
+    'start-up-companies': {
+        title: 'Valuing Start-up Companies',
+        content: `
+            <p>Startups have no history, no profits, and highly uncertain futures. Traditional valuation is impossible.</p>
+            <h3>Venture Capital Method</h3>
+            <p>VCs estimate what the company could be sold for in 5-7 years (the Terminal Value, often based on high EV/Sales multiples). They then discount that future value back to today using a massive discount rate (often 40-70%) to account for the massive probability that the startup will simply fail and go to zero.</p>
+        `
+    },
+    'pre-ipo-companies': {
+        title: 'Valuing Pre-IPO Companies',
+        content: `
+            <p>Late-stage private companies preparing to go public require precise valuation to set the IPO price.</p>
+            <h3>Comparable Company Analysis (Comps)</h3>
+            <p>Investment banks rely heavily on "Comps." They find 5 similar public companies, calculate their average EV/EBITDA and EV/Sales multiples, and apply those exact multiples to the private company's financials. They then apply an "IPO Discount" (usually 10-15%) to incentivize early buyers to purchase the stock on opening day.</p>
+        `
+    },
+    'asset-heavy-companies': {
+        title: 'Valuing Asset-Heavy Companies',
+        content: `
+            <p>Companies like real estate trusts (REITs), shipping lines, or infrastructure funds require unique valuation approaches.</p>
+            <h3>Net Asset Value (NAV)</h3>
+            <p>For a REIT, earnings (Net Income) are useless due to massive non-cash depreciation of buildings. Analysts use Funds From Operations (FFO) to measure cash, and calculate NAV by assessing the current open-market value of every single property in the portfolio, subtracting debt. The stock trades at a premium or discount to this NAV.</p>
+        `
+    },
+    'emerging-markets': {
+        title: 'Valuing Emerging Markets',
+        content: `
+            <p>Valuing companies in developing nations requires layering massive macro risk premiums onto standard models.</p>
+            <h3>Country Risk Premium</h3>
+            <p>When building a DCF for an Indonesian or Brazilian company, the analyst must add a "Country Risk Premium" to the discount rate. This accounts for the high risk of sudden currency devaluation, political instability, or government expropriation of assets. This higher discount rate mathematically suppresses the valuation compared to an identical US company.</p>
+        `
+    },
+
+            'industry-guides-automobiles-and-components': {
+                title: 'Automobiles and components',
+                content: `
+                    
+<p>Dummy content for Automobiles and components goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-banking': {
+                title: 'Banking',
+                content: `
+                    
+<p>Dummy content for Banking goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-capital-goods': {
+                title: 'Capital goods',
+                content: `
+                    
+<p>Dummy content for Capital goods goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-commercial-and-professional-services': {
+                title: 'Commercial and professional services',
+                content: `
+                    
+<p>Dummy content for Commercial and professional services goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-consumer-durable-and-apparel': {
+                title: 'Consumer durable and apparel',
+                content: `
+                    
+<p>Dummy content for Consumer durable and apparel goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-consumer-services': {
+                title: 'Consumer services',
+                content: `
+                    
+<p>Dummy content for Consumer services goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-consumer-discretionary-retail': {
+                title: 'Consumer discretionary & retail',
+                content: `
+                    
+<p>Dummy content for Consumer discretionary & retail goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-energy-industry': {
+                title: 'Energy industry',
+                content: `
+                    <p>Dummy content for Energy industry goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-consumer-staples-distribution-retail': {
+                title: 'Consumer staples distribution & retail',
+                content: `
+                    
+<p>Dummy content for Consumer staples distribution & retail goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-food-beverage-and-tobacco': {
+                title: 'Food, beverage and tobacco',
+                content: `
+                    
+<p>Dummy content for Food, beverage and tobacco goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-health-care-equipment-and-services': {
+                title: 'Health care equipment and services',
+                content: `
+                    
+<p>Dummy content for Health care equipment and services goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-household-and-personal-products': {
+                title: 'Household and personal products',
+                content: `
+                    
+<p>Dummy content for Household and personal products goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-insurance': {
+                title: 'Insurance',
+                content: `
+                    
+<p>Dummy content for Insurance goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-materials': {
+                title: 'Materials',
+                content: `
+                    
+<p>Dummy content for Materials goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-media-and-entertainment': {
+                title: 'Media and entertainment',
+                content: `
+                    
+<p>Dummy content for Media and entertainment goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-pharmaceuticals-biotechnology-and-life-sciences': {
+                title: 'Pharmaceuticals, biotechnology and life sciences',
+                content: `
+                    
+<p>Dummy content for Pharmaceuticals, biotechnology and life sciences goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-equity-real-estate-investment-trusts': {
+                title: 'Equity real estate Investment trusts',
+                content: `
+                    <p>Dummy content for Equity real estate Investment trusts goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-financial-services': {
+                title: 'Financial services',
+                content: `
+                    
+<p>Dummy content for Financial services goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-semiconductors': {
+                title: 'Semiconductors',
+                content: `
+                    
+<p>Dummy content for Semiconductors goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-software-and-services': {
+                title: 'Software and services',
+                content: `
+                    
+<p>Dummy content for Software and services goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-technology-hardware': {
+                title: 'Technology hardware',
+                content: `
+                    
+<p>Dummy content for Technology hardware goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-telecommunications': {
+                title: 'Telecommunications',
+                content: `
+                    
+<p>Dummy content for Telecommunications goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-transportation': {
+                title: 'Transportation',
+                content: `
+                    
+<p>Dummy content for Transportation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-utilities': {
+                title: 'Utilities',
+                content: `
+                    
+<p>Dummy content for Utilities goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'industry-guides-real-estate-management-development': {
+                title: 'Real estate management & development',
+                content: `
+                    
+<p>Dummy content for Real estate management & development goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-nature-and-purpose': {
+                title: 'Nature and purpose',
+                content: `
+                    
+<p>Dummy content for Nature and purpose goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-users-of-financial-statements': {
+                title: 'Users of financial statements',
+                content: `
+                    
+<p>Dummy content for Users of financial statements goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-basic-concepts-of-accounting': {
+                title: 'Basic concepts of accounting',
+                content: `
+                    
+<p>Dummy content for Basic concepts of accounting goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-gaap-in-australia': {
+                title: 'GAAP in Australia',
+                content: `
+                    
+<p>Dummy content for GAAP in Australia goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-ifrs-in-australia': {
+                title: 'IFRS in Australia',
+                content: `
+                    
+<p>Dummy content for IFRS in Australia goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-types-of-financial-statements': {
+                title: 'Types of financial statements',
+                content: `
+                    
+<p>Dummy content for Types of financial statements goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-how-statements-interlink': {
+                title: 'How statements interlink',
+                content: `
+                    
+<p>Dummy content for How statements interlink goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-what-is-financial-analysis': {
+                title: 'What is financial analysis?',
+                content: `
+                    
+<p>Dummy content for What is financial analysis? goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-when-financials-are-misleading': {
+                title: 'When financials are misleading',
+                content: `
+                    
+<p>Dummy content for When financials are misleading goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-limitations-of-financial-analysis': {
+                title: 'Limitations of financial analysis',
+                content: `
+                    
+<p>Dummy content for Limitations of financial analysis goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-12-signs-of-strong-companies': {
+                title: '12 signs of strong companies',
+                content: `
+                    
+<p>Dummy content for 12 signs of strong companies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-12-signs-of-financial-distress': {
+                title: '12 signs of financial distress',
+                content: `
+                    
+<p>Dummy content for 12 signs of financial distress goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-the-altman-z-score': {
+                title: 'The Altman Z-score',
+                content: `
+                    
+<p>Dummy content for The Altman Z-score goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-probability-of-bankruptcy': {
+                title: 'Probability of bankruptcy',
+                content: `
+                    
+<p>Dummy content for Probability of bankruptcy goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-drivers-of-business-growth': {
+                title: 'Drivers of business growth',
+                content: `
+                    
+<p>Dummy content for Drivers of business growth goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-the-top-5-questions-to-ask': {
+                title: 'The top 5 questions to ask',
+                content: `
+                    
+<p>Dummy content for The top 5 questions to ask goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-how-to-read-financials': {
+                title: 'How to read financials',
+                content: `
+                    
+<p>Dummy content for How to read financials goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-signs-of-transparent-company': {
+                title: 'Signs of transparent company',
+                content: `
+                    
+<p>Dummy content for Signs of transparent company goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-common-errors': {
+                title: 'Common errors',
+                content: `
+                    
+<p>Dummy content for Common errors goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'financial-statement-analysis-12-management-mistakes': {
+                title: '12 management mistakes',
+                content: `
+                    
+<p>Dummy content for 12 management mistakes goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'accounting-shenanigans-intro-to-accounting-shenanigans': {
+                title: 'Intro to accounting shenanigans',
+                content: `
+                    <p>Dummy content for Intro to accounting shenanigans goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'accounting-shenanigans-types-of-shenanigans': {
+                title: 'Types of shenanigans',
+                content: `
+                    <p>Dummy content for Types of shenanigans goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'accounting-shenanigans-how-to-spot-red-flags': {
+                title: 'How to spot red flags',
+                content: `
+                    <p>Dummy content for How to spot red flags goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'accounting-shenanigans-revenue-recognition-tricks': {
+                title: 'Revenue recognition tricks',
+                content: `
+                    
+<p>Dummy content for Revenue recognition tricks goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'accounting-shenanigans-expense-manipulation': {
+                title: 'Expense manipulation',
+                content: `
+                    <p>Dummy content for Expense manipulation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'accounting-shenanigans-asset-overvaluation': {
+                title: 'Asset overvaluation',
+                content: `
+                    <p>Dummy content for Asset overvaluation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'accounting-shenanigans-liability-concealment': {
+                title: 'Liability concealment',
+                content: `
+                    <p>Dummy content for Liability concealment goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'accounting-shenanigans-cash-flow-manipulation': {
+                title: 'Cash flow manipulation',
+                content: `
+                    
+<p>Dummy content for Cash flow manipulation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'accounting-shenanigans-real-world-case-studies': {
+                title: 'Real world case studies',
+                content: `
+                    <p>Dummy content for Real world case studies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'accounting-shenanigans-forensic-accounting-tools': {
+                title: 'Forensic accounting tools',
+                content: `
+                    <p>Dummy content for Forensic accounting tools goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'qualitative-factors-management-quality': {
+                title: 'Management quality',
+                content: `
+                    <p>Dummy content for Management quality goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'qualitative-factors-corporate-governance': {
+                title: 'Corporate governance',
+                content: `
+                    
+<p>Dummy content for Corporate governance goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'qualitative-factors-competitive-advantage-moats': {
+                title: 'Competitive advantage (Moats)',
+                content: `
+                    <p>Dummy content for Competitive advantage (Moats) goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'qualitative-factors-brand-value': {
+                title: 'Brand value',
+                content: `
+                    <p>Dummy content for Brand value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'qualitative-factors-industry-dynamics': {
+                title: 'Industry dynamics',
+                content: `
+                    <p>Dummy content for Industry dynamics goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'qualitative-factors-regulatory-environment': {
+                title: 'Regulatory environment',
+                content: `
+                    <p>Dummy content for Regulatory environment goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'qualitative-factors-technological-disruption': {
+                title: 'Technological disruption',
+                content: `
+                    <p>Dummy content for Technological disruption goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'qualitative-factors-esg-considerations': {
+                title: 'ESG considerations',
+                content: `
+                    <p>Dummy content for ESG considerations goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'qualitative-factors-customer-loyalty': {
+                title: 'Customer loyalty',
+                content: `
+                    <p>Dummy content for Customer loyalty goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'qualitative-factors-r-d-and-innovation': {
+                title: 'R&D and innovation',
+                content: `
+                    <p>Dummy content for R&D and innovation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-intro-to-stock-valuation': {
+                title: 'Intro to stock valuation',
+                content: `
+                    
+<p>Dummy content for Intro to stock valuation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-what-is-value': {
+                title: 'What is value?',
+                content: `
+                    
+<p>Dummy content for What is value? goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-stock-valuation-process': {
+                title: 'Stock valuation process',
+                content: `
+                    
+<p>Dummy content for Stock valuation process goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-limitations-of-valuation': {
+                title: 'Limitations of valuation',
+                content: `
+                    
+<p>Dummy content for Limitations of valuation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-behavioural-biases': {
+                title: 'Behavioural biases',
+                content: `
+                    
+<p>Dummy content for Behavioural biases goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-use-of-discount-rates': {
+                title: 'Use of discount rates',
+                content: `
+                    
+<p>Dummy content for Use of discount rates goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-calculating-discount-rate': {
+                title: 'Calculating discount rate',
+                content: `
+                    
+<p>Dummy content for Calculating discount rate goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-10-common-mistakes': {
+                title: '10 common mistakes',
+                content: `
+                    
+<p>Dummy content for 10 common mistakes goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-what-is-intrinsic-value': {
+                title: 'What is intrinsic value?',
+                content: `
+                    
+<p>Dummy content for What is intrinsic value? goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-calculating-intrinsic-value': {
+                title: 'Calculating intrinsic value',
+                content: `
+                    
+<p>Dummy content for Calculating intrinsic value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-buffett-s-intrinsic-value': {
+                title: 'Buffettâ€™s intrinsic value',
+                content: `
+                    
+<p>Dummy content for Buffettâ€™s intrinsic value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-graham-s-intrinsic-value': {
+                title: 'Grahamâ€™s intrinsic value',
+                content: `
+                    
+<p>Dummy content for Grahamâ€™s intrinsic value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-limitations-of-value': {
+                title: 'Limitations of value',
+                content: `
+                    
+<p>Dummy content for Limitations of value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-intro-to-revenue-based-val': {
+                title: 'Intro to revenue-based val',
+                content: `
+                    
+<p>Dummy content for Intro to revenue-based val goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-price-to-sales-ratio': {
+                title: 'Price-to-sales ratio',
+                content: `
+                    
+<p>Dummy content for Price-to-sales ratio goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-sales-multiples': {
+                title: 'Sales multiples',
+                content: `
+                    
+<p>Dummy content for Sales multiples goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-revenue-growth-rate': {
+                title: 'Revenue growth rate',
+                content: `
+                    
+<p>Dummy content for Revenue growth rate goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-price-to-revenue-growth': {
+                title: 'Price-to-revenue growth',
+                content: `
+                    
+<p>Dummy content for Price-to-revenue growth goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-price-to-earnings-ratio': {
+                title: 'Price-to-earnings ratio',
+                content: `
+                    
+<p>Dummy content for Price-to-earnings ratio goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-earnings-yield': {
+                title: 'Earnings yield',
+                content: `
+                    
+<p>Dummy content for Earnings yield goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-pe-to-growth-peg-ratio': {
+                title: 'PE-to-growth (PEG) ratio',
+                content: `
+                    
+<p>Dummy content for PE-to-growth (PEG) ratio goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-ypeg-ratio': {
+                title: 'YPEG ratio',
+                content: `
+                    
+<p>Dummy content for YPEG ratio goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-future-maintainable-earnings': {
+                title: 'Future maintainable earnings',
+                content: `
+                    
+<p>Dummy content for Future maintainable earnings goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-discounted-future-earnings': {
+                title: 'Discounted future earnings',
+                content: `
+                    
+<p>Dummy content for Discounted future earnings goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-earnings-power-value': {
+                title: 'Earnings power value',
+                content: `
+                    
+<p>Dummy content for Earnings power value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-residual-income': {
+                title: 'Residual income',
+                content: `
+                    
+<p>Dummy content for Residual income goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-price-to-ebitda': {
+                title: 'Price-to-EBITDA',
+                content: `
+                    
+<p>Dummy content for Price-to-EBITDA goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-discounted-cash-flow': {
+                title: 'Discounted cash flow',
+                content: `
+                    
+<p>Dummy content for Discounted cash flow goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-reverse-dcf': {
+                title: 'Reverse DCF',
+                content: `
+                    
+<p>Dummy content for Reverse DCF goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-economic-value-added': {
+                title: 'Economic value added',
+                content: `
+                    
+<p>Dummy content for Economic value added goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-free-cash-flow-valuation': {
+                title: 'Free cash flow valuation',
+                content: `
+                    
+<p>Dummy content for Free cash flow valuation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-book-value': {
+                title: 'Book value',
+                content: `
+                    
+<p>Dummy content for Book value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-tangible-book-value': {
+                title: 'Tangible book value',
+                content: `
+                    
+<p>Dummy content for Tangible book value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-adjusted-net-assets': {
+                title: 'Adjusted net assets',
+                content: `
+                    
+<p>Dummy content for Adjusted net assets goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-replacement-cost-method': {
+                title: 'Replacement cost method',
+                content: `
+                    
+<p>Dummy content for Replacement cost method goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-sum-of-the-parts': {
+                title: 'Sum of the parts',
+                content: `
+                    
+<p>Dummy content for Sum of the parts goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-liquidation-value': {
+                title: 'Liquidation value',
+                content: `
+                    
+<p>Dummy content for Liquidation value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-dividend-discount-model': {
+                title: 'Dividend Discount Model',
+                content: `
+                    
+<p>Dummy content for Dividend Discount Model goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-gordon-growth-model': {
+                title: 'Gordon Growth Model',
+                content: `
+                    
+<p>Dummy content for Gordon Growth Model goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-two-stage-dividend-growth': {
+                title: 'Two-Stage Dividend Growth',
+                content: `
+                    
+<p>Dummy content for Two-Stage Dividend Growth goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-dividend-payout-ratio': {
+                title: 'Dividend Payout Ratio',
+                content: `
+                    
+<p>Dummy content for Dividend Payout Ratio goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-price-to-book-value-ratio': {
+                title: 'Price-to-book value ratio',
+                content: `
+                    
+<p>Dummy content for Price-to-book value ratio goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-enterprise-value': {
+                title: 'Enterprise value',
+                content: `
+                    
+<p>Dummy content for Enterprise value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-enterprise-value-to-ebitda': {
+                title: 'Enterprise value to EBITDA',
+                content: `
+                    
+<p>Dummy content for Enterprise value to EBITDA goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-enterprise-value-to-sales': {
+                title: 'Enterprise value to sales',
+                content: `
+                    
+<p>Dummy content for Enterprise value to sales goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-graham-s-formulas': {
+                title: 'Grahamâ€™s formulas',
+                content: `
+                    
+<p>Dummy content for Grahamâ€™s formulas goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-greenblatt-s-magic-formula': {
+                title: 'Greenblattâ€™s magic formula',
+                content: `
+                    
+<p>Dummy content for Greenblattâ€™s magic formula goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-industry-rules-of-thumb': {
+                title: 'Industry rules of thumb',
+                content: `
+                    
+<p>Dummy content for Industry rules of thumb goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-intangible-assets': {
+                title: 'Intangible assets',
+                content: `
+                    
+<p>Dummy content for Intangible assets goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-call-options': {
+                title: 'Call options',
+                content: `
+                    
+<p>Dummy content for Call options goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-put-options': {
+                title: 'Put options',
+                content: `
+                    
+<p>Dummy content for Put options goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-distressed-companies': {
+                title: 'Distressed companies',
+                content: `
+                    
+<p>Dummy content for Distressed companies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-bankrupt-companies': {
+                title: 'Bankrupt companies',
+                content: `
+                    
+<p>Dummy content for Bankrupt companies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-mergers-acquisitions': {
+                title: 'Mergers & acquisitions',
+                content: `
+                    
+<p>Dummy content for Mergers & acquisitions goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-start-up-companies': {
+                title: 'Start-up companies',
+                content: `
+                    
+<p>Dummy content for Start-up companies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-pre-ipo-companies': {
+                title: 'Pre-IPO companies',
+                content: `
+                    
+<p>Dummy content for Pre-IPO companies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-asset-heavy-companies': {
+                title: 'Asset-heavy companies',
+                content: `
+                    
+<p>Dummy content for Asset-heavy companies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'stock-valuation-emerging-markets': {
+                title: 'Emerging markets',
+                content: `
+                    
+<p>Dummy content for Emerging markets goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'corporate-actions-dividends': {
+                title: 'Dividends',
+                content: `
+                    
+<p>Dummy content for Dividends goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'corporate-actions-stock-splits': {
+                title: 'Stock Splits',
+                content: `
+                    
+<p>Dummy content for Stock Splits goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'corporate-actions-share-buy-backs': {
+                title: 'Share Buy Backs',
+                content: `
+                    
+<p>Dummy content for Share Buy Backs goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'corporate-actions-rights-issues': {
+                title: 'Rights Issues',
+                content: `
+                    
+<p>Dummy content for Rights Issues goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'corporate-actions-bonus-issues': {
+                title: 'Bonus Issues',
+                content: `
+                    
+<p>Dummy content for Bonus Issues goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'corporate-actions-options-and-warrants': {
+                title: 'Options and Warrants',
+                content: `
+                    
+<p>Dummy content for Options and Warrants goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'corporate-actions-mergers-and-acquisitions': {
+                title: 'Mergers and Acquisitions',
+                content: `
+                    
+<p>Dummy content for Mergers and Acquisitions goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'corporate-actions-divestments': {
+                title: 'Divestments',
+                content: `
+                    
+<p>Dummy content for Divestments goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'corporate-actions-administration': {
+                title: 'Administration',
+                content: `
+                    
+<p>Dummy content for Administration goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'corporate-actions-liquidation': {
+                title: 'Liquidation',
+                content: `
+                    
+<p>Dummy content for Liquidation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'accounting-standards-regulatory-bodies': {
+                title: 'Regulatory Bodies',
+                content: `
+                    
+<p>Dummy content for Regulatory Bodies goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'accounting-standards-standards-relating-to-financial-reporting': {
+                title: 'Standards Relating to Financial Reporting',
+                content: `
+                    
+<p>Dummy content for Standards Relating to Financial Reporting goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'accounting-standards-profit-and-loss': {
+                title: 'Profit and Loss',
+                content: `
+                    <p>Dummy content for Profit and Loss goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'accounting-standards-balance-sheet': {
+                title: 'Balance Sheet',
+                content: `
+                    <p>Dummy content for Balance Sheet goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'accounting-standards-disclosures': {
+                title: 'Disclosures',
+                content: `
+                    <p>Dummy content for Disclosures goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'accounting-standards-cash-flow': {
+                title: 'Cash Flow',
+                content: `
+                    
+<p>Dummy content for Cash Flow goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'accounting-standards-aasb-work-in-progress': {
+                title: 'AASB Work-In-Progress',
+                content: `
+                    
+<p>Dummy content for AASB Work-In-Progress goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+            'accounting-standards-aasb-publications': {
+                title: 'AASB Publications',
+                content: `
+                    <p>Dummy content for AASB Publications goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                `
+            },
+        };
+    

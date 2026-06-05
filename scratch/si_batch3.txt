@@ -1,0 +1,334 @@
+    'what-is-technical-analysis': {
+        title: 'What is Technical Analysis?',
+        content: `
+            <p>Technical analysis is the study of historical price and volume data to forecast future price movements, based on the premise that all relevant information is already reflected in the stock's price.</p>
+            <h3>The Three Assumptions</h3>
+            <p><strong>1) The market discounts everything:</strong> All known information—fundamentals, news, sentiment—is already priced in. <strong>2) Prices move in trends:</strong> Once established, trends tend to persist. <strong>3) History repeats itself:</strong> Human psychology creates recognisable, recurring chart patterns.</p>
+            <h3>Charts as the Primary Tool</h3>
+            <p>Technical analysts (or "chartists") use price charts as their primary analytical tool, supplemented by volume data and mathematical indicators. They believe that chart patterns reflect the collective psychology of market participants and can predict future behaviour.</p>
+        `
+    },
+    'types-of-technical-analysis': {
+        title: 'Types of Technical Analysis',
+        content: `
+            <p>Technical analysis encompasses a broad range of methodologies, from simple trend-following to complex mathematical models.</p>
+            <h3>Classical Chart Analysis</h3>
+            <p>The oldest form: identifying patterns like head-and-shoulders, double tops/bottoms, triangles, and flags on price charts. This subjective approach relies heavily on the analyst's experience and pattern recognition skills.</p>
+            <h3>Indicator-Based Analysis</h3>
+            <p>Uses mathematical formulas applied to price and volume data to generate trading signals. Popular indicators include Moving Averages, RSI, MACD, Bollinger Bands, and Stochastic Oscillators. These provide more objective, rule-based signals.</p>
+            <h3>Advanced Methods</h3>
+            <p>Elliott Wave Theory identifies recursive wave patterns reflecting crowd psychology. Market Profile analyses the distribution of price and volume over time. Algorithmic and quantitative trading uses computer models to identify and exploit statistical patterns at high speed.</p>
+        `
+    },
+    'how-to-read-stock-charts': {
+        title: 'How to Read Stock Charts',
+        content: `
+            <p>The ability to read stock charts is the foundational skill of technical analysis, transforming raw price data into actionable insights.</p>
+            <h3>Chart Types</h3>
+            <p><strong>Line charts</strong> plot closing prices only—simple and clean. <strong>Bar charts (OHLC)</strong> show the Open, High, Low, and Close for each period, providing more detail. <strong>Candlestick charts</strong> display the same OHLC data in a more visual format, with the "body" showing the open-close range and "wicks" showing the high-low range.</p>
+            <h3>Timeframes</h3>
+            <p>Charts can display any timeframe: 1-minute candles for day traders, daily candles for swing traders, and weekly or monthly candles for long-term investors. The same stock can look bullish on a daily chart and bearish on a weekly chart—always check multiple timeframes.</p>
+            <h3>Volume: The Confirmation Tool</h3>
+            <p>Volume bars beneath the price chart show how many shares were traded. Price moves on high volume are more significant and reliable than moves on low volume. A breakout above resistance on heavy volume is far more convincing than one on thin volume.</p>
+        `
+    },
+    'support-and-resistance-levels': {
+        title: 'Support and Resistance Levels',
+        content: `
+            <p>Support and resistance are the most fundamental concepts in technical analysis—invisible price levels where buying and selling pressure concentrate.</p>
+            <h3>Support</h3>
+            <p>A support level is a price at which buying interest is sufficiently strong to overcome selling pressure, preventing the price from falling further. It acts as a "floor." Support levels form at previous lows, round numbers, and moving averages.</p>
+            <h3>Resistance</h3>
+            <p>A resistance level is a price at which selling pressure overwhelms buying interest, preventing the price from rising further. It acts as a "ceiling." Resistance forms at previous highs, psychological levels, and areas of prior congestion.</p>
+            <h3>The Polarity Principle</h3>
+            <p>When support is broken, it often becomes resistance (former buyers who are now underwater will sell to break even). Conversely, when resistance is broken, it often becomes support. This "role reversal" is one of the most reliable principles in technical analysis.</p>
+        `
+    },
+    'moving-averages-and-trend-indicators': {
+        title: 'Moving Averages and Trend Indicators',
+        content: `
+            <p>Moving averages smooth out price data to reveal the underlying trend, filtering out daily noise and providing clear directional signals.</p>
+            <h3>Simple vs Exponential</h3>
+            <p>A Simple Moving Average (SMA) calculates the arithmetic mean of closing prices over a set period (e.g., 50 or 200 days). An Exponential Moving Average (EMA) weights recent prices more heavily, making it more responsive to new information.</p>
+            <h3>The Golden Cross and Death Cross</h3>
+            <p>When the 50-day MA crosses above the 200-day MA, it is called a "Golden Cross"—a bullish signal. When the 50-day crosses below the 200-day, it is a "Death Cross"—a bearish signal. While these signals are lagging, they capture major trend changes with high reliability.</p>
+            <h3>Trend Determination</h3>
+            <p>A stock trading above its rising 200-day MA is in a long-term uptrend. Below a declining 200-day MA indicates a downtrend. Trend followers use this simple framework to stay on the right side of major market moves.</p>
+        `
+    },
+    'momentum-indicators': {
+        title: 'Momentum Indicators',
+        content: `
+            <p>Momentum indicators measure the speed and strength of price movements, helping traders identify overbought or oversold conditions and potential trend reversals.</p>
+            <h3>Relative Strength Index (RSI)</h3>
+            <p>The RSI oscillates between 0 and 100. Readings above 70 suggest overbought conditions (potential sell signal), while readings below 30 suggest oversold conditions (potential buy signal). Divergence between RSI and price (price making new highs while RSI is not) is a powerful reversal warning.</p>
+            <h3>MACD (Moving Average Convergence Divergence)</h3>
+            <p>The MACD plots the difference between a 12-period and 26-period EMA, plus a 9-period signal line. When the MACD line crosses above the signal line, it generates a buy signal; below generates a sell signal. The histogram visualises momentum acceleration or deceleration.</p>
+            <h3>Stochastic Oscillator</h3>
+            <p>Compares a stock's closing price to its price range over a set period. Like RSI, it identifies overbought (above 80) and oversold (below 20) conditions, particularly effective in range-bound markets.</p>
+        `
+    },
+    'volume-analysis-in-trading': {
+        title: 'Volume Analysis in Trading',
+        content: `
+            <p>Volume is the number of shares traded during a given period and is often called the "fuel" that drives price movements.</p>
+            <h3>Volume Confirms Trend</h3>
+            <p>In a healthy uptrend, volume should increase on up days and decrease on down days. In a downtrend, volume should increase on down days and decrease on rallies. When volume contradicts the trend, it signals potential exhaustion and reversal.</p>
+            <h3>Climax Volume</h3>
+            <p>Extremely high volume spikes (2-3x average) during a sharp price move often signal exhaustion—a "capitulation" event. Climax volume at the bottom of a decline frequently marks a major turning point, as panicked sellers have been flushed out.</p>
+            <h3>On-Balance Volume (OBV)</h3>
+            <p>OBV is a cumulative indicator that adds volume on up days and subtracts volume on down days. Rising OBV with a flat stock price suggests accumulation by smart money. Falling OBV with rising prices suggests distribution and impending weakness.</p>
+        `
+    },
+    'chart-patterns-and-price-formations': {
+        title: 'Chart Patterns and Price Formations',
+        content: `
+            <p>Chart patterns are specific geometric shapes formed by price movements that have statistically significant predictive power for future direction.</p>
+            <h3>Reversal Patterns</h3>
+            <p><strong>Head and Shoulders:</strong> Three peaks with the middle (head) highest. A break below the "neckline" signals a bearish reversal. <strong>Double Top/Bottom:</strong> Two peaks/troughs at approximately the same level, signalling that the trend has lost momentum.</p>
+            <h3>Continuation Patterns</h3>
+            <p><strong>Triangles</strong> (ascending, descending, symmetrical) represent consolidation within a trend before continuation. <strong>Flags and Pennants</strong> are short-term pauses in a strong trend, typically resolving in the direction of the prior move.</p>
+            <h3>Pattern Reliability</h3>
+            <p>No pattern is 100% reliable. Academic studies suggest success rates of 60-75% for the most well-known patterns. Volume confirmation, the broader market trend, and the timeframe all significantly impact pattern reliability. Always use stop-losses in case the pattern fails.</p>
+        `
+    },
+    'fibonacci-retracements-and-extensions': {
+        title: 'Fibonacci Retracements and Extensions',
+        content: `
+            <p>Fibonacci tools apply mathematical ratios derived from the Fibonacci sequence to identify potential support, resistance, and price targets in trending markets.</p>
+            <h3>Key Fibonacci Levels</h3>
+            <p>The most important retracement levels are 23.6%, 38.2%, 50%, 61.8%, and 78.6%. After a significant price move, the market often retraces to one of these levels before continuing the trend. The 61.8% level (the "golden ratio") is considered the most significant.</p>
+            <h3>How Traders Use Fibonacci</h3>
+            <p>In an uptrend, traders draw Fibonacci retracement levels from the swing low to the swing high. They then look for buying opportunities at the 38.2% or 61.8% retracement levels, placing stop-losses below the 78.6% level or the prior swing low.</p>
+            <h3>Self-Fulfilling Prophecy</h3>
+            <p>Fibonacci levels work partly because so many traders watch them. When thousands of traders place buy orders at the 61.8% retracement, the concentrated demand at that level actually creates the support that was predicted.</p>
+        `
+    },
+    'multi-timeframe-analysis': {
+        title: 'Multi-Timeframe Analysis',
+        content: `
+            <p>Multi-timeframe analysis examines the same stock across different chart timeframes to gain a comprehensive view of the trend structure and identify high-probability trading setups.</p>
+            <h3>The Top-Down Approach</h3>
+            <p>Start with the highest timeframe (monthly or weekly) to determine the primary trend. Move to the daily chart to identify the intermediate trend and key support/resistance levels. Finally, use the hourly or 15-minute chart to pinpoint precise entry points.</p>
+            <h3>The Triple Screen Method</h3>
+            <p>Developed by Alexander Elder, this system uses three timeframes: the long-term chart identifies the trend, the medium-term chart identifies corrections within that trend, and the short-term chart times the entry. You only trade in the direction of the long-term trend.</p>
+            <h3>Avoiding Conflicting Signals</h3>
+            <p>If the weekly chart is bullish but the daily chart is bearish, the signals conflict. The rule of thumb is to always defer to the higher timeframe. Wait for the lower timeframe to align with the higher before committing capital.</p>
+        `
+    },
+    'volatility-indicators': {
+        title: 'Volatility Indicators',
+        content: `
+            <p>Volatility indicators measure the magnitude of price fluctuations, helping traders assess risk, set stop-losses, and identify periods of market compression that often precede explosive moves.</p>
+            <h3>Bollinger Bands</h3>
+            <p>Bollinger Bands plot two standard deviations above and below a 20-period moving average. When the bands narrow ("squeeze"), volatility is low and a major breakout is imminent. When prices touch the upper band, the stock may be overextended; touching the lower band suggests oversold conditions.</p>
+            <h3>Average True Range (ATR)</h3>
+            <p>The ATR measures the average range of price movement over a set period, providing a pure volatility reading. Traders use ATR to set dynamic stop-losses—for example, placing a stop 2x ATR below the entry price ensures the stop adapts to the stock's normal volatility.</p>
+            <h3>VIX: The Fear Index</h3>
+            <p>The VIX measures expected volatility in the S&P 500 over the next 30 days. High VIX readings (above 30) indicate extreme fear and often mark market bottoms. Low VIX readings (below 15) indicate complacency and often precede corrections.</p>
+        `
+    },
+    'breakout-trading-strategies': {
+        title: 'Breakout Trading Strategies',
+        content: `
+            <p>Breakout trading seeks to enter positions as the price breaks through established support or resistance levels, capturing the beginning of a new trend or momentum move.</p>
+            <h3>Identifying Breakout Candidates</h3>
+            <p>Look for stocks consolidating in tight ranges (low volatility) near well-defined resistance levels, with increasing volume as the consolidation narrows. The tighter and longer the consolidation, the more explosive the eventual breakout tends to be.</p>
+            <h3>False Breakouts</h3>
+            <p>The biggest risk in breakout trading is false breakouts—where the price briefly pierces a level before reversing. To filter these out, wait for a close above resistance (not just an intraday breach) on above-average volume before entering.</p>
+            <h3>The Pullback Entry</h3>
+            <p>A more conservative approach is to wait for a breakout, then enter on the first pullback that retests the broken resistance level (which should now act as support). This provides a lower-risk entry point with a clearly defined stop-loss level.</p>
+        `
+    },
+    'trading-psychology-and-discipline': {
+        title: 'Trading Psychology and Discipline',
+        content: `
+            <p>In technical trading, your greatest edge—or your greatest enemy—is your own mind. Discipline separates profitable traders from those who blow up their accounts.</p>
+            <h3>The Trading Plan</h3>
+            <p>Every trade must be planned before execution: entry price, stop-loss, profit target, and position size. Trading without a plan is gambling. The plan removes emotion from the equation, ensuring decisions are based on analysis rather than impulse.</p>
+            <h3>Accepting Losses</h3>
+            <p>Losses are an inevitable cost of doing business in trading. Even the best traders are wrong 40-50% of the time. The key is to keep losses small (via stop-losses) and let winners run. The ratio of average win to average loss, not the win rate, determines long-term profitability.</p>
+            <h3>The Revenge Trade Trap</h3>
+            <p>After a painful loss, the urge to immediately "make it back" leads to revenge trading—taking oversized, emotionally driven positions that often result in even larger losses. After a bad trade, step away from the screen, review what went wrong, and return only when calm.</p>
+        `
+    },
+    'common-mistakes-in-technical-analysis': {
+        title: 'Common Mistakes in Technical Analysis',
+        content: `
+            <p>Most aspiring technical traders fail not because technical analysis does not work, but because they make avoidable errors in its application.</p>
+            <h3>Over-Indicator Syndrome</h3>
+            <p>Loading charts with 10+ indicators creates "analysis paralysis" and conflicting signals. Most successful traders rely on 2-3 complementary indicators maximum. More indicators do not equal more accuracy—they equal more confusion.</p>
+            <h3>Ignoring the Higher Timeframe</h3>
+            <p>Taking a buy signal on a 15-minute chart while the daily and weekly charts are in a clear downtrend is trading against the prevailing current. Always ensure your trades align with the direction of the higher timeframe trend.</p>
+            <h3>Curve Fitting</h3>
+            <p>Optimising indicator parameters to perfectly fit past data (backtesting) creates strategies that look brilliant historically but fail in real-time trading. This "curve fitting" or "overfitting" is the most dangerous trap in quantitative technical analysis.</p>
+        `
+    },
+    'risk-management-in-technical-trading': {
+        title: 'Risk Management in Technical Trading',
+        content: `
+            <p>Risk management is the single most critical determinant of long-term trading survival. A strategy with a 90% win rate will still blow up your account if risk is not managed.</p>
+            <h3>The 1-2% Rule</h3>
+            <p>Never risk more than 1-2% of your total trading capital on any single trade. This ensures that even a string of 10 consecutive losses (which will happen eventually) only draws down your account by 10-20%, allowing you to survive and recover.</p>
+            <h3>Position Sizing</h3>
+            <p>Position size is calculated from your risk per trade and stop-loss distance. If you risk 1% of a $50,000 account ($500) with a stop-loss $2 below your entry, your position size is $500 ÷ $2 = 250 shares. This mathematical approach removes emotion from sizing decisions.</p>
+            <h3>Risk-Reward Ratio</h3>
+            <p>Only take trades where the potential reward is at least 2x the risk (a 2:1 risk-reward ratio). This means you can be wrong 50% of the time and still be profitable, as your winners are twice as large as your losers.</p>
+        `
+    },
+    'trading-software-for-technical-analysis': {
+        title: 'Trading Software for Technical Analysis',
+        content: `
+            <p>The right charting and trading software can significantly enhance your technical analysis capabilities and trade execution efficiency.</p>
+            <h3>Charting Platforms</h3>
+            <p><strong>TradingView:</strong> The most popular web-based platform, offering powerful charting, community-shared strategies, and free-tier access. <strong>MetaTrader 4/5:</strong> The industry standard for forex and CFD trading, with automated strategy capabilities. <strong>Amibroker:</strong> A powerful desktop application favoured by quantitative and system traders for backtesting.</p>
+            <h3>Australian-Specific Tools</h3>
+            <p>CommSec's charting tools are adequate for basic analysis. Incredible Charts offers an ASX-focused platform with end-of-day data. Beyond Charts is a professional-grade platform designed specifically for the Australian market with advanced scanning capabilities.</p>
+            <h3>Choosing the Right Tool</h3>
+            <p>Match the platform to your trading style. Day traders need real-time data and fast execution. Swing traders need strong end-of-day charting and screening. System traders need robust backtesting capabilities. Start with free platforms before investing in premium subscriptions.</p>
+        `
+    },
+    'outlook-for-technical-analysis': {
+        title: 'Outlook for Technical Analysis',
+        content: `
+            <p>Technical analysis continues to evolve rapidly, driven by advances in computing power, machine learning, and the democratisation of market data.</p>
+            <h3>AI and Machine Learning</h3>
+            <p>Artificial intelligence is increasingly being applied to pattern recognition and predictive modelling in financial markets. Machine learning algorithms can identify subtle patterns in massive datasets that are invisible to human chartists, potentially creating new edges.</p>
+            <h3>The Persistence of Human Psychology</h3>
+            <p>Despite technological advances, the fundamental driver of chart patterns—human psychology (fear, greed, herding)—has not changed in millennia and is unlikely to change. As long as humans participate in markets, the core principles of technical analysis will remain relevant.</p>
+            <h3>The Integration Trend</h3>
+            <p>The most successful modern practitioners combine technical analysis with fundamental analysis, using fundamentals to determine what to buy and technicals to determine when to buy it. This integrated approach is becoming the dominant paradigm among professional investors.</p>
+        `
+    },
+    'history-of-ipos-in-australia': {
+        title: 'History of IPOs in Australia',
+        content: `
+            <p>Australia has a rich history of Initial Public Offerings that reflects the country's evolving economic landscape, from mining booms to technology disruption.</p>
+            <h3>The Resource IPO Waves</h3>
+            <p>Australia's IPO history is punctuated by resource booms. The Poseidon nickel bubble of 1969-70, the gold rush of the 1980s, and the iron ore boom of the 2000s each triggered waves of mining IPOs—some spectacularly successful, many ending in total loss for investors.</p>
+            <h3>The Modern Era</h3>
+            <p>The privatisation of government assets (Commonwealth Bank in 1991, Telstra in 1997, Medibank Private in 2014) introduced millions of Australians to share ownership. More recently, technology IPOs (Afterpay, Xero) and fintech listings have diversified the IPO landscape away from its traditional resource dominance.</p>
+            <h3>Cyclical Nature</h3>
+            <p>IPO volumes are highly cyclical, surging during bull markets when investor appetite is strong and drying up during bear markets. This cyclicality creates a systematic bias: companies tend to list when conditions are most favourable for sellers, not buyers.</p>
+        `
+    },
+    'the-ipo-process-in-australia': {
+        title: 'The IPO Process in Australia',
+        content: `
+            <p>The IPO process in Australia is governed by ASIC and the ASX Listing Rules, involving a structured series of steps from preparation to listing.</p>
+            <h3>Preparation (6-12 Months)</h3>
+            <p>The company appoints an investment bank (lead manager), auditors, and lawyers. They restructure the business for public markets, prepare audited financial statements, and develop the investment story. Due diligence is conducted to identify and address any issues before listing.</p>
+            <h3>The Prospectus</h3>
+            <p>A detailed prospectus is prepared and lodged with ASIC, containing comprehensive information about the business, its financials, risks, and the terms of the offer. This legally binding document must provide investors with all material information needed to make an informed decision.</p>
+            <h3>Bookbuild and Pricing</h3>
+            <p>The lead manager conducts a "bookbuild"—gauging institutional investor demand to determine the final offer price. The price is typically set at the top of a pre-announced range if demand is strong, or the bottom if demand is weak.</p>
+        `
+    },
+    'advantages-and-disadvantages-of-ipos': {
+        title: 'Advantages and Disadvantages of IPOs',
+        content: `
+            <p>IPOs offer unique investment opportunities but carry distinct risks that differ from buying established listed companies.</p>
+            <h3>Advantages</h3>
+            <p>Access to new, innovative companies before they become widely followed. Potential for significant "first day pop" returns (the average IPO trades above its offer price on day one). Opportunity to invest in growth stories at an earlier stage than would otherwise be possible.</p>
+            <h3>Disadvantages</h3>
+            <p>Information asymmetry—insiders know far more about the business than outside investors. Limited operating history as a public company. The company typically lists when conditions are most favourable for the seller (the company and its existing shareholders), not the buyer.</p>
+            <h3>The Winner's Curse</h3>
+            <p>In oversubscribed IPOs, you receive a small allocation of the "hot" deals and full allocation of the unwanted ones. Over time, this systematic bias means your average IPO return may be much lower than the average IPO performance suggests.</p>
+        `
+    },
+    'how-to-analyse-ipos': {
+        title: 'How to Analyse IPOs',
+        content: `
+            <p>Analysing an IPO requires a different approach than evaluating an established listed company, with greater emphasis on the prospectus and qualitative factors.</p>
+            <h3>Read the Prospectus Critically</h3>
+            <p>Focus on the "Risk Factors" section (usually the most honest part), the "Use of Proceeds" (is the money funding growth or paying off insiders?), and the financial statements (look for revenue trends, profit margins, and cash flow generation).</p>
+            <h3>Assess the Business Quality</h3>
+            <p>Does the company have a durable competitive advantage? Is the addressable market large enough to justify the valuation? Is revenue recurring or one-off? Is the company founder-led (positive) or private-equity-sponsored (potentially extractive)?</p>
+            <h3>Escrow and Lock-Up Periods</h3>
+            <p>Check what percentage of shares are escrowed (restricted from sale) and for how long. When escrow periods expire, insiders may sell, creating selling pressure. A short escrow period or a large percentage of free-floating shares at listing increases supply and downward price risk.</p>
+        `
+    },
+    'how-to-value-ipos': {
+        title: 'How to Value IPOs',
+        content: `
+            <p>Valuing an IPO is inherently more uncertain than valuing an established company due to limited historical data and the absence of a trading track record.</p>
+            <h3>Comparable Company Analysis</h3>
+            <p>The most common method: compare the IPO's valuation multiples (P/E, EV/Revenue, EV/EBITDA) to listed peers in the same industry. If the IPO is priced at a premium to peers, there must be a compelling reason (higher growth, better margins, superior technology).</p>
+            <h3>DCF with Caution</h3>
+            <p>Discounted Cash Flow analysis can be applied, but with extreme caution. Early-stage companies have highly uncertain future cash flows, making DCF output highly sensitive to assumptions. Use conservative growth estimates and multiple scenarios.</p>
+            <h3>The "IPO Discount"</h3>
+            <p>Prudent investors demand an "IPO discount" of 15-25% below fair value to compensate for the uncertainty, illiquidity risk (in the first weeks of trading), and information asymmetry inherent in new listings.</p>
+        `
+    },
+    'factors-influencing-ipo-investment': {
+        title: 'Factors Influencing IPO Investment',
+        content: `
+            <p>Multiple factors beyond the company's fundamentals influence whether an IPO will be a successful investment.</p>
+            <h3>Market Conditions</h3>
+            <p>IPOs launched during bull markets and periods of strong investor sentiment tend to perform better initially. However, companies that list during market euphoria are often overpriced, leading to poor long-term returns once sentiment normalises.</p>
+            <h3>Lead Manager Reputation</h3>
+            <p>IPOs managed by top-tier investment banks (Macquarie, Goldman Sachs, UBS) tend to perform better on average, as these institutions have more selective criteria and deeper institutional investor networks to support the stock post-listing.</p>
+            <h3>Cornerstone Investors</h3>
+            <p>The presence of reputable institutional investors taking large cornerstone positions provides a strong signal of quality. If experienced, sophisticated investors have conducted deep due diligence and committed significant capital, it increases confidence in the investment thesis.</p>
+        `
+    },
+    'how-to-access-ipos': {
+        title: 'How to Access IPOs',
+        content: `
+            <p>Accessing IPOs as a retail investor in Australia requires knowing where to look and how the allocation process works.</p>
+            <h3>Broker Allocations</h3>
+            <p>Most IPOs reserve a portion of shares for retail investors, distributed through participating brokers. CommSec, Bell Direct, and other major brokers regularly offer access to new listings. However, the most sought-after IPOs may have limited retail allocations.</p>
+            <h3>Direct Application</h3>
+            <p>Retail investors can also apply directly by completing the application form in the prospectus and submitting payment. This is available for most IPOs but can be slower than applying through a broker.</p>
+            <h3>IPO-Focused Platforms</h3>
+            <p>Platforms like OnMarket have emerged to democratise IPO access, providing retail investors with allocations in IPOs that were previously accessible only to institutional investors and high-net-worth individuals.</p>
+        `
+    },
+    'how-to-manage-ipos': {
+        title: 'How to Manage IPOs',
+        content: `
+            <p>Managing an IPO investment requires a clear strategy for the volatile initial trading period and beyond.</p>
+            <h3>The First Day Decision</h3>
+            <p>If the stock opens significantly above the offer price (a "hot" IPO), decide in advance whether to take quick profits ("stag" the IPO) or hold for the long term. Having this decision made before the emotion of the moment is critical.</p>
+            <h3>The Quiet Period</h3>
+            <p>For the first 40 days after listing (the "quiet period"), the lead manager's analysts cannot publish research. Once the quiet period ends and analyst coverage begins, this can drive a second wave of buying or selling depending on the reports.</p>
+            <h3>Escrow Expiry Monitoring</h3>
+            <p>Mark escrow expiry dates in your calendar. When insider shares become freely tradeable, there is often significant selling pressure. Consider reducing your position before major escrow releases, or at minimum, be prepared for increased volatility.</p>
+        `
+    },
+    'common-mistakes-in-ipo-investment': {
+        title: 'Common Mistakes in IPO Investment',
+        content: `
+            <p>IPO investing is littered with common pitfalls that systematically erode returns for retail investors.</p>
+            <h3>Chasing Hot IPOs</h3>
+            <p>The most popular IPOs are often the worst long-term investments. By the time retail investors hear about a "can't miss" IPO, the smart money has already secured its allocation. Buying on the secondary market on day one at inflated prices locks in much of the potential upside for others.</p>
+            <h3>Ignoring the Prospectus</h3>
+            <p>Many investors apply for IPOs based on media hype without reading the prospectus. The risk factors section, in particular, often contains crucial information about threats that could derail the investment thesis.</p>
+            <h3>Failing to Set an Exit Strategy</h3>
+            <p>IPO stocks can be extremely volatile in their first year. Investors who fail to set stop-losses or profit targets often ride a stock up 50% and then back down to the offer price (or below), capturing zero return despite significant paper profits.</p>
+        `
+    },
+    'ipo-and-risk-management': {
+        title: 'IPO and Risk Management',
+        content: `
+            <p>IPOs carry unique risks that require specific risk management strategies beyond those used for established listed companies.</p>
+            <h3>Sizing the Position</h3>
+            <p>Given the higher uncertainty of IPOs, limit individual IPO positions to 2-5% of your total portfolio. This ensures that even a total loss on a failed IPO does not materially damage your overall wealth.</p>
+            <h3>Staggered Entry</h3>
+            <p>Rather than committing your full intended position at the IPO, consider investing half at listing and half after the first earnings report (typically 3-6 months later). This gives you real operating data to validate (or invalidate) the investment thesis before fully committing.</p>
+            <h3>Stop-Loss Discipline</h3>
+            <p>Set a firm stop-loss at 15-20% below your purchase price. IPO stocks that fall significantly below their offer price often continue declining, as the loss of the "offer price floor" triggers further institutional selling and negative sentiment spirals.</p>
+        `
+    },
+    'latest-trends-in-ipos': {
+        title: 'Latest Trends in IPOs',
+        content: `
+            <p>The IPO landscape is evolving rapidly, with new listing mechanisms, sector shifts, and regulatory developments reshaping how companies access public markets.</p>
+            <h3>Technology and Healthcare Dominance</h3>
+            <p>The composition of IPOs has shifted dramatically from resources towards technology, healthcare, and fintech companies. This reflects the broader economic transformation and increased investor appetite for high-growth, innovation-driven businesses.</p>
+            <h3>Alternative Listing Pathways</h3>
+            <p>Special Purpose Acquisition Companies (SPACs), direct listings, and reverse takeovers (backdoor listings) have emerged as alternatives to traditional IPOs. While SPACs experienced a boom and bust globally, direct listings (bypassing underwriters) are gaining traction for well-known companies.</p>
+            <h3>ESG and Impact IPOs</h3>
+            <p>An increasing number of IPOs are from companies focused on sustainability, clean energy, and social impact. ESG credentials are becoming a significant factor in investor demand and are influencing IPO pricing and allocation decisions.</p>
+        `
+    }
