@@ -1864,6 +1864,367 @@
         });
 
         const articleContent = {
+'faaa-fin-plan-research-journal': {
+        title: 'FAAA Financial Planning Research Journal',
+        content: `
+            <p>The official research publication of the Financial Advice Association Australia (FAAA), serving as the peak academic and professional journal for the financial planning profession in Australia.</p>
+            <h3>Academic Rigor</h3>
+            <p>It publishes peer-reviewed research papers focusing on retirement strategies, superannuation legislation, risk profiling, behavioral finance, and ethics. It is essential reading for financial planners looking to implement evidence-based strategies rather than relying on industry rule-of-thumb heuristics.</p>
+        `
+    },
+    'cfa-financial-analysts-journal': {
+        title: 'CFA Financial Analysts Journal',
+        content: `
+            <p>Published by the CFA Institute, this is one of the most prestigious and widely read journals in the global investment management industry.</p>
+            <h3>Bridging Theory and Practice</h3>
+            <p>The journal specializes in bridging the gap between highly abstract academic finance theory and real-world portfolio management. It features groundbreaking research on asset pricing, quantitative models, ESG integration, and market anomalies, written by leading academics and elite practitioners.</p>
+        `
+    },
+    'rba-statement-on-monetary-policy': {
+        title: 'RBA Statement on Monetary Policy',
+        content: `
+            <p>A comprehensive quarterly report published by the Reserve Bank of Australia outlining its assessment of current economic conditions and the outlook for inflation and output growth.</p>
+            <h3>The Economic Bible</h3>
+            <p>For Australian macro investors, this is mandatory reading. It details exactly how the RBA views the global economy, the domestic labor market, and the trajectory of the official cash rate. It contains the RBA's official economic forecasts, which drive the pricing of the entire Australian bond market.</p>
+        `
+    },
+    'rba-financial-stability-review': {
+        title: 'RBA Financial Stability Review',
+        content: `
+            <p>A semi-annual publication from the RBA that assesses the current health and resilience of the Australian financial system.</p>
+            <h3>Monitoring Systemic Risk</h3>
+            <p>Unlike the Statement on Monetary Policy, which focuses on inflation, this report focuses on catastrophe prevention. It analyzes household debt levels, commercial real estate vulnerabilities, cyber risks, and the capital buffers of the major banks. If a housing crash is looming, the warning signs will be detailed here first.</p>
+        `
+    },
+    'financial-services-council-reports': {
+        title: 'Financial Services Council Reports',
+        content: `
+            <p>The Financial Services Council (FSC) is the peak body representing Australia's massive wealth management, superannuation, and life insurance sectors.</p>
+            <h3>Industry Benchmarks</h3>
+            <p>Their research reports provide critical industry-level data on funds under management, regulatory compliance costs, demographic shifts in retirement savings, and the impact of government tax policy on the wealth management industry. They are a primary source for understanding structural shifts in the Australian financial landscape.</p>
+        `
+    },
+    'money-management': {
+        title: 'Money Management',
+        content: `
+            <p>A leading Australian trade publication specifically targeting financial planners, fund managers, and wealth industry executives.</p>
+            <h3>Industry Gossip and Regulation</h3>
+            <p>It covers the daily news of the financial services sector: which fund managers are being hired or fired, the launch of new investment products (ETFs, Managed Accounts), and real-time updates on ASIC regulatory crackdowns. It is less about stock picking and more about the business of managing money.</p>
+        `
+    },
+    'general-investing-calculators': {
+        title: 'General Investing Calculators',
+        content: `
+            <p>Essential mathematical tools for modeling the time value of money and the magic of compound interest.</p>
+            <h3>The Power of Compounding</h3>
+            <p>These calculators allow investors to input their initial principal, monthly contributions, expected annual return, and time horizon. The visual graph of exponential growth is often the single most powerful tool to convince a young person to start investing early. They are fundamental for setting realistic long-term wealth targets.</p>
+        `
+    },
+    'share-investing-calculators': {
+        title: 'Share Investing Calculators',
+        content: `
+            <p>Specialized tools designed to analyze individual equity investments and portfolio metrics.</p>
+            <h3>Metrics and Yields</h3>
+            <p>They include Dividend Reinvestment Plan (DRP) calculators, Capital Gains Tax (CGT) estimators, and intrinsic value calculators (simplified DCF models). They allow investors to quickly estimate the "Yield on Cost" over time and understand the massive tax implications of holding shares for less than 12 months.</p>
+        `
+    },
+    'superannuation-calculators': {
+        title: 'Superannuation Calculators',
+        content: `
+            <p>Tools designed to navigate the incredibly complex tax environment of Australia's retirement system.</p>
+            <h3>Projecting Retirement</h3>
+            <p>These allow you to calculate the tax benefits of salary sacrifice vs. after-tax contributions, track your progress towards the Transfer Balance Cap, and estimate your total balance at retirement age. They are critical for determining if you will face a "shortfall" and run out of money during retirement.</p>
+        `
+    },
+    'home-loan-calculators': {
+        title: 'Home Loan Calculators',
+        content: `
+            <p>The first step for any prospective property buyer. These tools model the massive, long-term impact of debt.</p>
+            <h3>Amortization and Buffers</h3>
+            <p>They calculate your monthly repayment based on Principal & Interest or Interest-Only structures. More importantly, good calculators allow you to model "stress tests" (what happens if interest rates jump 3%) and show exactly how much interest you can save over 30 years by utilizing an offset account.</p>
+        `
+    },
+    'personal-loan-calculators': {
+        title: 'Personal Loan Calculators',
+        content: `
+            <p>Tools used to model the brutal mathematics of unsecured, high-interest consumer debt.</p>
+            <h3>The Cost of Debt</h3>
+            <p>They vividly demonstrate how minimum payments on credit cards or personal loans barely cover the interest, keeping the borrower trapped in debt for decades. They are essential for modeling debt consolidation strategies to escape the high-interest trap.</p>
+        `
+    },
+    'other-useful-calculators': {
+        title: 'Other Useful Calculators',
+        content: `
+            <p>A catch-all for specialized financial calculators that don't fit standard categories.</p>
+            <h3>Specialized Analysis</h3>
+            <p>This includes Lease vs. Buy calculators (crucial for buying cars or corporate equipment), Net Worth trackers, Inflation calculators (to determine historical purchasing power), and complex tax calculators designed to model the exact Medicare Levy Surcharge and HECS/HELP debt repayment thresholds.</p>
+        `
+    },
+    'yahoo-finance': {
+        title: 'Yahoo Finance',
+        content: `
+            <p>The undisputed grandfather of free financial data on the internet, widely used by retail and professional investors alike for quick stock screening.</p>
+            <h3>The Global Aggregator</h3>
+            <p>It provides free, delayed quotes for almost every stock exchange on earth, basic charting, historical price downloads (essential for Excel modeling), and aggregates financial news from thousands of sources. While its financial statements are sometimes simplified, it remains the most robust free portal available.</p>
+        `
+    },
+    'investing-com': {
+        title: 'Investing.com',
+        content: `
+            <p>A massive global financial portal heavily favored by macro traders and forex investors.</p>
+            <h3>The Economic Calendar</h3>
+            <p>Its standout feature is its real-time Economic Calendar, which tracks every central bank decision, GDP release, and employment report globally. Traders use it to track live commodities futures and bond yields that are often delayed or hidden behind paywalls on other platforms.</p>
+        `
+    },
+    'market-index': {
+        title: 'Market Index',
+        content: `
+            <p>An incredibly clean, highly specialized data portal explicitly focused on the Australian Securities Exchange (ASX).</p>
+            <h3>The Local Hero</h3>
+            <p>It is universally loved by Australian investors for its clean presentation of ASX company announcements, upcoming dividend dates (ex-dividend calendar), and tracking of massive director trades (when the CEO is buying or selling their own stock). It is arguably the best free site for purely domestic Australian equities.</p>
+        `
+    },
+    'tradingview': {
+        title: 'TradingView',
+        content: `
+            <p>The absolute gold standard for modern web-based charting and technical analysis.</p>
+            <h3>The Charting Behemoth</h3>
+            <p>It features an incredibly powerful HTML5 charting engine, thousands of custom technical indicators written by the community (Pine Script), and social features where traders share complex charting ideas. It is used heavily by day traders, crypto investors, and professionals who need rapid, advanced technical analysis in a browser.</p>
+        `
+    },
+    'moomoo': {
+        title: 'Moomoo',
+        content: `
+            <p>A rapidly growing, feature-rich online brokerage and financial data platform backed by Tencent.</p>
+            <h3>Pro-Level Data for Free</h3>
+            <p>It aggressively disrupted the market by offering Level 2 market data (showing the full order book of buyers and sellers), advanced options analytics, and institutional cash flow trackers for free, features that traditional brokers charge hundreds of dollars a month to access.</p>
+        `
+    },
+    'barchart': {
+        title: 'Barchart',
+        content: `
+            <p>A powerhouse platform for specialized data, particularly regarding options trading and commodities.</p>
+            <h3>Options and Futures</h3>
+            <p>While it covers stocks, Barchart excels at providing data on options "Greeks" (Delta, Gamma, Theta), unusual options volume scanners, and highly complex agricultural and energy futures contracts. It is a critical tool for sophisticated derivatives traders.</p>
+        `
+    },
+    'simply-wall-st': {
+        title: 'Simply Wall St',
+        content: `
+            <p>An Australian-founded financial technology company that visually translates complex financial data into beautiful, easy-to-understand infographics.</p>
+            <h3>The Snowflake Graphic</h3>
+            <p>Their famous "Snowflake" graphic instantly summarizes a company's health across five metrics: Value, Future, Past, Health, and Dividends. They automatically run DCF models to estimate fair value and heavily analyze insider trading. It is the ultimate tool for rapid, visual stock screening for fundamental investors.</p>
+        `
+    },
+    'sharesight': {
+        title: 'Sharesight',
+        content: `
+            <p>The definitive portfolio tracking and tax reporting software for Australian investors.</p>
+            <h3>Solving the Tax Nightmare</h3>
+            <p>Unlike broker apps, Sharesight automatically tracks the incredibly complex tax implications of holding ASX shares, including franking credits, dividend reinvestment plans (DRPs), and stock splits. It generates precise Capital Gains Tax (CGT) reports that investors simply hand straight to their accountants at tax time.</p>
+        `
+    },
+    'hotcopper': {
+        title: 'HotCopper',
+        content: `
+            <p>Australia's oldest and largest online stock market forum, infamous for its focus on highly speculative micro-cap mining and biotech stocks.</p>
+            <h3>The Wild West</h3>
+            <p>It is a chaotic mix of deep, brilliant geological analysis by industry insiders, combined with rampant, coordinated "pump and dump" schemes by amateur day traders. It is a dangerous but fascinating sentiment indicator for the most speculative end of the ASX.</p>
+        `
+    },
+    'aussie-stock-forums': {
+        title: 'Aussie Stock Forums (ASF)',
+        content: `
+            <p>A traditional, heavily moderated online message board discussing the Australian share market.</p>
+            <h3>The Sensible Alternative</h3>
+            <p>Compared to the wild speculation of HotCopper, ASF is generally much slower-paced, focusing more on technical analysis, macroeconomics, and broader investing strategies. It attracts a slightly older, more experienced demographic of retail investors.</p>
+        `
+    },
+    'the-stock-exchange': {
+        title: 'The Stock Exchange (TSE)',
+        content: `
+            <p>An online community dedicated to the global financial markets, often serving as a hub for both domestic and international equity discussions.</p>
+            <h3>Global Perspective</h3>
+            <p>While Australian-focused boards can suffer from intense home bias, global forums help local investors share strategies regarding US tech giants, emerging markets, and complex international ETFs, broadening their investment horizons.</p>
+        `
+    },
+'whirlpool-forums-12-5-5-r-asx-bets': {
+        title: 'r/ASX_Bets (and similar communities)',
+        content: `
+            <p>The Australian equivalent of the infamous r/WallStreetBets subreddit, infamous for extreme risk-taking and meme-culture.</p>
+            <h3>High Risk, High Entertainment</h3>
+            <p>Users refer to themselves as "autists" and "degenerates," openly mocking traditional investing advice. They gamble massive sums of money on highly speculative penny stocks ("dogs") hoping for "rocket ship" returns, and post "loss porn" when their investments inevitably collapse. It is highly entertaining, but absolutely toxic for serious wealth creation.</p>
+        `
+    },
+    'reddit-r-ausfinance': {
+        title: 'r/AusFinance',
+        content: `
+            <p>The largest and most prominent personal finance community in Australia on the Reddit platform.</p>
+            <h3>The VDHG Echo Chamber</h3>
+            <p>It is heavily focused on conservative, long-term wealth building. The dominant advice is to avoid picking individual stocks, minimize fees, and aggressively dump all spare cash into diversified ETFs (specifically Vanguard's VDHG). It is an excellent resource for beginners asking questions about superannuation, HECS debt, and basic tax strategy.</p>
+        `
+    },
+    'reddit-r-asx': {
+        title: 'r/ASX',
+        content: `
+            <p>A smaller, more focused subreddit specifically dedicated to discussing companies listed on the Australian Securities Exchange.</p>
+            <h3>Company-Specific Discussion</h3>
+            <p>Unlike r/AusFinance (which focuses on ETFs and personal budgeting), r/ASX focuses on analyzing individual corporate earnings reports, debating the macroeconomic impact of RBA decisions on specific sectors, and discussing the fundamentals of mid-cap Australian companies.</p>
+        `
+    },
+    'reddit-r-fiaustralia': {
+        title: 'r/FIAustralia',
+        content: `
+            <p>The Australian hub for the FIRE (Financial Independence, Retire Early) movement.</p>
+            <h3>Extreme Frugality and Compounding</h3>
+            <p>This community focuses on extreme savings rates (often saving 50-70% of their income) to build a massive investment portfolio (usually index funds or LICs) as fast as possible. The goal is to generate enough passive dividend income to cover living expenses, allowing them to permanently retire in their 30s or 40s.</p>
+        `
+    },
+    'reddit-r-ausinvesting': {
+        title: 'r/AusInvesting',
+        content: `
+            <p>A community attempting to bridge the gap between the ultra-conservative r/AusFinance and the reckless gambling of r/ASX_Bets.</p>
+            <h3>The Middle Ground</h3>
+            <p>It focuses on serious, fundamental analysis of individual stocks, portfolio construction strategies, and discussions about active vs. passive investing methodologies without the intense meme culture of the betting subreddits.</p>
+        `
+    },
+    'reddit-r-ausstocks': {
+        title: 'r/AusStocks',
+        content: `
+            <p>Another dedicated subreddit for the discussion of Australian equities.</p>
+            <h3>Retail Sentiment</h3>
+            <p>Like many retail-dominated boards, it provides a fascinating real-time look into the "retail sentiment" of the market. It is highly useful for seeing which stocks are currently popular among retail investors, which can act as a contrarian indicator for professional value investors.</p>
+        `
+    },
+    'propertychat': {
+        title: 'PropertyChat',
+        content: `
+            <p>The definitive, most respected online forum for Australian real estate investors.</p>
+            <h3>Deep Structural Knowledge</h3>
+            <p>Unlike stock forums, PropertyChat is incredibly technical. It is filled with elite mortgage brokers, property developers, and veteran investors discussing the extreme minutiae of negative gearing tax law, zoning regulations, trust structures, and complex development feasibility studies. It is the gold standard for property education.</p>
+        `
+    },
+    'glossary-a-to-b': {
+        title: 'Glossary: A to B',
+        content: `
+            <p>Key terms starting with A and B.</p>
+            <h3>Highlights</h3>
+            <p><strong>Alpha:</strong> The excess return of an investment relative to the return of a benchmark index. <strong>Beta:</strong> A measure of the volatility, or systematic risk, of a security compared to the market as a whole. <strong>Bear Market:</strong> A market condition in which prices are falling, encouraging selling.</p>
+        `
+    },
+    'glossary-c': {
+        title: 'Glossary: C',
+        content: `
+            <p>Key terms starting with C.</p>
+            <h3>Highlights</h3>
+            <p><strong>Capital Gains Tax (CGT):</strong> A tax levied on profit from the sale of property or an investment. <strong>Compound Interest:</strong> Interest calculated on the initial principal, which also includes all of the accumulated interest from previous periods. <strong>Cyclical Stock:</strong> An equity security whose price is affected by macroeconomic, systematic changes in the overall economy.</p>
+        `
+    },
+    'glossary-d-to-e': {
+        title: 'Glossary: D to E',
+        content: `
+            <p>Key terms starting with D and E.</p>
+            <h3>Highlights</h3>
+            <p><strong>Dividends:</strong> A distribution of a portion of a company's earnings, decided by the board of directors, paid to a class of its shareholders. <strong>EBITDA:</strong> Earnings Before Interest, Taxes, Depreciation, and Amortization; a measure of a company's overall financial performance. <strong>Equities:</strong> Shares issued by a company representing an ownership interest.</p>
+        `
+    },
+    'glossary-f-to-h': {
+        title: 'Glossary: F to H',
+        content: `
+            <p>Key terms starting with F, G, and H.</p>
+            <h3>Highlights</h3>
+            <p><strong>Franking Credits:</strong> A type of tax credit that allows Australian companies to pass on tax paid at the corporate level to shareholders. <strong>Growth Stock:</strong> A share in a company whose earnings are expected to grow at an above-average rate relative to the market. <strong>Hedge Fund:</strong> An actively managed investment pool whose managers use a wide range of strategies to beat average investment returns.</p>
+        `
+    },
+    'glossary-i-to-l': {
+        title: 'Glossary: I to L',
+        content: `
+            <p>Key terms starting with I, J, K, and L.</p>
+            <h3>Highlights</h3>
+            <p><strong>Index Fund:</strong> A mutual fund or ETF designed to follow certain preset rules so that the fund can track a specified basket of underlying investments. <strong>Intrinsic Value:</strong> The perceived or calculated true value of an asset, an investment, or a company. <strong>Liquidity:</strong> The degree to which an asset can be quickly bought or sold in the market without affecting the asset's price.</p>
+        `
+    },
+    'glossary-m-to-o': {
+        title: 'Glossary: M to O',
+        content: `
+            <p>Key terms starting with M, N, and O.</p>
+            <h3>Highlights</h3>
+            <p><strong>Margin Loan:</strong> A loan taken out by an investor using their existing portfolio of shares or managed funds as security. <strong>Net Asset Value (NAV):</strong> The value of an entity's assets minus the value of its liabilities. <strong>Options:</strong> Financial derivatives that give buyers the right, but not the obligation, to buy or sell an underlying asset at an agreed-upon price and date.</p>
+        `
+    },
+    'glossary-p-to-r': {
+        title: 'Glossary: P to R',
+        content: `
+            <p>Key terms starting with P, Q, and R.</p>
+            <h3>Highlights</h3>
+            <p><strong>Price-to-Earnings Ratio (P/E):</strong> The ratio for valuing a company that measures its current share price relative to its per-share earnings. <strong>Quantitative Easing (QE):</strong> A form of unconventional monetary policy in which a central bank purchases longer-term securities from the open market. <strong>Return on Equity (ROE):</strong> A measure of financial performance calculated by dividing net income by shareholders' equity.</p>
+        `
+    },
+    'glossary-s-to-t': {
+        title: 'Glossary: S to T',
+        content: `
+            <p>Key terms starting with S and T.</p>
+            <h3>Highlights</h3>
+            <p><strong>Short Selling:</strong> An investment or trading strategy that speculates on the decline in a stock or other security's price. <strong>Superannuation:</strong> The organizational pension program in Australia created by the government to encourage people to accumulate funds to provide them with an income stream in retirement. <strong>Technical Analysis:</strong> A trading discipline employed to evaluate investments and identify trading opportunities in price trends and patterns seen on charts.</p>
+        `
+    },
+    'glossary-u-to-z': {
+        title: 'Glossary: U to Z',
+        content: `
+            <p>Key terms starting with U through Z.</p>
+            <h3>Highlights</h3>
+            <p><strong>Undervalued:</strong> A financial security or other type of investment that is selling for a price presumed to be below the investment's true intrinsic value. <strong>Value Investing:</strong> An investment strategy that involves picking stocks that appear to be trading for less than their intrinsic or book value. <strong>Yield:</strong> The earnings generated and realized on an investment over a particular period of time.</p>
+        `
+    },
+    'buffett-munger-berkshire': {
+        title: 'Useful Links: Buffett, Munger & Berkshire',
+        content: `
+            <p>Essential resources for studying the philosophy of the greatest value investors in history.</p>
+            <h3>Key Resources</h3>
+            <p>The definitive resource is the official Berkshire Hathaway website, specifically the archive of Warren Buffett's Annual Shareholder Letters dating back to 1977. Other crucial links include the Poor Charlie's Almanack website (for Charlie Munger's speeches) and CNBC's Warren Buffett Archive, which hosts decades of uncut video interviews and annual meetings.</p>
+        `
+    },
+    'value-investing': {
+        title: 'Useful Links: Value Investing',
+        content: `
+            <p>Curated links for deepening your understanding of fundamental value investing.</p>
+            <h3>Key Resources</h3>
+            <p>Includes links to the Heilbrunn Center for Graham & Dodd Investing at Columbia Business School, the Value Investors Club (VIC) for deep-dive thesis research, Howard Marks' Oaktree Capital memos, and the Baupost Group (Seth Klarman) reading lists. These are the premier hubs for classical value analysis.</p>
+        `
+    },
+    'share-investing': {
+        title: 'Useful Links: Share Investing',
+        content: `
+            <p>Links covering the broader mechanics and strategies of investing in the stock market.</p>
+            <h3>Key Resources</h3>
+            <p>Links to the official ASX Education Center (for free courses on shares and options), Investopedia (the ultimate financial encyclopedia), and Vanguard Australia's education hub (the best resource for understanding index fund construction and passive investing strategies).</p>
+        `
+    },
+    'general-investing': {
+        title: 'Useful Links: General Investing',
+        content: `
+            <p>Resources covering macroeconomics, asset allocation, and alternative investments.</p>
+            <h3>Key Resources</h3>
+            <p>Includes links to Ray Dalio's Bridgewater Associates macro research ("Economic Principles"), the RBA's education portal on how monetary policy works, and resources for understanding fixed-income markets (bonds), property cycles, and the psychological aspects of investing (Behavioral Finance).</p>
+        `
+    },
+    'legal-and-accounting': {
+        title: 'Useful Links: Legal & Accounting',
+        content: `
+            <p>Crucial official resources for navigating the complex regulatory and tax landscape in Australia.</p>
+            <h3>Key Resources</h3>
+            <p>Direct links to the Australian Taxation Office (ATO) for rulings on CGT, negative gearing, and superannuation. Links to the Australian Securities and Investments Commission (ASIC) company registers (crucial for due diligence), and the Australian Accounting Standards Board (AASB) for understanding how financial statements are legally constructed.</p>
+        `
+    },
+    'miscellaneous': {
+        title: 'Useful Links: Miscellaneous',
+        content: `
+            <p>A collection of varied resources that don't fit into the main categories but remain highly valuable.</p>
+            <h3>Key Resources</h3>
+            <p>Links to the best financial podcasts (e.g., The Investor's Podcast, Equity Mates), historical data archives for testing investment strategies, behavioral economics blogs, and links to recommended financial calculators and portfolio tracking software.</p>
+        `
+    },
+
 
             'siaa-monthly': {
 
