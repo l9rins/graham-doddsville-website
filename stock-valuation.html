@@ -730,13 +730,7 @@
                 } else {
                     mobileDrawer.classList.add('open');
                     document.body.style.overflow = 'hidden';
-                } else {
-                title.textContent = 'Article Not Found';
-                body.innerHTML = '<p style="padding: 20px; color: #6b7280;">Sorry, the content for this article ("' + articleId + '") could not be found or has not been added yet.</p>';
-                panel.classList.add('active');
-                document.body.style.overflow = 'hidden';
-                console.error('Article not found:', articleId);
-            }
+                }
             }
         }
 
@@ -771,6 +765,12 @@
                 
                 const contentContainer = panel.querySelector('.article-detail-content');
                 if (contentContainer) contentContainer.scrollTop = 0;
+            } else {
+                title.textContent = 'Article Not Found';
+                body.innerHTML = '<p style="padding: 20px; color: #6b7280;">Sorry, the content for this article ("' + articleId + '") could not be found or has not been added yet.</p>';
+                panel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                console.error('Article not found:', articleId);
             }
         }
 
@@ -819,6 +819,549 @@
         });
 
         const articleContent = {
+'introduction-to-stock-valuation': {
+        title: 'Introduction to Stock Valuation',
+        content: `
+            <p>Stock valuation is the core discipline of fundamental investing. It is the process of calculating the theoretical true value of a company (its intrinsic value) to determine whether its current stock price on the market is overvalued or undervalued.</p>
+            <h3>Price vs. Value</h3>
+            <p>The foundation of valuation rests on a single concept: <strong>Price is what you pay; Value is what you get.</strong> The market dictates the price every second of the trading day, driven by emotion, momentum, and macroeconomics. Valuation attempts to dictate the actual underlying worth, driven purely by cash flows, assets, and business economics.</p>
+        `
+    },
+    'what-is-value': {
+        title: 'What is Value?',
+        content: `
+            <p>In finance, "value" is not an abstract concept; it is mathematically defined as the present value of all future cash flows a business will generate over its lifetime.</p>
+            <h3>The Golden Goose</h3>
+            <p>If you own a goose that lays one golden egg every year, the "value" of the goose is the total sum of all those future golden eggs, discounted back to today's money (because an egg today is worth more than an egg in 10 years). The same applies to a business generating cash.</p>
+        `
+    },
+    'stock-valuation-process': {
+        title: 'Stock Valuation Process',
+        content: `
+            <p>Valuation is not a single calculation; it is a multi-step process that combines qualitative analysis with quantitative modeling.</p>
+            <h3>The Core Steps</h3>
+            <p><strong>1. Understand the Business:</strong> How do they make money? What is their moat? <strong>2. Forecast Financial Performance:</strong> Projecting future revenue, margins, and cash flows. <strong>3. Select a Valuation Model:</strong> Choosing DCF, Earnings Power Value, or relative multiples based on the industry. <strong>4. Apply Discount Rates:</strong> Adjusting for the riskiness of the cash flows. <strong>5. Arrive at Intrinsic Value:</strong> And comparing it to the current market price.</p>
+        `
+    },
+    'behavioural-biases': {
+        title: 'Behavioural Biases in Valuation',
+        content: `
+            <p>The biggest threat to a valuation model is not the math; it's the psychological bias of the analyst building it.</p>
+            <h3>Common Biases</h3>
+            <p><strong>Anchoring:</strong> Valuing a stock at $100 simply because it traded at $100 last year, ignoring deteriorating fundamentals. <strong>Confirmation Bias:</strong> Building a model to justify a purchase you've already emotionally decided to make, rather than letting the model dictate the decision. <strong>Over-optimism:</strong> Assuming a company can sustain 30% growth forever, which capitalism rarely allows.</p>
+        `
+    },
+    'use-of-discount-rates': {
+        title: 'Use of Discount Rates',
+        content: `
+            <p>The discount rate represents the required rate of return an investor demands for taking on the risk of the investment. It accounts for both the time value of money and the uncertainty of future cash flows.</p>
+            <h3>The Impact on Value</h3>
+            <p>Valuation is highly sensitive to the discount rate. If you demand a 10% return (discount rate), a company's projected future cash flows are worth significantly less *today* than if you only demanded a 5% return. A higher perceived risk mandates a higher discount rate, which mathematically crushes the present intrinsic value.</p>
+        `
+    },
+    'limitations-of-valuation': {
+        title: 'Limitations of Valuation',
+        content: `
+            <p>Valuation is an imprecise art disguised as a precise science. It relies entirely on projecting the future, which is inherently unknowable.</p>
+            <h3>The Illusion of Precision</h3>
+            <p>A spreadsheet might calculate a stock's intrinsic value down to the penny (e.g., $43.27), but this implies a false level of accuracy. If your revenue growth assumption is off by just 2%, or your discount rate is off by 1%, that $43.27 value could easily swing to $25 or $60. Valuation provides a *range* of probabilities, not an absolute truth.</p>
+        `
+    },
+    'common-valuation-errors': {
+        title: 'Common Valuation Errors',
+        content: `
+            <p>Analysts frequently make structural errors that completely invalidate their valuation models.</p>
+            <h3>The Main Culprits</h3>
+            <p><strong>1. Ignoring Dilution:</strong> Valuing the total company but dividing by today's share count, ignoring millions of executive stock options that will vest. <strong>2. Double Counting Growth:</strong> Paying a high P/E multiple for growth, while also assuming high growth in a DCF model. <strong>3. Using the Wrong Metric:</strong> Valuing a capital-intensive mining company using an EBITDA multiple (which completely ignores the massive CapEx required to survive).</p>
+        `
+    },
+    'what-is-intrinsic-value': {
+        title: 'What is Intrinsic Value?',
+        content: `
+            <p>Intrinsic value is the absolute, true, underlying worth of an asset based solely on its ability to generate cash over its lifetime, independent of its current market price.</p>
+            <h3>The North Star</h3>
+            <p>For value investors, intrinsic value is the North Star. If a stock trades at $50, but a rigorous analysis determines its intrinsic value is $100, the investor buys the stock with a massive "Margin of Safety," trusting that eventually, the market price will converge with the intrinsic value.</p>
+        `
+    },
+    'how-to-calculate-intrinsic-value': {
+        title: 'How to Calculate Intrinsic Value',
+        content: `
+            <p>There is no single formula for intrinsic value. It is calculated using a variety of absolute valuation models, primarily the Discounted Cash Flow (DCF) model.</p>
+            <h3>The Formulaic Approach</h3>
+            <p>The standard academic approach: Project the Free Cash Flow (FCF) for the next 5-10 years. Calculate a Terminal Value for all cash flows beyond year 10. Discount all these future cash flows back to "Present Value" using a discount rate (usually the WACC). Sum the present values, subtract net debt, and divide by the number of shares.</p>
+        `
+    },
+    'ben-graham-s-intrinsic-value': {
+        title: "Ben Graham's Intrinsic Value",
+        content: `
+            <p>Benjamin Graham, the father of value investing, favored a highly conservative, asset-based approach to intrinsic value, rather than projecting highly uncertain future cash flows.</p>
+            <h3>Net-Net Valuation</h3>
+            <p>Graham's ultimate definition of intrinsic value was "Net Current Asset Value." He looked for companies trading below their current liquid assets (cash + receivables + inventory) minus *all* total liabilities. If you bought a stock below this value, you were essentially getting the physical business and all future profits for free.</p>
+        `
+    },
+    'warren-buffett-s-intrinsic-value': {
+        title: "Warren Buffett's Intrinsic Value",
+        content: `
+            <p>Buffett evolved Graham's approach. While Graham focused on liquidating assets, Buffett focuses on a company's ability to compound cash as a going concern.</p>
+            <h3>Owner Earnings</h3>
+            <p>Buffett defined intrinsic value based on "Owner Earnings": Reported Net Income + Depreciation/Amortization - Maintenance Capital Expenditure. He looks for companies with a durable competitive advantage (a moat) that allows them to generate massive Owner Earnings with very little required capital reinvestment.</p>
+        `
+    },
+    'seth-klarman-s-intrinsic-value': {
+        title: "Seth Klarman's Intrinsic Value",
+        content: `
+            <p>Seth Klarman, author of <em>Margin of Safety</em>, approaches intrinsic value with extreme skepticism regarding the future. He emphasizes downside protection above all else.</p>
+            <h3>Multiple Scenarios</h3>
+            <p>Klarman rarely relies on a single DCF. He calculates intrinsic value under highly pessimistic scenarios (e.g., zero growth, contracting margins). He also relies heavily on Liquidation Value and Private Market Value (what a private equity firm would pay to acquire the whole business) as hard anchors for intrinsic value.</p>
+        `
+    },
+    'irving-kahn-s-intrinsic-value': {
+        title: "Irving Kahn's Intrinsic Value",
+        content: `
+            <p>Irving Kahn, one of Graham's original disciples, remained a staunch advocate of Net-Net investing throughout his long career, but adapted it for modern markets.</p>
+            <h3>The Balance Sheet Fortress</h3>
+            <p>Kahn sought intrinsic value not in future growth, but in iron-clad balance sheets. He looked for companies trading below Book Value that possessed massive, hidden assets (like fully depreciated real estate) and zero debt. For Kahn, intrinsic value was about what the company *owned*, not what it *might earn*.</p>
+        `
+    },
+    'christopher-browne-s-intrinsic-value': {
+        title: "Christopher Browne's Intrinsic Value",
+        content: `
+            <p>Christopher Browne of Tweedy, Browne adopted a highly systematic, rules-based approach to defining intrinsic value, often combining Graham's asset approach with Buffett's franchise approach.</p>
+            <h3>Appraisal Value</h3>
+            <p>Browne often looked at "Appraisal Value"—valuing a company based on the actual multiples paid in recent M&A transactions for similar businesses in the real world. If private buyers were consistently paying 10x EBITDA for food companies, Browne considered that the baseline intrinsic value for public food companies.</p>
+        `
+    },
+    'howard-marks-intrinsic-value': {
+        title: "Howard Marks' Intrinsic Value",
+        content: `
+            <p>Howard Marks emphasizes that intrinsic value is deeply cyclical and psychological. He focuses heavily on credit cycles and distressed debt to find extreme mispricings.</p>
+            <h3>Second-Level Thinking</h3>
+            <p>Marks believes that calculating standard intrinsic value is not enough, because every analyst does it. To find true mispriced value, you need "second-level thinking"—understanding not just the asset's value, but understanding *why* the market psychology has temporarily priced it so far below that value (usually due to forced liquidation or sheer panic).</p>
+        `
+    },
+    'li-lu-s-intrinsic-value': {
+        title: "Li Lu's Intrinsic Value",
+        content: `
+            <p>Li Lu, heavily endorsed by Charlie Munger, combines deep fundamental value investing with an intense focus on management integrity and long-term compounding in Asian markets.</p>
+            <h3>The Certainty of Survival</h3>
+            <p>Li Lu defines intrinsic value by looking for businesses with absolute certainty of survival. He focuses on extreme downside scenarios. If a business can survive the worst possible macroeconomic shock and still generate cash, its long-term intrinsic value is almost certainly higher than its current price during a panic.</p>
+        `
+    },
+    'mohnish-pabrai-s-intrinsic-value': {
+        title: "Mohnish Pabrai's Intrinsic Value",
+        content: `
+            <p>Mohnish Pabrai approaches intrinsic value using the "Dhandho" framework: "Heads I win; tails, I don't lose much."</p>
+            <h3>Low Risk, High Uncertainty</h3>
+            <p>Pabrai looks for intrinsic value in situations where risk is actually very low (asset-backed, no debt), but *uncertainty* is very high (bad news, structural changes). The market confuses uncertainty with risk, crushing the stock price. Pabrai buys when the intrinsic value is protected by hard assets, knowing that if the uncertainty resolves positively, the upside is massive.</p>
+        `
+    },
+    'peter-lynch-s-intrinsic-value': {
+        title: "Peter Lynch's Intrinsic Value",
+        content: `
+            <p>Peter Lynch deviated from strict asset-based value, popularizing the concept of GARP (Growth At a Reasonable Price).</p>
+            <h3>The PEG Ratio</h3>
+            <p>Lynch defined a stock's intrinsic value relative to its growth rate. He popularized the PEG Ratio (P/E Ratio divided by Earnings Growth Rate). If a company is growing earnings at 25% a year, a P/E of 25 is "fair value" (PEG of 1.0). If you can buy that 25% grower at a P/E of 15 (PEG of 0.6), it is trading well below intrinsic value.</p>
+        `
+    },
+    'john-neff-s-intrinsic-value': {
+        title: "John Neff's Intrinsic Value",
+        content: `
+            <p>John Neff was a classic contrarian value investor who focused heavily on low P/E stocks combined with high dividend yields.</p>
+            <h3>Total Return Value</h3>
+            <p>Neff calculated intrinsic value based on a "Total Return" formula: (Earnings Growth Rate + Dividend Yield) / P/E Ratio. He sought solid, boring companies where the dividend alone provided a massive floor under the intrinsic value, while waiting for the market to eventually recognize the low P/E and re-rate the stock higher.</p>
+        `
+    },
+    'john-templeton-s-intrinsic-value': {
+        title: "John Templeton's Intrinsic Value",
+        content: `
+            <p>Sir John Templeton was the pioneer of global value investing, seeking intrinsic value anywhere in the world where pessimism was at its maximum.</p>
+            <h3>The Point of Maximum Pessimism</h3>
+            <p>Templeton defined intrinsic value comparatively across borders. If Japanese chemical companies were trading at 5x earnings while US chemical companies traded at 15x, Templeton found intrinsic value in Japan. He famously bought every US stock trading under $1 at the exact onset of WWII, realizing that war production would eventually unlock their hidden intrinsic value.</p>
+        `
+    },
+    'aswath-damodaran-s-intrinsic-value': {
+        title: "Aswath Damodaran's Intrinsic Value",
+        content: `
+            <p>Aswath Damodaran, the "Dean of Valuation," champions a rigorous, academically sound, but highly adaptable approach to DCF modeling.</p>
+            <h3>Narrative and Numbers</h3>
+            <p>Damodaran insists that intrinsic value cannot be calculated purely with a spreadsheet. You must first craft a logical "Narrative" about the company's future (e.g., "Uber will dominate global logistics"), and then translate that narrative directly into the "Numbers" (revenue growth, margins, target market size). If the numbers don't support the narrative, the valuation is flawed.</p>
+        `
+    },
+    'limitations-of-intrinsic-value': {
+        title: 'Limitations of Intrinsic Value',
+        content: `
+            <p>While conceptually perfect, intrinsic value is notoriously difficult to rely upon in practice.</p>
+            <h3>The Moving Target</h3>
+            <p>Intrinsic value is not a static number; it changes every day as the business environment changes. A sudden technological disruption or a change in government regulation can instantly destroy a company's "moat," reducing its intrinsic value by 80% overnight. Clinging to an outdated intrinsic value calculation is a common investor trap.</p>
+        `
+    },
+'price-to-sales-ratio': {
+        title: 'Price-to-Sales Ratio',
+        content: `
+            <p>The P/S ratio (Market Capitalization / Total Revenue) values a company purely on its top-line sales, ignoring profit margins entirely.</p>
+            <h3>When to Use It</h3>
+            <p>It is primarily used for early-stage companies (like SaaS startups) that are intentionally losing money to capture market share, making the P/E ratio useless. It assumes that eventually, the company will achieve standard industry profit margins on those sales.</p>
+            <h3>The Danger</h3>
+            <p>Sales do not equal cash. A company can have massive sales but structurally negative margins. Paying 10x Sales for a hardware company with 5% margins is a recipe for disaster; paying 10x Sales for a software company with 85% gross margins might be a bargain.</p>
+        `
+    },
+    'sales-multiples': {
+        title: 'Sales Multiples',
+        content: `
+            <p>Sales multiples compare a company's valuation to its revenue relative to its peers.</p>
+            <h3>Enterprise Value to Sales (EV/Sales)</h3>
+            <p>This is the superior version of the P/S ratio because it accounts for debt. If two companies both trade at 2x Sales, but Company A has $1B in debt and Company B has $1B in cash, Company B is drastically cheaper on an EV/Sales basis. EV/Sales is standard in M&A valuation.</p>
+        `
+    },
+    'revenue-growth-rate': {
+        title: 'Revenue Growth Rate',
+        content: `
+            <p>The pace at which top-line sales are expanding. It is the primary driver of high valuations in modern equity markets.</p>
+            <h3>Sustainable vs Unsustainable</h3>
+            <p>A 50% growth rate driven by massive, unrepeatable marketing spend is low-quality growth. A 20% growth rate driven by a deeply ingrained "network effect" (like Visa or Facebook) is high-quality, highly valuable growth. Analysts must always separate organic growth from acquisition-driven growth.</p>
+        `
+    },
+    'price-to-revenue-growth': {
+        title: 'Price to Revenue Growth',
+        content: `
+            <p>Similar to the PEG ratio, this compares the Price/Sales multiple to the expected revenue growth rate.</p>
+            <h3>The Growth Premium</h3>
+            <p>If a company trades at 15x Sales but is growing revenue at 60% year-over-year, it might be cheaper than a company trading at 4x Sales growing at only 5%. This metric helps investors standardize the massive valuations often applied to hyper-growth tech stocks.</p>
+        `
+    },
+    'price-to-earnings-ratio': {
+        title: 'Price-to-Earnings Ratio',
+        content: `
+            <p>The P/E Ratio (Share Price / Earnings Per Share) is the most famous and widely misused valuation metric in the world.</p>
+            <h3>What It Means</h3>
+            <p>It tells you how much the market is willing to pay for $1 of current accounting profit. A P/E of 20 means you are paying $20 for every $1 of earnings (a 5% yield). High P/E implies high expected growth; low P/E implies stagnation or distress.</p>
+            <h3>The Trap</h3>
+            <p>Because "Earnings" (Net Income) is heavily manipulable by management (via depreciation schedules, buybacks, and tax games), a low P/E can be a "value trap"—the earnings are artificially inflated and are about to collapse.</p>
+        `
+    },
+    'earnings-yield': {
+        title: 'Earnings Yield',
+        content: `
+            <p>The Earnings Yield (Earnings Per Share / Share Price) is simply the inverse of the P/E ratio.</p>
+            <h3>The Interest Rate Comparison</h3>
+            <p>A P/E of 20 equals an Earnings Yield of 5%. Expressing it as a yield allows investors to directly compare stocks against risk-free government bonds. If the 10-year Treasury bond yields 4%, a stock with a 5% Earnings Yield only offers a 1% "Equity Risk Premium," which is usually not enough to compensate for the risk of owning equities.</p>
+        `
+    },
+    'pe-to-growth-peg-ratio': {
+        title: 'PE-to-Growth (PEG) Ratio',
+        content: `
+            <p>Popularized by Peter Lynch, the PEG ratio (P/E Ratio / Annual EPS Growth Rate) contextualizes the P/E multiple by factoring in the company's growth trajectory.</p>
+            <h3>The Magic 1.0</h3>
+            <p>A PEG of 1.0 is historically considered "fair value." A company with a P/E of 20 growing at 20% (PEG 1.0) is fairly priced. A company with a P/E of 15 growing at 30% (PEG 0.5) is severely undervalued. However, in modern markets, high-quality companies rarely trade below a PEG of 1.5.</p>
+        `
+    },
+    'ypeg-ratio': {
+        title: 'YPEG Ratio',
+        content: `
+            <p>The Yield-Adjusted PEG Ratio improves upon the traditional PEG by factoring in the dividend yield, which is critical for mature, slower-growing companies.</p>
+            <h3>The Formula</h3>
+            <p>YPEG = P/E Ratio / (Annual EPS Growth Rate + Dividend Yield). A utility company might only grow earnings at 3% (giving it a terrible traditional PEG), but if it pays a 6% dividend, the YPEG captures that 9% total return, revealing that the stock is actually fairly valued.</p>
+        `
+    },
+    'future-maintainable-earnings': {
+        title: 'Future Maintainable Earnings',
+        content: `
+            <p>FME is the estimated level of profit a business is expected to generate consistently in the future, assuming normal operating conditions.</p>
+            <h3>Stripping the Noise</h3>
+            <p>To calculate FME, analysts take historical earnings and remove all one-off anomalies (e.g., a massive lawsuit settlement, a government pandemic subsidy, or a temporary supply chain shock). FME is the absolute baseline input for most capitalization-of-earnings valuation models.</p>
+        `
+    },
+    'discounted-future-earnings': {
+        title: 'Discounted Future Earnings',
+        content: `
+            <p>A valuation method that projects a company's Net Income into the future and discounts those earnings back to the present value.</p>
+            <h3>Earnings vs Cash Flow</h3>
+            <p>While simpler than a full DCF, this method is highly flawed because it relies on accounting "earnings" rather than actual "cash." A company can have massive projected earnings but go bankrupt because those earnings are tied up in inventory and receivables, never converting to cash.</p>
+        `
+    },
+    'earnings-power-value': {
+        title: 'Earnings Power Value (EPV)',
+        content: `
+            <p>Popularized by Bruce Greenwald, EPV is a valuation method that assumes zero future growth. It values the company based solely on its current, normalized, sustainable cash flow.</p>
+            <h3>The Conservative Anchor</h3>
+            <p>EPV = Adjusted Current Cash Flow / Cost of Capital. If the EPV is $50 a share, and the stock trades at $40, you are buying the current business at a discount and getting all future growth absolutely for free. It is the ultimate tool for conservative value investors.</p>
+        `
+    },
+    'residual-income': {
+        title: 'Residual Income Valuation',
+        content: `
+            <p>This model values a company based on its Book Value plus the present value of its expected future Residual Income (Economic Profit).</p>
+            <h3>Cost of Equity Deduction</h3>
+            <p>Residual Income is the Net Income minus a strict "capital charge" (the cost of the equity capital). If a company earns $10M, but its required cost of equity is $12M, its Residual Income is negative $2M. Despite reporting an accounting profit, it is destroying shareholder value, and its intrinsic value will be lower than its book value.</p>
+        `
+    },
+    'price-to-ebitda': {
+        title: 'Price to EBITDA',
+        content: `
+            <p>A rough valuation multiple (Market Cap / EBITDA) often used as a quick proxy for cash flow multiples.</p>
+            <h3>The Flaws</h3>
+            <p>It is generally inferior to EV/EBITDA because Market Cap (the numerator) ignores debt, while EBITDA (the denominator) is the profit available to *both* debt and equity holders. It represents a mismatched ratio and should generally be avoided by serious analysts.</p>
+        `
+    },
+    'discounted-cash-flow-dcf': {
+        title: 'Discounted Cash Flow (DCF)',
+        content: `
+            <p>The DCF is the gold standard of absolute valuation. It calculates intrinsic value by projecting a company's future Free Cash Flows and discounting them back to today's value.</p>
+            <h3>The Architecture</h3>
+            <p><strong>1. Forecast FCF:</strong> Usually 5 to 10 years out. <strong>2. Calculate Terminal Value:</strong> The value of all cash flows into perpetuity after year 10 (often using the Gordon Growth Model). <strong>3. Discount:</strong> Apply the WACC to bring it all to Present Value. <strong>4. Subtract Net Debt:</strong> To find the Equity Value.</p>
+            <h3>The Danger</h3>
+            <p>A DCF is highly sensitive. Tweaking the terminal growth rate from 2% to 3% can artificially double the final valuation. It is a tool for understanding assumptions, not a machine that outputs absolute truth.</p>
+        `
+    },
+    'revenue-dcf': {
+        title: 'Revenue DCF',
+        content: `
+            <p>A variation of the standard DCF used for early-stage companies with no current cash flows or profits (e.g., biotech, pre-revenue SaaS).</p>
+            <h3>Projecting the Top Line</h3>
+            <p>Instead of starting with historical cash flows, the analyst projects Total Market Size and Market Share to estimate future Revenue. They then apply an assumed future operating margin (e.g., "In year 5, they will reach the industry average 20% margin") to artificially calculate a future cash flow, which is then discounted back. It is highly speculative.</p>
+        `
+    },
+    'economic-value-added-eva': {
+        title: 'Economic Value Added (EVA)',
+        content: `
+            <p>EVA is a measure of a company's true economic profit, calculated as Net Operating Profit After Taxes (NOPAT) minus the total dollar cost of capital (Debt + Equity) deployed to generate that profit.</p>
+            <h3>The Capital Charge</h3>
+            <p>Unlike standard accounting, EVA forces management to pay for the equity they use. If a company generates a 10% Return on Capital, but its Cost of Capital is 12%, its EVA is negative. It is destroying value, even if the P&L shows a "profit." Management compensation is increasingly tied to EVA rather than EPS.</p>
+        `
+    },
+    'free-cash-flow-valuation': {
+        title: 'Free Cash Flow Valuation',
+        content: `
+            <p>This approach bypasses accounting earnings entirely and focuses purely on Free Cash Flow Yield (FCF / Enterprise Value).</p>
+            <h3>The Owner's Yield</h3>
+            <p>If a company generates $100M in FCF and has an EV of $1B, the FCF Yield is 10%. This means that theoretically, if you bought the entire company, you could pay yourself a 10% cash dividend every year without harming the business operations. A consistently high FCF yield is the hallmark of a deeply undervalued compounding machine.</p>
+        `
+    },
+    'book-value': {
+        title: 'Book Value',
+        content: `
+            <p>Book Value (Total Assets - Total Liabilities) represents the net accounting value of a company's equity on its balance sheet.</p>
+            <h3>The Historical Artifact</h3>
+            <p>In the 1950s, buying stocks below Book Value (P/B < 1) was Ben Graham's primary strategy. Today, it is largely irrelevant for technology companies whose primary assets (software, brands, networks) are not capitalized on the balance sheet. However, it remains a critical valuation anchor for banks and insurance companies.</p>
+        `
+    },
+    'tangible-book-value': {
+        title: 'Tangible Book Value',
+        content: `
+            <p>Tangible Book Value (TBV) takes Book Value and strips out all intangible assets (Goodwill, patents, trademarks).</p>
+            <h3>The Hard Floor</h3>
+            <p>TBV represents the hard, physical assets (cash, factories, land) backing the stock. In a bankruptcy scenario, intangibles usually become worthless; TBV is what is actually left to sell. Value investors often seek companies trading near TBV to ensure massive downside protection.</p>
+        `
+    },
+    'adjusted-net-assets': {
+        title: 'Adjusted Net Asset Valuation',
+        content: `
+            <p>This method takes the standard balance sheet and manually adjusts every asset and liability from its historical accounting cost to its current Fair Market Value.</p>
+            <h3>Finding Hidden Value</h3>
+            <p>An analyst might discover that a retailer's real estate, carried on the books at a 1980 cost of $10M, is actually worth $100M today. By adjusting the net assets to reflect this hidden $90M, the analyst calculates a new, much higher "Adjusted Intrinsic Value" that the broader market is missing.</p>
+        `
+    },
+    'replacement-cost-method': {
+        title: 'Replacement Cost Method',
+        content: `
+            <p>Also known as "Tobin's Q," this method values a company based on exactly how much it would cost to build an identical competitor from scratch today.</p>
+            <h3>The Barrier to Entry</h3>
+            <p>If a steel mill trades for $500M, but it would cost a competitor $2B to buy the land, build the blast furnaces, and secure the regulatory permits today, the steel mill is massively undervalued based on its replacement cost. This method is highly effective for heavy industries, pipelines, and infrastructure.</p>
+        `
+    },
+    'sum-of-the-parts': {
+        title: 'Sum-of-the-Parts (SOTP)',
+        content: `
+            <p>SOTP valuation is used for conglomerates. It involves valuing every individual business division separately and adding them together to find the Total Enterprise Value.</p>
+            <h3>The Conglomerate Discount</h3>
+            <p>Often, the market prices a conglomerate at $5B due to inefficiency. But an SOTP analysis might reveal the Media division is worth $3B, the Tech division is worth $4B, and the Retail division is worth $1B (Total $8B). Activist investors use SOTP to force management to break up the company and unlock that hidden $3B in value.</p>
+        `
+    },
+'liquidation-value': {
+        title: 'Liquidation Value',
+        content: `
+            <p>The absolute floor of valuation. It is the estimated amount of cash that would remain if a company immediately closed its doors, sold all its assets in a fire sale, and paid off all its liabilities.</p>
+            <h3>The Fire Sale Haircut</h3>
+            <p>Liquidation value is always far lower than Book Value. Inventory might only fetch 30 cents on the dollar, and specialized factory equipment might only sell for scrap metal value. If a stock is trading below its Liquidation Value, it is essentially priced for bankruptcy, offering a deep-value opportunity if the company actually survives.</p>
+        `
+    },
+    'limitations-of-value': {
+        title: 'Limitations of Value Models',
+        content: `
+            <p>Asset-based valuation models (Book Value, Liquidation Value) have severe limitations in the modern economy.</p>
+            <h3>The Intangible Economy</h3>
+            <p>They completely fail to value technology and service businesses. Microsoft's true value is its software ecosystem and brand monopoly, not the physical office buildings on its balance sheet. Asset models are only highly relevant for capital-heavy industries like banking, property trusts, and mining.</p>
+        `
+    },
+    'dividend-discount-model-ddm': {
+        title: 'Dividend Discount Model (DDM)',
+        content: `
+            <p>A specialized valuation method that calculates the intrinsic value of a stock based solely on the present value of its expected future dividend payments.</p>
+            <h3>The Premise</h3>
+            <p>The DDM argues that a share of stock is worth exactly the cash you can extract from it. It is highly effective for valuing mature, slow-growing utility companies or REITs that pay out the majority of their earnings as dividends.</p>
+        `
+    },
+    'gordon-growth-model-ggm': {
+        title: 'Gordon Growth Model (GGM)',
+        content: `
+            <p>The most common variant of the DDM. It assumes that a company's dividend will grow at a constant rate into perpetuity.</p>
+            <h3>The Formula</h3>
+            <p><strong>Value = Expected Dividend Per Share / (Discount Rate - Dividend Growth Rate).</strong> It is beautifully simple but highly dangerous. If you assume a growth rate that is even slightly higher than the overall economy's growth rate, the math breaks down and outputs an infinite valuation.</p>
+        `
+    },
+    'two-stage-dividend-growth-model': {
+        title: 'Two-Stage Dividend Growth Model',
+        content: `
+            <p>An improvement over the GGM. It assumes two distinct phases of growth: an initial period of high, rapid dividend growth (perhaps driven by a new product cycle), followed by a terminal period of slow, stable, perpetual growth.</p>
+            <h3>Flexibility</h3>
+            <p>This allows analysts to value maturing companies realistically without assuming hyper-growth will last forever. It bridges the gap between a high-growth startup phase and a mature "cash cow" phase.</p>
+        `
+    },
+    'dividend-payout-ratio': {
+        title: 'Dividend Payout Ratio',
+        content: `
+            <p>The percentage of Net Income paid out to shareholders as dividends (Dividends / Net Income).</p>
+            <h3>Yield vs Safety</h3>
+            <p>A stock with an 8% dividend yield looks attractive, but if its payout ratio is 110% (meaning it pays out more than it earns), the dividend is unsustainable and an imminent cut will likely crash the share price. A healthy payout ratio (e.g., 40-60%) indicates the dividend is safe and has room to grow.</p>
+        `
+    },
+    'price-to-book-value-ratio': {
+        title: 'Price-to-Book Value Ratio',
+        content: `
+            <p>The P/B ratio compares a company's market capitalization to its accounting book value (Total Assets - Liabilities).</p>
+            <h3>The Value Floor</h3>
+            <p>Historically, a P/B below 1.0 indicated a deeply undervalued "cigar butt" stock. Today, a P/B below 1.0 is common for distressed banks holding toxic assets. For modern banks, analysts focus strictly on Price to *Tangible* Book Value, ensuring they aren't paying for inflated goodwill.</p>
+        `
+    },
+    'enterprise-value-ev': {
+        title: 'Enterprise Value (EV)',
+        content: `
+            <p>The absolute true cost to buy an entire company. It strips away the illusion of market capitalization.</p>
+            <h3>The Calculation</h3>
+            <p><strong>EV = Market Capitalization + Total Debt - Cash.</strong> If you buy a house for $500k, but it has a $400k mortgage, the true cost is $900k. EV applies this logic to corporations. It is the only metric that allows you to compare the valuations of a heavily indebted company and a cash-rich company accurately.</p>
+        `
+    },
+    'enterprise-value-to-ebitda': {
+        title: 'Enterprise Value to EBITDA (EV/EBITDA)',
+        content: `
+            <p>The single most heavily used valuation multiple in professional finance and M&A.</p>
+            <h3>The Universal Metric</h3>
+            <p>Unlike the P/E ratio, EV/EBITDA is capital-structure neutral. It compares the total cost of the business (EV) to the cash flow available to all investors (EBITDA) before interest and taxes distort the picture. Private equity firms almost exclusively buy and sell businesses based on EV/EBITDA multiples.</p>
+        `
+    },
+    'enterprise-value-to-sales': {
+        title: 'Enterprise Value to Sales (EV/Sales)',
+        content: `
+            <p>A top-line valuation multiple that accounts for debt.</p>
+            <h3>The SaaS Metric</h3>
+            <p>Because software-as-a-service (SaaS) companies often generate negative earnings and negative EBITDA while intentionally spending heavily to acquire customers, EV/Sales is often the only mathematically viable multiple. It measures how much the market is paying for the recurring revenue base.</p>
+        `
+    },
+    'ben-graham-s-formulas': {
+        title: "Ben Graham's Formulas",
+        content: `
+            <p>Beyond Net-Nets, Graham created a famous shorthand formula to quickly estimate intrinsic value for defensive stocks.</p>
+            <h3>The Graham Formula</h3>
+            <p><strong>V = EPS x (8.5 + 2g)</strong>, where 8.5 is the P/E base for a no-growth company, and 'g' is the expected 7-to-10 year growth rate. Later revised to adjust for current corporate bond rates, it remains a quick "back of the napkin" reality check against wildly inflated growth expectations.</p>
+        `
+    },
+    'joel-greenblatt-s-magic-formula': {
+        title: "Joel Greenblatt's Magic Formula",
+        content: `
+            <p>A systematic valuation strategy designed to buy "good companies at bargain prices."</p>
+            <h3>The Two Metrics</h3>
+            <p>The formula ranks every stock in the market based on just two metrics: <strong>Earnings Yield</strong> (EBIT / Enterprise Value) to find cheapness, and <strong>Return on Capital</strong> (EBIT / Net Working Capital + Net Fixed Assets) to find quality. Buying a basket of the top-ranked stocks has historically crushed broader market indices.</p>
+        `
+    },
+    'industry-rules-of-thumb': {
+        title: 'Industry Rules of Thumb',
+        content: `
+            <p>Every industry has its own specialized valuation shorthand that professionals use before running complex DCFs.</p>
+            <h3>Sector Specifics</h3>
+            <p><strong>Retail:</strong> EV/EBITDAR (adding back Rent). <strong>Oil & Gas:</strong> EV/Proven Reserves. <strong>SaaS:</strong> EV/Annual Recurring Revenue (ARR). <strong>Telecoms:</strong> EV/Subscriber. Knowing the specific rule of thumb for an industry is essential to speak the same language as the sector analysts.</p>
+        `
+    },
+    'intangible-assets': {
+        title: 'Valuing Intangible Assets',
+        content: `
+            <p>The hardest challenge in modern valuation is pricing assets that cannot be touched, such as brands, algorithms, and network effects.</p>
+            <h3>The Excess Earnings Method</h3>
+            <p>One method calculates the expected return on the company's tangible assets. Any actual profit generated *above* that baseline return is considered "Excess Earnings" generated by the intangibles (the brand or moat). These excess earnings are then capitalized to estimate the value of the intangible asset.</p>
+        `
+    },
+    'call-options': {
+        title: 'Call Options as Valuation',
+        content: `
+            <p>In distressed scenarios, the equity of a heavily indebted company is mathematically identical to a Call Option on the company's assets, with the strike price equal to the debt face value.</p>
+            <h3>The Merton Model</h3>
+            <p>If the assets are worth less than the debt, standard equity valuation is zero. But an option pricing model gives the equity value because there is a small *probability* (based on asset volatility) that the assets might surge in value before the debt comes due, putting the equity "in the money."</p>
+        `
+    },
+    'put-options': {
+        title: 'Put Options in Valuation',
+        content: `
+            <p>While call options model equity, put options model the risk of default on the debt.</p>
+            <h3>Credit Risk</h3>
+            <p>By valuing the "put option" that equity holders essentially hold (the option to walk away and hand the assets to the bondholders if the company fails), analysts can precisely calculate the fair interest rate (credit spread) a distressed company should be paying on its debt.</p>
+        `
+    },
+    'distressed-companies': {
+        title: 'Valuing Distressed Companies',
+        content: `
+            <p>Standard DCF and P/E models completely fail when a company is bleeding cash and approaching bankruptcy.</p>
+            <h3>The Restructuring Math</h3>
+            <p>Distressed valuation requires estimating the probability of default, the legal priority of different debt tranches (who gets paid first), and the liquidation value of the assets. Analysts value the company assuming a Chapter 11 restructuring, calculating what the "new" post-bankruptcy equity will be worth once the current debt is wiped out.</p>
+        `
+    },
+    'bankrupt-companies': {
+        title: 'Valuing Bankrupt Companies',
+        content: `
+            <p>Once a company is formally bankrupt, the equity is almost always worthless. Valuation shifts entirely to the bondholders.</p>
+            <h3>Recovery Rates</h3>
+            <p>Analysts model the "waterfall." If the liquidated assets generate $100M, the senior secured bank debt might get 100 cents on the dollar, the senior unsecured bonds might get 40 cents, and the subordinated bonds get zero. Distressed debt investors buy those unsecured bonds at 20 cents, betting their valuation model proves the recovery will actually be 40 cents.</p>
+        `
+    },
+    'mergers-acquisitions': {
+        title: 'Mergers & Acquisitions (M&A) Valuation',
+        content: `
+            <p>M&A valuation involves calculating what a strategic buyer should pay for a target company, which is always higher than the standalone intrinsic value.</p>
+            <h3>Control Premium and Synergies</h3>
+            <p>Buyers pay a "Control Premium" (often 20-30% above the current stock price) to acquire voting control. They justify this premium by modeling "Synergies"—the cost savings (firing duplicate staff) or revenue boosts achieved by combining the two companies. M&A modeling is heavily focused on proving that these expected synergies mathematically justify the massive premium paid.</p>
+        `
+    },
+    'start-up-companies': {
+        title: 'Valuing Start-up Companies',
+        content: `
+            <p>Startups have no history, no profits, and highly uncertain futures. Traditional valuation is impossible.</p>
+            <h3>Venture Capital Method</h3>
+            <p>VCs estimate what the company could be sold for in 5-7 years (the Terminal Value, often based on high EV/Sales multiples). They then discount that future value back to today using a massive discount rate (often 40-70%) to account for the massive probability that the startup will simply fail and go to zero.</p>
+        `
+    },
+    'pre-ipo-companies': {
+        title: 'Valuing Pre-IPO Companies',
+        content: `
+            <p>Late-stage private companies preparing to go public require precise valuation to set the IPO price.</p>
+            <h3>Comparable Company Analysis (Comps)</h3>
+            <p>Investment banks rely heavily on "Comps." They find 5 similar public companies, calculate their average EV/EBITDA and EV/Sales multiples, and apply those exact multiples to the private company's financials. They then apply an "IPO Discount" (usually 10-15%) to incentivize early buyers to purchase the stock on opening day.</p>
+        `
+    },
+    'asset-heavy-companies': {
+        title: 'Valuing Asset-Heavy Companies',
+        content: `
+            <p>Companies like real estate trusts (REITs), shipping lines, or infrastructure funds require unique valuation approaches.</p>
+            <h3>Net Asset Value (NAV)</h3>
+            <p>For a REIT, earnings (Net Income) are useless due to massive non-cash depreciation of buildings. Analysts use Funds From Operations (FFO) to measure cash, and calculate NAV by assessing the current open-market value of every single property in the portfolio, subtracting debt. The stock trades at a premium or discount to this NAV.</p>
+        `
+    },
+    'emerging-markets': {
+        title: 'Valuing Emerging Markets',
+        content: `
+            <p>Valuing companies in developing nations requires layering massive macro risk premiums onto standard models.</p>
+            <h3>Country Risk Premium</h3>
+            <p>When building a DCF for an Indonesian or Brazilian company, the analyst must add a "Country Risk Premium" to the discount rate. This accounts for the high risk of sudden currency devaluation, political instability, or government expropriation of assets. This higher discount rate mathematically suppresses the valuation compared to an identical US company.</p>
+        `
+    },
+
             'industry-guides-automobiles-and-components': {
                 title: 'Automobiles and components',
                 content: `
