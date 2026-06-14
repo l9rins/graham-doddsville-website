@@ -37,7 +37,7 @@ const GNEWS_API_KEY = process.env.GNEWS_API_KEY;
 const MAX_CONCURRENT_REQUESTS = 5;
 const REQUEST_TIMEOUT = 8000;
 const CACHE_DURATION = 4 * 60 * 60 * 1000; // 4 hours
-const MAX_ARTICLES_PER_SOURCE = 8;
+const MAX_ARTICLES_PER_SOURCE = 50;
 
 // CACHE SETTINGS
 const CACHE_DIR = path.join(__dirname, 'news-cache');
@@ -48,15 +48,139 @@ if (!fs.existsSync(CACHE_DIR)) {
     fs.mkdirSync(CACHE_DIR);
 }
 
+
+function isDomainAllowed(url) {
+    try {
+        if (!url) return false;
+        const urlObj = new URL(url);
+        let host = urlObj.hostname.toLowerCase();
+        if (host.startsWith('www.')) host = host.substring(4);
+        if (host.startsWith('www1.')) host = host.substring(5);
+        return CREDIBLE_DOMAINS.some(domain => host === domain || host.endsWith('.' + domain));
+    } catch(e) { return false; }
+}
+
 const CREDIBLE_DOMAINS = [
-    'reuters.com', 'bloomberg.com', 'ft.com', 'cnbc.com',
-    'investing.com', 'wsj.com', 'economist.com',
-    'afr.com', 'smh.com.au', 'theaustralian.com.au',
-    'abc.net.au', 'asx.com.au', 'rba.gov.au', 'asic.gov.au',
-    'news.com.au', 'businessinsider.com.au', 'marketwatch.com',
-    'finance.yahoo.com', 'seekingalpha.com', 'fool.com',
-    'livewiremarkets.com', 'stockhead.com.au', 'theguardian.com',
-    'bbc.com', 'ap.org', 'apnews.com'
+    "abc.net.au",
+    "ausbanking.org.au",
+    "accc.gov.au",
+    "asiatimes.com",
+    "africanews.com",
+    "canberratimes.com.au",
+    "superannuation.asn.au",
+    "berkshirehathaway.com",
+    "afca.org.au",
+    "bloomberg.com",
+    "bbc.com",
+    "business-standard.com",
+    "arabianbusiness.com",
+    "heraldsun.com.au",
+    "marketwatch.com",
+    "apra.gov.au",
+    "cbsnews.com",
+    "channelnewsasia.com",
+    "egypttoday.com",
+    "moneymanagement.com.au",
+    "crikey.com.au",
+    "cnbc.com",
+    "asic.gov.au",
+    "chicagotribune.com",
+    "chinadaily.com.cn",
+    "morningstar.com.au",
+    "dfat.gov.au",
+    "financialstandard.com.au",
+    "nydailynews.com",
+    "ato.gov.au",
+    "eubusiness.com",
+    "eastasiaforum.org",
+    "folha.uol.com.br",
+    "news.com.au",
+    "faaa.au",
+    "entrepreneur.com",
+    "austrac.gov.au",
+    "edition.cnn.com",
+    "euronews.com",
+    "financeasia.com",
+    "gulfnews.com",
+    "9news.com.au",
+    "macrobusiness.com.au",
+    "daily.fattail.com.au",
+    "forbes.com",
+    "frc.gov.au",
+    "financialpost.com",
+    "euroweeklynews.com",
+    "focustaiwan.tw",
+    "iol.co.za",
+    "perthnow.com.au",
+    "fsadvice.com.au",
+    "foxbusiness.com",
+    "fsc.org.au",
+    "fortune.com",
+    "japantoday.com",
+    "khaleejtimes.com",
+    "sharecafe.com.au",
+    "fsmanagedaccounts.com.au",
+    "gurufocus.com",
+    "foreigninvestment.gov.au",
+    "imf.org",
+    "asia.nikkei.com",
+    "mg.co.za",
+    "smh.com.au",
+    "7news.com.au",
+    "fsprivatewealth.com.au",
+    "huffpost.com",
+    "oaic.gov.au",
+    "theglobeandmail.com",
+    "independent.co.uk",
+    "shine.cn",
+    "skynews.com.au",
+    "fssuper.com.au",
+    "hbr.org",
+    "rba.gov.au",
+    "nltimes.nl",
+    "scmp.com",
+    "nzherald.co.nz",
+    "markets.businessinsider.com",
+    "treasury.gov.au",
+    "investors.com",
+    "baltictimes.com",
+    "asianage.com",
+    "thenationalnews.com",
+    "adelaidenow.com.au",
+    "inc.com",
+    "nbcnews.com",
+    "budapesttimes.hu",
+    "chosun.com",
+    "thepeninsulaqatar.com",
+    "theage.com.au",
+    "investordaily.com.au",
+    "nypost.com",
+    "thediplomat.com",
+    "riotimesonline.com",
+    "theaustralian.com.au",
+    "mckinsey.com",
+    "newsweek.com",
+    "nytimes.com",
+    "theguardian.com",
+    "japannews.yomiuri.co.jp",
+    "thisdaylive.com",
+    "thebull.com.au",
+    "time.com",
+    "themoscowtimes.com",
+    "japantimes.co.jp",
+    "couriermail.com.au",
+    "usnews.com",
+    "usanews.com",
+    "thesun.co.uk",
+    "koreatimes.co.kr",
+    "usatoday.com",
+    "thestandard.com.hk",
+    "theguardian.com.au",
+    "thewest.com.au",
+    "thestar.com.my",
+    "watoday.com.au",
+    "washingtonpost.com",
+    "straitstimes.com"
 ];
 
 // Rate limiting
@@ -207,7 +331,10 @@ async function parseRSSFeed(url, sourceName, defaultCategory = null) {
             const item = items[i];
             const title = item.getElementsByTagName('title')[0]?.textContent || '';
             const description = item.getElementsByTagName('description')[0]?.textContent || '';
-            const link = item.getElementsByTagName('link')[0]?.textContent || '';
+            const linkRaw = item.getElementsByTagName('link')[0]?.textContent || '';
+            const sourceUrlElement = item.getElementsByTagName('source')[0];
+            const sourceUrl = sourceUrlElement ? sourceUrlElement.getAttribute('url') : '';
+            const link = (linkRaw.includes('news.google.com') && sourceUrl) ? sourceUrl : linkRaw;
             const pubDate = item.getElementsByTagName('pubDate')[0]?.textContent || '';
 
             if (title && link) {
@@ -599,7 +726,7 @@ async function refreshNewsCache() {
             if (GNEWS_API_KEY) {
                 try {
                     console.log(`Fetching GNews for ${config.category}...`);
-                    const gNewsUrl = `https://gnews.io/api/v4/search?q=${encodeURIComponent(config.query)}&lang=en&country=au&max=10&apikey=${GNEWS_API_KEY}`;
+                    const gNewsUrl = `https://gnews.io/api/v4/search?q=${encodeURIComponent(config.query)}&lang=en&country=au&max=100&apikey=${GNEWS_API_KEY}`;
 
                     const controller = new AbortController();
                     const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT);
@@ -661,13 +788,13 @@ async function refreshNewsCache() {
 
             // 2. FALLBACK: Configured RSS sources — with relevance filtering
             // ============================================================
-            if (filteredArticles.length < 10) {
+            if (filteredArticles.length < 20) {
                 console.log(`Falling back to configured RSS sources for ${config.category}`);
                 const seenUrls = new Set(filteredArticles.map(a => a.url));
                 const relevanceKeywords = categoryRelevanceKeywords[config.category] || [];
 
                 for (const sourceKey of config.rssSources) {
-                    if (filteredArticles.length >= 10) break;
+                    if (filteredArticles.length >= 20) break;
 
                     const sourceConfig = newsSources[sourceKey];
                     if (!sourceConfig || sourceConfig.type !== 'rss') continue;
@@ -677,35 +804,33 @@ async function refreshNewsCache() {
                         || sourceKey.startsWith('google-news-');
 
                     try {
-                        const feed = await parser.parseURL(sourceConfig.url);
-                        const items = feed.items || [];
+                        const items = await fetchNews(sourceKey);
 
                         for (const item of items) {
-                            if (filteredArticles.length >= 10) break;
-                            if (!item.title || !item.link) continue;
+                            if (filteredArticles.length >= 20) break;
+                            if (!item.title || !item.url) continue;
 
-                            const publishedDate = item.pubDate ? new Date(item.pubDate) : new Date();
+                            const publishedDate = item.publishedAt ? new Date(item.publishedAt) : new Date();
                             const hoursDiff = (new Date() - publishedDate) / (1000 * 60 * 60);
 
-                            // Be more lenient with RSS fallback timing (7 days max)
-                            if (hoursDiff <= 168 && !seenUrls.has(item.link)) {
+                            // Be more lenient with RSS fallback timing (365 days max)
+                            if (hoursDiff <= 8760 && !seenUrls.has(item.url) && (isDomainAllowed(item.url) || item.url.includes('news.google.com'))) {
                                 // RELEVANCE CHECK: For general news sources, verify the article is on-topic
                                 if (!isCategorySpecificFeed && relevanceKeywords.length > 0) {
-                                    const combinedText = (item.title + ' ' + (item.contentSnippet || item.content || '')).toLowerCase();
-                                    const isRelevant = relevanceKeywords.some(kw => combinedText.includes(kw));
+                                    const combinedText = (item.title + ' ' + (item.excerpt || '')).toLowerCase();
+                                    const isRelevant = relevanceKeywords.some(kw => new RegExp('\\b' + kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b', 'i').test(combinedText));
                                     if (!isRelevant) continue; // Skip off-topic articles
                                 }
 
-                                seenUrls.add(item.link);
+                                seenUrls.add(item.url);
                                 filteredArticles.push({
-                                    title: item.title.trim(),
-                                    url: item.link.trim(),
-                                    publishedAt: publishedDate.toISOString(),
-                                    source: { name: sourceConfig.name },
+                                    title: item.title,
+                                    url: item.url,
+                                    publishedAt: item.publishedAt,
+                                    source: item.source,
                                     category: config.category,
-                                    excerpt: (item.contentSnippet || item.content || '')
-                                        .replace(/<[^>]*>/g, '').substring(0, 150) + '...',
-                                    image: generatePlaceholderImage(sourceConfig.name)
+                                    excerpt: item.excerpt,
+                                    image: item.image || generatePlaceholderImage(sourceConfig.name)
                                 });
                             }
                         }
@@ -732,7 +857,7 @@ async function refreshNewsCache() {
                 });
             }
 
-            return filteredArticles.slice(0, 10);
+            return filteredArticles.slice(0, 20);
         });
 
         const results = await Promise.allSettled(promises);

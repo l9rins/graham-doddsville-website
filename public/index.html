@@ -3196,7 +3196,7 @@
         <div class="container">
             <div class="content-wrapper grid grid-cols-12">
                 <!-- Left Column - Latest News -->
-                <div class="left-column col-span-4">
+                <div class="left-column col-span-4 reveal-on-scroll">
                     <!-- Latest News Section -->
                     <section class="latest-news" id="news">
                         <h2 class="news-section-title">LATEST NEWS</h2>
@@ -9764,6 +9764,8 @@ Within this gigantic auction arena, it is our job to select businesses with econ
         }
 
         function updateNewsDisplay(articles) {
+            console.log('Frontend RSS bypass disabled - relying strictly on backend API');
+            return;
             const cleanArticles = articles.filter(article => {
                 const t = article.title.toLowerCase();
                 const badWords = ['stabbing', 'murder', 'police', 'arrest', 'dead', 'die', 'killed', 'court', 'jail', 'crash', 'tennis', 'cricket', 'rugby', 'lottery'];
@@ -9967,4 +9969,30 @@ Within this gigantic auction arena, it is our job to select businesses with econ
 
 
 
+
+    <!-- Intersection Observer for Cinematic Scroll Reveals (Desktop Only) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.matchMedia && window.matchMedia('(min-width: 1024px)').matches) {
+                const revealElements = document.querySelectorAll('.reveal-on-scroll');
+                
+                const revealObserver = new IntersectionObserver(function(entries, observer) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            observer.unobserve(entry.target); // Only reveal once
+                        }
+                    });
+                }, {
+                    root: null,
+                    rootMargin: '0px',
+                    threshold: 0.1 // Trigger when 10% of the element is visible
+                });
+
+                revealElements.forEach(function(el) {
+                    revealObserver.observe(el);
+                });
+            }
+        });
+    </script>
 </body></html>
