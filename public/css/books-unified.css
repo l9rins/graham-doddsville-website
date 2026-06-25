@@ -320,7 +320,7 @@
     display: block;
     position: relative;
     padding-top: 145%;
-    background: #f1f5f9; /* Light gray background */
+    background: #f1f5f9;
     overflow: hidden;
     border-bottom: 1px solid var(--border-light);
 }
@@ -331,7 +331,9 @@
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 .book-info {
@@ -636,4 +638,12 @@
     .detailed-grid {
         grid-template-columns: 1fr !important;
     }
+}
+
+/* User request: Font type and size for recommended books match news articles */
+.recommended-book-link, .comma-text, .book-title {
+    font-family: Georgia, serif !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    color: #111 !important;
 }

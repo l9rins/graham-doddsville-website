@@ -21,12 +21,13 @@ const newsSources = {
         type: 'rss',
         category: 'general'
     },
-    'afr': {
-        name: 'Australian Financial Review',
-        url: 'https://www.afr.com/rss/feed.xml',
-        type: 'rss',
-        category: 'business'
-    },
+    // AFR removed: subscriber-only content, not on approved sources list
+    // 'afr': {
+    //     name: 'Australian Financial Review',
+    //     url: 'https://www.afr.com/rss/feed.xml',
+    //     type: 'rss',
+    //     category: 'business'
+    // },
     'the-australian': {
         name: 'The Australian',
         url: 'https://www.theaustralian.com.au/feed/',

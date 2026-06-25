@@ -4967,7 +4967,7 @@ select:focus {
 .book-cover img {
     width: 120px;
     height: 180px;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 4px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -8244,7 +8244,7 @@ th {
 }
 
 .newspaper-section {
-    margin-bottom: 0px;
+    margin-bottom: 40px;
     padding: 0 16px;
     background: #fff;
 }
@@ -12673,20 +12673,24 @@ th {
 .comma-separated-list a {
     display: inline !important;
     text-decoration: none !important;
-    color: #333 !important;
+    color: #1e293b !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
 }
 
 .comma-separated-list a:hover {
-    color: #d4af37 !important;
+    color: #2563eb !important;
     text-decoration: none !important;
 }
 
 
 
 .comma-separated-list .desktop-buffett-item {
-    font-family: Georgia, serif;
+    font-family: 'Inter', sans-serif;
     font-size: 14px;
     font-weight: 600;
+    color: #1e293b;
 }
 
 /* Fix line spacing and clamping for classic reading links to match non-link items */
@@ -14604,4 +14608,30 @@ th {
         transform: translateY(0);
     }
 
+}
+
+/* User request: Font type and size for recommended books match news articles */
+.recommended-book-link, .comma-text, .book-title {
+    font-family: Georgia, serif !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    color: #111 !important;
+}
+
+/* User request: Adjust spacing between segments (Home Page/Classic Readings/Book sections) */
+.newspaper-section {
+    margin-bottom: 40px !important;
+}
+
+.sub-category {
+    margin-bottom: 30px !important;
+}
+
+/* Ensure spacing between images and article headings is uniform */
+.sub-category img {
+    margin-bottom: 15px !important;
+}
+
+.news-item-mobile {
+    margin-top: 15px !important;
 }

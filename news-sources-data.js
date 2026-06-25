@@ -215,3 +215,5 @@ const categoryMeta = {
     asia:           { title: 'Asia',             section: 'Around the World',  icon: '🌏', accent: '#1e40af' },
     elsewhere:      { title: 'Elsewhere',        section: 'Around the World',  icon: '🌐', accent: '#1d4ed8' }
 };
+
+if (typeof module !== 'undefined') { module.exports = { newsSourcesData, categoryMeta }; }
