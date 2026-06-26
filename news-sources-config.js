@@ -21,12 +21,13 @@ const newsSources = {
         type: 'rss',
         category: 'general'
     },
-    'afr': {
-        name: 'Australian Financial Review',
-        url: 'https://www.afr.com/rss/feed.xml',
-        type: 'rss',
-        category: 'business'
-    },
+    // AFR removed: subscriber-only content, not on approved sources list
+    // 'afr': {
+    //     name: 'Australian Financial Review',
+    //     url: 'https://www.afr.com/rss/feed.xml',
+    //     type: 'rss',
+    //     category: 'business'
+    // },
     'the-australian': {
         name: 'The Australian',
         url: 'https://www.theaustralian.com.au/feed/',
@@ -176,7 +177,7 @@ const newsSources = {
     },
     'google-news-regulatory': {
         name: 'Google News - ASIC/ACCC',
-        url: 'https://news.google.com/rss/search?q=(ASIC+OR+ACCC+OR+RBA)+Australia+when:7d&hl=en-AU&gl=AU&ceid=AU:en',
+        url: 'https://news.google.com/rss/search?q=site%3Aaccc.gov.au%20OR%20site%3Aafca.org.au%20OR%20site%3Aapra.gov.au%20OR%20site%3Aasic.gov.au%20OR%20site%3Aato.gov.au%20OR%20site%3Aaustrac.gov.au%20OR%20site%3Afrc.gov.au%20OR%20site%3Afsc.org.au%20OR%20site%3Aforeigninvestment.gov.au%20OR%20site%3Aoaic.gov.au%20OR%20site%3Arba.gov.au%20OR%20site%3Atreasury.gov.au+when:365d&hl=en-AU&gl=AU&ceid=AU:en',
         type: 'rss',
         category: 'Regulatory' // Explicitly set to Regulatory
     },

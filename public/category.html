@@ -1118,7 +1118,7 @@
                 categoryNews.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
                 
                 // Skip the first 5 (shown on index) and take the next 10
-                const archiveNews = categoryNews.slice(5, 15);
+                const archiveNews = categoryNews.slice(5, 20);
                 
                 if (archiveNews.length > 0) {
                     archiveSection.style.display = 'block';

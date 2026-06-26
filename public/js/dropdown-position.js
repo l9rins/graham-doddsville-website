@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Get the position of the Wealth Creation menu item
     const wealthCreation = document.querySelector('.secondary-nav-list > li:first-child');
+    if (!wealthCreation) return;
     const rect = wealthCreation.getBoundingClientRect();
     
     // Set the CSS variables for positioning
