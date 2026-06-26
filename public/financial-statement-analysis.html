@@ -465,7 +465,7 @@
                 <li><a href="financial-statement-analysis.html" class="drawer-link">Financial Statement Analysis</a></li>
                 <li><a href="stock-valuation.html" class="drawer-link">Stock Valuation</a></li>
                 <li><a href="economics.html" class="drawer-link">Economics</a></li>
-                <li><a href="investment-analysis.html" class="drawer-link">Investment Analysis</a></li>
+                
                 <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
                 <li><a href="resources.html" class="drawer-link">Resources</a></li>
                 <li><a href="events.html" class="drawer-link">Events &amp; Seminars</a></li>
@@ -775,13 +775,7 @@
                 } else {
                     mobileDrawer.classList.add('open');
                     document.body.style.overflow = 'hidden';
-                } else {
-                title.textContent = 'Article Not Found';
-                body.innerHTML = '<p style="padding: 20px; color: #6b7280;">Sorry, the content for this article ("' + articleId + '") could not be found or has not been added yet.</p>';
-                panel.classList.add('active');
-                document.body.style.overflow = 'hidden';
-                console.error('Article not found:', articleId);
-            }
+                }
             }
         }
 
@@ -816,6 +810,12 @@
                 
                 const contentContainer = panel.querySelector('.article-detail-content');
                 if (contentContainer) contentContainer.scrollTop = 0;
+            } else {
+                title.textContent = 'Article Not Found';
+                body.innerHTML = '<p style="padding: 20px; color: #6b7280;">Sorry, the content for this article ("' + articleId + '") could not be found or has not been added yet.</p>';
+                panel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                console.error('Article not found:', articleId);
             }
         }
 
@@ -1037,11 +1037,42 @@
 <p>Dummy content for Real estate management & development goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
                 `
             },
-            'financial-statement-analysis-nature-and-purpose': {
-                title: 'Nature and purpose',
+            
+            'nature-and-purpose': {
+                title: 'Nature and Purpose of Financial Statements',
                 content: `
-                    
-<p>Dummy content for Nature and purpose goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                    <p>Financial statements are the universal language of business. They provide a structured, formal record of the financial activities and position of a business, person, or other entity. For investors, these documents are the absolute foundation of fundamental analysis and valuation.</p>
+
+                    <h3>1. The Core Purpose</h3>
+                    <p>The primary objective of financial statements is to provide information about the financial position, performance, and changes in financial position of an enterprise that is useful to a wide range of users in making economic decisions. They are not designed to show the absolute value of an entity, but rather to provide the raw data necessary for users to estimate that value themselves.</p>
+                    <p>Specifically, they aim to answer three fundamental questions:</p>
+                    <ul>
+                        <li><strong>What does the company own and owe?</strong> (Financial Position)</li>
+                        <li><strong>How much money did the company make or lose?</strong> (Financial Performance)</li>
+                        <li><strong>Where did the cash come from, and where did it go?</strong> (Cash Flow)</li>
+                    </ul>
+
+                    <h3>2. The "Big Three" Statements</h3>
+                    <p>A complete set of financial statements generally comprises three primary documents, each serving a distinct but deeply interconnected purpose:</p>
+                    <ul>
+                        <li><strong>The Balance Sheet (Statement of Financial Position):</strong> A snapshot in time showing the company's Assets (what it owns), Liabilities (what it owes), and Shareholders' Equity (the residual value belonging to owners). It operates on the fundamental accounting equation: <em>Assets = Liabilities + Equity</em>.</li>
+                        <li><strong>The Income Statement (Profit & Loss):</strong> A dynamic record showing revenues, expenses, and the resulting net income or loss over a specific period (e.g., a quarter or a year). It measures the company's ability to generate profit from its operations.</li>
+                        <li><strong>The Cash Flow Statement:</strong> A reconciliation of the cash entering and leaving the business. Because the Income Statement uses accrual accounting (recording revenues/expenses when they occur, not when cash changes hands), the Cash Flow Statement is vital for verifying whether the company actually has the liquidity to survive and pay dividends.</li>
+                    </ul>
+
+                    <h3>3. Qualitative Characteristics</h3>
+                    <p>To be useful for decision-making, the information in financial statements must possess several key qualitative characteristics as defined by international accounting standards:</p>
+                    <ul>
+                        <li><strong>Understandability:</strong> Information should be presented clearly and concisely.</li>
+                        <li><strong>Relevance:</strong> Information must be capable of making a difference in the decisions made by users.</li>
+                        <li><strong>Reliability:</strong> Information must faithfully represent the economic phenomena it purports to represent, free from material error and bias.</li>
+                        <li><strong>Comparability:</strong> Users must be able to compare statements over time to identify trends, and compare them against other enterprises to evaluate relative performance.</li>
+                    </ul>
+
+                    <h3>Conclusion</h3>
+                    <p>Without financial statements, investing would be entirely speculative. By learning to read, interpret, and connect the dots between the Balance Sheet, Income Statement, and Cash Flow Statement, an investor moves from guessing about a company's prospects to scientifically evaluating its underlying economic reality.</p>
+                    <br>
+                    <p><strong>Disclaimer:</strong> The information provided in this article is for educational purposes only and should not be considered as financial or investment advice. Always do your own research and consult with a licensed professional before making any investment decisions.</p>
                 `
             },
             'financial-statement-analysis-users-of-financial-statements': {

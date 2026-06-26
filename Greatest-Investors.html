@@ -779,58 +779,42 @@
     <script src="js/article-image-resolver.js?v=3"></script>
     <script>
 const articleContent = {
-    'benjamin-graham': {
-        title: 'Benjamin Graham',
-        content: `
-            <h3>1. Background and History</h3>
-            <p>Benjamin Graham (; né Grossbaum; May 9, 1894 – September 21, 1976) was an English-American financial analyst, economist, accountant, investor and professor. He is widely known as the \"father of value investing\", and wrote two of the discipline's founding texts: Security Analysis (1934) with David Dodd, and The Intelligent Investor (1949). His investment philosophy stressed independent thinking, emotional detachment, and careful security analysis, emphasizing the importance of distinguishing the price of a stock from the value of its underlying business.
-After graduating from Columbia University at age 20, Graham started his career on Wall Street, eventually founding Graham–Newman Corp., a successful mutual fund. He also taught investing for many years at Columbia Business School, where one of his students was Warren Buffett. Graham later taught at the Anderson School of Management at the University of California, Los Angeles.
-Graham laid the groundwork for value investing at mutual funds, hedge funds, diversified holding companies, and other investment vehicles.</p>
-            <h3>2. Career Milestones</h3>
-            <p>He was the driving force behind the establishment of the profession of security analysis and the Chartered Financial Analyst designation. He also advocated the creation of index funds decades before they were introduced. Throughout his career, Graham had many notable disciples who went on to earn substantial success as investors, including Irving Kahn and Warren Buffett, who described Graham as the second most influential person in his life after his own father..</p>
-            <h4 style="color: #1e3a8a; font-weight: 600; font-size: 18px; margin-top: 40px; margin-bottom: 15px;">Related articles:</h4>
-            <p style="color: #6b7280; font-size: 15px; margin-bottom: 30px; line-height: 1.6;">Explore more resources and expert perspectives on these topics in our library collection.</p>
+            'benjamin-graham': {
+                title: 'Benjamin Graham: The Father of Value Investing',
+                content: `
+                    <p>Benjamin Graham (May 9, 1894 – September 21, 1976) is universally acclaimed as the "Father of Value Investing." An American economist, professor, and prolific investor, Graham's philosophy has fundamentally shaped modern finance and inspired generations of the world's most successful investors, most notably Warren Buffett.</p>
 
-            <h4 style="color: #1e3a8a; font-weight: 600; font-size: 18px; margin-bottom: 20px;">Related books:</h4>
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 40px;">
-                <div style="border: 1px solid #f3f4f6; border-radius: 8px; padding: 15px; text-align: center; background-color: #fcfcfc;">
-                    <div style="width: 70px; height: 100px; background-color: #e5e7eb; border-radius: 4px; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px auto; color: #9ca3af; font-size: 13px;">Book 1</div>
-                    <div style="color: #1e3a8a; font-size: 14px; margin-bottom: 10px;">Book title</div>
-                    <a href="#" style="color: #2563eb; font-size: 13px; text-decoration: none;">link</a>
-                </div>
-                <div style="border: 1px solid #f3f4f6; border-radius: 8px; padding: 15px; text-align: center; background-color: #fcfcfc;">
-                    <div style="width: 70px; height: 100px; background-color: #e5e7eb; border-radius: 4px; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px auto; color: #9ca3af; font-size: 13px;">Book 2</div>
-                    <div style="color: #1e3a8a; font-size: 14px; margin-bottom: 10px;">Book title</div>
-                    <a href="#" style="color: #2563eb; font-size: 13px; text-decoration: none;">link</a>
-                </div>
-                <div style="border: 1px solid #f3f4f6; border-radius: 8px; padding: 15px; text-align: center; background-color: #fcfcfc;">
-                    <div style="width: 70px; height: 100px; background-color: #e5e7eb; border-radius: 4px; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px auto; color: #9ca3af; font-size: 13px;">Book 3</div>
-                    <div style="color: #1e3a8a; font-size: 14px; margin-bottom: 10px;">Book title</div>
-                    <a href="#" style="color: #2563eb; font-size: 13px; text-decoration: none;">link</a>
-                </div>
-                <div style="border: 1px solid #f3f4f6; border-radius: 8px; padding: 15px; text-align: center; background-color: #fcfcfc;">
-                    <div style="width: 70px; height: 100px; background-color: #e5e7eb; border-radius: 4px; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px auto; color: #9ca3af; font-size: 13px;">Book 4</div>
-                    <div style="color: #1e3a8a; font-size: 14px; margin-bottom: 10px;">Book title</div>
-                    <a href="#" style="color: #2563eb; font-size: 13px; text-decoration: none;">link</a>
-                </div>
-                <div style="border: 1px solid #f3f4f6; border-radius: 8px; padding: 15px; text-align: center; background-color: #fcfcfc;">
-                    <div style="width: 70px; height: 100px; background-color: #e5e7eb; border-radius: 4px; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px auto; color: #9ca3af; font-size: 13px;">Book 5</div>
-                    <div style="color: #1e3a8a; font-size: 14px; margin-bottom: 10px;">Book title</div>
-                    <a href="#" style="color: #2563eb; font-size: 13px; text-decoration: none;">link</a>
-                </div>
-                <div style="border: 1px solid #f3f4f6; border-radius: 8px; padding: 15px; text-align: center; background-color: #fcfcfc;">
-                    <div style="width: 70px; height: 100px; background-color: #e5e7eb; border-radius: 4px; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px auto; color: #9ca3af; font-size: 13px;">Book 6</div>
-                    <div style="color: #1e3a8a; font-size: 14px; margin-bottom: 10px;">Book title</div>
-                    <a href="#" style="color: #2563eb; font-size: 13px; text-decoration: none;">link</a>
-                </div>
-            </div>
+                    <h3>1. The Core Philosophy of Value Investing</h3>
+                    <p>At its heart, Graham's philosophy rests on a simple but profound distinction: the difference between <strong>price</strong> and <strong>value</strong>. He famously stated, <em>"Price is what you pay; value is what you get."</em></p>
+                    <p>Graham argued that investors should approach the stock market not as a place to gamble on price fluctuations, but as a venue to purchase fractional ownership in real, underlying businesses. By meticulously analyzing a company's financial statements—its balance sheet, income statement, and cash flows—an investor can estimate its true intrinsic value.</p>
+                    <p>If the stock is trading at a price significantly below this intrinsic value, it represents a buying opportunity. If it is trading above it, it should be avoided.</p>
 
-            <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 30px 0;">
+                    <h3>2. The Concept of "Margin of Safety"</h3>
+                    <p>Perhaps Graham's most critical contribution to investment theory is the concept of the <strong>Margin of Safety</strong>. He summarized his entire approach to investing in those three words.</p>
+                    <p>Because valuing a company involves estimating future cash flows and assessing unpredictable macroeconomic factors, no valuation is ever perfectly precise. The Margin of Safety is the principle of buying a security at a significant discount to its estimated intrinsic value. This discount acts as a buffer against human error, bad luck, or unforeseen economic downturns.</p>
+                    <ul>
+                        <li><strong>Protection against downside:</strong> If an investor calculates a stock is worth $100 and buys it at $60, the $40 difference is the margin of safety.</li>
+                        <li><strong>Mathematical edge:</strong> Graham proved that by consistently buying fundamentally sound companies with a wide margin of safety, an investor could practically eliminate the risk of permanent capital loss over the long run.</li>
+                    </ul>
 
-            <p style="color: #9ca3af; font-style: italic; font-size: 14px; line-height: 1.6;"><strong style="color: #6b7280;">Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>
-        `
-    },
-    'warren-buffett': {
+                    <h3>3. The Allegory of "Mr. Market"</h3>
+                    <p>To illustrate the psychological discipline required to be a successful investor, Graham created the enduring allegory of <strong>Mr. Market</strong> in his seminal book, <em>The Intelligent Investor</em>.</p>
+                    <p>Imagine you own a stake in a business alongside a manic-depressive partner named Mr. Market. Every day, Mr. Market knocks on your door and offers to either buy your share or sell you his share at a specific price. On some days, Mr. Market is wildly optimistic and quotes ridiculously high prices. On other days, he is plunged into despair and offers to sell his share for pennies on the dollar.</p>
+                    <p>Graham's lesson is profound: The intelligent investor does not let Mr. Market dictate the value of the business. Instead, the investor uses Mr. Market's mood swings to their advantage—buying when Mr. Market is overly pessimistic (depressed prices) and selling when he is irrationally exuberant (inflated prices).</p>
+
+                    <h3>4. Enduring Legacy and Books</h3>
+                    <p>Graham's intellectual rigor brought a scientific discipline to what was previously a highly speculative field. He authored two foundational texts that remain required reading for any serious investor:</p>
+                    <ul>
+                        <li><strong>Security Analysis (1934):</strong> Co-authored with David Dodd, this textbook laid the academic groundwork for fundamental analysis and is still considered the "bible" of value investing.</li>
+                        <li><strong>The Intelligent Investor (1949):</strong> Designed for the layperson, this book outlines the psychological and behavioral framework necessary for investment success. Warren Buffett has repeatedly called it "by far the best book on investing ever written."</li>
+                    </ul>
+
+                    <h3>Conclusion</h3>
+                    <p>Benjamin Graham's principles of thorough analysis, demanding a margin of safety, and maintaining emotional detachment from the market's daily fluctuations are as relevant today as they were in the 1930s. By adhering to Graham's disciplined approach, modern investors can navigate turbulent markets with confidence and clarity.</p>
+                    <br>
+                    <p><strong>Disclaimer:</strong> The information provided in this article is for educational purposes only and should not be considered as financial or investment advice. Always do your own research and consult with a licensed professional before making any investment decisions.</p>
+                `
+            },'warren-buffett': {
         title: 'Warren Buffett',
         content: `
             <h3>1. Background and History</h3>
@@ -11217,7 +11201,8 @@ Tepper was born on September 11, 1957. He is the second of three children of Har
                 
                 const contentContainer = panel.querySelector('.article-detail-content');
                 if (contentContainer) contentContainer.scrollTop = 0;
-            } else {
+            
+        } else {
                 title.textContent = 'Article Not Found';
                 body.innerHTML = '<p style="padding: 20px; color: #6b7280;">Sorry, the content for this article ("' + articleId + '") could not be found or has not been added yet.</p>';
                 panel.classList.add('active');

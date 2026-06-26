@@ -581,7 +581,7 @@
                 <li><a href="financial-statement-analysis.html" class="drawer-link">Financial Statement Analysis</a></li>
                 <li><a href="stock-valuation.html" class="drawer-link">Stock Valuation</a></li>
                 <li><a href="economics.html" class="drawer-link">Economics</a></li>
-                <li><a href="investment-analysis.html" class="drawer-link">Investment Analysis</a></li>
+                
                 <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
                 <li><a href="resources.html" class="drawer-link">Resources</a></li>
                 <li><a href="events.html" class="drawer-link">Events &amp; Seminars</a></li>
@@ -808,13 +808,7 @@
                 } else {
                     mobileDrawer.classList.add('open');
                     document.body.style.overflow = 'hidden';
-                } else {
-                title.textContent = 'Article Not Found';
-                body.innerHTML = '<p style="padding: 20px; color: #6b7280;">Sorry, the content for this article ("' + articleId + '") could not be found or has not been added yet.</p>';
-                panel.classList.add('active');
-                document.body.style.overflow = 'hidden';
-                console.error('Article not found:', articleId);
-            }
+                }
             }
         }
 
@@ -849,6 +843,12 @@
                 
                 const contentContainer = panel.querySelector('.article-detail-content');
                 if (contentContainer) contentContainer.scrollTop = 0;
+            } else {
+                title.textContent = 'Article Not Found';
+                body.innerHTML = '<p style="padding: 20px; color: #6b7280;">Sorry, the content for this article ("' + articleId + '") could not be found or has not been added yet.</p>';
+                panel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                console.error('Article not found:', articleId);
             }
         }
 
@@ -897,14 +897,40 @@
         });
 
         const articleContent = {
-            'industry-guides-automobiles-and-components': {
-                title: 'Automobiles and components',
+            
+            'automobiles-and-components': {
+                title: 'Automobiles & Components: Industry Guide',
                 content: `
-                    
-<p>Dummy content for Automobiles and components goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                    <p>The Automobiles & Components sector is a critical pillar of the global manufacturing economy. It encompasses original equipment manufacturers (OEMs) that produce passenger cars, commercial vehicles, and motorcycles, as well as a massive, tiered supply chain of companies that manufacture parts, components, tires, and accessories.</p>
+
+                    <h3>1. Industry Structure & Dynamics</h3>
+                    <p>Understanding this sector requires separating the auto manufacturers (OEMs) from their suppliers:</p>
+                    <ul>
+                        <li><strong>Original Equipment Manufacturers (OEMs):</strong> These are the household brand names (e.g., Toyota, Volkswagen, Ford) that design, assemble, and market the final vehicles. They operate in a highly capital-intensive, cyclical environment characterized by fierce global competition, massive fixed costs, and relatively low profit margins.</li>
+                        <li><strong>Auto Parts & Equipment Suppliers:</strong> These companies manufacture the physical building blocks of the vehicle—ranging from basic commodities like tires and glass to highly complex systems like engines, autonomous driving sensors, and lithium-ion batteries. Suppliers often benefit from recurring revenue streams through the "aftermarket" (replacement parts) which is generally more stable than new car sales.</li>
+                    </ul>
+
+                    <h3>2. Key Investment Considerations</h3>
+                    <p>When analyzing a company within this sector, investors must focus on several macroeconomic and company-specific factors:</p>
+                    <ul>
+                        <li><strong>Cyclicality and Economic Health:</strong> Automobiles are "big-ticket" consumer discretionary items. When the economy is booming and consumer confidence is high, auto sales surge. During a recession, consumers delay buying new cars, leading to brutal revenue contractions for OEMs.</li>
+                        <li><strong>Capital Intensity and Operating Leverage:</strong> Building car factories requires billions of dollars. This high fixed-cost base means that when sales volumes increase, profit margins expand rapidly (high operating leverage). Conversely, a small drop in sales can completely wipe out profits.</li>
+                        <li><strong>Regulatory Environment:</strong> The industry is heavily regulated. Stringent emissions standards, safety regulations, and government subsidies (particularly for Electric Vehicles) dictate R&D spending and product roadmaps.</li>
+                        <li><strong>Inventory Levels:</strong> Monitoring "days supply" of vehicles on dealer lots is crucial. High inventory levels often lead to heavy discounting, which destroys profit margins.</li>
+                    </ul>
+
+                    <h3>3. The EV and Autonomous Revolution</h3>
+                    <p>The sector is currently undergoing its most profound transformation in a century. The shift from Internal Combustion Engines (ICE) to Electric Vehicles (EVs) and the race toward Autonomous Driving (AD) are fundamentally rewriting the competitive landscape.</p>
+                    <p>Traditional OEMs are being forced to spend billions on R&D just to stay relevant, acting as an anchor on their free cash flow. Meanwhile, pure-play EV manufacturers and specialized software/semiconductor suppliers are capturing immense market share and commanding massive valuation premiums.</p>
+                    <p>Investors must carefully evaluate whether a traditional automaker can successfully transition its manufacturing base without destroying shareholder value, or whether a high-flying tech-focused supplier can scale profitably.</p>
+
+                    <h3>Conclusion</h3>
+                    <p>Investing in the Automobiles & Components sector is not for the faint of heart. It requires a deep understanding of macroeconomic cycles, manufacturing economics, and technological disruption. While the legacy OEMs often trade at seemingly "cheap" valuations (low P/E ratios), these are often value traps due to their capital-intensive nature. Conversely, the companies providing the critical technology for the cars of the future offer high growth potential, but at significantly higher risk.</p>
+                    <br>
+                    <p><strong>Disclaimer:</strong> The information provided in this article is for educational purposes only and should not be considered as financial or investment advice. Always do your own research and consult with a licensed professional before making any investment decisions.</p>
                 `
             },
-            'industry-guides-banking': {
+'industry-guides-banking': {
                 title: 'Banking',
                 content: `
                     

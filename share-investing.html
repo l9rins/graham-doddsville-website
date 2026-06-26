@@ -873,7 +873,8 @@
                 
                 const contentContainer = panel.querySelector('.article-detail-content');
                 if (contentContainer) contentContainer.scrollTop = 0;
-            } else {
+            
+        } else {
                 title.textContent = 'Article Not Found';
                 body.innerHTML = '<p style="padding: 20px; color: #6b7280;">Sorry, the content for this article ("' + articleId + '") could not be found or has not been added yet.</p>';
                 panel.classList.add('active');
@@ -927,6 +928,49 @@
         });
 
         const articleContent = {
+            'how-the-stock-market-works': {
+                title: 'How the stock market works',
+                content: `
+                    <p>The stock market is often viewed as a complex and intimidating financial ecosystem, but at its core, it operates on very simple principles of supply and demand. Understanding how the stock market works is the foundational step for any aspiring investor looking to build long-term wealth.</p>
+                    
+                    <h3>What is a Share?</h3>
+                    <p>Before diving into the market itself, it's crucial to understand what is actually being traded. A share (or stock) represents a fraction of ownership in a business. When you buy a share of a publicly traded company, you are effectively buying a tiny slice of that company's future profits, assets, and growth potential. As a shareholder, you become a part-owner of the business.</p>
+                    
+                    <h3>Why Do Companies Issue Shares?</h3>
+                    <p>Companies issue shares primarily to raise capital. When a private company wants to expand its operations, build new factories, hire more staff, or pay off debt, it needs money. Instead of borrowing from a bank and taking on debt, the company can choose to sell a portion of its ownership to the public through an <strong>Initial Public Offering (IPO)</strong>.</p>
+                    <p>Once the company goes public, its shares are listed on a stock exchange where they can be freely bought and sold by investors.</p>
+                    
+                    <h3>The Role of Stock Exchanges</h3>
+                    <p>A stock exchange is essentially a highly regulated marketplace where buyers and sellers come together to trade shares. Think of it like a massive digital auction house. In Australia, the primary exchange is the <strong>Australian Securities Exchange (ASX)</strong>. Internationally, well-known exchanges include the New York Stock Exchange (NYSE) and the Nasdaq.</p>
+                    <ul>
+                        <li><strong>Liquidity:</strong> Exchanges provide liquidity, meaning investors can easily convert their shares back into cash by selling them to another buyer.</li>
+                        <li><strong>Regulation and Transparency:</strong> Exchanges enforce strict reporting rules on listed companies, ensuring that investors have access to accurate financial data.</li>
+                        <li><strong>Price Discovery:</strong> Exchanges facilitate the matching of buy and sell orders, which ultimately determines the current market price of a stock.</li>
+                    </ul>
+                    
+                    <h3>How Prices are Determined</h3>
+                    <p>Stock prices are driven by the basic economic principle of <strong>supply and demand</strong>.</p>
+                    <p>If a company announces record-breaking profits, more investors will want to buy its shares (high demand), and current shareholders will be reluctant to sell (low supply). Buyers will have to offer a higher price to entice sellers, causing the stock price to rise.</p>
+                    <p>Conversely, if a company reports a massive loss, current shareholders may panic and try to sell their shares (high supply), but few investors will want to buy them (low demand). Sellers will have to lower their asking price to find a buyer, causing the stock price to fall.</p>
+                    
+                    <h3>Market Participants</h3>
+                    <p>The stock market is made up of a diverse ecosystem of participants:</p>
+                    <ul>
+                        <li><strong>Retail Investors:</strong> Everyday individuals investing their personal savings.</li>
+                        <li><strong>Institutional Investors:</strong> Large organizations such as superannuation funds, mutual funds, hedge funds, and insurance companies that invest massive pools of capital.</li>
+                        <li><strong>Stockbrokers:</strong> Licensed professionals or online platforms that act as intermediaries, executing buy and sell orders on behalf of investors for a fee.</li>
+                        <li><strong>Market Makers:</strong> Entities that provide liquidity by continuously offering to buy and sell shares at publicly quoted prices.</li>
+                    </ul>
+                    
+                    <h3>Stock Market Indices</h3>
+                    <p>You often hear on the news that "the market went up today." They are usually referring to a stock market index. An index is a mathematical construct that tracks the performance of a specific group of stocks to provide a snapshot of the overall market's health. In Australia, the most commonly referenced index is the <strong>S&P/ASX 200</strong>, which tracks the performance of the 200 largest companies listed on the ASX.</p>
+                    
+                    <h3>Conclusion</h3>
+                    <p>In summary, the stock market is a dynamic engine of capitalism that allows companies to raise the money they need to innovate and grow, while simultaneously giving everyday people the opportunity to share in the financial success of those enterprises. While short-term price movements can be volatile and unpredictable, historically, investing in high-quality companies over the long term has been one of the most effective ways to generate wealth.</p>
+                    <br>
+                    <p><strong>Disclaimer:</strong> The information provided in this article is for educational purposes only and should not be considered as financial or investment advice. Always do your own research and consult with a licensed professional before making any investment decisions.</p>
+                `
+            },
 'how-the-stock-market-works': {
         title: 'How the Stock Market Works',
         content: `

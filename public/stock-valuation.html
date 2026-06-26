@@ -464,7 +464,7 @@
                 <li><a href="financial-statement-analysis.html" class="drawer-link">Financial Statement Analysis</a></li>
                 <li><a href="stock-valuation.html" class="drawer-link">Stock Valuation</a></li>
                 <li><a href="economics.html" class="drawer-link">Economics</a></li>
-                <li><a href="investment-analysis.html" class="drawer-link">Investment Analysis</a></li>
+                
                 <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
                 <li><a href="resources.html" class="drawer-link">Resources</a></li>
                 <li><a href="events.html" class="drawer-link">Events &amp; Seminars</a></li>
@@ -744,13 +744,7 @@
                 } else {
                     mobileDrawer.classList.add('open');
                     document.body.style.overflow = 'hidden';
-                } else {
-                title.textContent = 'Article Not Found';
-                body.innerHTML = '<p style="padding: 20px; color: #6b7280;">Sorry, the content for this article ("' + articleId + '") could not be found or has not been added yet.</p>';
-                panel.classList.add('active');
-                document.body.style.overflow = 'hidden';
-                console.error('Article not found:', articleId);
-            }
+                }
             }
         }
 
@@ -785,6 +779,12 @@
                 
                 const contentContainer = panel.querySelector('.article-detail-content');
                 if (contentContainer) contentContainer.scrollTop = 0;
+            } else {
+                title.textContent = 'Article Not Found';
+                body.innerHTML = '<p style="padding: 20px; color: #6b7280;">Sorry, the content for this article ("' + articleId + '") could not be found or has not been added yet.</p>';
+                panel.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                console.error('Article not found:', articleId);
             }
         }
 
@@ -1269,11 +1269,38 @@
                     <p>Dummy content for R&D and innovation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
                 `
             },
-            'stock-valuation-intro-to-stock-valuation': {
-                title: 'Intro to stock valuation',
+            
+            'introduction-to-stock-valuation': {
+                title: 'Introduction to Stock Valuation',
                 content: `
-                    
-<p>Dummy content for Intro to stock valuation goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+                    <p>Stock valuation is the cornerstone of all serious investing. It is the analytical process of determining the current (or projected) worth of an asset or a company. For an investor, the ultimate goal of valuation is to estimate a company's true "intrinsic value" so it can be compared to its current market price.</p>
+
+                    <h3>1. Why Valuation Matters</h3>
+                    <p>In the financial markets, it is entirely possible to buy shares of a fantastic, highly profitable business and still lose money. How? By paying too much. If you overpay for an asset, your future returns will be severely diminished. As Warren Buffett famously noted, <em>"For the investor, a too-high purchase price for the stock of an excellent company can undo the subsequent decade of favorable business developments."</em></p>
+                    <p>Valuation acts as an investor's compass. It prevents you from getting swept up in market euphoria (buying overvalued assets) and gives you the courage to act during market panics (buying undervalued assets).</p>
+
+                    <h3>2. Price vs. Value</h3>
+                    <p>The entire philosophy of valuation is built on a single, vital distinction:</p>
+                    <ul>
+                        <li><strong>Price</strong> is what you pay. It is the number flashing on your brokerage screen, dictated entirely by the immediate supply and demand of buyers and sellers in the stock market. It is often driven by human emotion—fear and greed.</li>
+                        <li><strong>Value</strong> is what you get. It is the actual, underlying economic worth of the business based on the cash it can generate over its lifetime. It is driven by business fundamentals: revenue growth, profit margins, and competitive advantages.</li>
+                    </ul>
+
+                    <h3>3. The Two Core Approaches to Valuation</h3>
+                    <p>While there are dozens of specific valuation models, almost all of them fall into one of two broad categories:</p>
+                    <ul>
+                        <li><strong>Absolute Valuation (Intrinsic Value):</strong> This approach attempts to find the true underlying value of a business based purely on its own fundamentals, completely ignoring how the rest of the stock market is priced. The most famous absolute valuation method is the <strong>Discounted Cash Flow (DCF) model</strong>, which calculates the present value of all the cash the business will generate in the future.</li>
+                        <li><strong>Relative Valuation (Multiples):</strong> This approach values a company by comparing it to similar companies in the same industry. It relies on the assumption that the market generally prices similar assets similarly. Common metrics used in relative valuation include the Price-to-Earnings (P/E) ratio, Price-to-Sales (P/S) ratio, and Enterprise Value-to-EBITDA (EV/EBITDA).</li>
+                    </ul>
+
+                    <h3>4. Valuation is an Art, Not a Science</h3>
+                    <p>It is critical to understand that valuation is never exact. Every valuation model requires you to make assumptions about the future—how fast the company will grow, what interest rates will be, and what competitors will do. Because the future is inherently unknowable, every valuation is merely an educated estimate.</p>
+                    <p>This is why legendary value investors insist on a <strong>Margin of Safety</strong>. By demanding a significant discount (e.g., buying a stock estimated to be worth $100 for only $60), investors protect themselves against their own inevitable forecasting errors.</p>
+
+                    <h3>Conclusion</h3>
+                    <p>Mastering stock valuation takes time, practice, and emotional discipline. By learning the fundamental models and understanding their limitations, you can systematically identify mispriced securities and build wealth over the long term.</p>
+                    <br>
+                    <p><strong>Disclaimer:</strong> The information provided in this article is for educational purposes only and should not be considered as financial or investment advice. Always do your own research and consult with a licensed professional before making any investment decisions.</p>
                 `
             },
             'stock-valuation-what-is-value': {
