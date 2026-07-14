@@ -49,6 +49,7 @@ const BACKUP_NEWS = [
 
 const app = express();
 const PORT = process.env.PORT || 4012;
+const NEWSAPI_KEY = process.env.NEWSAPI_KEY || '6d122bb10581490591ee20ade119ec27';
 const GNEWS_API_KEY = process.env.GNEWS_API_KEY;
 
 // Performance optimization constants
@@ -204,7 +205,7 @@ const CREDIBLE_DOMAINS = [
 // Rate limiting
 const limiter = rateLimit({
     windowMs: process.env.NODE_ENV === 'development' ? 60 * 1000 : 15 * 60 * 1000,
-    max: process.env.NODE_ENV === 'development' ? 1000 : 100,
+    max: process.env.NODE_ENV === 'development' ? 1000 : 500,
     message: 'Too many requests from this IP, please try again later.'
 });
 
@@ -232,7 +233,6 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.use(limiter);
 app.use(express.json());
 
 // Deduplication helpers
@@ -241,7 +241,7 @@ function generateArticleHash(title, source, publishedAt) {
     return crypto.createHash('sha256').update(content).digest('hex');
 }
 
-function isArticleValid(article) {
+function isArticleValid(article, category = null) {
     const BLOCKED_DOMAINS = [
         'vanityfair.com', 'pagesix.com', 'twistedsifter.com', 'bleedingcool.com',
         'tmz.com', 'eonline.com', 'people.com', 'usmagazine.com',
@@ -259,7 +259,16 @@ function isArticleValid(article) {
     const publishedDate = new Date(article.publishedAt);
     const now = new Date();
     const hoursDiff = (now - publishedDate) / (1000 * 60 * 60);
-    if (hoursDiff > 168) return false; // 7 days max
+
+    const cat = (category || article.category || '').trim();
+    let maxHours = 72;
+    if (['Companies', 'Markets', 'Economy', 'Industry'].includes(cat)) {
+        maxHours = 48;
+    } else if (['Regulatory', 'Guru Watch'].includes(cat)) {
+        maxHours = 168;
+    }
+
+    if (hoursDiff > maxHours) return false;
 
     return true;
 }
@@ -267,15 +276,46 @@ function isArticleValid(article) {
 function deduplicateArticles(articles) {
     const uniqueArticles = [];
     const seenHashes = new Set();
+    const seenTitles = new Map();
+
+    function normalizeTitle(title) {
+        return title.toLowerCase()
+            .replace(/[^\w\s]/g, '')
+            .replace(/\b(the|a|an|and|or|but|in|on|at|to|for|of|with|by|from|as|is|was|are|were|has|have|had|be|been|being|not|no|its|it|this|that|these|those|will|would|can|could|should|may|might|shall|do|does|did)\b/g, '')
+            .replace(/\s+/g, ' ')
+            .trim();
+    }
+
+    function wordOverlapRatio(title1, title2) {
+        const words1 = new Set(title1.split(' ').filter(w => w.length > 2));
+        const words2 = new Set(title2.split(' ').filter(w => w.length > 2));
+        if (words1.size === 0 || words2.size === 0) return 0;
+        let overlap = 0;
+        for (const word of words1) {
+            if (words2.has(word)) overlap++;
+        }
+        return overlap / Math.max(words1.size, words2.size);
+    }
 
     for (const article of articles) {
         const sourceName = article.source?.name || article.source || '';
         const hash = generateArticleHash(article.title, sourceName, article.publishedAt);
-        if (!seenHashes.has(hash) && !articleHashes.has(hash)) {
-            seenHashes.add(hash);
-            articleHashes.add(hash);
-            uniqueArticles.push(article);
+        if (seenHashes.has(hash) || articleHashes.has(hash)) continue;
+
+        const normalized = normalizeTitle(article.title);
+        let isDuplicate = false;
+        for (const [seenTitle, _] of seenTitles) {
+            if (wordOverlapRatio(normalized, seenTitle) > 0.8) {
+                isDuplicate = true;
+                break;
+            }
         }
+        if (isDuplicate) continue;
+
+        seenHashes.add(hash);
+        articleHashes.add(hash);
+        seenTitles.set(normalized, uniqueArticles.length);
+        uniqueArticles.push(article);
     }
 
     return uniqueArticles;
@@ -303,6 +343,23 @@ app.use((req, res, next) => {
     res.setHeader('Vary', 'Accept-Encoding');
     next();
 });
+
+function extractImageFromDescription(description) {
+    if (!description) return null;
+    const patterns = [
+        /<img[^>]+src="([^">]+)"/i,
+        /<img[^>]+src='([^'>]+)'/i,
+        /!\[.*?\]\((https?:\/\/[^)\s]+)\)/i,
+        /(https?:\/\/[^\s"'<>]+\.(?:jpg|jpeg|png|gif|webp)(?:\?[^\s"'<>]*)?)/i
+    ];
+    for (const pattern of patterns) {
+        const match = description.match(pattern);
+        if (match && match[1] && !match[1].includes('placehold') && !match[1].includes('icon')) {
+            return match[1];
+        }
+    }
+    return null;
+}
 
 // Enhanced RSS Feed Parser
 async function parseRSSFeed(url, sourceName, defaultCategory = null) {
@@ -362,6 +419,11 @@ async function parseRSSFeed(url, sourceName, defaultCategory = null) {
                 if (mediaContent) imageUrl = mediaContent.getAttribute('url');
 
                 if (!imageUrl) {
+                    const mediaThumbnail = item.getElementsByTagName('media:thumbnail')[0];
+                    if (mediaThumbnail) imageUrl = mediaThumbnail.getAttribute('url');
+                }
+
+                if (!imageUrl) {
                     const enclosure = item.getElementsByTagName('enclosure')[0];
                     if (enclosure && enclosure.getAttribute('type')?.startsWith('image')) {
                         imageUrl = enclosure.getAttribute('url');
@@ -369,18 +431,34 @@ async function parseRSSFeed(url, sourceName, defaultCategory = null) {
                 }
 
                 if (!imageUrl && description) {
-                    const imgMatch = description.match(/<img[^>]+src="([^">]+)"/);
-                    if (imgMatch) imageUrl = imgMatch[1];
+                    const ogImageMatch = description.match(/property="og:image"[^>]*content="([^">]+)"/i)
+                        || description.match(/content="([^">]+)"[^>]*property="og:image"/i)
+                        || description.match(/name="twitter:image"[^>]*content="([^">]+)"/i)
+                        || description.match(/content="([^">]+)"[^>]*name="twitter:image"/i);
+                    if (ogImageMatch) imageUrl = ogImageMatch[1];
                 }
+
+                if (!imageUrl && description) {
+                    imageUrl = extractImageFromDescription(description);
+                }
+
+                let cleanedDescription = description || '';
+                cleanedDescription = cleanedDescription.replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1');
+                cleanedDescription = cleanedDescription.replace(/<[^>]*>/g, '');
+                cleanedDescription = cleanedDescription.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'");
+                cleanedDescription = cleanedDescription.replace(/\s+/g, ' ').trim();
+
+                const category = (defaultCategory && ['Industry', 'Regulatory', 'Technology', 'Guru Watch', 'Economy', 'Markets', 'Companies'].includes(defaultCategory))
+                    ? defaultCategory
+                    : categorizeNews(title + ' ' + description + ' ' + sourceName);
 
                 articles.push({
                     title: title.trim(),
-                    excerpt: description ? description.replace(/<[^>]*>/g, '').substring(0, 150) + '...' : '',
+                    excerpt: cleanedDescription ? cleanedDescription.substring(0, 200) + (cleanedDescription.length > 200 ? '...' : '') : '',
+                    content: cleanedDescription,
                     url: link.trim(),
                     image: imageUrl || generatePlaceholderImage(sourceName),
-                    category: (defaultCategory && ['Industry', 'Regulatory', 'Technology', 'Guru Watch', 'Economy', 'Markets', 'Companies'].includes(defaultCategory))
-                        ? defaultCategory
-                        : categorizeNews(title + ' ' + description + ' ' + sourceName),
+                    category: category,
                     source: { name: sourceName },
                     publishedAt: pubDate ? new Date(pubDate).toISOString() : new Date().toISOString()
                 });
@@ -425,20 +503,22 @@ function getTextContent(parent, tagName) {
 // Categorize news
 function categorizeNews(content) {
     const lowerContent = content.toLowerCase();
-    if (lowerContent.includes('asx') || lowerContent.includes('market') || lowerContent.includes('stock') || lowerContent.includes('trading')) return 'Markets';
-    if (lowerContent.includes('company') || lowerContent.includes('business') || lowerContent.includes('corporate') || lowerContent.includes('startup')) return 'Companies';
-    if (lowerContent.includes('economy') || lowerContent.includes('gdp') || lowerContent.includes('inflation') || lowerContent.includes('unemployment')) return 'Economy';
-    if (lowerContent.includes('industry') || lowerContent.includes('sector') || lowerContent.includes('mining') || lowerContent.includes('manufacturing')) return 'Industry';
-    if (lowerContent.includes('rba') || lowerContent.includes('interest') || lowerContent.includes('rate') || lowerContent.includes('regulation') || lowerContent.includes('policy')) return 'Regulatory';
-    if (lowerContent.includes('commodity') || lowerContent.includes('gold') || lowerContent.includes('oil') || lowerContent.includes('iron ore')) return 'Commodities';
-    if (lowerContent.includes('property') || lowerContent.includes('housing') || lowerContent.includes('real estate')) return 'Property';
-    if (lowerContent.includes('bank') || lowerContent.includes('financial') || lowerContent.includes('fund') || lowerContent.includes('finance')) return 'Banking';
-    if (lowerContent.includes('tech') || lowerContent.includes('ai') || lowerContent.includes('digital') || lowerContent.includes('software')) return 'Technology';
-    if (lowerContent.includes('energy') || lowerContent.includes('renewable') || lowerContent.includes('coal')) return 'Energy';
-    if (lowerContent.includes('super') || lowerContent.includes('retirement') || lowerContent.includes('pension')) return 'Superannuation';
-    if (lowerContent.includes('retail') || lowerContent.includes('consumer') || lowerContent.includes('shopping')) return 'Consumer';
-    if (lowerContent.includes('buffett') || lowerContent.includes('munger') || lowerContent.includes('graham') || lowerContent.includes('guru') || lowerContent.includes('investor')) return 'Guru Watch';
-    if (lowerContent.includes('investment') || lowerContent.includes('value') || lowerContent.includes('portfolio')) return 'Investment';
+    if (lowerContent.includes('rba') || lowerContent.includes('reserve bank') || lowerContent.includes('interest rate decision') || lowerContent.includes('monetary policy') || lowerContent.includes('regulation') || lowerContent.includes('regulator') || lowerContent.includes('asic') || lowerContent.includes('apra')) return 'Regulatory';
+    if (lowerContent.includes('buffett') || lowerContent.includes('munger') || lowerContent.includes('graham') || lowerContent.includes('soros') || lowerContent.includes('druckenmiller') || lowerContent.includes('guru') || lowerContent.includes('legendary investor') || lowerContent.includes('warren')) return 'Guru Watch';
+    if (lowerContent.includes('asx') || lowerContent.includes('all ordinaries') || lowerContent.includes('s&p/asx') || lowerContent.includes('stock exchange') || lowerContent.includes('trading halt') || lowerContent.includes('market close') || lowerContent.includes('market update') || lowerContent.includes('share price') || lowerContent.includes('equities')) return 'Markets';
+    if (lowerContent.includes('gdp') || lowerContent.includes('inflation') || lowerContent.includes('cpi') || lowerContent.includes('unemployment') || lowerContent.includes('employment') || lowerContent.includes('economic growth') || lowerContent.includes('recession') || lowerContent.includes('economic outlook') || lowerContent.includes('trade balance') || lowerContent.includes('household spending')) return 'Economy';
+    if (lowerContent.includes('company') || lowerContent.includes('corporate') || lowerContent.includes('startup') || lowerContent.includes('quarterly results') || lowerContent.includes('earnings') || lowerContent.includes('profit') || lowerContent.includes('revenue') || lowerContent.includes('dividend') || lowerContent.includes('shareholder') || lowerContent.includes('annual report') || lowerContent.includes('ceo') || lowerContent.includes('board')) return 'Companies';
+    if (lowerContent.includes('mining') || lowerContent.includes('manufacturing') || lowerContent.includes('construction') || lowerContent.includes('resources') || lowerContent.includes('bhp') || lowerContent.includes('rio tinto') || lowerContent.includes('fortescue') || lowerContent.includes('sector') || lowerContent.includes('commodity')) return 'Industry';
+    if (lowerContent.includes('property') || lowerContent.includes('housing') || lowerContent.includes('real estate') || lowerContent.includes('mortgage') || lowerContent.includes('house prices') || lowerContent.includes('residential') || lowerContent.includes('commercial property') || lowerContent.includes('rental')) return 'Property';
+    if (lowerContent.includes('bank') || lowerContent.includes('cba') || lowerContent.includes('westpac') || lowerContent.includes('anz') || lowerContent.includes('nab') || lowerContent.includes('macquarie') || lowerContent.includes('financial') || lowerContent.includes('fund') || lowerContent.includes('finance') || lowerContent.includes('lending') || lowerContent.includes('credit')) return 'Banking';
+    if (lowerContent.includes('tech') || lowerContent.includes('ai') || lowerContent.includes('artificial intelligence') || lowerContent.includes('digital') || lowerContent.includes('software') || lowerContent.includes('cyber') || lowerContent.includes('cloud') || lowerContent.includes('semiconductor') || lowerContent.includes('atlassian')) return 'Technology';
+    if (lowerContent.includes('oil') || lowerContent.includes('gas') || lowerContent.includes('lpg') || lowerContent.includes('santos') || lowerContent.includes('woodside') || lowerContent.includes('lng')) return 'Energy';
+    if (lowerContent.includes('energy') || lowerContent.includes('renewable') || lowerContent.includes('solar') || lowerContent.includes('wind farm') || lowerContent.includes('coal') || lowerContent.includes('clean energy')) return 'Energy';
+    if (lowerContent.includes('super') || lowerContent.includes('retirement') || lowerContent.includes('pension') || lowerContent.includes('superannuation') || lowerContent.includes('self-managed super')) return 'Superannuation';
+    if (lowerContent.includes('retail') || lowerContent.includes('consumer') || lowerContent.includes('shopping') || lowerContent.includes('woolworths') || lowerContent.includes('coles') || lowerContent.includes('bunnings')) return 'Consumer';
+    if (lowerContent.includes('investment') || lowerContent.includes('portfolio') || lowerContent.includes('asset allocation') || lowerContent.includes('etf') || lowerContent.includes('managed fund')) return 'Investment';
+    if (lowerContent.includes('market') || lowerContent.includes('stock') || lowerContent.includes('trading') || lowerContent.includes('share') || lowerContent.includes('index')) return 'Markets';
+    if (lowerContent.includes('industry') || lowerContent.includes('sector')) return 'Industry';
     return 'General';
 }
 
@@ -474,6 +554,8 @@ async function fetchSourceData(sourceId) {
 // ============================================================
 // API ROUTES
 // ============================================================
+
+app.use('/api', limiter);
 
 app.get('/api/news/status', (req, res) => {
     const nextRefresh = newsCache.lastUpdated
@@ -687,73 +769,42 @@ async function refreshNewsCache() {
         const promises = categoriesConfig.map(async (config, index) => {
             await new Promise(resolve => setTimeout(resolve, index * 1000));
             let validArticles = [];
-            const seenUrls = new Set();
 
-            console.log(`Fetching configured RSS sources for ${config.category}`);
+            console.log(`Fetching from NewsAPI for ${config.category}`);
 
-            // Add general/business sources because they contain articles for these domains that will be strictly filtered.
-            const allSourcesToTry = Object.keys(newsSources).filter(k => 
-                newsSources[k].category === config.category || 
-                newsSources[k].category === config.category.toLowerCase().replace(' ', '-') ||
-                newsSources[k].category === 'general' ||
-                newsSources[k].category === 'business' ||
-                newsSources[k].category === 'finance'
-            );
-
-            for (const sourceKey of allSourcesToTry) {
-                if (validArticles.length >= 20) break;
-                const sourceConfig = newsSources[sourceKey];
-                if (!sourceConfig || sourceConfig.type !== 'rss') continue;
-
-                try {
-                    const items = await fetchNews(sourceKey);
-                    for (const item of items) {
-                        if (validArticles.length >= 20) break;
-                        if (!item.title || !item.url) continue;
-
-                        const itemDomain = getDomain(item.url);
-                        
-                        // Strict domain checking based on excel spreadsheet (global whitelist)
-                        let isDomainAllowed = false;
-                        if (itemDomain) {
-                            if (globalAllowedDomains.has(itemDomain)) {
-                                isDomainAllowed = true;
-                            } else {
-                                // Check if itemDomain ends with any allowed domain (e.g., finance.yahoo.com ends with yahoo.com)
-                                for (const domain of globalAllowedDomains) {
-                                    if (itemDomain.endsWith('.' + domain)) {
-                                        isDomainAllowed = true;
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-
-                        if (!isDomainAllowed) continue;
-
-                        const publishedDate = item.publishedAt ? new Date(item.publishedAt) : new Date();
-                        const hoursDiff = (new Date() - publishedDate) / (1000 * 60 * 60);
-
-                        if (hoursDiff <= 8760 && !seenUrls.has(item.url)) {
-                            seenUrls.add(item.url);
-                            validArticles.push({
-                                title: item.title,
-                                url: item.url,
-                                publishedAt: item.publishedAt,
-                                source: item.source,
-                                category: config.category,
-                                excerpt: item.excerpt,
-                                image: item.image || generatePlaceholderImage(sourceConfig.name)
-                            });
-                        }
-                    }
-                } catch (err) {
-                    console.error(`RSS failed for ${sourceKey} (${config.category}):`, err.message);
+            try {
+                // Get up to 20 domains to avoid URL length limits
+                const domainsParam = Array.from(globalAllowedDomains).slice(0, 20).join(',');
+                const query = encodeURIComponent(config.query);
+                const url = `https://newsapi.org/v2/everything?q=${query}&domains=${domainsParam}&language=en&sortBy=publishedAt&pageSize=20&apiKey=${NEWSAPI_KEY}`;
+                
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`NewsAPI responded with status ${response.status}`);
                 }
+                const data = await response.json();
+                
+                if (data.status === 'ok' && data.articles) {
+                    for (const item of data.articles) {
+                        if (!item.title || !item.url || item.title === '[Removed]') continue;
+
+                        validArticles.push({
+                            title: item.title,
+                            url: item.url,
+                            publishedAt: item.publishedAt,
+                            source: { name: item.source.name || 'NewsAPI' },
+                            category: config.category,
+                            excerpt: item.description,
+                            image: item.urlToImage || generatePlaceholderImage(item.source.name || 'NewsAPI')
+                        });
+                    }
+                }
+            } catch (err) {
+                console.error(`NewsAPI failed for ${config.category}:`, err.message);
             }
 
             if (validArticles.length === 0) {
-                console.log(`Safety net triggered for ${config.category}: 0 articles found after strict filtering`);
+                console.log(`Safety net triggered for ${config.category}: 0 articles found`);
                 validArticles.push({
                     title: `Latest ${config.category} News`,
                     url: fallbackUrls[config.category] || 'https://grahamanddoddsville.com.au',

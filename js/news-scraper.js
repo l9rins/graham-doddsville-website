@@ -1,6 +1,28 @@
 // News Scraper for Graham and Doddsville Website
 // Updated: Targets ALL ID variations to prevent conflicts and ensure 5 items everywhere
 
+const SOURCE_ABBREVIATIONS = {
+    'ABC News Australia': 'ABC', 'ABC Business': 'ABC', 'SBS News': 'SBS',
+    'The Australian': 'TheAus', 'Sydney Morning Herald': 'SMH', 'The Age': 'Age',
+    'Herald Sun': 'Hun', 'News.com.au': 'News', 'Daily Telegraph': 'DailyTel',
+    'Courier Mail': 'Courier', 'The Advertiser': 'Advertiser', 'West Australian': 'WestAus',
+    'The Australian Financial Review': 'AFR', 'Australian Financial Review': 'AFR',
+    'ABC News': 'ABC', 'BBC News': 'BBC', 'BBC': 'BBC',
+    'Reuters': 'Reuters', 'Bloomberg': 'Bloomberg', 'CNBC': 'CNBC',
+    'Financial Times': 'FT', 'The Guardian': 'Guardian', 'Guardian Australia': 'Guardian',
+    'The Wall Street Journal': 'WSJ', 'Wall Street Journal': 'WSJ',
+    'The New York Times': 'NYT', 'New York Times': 'NYT',
+    'Washington Post': 'WashPost', 'MarketWatch': 'MktWatch',
+    'Sky News': 'Sky', 'Sky News Australia': 'Sky',
+    'The Sydney Morning Herald': 'SMH', 'The Age': 'Age',
+    'Smart Company': 'SmartCo', 'Business Insider': 'BizInsider',
+    'The Conversation': 'Conversation', 'Crikey': 'Crikey',
+    'MacroBusiness': 'MacroBiz', 'Business Spectator': 'BizSpec',
+    'Yahoo Finance': 'Yahoo', 'Investor Daily': 'InvDaily',
+    'Money Management': 'MoneyMgt', 'SuperGuide': 'SuperGuide',
+    'Straitstimes': 'ST', 'The Straits Times': 'ST'
+};
+
 class AustralianNewsScraper {
     constructor(apiUrl) {
         this.apiUrl = apiUrl || '/api';
@@ -330,21 +352,36 @@ class NewsDisplayManager {
 
     createNewsItemHTML(item) {
         const formattedDate = this.scraper.formatDate(item.publishedAt);
-        let imageUrl = item.image;
-        if (!imageUrl || imageUrl.includes('unsplash')) {
-            imageUrl = this.generatePlaceholderImage(item.source);
+        const sourceName = item.source?.name || item.source || '';
+        const abbreviation = SOURCE_ABBREVIATIONS[sourceName] || sourceName.substring(0, 12);
+        const isMobile = window.innerWidth <= 768;
+
+        if (isMobile) {
+            return `
+                <div class="news-item-mobile news-fade-in" style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #f0f0f0;" data-category="${item.category}">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                        <div style="flex:1;">
+                            <a href="${item.url || '#'}" target="_blank" rel="noopener noreferrer" style="font-family: Georgia, serif; font-size: 15px; font-weight: 600; color: #111; text-decoration: none; line-height: 1.4;">${item.title}</a>
+                            <div style="margin-top:4px; font-size: 11px; color: #666;">
+                                <span style="text-transform:uppercase; font-weight:bold; color:#1e3a8a;">${abbreviation}</span>
+                                · ${formattedDate}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
         }
 
-        // Determine layout based on container type (sidebar vs main)
-        // For simplicity, we use the standard card layout which works in both
         return `
-            <div class="news-item-mobile" style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #f0f0f0;" data-category="${item.category}">
+            <div class="news-item news-fade-in" style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #f0f0f0;" data-category="${item.category}">
                 <div style="display:flex; justify-content:space-between; align-items:flex-start;">
                     <div style="flex:1;">
                         <a href="${item.url || '#'}" target="_blank" rel="noopener noreferrer" style="font-family: Georgia, serif; font-size: 15px; font-weight: 600; color: #111; text-decoration: none; line-height: 1.4;">${item.title}</a>
+                        ${item.excerpt ? `<p style="margin: 4px 0 0; font-size: 13px; color: #555; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${item.excerpt}</p>` : ''}
                         <div style="margin-top:4px; font-size: 11px; color: #666;">
-                            <span style="text-transform:uppercase; font-weight:bold; color:#1e3a8a;">${item.source?.name || item.source || ''}</span>
-                            • ${formattedDate}
+                            <span style="text-transform:uppercase; font-weight:bold; color:#1e3a8a;">${abbreviation}</span>
+                            · ${formattedDate}
+                            <span style="margin-left: 8px;"><a href="${item.url || '#'}" target="_blank" rel="noopener noreferrer" style="color: #1e3a8a; text-decoration: none; font-weight: 500;">Read More →</a></span>
                         </div>
                     </div>
                 </div>

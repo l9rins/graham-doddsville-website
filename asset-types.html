@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -128,106 +128,130 @@
             color: var(--primary-blue-dark);
         }
 
+        /* Article Detail Panel - Fullscreen */
         .article-detail-panel {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 100%;
-            max-width: 800px;
-            height: 100vh;
-            background: white;
-            box-shadow: var(--shadow-xl);
-            z-index: 1000;
-            transition: right 0.3s ease;
-            overflow-y: auto;
-        }
-
-        .article-detail-panel.open {
-            right: 0;
-        }
-
-        .article-detail-header {
-            padding: 24px;
-            border-bottom: 1px solid var(--border-light);
-            background: var(--secondary-gray);
-        }
-
-        .article-detail-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 8px;
-        }
-
-        .article-detail-close {
-            position: absolute;
-            top: 24px;
-            right: 24px;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            cursor: pointer;
-            padding: 4px;
-        }
-
-        .article-detail-close:hover {
-            color: var(--text-primary);
-        }
-
-        .article-detail-body {
-            padding: 24px;
-            line-height: 1.7;
-        }
-
-        .article-detail-body h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--primary-blue);
-            margin: 32px 0 16px 0;
-        }
-
-        .article-detail-body h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--primary-blue-dark);
-            margin: 24px 0 12px 0;
-        }
-
-        .article-detail-body p {
-            margin-bottom: 16px;
-            color: var(--text-primary);
-        }
-
-        .article-detail-body ol {
-            margin-bottom: 16px;
-            padding-left: 20px;
-        }
-
-        .article-detail-body li {
-            margin-bottom: 8px;
-            color: var(--text-primary);
-        }
-
-        .overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
+            background: #ffffff;
+            z-index: 2000;
+            display: none;
+            flex-direction: column;
         }
 
-        .overlay.active {
-            opacity: 1;
-            visibility: visible;
+        .article-detail-panel.active {
+            display: flex;
+        }
+
+        .article-detail-content {
+            background: white;
+            border-radius: 0;
+            max-width: none;
+            max-height: none;
+            width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            box-shadow: none;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .article-detail-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            min-height: 56px;
+            flex-shrink: 0;
+        }
+
+        .article-detail-title {
+            margin: 0;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: white;
+            line-height: 1.3;
+            padding-right: 12px;
+            flex: 1;
+        }
+
+        .article-detail-close {
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .article-detail-close:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .article-detail-body {
+            padding: 20px;
+            line-height: 1.8;
+            flex: 1;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            color: var(--text-primary);
+        }
+
+        .article-detail-body h1,
+        .article-detail-body h2,
+        .article-detail-body h3 {
+            color: var(--primary-blue);
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+
+        .article-detail-body h1:first-child,
+        .article-detail-body h2:first-child,
+        .article-detail-body h3:first-child {
+            margin-top: 0;
+        }
+
+        .article-detail-body p {
+            margin-bottom: 16px;
+        }
+
+        .article-detail-body ul,
+        .article-detail-body ol {
+            margin: 16px 0;
+            padding-left: 24px;
+        }
+
+        .article-detail-body li {
+            margin-bottom: 8px;
+        }
+
+        .article-detail-body strong {
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        .article-loading {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-secondary);
         }
 
         @media (max-width: 768px) {
@@ -237,10 +261,6 @@
 
             .content-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .article-detail-panel {
-                max-width: 100%;
             }
         }
     </style>
@@ -259,14 +279,15 @@
         </div>
     </div>
 
-    <div class="overlay" id="overlay"></div>
     <div class="article-detail-panel" id="article-detail-panel">
-        <div class="article-detail-header">
-            <h2 class="article-detail-title" id="article-detail-title"></h2>
-            <button class="article-detail-close" id="article-detail-close">&times;</button>
-        </div>
-        <div class="article-detail-body" id="article-detail-body">
-            <!-- Article content will be loaded here -->
+        <div class="article-detail-content">
+            <div class="article-detail-header">
+                <h3 class="article-detail-title" id="article-detail-title"></h3>
+                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">&times;</button>
+            </div>
+            <div class="article-detail-body" id="article-detail-body">
+                <!-- Article content will be loaded here -->
+            </div>
         </div>
     </div>
     <script>
@@ -4086,7 +4107,6 @@
             const panel = document.getElementById('article-detail-panel');
             const title = document.getElementById('article-detail-title');
             const body = document.getElementById('article-detail-body');
-            const overlay = document.getElementById('overlay');
 
             if (articleContent[articleId]) {
                 title.textContent = articleContent[articleId].title;
@@ -4132,22 +4152,19 @@
                 }
                 
                 body.innerHTML = imagePlaceholder + articleBody + relatedArticles;
-                panel.classList.add('open');
-                overlay.classList.add('active');
+                panel.classList.add('active');
+                document.body.style.overflow = 'hidden';
             }
         }
 
         function closeArticle() {
             const panel = document.getElementById('article-detail-panel');
-            const overlay = document.getElementById('overlay');
-
-            panel.classList.remove('open');
-            overlay.classList.remove('active');
+            panel.classList.remove('active');
+            document.body.style.overflow = '';
         }
 
         // Event listeners
         document.getElementById('article-detail-close').addEventListener('click', closeArticle);
-        document.getElementById('overlay').addEventListener('click', closeArticle);
 
         // Initialize
         generateContentCards();
