@@ -29,6 +29,7 @@
     <meta property="og:site_name" content="Graham and Doddsville">
     <meta property="og:locale" content="en_AU">
     <title>Graham and Doddsville - Value Investing Education Australia</title>
+    <link rel="canonical" href="https://grahamanddoddsville.com.au/">
     <link rel="stylesheet" href="/css/styles.css?v=5.7&amp;t=20241224">
     <!-- Using system fonts to avoid Google Fonts dependency -->
 
@@ -136,58 +137,24 @@
     }
     </script>
 
-    <!-- Article Structured Data -->
+    <!-- WebSite Structured Data -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "Article",
-        "headline": "Value Investing Education and Resources",
-        "description": "Comprehensive value investing education, articles, and resources for intelligent stock market investing in Australia.",
-        "author": {
-            "@type": "Organization",
-            "name": "Graham and Doddsville"
-        },
+        "@type": "WebSite",
+        "name": "Graham and Doddsville",
+        "url": "https://grahamanddoddsville.com.au",
+        "description": "Australia's premier value investing education resource. Comprehensive articles, market analysis, and investment insights inspired by Benjamin Graham and David Dodd.",
         "publisher": {
             "@type": "Organization",
-            "name": "Graham and Doddsville",
-            "logo": {
-                "@type": "ImageObject",
-                "url": "https://grahamanddoddsville.com.au/logo.png"
-            }
+            "name": "Graham and Doddsville Pty Ltd"
         },
-        "datePublished": "2024-12-23",
-        "dateModified": "2024-12-23",
-        "mainEntityOfPage": {
-            "@type": "WebPage",
-            "@id": "https://grahamanddoddsville.com.au"
-        }
-    }
-    </script>
-
-    <!-- Event Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Event",
-        "name": "Value Investing Education Events",
-        "description": "Educational events and resources for value investing in Australia.",
-        "organizer": {
-            "@type": "Organization",
-            "name": "Graham and Doddsville",
-            "url": "https://grahamanddoddsville.com.au"
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://grahamanddoddsville.com.au/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
         },
-        "location": {
-            "@type": "Place",
-            "name": "Brisbane, Queensland, Australia",
-            "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "Level 19, 10 Eagle Street",
-                "addressLocality": "Brisbane",
-                "addressRegion": "Queensland",
-                "postalCode": "4000",
-                "addressCountry": "AU"
-            }
-        }
+        "inLanguage": "en-AU"
     }
     </script>
 </head>
@@ -1928,6 +1895,14 @@
             </ul>
         </div>
     </nav>
+
+    <!-- Homepage Hero Heading (SEO) -->
+    <section class="homepage-hero" aria-label="Page heading">
+        <div class="container">
+            <h1 class="homepage-hero-title">Graham &amp; Doddsville</h1>
+            <p class="homepage-hero-subtitle">Australia's Premier Value Investing Education Resource</p>
+        </div>
+    </section>
 
     <!-- Date Display -->
     <div class="date-display">
@@ -9000,8 +8975,8 @@ Within this gigantic auction arena, it is our job to select businesses with econ
                 });
             }, observerOptions);
 
-            // Add fade-in animation to sections
-            document.querySelectorAll('section, .article-item, .news-item, .card').forEach(el => {
+            // Add fade-in animation to sections (excluding the hero header)
+            document.querySelectorAll('section:not(.homepage-hero), .article-item, .news-item, .card').forEach(el => {
                 el.classList.add('section-fade-in');
                 observer.observe(el);
             });
