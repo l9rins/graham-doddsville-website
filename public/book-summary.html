@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -907,7 +907,7 @@
             <div class="container">
                 <div class="header-content">
                     <div class="logo">
-                        <img src="images/G&amp;D Logo.png" alt="Graham &amp; Doddsville" class="logo-image">
+                        <img src="images/G&amp;D-Logo.png" alt="Graham &amp; Doddsville" class="logo-image">
                     </div>
                     
                     <nav class="main-nav desktop-only">                    <ul>
@@ -929,7 +929,7 @@
         <!-- Mobile Navigation Drawer -->
         <div class="mobile-drawer" id="mobile-drawer">
         <div class="drawer-header">
-            <img src="images/G&amp;D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
+            <img src="images/G&amp;D-Logo-(for-black-background).png" alt="Graham and Doddsville" class="drawer-logo">
             <button class="drawer-close" id="drawer-close" aria-label="Close menu"></button>
         </div>
         <nav class="drawer-nav">
@@ -956,7 +956,7 @@
         <div class="wealth-creation-page-content" style="max-width: 1000px; margin: 0 auto;">
     <div class="wealth-creation-header" style="text-align: left; border-bottom: 2px solid var(--border-light); padding-bottom: 24px; margin-bottom: 32px;">
         <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 12px;">
-            <a href="index.html" style="color: var(--primary-blue); text-decoration: none; font-weight: 500; font-size: 14px;">← Back to Books</a>
+            <a href="index.html" style="color: var(--primary-blue); text-decoration: none; font-weight: 500; font-size: 14px;">â† Back to Books</a>
             <span style="color: var(--text-muted); font-size: 14px;">|</span>
             <span id="book-category" style="background: rgba(30, 64, 175, 0.1); color: var(--primary-blue); padding: 4px 12px; border-radius: 99px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Category</span>
         </div>
@@ -975,7 +975,7 @@
                 <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-top: 0; margin-bottom: 16px;">Get the Book</h3>
                 <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 24px;">Support the site by purchasing the full book through our Amazon affiliate link.</p>
                 <a id="amazon-link" href="#" target="_self" rel="noopener" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: #FF9900; color: #111; padding: 14px 24px; border-radius: 99px; text-decoration: none; font-weight: 700; font-size: 16px; transition: all 0.2s ease; box-shadow: 0 4px 12px rgba(255, 153, 0, 0.3);">
-                    Buy on Amazon <span style="font-size: 18px;">→</span>
+                    Buy on Amazon <span style="font-size: 18px;">â†’</span>
                 </a>
             </div>
         </div>
@@ -1213,9 +1213,9 @@
                                 let count = match[2];
                                 let stars = '';
                                 for(let i=1; i<=5; i++) {
-                                    if (score >= i) stars += '★';
-                                    else if (score >= i - 0.5) stars += '☆'; 
-                                    else stars += '☆';
+                                    if (score >= i) stars += 'â˜…';
+                                    else if (score >= i - 0.5) stars += 'â˜†'; 
+                                    else stars += 'â˜†';
                                 }
                                 el.innerHTML = `<span class="stars">${stars}</span> <span class="score">${score}</span> <span class="count">(${count} reviews)</span>`;
                             }
@@ -1224,7 +1224,7 @@
                             el.className = 'comments-header';
                             el.textContent = 'Top Comments';
                         }
-                        else if (tagName === 'li' || /^\d+\.\s/.test(text) || /^"[^"]+" –/.test(text)) {
+                        else if (tagName === 'li' || /^\d+\.\s/.test(text) || /^"[^"]+" â€“/.test(text)) {
                             el.className = 'review-comment';
                         }
                     }
@@ -1316,7 +1316,7 @@
                     const s = c.closest('.collapsible-section');
                     if (s) s.classList.remove('active');
                     const a = document.getElementById(c.id.replace('-content', '-arrow'));
-                    if (a) a.innerHTML = '▼';
+                    if (a) a.innerHTML = 'â–¼';
                 }
             });
 
@@ -1330,13 +1330,13 @@
                     content.style.maxHeight = height + "px";
                 }
                 if (section) section.classList.add('active');
-                if (arrow) arrow.innerHTML = '▲';
+                if (arrow) arrow.innerHTML = 'â–²';
             } else {
                 content.style.maxHeight = null;
                 content.classList.remove('expanded');
                 content.classList.add('collapsed');
                 if (section) section.classList.remove('active');
-                if (arrow) arrow.innerHTML = '▼';
+                if (arrow) arrow.innerHTML = 'â–¼';
             }
         }
     </script>

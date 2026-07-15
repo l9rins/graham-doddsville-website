@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head>
+﻿<!DOCTYPE html><html lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Investment Analysis - Graham and Doddsville</title>
@@ -559,7 +559,7 @@
         <header class="header sticky-header" role="banner">
             <div class="container"><div class="header-content">
                 <div class="logo">
-                    <img src="images/G&amp;D Logo.png" alt="Graham &amp; Doddsville" class="logo-image">
+                    <img src="images/G&amp;D-Logo.png" alt="Graham &amp; Doddsville" class="logo-image">
                 </div>
                 
                 <nav class="main-nav desktop-only">                    <ul>
@@ -579,7 +579,7 @@
         <!-- Mobile Navigation Drawer -->
         <div class="mobile-drawer" id="mobile-drawer">
         <div class="drawer-header">
-            <img src="images/G&amp;D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
+            <img src="images/G&amp;D-Logo-(for-black-background).png" alt="Graham and Doddsville" class="drawer-logo">
             <button class="drawer-close" id="drawer-close" aria-label="Close menu"></button>
         </div>
         <nav class="drawer-nav">
@@ -609,7 +609,7 @@
             <!-- Page Title Section -->
             <div class="page-title-section">
                 <div class="breadcrumb">
-                    <a href="index.html" class="breadcrumb-link">← Home</a>
+                    <a href="index.html" class="breadcrumb-link">â† Home</a>
                 </div>
                 <h1 class="page-title">Investment Analysis</h1>
                 <p class="page-subtitle">Understand industries, business quality, corporate actions and accounting tricks</p>
@@ -620,7 +620,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('industry-guides')">
                         <h3 class="collapsible-title">Industry Guides</h3>
-                        <span class="collapsible-arrow" id="industry-guides-arrow">▼</span>
+                        <span class="collapsible-arrow" id="industry-guides-arrow">â–¼</span>
                     </div>
                     <div class="collapsible-content collapsed" id="industry-guides-content">
                         <ul class="collapsible-links">
@@ -655,7 +655,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('qualitative-factors')">
                         <h3 class="collapsible-title">Qualitative Factors</h3>
-                        <span class="collapsible-arrow" id="qualitative-factors-arrow">▼</span>
+                        <span class="collapsible-arrow" id="qualitative-factors-arrow">â–¼</span>
                     </div>
                     <div class="collapsible-content collapsed" id="qualitative-factors-content">
                         <ul class="collapsible-links">
@@ -679,7 +679,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('corporate-actions')">
                         <h3 class="collapsible-title">Corporate Actions</h3>
-                        <span class="collapsible-arrow" id="corporate-actions-arrow">▼</span>
+                        <span class="collapsible-arrow" id="corporate-actions-arrow">â–¼</span>
                     </div>
                     <div class="collapsible-content collapsed" id="corporate-actions-content">
                         <ul class="collapsible-links">
@@ -700,7 +700,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('accounting-shenanigans')">
                         <h3 class="collapsible-title">Accounting Shenanigans</h3>
-                        <span class="collapsible-arrow" id="accounting-shenanigans-arrow">▼</span>
+                        <span class="collapsible-arrow" id="accounting-shenanigans-arrow">â–¼</span>
                     </div>
                     <div class="collapsible-content collapsed" id="accounting-shenanigans-content">
                         <ul class="collapsible-links">
@@ -721,7 +721,7 @@
                 <div class="collapsible-section">
                     <div class="collapsible-header" onclick="toggleCollapsible('accounting-standards')">
                         <h3 class="collapsible-title">Accounting Standards</h3>
-                        <span class="collapsible-arrow" id="accounting-standards-arrow">▼</span>
+                        <span class="collapsible-arrow" id="accounting-standards-arrow">â–¼</span>
                     </div>
                     <div class="collapsible-content collapsed" id="accounting-standards-content">
                         <ul class="collapsible-links">
@@ -747,7 +747,7 @@
         <div class="article-detail-content">
             <div class="article-detail-header">
                 <h3 class="article-detail-title" id="article-detail-title">Article Title</h3>
-                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">×</button>
+                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">Ã—</button>
             </div>
             <div class="article-detail-body" id="article-detail-body">
                 <div class="article-loading">Loading article...</div>
@@ -787,7 +787,7 @@
                     const s = c.closest('.collapsible-section');
                     if (s) s.classList.remove('active');
                     const a = document.getElementById(c.id.replace('-content', '-arrow'));
-                    if (a) a.innerHTML = '▼';
+                    if (a) a.innerHTML = 'â–¼';
                 }
             });
 
@@ -801,13 +801,13 @@
                     content.style.maxHeight = height + "px";
                 }
                 if (section) section.classList.add('active');
-                if (arrow) arrow.innerHTML = '▲';
+                if (arrow) arrow.innerHTML = 'â–²';
             } else {
                 content.style.maxHeight = null;
                 content.classList.remove('expanded');
                 content.classList.add('collapsed');
                 if (section) section.classList.remove('active');
-                if (arrow) arrow.innerHTML = '▼';
+                if (arrow) arrow.innerHTML = 'â–¼';
             }
         }
 
@@ -996,7 +996,7 @@
                         <li><strong>Contract Stickiness & Switching Costs:</strong> The best service companies embed themselves so deeply into their clients' daily operations that replacing them becomes an expensive, logistical nightmare. This creates highly predictable, recurring revenue streams.</li>
                         <li><strong>Utilization Rates and Billable Hours:</strong> For professional services (like consulting), profitability is entirely dependent on how much of their employees' time is actively billed to clients versus sitting "on the bench."</li>
                         <li><strong>Labor Costs and Retention:</strong> In an industry where "the inventory walks out the door every night," managing wage inflation and retaining top talent is the single biggest operational challenge. High employee turnover directly destroys profit margins and client relationships.</li>
-                        <li><strong>Organic Growth vs. M&A Strategy:</strong> Many commercial service sectors (like waste management or pest control) are highly fragmented. Successful companies in this space often employ a "roll-up" strategy—aggressively acquiring smaller mom-and-pop operations to build economies of scale and pricing power.</li>
+                        <li><strong>Organic Growth vs. M&A Strategy:</strong> Many commercial service sectors (like waste management or pest control) are highly fragmented. Successful companies in this space often employ a "roll-up" strategyâ€”aggressively acquiring smaller mom-and-pop operations to build economies of scale and pricing power.</li>
                     </ul>
 
                     <h3>3. Defensive Characteristics</h3>
@@ -1090,7 +1090,7 @@
                     </ul>
 
                     <h3>3. The Amazon Effect and the Retail Apocalypse</h3>
-                    <p>The sector is undergoing a violent restructuring. "The Retail Apocalypse" refers to the mass bankruptcy of heavily indebted, mall-based department stores that failed to adapt to the internet. However, this is not the death of retail—it is an evolution. The winners in this space are either "Category Killers" (like massive home improvement chains) that are Amazon-resistant, or "Omnichannel" masters (like large big-box retailers) that use their massive physical footprint as localized fulfillment centers for online orders.</p>
+                    <p>The sector is undergoing a violent restructuring. "The Retail Apocalypse" refers to the mass bankruptcy of heavily indebted, mall-based department stores that failed to adapt to the internet. However, this is not the death of retailâ€”it is an evolution. The winners in this space are either "Category Killers" (like massive home improvement chains) that are Amazon-resistant, or "Omnichannel" masters (like large big-box retailers) that use their massive physical footprint as localized fulfillment centers for online orders.</p>
 
                     <h3>Conclusion</h3>
                     <p>Investing in discretionary retail requires identifying companies with immense brand loyalty, flawless inventory execution, and a clear strategy to survive the e-commerce transition. The best investments are those that offer a product or experience that simply cannot be replicated by a purely digital storefront.</p>
@@ -1101,14 +1101,14 @@
             'energy-industry': {
                 title: 'Energy industry',
                 content: `\n
-                    <p>The Energy sector is the foundation of the modern industrialized world. It is comprised of companies involved in the exploration, extraction, refining, and transportation of consumable fuels—primarily oil, natural gas, and coal. It is arguably the most cyclical and macroeconomically sensitive sector in the global market.</p>
+                    <p>The Energy sector is the foundation of the modern industrialized world. It is comprised of companies involved in the exploration, extraction, refining, and transportation of consumable fuelsâ€”primarily oil, natural gas, and coal. It is arguably the most cyclical and macroeconomically sensitive sector in the global market.</p>
 
                     <h3>1. Industry Structure & Dynamics</h3>
                     <p>The traditional oil and gas industry is segmented into three distinct phases of the supply chain:</p>
                     <ul>
                         <li><strong>Upstream (Exploration & Production - E&P):</strong> Companies that search for underground oil/gas fields and drill the wells. Their profitability is 100% reliant on the global spot price of the commodity. They are highly capital intensive and often highly leveraged.</li>
                         <li><strong>Midstream:</strong> Companies that transport, store, and wholesale the raw commodities (e.g., pipeline operators). They operate much like toll roads, charging fees based on volume rather than commodity prices, making their cash flows highly stable and attractive to dividend investors.</li>
-                        <li><strong>Downstream:</strong> Refineries and petrochemical plants that turn raw crude oil into usable products like gasoline, diesel, and plastics. Their profitability depends on the "crack spread"—the difference between the price of crude oil and the price of refined products.</li>
+                        <li><strong>Downstream:</strong> Refineries and petrochemical plants that turn raw crude oil into usable products like gasoline, diesel, and plastics. Their profitability depends on the "crack spread"â€”the difference between the price of crude oil and the price of refined products.</li>
                     </ul>
 
                     <h3>2. Key Investment Considerations</h3>
@@ -1130,7 +1130,7 @@
             'consumer-staples-distribution-retail': {
                 title: 'Consumer staples distribution & retail',
                 content: `\n
-                    <p>The Consumer Staples sector encompasses companies that produce and sell the essential goods that people must buy regardless of the economic climate—food, beverages, household goods, and personal hygiene products. This sector is the ultimate defensive play in the stock market.</p>
+                    <p>The Consumer Staples sector encompasses companies that produce and sell the essential goods that people must buy regardless of the economic climateâ€”food, beverages, household goods, and personal hygiene products. This sector is the ultimate defensive play in the stock market.</p>
 
                     <h3>1. Industry Structure & Dynamics</h3>
                     <p>The sector operates with massive scale but extremely thin profit margins:</p>
@@ -1177,7 +1177,7 @@
                     </ul>
 
                     <h3>Conclusion</h3>
-                    <p>These companies are the "widows and orphans" stocks—boring, stable, and highly profitable. They are ideal for risk-averse investors seeking reliable income through economic downturns.</p>
+                    <p>These companies are the "widows and orphans" stocksâ€”boring, stable, and highly profitable. They are ideal for risk-averse investors seeking reliable income through economic downturns.</p>
                     <br>
                     <p><strong>Disclaimer:</strong> The information provided in this article is for educational purposes only and should not be considered as financial or investment advice.</p>
                         `
@@ -1190,7 +1190,7 @@
                     <h3>1. Industry Structure & Dynamics</h3>
                     <ul>
                         <li><strong>Medical Devices & Equipment:</strong> From simple syringes to multi-million dollar MRI machines and robotic surgery systems. This segment benefits from high switching costs, as surgeons are reluctant to change equipment they are trained on.</li>
-                        <li><strong>Managed Healthcare (Insurance):</strong> Companies that provide health insurance policies. Their profitability is driven by the "Medical Loss Ratio"—the percentage of premiums paid out for medical claims.</li>
+                        <li><strong>Managed Healthcare (Insurance):</strong> Companies that provide health insurance policies. Their profitability is driven by the "Medical Loss Ratio"â€”the percentage of premiums paid out for medical claims.</li>
                         <li><strong>Healthcare Facilities:</strong> Hospitals and specialized clinics. They are highly capital-intensive and heavily reliant on government reimbursement rates (Medicare/Medicaid).</li>
                     </ul>
 
@@ -1263,14 +1263,14 @@
                     <ul>
                         <li><strong>Chemicals:</strong> Ranging from commodity chemicals (like basic plastics) to highly specialized agricultural chemicals (fertilizers) and specialty chemicals used in advanced manufacturing. Profitability is often dictated by the spread between raw input costs (like natural gas) and the price of the finished chemical.</li>
                         <li><strong>Metals & Mining:</strong> Companies that extract precious metals (gold, silver) and industrial metals (iron ore, copper, lithium). These companies are absolute price-takers; they cannot control the global spot price of their commodities, making them highly volatile.</li>
-                        <li><strong>Construction Materials:</strong> Producers of cement, aggregates, and bricks. Because these materials are extremely heavy and cheap, they are highly localized businesses—shipping cement across an ocean is rarely profitable, creating regional monopolies.</li>
+                        <li><strong>Construction Materials:</strong> Producers of cement, aggregates, and bricks. Because these materials are extremely heavy and cheap, they are highly localized businessesâ€”shipping cement across an ocean is rarely profitable, creating regional monopolies.</li>
                     </ul>
 
                     <h3>2. Key Investment Considerations</h3>
                     <p>Investing in materials requires a deep understanding of macroeconomic supply and demand curves rather than just company-specific analysis:</p>
                     <ul>
                         <li><strong>The Commodity Cycle:</strong> High commodity prices lead to massive profits, which inevitably leads to over-investment in new mines/plants. By the time these new projects come online years later, the increased supply crushes the commodity price, leading to a bust. Timing the cycle is everything.</li>
-                        <li><strong>The Cost Curve:</strong> Because materials companies cannot control the price they sell their products for, their only competitive advantage is their position on the global cost curve. The best investments are "lowest-quartile" producers—companies whose extraction costs are so low they can remain profitable even during a severe commodity price collapse.</li>
+                        <li><strong>The Cost Curve:</strong> Because materials companies cannot control the price they sell their products for, their only competitive advantage is their position on the global cost curve. The best investments are "lowest-quartile" producersâ€”companies whose extraction costs are so low they can remain profitable even during a severe commodity price collapse.</li>
                         <li><strong>Geopolitical Risk:</strong> Many of the world's most critical minerals (e.g., cobalt, lithium, rare earth elements) are concentrated in politically unstable or hostile jurisdictions. Investors must heavily discount the cash flows of mines located in high-risk areas due to the threat of nationalization or extreme taxation.</li>
                     </ul>
 
@@ -1521,7 +1521,7 @@
                     <p>The Utilities sector consists of companies that provide basic amenities, such as electricity, natural gas, and water. Because these services are essential public goods, the companies operate as localized monopolies that are heavily regulated by government commissions.</p>
 
                     <h3>1. Industry Structure & Dynamics</h3>
-                    <p>Utilities are the ultimate defensive investment. Their revenue is almost entirely insulated from the economic cycle—people do not stop using electricity or water during a recession.</p>
+                    <p>Utilities are the ultimate defensive investment. Their revenue is almost entirely insulated from the economic cycleâ€”people do not stop using electricity or water during a recession.</p>
                     <ul>
                         <li><strong>Regulated Utilities:</strong> Their profit margins and the rates they can charge customers are strictly dictated by state public utility commissions. In exchange for this regulation, they are guaranteed a specific "Return on Equity" (ROE).</li>
                         <li><strong>Unregulated (Merchant) Power Producers:</strong> Companies that generate electricity and sell it on the open wholesale market. They are much riskier and more volatile, as their profitability depends on fluctuating power prices.</li>
@@ -1902,17 +1902,17 @@
                 `
             },
             'stock-valuation-buffett-s-intrinsic-value': {
-                title: 'Buffettâ€™s intrinsic value',
+                title: 'BuffettÃ¢â‚¬â„¢s intrinsic value',
                 content: `
                     
-<p>Dummy content for Buffettâ€™s intrinsic value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+<p>Dummy content for BuffettÃ¢â‚¬â„¢s intrinsic value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
                 `
             },
             'stock-valuation-graham-s-intrinsic-value': {
-                title: 'Grahamâ€™s intrinsic value',
+                title: 'GrahamÃ¢â‚¬â„¢s intrinsic value',
                 content: `
                     
-<p>Dummy content for Grahamâ€™s intrinsic value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+<p>Dummy content for GrahamÃ¢â‚¬â„¢s intrinsic value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
                 `
             },
             'stock-valuation-limitations-of-value': {
@@ -2147,17 +2147,17 @@
                 `
             },
             'stock-valuation-graham-s-formulas': {
-                title: 'Grahamâ€™s formulas',
+                title: 'GrahamÃ¢â‚¬â„¢s formulas',
                 content: `
                     
-<p>Dummy content for Grahamâ€™s formulas goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+<p>Dummy content for GrahamÃ¢â‚¬â„¢s formulas goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
                 `
             },
             'stock-valuation-greenblatt-s-magic-formula': {
-                title: 'Greenblattâ€™s magic formula',
+                title: 'GreenblattÃ¢â‚¬â„¢s magic formula',
                 content: `
                     
-<p>Dummy content for Greenblattâ€™s magic formula goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+<p>Dummy content for GreenblattÃ¢â‚¬â„¢s magic formula goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
                 `
             },
             'stock-valuation-industry-rules-of-thumb': {

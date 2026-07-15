@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 /* Standardize subcategory images */
 .sub-category img,
@@ -2006,7 +2006,7 @@ body {
 }
 
 .secondary-nav .dropdown-toggle::after {
-    content: '▼';
+    content: 'â–¼';
     font-size: 8px;
     margin-left: 5px;
     vertical-align: middle;
@@ -3875,7 +3875,7 @@ select:focus {
 }
 
 .market-table th.sortable::after {
-    content: '↕';
+    content: 'â†•';
     position: absolute;
     right: 4px;
     opacity: 0.5;
@@ -3883,12 +3883,12 @@ select:focus {
 }
 
 .market-table th.sort-asc::after {
-    content: '↑';
+    content: 'â†‘';
     opacity: 1;
 }
 
 .market-table th.sort-desc::after {
-    content: '↓';
+    content: 'â†“';
     opacity: 1;
 }
 
@@ -8120,7 +8120,7 @@ th {
 }
 
 .drawer-toggle::after {
-    content: '▼';
+    content: 'â–¼';
     position: absolute;
     right: 20px;
     top: 50%;
@@ -8726,7 +8726,7 @@ th {
 }
 
 .read-more-link::after {
-    content: '→';
+    content: 'â†’';
     font-size: 12px;
     transition: transform 0.2s ease;
 }
@@ -12732,20 +12732,20 @@ th {
     margin-top: 24px !important;
 }
 
-/* ──── FIX MOBILE BLEEDING ──── */
+/* â”€â”€â”€â”€ FIX MOBILE BLEEDING â”€â”€â”€â”€ */
 .desktop-only {
     display: none !important;
 }
 
 /* =============================================
-   PREMIUM DESKTOP OVERRIDES — FINAL AUTHORITY
+   PREMIUM DESKTOP OVERRIDES â€” FINAL AUTHORITY
    This block MUST be the last desktop override.
    It overrides conflicting blocks at lines:
    14, 3233, 3372, 10134, 10165, 10181, 10387, 10442
    ============================================= */
 @media (min-width: 1024px) {
 
-    /* ──── GLOBAL SMOOTH TRANSITIONS & MICRO-ANIMATIONS ──── */
+    /* â”€â”€â”€â”€ GLOBAL SMOOTH TRANSITIONS & MICRO-ANIMATIONS â”€â”€â”€â”€ */
     a {
         transition: color 0.2s ease, transform 0.2s ease !important;
     }
@@ -12757,7 +12757,7 @@ th {
         box-shadow: 0 6px 16px rgba(0,0,0,0.08) !important;
     }
 
-    /* ──── PREMIUM PAGE BACKGROUND ──── */
+    /* â”€â”€â”€â”€ PREMIUM PAGE BACKGROUND â”€â”€â”€â”€ */
     html:root,
     body,
     body.wealth-creation-page,
@@ -12773,7 +12773,7 @@ th {
         line-height: 1.6 !important;
     }
 
-    /* ──── ULTRA-PREMIUM GLASSMORPHIC HEADER ──── */
+    /* â”€â”€â”€â”€ ULTRA-PREMIUM GLASSMORPHIC HEADER â”€â”€â”€â”€ */
     header.header,
     header.header.sticky-header,
     .date-time-bar {
@@ -12795,12 +12795,12 @@ th {
 
     /* Override block 10200 logo sizing */
     .header .logo img.logo-image {
-        content: url("../images/G&D Logo (for black background).png") !important;
+        content: url("../images/G&D-Logo-(for-black-background).png") !important;
         height: 52px !important;
         width: auto !important;
     }
 
-    /* ──── MODERN ACCORDIONS (Overrides inline clunky blue boxes) ──── */
+    /* â”€â”€â”€â”€ MODERN ACCORDIONS (Overrides inline clunky blue boxes) â”€â”€â”€â”€ */
     body .collapsible-categories {
         gap: 16px !important;
     }
@@ -12866,7 +12866,7 @@ th {
         border-bottom: none !important;
     }
 
-    /* Nav links — override blocks at 10206, 10481 with matching specificity */
+    /* Nav links â€” override blocks at 10206, 10481 with matching specificity */
     .main-nav a,
     .header .main-nav a,
     nav.main-nav.desktop-only ul li a,
@@ -12898,7 +12898,7 @@ th {
         font-size: 13px !important;
     }
 
-    /* ──── HIDE MOBILE / SHOW DESKTOP ──── */
+    /* â”€â”€â”€â”€ HIDE MOBILE / SHOW DESKTOP â”€â”€â”€â”€ */
     .mobile-only,
     .mobile-menu-toggle,
     .mobile-drawer {
@@ -12913,7 +12913,7 @@ th {
         display: block !important;
     }
 
-    /* ──── SECONDARY NAV — override block 10361 ──── */
+    /* â”€â”€â”€â”€ SECONDARY NAV â€” override block 10361 â”€â”€â”€â”€ */
     .secondary-nav {
         display: block !important;
         padding: 8px 0 !important;
@@ -12937,7 +12937,7 @@ th {
         display: none !important;
     }
 
-    /* ──── 2-COLUMN MAIN LAYOUT ────
+    /* â”€â”€â”€â”€ 2-COLUMN MAIN LAYOUT â”€â”€â”€â”€
        The center-column in HTML is EMPTY (line 4661-4663).
        Hide it and use a clean 2-column layout instead.
        Left = Latest News (wide), Right = Feature Articles (sidebar).
@@ -12969,7 +12969,7 @@ th {
         min-width: 0 !important;
     }
 
-    /* ──── ABOVE-FOLD & SPACING ──── */
+    /* â”€â”€â”€â”€ ABOVE-FOLD & SPACING â”€â”€â”€â”€ */
     .above-fold {
         min-height: auto !important;
         padding: 16px 0 0 0 !important;
@@ -12990,7 +12990,7 @@ th {
         border: none !important;
     }
 
-    /* ──── 8-COLUMN CATEGORY GRID ──── */
+    /* â”€â”€â”€â”€ 8-COLUMN CATEGORY GRID â”€â”€â”€â”€ */
     .categories-grid {
         display: grid !important;
         grid-template-columns: repeat(8, 1fr) !important;
@@ -13020,7 +13020,7 @@ th {
         margin-bottom: 6px !important;
     }
 
-    /* Category headings — override block 10547 h3 {font-size: 1.25rem} */
+    /* Category headings â€” override block 10547 h3 {font-size: 1.25rem} */
     .category-heading,
     .category-section h3,
     .category-section .category-heading {
@@ -13035,7 +13035,7 @@ th {
         line-height: 1.3 !important;
     }
 
-    /* Category news items — override block 10328 a {font-size: 15px} */
+    /* Category news items â€” override block 10328 a {font-size: 15px} */
     .category-section .news-item {
         padding: 3px 0 !important;
         margin-bottom: 4px !important;
@@ -13065,7 +13065,7 @@ th {
         margin-top: 1px !important;
     }
 
-    /* ──── LATEST NEWS SECTION ──── */
+    /* â”€â”€â”€â”€ LATEST NEWS SECTION â”€â”€â”€â”€ */
     .latest-news {
         margin-bottom: 24px !important;
     }
@@ -13108,7 +13108,7 @@ th {
         color: #4338ca !important;
     }
 
-    /* Latest News items — compact and clean */
+    /* Latest News items â€” compact and clean */
     .category-news-container .news-item,
     .latest-news .news-item {
         padding: 8px 0 !important;
@@ -13243,7 +13243,7 @@ th {
         display: block !important;
     }
 
-    /* ──── GENERAL CARDS (Feature Articles etc.) ──── */
+    /* â”€â”€â”€â”€ GENERAL CARDS (Feature Articles etc.) â”€â”€â”€â”€ */
     .article-item,
     .articles-list .article-item,
     .feature-articles .article-item,
@@ -13263,12 +13263,12 @@ th {
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.07) !important;
     }
 
-    /* News item general override — avoid giant cards */
+    /* News item general override â€” avoid giant cards */
     .news-item {
         margin-bottom: 12px !important;
     }
 
-    /* ──── FEATURE ARTICLES SECTION ──── */
+    /* â”€â”€â”€â”€ FEATURE ARTICLES SECTION â”€â”€â”€â”€ */
     .feature-articles,
     #mobile-feature-articles,
     #feature-articles-section {
@@ -13280,7 +13280,7 @@ th {
         box-shadow: none !important;
     }
 
-    /* ──── SECTION HEADERS ──── */
+    /* â”€â”€â”€â”€ SECTION HEADERS â”€â”€â”€â”€ */
     .section-header,
     .news-section-title {
         color: #1a202c !important;
@@ -13294,7 +13294,7 @@ th {
         padding-bottom: 6px !important;
     }
 
-    /* ──── RIGHT COLUMN (sidebar) — override block 10345 ──── */
+    /* â”€â”€â”€â”€ RIGHT COLUMN (sidebar) â€” override block 10345 â”€â”€â”€â”€ */
     .right-column {
         background: transparent !important;
         padding: 0 !important;
@@ -13302,7 +13302,7 @@ th {
         border-radius: 0 !important;
     }
 
-    /* ──── TYPOGRAPHY OVERRIDES ────
+    /* â”€â”€â”€â”€ TYPOGRAPHY OVERRIDES â”€â”€â”€â”€
        Override blocks 10310-10330 that set overly large global sizes */
     h1 { font-size: 1.75rem !important; }
     h2 { font-size: 1.4rem !important; }
@@ -13314,7 +13314,7 @@ th {
         color: #374151 !important;
     }
 
-    /* ──── LINKS ──── */
+    /* â”€â”€â”€â”€ LINKS â”€â”€â”€â”€ */
     a {
         color: #1e3a8a !important;
         text-decoration: none !important;
@@ -13325,7 +13325,7 @@ th {
         color: #2563eb !important;
     }
 
-    /* ──── BOOKS & BUFFETT ──── */
+    /* â”€â”€â”€â”€ BOOKS & BUFFETT â”€â”€â”€â”€ */
     .buffett-tab-btn,
     .book-category-btn,
     .buffett-tabs-mobile button {
@@ -13367,7 +13367,7 @@ th {
 
     /* (pill styles moved to premium overrides block below) */
 
-    /* ──── CONTAINER WIDTH ──── */
+    /* â”€â”€â”€â”€ CONTAINER WIDTH â”€â”€â”€â”€ */
     .container {
         max-width: 1380px !important;
         margin: 0 auto !important;
@@ -13375,7 +13375,7 @@ th {
         overflow: visible !important;
     }
 
-    /* ──── DROPDOWNS — keep them white (override block 10401) ──── */
+    /* â”€â”€â”€â”€ DROPDOWNS â€” keep them white (override block 10401) â”€â”€â”€â”€ */
     .wealth-creation-dropdown,
     .financial-markets-dropdown,
     .professional-advisers-dropdown,
@@ -13391,7 +13391,7 @@ th {
         color: #1a202c !important;
     }
 
-    /* ──── BUTTONS — override block 10367 ──── */
+    /* â”€â”€â”€â”€ BUTTONS â€” override block 10367 â”€â”€â”€â”€ */
     .show-more-btn,
     .btn,
     .event-register-btn {
@@ -13409,14 +13409,14 @@ th {
         background: #1e40af !important;
     }
 
-    /* ──── SECTIONS SPACING ──── */
+    /* â”€â”€â”€â”€ SECTIONS SPACING â”€â”€â”€â”€ */
     section,
     .full-width-sections {
         margin-top: 16px !important;
         margin-bottom: 16px !important;
     }
 
-    /* ──── ACCESSIBILITY FOCUS ──── */
+    /* â”€â”€â”€â”€ ACCESSIBILITY FOCUS â”€â”€â”€â”€ */
     nav.main-nav a:focus,
     .filter-link:focus {
         outline: 2px solid #d4af37 !important;
@@ -13424,7 +13424,7 @@ th {
         box-shadow: none !important;
     }
 
-    /* ──── FIX CSS ANIMATIONS HIDING CONTENT ──── */
+    /* â”€â”€â”€â”€ FIX CSS ANIMATIONS HIDING CONTENT â”€â”€â”€â”€ */
     .section-fade-in,
     .section-slide-in {
         opacity: 1 !important;
@@ -13432,16 +13432,16 @@ th {
         visibility: visible !important;
     }
 
-    /* ═══════════════════════════════════════════════════════════
-       PREMIUM DESKTOP AESTHETICS — COMPREHENSIVE UI/UX OVERHAUL
-       ═══════════════════════════════════════════════════════════ */
+    /* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+       PREMIUM DESKTOP AESTHETICS â€” COMPREHENSIVE UI/UX OVERHAUL
+       â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
     
-    /* ── 1. GLOBAL TYPOGRAPHY ── */
+    /* â”€â”€ 1. GLOBAL TYPOGRAPHY â”€â”€ */
     body, h1, h2, h3, h4, h5, h6, p, a, span, div, li, button {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
     }
 
-    /* ── 2. PAGE BACKGROUND — remove any blue vignette / glow ── */
+    /* â”€â”€ 2. PAGE BACKGROUND â€” remove any blue vignette / glow â”€â”€ */
     body {
         background: #f5f7fa !important;
         background-image: none !important;
@@ -13451,7 +13451,7 @@ th {
         background-image: none !important;
     }
 
-    /* ── 3. SECTION HEADERS — uniform style with proper accent ── */
+    /* â”€â”€ 3. SECTION HEADERS â€” uniform style with proper accent â”€â”€ */
     h2.news-section-title, 
     .section-header, 
     .recommended-books h2, 
@@ -13485,7 +13485,7 @@ th {
         border-radius: 2px;
     }
 
-    /* ── 4. NAVIGATION MODERNIZATION ── */
+    /* â”€â”€ 4. NAVIGATION MODERNIZATION â”€â”€ */
     .secondary-nav {
         background: #ffffff !important;
         border-bottom: 1px solid #e2e8f0 !important;
@@ -13503,14 +13503,14 @@ th {
         color: #1d4ed8 !important;
     }
 
-    /* ── 5. TOP HEADER ── */
+    /* â”€â”€ 5. TOP HEADER â”€â”€ */
     header.site-header {
         background: #0f172a !important;
         border-bottom: none !important;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12) !important;
     }
 
-    /* ── 6. CATEGORY GRID CARDS ── */
+    /* â”€â”€ 6. CATEGORY GRID CARDS â”€â”€ */
     .categories-grid {
         display: grid !important;
         grid-template-columns: repeat(4, 1fr) !important;
@@ -13560,7 +13560,7 @@ th {
         padding-bottom: 8px !important;
     }
 
-    /* ── 7. LATEST NEWS LIST ITEMS — clean separators ── */
+    /* â”€â”€ 7. LATEST NEWS LIST ITEMS â€” clean separators â”€â”€ */
     .category-news-container .news-item,
     .latest-news .news-item {
         padding: 12px 12px !important;
@@ -13596,7 +13596,7 @@ th {
         color: #2563eb !important;
     }
 
-    /* ── 8. NEWS META (category badge + time) ── */
+    /* â”€â”€ 8. NEWS META (category badge + time) â”€â”€ */
     .news-meta {
         margin-top: 4px !important;
         display: flex !important;
@@ -13622,12 +13622,12 @@ th {
         border-radius: 0 !important;
     }
 
-    /* ── 9. HIDE "Read Full Article" links in news feed ── */
+    /* â”€â”€ 9. HIDE "Read Full Article" links in news feed â”€â”€ */
     .read-more-link {
         display: none !important;
     }
 
-    /* ── 10. SUB-HEADING ROW (Companies, Markets, Industry headers) ── */
+    /* â”€â”€ 10. SUB-HEADING ROW (Companies, Markets, Industry headers) â”€â”€ */
     .sub-heading-row {
         display: flex !important;
         justify-content: space-between !important;
@@ -13645,7 +13645,7 @@ th {
         margin: 0 !important;
     }
 
-    /* ── 11. "SEE MORE" LINKS ── */
+    /* â”€â”€ 11. "SEE MORE" LINKS â”€â”€ */
     .see-more-link {
         display: inline-flex !important;
         align-items: center !important;
@@ -13661,7 +13661,7 @@ th {
         color: #1d4ed8 !important;
     }
 
-    /* ── 12. FEATURE ARTICLES SIDEBAR ── */
+    /* â”€â”€ 12. FEATURE ARTICLES SIDEBAR â”€â”€ */
     .feature-articles,
     #feature-articles-section {
         margin-top: 32px !important;
@@ -13710,7 +13710,7 @@ th {
         margin-top: 6px !important;
     }
 
-    /* ── 13. CLASSIC READINGS ── */
+    /* â”€â”€ 13. CLASSIC READINGS â”€â”€ */
     .container > .right-column {
         max-width: 1380px !important;
         margin: 32px auto !important;
@@ -13755,7 +13755,7 @@ th {
         color: #2563eb !important;
     }
 
-    /* ── 14. BOOKS & BUFFETT SECTIONS — container ── */
+    /* â”€â”€ 14. BOOKS & BUFFETT SECTIONS â€” container â”€â”€ */
     .recommended-books,
     .buffett-section {
         background: #ffffff !important;
@@ -13785,7 +13785,7 @@ th {
         border-bottom: 1px solid #e2e8f0 !important;
     }
 
-    /* ── 15. BOOK/BUFFETT PILLS — THE CRITICAL FIX ──
+    /* â”€â”€ 15. BOOK/BUFFETT PILLS â€” THE CRITICAL FIX â”€â”€
        Earlier rules conflict. We override everything here with maximum specificity. */
     .recommended-book-link,
     .desktop-buffett-item,
@@ -13824,7 +13824,7 @@ th {
         display: none !important;
     }
 
-    /* ── 16. BUFFETT TAB CONTROLS ── */
+    /* â”€â”€ 16. BUFFETT TAB CONTROLS â”€â”€ */
     .buffett-tabs {
         display: flex !important;
         gap: 6px !important;
@@ -13862,7 +13862,7 @@ th {
         color: #1e293b !important;
     }
 
-    /* ──── MODERN CLASSIC READINGS ──── */
+    /* â”€â”€â”€â”€ MODERN CLASSIC READINGS â”€â”€â”€â”€ */
     .classic-readings .readings-list li {
         background: #ffffff !important;
         border: 1px solid #e2e8f0 !important;
@@ -13913,7 +13913,7 @@ th {
         color: #2563eb !important;
     }
 
-    /* ── 17. FOOTER ── */
+    /* â”€â”€ 17. FOOTER â”€â”€ */
     footer.footer,
     .footer,
     footer.site-footer,
@@ -13960,7 +13960,7 @@ th {
         color: #cbd5e1 !important;
     }
 
-    /* ── 18. GENERAL LINK STYLING ── */
+    /* â”€â”€ 18. GENERAL LINK STYLING â”€â”€ */
     a {
         color: #1e40af !important;
         text-decoration: none !important;
@@ -13970,7 +13970,7 @@ th {
         color: #2563eb !important;
     }
 
-    /* ── 19. GENERAL TYPOGRAPHY OVERRIDES ── */
+    /* â”€â”€ 19. GENERAL TYPOGRAPHY OVERRIDES â”€â”€ */
     h1 { font-size: 1.75rem !important; }
     h2 { font-size: 1.4rem !important; }
     h3 { font-size: 1.1rem !important; }
@@ -13980,7 +13980,7 @@ th {
         line-height: 1.6 !important;
     }
 
-    /* ── 20. RIGHT COLUMN (sidebar) ── */
+    /* â”€â”€ 20. RIGHT COLUMN (sidebar) â”€â”€ */
     .right-column {
         background: transparent !important;
         padding: 0 !important;
@@ -13988,14 +13988,14 @@ th {
         border-radius: 0 !important;
     }
 
-    /* ── 21. FULL-WIDTH SECTIONS ── */
+    /* â”€â”€ 21. FULL-WIDTH SECTIONS â”€â”€ */
     .full-width-sections {
         max-width: 1380px !important;
         margin: 24px auto !important;
         padding: 0 24px !important;
     }
 
-    /* ── 22. CONTAINER ── */
+    /* â”€â”€ 22. CONTAINER â”€â”€ */
     .container {
         max-width: 1380px !important;
         margin: 0 auto !important;
@@ -14003,7 +14003,7 @@ th {
         overflow: visible !important;
     }
 
-    /* ── 23. DROPDOWNS — keep white ── */
+    /* â”€â”€ 23. DROPDOWNS â€” keep white â”€â”€ */
     .wealth-creation-dropdown,
     .financial-markets-dropdown,
     .professional-advisers-dropdown,
@@ -14016,7 +14016,7 @@ th {
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
     }
 
-    /* ── 24. FOCUS STATES ── */
+    /* â”€â”€ 24. FOCUS STATES â”€â”€ */
     a:focus-visible,
     button:focus-visible {
         outline: 2px solid #2563eb !important;
@@ -14024,12 +14024,12 @@ th {
         box-shadow: none !important;
     }
 
-    /* ── 25. NEWS ITEM GENERAL — avoid giant cards in feed ── */
+    /* â”€â”€ 25. NEWS ITEM GENERAL â€” avoid giant cards in feed â”€â”€ */
     .news-item {
         margin-bottom: 0 !important;
     }
 
-    /* ── 26. "SEE MORE" LINKS WITHIN BOOKS SECTION ── */
+    /* â”€â”€ 26. "SEE MORE" LINKS WITHIN BOOKS SECTION â”€â”€ */
     .mobile-books-see-more-link,
     .recommended-books .see-more-link {
         display: inline-flex !important;
@@ -14041,7 +14041,7 @@ th {
         text-decoration: none !important;
     }
 
-    /* ── 27. CATEGORY GRID HEADLINE TITLES ── */
+    /* â”€â”€ 27. CATEGORY GRID HEADLINE TITLES â”€â”€ */
     .category-h3, .category-h3 a, 
     .categories-grid h3, .categories-grid a h3,
     .category-section h4, .category-section h4 a {
@@ -14057,7 +14057,7 @@ th {
     
 @media (min-width: 1024px) {
 
-    /* ──── ENHANCED BOOK PILLS ──── */
+    /* â”€â”€â”€â”€ ENHANCED BOOK PILLS â”€â”€â”€â”€ */
     .recommended-books .recommended-book-link,
     .book-category .recommended-book-link,
     .books-categories .recommended-book-link {
@@ -14098,7 +14098,7 @@ th {
 
 @media (min-width: 1024px) {
 
-    /* ──── 1. ELEGANT HERO BANNER ──── */
+    /* â”€â”€â”€â”€ 1. ELEGANT HERO BANNER â”€â”€â”€â”€ */
     .elegant-hero-banner {
         margin: 40px 0 32px 0;
         padding: 40px;
@@ -14141,7 +14141,7 @@ th {
         line-height: 1.6 !important;
     }
 
-    /* ──── 2. FEATURE ARTICLES SIDEBAR (GLASSMORPHIC) ──── */
+    /* â”€â”€â”€â”€ 2. FEATURE ARTICLES SIDEBAR (GLASSMORPHIC) â”€â”€â”€â”€ */
     .feature-articles {
         background: rgba(255, 255, 255, 0.75) !important;
         backdrop-filter: blur(12px) !important;
@@ -14196,7 +14196,7 @@ th {
         color: #2563eb !important;
     }
 
-    /* ──── 3. CLASSIC READINGS ELEVATION ──── */
+    /* â”€â”€â”€â”€ 3. CLASSIC READINGS ELEVATION â”€â”€â”€â”€ */
     .classic-readings {
         background: transparent !important;
         border: none !important;
@@ -14280,7 +14280,7 @@ th {
         color: #2563eb !important;
     }
 
-    /* ──── 4. LATEST NEWS TYPOGRAPHY & "SEE MORE" ──── */
+    /* â”€â”€â”€â”€ 4. LATEST NEWS TYPOGRAPHY & "SEE MORE" â”€â”€â”€â”€ */
     .latest-news .category-list li {
         margin-bottom: 20px !important;
         line-height: 1.6 !important;
@@ -14347,7 +14347,7 @@ th {
         color: #1e293b !important;
     }
 
-    /* ──── 5. WARREN BUFFETT TABS (SEGMENTED CONTROL) ──── */
+    /* â”€â”€â”€â”€ 5. WARREN BUFFETT TABS (SEGMENTED CONTROL) â”€â”€â”€â”€ */
     .buffett-categories-container {
         border-top: none !important;
         border-bottom: none !important;
@@ -14401,7 +14401,7 @@ th {
 
 @media (min-width: 1024px) {
 
-    /* ──── 1. CONTACT INFO BOX REFINEMENT ──── */
+    /* â”€â”€â”€â”€ 1. CONTACT INFO BOX REFINEMENT â”€â”€â”€â”€ */
     .footer.desktop-only {
         background: transparent !important;
         padding: 60px 0 0 0 !important;
@@ -14439,7 +14439,7 @@ th {
         display: inline-block !important;
     }
 
-    /* ──── 2. DISCLAIMER REFINEMENT ──── */
+    /* â”€â”€â”€â”€ 2. DISCLAIMER REFINEMENT â”€â”€â”€â”€ */
     .site-footer.desktop-only {
         background: transparent !important;
         padding: 32px 0 64px 0 !important;
@@ -14471,7 +14471,7 @@ th {
         color: #334155 !important;
     }
 
-    /* ──── 3. WARREN BUFFETT SUB-TOPIC PILLS ──── */
+    /* â”€â”€â”€â”€ 3. WARREN BUFFETT SUB-TOPIC PILLS â”€â”€â”€â”€ */
     .buffett-topics .desktop-buffett-item,
     .buffett-section-content .desktop-buffett-item {
         background: rgba(255, 255, 255, 0.8) !important;
@@ -14506,7 +14506,7 @@ th {
 
 @media (min-width: 1024px) {
 
-    /* ──── Hide Commas Between Buffett Pills ──── */
+    /* â”€â”€â”€â”€ Hide Commas Between Buffett Pills â”€â”€â”€â”€ */
     .buffett-topics .comma-text {
         display: none !important;
     }
@@ -14515,7 +14515,7 @@ th {
 
 @media (min-width: 1024px) {
 
-    /* ──── 1. GLASSMORPHIC MEGA-MENUS ──── */
+    /* â”€â”€â”€â”€ 1. GLASSMORPHIC MEGA-MENUS â”€â”€â”€â”€ */
     .dropdown-content {
         background: rgba(255, 255, 255, 0.9) !important;
         backdrop-filter: blur(20px) !important;
@@ -14555,7 +14555,7 @@ th {
         padding-left: 20px !important;
     }
 
-    /* ──── 2. INTERACTIVE NEWS FEED ──── */
+    /* â”€â”€â”€â”€ 2. INTERACTIVE NEWS FEED â”€â”€â”€â”€ */
     .latest-news .news-item {
         position: relative !important;
         padding: 16px 20px !important;
@@ -14595,7 +14595,7 @@ th {
         color: #2563eb !important;
     }
 
-    /* ──── 3. CINEMATIC SCROLL REVEAL UTILITIES ──── */
+    /* â”€â”€â”€â”€ 3. CINEMATIC SCROLL REVEAL UTILITIES â”€â”€â”€â”€ */
     .reveal-on-scroll {
         opacity: 0;
         transform: translateY(30px);
