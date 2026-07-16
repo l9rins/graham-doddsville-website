@@ -19,7 +19,9 @@ app.use(helmet({
             styleSrc: ["'self'", "'unsafe-inline'", "https://cdn.jsdelivr.net", "https://fonts.googleapis.com"],
             fontSrc: ["'self'", "https://fonts.gstatic.com"],
             imgSrc: ["'self'", "data:", "https:", "http:"],
-            connectSrc: ["'self'", "https://api.currentsapi.services"]
+            connectSrc: ["'self'", "https://api.currentsapi.services"],
+            manifestSrc: ["'self'", "data:"],
+            scriptSrcAttr: ["'unsafe-inline'"]
         }
     },
     crossOriginEmbedderPolicy: false
