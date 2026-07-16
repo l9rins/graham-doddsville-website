@@ -338,6 +338,8 @@ async function buildHybridPipeline() {
       }
 
 
+    const { matchesRegion, GLOBAL_SOURCES_NEEDING_FILTER } = require('./region-keywords');
+
     for (const [category, items] of Object.entries(fallbackCatDomains)) {
         if (items.length > 0) {
             const catDomains = items.map(i => i.host);
@@ -347,7 +349,20 @@ async function buildHybridPipeline() {
             articles.forEach(a => {
                 const matchedSource = items.find(i => a.url.includes(i.host));
                 if (matchedSource) a.source.name = matchedSource.name;
-                allArticles.push(formatArticle(a, category));
+                
+                let assignedCategory = category;
+                
+                // If the source is a global source and we are assigning it to a regional tab, we must verify the region
+                if (['north-america', 'europe', 'asia', 'elsewhere'].includes(category)) {
+                    if (GLOBAL_SOURCES_NEEDING_FILTER.includes(a.source.name)) {
+                        const contentToMatch = (a.title + ' ' + (a.description || '')).trim();
+                        if (!matchesRegion(contentToMatch, category)) {
+                            assignedCategory = 'international';
+                        }
+                    }
+                }
+                
+                allArticles.push(formatArticle(a, assignedCategory));
             });
         }
     }
@@ -380,7 +395,19 @@ async function buildHybridPipeline() {
                     else if (s.name === 'AFCA') fetched = await scrapeAFCA();
                 }
                 
-                allArticles.push(...fetched.map(a => formatArticle(a, category)).filter(Boolean));
+                allArticles.push(...fetched.map(a => {
+                    let assignedCategory = category;
+                    // Apply regional filtering for global sources
+                    if (['north-america', 'europe', 'asia', 'elsewhere'].includes(category)) {
+                        if (GLOBAL_SOURCES_NEEDING_FILTER.includes(s.name)) {
+                            const contentToMatch = ((a.title || '') + ' ' + (a.description || '')).trim();
+                            if (!matchesRegion(contentToMatch, category)) {
+                                assignedCategory = 'international';
+                            }
+                        }
+                    }
+                    return formatArticle(a, assignedCategory);
+                }).filter(Boolean));
             })());
         }
     }

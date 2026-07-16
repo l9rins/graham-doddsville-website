@@ -338,13 +338,21 @@ class NewsDisplayManager {
 
         const freshArticles = [];
         const backfillArticles = [];
+        const sourceCounts = {};
 
         validArticles.forEach(item => {
+            const sourceName = item.source?.name || item.source || 'Unknown';
+            // Apply diversity cap: max 2 articles per source in any given category container
+            if (sourceCounts[sourceName] >= 2) return;
+            
             const diffHours = (now - new Date(item.publishedAt)) / (1000 * 60 * 60);
             if (diffHours <= freshHours) {
                 freshArticles.push(item);
+                sourceCounts[sourceName] = (sourceCounts[sourceName] || 0) + 1;
             } else if (diffHours <= hardHours) {
                 backfillArticles.push(item);
+                // Backfill articles are also capped to prevent a single source dominating older news
+                sourceCounts[sourceName] = (sourceCounts[sourceName] || 0) + 1;
             }
         });
 
