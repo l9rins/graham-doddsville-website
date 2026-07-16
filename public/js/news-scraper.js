@@ -313,12 +313,12 @@ class NewsDisplayManager {
                     // 1. Sort by Date (Newest First)
                     rawArticles.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
 
-                    // 2. SMART SELECTION
-                    let selectedArticles = this.getSmartArticles(rawArticles, config.limit, 20, config.freshLimit, config.hardLimit);
+                    // 2. SMART SELECTION (Strict 5 for homepage)
+                    let selectedArticles = this.getSmartArticles(rawArticles, config.limit, config.limit, config.freshLimit, config.hardLimit);
 
                     // 3. BACKFILL FROM TOTAL POOL (IF STILL EMPTY)
                     if (selectedArticles.length === 0 && news.length > 0) {
-                        selectedArticles = this.getSmartArticles(news, config.limit, 20, config.freshLimit, config.hardLimit);
+                        selectedArticles = this.getSmartArticles(news, config.limit, config.limit, config.freshLimit, config.hardLimit);
                     }
 
                     if (selectedArticles.length > 0) {
@@ -329,6 +329,32 @@ class NewsDisplayManager {
             });
         });
 
+        // Dedicated Category Page Logic (Expanded 6-20 view)
+        if (window.location.pathname.includes('category.html')) {
+            const urlParams = new URLSearchParams(window.location.search);
+            const categoryType = urlParams.get('type');
+            const categoryNewsContainer = document.getElementById('category-page-news-container');
+            const categoryNewsSection = document.getElementById('category-news-section');
+            
+            if (categoryType && categoryNewsContainer && categoryContainers[categoryType]) {
+                const config = categoryContainers[categoryType];
+                let rawArticles = newsByCategory[categoryType] || [];
+                rawArticles.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+                
+                // Allow up to 20 articles on the dedicated page
+                let selectedArticles = this.getSmartArticles(rawArticles, config.limit, 20, config.freshLimit, config.hardLimit);
+                
+                if (selectedArticles.length === 0 && news.length > 0) {
+                    selectedArticles = this.getSmartArticles(news, config.limit, 20, config.freshLimit, config.hardLimit);
+                }
+                
+                if (selectedArticles.length > 0) {
+                    categoryNewsContainer.innerHTML = selectedArticles.map(item => this.createNewsItemHTML(item)).join('');
+                    if (categoryNewsSection) categoryNewsSection.style.display = 'block';
+                }
+            }
+        }
+
         this.updateLastUpdatedTime();
     }
 
@@ -338,6 +364,7 @@ class NewsDisplayManager {
 
         const freshArticles = [];
         const backfillArticles = [];
+        const rejectedArticles = [];
         const sourceCounts = {};
 
         validArticles.forEach(item => {
@@ -349,7 +376,10 @@ class NewsDisplayManager {
             }
             
             // Apply diversity cap: max 2 articles per source in any given category container
-            if (sourceCounts[sourceName] >= 2) return;
+            if (sourceCounts[sourceName] >= 2) {
+                rejectedArticles.push(item);
+                return;
+            }
             
             const diffHours = (now - new Date(item.publishedAt)) / (1000 * 60 * 60);
             if (diffHours <= freshHours) {
@@ -370,6 +400,13 @@ class NewsDisplayManager {
         if (result.length < minLimit && backfillArticles.length > 0) {
             const needed = minLimit - result.length;
             result = result.concat(backfillArticles.slice(0, needed));
+        }
+
+        // EMERGENCY FALLBACK: if we STILL don't have enough articles to meet the minimum floor,
+        // relax the diversity cap and fill the remaining slots with articles we initially rejected
+        if (result.length < minLimit && rejectedArticles.length > 0) {
+            const needed = minLimit - result.length;
+            result = result.concat(rejectedArticles.slice(0, needed));
         }
 
         return result;

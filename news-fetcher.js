@@ -224,12 +224,22 @@ async function fetchGoogleNewsRSS(domains, keywords = '') {
             const url = 'https://news.google.com/rss/search?q=' + encodeURIComponent(q);
             try {
                 const feed = await parser.parseURL(url);
-                const chunkArticles = feed.items.map(item => ({
-                    title: item.title ? item.title.replace(/ - Google News$/, '').replace(/ - .*?$/, '').trim() : '',
-                    url: item.link,
-                    source: { name: 'Google News (Aggregated)' },
-                    publishedAt: item.pubDate || item.isoDate || new Date().toISOString()
-                }));
+                const chunkArticles = feed.items.map(item => {
+                    let titleStr = item.title || '';
+                    titleStr = titleStr.replace(/\s*-\s*Google News$/, '');
+                    let extractedSource = 'Google News (Aggregated)';
+                    const match = titleStr.match(/\s*-\s*([^-]+)$/);
+                    if (match) {
+                        extractedSource = match[1].trim();
+                        titleStr = titleStr.replace(match[0], '').trim();
+                    }
+                    return {
+                        title: titleStr,
+                        url: item.link,
+                        source: { name: extractedSource },
+                        publishedAt: item.pubDate || item.isoDate || new Date().toISOString()
+                    };
+                });
                 allArticles.push(...chunkArticles);
             } catch(e) {
                 console.error('Google News RSS fetch error for chunk:', e.message);
