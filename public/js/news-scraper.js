@@ -265,25 +265,32 @@ class NewsDisplayManager {
 
         const newsByCategory = {};
         news.forEach(item => {
-            const category = item.category || 'General';
+            const category = (item.category || 'general').toLowerCase().replace(/\s+/g, '-');
             if (!newsByCategory[category]) newsByCategory[category] = [];
             newsByCategory[category].push(item);
-        });
 
-        if (!newsByCategory['Feature Articles'] && newsByCategory['General']) {
-            newsByCategory['Feature Articles'] = newsByCategory['General'];
-        }
+            // Create a combined 'world' category for the desktop 'top-around-world-news' container
+            if (['north-america', 'europe', 'asia', 'elsewhere'].includes(category)) {
+                if (!newsByCategory['world']) newsByCategory['world'] = [];
+                newsByCategory['world'].push(item);
+            }
+        });
 
         // Configuration:
         // Supports BOTH ID formats to override any other script
         const categoryContainers = {
-            'Companies': { ids: ['companies-news', 'top-companies-news', 'companies-news-mobile'], limit: 5, freshLimit: 48, hardLimit: 336 },
-            'Markets': { ids: ['markets-news', 'top-markets-news', 'markets-news-mobile'], limit: 5, freshLimit: 48, hardLimit: 336 },
-            'Economy': { ids: ['economy-news', 'top-economy-news', 'economy-news-mobile'], limit: 5, freshLimit: 48, hardLimit: 336 },
-            'Industry': { ids: ['industry-news', 'top-industry-news', 'industry-news-mobile'], limit: 5, freshLimit: 48, hardLimit: 336 },
-            'Regulatory': { ids: ['regulatory-news', 'top-regulatory-news', 'regulatory-news-mobile'], limit: 5, freshLimit: 168, hardLimit: 504 },
-            'Guru Watch': { ids: ['guru-watch-news', 'top-guru-watch-news', 'guru-watch-news-mobile'], limit: 5, freshLimit: 168, hardLimit: 720 },
-            'Feature Articles': { ids: ['feature-articles-container'], limit: 10, freshLimit: 48, hardLimit: 336 }
+            'companies': { ids: ['companies-news', 'top-companies-news', 'companies-news-mobile'], limit: 5, freshLimit: 48, hardLimit: 336 },
+            'markets': { ids: ['markets-news', 'top-markets-news', 'markets-news-mobile'], limit: 5, freshLimit: 48, hardLimit: 336 },
+            'economy': { ids: ['economy-news', 'top-economy-news', 'economy-news-mobile'], limit: 5, freshLimit: 48, hardLimit: 336 },
+            'industry': { ids: ['industry-news', 'top-industry-news', 'industry-news-mobile'], limit: 5, freshLimit: 48, hardLimit: 336 },
+            'regulatory': { ids: ['regulatory-news', 'top-regulatory-news', 'regulatory-news-mobile'], limit: 5, freshLimit: 168, hardLimit: 504 },
+            'guru-watch': { ids: ['guru-watch-news', 'top-guru-watch-news', 'guru-watch-news-mobile'], limit: 5, freshLimit: 168, hardLimit: 720 },
+            'feature-articles': { ids: ['feature-articles-container'], limit: 10, freshLimit: 48, hardLimit: 336 },
+            'north-america': { ids: ['north-america-news'], limit: 5, freshLimit: 48, hardLimit: 336 },
+            'europe': { ids: ['europe-news'], limit: 5, freshLimit: 48, hardLimit: 336 },
+            'asia': { ids: ['asia-news'], limit: 5, freshLimit: 48, hardLimit: 336 },
+            'elsewhere': { ids: ['elsewhere-news'], limit: 5, freshLimit: 48, hardLimit: 336 },
+            'world': { ids: ['top-around-world-news'], limit: 5, freshLimit: 48, hardLimit: 336 }
         };
 
         Object.keys(categoryContainers).forEach(category => {
