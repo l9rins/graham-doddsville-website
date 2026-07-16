@@ -314,11 +314,11 @@ class NewsDisplayManager {
                     rawArticles.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
 
                     // 2. SMART SELECTION
-                    let selectedArticles = this.getSmartArticles(rawArticles, config.limit, config.freshLimit, config.hardLimit);
+                    let selectedArticles = this.getSmartArticles(rawArticles, config.limit, 20, config.freshLimit, config.hardLimit);
 
                     // 3. BACKFILL FROM TOTAL POOL (IF STILL EMPTY)
                     if (selectedArticles.length === 0 && news.length > 0) {
-                        selectedArticles = this.getSmartArticles(news, config.limit, config.freshLimit, config.hardLimit);
+                        selectedArticles = this.getSmartArticles(news, config.limit, 20, config.freshLimit, config.hardLimit);
                     }
 
                     if (selectedArticles.length > 0) {
@@ -332,7 +332,7 @@ class NewsDisplayManager {
         this.updateLastUpdatedTime();
     }
 
-    getSmartArticles(articles, limit, freshHours, hardHours) {
+    getSmartArticles(articles, minLimit, maxLimit, freshHours, hardHours) {
         const now = new Date();
         const validArticles = articles.filter(item => !isNaN(new Date(item.publishedAt).getTime()));
 
@@ -341,28 +341,38 @@ class NewsDisplayManager {
         const sourceCounts = {};
 
         validArticles.forEach(item => {
-            const sourceName = item.source?.name || item.source || 'Unknown';
+            // Defensive source extraction to ensure diversity cap works even if source is a string or differently structured object
+            let sourceName = 'Unknown';
+            if (item.source) {
+                if (typeof item.source === 'string') sourceName = item.source;
+                else if (item.source.name) sourceName = item.source.name;
+            }
+            
             // Apply diversity cap: max 2 articles per source in any given category container
             if (sourceCounts[sourceName] >= 2) return;
             
             const diffHours = (now - new Date(item.publishedAt)) / (1000 * 60 * 60);
             if (diffHours <= freshHours) {
-                freshArticles.push(item);
-                sourceCounts[sourceName] = (sourceCounts[sourceName] || 0) + 1;
+                if (freshArticles.length < maxLimit) {
+                    freshArticles.push(item);
+                    sourceCounts[sourceName] = (sourceCounts[sourceName] || 0) + 1;
+                }
             } else if (diffHours <= hardHours) {
-                backfillArticles.push(item);
-                // Backfill articles are also capped to prevent a single source dominating older news
-                sourceCounts[sourceName] = (sourceCounts[sourceName] || 0) + 1;
+                // We only need backfill articles if we haven't hit the minLimit
+                if (freshArticles.length + backfillArticles.length < minLimit) {
+                    backfillArticles.push(item);
+                    sourceCounts[sourceName] = (sourceCounts[sourceName] || 0) + 1;
+                }
             }
         });
 
         let result = [...freshArticles];
-        if (result.length < limit && backfillArticles.length > 0) {
-            const needed = limit - result.length;
+        if (result.length < minLimit && backfillArticles.length > 0) {
+            const needed = minLimit - result.length;
             result = result.concat(backfillArticles.slice(0, needed));
         }
 
-        return result.slice(0, limit);
+        return result;
     }
 
     createNewsItemHTML(item) {

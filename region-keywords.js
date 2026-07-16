@@ -56,7 +56,13 @@ function matchesRegion(text, region) {
 
   return keywords.some((kw) => {
     const escaped = kw.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    const pattern = new RegExp(`\\b${escaped}\\b`, "i");
+    
+    // If the keyword is purely uppercase letters (and optionally punctuation like U.S.), 
+    // treat it as an acronym and match case-sensitively.
+    const isAcronym = /^[A-Z&.]+$/.test(kw);
+    const flags = isAcronym ? "" : "i";
+    
+    const pattern = new RegExp(`\\b${escaped}\\b`, flags);
     return pattern.test(text);
   });
 }
@@ -70,7 +76,8 @@ const GLOBAL_SOURCES_NEEDING_FILTER = [
   "CNBC Europe",
   "The Guardian",
   "Guardian",
-  "Guardian Australia"
+  "Guardian Australia",
+  "The Diplomat"
 ];
 
 module.exports = {
