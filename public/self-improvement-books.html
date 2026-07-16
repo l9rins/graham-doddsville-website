@@ -73,7 +73,7 @@
             <!-- Page Title Section -->
             <section class="page-title-section">
                 <div class="breadcrumb">
-                    <a href="index.html" class="breadcrumb-link">â† Home</a>
+                    <a href="index.html" class="breadcrumb-link">← Home</a>
                 </div>
                 <h1 class="page-title">Self-Improvement Books</h1>
                 <p class="page-subtitle">Personal development and growth strategies for lifelong success</p>
@@ -1297,7 +1297,7 @@
                     const s = c.closest('.collapsible-section');
                     if (s) s.classList.remove('active');
                     const a = document.getElementById(c.id.replace('-content', '-arrow'));
-                    if (a) a.innerHTML = 'â–¼';
+                    if (a) a.innerHTML = '▼';
                 }
             });
 
@@ -1311,13 +1311,13 @@
                     content.style.maxHeight = height + "px";
                 }
                 if (section) section.classList.add('active');
-                if (arrow) arrow.innerHTML = 'â–²';
+                if (arrow) arrow.innerHTML = '▲';
             } else {
                 content.style.maxHeight = null;
                 content.classList.remove('expanded');
                 content.classList.add('collapsed');
                 if (section) section.classList.remove('active');
-                if (arrow) arrow.innerHTML = 'â–¼';
+                if (arrow) arrow.innerHTML = '▼';
             }
         }
 </script>

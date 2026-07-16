@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -956,7 +956,7 @@
         <div class="wealth-creation-page-content" style="max-width: 1000px; margin: 0 auto;">
     <div class="wealth-creation-header" style="text-align: left; border-bottom: 2px solid var(--border-light); padding-bottom: 24px; margin-bottom: 32px;">
         <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 12px;">
-            <a href="index.html" style="color: var(--primary-blue); text-decoration: none; font-weight: 500; font-size: 14px;">â† Back to Books</a>
+            <a href="index.html" style="color: var(--primary-blue); text-decoration: none; font-weight: 500; font-size: 14px;">← Back to Books</a>
             <span style="color: var(--text-muted); font-size: 14px;">|</span>
             <span id="book-category" style="background: rgba(30, 64, 175, 0.1); color: var(--primary-blue); padding: 4px 12px; border-radius: 99px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Category</span>
         </div>
@@ -975,7 +975,7 @@
                 <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-top: 0; margin-bottom: 16px;">Get the Book</h3>
                 <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 24px;">Support the site by purchasing the full book through our Amazon affiliate link.</p>
                 <a id="amazon-link" href="#" target="_self" rel="noopener" style="display: flex; align-items: center; justify-content: center; gap: 8px; background: #FF9900; color: #111; padding: 14px 24px; border-radius: 99px; text-decoration: none; font-weight: 700; font-size: 16px; transition: all 0.2s ease; box-shadow: 0 4px 12px rgba(255, 153, 0, 0.3);">
-                    Buy on Amazon <span style="font-size: 18px;">â†’</span>
+                    Buy on Amazon <span style="font-size: 18px;">←’</span>
                 </a>
             </div>
         </div>
@@ -1036,6 +1036,23 @@
         border-radius: var(--radius-lg);
         padding: 24px;
         margin-bottom: 32px;
+        display: flex;
+        gap: 32px;
+        align-items: flex-start;
+    }
+    .meta-info { flex: 1; }
+    .meta-image img {
+        max-width: 150px !important;
+        border-radius: 8px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        margin: 0 !important;
+    }
+    @media (max-width: 600px) {
+        .metadata-card {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
     }
     .meta-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px !important; }
     .meta-author { font-size: 1.1rem; color: var(--primary-blue); font-weight: 600; margin-bottom: 16px !important; }
@@ -1224,7 +1241,7 @@
                             el.className = 'comments-header';
                             el.textContent = 'Top Comments';
                         }
-                        else if (tagName === 'li' || /^\d+\.\s/.test(text) || /^"[^"]+" â€“/.test(text)) {
+                        else if (tagName === 'li' || /^\d+\.\s/.test(text) || /^"[^"]+" –/.test(text)) {
                             el.className = 'review-comment';
                         }
                     }
@@ -1273,12 +1290,30 @@
                 metaDataContainer.className = 'metadata-card';
                 metaElements[0].parentNode.insertBefore(metaDataContainer, metaElements[0]);
                 
+                let infoContainer = document.createElement('div');
+                infoContainer.className = 'meta-info';
+                
                 metaElements.forEach((p, index) => {
                     if (index === 0) p.className = 'meta-title';
                     else if (index === 1) p.className = 'meta-author';
                     else p.className = 'meta-details';
-                    metaDataContainer.appendChild(p);
+                    infoContainer.appendChild(p);
                 });
+                
+                let imgEl = contentEl.querySelector('img.book-cover-summary');
+                if (imgEl) {
+                    let imgContainer = document.createElement('div');
+                    imgContainer.className = 'meta-image';
+                    let imgParent = imgEl.closest('p');
+                    imgContainer.appendChild(imgEl); // move img into meta-image
+                    metaDataContainer.appendChild(imgContainer);
+                    
+                    if (imgParent && imgParent.innerHTML.trim() === '') {
+                        imgParent.remove();
+                    }
+                }
+                
+                metaDataContainer.appendChild(infoContainer);
             }
             
         } else {
@@ -1316,7 +1351,7 @@
                     const s = c.closest('.collapsible-section');
                     if (s) s.classList.remove('active');
                     const a = document.getElementById(c.id.replace('-content', '-arrow'));
-                    if (a) a.innerHTML = 'â–¼';
+                    if (a) a.innerHTML = '▼';
                 }
             });
 
@@ -1330,13 +1365,13 @@
                     content.style.maxHeight = height + "px";
                 }
                 if (section) section.classList.add('active');
-                if (arrow) arrow.innerHTML = 'â–²';
+                if (arrow) arrow.innerHTML = '▲';
             } else {
                 content.style.maxHeight = null;
                 content.classList.remove('expanded');
                 content.classList.add('collapsed');
                 if (section) section.classList.remove('active');
-                if (arrow) arrow.innerHTML = 'â–¼';
+                if (arrow) arrow.innerHTML = '▼';
             }
         }
     </script>

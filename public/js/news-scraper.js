@@ -361,7 +361,7 @@ class NewsDisplayManager {
                 <div class="news-item-mobile news-fade-in" style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #f0f0f0;" data-category="${item.category}">
                     <div style="display:flex; justify-content:space-between; align-items:flex-start;">
                         <div style="flex:1;">
-                            <a href="${item.url || '#'}" target="_blank" rel="noopener noreferrer" style="font-family: Georgia, serif; font-size: 15px; font-weight: 600; color: #111; text-decoration: none; line-height: 1.4;">${item.title}</a>
+                            <a href="${item.url || '#'}"  rel="noopener noreferrer" style="font-family: Georgia, serif; font-size: 15px; font-weight: 600; color: #111; text-decoration: none; line-height: 1.4;">${item.title}</a>
                             <div style="margin-top:4px; font-size: 11px; color: #666;">
                                 <span style="text-transform:uppercase; font-weight:bold; color:#1e3a8a;">${abbreviation}</span>
                                 · ${formattedDate}
@@ -376,12 +376,11 @@ class NewsDisplayManager {
             <div class="news-item news-fade-in" style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #f0f0f0;" data-category="${item.category}">
                 <div style="display:flex; justify-content:space-between; align-items:flex-start;">
                     <div style="flex:1;">
-                        <a href="${item.url || '#'}" target="_blank" rel="noopener noreferrer" style="font-family: Georgia, serif; font-size: 15px; font-weight: 600; color: #111; text-decoration: none; line-height: 1.4;">${item.title}</a>
-                        ${item.excerpt ? `<p style="margin: 4px 0 0; font-size: 13px; color: #555; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">${item.excerpt}</p>` : ''}
+                        <a href="${item.url || '#'}"  rel="noopener noreferrer" style="font-family: Georgia, serif; font-size: 15px; font-weight: 600; color: #111; text-decoration: none; line-height: 1.4;">${item.title}</a>
                         <div style="margin-top:4px; font-size: 11px; color: #666;">
                             <span style="text-transform:uppercase; font-weight:bold; color:#1e3a8a;">${abbreviation}</span>
                             · ${formattedDate}
-                            <span style="margin-left: 8px;"><a href="${item.url || '#'}" target="_blank" rel="noopener noreferrer" style="color: #1e3a8a; text-decoration: none; font-weight: 500;">Read More →</a></span>
+                            <span style="margin-left: 8px;"><a href="${item.url || '#'}"  rel="noopener noreferrer" style="color: #1e3a8a; text-decoration: none; font-weight: 500;">Read More →</a></span>
                         </div>
                     </div>
                 </div>

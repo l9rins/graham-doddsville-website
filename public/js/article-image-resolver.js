@@ -1119,7 +1119,7 @@
       .replace(/[\u0300-\u036f]/g, '')
       .toLowerCase()
       .replace(/&/g, ' and ')
-      .replace(/['â€™]/g, '')
+      .replace(/['’]/g, '')
       .replace(/[^a-z0-9]+/g, ' ')
       .trim()
       .replace(/\s+/g, ' ');

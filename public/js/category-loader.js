@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         container.innerHTML = articles.map(article => `
             <div class="news-item-small">
                 <div class="news-content">
-                    <h4><a href="${article.url}" target="_blank" rel="noopener">${article.title}</a></h4>
+                    <h4><a href="${article.url}"  rel="noopener">${article.title}</a></h4>
                     <span class="news-date">${formatDate(article.publishedAt)}</span>
                 </div>
             </div>

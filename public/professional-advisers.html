@@ -1,260 +1,520 @@
-﻿<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html><html lang="en"><head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Professional Advisers - Graham and Doddsville</title>
+    <meta name="description" content="Guide to professional financial advisers — accountants, financial planners, stockbrokers, lawyers and estate planners in Australia. Graham and Doddsville.">
+    <link rel="canonical" href="https://grahamanddoddsville.com.au/professional-advisers.html">
+
     <link rel="stylesheet" href="css/styles.css?v=3">
+
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+
     <style>
+
         :root {
+
             --primary-blue: #1e3a8a;
+
             --primary-blue-light: #3b82f6;
+
             --primary-blue-dark: #1e40af;
+
             --secondary-gray: #ffffff;
+
             --text-primary: #1f2937;
+
             --text-secondary: #6b7280;
+
             --text-muted: #9ca3af;
+
             --border-light: #e5e7eb;
+
             --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+
             --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
             --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
             --radius-sm: 6px;
+
             --radius-md: 8px;
+
             --radius-lg: 12px;
+
             --radius-xl: 16px;
+
         }
+
+
 
         * {
+
             box-sizing: border-box;
+
         }
+
+
 
         body {
+
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
             line-height: 1.6;
+
             color: var(--text-primary);
+
             background: #ffffff;
+
         }
+
+
 
         .wealth-creation-page {
+
             background: #ffffff;
+
             position: relative;
+
         }
+
+
 
         .wealth-creation-page-content {
+
             max-width: 1200px;
+
             margin: 0 auto;
+
             padding: 24px;
+
         }
+
+
 
         /* Header Section */
+
         .header {
+
             background: #ffffff;
+
             border-bottom: 2px solid #d4af37;
+
             padding: 12px 0;
+
             transition: all 0.3s ease;
+
             overflow: visible;
+
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+
         }
+
+
 
         .sticky-header {
+
             position: sticky;
+
             top: 0;
+
             z-index: 1000;
+
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+
         }
+
+
 
         .header-content {
+
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
+
             gap: 30px;
+
             overflow: visible;
+
             max-width: 1200px;
+
             margin: 0 auto;
+
             padding: 0 20px;
+
             background: transparent;
+
         }
+
+
 
         .logo {
+
             display: flex;
+
             align-items: center;
+
         }
+
+
 
         .logo-image {
+
             height: 40px;
+
             width: auto;
+
         }
+
+
 
         .main-nav {
+
             overflow: visible;
+
         }
+
+
 
         .main-nav ul {
+
             display: flex;
+
             list-style: none;
+
             gap: 35px;
+
             overflow: visible;
+
         }
+
+
 
         .nav-link {
+
             color: #000;
+
             text-decoration: none;
+
             font-weight: 500;
+
             font-size: 14px;
+
             letter-spacing: 0.5px;
+
             text-transform: uppercase;
+
             transition: all 0.3s ease;
+
             position: relative;
+
         }
+
+
 
         .nav-link:hover {
+
             text-decoration: underline;
+
         }
+
+
 
         .mobile-menu-toggle {
+
             display: none;
+
             flex-direction: column;
+
             justify-content: space-around;
+
             width: 30px;
+
             height: 30px;
+
             background: none;
+
             border: none;
+
             cursor: pointer;
+
             padding: 0;
+
             position: absolute;
+
             right: 20px;
+
             top: 50%;
+
             transform: translateY(-50%);
+
         }
+
+
 
         .hamburger-line {
+
             width: 25px;
+
             height: 2px;
+
             background: #333;
+
             border-radius: 1px;
+
             transition: all 0.3s ease;
+
             display: block;
+
             margin: 2px 0;
+
         }
+
+
 
         /* Mobile Menu Toggle Animation */
+
         .mobile-menu-toggle.active .hamburger-line:nth-child(1) {
+
             transform: rotate(45deg) translate(6px, 6px);
+
         }
+
+
 
         .mobile-menu-toggle.active .hamburger-line:nth-child(2) {
+
             opacity: 0;
+
         }
+
+
 
         .mobile-menu-toggle.active .hamburger-line:nth-child(3) {
+
             transform: rotate(-45deg) translate(6px, -6px);
+
         }
+
+
 
         /* Mobile Navigation Drawer */
+
         .mobile-drawer {
+
             position: fixed;
+
             top: 0;
+
             right: -80%;
+
             width: 80%;
+
             height: 100vh;
+
             background: #fff;
+
             z-index: 10000;
+
             transition: right 0.3s ease;
+
             overflow-y: auto;
+
             box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+
             display: block;
+
         }
+
+
 
         .mobile-drawer.open {
+
             right: 0;
+
         }
+
+
 
         .drawer-header {
+
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
+
             padding: 8px 20px;
+
             border-bottom: 1px solid #e0e0e0;
+
             background: #1e3a8a;
+
             color: white;
+
         }
+
+
 
         .drawer-logo {
+
             max-height: 40px;
+
             width: auto;
+
             display: block;
+
         }
+
+
 
         .drawer-close {
+
             background: none;
+
             border: none;
+
             color: white;
+
             font-size: 2rem;
+
             cursor: pointer;
+
             padding: 0;
+
             width: 40px;
+
             height: 40px;
+
             display: flex;
+
             align-items: center;
+
             justify-content: center;
+
         }
+
+
 
         .drawer-nav {
+
             padding: 20px 0;
+
         }
+
+
 
         .drawer-menu {
+
             list-style: none;
+
             margin: 0;
+
             padding: 0;
+
         }
+
+
 
         .drawer-menu li {
+
             border-bottom: 1px solid #ffffff;
+
             margin-bottom: 6px;
+
             padding-left: 20px;
+
         }
+
+
 
         .drawer-link {
+
             display: block;
+
             padding: 6px 20px;
+
             color: #333;
+
             text-decoration: none;
+
             font-weight: 500;
+
             transition: background-color 0.2s ease;
+
         }
+
+
 
         .drawer-link:hover {
+
             background: #ffffff;
+
             color: #1e3a8a;
+
         }
+
+
 
         /* Mobile responsive styles */
+
         @media (max-width: 768px) {
+
             .mobile-menu-toggle {
+
                 display: flex;
+
             }
+
             
+
             .desktop-only {
+
                 display: none;
+
             }
+
         }
+
+
 
         @media (min-width: 769px) {
+
             .mobile-only {
+
                 display: none;
+
             }
+
             
+
             .mobile-drawer {
+
                 display: none;
+
             }
+
         }
 
+
+
         @media (max-width: 768px) {
+
             .wealth-creation-page-content {
+
                 padding: 16px;
+
             }
+
         }
+
+
 
         /* Article Detail Panel - Fullscreen */
         .article-detail-panel {
@@ -358,526 +618,1114 @@
             color: var(--text-secondary);
         }
 
+
+
         /* Page Title Section */
+
         .page-title-section {
+
             background: white;
+
             border-radius: var(--radius-lg);
+
             padding: 32px;
+
             padding-top: 30px;
+
             margin-bottom: 32px;
+
             box-shadow: var(--shadow-md);
+
         }
+
+
 
         .breadcrumb {
+
             margin-bottom: 16px;
+
         }
+
+
 
         .breadcrumb-link {
+
             color: var(--text-secondary);
+
             text-decoration: none;
+
             font-size: 14px;
+
             font-weight: 500;
+
         }
+
+
 
         .breadcrumb-link:hover {
+
             color: var(--primary-blue);
+
         }
+
+
 
         .page-title {
+
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
             font-size: 25px;
+
             font-weight: 600;
+
             color: #6B46C1; /* Brand purple */
+
             margin: 0 0 0px 0;
+
             text-transform: uppercase;
+
             letter-spacing: 1px;
+
             border-bottom: 2px solid #e0e0e0;
+
             padding: 4px 0 4px 4px; /* 4px left padding inside bar */
+
             background: rgba(250, 251, 252, 0.65); /* Reduced opacity by 20% */
+
             height: 32px; /* Reduced from 36px to 32px */
+
             display: flex;
+
             align-items: center;
+
             letter-spacing: -0.02em;
+
         }
+
+
 
         .page-subtitle {
+
             font-size: 1.1rem;
+
             color: var(--text-secondary);
+
             margin: 0;
+
             line-height: 1.5;
+
         }
+
+
 
         /* Collapsible Categories */
+
         .collapsible-categories {
+
             display: flex;
+
             flex-direction: column;
+
             gap: 16px;
+
         }
+
+
 
         .collapsible-section {
+
             background: white;
+
             border-radius: var(--radius-lg);
+
             box-shadow: var(--shadow-md);
+
             overflow: hidden;
+
             transition: transform 0.2s ease;
+
         }
+
+
 
         .collapsible-section:hover {
+
             transform: translateY(-2px);
+
         }
+
+
 
         .collapsible-header {
+
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
+
             padding: 20px 24px;
+
             background: var(--primary-blue);
+
             color: white;
+
             cursor: pointer;
+
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
         }
+
+
 
         .collapsible-header:hover {
+
             background: var(--primary-blue-dark);
+
             transform: translateY(-1px);
+
             box-shadow: 0 4px 12px rgba(30, 64, 175, 0.15);
+
         }
+
+
 
         .collapsible-title {
+
             font-size: 1.25rem;
+
             font-weight: 600;
+
             margin: 0;
+
             color: white;
+
         }
+
+
 
         .collapsible-arrow {
+
             font-size: 1.2rem;
+
             font-weight: bold;
+
             transition: transform 0.3s ease;
+
             color: white;
+
         }
+
+
 
         .collapsible-arrow.rotated {
+
             transform: rotate(180deg);
+
         }
+
+
 
         .collapsible-content {
+
             max-height: 0;
+
             overflow: hidden;
+
             transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+
                         opacity 0.3s ease,
+
                         padding 0.3s ease;
+
             opacity: 0;
+
             padding: 0 24px;
+
         }
+
+
 
         .collapsible-content.expanded {
+
             max-height: 1000px;
+
             opacity: 1;
+
             padding: 12px 24px 24px 24px;
+
         }
+
+
 
         .collapsible-links {
+
             list-style: none;
+
             padding: 0;
+
             margin: 0;
+
         }
+
+
 
         .collapsible-links li {
+
             border-bottom: 1px solid var(--border-light);
+
         }
+
+
 
         .collapsible-links li:last-child {
+
             border-bottom: none;
+
         }
+
+
 
         .collapsible-link {
+
             display: block;
+
             padding: 16px 24px;
+
             color: var(--text-primary);
+
             text-decoration: none;
+
             font-weight: 500;
+
             transition: all 0.2s ease;
+
             border-left: 3px solid transparent;
+
         }
+
+
 
         .collapsible-link:hover {
+
             background: #ffffff;
+
             color: var(--primary-blue);
+
             border-left-color: var(--primary-blue);
+
         }
+
         .wealth-creation-page-content { padding-top: 30px; }
+
         </style>
-
-    
-    
-    
-    
-    
-
-
-
-
-
-
 
 
 
     <style>
-        /* Scoped overrides for Blue Headers (Surgical Fix) */
-        .drawer-header {
-            background: #1e3a8a !important;
-            background-color: #1e3a8a !important;
-            color: #ffffff !important;
-        }
-        .drawer-header h2, .drawer-close {
-            color: #ffffff !important;
-        }
-        
-        .collapsible-header {
-            background: #1e3a8a !important;
-            background-color: #1e3a8a !important;
-            color: #ffffff !important;
-        }
-        .collapsible-title, .collapsible-arrow {
-            color: #ffffff !important;
-        }
-        
-        /* Keep everything else as per the white theme requirements */
-        html, body, .container, .header, .header-content, .page-title-section, .collapsible-content {
-            background: #ffffff !important;
+
+        /* Scoped overrides for flat white design with gold header border */
+
+        html, body {
+
             background-color: #ffffff !important;
+
+            background: #ffffff !important;
+
         }
-        .header {
+
+
+
+        @media (max-width: 1024px) {
+
+            .container, .header, .header-content, .drawer-header, .wealth-creation-page, .wealth-creation-page-content, .financial-analysis-page, .stock-valuation-page {
+
+                background: #ffffff !important;
+
+                background-color: #ffffff !important;
+
+                border: 0px solid transparent !important;
+
+                box-shadow: none !important;
+
+            }
+
+            .header, .drawer-header {
+
+                border-bottom: 2px solid #d4af37 !important;
+
+            }
+
+            /* Remove jagged notebook border/shadow effect */
+
+            .container::before {
+
+                display: none !important;
+
+                content: none !important;
+
+                box-shadow: none !important;
+
+                filter: none !important;
+
+            }
+
+        }
+
+        
+
+        /* Apply to all viewports for specific elements */
+
+        .container, .header, .header-content, .drawer-header, .page-title-section, .collapsible-section {
+
+            background: #ffffff !important;
+
+            background-color: #ffffff !important;
+
+            box-shadow: none !important;
+
+            border: 0px solid transparent !important;
+
+        }
+
+        
+
+        .header, .drawer-header {
+
             border-bottom: 2px solid #d4af37 !important;
+
         }
+
+
+
+
+
+        
+
+
+
+        
+
+        /* Ensure the main page background is white */
+
+        body, .wealth-creation-page, .wealth-creation-page-content, .financial-analysis-page, .stock-valuation-page, .professional-advisers-page, .financial-products-page, .resources-page {
+
+            background: #ffffff !important;
+
+            background-color: #ffffff !important;
+
+        }
+
+        
+
+        /* Drawer close button visibility */
+
+        .drawer-close {
+
+            color: #1e3a8a !important;
+
+        }
+
+        .drawer-close::before {
+
+            color: #1e3a8a !important;
+
+        }
+
+        
+
+        /* Remove blue borders on links */
+
+        .collapsible-link:hover {
+
+            border-left-color: #1e3a8a !important;
+
+            background: #f8f9fa !important;
+
+        }
+
+        
+
+        /* Remove the blue glow from ALL elements */
+
+        * {
+
+            box-shadow: none !important;
+
+            text-shadow: none !important;
+
+        }
+
+
+
+        /* Hamburger menu colors */
+
+        .hamburger-line {
+
+            background-color: #1e3a8a !important;
+
+        }
+
+        
+
+        /* Footer disclaimer and other potential blue elements */
+
+        footer, .footer, .disclaimer-section {
+
+            background: #ffffff !important;
+
+            background-color: #ffffff !important;
+
+            color: #666666 !important;
+
+            border-top: 1px solid #e5e7eb !important;
+
+        }
+
     </style>
-    </head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
 <body>
+
     <div class="wealth-creation-page">
+
         <!-- Header -->
+
         <header class="header sticky-header" role="banner">
+
             <div class="container"><div class="header-content">
+
                 <div class="logo">
-                    <img src="images/G&amp;D-Logo.png" alt="Graham &amp; Doddsville" class="logo-image">
+
+                    <img src="images/G&amp;D Logo.png" alt="Graham &amp; Doddsville" class="logo-image">
+
                 </div>
+
                 
+
                 <nav class="main-nav desktop-only">                    <ul>
+
                         <li><a href="index.html" class="nav-link">HOME</a></li>
+
                         <li><a href="wealth-creation.html" class="nav-link">Wealth Creation</a></li>
+
                         <li><a href="about-us.html" class="nav-link">ABOUT</a></li>
+
                     </ul></nav>
+
                 
+
                 
+
                 <button class="mobile-menu-toggle mobile-only" id="mobile-toggle" aria-label="Toggle navigation menu">
+
                     <span class="hamburger-line"></span>
+
                     <span class="hamburger-line"></span>
+
                     <span class="hamburger-line"></span>
+
                 </button>
+
             </div></div></header>
 
+
+
         <!-- Mobile Navigation Drawer -->
+
         <div class="mobile-drawer" id="mobile-drawer">
+
         <div class="drawer-header">
-            <img src="images/G&amp;D-Logo-(for-black-background).png" alt="Graham and Doddsville" class="drawer-logo">
+
+            <img src="images/G&amp;D Logo (for black background).png" alt="Graham and Doddsville" class="drawer-logo">
+
             <button class="drawer-close" id="drawer-close" aria-label="Close menu"></button>
+
         </div>
+
         <nav class="drawer-nav">
+
             <ul class="drawer-menu">
+
                 <li><a href="index.html" class="drawer-link" style="white-space: nowrap;">Home</a></li>
+
                 <li><a href="wealth-creation.html" class="drawer-link">Wealth Creation</a></li>
+
                 <li><a href="legal-taxation.html" class="drawer-link">Legal &amp; Taxation</a></li>
+
                 <li><a href="financial-markets.html" class="drawer-link">Financial Markets</a></li>
+
                 <li><a href="share-investing.html" class="drawer-link">Share Investing</a></li>
+
                 <li><a href="Greatest-Investors.html" class="drawer-link">Greatest Investors</a></li>
+
                 <li><a href="investment-analysis.html" class="drawer-link">Investment Analysis</a></li>
+
                 <li><a href="financial-statement-analysis.html" class="drawer-link">Financial Statement Analysis</a></li>
+
                 <li><a href="stock-valuation.html" class="drawer-link">Stock Valuation</a></li>
+
                 <li><a href="economics.html" class="drawer-link">Economics</a></li>
+
                 <li><a href="professional-advisers.html" class="drawer-link">Professional Advisers</a></li>
+
                 <li><a href="financial-products.html" class="drawer-link">Financial Products</a></li>
+
                 <li><a href="resources.html" class="drawer-link">Resources</a></li>
+
                 <li><a href="events.html" class="drawer-link">Events &amp; Seminars</a></li>
+
             </ul>
+
         </nav>
+
     </div>
+
                 
+
             
+
         </div>
+
+
 
         <div class="wealth-creation-page-content">
+
             <!-- Page Title Section -->
+
             <div class="page-title-section">
+
                 <div class="breadcrumb">
-                    <a href="index.html" class="breadcrumb-link">â† Home</a>
+
+                    <a href="index.html" class="breadcrumb-link">← Home</a>
+
                 </div>
+
                 <h1 class="page-title">Professional Advisers</h1>
-                <p class="page-subtitle">The ultimate guides to the experts who can help you navigate the world of investing</p>
+
+                <p class="page-subtitle">Expert guidance from qualified professionals across all aspects of financial planning and investment management</p>
+
             </div>
+
+
 
             <!-- Collapsible Categories -->
+
             <div class="collapsible-categories">
+
                 <div class="collapsible-section">
+
                     <div class="collapsible-header" onclick="toggleCollapsible('accountants')">
+
                         <h3 class="collapsible-title">Accountants</h3>
-                        <span class="collapsible-arrow" id="accountants-arrow">â–¼</span>
+
+                        <span class="collapsible-arrow" id="accountants-arrow">&#9660;</span>
+
                     </div>
+
                     <div class="collapsible-content collapsed" id="accountants-content">
+
                         <ul class="collapsible-links">
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('what-are-accountants')">What are accountants?</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('types-of-accountants')">Types of accountants</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('financial-accounting')">Financial accounting</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('management-accounting')">Management accounting</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('tax-accounting')">Tax accounting</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('auditing-and-assurance')">Auditing and assurance</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-find-a-good-accountant')">How to find a good accountant</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('list-of-questions-to-ask')">List of questions to ask</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-accountants')">Limitations of accountants</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('top-accountants-in-australia')">Top accountants in Australia</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-complain')">How to complain</a></li>
+
                         </ul>
+
                     </div>
+
                 </div>
+
                 <div class="collapsible-section">
+
                     <div class="collapsible-header" onclick="toggleCollapsible('lawyers')">
+
                         <h3 class="collapsible-title">Lawyers</h3>
-                        <span class="collapsible-arrow" id="lawyers-arrow">â–¼</span>
+
+                        <span class="collapsible-arrow" id="lawyers-arrow">&#9660;</span>
+
                     </div>
+
                     <div class="collapsible-content collapsed" id="lawyers-content">
+
                         <ul class="collapsible-links">
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('what-are-lawyers')">What are lawyers?</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('types-of-lawyers')">Types of lawyers</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('corporate-lawyers')">Corporate lawyers</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('contract-law-for-investors')">Contract law for investors</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('securities-and-financial-markets')">Securities and financial markets</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('regulation-and-compliance')">Regulation and compliance</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-find-a-good-lawyer')">How to find a good lawyer</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('list-of-questions-to-ask')">List of questions to ask</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-lawyers')">Limitations of lawyers</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('top-lawyers-in-australia')">Top lawyers in Australia</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-complain')">How to complain</a></li>
+
                         </ul>
+
                     </div>
+
                 </div>
+
                 <div class="collapsible-section">
+
                     <div class="collapsible-header" onclick="toggleCollapsible('mortgage-brokers')">
+
                         <h3 class="collapsible-title">Mortgage Brokers</h3>
-                        <span class="collapsible-arrow" id="mortgage-brokers-arrow">â–¼</span>
+
+                        <span class="collapsible-arrow" id="mortgage-brokers-arrow">&#9660;</span>
+
                     </div>
+
                     <div class="collapsible-content collapsed" id="mortgage-brokers-content">
+
                         <ul class="collapsible-links">
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('what-are-mortgage-brokers')">What are mortgage brokers?</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('how-mortgage-brokers-get-paid')">How mortgage brokers get paid</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('home-loan-application-process')">Home loan application process</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('types-of-home-loans')">Types of home loans</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('borrowing-capacity-assessment')">Borrowing capacity assessment</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('regulation-of-mortgage-brokers')">Regulation of mortgage brokers</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-find-a-good-mortgage-broker')">How to find a good mortgage broker</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('list-of-questions-to-ask')">List of questions to ask</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-mortgage-brokers')">Limitations of mortgage brokers</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('top-mortgage-brokers-in-australia')">Top mortgage brokers in Australia</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-complain')">How to complain</a></li>
+
                         </ul>
+
                     </div>
+
                 </div>
+
                 <div class="collapsible-section">
+
                     <div class="collapsible-header" onclick="toggleCollapsible('financial-planners')">
+
                         <h3 class="collapsible-title">Financial Planners</h3>
-                        <span class="collapsible-arrow" id="financial-planners-arrow">â–¼</span>
+
+                        <span class="collapsible-arrow" id="financial-planners-arrow">&#9660;</span>
+
                     </div>
+
                     <div class="collapsible-content collapsed" id="financial-planners-content">
+
                         <ul class="collapsible-links">
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('what-are-financial-planners')">What are financial planners?</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('the-financial-planning-process')">The financial planning process</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('retirement-planning')">Retirement planning</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('risk-management-and-insurance')">Risk management and insurance</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('tax-planning-strategies')">Tax planning strategies</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('regulation-of-financial-planners')">Regulation of financial planners</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-find-a-good-financial-planner')">How to find a good financial planner</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('list-of-questions-to-ask')">List of questions to ask</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-financial-planners')">Limitations of financial planners</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('top-financial-planners-in-australia')">Top financial planners in Australia</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-complain')">How to complain</a></li>
+
                         </ul>
+
                     </div>
+
                 </div>
+
                 <div class="collapsible-section">
+
                     <div class="collapsible-header" onclick="toggleCollapsible('insurance-brokers')">
+
                         <h3 class="collapsible-title">Insurance Brokers</h3>
-                        <span class="collapsible-arrow" id="insurance-brokers-arrow">â–¼</span>
+
+                        <span class="collapsible-arrow" id="insurance-brokers-arrow">&#9660;</span>
+
                     </div>
+
                     <div class="collapsible-content collapsed" id="insurance-brokers-content">
+
                         <ul class="collapsible-links">
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('what-are-insurance-brokers')">What are insurance brokers?</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('the-insurance-broking-process')">The insurance broking process</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('types-of-insurance-products')">Types of insurance products</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('insurance-needs-analysis')">Insurance needs analysis</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('claims-management-support')">Claims management support</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('regulation-of-insurance-brokers')">Regulation of insurance brokers</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-find-a-good-insurance-broker')">How to find a good insurance broker</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('list-of-questions-to-ask')">List of questions to ask</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-insurance-brokers')">Limitations of insurance brokers</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('top-insurance-brokers-in-australia')">Top insurance brokers in Australia</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-complain')">How to complain</a></li>
+
                         </ul>
+
                     </div>
+
                 </div>
+
                 <div class="collapsible-section">
+
                     <div class="collapsible-header" onclick="toggleCollapsible('stockbrokers')">
+
                         <h3 class="collapsible-title">Stockbrokers</h3>
-                        <span class="collapsible-arrow" id="stockbrokers-arrow">â–¼</span>
+
+                        <span class="collapsible-arrow" id="stockbrokers-arrow">&#9660;</span>
+
                     </div>
+
                     <div class="collapsible-content collapsed" id="stockbrokers-content">
+
                         <ul class="collapsible-links">
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('what-are-stockbrokers')">What are stockbrokers?</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('types-of-stockbrokers')">Types of stockbrokers</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-open-a-brokerage-account')">How to open a brokerage account</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('trading-platforms-and-tools')">Trading platforms and tools</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('custody-and-settlement-of-shares')">Custody and settlement of shares</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('regulation-of-stockbrokers')">Regulation of stockbrokers</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-find-a-good-stockbroker')">How to find a good stockbroker</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('list-of-questions-to-ask')">List of questions to ask</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-stockbrokers')">Limitations of stockbrokers</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('top-stockbrokers-in-australia')">Top stockbrokers in Australia</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-complain')">How to complain</a></li>
+
                         </ul>
+
                     </div>
+
                 </div>
+
                 <div class="collapsible-section">
+
                     <div class="collapsible-header" onclick="toggleCollapsible('online-brokers')">
+
                         <h3 class="collapsible-title">Online Brokers</h3>
-                        <span class="collapsible-arrow" id="online-brokers-arrow">â–¼</span>
+
+                        <span class="collapsible-arrow" id="online-brokers-arrow">&#9660;</span>
+
                     </div>
+
                     <div class="collapsible-content collapsed" id="online-brokers-content">
+
                         <ul class="collapsible-links">
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('what-are-online-brokers')">What are online brokers?</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('how-online-brokers-work')">How online brokers work</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('online-trading-platforms')">Online trading platforms</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('beginner-mistakes-in-online-trading')">Beginner mistakes in online trading</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('risks-on-online-trading')">Risks on online trading</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('regulation-of-online-brokers')">Regulation of online brokers</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-find-a-good-online-broker')">How to find a good online broker</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('list-of-questions-to-ask')">List of questions to ask</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-online-brokers')">Limitations of online brokers</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('top-online-brokers-in-australia')">Top online brokers in Australia</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-complain')">How to complain</a></li>
+
                         </ul>
+
                     </div>
+
                 </div>
+
                 <div class="collapsible-section">
+
                     <div class="collapsible-header" onclick="toggleCollapsible('retail-bankers')">
+
                         <h3 class="collapsible-title">Retail Bankers</h3>
-                        <span class="collapsible-arrow" id="retail-bankers-arrow">â–¼</span>
+
+                        <span class="collapsible-arrow" id="retail-bankers-arrow">&#9660;</span>
+
                     </div>
+
                     <div class="collapsible-content collapsed" id="retail-bankers-content">
+
                         <ul class="collapsible-links">
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('what-are-retail-bankers')">What are retail bankers?</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('products-offered-by-retail-banks')">Products offered by retail banks</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('how-retail-banks-make-money')">How retail banks make money</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('the-lending-process')">The lending process</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('credit-risk-and-responsible-lending')">Credit risk and responsible lending</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('regulation-of-retail-banks')">Regulation of retail banks</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-find-a-good-retail-banker')">How to find a good retail banker</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('list-of-questions-to-ask')">List of questions to ask</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-retail-bankers')">Limitations of retail bankers</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('top-retail-bankers-in-australia')">Top retail bankers in Australia</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-complain')">How to complain</a></li>
+
                         </ul>
+
                     </div>
+
                 </div>
+
                 <div class="collapsible-section">
+
                     <div class="collapsible-header" onclick="toggleCollapsible('investment-bankers')">
+
                         <h3 class="collapsible-title">Investment Bankers</h3>
-                        <span class="collapsible-arrow" id="investment-bankers-arrow">â–¼</span>
+
+                        <span class="collapsible-arrow" id="investment-bankers-arrow">&#9660;</span>
+
                     </div>
+
                     <div class="collapsible-content collapsed" id="investment-bankers-content">
+
                         <ul class="collapsible-links">
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('what-are-investment-bankers')">What are investment bankers?</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('initial-public-offerings-ipos')">Initial Public Offerings (IPOs)</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('equity-capital-markets')">Equity capital markets</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('debt-capital-markets')">Debt capital markets</a></li>
-                            <li><a href="#" class="collapsible-link" onclick="loadArticle('mergers-and-acquisitions-m-a')">Mergers and acquisitions (M&amp;A)</a></li>
+
+                            <li><a href="#" class="collapsible-link" onclick="loadArticle('mergers-and-acquisitions-m-a')">Mergers and acquisitions (M&A)</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('regulation-of-investment-bankers')">Regulation of investment bankers</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-find-a-good-investment-banker')">How to find a good investment banker</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('list-of-questions-to-ask')">List of questions to ask</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-investment-bankers')">Limitations of investment bankers</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('top-investment-bankers-in-australia')">Top investment bankers in Australia</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-complain')">How to complain</a></li>
+
                         </ul>
+
                     </div>
+
                 </div>
+
                 <div class="collapsible-section">
+
                     <div class="collapsible-header" onclick="toggleCollapsible('research-houses')">
+
                         <h3 class="collapsible-title">Research Houses</h3>
-                        <span class="collapsible-arrow" id="research-houses-arrow">â–¼</span>
+
+                        <span class="collapsible-arrow" id="research-houses-arrow">&#9660;</span>
+
                     </div>
+
                     <div class="collapsible-content collapsed" id="research-houses-content">
+
                         <ul class="collapsible-links">
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('what-are-research-houses')">What are research houses?</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('equity-research')">Equity research</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('how-analysts-value-companies')">How analysts value companies</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-read-research-reports')">How to read research reports</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('conflicts-of-interest')">Conflicts of interest</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('regulation-of-research-houses')">Regulation of research houses</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-find-a-good-research-house')">How to find a good research house</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('list-of-questions-to-ask')">List of questions to ask</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-research-houses')">Limitations of research houses</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('top-research-houses-in-australia')">Top research houses in Australia</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-complain')">How to complain</a></li>
+
                         </ul>
+
                     </div>
+
                 </div>
+
                 <div class="collapsible-section">
+
                     <div class="collapsible-header" onclick="toggleCollapsible('fund-managers')">
+
                         <h3 class="collapsible-title">Fund Managers</h3>
-                        <span class="collapsible-arrow" id="fund-managers-arrow">â–¼</span>
+
+                        <span class="collapsible-arrow" id="fund-managers-arrow">&#9660;</span>
+
                     </div>
+
                     <div class="collapsible-content collapsed" id="fund-managers-content">
+
                         <ul class="collapsible-links">
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('what-are-fund-managers')">What are fund managers</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('how-fund-managers-make-money')">How fund managers make money</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('investment-strategies')">Investment strategies</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('fund-performance-measurement')">Fund performance measurement</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('risk-management-strategies')">Risk management strategies</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('regulation-of-fund-managers')">Regulation of fund managers</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-find-a-good-fund-manager')">How to find a good fund manager</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('list-of-questions-to-ask')">List of questions to ask</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('limitations-of-fund-managers')">Limitations of fund managers</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('top-fund-managers-in-australia')">Top fund managers in Australia</a></li>
+
                             <li><a href="#" class="collapsible-link" onclick="loadArticle('how-to-complain')">How to complain</a></li>
+
                         </ul>
+
                     </div>
+
                 </div>
+
             </div>
+
         </div>
-    
+
+    </div>
+
+
 
     <!-- Article Detail Panel -->
+
     <div class="article-detail-panel" id="article-detail-panel">
+
         <div class="article-detail-content">
+
             <div class="article-detail-header">
+
                 <h3 class="article-detail-title" id="article-detail-title">Article Title</h3>
-                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">Ã—</button>
+
+                <button class="article-detail-close" id="article-detail-close" aria-label="Close article">×</button>
+
             </div>
+
             <div class="article-detail-body" id="article-detail-body">
+
                 <div class="article-loading">Loading article...</div>
+
             </div>
+
         </div>
+
     </div>
-    
-    <script src="js/article-image-resolver.js?v=3"></script>
+
     <script>
 </script>
-    
-    <script src="js/article-image-resolver.js?v=3">
-    </script>
-    
-    <script src="js/article-image-resolver.js?v=3"></script>
-    <script>
-</script>
-    
-    <script src="js/article-image-resolver.js?v=3">
-    </script>
     <script>
         // Collapsible functionality
         function toggleCollapsible(sectionId) {
@@ -897,7 +1745,7 @@
                     const s = c.closest('.collapsible-section');
                     if (s) s.classList.remove('active');
                     const a = document.getElementById(c.id.replace('-content', '-arrow'));
-                    if (a) a.innerHTML = 'â–¼';
+                    if (a) a.innerHTML = '▼';
                 }
             });
 
@@ -911,13 +1759,13 @@
                     content.style.maxHeight = height + "px";
                 }
                 if (section) section.classList.add('active');
-                if (arrow) arrow.innerHTML = 'â–²';
+                if (arrow) arrow.innerHTML = '▲';
             } else {
                 content.style.maxHeight = null;
                 content.classList.remove('expanded');
                 content.classList.add('collapsed');
                 if (section) section.classList.remove('active');
-                if (arrow) arrow.innerHTML = 'â–¼';
+                if (arrow) arrow.innerHTML = '▼';
             }
         }
 
@@ -966,7 +1814,8 @@
                 
                 const contentContainer = panel.querySelector('.article-detail-content');
                 if (contentContainer) contentContainer.scrollTop = 0;
-            } else {
+            
+        } else {
                 title.textContent = 'Article Not Found';
                 body.innerHTML = '<p style="padding: 20px; color: #6b7280;">Sorry, the content for this article ("' + articleId + '") could not be found or has not been added yet.</p>';
                 panel.classList.add('active');
@@ -1020,217 +1869,1452 @@
         });
 
         const articleContent = {
+'what-are-accountants': {
+        title: 'What are Accountants?',
+        content: `
+            <p>Accountants are professionals responsible for keeping, interpreting, and analyzing financial records. For investors and businesses, they are the essential translators who turn raw commercial activity into standardized financial data.</p>
+            <h3>The Language of Business</h3>
+            <p>Warren Buffett famously called accounting "the language of business." Without accountants ensuring that financial statements follow strict legal standards, it would be impossible for investors to compare the performance of different companies or calculate their tax liabilities accurately.</p>
+        `
+    },
+    'types-of-accountants': {
+        title: 'Types of Accountants',
+        content: `
+            <p>The accounting profession is highly specialized, broken down into distinct areas of expertise.</p>
+            <h3>Key Specializations</h3>
+            <p><strong>Public Accountants:</strong> Work for independent firms (like the Big 4) providing auditing, tax, and consulting services to other businesses. <strong>Private/Management Accountants:</strong> Work internally for a specific corporation to manage its finances. <strong>Forensic Accountants:</strong> Act as financial detectives to uncover fraud, embezzlement, or trace hidden assets during litigation.</p>
+        `
+    },
+    'financial-accounting': {
+        title: 'Financial Accounting',
+        content: `
+            <p>Financial accounting is the process of recording, summarizing, and reporting the myriad of a company's transactions over a period of time to create formal financial statements (Income Statement, Balance Sheet, Cash Flow Statement).</p>
+            <h3>External Focus</h3>
+            <p>Unlike management accounting, financial accounting is strictly historical and externally focused. Its primary audience is outside the company: investors, creditors, regulators, and tax authorities who need to assess the company's past performance and current financial health.</p>
+        `
+    },
+    'management-accounting': {
+        title: 'Management Accounting',
+        content: `
+            <p>Management accounting involves identifying, analyzing, and communicating financial information specifically for the internal use of corporate management to aid in decision-making.</p>
+            <h3>Internal and Future-Focused</h3>
+            <p>These reports are not strictly regulated by external bodies (like the SEC or ASIC). They include forward-looking budgets, product profitability analysis, and cost-volume-profit analysis. The goal is to help executives decide whether to launch a new product, close a factory, or adjust pricing strategies.</p>
+        `
+    },
+    'tax-accounting': {
+        title: 'Tax Accounting',
+        content: `
+            <p>Tax accounting focuses specifically on taxes rather than the appearance of public financial statements. It involves strict compliance with the local tax code to calculate the correct amount of tax owed, while strategically utilizing legal deductions to minimize that liability.</p>
+            <h3>Tax vs. Book Differences</h3>
+            <p>Because the tax code allows for things like accelerated depreciation, a company's "Taxable Income" reported to the government is often vastly different from the "Accounting Profit" reported to shareholders.</p>
+        `
+    },
+    'auditing-and-assurance': {
+        title: 'Auditing and Assurance',
+        content: `
+            <p>Auditing is an independent examination of a company's financial records to determine whether they accurately and fairly reflect its financial position.</p>
+            <h3>The Seal of Trust</h3>
+            <p>Public companies are legally required to be audited by an independent firm. The auditor issues an "opinion" on the financial statements. Without this independent assurance, investors could never trust that a company's reported profits actually exist, making modern capital markets impossible.</p>
+        `
+    },
+    'how-to-find-a-good-accountant': {
+        title: 'How to Find a Good Accountant',
+        content: `
+            <p>Finding a reliable accountant requires looking beyond a simple Google search to ensure they match your specific financial complexity.</p>
+            <h3>The Vetting Process</h3>
+            <p>Look for recognized certifications (CPA or CA in Australia). Ask for referrals from other successful investors or business owners in your specific industry. A great accountant for a medical practice might be terrible at handling the tax complexities of an aggressive day trader or a property developer. Always interview them to ensure their communication style matches yours.</p>
+        `
+    },
+    'list-of-questions-to-ask': {
+        title: 'Questions to Ask an Accountant',
+        content: `
+            <p>Before hiring an accountant, conduct a rigorous interview to test their expertise and alignment with your goals.</p>
+            <h3>Crucial Questions</h3>
+            <p>1. What percentage of your clients are in my specific situation (e.g., small business, property investor)?<br>
+            2. How aggressively do you interpret the tax code regarding deductions?<br>
+            3. Will you be doing the work yourself, or delegating it to a junior associate?<br>
+            4. What is your fee structure (hourly vs. fixed annual retainer)?</p>
+        `
+    },
+    'limitations-of-accountants': {
+        title: 'Limitations of Accountants',
+        content: `
+            <p>Accountants are experts at compliance and historical reporting, but they are generally not investment advisors or legal experts.</p>
+            <h3>The Rearview Mirror</h3>
+            <p>A common mistake is asking an accountant to pick stocks or recommend specific property investments. While they can perfectly structure the *tax setup* for an investment, assessing the *underlying commercial risk* of the asset is outside their purview. They operate by looking in the rearview mirror (historical data), whereas investing requires looking through the windshield.</p>
+        `
+    },
+    'top-accountants-in-australia': {
+        title: 'Top Accountants in Australia',
+        content: `
+            <p>The Australian accounting landscape is dominated by the global giants, but also features strong mid-tier firms that often provide better value for mid-sized enterprises.</p>
+            <h3>The Big Players</h3>
+            <p><strong>The Big Four:</strong> PwC, Deloitte, EY, and KPMG dominate the auditing of the ASX 200. <strong>Mid-Tier Powerhouses:</strong> BDO, Grant Thornton, RSM, and Pitcher Partners are heavily utilized by medium-sized businesses and high-net-worth individuals for specialized tax and restructuring advice.</p>
+        `
+    },
+    'how-to-complain': {
+        title: 'How to Complain About an Accountant',
+        content: `
+            <p>If your accountant provides negligent advice or engages in unethical behavior, you have formal avenues for recourse.</p>
+            <h3>The Regulatory Bodies</h3>
+            <p>In Australia, you should first attempt to resolve the issue directly with the firm's partners. If that fails, lodge a formal complaint with their professional body (CPA Australia or Chartered Accountants ANZ). For serious legal breaches or fraud, reports should be made to ASIC or the Tax Practitioners Board (TPB), which has the power to strip them of their license.</p>
+        `
+    },
+    'what-are-lawyers': {
+        title: 'What are Lawyers?',
+        content: `
+            <p>Lawyers (or solicitors/attorneys) are licensed professionals trained to interpret the law, provide legal advice, draft legally binding documents, and represent clients in civil or criminal disputes.</p>
+            <h3>The Architects of Risk</h3>
+            <p>In the financial world, lawyers are the architects of risk management. Every major transaction—buying a business, issuing shares, or signing a commercial lease—relies on lawyers to structure the contract to protect their client's capital if the deal goes terribly wrong.</p>
+        `
+    },
+    'types-of-lawyers': {
+        title: 'Types of Lawyers',
+        content: `
+            <p>Like medicine, modern law is hyper-specialized. Hiring a family lawyer to handle a corporate merger is a recipe for disaster.</p>
+            <h3>Specializations</h3>
+            <p><strong>Litigators:</strong> Fight disputes in court. <strong>Commercial Lawyers:</strong> Draft and negotiate business contracts. <strong>M&A Lawyers:</strong> Specialize in buying and selling companies. <strong>Tax Lawyers:</strong> Dispute ATO rulings and structure complex offshore entities. <strong>Property Lawyers:</strong> Handle real estate conveyancing and commercial leases.</p>
+        `
+    },
+    'corporate-lawyers': {
+        title: 'Corporate Lawyers',
+        content: `
+            <p>Corporate lawyers advise businesses on their legal obligations, rights, and responsibilities, ensuring corporate governance standards are met.</p>
+            <h3>The Deal Makers</h3>
+            <p>They are heavily involved in forming new corporations, ensuring compliance with the Corporations Act, managing shareholder agreements, and orchestrating the incredibly complex legal paperwork required to take a private company public via an Initial Public Offering (IPO).</p>
+        `
+    },
+    'contract-law-for-investors': {
+        title: 'Contract Law for Investors',
+        content: `
+            <p>Contract law is the foundational bedrock of all commercial transactions and investing.</p>
+            <h3>The Four Pillars</h3>
+            <p>For an investment contract (like buying private shares or property) to be legally binding, it must generally have four elements: <strong>Offer</strong>, <strong>Acceptance</strong>, <strong>Consideration</strong> (something of value exchanged, like money), and <strong>Intention</strong> to create legal relations. If a contract is poorly drafted by an amateur, it may be deemed void in court, instantly destroying the investment.</p>
+        `
+    },
+    'securities-and-financial-markets': {
+        title: 'Securities and Financial Markets Law',
+        content: `
+            <p>This specialized area of law governs how financial instruments (stocks, bonds, derivatives) are created, traded, and regulated.</p>
+            <h3>Protecting the Market</h3>
+            <p>Lawyers in this field ensure that public companies do not commit insider trading, that they release price-sensitive information to the ASX immediately (continuous disclosure), and that investment banks don't mislead retail investors when issuing new complex financial products.</p>
+        `
+    },
+    'regulation-and-compliance': {
+        title: 'Regulation and Compliance',
+        content: `
+            <p>Compliance lawyers ensure that a business operates strictly within the confines of industry-specific government regulations to avoid massive fines or license revocation.</p>
+            <h3>The Burden of the Law</h3>
+            <p>In highly regulated industries like banking and healthcare, compliance is a massive expense. Compliance lawyers review every new marketing campaign, product launch, and internal procedure to ensure it doesn't violate ASIC regulations, privacy laws, or consumer protection acts.</p>
+        `
+    },
+    'how-to-find-a-good-lawyer': {
+        title: 'How to Find a Good Lawyer',
+        content: `
+            <p>Finding exceptional legal counsel requires diligence, as bad legal advice is exceptionally expensive.</p>
+            <h3>Sourcing Counsel</h3>
+            <p>Rely on referrals from accountants or other successful business owners. Look for lawyers who specialize *exclusively* in the specific area you need (e.g., franchise law). Use directories like the 'Chambers and Partners' rankings to find top-tier firms. A good commercial lawyer should act as a deal-maker who mitigates risk, not a deal-killer who gets bogged down in irrelevant technicalities.</p>
+        `
+    },
+    'limitations-of-lawyers': {
+        title: 'Limitations of Lawyers',
+        content: `
+            <p>Lawyers are trained to identify and eliminate risk, which can sometimes conflict with the fundamental nature of entrepreneurship and investing.</p>
+            <h3>The Risk of Zero Risk</h3>
+            <p>If you ask a lawyer to make a contract "100% safe," they will draft a 200-page document so restrictive that the other party will refuse to sign it, killing a highly profitable deal. As an investor, you must make the final *commercial* decision on which legal risks are acceptable to take in pursuit of profit.</p>
+        `
+    },
+    'top-lawyers-in-australia': {
+        title: 'Top Lawyers in Australia',
+        content: `
+            <p>The top tier of the Australian legal market is dominated by massive, elite corporate law firms.</p>
+            <h3>The Top Tier</h3>
+            <p>The most prestigious commercial firms are generally referred to as the "Big Six": Allens, Ashurst, Clayton Utz, Corrs Chambers Westgarth, Herbert Smith Freehills, and King & Wood Mallesons. These firms handle the vast majority of multi-billion dollar M&A deals and high-stakes corporate litigation on the ASX.</p>
+        `
+    },
+    'what-are-mortgage-brokers': {
+        title: 'What are Mortgage Brokers?',
+        content: `
+            <p>Mortgage brokers act as intermediaries between borrowers (homebuyers or property investors) and lenders (banks or credit unions).</p>
+            <h3>The Middleman</h3>
+            <p>Instead of a borrower walking into a single bank and only being offered that specific bank's products, a broker analyzes the borrower's financial situation and shops around across dozens of different lenders to find the specific home loan that best fits the borrower's needs and offers the lowest interest rate.</p>
+        `
+    },
+    'how-mortgage-brokers-get-paid': {
+        title: 'How Mortgage Brokers Get Paid',
+        content: `
+            <p>The vast majority of mortgage brokers in Australia do not charge the borrower an upfront fee. Instead, they are paid by the bank.</p>
+            <h3>Upfront and Trail Commissions</h3>
+            <p>When a loan settles, the bank pays the broker an <strong>Upfront Commission</strong> (usually around 0.65% of the loan amount). Additionally, the bank pays a <strong>Trail Commission</strong> (around 0.15% per year) for the life of the loan. This structure has faced heavy regulatory scrutiny to ensure brokers don't recommend unnecessarily large loans just to boost their commission.</p>
+        `
+    },
+    'home-loan-application-process': {
+        title: 'Home Loan Application Process',
+        content: `
+            <p>Applying for a massive loan requires providing extensive proof of your financial reliability.</p>
+            <h3>The Paperwork</h3>
+            <p>Brokers manage this incredibly tedious process. They collect the borrower's payslips, tax returns, bank statements (to scrutinize living expenses), and details of all other debts. They submit this "packaging" to the bank's credit assessors, answering questions and negotiating terms until the loan is formally approved and settled.</p>
+        `
+    },
+    'types-of-home-loans': {
+        title: 'Types of Home Loans',
+        content: `
+            <p>Brokers navigate a complex landscape of loan structures designed for different purposes.</p>
+            <h3>Key Structures</h3>
+            <p><strong>Principal & Interest (P&I):</strong> You pay down the debt while paying interest. Standard for owner-occupiers. <strong>Interest-Only (IO):</strong> You only pay the interest; the principal debt remains the same. Heavily used by property investors to maximize tax deductions. <strong>Fixed vs. Variable:</strong> Locking in an interest rate for certainty, versus letting it float with the RBA cash rate.</p>
+        `
+    },
+    'borrowing-capacity-assessment': {
+        title: 'Borrowing Capacity Assessment',
+        content: `
+            <p>The absolute most important calculation a broker performs is determining exactly how much a bank is legally willing to lend you.</p>
+            <h3>The Stress Test</h3>
+            <p>Banks do not lend based on today's interest rates. They apply a "servicing buffer" (e.g., calculating if you could still afford the repayments if interest rates suddenly rose by 3%). They also heavily discount rental income and bonuses. A good broker knows exactly which bank's specific calculator will view your specific situation most favorably.</p>
+        `
+    },
+'regulation-of-mortgage-brokers': {
+        title: 'Regulation of Mortgage Brokers',
+        content: `
+            <p>Following the Financial Services Royal Commission, mortgage brokers in Australia operate under incredibly strict regulations to protect consumers.</p>
+            <h3>Best Interests Duty (BID)</h3>
+            <p>By law, brokers are bound by the "Best Interests Duty." They must prioritize the borrower's financial interests above their own. If Bank A pays a higher commission than Bank B, but Bank B's loan is cheaper for the client, the broker is legally obligated to recommend Bank B. Failure to do so can result in massive fines and loss of their credit license.</p>
+        `
+    },
+    'how-to-find-a-good-mortgage-broker': {
+        title: 'How to Find a Good Mortgage Broker',
+        content: `
+            <p>A great broker is worth their weight in gold, especially for complex investors with multiple properties and tricky structures (like trusts).</p>
+            <h3>Questions to Ask</h3>
+            <p>Look for brokers who are property investors themselves. Ask them: "How many different lenders have you written loans for in the last 6 months?" (To ensure they aren't secretly funneling everyone to one bank). Check that they hold an Australian Credit Licence (ACL) or are a registered Credit Representative, and are members of the MFAA or FBAA.</p>
+        `
+    },
+    'limitations-of-mortgage-brokers': {
+        title: 'Limitations of Mortgage Brokers',
+        content: `
+            <p>Brokers are experts in debt, not necessarily in underlying asset selection or tax law.</p>
+            <h3>The Boundary of Advice</h3>
+            <p>A broker can tell you exactly how to structure a $1 million loan to buy an investment property, but they are not legally allowed to tell you *which* property to buy, nor can they provide tax advice on how negative gearing will specifically impact your tax return. You must rely on a buyer's agent and an accountant for those aspects.</p>
+        `
+    },
+    'top-mortgage-brokers-in-australia': {
+        title: 'Top Mortgage Brokers in Australia',
+        content: `
+            <p>The Australian market is highly fragmented, with major aggregators providing the backend technology for thousands of individual boutique brokers.</p>
+            <h3>The Aggregators and Franchises</h3>
+            <p>The largest franchise networks include Aussie Home Loans, Mortgage Choice, and Smartline. However, sophisticated property investors often seek out elite, independent boutique brokerages that specialize specifically in complex portfolio structuring rather than standard owner-occupier loans.</p>
+        `
+    },
+    'what-are-financial-planners': {
+        title: 'What are Financial Planners?',
+        content: `
+            <p>Financial planners (or financial advisers) are professionals who help individuals construct a comprehensive roadmap to achieve their long-term financial goals, such as funding retirement, buying a home, or leaving a legacy.</p>
+            <h3>The Holistic View</h3>
+            <p>Unlike a stockbroker who just buys shares, a financial planner looks at the entire picture: superannuation, tax minimization, cash flow budgeting, life insurance, and estate planning, ensuring all these pieces work together harmoniously.</p>
+        `
+    },
+    'the-financial-planning-process': {
+        title: 'The Financial Planning Process',
+        content: `
+            <p>Providing formal financial advice in Australia follows a strict, legally mandated process.</p>
+            <h3>The SOA</h3>
+            <p>First, the planner conducts a deep "Fact Find" to understand the client's current position and risk tolerance. Then, they legally must present their recommendations in a massive, detailed document called a <strong>Statement of Advice (SOA)</strong>. This document explains exactly what to do, why it is in the client's best interest, and explicitly lists all fees and commissions the planner will receive.</p>
+        `
+    },
+    'retirement-planning': {
+        title: 'Retirement Planning',
+        content: `
+            <p>The core business of most financial planners is ensuring clients do not run out of money before they die.</p>
+            <h3>The Superannuation Puzzle</h3>
+            <p>In Australia, this involves heavily optimizing Superannuation. Planners structure salary sacrifice contributions, manage the complex transition-to-retirement rules, determine the optimal asset allocation for the super fund, and calculate the exact safe withdrawal rate required to sustain the client's lifestyle through decades of retirement.</p>
+        `
+    },
+    'risk-management-and-insurance': {
+        title: 'Risk Management and Insurance',
+        content: `
+            <p>Wealth creation is meaningless if it can be instantly destroyed by a medical tragedy or sudden death.</p>
+            <h3>Protecting the Plan</h3>
+            <p>Financial planners conduct "needs analysis" to determine exactly how much Life, Total & Permanent Disability (TPD), Trauma, and Income Protection insurance a client needs to protect their family. Crucially, they advise on how to structure these policies (e.g., holding them inside vs. outside Superannuation) to optimize cash flow and tax outcomes.</p>
+        `
+    },
+    'tax-planning-strategies': {
+        title: 'Tax Planning Strategies',
+        content: `
+            <p>While planners do not prepare tax returns (that's an accountant's job), they build long-term strategies specifically designed to legally minimize tax drag on investment returns.</p>
+            <h3>Tax-Effective Structures</h3>
+            <p>This includes advising on whether to hold assets in a personal name, a Family Trust, a holding company, or within the highly tax-advantaged Superannuation environment, drastically altering the compounding trajectory of the wealth over decades.</p>
+        `
+    },
+    'regulation-of-financial-planners': {
+        title: 'Regulation of Financial Planners',
+        content: `
+            <p>The financial planning industry in Australia has undergone a massive regulatory purge following the Royal Commission to eliminate unethical behavior.</p>
+            <h3>Strict Educational and Ethical Standards</h3>
+            <p>Planners must now pass a rigorous national exam, hold a relevant university degree, undertake a professional year, and adhere to a strict Code of Ethics. Grandfathered commissions on investment products have been legally banned; planners must now charge transparent fee-for-service, ensuring their advice is not corrupted by kickbacks.</p>
+        `
+    },
+    'how-to-find-a-good-financial-planner': {
+        title: 'How to Find a Good Financial Planner',
+        content: `
+            <p>The mass exodus of advisers from the industry has made finding a good planner harder, but more critical than ever.</p>
+            <h3>Independent vs Aligned</h3>
+            <p>Seek out advisers who are genuinely "Independent" (they accept no commissions from product providers and charge flat fees). Check their credentials on the ASIC Financial Advisers Register. Ask them directly: "Are you restricted to recommending a specific 'Approved Product List' dictated by a bank, or can you recommend any product on the market?"</p>
+        `
+    },
+    'limitations-of-financial-planners': {
+        title: 'Limitations of Financial Planners',
+        content: `
+            <p>Planners are experts in strategy, structure, and asset allocation, but they are rarely elite stock pickers.</p>
+            <h3>The Asset Allocation Focus</h3>
+            <p>If you want someone to find the next undiscovered micro-cap mining stock that will go up 1000%, a financial planner is the wrong professional. Planners generally use index funds or large managed funds to build diversified portfolios. Their value lies in behavioral coaching (stopping you from panic selling during a crash) and tax structuring, not "beating the market."</p>
+        `
+    },
+    'top-financial-planners-in-australia': {
+        title: 'Top Financial Planners in Australia',
+        content: `
+            <p>The industry is rapidly shifting away from bank-owned dealer groups toward independent practices.</p>
+            <h3>The Shift to Independence</h3>
+            <p>Historically, the big four banks owned the largest planning networks (like AMP and BT), which frequently pushed clients into poor-performing, expensive in-house funds. Today, the most highly regarded planners usually operate in boutique, privately-owned practices holding their own Australian Financial Services Licence (AFSL).</p>
+        `
+    },
+    'what-are-insurance-brokers': {
+        title: 'What are Insurance Brokers?',
+        content: `
+            <p>Insurance brokers are independent professionals who act on behalf of a client to find, negotiate, and secure insurance coverage from insurance companies.</p>
+            <h3>The Client's Advocate</h3>
+            <p>Unlike an insurance *agent* (who works for one specific insurance company and sells only their products), a broker works for *you*. They have access to dozens of insurers, including wholesale markets (like Lloyd's of London) that the general public cannot access directly.</p>
+        `
+    },
+    'the-insurance-broking-process': {
+        title: 'The Insurance Broking Process',
+        content: `
+            <p>Brokers do not just sell off-the-shelf policies; they engineer custom risk transfer solutions.</p>
+            <h3>Risk Assessment</h3>
+            <p>They deeply analyze a business to identify all potential risks (fire, cyber-attack, professional negligence, supply chain disruption). They then approach the insurance market, force insurers to compete against each other, and negotiate the specific wording of the policy to ensure the business is covered precisely how it needs to be.</p>
+        `
+    },
+    'types-of-insurance-products': {
+        title: 'Types of Insurance Products',
+        content: `
+            <p>Brokers handle highly complex commercial policies that are too dangerous for businesses to buy directly without expert advice.</p>
+            <h3>Commercial Complexity</h3>
+            <p>These include <strong>Professional Indemnity</strong> (protecting against lawsuits for bad advice), <strong>Directors & Officers (D&O) Liability</strong> (protecting board members from being personally sued), <strong>Cyber Insurance</strong>, and massive <strong>Industrial Special Risks (ISR)</strong> policies for factories and infrastructure.</p>
+        `
+    },
+    'insurance-needs-analysis': {
+        title: 'Insurance Needs Analysis',
+        content: `
+            <p>The crucial step where a broker quantifies the exact financial devastation a disaster would cause.</p>
+            <h3>Business Interruption</h3>
+            <p>For example, if a factory burns down, standard insurance pays to rebuild the walls. But what about the 12 months of lost profit while it's being rebuilt? A broker calculates exactly how much "Business Interruption" insurance is required to keep the company solvent, pay staff, and cover fixed costs during the rebuild period.</p>
+        `
+    },
+    'claims-management-support': {
+        title: 'Claims Management Support',
+        content: `
+            <p>A broker's true value is proven not when selling the policy, but when disaster strikes.</p>
+            <h3>Fighting the Insurer</h3>
+            <p>When a massive claim is lodged, the insurance company will aggressively deploy loss adjusters to minimize their payout. The broker acts as the client's champion, using their technical knowledge of the policy wording to fight the insurer and ensure the claim is paid out in full and rapidly.</p>
+        `
+    },
+    'regulation-of-insurance-brokers': {
+        title: 'Regulation of Insurance Brokers',
+        content: `
+            <p>Insurance brokers must hold an Australian Financial Services Licence (AFSL) and operate under strict regulations enforced by ASIC.</p>
+            <h3>Duty of Care</h3>
+            <p>They have a fiduciary duty to act in the best interests of the client. Furthermore, because they are often paid via commissions from the insurance companies (usually around 15-20% of the premium), they are legally required to disclose exactly how much they are earning to prevent conflicts of interest.</p>
+        `
+    },
+    'how-to-find-a-good-insurance-broker': {
+        title: 'How to Find a Good Insurance Broker',
+        content: `
+            <p>Commercial insurance is incredibly complex; a bad policy can bankrupt a company.</p>
+            <h3>Specialized Expertise</h3>
+            <p>Look for brokers who specialize in your specific industry. A broker who handles retail shops will likely lack the connections and expertise to properly insure a heavy construction firm or a tech startup. Check if they have the Qualified Practising Insurance Broker (QPIB) designation from NIBA.</p>
+        `
+    },
+    'limitations-of-insurance-brokers': {
+        title: 'Limitations of Insurance Brokers',
+        content: `
+            <p>Brokers cannot magically make uninsurable risks disappear.</p>
+            <h3>The Hard Market</h3>
+            <p>In a "hard market" (when insurers are losing money globally due to massive natural disasters), premiums skyrocket and insurers refuse to cover certain risks entirely. A broker cannot force an insurer to take on a risk they deem too dangerous, meaning businesses may be forced to self-insure or accept massive premium hikes regardless of the broker's skill.</p>
+        `
+    },
+    'top-insurance-brokers-in-australia': {
+        title: 'Top Insurance Brokers in Australia',
+        content: `
+            <p>The Australian commercial insurance broking market is dominated by a few global titans, followed by large domestic networks.</p>
+            <h3>The Global Titans</h3>
+            <p>Marsh, Aon, and Willis Towers Watson (WTW) dominate the top end of town, handling the insurance for the massive ASX 200 corporations. For medium-sized businesses, massive broker networks like Steadfast Group and AUB Group provide the backend power for hundreds of independent, local brokerage firms.</p>
+        `
+    },
+    'what-are-stockbrokers': {
+        title: 'What are Stockbrokers?',
+        content: `
+            <p>Stockbrokers are licensed professionals or firms that act as agents, buying and selling shares and other securities on a public exchange (like the ASX or NYSE) on behalf of clients.</p>
+            <h3>The Gateway to the Market</h3>
+            <p>You cannot walk into the ASX and buy shares directly. You must go through a broker who is an official "market participant." They route your order to the exchange's computer system to be matched with a seller.</p>
+        `
+    },
+    'types-of-stockbrokers': {
+        title: 'Types of Stockbrokers',
+        content: `
+            <p>The industry is split based on the level of service and advice provided.</p>
+            <h3>Full-Service vs Discount</h3>
+            <p><strong>Full-Service Brokers:</strong> Provide personalized investment advice, research reports, and manage your portfolio for you, but charge high fees (e.g., 1% per trade). <strong>Discount/Online Brokers:</strong> Provide no advice whatsoever. They simply provide the digital platform for you to execute your own trades for a very low, flat fee (e.g., $10 per trade).</p>
+        `
+    },
+    'how-to-open-a-brokerage-account': {
+        title: 'How to Open a Brokerage Account',
+        content: `
+            <p>Opening an account in Australia is entirely digital and requires strict identity verification.</p>
+            <h3>The KYC Process</h3>
+            <p>Due to Anti-Money Laundering (AML) laws, brokers must perform "Know Your Customer" (KYC) checks, requiring 100 points of ID. You will also need to provide your Tax File Number (TFN) to ensure dividends are not taxed at the highest marginal rate, and link a nominated bank account to fund your trades.</p>
+        `
+    },
+'trading-platforms-and-tools': {
+        title: 'Trading Platforms and Tools',
+        content: `
+            <p>The software interface provided by the broker to analyze and execute trades.</p>
+            <h3>Basic vs Professional</h3>
+            <p>Basic platforms (like CommSec) provide simple market depth and basic charting, perfect for long-term investors. Professional platforms (like IRESS) cost hundreds of dollars a month, providing lightning-fast live data, complex options trading matrices, and advanced algorithmic order types required by day traders.</p>
+        `
+    },
+    'custody-and-settlement-of-shares': {
+        title: 'Custody and Settlement of Shares',
+        content: `
+            <p>How you actually legally "own" the shares you buy.</p>
+            <h3>CHESS vs Custodian</h3>
+            <p>In Australia, the premium standard is <strong>CHESS Sponsorship</strong>. Your shares are registered directly in your name on the ASX sub-register, and you get a Holder Identification Number (HIN). Many cheap online brokers use a <strong>Custodian</strong> model instead—the shares are held in the broker's name on your behalf. If a custodian broker goes bankrupt, retrieving your shares can be a legal nightmare.</p>
+        `
+    },
+    'regulation-of-stockbrokers': {
+        title: 'Regulation of Stockbrokers',
+        content: `
+            <p>Stockbrokers operate in one of the most heavily surveilled environments in the country.</p>
+            <h3>ASIC and Market Integrity Rules</h3>
+            <p>They are regulated by ASIC and must strictly adhere to the ASIC Market Integrity Rules. They are legally prohibited from executing trades that manipulate the market (e.g., "wash trades" or "layering") and must have incredibly strict firewalls ("Chinese Walls") between their retail advisory arm and their investment banking arm to prevent insider trading.</p>
+        `
+    },
+    'how-to-find-a-good-stockbroker': {
+        title: 'How to Find a Good Stockbroker',
+        content: `
+            <p>Choosing a broker depends entirely on your strategy.</p>
+            <h3>Matching the Broker to the Strategy</h3>
+            <p>If you are a buy-and-hold passive investor buying index funds twice a year, use the absolute cheapest CHESS-sponsored online broker you can find. If you are an active trader trading complex options, you need an interactive broker with a world-class trading platform and cheap margin lending rates.</p>
+        `
+    },
+    'limitations-of-stockbrokers': {
+        title: 'Limitations of Stockbrokers',
+        content: `
+            <p>Brokers, particularly full-service ones, face inherent conflicts of interest.</p>
+            <h3>The Churning Risk</h3>
+            <p>Full-service brokers are traditionally paid per trade. Therefore, they have a massive financial incentive to encourage you to trade constantly ("churning" the account), even if a buy-and-hold strategy would be far more profitable for you. Modern regulations have attempted to curb this, but the underlying incentive structure remains.</p>
+        `
+    },
+    'top-stockbrokers-in-australia': {
+        title: 'Top Stockbrokers in Australia',
+        content: `
+            <p>The market is sharply divided between elite full-service firms and massive discount platforms.</p>
+            <h3>The Elite Firms</h3>
+            <p>The premier full-service advisory firms handling high-net-worth clients include Macquarie, Morgan Stanley, UBS, and domestic giants like Morgans, Ord Minnett, and Bell Potter. They provide access to exclusive IPOs and elite research, but charge a massive premium for the privilege.</p>
+        `
+    },
+    'what-are-online-brokers': {
+        title: 'What are Online Brokers?',
+        content: `
+            <p>Online brokers revolutionized investing by eliminating the human intermediary. They provide a purely digital interface allowing retail investors to route their own trades directly to the market.</p>
+            <h3>Democratization of Finance</h3>
+            <p>By removing the human advisor, online brokers slashed execution fees from hundreds of dollars down to near zero. This democratized finance, allowing young investors with tiny amounts of capital (e.g., $500) to begin investing in the stock market.</p>
+        `
+    },
+    'how-online-brokers-work': {
+        title: 'How Online Brokers Work',
+        content: `
+            <p>Online brokers operate as massive technology companies rather than traditional financial advisors.</p>
+            <h3>The Execution Engine</h3>
+            <p>When you click "Buy" on your app, the broker's software instantly checks your cash balance, formats your order, and fires it via ultra-fast fiber optics to the ASX matching engine. They make money through immense scale—charging tiny fees on millions of trades, and by earning interest on the uninvested cash sitting in clients' accounts.</p>
+        `
+    },
+    'online-trading-platforms': {
+        title: 'Online Trading Platforms',
+        content: `
+            <p>The digital battleground where online brokers compete for customers.</p>
+            <h3>UX vs Power</h3>
+            <p>Modern platforms range from incredibly simplified, gamified mobile apps designed for absolute beginners (like Raiz or Robinhood), to highly complex desktop software designed for day traders (like Interactive Brokers' TWS), offering Level 2 market data, API integration for automated trading bots, and complex options strategies.</p>
+        `
+    },
+    'beginner-mistakes-in-online-trading': {
+        title: 'Beginner Mistakes in Online Trading',
+        content: `
+            <p>The ease of online trading often leads to disastrous financial decisions by uneducated retail investors.</p>
+            <h3>The Casino Mentality</h3>
+            <p>The biggest mistake is confusing investing with gambling. Because executing a trade takes 2 seconds on a phone, beginners often day-trade volatile "meme stocks" based on social media hype without ever reading a financial statement. They also frequently misuse margin loans, magnifying their losses and wiping out their entire account in a single crash.</p>
+        `
+    },
+    'risks-on-online-trading': {
+        title: 'Risks of Online Trading',
+        content: `
+            <p>Beyond market risk, online trading carries significant structural and technical risks.</p>
+            <h3>Platform Outages and Hacks</h3>
+            <p>During massive market crashes (when everyone is panic selling), cheap online broker platforms frequently crash due to server overload, leaving investors completely unable to exit their positions as the market plummets. Furthermore, because these accounts hold liquid cash and securities, they are prime targets for cyber-attacks and phishing scams.</p>
+        `
+    },
+    'regulation-of-online-brokers': {
+        title: 'Regulation of Online Brokers',
+        content: `
+            <p>Regulators are increasingly cracking down on online brokers, particularly regarding the "gamification" of trading.</p>
+            <h3>Protecting Retail Investors</h3>
+            <p>ASIC monitors online platforms to ensure they do not use manipulative app designs (like digital confetti when you make a trade) to encourage reckless trading. They also heavily restrict how these platforms advertise highly leveraged, dangerous products like Contracts for Difference (CFDs) to unsophisticated retail investors.</p>
+        `
+    },
+    'how-to-find-a-good-online-broker': {
+        title: 'How to Find a Good Online Broker',
+        content: `
+            <p>Selecting an online broker requires balancing fees, security, and market access.</p>
+            <h3>The Checklist</h3>
+            <p>Check if they offer CHESS Sponsorship (crucial for safety). Check their fee structure—not just the brokerage fee, but hidden fees like FX spreads if you want to buy US stocks. Finally, ensure they actually provide access to the markets you want to trade (e.g., some cheap brokers don't allow you to buy bonds or trade options).</p>
+        `
+    },
+    'limitations-of-online-brokers': {
+        title: 'Limitations of Online Brokers',
+        content: `
+            <p>You get exactly what you pay for. The low fees come with zero personalized support.</p>
+            <h3>You Are On Your Own</h3>
+            <p>If you make a terrible investment decision, no advisor will step in to stop you. If there is a complex corporate action (like a rights issue or a demerger), you must figure out the tax implications entirely on your own. Furthermore, cheap online brokers rarely get access to lucrative, heavily-oversubscribed IPOs.</p>
+        `
+    },
+    'top-online-brokers-in-australia': {
+        title: 'Top Online Brokers in Australia',
+        content: `
+            <p>The Australian landscape is dominated by the major banks, but aggressive fintech startups are rapidly stealing market share.</p>
+            <h3>The Contenders</h3>
+            <p><strong>The Giant:</strong> CommSec dominates the market due to integration with the Commonwealth Bank, but charges very high fees. <strong>The Disruptors:</strong> Platforms like Stake, Pearler, and Selfwealth offer CHESS-sponsored trading at a fraction of the cost. <strong>The Heavyweight:</strong> Interactive Brokers offers the cheapest international access and complex tools for advanced traders.</p>
+        `
+    },
+    'what-are-retail-bankers': {
+        title: 'What are Retail Bankers?',
+        content: `
+            <p>Retail bankers represent the consumer-facing division of a commercial bank. They deal directly with everyday individuals and small businesses, rather than massive corporations.</p>
+            <h3>The Financial Utility</h3>
+            <p>They provide the foundational utilities of modern financial life: taking deposits, providing checking and savings accounts, issuing credit cards, and granting personal loans and mortgages.</p>
+        `
+    },
+    'products-offered-by-retail-banks': {
+        title: 'Products Offered by Retail Banks',
+        content: `
+            <p>Retail banks offer a suite of products designed to capture a customer's entire financial lifecycle.</p>
+            <h3>The Ecosystem</h3>
+            <p>They offer transactional accounts for daily spending, term deposits for safe saving, credit cards for short-term unsecured debt, auto loans, and the massive profit engine: 30-year residential mortgages. They also frequently cross-sell insurance and wealth management products.</p>
+        `
+    },
+    'how-retail-banks-make-money': {
+        title: 'How Retail Banks Make Money',
+        content: `
+            <p>Retail banks are fundamentally spread businesses. They act as the bridge between savers and borrowers.</p>
+            <h3>Net Interest Margin (NIM)</h3>
+            <p>The bank pays you 2% interest on your savings account. They then take your money and lend it to someone else to buy a house at 6% interest. That 4% difference is the Net Interest Margin (NIM), which generates billions in profit. They also make massive revenues from hidden fees (overdraft fees, account keeping fees, late payment fees).</p>
+        `
+    },
+    'the-lending-process': {
+        title: 'The Lending Process',
+        content: `
+            <p>The core function of a retail bank is assessing risk before granting a loan.</p>
+            <h3>The Credit Assessment</h3>
+            <p>When you apply for a loan, the bank pulls your credit score, verifies your income, and scrutinizes your expenses. If the loan is secured (like a mortgage), they send a valuer to ensure the property is actually worth the purchase price. The loan must be approved by their internal credit algorithms before funds are released.</p>
+        `
+    },
+    'credit-risk-and-responsible-lending': {
+        title: 'Credit Risk and Responsible Lending',
+        content: `
+            <p>Credit risk is the risk that a borrower defaults on their loan. Mismanaging this risk causes banks to collapse.</p>
+            <h3>Responsible Lending Laws</h3>
+            <p>Following the 2008 financial crisis, strict "Responsible Lending" laws were enforced. Banks are legally forbidden from giving a consumer a loan that they cannot reasonably afford to repay without suffering substantial financial hardship. They must rigorously verify a borrower's living expenses, rather than just relying on standard benchmarks.</p>
+        `
+    },
+    'regulation-of-retail-banks': {
+        title: 'Regulation of Retail Banks',
+        content: `
+            <p>Because retail banks hold the life savings of the population, they are the most heavily regulated entities on earth.</p>
+            <h3>APRA and Capital Requirements</h3>
+            <p>In Australia, the Australian Prudential Regulation Authority (APRA) enforces strict capital requirements. Banks must hold billions of dollars in highly liquid, safe assets in reserve to ensure they can survive a massive housing crash or a sudden "bank run" without going bankrupt and destroying the national economy.</p>
+        `
+    },
+    'how-to-find-a-good-retail-banker': {
+        title: 'How to Find a Good Retail Banker',
+        content: `
+            <p>For individuals, choosing a retail bank is usually about digital convenience and avoiding fees. For small businesses, finding a good Relationship Manager is critical.</p>
+            <h3>The Relationship Manager</h3>
+            <p>A good business banker understands your specific industry's cash flow cycle. During a tough month, a rigid algorithm will automatically decline your overdraft limit, but a human Relationship Manager who understands your business can override the system and grant you the credit necessary to survive.</p>
+        `
+    },
+    'limitations-of-retail-bankers': {
+        title: 'Limitations of Retail Bankers',
+        content: `
+            <p>Retail bankers are highly constrained by strict internal credit policies and algorithms.</p>
+            <h3>The Computer Says No</h3>
+            <p>If your financial situation does not perfectly fit the bank's automated risk algorithms (e.g., you are self-employed with lumpy income, or you want to build a highly complex property portfolio), a retail banker usually cannot help you. They cannot bend the rules; you must go to a specialist broker who can find a non-bank lender.</p>
+        `
+    },
+    'top-retail-bankers-in-australia': {
+        title: 'Top Retail Banks in Australia',
+        content: `
+            <p>The Australian retail banking market operates as an oligopoly, dominated by four massive institutions.</p>
+            <h3>The Big Four</h3>
+            <p>The Commonwealth Bank (CBA), Westpac (WBC), ANZ, and National Australia Bank (NAB) control the vast majority of all deposits and mortgages in the country. They are surrounded by a tier of strong regional banks (like Bendigo Bank and Bank of Queensland) and aggressive digital-only "neobanks."</p>
+        `
+    },
+    'what-are-investment-bankers': {
+        title: 'What are Investment Bankers?',
+        content: `
+            <p>Investment bankers are the ultimate deal-makers of the corporate world. They do not deal with everyday consumers; they advise massive corporations, governments, and private equity firms on complex financial transactions.</p>
+            <h3>The Capital Engineers</h3>
+            <p>If a massive corporation needs to raise a billion dollars, or wants to buy a rival company, they hire an investment bank to structure the deal, find the buyers, and execute the transaction.</p>
+        `
+    },
+'initial-public-offerings-ipos': {
+        title: 'Initial Public Offerings (IPOs)',
+        content: `
+            <p>Taking a private company public on the stock exchange is one of the most lucrative functions of an investment bank.</p>
+            <h3>The Underwriting Process</h3>
+            <p>The bank acts as an "underwriter." They rigorously audit the private company, help them draft the massive legal prospectus, determine the initial share price, and go on a "roadshow" to pitch the stock to massive institutional investors. They guarantee the company a certain amount of capital, taking on massive risk if the IPO fails to attract buyers.</p>
+        `
+    },
+    'equity-capital-markets': {
+        title: 'Equity Capital Markets (ECM)',
+        content: `
+            <p>The division of an investment bank that helps public companies raise fresh capital by issuing new shares.</p>
+            <h3>Secondary Offerings</h3>
+            <p>If a company is already on the ASX but wants to buy a competitor for $500M, they might not have the cash. The ECM team orchestrates a "Secondary Offering" or a "Rights Issue," rapidly selling $500M worth of newly created shares to institutional investors overnight, earning the bank a massive fee for arranging the capital.</p>
+        `
+    },
+    'debt-capital-markets': {
+        title: 'Debt Capital Markets (DCM)',
+        content: `
+            <p>The division that helps corporations and governments raise capital by issuing debt (bonds) instead of equity.</p>
+            <h3>Structuring the Debt</h3>
+            <p>Unlike a simple bank loan, DCM bankers structure highly complex corporate bonds. They decide the maturity date, the interest rate (yield), and whether the debt is secured or unsecured. They then sell these bonds to massive pension funds and insurance companies that need steady yields.</p>
+        `
+    },
+    'mergers-and-acquisitions-m-a': {
+        title: 'Mergers and Acquisitions (M&A)',
+        content: `
+            <p>The most glamorous and secretive division of investment banking. They advise corporate boards on buying rivals, selling divisions, or defending against hostile takeovers.</p>
+            <h3>The Art of the Deal</h3>
+            <p>M&A bankers build massive, highly complex valuation models (DCFs and LBOs) to prove exactly what a target company is worth. They negotiate the terms of the deal, structure the financing, and orchestrate the legal strategy. A single successful M&A deal can generate tens of millions of dollars in advisory fees for the bank.</p>
+        `
+    },
+    'regulation-of-investment-bankers': {
+        title: 'Regulation of Investment Bankers',
+        content: `
+            <p>Because they possess immense, non-public, market-moving information, investment banks are heavily policed.</p>
+            <h3>The Chinese Wall</h3>
+            <p>If the M&A team is orchestrating a secret buyout of a public company, the bank's trading desk could make billions by buying that stock before the announcement. To prevent this illegal insider trading, strict legal barriers called "Chinese Walls" separate the advisory teams from the trading and research teams, monitored by intense internal compliance departments.</p>
+        `
+    },
+    'how-to-find-a-good-investment-banker': {
+        title: 'How to Find a Good Investment Banker',
+        content: `
+            <p>Corporations choose investment banks based on the bank's relationships and industry expertise.</p>
+            <h3>The Beauty Parade</h3>
+            <p>When a corporation wants to run a deal, they invite several banks to pitch for the business (a "Beauty Parade"). They choose the bank that has the deepest relationships with the specific buyers they need, the most aggressive valuation estimate, and the most prestigious reputation to lend credibility to the transaction.</p>
+        `
+    },
+    'limitations-of-investment-bankers': {
+        title: 'Limitations of Investment Bankers',
+        content: `
+            <p>Investment bankers are heavily incentivized to close deals, regardless of whether the deal is actually good for the client in the long run.</p>
+            <h3>The Fee Incentive</h3>
+            <p>Because they earn massive "success fees" only if an M&A deal goes through, they have a structural incentive to convince CEOs that an acquisition is a brilliant idea, using highly optimistic synergy projections. Years later, when the merger fails to deliver those synergies and destroys shareholder value, the bankers have already collected their fees and moved on.</p>
+        `
+    },
+    'top-investment-bankers-in-australia': {
+        title: 'Top Investment Bankers in Australia',
+        content: `
+            <p>The elite tier is dominated by global Wall Street titans and one massive Australian homegrown powerhouse.</p>
+            <h3>The Bulge Bracket and Macquarie</h3>
+            <p>The global "Bulge Bracket" banks (Goldman Sachs, Morgan Stanley, J.P. Morgan, UBS) dominate the largest M&A deals in Australia. However, the undisputed king of Australian investment banking is Macquarie Group (often dubbed "The Millionaires' Factory"), renowned globally for its unmatched expertise in infrastructure and toll-road financing.</p>
+        `
+    },
+    'what-are-research-houses': {
+        title: 'What are Research Houses?',
+        content: `
+            <p>Research houses (or equity research divisions within investment banks) employ armies of analysts to study specific companies and industries, producing detailed reports recommending whether investors should "Buy," "Hold," or "Sell" a stock.</p>
+            <h3>The Information Synthesizers</h3>
+            <p>They read every financial statement, interview the CEO, survey the company's customers, and build massive financial models to predict the company's future earnings. Their reports are the lifeblood of information for massive institutional fund managers.</p>
+        `
+    },
+    'equity-research': {
+        title: 'Equity Research',
+        content: `
+            <p>The process of analyzing a publicly-traded company to determine its true intrinsic value relative to its current share price.</p>
+            <h3>The Sell-Side vs Buy-Side</h3>
+            <p><strong>Sell-Side Analysts</strong> work for investment banks. They publish their research to the public (or to paying clients) hoping to generate trading commissions for their bank. <strong>Buy-Side Analysts</strong> work internally for massive mutual funds or hedge funds. Their research is strictly secret and used solely to make investment decisions for their own fund.</p>
+        `
+    },
+    'how-analysts-value-companies': {
+        title: 'How Analysts Value Companies',
+        content: `
+            <p>Equity analysts build immensely complex Discounted Cash Flow (DCF) models to arrive at a "Target Price" for a stock.</p>
+            <h3>The Modeling Process</h3>
+            <p>They project the company's revenue, margins, and capital expenditures quarter-by-quarter for the next five years. They constantly tweak these assumptions based on new data (e.g., changing the assumed price of iron ore, or adjusting the assumed market share of a new iPhone). If their resulting Target Price is 20% higher than the current stock price, they issue a "Buy" rating.</p>
+        `
+    },
+    'how-to-read-research-reports': {
+        title: 'How to Read Research Reports',
+        content: `
+            <p>Smart investors ignore the headline "Buy/Sell" rating and focus entirely on the analyst's underlying assumptions.</p>
+            <h3>Finding the Thesis</h3>
+            <p>A "Buy" rating is useless if you disagree with the analyst's logic. You must read the report to find their "Core Thesis"—why do they think the market is wrong? What specific catalyst (a new product launch, a cost-cutting program) do they believe will drive the earnings higher? If their thesis makes sense, the report is valuable.</p>
+        `
+    },
+    'conflicts-of-interest': {
+        title: 'Conflicts of Interest in Research',
+        content: `
+            <p>Sell-side research has a notorious history of bias.</p>
+            <h3>The "Buy" Bias</h3>
+            <p>Investment banks want to win lucrative M&A or IPO business from corporate CEOs. If a bank's research analyst issues a brutal "Sell" rating on a company, that CEO will never hire the bank for a deal. Therefore, sell-side analysts face immense internal pressure to be overly optimistic, resulting in vastly more "Buy" ratings than "Sell" ratings across the market.</p>
+        `
+    },
+    'regulation-of-research-houses': {
+        title: 'Regulation of Research Houses',
+        content: `
+            <p>Following massive scandals in the early 2000s, regulations forced investment banks to physically and financially separate their research departments from their investment banking divisions.</p>
+            <h3>The Global Settlement</h3>
+            <p>Analysts' bonuses can no longer be tied to the revenue generated by the investment banking deals they helped secure. They must also clearly disclose any financial relationship the bank has with the company being analyzed (e.g., "Our bank owns 1% of this company's stock" or "We recently managed an IPO for this company").</p>
+        `
+    },
+    'how-to-find-a-good-research-house': {
+        title: 'How to Find a Good Research House',
+        content: `
+            <p>Retail investors rarely get access to elite tier-1 investment bank research (like Goldman Sachs) unless they pay massive fees or hold huge accounts.</p>
+            <h3>Independent Research</h3>
+            <p>Retail investors often rely on independent research houses that do not have an investment banking arm, removing the primary conflict of interest. Firms like Morningstar or specialized boutique research firms charge a subscription fee purely for their objective analysis, rather than trying to win corporate deals.</p>
+        `
+    },
+    'limitations-of-research-houses': {
+        title: 'Limitations of Research Houses',
+        content: `
+            <p>Analysts are often accused of "driving through the rearview mirror."</p>
+            <h3>The Herd Mentality</h3>
+            <p>When a stock is crashing, analysts often quickly downgrade it to a "Sell" *after* the damage is done to protect their reputation. When a stock is booming, they constantly raise their Target Prices to match the momentum. Because career risk is high, analysts tend to cluster around the same consensus estimates; it takes immense courage for an analyst to issue a "Strong Buy" on a stock everyone else hates.</p>
+        `
+    },
+    'top-research-houses-in-australia': {
+        title: 'Top Research Houses in Australia',
+        content: `
+            <p>The highest quality institutional research in Australia is produced by the major investment banks (Macquarie, UBS, Morgan Stanley).</p>
+            <h3>Independent Providers</h3>
+            <p>For retail investors and independent financial planners, independent research houses are crucial. Firms like Morningstar, Lonsec, and Zenith dominate the landscape, providing the critical research and ratings that financial planners use to build client portfolios without the bias of investment banking conflicts.</p>
+        `
+    },
+    'what-are-fund-managers': {
+        title: 'What are Fund Managers?',
+        content: `
+            <p>Fund managers are professional investors who pool money from thousands of individuals or massive institutions (like superannuation funds) and invest it into the financial markets on their behalf.</p>
+            <h3>The Masters of Capital</h3>
+            <p>They are the ultimate "Buy-Side." They make the actual decisions on which specific stocks, bonds, or properties to buy or sell, aiming to grow the pooled capital and beat the broader market index.</p>
+        `
+    },
+    'how-fund-managers-make-money': {
+        title: 'How Fund Managers Make Money',
+        content: `
+            <p>Fund managers generate revenue through incredibly lucrative fee structures.</p>
+            <h3>The 2 and 20 Model</h3>
+            <p>Standard mutual funds charge a flat <strong>Management Fee</strong> (e.g., 1% of total assets under management per year). Elite hedge funds and private equity firms often charge the famous "2 and 20" structure: a 2% flat management fee, plus a 20% <strong>Performance Fee</strong> on any profits generated above a certain benchmark. This creates immense wealth for the manager, regardless of whether the fund actually performs well over the long term.</p>
+        `
+    },
+    'investment-strategies': {
+        title: 'Fund Manager Investment Strategies',
+        content: `
+            <p>Every fund manager operates under a specific "mandate" outlining exactly how they are allowed to invest the money.</p>
+            <h3>Active vs Passive</h3>
+            <p><strong>Passive Managers</strong> (like Vanguard) simply buy every stock in an index (like the ASX 200) and charge tiny fees. <strong>Active Managers</strong> attempt to beat the index. They might use a "Deep Value" strategy (buying hated, cheap stocks), a "Growth" strategy (buying high-flying tech companies), or a "Long/Short" strategy (short-selling stocks they think will crash to hedge the portfolio).</p>
+        `
+    },
+    'fund-performance-measurement': {
+        title: 'Fund Performance Measurement',
+        content: `
+            <p>Evaluating a fund manager requires looking far beyond their absolute return.</p>
+            <h3>Alpha and Beta</h3>
+            <p>If the overall stock market goes up 20%, and a fund manager goes up 22%, the manager didn't generate 22% of skill. They simply rode the market wave (Beta) and generated a tiny 2% of actual outperformance (Alpha). Investors use complex metrics like the Sharpe Ratio to determine if the manager's return was actually worth the level of risk they took to achieve it.</p>
+        `
+    },
+    'risk-management-strategies': {
+        title: 'Risk Management Strategies',
+        content: `
+            <p>A fund manager's primary job is often not maximizing returns, but preventing catastrophic losses.</p>
+            <h3>Position Sizing and Hedging</h3>
+            <p>Strict risk management involves <strong>Position Sizing</strong> (never putting more than 5% of the fund into a single stock so one bankruptcy doesn't destroy the fund). Sophisticated funds also use <strong>Hedging</strong>, buying put options or short-selling index futures to ensure that if the entire global market crashes 30%, the fund only loses 10%.</p>
+        `
+    },
+    'regulation-of-fund-managers': {
+        title: 'Regulation of Fund Managers',
+        content: `
+            <p>Fund managers operate under intense scrutiny to prevent fraud and ensure they adhere strictly to their promised investment mandates.</p>
+            <h3>The Custodian Model</h3>
+            <p>Crucially, the fund manager does not actually hold the investors' cash. The assets are legally held by an independent third-party <strong>Custodian Bank</strong>. The fund manager only sends "buy" and "sell" instructions. This ensures that if the fund manager turns out to be fraudulent or goes bankrupt, they cannot simply run away with the clients' money.</p>
+        `
+    },
+    'how-to-find-a-good-fund-manager': {
+        title: 'How to Find a Good Fund Manager',
+        content: `
+            <p>Finding an active manager who consistently beats the market over decades is statistically incredibly rare.</p>
+            <h3>Skin in the Game</h3>
+            <p>Avoid managers who only highlight their 1-year returns. Look for a 10+ year track record of outperformance across different market cycles. Crucially, look for "Skin in the Game"—does the fund manager have the vast majority of their own personal net worth invested in the exact same fund alongside their clients? If not, walk away.</p>
+        `
+    },
+    'limitations-of-fund-managers': {
+        title: 'Limitations of Fund Managers',
+        content: `
+            <p>The vast majority of active fund managers fail to beat simple, low-cost index funds over a 10-year period.</p>
+            <h3>The Drag of Fees and Size</h3>
+            <p>Their high fees act as a massive drag on compounding returns. Furthermore, as a successful fund attracts billions of dollars in new capital, it becomes too large to invest in agile, high-growth small-cap stocks. It is forced to buy massive, slow-moving corporations, eventually turning the fund into an expensive, bloated "closet index tracker."</p>
+        `
+    },
+    'top-fund-managers-in-australia': {
+        title: 'Top Fund Managers in Australia',
+        content: `
+            <p>The Australian funds management industry is world-class, fueled by the massive compulsory Superannuation system.</p>
+            <h3>The Heavyweights</h3>
+            <p>Massive domestic managers include Magellan (global equities), Platinum Asset Management, and Pendal. However, the true heavyweights of Australian capital are the massive Industry Superfunds (like AustralianSuper and Hostplus), which control hundreds of billions of dollars and increasingly bypass traditional fund managers to invest directly in global infrastructure and private equity.</p>
+        `
+    },
+
+
             'financial-planners': {
+
                 title: 'Financial Planners',
+
                 content: `
+
                     
+
 <p>Financial planners are comprehensive financial advisors who help individuals and families achieve their financial goals through holistic financial planning. They assess clients' entire financial picture and develop customized strategies.</p>
+
                     
+
                     <h3>Key Services</h3>
+
                     <p>Financial planners provide retirement planning, investment management, tax planning, estate planning, insurance analysis, debt management, and education funding strategies.</p>
+
                     
+
                     <h3>Qualifications</h3>
+
                     <p>Certified Financial Planners (CFP) have completed extensive education and passed rigorous examinations. Other designations include ChFC (Chartered Financial Consultant) and PFS (Personal Financial Specialist).</p>
+
                     
+
                     <h3>When to Consult</h3>
+
                     <p>Consider a financial planner when you need comprehensive financial advice, want to develop a long-term financial strategy, or need help coordinating various aspects of your financial life such as investments, insurance, and taxes.</p>
+
                     
+
                     <h3>Benefits</h3>
+
                     <p>Financial planners offer objective advice, help avoid costly mistakes, and provide peace of mind by ensuring all aspects of your financial life work together harmoniously.</p>
+
                 `
+
             },
+
             'accountants': {
+
                 title: 'Accountants',
+
                 content: `
+
                     
+
 <p>Accountants are financial professionals who specialize in recording, analyzing, and reporting financial transactions. They ensure financial accuracy, compliance, and provide valuable insights for business and personal finances.</p>
+
                     
+
                     <h3>Key Services</h3>
+
                     <p>Accountants provide tax preparation and planning, financial statement preparation, auditing, bookkeeping, financial analysis, and business advisory services.</p>
+
                     
+
                     <h3>Types of Accountants</h3>
+
                     <p>Certified Public Accountants (CPA), Chartered Accountants (CA), and tax specialists are common qualifications. Some specialize in forensic accounting, management accounting, or public accounting.</p>
+
                     
+
                     <h3>When to Use</h3>
+
                     <p>Consult an accountant for tax advice, business financial management, audit requirements, financial reporting, or when setting up a new business or investment structure.</p>
+
                     
+
                     <h3>Benefits</h3>
+
                     <p>Accountants help minimize tax liabilities, ensure compliance with regulations, and provide insights that can improve financial performance and decision-making.</p>
+
                 `
+
             },
+
             'fund-managers': {
+
                 title: 'Fund Managers',
+
                 content: `
+
                     
+
 <p>Fund managers are investment professionals who oversee investment portfolios on behalf of individuals, institutions, or mutual funds. They make investment decisions to achieve specific financial objectives.</p>
+
                     
+
                     <h3>Key Services</h3>
+
                     <p>Fund managers conduct research, select securities, manage risk, monitor market conditions, and make buy/sell decisions to optimize portfolio performance.</p>
+
                     
+
                     <h3>Types of Fund Managers</h3>
+
                     <p>Portfolio managers, investment advisors, hedge fund managers, and mutual fund managers specialize in different investment strategies and asset classes.</p>
+
                     
+
                     <h3>When to Use</h3>
+
                     <p>Consider fund managers when you lack the time, expertise, or inclination to manage investments yourself, or when you want professional management of large portfolios.</p>
+
                     
+
                     <h3>Benefits</h3>
+
                     <p>Professional fund managers bring expertise, research , and risk management capabilities that individual investors typically cannot access.</p>
+
                 `
+
             },
+
             'investment-bankers': {
+
                 title: 'Investment Bankers',
+
                 content: `
+
                     
+
 <p>Investment bankers are financial intermediaries who help corporations, governments, and institutions raise capital and provide strategic financial advice. They facilitate complex financial transactions.</p>
+
                     
+
                     <h3>Key Services</h3>
+
                     <p>Investment bankers provide merger and acquisition advisory, initial public offerings (IPOs), debt and equity underwriting, restructuring advice, and market-making services.</p>
+
                     
+
                     <h3>Types of Investment Bankers</h3>
+
                     <p>Bulge bracket banks, boutique firms, and regional investment banks offer different levels of service and specialization in various industries or transaction types.</p>
+
                     
+
                     <h3>When to Use</h3>
+
                     <p>Consult investment bankers when your business needs to raise capital, pursue mergers/acquisitions, or requires sophisticated financial restructuring.</p>
+
                     
+
                     <h3>Benefits</h3>
+
                     <p>Investment bankers provide access to capital markets, extensive networks, and expertise in complex financial transactions that can significantly impact business growth and valuation.</p>
+
                 `
+
             },
+
             'retail-bankers': {
+
                 title: 'Retail Bankers',
+
                 content: `
+
                     
+
 <p>Retail bankers work with individual customers to provide banking services, financial products, and advice for personal financial management. They are the primary point of contact for everyday banking needs.</p>
+
                     
+
                     <h3>Key Services</h3>
+
                     <p>Retail bankers offer savings accounts, checking accounts, loans, mortgages, credit cards, investment products, and basic financial advice.</p>
+
                     
+
                     <h3>Types of Retail Bankers</h3>
+
                     <p>Personal bankers, relationship managers, and financial services representatives specialize in different aspects of retail banking from basic transactions to comprehensive financial planning.</p>
+
                     
+
                     <h3>When to Use</h3>
+
                     <p>Use retail bankers for everyday banking needs, applying for loans or mortgages, opening accounts, or getting basic financial product recommendations.</p>
+
                     
+
                     <h3>Benefits</h3>
+
                     <p>Retail bankers provide convenient access to banking services, personalized service, and can help coordinate various financial products for comprehensive personal financial management.</p>
+
                 `
+
             },
+
             'mortgage-brokers': {
+
                 title: 'Mortgage Brokers',
+
                 content: `
+
                     
+
 <p>Mortgage brokers are independent financial professionals who help individuals find and secure the best mortgage loans from various lenders. They act as intermediaries between borrowers and lending institutions.</p>
+
                     
+
                     <h3>Key Services</h3>
+
                     <p>Mortgage brokers assess client needs, compare loan products, assist with applications, negotiate terms, and help with refinancing or debt consolidation.</p>
+
                     
+
                     <h3>Qualifications</h3>
+
                     <p>Licensed mortgage brokers must complete training and pass examinations. Many hold additional certifications in mortgage planning and lending practices.</p>
+
                     
+
                     <h3>When to Use</h3>
+
                     <p>Consult a mortgage broker when buying a home, refinancing existing mortgages, or seeking specialized loan products that may not be available through direct lenders.</p>
+
                     
+
                     <h3>Benefits</h3>
+
                     <p>Mortgage brokers have access to a wide range of lenders and products, can often negotiate better rates, and provide expert guidance through the complex mortgage process.</p>
+
                 `
+
             },
+
             'stockbrokers': {
+
                 title: 'Stockbrokers',
+
                 content: `
+
                     
+
 <p>Stockbrokers are licensed professionals who buy and sell securities on behalf of clients. They provide investment advice, execute trades, and help investors navigate the stock market.</p>
+
                     
+
                     <h3>Key Services</h3>
+
                     <p>Stockbrokers offer investment research, trade execution, portfolio management, market analysis, and personalized investment recommendations.</p>
+
                     
+
                     <h3>Types of Stockbrokers</h3>
+
                     <p>Full-service brokers provide comprehensive advice and research, while discount brokers focus on low-cost trade execution with minimal advisory services.</p>
+
                     
+
                     <h3>When to Use</h3>
+
                     <p>Use stockbrokers when you want professional assistance with stock trading, need research and analysis, or require guidance in building an investment portfolio.</p>
+
                     
+
                     <h3>Benefits</h3>
+
                     <p>Stockbrokers provide market expertise, research tools, and can help investors make informed decisions while managing the complexities of trading and compliance.</p>
+
                 `
+
             },
+
             'online-brokers': {
+
                 title: 'Online Brokers',
+
                 content: `
+
                     
+
 <p>Online brokers are digital platforms that provide investors with tools and technology to trade securities electronically. They offer low-cost access to financial markets without traditional broker services.</p>
+
                     
+
                     <h3>Key Services</h3>
+
                     <p>Online brokers provide trading platforms, real-time market data, research tools, educational , and mobile trading applications.</p>
+
                     
+
                     <h3>Types of Online Brokers</h3>
+
                     <p>Discount online brokers focus on low fees and self-directed trading, while robo-advisors use algorithms for automated portfolio management.</p>
+
                     
+
                     <h3>When to Use</h3>
+
                     <p>Choose online brokers if you prefer self-directed investing, want low trading costs, or need flexible access to markets through digital platforms.</p>
+
                     
+
                     <h3>Benefits</h3>
+
                     <p>Online brokers offer lower fees, 24/7 market access, advanced trading tools, and educational  that empower individual investors to manage their own portfolios.</p>
+
                 `
+
             },
+
             'lawyers': {
+
                 title: 'Lawyers',
+
                 content: `
+
                     
+
 <p>Lawyers are legal professionals who provide advice and representation in matters involving laws and regulations. In finance, they specialize in areas like corporate law, tax law, and estate planning.</p>
+
                     
+
                     <h3>Key Services</h3>
+
                     <p>Legal services include contract drafting, regulatory compliance, dispute resolution, estate planning, tax law advice, and corporate governance.</p>
+
                     
+
                     <h3>Types of Financial Lawyers</h3>
+
                     <p>Corporate lawyers, tax attorneys, estate planning attorneys, and securities lawyers specialize in different areas of financial and business law.</p>
+
                     
+
                     <h3>When to Use</h3>
+
                     <p>Consult lawyers for legal aspects of business transactions, estate planning, tax disputes, regulatory compliance, or when setting up complex financial structures.</p>
+
                     
+
                     <h3>Benefits</h3>
+
                     <p>Lawyers provide legal protection, ensure compliance with regulations, and help navigate complex legal frameworks that can have significant financial implications.</p>
+
                 `
+
             },
+
             'insurance-brokers': {
+
                 title: 'Insurance Brokers',
+
                 content: `
+
                     
+
 <p>Insurance brokers are independent professionals who help individuals and businesses find and purchase appropriate insurance coverage from various insurance companies.</p>
+
                     
+
                     <h3>Key Services</h3>
+
                     <p>Insurance brokers assess risk needs, compare policies from multiple insurers, negotiate terms, provide claims assistance, and offer ongoing policy management.</p>
+
                     
+
                     <h3>Types of Insurance</h3>
+
                     <p>Life insurance, health insurance, property insurance, liability insurance, and business insurance are common areas where brokers provide expertise.</p>
+
                     
+
                     <h3>When to Use</h3>
+
                     <p>Use insurance brokers when you need comprehensive coverage analysis, want to compare multiple insurance options, or require specialized insurance for business or personal needs.</p>
+
                     
+
                     <h3>Benefits</h3>
+
                     <p>Insurance brokers provide access to a wide range of products, expert advice on coverage needs, and can often secure better terms than dealing directly with insurers.</p>
+
                 `
+
             },
+
             'research-houses': {
+
                 title: 'Research Houses',
+
                 content: `
+
                     
+
 <p>Research houses are independent financial research firms that provide in-depth analysis and recommendations on stocks, sectors, and market trends. They serve institutional and individual investors.</p>
+
                     
+
                     <h3>Key Services</h3>
+
                     <p>Research houses offer company analysis, sector reports, market forecasts, investment recommendations, and economic research.</p>
+
                     
+
                     <h3>Types of Research</h3>
+
                     <p>Sell-side research (from investment banks), buy-side research (for institutional investors), and independent research firms provide different perspectives and analysis.</p>
+
                     
+
                     <h3>When to Use</h3>
+
                     <p>Consult research houses when you need detailed company or sector analysis, want independent investment opinions, or require comprehensive market research.</p>
+
                     
+
                     <h3>Benefits</h3>
+
                     <p>Research houses provide objective analysis, deep industry expertise, and insights that can inform investment decisions and help identify opportunities or risks in the market.</p>
+
                 `
+
             }
+
         };
+
+
+
+        // Article panel functionality
+
+        function openArticle(articleId) {
+
+            const panel = document.getElementById('article-detail-panel');
+
+            const title = document.getElementById('article-detail-title');
+
+            const body = document.getElementById('article-detail-body');
+
+            
+
+            if (articleContent[articleId]) {
+
+                title.textContent = articleContent[articleId].title;
+
+                const imagePlaceholder = typeof window.buildArticleImageHtml === 'function' ? window.buildArticleImageHtml(articleId, articleContent[articleId]) : '';
+
+
+
+                const relatedArticles = `
+
+<hr style="margin:32px 0;border:none;border-top:1px solid #e5e7eb;">
+
+<h3 style="color:#1e3a8a;margin-bottom:16px;">Further Reading:</h3>
+
+<p style="color:#6b7280;font-size:14px;line-height:1.6;">Explore more resources and expert perspectives on these topics in our library collection.</p>
+
+<h3 style="color:#1e3a8a;margin:24px 0 12px;">Related books:</h3>
+
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px;">
+
+    ${[1,2,3,4,5,6].map(i => `
+
+    <div style="border:1px solid #e5e7eb;border-radius:8px;padding:12px;text-align:center;background:#f9fafb;">
+
+        <div style="width:60px;height:80px;background:#e5e7eb;border-radius:4px;margin:0 auto 8px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:11px;">Book ${i}</div>
+
+        <a href="#" style="font-size:12px;color:#1e3a8a;text-decoration:none;">Book title link</a>
+
+    </div>`).join('')}
+
+</div>
+
+<hr style="margin:24px 0;border:none;border-top:1px solid #e5e7eb;">
+
+<p style="font-size:12px;color:#9ca3af;font-style:italic;"><strong>Disclaimer:</strong> The information provided in this article is for informational purposes only and should not be considered as investment advice. Always do your own research and consult with a professional before making any investment decisions.</p>`;
+
+
+
+                let articleBody = articleContent[articleId] ? articleContent[articleId].content : '';
+
+                if(articleBody) {
+
+                    // Remove first <p>...< /p> (non-greedy) and any adjacent heading up to h3 if it exists at the start
+
+                    // We'll run successive replaces to be robust instead of one massive regex:
+
+                    articleBody = articleBody.trim();
+
+                    // if starts with a paragraph that is a category
+
+                    let pMatch = articleBody.match(/^(<p[^>]*>.*?<\/p>)\s*(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
+
+                    if(pMatch) {
+
+                        articleBody = articleBody.substring(pMatch[0].length).trim();
+
+                    } else {
+
+                        // try to match just the h tag
+
+                        let hMatch = articleBody.match(/^(<h[1-6][^>]*>.*?<\/h[1-6]>)/is);
+
+                        if(hMatch) {
+
+                            articleBody = articleBody.substring(hMatch[0].length).trim();
+
+                        }
+
+                    }
+
+                    
+
+                    // Bold first paragraph
+
+                    articleBody = articleBody.replace(/<p>(.*?)<\/p>/i, '<p><strong>$1</strong></p>');
+
+                    
+
+                    // Remove existing disclaimer
+
+                    articleBody = articleBody.replace(/<p><strong>Disclaimer:<\/strong>.*?<\/p>\s*$/is, '');
+
+                }
+
+                
+
+                body.innerHTML = imagePlaceholder + articleBody + relatedArticles;
+
+                panel.classList.add('active');
+
+                document.body.style.overflow = 'hidden';
+
+            }
+
+        }
+
+
+
+        function closeArticlePanel() {
+
+            const panel = document.getElementById('article-detail-panel');
+
+            panel.classList.remove('active');
+
+            document.body.style.overflow = '';
+
+        }
+
+
+
+        // Event listeners
+
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const articleClose = document.getElementById('article-detail-close');
+
+            const articlePanel = document.getElementById('article-detail-panel');
+
+            
+
+            if (articleClose) {
+
+                articleClose.addEventListener('click', closeArticlePanel);
+
+            }
+
+            
+
+            if (articlePanel) {
+
+                articlePanel.addEventListener('click', function(event) {
+
+                    if (event.target === articlePanel) {
+
+                        closeArticlePanel();
+
+                    }
+
+                });
+
+            }
+
+        });
+
     </script>
-    
-    
-    </body></html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="js/article-image-resolver.js?v=3"></script>
+    <script>
+function toggleMobileMenu() {
+            const mobileDrawer = document.getElementById('mobile-drawer');
+            if (mobileDrawer) {
+                if (mobileDrawer.classList.contains('open')) {
+                    mobileDrawer.classList.remove('open');
+                    document.body.style.overflow = '';
+                } else {
+                    mobileDrawer.classList.add('open');
+                    document.body.style.overflow = 'hidden';
+                }
+            }
+        }
+    </script>
+
+</body></html>
+
+
+
+
+
+
+
+
+
+
+

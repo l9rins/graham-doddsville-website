@@ -1952,13 +1952,13 @@
 
             'stock-valuation-buffett-s-intrinsic-value': {
 
-                title: 'Buffettâ€™s intrinsic value',
+                title: 'Buffett’s intrinsic value',
 
                 content: `
 
                     
 
-<p>Dummy content for Buffettâ€™s intrinsic value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+<p>Dummy content for Buffett’s intrinsic value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
 
                 `
 
@@ -1966,13 +1966,13 @@
 
             'stock-valuation-graham-s-intrinsic-value': {
 
-                title: 'Grahamâ€™s intrinsic value',
+                title: 'Graham’s intrinsic value',
 
                 content: `
 
                     
 
-<p>Dummy content for Grahamâ€™s intrinsic value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+<p>Dummy content for Graham’s intrinsic value goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
 
                 `
 
@@ -2442,13 +2442,13 @@
 
             'stock-valuation-graham-s-formulas': {
 
-                title: 'Grahamâ€™s formulas',
+                title: 'Graham’s formulas',
 
                 content: `
 
                     
 
-<p>Dummy content for Grahamâ€™s formulas goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+<p>Dummy content for Graham’s formulas goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
 
                 `
 
@@ -2456,13 +2456,13 @@
 
             'stock-valuation-greenblatt-s-magic-formula': {
 
-                title: 'Greenblattâ€™s magic formula',
+                title: 'Greenblatt’s magic formula',
 
                 content: `
 
                     
 
-<p>Dummy content for Greenblattâ€™s magic formula goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
+<p>Dummy content for Greenblatt’s magic formula goes here. It provides a comprehensive analysis specifically tailored for real world investment applications.</p>
 
                 `
 
