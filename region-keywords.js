@@ -77,7 +77,16 @@ const GLOBAL_SOURCES_NEEDING_FILTER = [
   "The Guardian",
   "Guardian",
   "Guardian Australia",
-  "The Diplomat"
+  "The Diplomat",
+  "New York Times",
+  "Washington Post",
+  "Time",
+  "CNN Money",
+  "CBS News",
+  "Fox News",
+  "NBC News",
+  "HuffPost",
+  "USA Today"
 ];
 
 module.exports = {
