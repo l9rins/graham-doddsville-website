@@ -178,8 +178,18 @@ async function refreshNewsCache() {
 // Error handling
 app.use((req, res) => res.status(404).json({ error: 'Not Found' }));
 app.use((err, req, res, next) => res.status(500).json({ error: 'Server Error' }));
-process.on('uncaughtException', err => { console.error('💥 UNCAUGHT EXCEPTION:', err); process.exit(1); });
-process.on('unhandledRejection', reason => console.error('💥 UNHANDLED REJECTION:', reason));
+process.on('uncaughtException', err => { 
+    console.error('💥 UNCAUGHT EXCEPTION:', err); 
+    require('fs').writeFileSync('crash.log', 'UNCAUGHT EXCEPTION:\n' + (err && err.stack ? err.stack : err));
+    setTimeout(() => process.exit(1), 500); 
+});
+process.on('unhandledRejection', reason => {
+    console.error('💥 UNHANDLED REJECTION:', reason);
+    require('fs').writeFileSync('crash.log', 'UNHANDLED REJECTION:\n' + (reason && reason.stack ? reason.stack : reason));
+});
+process.on('exit', code => {
+    require('fs').writeFileSync('exit.log', 'Process exiting with code ' + code + '\n' + new Error().stack);
+});
 
 // Start server
 const server = app.listen(PORT, '0.0.0.0', () => {
