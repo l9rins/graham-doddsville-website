@@ -2647,11 +2647,11 @@
 
             <!-- Filter Pills -->
             <div class="article-filters">
-                <button class="buffett-tabs-mobile active" data-filter="investing">INVESTING</button>
-                <button class="buffett-tabs-mobile" data-filter="economy">ECONOMY</button>
-                <button class="buffett-tabs-mobile" data-filter="industry">INDUSTRY</button>
-                <button class="buffett-tabs-mobile" data-filter="super">SUPER</button>
-                <button class="buffett-tabs-mobile" data-filter="misc">MISC</button>
+                <button class="feature-article-tab-btn active" data-filter="investing">INVESTING</button>
+                <button class="feature-article-tab-btn" data-filter="economy">ECONOMY</button>
+                <button class="feature-article-tab-btn" data-filter="industry">INDUSTRY</button>
+                <button class="feature-article-tab-btn" data-filter="super">SUPER</button>
+                <button class="feature-article-tab-btn" data-filter="misc">MISC</button>
             </div>
 
             <!-- Article Slider Content -->
@@ -6034,13 +6034,15 @@
             }
 
             // When switching filter tabs, reset visibility for the selected category
-            const tabs = document.querySelectorAll('#mobile-feature-articles .buffett-tabs-mobile');
+            const tabs = document.querySelectorAll('#mobile-feature-articles .feature-article-tab-btn');
+            const slides = document.querySelectorAll('#mobile-feature-articles .article-slide');
+
             tabs.forEach(tab => {
                 tab.addEventListener('click', function () {
                     // find the active slide category
-                    const category = tab.dataset.filter;
+                    const category = tab.getAttribute('data-filter');
                     // remove active from all tabs
-                    document.querySelectorAll('#mobile-feature-articles .buffett-tabs-mobile').forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('#mobile-feature-articles .feature-article-tab-btn').forEach(t => t.classList.remove('active'));
                     // add active to clicked tab
                     this.classList.add('active');
                     // hide other slides and set active

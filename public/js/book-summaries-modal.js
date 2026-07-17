@@ -57,6 +57,21 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             
             if (foundSummary) {
+                // If summary doesn't have an image, inject the one from the book card
+                if (!foundSummary.includes('<img')) {
+                    const imgEl = bookCard.querySelector('img.book-cover');
+                    if (imgEl && imgEl.src) {
+                        const imgHtml = `<p style="text-align: center;"><img src="${imgEl.getAttribute('src')}" class="book-cover-summary" style="max-width: 200px; border-radius: 8px; margin: 15px 0; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"></p>`;
+                        
+                        // Insert image after the Pages paragraph, or just at the top
+                        if (foundSummary.includes('<p>Pages:')) {
+                            foundSummary = foundSummary.replace(/(<p>Pages:.*?<\/p>)/, `$1${imgHtml}`);
+                        } else {
+                            foundSummary = imgHtml + foundSummary;
+                        }
+                    }
+                }
+                
                 // Only add a title header if it's not already in the summaryHtml
                 if (!foundSummary.includes('<strong>' + rawTitle) && !foundSummary.toLowerCase().includes(rawTitle.toLowerCase())) {
                     modalBody.innerHTML = '<h2>' + rawTitle + '</h2>' + foundSummary;

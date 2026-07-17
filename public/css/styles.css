@@ -605,10 +605,7 @@ body {
 
     /* Book links list styling (Georgia, black, no underline) */
     .book-links-list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0px;
-        align-items: center;
+        display: block;
         line-height: 1.6;
     }
 
@@ -618,8 +615,8 @@ body {
         font-weight: 550;
         color: #000 !important;
         text-decoration: none !important;
-        white-space: nowrap;
-        margin-right: 4px;
+        display: inline;
+        white-space: normal;
     }
 
     .book-links-list a:not(:last-child)::after {
@@ -8453,6 +8450,7 @@ th {
 
 .buffett-content-mobile {
     position: relative;
+    margin-top: 8px;
 }
 
 .buffett-tab {
@@ -9278,7 +9276,7 @@ th {
 }
 
 /* Feature Articles Button Styles */
-.buffett-tabs-mobile {
+.feature-article-tab-btn {
     background: #f7fafc;
     color: #4a5568;
     border: 1px solid #e2e8f0;
@@ -9294,20 +9292,20 @@ th {
     text-transform: uppercase;
 }
 
-.buffett-tabs-mobile:hover {
+.feature-article-tab-btn:hover {
     background: #e2e8f0;
     border-color: #cbd5e0;
     color: #2d3748;
 }
 
-.buffett-tabs-mobile.active {
+.feature-article-tab-btn.active {
     background: #1e3a8a;
     color: white;
     border-color: #1a365d;
     box-shadow: 0 2px 4px rgba(26, 54, 93, 0.2);
 }
 
-.buffett-tabs-mobile:focus {
+.feature-article-tab-btn:focus {
     outline: none;
     box-shadow: 0 0 0 3px rgba(26, 54, 93, 0.1);
 }
@@ -11342,7 +11340,7 @@ th {
 @media (max-width: 767px) {
     .buffett-tabs-mobile {
         padding: 0 10px;
-        margin: 15px 0;
+        margin: 5px 0 0 0;
         scrollbar-width: none;
         /* Firefox */
         -ms-overflow-style: none;
