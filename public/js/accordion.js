@@ -51,9 +51,25 @@ function closeMobileMenu() {
     }
 }
 
-// Fill accordion content from buffettTopicsData + fallback map
+// Fill accordion content
 function fillAccordionContent(sectionId, quoteText, source) {
     var div = document.getElementById(sectionId + '-content');
     if (!div) return;
     div.innerHTML = '<div style="padding: 24px 16px; color: #4b5563;"><blockquote style="margin: 0 0 12px 0; padding: 0 0 0 16px; border-left: 3px solid #d4af37; font-style: italic; line-height: 1.7;">' + quoteText + '</blockquote><footer style="font-size: 13px; color: #6b7280; padding-left: 16px;">\u2014 ' + source + '</footer></div>';
 }
+
+// Auto-open first accordion section on desktop
+(function() {
+    function ready(fn) {
+        if (document.readyState !== 'loading') { fn(); } else { document.addEventListener('DOMContentLoaded', fn); }
+    }
+    ready(function() {
+        if (window.innerWidth < 1024) return;
+        var first = document.querySelector('.collapsible-section');
+        if (first && first.id) {
+            var sectionId = first.id.replace('-section', '');
+            var toggle = document.querySelector('.collapsible-header[onclick*="' + sectionId + '"]');
+            if (toggle) toggle.click();
+        }
+    });
+})();

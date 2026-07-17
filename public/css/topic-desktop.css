@@ -1,0 +1,145 @@
+/* Desktop layout for Buffett topic pages — only applies ≥1024px */
+/* Mobile is completely untouched */
+
+@media (min-width: 1024px) {
+
+  .quotes-accordion-container {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 0;
+    align-items: start;
+    position: relative;
+    min-height: 60vh;
+  }
+
+  /* Left panel — scrollable list of section titles */
+  .quotes-accordion-container > .collapsible-section:first-child {
+    margin-top: 0;
+  }
+
+  .collapsible-section {
+    grid-column: 1;
+    border-bottom: 1px solid #e5e7eb;
+    background: #fff;
+  }
+
+  /* Right panel content area */
+  .collapsible-section.active .collapsible-content {
+    min-height: 30vh;
+  }
+
+  .collapsible-section:last-child {
+    border-bottom: none;
+  }
+
+  .collapsible-header {
+    cursor: pointer;
+    padding: 10px 12px;
+    border-bottom: none !important;
+    transition: background 0.15s;
+    border-radius: 4px;
+    margin: 2px 0;
+  }
+
+  .collapsible-header:hover {
+    background: #f3f4f6;
+  }
+
+  .collapsible-section.active .collapsible-header {
+    background: #eff6ff;
+    border-left: 3px solid #1e3a8a;
+    padding-left: 9px;
+  }
+
+  .collapsible-title {
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    color: #374151 !important;
+  }
+
+  .collapsible-section.active .collapsible-title {
+    color: #1e3a8a !important;
+    font-weight: 600 !important;
+  }
+
+  /* Hide arrows and content inside left panel on desktop */
+  .collapsible-arrow {
+    display: none !important;
+  }
+
+  .collapsible-content {
+    position: absolute;
+    left: 312px;
+    top: 0;
+    width: calc(100% - 312px);
+    max-height: none !important;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+    background: #fff;
+    border-left: 1px solid #e5e7eb;
+    padding: 0 0 0 32px;
+    overflow: visible !important;
+  }
+
+  .collapsible-section.active .collapsible-content {
+    opacity: 1;
+    visibility: visible;
+    position: absolute;
+    max-height: none !important;
+  }
+
+  /* Inside right panel: override inline styles for better desktop reading */
+  .collapsible-content > div {
+    padding: 0 !important;
+    max-width: 680px;
+  }
+
+  .collapsible-content blockquote {
+    font-size: 17px !important;
+    line-height: 1.8 !important;
+    margin: 0 0 20px 0 !important;
+  }
+
+  .collapsible-content footer {
+    font-size: 14px !important;
+  }
+
+  /* Page title sits above the two-panel layout */
+  .page-title-section {
+    margin-bottom: 28px;
+  }
+
+  .page-title-section h1 {
+    font-size: 36px !important;
+  }
+
+  /* Right panel content needs a scroll margin for anchor links */
+  .collapsible-content h3:first-child {
+    margin-top: 0;
+  }
+
+  /* Make container wider on desktop */
+  .container {
+    max-width: 1320px;
+  }
+
+}
+
+@media (min-width: 1600px) {
+  .container {
+    max-width: 1480px;
+  }
+
+  .collapsible-content > div {
+    max-width: 760px;
+  }
+
+  .collapsible-content blockquote {
+    font-size: 18px !important;
+  }
+
+  .page-title-section h1 {
+    font-size: 40px !important;
+  }
+}
