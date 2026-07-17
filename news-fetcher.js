@@ -17,6 +17,14 @@ const parser = new Parser({
     timeout: 8000
 });
 
+// Dedicated value-investing blogs are often hosted on small infrastructure
+// and consistently time out at 8000ms. Give them a longer leash.
+const slowFeedSources = ['Acquirers Multiple', 'Value and Opportunity', 'Safal Niveshak'];
+const slowParser = new Parser({
+    headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' },
+    timeout: 15000
+});
+
 function normalizeTitle(title) {
     return title.toLowerCase()
         .replace(/[^\w\s]/g, '')
@@ -37,106 +45,128 @@ function wordOverlapRatio(title1, title2) {
 }
 
 // Scrapers for regulatory sites
+
 async function scrapeRBA() {
     try {
-        const res = await fetch('https://www.rba.gov.au/news/', { signal: AbortSignal.timeout(8000) });
+        const res = await fetch('https://www.rba.gov.au/news/', { 
+            headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' },
+            signal: AbortSignal.timeout(15000) 
+        });
         const html = await res.text();
         const $ = cheerio.load(html);
         const articles = [];
-        $('.list-articles li').each((i, el) => {
-            const a = $(el).find('a').first();
-            const title = a.text().trim();
-            let link = a.attr('href');
-            if (link && !link.startsWith('http')) link = 'https://www.rba.gov.au' + link;
-            const dateStr = $(el).find('.date').text().trim();
-            if (title && link) {
-                articles.push({
-                    title,
-                    url: link,
-                    source: { name: 'Reserve Bank of Australia' },
-                    publishedAt: dateStr ? new Date(dateStr).toISOString() : new Date().toISOString(),
-                    category: 'regulatory'
-                });
+        const seen = new Set();
+        $('a').each((i, el) => {
+            const href = $(el).attr('href');
+            if (href && href.includes('/media-releases/202')) {
+                const title = $(el).text().trim();
+                let link = href.startsWith('http') ? href : 'https://www.rba.gov.au' + href;
+                if (title && title.length > 10 && !seen.has(link)) {
+                    seen.add(link);
+                    articles.push({
+                        title,
+                        url: link,
+                        source: { name: 'Reserve Bank of Australia' },
+                        publishedAt: new Date().toISOString(),
+                        category: 'regulatory'
+                    });
+                }
             }
         });
-        return articles.slice(0, 10);
+        return articles.slice(0, 20);
     } catch(e) { console.error('RBA Scraper error:', e.message); return []; }
 }
 
 async function scrapeACCC() {
     try {
-        const res = await fetch('https://www.accc.gov.au/about-us/media/media-releases', { timeout: 8000 });
+        const res = await fetch('https://www.accc.gov.au/about-us/media/media-releases', { 
+            headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' },
+            timeout: 15000 
+        });
         const html = await res.text();
         const $ = cheerio.load(html);
         const articles = [];
-        $('.view-content .views-row').each((i, el) => {
-            const a = $(el).find('a').first();
-            const title = a.text().trim();
-            let link = a.attr('href');
-            if (link && !link.startsWith('http')) link = 'https://www.accc.gov.au' + link;
-            const dateStr = $(el).find('.date-display-single').text().trim();
-            if (title && link) {
-                articles.push({
-                    title,
-                    url: link,
-                    source: { name: 'ACCC' },
-                    publishedAt: dateStr ? new Date(dateStr).toISOString() : new Date().toISOString(),
-                    category: 'regulatory'
-                });
+        const seen = new Set();
+        $('a').each((i, el) => {
+            const href = $(el).attr('href');
+            if (href && href.includes('media-release')) {
+                const title = $(el).text().trim();
+                let link = href.startsWith('http') ? href : 'https://www.accc.gov.au' + href;
+                if (title && title.length > 15 && !title.toLowerCase().includes('subscribe') && !seen.has(link)) {
+                    seen.add(link);
+                    articles.push({
+                        title,
+                        url: link,
+                        source: { name: 'ACCC' },
+                        publishedAt: new Date().toISOString(),
+                        category: 'regulatory'
+                    });
+                }
             }
         });
-        return articles.slice(0, 10);
+        return articles.slice(0, 20);
     } catch(e) { console.error('ACCC Scraper error:', e.message); return []; }
 }
 
 async function scrapeATO() {
     try {
-        const res = await fetch('https://www.accc.gov.au/media-centre', { signal: AbortSignal.timeout(8000) });
+        const res = await fetch('https://www.ato.gov.au/media-centre', { 
+            headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' },
+            signal: AbortSignal.timeout(15000) 
+        });
         const html = await res.text();
         const $ = cheerio.load(html);
         const articles = [];
-        $('.item-list ul li').each((i, el) => {
-            const a = $(el).find('a').first();
-            const title = a.text().trim();
-            let link = a.attr('href');
-            if (link && !link.startsWith('http')) link = 'https://www.ato.gov.au' + link;
-            if (title && link) {
-                articles.push({
-                    title,
-                    url: link,
-                    source: { name: 'ATO' },
-                    publishedAt: new Date().toISOString(),
-                    category: 'regulatory'
-                });
+        const seen = new Set();
+        $('a').each((i, el) => {
+            const href = $(el).attr('href');
+            if (href && href.includes('media-releases')) {
+                const title = $(el).text().trim();
+                let link = href.startsWith('http') ? href : 'https://www.ato.gov.au' + href;
+                if (title && title.length > 15 && !seen.has(link)) {
+                    seen.add(link);
+                    articles.push({
+                        title,
+                        url: link,
+                        source: { name: 'ATO' },
+                        publishedAt: new Date().toISOString(),
+                        category: 'regulatory'
+                    });
+                }
             }
         });
-        return articles.slice(0, 10);
+        return articles.slice(0, 20);
     } catch(e) { console.error('ATO Scraper error:', e.message); return []; }
 }
 
 async function scrapeAUSTRAC() {
     try {
-        const res = await fetch('https://www.austrac.gov.au/news-and-media/media-release', { signal: AbortSignal.timeout(8000) });
+        const res = await fetch('https://www.austrac.gov.au/news-and-media/media-release', { 
+            headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' },
+            signal: AbortSignal.timeout(15000) 
+        });
         const html = await res.text();
         const $ = cheerio.load(html);
         const articles = [];
-        $('.view-news-and-media .views-row').each((i, el) => {
-            const a = $(el).find('h3 a').first();
-            const title = a.text().trim();
-            let link = a.attr('href');
-            if (link && !link.startsWith('http')) link = 'https://www.austrac.gov.au' + link;
-            const dateStr = $(el).find('.date-display-single').text().trim();
-            if (title && link) {
-                articles.push({
-                    title,
-                    url: link,
-                    source: { name: 'AUSTRAC' },
-                    publishedAt: dateStr ? new Date(dateStr).toISOString() : new Date().toISOString(),
-                    category: 'regulatory'
-                });
+        const seen = new Set();
+        $('a').each((i, el) => {
+            const href = $(el).attr('href');
+            if (href && href.includes('media-release')) {
+                const title = $(el).text().trim();
+                let link = href.startsWith('http') ? href : 'https://www.austrac.gov.au' + (href.startsWith('/') ? '' : '/') + href;
+                if (title && title.length > 15 && !seen.has(link)) {
+                    seen.add(link);
+                    articles.push({
+                        title,
+                        url: link,
+                        source: { name: 'AUSTRAC' },
+                        publishedAt: new Date().toISOString(),
+                        category: 'regulatory'
+                    });
+                }
             }
         });
-        return articles.slice(0, 10);
+        return articles.slice(0, 20);
     } catch(e) { console.error('AUSTRAC Scraper error:', e.message); return []; }
 }
 
@@ -145,36 +175,94 @@ async function scrapeAFCA() {
     try {
         const res = await fetch('https://www.afca.org.au/news/media-releases', { 
             headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' },
-            signal: AbortSignal.timeout(8000) 
+            signal: AbortSignal.timeout(15000) 
         });
         const html = await res.text();
         const $ = cheerio.load(html);
         const articles = [];
-        // Generic extraction (AFCA structure might need refinement, trying a safe generic approach if specific classes aren't known yet)
-        $('a').each((i, el) => {
-            const link = $(el).attr('href');
-            if (link && link.includes('/news/media-releases/')) {
+        const seen = new Set();
+        $('.view-news-events .views-row').each((i, el) => {
+            const a = $(el).find('h3 a').first();
+            const title = a.text().trim();
+            let link = a.attr('href');
+            if (link && !link.startsWith('http')) link = 'https://www.afca.org.au' + link;
+            const dateStr = $(el).find('.date-display-single').text().trim();
+            if (title && link && !seen.has(link)) {
+                seen.add(link);
+                articles.push({
+                    title,
+                    url: link,
+                    source: { name: 'AFCA' },
+                    publishedAt: dateStr ? new Date(dateStr).toISOString() : new Date().toISOString(),
+                    category: 'regulatory'
+                });
+            }
+        });
+        return articles.slice(0, 20);
+    } catch(e) { console.error('AFCA Scraper error:', e.message); return []; }
+}
+
+async function scrapeAFR() {
+    try {
+        const res = await fetch('https://www.afr.com/', { 
+            headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' },
+            signal: AbortSignal.timeout(15000) 
+        });
+        const html = await res.text();
+        const $ = cheerio.load(html);
+        const articles = [];
+        const seen = new Set();
+        $('h3 a').each((i, el) => {
+            const href = $(el).attr('href');
+            if (href) {
                 const title = $(el).text().trim();
-                if (title && title.length > 15) {
-                    let fullLink = link.startsWith('http') ? link : 'https://www.afca.org.au' + (link.startsWith('/') ? '' : '/') + link;
+                let link = href.startsWith('http') ? href : 'https://www.afr.com' + href;
+                if (title && title.length > 15 && !seen.has(link)) {
+                    seen.add(link);
                     articles.push({
                         title,
-                        url: fullLink,
-                        source: { name: 'AFCA' },
-                        publishedAt: new Date().toISOString(),
-                        category: 'regulatory'
+                        url: link,
+                        source: { name: 'AFR' },
+                        publishedAt: new Date().toISOString(), // scoped to headline + url + date
+                        category: 'companies' // Will be re-categorized in buildHybridPipeline if needed
                     });
                 }
             }
         });
-        // Simple dedup by url
-        const unique = [];
+        return articles.slice(0, 20);
+    } catch(e) { console.error('AFR Scraper error:', e.message); return []; }
+}
+
+async function scrapeBloomberg() {
+    try {
+        // Simple scraper for Bloomberg targeting business/finance headlines
+        const res = await fetch('https://www.bloomberg.com/', { 
+            headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' },
+            signal: AbortSignal.timeout(15000) 
+        });
+        const html = await res.text();
+        const $ = cheerio.load(html);
+        const articles = [];
         const seen = new Set();
-        for (const a of articles) {
-            if (!seen.has(a.url)) { seen.add(a.url); unique.push(a); }
-        }
-        return unique.slice(0, 10);
-    } catch(e) { console.error('AFCA Scraper error:', e.message); return []; }
+        $('a').each((i, el) => {
+            const href = $(el).attr('href');
+            if (href && (href.includes('/news/articles/') || href.includes('/news/features/'))) {
+                const title = $(el).text().trim();
+                let link = href.startsWith('http') ? href : 'https://www.bloomberg.com' + href;
+                if (title && title.length > 20 && !seen.has(link)) {
+                    seen.add(link);
+                    articles.push({
+                        title,
+                        url: link,
+                        source: { name: 'Bloomberg' },
+                        publishedAt: new Date().toISOString(),
+                        category: 'companies'
+                    });
+                }
+            }
+        });
+        return articles.slice(0, 20);
+    } catch(e) { console.error('Bloomberg Scraper error:', e.message); return []; }
 }
 
 async function scrapeFSC() {
@@ -200,60 +288,11 @@ async function scrapeFSC() {
                 });
             }
         });
-        return articles.slice(0, 10);
+        return articles.slice(0, 20);
     } catch(e) { console.error('FSC Scraper error:', e.message); return []; }
 }
 
-// Google News RSS Workaround for Guru Watch and Mainstream Failures
-async function fetchGoogleNewsRSS(domains, keywords = '') {
-    try {
-        if (domains.length === 0) return [];
-        let allArticles = [];
-        // Chunk domains into groups of 10 to prevent massive URL lengths
-        for (let i = 0; i < domains.length; i += 10) {
-            const chunk = domains.slice(i, i + 10);
-            const siteQuery = '(' + chunk.map(d => 'site:' + d).join(' OR ') + ')';
-            
-            let q = '';
-            if (keywords) {
-                q = '"' + keywords + '" ' + siteQuery;
-            } else {
-                q = siteQuery + ' when:1d'; // limit to 24h for general news
-            }
-            
-            const url = 'https://news.google.com/rss/search?q=' + encodeURIComponent(q);
-            try {
-                const feed = await parser.parseURL(url);
-                const chunkArticles = feed.items.map(item => {
-                    let titleStr = item.title || '';
-                    titleStr = titleStr.replace(/\s*-\s*Google News$/, '');
-                    let extractedSource = 'Google News (Aggregated)';
-                    const match = titleStr.match(/\s*-\s*([^-]+)$/);
-                    if (match) {
-                        extractedSource = match[1].trim();
-                        titleStr = titleStr.replace(match[0], '').trim();
-                    }
-                    return {
-                        title: titleStr,
-                        url: item.link,
-                        source: { name: extractedSource },
-                        publishedAt: item.pubDate || item.isoDate || new Date().toISOString()
-                    };
-                });
-                allArticles.push(...chunkArticles);
-            } catch(e) {
-                console.error('Google News RSS fetch error for chunk:', e.message);
-            }
-            
-            // Sleep briefly between chunks
-            await new Promise(r => setTimeout(r, 1000));
-        }
-        return allArticles;
-    } catch(e) {
-        console.error('Google News RSS wrapper error:', e.message);
-        return [];
-    }
-}
+
 
 function isQualityArticle(article) {
     if (!article || !article.title) return false;
@@ -276,7 +315,14 @@ function isQualityArticle(article) {
     if (article.publishedAt) {
         const publishedDate = new Date(article.publishedAt);
         const threeDaysAgo = new Date(Date.now() - 3 * 24 * 60 * 60 * 1000);
-        if (publishedDate < threeDaysAgo) return false;
+        
+        // Evergreen Exception: Dedicated value investing blogs have lower cadences
+        // and their content remains relevant for weeks, so we exempt them from the 3-day rule.
+        const sourceName = article.source?.name || article.source;
+        const evergreenSources = ['Acquirers Multiple', 'Value and Opportunity', 'Safal Niveshak'];
+        const isEvergreen = evergreenSources.includes(sourceName);
+        
+        if (!isEvergreen && publishedDate < threeDaysAgo) return false;
     }
     
     return true;
@@ -296,6 +342,61 @@ function formatArticle(article, category) {
 }
 
 // Deduplication
+function categorizeNews(title, description, sourceName) {
+    const text = ((title || '') + ' ' + (description || '')).toLowerCase();
+    const source = (sourceName || '').toLowerCase();
+
+    if (text.includes('buffett') || text.includes('berkshire') || text.includes('munger') ||
+        text.includes('dalio') || text.includes('ackman') || text.includes('burry') ||
+        text.includes('hedge fund') || text.includes('investor letter') ||
+        text.includes('13f') || text.includes('shareholder letter')) {
+        return 'guru-watch';
+    }
+
+    if (text.includes('asx') || text.includes('nasdaq') || text.includes('s&p 500') ||
+        text.includes('dow jones') || text.includes('stock market') || text.includes('wall st') ||
+        text.includes('share market') || text.includes('index closed') || text.includes('market rally') ||
+        text.includes('market plunge')) {
+        return 'markets';
+    }
+
+    if (text.includes('rba') || text.includes('reserve bank') || text.includes('asic') ||
+        text.includes('accc') || text.includes('tax') || text.includes('law') ||
+        text.includes('legislation') || text.includes('government') || text.includes('policy') ||
+        text.includes('compliance') || text.includes('court') || text.includes('fine') ||
+        text.includes('ban') || text.includes('penalty') || text.includes('regulator') ||
+        source.includes('ato') || source.includes('austrac') || source.includes('afca') || source.includes('fsc') ||
+        source.includes('rba') || source.includes('reserve bank') || source.includes('accc') || source.includes('asic')) {
+        return 'regulatory';
+    }
+
+    if (text.includes('economy') || text.includes('gdp') || text.includes('inflation') ||
+        text.includes('interest rate') || text.includes('cpi') || text.includes('unemployment') ||
+        text.includes('jobs') || text.includes('recession') || text.includes('growth') ||
+        text.includes('fiscal') || text.includes('trade deficit') || text.includes('dollar')) {
+        return 'economy';
+    }
+
+    if (text.includes('mining') || text.includes('banking') || text.includes('retail') ||
+        text.includes('tech') || text.includes('healthcare') || text.includes('energy') ||
+        text.includes('resources') || text.includes('construction') || text.includes('property') ||
+        text.includes('real estate') || text.includes('sector')) {
+        return 'industry';
+    }
+    
+    // Add explicitly known companies keywords here
+    const companyKeywords = ['company', 'shares', 'stock', 'dividend', 'profit', 'revenue', 
+                             'earnings', 'deal', 'acquisition', 'merger', 'ceo', 'appoint', 
+                             'strike', 'workers', 'port', 'wages', 'bid', 'offer', 'venture', 
+                             'investment', 'fum', 'fua'];
+    const companyRegex = new RegExp(`\\b(?:${companyKeywords.join('|')})\\b`, 'i');
+    if (companyRegex.test(text)) {
+        return 'companies';
+    }
+
+    return 'other'; // Default to other if no specific match, unless region overrides later
+}
+
 function deduplicateAll(allArticles) {
     const finalArticles = [];
     const seenTitles = [];
@@ -323,79 +424,34 @@ async function buildHybridPipeline() {
     
     console.log('Starting hybrid news pipeline fetch...');
     
-    // 1. Guru Watch via Google News RSS
-    const guruDomains = newsSourcesData['guru-watch'].map(s => {
-        try { return new URL(s.url).hostname.replace(/^www\./, ''); } catch(e) { return null; }
-    }).filter(Boolean);
-    const guruArticles = await fetchGoogleNewsRSS(guruDomains, 'warren buffett');
-    allArticles.push(...guruArticles.map(a => formatArticle(a, 'guru-watch')).filter(Boolean));
-
-    // 2. Mainstream Failures via Google News RSS
-    
-      // We automatically use Google News RSS as the universal fallback for ANY domain that failed RSS discovery.
-      const fallbackCatDomains = {};
-      for (const [category, sources] of Object.entries(newsSourcesData)) {
-          if (category === 'guru-watch' || category === 'regulatory') continue;
-          fallbackCatDomains[category] = [];
-          for (const s of sources) {
-              if (!rssMap[s.url]) {
-                  try {
-                      const host = new URL(s.url).hostname.replace(/^www\./, '');
-                      fallbackCatDomains[category].push({ host, name: s.name });
-                  } catch(e) {}
-              }
-          }
-      }
-
+    // 1. Guru Watch via Google News RSS has been removed
+    // 2. Mainstream Failures via Google News RSS has been removed
 
     const { matchesRegion, GLOBAL_SOURCES_NEEDING_FILTER } = require('./region-keywords');
-
-    for (const [category, items] of Object.entries(fallbackCatDomains)) {
-        if (items.length > 0) {
-            const catDomains = items.map(i => i.host);
-            const financialKeywords = '(intitle:business OR intitle:economy OR intitle:market OR intitle:finance OR intitle:shares OR intitle:invest OR intitle:rate OR intitle:inflation OR intitle:bank OR intitle:tax OR intitle:revenue OR intitle:profit OR intitle:ceo OR intitle:asx OR intitle:dividend OR intitle:debt)';
-            const articles = await fetchGoogleNewsRSS(catDomains, financialKeywords);
-            // For each article, map its source name based on the host
-            articles.forEach(a => {
-                const matchedSource = items.find(i => a.url.includes(i.host));
-                if (matchedSource) a.source.name = matchedSource.name;
-                
-                let assignedCategory = category;
-                
-                // If the source is a global source and we are assigning it to a regional tab, we must verify the region
-                if (['north-america', 'europe', 'asia', 'elsewhere'].includes(category)) {
-                    if (GLOBAL_SOURCES_NEEDING_FILTER.includes(a.source.name)) {
-                        const contentToMatch = (a.title + ' ' + (a.description || '')).trim();
-                        if (!matchesRegion(contentToMatch, category)) {
-                            assignedCategory = 'international';
-                        }
-                    }
-                }
-                
-                allArticles.push(formatArticle(a, assignedCategory));
-            });
-        }
-    }
     
     // 3. RSS and Scrapers for other categories (CONCURRENT FETCHING)
     const fetchPromises = [];
+    
+    // Structure to track counts per source for canary health checks
+    const sourceTracker = {};
+
     for (const [category, sources] of Object.entries(newsSourcesData)) {
-        if (category === 'guru-watch') continue;
-        
         for (const s of sources) {
             fetchPromises.push((async () => {
                 let fetched = [];
                 if (rssMap[s.url]) {
                     try {
-                        const feed = await parser.parseURL(rssMap[s.url]);
-                        fetched = feed.items.slice(0, 5).map(item => ({
+                        const activeParser = slowFeedSources.includes(s.name) ? slowParser : parser;
+                        const feed = await activeParser.parseURL(rssMap[s.url]);
+                        fetched = feed.items.slice(0, 20).map(item => ({
                             title: item.title,
                             url: item.link,
                             source: { name: s.name },
-                            publishedAt: item.pubDate || item.isoDate || new Date().toISOString(),
-                            category: category
+                            publishedAt: item.pubDate || item.isoDate || new Date().toISOString()
                         }));
-                    } catch(e) {}
+                    } catch(e) {
+                        console.error('RSS error for', s.name, ':', e.message);
+                    }
                 } else if (category === 'regulatory') {
                     if (s.name === 'Reserve Bank of Australia') fetched = await scrapeRBA();
                     else if (s.name === 'ACCC') fetched = await scrapeACCC();
@@ -403,12 +459,23 @@ async function buildHybridPipeline() {
                     else if (s.name === 'AUSTRAC') fetched = await scrapeAUSTRAC();
                     else if (s.name === 'Financial Services Council') fetched = await scrapeFSC();
                     else if (s.name === 'AFCA') fetched = await scrapeAFCA();
+                } else if (s.name === 'AFR') {
+                    fetched = await scrapeAFR();
+                } else if (s.name === 'Bloomberg') {
+                    fetched = await scrapeBloomberg();
                 }
                 
+                // Track counts for canary check
+                const actualCount = fetched.length;
+                sourceTracker[s.name] = (sourceTracker[s.name] || 0) + actualCount;
+                
                 allArticles.push(...fetched.map(a => {
-                    let assignedCategory = category;
-                    // Apply regional filtering for global sources
+                    // Categorize purely by content
+                    let assignedCategory = categorizeNews(a.title, a.description, a.source?.name);
+                    
+                    // Apply regional grouping if it originally belonged to a region (Regions take precedence)
                     if (['north-america', 'europe', 'asia', 'elsewhere'].includes(category)) {
+                        assignedCategory = category;
                         if (GLOBAL_SOURCES_NEEDING_FILTER.includes(s.name)) {
                             const contentToMatch = ((a.title || '') + ' ' + (a.description || '')).trim();
                             if (!matchesRegion(contentToMatch, category)) {
@@ -416,12 +483,35 @@ async function buildHybridPipeline() {
                             }
                         }
                     }
+                    // Dedicated guru-watch sources get a bypass, but with a light sanity check
+                    // to prevent completely off-topic posts (e.g. "Site Maintenance") from passing through.
+                    const dedicatedGuruSources = ['Acquirers Multiple', 'Value and Opportunity', 'Safal Niveshak'];
+                    if (dedicatedGuruSources.includes(s.name)) {
+                        const contentToMatch = ((a.title || '') + ' ' + (a.description || '')).toLowerCase();
+                        const sanityCheck = ['invest', 'stock', 'share', 'market', 'fund', 'portfolio', 'value', 'return', 'yield', 'dividend', 'capital', 'company', 'earnings', 'profit', 'loss', 'buy', 'sell', 'price', 'trade', 'economy', 'financial', 'asset', 'wealth', 'buffett', 'munger', 'graham', 'valuation'];
+                        
+                        // If it has at least one finance-adjacent word, classify as guru-watch.
+                        // Otherwise, let the standard keyword categorization decide its fate.
+                        if (sanityCheck.some(word => contentToMatch.includes(word))) {
+                            assignedCategory = 'guru-watch';
+                        }
+                    }
+                    
+                    // Always ensure we have a category
+                    a.category = assignedCategory;
                     return formatArticle(a, assignedCategory);
                 }).filter(Boolean));
             })());
         }
     }
     await Promise.allSettled(fetchPromises);
+    
+    // Canary Health Check
+    for (const [sourceName, count] of Object.entries(sourceTracker)) {
+        if (count === 0 && sourceName !== 'Berkshire Hathaway') {
+            console.warn(`[CANARY WARNING] Source "${sourceName}" returned 0 articles. This may indicate a broken scraper, dead RSS feed, or severe 403 block.`);
+        }
+    }
     
     // Sort by date before dedup to keep freshest
     allArticles = allArticles.filter(Boolean);

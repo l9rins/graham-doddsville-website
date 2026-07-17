@@ -60,3 +60,6 @@ This project uses a full-stack architecture with a Node.js API backend and a Van
 
 ### Scratch / Backups
 - `scratch/` - Contains old data dumps, one-off scripts, and redundant root assets. Do not use for production code.
+## Verification and Evidence Rule
+**CRITICAL RULE FOR ALL FUTURE SESSIONS:** When verifying fixes, data pipelines, or scrapers, NEVER accept or present high-level summaries or '100% accurate' claims without hard evidence. You MUST spot-check and provide actual raw log excerpts, exact JSON payload samples, and real data points (e.g., actual pubDate lists) to the user. Every real bug in the news pipeline (e.g., the 3-day purge bug, the canary timeout bug) was only surfaced because the user insisted on seeing the raw evidence instead of accepting a confident summary. Always show the data.
+

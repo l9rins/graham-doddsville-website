@@ -316,13 +316,17 @@ class NewsDisplayManager {
                     // 2. SMART SELECTION (Strict 5 for homepage)
                     let selectedArticles = this.getSmartArticles(rawArticles, config.limit, config.limit, config.freshLimit, config.hardLimit);
 
-                    // 3. BACKFILL FROM TOTAL POOL (IF STILL EMPTY)
-                    if (selectedArticles.length === 0 && news.length > 0) {
-                        selectedArticles = this.getSmartArticles(news, config.limit, config.limit, config.freshLimit, config.hardLimit);
-                    }
+
 
                     if (selectedArticles.length > 0) {
-                        container.innerHTML = selectedArticles.map(item => this.createNewsItemHTML(item)).join('');
+                        let htmlStr = selectedArticles.map(item => this.createNewsItemHTML(item)).join('');
+                        if (selectedArticles.length < config.limit) {
+                            const needed = config.limit - selectedArticles.length;
+                            for (let i = 0; i < needed; i++) {
+                                htmlStr += this.createPlaceholderHTML();
+                            }
+                        }
+                        container.innerHTML = htmlStr;
                     }
                     // If still empty, don't touch container — let inline script's content stay
                 }
@@ -362,6 +366,18 @@ class NewsDisplayManager {
         const now = new Date();
         const validArticles = articles.filter(item => !isNaN(new Date(item.publishedAt).getTime()));
 
+        // Calculate dynamic diversity cap:
+        // If there are fewer unique sources than the tab limit, a strict cap of 2
+        // leaves slots permanently empty. Raise the cap so thin pools can fill the tab.
+        const uniqueSources = new Set(validArticles.map(item => {
+            if (item.source) {
+                if (typeof item.source === 'string') return item.source;
+                if (item.source.name) return item.source.name;
+            }
+            return 'Unknown';
+        }));
+        const diversityCap = Math.max(2, Math.ceil(maxLimit / uniqueSources.size));
+
         const freshArticles = [];
         const backfillArticles = [];
         const rejectedArticles = [];
@@ -375,8 +391,8 @@ class NewsDisplayManager {
                 else if (item.source.name) sourceName = item.source.name;
             }
             
-            // Apply diversity cap: max 2 articles per source in any given category container
-            if (sourceCounts[sourceName] >= 2) {
+            // Apply diversity cap: dynamic based on how many sources are available
+            if (sourceCounts[sourceName] >= diversityCap) {
                 rejectedArticles.push(item);
                 return;
             }
@@ -400,13 +416,6 @@ class NewsDisplayManager {
         if (result.length < minLimit && backfillArticles.length > 0) {
             const needed = minLimit - result.length;
             result = result.concat(backfillArticles.slice(0, needed));
-        }
-
-        // EMERGENCY FALLBACK: if we STILL don't have enough articles to meet the minimum floor,
-        // relax the diversity cap and fill the remaining slots with articles we initially rejected
-        if (result.length < minLimit && rejectedArticles.length > 0) {
-            const needed = minLimit - result.length;
-            result = result.concat(rejectedArticles.slice(0, needed));
         }
 
         return result;
@@ -443,6 +452,40 @@ class NewsDisplayManager {
                             <span style="text-transform:uppercase; font-weight:bold; color:#1e3a8a;">${abbreviation}</span>
                             · ${formattedDate}
                             <span style="margin-left: 8px;"><a href="${item.url || '#'}"  rel="noopener noreferrer" style="color: #1e3a8a; text-decoration: none; font-weight: 500;">Read More →</a></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    createPlaceholderHTML() {
+        const isMobile = window.innerWidth <= 768;
+
+        if (isMobile) {
+            return `
+                <div class="news-item-mobile news-fade-in" style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #f0f0f0; opacity: 0.5; pointer-events: none;">
+                    <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                        <div style="flex:1;">
+                            <span style="font-family: Georgia, serif; font-size: 15px; font-weight: 600; color: #111; line-height: 1.4;">More stories loading...</span>
+                            <div style="margin-top:4px; font-size: 11px; color: #666;">
+                                <span style="text-transform:uppercase; font-weight:bold; color:#1e3a8a;">PENDING</span>
+                                · Check back soon
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        return `
+            <div class="news-item news-fade-in" style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #f0f0f0; opacity: 0.5; pointer-events: none;">
+                <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+                    <div style="flex:1;">
+                        <span style="font-family: Georgia, serif; font-size: 15px; font-weight: 600; color: #111; line-height: 1.4;">More stories loading...</span>
+                        <div style="margin-top:4px; font-size: 11px; color: #666;">
+                            <span style="text-transform:uppercase; font-weight:bold; color:#1e3a8a;">PENDING</span>
+                            · Check back soon
                         </div>
                     </div>
                 </div>

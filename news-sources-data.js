@@ -10,7 +10,6 @@ const newsSourcesData = {
 
     companies: [
         { name: 'ABC News', url: 'https://www.abc.net.au/news/business' },
-        { name: 'Canberra Times', url: 'https://www.canberratimes.com.au/news/business/' },
         { name: 'Herald Sun', url: 'https://www.heraldsun.com.au/business/breaking-news' },
         { name: 'Money Management', url: 'https://www.moneymanagement.com.au/news' },
         { name: 'Morningstar', url: 'https://www.morningstar.com.au/insights/stocks' },
@@ -74,8 +73,6 @@ const newsSourcesData = {
         { name: 'Harvard Business Review', url: 'https://hbr.org/' },
         { name: 'Inc Australia', url: 'https://www.inc.com/' },
         { name: 'Investor Daily', url: 'https://www.investordaily.com.au/' },
-        { name: 'McKinsey & Co (Australia)', url: 'https://www.mckinsey.com/au/our-insights' },
-        { name: 'McKinsey & Co (US)', url: 'https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights' },
         { name: 'Money Management', url: 'https://www.moneymanagement.com.au/' },
         { name: 'Morningstar', url: 'https://www.morningstar.com.au/' },
         { name: 'News.com.au', url: 'https://www.news.com.au/finance/business' },
@@ -83,8 +80,10 @@ const newsSourcesData = {
     ],
 
     'guru-watch': [
+        { name: 'Acquirers Multiple', url: 'https://acquirersmultiple.com/' },
+        { name: 'Value and Opportunity', url: 'https://valueandopportunity.com/' },
+        { name: 'Safal Niveshak', url: 'https://safalniveshak.com/' },
         { name: 'AFR', url: 'https://www.afr.com/' },
-        { name: 'Berkshire Hathaway', url: 'https://www.berkshirehathaway.com/news/2026news.html' },
         { name: 'Bloomberg', url: 'https://www.bloomberg.com/search?query=warren+buffett' },
         { name: 'CNBC', url: 'https://www.cnbc.com/warren-buffett-watch/' },
         { name: 'Daily News', url: 'https://www.nydailynews.com/?s=warren+buffett&orderby=date&order=desc' },
