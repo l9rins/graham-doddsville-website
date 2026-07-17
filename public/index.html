@@ -1,41 +1,41 @@
 <script>
-// Event Listeners
-        document.addEventListener('DOMContentLoaded', () => {
-            const mobileToggle = document.getElementById('mobile-toggle');
-            const mobileDrawer = document.getElementById('mobile-drawer');
-            const drawerClose = document.getElementById('drawer-close');
-            
-            if (mobileToggle) {
-                mobileToggle.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    toggleMobileMenu();
-                });
-            }
-            
-            if (drawerClose) {
-                drawerClose.addEventListener('click', closeMobileMenu);
-            }
-            
-            if (mobileDrawer) {
-                mobileDrawer.addEventListener('click', (e) => {
-                    if (e.target === mobileDrawer) closeMobileMenu();
-                });
-            }
+    // Event Listeners
+    document.addEventListener('DOMContentLoaded', () => {
+        const mobileToggle = document.getElementById('mobile-toggle');
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        const drawerClose = document.getElementById('drawer-close');
 
-            const articlePanel = document.getElementById('article-detail-panel');
-            if (articlePanel) {
-                articlePanel.addEventListener('click', (e) => {
-                    if (e.target === articlePanel) closeArticlePanel();
-                });
-            }
-            
-            const closeBtn = document.getElementById('article-detail-close');
-            if (closeBtn) {
-                closeBtn.addEventListener('click', closeArticlePanel);
-            }
-        });
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                toggleMobileMenu();
+            });
+        }
 
-        
+        if (drawerClose) {
+            drawerClose.addEventListener('click', closeMobileMenu);
+        }
+
+        if (mobileDrawer) {
+            mobileDrawer.addEventListener('click', (e) => {
+                if (e.target === mobileDrawer) closeMobileMenu();
+            });
+        }
+
+        const articlePanel = document.getElementById('article-detail-panel');
+        if (articlePanel) {
+            articlePanel.addEventListener('click', (e) => {
+                if (e.target === articlePanel) closeArticlePanel();
+            });
+        }
+
+        const closeBtn = document.getElementById('article-detail-close');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', closeArticlePanel);
+        }
+    });
+
+
 
 </script>
 <!DOCTYPE html><!-- Cache buster: 20241220120000 -->
@@ -2574,7 +2574,9 @@
                 <!-- Quote 1 -->
                 <div class="market-quote-item" onclick="window.location.href='market-quotes.html#quote-1'">
                     <div class="quote-content">
-                        <p class="quote-text">"The S&P North American Expanded Technology Software Index fell 24.2% in Q1 2026, compared to a 4.4% decline in the S&P 500 Index. Markets have priced AI disruption as largely uniform across softwar..."</p>
+                        <p class="quote-text">"The S&P North American Expanded Technology Software Index fell 24.2% in
+                            Q1 2026, compared to a 4.4% decline in the S&P 500 Index. Markets have priced AI disruption
+                            as largely uniform across softwar..."</p>
                         <div class="quote-meta">
                             <span class="quote-author">Corporate</span>
                             <span class="quote-position">Investments</span>
@@ -2583,7 +2585,8 @@
                             <span class="quote-date">(1/5/2026)</span>
                         </div>
                         <div class="quote-source">
-                            <a href="#" onclick="event.stopPropagation(); openSourceLink('https://www.jenseninvestment.com/insights/moat-ai-stock-selloff/')"
+                            <a href="#"
+                                onclick="event.stopPropagation(); openSourceLink('https://www.jenseninvestment.com/insights/moat-ai-stock-selloff/')"
                                 class="source-link">View source document</a>
                         </div>
                     </div>
@@ -2592,7 +2595,9 @@
                 <!-- Quote 2 -->
                 <div class="market-quote-item" onclick="window.location.href='market-quotes.html#quote-2'">
                     <div class="quote-content">
-                        <p class="quote-text">"The ASX 200 is up almost 6 per cent from its March 23 lows, while the S&P 500 and the Nasdaq are up 11 per cent and 17 per cent, respectively, from their lows on March 30. The remaining question fo..."</p>
+                        <p class="quote-text">"The ASX 200 is up almost 6 per cent from its March 23 lows, while the S&P
+                            500 and the Nasdaq are up 11 per cent and 17 per cent, respectively, from their lows on
+                            March 30. The remaining question fo..."</p>
                         <div class="quote-meta">
                             <span class="quote-author">Roger Montgomery</span>
                             <span class="quote-position">Founder and Chairman</span>
@@ -2601,7 +2606,8 @@
                             <span class="quote-date">(24/4/2026)</span>
                         </div>
                         <div class="quote-source">
-                            <a href="#" onclick="event.stopPropagation(); openSourceLink('https://rogermontgomery.com/the-australian-beyond-the-stocks-rally-how-top-investors-are-preparing-for-a-major-market-shift/')"
+                            <a href="#"
+                                onclick="event.stopPropagation(); openSourceLink('https://rogermontgomery.com/the-australian-beyond-the-stocks-rally-how-top-investors-are-preparing-for-a-major-market-shift/')"
                                 class="source-link">View source document</a>
                         </div>
                     </div>
@@ -2610,7 +2616,9 @@
                 <!-- Quote 3 -->
                 <div class="market-quote-item" onclick="window.location.href='market-quotes.html#quote-3'">
                     <div class="quote-content">
-                        <p class="quote-text">"We have found some opportunities to address that need in the portfolio in terms of that underweight of Energy particularly on the Energy Services side as we kicked off here in Q2 where we would pic..."</p>
+                        <p class="quote-text">"We have found some opportunities to address that need in the portfolio in
+                            terms of that underweight of Energy particularly on the Energy Services side as we kicked
+                            off here in Q2 where we would pic..."</p>
                         <div class="quote-meta">
                             <span class="quote-author">Corporate</span>
                             <span class="quote-position">Investments</span>
@@ -2619,7 +2627,8 @@
                             <span class="quote-date">(22/4/2026)</span>
                         </div>
                         <div class="quote-source">
-                            <a href="#" onclick="event.stopPropagation(); openSourceLink('https://www.heartlandadvisors.com/Perspectives/Insights/Heartland-Podcasts/Podcast-1Q26-Value-Fund-Commentary')"
+                            <a href="#"
+                                onclick="event.stopPropagation(); openSourceLink('https://www.heartlandadvisors.com/Perspectives/Insights/Heartland-Podcasts/Podcast-1Q26-Value-Fund-Commentary')"
                                 class="source-link">View source document</a>
                         </div>
                     </div>
@@ -2651,22 +2660,33 @@
                     <div class="articles-list-container">
                         <div class="articles-list" id="investing-articles-list">
                             <div class="article-item">
-                                <h5><a href="https://www.intelligentinvestor.com.au/investment-news/how-to-kick-your-addiction-to-financial-porn/61252" target="_blank">How to Kick Your Addiction to Financial Porn (Intelligent Investor)</a></h5>
+                                <h5><a href="https://www.intelligentinvestor.com.au/investment-news/how-to-kick-your-addiction-to-financial-porn/61252"
+                                        target="_blank">How to Kick Your Addiction to Financial Porn (Intelligent
+                                        Investor)</a></h5>
                             </div>
                             <div class="article-item">
-                                <h5><a href="https://www.intelligentinvestor.com.au/investment-news/risk-ratings-and-portfolio-weightings/61272" target="_blank">Risk Ratings and Portfolio Weightings (Intelligent Investor)</a></h5>
+                                <h5><a href="https://www.intelligentinvestor.com.au/investment-news/risk-ratings-and-portfolio-weightings/61272"
+                                        target="_blank">Risk Ratings and Portfolio Weightings (Intelligent Investor)</a>
+                                </h5>
                             </div>
                             <div class="article-item">
-                                <h5><a href="https://www.intelligentinvestor.com.au/investment-news/why-patience-pays-off/61292" target="_blank">Why Patience Pays Off (Intelligent Investor)</a></h5>
+                                <h5><a href="https://www.intelligentinvestor.com.au/investment-news/why-patience-pays-off/61292"
+                                        target="_blank">Why Patience Pays Off (Intelligent Investor)</a></h5>
                             </div>
                             <div class="article-item">
-                                <h5><a href="https://www.intelligentinvestor.com.au/investment-news/are-missed-opportunities-a-curse/46966" target="_blank">Are Missed Opportunities a Curse? (Intelligent Investor)</a></h5>
+                                <h5><a href="https://www.intelligentinvestor.com.au/investment-news/are-missed-opportunities-a-curse/46966"
+                                        target="_blank">Are Missed Opportunities a Curse? (Intelligent Investor)</a>
+                                </h5>
                             </div>
                             <div class="article-item">
-                                <h5><a href="https://www.intelligentinvestor.com.au/investment-news/is-your-fear-of-missing-out-hurting-your-returns/61328" target="_blank">Is Your Fear of Missing Out Hurting Your Returns? (Intelligent Investor)</a></h5>
+                                <h5><a href="https://www.intelligentinvestor.com.au/investment-news/is-your-fear-of-missing-out-hurting-your-returns/61328"
+                                        target="_blank">Is Your Fear of Missing Out Hurting Your Returns? (Intelligent
+                                        Investor)</a></h5>
                             </div>
                             <div class="article-item">
-                                <h5><a href="https://www.intelligentinvestor.com.au/investment-news/top-4-financial-ratios-when-buying-an-insurer/61349" target="_blank">Top 4 Financial Ratios When Buying an Insurer (Intelligent Investor)</a></h5>
+                                <h5><a href="https://www.intelligentinvestor.com.au/investment-news/top-4-financial-ratios-when-buying-an-insurer/61349"
+                                        target="_blank">Top 4 Financial Ratios When Buying an Insurer (Intelligent
+                                        Investor)</a></h5>
                             </div>
 
                         </div>
@@ -2677,22 +2697,33 @@
                     <div class="articles-list-container">
                         <div class="articles-list" id="economy-articles-list">
                             <div class="article-item">
-                                <h5><a href="https://www.firstlinks.com.au/aussie-dollar-not-collapsed" target="_blank">3 Reasons the Aussie Dollar Has Not Collapsed (Firstlinks)</a></h5>
+                                <h5><a href="https://www.firstlinks.com.au/aussie-dollar-not-collapsed"
+                                        target="_blank">3 Reasons the Aussie Dollar Has Not Collapsed (Firstlinks)</a>
+                                </h5>
                             </div>
                             <div class="article-item">
-                                <h5><a href="https://www.firstlinks.com.au/how-200-billion-magically-created" target="_blank">How $200 Billion is Magically Created (Firstlinks)</a></h5>
+                                <h5><a href="https://www.firstlinks.com.au/how-200-billion-magically-created"
+                                        target="_blank">How $200 Billion is Magically Created (Firstlinks)</a></h5>
                             </div>
                             <div class="article-item">
-                                <h5><a href="https://www.firstlinks.com.au/one-trillion-counting-government-debt-problem" target="_blank">One Trillion and Counting: is Government Debt a Problem? (Firstlinks)</a></h5>
+                                <h5><a href="https://www.firstlinks.com.au/one-trillion-counting-government-debt-problem"
+                                        target="_blank">One Trillion and Counting: is Government Debt a Problem?
+                                        (Firstlinks)</a></h5>
                             </div>
                             <div class="article-item">
-                                <h5><a href="https://www.firstlinks.com.au/magic-money-printing-reality-inflation" target="_blank">Magic Money Printing and the Reality of Inflation (Firstlinks)</a></h5>
+                                <h5><a href="https://www.firstlinks.com.au/magic-money-printing-reality-inflation"
+                                        target="_blank">Magic Money Printing and the Reality of Inflation
+                                        (Firstlinks)</a></h5>
                             </div>
                             <div class="article-item">
-                                <h5><a href="https://www.firstlinks.com.au/why-recessions-usually-good-share-prices" target="_blank">Why Are Recessions Usually Good for Share Prices? (Firstlinks)</a></h5>
+                                <h5><a href="https://www.firstlinks.com.au/why-recessions-usually-good-share-prices"
+                                        target="_blank">Why Are Recessions Usually Good for Share Prices?
+                                        (Firstlinks)</a></h5>
                             </div>
                             <div class="article-item">
-                                <h5><a href="https://www.firstlinks.com.au/populations-key-countries-shrinking" target="_blank">The Populations of Key Countries Are Shrinking (Firstlinks)</a></h5>
+                                <h5><a href="https://www.firstlinks.com.au/populations-key-countries-shrinking"
+                                        target="_blank">The Populations of Key Countries Are Shrinking (Firstlinks)</a>
+                                </h5>
                             </div>
 
                         </div>
@@ -2703,22 +2734,34 @@
                     <div class="articles-list-container">
                         <div class="articles-list" id="industry-articles-list">
                             <div class="article-item">
-                                <h5><a href="https://www.moneymag.com.au/australian-super-sued-over-multiple-accounts" target="_blank">Australian Super Sued Over Multiple Accounts (Money Magazine)</a></h5>
+                                <h5><a href="https://www.moneymag.com.au/australian-super-sued-over-multiple-accounts"
+                                        target="_blank">Australian Super Sued Over Multiple Accounts (Money
+                                        Magazine)</a></h5>
                             </div>
                             <div class="article-item">
-                                <h5><a href="https://www.moneymag.com.au/rising-costs-worry-older-australians-challenger-research" target="_blank">Rising Costs Worry Most Older Australians: Challenger Research (Money Magazine)</a></h5>
+                                <h5><a href="https://www.moneymag.com.au/rising-costs-worry-older-australians-challenger-research"
+                                        target="_blank">Rising Costs Worry Most Older Australians: Challenger Research
+                                        (Money Magazine)</a></h5>
                             </div>
                             <div class="article-item">
-                                <h5><a href="https://www.moneymag.com.au/business-bank-of-the-year-2023" target="_blank">Money's 2023 Business Bank of the Year Revealed (Money Magazine)</a></h5>
+                                <h5><a href="https://www.moneymag.com.au/business-bank-of-the-year-2023"
+                                        target="_blank">Money's 2023 Business Bank of the Year Revealed (Money
+                                        Magazine)</a></h5>
                             </div>
                             <div class="article-item">
-                                <h5><a href="https://www.moneymag.com.au/almost-three-quarters-pass-august-adviser-exam" target="_blank">Almost Three-quarters Pass August Adviser Exam (Money Magazine)</a></h5>
+                                <h5><a href="https://www.moneymag.com.au/almost-three-quarters-pass-august-adviser-exam"
+                                        target="_blank">Almost Three-quarters Pass August Adviser Exam (Money
+                                        Magazine)</a></h5>
                             </div>
                             <div class="article-item">
-                                <h5><a href="https://www.moneymag.com.au/cfa-private-markets-alternatives-certificate" target="_blank">CFA Institute Launches Private Markets and Alternatives Certificate (Money Magazine)</a></h5>
+                                <h5><a href="https://www.moneymag.com.au/cfa-private-markets-alternatives-certificate"
+                                        target="_blank">CFA Institute Launches Private Markets and Alternatives
+                                        Certificate (Money Magazine)</a></h5>
                             </div>
                             <div class="article-item">
-                                <h5><a href="https://www.moneymag.com.au/landlords-offload-rental-properties-pipa" target="_blank">Landlords Offload Hundreds of Thousands of Rental Properties (Money Magazine)</a></h5>
+                                <h5><a href="https://www.moneymag.com.au/landlords-offload-rental-properties-pipa"
+                                        target="_blank">Landlords Offload Hundreds of Thousands of Rental Properties
+                                        (Money Magazine)</a></h5>
                             </div>
                         </div>
                     </div>
@@ -2728,22 +2771,32 @@
                     <div class="articles-list-container">
                         <div class="articles-list" id="super-articles-list">
                             <div class="article-item">
-                                <h5><a href="https://www.moneymag.com.au/young-people-locked-out-of-super" target="_blank">Young People 'Locked Out' of Super (Money Magazine)</a></h5>
+                                <h5><a href="https://www.moneymag.com.au/young-people-locked-out-of-super"
+                                        target="_blank">Young People 'Locked Out' of Super (Money Magazine)</a></h5>
                             </div>
                             <div class="article-item">
-                                <h5><a href="https://www.moneymag.com.au/asfa-close-retirement-savings-gender-gap" target="_blank">ASFA Urges Action to Close the Retirement Savings Gender Gap (Money Magazine)</a></h5>
+                                <h5><a href="https://www.moneymag.com.au/asfa-close-retirement-savings-gender-gap"
+                                        target="_blank">ASFA Urges Action to Close the Retirement Savings Gender Gap
+                                        (Money Magazine)</a></h5>
                             </div>
                             <div class="article-item">
-                                <h5><a href="https://www.moneymag.com.au/closing-super-gap-parents-carers" target="_blank">Closing the Super Gap for Parents, Carers (Money Magazine)</a></h5>
+                                <h5><a href="https://www.moneymag.com.au/closing-super-gap-parents-carers"
+                                        target="_blank">Closing the Super Gap for Parents, Carers (Money Magazine)</a>
+                                </h5>
                             </div>
                             <div class="article-item">
-                                <h5><a href="https://www.moneymag.com.au/doubling-down-on-exposure" target="_blank">Doubling Down on Exposure (Money Magazine)</a></h5>
+                                <h5><a href="https://www.moneymag.com.au/doubling-down-on-exposure"
+                                        target="_blank">Doubling Down on Exposure (Money Magazine)</a></h5>
                             </div>
                             <div class="article-item">
-                                <h5><a href="https://www.moneymag.com.au/retail-super-funds-merger" target="_blank">Merger on the Cards for Retail Super Funds (Money Magazine)</a></h5>
+                                <h5><a href="https://www.moneymag.com.au/retail-super-funds-merger"
+                                        target="_blank">Merger on the Cards for Retail Super Funds (Money Magazine)</a>
+                                </h5>
                             </div>
                             <div class="article-item">
-                                <h5><a href="https://www.moneymag.com.au/australian-super-underpays-members-2-million" target="_blank">Australian Super Underpaid Members by $2 Million (Money Magazine)</a></h5>
+                                <h5><a href="https://www.moneymag.com.au/australian-super-underpays-members-2-million"
+                                        target="_blank">Australian Super Underpaid Members by $2 Million (Money
+                                        Magazine)</a></h5>
                             </div>
                         </div>
                     </div>
@@ -2753,22 +2806,31 @@
                     <div class="articles-list-container">
                         <div class="articles-list" id="misc-articles-list">
                             <div class="article-item">
-                                <h5><a href="https://www.intelligentinvestor.com.au/investment-news/does-your-spouses-paycheque-encourage-infidelity/61232" target="_blank">Does Your Spouse's Paycheque Encourage Infidelity? (Intelligent Investor)</a></h5>
+                                <h5><a href="https://www.intelligentinvestor.com.au/investment-news/does-your-spouses-paycheque-encourage-infidelity/61232"
+                                        target="_blank">Does Your Spouse's Paycheque Encourage Infidelity? (Intelligent
+                                        Investor)</a></h5>
                             </div>
                             <div class="article-item">
-                                <h5><a href="https://www.intelligentinvestor.com.au/investment-news/so-your-kids-want-to-be-millionaires-show-them-how-with-one-chart/61242" target="_blank">So Your Kids Want to Be Millionaires? Show Them How with One Chart (Intelligent Investor)</a></h5>
+                                <h5><a href="https://www.intelligentinvestor.com.au/investment-news/so-your-kids-want-to-be-millionaires-show-them-how-with-one-chart/61242"
+                                        target="_blank">So Your Kids Want to Be Millionaires? Show Them How with One
+                                        Chart (Intelligent Investor)</a></h5>
                             </div>
                             <div class="article-item">
-                                <h5><a href="https://www.intelligentinvestor.com.au/investment-news/should-you-save-invest-or-pay-off-debt/61262" target="_blank">Should You Save, Invest, or Pay Off Debt? (Intelligent Investor)</a></h5>
+                                <h5><a href="https://www.intelligentinvestor.com.au/investment-news/should-you-save-invest-or-pay-off-debt/61262"
+                                        target="_blank">Should You Save, Invest, or Pay Off Debt? (Intelligent
+                                        Investor)</a></h5>
                             </div>
                             <div class="article-item">
-                                <h5><a href="https://www.intelligentinvestor.com.au/investment-news/why-people-fail-to-retire-rich/61282" target="_blank">Why People Fail to Retire Rich (Intelligent Investor)</a></h5>
+                                <h5><a href="https://www.intelligentinvestor.com.au/investment-news/why-people-fail-to-retire-rich/61282"
+                                        target="_blank">Why People Fail to Retire Rich (Intelligent Investor)</a></h5>
                             </div>
                             <div class="article-item">
-                                <h5><a href="https://www.intelligentinvestor.com.au/investment-news/how-to-avoid-a-scam/61302" target="_blank">How to Avoid a Scam (Intelligent Investor)</a></h5>
+                                <h5><a href="https://www.intelligentinvestor.com.au/investment-news/how-to-avoid-a-scam/61302"
+                                        target="_blank">How to Avoid a Scam (Intelligent Investor)</a></h5>
                             </div>
                             <div class="article-item">
-                                <h5><a href="https://www.intelligentinvestor.com.au/investment-news/the-power-of-compounding/61322" target="_blank">The Power of Compounding (Intelligent Investor)</a></h5>
+                                <h5><a href="https://www.intelligentinvestor.com.au/investment-news/the-power-of-compounding/61322"
+                                        target="_blank">The Power of Compounding (Intelligent Investor)</a></h5>
                             </div>
                         </div>
                     </div>
@@ -2797,16 +2859,26 @@
             <div class="book-content" id="mobile-book-content">
                 <div class="book-category active" data-category="buffett-munger">
                     <div class="book-links-list">
-                        <a href="https://www.amazon.com.au/s?k=The+Essays+of+Warren+Buffett&tag=grahamdoddsvi-22" target="_blank">The Essays of Warren Buffett</a>
-                        <a href="https://www.amazon.com.au/s?k=The+Snowball+Warren+Buffett&tag=grahamdoddsvi-22" target="_blank">The Snowball</a>
-                        <a href="https://www.amazon.com.au/s?k=The+Warren+Buffett+Way&tag=grahamdoddsvi-22" target="_blank">The Warren Buffett Way</a>
-                        <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Speaks&tag=grahamdoddsvi-22" target="_blank">Warren Buffett Speaks</a>
-                        <a href="https://www.amazon.com.au/s?k=Tap+Dancing+to+Work&tag=grahamdoddsvi-22" target="_blank">Tap Dancing to Work</a>
-                        <a href="https://www.amazon.com.au/s?k=Buffett+The+Making+of+an+American+Capitalist&tag=grahamdoddsvi-22" target="_blank">Buffett: The Making of an American Capitalist</a>
-                        <a href="https://www.amazon.com.au/s?k=The+Warren+Buffett+Portfolio&tag=grahamdoddsvi-22" target="_blank">The Warren Buffett Portfolio</a>
-                        <a href="https://www.amazon.com.au/s?k=Warren+Buffett+An+Illustrated+Biography&tag=grahamdoddsvi-22" target="_blank">Warren Buffett: An Illustrated Biography</a>
-                        <a href="https://www.amazon.com.au/s?k=The+Deals+of+Warren+Buffett&tag=grahamdoddsvi-22" target="_blank">The Deals of Warren Buffett</a>
-                        <a href="https://www.amazon.com.au/s?k=Of+Permanent+Value+Warren+Buffett&tag=grahamdoddsvi-22" target="_blank">Of Permanent Value</a>
+                        <a href="https://www.amazon.com.au/s?k=The+Essays+of+Warren+Buffett&tag=grahamdoddsvi-22"
+                            target="_blank">The Essays of Warren Buffett</a>
+                        <a href="https://www.amazon.com.au/s?k=The+Snowball+Warren+Buffett&tag=grahamdoddsvi-22"
+                            target="_blank">The Snowball</a>
+                        <a href="https://www.amazon.com.au/s?k=The+Warren+Buffett+Way&tag=grahamdoddsvi-22"
+                            target="_blank">The Warren Buffett Way</a>
+                        <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Speaks&tag=grahamdoddsvi-22"
+                            target="_blank">Warren Buffett Speaks</a>
+                        <a href="https://www.amazon.com.au/s?k=Tap+Dancing+to+Work&tag=grahamdoddsvi-22"
+                            target="_blank">Tap Dancing to Work</a>
+                        <a href="https://www.amazon.com.au/s?k=Buffett+The+Making+of+an+American+Capitalist&tag=grahamdoddsvi-22"
+                            target="_blank">Buffett: The Making of an American Capitalist</a>
+                        <a href="https://www.amazon.com.au/s?k=The+Warren+Buffett+Portfolio&tag=grahamdoddsvi-22"
+                            target="_blank">The Warren Buffett Portfolio</a>
+                        <a href="https://www.amazon.com.au/s?k=Warren+Buffett+An+Illustrated+Biography&tag=grahamdoddsvi-22"
+                            target="_blank">Warren Buffett: An Illustrated Biography</a>
+                        <a href="https://www.amazon.com.au/s?k=The+Deals+of+Warren+Buffett&tag=grahamdoddsvi-22"
+                            target="_blank">The Deals of Warren Buffett</a>
+                        <a href="https://www.amazon.com.au/s?k=Of+Permanent+Value+Warren+Buffett&tag=grahamdoddsvi-22"
+                            target="_blank">Of Permanent Value</a>
                     </div>
                     <div class="mobile-books-see-more">
                         <a href="warren-buffett-books.html" class="mobile-books-see-more-link">See more</a>
@@ -2815,16 +2887,26 @@
 
                 <div class="book-category" data-category="value-investing">
                     <div class="book-links-list">
-                        <a href="https://www.amazon.com.au/s?k=The+Intelligent+Investor+Benjamin+Graham&tag=grahamdoddsvi-22" target="_blank">The Intelligent Investor</a>
-                        <a href="https://www.amazon.com.au/s?k=Security+Analysis+1940+Benjamin+Graham&tag=grahamdoddsvi-22" target="_blank">Security Analysis (1940)</a>
-                        <a href="https://www.amazon.com.au/s?k=Security+Analysis+2008+Benjamin+Graham&tag=grahamdoddsvi-22" target="_blank">Security Analysis (2008)</a>
-                        <a href="https://www.amazon.com.au/s?k=Benjamin+Graham+On+Value+Investing&tag=grahamdoddsvi-22" target="_blank">Benjamin Graham On Value Investing</a>
-                        <a href="https://www.amazon.com.au/s?k=Value+Investing+From+Graham+to+Buffett+and+Beyond&tag=grahamdoddsvi-22" target="_blank">Value Investing: From Graham to Buffett and Beyond</a>
-                        <a href="https://www.amazon.com.au/s?k=The+Rediscovered+Benjamin+Graham&tag=grahamdoddsvi-22" target="_blank">The Rediscovered Benjamin Graham</a>
-                        <a href="https://www.amazon.com.au/s?k=The+Little+Book+of+Value+Investing&tag=grahamdoddsvi-22" target="_blank">The Little Book of Value Investing</a>
-                        <a href="https://www.amazon.com.au/s?k=The+Little+Book+That+Beats+the+Market&tag=grahamdoddsvi-22" target="_blank">The Little Book That Beats the Market</a>
-                        <a href="https://www.amazon.com.au/s?k=You+Can+Be+A+Stock+Market+Genius&tag=grahamdoddsvi-22" target="_blank">You Can Be A Stock Market Genius</a>
-                        <a href="https://www.amazon.com.au/s?k=Modern+Value+Investing&tag=grahamdoddsvi-22" target="_blank">Modern Value Investing</a>
+                        <a href="https://www.amazon.com.au/s?k=The+Intelligent+Investor+Benjamin+Graham&tag=grahamdoddsvi-22"
+                            target="_blank">The Intelligent Investor</a>
+                        <a href="https://www.amazon.com.au/s?k=Security+Analysis+1940+Benjamin+Graham&tag=grahamdoddsvi-22"
+                            target="_blank">Security Analysis (1940)</a>
+                        <a href="https://www.amazon.com.au/s?k=Security+Analysis+2008+Benjamin+Graham&tag=grahamdoddsvi-22"
+                            target="_blank">Security Analysis (2008)</a>
+                        <a href="https://www.amazon.com.au/s?k=Benjamin+Graham+On+Value+Investing&tag=grahamdoddsvi-22"
+                            target="_blank">Benjamin Graham On Value Investing</a>
+                        <a href="https://www.amazon.com.au/s?k=Value+Investing+From+Graham+to+Buffett+and+Beyond&tag=grahamdoddsvi-22"
+                            target="_blank">Value Investing: From Graham to Buffett and Beyond</a>
+                        <a href="https://www.amazon.com.au/s?k=The+Rediscovered+Benjamin+Graham&tag=grahamdoddsvi-22"
+                            target="_blank">The Rediscovered Benjamin Graham</a>
+                        <a href="https://www.amazon.com.au/s?k=The+Little+Book+of+Value+Investing&tag=grahamdoddsvi-22"
+                            target="_blank">The Little Book of Value Investing</a>
+                        <a href="https://www.amazon.com.au/s?k=The+Little+Book+That+Beats+the+Market&tag=grahamdoddsvi-22"
+                            target="_blank">The Little Book That Beats the Market</a>
+                        <a href="https://www.amazon.com.au/s?k=You+Can+Be+A+Stock+Market+Genius&tag=grahamdoddsvi-22"
+                            target="_blank">You Can Be A Stock Market Genius</a>
+                        <a href="https://www.amazon.com.au/s?k=Modern+Value+Investing&tag=grahamdoddsvi-22"
+                            target="_blank">Modern Value Investing</a>
                     </div>
                     <div class="mobile-books-see-more">
                         <a href="value-investing-books.html" class="mobile-books-see-more-link">See more</a>
@@ -2833,16 +2915,26 @@
 
                 <div class="book-category" data-category="share-investing">
                     <div class="book-links-list">
-                        <a href="https://www.amazon.com.au/s?k=How+to+Make+Money+in+Stocks+William+O'Neil&tag=grahamdoddsvi-22" target="_blank">How to Make Money in Stocks</a>
-                        <a href="https://www.amazon.com.au/s?k=One+Up+on+Wall+Street+Peter+Lynch&tag=grahamdoddsvi-22" target="_blank">One Up on Wall Street</a>
-                        <a href="https://www.amazon.com.au/s?k=A+Beginner's+Guide+to+the+Stock+Market&tag=grahamdoddsvi-22" target="_blank">A Beginner’s Guide to the Stock Market</a>
-                        <a href="https://www.amazon.com.au/s?k=Common+Sense+on+Mutual+Funds+John+Bogle&tag=grahamdoddsvi-22" target="_blank">Common Sense on Mutual Funds</a>
-                        <a href="https://www.amazon.com.au/s?k=The+Little+Book+of+Common+Sense+Investing&tag=grahamdoddsvi-22" target="_blank">The Little Book of Common Sense Investing</a>
-                        <a href="https://www.amazon.com.au/s?k=Stocks+for+the+Long+Run+Jeremy+Siegel&tag=grahamdoddsvi-22" target="_blank">Stocks for the Long Run</a>
-                        <a href="https://www.amazon.com.au/s?k=The+Five+Rules+for+Successful+Stock+Investing&tag=grahamdoddsvi-22" target="_blank">The Five Rules for Successful Stock Investing</a>
-                        <a href="https://www.amazon.com.au/s?k=The+Little+Book+That+Builds+Wealth&tag=grahamdoddsvi-22" target="_blank">The Little Book That Builds Wealth</a>
-                        <a href="https://www.amazon.com.au/s?k=Best+Loser+Wins+Tom+Hougaard&tag=grahamdoddsvi-22" target="_blank">Best Loser Wins</a>
-                        <a href="https://www.amazon.com.au/s?k=Stock+Market+Investing&tag=grahamdoddsvi-22" target="_blank">Stock Market Investing</a>
+                        <a href="https://www.amazon.com.au/s?k=How+to+Make+Money+in+Stocks+William+O'Neil&tag=grahamdoddsvi-22"
+                            target="_blank">How to Make Money in Stocks</a>
+                        <a href="https://www.amazon.com.au/s?k=One+Up+on+Wall+Street+Peter+Lynch&tag=grahamdoddsvi-22"
+                            target="_blank">One Up on Wall Street</a>
+                        <a href="https://www.amazon.com.au/s?k=A+Beginner's+Guide+to+the+Stock+Market&tag=grahamdoddsvi-22"
+                            target="_blank">A Beginner’s Guide to the Stock Market</a>
+                        <a href="https://www.amazon.com.au/s?k=Common+Sense+on+Mutual+Funds+John+Bogle&tag=grahamdoddsvi-22"
+                            target="_blank">Common Sense on Mutual Funds</a>
+                        <a href="https://www.amazon.com.au/s?k=The+Little+Book+of+Common+Sense+Investing&tag=grahamdoddsvi-22"
+                            target="_blank">The Little Book of Common Sense Investing</a>
+                        <a href="https://www.amazon.com.au/s?k=Stocks+for+the+Long+Run+Jeremy+Siegel&tag=grahamdoddsvi-22"
+                            target="_blank">Stocks for the Long Run</a>
+                        <a href="https://www.amazon.com.au/s?k=The+Five+Rules+for+Successful+Stock+Investing&tag=grahamdoddsvi-22"
+                            target="_blank">The Five Rules for Successful Stock Investing</a>
+                        <a href="https://www.amazon.com.au/s?k=The+Little+Book+That+Builds+Wealth&tag=grahamdoddsvi-22"
+                            target="_blank">The Little Book That Builds Wealth</a>
+                        <a href="https://www.amazon.com.au/s?k=Best+Loser+Wins+Tom+Hougaard&tag=grahamdoddsvi-22"
+                            target="_blank">Best Loser Wins</a>
+                        <a href="https://www.amazon.com.au/s?k=Stock+Market+Investing&tag=grahamdoddsvi-22"
+                            target="_blank">Stock Market Investing</a>
                     </div>
                     <div class="mobile-books-see-more">
                         <a href="share-investing-books.html" class="mobile-books-see-more-link">See more</a>
@@ -2851,16 +2943,26 @@
 
                 <div class="book-category" data-category="wealth-creation">
                     <div class="book-links-list">
-                        <a href="https://www.amazon.com.au/s?k=How+to+Get+Rich+Felix+Dennis&tag=grahamdoddsvi-22" target="_blank">How to Get Rich</a>
-                        <a href="https://www.amazon.com.au/s?k=Rich+Dad+Poor+Dad+Robert+Kiyosaki&tag=grahamdoddsvi-22" target="_blank">Rich Dad Poor Dad</a>
-                        <a href="https://www.amazon.com.au/s?k=The+Simple+Path+to+Wealth+JL+Collins&tag=grahamdoddsvi-22" target="_blank">The Simple Path to Wealth</a>
-                        <a href="https://www.amazon.com.au/s?k=I+Will+Teach+You+to+be+Rich+Ramit+Sethi&tag=grahamdoddsvi-22" target="_blank">I Will Teach You to be Rich</a>
-                        <a href="https://www.amazon.com.au/s?k=The+Richest+Man+in+Babylon&tag=grahamdoddsvi-22" target="_blank">The Richest Man in Babylon</a>
-                        <a href="https://www.amazon.com.au/s?k=The+Millionaire+Next+Door&tag=grahamdoddsvi-22" target="_blank">The Millionaire Next Door</a>
-                        <a href="https://www.amazon.com.au/s?k=The+Millionaire+Mind+Thomas+Stanley&tag=grahamdoddsvi-22" target="_blank">The Millionaire Mind</a>
-                        <a href="https://www.amazon.com.au/s?k=The+Millionaire+Fastlane+MJ+DeMarco&tag=grahamdoddsvi-22" target="_blank">The Millionaire Fastlane</a>
-                        <a href="https://www.amazon.com.au/s?k=The+Strategic+Millionaire&tag=grahamdoddsvi-22" target="_blank">The Strategic Millionaire</a>
-                        <a href="https://www.amazon.com.au/s?k=Millionaire+Mission+Brian+Preston&tag=grahamdoddsvi-22" target="_blank">Millionaire Mission</a>
+                        <a href="https://www.amazon.com.au/s?k=How+to+Get+Rich+Felix+Dennis&tag=grahamdoddsvi-22"
+                            target="_blank">How to Get Rich</a>
+                        <a href="https://www.amazon.com.au/s?k=Rich+Dad+Poor+Dad+Robert+Kiyosaki&tag=grahamdoddsvi-22"
+                            target="_blank">Rich Dad Poor Dad</a>
+                        <a href="https://www.amazon.com.au/s?k=The+Simple+Path+to+Wealth+JL+Collins&tag=grahamdoddsvi-22"
+                            target="_blank">The Simple Path to Wealth</a>
+                        <a href="https://www.amazon.com.au/s?k=I+Will+Teach+You+to+be+Rich+Ramit+Sethi&tag=grahamdoddsvi-22"
+                            target="_blank">I Will Teach You to be Rich</a>
+                        <a href="https://www.amazon.com.au/s?k=The+Richest+Man+in+Babylon&tag=grahamdoddsvi-22"
+                            target="_blank">The Richest Man in Babylon</a>
+                        <a href="https://www.amazon.com.au/s?k=The+Millionaire+Next+Door&tag=grahamdoddsvi-22"
+                            target="_blank">The Millionaire Next Door</a>
+                        <a href="https://www.amazon.com.au/s?k=The+Millionaire+Mind+Thomas+Stanley&tag=grahamdoddsvi-22"
+                            target="_blank">The Millionaire Mind</a>
+                        <a href="https://www.amazon.com.au/s?k=The+Millionaire+Fastlane+MJ+DeMarco&tag=grahamdoddsvi-22"
+                            target="_blank">The Millionaire Fastlane</a>
+                        <a href="https://www.amazon.com.au/s?k=The+Strategic+Millionaire&tag=grahamdoddsvi-22"
+                            target="_blank">The Strategic Millionaire</a>
+                        <a href="https://www.amazon.com.au/s?k=Millionaire+Mission+Brian+Preston&tag=grahamdoddsvi-22"
+                            target="_blank">Millionaire Mission</a>
                     </div>
                     <div class="mobile-books-see-more">
                         <a href="wealth-creation-books.html" class="mobile-books-see-more-link">See more</a>
@@ -2869,34 +2971,55 @@
 
                 <div class="book-category" data-category="financial-analysis">
                     <div class="book-links-list">
-                        <a href="https://www.amazon.com.au/s?k=Financial+Statements+Thomas+Ittelson&tag=grahamdoddsvi-22" target="_blank">Financial Statements</a>
-                        <a href="https://www.amazon.com.au/s?k=How+to+Read+a+Financial+Report&tag=grahamdoddsvi-22" target="_blank">How to Read a Financial Report</a>
-                        <a href="https://www.amazon.com.au/s?k=Financial+Shenanigans+Howard+Schilit&tag=grahamdoddsvi-22" target="_blank">Financial Shenanigans</a>
-                        <a href="https://www.amazon.com.au/s?k=Bemused+Investor's+Guide+to+Company+Accounts&tag=grahamdoddsvi-22" target="_blank">Bemused Investor’s Guide to Company Accounts</a>
-                        <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Accounting&tag=grahamdoddsvi-22" target="_blank">Warren Buffett Accounting</a>
-                        <a href="https://www.amazon.com.au/s?k=Accounting+for+Beginners&tag=grahamdoddsvi-22" target="_blank">Accounting for Beginners</a>
-                        <a href="https://www.amazon.com.au/s?k=Financial+Intelligence+Berman+Knight&tag=grahamdoddsvi-22" target="_blank">Financial Intelligence</a>
-                        <a href="https://www.amazon.com.au/s?k=Balance+Sheet+Basics&tag=grahamdoddsvi-22" target="_blank">Balance Sheet Basics</a>
-                        <a href="https://www.amazon.com.au/s?k=Financial+Statement+Analysis+for+Value+Investors&tag=grahamdoddsvi-22" target="_blank">Financial Statement Analysis for Value Investors</a>
-                        <a href="https://www.amazon.com.au/s?k=The+Interpretation+of+Financial+Statements&tag=grahamdoddsvi-22" target="_blank">The Interpretation of Financial Statements</a>
+                        <a href="https://www.amazon.com.au/s?k=Financial+Statements+Thomas+Ittelson&tag=grahamdoddsvi-22"
+                            target="_blank">Financial Statements</a>
+                        <a href="https://www.amazon.com.au/s?k=How+to+Read+a+Financial+Report&tag=grahamdoddsvi-22"
+                            target="_blank">How to Read a Financial Report</a>
+                        <a href="https://www.amazon.com.au/s?k=Financial+Shenanigans+Howard+Schilit&tag=grahamdoddsvi-22"
+                            target="_blank">Financial Shenanigans</a>
+                        <a href="https://www.amazon.com.au/s?k=Bemused+Investor's+Guide+to+Company+Accounts&tag=grahamdoddsvi-22"
+                            target="_blank">Bemused Investor’s Guide to Company Accounts</a>
+                        <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Accounting&tag=grahamdoddsvi-22"
+                            target="_blank">Warren Buffett Accounting</a>
+                        <a href="https://www.amazon.com.au/s?k=Accounting+for+Beginners&tag=grahamdoddsvi-22"
+                            target="_blank">Accounting for Beginners</a>
+                        <a href="https://www.amazon.com.au/s?k=Financial+Intelligence+Berman+Knight&tag=grahamdoddsvi-22"
+                            target="_blank">Financial Intelligence</a>
+                        <a href="https://www.amazon.com.au/s?k=Balance+Sheet+Basics&tag=grahamdoddsvi-22"
+                            target="_blank">Balance Sheet Basics</a>
+                        <a href="https://www.amazon.com.au/s?k=Financial+Statement+Analysis+for+Value+Investors&tag=grahamdoddsvi-22"
+                            target="_blank">Financial Statement Analysis for Value Investors</a>
+                        <a href="https://www.amazon.com.au/s?k=The+Interpretation+of+Financial+Statements&tag=grahamdoddsvi-22"
+                            target="_blank">The Interpretation of Financial Statements</a>
                     </div>
                     <div class="mobile-books-see-more">
-                        <a href="financial-statement-analysis-books.html" class="mobile-books-see-more-link">See more</a>
+                        <a href="financial-statement-analysis-books.html" class="mobile-books-see-more-link">See
+                            more</a>
                     </div>
                 </div>
 
                 <div class="book-category" data-category="sales-marketing">
                     <div class="book-links-list">
-                        <a href="https://www.amazon.com.au/s?k=%24100M+Offers+Alex+Hormozi&tag=grahamdoddsvi-22" target="_blank">$100M Offers</a>
-                        <a href="https://www.amazon.com.au/s?k=%24100M+Leads+Alex+Hormozi&tag=grahamdoddsvi-22" target="_blank">$100M Leads</a>
-                        <a href="https://www.amazon.com.au/s?k=Sell+or+Be+Sold+Grant+Cardone&tag=grahamdoddsvi-22" target="_blank">Sell or Be Sold</a>
-                        <a href="https://www.amazon.com.au/s?k=This+Is+Marketing+Seth+Godin&tag=grahamdoddsvi-22" target="_blank">This Is Marketing</a>
-                        <a href="https://www.amazon.com.au/s?k=The+1-Page+Marketing+Plan&tag=grahamdoddsvi-22" target="_blank">The 1-Page Marketing Plan</a>
-                        <a href="https://www.amazon.com.au/s?k=80/20+Sales+and+Marketing+Perry+Marshall&tag=grahamdoddsvi-22" target="_blank">80/20 Sales and Marketing</a>
-                        <a href="https://www.amazon.com.au/s?k=Gap+Selling+Keenan&tag=grahamdoddsvi-22" target="_blank">Gap Selling</a>
-                        <a href="https://www.amazon.com.au/s?k=The+Challenger+Sale&tag=grahamdoddsvi-22" target="_blank">The Challenger Sale</a>
-                        <a href="https://www.amazon.com.au/s?k=The+Psychology+of+Selling+Brian+Tracy&tag=grahamdoddsvi-22" target="_blank">The Psychology of Selling</a>
-                        <a href="https://www.amazon.com.au/s?k=Selling+101+Zig+Ziglar&tag=grahamdoddsvi-22" target="_blank">Selling 101</a>
+                        <a href="https://www.amazon.com.au/s?k=%24100M+Offers+Alex+Hormozi&tag=grahamdoddsvi-22"
+                            target="_blank">$100M Offers</a>
+                        <a href="https://www.amazon.com.au/s?k=%24100M+Leads+Alex+Hormozi&tag=grahamdoddsvi-22"
+                            target="_blank">$100M Leads</a>
+                        <a href="https://www.amazon.com.au/s?k=Sell+or+Be+Sold+Grant+Cardone&tag=grahamdoddsvi-22"
+                            target="_blank">Sell or Be Sold</a>
+                        <a href="https://www.amazon.com.au/s?k=This+Is+Marketing+Seth+Godin&tag=grahamdoddsvi-22"
+                            target="_blank">This Is Marketing</a>
+                        <a href="https://www.amazon.com.au/s?k=The+1-Page+Marketing+Plan&tag=grahamdoddsvi-22"
+                            target="_blank">The 1-Page Marketing Plan</a>
+                        <a href="https://www.amazon.com.au/s?k=80/20+Sales+and+Marketing+Perry+Marshall&tag=grahamdoddsvi-22"
+                            target="_blank">80/20 Sales and Marketing</a>
+                        <a href="https://www.amazon.com.au/s?k=Gap+Selling+Keenan&tag=grahamdoddsvi-22"
+                            target="_blank">Gap Selling</a>
+                        <a href="https://www.amazon.com.au/s?k=The+Challenger+Sale&tag=grahamdoddsvi-22"
+                            target="_blank">The Challenger Sale</a>
+                        <a href="https://www.amazon.com.au/s?k=The+Psychology+of+Selling+Brian+Tracy&tag=grahamdoddsvi-22"
+                            target="_blank">The Psychology of Selling</a>
+                        <a href="https://www.amazon.com.au/s?k=Selling+101+Zig+Ziglar&tag=grahamdoddsvi-22"
+                            target="_blank">Selling 101</a>
                     </div>
                     <div class="mobile-books-see-more">
                         <a href="sales-and-marketing-books.html" class="mobile-books-see-more-link">See more</a>
@@ -2905,16 +3028,26 @@
 
                 <div class="book-category" data-category="self-improvement">
                     <div class="book-links-list">
-                        <a href="https://www.amazon.com.au/s?k=Atomic+Habits+James+Clear&tag=grahamdoddsvi-22" target="_blank">Atomic Habits</a>
-                        <a href="https://www.amazon.com.au/s?k=The+Mountain+Is+You+Brianna+Wiest&tag=grahamdoddsvi-22" target="_blank">The Mountain Is You</a>
-                        <a href="https://www.amazon.com.au/s?k=Good+Vibes+Good+Life+Vex+King&tag=grahamdoddsvi-22" target="_blank">Good Vibes Good Life</a>
-                        <a href="https://www.amazon.com.au/s?k=The+Power+of+Discipline+Daniel+Walter&tag=grahamdoddsvi-22" target="_blank">The Power of Discipline</a>
-                        <a href="https://www.amazon.com.au/s?k=The+Let+Them+Theory+Mel+Robbins&tag=grahamdoddsvi-22" target="_blank">The Let Them Theory</a>
-                        <a href="https://www.amazon.com.au/s?k=Stop+Overthinking+Nick+Trenton&tag=grahamdoddsvi-22" target="_blank">Stop Overthinking</a>
-                        <a href="https://www.amazon.com.au/s?k=Breaking+the+Habits+of+Being+Yourself+Dr+Joe+Dispenza&tag=grahamdoddsvi-22" target="_blank">Breaking the Habits of Being Yourself</a>
-                        <a href="https://www.amazon.com.au/s?k=The+7+Habits+of+Highly+Effective+People&tag=grahamdoddsvi-22" target="_blank">The 7 Habits of Highly Effective People</a>
-                        <a href="https://www.amazon.com.au/s?k=The+15+Invaluable+Laws+of+Growth+John+Maxwell&tag=grahamdoddsvi-22" target="_blank">The 15 Invaluable Laws of Growth</a>
-                        <a href="https://www.amazon.com.au/s?k=Success+Napoleon+Hill&tag=grahamdoddsvi-22" target="_blank">Success</a>
+                        <a href="https://www.amazon.com.au/s?k=Atomic+Habits+James+Clear&tag=grahamdoddsvi-22"
+                            target="_blank">Atomic Habits</a>
+                        <a href="https://www.amazon.com.au/s?k=The+Mountain+Is+You+Brianna+Wiest&tag=grahamdoddsvi-22"
+                            target="_blank">The Mountain Is You</a>
+                        <a href="https://www.amazon.com.au/s?k=Good+Vibes+Good+Life+Vex+King&tag=grahamdoddsvi-22"
+                            target="_blank">Good Vibes Good Life</a>
+                        <a href="https://www.amazon.com.au/s?k=The+Power+of+Discipline+Daniel+Walter&tag=grahamdoddsvi-22"
+                            target="_blank">The Power of Discipline</a>
+                        <a href="https://www.amazon.com.au/s?k=The+Let+Them+Theory+Mel+Robbins&tag=grahamdoddsvi-22"
+                            target="_blank">The Let Them Theory</a>
+                        <a href="https://www.amazon.com.au/s?k=Stop+Overthinking+Nick+Trenton&tag=grahamdoddsvi-22"
+                            target="_blank">Stop Overthinking</a>
+                        <a href="https://www.amazon.com.au/s?k=Breaking+the+Habits+of+Being+Yourself+Dr+Joe+Dispenza&tag=grahamdoddsvi-22"
+                            target="_blank">Breaking the Habits of Being Yourself</a>
+                        <a href="https://www.amazon.com.au/s?k=The+7+Habits+of+Highly+Effective+People&tag=grahamdoddsvi-22"
+                            target="_blank">The 7 Habits of Highly Effective People</a>
+                        <a href="https://www.amazon.com.au/s?k=The+15+Invaluable+Laws+of+Growth+John+Maxwell&tag=grahamdoddsvi-22"
+                            target="_blank">The 15 Invaluable Laws of Growth</a>
+                        <a href="https://www.amazon.com.au/s?k=Success+Napoleon+Hill&tag=grahamdoddsvi-22"
+                            target="_blank">Success</a>
                     </div>
                     <div class="mobile-books-see-more">
                         <a href="self-improvement-books.html" class="mobile-books-see-more-link">See more</a>
@@ -2923,16 +3056,26 @@
 
                 <div class="book-category" data-category="business-management">
                     <div class="book-links-list">
-                        <a href="https://www.amazon.com.au/s?k=Never+Split+the+Difference+Chris+Voss&tag=grahamdoddsvi-22" target="_blank">Never Split the Difference</a>
-                        <a href="https://www.amazon.com.au/s?k=The+Lean+Startup+Eric+Ries&tag=grahamdoddsvi-22" target="_blank">The Lean Startup</a>
-                        <a href="https://www.amazon.com.au/s?k=Leaders+Eat+Last+Simon+Sinek&tag=grahamdoddsvi-22" target="_blank">Leaders Eat Last</a>
-                        <a href="https://www.amazon.com.au/s?k=The+Coaching+Habit+Michael+Bungay+Stanier&tag=grahamdoddsvi-22" target="_blank">The Coaching Habit</a>
-                        <a href="https://www.amazon.com.au/s?k=The+E-Myth+Revisited+Michael+Gerber&tag=grahamdoddsvi-22" target="_blank">The E-Myth Revisited</a>
-                        <a href="https://www.amazon.com.au/s?k=Traction+Gino+Wickman&tag=grahamdoddsvi-22" target="_blank">Traction</a>
-                        <a href="https://www.amazon.com.au/s?k=Surrounded+By+Idiots+Thomas+Erikson&tag=grahamdoddsvi-22" target="_blank">Surrounded By Idiots</a>
-                        <a href="https://www.amazon.com.au/s?k=Profit+First+Mike+Michalowicz&tag=grahamdoddsvi-22" target="_blank">Profit First</a>
-                        <a href="https://www.amazon.com.au/s?k=Personal+MBA+Josh+Kaufman&tag=grahamdoddsvi-22" target="_blank">Personal MBA</a>
-                        <a href="https://www.amazon.com.au/s?k=The+Infinite+Game+Simon+Sinek&tag=grahamdoddsvi-22" target="_blank">The Infinite Game</a>
+                        <a href="https://www.amazon.com.au/s?k=Never+Split+the+Difference+Chris+Voss&tag=grahamdoddsvi-22"
+                            target="_blank">Never Split the Difference</a>
+                        <a href="https://www.amazon.com.au/s?k=The+Lean+Startup+Eric+Ries&tag=grahamdoddsvi-22"
+                            target="_blank">The Lean Startup</a>
+                        <a href="https://www.amazon.com.au/s?k=Leaders+Eat+Last+Simon+Sinek&tag=grahamdoddsvi-22"
+                            target="_blank">Leaders Eat Last</a>
+                        <a href="https://www.amazon.com.au/s?k=The+Coaching+Habit+Michael+Bungay+Stanier&tag=grahamdoddsvi-22"
+                            target="_blank">The Coaching Habit</a>
+                        <a href="https://www.amazon.com.au/s?k=The+E-Myth+Revisited+Michael+Gerber&tag=grahamdoddsvi-22"
+                            target="_blank">The E-Myth Revisited</a>
+                        <a href="https://www.amazon.com.au/s?k=Traction+Gino+Wickman&tag=grahamdoddsvi-22"
+                            target="_blank">Traction</a>
+                        <a href="https://www.amazon.com.au/s?k=Surrounded+By+Idiots+Thomas+Erikson&tag=grahamdoddsvi-22"
+                            target="_blank">Surrounded By Idiots</a>
+                        <a href="https://www.amazon.com.au/s?k=Profit+First+Mike+Michalowicz&tag=grahamdoddsvi-22"
+                            target="_blank">Profit First</a>
+                        <a href="https://www.amazon.com.au/s?k=Personal+MBA+Josh+Kaufman&tag=grahamdoddsvi-22"
+                            target="_blank">Personal MBA</a>
+                        <a href="https://www.amazon.com.au/s?k=The+Infinite+Game+Simon+Sinek&tag=grahamdoddsvi-22"
+                            target="_blank">The Infinite Game</a>
                     </div>
                     <div class="mobile-books-see-more">
                         <a href="business-and-management-books.html" class="mobile-books-see-more-link">See more</a>
@@ -2941,16 +3084,26 @@
 
                 <div class="book-category" data-category="miscellaneous">
                     <div class="book-links-list">
-                        <a href="https://www.amazon.com.au/s?k=The+Big+Short+Michael+Lewis&tag=grahamdoddsvi-22" target="_blank">The Big Short</a>
-                        <a href="https://www.amazon.com.au/s?k=Deep+Simplicity+John+Gribbin&tag=grahamdoddsvi-22" target="_blank">Deep Simplicity</a>
-                        <a href="https://www.amazon.com.au/s?k=Moneyball+Michael+Lewis&tag=grahamdoddsvi-22" target="_blank">Moneyball</a>
-                        <a href="https://www.amazon.com.au/s?k=Flash+Boys+Michael+Lewis&tag=grahamdoddsvi-22" target="_blank">Flash Boys</a>
-                        <a href="https://www.amazon.com.au/s?k=Liar's+Poker+Michael+Lewis&tag=grahamdoddsvi-22" target="_blank">Liar’s Poker</a>
-                        <a href="https://www.amazon.com.au/s?k=The+Fifth+Risk+Michael+Lewis&tag=grahamdoddsvi-22" target="_blank">The Fifth Risk</a>
-                        <a href="https://www.amazon.com.au/s?k=Bull%21+Maggie+Mahar&tag=grahamdoddsvi-22" target="_blank">Bull!</a>
-                        <a href="https://www.amazon.com.au/s?k=Going+Infinite+Michael+Lewis&tag=grahamdoddsvi-22" target="_blank">Going Infinite</a>
-                        <a href="https://www.amazon.com.au/s?k=Tools+and+Weapons+Brad+Smith&tag=grahamdoddsvi-22" target="_blank">Tools and Weapons</a>
-                        <a href="https://www.amazon.com.au/s?k=The+Third+Chimpanzee+Jared+Diamond&tag=grahamdoddsvi-22" target="_blank">The Third Chimpanzee</a>
+                        <a href="https://www.amazon.com.au/s?k=The+Big+Short+Michael+Lewis&tag=grahamdoddsvi-22"
+                            target="_blank">The Big Short</a>
+                        <a href="https://www.amazon.com.au/s?k=Deep+Simplicity+John+Gribbin&tag=grahamdoddsvi-22"
+                            target="_blank">Deep Simplicity</a>
+                        <a href="https://www.amazon.com.au/s?k=Moneyball+Michael+Lewis&tag=grahamdoddsvi-22"
+                            target="_blank">Moneyball</a>
+                        <a href="https://www.amazon.com.au/s?k=Flash+Boys+Michael+Lewis&tag=grahamdoddsvi-22"
+                            target="_blank">Flash Boys</a>
+                        <a href="https://www.amazon.com.au/s?k=Liar's+Poker+Michael+Lewis&tag=grahamdoddsvi-22"
+                            target="_blank">Liar’s Poker</a>
+                        <a href="https://www.amazon.com.au/s?k=The+Fifth+Risk+Michael+Lewis&tag=grahamdoddsvi-22"
+                            target="_blank">The Fifth Risk</a>
+                        <a href="https://www.amazon.com.au/s?k=Bull%21+Maggie+Mahar&tag=grahamdoddsvi-22"
+                            target="_blank">Bull!</a>
+                        <a href="https://www.amazon.com.au/s?k=Going+Infinite+Michael+Lewis&tag=grahamdoddsvi-22"
+                            target="_blank">Going Infinite</a>
+                        <a href="https://www.amazon.com.au/s?k=Tools+and+Weapons+Brad+Smith&tag=grahamdoddsvi-22"
+                            target="_blank">Tools and Weapons</a>
+                        <a href="https://www.amazon.com.au/s?k=The+Third+Chimpanzee+Jared+Diamond&tag=grahamdoddsvi-22"
+                            target="_blank">The Third Chimpanzee</a>
                     </div>
                     <div class="mobile-books-see-more">
                         <a href="miscellaneous-books.html" class="mobile-books-see-more-link">See more</a>
@@ -3059,7 +3212,7 @@
         </section>
 
         <section class="newspaper-section" id="mobile-buffett">
-            <h2 class="section-header">WARREN BUFFETT</h2>
+            <h2 class="section-header">WARREN BUFFETT QUOTES</h2>
 
             <!-- Buffett Tab Navigation -->
             <div class="buffett-tabs-mobile">
@@ -4310,136 +4463,226 @@
                     <div class="book-category">
                         <h3>Warren Buffett</h3>
                         <div class="book-links-horizontal">
-                            <a href="https://www.amazon.com.au/s?k=The+Essays+of+Warren+Buffett&tag=grahamdoddsvi-22" target="_blank">The Essays of Warren Buffett</a>
-                            <a href="https://www.amazon.com.au/s?k=The+Snowball+Warren+Buffett&tag=grahamdoddsvi-22" target="_blank">The Snowball</a>
-                            <a href="https://www.amazon.com.au/s?k=The+Warren+Buffett+Way&tag=grahamdoddsvi-22" target="_blank">The Warren Buffett Way</a>
-                            <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Speaks&tag=grahamdoddsvi-22" target="_blank">Warren Buffett Speaks</a>
-                            <a href="https://www.amazon.com.au/s?k=Tap+Dancing+to+Work&tag=grahamdoddsvi-22" target="_blank">Tap Dancing to Work</a>
-                            <a href="https://www.amazon.com.au/s?k=Buffett+The+Making+of+an+American+Capitalist&tag=grahamdoddsvi-22" target="_blank">Buffett: The Making of an American Capitalist</a>
-                            <a href="https://www.amazon.com.au/s?k=The+Warren+Buffett+Portfolio&tag=grahamdoddsvi-22" target="_blank">The Warren Buffett Portfolio</a>
-                            <a href="https://www.amazon.com.au/s?k=Warren+Buffett+An+Illustrated+Biography&tag=grahamdoddsvi-22" target="_blank">Warren Buffett: An Illustrated Biography</a>
-                            <a href="https://www.amazon.com.au/s?k=The+Deals+of+Warren+Buffett&tag=grahamdoddsvi-22" target="_blank">The Deals of Warren Buffett</a>
-                            <a href="https://www.amazon.com.au/s?k=Of+Permanent+Value+Warren+Buffett&tag=grahamdoddsvi-22" target="_blank">Of Permanent Value</a>
+                            <a href="https://www.amazon.com.au/s?k=The+Essays+of+Warren+Buffett&tag=grahamdoddsvi-22"
+                                target="_blank">The Essays of Warren Buffett</a>
+                            <a href="https://www.amazon.com.au/s?k=The+Snowball+Warren+Buffett&tag=grahamdoddsvi-22"
+                                target="_blank">The Snowball</a>
+                            <a href="https://www.amazon.com.au/s?k=The+Warren+Buffett+Way&tag=grahamdoddsvi-22"
+                                target="_blank">The Warren Buffett Way</a>
+                            <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Speaks&tag=grahamdoddsvi-22"
+                                target="_blank">Warren Buffett Speaks</a>
+                            <a href="https://www.amazon.com.au/s?k=Tap+Dancing+to+Work&tag=grahamdoddsvi-22"
+                                target="_blank">Tap Dancing to Work</a>
+                            <a href="https://www.amazon.com.au/s?k=Buffett+The+Making+of+an+American+Capitalist&tag=grahamdoddsvi-22"
+                                target="_blank">Buffett: The Making of an American Capitalist</a>
+                            <a href="https://www.amazon.com.au/s?k=The+Warren+Buffett+Portfolio&tag=grahamdoddsvi-22"
+                                target="_blank">The Warren Buffett Portfolio</a>
+                            <a href="https://www.amazon.com.au/s?k=Warren+Buffett+An+Illustrated+Biography&tag=grahamdoddsvi-22"
+                                target="_blank">Warren Buffett: An Illustrated Biography</a>
+                            <a href="https://www.amazon.com.au/s?k=The+Deals+of+Warren+Buffett&tag=grahamdoddsvi-22"
+                                target="_blank">The Deals of Warren Buffett</a>
+                            <a href="https://www.amazon.com.au/s?k=Of+Permanent+Value+Warren+Buffett&tag=grahamdoddsvi-22"
+                                target="_blank">Of Permanent Value</a>
                         </div>
                     </div>
                     <div class="book-category">
                         <h3>Value Investing</h3>
                         <div class="book-links-horizontal">
-                            <a href="https://www.amazon.com.au/s?k=The+Intelligent+Investor+Benjamin+Graham&tag=grahamdoddsvi-22" target="_blank">The Intelligent Investor</a>
-                            <a href="https://www.amazon.com.au/s?k=Security+Analysis+1940+Benjamin+Graham&tag=grahamdoddsvi-22" target="_blank">Security Analysis (1940)</a>
-                            <a href="https://www.amazon.com.au/s?k=Security+Analysis+2008+Benjamin+Graham&tag=grahamdoddsvi-22" target="_blank">Security Analysis (2008)</a>
-                            <a href="https://www.amazon.com.au/s?k=Benjamin+Graham+On+Value+Investing&tag=grahamdoddsvi-22" target="_blank">Benjamin Graham On Value Investing</a>
-                            <a href="https://www.amazon.com.au/s?k=Value+Investing+From+Graham+to+Buffett+and+Beyond&tag=grahamdoddsvi-22" target="_blank">Value Investing: From Graham to Buffett and Beyond</a>
-                            <a href="https://www.amazon.com.au/s?k=The+Rediscovered+Benjamin+Graham&tag=grahamdoddsvi-22" target="_blank">The Rediscovered Benjamin Graham</a>
-                            <a href="https://www.amazon.com.au/s?k=The+Little+Book+of+Value+Investing&tag=grahamdoddsvi-22" target="_blank">The Little Book of Value Investing</a>
-                            <a href="https://www.amazon.com.au/s?k=The+Little+Book+That+Beats+the+Market&tag=grahamdoddsvi-22" target="_blank">The Little Book That Beats the Market</a>
-                            <a href="https://www.amazon.com.au/s?k=You+Can+Be+A+Stock+Market+Genius&tag=grahamdoddsvi-22" target="_blank">You Can Be A Stock Market Genius</a>
-                            <a href="https://www.amazon.com.au/s?k=Modern+Value+Investing&tag=grahamdoddsvi-22" target="_blank">Modern Value Investing</a>
+                            <a href="https://www.amazon.com.au/s?k=The+Intelligent+Investor+Benjamin+Graham&tag=grahamdoddsvi-22"
+                                target="_blank">The Intelligent Investor</a>
+                            <a href="https://www.amazon.com.au/s?k=Security+Analysis+1940+Benjamin+Graham&tag=grahamdoddsvi-22"
+                                target="_blank">Security Analysis (1940)</a>
+                            <a href="https://www.amazon.com.au/s?k=Security+Analysis+2008+Benjamin+Graham&tag=grahamdoddsvi-22"
+                                target="_blank">Security Analysis (2008)</a>
+                            <a href="https://www.amazon.com.au/s?k=Benjamin+Graham+On+Value+Investing&tag=grahamdoddsvi-22"
+                                target="_blank">Benjamin Graham On Value Investing</a>
+                            <a href="https://www.amazon.com.au/s?k=Value+Investing+From+Graham+to+Buffett+and+Beyond&tag=grahamdoddsvi-22"
+                                target="_blank">Value Investing: From Graham to Buffett and Beyond</a>
+                            <a href="https://www.amazon.com.au/s?k=The+Rediscovered+Benjamin+Graham&tag=grahamdoddsvi-22"
+                                target="_blank">The Rediscovered Benjamin Graham</a>
+                            <a href="https://www.amazon.com.au/s?k=The+Little+Book+of+Value+Investing&tag=grahamdoddsvi-22"
+                                target="_blank">The Little Book of Value Investing</a>
+                            <a href="https://www.amazon.com.au/s?k=The+Little+Book+That+Beats+the+Market&tag=grahamdoddsvi-22"
+                                target="_blank">The Little Book That Beats the Market</a>
+                            <a href="https://www.amazon.com.au/s?k=You+Can+Be+A+Stock+Market+Genius&tag=grahamdoddsvi-22"
+                                target="_blank">You Can Be A Stock Market Genius</a>
+                            <a href="https://www.amazon.com.au/s?k=Modern+Value+Investing&tag=grahamdoddsvi-22"
+                                target="_blank">Modern Value Investing</a>
                         </div>
                     </div>
                     <div class="book-category">
                         <h3>Share Investing</h3>
                         <div class="book-links-horizontal">
-                            <a href="https://www.amazon.com.au/s?k=How+to+Make+Money+in+Stocks+William+O'Neil&tag=grahamdoddsvi-22" target="_blank">How to Make Money in Stocks</a>
-                            <a href="https://www.amazon.com.au/s?k=One+Up+on+Wall+Street+Peter+Lynch&tag=grahamdoddsvi-22" target="_blank">One Up on Wall Street</a>
-                            <a href="https://www.amazon.com.au/s?k=A+Beginner's+Guide+to+the+Stock+Market&tag=grahamdoddsvi-22" target="_blank">A Beginner's Guide to the Stock Market</a>
-                            <a href="https://www.amazon.com.au/s?k=Common+Sense+on+Mutual+Funds+John+Bogle&tag=grahamdoddsvi-22" target="_blank">Common Sense on Mutual Funds</a>
-                            <a href="https://www.amazon.com.au/s?k=The+Little+Book+of+Common+Sense+Investing&tag=grahamdoddsvi-22" target="_blank">The Little Book of Common Sense Investing</a>
-                            <a href="https://www.amazon.com.au/s?k=Stocks+for+the+Long+Run+Jeremy+Siegel&tag=grahamdoddsvi-22" target="_blank">Stocks for the Long Run</a>
-                            <a href="https://www.amazon.com.au/s?k=The+Five+Rules+for+Successful+Stock+Investing&tag=grahamdoddsvi-22" target="_blank">The Five Rules for Successful Stock Investing</a>
-                            <a href="https://www.amazon.com.au/s?k=The+Little+Book+That+Builds+Wealth&tag=grahamdoddsvi-22" target="_blank">The Little Book That Builds Wealth</a>
-                            <a href="https://www.amazon.com.au/s?k=Best+Loser+Wins+Tom+Hougaard&tag=grahamdoddsvi-22" target="_blank">Best Loser Wins</a>
-                            <a href="https://www.amazon.com.au/s?k=Stock+Market+Investing&tag=grahamdoddsvi-22" target="_blank">Stock Market Investing</a>
+                            <a href="https://www.amazon.com.au/s?k=How+to+Make+Money+in+Stocks+William+O'Neil&tag=grahamdoddsvi-22"
+                                target="_blank">How to Make Money in Stocks</a>
+                            <a href="https://www.amazon.com.au/s?k=One+Up+on+Wall+Street+Peter+Lynch&tag=grahamdoddsvi-22"
+                                target="_blank">One Up on Wall Street</a>
+                            <a href="https://www.amazon.com.au/s?k=A+Beginner's+Guide+to+the+Stock+Market&tag=grahamdoddsvi-22"
+                                target="_blank">A Beginner's Guide to the Stock Market</a>
+                            <a href="https://www.amazon.com.au/s?k=Common+Sense+on+Mutual+Funds+John+Bogle&tag=grahamdoddsvi-22"
+                                target="_blank">Common Sense on Mutual Funds</a>
+                            <a href="https://www.amazon.com.au/s?k=The+Little+Book+of+Common+Sense+Investing&tag=grahamdoddsvi-22"
+                                target="_blank">The Little Book of Common Sense Investing</a>
+                            <a href="https://www.amazon.com.au/s?k=Stocks+for+the+Long+Run+Jeremy+Siegel&tag=grahamdoddsvi-22"
+                                target="_blank">Stocks for the Long Run</a>
+                            <a href="https://www.amazon.com.au/s?k=The+Five+Rules+for+Successful+Stock+Investing&tag=grahamdoddsvi-22"
+                                target="_blank">The Five Rules for Successful Stock Investing</a>
+                            <a href="https://www.amazon.com.au/s?k=The+Little+Book+That+Builds+Wealth&tag=grahamdoddsvi-22"
+                                target="_blank">The Little Book That Builds Wealth</a>
+                            <a href="https://www.amazon.com.au/s?k=Best+Loser+Wins+Tom+Hougaard&tag=grahamdoddsvi-22"
+                                target="_blank">Best Loser Wins</a>
+                            <a href="https://www.amazon.com.au/s?k=Stock+Market+Investing&tag=grahamdoddsvi-22"
+                                target="_blank">Stock Market Investing</a>
                         </div>
                     </div>
                     <div class="book-category">
                         <h3>Wealth Creation</h3>
                         <div class="book-links-horizontal">
-                            <a href="https://www.amazon.com.au/s?k=How+to+Get+Rich+Felix+Dennis&tag=grahamdoddsvi-22" target="_blank">How to Get Rich</a>
-                            <a href="https://www.amazon.com.au/s?k=Rich+Dad+Poor+Dad+Robert+Kiyosaki&tag=grahamdoddsvi-22" target="_blank">Rich Dad Poor Dad</a>
-                            <a href="https://www.amazon.com.au/s?k=The+Simple+Path+to+Wealth+JL+Collins&tag=grahamdoddsvi-22" target="_blank">The Simple Path to Wealth</a>
-                            <a href="https://www.amazon.com.au/s?k=I+Will+Teach+You+to+be+Rich+Ramit+Sethi&tag=grahamdoddsvi-22" target="_blank">I Will Teach You to be Rich</a>
-                            <a href="https://www.amazon.com.au/s?k=The+Richest+Man+in+Babylon&tag=grahamdoddsvi-22" target="_blank">The Richest Man in Babylon</a>
-                            <a href="https://www.amazon.com.au/s?k=The+Millionaire+Next+Door&tag=grahamdoddsvi-22" target="_blank">The Millionaire Next Door</a>
-                            <a href="https://www.amazon.com.au/s?k=The+Millionaire+Mind+Thomas+Stanley&tag=grahamdoddsvi-22" target="_blank">The Millionaire Mind</a>
-                            <a href="https://www.amazon.com.au/s?k=The+Millionaire+Fastlane+MJ+DeMarco&tag=grahamdoddsvi-22" target="_blank">The Millionaire Fastlane</a>
-                            <a href="https://www.amazon.com.au/s?k=The+Strategic+Millionaire&tag=grahamdoddsvi-22" target="_blank">The Strategic Millionaire</a>
-                            <a href="https://www.amazon.com.au/s?k=Millionaire+Mission+Brian+Preston&tag=grahamdoddsvi-22" target="_blank">Millionaire Mission</a>
+                            <a href="https://www.amazon.com.au/s?k=How+to+Get+Rich+Felix+Dennis&tag=grahamdoddsvi-22"
+                                target="_blank">How to Get Rich</a>
+                            <a href="https://www.amazon.com.au/s?k=Rich+Dad+Poor+Dad+Robert+Kiyosaki&tag=grahamdoddsvi-22"
+                                target="_blank">Rich Dad Poor Dad</a>
+                            <a href="https://www.amazon.com.au/s?k=The+Simple+Path+to+Wealth+JL+Collins&tag=grahamdoddsvi-22"
+                                target="_blank">The Simple Path to Wealth</a>
+                            <a href="https://www.amazon.com.au/s?k=I+Will+Teach+You+to+be+Rich+Ramit+Sethi&tag=grahamdoddsvi-22"
+                                target="_blank">I Will Teach You to be Rich</a>
+                            <a href="https://www.amazon.com.au/s?k=The+Richest+Man+in+Babylon&tag=grahamdoddsvi-22"
+                                target="_blank">The Richest Man in Babylon</a>
+                            <a href="https://www.amazon.com.au/s?k=The+Millionaire+Next+Door&tag=grahamdoddsvi-22"
+                                target="_blank">The Millionaire Next Door</a>
+                            <a href="https://www.amazon.com.au/s?k=The+Millionaire+Mind+Thomas+Stanley&tag=grahamdoddsvi-22"
+                                target="_blank">The Millionaire Mind</a>
+                            <a href="https://www.amazon.com.au/s?k=The+Millionaire+Fastlane+MJ+DeMarco&tag=grahamdoddsvi-22"
+                                target="_blank">The Millionaire Fastlane</a>
+                            <a href="https://www.amazon.com.au/s?k=The+Strategic+Millionaire&tag=grahamdoddsvi-22"
+                                target="_blank">The Strategic Millionaire</a>
+                            <a href="https://www.amazon.com.au/s?k=Millionaire+Mission+Brian+Preston&tag=grahamdoddsvi-22"
+                                target="_blank">Millionaire Mission</a>
                         </div>
                     </div>
                     <div class="book-category">
                         <h3>Financial Analysis</h3>
                         <div class="book-links-horizontal">
-                            <a href="https://www.amazon.com.au/s?k=Financial+Statements+Thomas+Ittelson&tag=grahamdoddsvi-22" target="_blank">Financial Statements</a>
-                            <a href="https://www.amazon.com.au/s?k=How+to+Read+a+Financial+Report&tag=grahamdoddsvi-22" target="_blank">How to Read a Financial Report</a>
-                            <a href="https://www.amazon.com.au/s?k=Financial+Shenanigans+Howard+Schilit&tag=grahamdoddsvi-22" target="_blank">Financial Shenanigans</a>
-                            <a href="https://www.amazon.com.au/s?k=Bemused+Investor's+Guide+to+Company+Accounts&tag=grahamdoddsvi-22" target="_blank">Bemused Investor’s Guide to Company Accounts</a>
-                            <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Accounting&tag=grahamdoddsvi-22" target="_blank">Warren Buffett Accounting</a>
-                            <a href="https://www.amazon.com.au/s?k=Accounting+for+Beginners&tag=grahamdoddsvi-22" target="_blank">Accounting for Beginners</a>
-                            <a href="https://www.amazon.com.au/s?k=Financial+Intelligence+Berman+Knight&tag=grahamdoddsvi-22" target="_blank">Financial Intelligence</a>
-                            <a href="https://www.amazon.com.au/s?k=Balance+Sheet+Basics&tag=grahamdoddsvi-22" target="_blank">Balance Sheet Basics</a>
-                            <a href="https://www.amazon.com.au/s?k=Financial+Statement+Analysis+for+Value+Investors&tag=grahamdoddsvi-22" target="_blank">Financial Statement Analysis for Value Investors</a>
-                            <a href="https://www.amazon.com.au/s?k=The+Interpretation+of+Financial+Statements&tag=grahamdoddsvi-22" target="_blank">The Interpretation of Financial Statements</a>
+                            <a href="https://www.amazon.com.au/s?k=Financial+Statements+Thomas+Ittelson&tag=grahamdoddsvi-22"
+                                target="_blank">Financial Statements</a>
+                            <a href="https://www.amazon.com.au/s?k=How+to+Read+a+Financial+Report&tag=grahamdoddsvi-22"
+                                target="_blank">How to Read a Financial Report</a>
+                            <a href="https://www.amazon.com.au/s?k=Financial+Shenanigans+Howard+Schilit&tag=grahamdoddsvi-22"
+                                target="_blank">Financial Shenanigans</a>
+                            <a href="https://www.amazon.com.au/s?k=Bemused+Investor's+Guide+to+Company+Accounts&tag=grahamdoddsvi-22"
+                                target="_blank">Bemused Investor’s Guide to Company Accounts</a>
+                            <a href="https://www.amazon.com.au/s?k=Warren+Buffett+Accounting&tag=grahamdoddsvi-22"
+                                target="_blank">Warren Buffett Accounting</a>
+                            <a href="https://www.amazon.com.au/s?k=Accounting+for+Beginners&tag=grahamdoddsvi-22"
+                                target="_blank">Accounting for Beginners</a>
+                            <a href="https://www.amazon.com.au/s?k=Financial+Intelligence+Berman+Knight&tag=grahamdoddsvi-22"
+                                target="_blank">Financial Intelligence</a>
+                            <a href="https://www.amazon.com.au/s?k=Balance+Sheet+Basics&tag=grahamdoddsvi-22"
+                                target="_blank">Balance Sheet Basics</a>
+                            <a href="https://www.amazon.com.au/s?k=Financial+Statement+Analysis+for+Value+Investors&tag=grahamdoddsvi-22"
+                                target="_blank">Financial Statement Analysis for Value Investors</a>
+                            <a href="https://www.amazon.com.au/s?k=The+Interpretation+of+Financial+Statements&tag=grahamdoddsvi-22"
+                                target="_blank">The Interpretation of Financial Statements</a>
                         </div>
                     </div>
                     <div class="book-category">
                         <h3>Sales and Marketing</h3>
                         <div class="book-links-horizontal">
-                            <a href="https://www.amazon.com.au/s?k=%24100M+Offers+Alex+Hormozi&tag=grahamdoddsvi-22" target="_blank">$100M Offers</a>
-                            <a href="https://www.amazon.com.au/s?k=%24100M+Leads+Alex+Hormozi&tag=grahamdoddsvi-22" target="_blank">$100M Leads</a>
-                            <a href="https://www.amazon.com.au/s?k=Sell+or+Be+Sold+Grant+Cardone&tag=grahamdoddsvi-22" target="_blank">Sell or Be Sold</a>
-                            <a href="https://www.amazon.com.au/s?k=This+Is+Marketing+Seth+Godin&tag=grahamdoddsvi-22" target="_blank">This Is Marketing</a>
-                            <a href="https://www.amazon.com.au/s?k=The+1-Page+Marketing+Plan&tag=grahamdoddsvi-22" target="_blank">The 1-Page Marketing Plan</a>
-                            <a href="https://www.amazon.com.au/s?k=80/20+Sales+and+Marketing+Perry+Marshall&tag=grahamdoddsvi-22" target="_blank">80/20 Sales and Marketing</a>
-                            <a href="https://www.amazon.com.au/s?k=Gap+Selling+Keenan&tag=grahamdoddsvi-22" target="_blank">Gap Selling</a>
-                            <a href="https://www.amazon.com.au/s?k=The+Challenger+Sale&tag=grahamdoddsvi-22" target="_blank">The Challenger Sale</a>
-                            <a href="https://www.amazon.com.au/s?k=The+Psychology+of+Selling+Brian+Tracy&tag=grahamdoddsvi-22" target="_blank">The Psychology of Selling</a>
-                            <a href="https://www.amazon.com.au/s?k=Selling+101+Zig+Ziglar&tag=grahamdoddsvi-22" target="_blank">Selling 101</a>
+                            <a href="https://www.amazon.com.au/s?k=%24100M+Offers+Alex+Hormozi&tag=grahamdoddsvi-22"
+                                target="_blank">$100M Offers</a>
+                            <a href="https://www.amazon.com.au/s?k=%24100M+Leads+Alex+Hormozi&tag=grahamdoddsvi-22"
+                                target="_blank">$100M Leads</a>
+                            <a href="https://www.amazon.com.au/s?k=Sell+or+Be+Sold+Grant+Cardone&tag=grahamdoddsvi-22"
+                                target="_blank">Sell or Be Sold</a>
+                            <a href="https://www.amazon.com.au/s?k=This+Is+Marketing+Seth+Godin&tag=grahamdoddsvi-22"
+                                target="_blank">This Is Marketing</a>
+                            <a href="https://www.amazon.com.au/s?k=The+1-Page+Marketing+Plan&tag=grahamdoddsvi-22"
+                                target="_blank">The 1-Page Marketing Plan</a>
+                            <a href="https://www.amazon.com.au/s?k=80/20+Sales+and+Marketing+Perry+Marshall&tag=grahamdoddsvi-22"
+                                target="_blank">80/20 Sales and Marketing</a>
+                            <a href="https://www.amazon.com.au/s?k=Gap+Selling+Keenan&tag=grahamdoddsvi-22"
+                                target="_blank">Gap Selling</a>
+                            <a href="https://www.amazon.com.au/s?k=The+Challenger+Sale&tag=grahamdoddsvi-22"
+                                target="_blank">The Challenger Sale</a>
+                            <a href="https://www.amazon.com.au/s?k=The+Psychology+of+Selling+Brian+Tracy&tag=grahamdoddsvi-22"
+                                target="_blank">The Psychology of Selling</a>
+                            <a href="https://www.amazon.com.au/s?k=Selling+101+Zig+Ziglar&tag=grahamdoddsvi-22"
+                                target="_blank">Selling 101</a>
                         </div>
                     </div>
                     <div class="book-category">
                         <h3>Self-Improvement</h3>
                         <div class="book-links-horizontal">
-                            <a href="https://www.amazon.com.au/s?k=Atomic+Habits+James+Clear&tag=grahamdoddsvi-22" target="_blank">Atomic Habits</a>
-                            <a href="https://www.amazon.com.au/s?k=The+Mountain+Is+You+Brianna+Wiest&tag=grahamdoddsvi-22" target="_blank">The Mountain Is You</a>
-                            <a href="https://www.amazon.com.au/s?k=Good+Vibes+Good+Life+Vex+King&tag=grahamdoddsvi-22" target="_blank">Good Vibes Good Life</a>
-                            <a href="https://www.amazon.com.au/s?k=The+Power+of+Discipline+Daniel+Walter&tag=grahamdoddsvi-22" target="_blank">The Power of Discipline</a>
-                            <a href="https://www.amazon.com.au/s?k=The+Let+Them+Theory+Mel+Robbins&tag=grahamdoddsvi-22" target="_blank">The Let Them Theory</a>
-                            <a href="https://www.amazon.com.au/s?k=Stop+Overthinking+Nick+Trenton&tag=grahamdoddsvi-22" target="_blank">Stop Overthinking</a>
-                            <a href="https://www.amazon.com.au/s?k=Breaking+the+Habits+of+Being+Yourself+Dr+Joe+Dispenza&tag=grahamdoddsvi-22" target="_blank">Breaking the Habits of Being Yourself</a>
-                            <a href="https://www.amazon.com.au/s?k=The+7+Habits+of+Highly+Effective+People&tag=grahamdoddsvi-22" target="_blank">The 7 Habits of Highly Effective People</a>
-                            <a href="https://www.amazon.com.au/s?k=The+15+Invaluable+Laws+of+Growth+John+Maxwell&tag=grahamdoddsvi-22" target="_blank">The 15 Invaluable Laws of Growth</a>
-                            <a href="https://www.amazon.com.au/s?k=Success+Napoleon+Hill&tag=grahamdoddsvi-22" target="_blank">Success</a>
+                            <a href="https://www.amazon.com.au/s?k=Atomic+Habits+James+Clear&tag=grahamdoddsvi-22"
+                                target="_blank">Atomic Habits</a>
+                            <a href="https://www.amazon.com.au/s?k=The+Mountain+Is+You+Brianna+Wiest&tag=grahamdoddsvi-22"
+                                target="_blank">The Mountain Is You</a>
+                            <a href="https://www.amazon.com.au/s?k=Good+Vibes+Good+Life+Vex+King&tag=grahamdoddsvi-22"
+                                target="_blank">Good Vibes Good Life</a>
+                            <a href="https://www.amazon.com.au/s?k=The+Power+of+Discipline+Daniel+Walter&tag=grahamdoddsvi-22"
+                                target="_blank">The Power of Discipline</a>
+                            <a href="https://www.amazon.com.au/s?k=The+Let+Them+Theory+Mel+Robbins&tag=grahamdoddsvi-22"
+                                target="_blank">The Let Them Theory</a>
+                            <a href="https://www.amazon.com.au/s?k=Stop+Overthinking+Nick+Trenton&tag=grahamdoddsvi-22"
+                                target="_blank">Stop Overthinking</a>
+                            <a href="https://www.amazon.com.au/s?k=Breaking+the+Habits+of+Being+Yourself+Dr+Joe+Dispenza&tag=grahamdoddsvi-22"
+                                target="_blank">Breaking the Habits of Being Yourself</a>
+                            <a href="https://www.amazon.com.au/s?k=The+7+Habits+of+Highly+Effective+People&tag=grahamdoddsvi-22"
+                                target="_blank">The 7 Habits of Highly Effective People</a>
+                            <a href="https://www.amazon.com.au/s?k=The+15+Invaluable+Laws+of+Growth+John+Maxwell&tag=grahamdoddsvi-22"
+                                target="_blank">The 15 Invaluable Laws of Growth</a>
+                            <a href="https://www.amazon.com.au/s?k=Success+Napoleon+Hill&tag=grahamdoddsvi-22"
+                                target="_blank">Success</a>
                         </div>
                     </div>
                     <div class="book-category">
                         <h3>Business & Management</h3>
                         <div class="book-links-horizontal">
-                            <a href="https://www.amazon.com.au/s?k=Never+Split+the+Difference+Chris+Voss&tag=grahamdoddsvi-22" target="_blank">Never Split the Difference</a>
-                            <a href="https://www.amazon.com.au/s?k=The+Lean+Startup+Eric+Ries&tag=grahamdoddsvi-22" target="_blank">The Lean Startup</a>
-                            <a href="https://www.amazon.com.au/s?k=Leaders+Eat+Last+Simon+Sinek&tag=grahamdoddsvi-22" target="_blank">Leaders Eat Last</a>
-                            <a href="https://www.amazon.com.au/s?k=The+Coaching+Habit+Michael+Bungay+Stanier&tag=grahamdoddsvi-22" target="_blank">The Coaching Habit</a>
-                            <a href="https://www.amazon.com.au/s?k=The+E-Myth+Revisited+Michael+Gerber&tag=grahamdoddsvi-22" target="_blank">The E-Myth Revisited</a>
-                            <a href="https://www.amazon.com.au/s?k=Traction+Gino+Wickman&tag=grahamdoddsvi-22" target="_blank">Traction</a>
-                            <a href="https://www.amazon.com.au/s?k=Surrounded+By+Idiots+Thomas+Erikson&tag=grahamdoddsvi-22" target="_blank">Surrounded By Idiots</a>
-                            <a href="https://www.amazon.com.au/s?k=Profit+First+Mike+Michalowicz&tag=grahamdoddsvi-22" target="_blank">Profit First</a>
-                            <a href="https://www.amazon.com.au/s?k=Personal+MBA+Josh+Kaufman&tag=grahamdoddsvi-22" target="_blank">Personal MBA</a>
-                            <a href="https://www.amazon.com.au/s?k=The+Infinite+Game+Simon+Sinek&tag=grahamdoddsvi-22" target="_blank">The Infinite Game</a>
+                            <a href="https://www.amazon.com.au/s?k=Never+Split+the+Difference+Chris+Voss&tag=grahamdoddsvi-22"
+                                target="_blank">Never Split the Difference</a>
+                            <a href="https://www.amazon.com.au/s?k=The+Lean+Startup+Eric+Ries&tag=grahamdoddsvi-22"
+                                target="_blank">The Lean Startup</a>
+                            <a href="https://www.amazon.com.au/s?k=Leaders+Eat+Last+Simon+Sinek&tag=grahamdoddsvi-22"
+                                target="_blank">Leaders Eat Last</a>
+                            <a href="https://www.amazon.com.au/s?k=The+Coaching+Habit+Michael+Bungay+Stanier&tag=grahamdoddsvi-22"
+                                target="_blank">The Coaching Habit</a>
+                            <a href="https://www.amazon.com.au/s?k=The+E-Myth+Revisited+Michael+Gerber&tag=grahamdoddsvi-22"
+                                target="_blank">The E-Myth Revisited</a>
+                            <a href="https://www.amazon.com.au/s?k=Traction+Gino+Wickman&tag=grahamdoddsvi-22"
+                                target="_blank">Traction</a>
+                            <a href="https://www.amazon.com.au/s?k=Surrounded+By+Idiots+Thomas+Erikson&tag=grahamdoddsvi-22"
+                                target="_blank">Surrounded By Idiots</a>
+                            <a href="https://www.amazon.com.au/s?k=Profit+First+Mike+Michalowicz&tag=grahamdoddsvi-22"
+                                target="_blank">Profit First</a>
+                            <a href="https://www.amazon.com.au/s?k=Personal+MBA+Josh+Kaufman&tag=grahamdoddsvi-22"
+                                target="_blank">Personal MBA</a>
+                            <a href="https://www.amazon.com.au/s?k=The+Infinite+Game+Simon+Sinek&tag=grahamdoddsvi-22"
+                                target="_blank">The Infinite Game</a>
                         </div>
                     </div>
                     <div class="book-category">
                         <h3>Miscellaneous</h3>
                         <div class="book-links-horizontal">
-                            <a href="https://www.amazon.com.au/s?k=The+Big+Short+Michael+Lewis&tag=grahamdoddsvi-22" target="_blank">The Big Short</a>
-                            <a href="https://www.amazon.com.au/s?k=Deep+Simplicity+John+Gribbin&tag=grahamdoddsvi-22" target="_blank">Deep Simplicity</a>
-                            <a href="https://www.amazon.com.au/s?k=Moneyball+Michael+Lewis&tag=grahamdoddsvi-22" target="_blank">Moneyball</a>
-                            <a href="https://www.amazon.com.au/s?k=Flash+Boys+Michael+Lewis&tag=grahamdoddsvi-22" target="_blank">Flash Boys</a>
-                            <a href="https://www.amazon.com.au/s?k=Liar's+Poker+Michael+Lewis&tag=grahamdoddsvi-22" target="_blank">Liar’s Poker</a>
-                            <a href="https://www.amazon.com.au/s?k=The+Fifth+Risk+Michael+Lewis&tag=grahamdoddsvi-22" target="_blank">The Fifth Risk</a>
-                            <a href="https://www.amazon.com.au/s?k=Bull%21+Maggie+Mahar&tag=grahamdoddsvi-22" target="_blank">Bull!</a>
-                            <a href="https://www.amazon.com.au/s?k=Going+Infinite+Michael+Lewis&tag=grahamdoddsvi-22" target="_blank">Going Infinite</a>
-                            <a href="https://www.amazon.com.au/s?k=Tools+and+Weapons+Brad+Smith&tag=grahamdoddsvi-22" target="_blank">Tools and Weapons</a>
-                            <a href="https://www.amazon.com.au/s?k=The+Third+Chimpanzee+Jared+Diamond&tag=grahamdoddsvi-22" target="_blank">The Third Chimpanzee</a>
+                            <a href="https://www.amazon.com.au/s?k=The+Big+Short+Michael+Lewis&tag=grahamdoddsvi-22"
+                                target="_blank">The Big Short</a>
+                            <a href="https://www.amazon.com.au/s?k=Deep+Simplicity+John+Gribbin&tag=grahamdoddsvi-22"
+                                target="_blank">Deep Simplicity</a>
+                            <a href="https://www.amazon.com.au/s?k=Moneyball+Michael+Lewis&tag=grahamdoddsvi-22"
+                                target="_blank">Moneyball</a>
+                            <a href="https://www.amazon.com.au/s?k=Flash+Boys+Michael+Lewis&tag=grahamdoddsvi-22"
+                                target="_blank">Flash Boys</a>
+                            <a href="https://www.amazon.com.au/s?k=Liar's+Poker+Michael+Lewis&tag=grahamdoddsvi-22"
+                                target="_blank">Liar’s Poker</a>
+                            <a href="https://www.amazon.com.au/s?k=The+Fifth+Risk+Michael+Lewis&tag=grahamdoddsvi-22"
+                                target="_blank">The Fifth Risk</a>
+                            <a href="https://www.amazon.com.au/s?k=Bull%21+Maggie+Mahar&tag=grahamdoddsvi-22"
+                                target="_blank">Bull!</a>
+                            <a href="https://www.amazon.com.au/s?k=Going+Infinite+Michael+Lewis&tag=grahamdoddsvi-22"
+                                target="_blank">Going Infinite</a>
+                            <a href="https://www.amazon.com.au/s?k=Tools+and+Weapons+Brad+Smith&tag=grahamdoddsvi-22"
+                                target="_blank">Tools and Weapons</a>
+                            <a href="https://www.amazon.com.au/s?k=The+Third+Chimpanzee+Jared+Diamond&tag=grahamdoddsvi-22"
+                                target="_blank">The Third Chimpanzee</a>
                         </div>
                     </div>
                 </div>
@@ -4644,10 +4887,15 @@
     </main>
 
     <!-- Topic Modal -->
-    <div id="topicModal" class="topic-modal" style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5); backdrop-filter: blur(4px);">
-        <div class="topic-modal-content" style="background-color: #fefefe; margin: 8% auto; padding: 32px; border-radius: 12px; max-width: 750px; width: 90%; box-shadow: 0 10px 25px rgba(0,0,0,0.15); border: 1px solid #e5e7eb; max-height: 80vh; overflow-y: auto; position: relative;">
-            <span class="topic-modal-close" style="color: #6b7280; position: absolute; right: 24px; top: 16px; font-size: 28px; font-weight: bold; cursor: pointer; transition: color 0.2s;" onclick="closeTopicModal()">&times;</span>
-            <div id="topicModalBody" style="font-family: 'Inter', system-ui, sans-serif; color: #1f2937; line-height: 1.7; font-size: 15px;">
+    <div id="topicModal" class="topic-modal"
+        style="display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.5); backdrop-filter: blur(4px);">
+        <div class="topic-modal-content"
+            style="background-color: #fefefe; margin: 8% auto; padding: 32px; border-radius: 12px; max-width: 750px; width: 90%; box-shadow: 0 10px 25px rgba(0,0,0,0.15); border: 1px solid #e5e7eb; max-height: 80vh; overflow-y: auto; position: relative;">
+            <span class="topic-modal-close"
+                style="color: #6b7280; position: absolute; right: 24px; top: 16px; font-size: 28px; font-weight: bold; cursor: pointer; transition: color 0.2s;"
+                onclick="closeTopicModal()">&times;</span>
+            <div id="topicModalBody"
+                style="font-family: 'Inter', system-ui, sans-serif; color: #1f2937; line-height: 1.7; font-size: 15px;">
                 <!-- content goes here -->
             </div>
         </div>
@@ -6221,10 +6469,10 @@
         }
 
         /* Removed legacy scraper */
-</script>
+    </script>
     <script src="js/news-scraper.js"></script>
     <script>
-</script>
+    </script>
 
     <!-- Book sorting functionality -->
     <script>
@@ -6268,7 +6516,7 @@
                 });
             });
         });
-    
+
         function toggleMobileMenu() {
             const mobileDrawer = document.getElementById('mobile-drawer');
             if (mobileDrawer) {
@@ -6286,10 +6534,10 @@
             const content = document.getElementById(sectionId + '-content');
             const arrow = document.getElementById(sectionId + '-arrow');
             if (!content) return;
-            
+
             const section = content.closest('.collapsible-section');
             const isCurrentlyOpen = content.classList.contains('expanded');
-            
+
             // Close all other open sections
             document.querySelectorAll('.collapsible-content').forEach(c => {
                 if (c.id !== sectionId + '-content' && (c.classList.contains('expanded') || c.style.maxHeight)) {
@@ -6306,7 +6554,7 @@
             if (!isCurrentlyOpen) {
                 content.classList.add('expanded');
                 content.classList.remove('collapsed');
-                if(sectionId === 'events-seminars') {
+                if (sectionId === 'events-seminars') {
                     content.style.maxHeight = 'none';
                 } else {
                     const height = content.scrollHeight;
@@ -6322,6 +6570,6 @@
                 if (arrow) arrow.innerHTML = '▼';
             }
         }
-    
 
-          </script>
+
+    </script>
