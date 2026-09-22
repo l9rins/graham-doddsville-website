@@ -956,7 +956,7 @@
         <div class="wealth-creation-page-content" style="max-width: 1000px; margin: 0 auto;">
     <div class="wealth-creation-header" style="text-align: left; border-bottom: 2px solid var(--border-light); padding-bottom: 24px; margin-bottom: 32px;">
         <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 12px;">
-            <a href="index.html" style="color: var(--primary-blue); text-decoration: none; font-weight: 500; font-size: 14px;">← Back to Books</a>
+            <a href="index.html" style="color: var(--primary-blue); text-decoration: none; font-weight: 500; font-size: 14px;">← Back to Books</a>
             <span style="color: var(--text-muted); font-size: 14px;">|</span>
             <span id="book-category" style="background: rgba(30, 64, 175, 0.1); color: var(--primary-blue); padding: 4px 12px; border-radius: 99px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">Category</span>
         </div>
@@ -1230,9 +1230,9 @@
                                 let count = match[2];
                                 let stars = '';
                                 for(let i=1; i<=5; i++) {
-                                    if (score >= i) stars += 'â˜…';
-                                    else if (score >= i - 0.5) stars += 'â˜†'; 
-                                    else stars += 'â˜†';
+                                    if (score >= i) stars += '★';
+                                    else if (score >= i - 0.5) stars += '☆'; 
+                                    else stars += '☆';
                                 }
                                 el.innerHTML = `<span class="stars">${stars}</span> <span class="score">${score}</span> <span class="count">(${count} reviews)</span>`;
                             }

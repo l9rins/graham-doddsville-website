@@ -1,0 +1,6 @@
+#!/bin/sh
+# Block commits that add mojibake, stray control characters or BOMs.
+# Enable once per clone:  git config core.hooksPath .githooks
+files=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(html|js|css|json|md|txt|xml)$')
+[ -z "$files" ] && exit 0
+exec node scripts/check-encoding.js $files

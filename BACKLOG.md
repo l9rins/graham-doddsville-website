@@ -18,3 +18,9 @@ Items deliberately deferred. Each has an owner decision recorded.
   - `images/book-covers/fixed/<slug>.jpg` (483 files) looks like a correction set but is not reliable: e.g. `the-most-important-thing.jpg` is "The Seventh Most Important Thing" by Shelley Pearsall, and `the-deals-of-warren-buffett.jpg` is Vol 1 while the summary is Vol 3. Covers were not bulk-replaced for that reason.
   - Suggested approach: look covers up by ISBN (Open Library / Google Books) per summary and have someone eyeball the result before publishing.
 - **Regulatory news dates.** The RBA/ACCC/ATO/AUSTRAC/FSC/AFCA scrapers don't read a publication date, so every release is stamped "just now" and older releases can appear as fresh. Fix: read the date from each release page (or the listing), per regulator.
+- **Investment Analysis article links (Phase 3 territory).** Only 22 of 71 article links on `investment-analysis.html` find their content: the page's `articleContent` keys use different IDs (e.g. link `automobiles-and-components` vs key `industry-guides-automobiles-and-components`, typo `enegy-industry` vs `energy-industry`). Mapping links to content is part of the Phase 3 content pipeline and was left for it.
+
+## Tooling
+
+- **Encoding pre-commit hook** is in `.githooks/pre-commit` but not enabled. Enable once per clone with `git config core.hooksPath .githooks`.
+- `to-review/extract_docx.ps1` writes text with `Out-File -Encoding UTF8` (adds a BOM in PowerShell 5.1). Left unchanged because it belongs to the on-hold Phase 3 content scripts; see `.agents/AGENTS.md` section 7 before reusing it.

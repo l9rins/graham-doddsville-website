@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
   const ARTICLE_IMAGE_INDEX = [
     "03Bd9RjtxYk8HNGr64DiUZp-1.webp",
     "1.1.1.-Laws-of-wealth-creation.jpg",

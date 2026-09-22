@@ -16,18 +16,29 @@ This project is NOT a simple static HTML site. It is a full-stack application se
 Do NOT attempt to restructure or rename the files inside the `public/` directory (e.g., do not try to move them into `public/pages/`). Doing so will break all relative paths (`<script src="js/...">`, `<img src="images/...">`) across 20+ HTML files. Leave the flat structure inside `public/` exactly as it is.
 
 ## 4. The News Pipeline
-- The backend fetches news from RSS feeds and custom scrapers using `news-fetcher.js`.
-- It maps generic RSS domains to Google News strict financial searches using `news-rss-map.json`.
-- The frontend fetches the aggregated array of news via `http://localhost:4012/api/news` and displays it using client-side JavaScript (`public/js/news-scraper.js` and `index.html`).
+- The backend fetches news from RSS feeds and custom regulator scrapers using `news-fetcher.js`.
+- Sources come from the client spreadsheet ("Latest News - Sources"); `news-sources-data.js` (root) and `public/news-sources-data.js` hold the same list.
+- **An article's section is the spreadsheet column its source is listed under.** Never re-sort articles into other sections by keyword. Filters may only drop items (Guru Watch keeps investor-related items; regional sources drop off-region items).
+- `news-rss-map.json` maps each spreadsheet page URL to the RSS feed of that exact page (not the site's homepage feed). Only pages with a working feed are listed.
+- The frontend fetches the aggregated array of news via `/api/news` and displays it using client-side JavaScript (`public/js/news-scraper.js` and `index.html`). Show only headline, source name and date (client legal requirement: no source images or bylines).
 
 ## 5. Scratch & Backups
 - Do NOT clutter the root directory with old JSON dumps, loose HTML files, or test scripts.
 - Any temporary scripts, backups, or raw data dumps should be placed in the `scratch/` directory.
 
+## 6. Never copy root-level HTML over `public/`
+The repo root still contains old copies of many pages (`index.html`, `economics.html`, ...). They are stale. On 16 Jul 2026 two commits copied them over `public/` and silently reverted weeks of client-approved work, which had to be recovered from git history. Only ever edit the file in `public/`.
+
+## 7. Text encoding (UTF-8, no BOM)
+- All files are UTF-8 **without** a byte-order mark.
+- Windows PowerShell 5.1 corrupts them by default: `Get-Content` reads UTF-8 without a BOM as Windows-1252, and `Set-Content`/`Out-File -Encoding UTF8` write a BOM. A read-modify-write through those cmdlets turns `’` into `â€™` in every non-ASCII character — this caused 5,000+ corrupted characters across 36 files in July 2026.
+- Do bulk edits with Node (`fs.readFileSync(f, 'utf8')` / `fs.writeFileSync(f, s)`). In PowerShell, use `Get-Content -Raw -Encoding UTF8` and `[IO.File]::WriteAllText($path, $text, [Text.UTF8Encoding]::new($false))`.
+- Run `npm run check:encoding` before committing content changes; it fails on mojibake, stray control characters and BOMs.
+
 
 ## PROJECT OVERVIEW
 Mobile-responsive news aggregation website for Graham and Doddsville, a value investing education platform. The website features sections for:
-- Latest News (with subcategories: Companies, Markets, Commodities)
+- Latest News (subcategories: Companies, Markets, Economy, Industry, Guru Watch, Regulatory; Commodities was removed at the client's request on 8 Feb 2026)
 - Around The World (regional news)
 - Market Quotes (interactive quotes with full details)
 - Articles (organized by category tabs: Classical Readings, Economics, Events, Financial Markets, Financial Products, Greatest Investors, Legal Taxation, Professional Advisers, Resources, Share Investing, Wealth Creation)
