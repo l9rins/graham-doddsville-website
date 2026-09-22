@@ -17,13 +17,16 @@ const parser = new Parser({
     timeout: 8000
 });
 
-// Dedicated value-investing blogs are often hosted on small infrastructure
-// and consistently time out at 8000ms. Give them a longer leash.
-const slowFeedSources = ['Acquirers Multiple', 'Value and Opportunity', 'Safal Niveshak'];
-const slowParser = new Parser({
-    headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' },
-    timeout: 15000
-});
+// Guru Watch sources in the client spreadsheet are all "Warren Buffett" search/topic
+// pages. Their RSS equivalents are broader, so keep only items about the investors.
+const GURU_TERMS = ['buffett', 'berkshire', 'munger', 'greg abel', 'dalio', 'ackman', 'burry',
+    'klarman', 'howard marks', 'icahn', 'druckenmiller', 'soros', 'hedge fund',
+    'investor letter', 'shareholder letter', '13f'];
+
+function isGuruArticle(article) {
+    const text = ((article.title || '') + ' ' + (article.description || '')).toLowerCase();
+    return GURU_TERMS.some(term => text.includes(term));
+}
 
 function normalizeTitle(title) {
     return title.toLowerCase()
@@ -202,69 +205,6 @@ async function scrapeAFCA() {
     } catch(e) { console.error('AFCA Scraper error:', e.message); return []; }
 }
 
-async function scrapeAFR() {
-    try {
-        const res = await fetch('https://www.afr.com/', { 
-            headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' },
-            signal: AbortSignal.timeout(15000) 
-        });
-        const html = await res.text();
-        const $ = cheerio.load(html);
-        const articles = [];
-        const seen = new Set();
-        $('h3 a').each((i, el) => {
-            const href = $(el).attr('href');
-            if (href) {
-                const title = $(el).text().trim();
-                let link = href.startsWith('http') ? href : 'https://www.afr.com' + href;
-                if (title && title.length > 15 && !seen.has(link)) {
-                    seen.add(link);
-                    articles.push({
-                        title,
-                        url: link,
-                        source: { name: 'AFR' },
-                        publishedAt: new Date().toISOString(), // scoped to headline + url + date
-                        category: 'companies' // Will be re-categorized in buildHybridPipeline if needed
-                    });
-                }
-            }
-        });
-        return articles.slice(0, 20);
-    } catch(e) { console.error('AFR Scraper error:', e.message); return []; }
-}
-
-async function scrapeBloomberg() {
-    try {
-        // Simple scraper for Bloomberg targeting business/finance headlines
-        const res = await fetch('https://www.bloomberg.com/', { 
-            headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36' },
-            signal: AbortSignal.timeout(15000) 
-        });
-        const html = await res.text();
-        const $ = cheerio.load(html);
-        const articles = [];
-        const seen = new Set();
-        $('a').each((i, el) => {
-            const href = $(el).attr('href');
-            if (href && (href.includes('/news/articles/') || href.includes('/news/features/'))) {
-                const title = $(el).text().trim();
-                let link = href.startsWith('http') ? href : 'https://www.bloomberg.com' + href;
-                if (title && title.length > 20 && !seen.has(link)) {
-                    seen.add(link);
-                    articles.push({
-                        title,
-                        url: link,
-                        source: { name: 'Bloomberg' },
-                        publishedAt: new Date().toISOString(),
-                        category: 'companies'
-                    });
-                }
-            }
-        });
-        return articles.slice(0, 20);
-    } catch(e) { console.error('Bloomberg Scraper error:', e.message); return []; }
-}
-
 async function scrapeFSC() {
     try {
         const res = await fetch('https://fsc.org.au/news', { 
@@ -294,44 +234,45 @@ async function scrapeFSC() {
 
 
 
-function isQualityArticle(article) {
+// Maximum article age per section (Guru Watch matches the homepage's 30-day backfill).
+// Regulatory releases and Guru Watch items are published less often.
+const MAX_AGE_DAYS = { regulatory: 7, 'guru-watch': 30 };
+const DEFAULT_MAX_AGE_DAYS = 3;
+
+function isQualityArticle(article, category) {
     if (!article || !article.title) return false;
     const t = article.title.toLowerCase();
-    
+
     // 1. Length check
     if (t.length < 15) return false;
-    
+
+    // Scraped navigation links, not articles
+    if (/^(latest )?(news|media)( and | & )?(media )?releases?$/.test(t.trim())) return false;
+
     // 2. Keyword Blocklist
     const badWords = [
-        'subscribe to read', 'paywall', 'podcast:', 'watch live', 'crossword', 
-        'sudoku', 'wordle', 'quiz', 'kardashian', 'taylor swift', 'prince harry', 
+        'subscribe to read', 'paywall', 'podcast:', 'watch live', 'crossword',
+        'sudoku', 'wordle', 'quiz', 'kardashian', 'taylor swift', 'prince harry',
         'meghan markle', 'daily briefing'
     ];
     for (const w of badWords) {
         if (t.includes(w)) return false;
     }
-    
-    // 3. Date check (Reject if older than 3 days)
+
+    // 3. Date check
     if (article.publishedAt) {
-        const publishedDate = new Date(article.publishedAt);
-        const threeDaysAgo = new Date(Date.now() - 3 * 24 * 60 * 60 * 1000);
-        
-        // Evergreen Exception: Dedicated value investing blogs have lower cadences
-        // and their content remains relevant for weeks, so we exempt them from the 3-day rule.
-        const sourceName = article.source?.name || article.source;
-        const evergreenSources = ['Acquirers Multiple', 'Value and Opportunity', 'Safal Niveshak'];
-        const isEvergreen = evergreenSources.includes(sourceName);
-        
-        if (!isEvergreen && publishedDate < threeDaysAgo) return false;
+        const maxAgeDays = MAX_AGE_DAYS[category] || DEFAULT_MAX_AGE_DAYS;
+        const cutoff = new Date(Date.now() - maxAgeDays * 24 * 60 * 60 * 1000);
+        if (new Date(article.publishedAt) < cutoff) return false;
     }
-    
+
     return true;
 }
 
 // Format payload strictly
 function formatArticle(article, category) {
     if (!article.title || !article.url) return null;
-    if (!isQualityArticle(article)) return null;
+    if (!isQualityArticle(article, category)) return null;
     return {
         title: article.title.trim(),
         url: article.url.trim(),
@@ -342,65 +283,10 @@ function formatArticle(article, category) {
 }
 
 // Deduplication
-function categorizeNews(title, description, sourceName) {
-    const text = ((title || '') + ' ' + (description || '')).toLowerCase();
-    const source = (sourceName || '').toLowerCase();
-
-    if (text.includes('buffett') || text.includes('berkshire') || text.includes('munger') ||
-        text.includes('dalio') || text.includes('ackman') || text.includes('burry') ||
-        text.includes('hedge fund') || text.includes('investor letter') ||
-        text.includes('13f') || text.includes('shareholder letter')) {
-        return 'guru-watch';
-    }
-
-    if (text.includes('asx') || text.includes('nasdaq') || text.includes('s&p 500') ||
-        text.includes('dow jones') || text.includes('stock market') || text.includes('wall st') ||
-        text.includes('share market') || text.includes('index closed') || text.includes('market rally') ||
-        text.includes('market plunge')) {
-        return 'markets';
-    }
-
-    if (text.includes('rba') || text.includes('reserve bank') || text.includes('asic') ||
-        text.includes('accc') || text.includes('tax') || text.includes('law') ||
-        text.includes('legislation') || text.includes('government') || text.includes('policy') ||
-        text.includes('compliance') || text.includes('court') || text.includes('fine') ||
-        text.includes('ban') || text.includes('penalty') || text.includes('regulator') ||
-        source.includes('ato') || source.includes('austrac') || source.includes('afca') || source.includes('fsc') ||
-        source.includes('rba') || source.includes('reserve bank') || source.includes('accc') || source.includes('asic')) {
-        return 'regulatory';
-    }
-
-    if (text.includes('economy') || text.includes('gdp') || text.includes('inflation') ||
-        text.includes('interest rate') || text.includes('cpi') || text.includes('unemployment') ||
-        text.includes('jobs') || text.includes('recession') || text.includes('growth') ||
-        text.includes('fiscal') || text.includes('trade deficit') || text.includes('dollar')) {
-        return 'economy';
-    }
-
-    if (text.includes('mining') || text.includes('banking') || text.includes('retail') ||
-        text.includes('tech') || text.includes('healthcare') || text.includes('energy') ||
-        text.includes('resources') || text.includes('construction') || text.includes('property') ||
-        text.includes('real estate') || text.includes('sector')) {
-        return 'industry';
-    }
-    
-    // Add explicitly known companies keywords here
-    const companyKeywords = ['company', 'shares', 'stock', 'dividend', 'profit', 'revenue', 
-                             'earnings', 'deal', 'acquisition', 'merger', 'ceo', 'appoint', 
-                             'strike', 'workers', 'port', 'wages', 'bid', 'offer', 'venture', 
-                             'investment', 'fum', 'fua'];
-    const companyRegex = new RegExp(`\\b(?:${companyKeywords.join('|')})\\b`, 'i');
-    if (companyRegex.test(text)) {
-        return 'companies';
-    }
-
-    return 'other'; // Default to other if no specific match, unless region overrides later
-}
-
 function deduplicateAll(allArticles) {
     const finalArticles = [];
     const seenTitles = [];
-    
+
     // Process in order, later categories won't get duplicates of earlier ones
     for (const article of allArticles) {
         const norm = normalizeTitle(article.title);
@@ -421,37 +307,61 @@ function deduplicateAll(allArticles) {
 
 async function buildHybridPipeline() {
     let allArticles = [];
-    
+
     console.log('Starting hybrid news pipeline fetch...');
-    
-    // 1. Guru Watch via Google News RSS has been removed
-    // 2. Mainstream Failures via Google News RSS has been removed
 
     const { matchesRegion, GLOBAL_SOURCES_NEEDING_FILTER } = require('./region-keywords');
-    
-    // 3. RSS and Scrapers for other categories (CONCURRENT FETCHING)
+
     const fetchPromises = [];
-    
+
     // Structure to track counts per source for canary health checks
     const sourceTracker = {};
 
+    // A feed listed under several columns (e.g. Money Management under Companies and
+    // Markets) is fetched once and its items dealt out between those columns, so one
+    // section can't claim every item before deduplication.
+    const feedCache = {};
+    const feedColumns = {};
+    for (const [category, sources] of Object.entries(newsSourcesData)) {
+        for (const s of sources) {
+            const feedUrl = rssMap[s.url];
+            if (!feedUrl) continue;
+            (feedColumns[feedUrl] ??= []);
+            // Guru Watch takes every guru item from a shared feed; the rest is split.
+            if (category === 'guru-watch') feedColumns[feedUrl].guru = true;
+            else feedColumns[feedUrl].push(category);
+        }
+    }
+    function fetchFeed(feedUrl, sourceName) {
+        return feedCache[feedUrl] ??= parser.parseURL(feedUrl)
+            .then(feed => feed.items)
+            .catch(e => { console.error('RSS error for', sourceName, ':', e.message); return []; });
+    }
+
+    // Every article belongs to the section (spreadsheet column) its source is listed under.
     for (const [category, sources] of Object.entries(newsSourcesData)) {
         for (const s of sources) {
             fetchPromises.push((async () => {
                 let fetched = [];
-                if (rssMap[s.url]) {
-                    try {
-                        const activeParser = slowFeedSources.includes(s.name) ? slowParser : parser;
-                        const feed = await activeParser.parseURL(rssMap[s.url]);
-                        fetched = feed.items.slice(0, 20).map(item => ({
+                const feedUrl = rssMap[s.url];
+                if (feedUrl) {
+                    const columns = feedColumns[feedUrl];
+                    let items = (await fetchFeed(feedUrl, s.name))
+                        .filter(item => !isNaN(new Date(item.isoDate || item.pubDate))); // undated items would show as "just now"
+                    if (category !== 'guru-watch') {
+                        if (columns.guru) items = items.filter(item => !isGuruArticle({ title: item.title, description: item.contentSnippet }));
+                        const share = columns.indexOf(category);
+                        items = items.filter((item, i) => i % columns.length === share);
+                    }
+                    fetched = items
+                        .slice(0, 20)
+                        .map(item => ({
                             title: item.title,
                             url: item.link,
+                            description: item.contentSnippet || '',
                             source: { name: s.name },
-                            publishedAt: item.pubDate || item.isoDate || new Date().toISOString()
+                            publishedAt: new Date(item.isoDate || item.pubDate).toISOString()
                         }));
-                    } catch(e) {
-                        console.error('RSS error for', s.name, ':', e.message);
-                    }
                 } else if (category === 'regulatory') {
                     if (s.name === 'Reserve Bank of Australia') fetched = await scrapeRBA();
                     else if (s.name === 'ACCC') fetched = await scrapeACCC();
@@ -459,64 +369,38 @@ async function buildHybridPipeline() {
                     else if (s.name === 'AUSTRAC') fetched = await scrapeAUSTRAC();
                     else if (s.name === 'Financial Services Council') fetched = await scrapeFSC();
                     else if (s.name === 'AFCA') fetched = await scrapeAFCA();
-                } else if (s.name === 'AFR') {
-                    fetched = await scrapeAFR();
-                } else if (s.name === 'Bloomberg') {
-                    fetched = await scrapeBloomberg();
                 }
-                
+
+                // Label items with the source name as it appears in the spreadsheet
+                fetched = fetched.map(a => ({ ...a, source: { name: s.name } }));
+
+                // Relevance filters drop items; they never move them to another section.
+                if (category === 'guru-watch') {
+                    fetched = fetched.filter(isGuruArticle);
+                } else if (GLOBAL_SOURCES_NEEDING_FILTER.includes(s.name) &&
+                    ['north-america', 'europe', 'asia', 'elsewhere'].includes(category)) {
+                    fetched = fetched.filter(a => matchesRegion(((a.title || '') + ' ' + (a.description || '')).trim(), category));
+                }
+
                 // Track counts for canary check
-                const actualCount = fetched.length;
-                sourceTracker[s.name] = (sourceTracker[s.name] || 0) + actualCount;
-                
-                allArticles.push(...fetched.map(a => {
-                    // Categorize purely by content
-                    let assignedCategory = categorizeNews(a.title, a.description, a.source?.name);
-                    
-                    // Apply regional grouping if it originally belonged to a region (Regions take precedence)
-                    if (['north-america', 'europe', 'asia', 'elsewhere'].includes(category)) {
-                        assignedCategory = category;
-                        if (GLOBAL_SOURCES_NEEDING_FILTER.includes(s.name)) {
-                            const contentToMatch = ((a.title || '') + ' ' + (a.description || '')).trim();
-                            if (!matchesRegion(contentToMatch, category)) {
-                                assignedCategory = 'international';
-                            }
-                        }
-                    }
-                    // Dedicated guru-watch sources get a bypass, but with a light sanity check
-                    // to prevent completely off-topic posts (e.g. "Site Maintenance") from passing through.
-                    const dedicatedGuruSources = ['Acquirers Multiple', 'Value and Opportunity', 'Safal Niveshak'];
-                    if (dedicatedGuruSources.includes(s.name)) {
-                        const contentToMatch = ((a.title || '') + ' ' + (a.description || '')).toLowerCase();
-                        const sanityCheck = ['invest', 'stock', 'share', 'market', 'fund', 'portfolio', 'value', 'return', 'yield', 'dividend', 'capital', 'company', 'earnings', 'profit', 'loss', 'buy', 'sell', 'price', 'trade', 'economy', 'financial', 'asset', 'wealth', 'buffett', 'munger', 'graham', 'valuation'];
-                        
-                        // If it has at least one finance-adjacent word, classify as guru-watch.
-                        // Otherwise, let the standard keyword categorization decide its fate.
-                        if (sanityCheck.some(word => contentToMatch.includes(word))) {
-                            assignedCategory = 'guru-watch';
-                        }
-                    }
-                    
-                    // Always ensure we have a category
-                    a.category = assignedCategory;
-                    return formatArticle(a, assignedCategory);
-                }).filter(Boolean));
+                sourceTracker[s.name] = (sourceTracker[s.name] || 0) + fetched.length;
+
+                allArticles.push(...fetched.map(a => formatArticle(a, category)).filter(Boolean));
             })());
         }
     }
     await Promise.allSettled(fetchPromises);
-    
+
     // Canary Health Check
     for (const [sourceName, count] of Object.entries(sourceTracker)) {
-        if (count === 0 && sourceName !== 'Berkshire Hathaway') {
+        if (count === 0) {
             console.warn(`[CANARY WARNING] Source "${sourceName}" returned 0 articles. This may indicate a broken scraper, dead RSS feed, or severe 403 block.`);
         }
     }
-    
+
     // Sort by date before dedup to keep freshest
-    allArticles = allArticles.filter(Boolean);
     allArticles.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
-    
+
     const deduped = deduplicateAll(allArticles);
     console.log(`Pipeline complete. Filtered ${allArticles.length} -> ${deduped.length} unique articles.`);
     return deduped;

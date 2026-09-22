@@ -1,5 +1,5 @@
 // News Sources Data - Extracted from client Excel spreadsheet
-// "2026-05-22 Latest News - Sources - Updated (1).xlsx"
+// "2026-05-22 Latest News - Sources - Updated (2).xlsx"
 // Each category contains an array of { name, url } objects
 
 const newsSourcesData = {
@@ -10,6 +10,7 @@ const newsSourcesData = {
 
     companies: [
         { name: 'ABC News', url: 'https://www.abc.net.au/news/business' },
+        { name: 'Canberra Times', url: 'https://www.canberratimes.com.au/news/business/' },
         { name: 'Herald Sun', url: 'https://www.heraldsun.com.au/business/breaking-news' },
         { name: 'Money Management', url: 'https://www.moneymanagement.com.au/news' },
         { name: 'Morningstar', url: 'https://www.morningstar.com.au/insights/stocks' },
@@ -54,8 +55,8 @@ const newsSourcesData = {
         { name: 'News.com.au', url: 'https://www.news.com.au/finance/economy' },
         { name: 'RBA', url: 'https://www.rba.gov.au/media-releases/' },
         { name: 'Sharecafe', url: 'https://www.sharecafe.com.au/category/economics/' },
-        { name: 'Sydney Morning Herald', url: 'https://www.smh.com.au/business/the-economy' },
         { name: '7News', url: 'https://7news.com.au/business/economy' },
+        { name: 'Sydney Morning Herald', url: 'https://www.smh.com.au/business/the-economy' },
         { name: 'The Bull', url: 'https://thebull.com.au/category/share_tips/economics/' }
     ],
 
@@ -63,9 +64,9 @@ const newsSourcesData = {
         { name: 'ABA', url: 'https://www.ausbanking.org.au/news/' },
         { name: 'ASFA', url: 'https://www.superannuation.asn.au/media/media-releases/' },
         { name: 'Bloomberg', url: 'https://www.bloomberg.com/industries' },
+        { name: 'Financial Standard', url: 'https://www.financialstandard.com.au/' },
         { name: 'FAAA', url: 'https://faaa.au/news/' },
         { name: 'Fat Tail Daily', url: 'https://daily.fattail.com.au/latest-articles/' },
-        { name: 'Financial Standard', url: 'https://www.financialstandard.com.au/' },
         { name: 'FS Advice', url: 'https://www.fsadvice.com.au/' },
         { name: 'FS Managed Accounts', url: 'https://www.fsmanagedaccounts.com.au/' },
         { name: 'FS Private Wealth', url: 'https://www.fsprivatewealth.com.au/' },
@@ -73,6 +74,8 @@ const newsSourcesData = {
         { name: 'Harvard Business Review', url: 'https://hbr.org/' },
         { name: 'Inc Australia', url: 'https://www.inc.com/' },
         { name: 'Investor Daily', url: 'https://www.investordaily.com.au/' },
+        { name: 'McKinsey & Co (Australia)', url: 'https://www.mckinsey.com/au/our-insights' },
+        { name: 'McKinsey & Co (US)', url: 'https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights' },
         { name: 'Money Management', url: 'https://www.moneymanagement.com.au/' },
         { name: 'Morningstar', url: 'https://www.morningstar.com.au/' },
         { name: 'News.com.au', url: 'https://www.news.com.au/finance/business' },
@@ -80,24 +83,21 @@ const newsSourcesData = {
     ],
 
     'guru-watch': [
-        { name: 'Acquirers Multiple', url: 'https://acquirersmultiple.com/' },
-        { name: 'Value and Opportunity', url: 'https://valueandopportunity.com/' },
-        { name: 'Safal Niveshak', url: 'https://safalniveshak.com/' },
-        { name: 'AFR', url: 'https://www.afr.com/' },
+        { name: 'Berkshire Hathaway', url: 'https://www.berkshirehathaway.com/news/2026news.html' },
         { name: 'Bloomberg', url: 'https://www.bloomberg.com/search?query=warren+buffett' },
         { name: 'CNBC', url: 'https://www.cnbc.com/warren-buffett-watch/' },
         { name: 'Daily News', url: 'https://www.nydailynews.com/?s=warren+buffett&orderby=date&order=desc' },
         { name: 'Entrepreneur', url: 'https://www.entrepreneur.com/topic/warren-buffett' },
-        { name: 'Forbes', url: 'https://www.forbes.com/search/?q=warren%20buffett' },
+        { name: 'Forbes', url: 'https://www.forbes.com/search/?q=warren%20buffett&sh=363d4bb7279f' },
         { name: 'Fox News', url: 'https://www.foxbusiness.com/category/rich-famous' },
         { name: 'Guru Focus', url: 'https://www.gurufocus.com/guru/warren%2Bbuffett/stock-picks?view=table' },
-        { name: 'Harvard Business Review', url: 'https://hbr.org/the-latest' },
         { name: 'HuffPost', url: 'https://www.huffpost.com/topic/warren-buffett' },
+        { name: 'Harvard Business Review', url: 'https://hbr.org/the-latest' },
         { name: 'Markets Insider', url: 'https://markets.businessinsider.com/news/warren-buffett' },
         { name: 'MarketWatch', url: 'https://www.marketwatch.com/search?q=warren%20buffett&ts=0&tab=All%20News' },
         { name: 'Morningstar', url: 'https://www.morningstar.com.au/search/documents?q=warren%20buffett' },
-        { name: 'New York Times', url: 'https://www.nytimes.com/topic/person/warren-e-buffett' },
         { name: 'Newsweek', url: 'https://www.newsweek.com/search/site/?q=warren+buffett' },
+        { name: 'New York Times', url: 'https://www.nytimes.com/topic/person/warren-e-buffett' },
         { name: 'US News', url: 'https://www.usnews.com/topics/people/warren_buffett' },
         { name: 'USA Today', url: 'https://www.usatoday.com/search/?q=warren%20buffett' },
         { name: 'Washington Post', url: 'https://www.washingtonpost.com/search/?query=warren+buffett' }
@@ -108,15 +108,16 @@ const newsSourcesData = {
         { name: 'AFCA', url: 'https://www.afca.org.au/news/latest-news' },
         { name: 'APRA', url: 'https://www.apra.gov.au/news-and-publications' },
         { name: 'ASIC', url: 'https://asic.gov.au/newsroom/' },
-        { name: 'ATO', url: 'https://www.ato.gov.au/whats-new' },
+        { name: 'ATO', url: 'https://www.ato.gov.au/whats-new#sortCriteria=%40dateupdated%20descending' },
         { name: 'AUSTRAC', url: 'https://www.austrac.gov.au/news-and-media/media-release' },
-        { name: 'FIRB', url: 'https://foreigninvestment.gov.au/news-and-reports/news' },
         { name: 'Financial Reporting Council', url: 'https://frc.gov.au/media/media-release' },
         { name: 'Financial Services Council', url: 'https://www.fsc.org.au/news/media-releases' },
+        { name: 'FIRB', url: 'https://foreigninvestment.gov.au/news-and-reports/news?keys=&field_news_type_target_id=26' },
         { name: 'OAIC', url: 'https://www.oaic.gov.au/newsroom' },
         { name: 'Reserve Bank of Australia', url: 'https://www.rba.gov.au/news/' },
         { name: 'Treasury', url: 'https://treasury.gov.au/media' }
     ],
+
 
     // =============================================
     // AROUND THE WORLD CATEGORIES
@@ -133,10 +134,10 @@ const newsSourcesData = {
         { name: 'Fox News', url: 'https://www.foxbusiness.com/' },
         { name: 'Globe and Mail', url: 'https://www.theglobeandmail.com/investing/' },
         { name: 'HuffPost', url: 'https://www.huffpost.com/business' },
-        { name: "Investor's Business Daily", url: 'https://www.investors.com/' },
+        { name: 'Investor\'s Business Daily', url: 'https://www.investors.com/' },
         { name: 'NBC News', url: 'https://www.nbcnews.com/business' },
         { name: 'New York Post', url: 'https://nypost.com/business/' },
-        { name: 'New York Times', url: 'https://www.nytimes.com/section/business' },
+        { name: 'New York Times', url: 'https://www.nytimes.com/section/business?action=click&pgtype=Homepage&region=TopBar&module=HPMiniNav&contentCollection=Business&WT.nav=page' },
         { name: 'Time', url: 'https://time.com/section/business/' },
         { name: 'USA News', url: 'https://usanews.com/business' },
         { name: 'USA Today', url: 'https://www.usatoday.com/money/investing/' },
@@ -171,8 +172,7 @@ const newsSourcesData = {
         { name: 'Japan Today', url: 'https://japantoday.com/category/business' },
         { name: 'Nikkei Asia', url: 'https://asia.nikkei.com/Economy' },
         { name: 'Shine', url: 'https://www.shine.cn/biz/economy/' },
-        { name: 'South China Morning Post', url: 'https://www.scmp.com/economy' },
-        { name: 'The Asian Age', url: 'https://www.asianage.com/business' },
+        { name: 'South China Morning Post', url: 'https://www.scmp.com/economy?module=oneline_menu_section_int&pgtype=homepage' },
         { name: 'The Chosun Daily', url: 'https://www.chosun.com/english/market-money-en/' },
         { name: 'The Diplomat', url: 'https://thediplomat.com/topics/economy/' },
         { name: 'The Japan News', url: 'https://japannews.yomiuri.co.jp/news/business/' },
