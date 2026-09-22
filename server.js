@@ -46,12 +46,14 @@ const newsCache = {
 };
 
 // Static file serving
+// Block npm leftovers in public/ from being served
+app.use(/^\/(package(-lock)?\.json|node_modules)(?=\/|$)/, (req, res) => res.status(404).json({ error: 'Not Found' }));
 app.use('/html', express.static(path.join(__dirname, 'public', 'html')));
 app.use('/css', express.static(path.join(__dirname, 'public', 'css')));
 app.use('/js', express.static(path.join(__dirname, 'public', 'js')));
 app.use('/images', express.static(path.join(__dirname, 'public', 'images')));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(__dirname));
+app.use('/pdfs', express.static(path.join(__dirname, 'pdfs')));
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
