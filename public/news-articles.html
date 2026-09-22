@@ -428,12 +428,10 @@
                         `;
                     } else {
                         cardInner = `
-                            ${article.image ? `<img src="${article.image}" alt="News thumbnail" onerror="this.style.display='none'">` : ''}
                             <div class="article-card-source">${sourceName}</div>
                             <h3 class="article-card-title">
                                 <a href="${article.url}" target="_blank" rel="noopener noreferrer">${article.title}</a>
                             </h3>
-                            <div class="article-card-excerpt">${article.excerpt || ''}</div>
                             <div class="article-card-meta">
                                 <span class="date">${pubDate.toLocaleDateString('en-AU', {day: 'numeric', month: 'short', year: 'numeric'})}</span>
                                 <span class="time-ago">${timeAgo}</span>

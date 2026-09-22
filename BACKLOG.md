@@ -9,3 +9,12 @@ Items deliberately deferred. Each has an owner decision recorded.
 ## Not requested — do not build without a new request
 
 - **Warren Buffett term links on the homepage.** All terms in the "WARREN BUFFETT QUOTES" tabs are `href="#"` (tapping jumps to top of page). Could link each term to its section on the matching quote page. Not asked for by the client. (Raised 2026-09-23.)
+
+## Content work — needs a person with the right cover sources
+
+- **Book summary covers are widely wrong** (audit 2026-09-23 of `public/js/book-summaries-data.js`, 640 summaries):
+  - 66 cover images are shared by several different books (one image is the "cover" for 23 value-investing titles).
+  - 14 summaries use the G&D logo as the cover; 29 have no cover; 130 point at cover files that don't exist.
+  - `images/book-covers/fixed/<slug>.jpg` (483 files) looks like a correction set but is not reliable: e.g. `the-most-important-thing.jpg` is "The Seventh Most Important Thing" by Shelley Pearsall, and `the-deals-of-warren-buffett.jpg` is Vol 1 while the summary is Vol 3. Covers were not bulk-replaced for that reason.
+  - Suggested approach: look covers up by ISBN (Open Library / Google Books) per summary and have someone eyeball the result before publishing.
+- **Regulatory news dates.** The RBA/ACCC/ATO/AUSTRAC/FSC/AFCA scrapers don't read a publication date, so every release is stamped "just now" and older releases can appear as fresh. Fix: read the date from each release page (or the listing), per regulator.
