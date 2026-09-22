@@ -43,7 +43,7 @@
     max-width: 1240px;
     margin: 0 auto;
     padding: 24px;
-    padding-top: 100px; /* Space for sticky header */
+    padding-top: 24px; /* header is in the page flow (css/site-header.css) */
 }
 
 /* Header & Navigation - Aligned with Main Site Blue Theme */
@@ -423,7 +423,7 @@
 @media (max-width: 768px) {
     .books-page-content {
         padding: 16px;
-        padding-top: 80px;
+        padding-top: 16px;
     }
     
     .page-title {

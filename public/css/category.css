@@ -37,9 +37,9 @@
 
 /* --- Back Navigation Bar --- */
 .category-back-nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    /* Not sticky: the shared site header is sticky above it */
+    position: relative;
+    z-index: 1;
     background: linear-gradient(135deg, var(--cat-purple-dark) 0%, var(--cat-purple) 100%);
     padding: 0 16px;
     display: flex;
@@ -64,6 +64,12 @@
     padding: 8px 0;
     transition: var(--cat-transition);
     -webkit-tap-highlight-color: transparent;
+}
+
+.category-back-nav a.back-link {
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 500;
 }
 
 .back-btn:active {

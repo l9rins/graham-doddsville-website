@@ -1,0 +1,204 @@
+/*
+ * Shared subpage header, navigation drawer, back link and icons.
+ * Mirrors the homepage's mobile header (navy bar, centred logo, hamburger
+ * on the right, 300px drawer). Loaded last in <head> on every subpage so it
+ * wins over page-specific header styles. The homepage does not use these
+ * classes and is unaffected.
+ */
+
+/* ---------- Icons (images/icons.svg sprite) ---------- */
+.icon {
+    width: 1em;
+    height: 1em;
+    flex-shrink: 0;
+    vertical-align: -0.125em;
+    fill: none;
+    stroke: currentColor;
+}
+
+/* ---------- Header ---------- */
+header.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    margin: 0;
+    padding: 8px 0;
+    background: #ffffff;
+    border: 0;
+    border-bottom: 1px solid #e0e0e0;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* !important: some pages force .container/.header-content white with !important */
+header.site-header .container {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    background: #1e3a8a !important;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+header.site-header .header-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 68px;
+    margin: 0;
+    padding: 0 16px;
+    background: transparent !important;
+    border: 0;
+}
+
+header.site-header .logo {
+    display: block;
+    margin: 0;
+    line-height: 0;
+}
+
+header.site-header .logo-image {
+    display: block;
+    height: 60px;
+    width: auto;
+    max-width: 60vw;
+    margin: 0;
+}
+
+header.site-header .mobile-menu-toggle {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    width: 44px;
+    height: 44px;
+    margin: 0;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+header.site-header .hamburger-line {
+    display: block;
+    flex-shrink: 0;
+    width: 25px;
+    height: 2px;
+    margin: 2px 0;
+    background: #333333;
+    border-radius: 1px;
+}
+
+/* ---------- Drawer ---------- */
+#mobile-drawer.site-drawer {
+    position: fixed;
+    top: 0;
+    right: -320px;
+    left: auto;
+    bottom: 0;
+    z-index: 10000;
+    display: block;
+    width: 300px;
+    max-width: 80vw;
+    height: 100%;
+    overflow-y: auto;
+    background: #ffffff;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    transform: none;
+    transition: right 0.3s;
+}
+
+#mobile-drawer.site-drawer.open {
+    right: 0;
+}
+
+#mobile-drawer.site-drawer .drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 20px;
+    background: #1e3a8a !important;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+#mobile-drawer.site-drawer .drawer-logo {
+    display: block;
+    height: 40px;
+    width: auto;
+}
+
+#mobile-drawer.site-drawer .drawer-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin: 0;
+    padding: 0;
+    font-size: 28px;
+    color: #ffffff;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+
+#mobile-drawer.site-drawer .drawer-menu {
+    list-style: none;
+    margin: 0;
+    padding: 12px 0;
+}
+
+#mobile-drawer.site-drawer .drawer-link {
+    display: block;
+    padding: 6px 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.6;
+    color: #333333;
+    white-space: nowrap;
+    text-decoration: none;
+    background: transparent;
+    border: 0;
+}
+
+#mobile-drawer.site-drawer .drawer-link:hover,
+#mobile-drawer.site-drawer .drawer-link[aria-current="page"] {
+    color: #1e3a8a;
+    background: #f3f4f6;
+}
+
+/* ---------- Back link (one convention for every subpage) ---------- */
+a.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 44px;
+    padding: 0;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-transform: none;
+    color: #1e3a8a;
+    text-decoration: none;
+    background: none;
+    border: 0;
+}
+
+a.back-link:hover {
+    text-decoration: underline;
+}
+
+a.back-link .icon {
+    width: 18px;
+    height: 18px;
+}

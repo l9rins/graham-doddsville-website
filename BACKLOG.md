@@ -24,3 +24,12 @@ Items deliberately deferred. Each has an owner decision recorded.
 
 - **Encoding pre-commit hook** is in `.githooks/pre-commit` but not enabled. Enable once per clone with `git config core.hooksPath .githooks`.
 - `to-review/extract_docx.ps1` writes text with `Out-File -Encoding UTF8` (adds a BOM in PowerShell 5.1). Left unchanged because it belongs to the on-hold Phase 3 content scripts; see `.agents/AGENTS.md` section 7 before reusing it.
+
+## Header / navigation / icons (Phase 5 follow-ups)
+
+- **Orphaned pages left out of the shared header:** `news-articles.html` (two HTML documents pasted together; a second, unclosed homepage header sits mid-page; no page links to it) and `warren-buffett-economics-backup.html` (old backup). Decide: rebuild or delete.
+- **Accordion arrows are still text glyphs (▼/▲, +/−).** Each page's own `toggleCollapsible` script writes the glyph into the arrow element, so switching to the SVG chevron means editing ~20 inline scripts. Deferred to avoid breaking accordions; `images/icons.svg#icon-chevron-down` is ready.
+- **Category icons are emoji** (`categoryMeta` in `public/news-sources-data.js`, shown on `category.html`).
+- **Homepage overlay "← Back" buttons** (`.back-button`, 10 in `index.html`) were not changed — the homepage was out of scope for the subpage header work.
+- **Desktop:** subpages now show the hamburger at every width and no desktop nav bar (the old per-page mini navs were inconsistent). Revisit in the desktop phase.
+- To change the subpage menu, edit `MENU` in `scripts/apply-site-header.js` and re-run it (idempotent).
