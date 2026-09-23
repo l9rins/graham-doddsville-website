@@ -74,3 +74,7 @@ This project uses a full-stack architecture with a Node.js API backend and a Van
 ## Verification and Evidence Rule
 **CRITICAL RULE FOR ALL FUTURE SESSIONS:** When verifying fixes, data pipelines, or scrapers, NEVER accept or present high-level summaries or '100% accurate' claims without hard evidence. You MUST spot-check and provide actual raw log excerpts, exact JSON payload samples, and real data points (e.g., actual pubDate lists) to the user. Every real bug in the news pipeline (e.g., the 3-day purge bug, the canary timeout bug) was only surfaced because the user insisted on seeing the raw evidence instead of accepting a confident summary. Always show the data.
 
+
+## 8. Mobile-safe content
+- Wrap every content table in `<div class="table-responsive">…</div>` (styles in `public/css/styles.css`) so wide tables scroll inside their box instead of widening the page.
+- Grid columns: use `minmax(min(300px, 100%), 1fr)`, never a bare `minmax(300px, 1fr)`, which overflows narrow phones.

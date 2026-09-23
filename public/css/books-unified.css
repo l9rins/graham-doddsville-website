@@ -292,7 +292,7 @@
 /* Books Grid */
 .books-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
     gap: 32px;
     margin-bottom: 60px;
 }
@@ -632,7 +632,7 @@
 
 /* Detailed grid overrides */
 .detailed-grid {
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)) !important;
+    grid-template-columns: repeat(auto-fill, minmax(min(350px, 100%), 1fr)) !important;
 }
 @media (max-width: 768px) {
     .detailed-grid {

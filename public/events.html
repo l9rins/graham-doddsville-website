@@ -1684,7 +1684,8 @@
         window.toggleMobileFilters = function() {
             const panel = document.getElementById('evt-filters-panel');
             if (panel) {
-                panel.classList.toggle('active');
+                // The mobile styles open the panel with .mobile-open
+                panel.classList.toggle('mobile-open');
             }
         };
 

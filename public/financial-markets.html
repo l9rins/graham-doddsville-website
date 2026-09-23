@@ -236,7 +236,7 @@
         /* Reading Cards */
         .readings-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(min(350px, 100%), 1fr));
             gap: 24px;
             margin-bottom: 32px;
         }
@@ -4087,7 +4087,7 @@ const articleContent = {
                     
                     <p>Imagine you invest $10,000 at various interest rates (4%, 6%, and 10%) over different timeframes (10, 20, and 30 years). The table below illustrates how your initial investment multiplies over time:</p>
                     
-                    <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+                    <div class="table-responsive"><table style="width: 100%; border-collapse: collapse; margin: 0;">
                         <tr style="background-color: #f8f9fa;">
                             <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Years</th>
                             <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">4%</th>
@@ -4112,7 +4112,7 @@ const articleContent = {
                             <td style="border: 1px solid #ddd; padding: 12px;">$57,430</td>
                             <td style="border: 1px solid #ddd; padding: 12px;">$174,490</td>
                         </tr>
-                    </table>
+                    </table></div>
                     
                     <p>Notice the remarkable difference in the final amounts depending on the interest rate and the time horizon. Higher interest rates and longer investment periods result in significantly greater compounding.</p>
                     

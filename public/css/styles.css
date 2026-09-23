@@ -8285,7 +8285,7 @@ th {
 .quotes-grid {
     display: grid;
     gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(500px, 100%), 1fr));
 }
 
 .quote-card-full {
@@ -9771,7 +9771,7 @@ th {
 
 .events-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
     gap: 30px;
     margin-bottom: 40px;
 }
@@ -11600,7 +11600,7 @@ th {
 /* Grid Layout for News Cards */
 #category-news-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
     gap: 24px;
     padding: 20px 0;
 }
@@ -12470,3 +12470,18 @@ th {
 .comma-separated-list .desktop-buffett-item{font-family:'Inter', sans-serif;font-size:14px;font-weight:600;color:#1e293b}
 .recommended-book-link{font-family:Georgia, serif!important;font-size:15px!important;font-weight:600!important;color:#000!important}
 .recommended-book-link:hover{text-decoration:underline!important;color:#d4af37!important}
+
+/* Tables that are wider than a phone scroll sideways inside their own box
+   instead of widening the page. Wrap every content table in this. */
+.table-responsive {
+    width: 100%;
+    max-width: 100%;
+    margin: 20px 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.table-responsive > table {
+    min-width: 100%;
+    margin: 0;
+}
