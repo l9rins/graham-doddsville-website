@@ -33,7 +33,7 @@ The repo root still contains old copies of many pages (`index.html`, `economics.
 
 ## 7. Text encoding (UTF-8, no BOM)
 - All files are UTF-8 **without** a byte-order mark.
-- Windows PowerShell 5.1 corrupts them by default: `Get-Content` reads UTF-8 without a BOM as Windows-1252, and `Set-Content`/`Out-File -Encoding UTF8` write a BOM. A read-modify-write through those cmdlets turns `’` into `â€™` in every non-ASCII character — this caused 5,000+ corrupted characters across 36 files in July 2026.
+- Windows PowerShell 5.1 corrupts them by default: `Get-Content` reads UTF-8 without a BOM as Windows-1252, and `Set-Content`/`Out-File -Encoding UTF8` write a BOM. A read-modify-write through those cmdlets turns every non-ASCII character into two or three wrong ones (a curly apostrophe becomes "a-circumflex, euro sign, trade-mark sign") — this caused 5,000+ corrupted characters across 36 files in July 2026.
 - Do bulk edits with Node (`fs.readFileSync(f, 'utf8')` / `fs.writeFileSync(f, s)`). In PowerShell, use `Get-Content -Raw -Encoding UTF8` and `[IO.File]::WriteAllText($path, $text, [Text.UTF8Encoding]::new($false))`.
 - Run `npm run check:encoding` before committing content changes; it fails on mojibake, stray control characters and BOMs.
 
