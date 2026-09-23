@@ -35,3 +35,8 @@ Items deliberately deferred. Each has an owner decision recorded.
 - To change the subpage menu, edit `MENU` in `scripts/apply-site-header.js` and re-run it (idempotent).
 - **Article links without content (Phase 3 territory).** Share of article links that open real content on 23 Sep: Financial Products 21/108, Economics (`sidebar-economics.html`) 21/90, Investment Analysis 22/71; all other topic pages 100%. The rest show "Article Not Found".
 - **10 book covers missing on the book-list pages** (e.g. `images/book-covers/image5681.webp` on share-investing-books). They fall back to the G&D logo via `onerror`; real covers are content work (see book cover item above).
+
+## Found in the final link check (23 Sep) — not changed
+
+- **Homepage desktop mega-menu links** (~45, `index.html` lines ~1006–1128) point to `html/investment-analysis.html#…`, which doesn't exist (should be `investment-analysis.html`). Desktop-only; left for the desktop phase. Most of the `#anchors` also don't match sections on that page.
+- **`events.html` links `css/mobile-fixes.css`**, which was deleted on 16 Jul (commit `5fe3918`, same day as the other overwrites). The Events page looks correct on mobile today; decide whether to restore the file from git or drop the link.
