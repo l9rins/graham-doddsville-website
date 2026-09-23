@@ -2,6 +2,8 @@
 
 **CRITICAL RULE FOR ALL FUTURE AGENTS:** Read this document carefully before making ANY file changes.
 
+**Current project state, owner decisions and open work:** read `.agents/HANDOFF.md` and `BACKLOG.md` before starting.
+
 ## 1. Project Architecture (Client / Server Separation)
 This project is NOT a simple static HTML site. It is a full-stack application served by a Node.js Express server.
 - **Backend Entry Point:** `server.js` (runs on port 4012). It serves the API endpoints AND statically serves the `public/` directory.
