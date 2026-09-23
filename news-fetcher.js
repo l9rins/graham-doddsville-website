@@ -269,6 +269,10 @@ function isQualityArticle(article, category) {
     return true;
 }
 
+// "Around the World" columns in the client spreadsheet; an article's region is its
+// column when it comes from one of these, otherwise null (Latest News sections).
+const REGIONS = ['north-america', 'europe', 'asia', 'elsewhere'];
+
 // Format payload strictly
 function formatArticle(article, category) {
     if (!article.title || !article.url) return null;
@@ -278,7 +282,8 @@ function formatArticle(article, category) {
         url: article.url.trim(),
         source: { name: article.source?.name || article.source || 'News' },
         publishedAt: article.publishedAt,
-        category: category
+        category: category,
+        region: REGIONS.includes(category) ? category : null
     };
 }
 
@@ -378,7 +383,7 @@ async function buildHybridPipeline() {
                 if (category === 'guru-watch') {
                     fetched = fetched.filter(isGuruArticle);
                 } else if (GLOBAL_SOURCES_NEEDING_FILTER.includes(s.name) &&
-                    ['north-america', 'europe', 'asia', 'elsewhere'].includes(category)) {
+                    REGIONS.includes(category)) {
                     fetched = fetched.filter(a => matchesRegion(((a.title || '') + ' ' + (a.description || '')).trim(), category));
                 }
 
@@ -406,4 +411,4 @@ async function buildHybridPipeline() {
     return deduped;
 }
 
-module.exports = { buildHybridPipeline };
+module.exports = { buildHybridPipeline, REGIONS };

@@ -33,3 +33,5 @@ Items deliberately deferred. Each has an owner decision recorded.
 - **Homepage overlay "← Back" buttons** (`.back-button`, 10 in `index.html`) were not changed — the homepage was out of scope for the subpage header work.
 - **Desktop:** subpages now show the hamburger at every width and no desktop nav bar (the old per-page mini navs were inconsistent). Revisit in the desktop phase.
 - To change the subpage menu, edit `MENU` in `scripts/apply-site-header.js` and re-run it (idempotent).
+- **Article links without content (Phase 3 territory).** Share of article links that open real content on 23 Sep: Financial Products 21/108, Economics (`sidebar-economics.html`) 21/90, Investment Analysis 22/71; all other topic pages 100%. The rest show "Article Not Found".
+- **10 book covers missing on the book-list pages** (e.g. `images/book-covers/image5681.webp` on share-investing-books). They fall back to the G&D logo via `onerror`; real covers are content work (see book cover item above).

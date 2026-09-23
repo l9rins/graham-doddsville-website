@@ -5,7 +5,7 @@ const helmet = require('helmet');
 const path = require('path');
 const rateLimit = require('express-rate-limit');
 const { newsSourcesData } = require('./news-sources-data');
-const { buildHybridPipeline } = require('./news-fetcher');
+const { buildHybridPipeline, REGIONS } = require('./news-fetcher');
 
 const app = express();
 const PORT = process.env.PORT || 4012;
@@ -121,12 +121,15 @@ app.get('/api/news/category/:category', (req, res) => {
 app.get('/api/news/region/:region', (req, res) => {
     try {
         const region = req.params.region.toLowerCase();
+        if (!REGIONS.includes(region)) {
+            return res.status(400).json({ error: 'Unknown region', validRegions: REGIONS });
+        }
         if (newsCache.articles.length === 0) {
             return res.status(503).json({ error: 'Service temporarily unavailable', message: 'Cache warming up' });
         }
-        
+
         const filtered = newsCache.articles
-            .filter(a => a.category === region)
+            .filter(a => a.region === region)
             .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt))
             .slice(0, 10);
 
@@ -134,7 +137,7 @@ app.get('/api/news/region/:region', (req, res) => {
             region,
             articles: filtered,
             count: filtered.length,
-            sources: [],
+            sources: newsSourcesData[region].map(s => s.name),
             timestamp: new Date().toISOString()
         });
     } catch (e) { res.status(500).json({ error: 'Server error' }); }
